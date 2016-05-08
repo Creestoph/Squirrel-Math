@@ -1,0 +1,1454 @@
+﻿<!DOCTYPE HTML PUBLIC “-//W3C//DTD HTML 4.01 Transitional//EN”>
+<html lang="pl">
+
+<head>
+	<title>Podzielność liczb</title>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+	<link rel="stylesheet" href="lesson_style.css">
+
+	<style>
+		table.factorisation
+		{
+			border-collapse: collapse;
+		}
+
+
+		table.factorisation td:nth-child(odd)
+		{
+			border-right: 1px solid black;
+			height: 30px;
+			padding-right: 5px;
+			text-align: right;
+		}
+		table.factorisation td:nth-child(even)
+		{
+			height: 30px;
+			padding-left: 5px;
+			text-align: left;
+		}
+
+	</style>
+
+</head>
+
+<body class="lekcja">
+  
+<div class = "menu">
+	<a href="index.html"><button class = "przejscie" style="position: absolute; left: 10px"><span>Strona główna</span></button></a>
+	<a href="drzewo.html"><button class = "przejscie" style="position: absolute; left: 250px"><span>Drzewo</span></button></a>
+	<a href="podzielnosc_liczb_short.html"><button class = "przejscie" style="position: relative; left: 80%"><span>Wersja skrócona</span></button></a>
+</div>
+  
+<div class="glowny">
+
+	<p class="tytul">
+		Podzielność liczb
+	</p>
+    
+	<font size="5" face="Calibri Light">
+      
+		<p>
+			Uwaga: Lekcja ociera się o dział matematyki zwany <i>teorią liczb</i>. Temat zawiera duże ilości nowych pojęć, twierdzeń i 
+			zależności. Wchodzisz na własne ryzyko. 
+		</p>
+
+		<p>
+			W temacie o dzieleniu napotkaliśmy na problem, próbując rozłożyć 7 kamieni na 3 równe grupy. Z drugiej strony podzielenie 
+			15 ziemniaków pomiędzy 3 gości nie sprawiło większych trudności. Na czym polega różnica? 
+		</p>
+
+		<p class ="rozdzial">
+			Trochę słownictwa
+		</p>
+		<hr>
+
+		<p class="typ">
+			Intuicje
+		</p>
+
+		<p>
+			Istotna różnica jest taka, że 7 : 3 to przykład dzielenia z resztą, a 15 : 3 to dzielenie bez reszty. Mówimy, że 7 
+			daje resztę 1 przy dzieleniu przez 3 lub inaczej, że nie <i>dzieli się</i> przez 3. Z kolei 15 dzieli się przez 3, 
+			ponieważ dzielenie 15 : 3 nie daje reszty. Mówimy, że liczba jest <i>podzielna</i> przez drugą liczbę, jeśli nie daje reszty 
+			przy dzieleniu.
+		</p>
+
+		<ul>
+			<li>15 jest podzielne przez 3, ponieważ 15 : 3 = 5</li>
+			<li>7 nie jest podzielne przez 3, ponieważ 7 : 3 = 2 r. 1</li>
+			<li>20 jest podzielne przez 10, ponieważ 20 : 10 = 2</li>
+			<li>20 nie jest podzielne przez 9, ponieważ 20 : 9 = 2 r. 2</li>
+		</ul>
+		
+		<p>
+			Matematycy używają czasem też sformułowania, że jedna liczba <i>dzieli</i> drugą liczbę. Powiedzą więc, że 
+		</p>
+
+		<ul>
+			<li>3 dzieli 15</li>
+			<li>10 dzieli 20</li>
+			<li>3 nie dzieli 7</li>
+			<li>9 nie dzieli 20</li>
+		</ul>
+
+		<p>
+			Ponieważ zapisanie sześcioliterowego słowa „dzieli” przerasta ambicje matematyków, wprowadzono w jego miejsce symbol | . 
+			Z kolei zamiast słownego „nie dzieli” mamy symbol ∤ . Wbrew pozorom nie jest to litera ł. Jest to przekreślona pionowa 
+			kreska. To istotna różnica. Powyższe stwierdzenia możemy zapisać symbolicznie:
+		</p>
+
+		<ul>
+			<li>3 | 15</li>
+			<li>10 | 20</li>
+			<li>3 ∤ 7 </li>
+			<li>9 ∤ 20 </li>
+		</ul>
+
+		<p class="rozdzial">
+			Cechy podzielności
+		</p>
+		<hr>
+
+		<p class="typ">
+			Intuicje
+		</p>
+
+		<p>
+			W jaki sposób stwierdzić, że jedna liczba jest podzielna przez drugą? Możemy spróbować wykonać dzielenie i sprawdzić, 
+			czy otrzymamy resztę. Zobaczmy dla przykładu, jak to jest z dzieleniem przez 2.
+		</p>
+
+		<ul>
+			<li>1 nie jest podzielne przez 2, bo 1 : 2 = 0 r. 1</li>
+			<li>2 jest podzielne przez 2, bo 2 : 2 = 1</li>
+			<li>3 nie jest podzielne przez 2, bo 3 : 2 = 1 r. 1</li>
+			<li>4 jest podzielne przez 2, bo 4 : 2 = 2</li>
+			<li>5 nie jest podzielne przez 2, bo 5 : 2 = 2 r. 1</li>
+			<li>6 jest podzielne przez 2, bo 6 : 2 = 3</li>
+			<li>7 nie jest podzielne przez 2, bo 7 : 2 = 3 r. 1</li>
+			<li>8 jest podzielne przez 2, bo 8 : 2 = 4</li>
+			<li>9 nie jest podzielne przez 2, bo 9 : 2 = 4 r. 1</li>
+			<li>10 jest podzielne przez 2, bo 10 : 2 = 5</li>
+		</ul>
+
+		<p>
+			Nasuwa się pewna tendencja – kolejne liczby są na przemian podzielne przez 2 i niepodzielne przez 2. Ponieważ problem 
+			podzielności przez 2 pojawia się w matematyce stosunkowo często, wprowadzono dodatkowe nazwy: 
+		</p>
+
+		<ul>
+			<li><i>liczba parzysta</i> to liczba podzielna przez 2</li>
+			<li><i>liczba nieparzysta</i> to liczba niepodzielna przez 2</li>
+		</ul>
+
+		<p>
+			Gdy nabierzemy wprawy, jesteśmy w stanie bez wykonania dzielenia stwierdzić, czy dana liczba jest podzielna, czy też nie. 
+			Pomagają nam w tym cechy podzielności.
+		</p>
+
+			<p>
+				Cecha podzielności przez 1:
+			</p>
+			<p class="formula">
+				Każda liczba jest podzielna przez 1.
+			</p>
+			<p>
+				Co do tego raczej nie ma wątpliwości. Gdy podzielimy dowolną liczbę przez 1, otrzymamy tą samą liczbę.
+			</p>
+
+			<p>
+				Cecha podzielności przez 2:
+			</p>
+			<p class = "formula">
+				Liczba jest podzielna przez 2 wtedy i tylko wtedy, gdy jej ostatnią cyfrą jest 0, 2, 4, 6 lub 8.
+			</p>
+			<ul>
+				<li>18 jest podzielne przez 2, ponieważ ostatnią cyfrą jest 8.</li>
+				<li>10000 jest podzielne przez 2, ponieważ ostatnią cyfrą jest 0.</li>
+				<li>23 789 264 jest podzielne przez 2, ponieważ ostatnią cyfrą jest 4.</li>
+			</ul>
+
+			<p>
+				Cecha podzielności przez 3:
+			</p>
+			<p class ="formula">
+				Liczba jest podzielna przez 3 wtedy i tylko wtedy, gdy suma jej cyfr jest podzielna przez 3.
+			</p>
+			<ul>
+				<li>123 jest podzielne przez 3, ponieważ 1 + 2 + 3 = 6 jest podzielne przez 3.</li>
+				<li>3000 jest podzielne przez 3, ponieważ 3 + 0 + 0 + 0 = 3 jest podzielne przez 3.</li>
+				<li>100 010 001 jest podzielne przez 3, ponieważ 1 + 0 + 0 + 0 + 1 + 0 + 0 + 0 + 1 = 3 jest podzielne przez 3.</li>
+			</ul>
+
+			<p>
+				Cecha podzielności przez 4:
+			</p>
+			<p class ="formula">
+				Liczba jest podzielna przez 4 wtedy i tylko wtedy, gdy jej dwie ostatnie cyfry tworzą liczbę podzielną przez 4.
+			</p>
+			<p>
+				Zasada ta jest pomocna tylko w przypadku liczb trzycyfrowych lub większych.
+			</p>
+			<ul>
+				<li>124 jest podzielne przez 4, ponieważ 24 jest podzielne przez 4.</li>
+				<li>1000 jest podzielny przez 4, ponieważ 0  jest podzielne przez 4.</li>
+				<li>12 894 782 712 jest podzielne przez 4, ponieważ 12 jest podzielne przez 4.</li>
+			</ul>
+
+			<p>
+				Cecha podzielności przez 5:
+			</p>
+			<p class ="formula">
+				Liczba jest podzielna przez 5 wtedy i tylko wtedy, gdy jej ostatnią cyfrą jest 0 lub 5.
+			</p>
+			<ul>
+				<li>125 jest podzielne przez 5, ponieważ ostatnią cyfrą jest 5.</li>
+				<li>10 000 jest podzielne przez 5, ponieważ ostatnią cyfrą jest 0.</li>
+				<li>4 847 968 475 jest podzielne przez 5, ponieważ ostatnią cyfrą jest 5.</li>
+			</ul>
+
+			<p>
+				Cecha podzielności przez 8:
+			</p>
+			<p class ="formula">
+				Liczba jest podzielna przez 8 wtedy i tylko wtedy, gdy jej trzy ostatnie cyfry tworzą liczbę podzielną przez 8. 
+			</p>
+			<p>
+				Zasada ta jest pomocna tylko w przypadku liczb czterocyfrowych lub większych.
+			</p>
+			<ul>
+				<li>1008 jest podzielne przez 8, ponieważ 8 jest podzielne przez 8.</li>
+				<li>100 024 jest podzielne przez 8, ponieważ 24 jest podzielne przez 8.</li>
+				<li>224 797 438 128 jest podzielne przez 8, ponieważ 128 jest podzielne przez 8.</li>
+			</ul>
+
+			<p>
+				Cecha podzielności przez 9:
+			</p>
+			<p class ="formula">
+				Liczba jest podzielna przez 9 wtedy i tylko wtedy, gdy suma jej cyfr jest podzielna przez 9. 
+			</p>
+			<ul>
+				<li>153 jest podzielne przez 9, ponieważ 1 + 5 + 3 = 9 jest podzielne przez 9.</li>
+				<li>111 111 111 jest podzielne przez 9, ponieważ 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 = 9 jest podzielne przez 9.</li>
+				<li>123 456 789 jest podzielne przez 9, ponieważ 1 + 2 + 3 + 4 + 5 + 6 + 7 + 8 + 9 = 45 jest podzielne przez 9.</li>
+			</ul>
+
+			<p>
+				Cecha podzielności przez 10:
+			</p>
+			<p class ="formula">
+				Liczba jest podzielna przez 10 wtedy i tylko wtedy, gdy jej ostatnią cyfrą jest 0. 
+			</p>
+			<ul>
+				<li>20 jest podzielne przez 10, ponieważ ostatnią cyfrą jest 0.</li>
+				<li>1 000 000 jest podzielny przez 10, ponieważ ostatnią cyfrą jest 0.</li>
+				<li>364 683 980 jest podzielne przez 10, ponieważ ostatnią cyfrą jest 0.</li>
+			</ul>
+
+			<p>
+				Tajemnicze może wydawać się milczenie na temat cechy podzielności przez 6. Zauważmy, że 6 = 2 &middot; 3. Wypiszmy kilka 
+				początkowych liczb naturalnych. W pierwszym rządku wyróżnimy liczby podzielne przez 2, w drugim rządku liczby podzielne 
+				przez 3, a w trzecim liczby podzielne przez 6.
+			</p>
+
+			<p align="center">
+				<table style="color: #AAAAAA; width: 100%">
+					<tr>
+						<td>1</td>
+						<td style="color: 994444; font-weight: bold">2</td>
+						<td>3</td>
+						<td style="color: 994444; font-weight: bold">4</td>
+						<td>5</td>
+						<td style="color: 994444; font-weight: bold">6</td>
+						<td>7</td>
+						<td style="color: 994444; font-weight: bold">8</td>
+						<td>9</td>
+						<td style="color: 994444; font-weight: bold">10</td>
+						<td>11</td>
+						<td style="color: 994444; font-weight: bold">12</td>
+						<td>13</td>
+						<td style="color: 994444; font-weight: bold">14</td>
+						<td>15</td>
+						<td style="color: 994444; font-weight: bold">16</td>
+						<td>17</td>
+						<td style="color: 994444; font-weight: bold">18</td>
+						<td>19</td>
+						<td style="color: 994444; font-weight: bold">20</td>
+						<td>21</td>
+						<td style="color: 994444; font-weight: bold">22</td>
+						<td>23</td>
+						<td style="color: 994444; font-weight: bold">24</td>
+						<td>25</td>
+						<td style="color: 994444; font-weight: bold">26</td>
+						<td>27</td>
+						<td style="color: 994444; font-weight: bold">28</td>
+						<td>29</td>
+						<td style="color: 994444; font-weight: bold">30</td>
+					</tr>
+					<tr>
+						<td>1</td>
+						<td>2</td>
+						<td style="color: 994444; font-weight: bold">3</td>
+						<td>4</td>
+						<td>5</td>
+						<td style="color: 994444; font-weight: bold">6</td>
+						<td>7</td>
+						<td>8</td>
+						<td style="color: 994444; font-weight: bold">9</td>
+						<td>10</td>
+						<td>11</td>
+						<td style="color: 994444; font-weight: bold">12</td>
+						<td>13</td>
+						<td>14</td>
+						<td style="color: 994444; font-weight: bold">15</td>
+						<td>16</td>
+						<td>17</td>
+						<td style="color: 994444; font-weight: bold">18</td>
+						<td>19</td>
+						<td>20</td>
+						<td style="color: 994444; font-weight: bold">21</td>
+						<td>22</td>
+						<td>23</td>
+						<td style="color: 994444; font-weight: bold">24</td>
+						<td>25</td>
+						<td>26</td>
+						<td style="color: 994444; font-weight: bold">27</td>
+						<td>28</td>
+						<td>29</td>
+						<td style="color: 994444; font-weight: bold">30</td>
+					</tr>
+					<tr>
+						<td>1</td>
+						<td>2</td>
+						<td>3</td>
+						<td>4</td>
+						<td>5</td>
+						<td style="color: 994444; font-weight: bold">6</td>
+						<td>7</td>
+						<td>8</td>
+						<td>9</td>
+						<td>10</td>
+						<td>11</td>
+						<td style="color: 994444; font-weight: bold">12</td>
+						<td>13</td>
+						<td>14</td>
+						<td>15</td>
+						<td>16</td>
+						<td>17</td>
+						<td style="color: 994444; font-weight: bold">18</td>
+						<td>19</td>
+						<td>20</td>
+						<td>21</td>
+						<td>22</td>
+						<td>23</td>
+						<td style="color: 994444; font-weight: bold">24</td>
+						<td>25</td>
+						<td>26</td>
+						<td>27</td>
+						<td>28</td>
+						<td>29</td>
+						<td style="color: 994444; font-weight: bold">30</td>
+					</tr>
+				</table>
+			</p>
+
+			<p>
+				Widzimy, że jeśli liczba jest podzielna przez 2 i jest podzielna przez 3, to jest też podzielna przez 6.
+			</p>
+			<p class="formula">
+				Liczba jest podzielna przez 6 wtedy i tylko wtedy, gdy jest podzielna przez 2 i przez 3.
+			</p>
+			<ul>
+				<li>24 jest podzielne przez 6, ponieważ ostatnią cyfrą jest 4, a suma cyfr 2 + 4 = 6 jest podzielna przez 3.</li>
+				<li>330 jest podzielne przez 6, ponieważ ostatnią cyfrą jest 0, a suma cyfr 3 + 3 + 0 = 6 jest podzielna przez 3.</li>
+				<li>14 718 jest podzielne przez 6, ponieważ ostatnią cyfrą jest 8, a suma cyfr 1 + 4 + 7 + 1 + 8 = 21 jest 
+				podzielna przez 3.</li>
+			</ul>
+
+			<p>
+				Podobne reguły możemy tworzyć samodzielnie także dla innych liczb. Przykładowo 15 = 3 &middot; 5, więc 
+				Liczba jest podzielna przez 15 wtedy i tylko wtedy, gdy jest podzielna przez 3 i przez 5.
+			</p>
+
+			<p align="center">
+				<table style="color: #AAAAAA; width: 100%">
+					<tr>
+						<td>1</td>
+						<td>2</td>
+						<td style="color: 994444; font-weight: bold">3</td>
+						<td>4</td>
+						<td>5</td>
+						<td style="color: 994444; font-weight: bold">6</td>
+						<td>7</td>
+						<td>8</td>
+						<td style="color: 994444; font-weight: bold">9</td>
+						<td>10</td>
+						<td>11</td>
+						<td style="color: 994444; font-weight: bold">12</td>
+						<td>13</td>
+						<td>14</td>
+						<td style="color: 994444; font-weight: bold">15</td>
+						<td>16</td>
+						<td>17</td>
+						<td style="color: 994444; font-weight: bold">18</td>
+						<td>19</td>
+						<td>20</td>
+						<td style="color: 994444; font-weight: bold">21</td>
+						<td>22</td>
+						<td>23</td>
+						<td style="color: 994444; font-weight: bold">24</td>
+						<td>25</td>
+						<td>26</td>
+						<td style="color: 994444; font-weight: bold">27</td>
+						<td>28</td>
+						<td>29</td>
+						<td style="color: 994444; font-weight: bold">30</td>
+					</tr>
+					<tr>
+						<td>1</td>
+						<td>2</td>
+						<td>3</td>
+						<td>4</td>
+						<td style="color: 994444; font-weight: bold">5</td>
+						<td>6</td>
+						<td>7</td>
+						<td>8</td>
+						<td>9</td>
+						<td style="color: 994444; font-weight: bold">10</td>
+						<td>11</td>
+						<td>12</td>
+						<td>13</td>
+						<td>14</td>
+						<td style="color: 994444; font-weight: bold">15</td>
+						<td>16</td>
+						<td>17</td>
+						<td>18</td>
+						<td>19</td>
+						<td style="color: 994444; font-weight: bold">20</td>
+						<td>21</td>
+						<td>22</td>
+						<td>23</td>
+						<td>24</td>
+						<td style="color: 994444; font-weight: bold">25</td>
+						<td>26</td>
+						<td>27</td>
+						<td>28</td>
+						<td>29</td>
+						<td style="color: 994444; font-weight: bold">30</td>
+					</tr>
+					<tr>
+						<td>1</td>
+						<td>2</td>
+						<td>3</td>
+						<td>4</td>
+						<td>5</td>
+						<td>6</td>
+						<td>7</td>
+						<td>8</td>
+						<td>9</td>
+						<td>10</td>
+						<td>11</td>
+						<td>12</td>
+						<td>13</td>
+						<td>14</td>
+						<td style="color: 994444; font-weight: bold">15</td>
+						<td>16</td>
+						<td>17</td>
+						<td>18</td>
+						<td>19</td>
+						<td>20</td>
+						<td>21</td>
+						<td>22</td>
+						<td>23</td>
+						<td>24</td>
+						<td>25</td>
+						<td>26</td>
+						<td>27</td>
+						<td>28</td>
+						<td>29</td>
+						<td style="color: 994444; font-weight: bold">30</td>
+					</tr>
+				</table>
+			</p>
+
+			<p>
+				Tak samo
+			</p>
+
+			<p class = "formula">
+				Liczba jest podzielna przez 14 wtedy i tylko wtedy, gdy jest podzielna przez 2 i przez 7.
+			</p>
+
+			<p>
+				Niestety… nie powiedzieliśmy, jaka jest cecha podzielności przez 7. To trochę trudniejszy temat.
+			</p>
+
+		<p class ="typ">
+			Rozszerzenie
+		</p>
+		<p class="ostrzezenie">
+			[wymagana znajomość tematu: Potęgowanie]
+		</p>
+
+		<p>
+			Mając nieco większy zasób wiedzy, możemy wprowadzić więcej cech podzielności.
+		</p>
+
+		<p>
+			Cecha podzielności przez 7:
+		</p>
+		<p class="formula">
+			Oznaczmy pozycję cyfry jedności jako 0, pozycję cyfry dziesiątek jako 1 itd. Liczba jest podzielna przez 7 wtedy i 
+			tylko wtedy, gdy podzielna przez 7 jest suma cyfr mnożonych przez 3^n, gdzie n jest pozycją danej cyfry. 
+		</p>
+		<ul>
+			<li>
+				Weźmy liczbę 91.
+				<ul>
+					<li>Cyfra 1 ma pozycję 0, więc mnożymy ją przez 3^0:   1∙3^0=1</li>
+					<li>Cyfra 9 ma pozycję 1, więc mnożymy ją przez 3^1:   9∙3^1=27</li>
+				</ul>
+				Dodajemy otrzymane wyniki: 1+27=28. Liczba 28 jest podzielna przez 7, więc również 91 jest podzielne przez 7.
+			</li>
+
+			<li>
+				Weźmy liczbę 1547.
+				<ul>
+					<li>Cyfra 7 ma pozycję 0, więc mnożymy ją przez 3^0:   7∙3^0=7</li>
+					<li>Cyfra 4 ma pozycję 1, więc mnożymy ją przez 3^1:   4∙3^1=12</li>
+					<li>Cyfra 5 ma pozycję 2, więc mnożymy ją przez 3^2:   5∙3^2=45</li>
+					<li>Cyfra 1 ma pozycję 3, więc mnożymy ją przez 3^3:   1∙3^3=27</li>
+				</ul>
+				Dodajemy otrzymane wyniki: 7+12+45+27=91. Liczba 91 jest podzielna przez 7, więc 1547 jest podzielne przez 7.
+				7000 jest podzielne przez 7, ponieważ 7∙3^3+0∙3^2+0∙3^1+0∙3^0=7∙27 jest podzielne przez 7.
+			</li>
+		</ul>
+		
+		<p>	
+			Cecha podzielności przez 11:
+		</p>
+		<p class ="formula">
+			Oznaczmy pozycję cyfry jedności jako 0, pozycję cyfry dziesiątek jako 1 itd. Liczba jest podzielna przez 11 wtedy i tylko 
+			wtedy, gdy suma cyfr o pozycjach parzystych pomniejszona o sumę cyfr o pozycjach nieparzystych jest podzielna przez 11. 
+		</p>
+		<ul>
+			<li>
+				Weźmy liczbę 649. Cyfry o pozycjach parzystych to 9 i 6. Ich suma wynosi 9 + 6 = 15. Cyfra o pozycji nieparzystej to 4. 
+				Odejmujemy: 15 – 4 = 11. Wynik jest podzielny przez 11, więc 649 jest podzielne przez 11.
+			</li>
+			<li>
+				Weźmy liczbę 24 574. Cyfry o pozycjach parzystych to 4, 5 i 2. Ich suma wynosi 11. Cyfry o pozycjach nieparzystych to 
+				7 i 4. Ich suma wynosi 11. Odejmujemy: 11 – 11 = 0. Wynik jest podzielny przez 11, więc 24 574  jest podzielne przez 11.
+			</li>
+			<li>
+				5093 jest podzielne przez 11, ponieważ 3 + 0 – (9 + 5) = –11 jest podzielne przez 11.
+			</li>
+		</ul>
+
+		<p>
+			Cechy podzielności przez 7, 11 i 9 to szczególne przypadki ogólniejszego twierdzenia:
+		</p>
+
+		<p class="formula">
+			Oznaczmy pozycję cyfry jedności jako 0, pozycję cyfry dziesiątek jako 1 itd. Liczba daje resztę  z dzielenia przez p taką 
+			samą, jak reszta z dzielenia przez p sumy cyfr mnożonych przez (10-p)^n, gdzie n jest pozycją danej cyfry.
+		</p>
+
+		<p>
+			Dowód tego twierdzenia jest dość skomplikowany.
+		</p>
+
+		<p class ="typ">
+			Dowód
+		</p>
+		<p class="ostrzezenie">
+			[wymagana znajomość tematu: Ciąg geometryczny]
+		</p>
+		<p class="ostrzezenie">
+			[wymagana znajomość tematu: Indukcja matematyczna]
+		</p>
+
+		<div class ="proof">
+			<p>
+				Co tak naprawdę mówi twierdzenie? Weźmy dla przykładu p=8 i rozważmy liczbę 158. Reszta z dzielenia 158 przez p wynosi 6, 
+				ponieważ 158 : 8 = 19 r. 6. „Suma cyfr mnożonych przez (10-p)^n ” oznacza tyle, że 158 rozbijamy na cyfry, każdą mnożymy 
+				przez odpowiednią potęgę liczby (10-p), a potem dodajemy wyniki.
+			</p>
+
+			<ul>
+				<li>Cyfra 8 ma pozycję 0, więc mnożymy ją przez 2^0. Dostajemy 8∙2^0=8.</li>
+				<li>Cyfra 5 ma pozycję 1, więc mnożymy ją przez 2^1. Dostajemy 5∙2^1=10.</li>
+				<li>Cyfra 1 ma pozycję 2, więc mnożymy ją przez 2^2. Dostajemy 1∙2^2=4.</li>	
+			</ul>
+
+			<p>
+				Razem: 8 + 10 + 4 = 22. Reszta z dzielenia 22 przez 8 wynosi 6, bo 22 : 8 = 2 r. 6. Obydwie reszty są równe – za sprawą 
+				magii twierdzenia. Tak samo będzie dla dowolnego innego p i dowolnej innej liczby.
+			</p>
+
+			<p>
+				Jak udowodnić to twierdzenie? Z pomocą przychodzi indukcja matematyczna. Bierzemy dowolne p i sprawdzamy, że twierdzenie 
+				jest prawdziwe, gdy rozpatrujemy liczbę 0. Krok indukcyjny jest taki: jeśli twierdzenie jest prawdziwe dla pewnej liczby 
+				a, to jest też prawdziwe dla a+1. 
+			</p>
+
+			<p>
+				W powyższym przykładzie: Twierdzenie jest prawdziwe dla 158. Gdy weźmiemy 159, to jej reszta z dzielenia przez p=8 jest 
+				o 1 większa i wynosi 7. Cyfry tej liczby zmieniły się tak, że cyfra jedności 8 zwiększyła się o 1 i wynosi 9. W takim 
+				razie suma mnożonych cyfr zwiększy się o 1∙〖(10-p)〗^0, czyli o 1, a więc reszta z dzielenia także wzrośnie o 1 – 
+				twierdzenie jest prawdziwe. 
+			</p>
+
+			<p>
+				W tym przypadku nie było trudno, ponieważ zarówno liczba, jak i suma cyfr wzrosły o 1. Gdy rozpatrzymy liczbę jeszcze o 
+				1 większą, dostaniemy 160. Tu zmiany w cyfrach są bardziej drastyczne: cyfra jedności 9 zamieniła się na 0, a cyfra 
+				dziesiątek wzrosła o 1. W takim razie suma cyfr mnożonych różni się o 1∙(10-p)^1-9∙〖(10-p)〗^0, czyli jest mniejsza o 7, 
+				więc wynosi 0. Okazuje się, że obydwie reszty z dzielenia są równe.
+			</p>
+
+			<p>
+				Istotą dowodu będzie uchwycić, jak zmieniają się cyfry liczby podczas zwiększania jej o 1.
+			</p>
+		</div>
+
+		<div class ="proof">
+			<p>
+				Weźmy dowolne p. Teza jest prawdziwa dla liczby 0. Reszta z dzielenia liczby 0 przez p wynosi 0, a reszta z dzielenia przez 
+				p liczby 0∙(10-p)^0=0 też wynosi 0. [?]
+			</p>
+
+			<p>
+				Udowodnimy, że jeśli twierdzenie jest prawdziwe dla liczby a, to jest też prawdziwe dla a+1. Wtedy na mocy indukcji 
+				matematycznej twierdzenie będzie prawdziwe dla dowolnego a.[?]
+			</p>
+
+			<p>
+				Weźmy dowolną liczbę a, dla której twierdzenie jest prawdziwe. Można ją zapisać w postaci 
+			</p>
+
+			<p class ="math">
+			〖10〗^k a_k+〖10〗^(k-1) a_(k-1)+⋯+〖10〗^1 a_1+〖10〗^0 a_0
+			</p>
+
+			<p>
+				gdzie a_0,a_1,…,a_k∈{0,1,2,3,4,5,6,7,8,9} są cyframi tej liczby.[?]  Z założenia reszta r z dzielenia a przez p jest taka 
+				sama, jak reszta z dzielenia przez p liczby
+			</p>
+
+			<p>
+				m=(10-p)^k a_k+(10-p)^(k-1) a_(k-1)+⋯+(10-p)^1 a_1+(10-p)^0 a_0[?]
+			</p>
+
+			<p>
+				Weźmy liczbę a+1. Jeśli a_0<9, to liczbę tę zapisujemy jako 
+			</p>
+
+			<p class ="math">
+			〖10〗^k a_k+〖10〗^(k-1) a_(k-1)+⋯+〖10〗^1 a_1+〖10〗^0 (a_0+1)[?]
+			</p>
+
+			<p>
+				Wtedy
+			</p>
+
+			<p class ="math">
+				m^'=(10-p)^k a_k+(10-p)^(k-1) a_(k-1)+⋯+(10-p)^1 a_1+(10-p)^0 (a_0+1)=m+1[?]
+			</p>
+
+			<p>
+				Jeśli r=p-1, to reszta z dzielenia a+1 przez p jest taka sama, jak reszta z dzielenia m+1 przez p i wynosi 0. 
+				W przeciwnym razie obie reszty są równe r+1. Teza jest prawdziwa.
+			</p>
+
+			<p>
+				Jeśli a_0=9, oznaczamy przez d największą liczbę, dla której a_0,a_1,a_2,…,a_d=9.[?] Wtedy liczbę a+1 można zapisać w 
+				postaci
+			</p>
+
+			<p class ="math">
+			〖10〗^k a_k+〖10〗^(k-1) a_(k-1)+⋯+〖10〗^(d+1) (a_(d+1)+1)+〖10〗^d∙0+〖10〗^(d-1)∙0+⋯+〖10〗^0∙0 [?]
+			</p>
+
+			<p>
+				Jeśli r=p-1, to reszta z dzielenia tej liczby przez p wynosi 0. W przeciwnym razie reszta wynosi r+1. Bierzemy liczbę 
+			</p>
+
+			<p class="math">
+				m'=(10-p)^k a_k+(10-p)^(k-1) a_(k-1)+⋯+〖(10-p)〗^(d+1) (a_(d+1)+1)+〖(10-p)〗^d∙0+〖(10-p)〗^(d-1)∙0+⋯+〖(10-p)〗^0∙0
+			</p>
+
+			<p>
+				Możemy zapisać
+			</p>
+
+			<p class ="math">
+				m^'=m+(10-p)^(d+1)-(10-p)^d∙9-…-(10-p)^1∙9-(10-p)^0∙9=m+〖1∙(10-p)〗^(d+1)-9∙((10-p)^d+⋯+(10-p)^1+(10-p)^0 ) [?]
+			</p>
+
+			<p>
+				Ze wzoru na szereg geometryczny mamy:
+			</p>
+
+			<p class="math">
+				m^'=m+(10-p)^(d+1)-9∙((10-p)^(d+1)-1)/((10-p)-1)=m+(10-p)^(d+1)-(9∙(10-p)^(d+1)-9)/(9-p)=
+				m+((10-p)^(d+1) (9-p)-9∙(10-p)^(d+1)+9)/(9-p)==m+(9∙(10-p)^(d+1)-p(10-p)^(d+1)-9∙(10-p)^(d+1)+9)/(9-p)=
+				m+(-p(10-p)^(d+1)+9)/(9-p)=m+(-p(10-p)^(d+1)+p+9-p)/(9-p)=
+			=m+(-p(10-p)^(d+1)+p)/(9-p)+1=m+1+p∙(1-(10-p)^(d+1))/(9-p)  
+			</p>
+
+			<p>
+				Mając na uwadze, że 1+p∙(1-(10-p)^(d+1))/(9-p) to to samo, co 
+			</p>
+
+			<p class ="math">
+			(10-p)^(d+1)-(10-p)^d∙9-…-(10-p)^1∙9-(10-p)^0∙9
+			</p>
+
+			<p>
+				stwierdzamy, że liczba p∙(1-(10-p)^(d+1))/(9-p) jest całkowita. Jest ona podzielna przez p, co oznacza, że reszta z 
+				dzielenia liczby m^' przez p jest taka sama, jak reszta z dzielenia liczby m+1 przez p. Jeśli reszta z dzielenia m przez p 
+				wynosi p-1, to poszukiwana reszta wynosi 0, w przeciwnym razie wynosi r+1. Oznacza to, że reszta z dzielenia przez p 
+				liczby m^' jest taka sama, jak reszta z dzielenia przez p liczby a+1. □
+			</p>
+		</div>
+
+		<p>
+			Mając to twierdzenie, możemy udowodnić cechy podzielności przez 7, 9, 11 i 3. 
+		</p>
+
+		<ul>
+			<li>
+				Z cechą podzielności przez 7 jest łatwo: w formule twierdzenia wystarczy wstawić w miejsce p liczbę 7 i otrzymamy 
+				żądaną cechę. 
+			</li>
+			<li>
+				Jeśli w miejsce p wstawimy liczbę 9, twierdzenie będzie brzmiało:
+				<p class ="formula">
+					Oznaczmy pozycję cyfry jedności jako 0, pozycję cyfry dziesiątek jako 1 itd. Liczba daje resztę  z dzielenia przez p 
+					taką samą, jak reszta z dzielenia przez p sumy cyfr mnożonych przez 1^n, gdzie n jest pozycją danej cyfry.
+				</p>
+				Ponieważ mnożenie przez 1 nic nie zmienia, wystarczy nam sumować cyfry danej liczby. 
+			</li>
+			<li>
+				Jeśli wstawimy w miejsce p liczbę 11, twierdzenie będzie brzmiało:
+				<p class="formula">
+					Oznaczmy pozycję cyfry jedności jako 0, pozycję cyfry dziesiątek jako 1 itd. Liczba daje resztę z dzielenia przez p 
+					taką samą, jak reszta z dzielenia przez p sumy cyfr mnożonych przez 〖(-1)〗^n, gdzie n jest pozycją danej cyfry.
+				</p>
+				Jest to równoważne z tym, że liczby o pozycjach parzystych bierzemy ze znakiem +, a liczby o pozycjach nieparzystych 
+				bierzemy ze znakiem –.
+			</li>
+			<li>
+				Z podzielnością przez 3 jest trochę ciekawiej. Wynika ona z przypadku dla p=9:
+				<p class ="formula">
+					Liczba daje resztę  z dzielenia przez 9 taką samą, jak suma cyfr tej liczby.
+				</p>
+				Gdy liczba jest podzielna przez 3, daje resztę 0, 3 lub 6 z dzielenia przez 9. Wtedy suma cyfr daje taką samą resztę z 
+				dzielenia przez 9, czyli także jest podzielna przez 3. To samo w drugą stronę: jeśli suma cyfr liczby jest podzielna 
+				przez 3, to liczba też jest podzielna przez 3.
+			</li>
+		</ul>
+
+		<p>
+			Twierdzenie to pozwala stworzyć cechę podzielności przez p dla dowolnego p. Nie zawsze jednak tak sformułowana cecha 
+			podzielności ma praktyczną użyteczność, zwłaszcza gdy p jest duże. Czasem bardziej praktyczne jest inne ujęcie cechy 
+			podzielności. Na przykład dla pewnych przypadków:
+		</p>
+
+		<p class ="formula">
+			Liczba jest podzielna przez 2^n wtedy i tylko wtedy, gdy jej n ostatnich cyfr tworzy liczbę podzielną przez 2^n.
+		</p>
+
+		<p class ="typ">
+			Dowód
+		</p>
+
+		<div class ="proof">
+			<p>
+				Spójrzmy, czemu tak się dzieje. Weźmy dla przykładu n=2, czyli cechę podzielności przez 4. Gdy chcemy stwierdzić, że 
+				liczba 324 jest podzielna przez 4, wystarczy spojrzeć na 2 ostatnie cyfry, ponieważ 
+				324 = 300 + 24 = 3 &middot; 100 + 24 = 3 &middot; 4 &middot; 25 + 24. Widzimy, że wszystko oprócz 24, czyli cząstka 300, 
+				jest podzielne przez 4. W takim razie podzielność liczby przez 4 zależy tylko od dwóch ostatnich cyfr. 
+				Podobnie 2566340 = 2566300 + 40 = 25663 &middot; 100 + 40 = 25663 &middot; 4 &middot; 25 + 40, a więc cząstka 2566300 jest 
+				podzielna przez 4. Podobnie będzie dla innych n, przykładowo dla n=3 mamy 746320 = 746000 + 320 = 746 &middot; 1000 + 320 = 
+				746 &middot; 8 &middot; 125 + 320, a więc cząstka 746000 jest podzielna przez 8.
+			</p>
+		</div>
+
+		<div class="proof">
+			<p>
+				Weźmy dowolną liczbę a. Można ją zapisać w postaci 
+			</p>
+
+			<p class="math">
+			〖10〗^k a_k+〖10〗^(k-1) a_(k-1)+⋯+〖10〗^1 a_1+〖10〗^0 a_0
+			</p>
+
+			<p>
+				gdzie a_0,a_1,…,a_k∈{0,1,2,3,4,5,6,7,8,9} są cyframi tej liczby.[?] Jeśli k&#60;n, to liczba utworzona przez n ostatnich 
+				cyfr tej liczby jest równa a i twierdzenie jest prawdziwe.[?] Gdy k≥n, liczba utworzona przez n ostatnich cyfr ma postać
+			</p>
+
+			<p class = "math">
+				q=〖10〗^(n-1) a_(n-1)+⋯+〖10〗^1 a_1+〖10〗^0 a_0
+			</p>
+
+			<p>
+				Wtedy:
+			</p>
+
+			<p class ="math">
+				a=〖10〗^k a_k+⋯+〖10〗^n a_n+〖10〗^(n-1) a_(n-1)+⋯+〖10〗^1 a_1+〖10〗^0 a_0=
+				=2^k 5^k a_k+⋯+2^n 5^n a_n+q=2^n (2^(k-n) 5^k a_k+⋯+2^0 5^n a_n )+q
+			</p>
+
+			<p>
+				Mamy więc 
+			</p>
+
+			<p class="math">
+				a=2^n (2^(k-n) 5^k a_k+⋯+2^0 5^n a_n )+q
+			</p>
+
+			<p>
+				gdzie 2^n (2^(k-n) 5^k a_k+⋯+2^0 5^n a_n ) jest liczbą podzielną przez 2^n.
+			</p>
+
+			<p>
+				Jeśli 2^n |q, to prawa strona równości jest podzielna przez 2^n, więc lewa strona też jest podzielna przez 2^n, 
+				mamy więc 2^n |q⟹2^n |a. Jeśli 2^n |a, to w równości a-2^n (2^(k-n) 5^k a_k+⋯+2^0 5^n a_n )=q, lewa strona 
+				jest podzielna przez 2^n, więc prawa strona też jest podzielna przez 2^n, mamy więc 2^n |a⟹2^n |q. A zatem
+			</p>
+
+			<p class="math">
+				2^n |a⟺2^n |q □
+			</p>
+		</div>
+
+		<p>
+			Z tego twierdzenia wynikają cechy podzielności przez 2, 4, 8 itd. Podobnie cecha podzielności przez 5 wynika z ogólniejszego 
+			twierdzenia:
+		</p>
+
+		<p class ="formula">
+			Liczba jest podzielna przez 5^n wtedy i tylko wtedy, gdy jej n ostatnich cyfr tworzy liczbę podzielną przez 5^n.
+		</p>
+
+		<p class ="typ">
+			Dowód
+		</p>
+
+		<div class = "proof">
+			<p>
+				Dowód przebiega analogicznie jak w przypadku poprzedniego twierdzenia.
+			</p>
+		</div>
+
+		<div class ="proof">
+			<p>
+				Weźmy dowolną liczbę a. Można ją zapisać w postaci 
+			</p>
+			<p class ="math">
+				〖10〗^k a_k+〖10〗^(k-1) a_(k-1)+⋯+〖10〗^1 a_1+〖10〗^0 a_0
+			</p>
+
+			<p>
+				gdzie a_0,a_1,…,a_k∈{0,1,2,3,4,5,6,7,8,9} są cyframi tej liczby. Jeśli k&#60;n, to liczba utworzona przez n ostatnich cyfr 
+				tej liczby jest równa a i twierdzenie jest prawdziwe. Gdy k≥n, liczba utworzona przez n ostatnich cyfr ma postać
+			</p>
+
+			<p class ="math">
+			q=〖10〗^(n-1) a_(n-1)+⋯+〖10〗^1 a_1+〖10〗^0 a_0
+			</p>
+
+			<p>
+				Wtedy:
+			</p>
+
+			<p class ="math">
+			a=〖10〗^k a_k+⋯+〖10〗^n a_n+〖10〗^(n-1) a_(n-1)+⋯+〖10〗^1 a_1+〖10〗^0 a_0=
+			=2^k 5^k a_k+⋯+2^n 5^n a_n+q=5^n (2^k 5^(k-n) a_k+⋯+2^n 5^0 a_n )+q
+			</p>
+
+			<p>
+				Mamy więc 
+			</p>
+
+			<p class ="math">
+			a=5^n (2^k 5^(k-n) a_k+⋯+2^n 5^0 a_n )+q
+			</p>
+
+			<p>
+				gdzie 5^n (2^k 5^(k-n) a_k+⋯+2^n 5^0 a_n ) jest liczbą podzielną przez 5^n.
+			</p>
+
+			<p>
+				Jeśli 5^n |q, to prawa strona równości jest podzielna przez 5^n, więc lewa strona też jest podzielna przez 5^n, mamy 
+				więc 5^n |q⟹5^n |a. Jeśli 5^n |a, to w równości a-5^n (2^k 5^(k-n) a_k+⋯+2^n 5^0 a_n )=q, lewa strona jest podzielna 
+				przez 5^n, więc prawa strona też jest podzielna przez 2^n, mamy więc 5^n |a⟹5^n |q. A zatem
+			</p>
+			<p class ="math">
+				5^n |a⇔5^n |q □
+			</p>
+		</div>
+
+		<p class ="rozdzial">
+			Dzielniki liczby
+		</p>
+		<hr>
+
+		<p class ="typ">
+			Intuicje
+		</p>
+
+		<p>
+			Nazewnictwa ciąg dalszy. Filozofia jest taka: Jeśli jedna liczba dzieli drugą, to mówimy, że jest jej dzielnikiem.
+		</p>
+
+		<ul>
+			<li>Dzielniki liczby 12 to 1, 2, 3, 4, 6 i 12.</li>
+			<li>Dzielniki liczby 16 to 1, 2, 4, 8 i 16.</li>
+			<li>Dzielniki liczby 60 to 1, 2, 3, 4, 6, 10, 12, 15, 20, 30 i 60.</li>
+			<li>Dzielniki liczby 7 to 1 i 7.</li>
+		</ul>
+
+		<p>
+			Poszukiwanie dzielników liczby to tak na prawdę pytanie , na ile równych grupek możemy podzielić stertę kamieni. 
+			Gdy weźmiemy kupkę 60 kamieni, możemy to zrobić na całkiem sporo sposobów – możemy dzielić kamienie na 1 grupkę 
+			(nie dzielić wcale), dzielić na 2 grupki, 3 grupki itd. aż w końcu położymy każdy kamień osobno, czyli rozłożymy stertę na 
+			60 grupek.
+		</p>
+
+		<p>
+			Z drugiej strony, gdy weźmiemy 7 kamieni, nasze możliwości są ograniczone. Możemy jedynie zostawić kupkę w spokoju albo 
+			rozłożyć każdy kamień osobno.
+		</p>
+
+		<p>
+			Bez względu na to, ile weźmiemy kamieni na naszą stertę, za każdym razem na pewno możemy:
+			<ul>
+				<li>Zostawić stertę w spokoju, czyli inaczej mówiąc rozdzielić ją na jedną grupkę.</li>
+				<li>Położyć każdy z tych kamieni osobno, czyli rozdzielić stertę na tyle grupek, ile było kamieni na stercie.</li>
+			</ul>
+		</p>
+
+		<p>
+			Dochodzimy do dość istotnego spostrzeżenia:
+		</p>
+
+		<p class ="formula">
+			Każda liczba dzieli się przez 1 oraz samą siebie.
+		</p>
+
+		<p>
+			Wyjątkiem jest liczba 0. Zera przez zero dzielić nie wolno.
+		</p>
+
+		<p class ="typ">
+			Rozszerzenie
+		</p>
+
+		<p>
+			<i>Dzielnikiem właściwym</i> liczby nazywamy każdy dzielnik tej liczby oprócz jej samej.
+		</p>
+
+		<ul>
+			<li>Dzielniki właściwe liczby 12 to 1, 2, 3, 4 i 6.</li>
+			<li>Dzielniki właściwe liczby 16 to 1, 2, 4 i 8.</li>
+			<li>Dzielnikiem właściwym liczby 7 jest 1.</li>
+		</ul>
+
+		<p>
+			Fascynujące to to nie jest, ale daje podstawę do ciekawszego zagadnienia. 
+		</p>
+
+		<p>
+			<i>Liczba doskonała</i> to liczba będąca sumą swoich dzielników właściwych.
+		</p>
+		<ul>
+			<li>6 jest liczbą doskonałą. Dzielniki właściwe szóstki to 1, 2 i 3, a 1 + 2 + 3 = 6.</li>
+			<li>28 jest liczbą doskonałą. Dzielniki właściwe 28 to 1, 2, 4, 7 i 14, a 1 + 2 + 4 + 7 + 14 = 28.</li>
+			<li>496 jest liczbą doskonałą, ponieważ dzielniki właściwe 496 to 1, 2, 4, 8, 16, 31, 62, 124 i 248, a 
+			1 + 2 + 4 + 8 + 16 + 31 + 62 + 124 + 248 = 496.</li>
+		</ul>
+
+		<p>
+			Magia. Sprawa jest tym bardziej ciekawa, że 6, 28, 496 i jeszcze kilka dalszych liczb doskonałych to liczby parzyste. 
+			Matematycy nie mają pojęcia, czy istnieje nieparzysta liczba doskonała. Jeśli taką znajdziesz, nie ukrywaj się z tym. 
+			Prawdopodobnie czeka Cię chwała, sława i pieniądze. Miej jednak na uwadze, że liczba taka ma przynajmniej 1500 cyfr. 
+			Wszystkie mniejsze matematycy już zdyskwalifikowali. Natknęliśmy się na pierwszy nierozwiązany problem matematyki:
+		</p>
+
+		<p class ="formula">
+			Czy istnieje nieparzysta liczba doskonała?
+		</p>
+
+		<p>
+			To naprawdę poważna sprawa. Wyobraź sobie, że żaden tęgi umysł przez tysiąclecia istnienia cywilizacji nie rozgryzł tego 
+			problemu, chociaż liczby doskonałe interesowały już starożytnych Greków. Z dzielnikami właściwymi wiąże się jeszcze 
+			jedna ciekawostka:
+		</p>
+
+		<p>
+			<i>Liczby zaprzyjaźnione</i> to takie dwie liczby, że każda jest sumą dzielników właściwych drugiej.
+			<ul>
+				<li>220 i 284 to liczby zaprzyjaźnione. Dzielniki właściwe 220 to 1, 2, 4, 5, 10, 11, 20, 22, 44, 55, 110, a 
+				1 + 2 + 4 + 5 + 10 + 11 + 20 + 22 + 44 + 55 + 110 = 284. 
+				Dzielniki właściwe 284 to 1, 2, 4, 71, 142, a 1 + 2 + 4 + 71 + 142 = 220.</li>
+				<li>1184 i 1210 to liczby zaprzyjaźnione. Dzielniki właściwe 1184 to 1, 2, 4, 8, 16, 32, 37, 74, 148, 296, 592, a 
+				1 + 2 + 4 + 8 + 16 + 32 + 37 + 74 + 148 + 296 + 592 = 1210. Dzielniki właściwe 1210 to 
+				1, 2, 5, 10, 11, 22, 55, 110, 121, 242, 605, a 1 + 2 + 5 + 10 + 11 + 22 + 55 + 110 + 121 + 242 + 605 = 1184.</li>
+			</ul>
+		</p>
+
+		<p>
+			To jeszcze bardziej magiczne i jeszcze bardziej niepojęte. Na tyle magiczne i na tyle niepojęte, że matematycy nie dali rady 
+			z odpowiedzią na pytania:
+		</p>
+
+		<p class="formula">
+			Czy istnieją liczby takie zaprzyjaźnione, że jedna jest parzysta, a druga nieparzysta?
+		</p>
+
+		<p>
+			oraz
+		</p>
+
+		<p class ="formula">
+			Czy par liczb zaprzyjaźnionych jest nieskończenie wiele?
+		</p>
+
+		<p>
+			Oto dwa kolejne nierozwiązane problemy matematyki. Bądź pierwszy – pokaż, na co cię stać.
+		</p>
+
+		<p class ="rozdzial">
+			Liczby pierwsze
+		</p>
+		<hr>
+
+		<p class="typ">
+			Intuicje
+		</p>
+
+		<p>
+			Zauważyliśmy pewną niesforność sterty liczącej 7 kamieni. Oprócz banalnego podziału na 1 grupkę lub 7 grupek, nie jesteśmy 
+			w stanie nic z nią zrobić. Podobnie byłoby, gdyby wziąć stertę 3 kamieni, 5 kamieni, albo 11 kamieni… Za każdym razem 
+			jedyne co możemy, to zostawić stertę taką, jak ją Pan Bóg stworzył, albo rozrzucić wszystkie kamienie w cały świat. Gdy 
+			liczba ma tylko dwa dzielniki: 1 oraz samą siebie, mówimy, że jest liczbą pierwszą. Kilka początkowych liczb pierwszych to:
+		</p>
+
+		<p align ="center">
+			2, 3, 5, 7, 8, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97
+		</p>
+
+		<p>
+			Liczby pierwsze to bardzo niesforne istoty. Ze względu na to, że na nic się nie dzielą, nazywa się je czasem atomami 
+			wśród liczb.
+		</p>
+
+		<p>
+			Jeśli liczba jest iloczynem co najmniej dwóch liczb pierwszych, to jest <i>liczbą złożoną</i>. Każda liczba złożona ma więcej 
+			niż dwa dzielniki.
+		</p>
+		<ul>
+			<li>4 jest liczbą złożoną, ponieważ 4 = 2 &middot; 2. Dzielniki 4 to 1, 2, 4.</li>
+			<li>6 jest liczbą złożoną, ponieważ 6 = 2 &middot; 3. Dzielniki 6 to 1, 2, 3, 6.</li>
+			<li>8 jest liczbą złożoną, ponieważ 8 = 2 &middot; 2 &middot; 2. Dzielniki 8 to 1, 2, 4, 8.</li>
+			<li>9 jest liczbą złożoną, ponieważ 9 = 3 &middot; 3. Dzielniki 9 to 1, 3, 9.</li>
+			<li>10 jest liczbą złożoną, ponieważ 10 = 2 &middot; 5. Dzielniki 10 to 1, 2, 5, 10.</li> 
+			<li>12 jest liczbą złożoną, ponieważ 12 = 2 &middot; 2 &middot; 3. Dzielniki 12 to 1, 2, 3, 4, 6, 12.</li>
+		</ul> 
+
+		<p>
+			Oprócz liczb pierwszych i liczb złożonych mamy jeszcze dwóch delikwentów: liczbę 0 oraz liczbę 1. Co można powiedzieć o 
+			liczbie 0? Gdy podzielimy 0 przez jakąkolwiek liczbę, dostajemy 0, czyli 0 zawsze dzieli się bez reszty. W takim razie 
+			0 jest podzielne przez dowolną liczbę, więc każda  liczba jest dzielnikiem 0. Skoro tak, to na pewno 0 nie jest liczbą 
+			pierwszą. Poza tym 0 nie da się zapisać w postaci iloczynu liczb pierwszych, więc 0 nie jest też liczbą złożoną. A co się 
+			dzieje z 1? Jedynka ma tylko jeden dzielnik: 1. Nie kwalifikuje się więc do liczb pierwszych, bo te mają 2 dzielniki. 
+			Tym bardziej nie jest liczbą złożoną.
+		</p>
+
+		<p>
+			Każda liczba oprócz 0 i 1 jest liczbą pierwszą albo liczbą złożoną. Zarówno jednych, jak i drugich, jest nieskończenie wiele.
+		</p>
+
+		<p class ="rozdzial">
+			Rozkład na czynniki pierwsze
+		</p>
+		<hr>
+
+		<p class="typ">
+			Warsztat
+		</p>
+
+		<p>
+			Ogłosiliśmy dumnie, że każda liczba złożona jest iloczynem jakichś liczb pierwszych. Pytanie tylko, jakich? Gdy uda nam 
+			się wyłuskać z liczby informację o tym, z jakich liczb pierwszych się składa, dokonamy jej rozkładu na czynniki pierwsze, 
+			zwanego tez <i>faktoryzacją</i>. Jak to robimy? Dość żmudnie. Weźmy pod lupę liczbę 120. Zastanówmy się najpierw, czy liczba ta 
+			będzie miała w rozkładzie 2, czyli czy można zapisać 120 jakoś tak: 120 = 2 &middot; … &middot; … &middot; … &middot; …
+			120 dzieli się przez 2, ponieważ 120 : 2 = 60, czyli inaczej mówiąc 120 = 2 &middot; 60. Tak oto dwójka pojawiła się w 
+			rozkładzie. Niestety to nie koniec. Chcemy rozbić 120 na taki iloczyn, w którym pojawiają się tyko liczby pierwsze, a 
+			60 taką nie jest. W takim razie jeśli uda nam się rozbić liczbę 60, to poznamy też pełen rozkład 120. W takim razie 
+			bierzemy 60 i pytamy, czy w jej rozkładzie występuje 2. Stwierdzamy, że 60 : 2 = 30, czyli 60 = 2 &middot; 30. Mamy więc 
+			120 = 2 &middot; 60 = 2 &middot; 2 &middot; 30. Teraz bierzemy 30 i pytamy, czy dzieli się przez 2. Ponieważ 30 : 2 = 15, 
+			to 30 = 2 &middot; 15, a więc 120 = 2 &middot; 60 = 2 &middot; 2 &middot;30 = 2 &middot; 2 &middot; 2 &middot; 15. Teraz 
+			bierzemy 15. Piętnaście nie dzieli się na 2, ponieważ 15 : 2 = 7 r. 1. W takim razie 15 nie posiada 2 w swoim rozkładzie. 
+			No to może posiada 3? Dzielimy 15 : 3 = 5, czyli mamy 15 = 3 &middot; 5. Sukces. 
+			Piszemy ostatecznie:
+		</p>
+
+		<p align="center">
+			120 = 2 &middot; 60 = 2 &middot; 2 &middot; 30 = 2 &middot; 2 &middot; 2 &middot; 15 = 2 &middot; 2 &middot; 2 &middot; 3 
+			&middot; 5
+		</p>
+			Na koniec otrzymaliśmy 5, a 5 jest liczbą pierwszą. W takim razie rozkład 120 na czynniki pierwsze wygląda tak: 
+			120 = 2 &middot; 2 &middot; 2 &middot; 3 &middot; 5. 
+		</p>
+
+		<p>
+			Gdy przeprowadzamy rozkład na czynniki, formalnie stosujemy taki zapis: rysujemy pionową kreskę, po lewej na górze piszemy 
+			liczbę do rozkładu.
+		</p>
+
+		<p align="center">
+			<table class="factorisation">
+				<tr><td>120</td><td></td></tr>
+				<tr><td></td><td></td></tr>
+				<tr><td></td><td></td></tr>
+				<tr><td></td><td></td></tr>
+				<tr><td></td><td></td></tr>
+				<tr><td></td><td></td></tr>
+			</table>
+		</p>
+
+		<p>
+			Szukamy liczby pierwszej, która dzieli 120. Znajdujemy 2, więc zapisujemy 2 z prawej i wykonujemy dzielenie. Wynik 
+			zapisujemy poniżej z lewej.
+		</p>
+
+		<p align="center">
+			<table class="factorisation">
+				<tr><td>120</td><td>2</td></tr>
+				<tr><td>60</td><td></td></tr>
+				<tr><td></td><td></td></tr>
+				<tr><td></td><td></td></tr>
+				<tr><td></td><td></td></tr>
+				<tr><td></td><td></td></tr>
+			</table>
+		</p>
+
+		<p>
+			Powtarzamy czynności: szukamy dzielnika pierwszego liczby 60, dzielimy i piszemy wynik pod spodem.
+		</p>
+
+		<p align="center">
+			<table class="factorisation">
+				<tr><td>120</td><td>2</td></tr>
+				<tr><td>60</td><td>2</td></tr>
+				<tr><td>30</td><td></td></tr>
+				<tr><td></td><td></td></tr>
+				<tr><td></td><td></td></tr>
+				<tr><td></td><td></td></tr>
+			</table>
+		</p>
+	
+		<p>
+			Idziemy dalej, aż do skutku.
+		</p>
+
+		<p align="center">
+			<table class="factorisation">
+				<tr><td>120</td><td>2</td></tr>
+				<tr><td>60</td><td>2</td></tr>
+				<tr><td>30</td><td>2</td></tr>
+				<tr><td>15</td><td>3</td></tr>
+				<tr><td>5</td><td>5</td></tr>
+				<tr><td>1</td><td></td></tr>
+			</table>
+		</p>
+
+		<p>
+			Na koniec z dzielenia dostaliśmy 1 i tu nasza praca się kończy – nie znajdziemy już liczby pierwszej, na którą 
+			rozkłada się 1. Po prawej stronie kreski widzimy wszystkie liczby pierwsze z rozkładu. Odczytujemy, że 
+			120 = 2 &middot; 2 &middot; 2 &middot; 3 &middot; 5. Zobaczmy jeszcze podobne przykłady:
+		</p>
+		
+		<table align="center">
+			<tr>
+				<td>
+					<table align="center" class="factorisation">
+						<tr><td>630</td><td>2</td></tr>
+						<tr><td>315</td><td>3</td></tr>
+						<tr><td>105</td><td>3</td></tr>
+						<tr><td>35</td><td>5</td></tr>
+						<tr><td>7</td><td>7</td></tr>
+						<tr><td>1</td><td></td></tr>
+					</table>
+					<p>
+						630 = 2 &middot; 3 &middot; 3 &middot; 5 &middot; 7
+					</p>
+				</td>
+				<td>
+					<table align="center" class="factorisation">
+						<tr><td>440</td><td>2</td></tr>
+						<tr><td>220</td><td>2</td></tr>
+						<tr><td>110</td><td>2</td></tr>
+						<tr><td>55</td><td>5</td></tr>
+						<tr><td>11</td><td>11</td></tr>
+						<tr><td>1</td><td></td></tr>
+					</table>
+					<p>
+						440 = 2 &middot; 2 &middot; 2 &middot; 5 &middot; 11
+					</p>
+				</td>
+				<td>
+					<table align="center" class="factorisation">
+						<tr><td>24310</td><td>2</td></tr>
+						<tr><td>12155</td><td>5</td></tr>
+						<tr><td>2431</td><td>11</td></tr>
+						<tr><td>221</td><td>13</td></tr>
+						<tr><td>17</td><td>17</td></tr>
+						<tr><td>1</td><td></td></tr>
+					</table>
+					<p>
+						24310 = 2 &middot; 5 &middot; 11 &middot; 13 &middot; 17 
+					</p>
+				</td>
+			</tr>
+		</table>
+
+		<p>
+			Mówimy, że rozkład na czynniki pierwsze jest <i>jednoznaczny</i>, to znaczy, że jedna liczba nie może zostać rozłożona na 
+			czynniki pierwsze w różny sposób.
+		</p>
+
+		<p class ="rozdzial">
+			NWD i NWW
+		</p>
+		<hr>
+		
+		<p class="typ">
+			Intuicje
+		</p>
+
+		<p>
+			Temat rozdziału brzmi jak nazwa partii politycznej Polski Ludowej, ale nie jest to nic równie strasznego.
+		</p>
+
+		<p>
+			NWD to skrót od „największy wspólny dzielnik”. Gdy rozważamy dwie liczby, powiedzmy 30 i 75, możemy wypisać wszystkie 
+			dzielniki jednej liczby i wszystkie dzielniki drugiej liczby. 
+		</p>
+		<ul>
+			<li>Dzielniki liczby 30 to 1, 2, 3, 5, 6, 10, 15 i 30.</li>
+			<li>Dzielniki liczby 75 to 1, 3, 5, 15, 25 i 75.</li>
+		</ul>
+
+		<p>
+			Gdy przyjrzymy się im uważnie, zauważymy, że niektóre dzielniki występują zarówno w pierwszej, jak i w drugiej liczbie. 
+			Takie dzielniki nazywamy <i>dzielnikami wspólnymi</i> tych liczb.
+		</p>
+		<ul>
+			<li>Dzielniki wspólne liczb 30 i 75 to 1, 3, 5 i 15.</li>
+		</ul>
+
+		<p>
+			Największy spośród tych dzielników to właśnie NWD tych liczb. W przypadku liczb 30 i 75 ich największy wspólny dzielnik 
+			to 15. Zapisujemy to symbolicznie: NWD(30, 75) = 15.
+		</p>
+		<ul>
+			<li>Szukamy NWD(30, 42). Dzielniki 30 to 1, 2, 3, 5, 6, 10, 15, 30. Dzielniki 42 to 1, 2, 3, 6, 7, 14, 21, 42. 
+			W takim razie NWD(30, 42) = 6.</li>
+			<li>Szukamy NWD(28, 70). Dzielniki 28 to 1, 2, 4, 7, 14, 28. Dzielniki 70 to 1, 2, 5, 7, 10, 14, 35, 70. 
+			W takim razie NWD(30, 42) = 14.</li>
+			<li>Szukamy NWD(60, 105). Dzielniki 60 to 1, 2, 3, 4, 6, 10, 12, 15, 20, 30 i 60. 
+			Dzielniki 105 to 1, 3, 5, 7, 15, 21, 35, 105. W takim razie NWD(60, 105) to 15.</li>
+		</ul>
+
+		<p>
+			NWW to skrót od „najmniejsza wspólna wielokrotność”. Gdy pomnożymy jakąś liczbę przez dowolną inną, otrzymamy jej <i>wielokrotność</i>.
+		</p>
+		<ul>
+			<li>
+				Kolejne wielokrotności liczby 5 to 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60… Są to wyniki mnożenia 5 przez 
+				kolejne liczby naturalne, czyli 1 &middot; 5, 2 &middot; 5, 3 &middot; 5, 4 &middot; 5, 5 &middot; 5…
+			</li>
+			<li>
+				Kolejne wielokrotności liczby 12 to 12, 24, 36, 48, 60, 72, 84, 96, 108, 120, 132, 144, 156, 168, 180… czyli inaczej 
+				1 &middot; 12, 2 &middot; 12, 3 &middot; 12, 4 &middot; 12, 5 &middot; 12, 6 &middot; 12…
+			</li>
+			<li>
+				Kolejne wielokrotności liczby 21 to 21, 42, 63, 84, 105, 126, 147, 168, 189, 210… każda kolejna wielokrotność jest o 21 
+				większa od poprzedniej.
+			</li>
+		</ul>
+
+		<p>
+			Możemy wziąć dwie liczby, np. 12 i 21 i wypisać dla każdej z nich kilka początkowych wielokrotności. W końcu musi się 
+			zdarzyć, że wielokrotność jednej i drugiej będzie taka sama. Taka wielokrotność to <i>wspólna wielokrotność</i> tych liczb. 
+			Dla 12 i 21 mamy na przykład wspólne wielokrotności 84 i 168. Gdybyśmy szukali dalej, znaleźlibyśmy ich dużo więcej, a 
+			nawet dowolnie dużo więcej. Najmniejsza spośród wspólnych wielokrotności dwóch liczb to ich NWW. Możemy zapisać 
+			symbolicznie NWW(12, 21) = 84.
+		</p>
+
+		<p>
+			Poszukiwanie wspólnej wielokrotności można przedstawić bardziej obrazowo. Weźmy liczby 4 i 6. Ustawmy kulki jedna za drugą 
+			i ponumerujmy je od 1 wzwyż. W pierwszym rządku pomalujemy te kule, których numer jest wielokrotnością 4. W drugim rządku 
+			te kule, których numer jest wielokrotnością 6.
+		</p>
+
+		<br>
+		<table id="NWW_1" width=100% align="center"></table>
+		<br>
+
+		<script>
+
+		var x = "<tr>";
+		for (i = 1; i<=30; i++)
+			x+="<td>"+i+"</td>";
+
+		x+="</tr><tr>";
+
+		for (i = 1; i<=30; i++)
+			x+='<td>\
+					<svg height="20" width="20">\
+						<defs>\
+							<linearGradient id="gradient">' +
+							((i % 4 == 0) ? '<stop offset="20%" stop-color="#C33" /><stop offset="90%" stop-color="#833" />' : '<stop offset="20%" stop-color="#CCC" /><stop offset="90%" stop-color="#999" />') +
+							'</linearGradient>\
+						</defs>\
+						<circle cx="10" cy="10" r="8"/>\
+					</svg>\
+				</td>';
+
+		x+="</tr><tr>"
+
+		for (i = 1; i<=30; i++)
+			x+='<td>\
+					<svg height="20" width="20">\
+						<defs>\
+							<linearGradient id="gradient">' +
+							((i % 6 == 0) ? '<stop offset="20%" stop-color="#C33" /><stop offset="90%" stop-color="#833" />' : '<stop offset="20%" stop-color="#CCC" /><stop offset="90%" stop-color="#999" />') +
+							'</linearGradient>\
+						</defs>\
+						<circle cx="10" cy="10" r="8"/>\
+					</svg>\
+				</td>';
+
+		x+="</tr>";
+
+		document.getElementById("NWW_1").innerHTML = x;
+
+		</script>
+
+		<p>
+			Tam, gdzie kule są pomalowane  obydwu rządkach, mamy wspólne wielokrotności obydwu liczb. Wspólne wielokrotności 4 i 6 to 
+			m.in. 12 i 24. Dla 5 i 6 mamy z kolei:
+		</p>
+
+		<br>
+		<table id="NWW_2" width=100% align="center"></table>
+		<br>
+
+		<script>
+
+		var x = "<tr>";
+		for (i = 1; i<=30; i++)
+			x+="<td>"+i+"</td>";
+
+		x+="</tr><tr>";
+
+		for (i = 1; i<=30; i++)
+			x+='<td>\
+					<svg height="20" width="20">\
+						<defs>\
+							<linearGradient id="gradient">' +
+							((i % 5 == 0) ? '<stop offset="20%" stop-color="#C33" /><stop offset="90%" stop-color="#833" />' : '<stop offset="20%" stop-color="#CCC" /><stop offset="90%" stop-color="#999" />') +
+							'</linearGradient>\
+						</defs>\
+						<circle cx="10" cy="10" r="8"/>\
+					</svg>\
+				</td>';
+
+		x+="</tr><tr>"
+
+		for (i = 1; i<=30; i++)
+			x+='<td>\
+					<svg height="20" width="20">\
+						<defs>\
+							<linearGradient id="gradient">' +
+							((i % 6 == 0) ? '<stop offset="20%" stop-color="#C33" /><stop offset="90%" stop-color="#833" />' : '<stop offset="20%" stop-color="#CCC" /><stop offset="90%" stop-color="#999" />') +
+							'</linearGradient>\
+						</defs>\
+						<circle cx="10" cy="10" r="8"/>\
+					</svg>\
+				</td>';
+
+		x+="</tr>";
+
+		document.getElementById("NWW_2").innerHTML = x;
+
+		</script>
+
+		<p>
+			Najmniejszą wielokrotność napotkaliśmy dopiero przy 30.
+		</p>
+
+		<p class ="typ">
+			Rozszerzenie
+		</p>
+
+		<p>
+			Mówimy, że dwie liczby są <i>względnie pierwsze</i>, jeśli ich NWD wynosi 1. Nie możemy wtedy znaleźć żadnej sensownej  liczby, 
+			przez którą można podzielić i jedną, i drugą.
+		</p>
+		<ul>
+			<li>Liczby 5 i 6 są względnie pierwsze, ponieważ nie mają wspólnego dzielnika innego niż 1.</li>
+			<li>Liczby 12 i 35 są względnie pierwsze, ponieważ nie mają wspólnego dzielnika innego niż 1.</li>
+			<li>42 i 77 nie są względnie pierwsze, ponieważ 7 dzieli obydwie liczby.</li>
+		</ul>
+
+		<p>
+			Gdy rozważamy więcej niż dwie liczby, mówimy że są względnie pierwsze, gdy największy wspólny dzielnik wszystkich tych 
+			liczb wynosi 1.
+		</p>
+		<ul>
+			<li>Liczby 3, 5 i 7 są względnie pierwsze.</li>
+			<li>Liczby 22, 23, 39 i 85 są względnie pierwsze.</li>
+			<li>Liczby 24, 12 i 7 są względnie pierwsze, mimo że 24 i 12 nie są względnie pierwsze.</li>
+		</ul>
+		
+		<p>
+			Jeśli chcemy podkreślić, że wśród wielu liczb dowolne dwie są ze sobą względnie pierwsze, mówimy, że są <i>parami względnie 
+			pierwsze</i>. 
+		</p>
+
+		<ul>
+			<li>24, 12 i 7 są względnie pierwsze, ale nie są parami względnie pierwsze.</li>
+		</ul>
+
+		<p>
+			Najmniejsza wspólna wielokrotność dwóch liczb względnie pierwszych jest ich iloczynem. Wynika to z bardziej ogólnego 
+			twierdzenia:
+		</p>
+
+		<p class ="formula">
+			Iloczyn NWW i NWD dwóch liczb jest równy iloczynowi tych liczb.
+		</p>
+
+		<p class="typ">
+			Dowód
+		</p>
+			Eh…
+
+	</font>
+  
+</div>
+
+<script type="text/javascript" src="script_draggable.js"></script>
+
+</body>
+
+</html>
