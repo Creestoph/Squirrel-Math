@@ -28,6 +28,9 @@
 		}
 
 	</style>
+	
+	
+	
 
 </head>
 
@@ -46,12 +49,12 @@
 	</p>
     
 	<font size="5" face="Calibri Light">
-      
+
 		<p>
 			Uwaga: Lekcja ociera się o dział matematyki zwany <i>teorią liczb</i>. Temat zawiera duże ilości nowych pojęć, twierdzeń i 
 			zależności. Wchodzisz na własne ryzyko. 
 		</p>
-
+			
 		<p>
 			W temacie o dzieleniu napotkaliśmy na problem, próbując rozłożyć 7 kamieni na 3 równe grupy. Z drugiej strony podzielenie 
 			15 ziemniaków pomiędzy 3 gości nie sprawiło większych trudności. Na czym polega różnica? 
@@ -500,14 +503,63 @@
 		</p>
 		<p class="formula">
 			Oznaczmy pozycję cyfry jedności jako 0, pozycję cyfry dziesiątek jako 1 itd. Liczba jest podzielna przez 7 wtedy i 
-			tylko wtedy, gdy podzielna przez 7 jest suma cyfr mnożonych przez 3^n, gdzie n jest pozycją danej cyfry. 
+			tylko wtedy, gdy podzielna przez 7 jest suma cyfr mnożonych przez 
+			<math xmlns="http://www.w3.org/1998/Math/MathML">
+				<msup>
+					<mn>3</mn>
+					<mi>n</mi>
+				</msup>
+			</math>
+			, gdzie 
+			<math xmlns="http://www.w3.org/1998/Math/MathML">
+				<mi>n</mi>
+			</math>
+			jest pozycją danej cyfry. 
 		</p>
 		<ul>
 			<li>
 				Weźmy liczbę 91.
 				<ul>
-					<li>Cyfra 1 ma pozycję 0, więc mnożymy ją przez 3^0:   1∙3^0=1</li>
-					<li>Cyfra 9 ma pozycję 1, więc mnożymy ją przez 3^1:   9∙3^1=27</li>
+					<li>
+						Cyfra 1 ma pozycję 0, więc mnożymy ją przez 
+						<math xmlns="http://www.w3.org/1998/Math/MathML">
+							<msup>
+								<mn>3</mn>
+								<mn>0</mn>
+							</msup>
+						</math>
+						:&nbsp;&nbsp;&nbsp;&nbsp;
+						<math xmlns="http://www.w3.org/1998/Math/MathML">
+							<mn>1</mn>
+							<mo>&middot;</mo>
+							<msup>
+								<mn>3</mn>
+								<mn>0</mn>
+							</msup>
+							<mo>=</mo>
+							<mn>1</mn>
+						</math>
+					</li>
+					<li>
+						Cyfra 9 ma pozycję 1, więc mnożymy ją przez
+						<math xmlns="http://www.w3.org/1998/Math/MathML">
+							<msup>
+								<mn>3</mn>
+								<mn>1</mn>
+							</msup>
+						</math>
+						:&nbsp;&nbsp;&nbsp;&nbsp;
+						<math xmlns="http://www.w3.org/1998/Math/MathML">
+							<mn>9</mn>
+							<mo>&middot;</mo>
+							<msup>
+								<mn>3</mn>
+								<mn>1</mn>
+							</msup>
+							<mo>=</mo>
+							<mn>27</mn>
+						</math>
+					</li>
 				</ul>
 				Dodajemy otrzymane wyniki: 1+27=28. Liczba 28 jest podzielna przez 7, więc również 91 jest podzielne przez 7.
 			</li>
@@ -515,13 +567,123 @@
 			<li>
 				Weźmy liczbę 1547.
 				<ul>
-					<li>Cyfra 7 ma pozycję 0, więc mnożymy ją przez 3^0:   7∙3^0=7</li>
-					<li>Cyfra 4 ma pozycję 1, więc mnożymy ją przez 3^1:   4∙3^1=12</li>
-					<li>Cyfra 5 ma pozycję 2, więc mnożymy ją przez 3^2:   5∙3^2=45</li>
-					<li>Cyfra 1 ma pozycję 3, więc mnożymy ją przez 3^3:   1∙3^3=27</li>
+					<li>
+						Cyfra 7 ma pozycję 0, więc mnożymy ją przez 
+						<math xmlns="http://www.w3.org/1998/Math/MathML">
+							<msup>
+								<mn>3</mn>
+								<mn>0</mn>
+							</msup>
+						</math>
+						:&nbsp;&nbsp;&nbsp;&nbsp;
+						<math xmlns="http://www.w3.org/1998/Math/MathML">
+							<mn>7</mn>
+							<mo>&middot;</mo>
+							<msup>
+								<mn>3</mn>
+								<mn>0</mn>
+							</msup>
+							<mo>=</mo>
+							<mn>7</mn>
+						</math>
+					</li>
+					<li>
+						Cyfra 4 ma pozycję 1, więc mnożymy ją przez 
+						<math xmlns="http://www.w3.org/1998/Math/MathML">
+							<msup>
+								<mn>3</mn>
+								<mn>1</mn>
+							</msup>
+						</math>
+						:&nbsp;&nbsp;&nbsp;&nbsp;
+						<math xmlns="http://www.w3.org/1998/Math/MathML">
+							<mn>4</mn>
+							<mo>&middot;</mo>
+							<msup>
+								<mn>3</mn>
+								<mn>1</mn>
+							</msup>
+							<mo>=</mo>
+							<mn>12</mn>
+						</math>
+					</li>
+					<li>
+						Cyfra 5 ma pozycję 2, więc mnożymy ją przez 
+						<math xmlns="http://www.w3.org/1998/Math/MathML">
+							<msup>
+								<mn>3</mn>
+								<mn>2</mn>
+							</msup>
+						</math>
+						:&nbsp;&nbsp;&nbsp;&nbsp;
+						<math xmlns="http://www.w3.org/1998/Math/MathML">
+							<mn>5</mn>
+							<mo>&middot;</mo>
+							<msup>
+								<mn>3</mn>
+								<mn>2</mn>
+							</msup>
+							<mo>=</mo>
+							<mn>45</mn>
+						</math>
+					</li>
+					<li>
+						Cyfra 1 ma pozycję 3, więc mnożymy ją przez 
+						<math xmlns="http://www.w3.org/1998/Math/MathML">
+							<msup>
+								<mn>3</mn>
+								<mn>3</mn>
+							</msup>
+						</math>
+						:&nbsp;&nbsp;&nbsp;&nbsp;
+						<math xmlns="http://www.w3.org/1998/Math/MathML">
+							<mn>1</mn>
+							<mo>&middot;</mo>
+							<msup>
+								<mn>3</mn>
+								<mn>3</mn>
+							</msup>
+							<mo>=</mo>
+							<mn>27</mn>
+						</math>
+					</li>
 				</ul>
 				Dodajemy otrzymane wyniki: 7+12+45+27=91. Liczba 91 jest podzielna przez 7, więc 1547 jest podzielne przez 7.
-				7000 jest podzielne przez 7, ponieważ 7∙3^3+0∙3^2+0∙3^1+0∙3^0=7∙27 jest podzielne przez 7.
+				7000 jest podzielne przez 7, ponieważ 
+				<math xmlns="http://www.w3.org/1998/Math/MathML">
+					<mn>7</mn>
+					<mo>&middot;</mo>
+					<msup>
+						<mn>3</mn>
+						<mn>3</mn>
+					</msup>
+					<mo>+</mo>
+					<mn>0</mn>
+					<mo>&middot;</mo>
+					<msup>
+						<mn>3</mn>
+						<mn>2</mn>
+					</msup>
+					<mo>+</mo>
+					<mn>0</mn>
+					<mo>&middot;</mo>
+					<msup>
+						<mn>3</mn>
+						<mn>1</mn>
+					</msup>
+					<mo>+</mo>
+					<mn>0</mn>
+					<mo>&middot;</mo>
+					<msup>
+						<mn>3</mn>
+						<mn>0</mn>
+					</msup>
+					<mo>=</mo>
+					<mn>7</mn>
+					<mo>&middot;</mo>
+					<mn>27</mn>
+				</math>
+				jest podzielne przez 7.
 			</li>
 		</ul>
 		
@@ -551,8 +713,10 @@
 		</p>
 
 		<p class="formula">
-			Oznaczmy pozycję cyfry jedności jako 0, pozycję cyfry dziesiątek jako 1 itd. Liczba daje resztę  z dzielenia przez p taką 
-			samą, jak reszta z dzielenia przez p sumy cyfr mnożonych przez (10-p)^n, gdzie n jest pozycją danej cyfry.
+			Oznaczmy pozycję cyfry jedności jako 0, pozycję cyfry dziesiątek jako 1 itd. Liczba daje resztę  z dzielenia przez 
+			<span class="math">p</span> taką 
+			samą, jak reszta z dzielenia przez <span class="math">p</span> sumy cyfr mnożonych przez <span class="math">(10-p)^n</span>, gdzie 
+			<span class="math">n</span> jest pozycją danej cyfry.
 		</p>
 
 		<p>
@@ -572,14 +736,14 @@
 		<div class ="proof">
 			<p>
 				Co tak naprawdę mówi twierdzenie? Weźmy dla przykładu p=8 i rozważmy liczbę 158. Reszta z dzielenia 158 przez p wynosi 6, 
-				ponieważ 158 : 8 = 19 r. 6. „Suma cyfr mnożonych przez (10-p)^n ” oznacza tyle, że 158 rozbijamy na cyfry, każdą mnożymy 
-				przez odpowiednią potęgę liczby (10-p), a potem dodajemy wyniki.
+				ponieważ 158 : 8 = 19 r. 6. „Suma cyfr mnożonych przez <span class="math">(10-p)^n</span> ” oznacza tyle, że 158 rozbijamy na cyfry, każdą mnożymy 
+				przez odpowiednią potęgę liczby <span class="math">(10-p)</span>, a potem dodajemy wyniki.
 			</p>
 
 			<ul>
-				<li>Cyfra 8 ma pozycję 0, więc mnożymy ją przez 2^0. Dostajemy 8∙2^0=8.</li>
-				<li>Cyfra 5 ma pozycję 1, więc mnożymy ją przez 2^1. Dostajemy 5∙2^1=10.</li>
-				<li>Cyfra 1 ma pozycję 2, więc mnożymy ją przez 2^2. Dostajemy 1∙2^2=4.</li>	
+				<li>Cyfra 8 ma pozycję 0, więc mnożymy ją przez <span class="math">2^0</span>. Dostajemy <span class="math">8*2^0=8</span>.</li>
+				<li>Cyfra 5 ma pozycję 1, więc mnożymy ją przez <span class="math">2^1</span>. Dostajemy <span class="math">5*2^1=10</span>.</li>
+				<li>Cyfra 1 ma pozycję 2, więc mnożymy ją przez <span class="math">2^2</span>. Dostajemy <span class="math">1*2^2=4</span>.</li>	
 			</ul>
 
 			<p>
@@ -588,22 +752,24 @@
 			</p>
 
 			<p>
-				Jak udowodnić to twierdzenie? Z pomocą przychodzi indukcja matematyczna. Bierzemy dowolne p i sprawdzamy, że twierdzenie 
+				Jak udowodnić to twierdzenie? Z pomocą przychodzi indukcja matematyczna. Bierzemy dowolne <span class="math">p</span>
+				i sprawdzamy, że twierdzenie 
 				jest prawdziwe, gdy rozpatrujemy liczbę 0. Krok indukcyjny jest taki: jeśli twierdzenie jest prawdziwe dla pewnej liczby 
-				a, to jest też prawdziwe dla a+1. 
+				<span class="math">a</span>, to jest też prawdziwe dla <span class="math">a+1</span>. 
 			</p>
 
 			<p>
-				W powyższym przykładzie: Twierdzenie jest prawdziwe dla 158. Gdy weźmiemy 159, to jej reszta z dzielenia przez p=8 jest 
+				W powyższym przykładzie: Twierdzenie jest prawdziwe dla 158. Gdy weźmiemy 159, to jej reszta z dzielenia przez 
+				<span class="math">p=8</span> jest 
 				o 1 większa i wynosi 7. Cyfry tej liczby zmieniły się tak, że cyfra jedności 8 zwiększyła się o 1 i wynosi 9. W takim 
-				razie suma mnożonych cyfr zwiększy się o 1∙〖(10-p)〗^0, czyli o 1, a więc reszta z dzielenia także wzrośnie o 1 – 
+				razie suma mnożonych cyfr zwiększy się o <span class="math">1*((10-p))^0</span>, czyli o 1, a więc reszta z dzielenia także wzrośnie o 1 – 
 				twierdzenie jest prawdziwe. 
 			</p>
 
 			<p>
 				W tym przypadku nie było trudno, ponieważ zarówno liczba, jak i suma cyfr wzrosły o 1. Gdy rozpatrzymy liczbę jeszcze o 
 				1 większą, dostaniemy 160. Tu zmiany w cyfrach są bardziej drastyczne: cyfra jedności 9 zamieniła się na 0, a cyfra 
-				dziesiątek wzrosła o 1. W takim razie suma cyfr mnożonych różni się o 1∙(10-p)^1-9∙〖(10-p)〗^0, czyli jest mniejsza o 7, 
+				dziesiątek wzrosła o 1. W takim razie suma cyfr mnożonych różni się o <span class="math">1*(10-p)^1-9*((10-p))^0</span>, czyli jest mniejsza o 7, 
 				więc wynosi 0. Okazuje się, że obydwie reszty z dzielenia są równe.
 			</p>
 
@@ -614,102 +780,116 @@
 
 		<div class ="proof">
 			<p>
-				Weźmy dowolne p. Teza jest prawdziwa dla liczby 0. Reszta z dzielenia liczby 0 przez p wynosi 0, a reszta z dzielenia przez 
-				p liczby 0∙(10-p)^0=0 też wynosi 0. [?]
+				Weźmy dowolne <span class = "math">p</span>. Teza jest prawdziwa dla liczby 0. Reszta z dzielenia liczby 0 przez <span class="math">p</span> 
+				wynosi 0, a reszta z dzielenia przez <span class="math">p</span> liczby <span class="math">0*(10-p)^0=0</span> też wynosi 0. [?]
 			</p>
 
 			<p>
-				Udowodnimy, że jeśli twierdzenie jest prawdziwe dla liczby a, to jest też prawdziwe dla a+1. Wtedy na mocy indukcji 
-				matematycznej twierdzenie będzie prawdziwe dla dowolnego a.[?]
+				Udowodnimy, że jeśli twierdzenie jest prawdziwe dla liczby <span class="math">a</span>, to jest też prawdziwe dla 
+				<span class="math">a+1</span>. Wtedy na mocy indukcji 
+				matematycznej twierdzenie będzie prawdziwe dla dowolnego <span class="math">a</span>.[?]
 			</p>
 
 			<p>
 				Weźmy dowolną liczbę a, dla której twierdzenie jest prawdziwe. Można ją zapisać w postaci 
 			</p>
 
-			<p class ="math">
-			〖10〗^k a_k+〖10〗^(k-1) a_(k-1)+⋯+〖10〗^1 a_1+〖10〗^0 a_0
+			<p class ="math" align="center">
+			10^k a_k+10^(k-1) a_(k-1)+⋯+10^1 a_1+10^0 a_0
 			</p>
 
 			<p>
-				gdzie a_0,a_1,…,a_k∈{0,1,2,3,4,5,6,7,8,9} są cyframi tej liczby.[?]  Z założenia reszta r z dzielenia a przez p jest taka 
-				sama, jak reszta z dzielenia przez p liczby
+				gdzie <span class="math">a_0,a_1,…,a_k∈{0,1,2,3,4,5,6,7,8,9}</span> są cyframi tej liczby.[?]  Z założenia reszta 
+				<span class="math">r</span> z dzielenia <span class="math">a</span> przez <span class="math">p</span> jest taka 
+				sama, jak reszta z dzielenia przez <span class="math">p</span> liczby
 			</p>
 
-			<p>
+			<p class="math" align="center">
 				m=(10-p)^k a_k+(10-p)^(k-1) a_(k-1)+⋯+(10-p)^1 a_1+(10-p)^0 a_0[?]
 			</p>
 
 			<p>
-				Weźmy liczbę a+1. Jeśli a_0<9, to liczbę tę zapisujemy jako 
+				Weźmy liczbę <span class="math">a+1</span>. Jeśli <span class="math">a_0<9</span>, to liczbę tę zapisujemy jako 
 			</p>
 
-			<p class ="math">
-			〖10〗^k a_k+〖10〗^(k-1) a_(k-1)+⋯+〖10〗^1 a_1+〖10〗^0 (a_0+1)[?]
+			<p class ="math" align ="center">
+			10^k a_k+10^(k-1) a_(k-1)+⋯+10^1 a_1+10^0 (a_0+1)[?]
 			</p>
 
 			<p>
 				Wtedy
 			</p>
 
-			<p class ="math">
-				m^'=(10-p)^k a_k+(10-p)^(k-1) a_(k-1)+⋯+(10-p)^1 a_1+(10-p)^0 (a_0+1)=m+1[?]
+			<p class ="math" align="center">
+				m'=<br>
+				= (10-p)^k a_k+(10-p)^(k-1) a_(k-1)+⋯+(10-p)^1 a_1+(10-p)^0 (a_0+1)=<br>
+				= m+1[?]
 			</p>
 
 			<p>
-				Jeśli r=p-1, to reszta z dzielenia a+1 przez p jest taka sama, jak reszta z dzielenia m+1 przez p i wynosi 0. 
-				W przeciwnym razie obie reszty są równe r+1. Teza jest prawdziwa.
+				Jeśli <span class="math">r=p-1</span>, to reszta z dzielenia <span class="math">a+1</span> przez <span class="math">p</span> jest taka sama, 
+				jak reszta z dzielenia <span class="math">m+1</span> przez <span class="math">p</span> i wynosi 0. 
+				W przeciwnym razie obie reszty są równe <span class="math">r+1</span>. Teza jest prawdziwa.
 			</p>
 
 			<p>
-				Jeśli a_0=9, oznaczamy przez d największą liczbę, dla której a_0,a_1,a_2,…,a_d=9.[?] Wtedy liczbę a+1 można zapisać w 
+				Jeśli <span class="math">a_0=9</span>, oznaczamy przez <span class="math">d</span> największą liczbę, dla której 
+				<span class="math">a_0,a_1,a_2,…,a_d=9</span>.[?] Wtedy liczbę <span class="math">a+1</span> można zapisać w 
 				postaci
 			</p>
 
-			<p class ="math">
-			〖10〗^k a_k+〖10〗^(k-1) a_(k-1)+⋯+〖10〗^(d+1) (a_(d+1)+1)+〖10〗^d∙0+〖10〗^(d-1)∙0+⋯+〖10〗^0∙0 [?]
+			<p class ="math" align="center">
+			10^k a_k+10^(k-1) a_(k-1)+⋯+10^(d+1) (a_(d+1)+1)+10^d*0+10^(d-1)*0+⋯+10^0*0 [?]
 			</p>
 
 			<p>
-				Jeśli r=p-1, to reszta z dzielenia tej liczby przez p wynosi 0. W przeciwnym razie reszta wynosi r+1. Bierzemy liczbę 
+				Jeśli <span class="math">r=p-1</span>, to reszta z dzielenia tej liczby przez <span class="math">p</span> wynosi 0. 
+				W przeciwnym razie reszta wynosi <span class="math">r+1</span>. Bierzemy liczbę 
 			</p>
 
-			<p class="math">
-				m'=(10-p)^k a_k+(10-p)^(k-1) a_(k-1)+⋯+〖(10-p)〗^(d+1) (a_(d+1)+1)+〖(10-p)〗^d∙0+〖(10-p)〗^(d-1)∙0+⋯+〖(10-p)〗^0∙0
+			<p class="math" align="center">
+				m'=(10-p)^k a_k+(10-p)^(k-1) a_(k-1)+⋯+<br>
+				+((10-p))^(d+1) (a_(d+1)+1)+((10-p))^d*0+((10-p))^(d-1)*0+⋯+((10-p))^0*0
 			</p>
 
 			<p>
 				Możemy zapisać
 			</p>
 
-			<p class ="math">
-				m^'=m+(10-p)^(d+1)-(10-p)^d∙9-…-(10-p)^1∙9-(10-p)^0∙9=m+〖1∙(10-p)〗^(d+1)-9∙((10-p)^d+⋯+(10-p)^1+(10-p)^0 ) [?]
+			<p class ="math" align="center">
+				m^'=m+(10-p)^(d+1)-(10-p)^d*9-…-(10-p)^1*9-(10-p)^0*9=<br>
+				= m+(1*(10-p))^(d+1)-9*((10-p)^d+⋯+(10-p)^1+(10-p)^0 ) [?]
 			</p>
 
 			<p>
 				Ze wzoru na szereg geometryczny mamy:
 			</p>
 
-			<p class="math">
-				m^'=m+(10-p)^(d+1)-9∙((10-p)^(d+1)-1)/((10-p)-1)=m+(10-p)^(d+1)-(9∙(10-p)^(d+1)-9)/(9-p)=
-				m+((10-p)^(d+1) (9-p)-9∙(10-p)^(d+1)+9)/(9-p)==m+(9∙(10-p)^(d+1)-p(10-p)^(d+1)-9∙(10-p)^(d+1)+9)/(9-p)=
-				m+(-p(10-p)^(d+1)+9)/(9-p)=m+(-p(10-p)^(d+1)+p+9-p)/(9-p)=
-			=m+(-p(10-p)^(d+1)+p)/(9-p)+1=m+1+p∙(1-(10-p)^(d+1))/(9-p)  
+			<p class="math" align="center">
+				m^'=m+(10-p)^(d+1)-9*((10-p)^(d+1)-1)/((10-p)-1)=<br>
+				= m+(10-p)^(d+1)-(9*(10-p)^(d+1)-9)/(9-p)=<br>
+				= m+((10-p)^(d+1) (9-p)-9*(10-p)^(d+1)+9)/(9-p)=<br>
+				= m+(9*(10-p)^(d+1)-p(10-p)^(d+1)-9*(10-p)^(d+1)+9)/(9-p)=<br>
+				= m+(-p(10-p)^(d+1)+9)/(9-p)=m+(-p(10-p)^(d+1)+p+9-p)/(9-p)=<br>
+				= m+(-p(10-p)^(d+1)+p)/(9-p)+1=m+1+p*(1-(10-p)^(d+1))/(9-p)  
 			</p>
 
 			<p>
-				Mając na uwadze, że 1+p∙(1-(10-p)^(d+1))/(9-p) to to samo, co 
+				Mając na uwadze, że <span class="math">1+p*(1-(10-p)^(d+1))/(9-p)</span> to to samo, co 
 			</p>
 
-			<p class ="math">
-			(10-p)^(d+1)-(10-p)^d∙9-…-(10-p)^1∙9-(10-p)^0∙9
+			<p class ="math" align="center">
+			(10-p)^(d+1)-(10-p)^d*9-…-(10-p)^1*9-(10-p)^0*9
 			</p>
 
 			<p>
-				stwierdzamy, że liczba p∙(1-(10-p)^(d+1))/(9-p) jest całkowita. Jest ona podzielna przez p, co oznacza, że reszta z 
-				dzielenia liczby m^' przez p jest taka sama, jak reszta z dzielenia liczby m+1 przez p. Jeśli reszta z dzielenia m przez p 
-				wynosi p-1, to poszukiwana reszta wynosi 0, w przeciwnym razie wynosi r+1. Oznacza to, że reszta z dzielenia przez p 
-				liczby m^' jest taka sama, jak reszta z dzielenia przez p liczby a+1. □
+				stwierdzamy, że liczba <span class="math">p*(1-(10-p)^(d+1))/(9-p)</span> jest całkowita. Jest ona podzielna przez 
+				<span class="math">p</span>, co oznacza, że reszta z 
+				dzielenia liczby <span class="math">m'</span> przez <span class="math">p</span> jest taka sama, jak reszta z dzielenia liczby 
+				<span class="math">m+1</span> przez <span class="math">p</span>. Jeśli reszta z dzielenia <span class="math">m</span> przez 
+				<span class="math">p</span> wynosi <span class="math">p-1</span>, to poszukiwana reszta wynosi 0, w przeciwnym razie wynosi
+				<span class="math">r+1</span>. Oznacza to, że reszta z dzielenia przez <span class="math">p</span> 
+				liczby <span class="math">m'</span> jest taka sama, jak reszta z dzielenia przez <span class="math">p</span> liczby <span class="math">a+1</span>. □
 			</p>
 		</div>
 
@@ -719,28 +899,30 @@
 
 		<ul>
 			<li>
-				Z cechą podzielności przez 7 jest łatwo: w formule twierdzenia wystarczy wstawić w miejsce p liczbę 7 i otrzymamy 
+				Z cechą podzielności przez 7 jest łatwo: w formule twierdzenia wystarczy wstawić w miejsce <span class="math">p</span> liczbę 7 i otrzymamy 
 				żądaną cechę. 
 			</li>
 			<li>
 				Jeśli w miejsce p wstawimy liczbę 9, twierdzenie będzie brzmiało:
 				<p class ="formula">
-					Oznaczmy pozycję cyfry jedności jako 0, pozycję cyfry dziesiątek jako 1 itd. Liczba daje resztę  z dzielenia przez p 
-					taką samą, jak reszta z dzielenia przez p sumy cyfr mnożonych przez 1^n, gdzie n jest pozycją danej cyfry.
+					Oznaczmy pozycję cyfry jedności jako 0, pozycję cyfry dziesiątek jako 1 itd. Liczba daje resztę  z dzielenia przez <span class="math">p</span> 
+					taką samą, jak reszta z dzielenia przez <span class="math">p</span> sumy cyfr mnożonych przez <span class="math">1^n</span>, gdzie 
+					<span class="math">n</span> jest pozycją danej cyfry.
 				</p>
 				Ponieważ mnożenie przez 1 nic nie zmienia, wystarczy nam sumować cyfry danej liczby. 
 			</li>
 			<li>
-				Jeśli wstawimy w miejsce p liczbę 11, twierdzenie będzie brzmiało:
+				Jeśli wstawimy w miejsce <span class="math">p</span> liczbę 11, twierdzenie będzie brzmiało:
 				<p class="formula">
-					Oznaczmy pozycję cyfry jedności jako 0, pozycję cyfry dziesiątek jako 1 itd. Liczba daje resztę z dzielenia przez p 
-					taką samą, jak reszta z dzielenia przez p sumy cyfr mnożonych przez 〖(-1)〗^n, gdzie n jest pozycją danej cyfry.
+					Oznaczmy pozycję cyfry jedności jako 0, pozycję cyfry dziesiątek jako 1 itd. Liczba daje resztę z dzielenia przez <span class="math">p</span> 
+					taką samą, jak reszta z dzielenia przez <span class="math">p</span> sumy cyfr mnożonych przez <span class="math">(-1)^n</span>, gdzie 
+					<span class="math">n</span> jest pozycją danej cyfry.
 				</p>
 				Jest to równoważne z tym, że liczby o pozycjach parzystych bierzemy ze znakiem +, a liczby o pozycjach nieparzystych 
 				bierzemy ze znakiem –.
 			</li>
 			<li>
-				Z podzielnością przez 3 jest trochę ciekawiej. Wynika ona z przypadku dla p=9:
+				Z podzielnością przez 3 jest trochę ciekawiej. Wynika ona z przypadku dla <span class="math">p=9</span>:
 				<p class ="formula">
 					Liczba daje resztę  z dzielenia przez 9 taką samą, jak suma cyfr tej liczby.
 				</p>
@@ -751,13 +933,15 @@
 		</ul>
 
 		<p>
-			Twierdzenie to pozwala stworzyć cechę podzielności przez p dla dowolnego p. Nie zawsze jednak tak sformułowana cecha 
-			podzielności ma praktyczną użyteczność, zwłaszcza gdy p jest duże. Czasem bardziej praktyczne jest inne ujęcie cechy 
-			podzielności. Na przykład dla pewnych przypadków:
+			Twierdzenie to pozwala stworzyć cechę podzielności przez <span class="math">p</span> dla dowolnego <span class="math">p</span>. 
+			Nie zawsze jednak tak sformułowana cecha 
+			podzielności ma praktyczną użyteczność, zwłaszcza gdy <span class="math">p</span> jest duże. Czasem bardziej praktyczne jest inne ujęcie cechy 
+			podzielności. Na przykład:
 		</p>
 
 		<p class ="formula">
-			Liczba jest podzielna przez 2^n wtedy i tylko wtedy, gdy jej n ostatnich cyfr tworzy liczbę podzielną przez 2^n.
+			Liczba jest podzielna przez <span class="math">2^n</span> wtedy i tylko wtedy, gdy jej <span class="math">n</span> ostatnich cyfr tworzy 
+			liczbę podzielną przez <span class="math">2^n</span>.
 		</p>
 
 		<p class ="typ">
@@ -776,30 +960,44 @@
 			</p>
 		</div>
 
+		<div class ="proof">
+			<p>
+				Spójrzmy, czemu tak się dzieje. Weźmy dla przykładu n=2, czyli cechę podzielności przez 4. Gdy chcemy stwierdzić, że 
+				liczba 324 jest podzielna przez 4, wystarczy spojrzeć na 2 ostatnie cyfry, ponieważ 
+				324 = 300 + 24 = 3 &middot; 100 + 24 = 3 &middot; 4 &middot; 25 + 24. Widzimy, że wszystko oprócz 24, czyli cząstka 300, 
+				jest podzielne przez 4. W takim razie podzielność liczby przez 4 zależy tylko od dwóch ostatnich cyfr. 
+				Podobnie 2566340 = 2566300 + 40 = 25663 &middot; 100 + 40 = 25663 &middot; 4 &middot; 25 + 40, a więc cząstka 2566300 jest 
+				podzielna przez 4. Podobnie będzie dla innych n, przykładowo dla n=3 mamy 746320 = 746000 + 320 = 746 &middot; 1000 + 320 = 
+				746 &middot; 8 &middot; 125 + 320, a więc cząstka 746000 jest podzielna przez 8.
+			</p>
+		</div>
+
 		<div class="proof">
 			<p>
 				Weźmy dowolną liczbę a. Można ją zapisać w postaci 
 			</p>
 
-			<p class="math">
-			〖10〗^k a_k+〖10〗^(k-1) a_(k-1)+⋯+〖10〗^1 a_1+〖10〗^0 a_0
+			<p class="math" align="center">
+			10^k a_k+10^(k-1) a_(k-1)+⋯+10^1 a_1+10^0 a_0
 			</p>
 
 			<p>
-				gdzie a_0,a_1,…,a_k∈{0,1,2,3,4,5,6,7,8,9} są cyframi tej liczby.[?] Jeśli k&#60;n, to liczba utworzona przez n ostatnich 
-				cyfr tej liczby jest równa a i twierdzenie jest prawdziwe.[?] Gdy k≥n, liczba utworzona przez n ostatnich cyfr ma postać
+				gdzie <span class="math">a_0,a_1,…,a_k∈{0,1,2,3,4,5,6,7,8,9}</span> są cyframi tej liczby.[?] Jeśli k&#60;n, to liczba utworzona przez 
+				<span class="math">n</span> ostatnich 
+				cyfr tej liczby jest równa <span class="math">a</span> i twierdzenie jest prawdziwe.[?] Gdy <span class="math">k≥n</span>, liczba utworzona przez 
+				<span class="math">n</span> ostatnich cyfr ma postać
 			</p>
 
-			<p class = "math">
-				q=〖10〗^(n-1) a_(n-1)+⋯+〖10〗^1 a_1+〖10〗^0 a_0
+			<p class = "math" align="center">
+				q=(10)^(n-1) a_(n-1)+⋯+(10)^1 a_1+(10)^0 a_0
 			</p>
 
 			<p>
 				Wtedy:
 			</p>
 
-			<p class ="math">
-				a=〖10〗^k a_k+⋯+〖10〗^n a_n+〖10〗^(n-1) a_(n-1)+⋯+〖10〗^1 a_1+〖10〗^0 a_0=
+			<p class ="math" align="center">
+				a=10^k a_k+⋯+10^n a_n+10^(n-1) a_(n-1)+⋯+10^1 a_1+10^0 a_0=<br>
 				=2^k 5^k a_k+⋯+2^n 5^n a_n+q=2^n (2^(k-n) 5^k a_k+⋯+2^0 5^n a_n )+q
 			</p>
 
@@ -807,21 +1005,24 @@
 				Mamy więc 
 			</p>
 
-			<p class="math">
+			<p class="math" align="center">
 				a=2^n (2^(k-n) 5^k a_k+⋯+2^0 5^n a_n )+q
 			</p>
 
 			<p>
-				gdzie 2^n (2^(k-n) 5^k a_k+⋯+2^0 5^n a_n ) jest liczbą podzielną przez 2^n.
+				gdzie <span class="math">2^n (2^(k-n) 5^k a_k+⋯+2^0 5^n a_n )</span> jest liczbą podzielną przez <span class="math">2^n</span>.
 			</p>
 
 			<p>
-				Jeśli 2^n |q, to prawa strona równości jest podzielna przez 2^n, więc lewa strona też jest podzielna przez 2^n, 
-				mamy więc 2^n |q⟹2^n |a. Jeśli 2^n |a, to w równości a-2^n (2^(k-n) 5^k a_k+⋯+2^0 5^n a_n )=q, lewa strona 
-				jest podzielna przez 2^n, więc prawa strona też jest podzielna przez 2^n, mamy więc 2^n |a⟹2^n |q. A zatem
+				Jeśli <span class="math">2^n |q</span>, to prawa strona równości jest podzielna przez <span class="math">2^n</span>, więc lewa strona też jest 
+				podzielna przez <span class="math">2^n</span>, 
+				mamy więc <span class="math">2^n |q⟹2^n |a</span>. Jeśli <span class="math">2^n |a</span>, to w równości 
+				<span class="math">a-2^n (2^(k-n) 5^k a_k+⋯+2^0 5^n a_n )=q</span>, lewa strona 
+				jest podzielna przez <span class="math">2^n</span>, więc prawa strona też jest podzielna przez <span class="math">2^n</span>, mamy więc 
+				<span class="math">2^n |a⟹2^n |q</span>. A zatem
 			</p>
 
-			<p class="math">
+			<p class="math" align="center">
 				2^n |a⟺2^n |q □
 			</p>
 		</div>
@@ -832,7 +1033,8 @@
 		</p>
 
 		<p class ="formula">
-			Liczba jest podzielna przez 5^n wtedy i tylko wtedy, gdy jej n ostatnich cyfr tworzy liczbę podzielną przez 5^n.
+			Liczba jest podzielna przez <span class="math">5^n</span> wtedy i tylko wtedy, gdy jej <span class="math">n</span> ostatnich cyfr tworzy liczbę 
+			podzielną przez <span class="math">5^n</span>.
 		</p>
 
 		<p class ="typ">
@@ -847,27 +1049,29 @@
 
 		<div class ="proof">
 			<p>
-				Weźmy dowolną liczbę a. Można ją zapisać w postaci 
+				Weźmy dowolną liczbę <span class="math">a</span>. Można ją zapisać w postaci 
 			</p>
-			<p class ="math">
-				〖10〗^k a_k+〖10〗^(k-1) a_(k-1)+⋯+〖10〗^1 a_1+〖10〗^0 a_0
+			<p class ="math" align="center">
+				10^k a_k+10^(k-1) a_(k-1)+⋯+10^1 a_1+10^0 a_0
 			</p>
 
 			<p>
-				gdzie a_0,a_1,…,a_k∈{0,1,2,3,4,5,6,7,8,9} są cyframi tej liczby. Jeśli k&#60;n, to liczba utworzona przez n ostatnich cyfr 
-				tej liczby jest równa a i twierdzenie jest prawdziwe. Gdy k≥n, liczba utworzona przez n ostatnich cyfr ma postać
+				gdzie <span class="math">a_0,a_1,…,a_k∈{0,1,2,3,4,5,6,7,8,9}</span> są cyframi tej liczby. Jeśli k&#60;n, to liczba utworzona przez 
+				<span class="math">n</span> ostatnich cyfr 
+				tej liczby jest równa <span class="math">a</span> i twierdzenie jest prawdziwe. Gdy <span class="math">k≥n</span>, 
+				liczba utworzona przez <span class="math">n</span> ostatnich cyfr ma postać
 			</p>
 
-			<p class ="math">
-			q=〖10〗^(n-1) a_(n-1)+⋯+〖10〗^1 a_1+〖10〗^0 a_0
+			<p class ="math" align="center">
+			q=(10)^(n-1) a_(n-1)+⋯+(10)^1 a_1+(10)^0 a_0
 			</p>
 
 			<p>
 				Wtedy:
 			</p>
 
-			<p class ="math">
-			a=〖10〗^k a_k+⋯+〖10〗^n a_n+〖10〗^(n-1) a_(n-1)+⋯+〖10〗^1 a_1+〖10〗^0 a_0=
+			<p class ="math" align="center">
+			a=(10)^k a_k+⋯+(10)^n a_n+(10)^(n-1) a_(n-1)+⋯+(10)^1 a_1+(10)^0 a_0=<br>
 			=2^k 5^k a_k+⋯+2^n 5^n a_n+q=5^n (2^k 5^(k-n) a_k+⋯+2^n 5^0 a_n )+q
 			</p>
 
@@ -875,20 +1079,23 @@
 				Mamy więc 
 			</p>
 
-			<p class ="math">
+			<p class ="math" align ="center">
 			a=5^n (2^k 5^(k-n) a_k+⋯+2^n 5^0 a_n )+q
 			</p>
 
 			<p>
-				gdzie 5^n (2^k 5^(k-n) a_k+⋯+2^n 5^0 a_n ) jest liczbą podzielną przez 5^n.
+				gdzie <span class="math">5^n (2^k 5^(k-n) a_k+⋯+2^n 5^0 a_n )</span> jest liczbą podzielną przez <span class="math">5^n</span>.
 			</p>
 
 			<p>
-				Jeśli 5^n |q, to prawa strona równości jest podzielna przez 5^n, więc lewa strona też jest podzielna przez 5^n, mamy 
-				więc 5^n |q⟹5^n |a. Jeśli 5^n |a, to w równości a-5^n (2^k 5^(k-n) a_k+⋯+2^n 5^0 a_n )=q, lewa strona jest podzielna 
-				przez 5^n, więc prawa strona też jest podzielna przez 2^n, mamy więc 5^n |a⟹5^n |q. A zatem
+				Jeśli <span class="math">5^n |q</span>, to prawa strona równości jest podzielna przez <span class="math">5^n</span>, więc lewa strona też 
+				jest podzielna przez <span class="math">5^n</span>, mamy 
+				więc <span class="math">5^n |q⟹5^n |a</span>. Jeśli <span class="math">5^n |a</span>, to w równości 
+				<span class="math">a-5^n (2^k 5^(k-n) a_k+⋯+2^n 5^0 a_n )=q</span>, lewa strona jest podzielna 
+				przez <span class="math">5^n</span>, więc prawa strona też jest podzielna przez <span class="math">2^n</span>, mamy więc 
+				<span class="math">5^n |a⟹5^n |q</span>. A zatem
 			</p>
-			<p class ="math">
+			<p class ="math" align="center">
 				5^n |a⇔5^n |q □
 			</p>
 		</div>
@@ -1306,12 +1513,12 @@
 		<script>
 
 		var x = "<tr>";
-		for (i = 1; i<=30; i++)
+		for (var i = 1; i<=30; i++)
 			x+="<td>"+i+"</td>";
 
 		x+="</tr><tr>";
 
-		for (i = 1; i<=30; i++)
+		for (var i = 1; i<=30; i++)
 			x+='<td>\
 					<svg height="20" width="20">\
 						<defs>\
@@ -1325,7 +1532,7 @@
 
 		x+="</tr><tr>"
 
-		for (i = 1; i<=30; i++)
+		for (var i = 1; i<=30; i++)
 			x+='<td>\
 					<svg height="20" width="20">\
 						<defs>\
@@ -1355,12 +1562,12 @@
 		<script>
 
 		var x = "<tr>";
-		for (i = 1; i<=30; i++)
+		for (var i = 1; i<=30; i++)
 			x+="<td>"+i+"</td>";
 
 		x+="</tr><tr>";
 
-		for (i = 1; i<=30; i++)
+		for (var i = 1; i<=30; i++)
 			x+='<td>\
 					<svg height="20" width="20">\
 						<defs>\
@@ -1374,7 +1581,7 @@
 
 		x+="</tr><tr>"
 
-		for (i = 1; i<=30; i++)
+		for (var i = 1; i<=30; i++)
 			x+='<td>\
 					<svg height="20" width="20">\
 						<defs>\
@@ -1448,6 +1655,8 @@
 </div>
 
 <script type="text/javascript" src="script_draggable.js"></script>
+<script type="text/javascript" src="script_math.js"></script>
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=MML_HTMLorMML"></script>
 
 </body>
 
