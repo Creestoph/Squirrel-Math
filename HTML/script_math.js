@@ -1,4 +1,4 @@
-var maths = document.getElementsByClassName("math");
+﻿var maths = document.getElementsByClassName("math");
 var pos;
 
 function element_mathML(input)
@@ -16,22 +16,44 @@ function element_mathML(input)
             if (nawias == 0)
             {
                 result = '<mfenced separators="">' + to_mathML(input.substring(pos + 1, j)) + "</mfenced>";
+                //result = '<mrow>' + to_mathML(input.substring(pos + 1, j)) + "</mrow>";
                 pos = j;
                 break;
             }
         }
     }
     else if (input[pos] >= '0' && input[pos] <= '9')
-        result = "<mn>" + input[pos] + "</mn>";
+    {
+        result = "<mn>"
+        while ((input[pos] >= '0' && input[pos] <= '9') || input[pos] == '.' || input[pos] == ',')
+        {
+            result += input[pos];
+            pos++;
+        }
+        result += "</mn>";
+        pos--;
+    }
     else if (input[pos] == '<' && input[pos + 1] == 'b' && input[pos + 2] == 'r' && input[pos + 3] == '>')
     {
         result += "<mo linebreak='newline'></mo>";
         pos += 3;
     }
-    else if (input[pos] == '+' || input[pos] == '-' || input[pos] == ':' || input[pos] == '=' || input[pos] == '<' || input[pos] == '>')
+    else if (input[pos] == '+' || input[pos] == '-' || input[pos] == ':' || input[pos] == '=')
         result = "<mo>" + input[pos] + "</mo>";
-    else if (input[pos] == '*')
-        result = "<mn>&middot;</mn>";
+    else if (input.substring(pos, pos + 4) == '&lt;')
+    {
+        result = "<mi><</mi>";
+        pos += 3;
+    }
+    else if (input.substring(pos, pos + 4) == '&gt;')
+    {
+        pos += 3;
+        result = "<mi>></mi>";
+    }
+    else if (input[pos] == '*' || input[pos] == '∙')
+        result = "<mo>&middot;</mo>";
+    else if (input[pos] == '∶' || input[pos] == ':')
+        result = "<mo>:</mo>";
     else
         result = "<mi>" + input[pos] + "</mi>";
     
