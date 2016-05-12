@@ -14,8 +14,19 @@ var drags = document.getElementsByClassName("draggable");
       drags[i].setAttributeNS(null, "onmousedown", "selectElement(evt)")
     }
 
+function leftMousePressed(e)
+{
+    e = e || window.event;
+    var button = e.which || e.button;
+    return button == 1;
+}
 function selectElement(evt) {
-    
+if (leftMousePressed(evt)){
+    if ( document.selection ) {
+        document.selection.empty();
+    } else if ( window.getSelection ) {
+        window.getSelection().removeAllRanges();
+    }
     selectedElement = evt.target;
     svgCanv = selectedElement.parentElement;
     elementX = (selectedElement.getBoundingClientRect().left + selectedElement.getBoundingClientRect().right)/2
@@ -28,9 +39,18 @@ function selectElement(evt) {
     }
     svgCanv.setAttributeNS(null, "onmousemove", "moveElement(evt)");
     svgCanv.setAttributeNS(null, "onmouseup", "deselectElement(evt)");
+    svgCanv.setAttributeNS(null, "onmouseleave", "deselectElement(evt)");
+    window.onkeydown=deselectElement;
+    svgCanv.setAttributeNS(null, "onscroll", "deselectElement(evt)");
+    svgCanv.setAttributeNS(null, "onmousedown", "deselectElementNotLeft(evt)");
     selectedElement.setAttributeNS(null, "onmouseup", "deselectElement(evt)");
   }
-
+ }
+ function deselectElementNotLeft(evt){
+	if (!leftMousePressed(evt)){
+		deselectElement(evt);
+	}
+ }
   function moveElement(evt) {
     dx = evt.clientX - mouseX;
     dy = evt.clientY - mouseY;
