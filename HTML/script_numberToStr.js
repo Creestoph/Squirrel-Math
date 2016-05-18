@@ -17,9 +17,10 @@ function numberToStr() {
     "duodecylionów", "duodecyliardów"
   ];
   var outstr = "";
+  input = input.replace(/ /g, "");
   for (i = 0; i < input.length; i++) {
     if (String(parseInt(input.charAt(i))) !== input.charAt(i)) {
-      out.innerHTML = "Nie umiesz wpisac liczby calkowitej?";
+      out.innerHTML = "Nie umiesz wpisać liczby naturalnej?";
       return;
     }
   }
