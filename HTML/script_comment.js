@@ -22,7 +22,6 @@ for (var i = 0; i<comment.length; i++)
 
 function display(event)
 {
-    debugger;
     background_default = this.style.background;
     this.style.background = "#EEEEEE";
     
