@@ -83,7 +83,46 @@ div.comment_window
 	font-size: 15px;
 	box-shadow: inset 0px -15px 15px -5px rgba(0, 0, 0, 0.15);
 }
+div.chapter
+{
+	position: relative;
+}
+div.chapter_name
+{
+	position: relative;
+}
+div.chapter_body
+{
+	position: relative;
+}
 
+@keyframes hide {
+    0%   { -webkit-clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)}
+    100% { -webkit-clip-path: polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)}
+}
+
+.scroll_hide
+{
+	animation-timing-function: linear;
+	animation-fill-mode: forwards;
+	position: relative;
+    animation-name: hide;
+    animation-duration: 3.6s;
+}
+
+@keyframes show {
+    0%   { -webkit-clip-path: polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)}
+    100% { -webkit-clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)}
+}
+
+.scroll_show
+{
+	animation-timing-function: linear;
+	animation-fill-mode: forwards;
+	position: relative;
+    animation-name: show;
+    animation-duration: 3.6s;
+}
 
 p:not(.printable)
 {
