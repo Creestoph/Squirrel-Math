@@ -94,35 +94,28 @@ div.chapter_name
 div.chapter_body
 {
 	position: relative;
+  border: 0px solid black;
+  margin: 0; 
+  margin-bottom: 0px;
+  margin-top: 0px;
+  padding: 0px;
+  box-shadow: inset 0 0 0 0 rgba(0, 0, 0, 0.3);
+	
 }
 
-@keyframes hide {
-    0%   { -webkit-clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)}
-    100% { -webkit-clip-path: polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)}
-}
 
-.scroll_hide
+.chapter_mask
 {
-	animation-timing-function: linear;
-	animation-fill-mode: forwards;
+	overflow: hidden;
 	position: relative;
-    animation-name: hide;
-    animation-duration: 3.6s;
+  border: 0px solid black;
+  margin: 0; 
+  margin-bottom: 0px;
+  margin-top: 0px;
+  padding: 0px;
+  box-shadow: inset 0 0 0 0 rgba(0, 0, 0, 0.3);
 }
 
-@keyframes show {
-    0%   { -webkit-clip-path: polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)}
-    100% { -webkit-clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)}
-}
-
-.scroll_show
-{
-	animation-timing-function: linear;
-	animation-fill-mode: forwards;
-	position: relative;
-    animation-name: show;
-    animation-duration: 3.6s;
-}
 
 p:not(.printable)
 {

@@ -1,44 +1,40 @@
 $(document).ready(function(){
 	$(".chapter_name").on("click", function(){
+		var dmask = $(this).parent().find(".chapter_mask");
         var d = $(this).parent().find(".chapter_body");
-		if (d.hasClass("scroll_hide"))
+		var classList = dmask.attr('class').split(' ');
+		
+		if (d.hasClass("hidden"))
 		{
-			d.removeClass("scroll_hide");
-			d.addClass("scroll_show");
-			var dh =  +d.height();
-			d.animate({top: "+=" + dh, easing: "linear"}, 3600);
-
-			var should_animate = 0;
-			$(".chapter").each(function(i){
-				if (should_animate == 1)
-				{
-					 $(this).animate({top: "+=" + dh, easing: "linear"}, 3600);
-				}
-				if ($(this)[0] === d.parent()[0])
-				{
-					 should_animate = 1;
-				}
-		   });	
+			d.addClass("not_hidden");
+			d.removeClass("hidden");
+			
+			for (var i = 0; i < classList.length; i++)
+			{
+				if (classList[i].includes("height")) var dh = parseInt(classList[i].replace("height",""));	
+			}
+			d.animate({top: "+=" + dh, easing: "linear"}, 1100);
+            var dr = $(this).parent().find(".chapter_mask");
+			dr.animate({height: "+=" + dh, easing: "linear"}, 1100);
+			
 			
 		}
 		else
 		{
-			d.removeClass("scroll_show");
-			d.addClass("scroll_hide");
-			var dh =  -d.height();
-			d.animate({top: "+=" + dh, easing: "linear"}, 3600);
-
-			var should_animate = 0;
-			$(".chapter").each(function(i){
-				if (should_animate == 1)
-				{
-					 $(this).animate({top: "+=" + dh, easing: "linear"}, 3600);
-				}
-				if ($(this)[0] === d.parent()[0])
-				{
-					 should_animate = 1;
-				}
-		   });			
+			d.addClass("hidden");
+			d.removeClass("not_hidden");
+			var toadd = true;
+			for (var i = 0; i < classList.length; i++)
+			{
+				if (classList[i].includes("height")) toadd = false;
+			}
+			if (toadd) dmask.addClass("height" + dmask.height());
+			
+			var dh =  -dmask.height();
+			d.animate({top: "+=" + dh, easing: "linear"}, 1100);
+            var dr = $(this).parent().find(".chapter_mask");
+			dr.animate({height: "+=" + dh, easing: "linear"}, 1100);
+	
 		}
 	});        
 });
