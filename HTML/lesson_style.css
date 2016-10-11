@@ -93,7 +93,7 @@ div.chapter_name
 }
 div.chapter_body
 {
-	position: relative;
+  position: relative;
   border: 0px solid black;
   margin: 0; 
   margin-bottom: 0px;
@@ -106,8 +106,8 @@ div.chapter_body
 
 .chapter_mask
 {
-	overflow: hidden;
-	position: relative;
+  overflow: hidden;
+  position: relative;
   border: 0px solid black;
   margin: 0; 
   margin-bottom: 0px;
@@ -441,4 +441,27 @@ circle
 {
   background: #EF0000;
   color: #FFFFFF;
+}
+
+
+
+
+
+table.columnar_operation
+{
+	border-collapse: collapse; 
+	font-family: Bookman Old Style;
+}
+
+td.columnar_operation
+{
+	padding-top: 0px;
+	padding-bottom: 0px;
+	padding-left: 2px;
+	padding-right: 2px;
+}
+
+td.columnar_operation_underlined
+{
+	border-bottom: 1pt solid black;
 }
