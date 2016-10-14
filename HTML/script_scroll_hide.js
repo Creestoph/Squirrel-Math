@@ -21,6 +21,11 @@ $(document).ready(function(){
 				var dr = $(this).parent().find(".chapter_mask");
 				dr.animate({height: "+=" + dh}, 1100, "swing", function () {animate = 1;});
 				
+				var chapters = document.getElementsByClassName("chapter_name");
+				for (var i = 0; i < chapters.length; i++)
+					if (chapters[i] === this)
+						//chapters[i+1].animate({marginTop: "+=40"}, 1100, "swing");
+						chapters[i+1].style.marginTop = "50px";
 			}
 			else
 			{
@@ -37,7 +42,12 @@ $(document).ready(function(){
 				d.animate({top: "+=" + dh}, 1100, "swing", function () {animate = 1;});
 				var dr = $(this).parent().find(".chapter_mask");
 				dr.animate({height: "+=" + dh}, 1100, "swing", function () {animate = 1;});
-		
+				
+				var chapters = document.getElementsByClassName("chapter_name");
+				for (var i = 0; i < chapters.length; i++)
+					if (chapters[i] === this)
+						//chapters[i+1].animate({marginTop: "-=40"}, 1100, "swing");
+						chapters[i+1].style.marginTop = "10px";
 			}
 		}	
 	});  
