@@ -29,7 +29,7 @@ function display(event)
         if (windows[i].id.indexOf(this.id) > -1)
         {
             windows[i].style.top = (event.screenY - 120);
-            windows[i].style.left = event.screenX;
+            windows[i].style.left = event.screenX + 15;
             windows[i].style.visibility = "visible";
         }
     
