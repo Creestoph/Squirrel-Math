@@ -192,6 +192,15 @@ p.ostrzezenie
 
 
 
+.no_selection 
+{
+    -webkit-user-select: none; /* webkit (safari, chrome) browsers */
+    -moz-user-select: none; /* mozilla browsers */
+    -khtml-user-select: none; /* webkit (konqueror) browsers */
+    -ms-user-select: none; /* IE10+ */
+}
+
+
 
 ul
 {
@@ -489,4 +498,37 @@ td.columnar_operation_carry
 	vertical-align: center;
 	text-align: center;
 	height: 19px;
+}
+
+
+
+table.columnar_operation_script
+{
+	border: 1px solid black;
+	width: 80%;
+	height: 0px;
+	text-align: center;
+	padding: 20px;
+	visibility: hidden;
+}
+
+table.columnar_operation_script td
+{
+	vertical-align: center;
+}
+
+#columnar_addition_script_button_left + td
+{
+	width: 80%;
+	vertical-align: top;
+}
+
+#columnar_addition_script
+{
+	margin-top: 60px;
+}
+
+#columnar_addition_script_comment
+{
+	margin-top: 60px;
 }

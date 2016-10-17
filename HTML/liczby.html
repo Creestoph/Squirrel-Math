@@ -545,19 +545,11 @@
 		</p>
 
 		  <div style="text-align: center">
-			<input style="width: 800px" name="numberInput" type="text" id="numberToStr" />
+			<input style="width: 800px" type="text" id="number_to_str" />
 			<script>
-			  $(document).ready(function() {
-				$("#numberToStr").on("keyup", function() {
-				  this.value = this.value.replace(/ /g, '');
-				  var number = this.value;
-				  this.value = number.replace(/\B(?=(\d{3})+(?!\d))/g, " ");
-				});
-			  });
 			</script>
 			<p align="center" id="out"></p>
-			<button id="myBtn" style="float: center;">Start</button>
-			<script type="text/javascript" src="script_numberToStr.js"></script>
+			<script type="text/javascript" src="script_number_to_str.js"></script>
 		  </div>
 	</div>
 	</div>

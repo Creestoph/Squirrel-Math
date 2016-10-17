@@ -534,6 +534,53 @@
         </li>
       </ul>
       
+	<p align="center">
+		<input style="width: 800px" name="numberInput" type="text" id="columnar_addition_input" />
+	</p>
+	<script>
+	function ColumnarAdditionStartArgs()
+	{
+		ColumnarAdditionStart("columnar_addition_input", "columnar_addition_script_button_right", "columnar_addition_script_button_left", "columnar_addition_script", "columnar_addition_script_comment", "columnar_addition_table");
+	}
+	</script>
+	<p align="center">
+		<button id="start_button" style="float: center;" 
+		onclick="ColumnarAdditionStartArgs()">Start</button>
+	</p>
+	
+	  <table align = "center" class="columnar_operation_script" id="columnar_addition_table" >
+		<tr>
+			<td id="columnar_addition_script_button_left">
+				<svg height="60" width="30">
+				   <defs>
+					<linearGradient id="gradient">
+					  <stop offset="20%" stop-color="#C33" />
+					  <stop offset="90%" stop-color="#833" />
+					</linearGradient>
+				  </defs>
+				  <polygon points="20,0 0,30 20,60"/>
+				</svg>
+			</td>
+			<td>
+				<div id="columnar_addition_script" class="no_selection">
+				</div>
+				<p id="columnar_addition_script_comment" class="no_selection">
+				</p>
+			</td>
+			<td id = "columnar_addition_script_button_right">
+				<svg height="60" width="30">
+				   <defs>
+					<linearGradient id="gradient">
+					  <stop offset="20%" stop-color="#C33" />
+					  <stop offset="90%" stop-color="#833" />
+					</linearGradient>
+				  </defs>
+				  <polygon points="0,0 20,30 0,60"/>
+				</svg>
+			</td>	
+		</tr>
+	  </table>
+	  
       <p class ="typ">
         Rozszerzenie
       </p>

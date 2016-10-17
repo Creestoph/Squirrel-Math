@@ -1,3 +1,12 @@
+$(document).ready(function() {
+	$("#number_to_str").on("keyup", function() {
+	  this.value = this.value.replace(/ /g, '');
+	  var number = this.value;
+	  this.value = number.replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+	  numberToStr();
+	});
+});
+
 function numberToStr() {
   var out = document.getElementById("out");
   out.innerHTML = "";
@@ -55,6 +64,3 @@ function numberToStr() {
   out.innerHTML = outstr;
 
 }
-document.getElementById("myBtn").onclick = function() {
-  numberToStr()
-};
