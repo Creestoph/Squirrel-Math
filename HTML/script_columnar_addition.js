@@ -1,12 +1,14 @@
 function ColumnarAdditionStart(inputId, nextId, prevId, scriptId, commentId, tableId)
 {	
 	document.getElementById(tableId).style.visibility = "visible";
+	document.getElementById(prevId).childNodes[0].nextSibling.height = "60px";
+	document.getElementById(nextId).childNodes[0].nextSibling.height = "60px";
 	document.getElementById(tableId).style.height = "400px";
 	var input = document.getElementById(inputId).value;
 	input = input.replace(/ /g,"");
 	input = input.replace(/,/g,".");
 	var inputTab = input.split("+");
-	var columnarAddition = ColumnarAddition.CreateFromNumbers(inputTab, scriptId, commentId);
+	var columnarAddition = ColumnarAddition.CreateFromNumbers(inputTab, scriptId, commentId, nextId, prevId);
 	if (columnarAddition != undefined)
 	{
 		document.getElementById(nextId).onclick = function() {
@@ -32,19 +34,28 @@ class ColumnarAddition{
 		this.comma = 0;
 		this.commentId = commentId;
 		this.comment = "";
+		this.buttonRightId = "";
+		this.buttonLeftId = "";
 	}
 	
 	NextStep()
 	{
+		document.getElementById(this.buttonLeftId).style.visibility = "visible";
+		document.getElementById(this.buttonRightId).style.visibility = "visible";
 		if (this.currentColumn < 0) 
 		{
 			this.comment = "Odczytujemy wynik: ";
 			for (var i = 0; i < this.numbersTable[this.numbersTable.length - 1].length; i++)
 				this.comment += (i==this.longestBeforeComma ? "," : "")+this.numbersTable[this.numbersTable.length - 1][i];
 			this.comment += ".";
+			document.getElementById(this.buttonRightId).style.visibility = "hidden";
 			return;
 		}
-		if (this.step == 0) this.comment = "Zapisujemy "+(this.numbersTable.length == 4 ? "obie" : "wszystkie")+" liczby jedna pod drugą z wyrównaniem do " + (this.comma == 0 ? "prawej" : "przecinka")+ " i podkreślamy.";
+		if (this.step == 0) 
+		{
+			this.comment = "Zapisujemy "+(this.numbersTable.length == 4 ? "obie" : "wszystkie")+" liczby jedna pod drugą z wyrównaniem do " + (this.comma == 0 ? "prawej" : "przecinka")+ " i podkreślamy.";
+			document.getElementById(this.buttonLeftId).style.visibility = "hidden";
+		}
 		else
 		{
 			var digits = [];
@@ -59,6 +70,7 @@ class ColumnarAddition{
 				for (var i = 0; i < this.numbersTable[this.numbersTable.length - 1].length; i++)
 					this.comment += (i==this.longestBeforeComma ? "," : "")+this.numbersTable[this.numbersTable.length - 1][i];
 				this.comment += ".";
+				document.getElementById(this.buttonRightId).style.visibility = "hidden";
 				return;
 			}
 			
@@ -76,16 +88,16 @@ class ColumnarAddition{
 			else
 			{
 				this.comment = "Dodajemy cyfry ";
-				if (digits.length == 2) this.comment += digits[0] + " i " + digits[1];
+				if (digits.length == 2) this.comment += digits[0] + " i " + digits[1] +", ";
 				else
 				{
 					for (var i = 0; i < digits.length - 1; i++)
 					{
 						this.comment += digits[i]+", ";
 					}
-					this.comment += digits[digits.length-1];
+					this.comment += digits[digits.length-1] + " i ";
 				}
-				this.comment += " i otrzymujemy ";
+				this.comment += " otrzymujemy ";
 				var sum = 0;
 				for (var i = 0; i < digits.length; i++) sum += parseInt(digits[i]);
 				this.comment += sum;
@@ -132,14 +144,20 @@ class ColumnarAddition{
 		ColumnarAddition.InsertTable(this.numbersTable,this.id,this.comma);
 	}
 	
-	static CreateFromNumbers(numbersStr, id, commentId)
+	static CreateFromNumbers(numbersStr, id, commentId, buttonRightID, buttonLeftID)
 	{
 		var ret = new ColumnarAddition(id, commentId);
+		ret.buttonLeftId = buttonLeftID;
+		ret.buttonRightId = buttonRightID;
 		var numbers = [];
+		document.getElementById(buttonRightID).style.visibility = "visible";
+		document.getElementById(buttonLeftID).style.visibility = "visible";
 		if (numbersStr.length == 1)
 		{
-			ret.comment = "EEEEE nie ma";
+			ret.comment = "Wpisz liczby do dodania <br>np. 1234+73";
 			ret.Print();
+			document.getElementById(buttonRightID).style.visibility = "hidden";
+			document.getElementById(buttonLeftID).style.visibility = "hidden";
 			return;			
 		}
 		for (var i = 0; i < numbersStr.length; i++)
@@ -165,8 +183,10 @@ class ColumnarAddition{
 			}
 			if (!ok)
 			{
-				ret.comment = "EEEEE nie ma";
+				ret.comment = "Wpisz liczby do dodania <br>np. 1234+73";
 				ret.Print();
+				document.getElementById(buttonRightID).style.visibility = "hidden";
+				document.getElementById(buttonLeftID).style.visibility = "hidden";
 				return;
 			}
 			numbers[i] = parseFloat(numbersStr[i]);
