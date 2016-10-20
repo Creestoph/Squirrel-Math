@@ -1,9 +1,14 @@
 function ColumnarAdditionStart(inputId, nextId, prevId, scriptId, commentId, tableId)
 {	
 	document.getElementById(tableId).style.visibility = "visible";
-	document.getElementById(prevId).childNodes[0].nextSibling.height = "60px";
-	document.getElementById(nextId).childNodes[0].nextSibling.height = "60px";
+	document.getElementById(tableId).style.marginBottom = "60px";
 	document.getElementById(tableId).style.height = "400px";
+	document.getElementById(tableId).style.padding = "20px";
+	document.getElementById(scriptId).style.marginTop = "60px";
+	document.getElementById(commentId).style.marginTop = "60px";
+	document.getElementById(prevId).childNodes[0].nextSibling.setAttribute("height", "60px");
+	document.getElementById(nextId).childNodes[0].nextSibling.setAttribute("height", "60px");
+	
 	var input = document.getElementById(inputId).value;
 	input = input.replace(/ /g,"");
 	input = input.replace(/,/g,".");
