@@ -500,18 +500,19 @@ td.columnar_operation_carry
 	height: 19px;
 }
 
-
+td.columnar_operation_highlight
+{
+	background: #FFCCCC;
+}
 
 table.columnar_operation_script
 {
-	border: 1px solid #888888;
+	border: 1px solid black;
 	width: 80%;
 	height: 0px;
 	text-align: center;
-	padding: 0px; /*20px*/
-	
+	padding: 20px;
 	visibility: hidden;
-	box-shadow: 0px 0px 13px 0px rgba(0, 0, 0, 0.2);
 }
 
 table.columnar_operation_script td
@@ -519,8 +520,28 @@ table.columnar_operation_script td
 	vertical-align: center;
 }
 
+#columnar_addition_script_button_left polygon:hover
+{
+	fill: url(#hover_gradient);
+}
+
+#columnar_addition_script_button_right polygon:hover
+{
+	fill: url(#hover_gradient);
+}
+
 #columnar_addition_script_button_left + td
 {
 	width: 80%;
 	vertical-align: top;
+}
+
+#columnar_addition_script
+{
+	margin-top: 60px;
+}
+
+#columnar_addition_script_comment
+{
+	margin-top: 60px;
 }

@@ -1,19 +1,12 @@
 function ColumnarAdditionStart(inputId, nextId, prevId, scriptId, commentId, tableId)
 {	
 	document.getElementById(tableId).style.visibility = "visible";
-	document.getElementById(tableId).style.marginBottom = "60px";
 	document.getElementById(tableId).style.height = "400px";
-	document.getElementById(tableId).style.padding = "20px";
-	document.getElementById(scriptId).style.marginTop = "60px";
-	document.getElementById(commentId).style.marginTop = "60px";
-	document.getElementById(prevId).childNodes[0].nextSibling.setAttribute("height", "60px");
-	document.getElementById(nextId).childNodes[0].nextSibling.setAttribute("height", "60px");
-	
 	var input = document.getElementById(inputId).value;
 	input = input.replace(/ /g,"");
 	input = input.replace(/,/g,".");
 	var inputTab = input.split("+");
-	var columnarAddition = ColumnarAddition.CreateFromNumbers(inputTab, scriptId, commentId, nextId, prevId);
+	var columnarAddition = ColumnarAddition.CreateFromNumbers(inputTab, scriptId, commentId);
 	if (columnarAddition != undefined)
 	{
 		document.getElementById(nextId).onclick = function() {
@@ -29,6 +22,16 @@ function ColumnarAdditionStart(inputId, nextId, prevId, scriptId, commentId, tab
 	}
 }
 
+function SetInputEnterEvent(inputId, btnId)
+{
+	document.getElementById(inputId)
+		.addEventListener("keyup", function(event) {
+		event.preventDefault();
+		if (event.keyCode == 13) {
+			document.getElementById(btnId).click();
+		}
+	});
+}
 class ColumnarAddition{
 	
 	constructor(id, commentId)
@@ -39,31 +42,22 @@ class ColumnarAddition{
 		this.comma = 0;
 		this.commentId = commentId;
 		this.comment = "";
-		this.buttonRightId = "";
-		this.buttonLeftId = "";
 	}
 	
 	NextStep()
 	{
-		document.getElementById(this.buttonLeftId).style.visibility = "visible";
-		document.getElementById(this.buttonRightId).style.visibility = "visible";
+		var digits = [];
 		if (this.currentColumn < 0) 
 		{
 			this.comment = "Odczytujemy wynik: ";
 			for (var i = 0; i < this.numbersTable[this.numbersTable.length - 1].length; i++)
 				this.comment += (i==this.longestBeforeComma ? "," : "")+this.numbersTable[this.numbersTable.length - 1][i];
 			this.comment += ".";
-			document.getElementById(this.buttonRightId).style.visibility = "hidden";
 			return;
 		}
-		if (this.step == 0) 
-		{
-			this.comment = "Zapisujemy "+(this.numbersTable.length == 4 ? "obie" : "wszystkie")+" liczby jedna pod drugą z wyrównaniem do " + (this.comma == 0 ? "prawej" : "przecinka")+ " i podkreślamy.";
-			document.getElementById(this.buttonLeftId).style.visibility = "hidden";
-		}
+		if (this.step == 0) this.comment = "Zapisujemy "+(this.numbersTable.length == 4 ? "obie" : "wszystkie")+" liczby jedna pod drugą z wyrównaniem do " + (this.comma == 0 ? "prawej" : "przecinka")+ " i podkreślamy.";
 		else
 		{
-			var digits = [];
 			for (var i = 0; i < this.numbersTable.length-1; i++ )
 			{
 				if (this.numbersTable[i][this.currentColumn] != "") digits.push(this.numbersTable[i][this.currentColumn]);
@@ -75,7 +69,6 @@ class ColumnarAddition{
 				for (var i = 0; i < this.numbersTable[this.numbersTable.length - 1].length; i++)
 					this.comment += (i==this.longestBeforeComma ? "," : "")+this.numbersTable[this.numbersTable.length - 1][i];
 				this.comment += ".";
-				document.getElementById(this.buttonRightId).style.visibility = "hidden";
 				return;
 			}
 			
@@ -93,16 +86,16 @@ class ColumnarAddition{
 			else
 			{
 				this.comment = "Dodajemy cyfry ";
-				if (digits.length == 2) this.comment += digits[0] + " i " + digits[1] +", ";
+				if (digits.length == 2) this.comment += digits[0] + " i " + digits[1];
 				else
 				{
 					for (var i = 0; i < digits.length - 1; i++)
 					{
 						this.comment += digits[i]+", ";
 					}
-					this.comment += digits[digits.length-1] + " i ";
+					this.comment += digits[digits.length-1];
 				}
-				this.comment += " otrzymujemy ";
+				this.comment += " i otrzymujemy ";
 				var sum = 0;
 				for (var i = 0; i < digits.length; i++) sum += parseInt(digits[i]);
 				this.comment += sum;
@@ -121,7 +114,8 @@ class ColumnarAddition{
 			}
 			
 		}
-		
+		this.highlightColumn = -1;
+		if (this.step != 0) this.highlightColumn = (digits.length == 0 ? this.currentColumn - 1: this.currentColumn);
 		if (this.step != 0)this.currentColumn -= 1;
 		this.step += 1;
 	}
@@ -146,23 +140,17 @@ class ColumnarAddition{
 	Print()
 	{
 		document.getElementById(this.commentId).innerHTML = this.comment;
-		ColumnarAddition.InsertTable(this.numbersTable,this.id,this.comma);
+		ColumnarAddition.InsertTable(this.numbersTable,this.id,this.comma, this.highlightColumn);
 	}
 	
-	static CreateFromNumbers(numbersStr, id, commentId, buttonRightID, buttonLeftID)
+	static CreateFromNumbers(numbersStr, id, commentId)
 	{
 		var ret = new ColumnarAddition(id, commentId);
-		ret.buttonLeftId = buttonLeftID;
-		ret.buttonRightId = buttonRightID;
 		var numbers = [];
-		document.getElementById(buttonRightID).style.visibility = "visible";
-		document.getElementById(buttonLeftID).style.visibility = "visible";
 		if (numbersStr.length == 1)
 		{
-			ret.comment = "Wpisz liczby do dodania <br>np. 1234+73";
+			ret.comment = "EEEEE nie ma";
 			ret.Print();
-			document.getElementById(buttonRightID).style.visibility = "hidden";
-			document.getElementById(buttonLeftID).style.visibility = "hidden";
 			return;			
 		}
 		for (var i = 0; i < numbersStr.length; i++)
@@ -188,10 +176,8 @@ class ColumnarAddition{
 			}
 			if (!ok)
 			{
-				ret.comment = "Wpisz liczby do dodania <br>np. 1234+73";
+				ret.comment = "EEEEE nie ma";
 				ret.Print();
-				document.getElementById(buttonRightID).style.visibility = "hidden";
-				document.getElementById(buttonLeftID).style.visibility = "hidden";
 				return;
 			}
 			numbers[i] = parseFloat(numbersStr[i]);
@@ -233,12 +219,13 @@ class ColumnarAddition{
 		}
 		ret.longestBeforeComma = longestBeforeComma;
 		ret.currentColumn = ret.numbersTable[0].length-1;
+		ret.highlightColumn = ret.numbersTable[0].length-1;
 		ret.comma = longestAfterComma;
 		return ret;
 		
 	}
 	
-	static InsertTable(rows, id, comma = 0)
+	static InsertTable(rows, id, comma = 0, highlight_column = -1)
 	{
 		var table = "<table align = \"center\" class=\"columnar_operation\">";
 		for (var i = 0; i < rows.length; i++)
@@ -264,11 +251,15 @@ class ColumnarAddition{
 						table += "<td class = \"columnar_operation\">"+c+"</td>";			
 				}
 				if (i == 0)
-					table += "<td class = \"columnar_operation_carry\">" + rows[i][j] +"</td>";
+					table += "<td class = \"columnar_operation_carry";
 				else if (i == rows.length - 2)
-					table += "<td class = \"columnar_operation_underlined\">" + rows[i][j] +"</td>";
+					table += "<td class = \"columnar_operation_underlined";
 				else
-					table += "<td class = \"columnar_operation\">" + rows[i][j] +"</td>";
+					table += "<td class = \"columnar_operation";
+				if (highlight_column == j)
+					table += " columnar_operation_highlight\"";
+				else table+= "\"";
+				table += ">" + rows[i][j] +"</td>";
 			}
 			table += "</tr>";
 		}
