@@ -1,24 +1,31 @@
-(10) + Ogarn¹æ skrypt math.js (strasznie d³ugo siê ³aduje, niechêtnie wczytuje style, zamula stronê)
-(3)  + Kule w "Podzielnoœci liczb" nie dzia³aj¹ (skrypt wewnêtrzny) - koliduje z includem mathml
-(5)  + Przenieœæ resztê skryptów i styli do osobnych plików
-(6)  + Stworzyæ skrypty do odejmowania, mno¿enia, dzielenia w s³upku
-(4)  + Stworzyæ skrypt do faktoryzacji
-(1)  + Zablokowaæ mo¿liwoœæ wpisywania przecinka w skrypcie dodawania w s³upku w lekcji "Dodawanie" (przecinek dostêpny tylko w lekcji "U³amki dziesiêtne")
-(4)  + Wygenerowaæ grafiki do u³amków zwyk³ych, dziesiêtnych i procentów
-(1)  + Ogarn¹æ wyœwietlanie "b³êdnego u³amka piêtrowego" na koñcu lekcji "U³amki zwyk³e"
-(2)  + Wstawiæ taby w pierwszych kilku lekcjach
-(10) + Tworzyæ lekcje...
-(6)  + Sformu³owaæ dowody dzia³añ w s³upku
-(4)  + Dodaæ rozdzia³ o lokatach i kredytach w temacie "Procenty"
-(9)  + Stworzyæ interaktywne (trójwymiarowe?) drzewo lekcji
-(7)  + Udoskonaliæ formatowanie lekcji w Wordzie
-(3)  + Rozwin¹æ skrypt number_to_str.js na dowolnie du¿e liczby
-(6)  + Ulepszyæ skrypt draggable.js aby przesuwa³ kulki po ca³ym ekranie (+ animacja wracania)
-(2)  + Dodaæ animacjê przesuwania podœwietlenia kolumny w dzia³aniach w s³upku
-(9)  + Dodaæ okienko podgl¹du definicji przy trudnych pojêciach (najechanie na s³owo np. "asymptota" powinno wyœwietlaæ odpowiedni fragment odpowiedniej lekcji z wyjaœnieniem)
-(1)  + Uogólniæ skrypty do tabliczek dzia³añ w lekcjach "Dodawanie", "Odejmowanie", "Mno¿enie", "Dzielenie"
-(7)  + Ujednoliciæ nazwy zmiennych (klas, id) w kodzie
-(8)  + Stworzyæ edytor lekcji w HTML
-(6)  + Ogarn¹æ wyœwietlanie rozdzia³ów "Dodawanie w s³upku", "Odejmowanie w s³upku", "Mno¿enie w s³upku", "Dzielenie w s³upku"
-(1)  + Pomyœleæ nad nowymi t³ami do lekcji
-(8)  + Znormalizowaæ wyœwietlanie liczb i elementów matematycznych w lekcjach (mathml / zwyk³y tekst)
+(8)	Znormalizowaæ wyœwietlanie liczb i elementów matematycznych w lekcjach (mathml / zwyk³y tekst)
+(8)	Ujednoliciæ nazwy zmiennych (klas, id) w kodzie
+(7)	Stworzyæ skrypty do odejmowania, mno¿enia, dzielenia w s³upku
+(7)	Stworzyæ edytor lekcji w HTML
+(6)	Ogarn¹æ wyœwietlanie rozdzia³ów "Dodawanie w s³upku", "Odejmowanie w s³upku", "Mno¿enie w s³upku", "Dzielenie w s³upku"
+(6)	Sformu³owaæ dowody dzia³añ w s³upku
+(6)	Ulepszyæ skrypt draggable.js aby przesuwa³ kulki po ca³ym ekranie (+ animacja wracania)
+(5)	Ramka "Dowód" wygl¹da s³abo (lepszy css i animacja scroll_hide)
+(5)	Udoskonaliæ formatowanie lekcji w Wordzie
+(5)	Ogarn¹æ skrypt math.js (na laptopie strasznie d³ugo siê ³aduje, niechêtnie wczytuje style, zamula stronê)
+(4)	Wygenerowaæ grafiki do u³amków zwyk³ych, dziesiêtnych i procentów
+(4)	Stworzyæ skrypt do faktoryzacji
+(4)	Dodaæ rozdzia³ o lokatach i kredytach w temacie "Procenty"
+(3)	Ulepszyæ skrypt math.js, ¿eby ogarnia³ jednostki typu m, kg, l
+(3)	Uproœciæ dowód w "Podzielnoœci liczb" i dodaæ komentarze
+(3)	Rozwin¹æ skrypt number_to_str.js na dowolnie du¿e liczby
+(3)	Ogarn¹æ t³umazenie wymowy i zapisu kolejnych liczb w lekcji "Liczby"
+(3)	Dodaæ okienko podgl¹du definicji przy trudnych pojêciach (najechanie na s³owo np. "asymptota" powinno wyœwietlaæ odpowiedni fragment 
+	odpowiedniej lekcji z wyjaœnieniem)
+(2)	Stworzyæ skrypt wykonuj¹cy dzia³ania do lekcji "Kolejnoœæ wykonywania dzia³añ" 
+(2)	Naprawiæ maskowanie czêœci rozdzia³u "Dodawanie w s³upku" po rozwiniêciu skryptu
+(2)	Dopisaæ brakuj¹ce dowody w "Podzielnoœci liczb"
+(2)	Dodaæ animacjê przesuwania podœwietlenia kolumny w dzia³aniach w s³upku
+(2)	Stworzyæ interaktywne (trójwymiarowe?) drzewo lekcji
+(2) 	Dodaæ wyszukiwarkê pojêæ
+(1)	Narysowaæ poprawnie "coraz wiêksze nawiasy" w rozdziale "Dzia³ania w nawiasach" lekcji "Kolejnoœæ wykonywania dzia³añ"
+(1)	Pomyœleæ nad nowymi t³ami do lekcji
+(1)	Uogólniæ skrypty do tabliczek dzia³añ w lekcjach "Dodawanie", "Odejmowanie", "Mno¿enie", "Dzielenie"
+(1)	Zablokowaæ mo¿liwoœæ wpisywania przecinka w skrypcie dodawania w s³upku w lekcji "Dodawanie" (przecinek dostêpny tylko w lekcji 
+	"U³amki dziesiêtne")
+(1)	Ogarn¹æ wyœwietlanie "b³êdnego u³amka piêtrowego" na koñcu lekcji "U³amki zwyk³e"

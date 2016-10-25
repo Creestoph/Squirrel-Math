@@ -2,144 +2,147 @@
 <html lang="pl">
 
 <head>
-  <title>Mnożenie</title>
-  <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+	<title>Mnożenie</title>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 	<link rel="stylesheet" href="../lesson_style.css">
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+	<script src="multiplication_table_short.js"></script>
 </head>
 
 <body class="lekcja">
   
-  <div class = "menu">
+<div class = "menu">
 	<a href="../index.html"><button class = "przejscie" style="position: absolute; left: 10px"><span>Strona główna</span></button></a>
 	<a href="../drzewo.html"><button class = "przejscie" style="position: absolute; left: 250px"><span>Drzewo</span></button></a>
     <a href="mnozenie.html"><button class = "przejscie" style="position: relative; left: 80%"><span>Wersja pełna</span></button></a>
-  </div>
+</div>
   
-  <div class="glowny">
+<div class="glowny">
 
     <p class="tytul_short">
-      Mnożenie
+		Mnożenie
     </p>
     <p class = "podtytul">
-      w pigułce
+		w pigułce
     </p>
       
-      <p class = "typ">
+    <p class = "typ">
         Intuicje
-      </p>
+    </p>
       
-      <p>
+    <p>
         Mnożenie to wielokrotne dodawanie. Gdy chcemy policzyć liczbę kafelków poniżej:
-      </p>
+    </p>
       
-      <br>
-      <p align = "center">
+    <br>
+    <p align = "center">
         <table class = "tiles">
-          <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-          <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-          <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-          <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+			<tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+			<tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+			<tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+			<tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
         </table>
-      </p>
-      <br>
+    </p>
+    <br>
     
-      <p>
+    <p>
         możemy stwierdzić, że plansza składa się z 4 rzędów, a w każdym znajduje się 6 kafli:
-      </p>
+    </p>
   
-      <p align = "center">
+    <p align = "center">
         6 + 6 + 6 + 6 = 24
-      </p>
+    </p>
     
-      <p>
+    <p>
         Stosując mnożenie zapszemy to jako:
-      </p>
+    </p>
       
-      <p align = "center">
+    <p align = "center">
         4 &middot; 6 = 24
-      </p>
+    </p>
       
-      <p>
+    <p>
         Znak &middot; czytamy jako „razy”. Zapis 4 &middot; 6 (cztery razy sześć) oznacza, że należy cztery razy dodać do siebie 
         szóstkę.
-      </p>
+    </p>
       
-      <p>
+    <p>
         Liczby, które mnożymy, nazywamy <i>czynnikami</i>, zaś wynik mnożenia <i>iloczynem</i>.
-      </p>
+    </p>
       
-      <p align = "center">
+    <p align = "center">
         czynnik  &middot; czynnik = iloczyn
-      </p>
+    </p>
       
-      <p>
+    <p>
         W działaniu 5 &middot; 6 = 30 czynnikami są 5 i 6, a wynikiem (iloczynem) 30.
-      </p>
+    </p>
       
-      <p class = "typ">
+    <p class = "typ">
         Rozszerzenie
-      </p>
+    </p>
     
-      <p>
+    <p>
         Mnożenie jest przemienne, ponieważ 4 &middot; 6 to to samo, co 6 &middot; 4.
-      </p>
+    </p>
     
-      <p>
+    <p>
         Mnożenie jest łączne, co oznacza, że 4 &middot; 6 &middot; 3 możemy obliczyć na dwa sposoby:
-      </p>
+    </p>
     
-      <p align = "center">
+    <p align = "center">
         4 &middot; 6 &middot; 3 = 24 &middot; 4 = 72<br>
         4 &middot; 6 &middot; 3 = 4 &middot; 18 = 72
-      </p>
+    </p>
   
-      <p class = "typ">
+    <p class = "typ">
         Warsztat
-      </p>
+    </p>
       
-      <p>
+    <p>
         Obliczanie mnożenia zawsze można sprowadzić do wielokrotnego dodawania, np. 7 &middot; 8 = 8 + 8 + 8 + 8 + 8 + 8 + 8.
         Aby przyspieszyć rachunki, warto opanować <i>tabliczkę mnożenia</i>, czyli zapamiętać wyniki jednocyfrowych mnożeń.
-      </p>
+    </p>
 
-      <br>
-      <p align = "center">
+    <br>
+    <p align = "center">
         <table class="tabelka" id="multiplication_table">
-          <tr><th> </th><th>0</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th style="background: #F0E0E0">7</th><th>8</th><th>9</th></tr>
-          <tr><th>0</th><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td style="background: #F0E0E0">0</td><td>0</td><td>0</td></tr>
-          <tr><th>1</th><td>0</td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td style="background: #F0E0E0">7</td><td>8</td><td>9</td></tr>
-          <tr><th>2</th><td>0</td><td>2</td><td>4</td><td>6</td><td>8</td><td>10</td><td>12</td><td style="background: #F0E0E0">14</td><td>16</td><td>18</td></tr>
-          <tr><th>3</th><td>0</td><td>3</td><td>6</td><td>9</td><td>12</td><td>15</td><td>18</td><td style="background: #F0E0E0">21</td><td>24</td><td>27</td></tr>
-          <tr><th>4</th><td>0</td><td>4</td><td>8</td><td>12</td><td>16</td><td>20</td><td>24</td><td style="background: #F0E0E0">28</td><td>32</td><td>36</td></tr>
-          <tr><th>5</th><td>0</td><td>5</td><td>10</td><td>15</td><td>20</td><td>25</td><td>30</td><td style="background: #F0E0E0">35</td><td>40</td><td>45</td></tr>
-          <tr><th>6</th><td>0</td><td>6</td><td>12</td><td>18</td><td>24</td><td>30</td><td>36</td><td style="background: #F0E0E0">42</td><td>48</td><td>54</td></tr>
-          <tr><th>7</th><td>0</td><td>7</td><td>14</td><td>21</td><td>28</td><td>35</td><td>42</td><td style="background: #F0E0E0">49</td><td>56</td><td>63</td></tr>
-          <tr style="background: #F0E0E0"><th>8</th><td>0</td><td>8</td><td>16</td><td>24</td><td>32</td><td>40</td><td>48</td><td style="background: #CA7777">56</td><td>64</td><td>72</td></tr>
-          <tr><th>9</th><td>0</td><td>9</td><td>18</td><td>27</td><td>36</td><td>45</td><td>54</td><td style="background: #F0E0E0">63</td><td>72</td><td>81</td></tr>
+			<tr><th> </th><th>0</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th style="background: #F0E0E0">7</th><th>8</th><th>9</th></tr>
+			<tr><th>0</th><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td style="background: #F0E0E0">0</td><td>0</td><td>0</td></tr>
+			<tr><th>1</th><td>0</td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td style="background: #F0E0E0">7</td><td>8</td><td>9</td></tr>
+			<tr><th>2</th><td>0</td><td>2</td><td>4</td><td>6</td><td>8</td><td>10</td><td>12</td><td style="background: #F0E0E0">14</td><td>16</td><td>18</td></tr>
+			<tr><th>3</th><td>0</td><td>3</td><td>6</td><td>9</td><td>12</td><td>15</td><td>18</td><td style="background: #F0E0E0">21</td><td>24</td><td>27</td></tr>
+			<tr><th>4</th><td>0</td><td>4</td><td>8</td><td>12</td><td>16</td><td>20</td><td>24</td><td style="background: #F0E0E0">28</td><td>32</td><td>36</td></tr>
+			<tr><th>5</th><td>0</td><td>5</td><td>10</td><td>15</td><td>20</td><td>25</td><td>30</td><td style="background: #F0E0E0">35</td><td>40</td><td>45</td></tr>
+			<tr><th>6</th><td>0</td><td>6</td><td>12</td><td>18</td><td>24</td><td>30</td><td>36</td><td style="background: #F0E0E0">42</td><td>48</td><td>54</td></tr>
+			<tr><th>7</th><td>0</td><td>7</td><td>14</td><td>21</td><td>28</td><td>35</td><td>42</td><td style="background: #F0E0E0">49</td><td>56</td><td>63</td></tr>
+			<tr style="background: #F0E0E0"><th>8</th><td>0</td><td>8</td><td>16</td><td>24</td><td>32</td><td>40</td><td>48</td><td style="background: #CA7777">56</td><td>64</td><td>72</td></tr>
+			<tr><th>9</th><td>0</td><td>9</td><td>18</td><td>27</td><td>36</td><td>45</td><td>54</td><td style="background: #F0E0E0">63</td><td>72</td><td>81</td></tr>
         </table>
-      </p>
-      <p align = "center" id="multiplication_table_field">
+    </p>
+    <p align = "center" id="multiplication_table_field">
         7 &middot; 8 = 56
-      </p>
-      <br>
+    </p>
+    <br>
       
-      <p>
+    <p>
         Większe liczby zwykle <i>mnoży się w słupku</i> (wykonuje<i>mnożenie pisemne</i>). Pomnożymy 629 przez 204. 
         Obydwie liczby zapisujemy jedna pod drugą z wyrównaniem do prawej i podkreślamy. Mnożymy kolejne cyfry górnej 
         liczby przez cyfrę jedności dolnej liczby, a wyniki zapisujemy pod kreską. 
         <ul>
-          <li>4 &middot; 9 = 36; cyfrę 6 piszemy pod kreską, zaś cyfrę 3 przechowujemy w pamięci.</li>
-          <li>4 &middot; 2 = 8; do wyniku dodajemy zapamiętaną 3 i otrzymujemy 11; cyfrę 1 piszemy pod kreską i przechowujemy w 
+			<li>4 &middot; 9 = 36; cyfrę 6 piszemy pod kreską, zaś cyfrę 3 przechowujemy w pamięci.</li>
+			<li>4 &middot; 2 = 8; do wyniku dodajemy zapamiętaną 3 i otrzymujemy 11; cyfrę 1 piszemy pod kreską i przechowujemy w 
             pamięci 1</li>
-          <li>4 &middot; 6 = 24; do wyniku dodajemy zapamiętaną 1 i otrzymujemy 25; cyfrę 5 piszemy pod kreską i zapamiętujemy 2.
-          <li>spisujemy zapamiętaną cyfrę 2.</li>
+			<li>4 &middot; 6 = 24; do wyniku dodajemy zapamiętaną 1 i otrzymujemy 25; cyfrę 5 piszemy pod kreską i zapamiętujemy 2.
+			<li>spisujemy zapamiętaną cyfrę 2.</li>
         </ul>
         Podobnie mnożymy 629 kolejno przez 0 i 2, przy czym wynik mnożenia przez 0 zapisujemy z przesunięciem o 1 w lewo, a wynik 
         mnożenia przez 2 z przesunięciem o 2 w lewo. Tak otrzymane wyniki sumujemy metodą dodawania w słupku. Ostatecznie
         wynikiem jest 128 316.
-      </p>
+    </p>
   
-      <p align = "center">
+    <p align = "center">
 
               1		1	
               2	1	3	
@@ -149,67 +152,18 @@
               0	0	0	
         +	1	2	5	8		
           1	2	8	3	1	6
-      </p>
+    </p>
   
-      <p class = "typ">
+    <p class = "typ">
         Dowód
-      </p>
+    </p>
   
-      <p class = "ostrzezenie">
+    <p class = "ostrzezenie">
         [wymagana znajomość tematu: Algebra]
-      </p>
+    </p>
   
-  </div>
+</div>
 
-  <script type="text/javascript" src="script_draggable.js"></script>
-  <script>
-	
-	var table = document.getElementById("multiplication_table");
-	var field = document.getElementById("multiplication_table_field");
-	var k, i, j;
-
-	for (i = 1; i<table.rows.length; i++)
-		 for (j = 1; j < table.rows[i].cells.length; j++)
-			  table.rows[i].cells[j].addEventListener("mouseover", f1);
-
-	table.addEventListener("mouseout", f2);
-
-	function f1()
-	{
-		 for (i = 0; i < table.rows.length; i++)
-			  for (j = 0; j < table.rows[i].cells.length; j++)
-					table.rows[i].cells[j].style.background = "#FFFFFF";
-
-		 for (i = 0; i < table.rows.length; i++)
-			  for (j = 0; j < table.rows[i].cells.length; j++)
-					if (table.rows[i].cells[j] === this)
-					{
-						 for (r = 0; r < table.rows.length; r++)
-							  table.rows[r].cells[j].style.background = "#F0E0E0";
-						 for (r = 0; r < table.rows[i].cells.length; r++)
-							  table.rows[i].cells[r].style.background = "#F0E0E0";
-						 table.rows[i].cells[j].style.background = "#CA7777";
-
-						 field.innerHTML = (j - 1) + " &middot; " + (i - 1) + " = " + ((i-1)*(j-1));
-					}
-	}
-
-	function f2()
-	{
-		 for (i = 0; i < this.rows.length; i++)
-			  for (j = 0; j < this.rows[i].cells.length; j++)
-					this.rows[i].cells[j].style.background = "#FFFFFF";
-
-		 for (r = 0; r < this.rows.length; r++)
-			  this.rows[r].cells[8].style.background = "#F0E0E0";
-		 for (r = 0; r < this.rows[9].cells.length; r++)
-			  this.rows[9].cells[r].style.background = "#F0E0E0";
-		 this.rows[9].cells[8].style.background = "#CA7777";
-
-		 field.innerHTML = "7 &middot; 8 = 56";
-	}
-
-  </script>
 </body>
 
 </html>
