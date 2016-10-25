@@ -1,0 +1,315 @@
+﻿<!DOCTYPE HTML PUBLIC “-//W3C//DTD HTML 4.01 Transitional//EN”>
+<html lang="pl">
+
+<head>
+	<title>Ułamki dziesiętne</title>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+	<link rel="stylesheet" href="../lesson_style.css">
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+	<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=MML_HTMLorMML"></script>
+	<script src="../.scripts/columnar_addition.js"></script>
+	<script src="../.scripts/draggable.js"></script>
+	<script src="../.scripts/math.js"></script>
+</head>
+
+<body class="lekcja">
+  
+<div class = "menu">
+	<a href="../index.html"><button class = "przejscie" style="position: absolute; left: 10px"><span>Strona główna</span></button></a>
+	<a href="../drzewo.html"><button class = "przejscie" style="position: absolute; left: 250px"><span>Drzewo</span></button></a>
+	<a href="ulamki_dziesietne.html"><button class = "przejscie" style="position: relative; left: 80%"><span>Wersja pełna</span></button></a>
+</div>
+  
+<div class="glowny">
+
+	<p class="tytul_short">
+		Ułamki dziesietne
+	</p>
+	<p class="podtytul">
+		w pigułce
+	</p>
+    
+	<p class="typ">
+		Intuicje
+	</p>
+	
+	<p>
+		Ułamki zapisane w postaci <i>rozwinięcia dziesiętnego</i> stanowią naturalne rozszerzenie zapisu liczb naturalnych. Dzięki takiemu 
+		zapisowi łatwo ocenić rzeczywistą wielkość ułamka; porównywanie ułamków
+		dziesiętnych jest znacznie prostsze niż porównywanie ułamków zwykłych. 
+	</p>
+	
+	<p>
+		<i>Przecinek dziesiętny</i> (<i>separator dziesiętny</i>) oddziela część całkowitą liczby (jej <i>cechę</i>) od części ułamkowej 
+		(<i>mantysy</i>). Ułamek dziesiętny zawsze odpowiada ułamkowi zwykłemu, którego mianownik to 10, 100, 1000, 10000 itd. - w zależności
+		od tego, ile ma cyfr po przecinku.
+	</p>
+	
+	<ul>
+		<li class="math">21,7=21 7/10 = 217/10</li>
+		<li class="math">0,74=74/100</li>
+		<li class="math">37,843=37 843/1000=37843/1000</li>
+		<li class="math">0,000001=1/1000000</li>
+	</ul>
+	
+	<p>
+		Cyfry po przecinku nazywamy kolejno: <i>cyfrą części dziesiętnych</i>, <i>cyfrą części setnych</i>, <i>cyfrą części tysięcznych</i> itd.
+		W zapisie dziesiętnym cyfry z lewej strony mają większą wagę i mocniej wpływają na wielkość liczby niż cyfry po 
+		prawej stronie. Każda cyfra ma wagę 10 razy większą niż cyfra bezpośrednio po prawej. Gdy czytamy liczbę od lewej do 
+		prawej, kolejne cyfry mają coraz mniejsze znaczenie i jedynie precyzują wartość liczby. 
+	</p>
+	
+	<p>
+		Jeśli nie interesuje nas dokładna wartość liczby, a jedynie jej orientacyjna wielkość, stosujemy <i>przybiżenie</i> (<i>szacowanie</i>).
+		Najczęściej stosowanym rodzajem przybliżenia jest zaokrąglenie. Zaokrąglenia zawsze dokonujemy do pewnej cyfry, np. do części tysięcznych, 
+		do części setnych, albo do wyższych cyfr – do dziesiątek, do setek itd. Aby zaokrąglić liczbę do części dziesiętnych, 
+		patrzymy na cyfrę bezpośrednio po prawej - cyfrę części setnych. Jeśli wynosi ona 0, 1, 2, 3 albo 4, 
+		przybliżenie polega na ucięciu cyfry części setnych i wszystkich kolejnych. Jeśli jednak wynosi 5, 6, 7, 8 
+		albo 9, cyfrę części dziesiętnych zwiększamy o 1 i ucinamy wszystkie z prawej.
+	</p>
+	
+	<ul>
+		<li>Zaokrąglenie 17,6541 do części tysięcznych wynosi 17,654.</li>
+		<li>Zaokrąglenie 17,6541 do części setnych wynosi 17,65.</li>
+		<li>Zaokrąglenie 17,6541 do części dziesiętnych wynosi 17,7.</li>
+		<li>Zaokrąglenie 17,6541 do jedności wynosi 18.</li>
+		<li>Zaokrąglenie 17,6541 do dziesiątek wynosi 20.</li>
+		<li>Zaokrąglenie 17,6541 do setek wynosi 0.</li>
+	</ul>
+	
+	<p>
+		Powyższe zdania można zapisać za pomocą symbolu ≈ (czasem stosuje się też ≅):
+	</p>
+	
+	<ul>
+		<li>17,6541 ≈ 17,654</li>
+		<li>17,6541 ≈ 17,65</li>
+		<li>17,6541 ≈ 17,7</li>
+		<li>17,6541 ≈ 18</li>
+		<li>17,6541 ≈ 20</li>
+		<li>17,6541 ≈ 0</li>
+	</ul>
+	
+	<p class="typ">
+		Rozszerzenie
+	</p>
+	
+	<p>
+		Innym rodzajem przybliżeń są <i>podłoga</i> oraz <i>sufit</i>. Podłoga liczby to jej część całkowita
+		(symbolicznie ⌊24,389⌋=24), a sufit to liczba o 1 większa od podłogi (symbolicznie ⌈24,389⌉=25).
+	</p>
+
+	<p class="typ">
+		Intuicje
+	</p>
+	
+	<p>
+		Przedstawione do tej pory ułamki mają skończone rozwinięcia dziesiętne (skończoną ilość cyfr po przecinku). 
+		Niektóre ułamki zwykłe nie posiadają skończonego rozwinięcia. Przykładowo
+	</p>
+	<ul>
+		<li>1/6=0,166666666666666666666666666666666666666666666…</li>
+		<li>1/7=0,142857142857142857142857142857142857142857142…</li>
+		<li>1/11=0,09090909090909090909090909090909090909090909…</li>
+		<li>1/23=0,04347826086956521739130434782608695652173913…</li>
+		<li>1/36=0,02777777777777777777777777777777777777777777…</li>
+	</ul>
+	
+	<p>
+		W rozwinięciu ułamka <span class="math">1/7</span>
+		powtarza się zbitek liczb 142857. Taki powtarzający się fragment nieskończonego rozwinięcia dziesiętnego nazywamy <i>okresem</i>. 
+		Okresowość ułamka zapisujemy symbolicznie: <span class="math">1/7=0,(142857)</span>. Podobnie <span class="math">1/36=0,02(7)</span>.
+	</p>
+	
+	<p>
+		Każdy ułamek zwykły da się przedstawić w postaci skończonego ułamka dziesiętnego albo 
+		nieskończonego posiadającego okres. Skończone rozwinięcie dziesiętne zawsze można przedłużyć do nieskończonego przez dopisanie nieskończonej
+		ilości zer na końcu (dopisywanie zer na końcu rozwinięcia nie zmienia wartości).
+	</p>
+	
+	<p class="typ">
+		Warsztat
+	</p>
+	
+	<p>
+		Dodawanie ułamków dziesiętnych przebiega identycznie jak w przypadku liczb naturalnych.
+	</p>
+	
+	<div id="columnar_addition_1">
+	</div>
+	<script>
+		ColumnarAddition.InsertTable([["", "1", "1", "1", "", "", ""], ["3", "4", "2", "6", "7", "", ""], 
+		["", "1", "9", "1", "5", "8", "2"], ["3", "6", "2", "2", "2", "8", "2"]], "columnar_addition_1", 4);
+	</script>
+	
+	<p>
+		Odejmowanie liczb dziesiętnych także przebiega analogicznie. Jeśli odjemna i odjemnik mają różną ilość cyfr po przecinku (np.
+		141,21 - 74,1364), wypełniamy brakujące pola zerami.
+	</p>
+
+				13				10		
+			0	3	11		1	0	9	10
+			1	4	1	,	2	1	0	0
+		-		7	4	,	1	3	6	4
+				6	7	,	0	7	3	6
+
+	<p>
+		Mnożenie i dzielenie liczb dziesiętnych przez 10 sprowadza się do przesunięcia przecinka o odpowiednią ilość pozycji w prawo lub w lewo.
+	</p>
+	
+	<ul>
+		<li>45,292 ∙ 100 = 4529,2</li>
+		<li>347 ∙ 10 = 347,0000 ∙ 10 = 3470,000 = 3470</li>
+		<li>0,349 : 10 = 0,0349</li>
+		<li>94 : 1000 = 94,0 : 1000 = 0,0940 = 0,094</li>
+	</ul>
+	
+	<p>
+		Aby obliczyć iloczyn dwóch liczb z przecinkiem, mnożymy je bez przecinka, a potem 
+		wstawiamy przecinek w odpowiednim miejscu (wynik powinien mieć tyle cyfr po przecinku, co pierwsza i druga łącznie). Przykładowo
+		12,34 ∙1,03 = 12,772.
+	</p>
+	
+							1	
+						1	2	4
+						1	0	3
+						3	7	2
+					0	0	0	
+		+		1	2	4		
+				1	2	7	7	2
+	
+	<p>
+		Gdy chcemy podzielić dwie liczby z przecinkiem, na początek 
+		wygodnie jest pozbyć się przecinka z dzielnika i „przerzucić go” do dzielnej:
+	</p>
+	
+	<p class="math" align="center">
+		37,58∶1,6=3758/100 ∶  16/10=3758/100  ∙  10/16=3758/10  ∙  1/16=3758/10 ∶16=375,8∶16
+	</p>
+
+	<p>
+		Dzielenie wykonujemy według standardowej procedury.
+	</p>
+
+				2	3	,	4			
+			3	7	5	,	8	:	1	6
+		-	3	2						
+				5	5					
+		-		4	8					
+					7		8			
+		-			6		4			
+					1		4					
+
+	<p>
+		Gdy w dzielnej nie ma już kolejnych cyfr do spisania, 
+		jej rozwinięcie dziesiętne możemy przedłużać o dowolną ilość zer. Spisujemy cyfrę 0 i kontynuujemy:
+	</p>
+
+
+				2	3	,	4	8	7	5
+			3	7	5	,	8	:	1	6
+		-	3	2						
+				5	5					
+		-		4	8					
+					7		8			
+		-			6		4			
+					1		4	0		
+		-			1		2	8		
+							1	2	0	
+		-					1	1	2	
+									8	0
+		-							8	0
+										0
+
+	<p>
+		Trochę inaczej wygląda procedura dzielenia, gdy wynik nie posiada skończonego rozwinięcia dziesiętnego.
+		Weźmy przykład 1 : 7. Najpierw warto "stworzyć" przecinek poprzez zapisanie jedynki jako 1,0. Postępujemy zgodnie ze
+		znaną metodą dzielenia pisemnego.
+	</p>
+	
+			0	,	1	4	2	8	5	7	
+			1	,	0	:	7				
+		-			7						
+					3	0					
+		-			2	8					
+						2	0				
+		-				1	4				
+							6	0			
+		-					5	6			
+								4	0		
+		-						3	5		
+									5	0	
+		-							4	9	
+										1	0
+	<p>
+		W tym momencie zauważamy, że zatoczyliśmy koło: w tej chwili mamy do podzielenia 10 przez 7 i jest to dokładnie 
+		ta sama czynność, jakiej dokonaliśmy na samym początku słupka. Oznacza to, że poznaliśmy już pełen okres rozwinięcia dziesiętnego ułamka
+		<span class="math">1/7</span> i możemy odczytać wynik 1 : 7 = 0,(142857).
+	</p>
+
+	<p class="typ">
+		Warsztat | Rozszerzenie
+	</p>
+	
+	<p class="ostrzezenie">
+		[wymagana znajomość tematu: Równania]
+	</p>
+
+	<p>
+		Gdy chcemy przedstawić ułamek dziesiętny okresowy w postaci ułamka zwykłego, musimy rozwiązać równanie typu
+	</p>
+	
+	<p class="math" align="center">
+		0,(259)=x
+	</p>
+	
+	<p>
+		Mnożymy równanie obustronnie przez 1000 (jedynkę i trzy zera – bo tyle cyfr ma okres) i odejmujemy stronami z powyższym równaniem
+	</p>
+	
+	<p class="math" align="center">
+		259,(259)=1000x
+	</p>
+	
+	<p class="math" align="center">
+		259,(259)-0,(259)=1000x-x
+	</p>
+	
+	<p class="math" align="center">
+		259=999x
+	</p>
+	
+	<p class="math" align="center">
+		x=259/999
+	</p>
+	
+	<p>
+		Jeśli okres rozpoczyna się zaraz po przecinku, odpowiadający mu ułamek zwykły będzie miał licznik równy okresowi i mianownik 
+		złożony z tylu dziewiątek, ile cyfr ma okres. 
+	</p>
+	
+	<ul>
+		<li class="math">0,(132)=132/999=44/333</li>
+		<li class="math">4,(15)=4 15/99=4 5/33=137/33</li>
+		<li class="math">43,(5)=43 5/9=392/9</li>
+		<li class="math">0,(0045)=45/9999=5/1111</li>
+	</ul>
+		
+	<p>
+		Jeśli okres nie zaczyna się zaraz po przecinku, możemy stworzyć odpowiedni pomocniczy ułamek dziesiętny.
+	</p>
+	
+	<ul>
+		<li class="math">0,0(34)=0,(34) ∶10=  34/99 ∶10=34/990=17/495</li>
+		<li class="math">1,1(6)=11,(6) ∶10=11 6/9:10=35/3:10=35/30=7/6</li>
+		<li class="math">78,355(1)=78355,(1) ∶1000=78355 1/9 ∶1000=705196/9000=176299/2250</li>
+	</ul>
+		
+  
+</div>
+
+
+</body>
+
+</html>

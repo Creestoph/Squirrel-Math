@@ -1,0 +1,144 @@
+﻿<!DOCTYPE HTML PUBLIC “-//W3C//DTD HTML 4.01 Transitional//EN”>
+<html lang="pl">
+
+<head>
+	<title>Ułamki zwykłe</title>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+	<link rel="stylesheet" href="../lesson_style.css">
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+	<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=MML_HTMLorMML"></script>
+	<script src="../.scripts/draggable.js"></script>
+	<script src="../.scripts/math.js"></script>
+</head>
+
+<body class="lekcja">
+  
+<div class = "menu">
+	<a href="../index.html"><button class = "przejscie" style="position: absolute; left: 10px"><span>Strona główna</span></button></a>
+	<a href="../drzewo.html"><button class = "przejscie" style="position: absolute; left: 250px"><span>Drzewo</span></button></a>
+	<a href="ulamki_zwykle.html"><button class = "przejscie" style="position: relative; left: 80%"><span>Wersja pełna</span></button></a>
+</div>
+  
+<div class="glowny">
+
+	<p class="tytul_short">
+		Ułamki zwykłe
+	</p>
+	<p class="podtytul">
+		w pigułce
+	</p>
+
+		<p class = "typ">
+			Intuicje
+		</p>
+	  
+		<p>
+			Liczby naturalne pozwalają jedynie na opis "pełnych", "całych" liczb jak 1, 2, 3, ... i nie dają sposobu na wyrażenie "połówek".
+			Do zapisu części całości stosuje się ułamki. Jeśli dzielimy tort na 8 kawałków i bierzemy spośród nich 3 kawałki, to bierzemy 
+			<span class="math">3/8</span> tortu.
+			Ułamek ten czytamy jako "trzy ósme". Liczba u góry to <i>licznik ułamka</i>, a liczba na dole to <i>mianownik ułamka</i>. Pozioma kreska
+			to <i>kreska ułamkowa</i>.
+		</p>
+
+		<p>
+			Ułamek, w którym licznik jest mniejszy niż mianownik, to <i>ułamek właściwy</i>. Pozostałe 
+			ułamki to <i>ułamki niewłaściwe</i> – np. <span class="math">123/67</span>.
+		</p>
+
+		<p>
+			Ułamki pozwalają unikać zapisu używającego reszty z dzielenia. Problem podzielenia 7 kamieni na 3 równe sterty możemy rozwiązać 
+			stosując resztę: 7 : 3 = 2 r. 1 albo stosując ułamek: 7 : 3 = <span class="math">2 1/3</span>. W drugim przypadku pozostałą jedynkę rozbijamy na trzy 
+			części - dostajemy więc ułamek <span class="math">1/3</span>. <span class="math">2 1/3</span> to przykład <i>liczby mieszanej</i>, czyli takiej, 
+			która składa się z pełnej liczby oraz ułamka. 
+			Każdą liczbę mieszaną można przedstawić jako ich sumę: 
+		</p>
+
+		<p class = "math" align ="center">
+			2 1/3= 2+1/3
+		</p>
+
+		<p>
+			Gdyby podzielić każdy z kamieni na 3 części, moglibyśmy stwierdzić, że <span class="math">2 1/3 = 7/3</span>, co odpowiada wyobrażeniu 
+			7 fragmentów,z których
+			każdy jest <span class="math">1/3</span> kamienia. Znak dzielenia zawsze można zastąpić kreską ułamkową.
+		</p>
+		<ul>
+			<li class="math">3 : 4 = 3/4</li>
+			<li class="math">6 : 2 = 6/2</li>
+			<li class="math">5 : 5 = 5/5</li>
+		</ul>
+
+		<p>
+			Dowolny ułamek można rozszerzyć, czyli pomnożyć jego licznik oraz mianownik przez tę samą liczbę. Przykładowo <span class="math">3/8 = 6/16</span>
+			, ponieważ, wziąć
+			3 fragmenty z 8 to to samo, co wziąć 6 fragmentów z 16. Możemy postępować też na odwrót, czyli <i>skrócić ułamek</i>. Przykładowo 
+			<span class="math">4/8</span> to tyle samo,
+			co <span class="math">1/2</span>. Ułamek, którego nie da się skrócić, to ułamek w <i>postaci nieskracalnej</i>. Taka sytuacja występuje, gdy NWD 
+			licznika i mianownika to 1.
+		</p>
+
+		<p>
+			Ułamki można dodawać, odejmować, mnożyć i dzielić. 
+		</p> 
+
+		<ul>
+			<li>
+				Aby dodać dwa ułamki, należy <i>sprowadzić je do wspólnego mianownika</i>, czyli rozszerzyć każdy z nich tak, aby uzyskać jednakowe
+				mianowniki. Dodawanie ułamków o jednakowych mianownikach polega na dodaniu ich liczników.
+				<p class = "math" align="center">
+					5/12 + 7/18 = 15/36 + 14/36 = 29/36
+				</p>
+			</li>
+			<li>
+				Odejmowanie ułamków jest analogiczne do ich dodawania - po sprowadzeniu ułamków do wspólnego mianownika odejmujemy ich liczniki.
+				<p class = "math" align="center">
+					3/5 - 1/4 = 12/20 - 5/20 = 7/20
+				</p>
+			</li>
+			<li>
+				Aby pomnożyć ułamek przez liczbę naturalną, mnożymy jego licznik przez tę liczbę. Pomnożenie dwóch ułamków polega na pomnożeniu ich liczników
+				oraz ich mianowników.
+				<p class = "math" align="center">
+					5 &middot; 2/13 = (5 &middot; 2)/13 = 10/13<br>
+					3/4 &middot; 5/7 = (3 &middot; 5)/(4 &middot; 7) = 15/28
+				</p>
+			</li>
+			<li>
+				Dzielenie przez ułamek to mnożenie przez jego <i>odwrotność</i> (<i>liczbę odwrotną</i>), czyli ułamek powstały przez 
+				zamianę licznika i mianownika miejsacami.
+				<p class = "math" align="center">
+					3/4 : 2/5 = 3/4 &middot; 5/2 = (3 &middot; 5)/(4 &middot; 2) = 15/8<br>
+					2 : 3/8 = 2/1 : 3/8 = 2/1 &middot; 8/3 = (2 &middot; 8)/(1 &middot; 3) = 16/3
+				</p> 
+			</li>
+		</ul>
+
+		<p>
+			Aby porównać ułamki, sprowadzamy je do wspólnego mianownika. Większy jest ten, który ma większy licznik.
+		</p>
+
+		<ul>
+			<li><span class ="math">10/8>6/5</span>, bo <span class ="math">25/20>24/20</span></li>
+		</ul>
+
+		<p class="typ"> 
+			Rozszerzenie
+		</p>
+
+		<p>
+			W liczniku albo mianowniku ułamka mogą się pojawić wyrażenia zawierające dodawanie, odejmowanie, mnożenie albo dzielenie.
+			Jeśli ułamek posiada w liczniku albo mianowniku inny ułamek, nazywamy go <i>ułamkiem piętrowym</i>. Uproszczenie ułamka piętrowego
+			wykonujemy zastępując <i>główną kreskę ułamkową</i> znakiem dzielenia. Główną kreskę ułamkową rozpoznajemy po tym, że jest dłuższa od pozostałych,
+			a znak równości zapisuje się na jej wysokości.
+			<ul>
+				<li class="math">(2/3)/5 = 2/3 : 5 = 2/3 &middot; 1/5 = 2/15</li>
+			</ul>
+		</p>
+  
+</div>
+
+
+</body>
+
+</html>
