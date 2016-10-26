@@ -17,9 +17,11 @@ $(document).ready(function(){
 				{
 					if (classList[i].includes("height")) var dh = parseInt(classList[i].replace("height",""));	
 				}
-				d.animate({top: "+=" + dh}, 1100, "swing", function () {animate = 1;});
 				var dr = $(this).parent().find(".chapter_mask");
+				d.animate({top: "+=" + dh}, 1100, "swing", function () {animate = 1;});
 				dr.animate({height: "+=" + dh}, 1100, "swing", function () {animate = 1;});
+				
+				
 			}
 			else
 			{
@@ -32,9 +34,9 @@ $(document).ready(function(){
 				}
 				if (toadd) dmask.addClass("height" + dmask.height());
 				
+				var dr = $(this).parent().find(".chapter_mask");
 				var dh =  -dmask.height();
 				d.animate({top: "+=" + dh}, 1100, "swing", function () {animate = 1;});
-				var dr = $(this).parent().find(".chapter_mask");
 				dr.animate({height: "+=" + dh}, 1100, "swing", function () {animate = 1;});
 			}
 		}	

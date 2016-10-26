@@ -23,9 +23,11 @@
 (2)	Dodaæ animacjê przesuwania podœwietlenia kolumny w dzia³aniach w s³upku
 (2)	Stworzyæ interaktywne (trójwymiarowe?) drzewo lekcji
 (2) 	Dodaæ wyszukiwarkê pojêæ
+(2)	Poprawiæ skrypt comment.js, ¿eby dzia³a³ dobrze na powiêkszonej/pomniejszonej stronie.
 (1)	Narysowaæ poprawnie "coraz wiêksze nawiasy" w rozdziale "Dzia³ania w nawiasach" lekcji "Kolejnoœæ wykonywania dzia³añ"
 (1)	Pomyœleæ nad nowymi t³ami do lekcji
 (1)	Uogólniæ skrypty do tabliczek dzia³añ w lekcjach "Dodawanie", "Odejmowanie", "Mno¿enie", "Dzielenie"
 (1)	Zablokowaæ mo¿liwoœæ wpisywania przecinka w skrypcie dodawania w s³upku w lekcji "Dodawanie" (przecinek dostêpny tylko w lekcji 
 	"U³amki dziesiêtne")
 (1)	Ogarn¹æ wyœwietlanie "b³êdnego u³amka piêtrowego" na koñcu lekcji "U³amki zwyk³e"
+(1)	Dodaæ spowolnienie na koñcu animacji scroll_hide

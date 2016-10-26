@@ -245,7 +245,7 @@ class ColumnarSubtraction{
 			numbers[i] = numbersStr[i];			
 			if (numbers[i].length > 39)
 			{
-				ret.comment = "ERROR: Długość liczby przeczy design'owi strony. Szanujmy się.";
+				ret.comment = "<b>ERROR</b><br>Wprowadzone liczby są zbyt długie.<br>Ich wyświetlenie przeczy design'owi strony.<br>Szanujmy się.";
 				ret.Print();
 				document.getElementById(buttonRightID).style.visibility = "hidden";
 				document.getElementById(buttonLeftID).style.visibility = "hidden";

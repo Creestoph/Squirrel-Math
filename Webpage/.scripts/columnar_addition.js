@@ -179,8 +179,25 @@ class ColumnarAddition{
 			document.getElementById(buttonLeftID).style.visibility = "hidden";
 			return;			
 		}
+		if (numbersStr.length > 10)
+		{
+			ret.comment = "<b>ERROR</b><br>Ani Ty, ani ja nie potrzebujemy aż tylu liczb.";
+			ret.Print();
+			document.getElementById(buttonRightID).style.visibility = "hidden";
+			document.getElementById(buttonLeftID).style.visibility = "hidden";
+			return;	
+		}
 		for (var i = 0; i < numbersStr.length; i++)
 		{
+			if (numbersStr[i].length > 39)
+			{
+				ret.comment = "<b>ERROR</b><br>Wprowadzone liczby są zbyt długie.<br>Ich wyświetlenie przeczy design'owi strony.<br>Szanujmy się.";
+				ret.Print();
+				document.getElementById(buttonRightID).style.visibility = "hidden";
+				document.getElementById(buttonLeftID).style.visibility = "hidden";
+				return;	
+			}
+			
 			var wasComma = false;
 			var ok = true;
 			for (var j = 0; j < numbersStr[i].length; j++)

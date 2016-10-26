@@ -1,71 +1,71 @@
 body.lekcja
 {
-  /*background-color: #8A1010;*/
-  background-image: url(".images/background.jpg");
-  background-attachment: fixed;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  margin: 0;
+	/*background-color: #8A1010;*/
+	background-image: url(".images/background.jpg");
+	background-attachment: fixed;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	margin: 0;
 }
 
 body.drzewo
 {
-  background-color: #FFFFFF;
+	background-color: #FFFFFF;
 }
 
 a:link
 {
-  color: #BA0000;
-  text-decoration: none;
+	color: #BA0000;
+	text-decoration: none;
 }
 
 a:visited
 {
-  color: #700000;
-  text-decoration: none;
+	color: #700000;
+	text-decoration: none;
 }
 
 a:hover
 {
-  color: #FA0000;
-  text-decoration: none;
+	color: #FA0000;
+	text-decoration: none;
 }
 
 a:active
 {
-  color: #300000;
-  text-decoration: none;
+	color: #300000;
+	text-decoration: none;
 }
 
 div.glowny
 {
-  color: #000000; 
-  background: #FEFEFE; 
-  position: relative; 
-  top: 50px;
-  border: 3px solid black;
-  width: 900px;
-  margin: auto; 
-  margin-bottom: 50px;
-  padding: 30px;
-  box-shadow: inset 0 0 13px 4px rgba(0, 0, 0, 0.3);
-  font-family: "Calibri Light";
-  font-size: 24px;
+	color: #000000; 
+	background: #FEFEFE; 
+	position: relative; 
+	top: 50px;
+	border: 3px solid black;
+	width: 900px;
+	margin: auto; 
+	margin-bottom: 50px;
+	padding: 30px;
+	box-shadow: inset 0 0 13px 4px rgba(0, 0, 0, 0.3);
+	font-family: "Calibri Light";
+	font-size: 24px;
 }
 
 div.menu
 {
-  color: #000000; 
-  background: #FEFEFE; 
-  position: relative; 
-  top: 0px;
-  border-bottom: 1px solid black; 
-  width: auto;
-  margin: auto; 
-  padding: 10px;
-  box-shadow: inset 0 -9px 15px 0px rgba(0, 0, 0, 0.3);
-  height: 70px;
+	color: #000000; 
+	background: #FEFEFE; 
+	position: relative; 
+	top: 0px;
+	border-bottom: 1px solid black; 
+	width: auto;
+	margin: auto; 
+	padding: 10px;
+	box-shadow: inset 0 -9px 15px 0px rgba(0, 0, 0, 0.3);
+	height: 70px;
 }
 
 div.proof
@@ -119,67 +119,73 @@ div.chapter_body
 
 div.chapter_mask
 {
-  overflow: hidden;
-  position: relative;
-  border: 0px solid black;
-  margin: 0; 
-  margin-bottom: 0px;
-  margin-top: 0px;
-  padding: 0px;
-  box-shadow: inset 0 0 0 0 rgba(0, 0, 0, 0.3);
+	overflow: hidden;
+	position: relative;
+	border: 0px solid black;
+	margin: 0; 
+	margin-bottom: 0px;
+	margin-top: 0px;
+	padding: 0px;
+	box-shadow: inset 0 0 0 0 rgba(0, 0, 0, 0.3);
 }
 
 
 
 p:not(.printable)
 {
-  margin: 15px;
-  font-family: calibri light;
-  font-size: 24px; /*24 to standard chyba*/
+	margin: 15px;
+	font-family: calibri light;
+	font-size: 24px; /*24 to standard chyba*/
 }
 
 p.tytul
 {
-  text-align: center;
-  font-size: 50px;
-  font-family: cambria;
-  margin: 50px;
+	text-align: center;
+	font-size: 50px;
+	font-family: cambria;
+	margin: 50px;
 }
 
 p.tytul_short
 {
-  text-align: center;
-  font-size: 50px;
-  font-family: cambria;
-  margin-top: 50px;
-  margin-bottom: 1px;
+	text-align: center;
+	font-size: 50px;
+	font-family: cambria;
+	margin-top: 50px;
+	margin-bottom: 1px;
 }
 
 p.podtytul
 {
-  text-align: center;
-  font-size: 25px;
-  font-family: cambria;
-  margin-top: 1px;
-  margin-bottom: 50px;
+	text-align: center;
+	font-size: 25px;
+	font-family: cambria;
+	margin-top: 1px;
+	margin-bottom: 50px;
 }
 
 p.typ
 {
-  font-family: calibri;
-  font-size: 31px;
-  line-height: 0%;
-  margin-bottom: 25px;
-  margin-top: 40px;
-  text-shadow: 2px 2px #CCCCCC;
+	font-family: calibri;
+	font-size: 31px;
+	line-height: 0%;
+	margin-bottom: 25px;
+	margin-top: 40px;
+	text-shadow: 2px 2px #CCCCCC;
 }
 
 p.ostrzezenie
 {
-  font-family: arial;
-  font-size: 14px;
-  margin-top: 4px;
-  margin-bottom: 8px;
+	font-family: arial;
+	font-size: 14px;
+	margin-top: 4px;
+	margin-bottom: 8px;
+}	
+
+p.problem
+{
+	font-family: constantia;
+	text-align: center;
 }
 
 .formula
@@ -204,8 +210,8 @@ p.ostrzezenie
 
 ul
 {
-  list-style: none;
-  display: table;
+	list-style: none;
+	display: table;
 }
 
 li
@@ -216,18 +222,18 @@ li
 
 ul li:before
 {
-  content: "♣";
-  color: #CC2222;
-  margin: 0 1em;  
-  display: table-cell;
-  padding-right:  0.5em;
+	content: "♣";
+	color: #CC2222;
+	margin: 0 1em;  
+	display: table-cell;
+	padding-right:  0.5em;
 }
 
 ul ul li:before
 {
-  content: "♥";
-  color: #CC2222;
-  margin: 0 1.5em;
+	content: "♥";
+	color: #CC2222;
+	margin: 0 1.5em;
 }
 
 ol
@@ -254,20 +260,20 @@ ol li:before
 
 .chapter_name + hr
 {
-  height: 12px;
-  border: 0;
-  box-shadow: inset 0 12px 12px -12px rgba(0, 0, 0, 0.5);
-  margin-left: 15px;
-  margin-right: 15px;
+	height: 12px;
+	border: 0;
+	box-shadow: inset 0 12px 12px -12px rgba(0, 0, 0, 0.5);
+	margin-left: 15px;
+	margin-right: 15px;
 }
 
 .chapter_name:hover + hr
 {
-  height: 12px;
-  border: 0;
-  box-shadow: inset 0 12px 12px -12px rgba(0, 0, 0, 1);
-  margin-left: 15px;
-  margin-right: 15px;
+	height: 12px;
+	border: 0;
+	box-shadow: inset 0 12px 12px -12px rgba(0, 0, 0, 1);
+	margin-left: 15px;
+	margin-right: 15px;
 }
 
 
@@ -276,21 +282,21 @@ ol li:before
 
 table
 {
-  font-size: 23px;
+	font-size: 23px;
 }
 
 table.tabelka
 {
-  text-align: center;
-  border-collapse: collapse;
-  border-style: hidden;
+	text-align: center;
+	border-collapse: collapse;
+	border-style: hidden;
 }
 
 table.tabelka td
 {
-  height: 34px;
-  width: 32px;
-  border: 1px solid black;
+	height: 34px;
+	width: 32px;
+	border: 1px solid black;
 }
 
 table.tabelka th 
@@ -304,120 +310,120 @@ table.tabelka th
 
 table.tiles
 {
-  border-collapse: collapse;
+	border-collapse: collapse;
 }
 
 table.tiles td
 {
-  height: 45px;
-  width: 41px;
-  background-color: #EEDDDD;
-  border: 3px groove #AA2222;
+	height: 45px;
+	width: 41px;
+	background-color: #EEDDDD;
+	border: 3px groove #AA2222;
 }
 
 table.tiles td:hover
 {
-   background-color: #DD8888;
-   border-style: ridge;
+	background-color: #DD8888;
+	border-style: ridge;
 }
 
 
 
 button
 {
-  background-color: #AA1111;
-  border: none;
-  color: white;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  /*display: inline-block;*/
-  font-size: 16px;
-  margin: 4px 2px;
-  cursor: pointer;
+	background-color: #AA1111;
+	border: none;
+	color: white;
+	padding: 15px 32px;
+	text-align: center;
+	text-decoration: none;
+	/*display: inline-block;*/
+	font-size: 16px;
+	margin: 4px 2px;
+	cursor: pointer;
 }
 
 button:hover
 {
-  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
-  background-color: #771111;
+	box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+	background-color: #771111;
 }
 
 button:focus
 {
-  outline: none;
+	outline: none;
 }
 
 button.przejscie
 {
-  background-color: rgba(0, 0, 0, 0);
-  border: none;
-  color: black;
-  text-align: center;
-  text-decoration: none;
-  font-size: 20px;
-  margin: 4px 2px;
-  cursor: pointer;
-  display: inline-block;
-  padding: 20px;
-  transition: all 0.5s;
-  cursor: pointer;
-  margin: 5px;
+	background-color: rgba(0, 0, 0, 0);
+	border: none;
+	color: black;
+	text-align: center;
+	text-decoration: none;
+	font-size: 20px;
+	margin: 4px 2px;
+	cursor: pointer;
+	display: inline-block;
+	padding: 20px;
+	transition: all 0.5s;
+	cursor: pointer;
+	margin: 5px;
 }
 
 button.przejscie:hover
 {
-  box-shadow: none;
+	box-shadow: none;
 }
 
 button.przejscie span 
 {
-  display: inline-block;
-  position: relative;
-  transition: 0.5s;
+	display: inline-block;
+	position: relative;
+	transition: 0.5s;
 }
 
 button.przejscie span:after 
 {
-  content: '»';
-  position: absolute;
-  opacity: 0;
-  top: 0;
-  right: -20px;
-  transition: 0.5s;
+	content: '»';
+	position: absolute;
+	opacity: 0;
+	top: 0;
+	right: -20px;
+	transition: 0.5s;
 }
 
 button.przejscie:hover span 
 {
-  padding-right: 25px;
-  text-shadow: 2px 2px #CCCCCC;
+	padding-right: 25px;
+	text-shadow: 2px 2px #CCCCCC;
 }
 
 button.przejscie:hover span:after 
 {
-  opacity: 1;
-  right: 0;
+	opacity: 1;
+	right: 0;
 }
 
 button.przejscie span a
 {
-  color: black;
+	color: black;
 }
 
 input
 {
-  border-radius: 7px;
-  border: 1px solid #AAAAAA;
-  padding-left: 6px;
-  padding-right: 6px; 
-  height: 25px;
+	border-radius: 7px;
+	border: 1px solid #AAAAAA;
+	padding-left: 6px;
+	padding-right: 6px; 
+	height: 25px;
 }
 
 input:focus
 {
-  border-color: #EEAAAA;
-  outline: none;
-  box-shadow: 0 0 15px 0 #FFAAAA;
+	border-color: #EEAAAA;
+	outline: none;
+	box-shadow: 0 0 15px 0 #FFAAAA;
 }
 
 input[type=number]::-webkit-inner-spin-button, 
@@ -433,55 +439,60 @@ input[type=number]::-webkit-outer-spin-button {
 
 polygon
 {
-  /*fill: #DD2222; */
-  fill: url(#gradient);
-  stroke-width:0;
-  box-shadow: 0 0px 100px 0 rgba(0,0,0,0.24);
+	/*fill: #DD2222; */
+	fill: url(#gradient);
+	stroke-width:0;
+	box-shadow: 0 0px 100px 0 rgba(0,0,0,0.24);
 }
 
 circle
 {
-  /*fill: #DD2222; */
-  fill: url(#gradient);
-  stroke-width:0;
-  box-shadow: 0 0px 100px 0 rgba(0,0,0,0.24);
+	/*fill: #DD2222; */
+	fill: url(#gradient);
+	stroke-width:0;
+	box-shadow: 0 0px 100px 0 rgba(0,0,0,0.24);
 }
 
 .draggable
 {
-  cursor: move;
+	cursor: move;
 }
 
 ::selection
 {
-  background: #EF0000;
-  color: #FFFFFF;
+	background: #EF0000;
+	color: #FFFFFF;
 }
 
 ::moz-selection
 {
-  background: #EF0000;
-  color: #FFFFFF;
+	background: #EF0000;
+	color: #FFFFFF;
 }
 
-.strikethrough {
-  position: relative;
+.strikethrough 
+{
+	position: relative;
 }
-.strikethrough:before {
-  position: absolute;
-  content: "";
-  left: 0;
-  top: 50%;
-  right: 0;
-  border-top: 2px solid;
-  border-color: inherit;
 
-  -webkit-transform:rotate(-60deg);
-  -moz-transform:rotate(-60deg);
-  -ms-transform:rotate(-60deg);
-  -o-transform:rotate(-60deg);
-  transform:rotate(-60deg);
+.strikethrough:before 
+{
+	position: absolute;
+	content: "";
+	left: 0;
+	top: 50%;
+	right: 0;
+	border-top: 2px solid;
+	border-color: inherit;
+
+	-webkit-transform:rotate(-60deg);
+	-moz-transform:rotate(-60deg);
+	-ms-transform:rotate(-60deg);
+	-o-transform:rotate(-60deg);
+	transform:rotate(-60deg);
 }
+
+
 
 
 
@@ -538,12 +549,22 @@ table.columnar_operation_script td
 	vertical-align: center;
 }
 
-#columnar_addition_script_button_left polygon:hover
+#columnar_addition_script_button_left:hover
+{
+	transform: scale(1.2);
+}
+
+#columnar_addition_script_button_left:hover polygon
 {
 	fill: url(#hover_gradient);
 }
 
-#columnar_addition_script_button_right polygon:hover
+#columnar_addition_script_button_right:hover
+{
+	transform: scale(1.2);
+}
+
+#columnar_addition_script_button_right:hover polygon
 {
 	fill: url(#hover_gradient);
 }
