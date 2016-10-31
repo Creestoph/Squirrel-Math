@@ -1,320 +1,188 @@
-function ColumnarAdditionStart(inputId, nextId, prevId, scriptId, commentId, tableId)
-{	
-	document.getElementById(tableId).style.visibility = "visible";
-	document.getElementById(tableId).style.marginBottom = "60px";
-	document.getElementById(tableId).style.height = "400px";
-	document.getElementById(tableId).style.padding = "20px";
-	document.getElementById(scriptId).style.marginTop = "60px";
-	document.getElementById(commentId).style.marginTop = "60px";
-	document.getElementById(prevId).childNodes[0].nextSibling.setAttribute("height", "60px");
-	document.getElementById(nextId).childNodes[0].nextSibling.setAttribute("height", "60px");
-	var input = document.getElementById(inputId).value;
-	input = input.replace(/ /g,"");
-	input = input.replace(/,/g,".");
-	var inputTab = input.split("+");
-	var columnarAddition = ColumnarAddition.CreateFromNumbers(inputTab, scriptId, commentId, nextId, prevId);
-	if (columnarAddition != undefined)
-	{
-		document.getElementById(nextId).onclick = function() {
-			columnarAddition.NextStep();
-			columnarAddition.Print();
-		};
-		document.getElementById(prevId).onclick = function() {
-			columnarAddition.PrevStep();
-			columnarAddition.Print();
-		};
-		columnarAddition.NextStep();
-		columnarAddition.Print();	
-	}
-}
+/**
+ * Created by Creestoph on 31.10.2016.
+ */
+
 
 function SetInputEnterEvent(inputId, btnId)
 {
 	document.getElementById(inputId)
 		.addEventListener("keyup", function(event) {
-		event.preventDefault();
-		if (event.keyCode == 13) {
-			document.getElementById(btnId).click();
-		}
-	});
+			event.preventDefault();
+			if (event.keyCode == 13) {
+				document.getElementById(btnId).click();
+			}
+		});
 }
-class ColumnarAddition{
-	
-	constructor(id, commentId)
-	{
-		this.step = 0;
-		this.id = id;
-		this.numbersTable = [];
-		this.comma = 0;
-		this.commentId = commentId;
-		this.comment = "";
-		this.buttonRightId = "";
-		this.buttonLeftId = "";
+
+function Columnar_addition_step(table, comma, highlight_column, comment) {
+	var tab = [];
+	for (var i = 0; i < table.length; i++){
+		tab[i] = [];
+		for (var j = 0; j < table[i].length; j++){
+			if (j == highlight_column) tab[i][j] = "/h:" + table[i][j];
+			else tab[i][j] = table[i][j];
+		}
+		if (comma > 0 && i != 0) tab[i].splice(tab[0].length-1-comma,0,",");
 	}
-	
-	NextStep()
-	{
-		document.getElementById(this.buttonLeftId).style.visibility = "visible";
-		document.getElementById(this.buttonRightId).style.visibility = "visible";
-		var digits = [];
-		if (this.currentColumn < 0) 
-		{
-			this.highlightColumn = -1;
-			this.step++;
-			this.comment = "Odczytujemy wynik: ";
-			for (var i = 0; i < this.numbersTable[this.numbersTable.length - 1].length; i++)
-				this.comment += (i==this.longestBeforeComma ? "," : "")+this.numbersTable[this.numbersTable.length - 1][i];
-			this.comment += ".";
-			document.getElementById(this.buttonRightId).style.visibility = "hidden";
-			return;
+	this.table = Display_table.create_from_table("+", tab);
+	this.comment = comment;
+}
+
+Columnar_addition_step.prototype.print = function (coment_target_id, table_target_id) {
+	document.getElementById(coment_target_id).innerHTML = this.comment;
+	this.table.print(table_target_id);
+}
+
+
+function Columnar_addition(table_id, comment_id, button_right_id, button_left_id) {
+	this.comment_id = comment_id;
+	this.table_id = table_id;
+	this.button_right_id = button_right_id;
+	this.button_left_id = button_left_id;
+}
+
+Columnar_addition.prototype.generate_from_input = function (input_id, columnar_addition_area) {
+	document.getElementById(columnar_addition_area).style.visibility = "visible";
+	document.getElementById(columnar_addition_area).style.marginBottom = "60px";
+	document.getElementById(columnar_addition_area).style.height = "400px";
+	document.getElementById(columnar_addition_area).style.padding = "20px";
+	document.getElementById(this.table_id).style.marginTop = "60px";
+	document.getElementById(this.comment_id).style.marginTop = "60px";
+	document.getElementById(this.button_left_id).childNodes[0].nextSibling.setAttribute("height", "60px");
+	document.getElementById(this.button_right_id).childNodes[0].nextSibling.setAttribute("height", "60px");
+	var input = document.getElementById(input_id).value;
+	input = input.replace(/ /g,"");
+	input = input.replace(/,/g,".");
+	try{
+		this.generate_steps(input.split("+"));
+	}
+	catch (err){
+		this.print_error(err.message);
+	}
+}
+
+Columnar_addition.prototype.next = function () {
+	this.step += 1;
+	this.print_step(this.step)
+}
+Columnar_addition.prototype.prev = function () {
+	this.step -= 1;
+	this.print_step(this.step)
+}
+
+Columnar_addition.prototype.print_step = function (i) {
+	document.getElementById(this.button_right_id).style.visibility = "visible";
+	document.getElementById(this.button_left_id).style.visibility = "visible";
+	// if (this.step == 0){
+	// 	document.getElementById(this.button_left_id).style.visibility = "hidden";
+	// }
+	// else if (this.step == this.steps.length-1){
+	// 	document.getElementById(this.button_right_id).style.visibility = "hidden";
+	// }
+	this.steps[i].print(this.comment_id, this.table_id);
+}
+
+Columnar_addition.prototype.print_error = function (msg) {
+	document.getElementById(this.comment_id).innerHTML = msg;
+	// document.getElementById(this.button_left_id).style.visibility = "hidden";
+	// document.getElementById(this.button_right_id).style.visibility = "hidden";
+}
+
+Columnar_addition.prototype.generate_steps = function (numbers) {
+	this.steps = [];
+	if (numbers.length == 1) {
+		throw "Wpisz liczby do dodania <br>np. 1234+73";
+	}
+	if (numbers.length > 10) {
+		throw "<b>ERROR</b><br>Ani Ty, ani ja nie potrzebujemy aż tylu liczb.";
+	}
+	for (var i = 0; i < numbers.length; i++) {
+		if (numbers[i].length > 39) {
+			throw "<b>ERROR</b><br>Wprowadzone liczby są zbyt długie.<br>Ich wyświetlenie przeczy design'owi strony.<br>Szanujmy się.";
 		}
-		if (this.step == 0) 
-		{
-			this.comment = "Zapisujemy "+(this.numbersTable.length == 4 ? "obie" : "wszystkie")+" liczby jedna pod drugą z wyrównaniem do " + (this.comma == 0 ? "prawej" : "przecinka")+ " i podkreślamy.";
-			document.getElementById(this.buttonLeftId).style.visibility = "hidden";
+		if (!validate_float(numbers[i])) {
+			throw "Wpisz liczby do dodania <br>np. 1234+73";
 		}
+	}
+	for (var i = 0; i < numbers.length; i++) {
+		while (numbers[i][0] == "0") numbers[i] = numbers[i].replace("0", "");
+		if (numbers[i] == "") numbers[i] = "0";
+		if (numbers[i][0] == ".") numbers[i] = "0" + numbers[i];
+	}
+	var longestBeforeComma = 0;
+	var longestAfterComma = 0;
+	for (var i = 0; i < numbers.length; i++) {
+		var j;
+		for (j = 0; j < numbers[i].length && numbers[i][j] != '.'; j++);
+		if (j > longestBeforeComma) longestBeforeComma = j;
+		if (numbers[i].length - 1 - j > longestAfterComma) longestAfterComma = numbers[i].length - 1 - j;
+	}
+	longestBeforeComma += 1;
+	var table = [];
+	for (var i = 0; i < numbers.length + 2; i++) {
+		table[i] = [];
+		for (var j = 0; j < longestAfterComma + longestBeforeComma; j++) {
+			table[i][j] = "";
+		}
+	}
+	for (var i = 0; i < numbers.length; i++) {
+		var j;
+		for (j = 0; j < numbers[i].length && numbers[i][j] != '.'; j++);
+		var beforeComma = j;
+		numbers[i] = numbers[i].replace(".", "")
+		for (var k = 0; k < numbers[i].length; k++) {
+			table[i + 1][longestBeforeComma - beforeComma + k] = numbers[i][k];
+		}
+	}
+	this.steps.push(new Columnar_addition_step(table, longestAfterComma, -1, "Zapisujemy " + (table.length == 4 ? "obie" : "wszystkie") + " liczby jedna pod drugą z wyrównaniem do " + (longestAfterComma == 0 ? "prawej" : "przecinka") + " i podkreślamy."));
+	this.step = 0;
+	var current_column = table[0].length - 1;
+	var digits = [];
+	var comment = "";
+	while (current_column >= 0) {
+		digits = [];
+		for (var i = 0; i < table.length - 1; i++) {
+			if (table[i][current_column] != "") digits.push(table[i][current_column]);
+		}
+		if (digits.length == 0) break;
+		if (current_column == table[0].length -1)
+			comment = "Analizujemy słupek od prawej strony. "
 		else
-		{
-			for (var i = 0; i < this.numbersTable.length-1; i++ )
-			{
-				if (this.numbersTable[i][this.currentColumn] != "") digits.push(this.numbersTable[i][this.currentColumn]);
-			}
-			
-			if (digits.length == 0) 
-			{
-				this.highlightColumn = -1;
-				this.step++;
-				this.comment = "Odczytujemy wynik: ";
-				for (var i = 0; i < this.numbersTable[this.numbersTable.length - 1].length; i++)
-					this.comment += (i==this.longestBeforeComma ? "," : "")+this.numbersTable[this.numbersTable.length - 1][i];
-				this.comment += ".";
-				document.getElementById(this.buttonRightId).style.visibility = "hidden";
-				return;
-			}
-			
-			if (this.step == 1)
-				this.comment = "Analizujemy słupek od prawej strony. "
-			else 
-				this.comment = "";
-					
-			
-			if (digits.length == 1)
-			{
-				this.comment += "Cyfra " + digits[0] + " jest samotna, więc przepisujemy ją bez zmian.";
-				this.numbersTable[this.numbersTable.length-1][this.currentColumn] = digits[0];
-			}	
-			else
-			{
-				this.comment = "Dodajemy cyfry ";
-				if (digits.length == 2) this.comment += digits[0] + " i " + digits[1] +", ";
-				else
-				{
-					for (var i = 0; i < digits.length - 1; i++)
-					{
-						this.comment += digits[i]+", ";
-					}
-					this.comment += digits[digits.length-1] + " i ";
-				}
-				this.comment += " otrzymujemy ";
-				var sum = 0;
-				for (var i = 0; i < digits.length; i++) sum += parseInt(digits[i]);
-				this.comment += sum;
-				var carry = parseInt(sum / 10);
-				if (carry == 0)
-				{
-					this.comment += ". Wynik zapisujemy pod kreską.";
-					this.numbersTable[this.numbersTable.length-1][this.currentColumn] = sum;
-				}
-				else
-				{
-					this.comment += ". Ponieważ wynik jest dwucyfrowy, rozbijamy go na " + carry + " i " + sum%10 + ". Cyfrę " + sum%10 + " zapisujemy pod kreską, a " + carry + " przenosimy do następnej kolumny.";
-					this.numbersTable[this.numbersTable.length-1][this.currentColumn] = sum%10;
-					this.numbersTable[0][this.currentColumn-1] = carry;
-				}
-			}
-			
+			comment = "";
+		if (digits.length == 1) {
+			table[table.length - 1][current_column] = digits[0];
+			comment += "Cyfra " + digits[0] + " jest samotna, więc przepisujemy ją bez zmian.";
 		}
-		this.highlightColumn = -1;
-		if (this.step != 0) this.highlightColumn = (digits.length == 0 ? this.currentColumn - 1: this.currentColumn);
-		if (this.step != 0)this.currentColumn -= 1;
-		this.step += 1;
+		else {
+			var sum = 0;
+			for (var i = 0; i < digits.length; i++) sum += parseInt(digits[i]);
+			var carry = parseInt(sum / 10);
+			comment += "Dodajemy cyfry ";
+			if (digits.length == 2) comment += digits[0] + " i " + digits[1] + ", ";
+			else {
+				for (var i = 0; i < digits.length - 1; i++) {
+					comment += digits[i] + ", ";
+				}
+				comment += digits[digits.length - 1] + " i ";
+			}
+			comment += " otrzymujemy " + sum;
+			if (carry == 0) {
+				comment += ". Wynik zapisujemy pod kreską.";
+				table[table.length - 1][current_column] = sum;
+			}
+			else {
+				comment += ". Ponieważ wynik jest dwucyfrowy, rozbijamy go na " + carry + " i " + sum % 10 + ". Cyfrę " + sum % 10 + " zapisujemy pod kreską, a " + carry + " przenosimy do następnej kolumny.";
+				table[table.length - 1][current_column] = sum % 10;
+				table[0][current_column - 1] = carry;
+			}
+		}
+		this.steps.push(new Columnar_addition_step(table, longestAfterComma, current_column, comment));
+		current_column -= 1;
 	}
-	
-	PrevStep()
-	{
-		if (this.step > 1)
-		{
-			for (var i = 0; i < this.numbersTable[0].length; i++)
-			{
-				this.numbersTable[0][i] = "";
-				this.numbersTable[this.numbersTable.length-1][i] = "";
-			}
-			var prevStep = this.step - 1;
-			this.currentColumn = this.numbersTable[0].length-1;
-			this.step = 0;
-			while (this.step != prevStep)
-				this.NextStep();
-		}
-	}
-	
-	Print()
-	{
-		document.getElementById(this.commentId).innerHTML = this.comment;
-		ColumnarAddition.InsertTable(this.numbersTable,this.id,this.comma, this.highlightColumn);
-	}
-	
-	static CreateFromNumbers(numbersStr, id, commentId, buttonRightID, buttonLeftID)
-	{
-		var ret = new ColumnarAddition(id, commentId);
-		ret.buttonLeftId = buttonLeftID;
-		ret.buttonRightId = buttonRightID;
-		var numbers = [];
-		document.getElementById(buttonRightID).style.visibility = "visible";
-		document.getElementById(buttonLeftID).style.visibility = "visible";
-		if (numbersStr.length == 1)
-		{
-			ret.comment = "Wpisz liczby do dodania <br>np. 1234+73";
-			ret.Print();
-			document.getElementById(buttonRightID).style.visibility = "hidden";
-			document.getElementById(buttonLeftID).style.visibility = "hidden";
-			return;			
-		}
-		if (numbersStr.length > 10)
-		{
-			ret.comment = "<b>ERROR</b><br>Ani Ty, ani ja nie potrzebujemy aż tylu liczb.";
-			ret.Print();
-			document.getElementById(buttonRightID).style.visibility = "hidden";
-			document.getElementById(buttonLeftID).style.visibility = "hidden";
-			return;	
-		}
-		for (var i = 0; i < numbersStr.length; i++)
-		{
-			if (numbersStr[i].length > 39)
-			{
-				ret.comment = "<b>ERROR</b><br>Wprowadzone liczby są zbyt długie.<br>Ich wyświetlenie przeczy design'owi strony.<br>Szanujmy się.";
-				ret.Print();
-				document.getElementById(buttonRightID).style.visibility = "hidden";
-				document.getElementById(buttonLeftID).style.visibility = "hidden";
-				return;	
-			}
-			
-			var wasComma = false;
-			var ok = true;
-			for (var j = 0; j < numbersStr[i].length; j++)
-			{
-				if (numbersStr[i][j] == ".")
-				{
-					if (wasComma)
-					{
-						ok = false;
-						break;
-					}
-					else wasComma = true;
-				}
-				else if (isNaN(parseInt(numbersStr[i][j])))
-				{
-					ok = false;
-					break;					
-				}
-			}
-			if (!ok)
-			{
-				ret.comment = "Wpisz liczby do dodania <br>np. 1234+73";
-				ret.Print();
-				document.getElementById(buttonRightID).style.visibility = "hidden";
-				document.getElementById(buttonLeftID).style.visibility = "hidden";
-				return;
-			}
-			numbers[i] = parseFloat(numbersStr[i]);
-		}
-		for (var i = 0; i < numbersStr.length; i++)
-		{
-			while (numbersStr[i][0] == "0") numbersStr[i] = numbersStr[i].replace("0","");
-			if (numbersStr[i] == "") numbersStr[i] = "0";
-			numbers[i] = numbersStr[i];			
-		}
-		var longestBeforeComma = 0;
-		var longestAfterComma = 0;
-		for (var i = 0; i<numbers.length; i++)
-		{
-			var j;
-			var iStr = numbers[i].toString();
-			for (j = 0; j < iStr.length && iStr[j] != '.'; j++){}
-			if (j > longestBeforeComma) longestBeforeComma = j;
-			if (iStr.length-1-j > longestAfterComma) longestAfterComma = iStr.length-1-j;
-		}
-		longestBeforeComma += 1;
-		for (var i = 0; i < numbers.length+2; i++)
-		{
-			ret.numbersTable[i] = [];
-			for (var j = 0; j < longestAfterComma + longestBeforeComma; j++)
-			{
-				ret.numbersTable[i][j] = "";
-			}
-		}
-		for (var i = 0; i<numbers.length; i++)
-		{
-			var beforeComma = 0;
-			var afterComma = 0;
-			var iStr = numbers[i].toString();
-			var j;
-			for (j = 0; j < iStr.length && iStr[j] != '.'; j++){}
-			if (j > beforeComma) beforeComma = j;
-			if (iStr.length-1-j > afterComma) afterComma = iStr.length-1-j;
-			iStr = iStr.replace(".","")
-			for (var k = 0; k < iStr.length; k++)
-			{
-				ret.numbersTable[i+1][longestBeforeComma-beforeComma+k] = iStr[k];
-			}
-		}
-		ret.longestBeforeComma = longestBeforeComma;
-		ret.currentColumn = ret.numbersTable[0].length-1;
-		ret.highlightColumn = ret.numbersTable[0].length-1;
-		ret.comma = longestAfterComma;
-		return ret;
-		
-	}
-	
-	static InsertTable(rows, id, comma = 0, highlight_column = -1)
-	{
-		var table = "<table align = \"center\" class=\"columnar_operation\">";
-		for (var i = 0; i < rows.length; i++)
-		{
-			table += "<tr>";
-			if (i == 0)
-				table+="<td class = \"columnar_operation_carry\"></td><td class = \"columnar_operation_carry\"></td>";
-			else if (i == rows.length-2)
-				table+="<td class = \"columnar_operation_underlined\">+</td><td class = \"columnar_operation_underlined\"></td>";
-			else 
-				table+="<td class = \"columnar_operation\"></td><td class = \"columnar_operation\"></td>";
-			
-			for (var j = 0; j < rows[i].length; j++)
-			{	
-				if (j == rows[i].length - comma)
-				{
-					var c = (rows[i][j] != "" ? "," : "");
-					if (i == 0)
-						table += "<td class = \"columnar_operation_carry\"></td>";
-					else if (i == rows.length - 2)
-						table += "<td class = \"columnar_operation_underlined\">"+c+"</td>";
-					else
-						table += "<td class = \"columnar_operation\">"+c+"</td>";			
-				}
-				if (i == 0)
-					table += "<td class = \"columnar_operation_carry";
-				else if (i == rows.length - 2)
-					table += "<td class = \"columnar_operation_underlined";
-				else
-					table += "<td class = \"columnar_operation";
-				if (highlight_column == j)
-					table += " columnar_operation_highlight\"";
-				else table+= "\"";
-				table += ">" + rows[i][j] +"</td>";
-			}
-			table += "</tr>";
-		}
-		table += "</table>";
-		document.getElementById(id).innerHTML = table;
-	}
+	comment = "Odczytujemy wynik: ";
+	for (var i = 0; i < table[table.length - 1].length; i++)
+		comment += (i == longestBeforeComma ? "," : "") + table[table.length - 1][i];
+	comment += ".";
+	this.steps.push(new Columnar_addition_step(table, longestAfterComma, -1, comment));
 }
 

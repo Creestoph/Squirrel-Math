@@ -549,27 +549,27 @@ table.columnar_operation_script td
 	vertical-align: center;
 }
 
-#columnar_addition_script_button_left:hover
+#columnar_addition_button_left:hover
 {
 	transform: scale(1.2);
 }
 
-#columnar_addition_script_button_left:hover polygon
+#columnar_addition_button_left:hover polygon
 {
 	fill: url(#hover_gradient);
 }
 
-#columnar_addition_script_button_right:hover
+#columnar_addition_button_right:hover
 {
 	transform: scale(1.2);
 }
 
-#columnar_addition_script_button_right:hover polygon
+#columnar_addition_button_right:hover polygon
 {
 	fill: url(#hover_gradient);
 }
 
-#columnar_addition_script_button_left + td
+#columnar_addition_button_left + td
 {
 	width: 80%;
 	vertical-align: top;
