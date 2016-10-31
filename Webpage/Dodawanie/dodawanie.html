@@ -7,24 +7,26 @@
 	<link rel="stylesheet" href="../lesson_style.css">
 	
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+	<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=MML_HTMLorMML"></script>
 	<script src="../.scripts/columnar_addition.js"></script>
 	<script src="../.scripts/scroll_hide.js"></script>
 	<script src="../.scripts/comment.js"></script>
 	<script src="../.scripts/draggable.js"></script>
+	<script src="../.scripts/math.js"></script>
 	<script src="addition_table.js"></script>
 </head>
 
-<body class="lekcja">
+<body class="lesson">
   
 <div class = "menu">
-	<a href="../index.html"><button class = "przejscie" style="position: absolute; left: 10px"><span>Strona główna</span></button></a>
-	<a href="../drzewo.html"><button class = "przejscie" style="position: absolute; left: 250px"><span>Drzewo</span></button></a>
-	<a href="dodawanie_short.html"><button class = "przejscie" style="position: relative; left: 80%"><span>Wersja skrócona</span></button></a>
+	<a href="../index.html"><button class = "button_convey" style="position: absolute; left: 10px"><span>Strona główna</span></button></a>
+	<a href="../drzewo.html"><button class = "button_convey" style="position: absolute; left: 250px"><span>Drzewo</span></button></a>
+	<a href="dodawanie_short.html"><button class = "button_convey" style="position: relative; left: 80%"><span>Wersja skrócona</span></button></a>
 </div>
   
-<div class="glowny">
+<div class="main">
 
-	<p class="tytul">
+	<p class="lesson_title">
 		Dodawanie
     </p>
       
@@ -42,7 +44,7 @@
       
 	<div class="chapter_mask">
 	<div class="chapter_body">
-    <p class = "typ">
+    <p class = "type">
 		Intuicje
     </p>
       
@@ -59,34 +61,35 @@
 				  <stop offset="90%" stop-color="#833" />
 				</linearGradient>
 			</defs>
-			<circle cx="240" cy="130" r="20" class = "draggable"/>
-			<circle cx="200" cy="70" r="20" class = "draggable"/>
-			<circle cx="580" cy="160" r="20" class = "draggable"/>
-			<circle cx="500" cy="90" r="20" class = "draggable"/>
-			<circle cx="480" cy="140" r="20" class = "draggable"/>
-			<circle cx="620" cy="64" r="20" class = "draggable"/>
+			<circle cx="240" cy="130" r="20" class = "draggable"></circle>
+			<circle cx="200" cy="70" r="20" class = "draggable"></circle>
+			<circle cx="580" cy="160" r="20" class = "draggable"></circle>
+			<circle cx="500" cy="90" r="20" class = "draggable"></circle>
+			<circle cx="480" cy="140" r="20" class = "draggable"></circle>
+			<circle cx="620" cy="64" r="20" class = "draggable"></circle>
 		</svg>
     </p>  
       
     <p>
         Kulki rozłożyły się na dwie widoczne grupy. W grupie po lewej stronie widzimy dwie kulki. W grupie po prawej stronie są cztery kulki. Kiedy policzymy 
-		po kolei wszystkie widoczne kulki, stwierdzimy, że jest ich sześć. Na tym polega właśnie magia dodawania. 2 kulki oraz 4 kulki to to samo, co 6 kulek. 
+		po kolei wszystkie widoczne kulki, stwierdzimy, że jest ich sześć. Na tym polega właśnie magia dodawania. <span class="math">2</span> kulki oraz <span class="math">4</span> kulki to to samo, 
+		co <span class="math">6</span> kulek. 
 		Matematycy nie lubią używać zbyt wielu słów, więc zapiszą to spostrzeżenie krócej:
     </p>
       
-	<p align = "center">
+	<p align = "center" class="math">
 		2 kulki + 4 kulki = 6 kulek
     </p>
       
     <p>
-        Znaczek + rozumiemy jako „oraz”, a znaczek = jako „to to samo, co”. Znaczki te to pierwsze symbole matematyczne, z jakimi masz 
+        Znaczek <span class="math">+</span> rozumiemy jako „oraz”, a znaczek <span class="math">=</span> jako „to to samo, co”. Znaczki te to pierwsze symbole matematyczne, z jakimi masz 
 		<span class="comment" id="Czujesz ją?">przyjemność</span> 
-		się spotkać. Bardziej profesjonalnie symbol + czytamy jako „dodać”. Mniej profesjonalnie jako „plus”. Symbol = czytamy jako „równa się”. Ma on 
-		dużo szerszą i ogólniejszą rolę, niż tylko opowiadanie o łączeniu kulek. Symbol = mówi tyle, że po jego lewej stronie jest dokładnie to samo, co po 
+		się spotkać. Bardziej profesjonalnie symbol <span class="math">+</span> czytamy jako „dodać”. Mniej profesjonalnie jako „plus”. Symbol <span class="math">=</span> czytamy jako „równa się”. Ma on 
+		dużo szerszą i ogólniejszą rolę, niż tylko opowiadanie o łączeniu kulek. Symbol <span class="math">=</span> mówi tyle, że po jego lewej stronie jest dokładnie to samo, co po 
 		prawej stronie. Można na przykład zapisać, że 
     </p>
       
-    <p align = "center">
+    <p align = "center" class="math">
 		2 kulki = 2 kulki
     </p>
       
@@ -96,48 +99,36 @@
       
     <p align = "center">
         <svg height="150" width="800">
-			<defs>
-				<linearGradient id="gradient">
-					<stop offset="20%" stop-color="#C33" />
-					<stop offset="90%" stop-color="#833" />
-				</linearGradient>
-			</defs>
-			<circle cx="280" cy="120" r="20" class = "draggable"/>
-			<circle cx="190" cy="50" r="20" class = "draggable"/>
-			<circle cx="540" cy="100" r="20" class = "draggable"/>
-			<circle cx="600" cy="24" r="20" class = "draggable"/>
+			<circle cx="280" cy="120" r="20" class = "draggable"></circle>
+			<circle cx="190" cy="50" r="20" class = "draggable"></circle>
+			<circle cx="540" cy="100" r="20" class = "draggable"></circle>
+			<circle cx="600" cy="24" r="20" class = "draggable"></circle>
         </svg>
     </p>  
       
     <p style="margin-bottom: 0">
-		Dwie kule po lewej, dwie kule po prawej, razem widzimy 4 kule.
+		Dwie kule po lewej, dwie kule po prawej, razem widzimy <span class="math">4</span> kule.
     </p>
       
-    <p align = "center" style="margin-top: 0">
+    <p align = "center" class="math" style="margin-top: 0">
 		2 kule + 2 kule = 4 kule
     </p>
       
     <p align = "center">
 		<svg height="250" width="800">
-			<defs>
-				<linearGradient id="gradient">
-					<stop offset="20%" stop-color="#C33" />
-					<stop offset="90%" stop-color="#833" />
-				</linearGradient>
-			</defs>
-			<circle cx="140" cy="130" r="20" class = "draggable"/>
-			<circle cx="90" cy="170" r="20" class = "draggable"/>
-			<circle cx="80" cy="210" r="20" class = "draggable"/>
-			<circle cx="340" cy="100" r="20" class = "draggable"/>
-			<circle cx="370" cy="150" r="20" class = "draggable"/>
-			<circle cx="400" cy="90" r="20" class = "draggable"/>
-			<circle cx="310" cy="180" r="20" class = "draggable"/>
-			<circle cx="640" cy="130" r="20" class = "draggable"/>
-			<circle cx="700" cy="160" r="20" class = "draggable"/>
-			<circle cx="580" cy="200" r="20" class = "draggable"/>
-			<circle cx="690" cy="100" r="20" class = "draggable"/>
-			<circle cx="580" cy="100" r="20" class = "draggable"/>
-			<circle cx="670" cy="220" r="20" class = "draggable"/>
+			<circle cx="140" cy="130" r="20" class = "draggable"></circle>
+			<circle cx="90" cy="170" r="20" class = "draggable"></circle>
+			<circle cx="80" cy="210" r="20" class = "draggable"></circle>
+			<circle cx="340" cy="100" r="20" class = "draggable"></circle>
+			<circle cx="370" cy="150" r="20" class = "draggable"></circle>
+			<circle cx="400" cy="90" r="20" class = "draggable"></circle>
+			<circle cx="310" cy="180" r="20" class = "draggable"></circle>
+			<circle cx="640" cy="130" r="20" class = "draggable"></circle>
+			<circle cx="700" cy="160" r="20" class = "draggable"></circle>
+			<circle cx="580" cy="200" r="20" class = "draggable"></circle>
+			<circle cx="690" cy="100" r="20" class = "draggable"></circle>
+			<circle cx="580" cy="100" r="20" class = "draggable"></circle>
+			<circle cx="670" cy="220" r="20" class = "draggable"></circle>
         </svg>
     </p>  
       
@@ -145,7 +136,7 @@
         Trzy kule po lewej, cztery kule po środku, sześć kul po prawej. Razem 13 kul.
     </p>
       
-    <p align = "center" style="margin-top: 0">
+    <p align = "center" class="math" style="margin-top: 0">
         3 kule + 4 kule + 6 kul = 13 kul
     </p>
       
@@ -155,9 +146,9 @@
     </p>
       
     <p align = "center">
-        2 + 4 = 6<br>
-        2 + 2 = 4<br>
-        3 + 4 + 6 = 13<br>
+        <span class="math">2 + 4 = 6</span><br>
+        <span class="math">2 + 2 = 4</span><br>
+        <span class="math">3 + 4 + 6 = 13</span><br>
     </p>
       
     <p>
@@ -170,24 +161,25 @@
         postanowił dokupić siedem owiec, to teraz ma siedemnaście owiec.
     </p>
       
-    <p align = "center">
+    <p align = "center" class="math">
         10 + 7 = 17
     </p>
       
     <p>
-        <span class="comment" id = "To ile czasu spędzi w toalecie?">Jeśli pan Janusz zjadł na śniadanie 3 golonki, na obiad 4 golonki, a na kolację 2 golonki,</span> 
-        to w ciągu całego dnia zjadł 9 golonek.
+        <span class="comment" id = "To ile czasu spędzi w toalecie?">Jeśli pan Janusz zjadł na śniadanie <span class="math">3</span> golonki, na obiad <span class="math">4</span> golonki, a na kolację 
+		<span class="math">2</span> golonki,</span> 
+        to w ciągu całego dnia zjadł <span class="math">9</span> golonek.
     </p>
       
-    <p align = "center">
+    <p align = "center" class="math">
         3 + 4 + 2 = 9
     </p>
       
     <p>
-        Jeśli 5 razy w ciągu dnia wypijesz dwie <span class="comment" id="soku">szklaneczki</span>, to łącznie wypijesz 10 szklaneczek.
+        Jeśli <span class="math">5</span> razy w ciągu dnia wypijesz dwie <span class="comment" id="soku">szklaneczki</span>, to łącznie wypijesz <span class="math">10</span> szklaneczek.
     </p>
       
-	<p align = "center">
+	<p align = "center" class="math">
         2 + 2 + 2 + 2 + 2 = 10
     </p>
 
@@ -205,7 +197,7 @@
       
 	<div class="chapter_mask">
 	<div class="chapter_body">
-    <p class = "typ">
+    <p class = "type">
         Intuicje
     </p>
       
@@ -219,20 +211,20 @@
     </p>
         
     <p>
-        Aby znaleźć odpowiedź na to intrygujące pytanie, musimy wykonać dodawanie, czyli <i>dodać</i> liczby 3 i 5. 
-        Gdy podołamy wyzwaniu i otrzymamy w odpowiedzi 8, dostaniemy <i>wynik</i> dodawania. W ogólności wykonanie dowolnego działania 
+        Aby znaleźć odpowiedź na to intrygujące pytanie, musimy wykonać dodawanie, czyli <i>dodać</i> liczby <span class="math">3</span> i <span class="math">5</span>. 
+        Gdy podołamy wyzwaniu i otrzymamy w odpowiedzi <span class="math">8</span>, dostaniemy <i>wynik</i> dodawania. W ogólności wykonanie dowolnego działania 
         na liczbach zwraca wynik działania. W przypadku dodawania liczby, które dodajemy, nazywamy <i>składnikami</i>, zaś 
         otrzymany wynik nazywamy <i>sumą</i>. Czasami samo dodawanie nazywamy też <i>sumowaniem</i>.
     </p>
         
-    <p align = "center">
+    <p align = "center" class="math">
         składnik + składnik = suma
     </p>
       
     <ul>
-        <li>W działaniu 2 + 3 = 5 składnikami są 2 i 3, a wynikiem (sumą) 5.</li>
-        <li>W działaniu 3 + 5 + 7 = 15 składnikami są 3, 5 i 7, a wynikiem (sumą) 15.</li>
-        <li>W działaniu 14 = 9  + 5 składnikami są 9 i 5, a wynikiem (sumą) 14.</li>
+        <li>W działaniu <span class="math">2 + 3 = 5</span> składnikami są <span class="math">2</span> i <span class="math">3</span>, a wynikiem (sumą) <span class="math">5</span>.</li>
+        <li>W działaniu <span class="math">3 + 5 + 7 = 15</span> składnikami są <span class="math">3</span>, <span class="math">5</span> i <span class="math">7</span>, a wynikiem (sumą) <span class="math">15</span>.</li>
+        <li>W działaniu <span class="math">14 = 9  + 5</span> składnikami są <span class="math">9</span> i <span class="math">5</span>, a wynikiem (sumą) <span class="math">14</span>.</li>
     </ul>
       
 	</div>
@@ -247,7 +239,7 @@
       
 	<div class="chapter_mask">
 	<div class="chapter_body">
-    <p class = "typ">
+    <p class = "type">
         Rozszerzenie
     </p>
       
@@ -257,21 +249,15 @@
       
     <p align = "center">
         <svg height="200" width="800">
-			<defs>
-				<linearGradient id="gradient">
-					<stop offset="20%" stop-color="#C33" />
-					<stop offset="90%" stop-color="#833" />
-				</linearGradient>
-			</defs>
-			<circle cx="200" cy="90" r="20" class = "draggable"/>
-			<circle cx="150" cy="170" r="20" class = "draggable"/>
-			<circle cx="230" cy="120" r="20" class = "draggable"/>
-			<circle cx="190" cy="40" r="20" class = "draggable"/>
-			<circle cx="520" cy="120" r="20" class = "draggable"/>
-			<circle cx="580" cy="40" r="20" class = "draggable"/>
-			<circle cx="610" cy="160" r="20" class = "draggable"/>
-			<circle cx="640" cy="100" r="20" class = "draggable"/>
-			<circle cx="560" cy="80" r="20" class = "draggable"/>
+			<circle cx="200" cy="90" r="20" class = "draggable"></circle>
+			<circle cx="150" cy="170" r="20" class = "draggable"></circle>
+			<circle cx="230" cy="120" r="20" class = "draggable"></circle>
+			<circle cx="190" cy="40" r="20" class = "draggable"></circle>
+			<circle cx="520" cy="120" r="20" class = "draggable"></circle>
+			<circle cx="580" cy="40" r="20" class = "draggable"></circle>
+			<circle cx="610" cy="160" r="20" class = "draggable"></circle>
+			<circle cx="640" cy="100" r="20" class = "draggable"></circle>
+			<circle cx="560" cy="80" r="20" class = "draggable"></circle>
 		</svg>
     </p> 
       
@@ -279,7 +265,7 @@
         Dodając kulki po lewej stronie do kulek po prawej stronie, otrzymamy
     </p>
       
-    <p align = "center">
+    <p align = "center" class="math">
         4 + 5 = 9
     </p>
       
@@ -287,7 +273,7 @@
         Nic nie stoi jednak na przeszkodzie, by w porywie szaleństwa kulki po prawej stronie dodać do kulek po lewej stronie:
     </p>
       
-    <p align = "center">
+    <p align = "center" class="math">
         5 + 4 = 9
     </p>
         
@@ -298,39 +284,33 @@
       
     <p align = "center">
         <svg height="250" width="800">
-			<defs>
-				<linearGradient id="gradient">
-					<stop offset="20%" stop-color="#C33" />
-					<stop offset="90%" stop-color="#833" />
-				</linearGradient>
-			</defs>
-			<circle cx="100" cy="90" r="20" class = "draggable"/>
-			<circle cx="110" cy="160" r="20" class = "draggable"/>
-			<circle cx="340" cy="110" r="20" class = "draggable"/>
-			<circle cx="540" cy="100" r="20" class = "draggable"/>
-			<circle cx="670" cy="90" r="20" class = "draggable"/>
-			<circle cx="590" cy="90" r="20" class = "draggable"/>
-			<circle cx="700" cy="130" r="20" class = "draggable"/>
-			<circle cx="620" cy="130" r="20" class = "draggable"/>
-			<circle cx="530" cy="160" r="20" class = "draggable"/>
+			<circle cx="100" cy="90" r="20" class = "draggable"></circle>
+			<circle cx="110" cy="160" r="20" class = "draggable"></circle>
+			<circle cx="340" cy="110" r="20" class = "draggable"></circle>
+			<circle cx="540" cy="100" r="20" class = "draggable"></circle>
+			<circle cx="670" cy="90" r="20" class = "draggable"></circle>
+			<circle cx="590" cy="90" r="20" class = "draggable"></circle>
+			<circle cx="700" cy="130" r="20" class = "draggable"></circle>
+			<circle cx="620" cy="130" r="20" class = "draggable"></circle>
+			<circle cx="530" cy="160" r="20" class = "draggable"></circle>
         </svg>
     </p> 
       
     <p>
-        Gdy do dwóch kulek dodamy jedną, otrzymamy 3 kulki. Jeśli do tych trzech kulek dołożymy jeszcze 6, to będziemy mieli 9 kulek.
+        Gdy do dwóch kulek dodamy jedną, otrzymamy <span class="math">3</span> kulki. Jeśli do tych trzech kulek dołożymy jeszcze <span class="math">6</span>, to będziemy mieli <span class="math">9</span> kulek.
     </p>
       
-    <p align = "center">
+    <p align = "center" class="math">
         1 + 2 = 3<br>
         3 + 6 = 9
     </p>
       
     <p>
-        Patrząc z innej strony, gdy do sześciu kulek dołożymy jedną, otrzymamy 7 kulek. Dołożenie do tych 7 jeszcze dwóch da 
-        nam razem 9 kulek. 
+        Patrząc z innej strony, gdy do sześciu kulek dołożymy jedną, otrzymamy <span class="math">7</span> kulek. Dołożenie do tych <span class="math">7</span> jeszcze dwóch da 
+        nam razem <span class="math">9</span> kulek. 
     </p>
       
-    <p align = "center">
+    <p align = "center" class="math">
         6 + 1 = 7<br>
         7 + 2 = 9
     </p>
@@ -352,21 +332,21 @@
       
 	<div class="chapter_mask">
 	<div class="chapter_body">
-    <p class = "typ">
+    <p class = "type">
         Warsztat
     </p>
       
     <p>
         Powiedzieliśmy trochę o samej teorii dodawania, ale cały czas nie wiemy, jak to robić w praktyce. Kiedy ktoś 
-        zapyta nas o wynik dodawania 3 + 4, to możemy w lewej ręce wyciągnąć 3 palce, w prawej 4 palce i policzyć, że razem 
-        wyciągnęliśmy 7 palców. Dodawanie liczb jednocyfrowych nie jest dużym wyzwaniem, szczególnie kiedy nabierze się wprawy. 
-        Gdyby ktoś napotkał jednak problemy z dodawaniem liczb rzędu 8 i 9, spieszymy z pomocą i podsuwamy zgrabną tabelkę, zwaną 
+        zapyta nas o wynik dodawania <span class="math">3 + 4</span>, to możemy w lewej ręce wyciągnąć <span class="math">3</span> palce, w prawej <span class="math">4</span> palce i policzyć, że razem 
+        wyciągnęliśmy <span class="math">7</span> palców. Dodawanie liczb jednocyfrowych nie jest dużym wyzwaniem, szczególnie kiedy nabierze się wprawy. 
+        Gdyby ktoś napotkał jednak problemy z dodawaniem liczb rzędu <span class="math">8</span> i <span class="math">9</span>, spieszymy z pomocą i podsuwamy zgrabną tabelkę, zwaną 
         <i>tabliczką dodawania</i>. 
     </p>
       
     <br>
     <p align = "center">
-        <table class="tabelka">
+        <table class="operation_table">
 			<tr><th> </th><th>0</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th></tr>
 			<tr><th>0</th><td>0</td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td><td>9</td></tr>
 			<tr><th>1</th><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td><td>9</td><td>10</td></tr>
@@ -383,14 +363,14 @@
     <br>    
     
     <p>
-        Jeśli chcemy poznać wynik dodawania 8 + 9, szukamy ósemki u góry wśród pogrubionych liczb, a dziewiątki po lewej wśród 
+        Jeśli chcemy poznać wynik dodawania <span class="math">8 + 9</span>, szukamy ósemki u góry wśród pogrubionych liczb, a dziewiątki po lewej wśród 
         pogrubionych liczb. Następnie jedziemy wzrokiem wzdłuż odpowiedniego rzędu i odpowiedniej kolumny i we wspólnej komórce 
-        znajdujemy wynik 17.
+        znajdujemy wynik <span class="math">17</span>.
     </p>
       
     <br>
     <p align = "center">
-        <table class="tabelka" id="adding_table">
+        <table class="operation_table" id="adding_table">
 			<tr><th> </th><th>0</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th style="background: #F0E0E0">8</th><th>9</th></tr>
 			<tr><th>0</th><td>0</td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td style="background: #F0E0E0">8</td><td>9</td></tr>
 			<tr><th>1</th><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td><td style="background: #F0E0E0">9</td><td>10</td></tr>
@@ -404,20 +384,20 @@
 			<tr style="background: #F0E0E0"><th>9</th><td>9</td><td>10</td><td>11</td><td>12</td><td>13</td><td>14</td><td>15</td><td>16</td><td style="background: #CA7777">17</td><td>18</td></tr>
         </table>
     </p>
-    <p align="center" id="adding_table_field" style="visibility: hidden;">
+    <p align="center" id="adding_table_field" class="math" style="visibility: hidden;">
 		a
 	</p> 
       
     <p>
         Ponieważ dodawanie jest przemienne, możemy równie dobrze znaleźć dziewiątkę u góry i ósemkę po lewej – znowu trafimy na 
-        wynik 17.
+        wynik <span class="math">17</span>.
     </p>
         
     <p>
         Większy problem z dodawaniem pojawia się wtedy, gdy chcemy dodać liczby dwucyfrowe lub jeszcze większe. Oczywiście 
         moglibyśmy rozszerzyć tabliczkę dodawania dalej niż do dziewiątki, jednak… bądźmy realistami. Bardziej pomocna 
         okazuje się technika <i>dodawania w słupku</i> zwana też <i>dodawaniem pisemnym</i>. Najlepiej nauczmy się jej na przykładzie – 
-        bądźmy odważni i spróbujmy dodać 127 oraz 32. Piszemy dwie liczby jedna pod drugą tak, by cyfry jedności, cyfry dziesiątek, 
+        bądźmy odważni i spróbujmy dodać <span class="math">127</span> oraz <span class="math">32</span>. Piszemy dwie liczby jedna pod drugą tak, by cyfry jedności, cyfry dziesiątek, 
         cyfry setek itd. znajdowały się jedna pod drugą (wyrównujemy do prawej) i podkreślamy tak zapisane liczby. Pod kreską wkrótce 
         pojawi się wynik.
     </p>
@@ -434,9 +414,9 @@
     </p>
 
     <ul>
-        <li>7 + 2 = 9, więc pod siódemką i dwójką piszemy 9.</li>
-        <li>2 + 3 = 5, więc pod dwójką i trójką piszemy 5.</li>
-        <li>1 nie ma swojego towarzysza, więc przepisujemy ją w niezmienionej postaci.</li>
+        <li><span class="math">7 + 2 = 9</span>, więc pod siódemką i dwójką piszemy <span class="math">9</span>.</li>
+        <li><span class="math">2 + 3 = 5</span>, więc pod dwójką i trójką piszemy <span class="math">5</span>.</li>
+        <li><span class="math">1</span> nie ma swojego towarzysza, więc przepisujemy ją w niezmienionej postaci.</li>
     </ul>
       
 	<div id="columnar_addition_2"></div>
@@ -445,8 +425,8 @@
 	</script>
         
     <p>
-        Wynikiem dodawania 127 + 32 jest 159. Nie było tak źle, prawda? Spróbujmy się zmierzyć z trochę trudniejszym 
-        przypadkiem – dodajmy 256 i 947. Zaczynamy tak samo:
+        Wynikiem dodawania <span class="math">127 + 32</span> jest <span class="math">159</span>. Nie było tak źle, prawda? Spróbujmy się zmierzyć z trochę trudniejszym 
+        przypadkiem – dodajmy <span class="math">256</span> i <span class="math">947</span>. Zaczynamy tak samo:
     </p>
       
 	<div id="columnar_addition_3"></div>
@@ -455,8 +435,8 @@
 	</script>
 
     <p>
-        Teraz dodajmy szóstkę do siódemki. Otrzymujemy 13 – pojawia się problem, bo przecież nie zapiszemy dwóch cyfr pod 
-        szóstką i siódemką. Zrobimy więc tak – rozbijmy 13 na dwie cyfry, pod szóstką i siódemką napiszemy 3, a 1 przenieśmy do 
+        Teraz dodajmy szóstkę do siódemki. Otrzymujemy <span class="math">13</span> – pojawia się problem, bo przecież nie zapiszemy dwóch cyfr pod 
+        szóstką i siódemką. Zrobimy więc tak – rozbijmy <span class="math">13</span> na dwie cyfry, pod szóstką i siódemką napiszemy <span class="math">3</span>, a <span class="math">1</span> przenieśmy do 
         następnej kolumny.
     </p>
       
@@ -467,8 +447,9 @@
 	  
 	  
     <p>
-        Teraz dodajemy wszystkie trzy cyfry: 1, 5 i 4 – dostajemy 10. Ponieważ wynik jest dwucyfrowy, w tej kolumnie piszemy 0, 
-        a 1 przenosimy dalej.
+        Teraz dodajemy wszystkie trzy cyfry: <span class="math">1</span>, <span class="math">5</span> i <span class="math">4</span> – dostajemy <span class="math">10</span>. Ponieważ wynik jest dwucyfrowy, w 
+		tej kolumnie piszemy <span class="math">0</span>, 
+        a <span class="math">1</span> przenosimy dalej.
     </p>
       
     <div id="columnar_addition_5"></div>
@@ -477,7 +458,7 @@
 	</script>
 	  
     <p>
-        Dodajemy 1 + 2 + 9. Wynik 12 rozbijamy na 2 i 1.
+        Dodajemy <span class="math">1 + 2 + 9</span>. Wynik <span class="math">12</span> rozbijamy na <span class="math">2</span> i <span class="math">1</span>.
     </p>
       
 	<div id="columnar_addition_6"></div>
@@ -495,7 +476,7 @@
 	</script>
       
     <p>
-        Dostaliśmy wynik: 256 + 947 = 1203. Jeśli dodawanie w słupku sprawia wrażenie <span class="comment" id="Masz problem z poprawnością polityczną?">
+        Dostaliśmy wynik: <span class="math">256 + 947 = 1203</span>. Jeśli dodawanie w słupku sprawia wrażenie <span class="comment" id="Masz problem z poprawnością polityczną?">
 		  czarnej magii</span>, prześledź jeszcze dowolne własne przykłady:
     </p>
       
@@ -546,17 +527,17 @@
 		</tr>
 	</table>
 	  
-    <p class ="typ">
+    <p class ="type">
         Rozszerzenie
 	</p>
       
     <p>
         Być może jesteś ciekaw, dlaczego magiczna metoda dodawania w słupku jest matematycznie poprawna. Czemu jakieś dodawanie 
-        cyfr w kolumnach i przepisywanie jedynek do kolejnej kolumny w ogóle działa? W pierwszym przykładzie 127 + 32 = 159 
-        stosunkowo łatwo to zrozumieć. 127 można zapisać jako 100 + 20 +7, a 32 jako 30 + 2. W takim razie
+        cyfr w kolumnach i przepisywanie jedynek do kolejnej kolumny w ogóle działa? W pierwszym przykładzie <span class="math">127 + 32 = 159</span> 
+        stosunkowo łatwo to zrozumieć. <span class="math">127</span> można zapisać jako <span class="math">100 + 20 +7</span>, a <span class="math">32</span> jako <span class="math">30 + 2</span>. W takim razie
     </p>
       
-    <p align = "center">
+    <p align = "center" class="math">
         127 + 32 = 100 + 20 + 7 + 30 + 2
     </p>
       
@@ -564,7 +545,7 @@
         Ponieważ dodawanie jest przemienne, nie ma znaczenia kolejność zapisania składników, więc:
     </p>
       
-    <p align = "center">
+    <p align = "center" class="math">
         100 + 20 + 7 + 30 + 2 = 100 + 20 + 30 + 7 + 2
     </p>
       
@@ -572,7 +553,7 @@
         Ponieważ dodawanie jest łączne, możemy zająć się tą sumą tak, jak nam wygodnie:
     </p>
       
-    <p align = "center">
+    <p align = "center" class="math">
         100 + 20 + 30 + 7 + 2 = 100 + 50 + 9 = 159
     </p>
       
@@ -582,20 +563,20 @@
     </p>
 
     <p align = "center">
-        256 + 947 =<br>
-        = 200 + 50 + 6 + 900 + 40 + 7 =<br>
-          = 200 + 900 + 50 + 40 + 6 + 7 =	ustalamy wygodną kolejność składników<br>
-          = 200 + 900 + 50 + 40 + 13 =	dodajemy cyfry jedności<br>
-          = 200 + 900 + 50 + 40 + 10 + 3 = 	rozbijamy 13 na dwie cyfry<br>
-          = 200 + 900 + 100 + 3 = 	dodajemy cyfry dziesiątek<br>
-          = 1200 + 3 =	dodajemy cyfry setek<br>
-          = 1000 + 200 + 3 = 	rozbijamy 12 na 1 i 2<br>
-        1203
+        <span class="math">256 + 947 =</span><br>
+        <span class="math">= 200 + 50 + 6 + 900 + 40 + 7 =</span><br>
+        <span class="math">= 200 + 900 + 50 + 40 + 6 + 7 =</span>	ustalamy wygodną kolejność składników<br>
+        <span class="math">= 200 + 900 + 50 + 40 + 13 =</span>	dodajemy cyfry jedności<br>
+        <span class="math">= 200 + 900 + 50 + 40 + 10 + 3 =</span> 	rozbijamy 13 na dwie cyfry<br>
+        <span class="math">= 200 + 900 + 100 + 3 =</span> 	dodajemy cyfry dziesiątek<br>
+        <span class="math">= 1200 + 3 =</span>	dodajemy cyfry setek<br>
+        <span class="math">= 1000 + 200 + 3 =</span> 	rozbijamy 12 na 1 i 2<br>
+        <span class="math">1203</span>
     </p>
       
     <p>
         Dla przejrzystości zapisaliśmy to działanie w kilku linijkach. Kiedy przenosimy nasze obliczenia do następnej linijki w 
-        miejscu znaku równości, zwyczajowo zapisujemy = dwa razy: na końcu poprzedniej linijki i na początku nowej.
+        miejscu znaku równości, zwyczajowo zapisujemy <span class="math">=</span> dwa razy: na końcu poprzedniej linijki i na początku nowej.
     </p>
       
     <p>
@@ -603,11 +584,11 @@
 		  formalnego wyjaśnienia zagadki dodawania w słupku. Proszę bardzo:
     </p>
       
-    <p class = "typ">
+    <p class = "type">
         Dowód
     </p>
       
-    <p class = "ostrzezenie">
+    <p class = "warning">
         [wymagana znajomość tematu: Algebra]
     </p>
         

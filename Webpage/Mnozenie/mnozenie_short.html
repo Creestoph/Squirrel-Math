@@ -7,27 +7,29 @@
 	<link rel="stylesheet" href="../lesson_style.css">
 	
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+	<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=MML_HTMLorMML"></script>
+	<script src="../.scripts/math.js"></script>
 	<script src="multiplication_table_short.js"></script>
 </head>
 
-<body class="lekcja">
+<body class="lesson">
   
 <div class = "menu">
-	<a href="../index.html"><button class = "przejscie" style="position: absolute; left: 10px"><span>Strona główna</span></button></a>
-	<a href="../drzewo.html"><button class = "przejscie" style="position: absolute; left: 250px"><span>Drzewo</span></button></a>
-    <a href="mnozenie.html"><button class = "przejscie" style="position: relative; left: 80%"><span>Wersja pełna</span></button></a>
+	<a href="../index.html"><button class = "button_convey" style="position: absolute; left: 10px"><span>Strona główna</span></button></a>
+	<a href="../drzewo.html"><button class = "button_convey" style="position: absolute; left: 250px"><span>Drzewo</span></button></a>
+    <a href="mnozenie.html"><button class = "button_convey" style="position: relative; left: 80%"><span>Wersja pełna</span></button></a>
 </div>
   
-<div class="glowny">
+<div class="main">
 
-    <p class="tytul_short">
+    <p class="lesson_title_short">
 		Mnożenie
     </p>
-    <p class = "podtytul">
+    <p class = "lesson_subtitle">
 		w pigułce
     </p>
       
-    <p class = "typ">
+    <p class = "type">
         Intuicje
     </p>
       
@@ -47,10 +49,10 @@
     <br>
     
     <p>
-        możemy stwierdzić, że plansza składa się z 4 rzędów, a w każdym znajduje się 6 kafli:
+        możemy stwierdzić, że plansza składa się z <span class="math">4</span> rzędów, a w każdym znajduje się <span class="math">6</span> kafli:
     </p>
   
-    <p align = "center">
+    <p align = "center" class="math">
         6 + 6 + 6 + 6 = 24
     </p>
     
@@ -58,12 +60,12 @@
         Stosując mnożenie zapszemy to jako:
     </p>
       
-    <p align = "center">
+    <p align = "center" class="math">
         4 &middot; 6 = 24
     </p>
       
     <p>
-        Znak &middot; czytamy jako „razy”. Zapis 4 &middot; 6 (cztery razy sześć) oznacza, że należy cztery razy dodać do siebie 
+        Znak <span class="math">&middot;</span> czytamy jako „razy”. Zapis <span class="math">4 &middot; 6</span> (cztery razy sześć) oznacza, że należy cztery razy dodać do siebie 
         szóstkę.
     </p>
       
@@ -71,43 +73,43 @@
         Liczby, które mnożymy, nazywamy <i>czynnikami</i>, zaś wynik mnożenia <i>iloczynem</i>.
     </p>
       
-    <p align = "center">
+    <p align = "center" class="math">
         czynnik  &middot; czynnik = iloczyn
     </p>
       
     <p>
-        W działaniu 5 &middot; 6 = 30 czynnikami są 5 i 6, a wynikiem (iloczynem) 30.
+        W działaniu <span class="math">5 &middot; 6 = 30</span> czynnikami są <span class="math">5</span> i <span class="math">6</span>, a wynikiem (iloczynem) <span class="math">30</span>.
     </p>
       
-    <p class = "typ">
+    <p class = "type">
         Rozszerzenie
     </p>
     
     <p>
-        Mnożenie jest przemienne, ponieważ 4 &middot; 6 to to samo, co 6 &middot; 4.
+        Mnożenie jest przemienne, ponieważ <span class="math">4 &middot; 6</span> to to samo, co <span class="math">6 &middot; 4</span>.
     </p>
     
     <p>
-        Mnożenie jest łączne, co oznacza, że 4 &middot; 6 &middot; 3 możemy obliczyć na dwa sposoby:
+        Mnożenie jest łączne, co oznacza, że <span class="math">4 &middot; 6 &middot; 3</span> możemy obliczyć na dwa sposoby:
     </p>
     
     <p align = "center">
-        4 &middot; 6 &middot; 3 = 24 &middot; 4 = 72<br>
-        4 &middot; 6 &middot; 3 = 4 &middot; 18 = 72
+        <span class="math">4 &middot; 6 &middot; 3 = 24 &middot; 4 = 72</span><br>
+        <span class="math">4 &middot; 6 &middot; 3 = 4 &middot; 18 = 72</span>
     </p>
   
-    <p class = "typ">
+    <p class = "type">
         Warsztat
     </p>
       
     <p>
-        Obliczanie mnożenia zawsze można sprowadzić do wielokrotnego dodawania, np. 7 &middot; 8 = 8 + 8 + 8 + 8 + 8 + 8 + 8.
+        Obliczanie mnożenia zawsze można sprowadzić do wielokrotnego dodawania, np. <span class="math">7 &middot; 8 = 8 + 8 + 8 + 8 + 8 + 8 + 8</span>.
         Aby przyspieszyć rachunki, warto opanować <i>tabliczkę mnożenia</i>, czyli zapamiętać wyniki jednocyfrowych mnożeń.
     </p>
 
     <br>
     <p align = "center">
-        <table class="tabelka" id="multiplication_table">
+        <table class="operation_table" id="multiplication_table">
 			<tr><th> </th><th>0</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th style="background: #F0E0E0">7</th><th>8</th><th>9</th></tr>
 			<tr><th>0</th><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td style="background: #F0E0E0">0</td><td>0</td><td>0</td></tr>
 			<tr><th>1</th><td>0</td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td style="background: #F0E0E0">7</td><td>8</td><td>9</td></tr>
@@ -121,25 +123,28 @@
 			<tr><th>9</th><td>0</td><td>9</td><td>18</td><td>27</td><td>36</td><td>45</td><td>54</td><td style="background: #F0E0E0">63</td><td>72</td><td>81</td></tr>
         </table>
     </p>
-    <p align = "center" id="multiplication_table_field">
+    <p align = "center" id="multiplication_table_field" class="math">
         7 &middot; 8 = 56
     </p>
     <br>
       
     <p>
-        Większe liczby zwykle <i>mnoży się w słupku</i> (wykonuje<i>mnożenie pisemne</i>). Pomnożymy 629 przez 204. 
+        Większe liczby zwykle <i>mnoży się w słupku</i> (wykonuje<i>mnożenie pisemne</i>). Pomnożymy <span class="math">629</span> przez <span class="math">204</span>. 
         Obydwie liczby zapisujemy jedna pod drugą z wyrównaniem do prawej i podkreślamy. Mnożymy kolejne cyfry górnej 
         liczby przez cyfrę jedności dolnej liczby, a wyniki zapisujemy pod kreską. 
         <ul>
-			<li>4 &middot; 9 = 36; cyfrę 6 piszemy pod kreską, zaś cyfrę 3 przechowujemy w pamięci.</li>
-			<li>4 &middot; 2 = 8; do wyniku dodajemy zapamiętaną 3 i otrzymujemy 11; cyfrę 1 piszemy pod kreską i przechowujemy w 
-            pamięci 1</li>
-			<li>4 &middot; 6 = 24; do wyniku dodajemy zapamiętaną 1 i otrzymujemy 25; cyfrę 5 piszemy pod kreską i zapamiętujemy 2.
-			<li>spisujemy zapamiętaną cyfrę 2.</li>
+			<li><span class="math">4 &middot; 9 = 36</span>; cyfrę <span class="math">6</span> piszemy pod kreską, zaś cyfrę <span class="math">3</span> przechowujemy w pamięci.</li>
+			<li><span class="math">4 &middot; 2 = 8</span>; do wyniku dodajemy zapamiętaną <span class="math">3</span> i otrzymujemy <span class="math">11</span>; cyfrę <span class="math">1</span>
+			piszemy pod kreską i przechowujemy w 
+            pamięci <span class="math">1</span></li>
+			<li><span class="math">4 &middot; 6 = 24</span>; do wyniku dodajemy zapamiętaną <span class="math">1</span> i otrzymujemy <span class="math">25</span>; cyfrę <span class="math">5</span>
+			piszemy pod kreską i zapamiętujemy <span class="math">2</span>.
+			<li>spisujemy zapamiętaną cyfrę <span class="math">2</span>.</li>
         </ul>
-        Podobnie mnożymy 629 kolejno przez 0 i 2, przy czym wynik mnożenia przez 0 zapisujemy z przesunięciem o 1 w lewo, a wynik 
-        mnożenia przez 2 z przesunięciem o 2 w lewo. Tak otrzymane wyniki sumujemy metodą dodawania w słupku. Ostatecznie
-        wynikiem jest 128 316.
+        Podobnie mnożymy <span class="math">629</span> kolejno przez <span class="math">0</span> i <span class="math">2</span>, przy czym wynik mnożenia przez <span class="math">0</span>
+		zapisujemy z przesunięciem o <span class="math">1</span> w lewo, a wynik 
+        mnożenia przez <span class="math">2</span> z przesunięciem o <span class="math">2</span> w lewo. Tak otrzymane wyniki sumujemy metodą dodawania w słupku. Ostatecznie
+        wynikiem jest <span class="math">128 316</span>.
     </p>
   
     <p align = "center">
@@ -154,11 +159,11 @@
           1	2	8	3	1	6
     </p>
   
-    <p class = "typ">
+    <p class = "type">
         Dowód
     </p>
   
-    <p class = "ostrzezenie">
+    <p class = "warning">
         [wymagana znajomość tematu: Algebra]
     </p>
   

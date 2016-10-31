@@ -16,17 +16,17 @@
 	<script src="generate_balls.js"></script>
 </head>
 
-<body class="lekcja">
+<body class="lesson">
   
 <div class = "menu">
-	<a href="../index.html"><button class = "przejscie" style="position: absolute; left: 10px"><span>Strona główna</span></button></a>
-	<a href="../drzewo.html"><button class = "przejscie" style="position: absolute; left: 250px"><span>Drzewo</span></button></a>
-	<a href="podzielnosc_liczb_short.html"><button class = "przejscie" style="position: relative; left: 80%"><span>Wersja skrócona</span></button></a>
+	<a href="../index.html"><button class = "button_convey" style="position: absolute; left: 10px"><span>Strona główna</span></button></a>
+	<a href="../drzewo.html"><button class = "button_convey" style="position: absolute; left: 250px"><span>Drzewo</span></button></a>
+	<a href="podzielnosc_liczb_short.html"><button class = "button_convey" style="position: relative; left: 80%"><span>Wersja skrócona</span></button></a>
 </div>
   
-<div class="glowny">
+<div class="main">
 
-	<p class="tytul">
+	<p class="lesson_title">
 		Podzielność liczb
 	</p>
 
@@ -49,7 +49,7 @@
 
 	<div class="chapter_mask">
 	<div class="chapter_body">
-	<p class="typ">
+	<p class = "type">
 		Intuicje
 	</p>
 
@@ -103,7 +103,7 @@
 
 	<div class="chapter_mask">
 	<div class="chapter_body">
-	<p class="typ">
+	<p class = "type">
 		Intuicje
 	</p>
 
@@ -478,10 +478,10 @@
 			Niestety… nie powiedzieliśmy, jaka jest cecha podzielności przez 7. To trochę trudniejszy temat.
 		</p>
 
-	<p class ="typ">
+	<p class = "type">
 		Rozszerzenie
 	</p>
-	<p class="ostrzezenie">
+	<p class="warning">
 		[wymagana znajomość tematu: Potęgowanie]
 	</p>
 
@@ -495,61 +495,17 @@
 	<p class="formula">
 		Oznaczmy pozycję cyfry jedności jako 0, pozycję cyfry dziesiątek jako 1 itd. Liczba jest podzielna przez 7 wtedy i 
 		tylko wtedy, gdy podzielna przez 7 jest suma cyfr mnożonych przez 
-		<math xmlns="http://www.w3.org/1998/Math/MathML">
-			<msup>
-				<mn>3</mn>
-				<mi>n</mi>
-			</msup>
-		</math>
-		, gdzie 
-		<math xmlns="http://www.w3.org/1998/Math/MathML">
-			<mi>n</mi>
-		</math>
-		jest pozycją danej cyfry. 
+		<span class="math">3^n</span>, gdzie <span class="math">n</span> jest pozycją danej cyfry. 
 	</p>
 	<ul>
 		<li>
 			Weźmy liczbę 91.
 			<ul>
 				<li>
-					Cyfra 1 ma pozycję 0, więc mnożymy ją przez 
-					<math xmlns="http://www.w3.org/1998/Math/MathML">
-						<msup>
-							<mn>3</mn>
-							<mn>0</mn>
-						</msup>
-					</math>
-					:&nbsp;&nbsp;&nbsp;&nbsp;
-					<math xmlns="http://www.w3.org/1998/Math/MathML">
-						<mn>1</mn>
-						<mo>&middot;</mo>
-						<msup>
-							<mn>3</mn>
-							<mn>0</mn>
-						</msup>
-						<mo>=</mo>
-						<mn>1</mn>
-					</math>
+					Cyfra 1 ma pozycję 0, więc mnożymy ją przez <span class="math">3^0:&nbsp;&nbsp;&nbsp;&nbsp;1*3^0=1</span>
 				</li>
 				<li>
-					Cyfra 9 ma pozycję 1, więc mnożymy ją przez
-					<math xmlns="http://www.w3.org/1998/Math/MathML">
-						<msup>
-							<mn>3</mn>
-							<mn>1</mn>
-						</msup>
-					</math>
-					:&nbsp;&nbsp;&nbsp;&nbsp;
-					<math xmlns="http://www.w3.org/1998/Math/MathML">
-						<mn>9</mn>
-						<mo>&middot;</mo>
-						<msup>
-							<mn>3</mn>
-							<mn>1</mn>
-						</msup>
-						<mo>=</mo>
-						<mn>27</mn>
-					</math>
+					Cyfra 9 ma pozycję 1, więc mnożymy ją przez <span class="math">3^1:&nbsp;&nbsp;&nbsp;&nbsp;9*3^1=27</span>
 				</li>
 			</ul>
 			Dodajemy otrzymane wyniki: 1+27=28. Liczba 28 jest podzielna przez 7, więc również 91 jest podzielne przez 7.
@@ -559,122 +515,20 @@
 			Weźmy liczbę 1547.
 			<ul>
 				<li>
-					Cyfra 7 ma pozycję 0, więc mnożymy ją przez 
-					<math xmlns="http://www.w3.org/1998/Math/MathML">
-						<msup>
-							<mn>3</mn>
-							<mn>0</mn>
-						</msup>
-					</math>
-					:&nbsp;&nbsp;&nbsp;&nbsp;
-					<math xmlns="http://www.w3.org/1998/Math/MathML">
-						<mn>7</mn>
-						<mo>&middot;</mo>
-						<msup>
-							<mn>3</mn>
-							<mn>0</mn>
-						</msup>
-						<mo>=</mo>
-						<mn>7</mn>
-					</math>
+					Cyfra 7 ma pozycję 0, więc mnożymy ją przez <span class="math">3^0:&nbsp;&nbsp;&nbsp;&nbsp;7*3^0=7</span>
 				</li>
 				<li>
-					Cyfra 4 ma pozycję 1, więc mnożymy ją przez 
-					<math xmlns="http://www.w3.org/1998/Math/MathML">
-						<msup>
-							<mn>3</mn>
-							<mn>1</mn>
-						</msup>
-					</math>
-					:&nbsp;&nbsp;&nbsp;&nbsp;
-					<math xmlns="http://www.w3.org/1998/Math/MathML">
-						<mn>4</mn>
-						<mo>&middot;</mo>
-						<msup>
-							<mn>3</mn>
-							<mn>1</mn>
-						</msup>
-						<mo>=</mo>
-						<mn>12</mn>
-					</math>
+					Cyfra 4 ma pozycję 1, więc mnożymy ją przez <span class="math">3^1:&nbsp;&nbsp;&nbsp;&nbsp;4*3^1=12</span>
 				</li>
 				<li>
-					Cyfra 5 ma pozycję 2, więc mnożymy ją przez 
-					<math xmlns="http://www.w3.org/1998/Math/MathML">
-						<msup>
-							<mn>3</mn>
-							<mn>2</mn>
-						</msup>
-					</math>
-					:&nbsp;&nbsp;&nbsp;&nbsp;
-					<math xmlns="http://www.w3.org/1998/Math/MathML">
-						<mn>5</mn>
-						<mo>&middot;</mo>
-						<msup>
-							<mn>3</mn>
-							<mn>2</mn>
-						</msup>
-						<mo>=</mo>
-						<mn>45</mn>
-					</math>
+					Cyfra 5 ma pozycję 2, więc mnożymy ją przez <span class="math">3^2:&nbsp;&nbsp;&nbsp;&nbsp;5*3^2=45</span>
 				</li>
 				<li>
-					Cyfra 1 ma pozycję 3, więc mnożymy ją przez 
-					<math xmlns="http://www.w3.org/1998/Math/MathML">
-						<msup>
-							<mn>3</mn>
-							<mn>3</mn>
-						</msup>
-					</math>
-					:&nbsp;&nbsp;&nbsp;&nbsp;
-					<math xmlns="http://www.w3.org/1998/Math/MathML">
-						<mn>1</mn>
-						<mo>&middot;</mo>
-						<msup>
-							<mn>3</mn>
-							<mn>3</mn>
-						</msup>
-						<mo>=</mo>
-						<mn>27</mn>
-					</math>
+					Cyfra 1 ma pozycję 3, więc mnożymy ją przez <span class="math">3^3:&nbsp;&nbsp;&nbsp;&nbsp;1*3^3=27</span>
 				</li>
 			</ul>
 			Dodajemy otrzymane wyniki: 7+12+45+27=91. Liczba 91 jest podzielna przez 7, więc 1547 jest podzielne przez 7.
-			7000 jest podzielne przez 7, ponieważ 
-			<math xmlns="http://www.w3.org/1998/Math/MathML">
-				<mn>7</mn>
-				<mo>&middot;</mo>
-				<msup>
-					<mn>3</mn>
-					<mn>3</mn>
-				</msup>
-				<mo>+</mo>
-				<mn>0</mn>
-				<mo>&middot;</mo>
-				<msup>
-					<mn>3</mn>
-					<mn>2</mn>
-				</msup>
-				<mo>+</mo>
-				<mn>0</mn>
-				<mo>&middot;</mo>
-				<msup>
-					<mn>3</mn>
-					<mn>1</mn>
-				</msup>
-				<mo>+</mo>
-				<mn>0</mn>
-				<mo>&middot;</mo>
-				<msup>
-					<mn>3</mn>
-					<mn>0</mn>
-				</msup>
-				<mo>=</mo>
-				<mn>7</mn>
-				<mo>&middot;</mo>
-				<mn>27</mn>
-			</math>
-			jest podzielne przez 7.
+			7000 jest podzielne przez 7, ponieważ <span class="math">7*3^3+0*3^2+0*3^1+0*3^0=7</span> jest podzielne przez 7.
 		</li>
 	</ul>
 	
@@ -714,14 +568,11 @@
 		Dowód tego twierdzenia jest dość skomplikowany.
 	</p>
 
-	<p class ="typ">
+	<p class = "type">
 		Dowód
 	</p>
-	<p class="ostrzezenie">
-		[wymagana znajomość tematu: Ciąg geometryczny]
-	</p>
-	<p class="ostrzezenie">
-		[wymagana znajomość tematu: Indukcja matematyczna]
+	<p class="warning">
+		[wymagana znajomość tematu: Dwumian Newtona]
 	</p>
 
 	<div class ="proof">
@@ -785,7 +636,7 @@
 				+(10)^1 a_1+(-p)((Newton((1),1) (10)^0 (-p)^0 ) a_1+</br>
 				+a_0=<br>
 			=(10)^k a_k+(10)^(k-1) a_(k-1)+⋯+(10)^1 a_1+a_0+<br>
-			(-p)((Newton(k,1) (10)^(k-1) (-p)^0+Newton(k,2) (10)^(k-2) (-p)^1+⋯+Newton(k,k) (10)^0 (-p)^(k-1) )+(Newton((k-1),1) (10)^(k-2) (-p)^0+Newton((k-1),2) (10)^(k-2) (-p)^1+⋯+Newton((k-1),(k-1)) (10)^0 (-p)^(k-2) ) a_(k-1)+⋯+Newton((1,1) (10)^0 (-p)^0 ) a_1 )=<br>=a-pm'
+			(-p)((Newton(k,1) (10)^(k-1) (-p)^0+Newton(k,2) (10)^(k-2) (-p)^1+⋯+Newton(k,k) (10)^0 (-p)^(k-1) )a_k+(Newton((k-1),1) (10)^(k-2) (-p)^0+Newton((k-1),2) (10)^(k-2) (-p)^1+⋯+Newton((k-1),(k-1)) (10)^0 (-p)^(k-2) ) a_(k-1)+⋯+(Newton((1),1) (10)^0 (-p)^0 ) a_1 )=<br>=a-pm'
 		</p>
 
 		<p>
@@ -793,7 +644,7 @@
 		</p>
 		
 		<p class="math">
-			((Newton(k,1) (10)^(k-1) (-p)^0+Newton(k,2) (10)^(k-2) (-p)^1+⋯+Newton(k,k) (10)^0 (-p)^(k-1) )+(Newton((k-1),1) (10)^(k-2) (-p)^0+Newton((k-1),2) (10)^(k-2) (-p)^1+⋯+Newton((k-1),(k-1)) (10)^0 (-p)^(k-2) ) a_(k-1)+⋯+Newton((1,1) (10)^0 (-p)^0 ) a_1 )
+			(Newton(k,1) (10)^(k-1) (-p)^0+Newton(k,2) (10)^(k-2) (-p)^1+⋯+Newton(k,k) (10)^0 (-p)^(k-1) )a_k+(Newton((k-1),1) (10)^(k-2) (-p)^0+Newton((k-1),2) (10)^(k-2) (-p)^1+⋯+Newton((k-1),(k-1)) (10)^0 (-p)^(k-2) ) a_(k-1)+⋯+(Newton((1),1) (10)^0 (-p)^0 ) a_1 
 		</p>
 		
 		<p>
@@ -854,21 +705,9 @@
 		liczbę podzielną przez <span class="math">2^n</span>.
 	</p>
 
-	<p class ="typ">
+	<p class = "type">
 		Dowód
 	</p>
-
-	<div class ="proof">
-		<p>
-			Spójrzmy, czemu tak się dzieje. Weźmy dla przykładu n=2, czyli cechę podzielności przez 4. Gdy chcemy stwierdzić, że 
-			liczba 324 jest podzielna przez 4, wystarczy spojrzeć na 2 ostatnie cyfry, ponieważ 
-			324 = 300 + 24 = 3 &middot; 100 + 24 = 3 &middot; 4 &middot; 25 + 24. Widzimy, że wszystko oprócz 24, czyli cząstka 300, 
-			jest podzielne przez 4. W takim razie podzielność liczby przez 4 zależy tylko od dwóch ostatnich cyfr. 
-			Podobnie 2566340 = 2566300 + 40 = 25663 &middot; 100 + 40 = 25663 &middot; 4 &middot; 25 + 40, a więc cząstka 2566300 jest 
-			podzielna przez 4. Podobnie będzie dla innych n, przykładowo dla n=3 mamy 746320 = 746000 + 320 = 746 &middot; 1000 + 320 = 
-			746 &middot; 8 &middot; 125 + 320, a więc cząstka 746000 jest podzielna przez 8.
-		</p>
-	</div>
 
 	<div class ="proof">
 		<p>
@@ -947,7 +786,7 @@
 		podzielną przez <span class="math">5^n</span>.
 	</p>
 
-	<p class ="typ">
+	<p class = "type">
 		Dowód
 	</p>
 
@@ -1022,7 +861,7 @@
 
 	<div class="chapter_mask">
 	<div class="chapter_body">
-	<p class ="typ">
+	<p class = "type">
 		Intuicje
 	</p>
 
@@ -1070,7 +909,7 @@
 		Wyjątkiem jest liczba 0. Zera przez zero dzielić nie wolno.
 	</p>
 
-	<p class ="typ">
+	<p class = "type">
 		Rozszerzenie
 	</p>
 
@@ -1106,7 +945,7 @@
 		problem ten jest już rozwiązany, zgłoś proszę tę nieścisłość do administracji strony.">nierozwiązany problem matematyki</span>:
 	</p>
 
-	<p class ="formula">
+	<p class = "formula">
 		Czy istnieje nieparzysta liczba doskonała?
 	</p>
 
@@ -1161,7 +1000,7 @@
 
 	<div class="chapter_mask">
 	<div class="chapter_body">
-	<p class="typ">
+	<p class = "type">
 		Intuicje
 	</p>
 
@@ -1220,7 +1059,7 @@
 
 	<div class="chapter_mask">
 	<div class="chapter_body">
-	<p class="typ">
+	<p class = "type">
 		Warsztat
 	</p>
 
@@ -1377,7 +1216,7 @@
 	
 	<div class="chapter_mask">
 	<div class="chapter_body">
-	<p class="typ">
+	<p class = "type">
 		Intuicje
 	</p>
 
@@ -1464,7 +1303,7 @@
 		Najmniejszą wielokrotność napotkaliśmy dopiero przy 30.
 	</p>
 
-	<p class ="typ">
+	<p class = "type">
 		Rozszerzenie
 	</p>
 
@@ -1507,7 +1346,7 @@
 		Iloczyn NWW i NWD dwóch liczb jest równy iloczynowi tych liczb.
 	</p>
 
-	<p class="typ">
+	<p class = "type">
 		Dowód
 	</p>
 		Eh…

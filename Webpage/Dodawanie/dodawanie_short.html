@@ -7,25 +7,27 @@
 	<link rel="stylesheet" href="../lesson_style.css">
 	
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+	<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=MML_HTMLorMML"></script>
 	<script src="../.scripts/columnar_addition.js"></script>
 	<script src="../.scripts/draggable.js"></script>
+	<script src="../.scripts/math.js"></script>
 	<script src="addition_table_short.js"></script>
 </head>
 
-<body class="lekcja">
+<body class="lesson">
   
 <div class = "menu">
-	<a href="../index.html"><button class = "przejscie" style="position: absolute; left: 10px"><span>Strona główna</span></button></a>
-	<a href="../drzewo.html"><button class = "przejscie" style="position: absolute; left: 250px"><span>Drzewo</span></button></a>
-    <a href = "dodawanie.html"><button class = "przejscie" style="position: relative; left: 80%" ><span>Wersja pełna</span></button></a>
+	<a href="../index.html"><button class = "button_convey" style="position: absolute; left: 10px"><span>Strona główna</span></button></a>
+	<a href="../drzewo.html"><button class = "button_convey" style="position: absolute; left: 250px"><span>Drzewo</span></button></a>
+    <a href = "dodawanie.html"><button class = "button_convey" style="position: relative; left: 80%" ><span>Wersja pełna</span></button></a>
 </div>
   
-<div class="glowny">
+<div class="main">
 
-	<p class="tytul_short">
+	<p class="lesson_title_short">
 		Dodawanie
     </p>
-    <p class = "podtytul">
+    <p class = "lesson_subtitle">
 		w pigułce
     </p>
       
@@ -34,7 +36,7 @@
         Jego istotą jest łączenie części w całość.
     </p>
       
-    <p class = "typ">
+    <p class = "type">
         Intuicje
     </p>
 
@@ -46,27 +48,27 @@
 					<stop offset="90%" stop-color="#833" />
 				</linearGradient>
 			</defs>
-			<circle cx="240" cy="130" r="20" class = "draggable"/>
-			<circle cx="200" cy="70" r="20" class = "draggable"/>
-			<circle cx="580" cy="160" r="20" class = "draggable"/>
-			<circle cx="500" cy="90" r="20" class = "draggable"/>
-			<circle cx="480" cy="140" r="20" class = "draggable"/>
-			<circle cx="620" cy="64" r="20" class = "draggable"/>
+			<circle cx="240" cy="130" r="20" class = "draggable"></circle>
+			<circle cx="200" cy="70" r="20" class = "draggable"></circle>
+			<circle cx="580" cy="160" r="20" class = "draggable"></circle>
+			<circle cx="500" cy="90" r="20" class = "draggable"></circle>
+			<circle cx="480" cy="140" r="20" class = "draggable"></circle>
+			<circle cx="620" cy="64" r="20" class = "draggable"></circle>
         </svg>
     </p> 
       
     <p>
-        Pojęcie dodawania można dobrze zobrazować na fizycznych przedmiotach: 2 kulki oraz 4 kulki to to samo, co 6 kulek. 
+        Pojęcie dodawania można dobrze zobrazować na fizycznych przedmiotach: <span class="math">2</span> kulki oraz <span class="math">4</span> kulki to to samo, co <span class="math">6</span> kulek. 
         Matematycznie zapisujemy to spostrzeżenie jako:
     </p>
       
-    <p align = "center">
+    <p align = "center" class="math">
         2 kulki + 4 kulki = 6 kulek
     </p>
       
     <p>
-        Znaczki + oraz = to <i>symbole</i> matematyczne. Pierwszy z nich rozumiemy jako "razem z", a drugi jako "to to samo, co".
-        Symbol + czytamy jako „dodać” albo „plus”, zaś symbol = jako „równa się”. Symbol = ma dość ogólne zastosowanie: mówi on tyle, 
+        Znaczki <span class="math">+</span> oraz <span class="math">=</span> to <i>symbole</i> matematyczne. Pierwszy z nich rozumiemy jako "razem z", a drugi jako "to to samo, co".
+        Symbol <span class="math">+</span> czytamy jako „dodać” albo „plus”, zaś symbol <span class="math">=</span> jako „równa się”. Symbol <span class="math">=</span> ma dość ogólne zastosowanie: mówi on tyle, 
         że po jego lewej stronie jest dokładnie to samo, co po prawej stronie. 
     </p>
       
@@ -76,9 +78,9 @@
     </p>
       
     <p align = "center">
-        2 + 4 = 6<br>
-        2 + 2 = 4<br>
-        3 + 4 + 6 = 13<br>
+        <span class="math">2 + 4 = 6</span><br>
+        <span class="math">2 + 2 = 4</span><br>
+        <span class="math">3 + 4 + 6 = 13</span><br>
     </p>
       
     <p>
@@ -86,15 +88,15 @@
         też <i>sumowaniem</i>.
     </p>
       
-	<p align = "center">
+	<p align = "center" class="math">
         składnik + składnik = suma
     </p>
       
     <ul>
-        <li>W działaniu 2 + 3 = 5 składnikami są 2 i 3, a wynikiem (sumą) 5</li>
+        <li>W działaniu <span class="math">2 + 3 = 5</span> składnikami są <span class="math">2</span> i <span class="math">3</span>, a wynikiem (sumą) <span class="math">5</span></li>
     </ul>
       
-    <p class = "typ">
+    <p class = "type">
         Rozszerzenie
     </p>
       
@@ -105,11 +107,12 @@
       
     <p>
         Dodawanie jest <i>łączne</i>, co oznacza, że gdy dodajemy więcej niż dwa składniki, możemy sumować je parami w dowolnej 
-        kolejności. Przykładowo 2 + 1 + 3 możemy obliczyć na dwa sposoby: najpierw zająć się dodaniem 2 i 1, a następnie 3 albo 
-        najpierw dodać 1 i 3, a nastepnie połączyć to z 2.
+        kolejności. Przykładowo <span class="math">2 + 1 + 3</span> możemy obliczyć na dwa sposoby: najpierw zająć się dodaniem <span class="math">2</span> i 
+		<span class="math">1</span>, a następnie <span class="math">3</span> albo 
+        najpierw dodać <span class="math">1</span> i <span class="math">3</span>, a nastepnie połączyć to z <span class="math">2</span>.
     </p>
 
-    <p class = "typ">
+    <p class = "type">
         Warsztat
     </p>
       
@@ -119,7 +122,7 @@
         
     <br>
 	<p align = "center">
-		<table class="tabelka" id="adding_table">
+		<table class="operation_table" id="adding_table">
 			<tr><th> </th><th>0</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th style="background: #F0E0E0">8</th><th>9</th></tr>
 			<tr><th>0</th><td>0</td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td style="background: #F0E0E0">8</td><td>9</td></tr>
 			<tr><th>1</th><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td><td style="background: #F0E0E0">9</td><td>10</td></tr>
@@ -134,7 +137,7 @@
 		</table>
 	</p>
     
-    <p align = "center" id="adding_table_field">
+    <p align = "center" id="adding_table_field" class="math">
         8 + 9 = 17
     </p>
     <br>
@@ -193,11 +196,11 @@
 		</tr>
 	</table>
     
-    <p class = "typ">
+    <p class = "type">
         Dowód
     </p>
-    <p class = "ostrzezenie">
-        [wymagana znajomość tematu: algebra]
+    <p class = "warning">
+        [wymagana znajomość tematu: Algebra]
     </p>
     <p>
         uzupełnię w odpowiednim czasie

@@ -7,22 +7,24 @@
 	<link rel="stylesheet" href="../lesson_style.css">
 	
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+	<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=MML_HTMLorMML"></script>
 	<script src="../.scripts/scroll_hide.js"></script>
 	<script src="../.scripts/comment.js"></script>
 	<script src="../.scripts/draggable.js"></script>
+	<script src="../.scripts/math.js"></script>
 </head>
 
-<body class="lekcja">
+<body class="lesson">
   
 <div class = "menu">
-	<a href="../index.html"><button class = "przejscie" style="position: absolute; left: 10px"><span>Strona główna</span></button></a>
-	<a href="../drzewo.html"><button class = "przejscie" style="position: absolute; left: 250px"><span>Drzewo</span></button></a>
-	<a href="kolejnosc_wykonywania_dzialan_short.html"><button class = "przejscie" style="position: relative; left: 80%"><span>Wersja skrócona</span></button></a>
+	<a href="../index.html"><button class = "button_convey" style="position: absolute; left: 10px"><span>Strona główna</span></button></a>
+	<a href="../drzewo.html"><button class = "button_convey" style="position: absolute; left: 250px"><span>Drzewo</span></button></a>
+	<a href="kolejnosc_wykonywania_dzialan_short.html"><button class = "button_convey" style="position: relative; left: 80%"><span>Wersja skrócona</span></button></a>
 </div>
   
-<div class="glowny">
+<div class="main">
 
-	<p class="tytul">
+	<p class="lesson_title">
 		Kolejność wykonywania działań
 	</p>
       
@@ -40,33 +42,33 @@
 
 	<div class="chapter_mask">
 	<div class="chapter_body">
-	<p class = "typ">
+	<p class = "type">
 		Intuicje
 	</p>
 
 	<p>
-		Co zrobić, kiedy napotkamy działanie, w którym występuje więcej niż jeden z symboli +  –  &middot;  : ? Zacznijmy od 
+		Co zrobić, kiedy napotkamy działanie, w którym występuje więcej niż jeden z symboli <span class="math">+  –  &middot;  :</span> ? Zacznijmy od 
 		kolizji plusa z minusem. Weźmy działanie:
 	</p>
 
-	<p align="center">
+	<p align="center" class="math">
 		3 + 6 – 2
 	</p>
 
 	<p>
-		Rozumiemy je tak, że liczbę 3 powiększamy o 6, a potem pomniejszamy o 2. W takim razie liczymy:
+		Rozumiemy je tak, że liczbę <span class="math">3</span> powiększamy o <span class="math">6</span>, a potem pomniejszamy o <span class="math">2</span>. W takim razie liczymy:
 	</p>
 
 	<ul>
-		<li>Powiększamy o 6:&nbsp;&nbsp;&nbsp;&nbsp;3 + 6 = 9</li>
-		<li>Pomniejszamy o 2:&nbsp;&nbsp;&nbsp;&nbsp;9 – 2 = 7</li>
+		<li>Powiększamy o <span class="math">6:&nbsp;&nbsp;&nbsp;&nbsp;3 + 6 = 9</span></li>
+		<li>Pomniejszamy o <span class="math">2:&nbsp;&nbsp;&nbsp;&nbsp;9 – 2 = 7</span></li>
 	</ul>
 
 	<p>
-		Czyli 3 + 6 – 2 = 7. Możemy wziąć nawet dłuższe i bardziej rozbudowane działanie.
+		Czyli <span class="math">3 + 6 – 2 = 7</span>. Możemy wziąć nawet dłuższe i bardziej rozbudowane działanie.
 	</p>
 
-	<p align = "center">
+	<p align = "center" class="math">
 		7 – 2 + 11 – 16 + 5 + 3 + 1 – 5
 	</p>
 
@@ -75,13 +77,13 @@
 	</p>
 
 	<ul>
-		<li>Pomniejszamy o 2:&nbsp;&nbsp;&nbsp;&nbsp;7 – 2 = 5</li>
-		<li>Powiększamy o 11:&nbsp;&nbsp;&nbsp;&nbsp;5 + 11 = 16</li>
-		<li>Pomniejszamy o 16:&nbsp;&nbsp;&nbsp;&nbsp;16 – 16 = 0</li>
-		<li>Powiększamy o 5:&nbsp;&nbsp;&nbsp;&nbsp;0 + 5 = 5</li>
-		<li>Powiększamy o 3:&nbsp;&nbsp;&nbsp;&nbsp;5 + 3 = 8</li>
-		<li>Powiększamy o 1:&nbsp;&nbsp;&nbsp;&nbsp;8 + 1 = 9</li>
-		<li>Pomniejszamy o 5:&nbsp;&nbsp;&nbsp;&nbsp;9 – 5 = 4</li>
+		<li>Pomniejszamy o <span class="math">2:&nbsp;&nbsp;&nbsp;&nbsp;7 – 2 = 5</span></li>
+		<li>Powiększamy o <span class="math">11:&nbsp;&nbsp;&nbsp;&nbsp;5 + 11 = 16</span></li>
+		<li>Pomniejszamy o <span class="math">16:&nbsp;&nbsp;&nbsp;&nbsp;16 – 16 = 0</span></li>
+		<li>Powiększamy o <span class="math">5:&nbsp;&nbsp;&nbsp;&nbsp;0 + 5 = 5</span></li>
+		<li>Powiększamy o <span class="math">3:&nbsp;&nbsp;&nbsp;&nbsp;5 + 3 = 8</span></li>
+		<li>Powiększamy o <span class="math">1:&nbsp;&nbsp;&nbsp;&nbsp;8 + 1 = 9</span></li>
+		<li>Pomniejszamy o <span class="math">5:&nbsp;&nbsp;&nbsp;&nbsp;9 – 5 = 4</span></li>
 	</ul>
 
 	<p>
@@ -89,7 +91,7 @@
 		Działanie 
 	</p>
 
-	<p align = "center">
+	<p align = "center" class="math">
 		7 – 2 + 11 – 16 + 5 + 3 + 1 – 5
 	</p>
 
@@ -97,7 +99,7 @@
 		Możemy więc przekształcić do prostszej postaci – zapisujemy to tak:
 	</p>
 
-	<p align = "center">
+	<p align = "center" class="math">
 		7 – 2 + 11 – 16 + 5 + 3 + 1 – 5 = 5 + 11 – 16 + 5 + 3 + 1 – 5 = 16 – 16 + 5 + 3 + 1 – 5 =<br>
 		= 0 + 5 + 3 + 1 – 5 = 5 + 3 + 1 – 5 = 8 + 1 – 5 = 9 – 5 = 4
 	</p>
@@ -114,7 +116,7 @@
 		Czemu to takie istotne? Weźmy działanie
 	</p>
 
-	<p align="center">
+	<p align="center" class="math">
 		7 – 2 + 3
 	</p>
 
@@ -122,7 +124,7 @@
 		Wykonując je poprawnie, czyli od lewej do prawej, dostajemy
 	</p>
 
-	<p align="center">
+	<p align="center" class="math">
 		7 – 2 + 3 = 5 + 3 = 8
 	</p>
 
@@ -130,7 +132,7 @@
 		Gdyby pokusiło nas obliczyć od prawej do lewej, mielibyśmy
 	</p>
 
-	<p align="center">
+	<p align="center" class="math">
 		7 – 2 + 3 = 7 – 5 = 2
 	</p>
 
@@ -142,15 +144,15 @@
 		Zobaczmy teraz, co się stanie, gdy dołączymy mnożenie. Działanie
 	</p>
 
-	<p align ="center">
+	<p align ="center" class="math">
 		3 &middot; 4 + 5
 	</p>
 
 	<p>
-		rozumiemy tak: trzy razy bierzemy czwórkę i jeszcze dodajemy 5. Liczymy więc:
+		rozumiemy tak: trzy razy bierzemy czwórkę i jeszcze dodajemy <span class="math">5</span>. Liczymy więc:
 	</p>
 
-	<p align ="center">
+	<p align ="center" class="math">
 		3 &middot; 4 + 5 = 12 + 5 = 17
 	</p>
 
@@ -158,7 +160,7 @@
 		Weźmy teraz działanie
 	</p>
 
-	<p align ="center">
+	<p align ="center" class="math">
 		9 + 2 &middot; 4
 	</p>
 
@@ -166,7 +168,7 @@
 		mamy tu na myśli, że dziewiątkę powiększamy o dwa razy wziętą czwórkę. W takim razie:
 	</p>
 
-	<p align ="center">
+	<p align ="center" class="math">
 		9 + 2 &middot; 4 = 9 + 8 = 17
 	</p>
 
@@ -176,11 +178,13 @@
 	</p>
 
 	<ul>
-		<li>3 &middot; 4 – 5 oznacza, że trzy razy bierzemy czwórkę i odejmujemy od tego 5.
-			<p align ="center">3 &middot; 4 – 5 = 12 – 5 = 7</p>
+		<li>
+			<span class="math">3 &middot; 4 – 5</span> oznacza, że trzy razy bierzemy czwórkę i odejmujemy od tego <span class="math">5</span>.
+			<p align ="center"><span class="math">3 &middot; 4 – 5 = 12 – 5 = 7</span></p>
 		</li>
-		<li>9 – 2 &middot; 4 oznacza, że dziewiątkę pomniejszamy o dwa razy wziętą czwórkę.
-			<p align = "center">9 – 2 &middot; 4 = 9 – 8 = 1</p>
+		<li>
+			<span class="math">9 – 2 &middot; 4</span> oznacza, że dziewiątkę pomniejszamy o dwa razy wziętą czwórkę.
+			<p align = "center"><span class="math">9 – 2 &middot; 4 = 9 – 8 = 1</span></p>
 		</li>
 	</ul>
 
@@ -191,33 +195,34 @@
 	</p>
 
 	<ul>
-		<li>Działanie 6 &middot; 5 : 2 zawiera tylko dzielenie i mnożenie. Liczymy od lewej do prawej, czyli najpierw mnożymy 
-		6 &middot; 5, a potem dzielimy wynik przez 2.
-			<p align ="center">6 &middot; 5 : 2 = 30 : 2 = 15</p>
+		<li>
+			Działanie <span class="math">6 &middot; 5 : 2</span> zawiera tylko dzielenie i mnożenie. Liczymy od lewej do prawej, czyli najpierw mnożymy 
+			<span class="math">6 &middot; 5</span>, a potem dzielimy wynik przez <span class="math">2</span>.
+			<p align ="center"><span class="math">6 &middot; 5 : 2 = 30 : 2 = 15</span></p>
 		</li>
 
 		<li>
-			W działaniu 4 : 2 + 2 występuje dzielenie i dodawanie. Najpierw zajmujemy się dzieleniem 4 : 2, a potem dodajemy 2.
-			<p align="center">4 : 2 + 2 = 2 + 2 = 4</p>
+			W działaniu <span class="math">4 : 2 + 2</span> występuje dzielenie i dodawanie. Najpierw zajmujemy się dzieleniem <span class="math">4 : 2</span>, a potem dodajemy <span class="math">2</span>.
+			<p align="center"><span class="math">4 : 2 + 2 = 2 + 2 = 4</span></p>
 		</li>
 
 		<li>
-			Działanie 2 + 7 &middot; 3 – 5 &middot; 4 składa się z dodawania, mnożenia i odejmowania. Najpierw wykonujemy mnożenie, 
-			czyli zajmujemy się 7 &middot; 3 oraz 5 &middot; 4. Potem dodajemy i odejmujemy od lewej do prawej.
-			<p align ="center">2 + 7 &middot; 3 – 5 &middot; 4 = 2 + 21 – 20 = 23 – 20 = 3</p>
+			Działanie <span class="math">2 + 7 &middot; 3 – 5 &middot; 4</span> składa się z dodawania, mnożenia i odejmowania. Najpierw wykonujemy mnożenie, 
+			czyli zajmujemy się <span class="math">7 &middot; 3</span> oraz <span class="math">5 &middot; 4</span>. Potem dodajemy i odejmujemy od lewej do prawej.
+			<p align ="center"><span class="math">2 + 7 &middot; 3 – 5 &middot; 4 = 2 + 21 – 20 = 23 – 20 = 3</span></p>
 		</li>
 
 		<li>
-			6 + 3 &middot; 10 : 5 – 6 : 3 + 5 – 2 : 1 &middot; 4 zawiera wszystkie działania. Zaczynami od mnożenia i dzielenia, czyli 
-			najpierw rozbrajamy fragmenty 3 &middot; 10 : 5,  6 : 3 oraz 2 : 1 &middot; 4. W tych cząstkach dzielenie i mnożenie 
+			<span class="math">6 + 3 &middot; 10 : 5 – 6 : 3 + 5 – 2 : 1 &middot; 4</span> zawiera wszystkie działania. Zaczynami od mnożenia i dzielenia, czyli 
+			najpierw rozbrajamy fragmenty <span class="math">3 &middot; 10 : 5,  6 : 3</span> oraz <span class="math">2 : 1 &middot; 4</span>. W tych cząstkach dzielenie i mnożenie 
 			wykonujemy od lewej do prawej. Na koniec zostaje nam dodawanie i odejmowanie od lewej do prawej.
-			<p align = "center">6 + 3 &middot; 10 : 5 – 6 : 3 + 5 – 2 : 1 &middot; 4 = <br>
-			= 6 + 30 : 5 – 2 + 5 – 2 &middot; 4 = <br>
-			= 6 + 6 – 2 + 5 – 8 =<br>
-			= 12 – 2 + 5 – 8 = <br>
-			= 10 + 5 – 8 = <br>
-			= 15 – 8 = <br>
-			= 7
+			<p align = "center"><span class="math">6 + 3 &middot; 10 : 5 – 6 : 3 + 5 – 2 : 1 &middot; 4 = </span><br>
+			<span class="math">= 6 + 30 : 5 – 2 + 5 – 2 &middot; 4 = </span><br>
+			<span class="math">= 6 + 6 – 2 + 5 – 8 =</span><br>
+			<span class="math">= 12 – 2 + 5 – 8 = </span><br>
+			<span class="math">= 10 + 5 – 8 = </span><br>
+			<span class="math">= 15 – 8 = </span><br>
+			<span class="math">= 7</span>
 			</p>
 		</li>
 	</ul>
@@ -235,38 +240,38 @@
 
 	<ul>
 		<li>
-			Czerwony kapturek miał 1 babcię. Gdy wilk zjadł babcię, czerwony kapturek miał 0 babć. Z pomocą przyszedł myśliwy, 
-			który wyciągnął babcię z brzucha wilka. Czerwony kapturek znowu ma 1 babcię.
-			<p align ="center">1 – 1 + 1 = 0 + 1 = 1</p>
+			Czerwony kapturek miał <span class="math">1</span> babcię. Gdy wilk zjadł babcię, czerwony kapturek miał <span class="math">0</span> babć. Z pomocą przyszedł myśliwy, 
+			który wyciągnął babcię z brzucha wilka. Czerwony kapturek znowu ma <span class="math">1</span> babcię.
+			<p align ="center" class="math">1 – 1 + 1 = 0 + 1 = 1</p>
 		</li>
 
 		<li>
-			Liczba oczu pająka wynosi 4. Dwugłowy pająk ma więc 8 gałek ocznych. Gdy postawisz naprzeciw siebie 3 dwugłowe pająki i 
-			5 cyklopów, będzie na ciebie patrzyło 29 sztuk oczu.
-			<p align="center">2 &middot; 4 &middot; 3 + 1 &middot; 5 = 8 &middot; 3 + 5 = 24 + 5 = 29</p>
+			Liczba oczu pająka wynosi <span class="math">4</span>. Dwugłowy pająk ma więc <span class="math">8</span> gałek ocznych. Gdy postawisz naprzeciw siebie <span class="math">3</span> dwugłowe pająki i 
+			<span class="math">5</span> cyklopów, będzie na ciebie patrzyło <span class="math">29</span> sztuk oczu.
+			<p align="center"><span class="math">2 &middot; 4 &middot; 3 + 1 &middot; 5 = 8 &middot; 3 + 5 = 24 + 5 = 29</span></p>
 		</li>
 
 		<li>
-			Stefan znalazł się w tłumie 4 szczęśliwców, którym dobrodziej rozda zapas 20 jabłek z działki. Stefan załapał się na 
-			5 jabłek. Wracając do domu, natknął się na jabłoń. Z każdej z trzech gałęzi zerwał 2 jabłka, okradł więc jabłoń z 6 
-			dzieci. Po drodze zjadł 2 jabłka, więc do domu doniósł 9 jabłek.
-			<p align="center">20 : 4 + 3 &middot; 2 – 2 = 5 + 6 – 2 = 11 – 2 = 9</p>
+			Stefan znalazł się w tłumie <span class="math">4</span> szczęśliwców, którym dobrodziej rozda zapas <span class="math">20</span> jabłek z działki. Stefan załapał się na 
+			<span class="math">5</span> jabłek. Wracając do domu, natknął się na jabłoń. Z każdej z trzech gałęzi zerwał <span class="math">2</span> jabłka, okradł więc jabłoń z <span class="math">6</span> 
+			dzieci. Po drodze zjadł <span class="math">2</span> jabłka, więc do domu doniósł <span class="math">9</span> jabłek.
+			<p align="center"><span class="math">20 : 4 + 3 &middot; 2 – 2 = 5 + 6 – 2 = 11 – 2 = 9</span></p>
 		</li>
 
 		<li>
 			Każdego roku Maciuś dostawał na urodziny, imieniny, dzień dziecka i Boże Narodzenie od mamy, cioci i babci po dwie pary 
-			majtek. Maciuś gromadził prezenty przez 20 lat, aż w końcu postanowił otworzyć sklep z bielizną. Połowę towaru wykupił 
-			bogaty biznesmen z Ameryki. Następnie do sklepu wkroczyło 4 fanów odzieży męskiej i każdy z nich kupił 30 par majtek. 
-			W nocy sklep został okradziony, w wyniku czego zniknęło 100 par majtek. Maciusiowi pozostało więc 20 par, które zachował 
+			majtek. Maciuś gromadził prezenty przez <span class="math">20</span> lat, aż w końcu postanowił otworzyć sklep z bielizną. Połowę towaru wykupił 
+			bogaty biznesmen z Ameryki. Następnie do sklepu wkroczyło <span class="math">4</span> fanów odzieży męskiej i każdy z nich kupił <span class="math">30</span> par majtek. 
+			W nocy sklep został okradziony, w wyniku czego zniknęło 100 par majtek. Maciusiowi pozostało więc <span class="math">20</span> par, które zachował 
 			na pamiątkę.
 			<p align="center">
-				4 &middot; 3 &middot; 2 &middot; 20 : 2 – 4 &middot; 30 – 100 = <br>
-				= 12 &middot; 2 &middot; 20 : 2 – 4 &middot; 30 – 100 = <br>
-				= 24 &middot; 20 : 2 – 4 &middot; 30 – 100 =<br>
-				=  480 : 2 – 4 &middot; 30 – 100 = <br>
-				= 240 – 120 – 100 = <br>
-				= 120 – 100 = <br>
-				= 20
+				<span class="math">4 &middot; 3 &middot; 2 &middot; 20 : 2 – 4 &middot; 30 – 100 = </span><br>
+				<span class="math">= 12 &middot; 2 &middot; 20 : 2 – 4 &middot; 30 – 100 = </span><br>
+				<span class="math">= 24 &middot; 20 : 2 – 4 &middot; 30 – 100 =</span><br>
+				<span class="math">=  480 : 2 – 4 &middot; 30 – 100 = </span><br>
+				<span class="math">= 240 – 120 – 100 = </span><br>
+				<span class="math">= 120 – 100 = </span><br>
+				<span class="math">= 20</span>
 			</p>
 		</li>
 	</ul>
@@ -283,7 +288,7 @@
 
 	<div class="chapter_mask">
 	<div class="chapter_body">
-	<p class ="typ">
+	<p class ="type">
 		Intuicje
 	</p>
 
@@ -297,14 +302,14 @@
 	</p>
 
 	<p>
-		W ciągu jednego roku wpuszcza się 7 + 7 = 14 dzieci, <span class="comment" id="I po problemie.">więc w ciągu 5 lat będzie to 
-		kumulacja 70 dzieci.</span> Napotkaliśmy obliczenia, w których najpierw należy wykonać dodawanie, a potem mnożenie. Jak zapisać 
-		takie działanie? Zgodnie z umową zapis 5 &middot; 7 + 7 wymaga najpierw mnożenia, a potem dodawania – takie działanie daje wynik 42. 
+		W ciągu jednego roku wpuszcza się <span class="math">7 + 7 = 14</span> dzieci, <span class="comment" id="I po problemie.">więc w ciągu <span class="math">5</span> lat będzie to 
+		kumulacja <span class="math">70</span> dzieci.</span> Napotkaliśmy obliczenia, w których najpierw należy wykonać dodawanie, a potem mnożenie. Jak zapisać 
+		takie działanie? Zgodnie z umową zapis <span class="math">5 &middot; 7 + 7</span> wymaga najpierw mnożenia, a potem dodawania – takie działanie daje wynik <span class="math">42</span>. 
 		<span class="comment" id="Chcemy przecież oddać 70 dzieci.">Nie tego chcemy</span>. 
 		Z pomocą przychodzą nawiasy. Działanie, o które nam chodzi, będzie wyglądało tak:
 	</p>
 
-	<p align ="center">
+	<p align ="center" class="math">
 		5 &middot; (7 + 7)
 	</p>
 
@@ -332,15 +337,15 @@
 	</p>
 
 	<ul>
-		<li>5 &middot; (3 + 4) – 10 : (2 + 3) = 5 &middot; 7 – 10 : 5 = 35 – 2 = 33</li>
+		<li><span class="math">5 &middot; (3 + 4) – 10 : (2 + 3) = 5 &middot; 7 – 10 : 5 = 35 – 2 = 33</span></li>
 		<li>
-			2 &middot; (3 + (7 + 3) : 2 + 3 &middot; (1 + 2) : 9) = 2 &middot; (3 + 10 : 2 + 3 &middot; 3 : 9) = <br>
-			= 2 &middot; (3 + 5 + 9 : 9) = 2 &middot; (3 + 5 + 1) = 2 &middot; (8 + 1) = 2 &middot; 9 = 18</li>
+			<span class="math">2 &middot; (3 + (7 + 3) : 2 + 3 &middot; (1 + 2) : 9) = 2 &middot; (3 + 10 : 2 + 3 &middot; 3 : 9) = <br>
+			= 2 &middot; (3 + 5 + 9 : 9) = 2 &middot; (3 + 5 + 1) = 2 &middot; (8 + 1) = 2 &middot; 9 = 18</span></li>
 		<li>
-			2 &middot; (2 + 2 &middot; (2 + 2 &middot; (2 + 2 &middot; (2 + 2)))) =
+			<span class="math">2 &middot; (2 + 2 &middot; (2 + 2 &middot; (2 + 2 &middot; (2 + 2)))) =
 			2 &middot; (2 + 2 &middot; (2 + 2 &middot; (2 + 2 &middot; 4))) = <br>
 			= 2 &middot; (2 + 2 &middot; (2 + 2 &middot; (2 + 8))) = 2 &middot; (2 + 2 &middot; (2 + 2 &middot; 10)) = <br>
-			= 2 &middot; (2 + 2 &middot; (2 +20)) = 2 &middot; (2 + 2 &middot; 22) = 2 &middot; (2 + 44) = 2 &middot; 46 = 92
+			= 2 &middot; (2 + 2 &middot; (2 +20)) = 2 &middot; (2 + 2 &middot; 22) = 2 &middot; (2 + 44) = 2 &middot; 46 = 92</span>
 		</li>
 	</ul>
 
@@ -349,21 +354,21 @@
 	</p>
 
 	<p>
-		Niektórzy uważają, że zapis z użyciem wielu nawiasów, np. 2 + 2 &middot; (2 + 2 &middot; (2 + 2 &middot; (2 + 2))) jest 
+		Niektórzy uważają, że zapis z użyciem wielu nawiasów, np. <span class="math">2 + 2 &middot; (2 + 2 &middot; (2 + 2 &middot; (2 + 2)))</span> jest 
 		nieprzejrzysty, ponieważ nie widać, gdzie dany nawias się zaczyna, a gdzie kończy. Powyższe wyrażenie można zapisać w inny 
 		sposób:
 	</p>
 
-	<p align ="center">
+	<p align ="center" class="math">
 		2 + 2 &middot; {2 + 2 &middot; [2 + 2 &middot; (2 + 2)]}
 	</p>
 
 	<p>
 		Każdy z tych bazgrołów ma swoją nazwę:
 		<ul>
-			<li>(   ) to <i>nawias okrągły</i></li>
-			<li>[   ] to <i>nawias kwadratowy</i></li>
-			<li>{   } to <i>nawias klamrowy</i></li>
+			<li><span class="math">(   )</span> to <i>nawias okrągły</i></li>
+			<li><span class="math">[   ]</span> to <i>nawias kwadratowy</i></li>
+			<li><span class="math">{   }</span> to <i>nawias klamrowy</i></li>
 		</ul>
 		Gdy stosujemy taki zapis, najgłębiej położony będzie nawias okrągły, na zewnętrz będzie nawias kwadratowy. 
 		Gdy mamy trzy nawiasy, jak w przykładzie powyżej, nawias klamrowy będzie najbardziej zewnętrzny.
@@ -383,7 +388,7 @@
 		Najlepiej stosować zawsze nawiasy okrągłe. Gdy robi się ich dużo, te bardziej zewnętrzne mogą być po prostu większe.
 	</p>
 
-	<p align ="center">
+	<p align ="center" class="math">
 		2+2 &middot; (2+2 &middot; (2+2 &middot; (2+2)))
 	</p>
 
@@ -399,7 +404,7 @@
 
 	<div class="chapter_mask">
 	<div class="chapter_body">
-	<p class="typ">
+	<p class="type">
 		Intuicje
 	</p>
 
@@ -436,10 +441,10 @@
 
 	<p>	
 		Zatroskany pan Janusz upewnia się, czy trzęsienie ziemi nie pochłonęło któregoś z kafli łazienkowych. 
-		Przed katastrofą liczba kafli wynosiła 4 &middot; 5 = 20. Pan Janusz liczy, że teraz liczba kafli wynosi
+		Przed katastrofą liczba kafli wynosiła <span class="math">4 &middot; 5 = 20</span>. Pan Janusz liczy, że teraz liczba kafli wynosi
 	</p>
 
-	<p align ="center">
+	<p align ="center" class="math">
 		4 &middot; 3 + 4 &middot; 2 = 12 + 8 = 20
 	</p>
 
@@ -451,28 +456,28 @@
 		Naszą obserwację można zapisać w taki sposób:
 	</p>
 
-	<p align="center">
+	<p align="center" class="math">
 		4 &middot; 5 = 4 &middot; (3 + 2) = 4 &middot; 3 + 4 &middot; 2
 	</p>
 
 	<p>
 		Zależność ta jest bardzo ogólna. Gdy chcemy pomnożyć pewną liczbę przez sumę, możemy rozdzielić to mnożenie na dodawanie. 
-		Tak więc 7 &middot; 9 = (3 + 4) &middot; 9 = 3 &middot; 9 + 4 &middot; 9. Nie jest to specjalnie odkrywcze. Wziąć 
-		siedem dziewiątek to to samo, co wziąć trzy dziewiątki, a potem jeszcze 4 dziewiątki.
+		Tak więc <span class="math">7 &middot; 9 = (3 + 4) &middot; 9 = 3 &middot; 9 + 4 &middot; 9</span>. Nie jest to specjalnie odkrywcze. Wziąć 
+		siedem dziewiątek to to samo, co wziąć trzy dziewiątki, a potem jeszcze <span class="math">4</span> dziewiątki.
 	</p>
 
 	<ul>
-		<li>(3 + 4) &middot; 9 = 7 &middot; 9 = 9 + 9 + 9 + 9 + 9 + 9 + 9</li>
-		<li>3 &middot; 9 + 4 &middot; 9 = 9 + 9 + 9&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;&nbsp;&nbsp;&nbsp;9 + 9 + 9 + 9</li>
+		<li class="math">(3 + 4) &middot; 9 = 7 &middot; 9 = 9 + 9 + 9 + 9 + 9 + 9 + 9</li>
+		<li class="math">3 &middot; 9 + 4 &middot; 9 = 9 + 9 + 9&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;&nbsp;&nbsp;&nbsp;9 + 9 + 9 + 9</li>
 	</ul>
 
 	<p>
 		Z powodu występowania takiej zależności mówimy, że mnożenie jest rozdzielne względem dodawania. Jest to dość przydatne,
 		gdy chcemy obliczyć iloczyn wielkich liczb i nie mamy ochoty wykonywać tego w słupku.
 		<ul>
-			<li>23 &middot; 7 = (20 + 3) &middot; 7 = 20 &middot; 7 + 3 &middot; 7 = 140 + 21 = 161</li>
-			<li>4 &middot; 124 = 4 &middot; (100 + 20 + 4) = 4 &middot; 100 + 4 &middot; 20 + 4 &middot; 4 = 400 + 80 + 16 = 496</li>
-			<li>34 &middot; 23 = (30 + 4) &middot; 23 = 30 &middot 23 + 4 &middot 23 = 30 &middot; (20 + 3) + 4 &middot; (20 + 3) =<br>
+			<li class="math">23 &middot; 7 = (20 + 3) &middot; 7 = 20 &middot; 7 + 3 &middot; 7 = 140 + 21 = 161</li>
+			<li class="math">4 &middot; 124 = 4 &middot; (100 + 20 + 4) = 4 &middot; 100 + 4 &middot; 20 + 4 &middot; 4 = 400 + 80 + 16 = 496</li>
+			<li class="math">34 &middot; 23 = (30 + 4) &middot; 23 = 30 &middot 23 + 4 &middot 23 = 30 &middot; (20 + 3) + 4 &middot; (20 + 3) =<br>
 			= 30 &middot; 20 + 30 &middot; 3 + 4 &middot; 20 + 4 &middot; 3 = 600 + 90 + 80 + 12 = 782</li>
 		</ul>
 	</p>

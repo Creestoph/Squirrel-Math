@@ -5,62 +5,66 @@
 	<title>Kolejność wykonywania działań</title>
 	<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 	<link rel="stylesheet" href="../lesson_style.css">
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+	<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=MML_HTMLorMML"></script>
 	<script src="../.scripts/draggable.js"></script>
+	<script src="../.scripts/math.js"></script>
 </head>
 
-<body class="lekcja">
+<body class="lesson">
   
 <div class = "menu">
-	<a href="../index.html"><button class = "przejscie" style="position: absolute; left: 10px"><span>Strona główna</span></button></a>
-	<a href="../drzewo.html"><button class = "przejscie" style="position: absolute; left: 250px"><span>Drzewo</span></button></a>
-	<a href="kolejnosc_wykonywania_dzialan.html"><button class = "przejscie" style="position: relative; left: 80%"><span>Wersja pełna</span></button></a>
+	<a href="../index.html"><button class = "button_convey" style="position: absolute; left: 10px"><span>Strona główna</span></button></a>
+	<a href="../drzewo.html"><button class = "button_convey" style="position: absolute; left: 250px"><span>Drzewo</span></button></a>
+	<a href="kolejnosc_wykonywania_dzialan.html"><button class = "button_convey" style="position: relative; left: 80%"><span>Wersja pełna</span></button></a>
 </div>
   
-<div class="glowny">
+<div class="main">
 
-	<p class="tytul_short">
+	<p class="lesson_title_short">
 		Kolejność wykonywania działań
 	</p>
-	<p class="podtytul">
+	<p class="lesson_subtitle">
 		w pigułce
 	</p>
       
-	<p class = "typ">
+	<p class = "type">
 		Intuicje
 	</p>
   
 	<p>
-		Często w matematyce pojawiają się wyrażenia, które zawierają więcej niż jeden z symboli +  –  &middot;  : . Wtedy, aby je
+		Często w matematyce pojawiają się wyrażenia, które zawierają więcej niż jeden z symboli <span class="math">+  –  &middot;  :</span> . Wtedy, aby je
 		obliczyć, musimy wykonać <i>przekształcenia</i>, czyli uproszczenia obliczeń. Robimy to zgodnie z regułą: 
 		najpierw wykonujemy mnożenie i dzielenie w kolejności występowania, a następnie dodawanie i odejmowanie w kolejności występowania.
-		Przykładowo aby poznać wynik działania 6 + 3 &middot; 10 : 5 – 6 : 3 + 5 – 2 : 1 &middot; 4 postępujemy następująco:
+		Przykładowo aby poznać wynik działania <span class="math">6 + 3 &middot; 10 : 5 – 6 : 3 + 5 – 2 : 1 &middot; 4</span> postępujemy następująco:
 	</p>
 
 	<ul>
 		<li>
-			Na początku wykonujemy wszystkie mnożenia i dzielenia występujące w wyrażeniu. Wyróżniamy więc cząstki 3 &middot; 10 : 5,
-			&nbsp;&nbsp;&nbsp; 6 : 3 &nbsp;&nbsp; oraz &nbsp;&nbsp; 2 : 1 &middot; 4. Każdą z nich obliczamy od lewej doprawej (w kolejności
+			Na początku wykonujemy wszystkie mnożenia i dzielenia występujące w wyrażeniu. Wyróżniamy więc cząstki <span class="math">3 &middot; 10 : 5</span>,
+			&nbsp;&nbsp;&nbsp; <span class="math">6 : 3</span> &nbsp;&nbsp; oraz &nbsp;&nbsp; <span class="math">2 : 1 &middot; 4</span>. Każdą z nich obliczamy od lewej doprawej (w kolejności
 			występowania), czyli
 			<ul>
-				<li>3 &middot; 10 : 5 = 30 : 5 = 6</li>
-				<li>6 : 3 = 2</li>
-				<li>2 : 1 &middot; 4 = 2 &middot; 4 = 8</li>
+				<li class="math">3 &middot; 10 : 5 = 30 : 5 = 6</li>
+				<li class="math">6 : 3 = 2</li>
+				<li class="math">2 : 1 &middot; 4 = 2 &middot; 4 = 8</li>
 			</ul>
 		</li>
 		<li>
-			Otrzymujemy uproszczoną postać wyrażenia: 6 + 3 &middot; 10 : 5 – 6 : 3 + 5 – 2 : 1 &middot; 4 = 6 + 6 - 2 + 5 - 8. Teraz 
+			Otrzymujemy uproszczoną postać wyrażenia: <span class="math">6 + 3 &middot; 10 : 5 – 6 : 3 + 5 – 2 : 1 &middot; 4 = 6 + 6 - 2 + 5 - 8</span>. Teraz 
 			wykonujemy dodawanie i odejmowanie od lewej do prawej (w kolejności występowania), a więc:
 			<ul>
-				<li>Zaczynamy od liczby 6. Zwiększamy ją o 6 i otrzymujemy 12</li>
-				<li>Liczbę 12 zmniejszamy o 2 i dostajemy 10</li>
-				<li>Liczbę 10 zwiększamy o 5 i dostajemy 15</li>
-				<li>Liczbę 15 zmniejszamy o 8 i dostajemy 7</li>
+				<li>Zaczynamy od liczby <span class="math">6</span>. Zwiększamy ją o <span class="math">6</span> i otrzymujemy <span class="math">12</span></li>
+				<li>Liczbę <span class="math">12</span> zmniejszamy o <span class="math">2</span> i dostajemy <span class="math">10</span></li>
+				<li>Liczbę <span class="math">10</span> zwiększamy o <span class="math">5</span> i dostajemy <span class="math">15</span></li>
+				<li>Liczbę <span class="math">15</span> zmniejszamy o <span class="math">8</span> i dostajemy <span class="math">7</span></li>
 			</ul>
 		</li>
 	</ul>
 
 	<p>
-		Wynikiem działania jest 7.
+		Wynikiem działania jest <span class="math">7</span>.
 	</p>
 
 	<p>
@@ -70,9 +74,9 @@
 	</p>
 
 	<p>
-		Gdy chcemy wymusić pierwszeństwo działania wiążącego słabiej, stosujemy nawiasy. Działanie 5 &middot; (7 + 7) wykonujemy, 
-		zaczynając od wyrażenia w nawiasie, a więc 5 &middot; (7 + 7) = 5 &middot; 14 = 70. Bez nawiasu działanie obliczalibyśmy jako
-		5 &middot; 7 + 7 = 35 + 7 = 42. Ogólna reguła postępowania ze złożonymi działaniami jest następująca:
+		Gdy chcemy wymusić pierwszeństwo działania wiążącego słabiej, stosujemy nawiasy. Działanie <span class="math">5 &middot; (7 + 7)</span> wykonujemy, 
+		zaczynając od wyrażenia w nawiasie, a więc <span class="math">5 &middot; (7 + 7) = 5 &middot; 14 = 70</span>. Bez nawiasu działanie obliczalibyśmy jako
+		<span class="math">5 &middot; 7 + 7 = 35 + 7 = 42</span>. Ogólna reguła postępowania ze złożonymi działaniami jest następująca:
 	</p>
 
 	<p class = "formula">
@@ -89,11 +93,11 @@
 	</p>
 
 	<ul>
-		<li>5 &middot; (3 + 4) – 10 : (2 + 3) = 5 &middot; 7 – 10 : 5 = 35 – 2 = 33</li>
-		<li>
+		<li class="math">5 &middot; (3 + 4) – 10 : (2 + 3) = 5 &middot; 7 – 10 : 5 = 35 – 2 = 33</li>
+		<li class="math">
 			2 &middot; (3 + (7 + 3) : 2 + 3 &middot; (1 + 2) : 9) = 2 &middot; (3 + 10 : 2 + 3 &middot; 3 : 9) = <br>
 			= 2 &middot; (3 + 5 + 9 : 9) = 2 &middot; (3 + 5 + 1) = 2 &middot; (8 + 1) = 2 &middot; 9 = 18</li>
-		<li>
+		<li class="math">
 			2 &middot; (2 + 2 &middot; (2 + 2 &middot; (2 + 2 &middot; (2 + 2)))) =
 			2 &middot; (2 + 2 &middot; (2 + 2 &middot; (2 + 2 &middot; 4))) = <br>
 			= 2 &middot; (2 + 2 &middot; (2 + 2 &middot; (2 + 8))) = 2 &middot; (2 + 2 &middot; (2 + 2 &middot; 10)) = <br>
@@ -101,24 +105,24 @@
 		</li>
 	</ul>
 
-	<p class="typ">
+	<p class = "type">
 		Rozszerzenie
 	</p>
 
 	<p>
-		Ponieważ zapis z użyciem wielu nawiasów, np. 2 + 2 &middot; (2 + 2 &middot; (2 + 2 &middot; (2 + 2))) jest 
+		Ponieważ zapis z użyciem wielu nawiasów, np. <span class="math">2 + 2 &middot; (2 + 2 &middot; (2 + 2 &middot; (2 + 2)))</span> jest 
 		nieprzejrzysty, czasem stosuje się zapis
 	</p>
 
-	<p align ="center">
+	<p align ="center" class="math">
 		2 + 2 &middot; {2 + 2 &middot; [2 + 2 &middot; (2 + 2)]}
 	</p>
 
 	<p>
 		<ul>
-			<li>(   ) to <i>nawias okrągły</i></li>
-			<li>[   ] to <i>nawias kwadratowy</i></li>
-			<li>{   } to <i>nawias klamrowy</i></li>
+			<li><span class="math">(   )</span> to <i>nawias okrągły</i></li>
+			<li><span class="math">[   ]</span> to <i>nawias kwadratowy</i></li>
+			<li><span class="math">{   }</span> to <i>nawias klamrowy</i></li>
 		</ul>
 	</p>
 
@@ -129,11 +133,11 @@
 		Najlepiej stosować zawsze nawiasy okrągłe. Gdy robi się ich dużo, te bardziej zewnętrzne mogą być po prostu większe.
 	</p>
 
-	<p align ="center">
+	<p align ="center" class="math">
 		2+2 &middot; (2+2 &middot; (2+2 &middot; (2+2)))
 	</p>
 
-	<p class="typ">
+	<p class = "type">
 		Intuicje
 	</p>
 
@@ -143,30 +147,31 @@
 	</p>
 
 	<br>
-  <p align = "center">
-	<table class = "tiles">
-	  <tr><td></td><td></td><td></td><td></td><td></td></tr>
-	  <tr><td></td><td></td><td></td><td></td><td></td></tr>
-	  <tr><td></td><td></td><td></td><td></td><td></td></tr>
-	  <tr><td></td><td></td><td></td><td></td><td></td></tr>
-	</table>
-  </p>
 	
-	<p align ="center">
+	<p align = "center">
+		<table class = "tiles">
+			<tr><td></td><td></td><td></td><td></td><td></td></tr>
+			<tr><td></td><td></td><td></td><td></td><td></td></tr>
+			<tr><td></td><td></td><td></td><td></td><td></td></tr>
+			<tr><td></td><td></td><td></td><td></td><td></td></tr>
+		</table>
+	</p>
+	
+	<p align ="center" class="math">
 		4 &middot; 5 = 20
 	</p>
 
 	<br>
-  <p align = "center">
-	<table class = "tiles">
-	  <tr><td></td><td></td><td></td><td style = "background: white; width: 20px; border-top: none; border-bottom:none;"></td><td></td><td></td></tr>
-	  <tr><td></td><td></td><td></td><td style = "background: white; width: 20px; border-top: none; border-bottom:none;"></td><td></td><td></td></tr>
-	  <tr><td></td><td></td><td></td><td style = "background: white; width: 20px; border-top: none; border-bottom:none;"></td><td></td><td></td></tr>
-	  <tr><td></td><td></td><td></td><td style = "background: white; width: 20px; border-top: none; border-bottom:none;"></td><td></td><td></td></tr>
-	</table>
-  </p>
+	<p align = "center">
+		<table class = "tiles">
+			<tr><td></td><td></td><td></td><td style = "background: white; width: 20px; border-top: none; border-bottom:none;"></td><td></td><td></td></tr>
+			<tr><td></td><td></td><td></td><td style = "background: white; width: 20px; border-top: none; border-bottom:none;"></td><td></td><td></td></tr>
+			<tr><td></td><td></td><td></td><td style = "background: white; width: 20px; border-top: none; border-bottom:none;"></td><td></td><td></td></tr>
+			<tr><td></td><td></td><td></td><td style = "background: white; width: 20px; border-top: none; border-bottom:none;"></td><td></td><td></td></tr>
+		</table>
+	</p>
 
-	<p align="center">
+	<p align="center" class="math">
 		4 &middot; 3 + 4 &middot; 2 = 12 + 8 = 20
 	</p>
 	<br>
@@ -175,7 +180,7 @@
 		Naszą obserwację można zapisać w taki sposób:
 	</p>
 
-	<p align="center">
+	<p align="center" class="math">
 		4 &middot; 5 = 4 &middot; (3 + 2) = 4 &middot; 3 + 4 &middot; 2
 	</p>
 
@@ -184,15 +189,14 @@
 		Z powodu występowania takiej zależności mówimy, że mnożenie jest rozdzielne względem dodawania. Jest to dość przydatne,
 		do obliczania iloczynów wielkich liczb bez użycia mnożenia w słupku.
 		<ul>
-			<li>23 &middot; 7 = (20 + 3) &middot; 7 = 20 &middot; 7 + 3 &middot; 7 = 140 + 21 = 161</li>
-			<li>4 &middot; 124 = 4 &middot; (100 + 20 + 4) = 4 &middot; 100 + 4 &middot; 20 + 4 &middot; 4 = 400 + 80 + 16 = 496</li>
-			<li>34 &middot; 23 = (30 + 4) &middot; 23 = 30 &middot 23 + 4 &middot 23 = 30 &middot; (20 + 3) + 4 &middot; (20 + 3) =<br>
+			<li class="math">23 &middot; 7 = (20 + 3) &middot; 7 = 20 &middot; 7 + 3 &middot; 7 = 140 + 21 = 161</li>
+			<li class="math">4 &middot; 124 = 4 &middot; (100 + 20 + 4) = 4 &middot; 100 + 4 &middot; 20 + 4 &middot; 4 = 400 + 80 + 16 = 496</li>
+			<li class="math">34 &middot; 23 = (30 + 4) &middot; 23 = 30 &middot 23 + 4 &middot 23 = 30 &middot; (20 + 3) + 4 &middot; (20 + 3) =<br>
 			= 30 &middot; 20 + 30 &middot; 3 + 4 &middot; 20 + 4 &middot; 3 = 600 + 90 + 80 + 12 = 782</li>
 		</ul>
 	</p>
   
 </div>
-
 
 </body>
 

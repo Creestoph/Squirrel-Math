@@ -60,6 +60,11 @@ function element_mathML(input)
         pos += 3;
         result = "<mi>></mi>";
     }
+	else if (input.substring(pos, pos + 6) == '&nbsp;')
+    {
+        pos += 5;
+        result = "<mi>&nbsp;</mi>";
+    }
     else if (input[pos] == '*' || input[pos] == '∙')
         result = "<mo>&middot;</mo>";
     else if (input[pos] == '∶' || input[pos] == ':')

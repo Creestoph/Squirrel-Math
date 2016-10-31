@@ -1,4 +1,4 @@
-body.lekcja
+body.lesson
 {
 	/*background-color: #8A1010;*/
 	background-image: url(".images/background.jpg");
@@ -9,7 +9,7 @@ body.lekcja
 	margin: 0;
 }
 
-body.drzewo
+body.tree
 {
 	background-color: #FFFFFF;
 }
@@ -38,7 +38,7 @@ a:active
 	text-decoration: none;
 }
 
-div.glowny
+div.main
 {
 	color: #000000; 
 	background: #FEFEFE; 
@@ -138,7 +138,7 @@ p:not(.printable)
 	font-size: 24px; /*24 to standard chyba*/
 }
 
-p.tytul
+p.lesson_title
 {
 	text-align: center;
 	font-size: 50px;
@@ -146,7 +146,7 @@ p.tytul
 	margin: 50px;
 }
 
-p.tytul_short
+p.lesson_title_short
 {
 	text-align: center;
 	font-size: 50px;
@@ -155,7 +155,7 @@ p.tytul_short
 	margin-bottom: 1px;
 }
 
-p.podtytul
+p.lesson_subtitle
 {
 	text-align: center;
 	font-size: 25px;
@@ -164,7 +164,7 @@ p.podtytul
 	margin-bottom: 50px;
 }
 
-p.typ
+p.type
 {
 	font-family: calibri;
 	font-size: 31px;
@@ -174,7 +174,7 @@ p.typ
 	text-shadow: 2px 2px #CCCCCC;
 }
 
-p.ostrzezenie
+p.warning
 {
 	font-family: arial;
 	font-size: 14px;
@@ -285,21 +285,21 @@ table
 	font-size: 23px;
 }
 
-table.tabelka
+table.operation_table
 {
 	text-align: center;
 	border-collapse: collapse;
 	border-style: hidden;
 }
 
-table.tabelka td
+table.operation_table td
 {
 	height: 34px;
 	width: 32px;
 	border: 1px solid black;
 }
 
-table.tabelka th 
+table.operation_table th 
 {
     height: 34px;
     width: 32px;
@@ -354,7 +354,7 @@ button:focus
 	outline: none;
 }
 
-button.przejscie
+button.button_convey
 {
 	background-color: rgba(0, 0, 0, 0);
 	border: none;
@@ -371,19 +371,19 @@ button.przejscie
 	margin: 5px;
 }
 
-button.przejscie:hover
+button.button_convey:hover
 {
 	box-shadow: none;
 }
 
-button.przejscie span 
+button.button_convey span 
 {
 	display: inline-block;
 	position: relative;
 	transition: 0.5s;
 }
 
-button.przejscie span:after 
+button.button_convey span:after 
 {
 	content: '»';
 	position: absolute;
@@ -393,19 +393,19 @@ button.przejscie span:after
 	transition: 0.5s;
 }
 
-button.przejscie:hover span 
+button.button_convey:hover span 
 {
 	padding-right: 25px;
 	text-shadow: 2px 2px #CCCCCC;
 }
 
-button.przejscie:hover span:after 
+button.button_convey:hover span:after 
 {
 	opacity: 1;
 	right: 0;
 }
 
-button.przejscie span a
+button.button_convey span a
 {
 	color: black;
 }
