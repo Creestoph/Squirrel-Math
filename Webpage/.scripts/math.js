@@ -40,6 +40,14 @@ function element_mathML(input)
         result += "<mo linebreak='newline'></mo>";
         pos += 3;
     }
+	else if (input.substring(pos, pos+7)=='Newton(')
+	{
+		pos+=7; //Newton(
+		result+="<mfenced open='(' close=')' separators=''><mtable><mtr><mtd>" + element_mathML(input);
+		pos+=2; //,
+		result+="</mtd></mtr><mtr><mtd>" + element_mathML(input) + "</mtd></mtr></mtable></mfenced>";
+		pos++; //)
+	}
     else if (input[pos] == '+' || input[pos] == '-' || input[pos] == ':' || input[pos] == '=')
         result = "<mo>" + input[pos] + "</mo>";
     else if (input.substring(pos, pos + 4) == '&lt;')

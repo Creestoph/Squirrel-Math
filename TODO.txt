@@ -1,7 +1,7 @@
 (8)	Znormalizowaæ wyœwietlanie liczb i elementów matematycznych w lekcjach (mathml / zwyk³y tekst)
 (8)	Ujednoliciæ nazwy zmiennych (klas, id) w kodzie
 (7)	Stworzyæ skrypty do odejmowania, mno¿enia, dzielenia w s³upku
-(7)	Stworzyæ edytor lekcji w HTML
+(7)	Wygenerowaæ grafiki do u³amków zwyk³ych, dziesiêtnych, procentów i liczb ujemnych
 (6)	Ogarn¹æ wyœwietlanie rozdzia³ów "Dodawanie w s³upku", "Odejmowanie w s³upku", "Mno¿enie w s³upku", "Dzielenie w s³upku"
 (6)	Sformu³owaæ dowody dzia³añ w s³upku
 (6)	Ulepszyæ skrypt draggable.js aby przesuwa³ kulki po ca³ym ekranie (+ animacja wracania)
@@ -9,7 +9,7 @@
 (5)	Udoskonaliæ formatowanie lekcji w Wordzie
 (5)	Ogarn¹æ skrypt math.js (na laptopie strasznie d³ugo siê ³aduje, niechêtnie wczytuje style, zamula stronê)
 (5)	Dostosowaæ stronê do wersji mobilnej
-(4)	Wygenerowaæ grafiki do u³amków zwyk³ych, dziesiêtnych i procentów
+(4)	Stworzyæ edytor lekcji w HTML
 (4)	Stworzyæ skrypt do faktoryzacji
 (4)	Dodaæ rozdzia³ o lokatach i kredytach w temacie "Procenty"
 (3)	Ulepszyæ skrypt math.js, ¿eby ogarnia³ jednostki typu m, kg, l
@@ -27,6 +27,7 @@
 (2)	Stworzyæ interaktywne (trójwymiarowe?) drzewo lekcji
 (2) 	Dodaæ wyszukiwarkê pojêæ
 (2)	Poprawiæ skrypt comment.js, ¿eby dzia³a³ dobrze na powiêkszonej/pomniejszonej stronie.
+(2)	Ulepszyæ wyœwietlanie skryptu number_to_str.js
 (1)	Narysowaæ poprawnie "coraz wiêksze nawiasy" w rozdziale "Dzia³ania w nawiasach" lekcji "Kolejnoœæ wykonywania dzia³añ"
 (1)	Pomyœleæ nad nowymi t³ami do lekcji
 (1)	Uogólniæ skrypty do tabliczek dzia³añ w lekcjach "Dodawanie", "Odejmowanie", "Mno¿enie", "Dzielenie"
@@ -34,4 +35,5 @@
 	"U³amki dziesiêtne")
 (1)	Ogarn¹æ wyœwietlanie "b³êdnego u³amka piêtrowego" na koñcu lekcji "U³amki zwyk³e"
 (1)	Dodaæ spowolnienie na koñcu animacji scroll_hide
+(1)	W lekcji "Liczby" owce mog³yby nachodziæ jedna na drug¹ (by³yby wiêksze)
 (0)	W tematach "Odejmowanie" oraz "Wprowadzenie" zamieniæ "Oblicze ca³ki" na ostateczn¹ nazwê projektu

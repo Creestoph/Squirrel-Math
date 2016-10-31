@@ -741,147 +741,66 @@
 			Razem: 8 + 10 + 4 = 22. Reszta z dzielenia 22 przez 8 wynosi 6, bo 22 : 8 = 2 r. 6. Obydwie reszty są równe – za sprawą 
 			magii twierdzenia. Tak samo będzie dla dowolnego innego p i dowolnej innej liczby.
 		</p>
-
-		<p>
-			Jak udowodnić to twierdzenie? Z pomocą przychodzi indukcja matematyczna. Bierzemy dowolne <span class="math">p</span>
-			i sprawdzamy, że twierdzenie 
-			jest prawdziwe, gdy rozpatrujemy liczbę 0. Krok indukcyjny jest taki: jeśli twierdzenie jest prawdziwe dla pewnej liczby 
-			<span class="math">a</span>, to jest też prawdziwe dla <span class="math">a+1</span>. 
-		</p>
-
-		<p>
-			W powyższym przykładzie: Twierdzenie jest prawdziwe dla 158. Gdy weźmiemy 159, to jej reszta z dzielenia przez 
-			<span class="math">p=8</span> jest 
-			o 1 większa i wynosi 7. Cyfry tej liczby zmieniły się tak, że cyfra jedności 8 zwiększyła się o 1 i wynosi 9. W takim 
-			razie suma mnożonych cyfr zwiększy się o <span class="math">1*((10-p))^0</span>, czyli o 1, a więc reszta z dzielenia także wzrośnie o 1 – 
-			twierdzenie jest prawdziwe. 
-		</p>
-
-		<p>
-			W tym przypadku nie było trudno, ponieważ zarówno liczba, jak i suma cyfr wzrosły o 1. Gdy rozpatrzymy liczbę jeszcze o 
-			1 większą, dostaniemy 160. Tu zmiany w cyfrach są bardziej drastyczne: cyfra jedności 9 zamieniła się na 0, a cyfra 
-			dziesiątek wzrosła o 1. W takim razie suma cyfr mnożonych różni się o <span class="math">1*(10-p)^1-9*((10-p))^0</span>, czyli jest mniejsza o 7, 
-			więc wynosi 0. Okazuje się, że obydwie reszty z dzielenia są równe.
-		</p>
-
-		<p>
-			Istotą dowodu będzie uchwycić, jak zmieniają się cyfry liczby podczas zwiększania jej o 1.
-		</p>
 	</div>
 
 	<div class ="proof">
 		<p>
-			Weźmy dowolne <span class = "math">p</span>. Teza jest prawdziwa dla liczby 0. Reszta z dzielenia liczby 0 przez <span class="math">p</span> 
-			wynosi 0, a reszta z dzielenia przez <span class="math">p</span> liczby <span class="math">0*(10-p)^0=0</span> też wynosi 0. [?]
+			Weźmy dowolne <span class="math">p</span> oraz dowolną liczbę <span class="math">a</span> postaci 
 		</p>
-
-		<p>
-			Udowodnimy, że jeśli twierdzenie jest prawdziwe dla liczby <span class="math">a</span>, to jest też prawdziwe dla 
-			<span class="math">a+1</span>. Wtedy na mocy indukcji 
-			matematycznej twierdzenie będzie prawdziwe dla dowolnego <span class="math">a</span>.[?]
-		</p>
-
-		<p>
-			Weźmy dowolną liczbę a, dla której twierdzenie jest prawdziwe. Można ją zapisać w postaci 
-		</p>
-
-		<p class ="math" align="center">
-		10^k a_k+10^(k-1) a_(k-1)+⋯+10^1 a_1+10^0 a_0
-		</p>
-
-		<p>
-			gdzie <span class="math">a_0,a_1,…,a_k∈{0,1,2,3,4,5,6,7,8,9}</span> są cyframi tej liczby.[?]  Z założenia reszta 
-			<span class="math">r</span> z dzielenia <span class="math">a</span> przez <span class="math">p</span> jest taka 
-			sama, jak reszta z dzielenia przez <span class="math">p</span> liczby
-		</p>
-
+		
 		<p class="math" align="center">
-			m=(10-p)^k a_k+(10-p)^(k-1) a_(k-1)+⋯+(10-p)^1 a_1+(10-p)^0 a_0[?]
+			(10)^k a_k+(10)^(k-1) a_(k-1)+⋯+(10)^1 a_1+(10)^0 a_0
 		</p>
-
+		
 		<p>
-			Weźmy liczbę <span class="math">a+1</span>. Jeśli <span class="math">a_0<9</span>, to liczbę tę zapisujemy jako 
+			Przypuśćmy, że daje ona resztę <span class="math">r</span> z dzielenia przez <span class="math">p</span>.
 		</p>
-
-		<p class ="math" align ="center">
-		10^k a_k+10^(k-1) a_(k-1)+⋯+10^1 a_1+10^0 (a_0+1)[?]
-		</p>
-
+		
 		<p>
-			Wtedy
+			Rozważmy liczbę
 		</p>
-
-		<p class ="math" align="center">
-			m'=<br>
-			= (10-p)^k a_k+(10-p)^(k-1) a_(k-1)+⋯+(10-p)^1 a_1+(10-p)^0 (a_0+1)=<br>
-			= m+1[?]
-		</p>
-
-		<p>
-			Jeśli <span class="math">r=p-1</span>, to reszta z dzielenia <span class="math">a+1</span> przez <span class="math">p</span> jest taka sama, 
-			jak reszta z dzielenia <span class="math">m+1</span> przez <span class="math">p</span> i wynosi 0. 
-			W przeciwnym razie obie reszty są równe <span class="math">r+1</span>. Teza jest prawdziwa.
-		</p>
-
-		<p>
-			Jeśli <span class="math">a_0=9</span>, oznaczamy przez <span class="math">d</span> największą liczbę, dla której 
-			<span class="math">a_0,a_1,a_2,…,a_d=9</span>.[?] Wtedy liczbę <span class="math">a+1</span> można zapisać w 
-			postaci
-		</p>
-
-		<p class ="math" align="center">
-		10^k a_k+10^(k-1) a_(k-1)+⋯+10^(d+1) (a_(d+1)+1)+10^d*0+10^(d-1)*0+⋯+10^0*0 [?]
-		</p>
-
-		<p>
-			Jeśli <span class="math">r=p-1</span>, to reszta z dzielenia tej liczby przez <span class="math">p</span> wynosi 0. 
-			W przeciwnym razie reszta wynosi <span class="math">r+1</span>. Bierzemy liczbę 
-		</p>
-
+		
 		<p class="math" align="center">
-			m'=(10-p)^k a_k+(10-p)^(k-1) a_(k-1)+⋯+<br>
-			+((10-p))^(d+1) (a_(d+1)+1)+((10-p))^d*0+((10-p))^(d-1)*0+⋯+((10-p))^0*0
+			m=(10-p)^k a_k+(10-p)^(k-1) a_(k-1)+⋯+(10-p)^1 a_1+(10-p)^0 a_0
+		</p>
+		
+		<p>
+			Z dwumianu Newtona możemy rozpisać:
+		</p>
+		
+		<p class="math">
+			m=(Newton(k,0)10^k(-p)^0+Newton(k,1)10^(k-1)(-p)^1+Newton(k,2)10^(k-2)(-p)^2+⋯+Newton(k,k)10^0(-p)^k)a_k+<br>
+				+(Newton((k-1),0)10^(k-1)(-p)^0+Newton((k-1),1)10^(k-2)(-p)^1+Newton((k-1),2)10^(k-2)(-p)^2+⋯+Newton((k-1),(k-1))10^0(-p)^(k-1))a_(k-1)+<br>
+				+⋯+<br>
+				+(Newton((1),0) (10)^1 (-p)^0+Newton((1),1) (10)^0 (-p)^1 ) a_1+<br>
+				+a_0=<br>
+			=(10^k+Newton(k,1)10^(k-1)(-p)^1+Newton(k,2)10^(k-2)(-p)^2+⋯+Newton(k,k)10^0(-p)^k)a_k+<br>
+				+(10^(k-1)+Newton((k-1),1)10^(k-2)(-p)^1+Newton((k-1),2)10^(k-2)(-p)^2+⋯+Newton((k-1),(k-1))10^0(-p)^(k-1))a_(k-1)+<br>
+				+⋯+<br>
+				+((10)^1+Newton((1),1) (10)^0 (-p)^1 ) a_1+<br>
+				+a_0=<br>
+			=(10)^k a_k+(-p)(Newton(k,1)10^(k-1)(-p)^0+Newton(k,2)10^(k-2)(-p)^1+⋯+Newton(k,k)10^0(-p)^(k-1))a_k+<br>
+				+(10)^(k-1) a_(k-1)+(-p)(Newton((k-1),1)10^(k-2)(-p)^0+Newton((k-1),2)10^(k-2)(-p)^1+⋯+Newton((k-1),(k-1))10^0(-p)^(k-2))a_(k-1)+
+				+⋯+</br>
+				+(10)^1 a_1+(-p)((Newton((1),1) (10)^0 (-p)^0 ) a_1+</br>
+				+a_0=<br>
+			=(10)^k a_k+(10)^(k-1) a_(k-1)+⋯+(10)^1 a_1+a_0+<br>
+			(-p)((Newton(k,1) (10)^(k-1) (-p)^0+Newton(k,2) (10)^(k-2) (-p)^1+⋯+Newton(k,k) (10)^0 (-p)^(k-1) )+(Newton((k-1),1) (10)^(k-2) (-p)^0+Newton((k-1),2) (10)^(k-2) (-p)^1+⋯+Newton((k-1),(k-1)) (10)^0 (-p)^(k-2) ) a_(k-1)+⋯+Newton((1,1) (10)^0 (-p)^0 ) a_1 )=<br>=a-pm'
 		</p>
 
 		<p>
-			Możemy zapisać
+			Gdzie <span class="math">m'</span> jest liczbą całkowitą równą
 		</p>
-
-		<p class ="math" align="center">
-			m^'=m+(10-p)^(d+1)-(10-p)^d*9-…-(10-p)^1*9-(10-p)^0*9=<br>
-			= m+(1*(10-p))^(d+1)-9*((10-p)^d+⋯+(10-p)^1+(10-p)^0 ) [?]
+		
+		<p class="math">
+			((Newton(k,1) (10)^(k-1) (-p)^0+Newton(k,2) (10)^(k-2) (-p)^1+⋯+Newton(k,k) (10)^0 (-p)^(k-1) )+(Newton((k-1),1) (10)^(k-2) (-p)^0+Newton((k-1),2) (10)^(k-2) (-p)^1+⋯+Newton((k-1),(k-1)) (10)^0 (-p)^(k-2) ) a_(k-1)+⋯+Newton((1,1) (10)^0 (-p)^0 ) a_1 )
 		</p>
-
+		
 		<p>
-			Ze wzoru na szereg geometryczny mamy:
+			Liczba <span class="math">m=a-pm'</span> jest więc sumą liczby <span class="math">a</span> oraz liczby podzielnej przez 
+			<span class="math">p</span>, zatem jej reszta z dzielenia przez <span class="math">p</span> wynosi <span class="math">r</span>. □
 		</p>
-
-		<p class="math" align="center">
-			m^'=m+(10-p)^(d+1)-9*((10-p)^(d+1)-1)/((10-p)-1)=<br>
-			= m+(10-p)^(d+1)-(9*(10-p)^(d+1)-9)/(9-p)=<br>
-			= m+((10-p)^(d+1) (9-p)-9*(10-p)^(d+1)+9)/(9-p)=<br>
-			= m+(9*(10-p)^(d+1)-p(10-p)^(d+1)-9*(10-p)^(d+1)+9)/(9-p)=<br>
-			= m+(-p(10-p)^(d+1)+9)/(9-p)=m+(-p(10-p)^(d+1)+p+9-p)/(9-p)=<br>
-			= m+(-p(10-p)^(d+1)+p)/(9-p)+1=m+1+p*(1-(10-p)^(d+1))/(9-p)  
-		</p>
-
-		<p>
-			Mając na uwadze, że <span class="math">1+p*(1-(10-p)^(d+1))/(9-p)</span> to to samo, co 
-		</p>
-
-		<p class ="math" align="center">
-		(10-p)^(d+1)-(10-p)^d*9-…-(10-p)^1*9-(10-p)^0*9
-		</p>
-
-		<p>
-			stwierdzamy, że liczba <span class="math">p*(1-(10-p)^(d+1))/(9-p)</span> jest całkowita. Jest ona podzielna przez 
-			<span class="math">p</span>, co oznacza, że reszta z 
-			dzielenia liczby <span class="math">m'</span> przez <span class="math">p</span> jest taka sama, jak reszta z dzielenia liczby 
-			<span class="math">m+1</span> przez <span class="math">p</span>. Jeśli reszta z dzielenia <span class="math">m</span> przez 
-			<span class="math">p</span> wynosi <span class="math">p-1</span>, to poszukiwana reszta wynosi 0, w przeciwnym razie wynosi
-			<span class="math">r+1</span>. Oznacza to, że reszta z dzielenia przez <span class="math">p</span> 
-			liczby <span class="math">m'</span> jest taka sama, jak reszta z dzielenia przez <span class="math">p</span> liczby <span class="math">a+1</span>. □
-		</p>
+			
 	</div>
 
 	<p>
