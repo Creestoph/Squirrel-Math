@@ -7,7 +7,9 @@
 	<link rel="stylesheet" href="../lesson_style.css">
 	
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+	<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=MML_HTMLorMML"></script>
 	<script src="../.scripts/draggable.js"></script>
+	<script src="../.scripts/math.js"></script>
 	<script src="subtraction_table_short.js"></script>
 </head>
 
@@ -51,16 +53,17 @@
     </p> 
       
     <p>
-        Istotą odejmowania jest zmniejszanie jednej liczby o drugą. Gdy od 7 kulek zabierzemy 4 kulki, otrzymamy 3 kulki. 
+        Istotą odejmowania jest zmniejszanie jednej liczby o drugą. Gdy od <span class="math">7</span> kulek zabierzemy 
+		<span class="math">4</span> kulki, otrzymamy <span class="math">3</span> kulki. 
         Matematycznie zapiszemy to tak:
     </p>
       
-    <p align = "center">
+    <p align = "center" class="math">
         7 kulek – 4 kulki = 3 kulki
     </p>
       
     <p>
-        Znaczek – jest symbolem matematycznym, nazywa się „minus”. W działaniu czytamy go jako „odjąć”. Znaczy on tyle, 
+        Znaczek <span class="math">–</span> jest symbolem matematycznym, nazywa się „minus”. W działaniu czytamy go jako „odjąć”. Znaczy on tyle, 
         że od tego, co po lewej stronie, zabieramy (czyli odejmujemy) to, co po prawej stronie.
     </p>
       
@@ -69,18 +72,21 @@
         <i>odjemnikiem</i>. Wynik odejmowania nazywany jest <i>różnica</i>.
     </p>
       
-    <p align = "center">
+    <p align = "center" class="math">
         odjemna – odjemnik = różnica
     </p>
       
     <p>
-        Przykładowo w działaniu 10 – 4 = 6 odjemną jest 10, odjemnikiem jest 4, a różnicą 6.
+        Przykładowo w działaniu <span class="math">10 – 4 = 6</span> odjemną jest <span class="math">10</span>, odjemnikiem jest 
+		<span class="math">4</span>, a różnicą <span class="math">6</span>.
     </p>
         
     <p>
-        Odejmowanie jest działaniem odwrotnym do dodawania. Kiedy napotkamy problem, próbując odjąć 10 – 4, możemy zadać sobie 
-        pytanie „co należy dodać do 4, by otrzymać 10?”. Stwierdzimy wtedy, że od 4 do 10 brakuje jeszcze 6. Tak więc spostrzeżenie
-        4 + 6 = 10 oznacza tyle samo co 10 - 4 = 6. 
+        Odejmowanie jest działaniem odwrotnym do dodawania. Kiedy napotkamy problem, próbując odjąć <span class="math">10 – 4</span>, 
+		możemy zadać sobie 
+        pytanie „co należy dodać do <span class="math">4</span>, by otrzymać <span class="math">10</span>?”. Stwierdzimy wtedy, że od 
+		<span class="math">4</span> do <span class="math">10</span> brakuje jeszcze <span class="math">6</span>. Tak więc spostrzeżenie
+        <span class="math">4 + 6 = 10</span> oznacza tyle samo co <span class="math">10 - 4 = 6</span>. 
     </p>
         
     <p class = "type">
@@ -88,12 +94,13 @@
     </p>
       
     <p>
-        Odejmowanie nie jest przemienne, ponieważ 10 – 2 to nie to samo, co 2 – 10.
+        Odejmowanie nie jest przemienne, ponieważ <span class="math">10 – 2</span> to nie to samo, co <span class="math">2 – 10</span>.
     </p>
       
     <p>
-        Odejmowanie nie jest też łączne. Reguła mówi, że gdy napotkamy wiele znaków – w jednym działaniu, należy je 
-        rozpracowywać od lewej do prawej. Licząc poprawnie: 8 – 5 – 2 = 3 - 2 = 1. Licząc niepoprawnie: 8 - 5 - 2 = 8 - 3 = 5.
+        Odejmowanie nie jest też łączne. Reguła mówi, że gdy napotkamy wiele znaków <span class="math">–</span> w jednym działaniu, należy je 
+        rozpracowywać od lewej do prawej. Licząc poprawnie: <span class="math">8 – 5 – 2 = 3 - 2 = 1</span>. Licząc niepoprawnie: 
+		<span class="math">8 - 5 - 2 = 8 - 3 = 5</span>.
     </p>
         
     <p class = "type">
@@ -122,16 +129,18 @@
         </table>
     </p>
 
-    <p align = "center" id="subtracting_table_field">
+    <p align = "center" id="subtracting_table_field" class="math">
         7 – 3 = 4
     </p>
       
     <p>
         Dla większych liczb stosuje się metodę <i>odejmowania w słupku</i>, zwaną też <i>odejmowaniem pisemnym</i>. 
-        Aby odjąć 2737 – 683, piszemy liczby jedna pod drugą z wyrównaniem do prawej i podkreślamy. 
-        Odejmujemy cyfry jedności: 7 – 3 = 4. Odjęcie cyfr dziesiątek 3 – 8 sprawia problem, więc wykonujemy 
-        „pożyczkę” –  trójkę zwiększamy o 10 (robimy z niej 13) kosztem cyfry po lewej – siódemkę zmniejszamy o 1 
-        (robimy z niej 6). Po takim zabiegu odejmujemy kolejne cyfry. Wynikiem jest 2054.
+        Aby odjąć <span class="math">2737 – 683</span>, piszemy liczby jedna pod drugą z wyrównaniem do prawej i podkreślamy. 
+        Odejmujemy cyfry jedności: <span class="math">7 – 3 = 4</span>. Odjęcie cyfr dziesiątek <span class="math">3 – 8</span> 
+		sprawia problem, więc wykonujemy 
+        „pożyczkę” –  trójkę zwiększamy o <span class="math">10</span> (robimy z niej <span class="math">13</span>) kosztem cyfry po lewej – 
+		siódemkę zmniejszamy o <span class="math">1</span> 
+        (robimy z niej <span class="math">6</span>). Po takim zabiegu odejmujemy kolejne cyfry. Wynikiem jest <span class="math">2054</span>.
     </p>
       
     <p align = "center">

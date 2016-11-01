@@ -1,6 +1,4 @@
-﻿
-
-var maths;
+﻿var maths;
 var pos;
 
 function element_mathML(input)
@@ -17,12 +15,14 @@ function element_mathML(input)
                 nawias--;
             if (nawias == 0)
             {
-                result = '<mfenced separators="">' + to_mathML(input.substring(pos + 1, j)) + "</mfenced>";
+				 result = "<mrow>" + to_mathML(input.substring(pos + 1, j)) + "</mrow>";
+                //result = '<mfenced separators="">' + to_mathML(input.substring(pos + 1, j)) + "</mfenced>";
                 //result = '<mrow>' + to_mathML(input.substring(pos + 1, j)) + "</mrow>";
                 pos = j;
                 break;
             }
         }
+		pos++;
     }
     else if (input[pos] >= '0' && input[pos] <= '9')
     {
@@ -33,44 +33,79 @@ function element_mathML(input)
             pos++;
         }
         result += "</mn>";
-        pos--;
     }
     else if (input[pos] == '<' && input[pos + 1] == 'b' && input[pos + 2] == 'r' && input[pos + 3] == '>')
     {
         result += "<mo linebreak='newline'></mo>";
-        pos += 3;
+        pos += 4;
     }
 	else if (input.substring(pos, pos+7)=='Newton(')
 	{
 		pos+=7; //Newton(
 		result+="<mfenced open='(' close=')' separators=''><mtable><mtr><mtd>" + element_mathML(input);
-		pos+=2; //,
+		pos++; //,
 		result+="</mtd></mtr><mtr><mtd>" + element_mathML(input) + "</mtd></mtr></mtable></mfenced>";
 		pos++; //)
 	}
     else if (input[pos] == '+' || input[pos] == '-' || input[pos] == ':' || input[pos] == '=')
-        result = "<mo>" + input[pos] + "</mo>";
+	{
+		result = "<mo>" + input[pos] + "</mo>";
+		pos++;
+	}
     else if (input.substring(pos, pos + 4) == '&lt;')
     {
         result = "<mi><</mi>";
-        pos += 3;
+        pos += 4;
     }
     else if (input.substring(pos, pos + 4) == '&gt;')
     {
-        pos += 3;
+        pos += 4;
         result = "<mi>></mi>";
     }
 	else if (input.substring(pos, pos + 6) == '&nbsp;')
     {
-        pos += 5;
+        pos += 6;
         result = "<mi>&nbsp;</mi>";
     }
-    else if (input[pos] == '*' || input[pos] == '∙')
-        result = "<mo>&middot;</mo>";
+	else if (input.substring(pos, pos + 2) == 'r.')
+    {
+        pos += 2;
+        result = "<mo>r.</mo>";
+    }
+    else if (input[pos] == '*' || input[pos] == '∙' || input[pos] == '·')
+	{
+		pos++;
+		result = "<mo>&middot;</mo>";
+	}
+	 else if (input[pos] == '×')
+	{
+		pos++;
+		result = "<mo>×</mo>";
+	}
     else if (input[pos] == '∶' || input[pos] == ':')
-        result = "<mo>:</mo>";
+	{
+		pos++;
+		result = "<mo>:</mo>";
+	}
+	else if (input[pos] == '|' || input[pos]=='∣')
+	{
+		pos++;
+		result = "<mo>|</mo>";
+	}
+	else if (input[pos] == '∤') //ł
+	{
+		pos++;
+		result = "<mo>∤</mo>";
+	}
+	else if (input[pos] == " ")
+	{
+		pos++
+	}
     else
+	{
         result = "<mi>" + input[pos] + "</mi>";
+		pos++;
+	}
     
     return result;
 }
@@ -78,33 +113,28 @@ function element_mathML(input)
 function to_mathML(input)
 {
     var output = "";
-    for (var i = 0; i < input.length; i++)
+	pos=0;
+	while (pos < input.length)
     {
-        pos = i;
         var result = element_mathML(input);
-        i = pos;
 
-        if (input[i + 1] == '_')
+        if (input[pos] == '_')
         {
-            pos = i + 2;
+            pos ++;
             output += "<msub>" + result + element_mathML(input) + "</msub>";
-            i = pos;
         }
-        else if (input[i + 1] == '^')
+        else if (input[pos] == '^')
         {
-            pos = i + 2;
+            pos++
             output += "<msup>" + result + element_mathML(input) + "</msup>";
-            i = pos;
         }
-        else if (input[i+1] == '/')
+        else if (input[pos] == '/')
         {
-            pos = i + 2;
+            pos++
             output += "<mfrac>" + result + element_mathML(input) + "</mfrac>";
-            i = pos;
         }
         else
             output += result;
-
     }
     return output;
 }
@@ -113,6 +143,6 @@ $(document).ready(function(){
 	 maths = document.getElementsByClassName("math");
 	for (k = 0; k < maths.length; k++)
 	{
-		maths[k].innerHTML = '<math xmlns="http://www.w3.org/1998/Math/MathML" display="inline">' + to_mathML(maths[k].innerHTML) + "</math>";
+		maths[k].innerHTML = '<math xmlns="http://www.w3.org/1998/Math/MathML" display="inline" fontFamily="MathJax">' + to_mathML(maths[k].innerHTML) + "</math>";
 	}
 });

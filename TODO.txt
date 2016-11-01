@@ -1,4 +1,4 @@
-(8)	Znormalizowaæ wyœwietlanie liczb i elementów matematycznych w lekcjach (mathml / zwyk³y tekst)
+(8)	Zadbaæ o przejrzystoœæ wyœwietlania elementów matematycznych (i ca³ego tekstu...)
 (7)	Stworzyæ skrypty do odejmowania, mno¿enia, dzielenia w s³upku
 (7)	Wygenerowaæ grafiki do u³amków zwyk³ych, dziesiêtnych, procentów i liczb ujemnych
 (6)	Ogarn¹æ wyœwietlanie rozdzia³ów "Dodawanie w s³upku", "Odejmowanie w s³upku", "Mno¿enie w s³upku", "Dzielenie w s³upku"
