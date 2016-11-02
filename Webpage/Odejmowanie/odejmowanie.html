@@ -13,6 +13,8 @@
 	<script src="../.scripts/comment.js"></script>
 	<script src="../.scripts/draggable.js"></script>
 	<script src="../.scripts/math.js"></script>
+	<script src="../.scripts/display_table.js"></script>
+	<script src="../.scripts/number_validation.js"></script>
 	<script src="subtraction_table.js"></script>
 </head>
 
@@ -97,7 +99,7 @@
     </p>
         
     <p align = "center" class="math">
-        7 kulek – 4 kulki = 3 kulki
+        7&nbsp;kulek – 4&nbsp;kulki = 3&nbsp;kulki
     </p>
         
     <p>
@@ -118,7 +120,7 @@
 			<li>
 				Pasterz miał <span class="math">10</span> owiec. Pewnego dnia zły wilk zjadł <span class="math">3</span> owce. 
 				Pozostało <span class="math">7</span> owiec.
-				<p align = "center" class="math">10 owiec – 3 owce = 7 owiec</p>
+				<p align = "center" class="math">10&nbsp;owiec – 3&nbsp;owce = 7&nbsp;owiec</p>
 			</li>
 
 			<li>
@@ -126,13 +128,13 @@
 				<span class="comment" id = "Lekcja zawiera lokowanie produktu.">Piccolo</span>. 
 				Zamyślony teorią odejmowania potknął się o krawężnik i stłukł <span class="math">2</span> butelki. Do celu doniósł jedynie 
 				<span class="math">3</span> butelki.
-				<p align = "center" class="math">5 butelek – 2 butelki = 3 butelki</p>
+				<p align = "center" class="math">5&nbsp;butelek – 2&nbsp;butelki = 3&nbsp;butelki</p>
 			</li>
 
 			<li>
 				Kupiłeś <span class="math">30</span> ciastek z zamiarem spędzenia miłego wieczoru. Nie wiesz, że kiedy czytasz „Oblicze całki”, 
 				młodsza siostra zjada Ci wszystkie ciastka. Najadłeś się zamiarem.
-				<p align = "center" class="math">30 ciastek – 30 ciastek = 0 ciastek</p>
+				<p align = "center" class="math">30&nbsp;ciastek – 30&nbsp;ciastek = 0&nbsp;ciastek</p>
 			</li>
         </ul>
     </p>
@@ -254,7 +256,7 @@
 			jak bardzo jest stratny, czyli jaka jest różnica między jego poprzednią a obecną pensją. Napotykając problem z 
 			obliczeniem <span class="math">120 – 110</span> pan Janusz zastanawia się, ile musiałby dołożyć do <span class="math">110</span>, 
 			aby otrzymać <span class="math">120</span>:
-			<p align = "center" class="math">110 +  = 120</p>
+			<p align = "center" class="math">110 + Text(∎) = 120</p>
 			Stwierdza, że różnica wynosi <span class="math">10 zł</span>.
 		</li>
 
@@ -263,7 +265,7 @@
 			<span class="comment" id="Zwyczajowo zwaną kieszonkowym">Ciężką pracą</span>
 			zarobił <span class="math">40 zł</span> i zastanawia się, ile 
 			jeszcze musi uzbierać. Stoi więc przed problemem:
-			<p align = "center" class="math">40 +  = 120</p>
+			<p align = "center" class="math">40 + Text(∎) = 120</p>
 			Odpowiedź <span class="math">80</span> to wynik odejmowania <span class="math">120 – 40</span>.
 		</li>
     </ul>
@@ -389,11 +391,11 @@
         <span class="math">3698 – 1274</span>. Zaczynamy podobnie jak z dodawaniem – piszemy liczby jedna pod drugą z wyrównaniem do prawej i 
 		podkreślamy.
     </p>
-        
-    <p align = "center">
-          3	6	9	8
-        -	1	2	7	4
-    </p>
+     
+	<div id="columnar_subtraction_1"></div>
+	<script>
+		Display_table.create_from_table("-",[[], [], ["3", "6", "9", "8"], ["1", "2", "7", "4"], []]).print("columnar_subtraction_1");
+	</script>
     
     <p>
         Teraz odejmujemy po kolei cyfry jedności, cyfry dziesiątek, cyfry setek i cyfry tysięcy. Wyniki zapisujemy odpowiednio pod kreską
@@ -405,11 +407,10 @@
         </ul>
     </p>    
     
-    <p align = "center">
-          3	6	9	8
-        -	1	2	7	4
-          2	4	2	4
-    </p>
+	<div id="columnar_subtraction_2"></div>
+	<script>
+		Display_table.create_from_table("-",[[], [], ["3", "6", "9", "8"], ["1", "2", "7", "4"], ["2", "4", "2", "4"]]).print("columnar_subtraction_2");
+	</script>
       
     <p>
         Odczytujemy, że wynik odejmowania to <span class="math">2424</span>. Ten przykład był prosty tylko na zachętę. 
@@ -417,20 +418,19 @@
         obliczmy <span class="math">2737 – 683</span>.
     </p>
         
-    <p align = "center">
-          2	7	3	7
-        -		6	8	3
-    </p>
+	<div id="columnar_subtraction_3"></div>
+	<script>
+		Display_table.create_from_table("-",[[], [], ["2", "7", "3", "7"], ["", "6", "8", "3"], []]).print("columnar_subtraction_3");
+	</script>
 
     <p>
         Odejmujemy cyfrę jedności od cyfry jedności: <span class="math">7 – 3 = 4</span>.
     </p>
 
-    <p align = "center">
-          2	7	3	7
-        -		6	8	3
-                4
-    </p>
+	<div id="columnar_subtraction_4"></div>
+	<script>
+		Display_table.create_from_table("-",[[], [], ["2", "7", "3", "7"], ["", "6", "8", "3"], ["", "", "", "4"]]).print("columnar_subtraction_4");
+	</script>
     
     <p>
         Odejmujemy cyfrę dziesiątek od cyfry dziesiątek: <span class="math">3 – 8 = …</span> no i mamy problem. 
@@ -440,12 +440,11 @@
         o <span class="math">1</span> (robimy z niej <span class="math">6</span>).
     </p>
   
-    <p align = "center">
-            6	13	
-          2	7	3	7
-        -		6	8	3
-                4
-    </p>
+	<div id="columnar_subtraction_5"></div>
+	<script>
+		Display_table.create_from_table("-",[[], ["", "6", "13"], ["2", "/s: 7", "/s: 3", "7"], ["", "6", "8", "3"], ["", "", "", "4"]]).print("columnar_subtraction_5");
+	</script>
+  
         
     <p>
         Po takim zabiegu reszta działań jest łatwa:
@@ -455,59 +454,49 @@
 			<li><span class="math">2</span> jest sama, więc pozostaje bez zmian.</li>
         </ul>
     </p>
-      
-    <p align = "center">
-            6	13	
-          2	7	3	7
-        -		6	8	3
-          2	0	5	4
-    </p>
+    
+	<div id="columnar_subtraction_6"></div>
+	<script>
+		Display_table.create_from_table("-",[[], ["", "6", "13"], ["2", "/s: 7", "/s: 3", "7"], ["", "6", "8", "3"], ["2", "0", "5", "4"]]).print("columnar_subtraction_6");
+	</script>
       
     <p>
         Wynikiem jest <span class="math">2054</span>. Największym problemem przy odejmowaniu w słupku jest wykonywanie „pożyczania”, czyli właśnie 
         tego triku z trzynastką i szóstką. Czasami sprawy bywają jeszcze bardziej skomplikowane. 
         Zobaczmy, jak odjąć <span class="math">1358 – 489</span>.
     </p>
-          
-	<p align = "center">
-          1	3	5	8
-        -		4	8	9
-    </p>
+
+	<div id="columnar_subtraction_7"></div>
+	<script>
+		Display_table.create_from_table("-",[[], [], ["1", "3", "5", "8"], ["", "4", "8", "9"], []]).print("columnar_subtraction_7");
+	</script>
 
     <p>
         Próbujemy odjąć <span class="math">8 – 9</span>. Ponieważ są problemy, robimy pożyczkę i odejmujemy <span class="math">18 – 9 = 9</span>.
     </p>
   
-    <p align = "center">
-              4	18
-          1	3	5	8
-        -		4	8	9
-                9
-    </p>
+	<div id="columnar_subtraction_8"></div>
+	<script>
+		Display_table.create_from_table("-",[[], ["", "", "4", "18"], ["1", "3", "/s: 5", "/s: 8"], ["", "4", "8", "9"], ["", "", "", "9"]]).print("columnar_subtraction_8");
+	</script>
         
     <p>
         Teraz pora na <span class="math">4 – 8</span>. Widzimy, że znowu są problemy, więc dokonujemy kolejnej pożyczki i odejmujemy <span class="math">14 – 8 = 6</span>.
     </p>
   
-    <p align = "center">
-              14	
-            2	4	18
-          1	3	5	8
-        -		4	8	9
-              6	9
-    </p>
+	<div id="columnar_subtraction_9"></div>
+	<script>
+		Display_table.create_from_table("-",[["", "", "14", ""], ["", "2", "/s: 4", "18"], ["1", "/s: 3", "/s: 5", "/s: 8"], ["", "4", "8", "9"], ["", "", "6", "9"]]).print("columnar_subtraction_9");
+	</script>
 
     <p>
         Odejmowanie <span class="math">2 – 4</span> ponownie wymaga zaciągnięcia pożyczki. 
     </p>
-        
-    <p align = "center">
-            12	14	
-          0	2	4	18
-          1	3	5	8
-        -		4	8	9
-            8	6	9
-    </p>
+    
+	<div id="columnar_subtraction_10"></div>
+	<script>
+		Display_table.create_from_table("-",[["", "12", "14", ""], ["0", "/s: 2", "/s: 4", "18"], ["/s: 1", "/s: 3", "/s: 5", "/s: 8"], ["", "4", "8", "9"], ["", "8", "6", "9"]]).print("columnar_subtraction_10");
+	</script>
     
     <p>
         Z zapożyczonej jedynki nic już nie zostało. Skoro tak, to <span class="math">869</span> jest ostatecznym wynikiem. Zróbmy jeszcze 
@@ -515,10 +504,10 @@
         Jeśli go zrozumiesz, odejmowanie w słupku nie będzie miało przed Tobą tajemnic.
     </p>
 
-    <p align = "center">
-          1	0	0	0
-        -		6	7	9
-    </p>
+	<div id="columnar_subtraction_11"></div>
+	<script>
+		Display_table.create_from_table("-",[[], [], ["1", "0", "0", "0"], ["", "6", "7", "9"], []]).print("columnar_subtraction_11");
+	</script>
 
     <p>
         Na dobry początek dostajemy <span class="math">0 – 9</span>. Widać, że musimy zaciągnąć pożyczkę. Ale nawet zaciąganie pożyczki 
@@ -531,46 +520,38 @@
 		jednej 
         pożyczki. Ostatecznie <span class="math">0</span> w cyfrach setek stanie się <span class="math">10</span> kosztem <span class="math">1</span>, która stanie się <span class="math">0</span>.
     </p>
-          
-    <p align = "center">
-          0	10		
-          1	0	0	0
-        -		6	7	9
-    </p>
+    
+	<div id="columnar_subtraction_12"></div>
+	<script>
+		Display_table.create_from_table("-",[[], ["0", "10", "", ""], ["/s: 1", "/s: 0", "0", "0"], ["", "6", "7", "9"], []]).print("columnar_subtraction_12");
+	</script>
 
     <p>
         Teraz możemy wykonać pożyczkę o krok wcześniej
     </p>
-      
-    <p align = "center">
-            9		
-          0	10	10	
-          1	0	0	0
-        -		6	7	9
-    </p>
 
+	<div id="columnar_subtraction_13"></div>
+	<script>
+		Display_table.create_from_table("-",[["", "9", "", ""], ["0", "/s: 10", "10", ""], ["/s: 1", "/s: 0", "/s: 0", "0"], ["", "6", "7", "9"], []]).print("columnar_subtraction_13");
+	</script>
+	
     <p>
         I jeszcze o krok wcześniej:
     </p>
-        
-    <p align = "center">
-            9	9	
-          0	10	10	10
-          1	0	0	0
-        -		6	7	9
-    </p>
+    
+	<div id="columnar_subtraction_14"></div>
+	<script>
+		Display_table.create_from_table("-",[["", "9", "9", ""], ["0", "/s: 10", "/s: 10", "10"], ["/s: 1", "/s: 0", "/s: 0", "/s: 0"], ["", "6", "7", "9"], []]).print("columnar_subtraction_14");
+	</script>
 
     <p>
         Wreszcie możemy wykonać odejmowanie i otrzymać wynik <span class="math">321</span>.
     </p>
-      
-    <p>
-            9	9	
-          0	10	10	10
-          1	0	0	0
-        -		6	7	9
-            3	2	1
-    </p>
+    
+	<div id="columnar_subtraction_15"></div>
+	<script>
+		Display_table.create_from_table("-",[["", "9", "9", ""], ["0", "/s: 10", "/s: 10", "10"], ["/s: 1", "/s: 0", "/s: 0", "/s: 0"], ["", "6", "7", "9"], ["", "3", "2", "1"]]).print("columnar_subtraction_15");
+	</script>
   
     <p>
         Może odejmowanie w słupku nie jest najprostszą metodą, jaką w życiu widziałeś, ale na pocieszenie: 

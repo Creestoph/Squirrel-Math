@@ -8,11 +8,12 @@
 	
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 	<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=MML_HTMLorMML"></script>
-	<script src="../.scripts/columnar_addition_old.js"></script>
 	<script src="../.scripts/scroll_hide.js"></script>
 	<script src="../.scripts/draggable.js"></script>
 	<script src="../.scripts/math.js"></script>
 	<script src="../.scripts/comment.js"></script>
+	<script src="../.scripts/display_table.js"></script>
+	<script src="../.scripts/number_validation.js"></script>
 </head>
 
 <body class="lesson">
@@ -451,10 +452,10 @@
 	<div id="columnar_addition_1">
 	</div>
 	<script>
-		ColumnarAddition.InsertTable([[], ["3", "4", "2", ",", "6", "7", "", ""], ["", "1", "9", ",", "1", "5", "8", "2"],
-		["", "", "", ",", "", "", "", ""]], "columnar_addition_1");
+		Display_table.create_from_table("+",[[], ["3", "4", "2", ",", "6", "7", "", ""], ["", "1", "9", ",", "1", "5", "8", "2"],
+		["", "", "", ",", "", "", "", ""]]).print("columnar_addition_1");
 	</script>
-				
+		
 	<p>
 		Procedura dodawania przebiega identycznie jak w przypadku liczb naturalnych.
 	</p>
@@ -462,31 +463,40 @@
 	<div id="columnar_addition_2">
 	</div>
 	<script>
-		ColumnarAddition.InsertTable([["", "1", "1", "1", "", "", ""], ["3", "4", "2", "6", "7", "", ""], 
-		["", "1", "9", "1", "5", "8", "2"], ["3", "6", "2", "2", "2", "8", "2"]], "columnar_addition_2",4);
+		Display_table.create_from_table("+",[["", "1", "", "", "1", "", "", ""], ["3", "4", "2", ",", "6", "7", "", ""], 
+		["", "1", "9", ",", "1", "5", "8", "2"], ["3", "6", "1", ",", "8", "2", "8", "2"]]).print("columnar_addition_2");
 	</script>
 
 	<p>
 		Tak samo działa odejmowanie w słupku – najpierw wyrównujemy odjemną i odjemnik względem przecinka.
 	</p>
-			1	4	1	,	2	1		
-		-		7	4	,	1	3	6	4
-						,				
+	
+	<div id="columnar_subtraction_1">
+	</div>
+	<script>
+		Display_table.create_from_table("-",[[], [], ["1", "4", "1", ",", "2", "1", "", ""], ["", "7", "4", ",", "1", "3", "6", "4"], ["", "", "", ",", "", "", "", ""]]).print("columnar_subtraction_1");
+	</script>		
 	
 	<p>
 		Jeśli odjemna i odjemnik mają różną ilość cyfr po przecinku, wypełniamy brakujące pola zerami.
 	</p>
-			1	4	1	,	2	1	0	0
-		-		7	4	,	1	3	6	4
-						,				
+	
+	<div id="columnar_subtraction_2">
+	</div>
+	<script>
+		Display_table.create_from_table("-",[[], [], ["1", "4", "1", ",", "2", "1", "0", "0"], ["", "7", "4", ",", "1", "3", "6", "4"], ["", "", "", ",", "", "", "", ""]]).print("columnar_subtraction_2");
+	</script>	
+					
 	<p>
 		Odejmujemy liczby według znanej metody.
 	</p>
-				13				10		
-			0	3	11		1	0	9	10
-			1	4	1	,	2	1	0	0
-		-		7	4	,	1	3	6	4
-				6	7	,	0	7	3	6
+	
+	<div id="columnar_subtraction_3">
+	</div>
+	<script>
+		Display_table.create_from_table("-",[["", "13", "", "", "", "10", "", ""], ["0", "/s: 3", "11", "", "1", "/s: 0", "9", "10"], 
+		["/s: 1", "/s: 4", "/s: 1", ",", "/s: 2", "/s: 1", "/s: 0", "/s: 0"], ["", "7", "4", ",", "1", "3", "6", "4"], ["", "6", "7", ",", "0", "7", "3", "6"]]).print("columnar_subtraction_3");
+	</script>	
 
 	<p>
 		Zanim przystąpimy do mnożenia i dzielenia ułamków dziesiętnych, zauważmy pewne własności. Gdy chcemy pomnożyć <span class="math">53,243</span> 

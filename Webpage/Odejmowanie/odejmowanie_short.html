@@ -8,6 +8,7 @@
 	
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 	<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=MML_HTMLorMML"></script>
+	<script src="../.scripts/columnar_subtraction.js"></script>
 	<script src="../.scripts/draggable.js"></script>
 	<script src="../.scripts/math.js"></script>
 	<script src="subtraction_table_short.js"></script>
@@ -59,7 +60,7 @@
     </p>
       
     <p align = "center" class="math">
-        7 kulek – 4 kulki = 3 kulki
+        7&nbsp;kulek – 4&nbsp;kulki = 3&nbsp;kulki
     </p>
       
     <p>
@@ -108,7 +109,7 @@
     </p>
         
     <p>
-        Aby odjąć liczby jednocyfrowe można skorzystać z tabliczki odejmowania uwzględniając, że odejmowanie jest odwrotne do
+        Aby odjąć liczby jednocyfrowe, można skorzystać z tabliczki odejmowania, uwzględniając, że odejmowanie jest odwrotne do
         dodawania.
     </p>
 
@@ -134,34 +135,59 @@
     </p>
       
     <p>
-        Dla większych liczb stosuje się metodę <i>odejmowania w słupku</i>, zwaną też <i>odejmowaniem pisemnym</i>. 
-        Aby odjąć <span class="math">2737 – 683</span>, piszemy liczby jedna pod drugą z wyrównaniem do prawej i podkreślamy. 
-        Odejmujemy cyfry jedności: <span class="math">7 – 3 = 4</span>. Odjęcie cyfr dziesiątek <span class="math">3 – 8</span> 
-		sprawia problem, więc wykonujemy 
-        „pożyczkę” –  trójkę zwiększamy o <span class="math">10</span> (robimy z niej <span class="math">13</span>) kosztem cyfry po lewej – 
-		siódemkę zmniejszamy o <span class="math">1</span> 
-        (robimy z niej <span class="math">6</span>). Po takim zabiegu odejmujemy kolejne cyfry. Wynikiem jest <span class="math">2054</span>.
-    </p>
-      
-    <p align = "center">
-      
-            6	13	
-          2	7	3	7
-        -		6	8	3
-          2	0	5	4
-    </p>
-        
-    <p>
-        Czasem wykonanie jednej pożyczki wymaga wykonania innej.
-    </p>
-      
-    <p align = "center">
-            9	9	
-          0	10	10	10
-          1	0	0	0
-        -		6	7	9
-            3	2	1
-    </p>
+        Dla większych liczb stosuje się metodę <i>odejmowania w słupku</i>, zwaną też <i>odejmowaniem pisemnym</i>. Wpisz poniżej przykładowe liczby do odjęcia
+		(rozdzielone minusem). 
+	</p>
+  
+	<p align="center">
+		<input style="width: 800px" name="numberInput" type="text" id="columnar_addition_input" />
+	</p>
+	
+	<script>
+		function ColumnarSubtractionStartArgs()
+		{
+			ColumnarSubtractionStart("columnar_addition_input", "columnar_addition_script_button_right", "columnar_addition_script_button_left", 
+			"columnar_addition_script", "columnar_addition_script_comment", "columnar_addition_table");
+		}
+	</script>
+	
+	<p align="center">
+		<button id="columnar_addition_start" style="float: center;" 
+		onclick="ColumnarSubtractionStartArgs()">Start</button>
+	</p>
+	
+	<script>
+		SetInputEnterEvent("columnar_addition_input","columnar_addition_start")
+	</script>
+	
+	<table align = "center" class="columnar_operation_script" id="columnar_addition_table" >
+		<tr>
+			<td id="columnar_addition_script_button_left">
+				<svg height="0" width="30">
+					<defs>
+						<linearGradient id="gradient">
+						  <stop offset="20%" stop-color="#C33" />
+						  <stop offset="90%" stop-color="#833" />
+						</linearGradient>
+						<linearGradient id="hover_gradient">
+						  <stop offset="20%" stop-color="#A33" />
+						  <stop offset="90%" stop-color="#433" />
+						</linearGradient>
+					</defs>
+					<polygon points="20,0 0,30 20,60"/>
+				</svg>
+			</td>
+			<td>
+				<div id="columnar_addition_script" class="no_selection"></div>
+				<p id="columnar_addition_script_comment" class="no_selection"></p>
+			</td>
+			<td id = "columnar_addition_script_button_right">
+				<svg height="0" width="30">
+					<polygon points="0,0 20,30 0,60"/>
+				</svg>
+			</td>	
+		</tr>
+	</table>
   
 </div>
 

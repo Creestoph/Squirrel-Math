@@ -1,19 +1,17 @@
-(8)	Zadbaæ o przejrzystoœæ wyœwietlania elementów matematycznych (i ca³ego tekstu...)
 (7)	Stworzyæ skrypty do odejmowania, mno¿enia, dzielenia w s³upku
 (7)	Wygenerowaæ grafiki do u³amków zwyk³ych, dziesiêtnych, procentów i liczb ujemnych
+(7)	Uporz¹dkowaæ wyœwietlanie tekstu (ogólnie)
 (6)	Ogarn¹æ wyœwietlanie rozdzia³ów "Dodawanie w s³upku", "Odejmowanie w s³upku", "Mno¿enie w s³upku", "Dzielenie w s³upku"
 (6)	Sformu³owaæ dowody dzia³añ w s³upku
 (6)	Ulepszyæ skrypt draggable.js aby przesuwa³ kulki po ca³ym ekranie (+ animacja wracania)
-(6)	Dodaæ automatyczne ³amanie linii w wyœwietlaniu elementów mathml i zadbaæ o wyœwietlanie nawiasów tam gdzie trzeba
+(6)	Ulepszyæ skrypt math.js: mniejsze i wiêksze nawiasy, ogarnianie jednostek (m, kg, l), znaczników (<b>, <i>, <font>), automatyczne ³amanie linii
 (5)	Ramka "Dowód" wygl¹da s³abo (lepszy css i animacja scroll_hide)
 (5)	Udoskonaliæ formatowanie lekcji w Wordzie
-(5)	Ogarn¹æ skrypt math.js (na laptopie strasznie d³ugo siê ³aduje, niechêtnie wczytuje style, zamula stronê)
 (5)	Dostosowaæ stronê do wersji mobilnej
 (5)	Udoskonaliæ wersje skrócone (wydzieliæ sekcje, wesprzeæ szybkoogarnialnoœæ)
-(4)	Stworzyæ edytor lekcji w HTML
+(5)	Stworzyæ edytor lekcji w HTML
 (4)	Stworzyæ skrypt do faktoryzacji
 (4)	Dodaæ rozdzia³ o lokatach i kredytach w temacie "Procenty"
-(3)	Ulepszyæ skrypt math.js, ¿eby ogarnia³ jednostki typu m, kg, l
 (3)	Uproœciæ dowód w "Podzielnoœci liczb" i dodaæ komentarze
 (3)	Rozwin¹æ skrypt number_to_str.js na dowolnie du¿e liczby
 (3)	Ogarn¹æ t³umaczenie wymowy i zapisu kolejnych liczb w lekcji "Liczby"
@@ -21,6 +19,7 @@
 	odpowiedniej lekcji z wyjaœnieniem)
 (3)	W temacie "Podzielnoœæ liczb" wyjaœniæ sposoby na wyznaczanie NWD i NWW
 (3)	W temacie "Podzielnoœæ liczb" ogarn¹æ jak to jest z podzielnoœci¹ zera przez zero
+(3)	Sprawdziæ czy operator ÷ nie ma jakichœ dzikich w³asnoœci
 (2)	Stworzyæ skrypt wykonuj¹cy dzia³ania do lekcji "Kolejnoœæ wykonywania dzia³añ" 
 (2)	Naprawiæ maskowanie czêœci rozdzia³u "Dodawanie w s³upku" po rozwiniêciu skryptu
 (2)	Dopisaæ brakuj¹ce dowody w "Podzielnoœci liczb"

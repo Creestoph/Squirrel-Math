@@ -17,7 +17,98 @@ function element_mathML(input)
             {
 				 result = "<mrow>" + to_mathML(input.substring(pos + 1, j)) + "</mrow>";
                 //result = '<mfenced separators="">' + to_mathML(input.substring(pos + 1, j)) + "</mfenced>";
-                //result = '<mrow>' + to_mathML(input.substring(pos + 1, j)) + "</mrow>";
+                pos = j;
+                break;
+            }
+        }
+		pos++;
+    }
+	else if (input[pos] == '[')
+    {
+        var nawias = 1;
+        for (var j = pos+1; j < input.length; j++) 
+        {
+            if (input[j] == '[')
+                nawias++;
+            if (input[j] == ']')
+                nawias--;
+            if (nawias == 0)
+            {
+                result = '<mfenced open="[" close="]" separators="">' + to_mathML(input.substring(pos + 1, j)) + "</mfenced>";
+                pos = j;
+                break;
+            }
+        }
+		pos++;
+    }
+	else if (input[pos] == '⌊') //floor
+    {
+        var nawias = 1;
+        for (var j = pos+1; j < input.length; j++) 
+        {
+            if (input[j] == '⌊')
+                nawias++;
+            if (input[j] == '⌋')
+                nawias--;
+            if (nawias == 0)
+            {
+                result = '<mfenced open="⌊" close="⌋" separators="">' + to_mathML(input.substring(pos + 1, j)) + "</mfenced>";
+                pos = j;
+                break;
+            }
+        }
+		pos++;
+    }
+	else if (input[pos] == '⌈') //ceiling
+    {
+        var nawias = 1;
+        for (var j = pos+1; j < input.length; j++) 
+        {
+            if (input[j] == '⌈')
+                nawias++;
+            if (input[j] == '⌉')
+                nawias--;
+            if (nawias == 0)
+            {
+                result = '<mfenced open="⌈" close="⌉" separators="">' + to_mathML(input.substring(pos + 1, j)) + "</mfenced>";
+                pos = j;
+                break;
+            }
+        }
+		pos++;
+    }
+	else if (input[pos] == '{')
+    {
+        var nawias = 1;
+        for (var j = pos+1; j < input.length; j++) 
+        {
+            if (input[j] == '{')
+                nawias++;
+            if (input[j] == '}')
+                nawias--;
+            if (nawias == 0)
+            {
+                result = '<mfenced open="{" close="}" separators="">' + to_mathML(input.substring(pos + 1, j)) + "</mfenced>";
+                pos = j;
+                break;
+            }
+        }
+		pos++;
+    }
+	else if (input.substring(pos, pos+8)=="Bracket(")
+	{
+		pos += 8;
+		var nawias = 1;
+        for (var j = pos; j < input.length; j++) 
+        {
+            if (input[j] == '(')
+				nawias++;
+            if (input[j] == ')')
+                nawias--;
+            if (nawias == 0)
+            {
+				result = '<mfenced open="(" close=")" separators="">' + to_mathML(input.substring(pos, j)) + '</mfenced>';
+                //result = '<mfenced separators="">' + to_mathML(input.substring(pos + 1, j)) + "</mfenced>";
                 pos = j;
                 break;
             }
@@ -34,9 +125,9 @@ function element_mathML(input)
         }
         result += "</mn>";
     }
-    else if (input[pos] == '<' && input[pos + 1] == 'b' && input[pos + 2] == 'r' && input[pos + 3] == '>')
+    else if (input.substring(pos, pos+4)=="<br>")
     {
-        result += "<mo linebreak='newline'></mo>";
+        result += "<mspace linebreak='newline'></mspace>";
         pos += 4;
     }
 	else if (input.substring(pos, pos+7)=='Newton(')
@@ -47,21 +138,78 @@ function element_mathML(input)
 		result+="</mtd></mtr><mtr><mtd>" + element_mathML(input) + "</mtd></mtr></mtable></mfenced>";
 		pos++; //)
 	}
-    else if (input[pos] == '+' || input[pos] == '-' || input[pos] == ':' || input[pos] == '=')
+	else if (input.substring(pos, pos+5)=='Text(')
+	{
+		pos+=5; //Text(
+		result+="<mtext>";
+		while (pos<input.length && input[pos]!=')')
+		{
+			result+=input[pos];
+			pos++
+		}
+		result+="</mtext>";
+		pos++; //)
+	}
+	else if (input.substring(pos, pos+3)=="NWD")
+	{
+		result = "<mtext>NWD</mtext>";
+		pos+=3;
+	}
+	else if (input.substring(pos, pos+3)=="NWW")
+	{
+		result = "<mtext>NWW</mtext>";
+		pos+=3;
+	}
+	else if (input.substring(pos, pos+2)=="zł")
+	{
+		result = "<mtext>&nbsp;zł</mtext>";
+		pos+=2;
+	}
+    else if (input[pos] == '+' || input[pos] == ':' || input[pos] == '=')
 	{
 		result = "<mo>" + input[pos] + "</mo>";
 		pos++;
 	}
     else if (input.substring(pos, pos + 4) == '&lt;')
     {
-        result = "<mi><</mi>";
+        result = "<mo><</mo>";
         pos += 4;
     }
     else if (input.substring(pos, pos + 4) == '&gt;')
     {
         pos += 4;
-        result = "<mi>></mi>";
+        result = "<mo>></mo>";
     }
+	else if (input[pos] == '≥')
+	{
+		pos ++;
+        result = "<mo>≥</mo>";
+	}
+	else if (input[pos] == '≤')
+	{
+		pos ++;
+        result = "<mo>≤</mo>";
+	}
+	else if (input[pos] == '÷')
+	{
+		pos ++;
+        result = "<mo>÷</mo>";
+	}
+	else if (input[pos] == '∈')
+	{
+		pos ++;
+        result = "<mo>∈</mo>";
+	}
+	else if (input[pos] == '⇒' || input[pos]=='⟹')
+	{
+		pos ++;
+        result = "<mo>⇒</mo>";
+	}
+	else if (input[pos] == '⇔')
+	{
+		pos ++;
+        result = "<mo>⇔</mo>";
+	}
 	else if (input.substring(pos, pos + 6) == '&nbsp;')
     {
         pos += 6;
@@ -72,6 +220,11 @@ function element_mathML(input)
         pos += 2;
         result = "<mo>r.</mo>";
     }
+	else if (input[pos]=='–' || input[pos]=='-')
+	{
+		pos++;
+		result = "<mo>-</mo>";
+	}
     else if (input[pos] == '*' || input[pos] == '∙' || input[pos] == '·')
 	{
 		pos++;

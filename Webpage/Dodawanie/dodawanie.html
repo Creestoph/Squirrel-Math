@@ -13,8 +13,8 @@
 	<script src="../.scripts/comment.js"></script>
     <script src="../.scripts/draggable.js"></script>
 	<script src="../.scripts/math.js"></script>
-    <script src="../.scripts/number_validation.js"></script>
     <script src="../.scripts/display_table.js"></script>
+	<script src="../.scripts/number_validation.js"></script>
 	<script src="addition_table.js"></script>
 </head>
 
@@ -80,7 +80,7 @@
     </p>
       
 	<p align = "center" class="math">
-		2 kulki + 4 kulki = 6 kulek
+		2&nbsp;kulki + 4&nbsp;kulki = 6&nbsp;kulek
     </p>
       
     <p>
@@ -92,7 +92,7 @@
     </p>
       
     <p align = "center" class="math">
-		2 kulki = 2 kulki
+		2&nbsp;kulki = 2&nbsp;kulki
     </p>
       
     <p>
@@ -113,7 +113,7 @@
     </p>
       
     <p align = "center" class="math" style="margin-top: 0">
-		2 kule + 2 kule = 4 kule
+		2&nbsp;kule + 2&nbsp;kule = 4&nbsp;kule
     </p>
       
     <p align = "center">
@@ -139,7 +139,7 @@
     </p>
       
     <p align = "center" class="math" style="margin-top: 0">
-        3 kule + 4 kule + 6 kul = 13 kul
+        3&nbsp;kule + 4&nbsp;kule + 6&nbsp;kul = 13&nbsp;kul
     </p>
       
     <p>
@@ -423,7 +423,7 @@
       
 	<div id="columnar_addition_2"></div>
 	<script>
-		ColumnarAddition.InsertTable([[], ["1", "2", "7"], ["", "3", "2"], ["1", "5", "9"]], "columnar_addition_2");
+		 Display_table.create_from_table("+",[[], ["1", "2", "7"], ["", "3", "2"], ["1", "5", "9"]]).print("columnar_addition_2");
 	</script>
         
     <p>
@@ -433,7 +433,7 @@
       
 	<div id="columnar_addition_3"></div>
 	<script>
-		ColumnarAddition.InsertTable([[], ["2", "5", "6"], ["9", "4", "7"], []], "columnar_addition_3");
+		Display_table.create_from_table("+",[[], ["2", "5", "6"], ["9", "4", "7"], []]).print("columnar_addition_3");
 	</script>
 
     <p>
@@ -444,7 +444,7 @@
       
     <div id="columnar_addition_4"></div>
 	<script>
-		ColumnarAddition.InsertTable([["", "1", ""], ["2", "5", "6"], ["9", "4", "7"], ["", "", "3"]], "columnar_addition_4");
+		Display_table.create_from_table("+",[["", "1", ""], ["2", "5", "6"], ["9", "4", "7"], ["", "", "3"]]).print("columnar_addition_4");
 	</script>
 	  
 	  
@@ -456,7 +456,7 @@
       
     <div id="columnar_addition_5"></div>
 	<script>
-		ColumnarAddition.InsertTable([["1", "1", ""], ["2", "5", "6"], ["9", "4", "7"], ["", "0", "3"]], "columnar_addition_5");
+		Display_table.create_from_table("+",[["1", "1", ""], ["2", "5", "6"], ["9", "4", "7"], ["", "0", "3"]]).print("columnar_addition_5");
 	</script>
 	  
     <p>
@@ -465,7 +465,7 @@
       
 	<div id="columnar_addition_6"></div>
 	<script>
-		ColumnarAddition.InsertTable([["1", "1", "1", ""], ["", "2", "5", "6"], ["", "9", "4", "7"], ["", "2", "0", "3"]], "columnar_addition_6");
+		Display_table.create_from_table("+",[["1", "1", "1", ""], ["", "2", "5", "6"], ["", "9", "4", "7"], ["", "2", "0", "3"]]).print("columnar_addition_6");
 	</script>
 	  
     <p>
@@ -474,7 +474,7 @@
       
     <div id="columnar_addition_7"></div>
 	<script>
-		ColumnarAddition.InsertTable([["1", "1", "1", ""], ["", "2", "5", "6"], ["", "9", "4", "7"], ["1", "2", "0", "3"]], "columnar_addition_7");
+		Display_table.create_from_table("+",[["1", "1", "1", ""], ["", "2", "5", "6"], ["", "9", "4", "7"], ["1", "2", "0", "3"]]).print("columnar_addition_7");
 	</script>
       
     <p>
@@ -561,8 +561,9 @@
     </p>
       
     <p>
-        W gruncie rzeczy to, co uczyniliśmy, to właśnie sumowanie cyfr jedności (7 + 2), dziesiątek (20 + 30) i setek (100), 
-        by otrzymać wynik końcowy. Tak jak w słupku. Zobaczmy jeszcze jak działa 256 + 947 = 1203:
+        W gruncie rzeczy to, co uczyniliśmy, to właśnie sumowanie cyfr jedności (<span class="math">7 + 2</span>), dziesiątek (<span class="math">20 + 30</span>) i 
+		setek (<span class="math">100</span>), 
+        by otrzymać wynik końcowy. Tak jak w słupku. Zobaczmy jeszcze jak działa <span class="math">256 + 947 = 1203</span>:
     </p>
 
     <p align = "center">

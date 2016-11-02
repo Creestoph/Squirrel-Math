@@ -659,23 +659,23 @@
 		</p>
 		
 		<p class="math">
-			m=(Newton(k,0)10^k(-p)^0+Newton(k,1)10^(k-1)(-p)^1+Newton(k,2)10^(k-2)(-p)^2+⋯+Newton(k,k)10^0(-p)^k)a_k+<br>
-				+(Newton((k-1),0)10^(k-1)(-p)^0+Newton((k-1),1)10^(k-2)(-p)^1+Newton((k-1),2)10^(k-2)(-p)^2+⋯+Newton((k-1),(k-1))10^0(-p)^(k-1))a_(k-1)+<br>
+			m=Bracket(Newton(k,0)10^k Bracket(-p)^0+Newton(k,1)10^(k-1)Bracket(-p)^1+Newton(k,2)10^(k-2)Bracket(-p)^2+⋯+Newton(k,k)10^0Bracket(-p)^k)a_k+<br>
+				+Bracket(Newton((k-1),0)10^(k-1)Bracket(-p)^0+Newton((k-1),1)10^(k-2)Bracket(-p)^1+Newton((k-1),2)10^(k-2)Bracket(-p)^2+⋯+Newton((k-1),(k-1))10^0 Bracket(-p)^(k-1))a_(k-1)+<br>
 				+⋯+<br>
-				+(Newton((1),0) (10)^1 (-p)^0+Newton((1),1) (10)^0 (-p)^1 ) a_1+<br>
+				+Bracket(Newton((1),0) (10)^1 Bracket(-p)^0+Newton((1),1) (10)^0 Bracket(-p)^1 ) a_1+<br>
 				+a_0=<br>
-			=(10^k+Newton(k,1)10^(k-1)(-p)^1+Newton(k,2)10^(k-2)(-p)^2+⋯+Newton(k,k)10^0(-p)^k)a_k+<br>
-				+(10^(k-1)+Newton((k-1),1)10^(k-2)(-p)^1+Newton((k-1),2)10^(k-2)(-p)^2+⋯+Newton((k-1),(k-1))10^0(-p)^(k-1))a_(k-1)+<br>
+			=Bracket(10^k+Newton(k,1)10^(k-1)Bracket(-p)^1+Newton(k,2)10^(k-2)Bracket(-p)^2+⋯+Newton(k,k)10^0 Bracket(-p)^k)a_k+<br>
+				+Bracket(10^(k-1)+Newton((k-1),1)10^(k-2) Bracket(-p)^1+Newton((k-1),2)10^(k-2)Bracket(-p)^2+⋯+Newton((k-1),(k-1))10^0 Bracket(-p)^(k-1))a_(k-1)+<br>
 				+⋯+<br>
-				+((10)^1+Newton((1),1) (10)^0 (-p)^1 ) a_1+<br>
+				+Bracket((10)^1+Newton((1),1) (10)^0 Bracket(-p)^1 ) a_1+<br>
 				+a_0=<br>
-			=(10)^k a_k+(-p)(Newton(k,1)10^(k-1)(-p)^0+Newton(k,2)10^(k-2)(-p)^1+⋯+Newton(k,k)10^0(-p)^(k-1))a_k+<br>
-				+(10)^(k-1) a_(k-1)+(-p)(Newton((k-1),1)10^(k-2)(-p)^0+Newton((k-1),2)10^(k-2)(-p)^1+⋯+Newton((k-1),(k-1))10^0(-p)^(k-2))a_(k-1)+
+			=(10)^k a_k+ Bracket(-p)Bracket(Newton(k,1)10^(k-1)Bracket(-p)^0+Newton(k,2)10^(k-2)Bracket(-p)^1+⋯+Newton(k,k)10^0 Bracket(-p)^(k-1))a_k+<br>
+				+(10)^(k-1) a_(k-1)+Bracket(-p)Bracket(Newton((k-1),1)10^(k-2)Bracket(-p)^0+Newton((k-1),2)10^(k-2)Bracket(-p)^1+⋯+Newton((k-1),(k-1))10^0 Bracket(-p)^(k-2))a_(k-1)+
 				+⋯+</br>
-				+(10)^1 a_1+(-p)((Newton((1),1) (10)^0 (-p)^0 ) a_1+</br>
+				+(10)^1 a_1+Bracket(-p)Bracket((Newton((1),1) (10)^0 Bracket(-p)^0 ) a_1+</br>
 				+a_0=<br>
 			=(10)^k a_k+(10)^(k-1) a_(k-1)+⋯+(10)^1 a_1+a_0+<br>
-			(-p)((Newton(k,1) (10)^(k-1) (-p)^0+Newton(k,2) (10)^(k-2) (-p)^1+⋯+Newton(k,k) (10)^0 (-p)^(k-1) )a_k+(Newton((k-1),1) (10)^(k-2) (-p)^0+Newton((k-1),2) (10)^(k-2) (-p)^1+⋯+Newton((k-1),(k-1)) (10)^0 (-p)^(k-2) ) a_(k-1)+⋯+(Newton((1),1) (10)^0 (-p)^0 ) a_1 )=<br>=a-pm'
+			Bracket(-p)Bracket(Bracket(Newton(k,1) (10)^(k-1) Bracket(-p)^0+Newton(k,2) (10)^(k-2) Bracket(-p)^1+⋯+Newton(k,k) (10)^0 Bracket(-p)^(k-1) )a_k+Bracket(Newton((k-1),1) (10)^(k-2) Bracket(-p)^0+Newton((k-1),2) (10)^(k-2) Bracket(-p)^1+⋯+Newton((k-1),(k-1)) (10)^0 Bracket(-p)^(k-2) ) a_(k-1)+⋯+Bracket(Newton((1),1) (10)^0 Bracket(-p)^0 ) a_1 )=<br>=a-pm'
 		</p>
 
 		<p>
@@ -683,7 +683,7 @@
 		</p>
 		
 		<p class="math">
-			(Newton(k,1) (10)^(k-1) (-p)^0+Newton(k,2) (10)^(k-2) (-p)^1+⋯+Newton(k,k) (10)^0 (-p)^(k-1) )a_k+(Newton((k-1),1) (10)^(k-2) (-p)^0+Newton((k-1),2) (10)^(k-2) (-p)^1+⋯+Newton((k-1),(k-1)) (10)^0 (-p)^(k-2) ) a_(k-1)+⋯+(Newton((1),1) (10)^0 (-p)^0 ) a_1 
+			Bracket(Newton(k,1) (10)^(k-1) Bracket(-p)^0+Newton(k,2) (10)^(k-2) Bracket(-p)^1+⋯+Newton(k,k) (10)^0 Bracket(-p)^(k-1) )a_k+Bracket(Newton((k-1),1) (10)^(k-2) Bracket(-p)^0+Newton((k-1),2) (10)^(k-2) Bracket(-p)^1+⋯+Newton((k-1),(k-1)) (10)^0 Bracket(-p)^(k-2) ) a_(k-1)+⋯+Bracket(Newton((1),1) (10)^0 Bracket(-p)^0 ) a_1 
 		</p>
 		
 		<p>
@@ -718,7 +718,7 @@
 			<p class="formula">
 				Oznaczmy pozycję cyfry jedności jako <span class="math">0</span>, pozycję cyfry dziesiątek jako <span class="math">1</span> itd. 
 				Liczba daje resztę z dzielenia przez <span class="math">p</span> 
-				taką samą, jak reszta z dzielenia przez <span class="math">p</span> sumy cyfr mnożonych przez <span class="math">(-1)^n</span>, 
+				taką samą, jak reszta z dzielenia przez <span class="math">p</span> sumy cyfr mnożonych przez <span class="math">Bracket(-1)^n</span>, 
 				gdzie <span class="math">n</span> jest pozycją danej cyfry.
 			</p>
 			Jest to równoważne z tym, że liczby o pozycjach parzystych bierzemy ze znakiem <span class="math">+</span>, 
@@ -797,7 +797,7 @@
 
 		<p class ="math" align="center">
 			a=10^k a_k+⋯+10^n a_n+10^(n-1) a_(n-1)+⋯+10^1 a_1+10^0 a_0=<br>
-			=2^k 5^k a_k+⋯+2^n 5^n a_n+q=2^n (2^(k-n) 5^k a_k+⋯+2^0 5^n a_n )+q
+			=2^k 5^k a_k+⋯+2^n 5^n a_n+q=2^n Bracket(2^(k-n) 5^k a_k+⋯+2^0 5^n a_n )+q
 		</p>
 
 		<p>
@@ -805,24 +805,24 @@
 		</p>
 
 		<p class="math" align="center">
-			a=2^n (2^(k-n) 5^k a_k+⋯+2^0 5^n a_n )+q
+			a=2^n Bracket(2^(k-n) 5^k a_k+⋯+2^0 5^n a_n )+q
 		</p>
 
 		<p>
-			gdzie <span class="math">2^n (2^(k-n) 5^k a_k+⋯+2^0 5^n a_n )</span> jest liczbą podzielną przez <span class="math">2^n</span>.
+			gdzie <span class="math">2^n Bracket(2^(k-n) 5^k a_k+⋯+2^0 5^n a_n )</span> jest liczbą podzielną przez <span class="math">2^n</span>.
 		</p>
 
 		<p>
 			Jeśli <span class="math">2^n |q</span>, to prawa strona równości jest podzielna przez <span class="math">2^n</span>, więc lewa strona 
 			też jest podzielna przez <span class="math">2^n</span>, 
 			mamy więc <span class="math">2^n |q⟹2^n |a</span>. Jeśli <span class="math">2^n |a</span>, to w równości 
-			<span class="math">a-2^n (2^(k-n) 5^k a_k+⋯+2^0 5^n a_n )=q</span>, lewa strona 
+			<span class="math">a-2^n Bracket(2^(k-n) 5^k a_k+⋯+2^0 5^n a_n )=q</span>, lewa strona 
 			jest podzielna przez <span class="math">2^n</span>, więc prawa strona też jest podzielna przez <span class="math">2^n</span>, mamy 
 			więc <span class="math">2^n |a⟹2^n |q</span>. A zatem
 		</p>
 
 		<p class="math" align="center">
-			2^n |a⟺2^n |q □
+			2^n |a⇔2^n |q □
 		</p>
 	</div>
 
@@ -872,7 +872,7 @@
 
 		<p class ="math" align="center">
 		a=(10)^k a_k+⋯+(10)^n a_n+(10)^(n-1) a_(n-1)+⋯+(10)^1 a_1+(10)^0 a_0=<br>
-		=2^k 5^k a_k+⋯+2^n 5^n a_n+q=5^n (2^k 5^(k-n) a_k+⋯+2^n 5^0 a_n )+q
+		=2^k 5^k a_k+⋯+2^n 5^n a_n+q=5^n Bracket(2^k 5^(k-n) a_k+⋯+2^n 5^0 a_n )+q
 		</p>
 
 		<p>
@@ -880,18 +880,18 @@
 		</p>
 
 		<p class ="math" align ="center">
-			a=5^n (2^k 5^(k-n) a_k+⋯+2^n 5^0 a_n )+q
+			a=5^n Bracket(2^k 5^(k-n) a_k+⋯+2^n 5^0 a_n )+q
 		</p>
 
 		<p>
-			gdzie <span class="math">5^n (2^k 5^(k-n) a_k+⋯+2^n 5^0 a_n )</span> jest liczbą podzielną przez <span class="math">5^n</span>.
+			gdzie <span class="math">5^n Bracket(2^k 5^(k-n) a_k+⋯+2^n 5^0 a_n )</span> jest liczbą podzielną przez <span class="math">5^n</span>.
 		</p>
 
 		<p>
 			Jeśli <span class="math">5^n |q</span>, to prawa strona równości jest podzielna przez <span class="math">5^n</span>, więc lewa strona też 
 			jest podzielna przez <span class="math">5^n</span>, mamy 
 			więc <span class="math">5^n |q⟹5^n |a</span>. Jeśli <span class="math">5^n |a</span>, to w równości 
-			<span class="math">a-5^n (2^k 5^(k-n) a_k+⋯+2^n 5^0 a_n )=q</span>, lewa strona jest podzielna 
+			<span class="math">a-5^n Bracket(2^k 5^(k-n) a_k+⋯+2^n 5^0 a_n )=q</span>, lewa strona jest podzielna 
 			przez <span class="math">5^n</span>, więc prawa strona też jest podzielna przez <span class="math">2^n</span>, mamy więc 
 			<span class="math">5^n |a⟹5^n |q</span>. A zatem
 		</p>
@@ -1350,23 +1350,23 @@
 	<p>
 		Największy spośród tych dzielników to właśnie <span class="math">NWD</span> tych liczb. W przypadku liczb <span class="math">30</span>
 		i <span class="math">75</span> ich największy wspólny dzielnik 
-		to <span class="math">15</span>. Zapisujemy to symbolicznie: <span class="math">NWD(30, 75) = 15</span>.
+		to <span class="math">15</span>. Zapisujemy to symbolicznie: <span class="math">NWD Bracket(30, 75) = 15</span>.
 	</p>
 	<ul>
-		<li>Szukamy <span class="math">NWD(30, 42)</span>. Dzielniki <span class="math">30</span> to 
+		<li>Szukamy <span class="math">NWD Bracket(30, 42)</span>. Dzielniki <span class="math">30</span> to 
 		<span class="math">1</span>, <span class="math">2</span>, <span class="math">3</span>, <span class="math">5</span>, 
 		<span class="math">6</span>, <span class="math">10</span>, <span class="math">15</span>, <span class="math">30</span>. 
 		Dzielniki <span class="math">42</span> to <span class="math">1</span>, <span class="math">2</span>, <span class="math">3</span>, 
 		<span class="math">6</span>, <span class="math">7</span>, <span class="math">14</span>, <span class="math">21</span>, 
 		<span class="math">42</span>. 
-		W takim razie <span class="math">NWD(30, 42) = 6</span>.</li>
-		<li>Szukamy <span class="math">NWD(28, 70)</span>. Dzielniki <span class="math">28</span> to <span class="math">1</span>, 
+		W takim razie <span class="math">NWD Bracket(30, 42) = 6</span>.</li>
+		<li>Szukamy <span class="math">NWD Bracket(28, 70)</span>. Dzielniki <span class="math">28</span> to <span class="math">1</span>, 
 		<span class="math">2</span>, <span class="math">4</span>, <span class="math">7</span>, <span class="math">14</span>, 
 		<span class="math">28</span>. Dzielniki <span class="math">70</span> to <span class="math">1</span>, <span class="math">2</span>, 
 		<span class="math">5</span>, <span class="math">7</span>, <span class="math">10</span>, <span class="math">14</span>, 
 		<span class="math">35</span>, <span class="math">70</span>. 
-		W takim razie <span class="math">NWD(30, 42) = 14</span>.</li>
-		<li>Szukamy <span class="math">NWD(60, 105)</span>. Dzielniki <span class="math">60</span> to <span class="math">1</span>, 
+		W takim razie <span class="math">NWD Bracket(30, 42) = 14</span>.</li>
+		<li>Szukamy <span class="math">NWD Bracket(60, 105)</span>. Dzielniki <span class="math">60</span> to <span class="math">1</span>, 
 		<span class="math">2</span>, <span class="math">3</span>, <span class="math">4</span>, <span class="math">6</span>, 
 		<span class="math">10</span>, <span class="math">12</span>, <span class="math">15</span>, <span class="math">20</span>, 
 		<span class="math">30</span> i <span class="math">60</span>. 
@@ -1412,7 +1412,7 @@
 		Dla <span class="math">12</span> i <span class="math">21</span> mamy na przykład wspólne wielokrotności <span class="math">84</span> i 
 		<span class="math">168</span>. Gdybyśmy szukali dalej, znaleźlibyśmy ich dużo więcej, a 
 		nawet dowolnie dużo więcej. Najmniejsza spośród wspólnych wielokrotności dwóch liczb to ich <span class="math">NWW</span>. Możemy zapisać 
-		symbolicznie <span class="math">NWW(12, 21) = 84</span>.
+		symbolicznie <span class="math">NWW Bracket(12, 21) = 84</span>.
 	</p>
 
 	<p>

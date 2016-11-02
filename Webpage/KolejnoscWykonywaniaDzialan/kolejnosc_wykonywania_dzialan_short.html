@@ -42,8 +42,8 @@
 
 	<ul>
 		<li>
-			Na początku wykonujemy wszystkie mnożenia i dzielenia występujące w wyrażeniu. Wyróżniamy więc cząstki <span class="math">3 &middot; 10 : 5</span>,
-			&nbsp;&nbsp;&nbsp; <span class="math">6 : 3</span> &nbsp;&nbsp; oraz &nbsp;&nbsp; <span class="math">2 : 1 &middot; 4</span>. Każdą z nich obliczamy od lewej doprawej (w kolejności
+			Na początku wykonujemy wszystkie mnożenia i dzielenia występujące w wyrażeniu. Wyróżniamy więc cząstki <span class="math">3 &middot; 10 : 5</span>, &nbsp; 
+			<span class="math">6 : 3</span> oraz <span class="math">2 : 1 &middot; 4</span>. Każdą z nich obliczamy od lewej doprawej (w kolejności
 			występowania), czyli
 			<ul>
 				<li class="math">3 &middot; 10 : 5 = 30 : 5 = 6</li>
@@ -75,7 +75,7 @@
 
 	<p>
 		Gdy chcemy wymusić pierwszeństwo działania wiążącego słabiej, stosujemy nawiasy. Działanie <span class="math">5 &middot; (7 + 7)</span> wykonujemy, 
-		zaczynając od wyrażenia w nawiasie, a więc <span class="math">5 &middot; (7 + 7) = 5 &middot; 14 = 70</span>. Bez nawiasu działanie obliczalibyśmy jako
+		zaczynając od wyrażenia w nawiasie, a więc <span class="math">5 &middot; Bracket(7 + 7) = 5 &middot; 14 = 70</span>. Bez nawiasu działanie obliczalibyśmy jako
 		<span class="math">5 &middot; 7 + 7 = 35 + 7 = 42</span>. Ogólna reguła postępowania ze złożonymi działaniami jest następująca:
 	</p>
 
@@ -93,15 +93,15 @@
 	</p>
 
 	<ul>
-		<li class="math">5 &middot; (3 + 4) – 10 : (2 + 3) = 5 &middot; 7 – 10 : 5 = 35 – 2 = 33</li>
+		<li class="math">5 &middot; Bracket(3 + 4) – 10 : Bracket(2 + 3) = 5 &middot; 7 – 10 : 5 = 35 – 2 = 33</li>
 		<li class="math">
-			2 &middot; (3 + (7 + 3) : 2 + 3 &middot; (1 + 2) : 9) = 2 &middot; (3 + 10 : 2 + 3 &middot; 3 : 9) = <br>
-			= 2 &middot; (3 + 5 + 9 : 9) = 2 &middot; (3 + 5 + 1) = 2 &middot; (8 + 1) = 2 &middot; 9 = 18</li>
+			2 &middot; Bracket(3 + Bracket(7 + 3) : 2 + 3 &middot; Bracket(1 + 2) : 9) = 2 &middot; Bracket(3 + 10 : 2 + 3 &middot; 3 : 9) = <br>
+			= 2 &middot; Bracket(3 + 5 + 9 : 9) = 2 &middot; Bracket(3 + 5 + 1) = 2 &middot; Bracket(8 + 1) = 2 &middot; 9 = 18</li>
 		<li class="math">
-			2 &middot; (2 + 2 &middot; (2 + 2 &middot; (2 + 2 &middot; (2 + 2)))) =
-			2 &middot; (2 + 2 &middot; (2 + 2 &middot; (2 + 2 &middot; 4))) = <br>
-			= 2 &middot; (2 + 2 &middot; (2 + 2 &middot; (2 + 8))) = 2 &middot; (2 + 2 &middot; (2 + 2 &middot; 10)) = <br>
-			= 2 &middot; (2 + 2 &middot; (2 + 20)) = 2 &middot; (2 + 2 &middot; 22) = 2 &middot; (2 + 44) = 2 &middot; 46 = 92
+			2 &middot; Bracket(2 + 2 &middot; Bracket(2 + 2 &middot; Bracket(2 + 2 &middot; Bracket(2 + 2)))) =
+			2 &middot; Bracket(2 + 2 &middot; Bracket(2 + 2 &middot; Bracket(2 + 2 &middot; 4))) = <br>
+			= 2 &middot; Bracket(2 + 2 &middot; Bracket(2 + 2 &middot; Bracket(2 + 8))) = 2 &middot; Bracket(2 + 2 &middot; Bracket(2 + 2 &middot; 10)) = <br>
+			= 2 &middot; Bracket(2 + 2 &middot; Bracket(2 + 20)) = 2 &middot; Bracket(2 + 2 &middot; 22) = 2 &middot; Bracket(2 + 44) = 2 &middot; 46 = 92
 		</li>
 	</ul>
 
@@ -120,9 +120,9 @@
 
 	<p>
 		<ul>
-			<li><span class="math">(   )</span> to <i>nawias okrągły</i></li>
-			<li><span class="math">[   ]</span> to <i>nawias kwadratowy</i></li>
-			<li><span class="math">{   }</span> to <i>nawias klamrowy</i></li>
+			<li><span class="math">Bracket(&nbsp;&nbsp;&nbsp;)</span> to <i>nawias okrągły</i></li>
+			<li><span class="math">[&nbsp;&nbsp;&nbsp;]</span> to <i>nawias kwadratowy</i></li>
+			<li><span class="math">{&nbsp;&nbsp;&nbsp;}</span> to <i>nawias klamrowy</i></li>
 		</ul>
 	</p>
 
@@ -134,7 +134,7 @@
 	</p>
 
 	<p align ="center" class="math">
-		2+2 &middot; (2+2 &middot; (2+2 &middot; (2+2)))
+		2+2 &middot; Bracket(2+2 &middot; Bracket(2+2 &middot; Bracket(2+2)))
 	</p>
 
 	<p class = "type">
@@ -181,7 +181,7 @@
 	</p>
 
 	<p align="center" class="math">
-		4 &middot; 5 = 4 &middot; (3 + 2) = 4 &middot; 3 + 4 &middot; 2
+		4 &middot; 5 = 4 &middot; Bracket(3 + 2) = 4 &middot; 3 + 4 &middot; 2
 	</p>
 
 	<p>
@@ -189,9 +189,9 @@
 		Z powodu występowania takiej zależności mówimy, że mnożenie jest rozdzielne względem dodawania. Jest to dość przydatne,
 		do obliczania iloczynów wielkich liczb bez użycia mnożenia w słupku.
 		<ul>
-			<li class="math">23 &middot; 7 = (20 + 3) &middot; 7 = 20 &middot; 7 + 3 &middot; 7 = 140 + 21 = 161</li>
-			<li class="math">4 &middot; 124 = 4 &middot; (100 + 20 + 4) = 4 &middot; 100 + 4 &middot; 20 + 4 &middot; 4 = 400 + 80 + 16 = 496</li>
-			<li class="math">34 &middot; 23 = (30 + 4) &middot; 23 = 30 &middot 23 + 4 &middot 23 = 30 &middot; (20 + 3) + 4 &middot; (20 + 3) =<br>
+			<li class="math">23 &middot; 7 = Bracket(20 + 3) &middot; 7 = 20 &middot; 7 + 3 &middot; 7 = 140 + 21 = 161</li>
+			<li class="math">4 &middot; 124 = 4 &middot; Bracket(100 + 20 + 4) = 4 &middot; 100 + 4 &middot; 20 + 4 &middot; 4 = 400 + 80 + 16 = 496</li>
+			<li class="math">34 &middot; 23 = Bracket(30 + 4) &middot; 23 = 30 &middot 23 + 4 &middot 23 = 30 &middot; Bracket(20 + 3) + 4 &middot; Bracket(20 + 3) =<br>
 			= 30 &middot; 20 + 30 &middot; 3 + 4 &middot; 20 + 4 &middot; 3 = 600 + 90 + 80 + 12 = 782</li>
 		</ul>
 	</p>

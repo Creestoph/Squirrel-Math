@@ -397,23 +397,23 @@
 		</p>
 		
 		<p class="math">
-			m=(Newton(k,0)10^k(-p)^0+Newton(k,1)10^(k-1)(-p)^1+Newton(k,2)10^(k-2)(-p)^2+⋯+Newton(k,k)10^0(-p)^k)a_k+<br>
-				+(Newton((k-1),0)10^(k-1)(-p)^0+Newton((k-1),1)10^(k-2)(-p)^1+Newton((k-1),2)10^(k-2)(-p)^2+⋯+Newton((k-1),(k-1))10^0(-p)^(k-1))a_(k-1)+<br>
+			m=Bracket(Newton(k,0)10^k Bracket(-p)^0+Newton(k,1)10^(k-1)Bracket(-p)^1+Newton(k,2)10^(k-2)Bracket(-p)^2+⋯+Newton(k,k)10^0Bracket(-p)^k)a_k+<br>
+				+Bracket(Newton((k-1),0)10^(k-1)Bracket(-p)^0+Newton((k-1),1)10^(k-2)Bracket(-p)^1+Newton((k-1),2)10^(k-2)Bracket(-p)^2+⋯+Newton((k-1),(k-1))10^0 Bracket(-p)^(k-1))a_(k-1)+<br>
 				+⋯+<br>
-				+(Newton((1),0) (10)^1 (-p)^0+Newton((1),1) (10)^0 (-p)^1 ) a_1+<br>
+				+Bracket(Newton((1),0) (10)^1 Bracket(-p)^0+Newton((1),1) (10)^0 Bracket(-p)^1 ) a_1+<br>
 				+a_0=<br>
-			=(10^k+Newton(k,1)10^(k-1)(-p)^1+Newton(k,2)10^(k-2)(-p)^2+⋯+Newton(k,k)10^0(-p)^k)a_k+<br>
-				+(10^(k-1)+Newton((k-1),1)10^(k-2)(-p)^1+Newton((k-1),2)10^(k-2)(-p)^2+⋯+Newton((k-1),(k-1))10^0(-p)^(k-1))a_(k-1)+<br>
+			=Bracket(10^k+Newton(k,1)10^(k-1)Bracket(-p)^1+Newton(k,2)10^(k-2)Bracket(-p)^2+⋯+Newton(k,k)10^0 Bracket(-p)^k)a_k+<br>
+				+Bracket(10^(k-1)+Newton((k-1),1)10^(k-2) Bracket(-p)^1+Newton((k-1),2)10^(k-2)Bracket(-p)^2+⋯+Newton((k-1),(k-1))10^0 Bracket(-p)^(k-1))a_(k-1)+<br>
 				+⋯+<br>
-				+((10)^1+Newton((1),1) (10)^0 (-p)^1 ) a_1+<br>
+				+Bracket((10)^1+Newton((1),1) (10)^0 Bracket(-p)^1 ) a_1+<br>
 				+a_0=<br>
-			=(10)^k a_k+(-p)(Newton(k,1)10^(k-1)(-p)^0+Newton(k,2)10^(k-2)(-p)^1+⋯+Newton(k,k)10^0(-p)^(k-1))a_k+<br>
-				+(10)^(k-1) a_(k-1)+(-p)(Newton((k-1),1)10^(k-2)(-p)^0+Newton((k-1),2)10^(k-2)(-p)^1+⋯+Newton((k-1),(k-1))10^0(-p)^(k-2))a_(k-1)+
+			=(10)^k a_k+ Bracket(-p)Bracket(Newton(k,1)10^(k-1)Bracket(-p)^0+Newton(k,2)10^(k-2)Bracket(-p)^1+⋯+Newton(k,k)10^0 Bracket(-p)^(k-1))a_k+<br>
+				+(10)^(k-1) a_(k-1)+Bracket(-p)Bracket(Newton((k-1),1)10^(k-2)Bracket(-p)^0+Newton((k-1),2)10^(k-2)Bracket(-p)^1+⋯+Newton((k-1),(k-1))10^0 Bracket(-p)^(k-2))a_(k-1)+
 				+⋯+</br>
-				+(10)^1 a_1+(-p)((Newton((1),1) (10)^0 (-p)^0 ) a_1+</br>
+				+(10)^1 a_1+Bracket(-p)Bracket((Newton((1),1) (10)^0 Bracket(-p)^0 ) a_1+</br>
 				+a_0=<br>
 			=(10)^k a_k+(10)^(k-1) a_(k-1)+⋯+(10)^1 a_1+a_0+<br>
-			(-p)((Newton(k,1) (10)^(k-1) (-p)^0+Newton(k,2) (10)^(k-2) (-p)^1+⋯+Newton(k,k) (10)^0 (-p)^(k-1) )a_k+(Newton((k-1),1) (10)^(k-2) (-p)^0+Newton((k-1),2) (10)^(k-2) (-p)^1+⋯+Newton((k-1),(k-1)) (10)^0 (-p)^(k-2) ) a_(k-1)+⋯+(Newton((1),1) (10)^0 (-p)^0 ) a_1  )=<br>=a-pm'
+			Bracket(-p)Bracket(Bracket(Newton(k,1) (10)^(k-1) Bracket(-p)^0+Newton(k,2) (10)^(k-2) Bracket(-p)^1+⋯+Newton(k,k) (10)^0 Bracket(-p)^(k-1) )a_k+Bracket(Newton((k-1),1) (10)^(k-2) Bracket(-p)^0+Newton((k-1),2) (10)^(k-2) Bracket(-p)^1+⋯+Newton((k-1),(k-1)) (10)^0 Bracket(-p)^(k-2) ) a_(k-1)+⋯+Bracket(Newton((1),1) (10)^0 Bracket(-p)^0 ) a_1 )=<br>=a-pm'
 		</p>
 
 		<p>
@@ -421,7 +421,7 @@
 		</p>
 		
 		<p class="math">
-			(Newton(k,1) (10)^(k-1) (-p)^0+Newton(k,2) (10)^(k-2) (-p)^1+⋯+Newton(k,k) (10)^0 (-p)^(k-1) )a_k+(Newton((k-1),1) (10)^(k-2) (-p)^0+Newton((k-1),2) (10)^(k-2) (-p)^1+⋯+Newton((k-1),(k-1)) (10)^0 (-p)^(k-2) ) a_(k-1)+⋯+(Newton((1),1) (10)^0 (-p)^0 ) a_1 
+			Bracket(Newton(k,1) (10)^(k-1) Bracket(-p)^0+Newton(k,2) (10)^(k-2) Bracket(-p)^1+⋯+Newton(k,k) (10)^0 Bracket(-p)^(k-1) )a_k+Bracket(Newton((k-1),1) (10)^(k-2) Bracket(-p)^0+Newton((k-1),2) (10)^(k-2) Bracket(-p)^1+⋯+Newton((k-1),(k-1)) (10)^0 Bracket(-p)^(k-2) ) a_(k-1)+⋯+Bracket(Newton((1),1) (10)^0 Bracket(-p)^0 ) a_1 
 		</p>
 		
 		<p>
@@ -450,13 +450,14 @@
 		</p>
 
 		<p class="math" align="center">
-		10^k a_k+10^(k-1) a_(k-1)+⋯+10^1 a_1+10^0 a_0
+			10^k a_k+10^(k-1) a_(k-1)+⋯+10^1 a_1+10^0 a_0
 		</p>
 
 		<p>
-			gdzie <span class="math">a_0,a_1,…,a_k∈{0,1,2,3,4,5,6,7,8,9}</span> są cyframi tej liczby.[?] Jeśli <span class="math">k&#60;n</span>, to liczba utworzona 
-			przez <span class="math">n</span> ostatnich 
-			cyfr tej liczby jest równa <span class="math">a</span> i twierdzenie jest prawdziwe.[?] Gdy <span class="math">k≥n</span>, liczba utworzona przez 
+			gdzie <span class="math">a_0,a_1,…,a_k∈{0,1,2,3,4,5,6,7,8,9}</span> są cyframi tej liczby.[?] Jeśli <span class="math">k&#60;n</span>, to 
+			liczba utworzona przez <span class="math">n</span> ostatnich 
+			cyfr tej liczby jest równa <span class="math">a</span> i twierdzenie jest prawdziwe.[?] Gdy <span class="math">k≥n</span>, 
+			liczba utworzona przez 
 			<span class="math">n</span> ostatnich cyfr ma postać
 		</p>
 
@@ -470,7 +471,7 @@
 
 		<p class ="math" align="center">
 			a=10^k a_k+⋯+10^n a_n+10^(n-1) a_(n-1)+⋯+10^1 a_1+10^0 a_0=<br>
-			=2^k 5^k a_k+⋯+2^n 5^n a_n+q=2^n (2^(k-n) 5^k a_k+⋯+2^0 5^n a_n )+q
+			=2^k 5^k a_k+⋯+2^n 5^n a_n+q=2^n Bracket(2^(k-n) 5^k a_k+⋯+2^0 5^n a_n )+q
 		</p>
 
 		<p>
@@ -478,24 +479,24 @@
 		</p>
 
 		<p class="math" align="center">
-			a=2^n (2^(k-n) 5^k a_k+⋯+2^0 5^n a_n )+q
+			a=2^n Bracket(2^(k-n) 5^k a_k+⋯+2^0 5^n a_n )+q
 		</p>
 
 		<p>
-			gdzie <span class="math">2^n (2^(k-n) 5^k a_k+⋯+2^0 5^n a_n )</span> jest liczbą podzielną przez <span class="math">2^n</span>.
+			gdzie <span class="math">2^n Bracket(2^(k-n) 5^k a_k+⋯+2^0 5^n a_n )</span> jest liczbą podzielną przez <span class="math">2^n</span>.
 		</p>
 
 		<p>
-			Jeśli <span class="math">2^n |q</span>, to prawa strona równości jest podzielna przez <span class="math">2^n</span>, więc lewa strona też jest 
-			podzielna przez <span class="math">2^n</span>, 
+			Jeśli <span class="math">2^n |q</span>, to prawa strona równości jest podzielna przez <span class="math">2^n</span>, więc lewa strona 
+			też jest podzielna przez <span class="math">2^n</span>, 
 			mamy więc <span class="math">2^n |q⟹2^n |a</span>. Jeśli <span class="math">2^n |a</span>, to w równości 
-			<span class="math">a-2^n (2^(k-n) 5^k a_k+⋯+2^0 5^n a_n )=q</span>, lewa strona 
-			jest podzielna przez <span class="math">2^n</span>, więc prawa strona też jest podzielna przez <span class="math">2^n</span>, mamy więc 
-			<span class="math">2^n |a⟹2^n |q</span>. A zatem
+			<span class="math">a-2^n Bracket(2^(k-n) 5^k a_k+⋯+2^0 5^n a_n )=q</span>, lewa strona 
+			jest podzielna przez <span class="math">2^n</span>, więc prawa strona też jest podzielna przez <span class="math">2^n</span>, mamy 
+			więc <span class="math">2^n |a⟹2^n |q</span>. A zatem
 		</p>
 
 		<p class="math" align="center">
-			2^n |a⟺2^n |q □
+			2^n |a⇔2^n |q □
 		</p>
 	</div>
 
@@ -527,7 +528,7 @@
 		</p>
 
 		<p>
-			gdzie <span class="math">a_0,a_1,…,a_k∈{0,1,2,3,4,5,6,7,8,9}</span> są cyframi tej liczby. Jeśli <span class="math">k&#60;n</span>, to liczba utworzona przez 
+			gdzie <span class="math">a_0,a_1,…,a_k∈{0,1,2,3,4,5,6,7,8,9}</span> są cyframi tej liczby. Jeśli k&#60;n, to liczba utworzona przez 
 			<span class="math">n</span> ostatnich cyfr 
 			tej liczby jest równa <span class="math">a</span> i twierdzenie jest prawdziwe. Gdy <span class="math">k≥n</span>, 
 			liczba utworzona przez <span class="math">n</span> ostatnich cyfr ma postać
@@ -543,7 +544,7 @@
 
 		<p class ="math" align="center">
 		a=(10)^k a_k+⋯+(10)^n a_n+(10)^(n-1) a_(n-1)+⋯+(10)^1 a_1+(10)^0 a_0=<br>
-		=2^k 5^k a_k+⋯+2^n 5^n a_n+q=5^n (2^k 5^(k-n) a_k+⋯+2^n 5^0 a_n )+q
+		=2^k 5^k a_k+⋯+2^n 5^n a_n+q=5^n Bracket(2^k 5^(k-n) a_k+⋯+2^n 5^0 a_n )+q
 		</p>
 
 		<p>
@@ -551,18 +552,18 @@
 		</p>
 
 		<p class ="math" align ="center">
-		a=5^n (2^k 5^(k-n) a_k+⋯+2^n 5^0 a_n )+q
+			a=5^n Bracket(2^k 5^(k-n) a_k+⋯+2^n 5^0 a_n )+q
 		</p>
 
 		<p>
-			gdzie <span class="math">5^n (2^k 5^(k-n) a_k+⋯+2^n 5^0 a_n )</span> jest liczbą podzielną przez <span class="math">5^n</span>.
+			gdzie <span class="math">5^n Bracket(2^k 5^(k-n) a_k+⋯+2^n 5^0 a_n )</span> jest liczbą podzielną przez <span class="math">5^n</span>.
 		</p>
 
 		<p>
 			Jeśli <span class="math">5^n |q</span>, to prawa strona równości jest podzielna przez <span class="math">5^n</span>, więc lewa strona też 
 			jest podzielna przez <span class="math">5^n</span>, mamy 
 			więc <span class="math">5^n |q⟹5^n |a</span>. Jeśli <span class="math">5^n |a</span>, to w równości 
-			<span class="math">a-5^n (2^k 5^(k-n) a_k+⋯+2^n 5^0 a_n )=q</span>, lewa strona jest podzielna 
+			<span class="math">a-5^n Bracket(2^k 5^(k-n) a_k+⋯+2^n 5^0 a_n )=q</span>, lewa strona jest podzielna 
 			przez <span class="math">5^n</span>, więc prawa strona też jest podzielna przez <span class="math">2^n</span>, mamy więc 
 			<span class="math">5^n |a⟹5^n |q</span>. A zatem
 		</p>
@@ -731,7 +732,7 @@
 	</ul>
 
 	<p>
-		Największy spośród tych wspólnych dzielników to <span class="math">15</span>. Zapisujemy to symbolicznie: <span class="math">NWD(30, 75) = 15</span>.
+		Największy spośród tych wspólnych dzielników to <span class="math">15</span>. Zapisujemy to symbolicznie: <span class="math">NWD Bracket(30, 75) = 15</span>.
 	</p>
 
 	<p>
@@ -749,7 +750,7 @@
 	</ul>
 
 	<p>
-		W przypadku liczb <span class="math">4</span> i <span class="math">6</span> mamy <span class="math">NWW(4, 6) = 12</span>.
+		W przypadku liczb <span class="math">4</span> i <span class="math">6</span> mamy <span class="math">NWW Bracket(4, 6) = 12</span>.
 	</p>
 
 	<br>
