@@ -1,6 +1,5 @@
 (7)	Stworzyæ skrypty do odejmowania, mno¿enia, dzielenia w s³upku
 (7)	Wygenerowaæ grafiki do u³amków zwyk³ych, dziesiêtnych, procentów i liczb ujemnych
-(7)	Uporz¹dkowaæ wyœwietlanie tekstu (ogólnie)
 (6)	Ogarn¹æ wyœwietlanie rozdzia³ów "Dodawanie w s³upku", "Odejmowanie w s³upku", "Mno¿enie w s³upku", "Dzielenie w s³upku"
 (6)	Sformu³owaæ dowody dzia³añ w s³upku
 (6)	Ulepszyæ skrypt draggable.js aby przesuwa³ kulki po ca³ym ekranie (+ animacja wracania)
@@ -10,6 +9,7 @@
 (5)	Dostosowaæ stronê do wersji mobilnej
 (5)	Udoskonaliæ wersje skrócone (wydzieliæ sekcje, wesprzeæ szybkoogarnialnoœæ)
 (5)	Stworzyæ edytor lekcji w HTML
+(5)	Znormalizowaæ wyœwietlanie przyk³adów jako "example"
 (4)	Stworzyæ skrypt do faktoryzacji
 (4)	Dodaæ rozdzia³ o lokatach i kredytach w temacie "Procenty"
 (3)	Uproœciæ dowód w "Podzielnoœci liczb" i dodaæ komentarze

@@ -92,18 +92,19 @@
 		Nawiasów możemy stosować dowolnie dużo, możemy nawet <i>zagnieżdżać</i> nawiasy, czyli stosować nawias wewnątrz nawiasu.
 	</p>
 
-	<ul>
-		<li class="math">5 &middot; Bracket(3 + 4) – 10 : Bracket(2 + 3) = 5 &middot; 7 – 10 : 5 = 35 – 2 = 33</li>
-		<li class="math">
-			2 &middot; Bracket(3 + Bracket(7 + 3) : 2 + 3 &middot; Bracket(1 + 2) : 9) = 2 &middot; Bracket(3 + 10 : 2 + 3 &middot; 3 : 9) = <br>
-			= 2 &middot; Bracket(3 + 5 + 9 : 9) = 2 &middot; Bracket(3 + 5 + 1) = 2 &middot; Bracket(8 + 1) = 2 &middot; 9 = 18</li>
-		<li class="math">
-			2 &middot; Bracket(2 + 2 &middot; Bracket(2 + 2 &middot; Bracket(2 + 2 &middot; Bracket(2 + 2)))) =
-			2 &middot; Bracket(2 + 2 &middot; Bracket(2 + 2 &middot; Bracket(2 + 2 &middot; 4))) = <br>
-			= 2 &middot; Bracket(2 + 2 &middot; Bracket(2 + 2 &middot; Bracket(2 + 8))) = 2 &middot; Bracket(2 + 2 &middot; Bracket(2 + 2 &middot; 10)) = <br>
-			= 2 &middot; Bracket(2 + 2 &middot; Bracket(2 + 20)) = 2 &middot; Bracket(2 + 2 &middot; 22) = 2 &middot; Bracket(2 + 44) = 2 &middot; 46 = 92
-		</li>
-	</ul>
+	<div class="example">
+		<span class="math">5 &middot; Bracket(3 + 4) – 10 : Bracket(2 + 3) = 5 &middot; 7 – 10 : 5 = 35 – 2 = 33</span>
+	</div>
+	<div class="example">
+		<span class="math">2 &middot; Bracket(3 + Bracket(7 + 3) : 2 + 3 &middot; Bracket(1 + 2) : 9) = 2 &middot; Bracket(3 + 10 : 2 + 3 &middot; 3 : 9) = <br>
+		= 2 &middot; Bracket(3 + 5 + 9 : 9) = 2 &middot; Bracket(3 + 5 + 1) = 2 &middot; Bracket(8 + 1) = 2 &middot; 9 = 18</span>
+	</div>
+	<div class="example">
+		<span class="math">2 &middot; Bracket(2 + 2 &middot; Bracket(2 + 2 &middot; Bracket(2 + 2 &middot; Bracket(2 + 2)))) =
+		2 &middot; Bracket(2 + 2 &middot; Bracket(2 + 2 &middot; Bracket(2 + 2 &middot; 4))) = <br>
+		= 2 &middot; Bracket(2 + 2 &middot; Bracket(2 + 2 &middot; Bracket(2 + 8))) = 2 &middot; (2 + 2 &middot; Bracket(2 + 2 &middot; 10)) = <br>
+		= 2 &middot; Bracket(2 + 2 &middot; Bracket(2 +20)) = 2 &middot; Bracket(2 + 2 &middot; 22) = 2 &middot; Bracket(2 + 44) = 2 &middot; 46 = 92</span>
+	</div>
 
 	<p class = "type">
 		Rozszerzenie
@@ -188,13 +189,19 @@
 		Zależność ta jest bardzo ogólna. Gdy chcemy pomnożyć pewną liczbę przez sumę, możemy rozdzielić to mnożenie na dodawanie.
 		Z powodu występowania takiej zależności mówimy, że mnożenie jest rozdzielne względem dodawania. Jest to dość przydatne,
 		do obliczania iloczynów wielkich liczb bez użycia mnożenia w słupku.
-		<ul>
-			<li class="math">23 &middot; 7 = Bracket(20 + 3) &middot; 7 = 20 &middot; 7 + 3 &middot; 7 = 140 + 21 = 161</li>
-			<li class="math">4 &middot; 124 = 4 &middot; Bracket(100 + 20 + 4) = 4 &middot; 100 + 4 &middot; 20 + 4 &middot; 4 = 400 + 80 + 16 = 496</li>
-			<li class="math">34 &middot; 23 = Bracket(30 + 4) &middot; 23 = 30 &middot 23 + 4 &middot 23 = 30 &middot; Bracket(20 + 3) + 4 &middot; Bracket(20 + 3) =<br>
-			= 30 &middot; 20 + 30 &middot; 3 + 4 &middot; 20 + 4 &middot; 3 = 600 + 90 + 80 + 12 = 782</li>
-		</ul>
 	</p>
+	
+	<div class="example">
+		<span class="math">23 &middot; 7 = Bracket(20 + 3) &middot; 7 = 20 &middot; 7 + 3 &middot; 7 = 140 + 21 = 161</span>
+	</div>
+	<div class="example">
+		<span class="math">4 &middot; 124 = 4 &middot; Bracket(100 + 20 + 4) = 4 &middot; 100 + 4 &middot; 20 + 4 &middot; 4 = 400 + 80 + 16 = 496</span>
+	</div>
+	<div class="example">
+		<span class="math">34 &middot; 23 = Bracket(30 + 4) &middot; 23 = 30 &middot 23 + 4 &middot 23 = 30 &middot; Bracket(20 + 3) + 4 &middot; Bracket(20 + 3) =<br>
+		= 30 &middot; 20 + 30 &middot; 3 + 4 &middot; 20 + 4 &middot; 3 = 600 + 90 + 80 + 12 = 782</span>
+	</div>
+	
   
 </div>
 
