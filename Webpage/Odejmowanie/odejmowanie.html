@@ -560,7 +560,7 @@
 	</p>
 
         <script>
-            var columnar_subtraction = new Columnar_subtraction( "columnar_subtraction_table","columnar_subtraction_comment", "columnar_subtraction_button_right", "columnar_subtraction_button_left");
+            var columnar_subtraction = new Columnar_subtraction( "columnar_subtraction_table","columnar_subtraction_comment", "columnar_operation_button_right", "columnar_operation_button_left");
             function ColumnarSubtractionStartArgs() {
                 var success = columnar_subtraction.generate_from_input("columnar_subtraction_input","columnar_subtraction_area");
                 if (success)columnar_subtraction.print_step(0);
@@ -579,7 +579,7 @@
 	
 	<table align = "center" class="columnar_operation_script" id="columnar_subtraction_area" >
 		<tr>
-			<td id="columnar_subtraction_button_left" onclick="columnar_subtraction.prev()">
+			<td id="columnar_operation_button_left" onclick="columnar_subtraction.prev()">
 				<svg height="0" width="30">
 					<defs>
 						<linearGradient id="gradient">
@@ -598,7 +598,7 @@
 				<div id="columnar_subtraction_table" class="no_selection"></div>
 				<p id="columnar_subtraction_comment" class="no_selection"></p>
 			</td>
-			<td id = "columnar_subtraction_button_right" onclick="columnar_subtraction.next()">
+			<td id = "columnar_operation_button_right" onclick="columnar_subtraction.next()">
 				<svg height="0" width="30">
 					<polygon points="0,0 20,30 0,60"/>
 				</svg>

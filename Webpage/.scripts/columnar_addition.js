@@ -36,7 +36,6 @@ Columnar_addition.prototype.generate_from_input = function (input_id, columnar_a
 	document.getElementById(columnar_addition_area).style.height = "400px";
 	document.getElementById(columnar_addition_area).style.padding = "20px";
 	document.getElementById(this.table_id).style.marginTop = "60px";
-	document.getElementById(this.comment_id).style.marginTop = "60px";
 	document.getElementById(this.button_left_id).childNodes[0].nextSibling.setAttribute("height", "60px");
 	document.getElementById(this.button_right_id).childNodes[0].nextSibling.setAttribute("height", "60px");
 	var input = document.getElementById(input_id).value;
@@ -44,9 +43,11 @@ Columnar_addition.prototype.generate_from_input = function (input_id, columnar_a
 	input = input.replace(/,/g,".");
 	try{
 		this.generate_steps(input.split("+"));
+		document.getElementById(this.comment_id).style.marginTop = "60px";
 		return true;
 	}
 	catch (err){
+		document.getElementById(this.comment_id).style.marginTop = "120px";
 		this.print_error(err);
 		return false;
 	}

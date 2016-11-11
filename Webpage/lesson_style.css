@@ -517,7 +517,7 @@ table.columnar_operation
 	font-family: Bookman Old Style;
 }
 
-td.columnar_operation
+td.columnar_operation_not_carry
 {
 	padding-top: 0px;
 	padding-bottom: 0px;
@@ -528,10 +528,6 @@ td.columnar_operation
 
 td.columnar_operation_underlined
 {
-	padding-top: 0px;
-	padding-bottom: 0px;
-	padding-left: 2px;
-	padding-right: 2px;
 	border-bottom: 1pt solid black;
 }
 
@@ -564,27 +560,27 @@ table.columnar_operation_script td
 	vertical-align: center;
 }
 
-#columnar_addition_button_left:hover
+#columnar_operation_button_left:hover
 {
 	transform: scale(1.2);
 }
 
-#columnar_addition_button_left:hover polygon
+#columnar_operation_button_left:hover polygon
 {
 	fill: url(#hover_gradient);
 }
 
-#columnar_addition_button_right:hover
+#columnar_operation_button_right:hover
 {
 	transform: scale(1.2);
 }
 
-#columnar_addition_button_right:hover polygon
+#columnar_operation_button_right:hover polygon
 {
 	fill: url(#hover_gradient);
 }
 
-#columnar_addition_button_left + td
+#columnar_operation_button_left + td
 {
 	width: 80%;
 	vertical-align: top;

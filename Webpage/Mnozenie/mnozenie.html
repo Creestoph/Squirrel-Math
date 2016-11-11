@@ -11,7 +11,7 @@
 	<script src="../.scripts/scroll_hide.js"></script>
 	<script src="../.scripts/comment.js"></script>
 	<script src="../.scripts/math.js"></script>
-	<script src="multiplication_table.js"></script>
+	<script src="../.scripts/display_table.js"></script>
 </head>
 
 <body class="lesson">
@@ -439,10 +439,11 @@
         obydwie liczby jedna pod drugą z wyrównaniem do prawej i podkreślamy.
     </p>
       
-    <p align = "center">
-          1	3	4
-        			2
-    </p>
+	<div id="columnar_multiplication_1">
+	</div>
+	<script>
+		Display_table.create_custom([["", "", "1", "3", "4"], ["/u:∙", "/u:", "/u:", "/u:", "/u:2"], ["", "", "", "", ""]]).print("columnar_multiplication_1");
+	</script>
       
     <p>
         Teraz mnożymy kolejne cyfry górnej liczby przez <span class="math">2</span> i wynik zapisujemy pod kreską. 
@@ -453,21 +454,22 @@
         </ul>
     </p>
     
-    <p align = "center">
-          1	3	4
-        			2
-          2	6	8
-    </p>
+	<div id="columnar_multiplication_2">
+	</div>
+	<script>
+		Display_table.create_custom([["", "", "1", "3", "4"], ["/u:∙", "/u:", "/u:", "/u:", "/u:2"], ["", "", "2", "6", "8"]]).print("columnar_multiplication_2");
+	</script>
     
     <p>
         To był najprostszy przypadek mnożenia. Teraz dajmy się ponieść mnożeniu przez liczbę większą niż jednocyfrową: 
         <span class="math">302  &middot; 213</span>
     </p>
     
-    <p align = "center">
-          3	0	2
-        	2	1	3
-    </p>
+	<div id="columnar_multiplication_3">
+	</div>
+	<script>
+		Display_table.create_custom([["", "", "3", "0", "2"], ["/u:∙", "/u:", "/u:2", "/u:1", "/u:3"], ["", "", "", "", ""]]).print("columnar_multiplication_3");
+	</script>
     
     <p>
         Zaczynamy od mnożenia górnej liczby przez cyfrę jedności dolnej.
@@ -478,11 +480,11 @@
         </ul>
     </p>
   
-    <p align = "center">
-          3	0	2
-        	2	1	3
-          9	0	6
-    </p>
+	<div id="columnar_multiplication_4">
+	</div>
+	<script>
+		Display_table.create_custom([["", "", "3", "0", "2"], ["/u:∙", "/u:", "/u:2", "/u:1", "/u:3"], ["", "", "9", "0", "6"]]).print("columnar_multiplication_4");
+	</script>
         
     <p>
         Teraz będziemy mnożyć górną liczbę przez cyfrę dziesiątek dolnej. Wynik będziemy zapisywać pod poprzednim wynikiem, 
@@ -494,12 +496,11 @@
         </ul>
     </p>
   
-    <p align = "center">
-          3	0	2
-        	2	1	3
-          9	0	6
-        3	0	2	
-    </p>
+	<div id="columnar_multiplication_5">
+	</div>
+	<script>
+		Display_table.create_custom([["", "", "3", "0", "2"], ["/u:∙", "/u:", "/u:2", "/u:1", "/u:3"], ["", "", "9", "0", "6"], ["", "3", "0", "2", ""]]).print("columnar_multiplication_5");
+	</script>
   
     <p>
         Konsekwentnie mnożymy górną liczbę przez cyfrę setek dolnej. Wynik zapisujemy pod poprzednim z przesunięciem o dwie 
@@ -511,13 +512,11 @@
         </ul>
     </p>
 
-    <p align = "center">
-            3	0	2
-        		2	1	3
-            9	0	6
-          3	0	2	
-        6	0	4		
-    </p>
+	<div id="columnar_multiplication_6">
+	</div>
+	<script>
+		Display_table.create_custom([["", "", "3", "0", "2"], ["/u:∙", "/u:", "/u:2", "/u:1", "/u:3"], ["", "", "9", "0", "6"], ["", "3", "0", "2", ""], ["6", "0", "4", "", ""]]).print("columnar_multiplication_6");
+	</script>
   
     <p>
         Najgorsze za nami. Teraz wszystkie trzy otrzymane wyniki musimy do siebie dodać. Robimy to znaną nam już metodą 
@@ -534,23 +533,22 @@
         </ul>
     </p>
   
-    <p align = "center">
-              3	0	2
-        			2	1	3
-              9	0	6
-            3	0	2	
-        +	6	0	4		
-          6	4	3	2	6
-    </p>
+	<div id="columnar_multiplication_7">
+	</div>
+	<script>
+		Display_table.create_custom([["", "", "", "", "3", "0", "2"], ["/u:∙", "/u:", "/u:", "/u:", "/u:2", "/u:1", "/u:3"], ["", "", "", "", "9", "0", "6"], ["", "", "", "3", "0", "2", ""], ["/u:+", "/u:", "/u:6", "/u:0", "/u:4", "/u:", "/u:"], 
+		["", "", "6", "4", "3", "2", "6"]]).print("columnar_multiplication_7");
+	</script>
   
     <p>
         Otrzymaliśmy wynik <span class="math">64326</span>. Zasłużyłeś na nagrodę. Będzie nią mnożenie liczb <span class="math">629</span> i <span class="math">204</span>.
     </p>
-
-    <p align = "center">
-          6	2	9
-        	2	0	4
-    </p>
+	
+	<div id="columnar_multiplication_8">
+	</div>
+	<script>
+		Display_table.create_custom([["", "", "6", "2", "9"], ["/u:∙", "/u:", "/u:2", "/u:0", "/u:4"], ["", "", "", "", ""]]).print("columnar_multiplication_8");
+	</script>
   
     <p>
         Zaczynamy od mnożenia górnej liczby przez <span class="math">4</span>. Mnożymy <span class="math">9  &middot; 4</span> i otrzymujemy <span class="math">36</span>. Sytuacja problematyczna, bo 
@@ -558,59 +556,53 @@
         czego <span class="math">6</span> piszemy jako wynik, zaś <span class="math">3</span> przenosimy do następnej kolumny.
     </p>
   
-    <p align = "center">
-            3	
-          6	2	9
-        	2	0	4
-              6
-    </p>
+	<div id="columnar_multiplication_9">
+	</div>
+	<script>
+		Display_table.create_custom([["/c:", "/c:", "/c:", "/c:3", "/c:"], ["", "", "6", "2", "9"], ["/u:∙", "/u:", "/u:2", "/u:0", "/u:4"], ["", "", "", "", "6"]]).print("columnar_multiplication_9");
+	</script>
   
     <p>
         Teraz mnożymy <span class="math">2 &middot; 4 = 8</span>. Trójkę, którą sobie zanotowaliśmy, dodajemy teraz do wyniku. Dostajemy <span class="math">11</span>. Ponieważ 
         znowu wynik jest dwucyfrowy, rozbijamy go na dwie cyfry: pod kreską piszemy <span class="math">1</span> i przenosimy <span class="math">1</span> do następnej kolumny.
     </p>
   
-    <p align = "center">
-          1	3	
-          6	2	9
-        	2	0	4
-            1	6
-    </p>
+	<div id="columnar_multiplication_10">
+	</div>
+	<script>
+		Display_table.create_custom([["/c:", "/c:", "/c:1", "/c:3", "/c:"], ["", "", "6", "2", "9"], ["/u:∙", "/u:", "/u:2", "/u:0", "/u:4"], ["", "", "", "1", "6"]]).print("columnar_multiplication_10");
+	</script>
   
     <p>
         Mnożymy <span class="math">6 &middot; 4 = 24</span>. Do wyniku dodajemy zanotowaną jedynkę i dostajemy <span class="math">25</span>. Wynik rozbijamy na <span class="math">2</span> i <span class="math">5</span>.
     </p>
   
-    <p align = "center">
-        2	1	3	
-          6	2	9
-        	2	0	4
-          5	1	6
-    </p>
+	<div id="columnar_multiplication_11">
+	</div>
+	<script>
+		Display_table.create_custom([["/c:", "/c:2", "/c:1", "/c:3", "/c:"], ["", "", "6", "2", "9"], ["/u:∙", "/u:", "/u:2", "/u:0", "/u:4"], ["", "", "5", "1", "6"]]).print("columnar_multiplication_11");
+	</script>
   
     <p>
         Pomnożyliśmy już wszystkie cyfry przez <span class="math">4</span>, ale mamy jeszcze zanotowaną dwójkę, więc przepisujemy ją jak stoi.
     </p>
   
-    <p align = "center">
-        2	1	3	
-          6	2	9
-        	2	0	4
-        2	5	1	6
-    </p>
+	<div id="columnar_multiplication_12">
+	</div>
+	<script>
+		Display_table.create_custom([["/c:", "/c:2", "/c:1", "/c:3", "/c:"], ["", "", "6", "2", "9"], ["/u:∙", "/u:", "/u:2", "/u:0", "/u:4"], ["", "2", "5", "1", "6"]]).print("columnar_multiplication_12");
+	</script>
 
     <p>
         Teraz przechodzimy do mnożenia przez <span class="math">0</span>. Większych problemów nie napotykamy, pamiętamy tylko o przesunięciu wyniku w 
         lewo.
     </p>
   
-    <p align = "center">
-        2	1	3	
-          6	2	9
-        	2	0	4
-        2	5	1	6
-        0	0	0	
-    </p>
+	<div id="columnar_multiplication_13">
+	</div>
+	<script>
+		Display_table.create_custom([["/c:", "/c:2", "/c:1", "/c:3", "/c:"], ["", "", "6", "2", "9"], ["/u:∙", "/u:", "/u:2", "/u:0", "/u:4"], ["", "2", "5", "1", "6"], ["", "0", "0", "0", ""]]).print("columnar_multiplication_13");
+	</script>
 
     <p>
         Pozostaje nam wymnożyć górną liczbę przez <span class="math">2</span>. Obliczmy <span class="math">9  &middot; 2 = 18</span> i wynik dwucyfrowy rozbijamy. <span class="math">8</span> piszemy pod kreską z 
@@ -618,33 +610,34 @@
         <span class="math">1</span> jeszcze wyżej.
     </p>
   
-    <p align = "center">
-            1	
-        2	1	3	
-          6	2	9
-        	2	0	4
-        2	5	1	6
-        0	0	0	
-          8		
-    </p>
+	<div id="columnar_multiplication_14">
+	</div>
+	<script>
+		Display_table.create_custom([["/c:", "/c:", "/c:", "/c:1", "/c:"], ["/c:", "/c:2", "/c:1", "/c:3", "/c:"], ["", "", "6", "2", "9"], ["/u:∙", "/u:", "/u:2", "/u:0", "/u:4"], ["", "2", "5", "1", "6"], 
+		["", "0", "0", "0", ""], ["", "", "8", "", ""]]).print("columnar_multiplication_14");
+	</script>
   
     <p>
         Mnożymy <span class="math">2  &middot; 2 = 4</span> i dodajemy zanotowaną jedynkę. Dostajemy <span class="math">5</span>.
     </p>
   
-    <p align = "center">
-            1	
-        2	1	3	
-          6	2	9
-        	2	0	4
-        2	5	1	6
-        0	0	0	
-        5	8		
-    </p>
+	<div id="columnar_multiplication_15">
+	</div>
+	<script>
+		Display_table.create_custom([["/c:", "/c:", "/c:", "/c:1", "/c:"], ["/c:", "/c:2", "/c:1", "/c:3", "/c:"], ["", "", "6", "2", "9"], ["/u:∙", "/u:", "/u:2", "/u:0", "/u:4"], ["", "2", "5", "1", "6"], 
+		["", "0", "0", "0", ""], ["", "5", "8", "", ""]]).print("columnar_multiplication_15");
+	</script>
   
     <p>
         Mnożymy <span class="math">6  &middot; 2 = 12</span>. Rozbijamy wynik na <span class="math">1</span> i <span class="math">2</span>. Zanotowaną jedynkę możemy już przepisać bez zmian.
     </p>
+  
+	<div id="columnar_multiplication_15">
+	</div>
+	<script>
+		Display_table.create_custom([["/c:", "/c:", "/c:", "/c:1", "/c:"], ["/c:", "/c:2", "/c:1", "/c:3", "/c:"], ["", "", "6", "2", "9"], ["/u:∙", "/u:", "/u:2", "/u:0", "/u:4"], ["", "2", "5", "1", "6"], 
+		["", "0", "0", "0", ""], ["", "5", "8", "", ""]]).print("columnar_multiplication_15");
+	</script>
   
     <p align = "center">
             1		1	
