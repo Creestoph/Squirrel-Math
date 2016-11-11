@@ -41,14 +41,14 @@ Columnar_operation_node.prototype.update_styles = function (str) {
 }
 
 Columnar_operation_node.prototype.print = function () {
-	var class_str = " class = \"columnar_operation\"";
-	if (this.style_ids.length > 0){
-		class_str = " class = \"" + this.style_ids.map(Columnar_operation_node.style_id_to_style_name).join(" ") + "\"";
-	}
+	if (this.style_ids.indexOf("c") == -1)
+		this.style_ids.push("n")
+	class_str = " class = \"" + this.style_ids.map(Columnar_operation_node.style_id_to_style_name).join(" ") + "\"";
 	return "<td"+class_str+">"+ this.value + "</td>";
 }
 
 Columnar_operation_node.style_dictionary = {};
+Columnar_operation_node.style_dictionary["n"] = "columnar_operation_not_carry";
 Columnar_operation_node.style_dictionary["c"] = "columnar_operation_carry";
 Columnar_operation_node.style_dictionary["u"] = "columnar_operation_underlined";
 Columnar_operation_node.style_dictionary["h"] = "columnar_operation_highlight";
