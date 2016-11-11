@@ -104,6 +104,7 @@ Display_table.create_custom = function (strs) {
 
 Display_table.create_from_table = function (operation, numbers) {
     var nodes = [];
+    var t;
     for (var i = 0; i < numbers.length; i++) {
         nodes[i] = [];
         var style = "";
@@ -114,15 +115,19 @@ Display_table.create_from_table = function (operation, numbers) {
                 }
                 if (i == numbers.length - 2) {
                     style += "/u";
-                    nodes[i][0] = new Columnar_operation_node(style + ":+");
-                    nodes[i][1] = new Columnar_operation_node(style + ":");
+                    t = style + ":+";
+                    nodes[i][0] = new Columnar_operation_node(t[0] == ':' ? t.substring(1): t);
+                    t = style + ":";
+                    nodes[i][1] = new Columnar_operation_node(t[0] == ':' ? t.substring(1): t);
                 }
                 else {
-                    nodes[i][0] = new Columnar_operation_node(style + ":");
-                    nodes[i][1] = new Columnar_operation_node(style + ":");
+                    t = style + ":";
+                    nodes[i][0] = new Columnar_operation_node(t[0] == ':' ? t.substring(1): t);
+                    nodes[i][1] = new Columnar_operation_node(t[0] == ':' ? t.substring(1): t);
                 }
                 for (var j = 0; j < numbers[i].length; j++) {
-                    nodes[i][j + 2] = new Columnar_operation_node(style + (numbers[i][j].length > 0 && numbers[i][j][0] == "/" ? "" : ":") + numbers[i][j]);
+                    t = style + (numbers[i][j].length > 0 && numbers[i][j][0] == "/" ? "" : ":") + numbers[i][j]
+                    nodes[i][j + 2] = new Columnar_operation_node(t[0] == ':' ? t.substring(1): t);
                 }
                 break;
             case "-":
@@ -131,15 +136,19 @@ Display_table.create_from_table = function (operation, numbers) {
                 }
                 if (i == numbers.length - 2) {
                     style += "/u";
-                    nodes[i][0] = new Columnar_operation_node(style + ":-");
-                    nodes[i][1] = new Columnar_operation_node(style + ":");
+                    t = style + ":-";
+                    nodes[i][0] = new Columnar_operation_node(t[0] == ':' ? t.substring(1): t);
+                    t = style + ":";
+                    nodes[i][1] = new Columnar_operation_node(t[0] == ':' ? t.substring(1): t);
                 }
                 else {
-                    nodes[i][0] = new Columnar_operation_node(style + ":");
-                    nodes[i][1] = new Columnar_operation_node(style + ":");
+                    t = style + ":";
+                    nodes[i][0] = new Columnar_operation_node(t[0] == ':' ? t.substring(1): t);
+                    nodes[i][1] = new Columnar_operation_node(t[0] == ':' ? t.substring(1): t);
                 }
                 for (var j = 0; j < numbers[i].length; j++) {
-                    nodes[i][j + 2] = new Columnar_operation_node(style + (numbers[i][j].length > 0 && numbers[i][j][0] == "/" ? "" : ":") + numbers[i][j]);
+                    t = style + (numbers[i][j].length > 0 && numbers[i][j][0] == "/" ? "" : ":") + numbers[i][j];
+                    nodes[i][j + 2] = new Columnar_operation_node(t[0] == ':' ? t.substring(1): t);
                 }
                 break;
         }
