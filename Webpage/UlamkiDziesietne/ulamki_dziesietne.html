@@ -188,29 +188,39 @@
 		Jeden metr to dość dużo – miarka okazała się wystawać poza krawędź biurka
 	</p>
 
+	<center><img src=".images/Screenshot_1.png" align="middle"></img></center>
+	
 	<p>
 		Ponieważ Krzyś jest perfekcjonistą, chce dokładnie określić szerokość biurka. W tym celu dzieli w myślach tasiemkę z 
 		miarką na <span class="math">10</span> równych części.
 	</p>
 
+	<center><img src=".images/Screenshot_2.png" align="middle"></img></center>
+	
 	<p>
 		Każda z nich ma długość <span class="math">1/10</span>m, czyli <span class="math">0,1 m</span>. Spostrzegawczy Krzyś zauważa, że do szerokości biurka 
 		najlepiej dopasowuje się <span class="math">8</span> takich fragmentów, czyli <span class="math">8/10 m=0,8 m</span>. Jednak ta 
 		dokładność wciąż nie zadowala Krzysia – teraz tasiemka nie dosięga krawędzi stołu.
 	</p>
 
+	<center><img src=".images/Screenshot_3.png" align="middle"></img></center>
+	
 	<p>
 		Idealna długość tasiemki będzie mieścić się gdzieś pomiędzy <span class="math">0,8 m</span> a <span class="math">0,9 m</span>. Dla uzyskania perfekcyjnego wyniku 
 		Krzyś dzieli dziewiąty segment taśmy na <span class="math">10</span> fragmentów. Każdy z nich ma długość <span class="math">1/10</span> takiego 
 		segmentu, czyli <span class="math">1/100 m=0,01 m</span>.
 	</p>
 
+	<center><img src=".images/Screenshot_4.png" align="middle"></img></center>
+	
 	<p>
 		Gdy weźmiemy <span class="math">4</span> takie mini-segmenty, tasiemka całkiem nieźle dotyka krawędzi stołu. Wyznaczamy więc orientacyjną 
 		długość biurka na <span class="math">0,84 m</span>. Aby osiągnąć samospełnienie, Krzyś wyciąga lupę. Stwierdza, że <span class="math">0,84 m</span> nadal nie jest 
 		idealną długością.
 	</p>
 
+	<center><img src=".images/Screenshot_5.png" align="middle"></img></center>
+	
 	<p>
 		Długość <span class="math">0,842 m</span> jest dla Krzysia zadowalająco dokładna.
 	</p>
@@ -384,6 +394,8 @@
 		szacowanie nie będzie w pełni dokładne. Niestety, Krzyś został skazany na nieskończone korygowanie przybliżenia. 
 	</p>
 
+	<center><img src=".images/Screenshot_6.png" align="middle"></img></center>
+	
 	<p>
 		Niektóre ułamki zwykłe mają mniej eleganckie rozwinięcia dziesiętne. Przykładowo
 	</p>
@@ -402,7 +414,7 @@
 	</p>
 	
 	<p class="math" align = "center">
-		1/7=0,(142857)
+		1/7=0,Bracket(142857)
 	</p>
 	
 	<p>
@@ -410,7 +422,7 @@
 	</p>
 	
 	<p class="math" align="center">
-		1/36=0,02(7)
+		1/36=0,02Bracket(7)
 	</p>
 	
 	<p>
@@ -548,13 +560,13 @@
 		Oznacza to, że wynik takiego mnożenia będzie taki, jak wynik <span class="math">124∙103</span> z przecinkiem przesuniętym o trzy pozycje w lewo. 
 		Mnożenie <span class="math">124∙103</span> wykonujemy standardową metodą
 	</p>
-							1	
-						1	2	4
-						1	0	3
-						3	7	2
-					0	0	0	
-		+		1	2	4		
-				1	2	7	7	2
+	
+	<div id="columnar_multiplication_1">
+	</div>
+	<script>
+		Display_table.create_custom([["/c:", "/c:", "/c:", "/c:", "/c:", "/c:1", "/c:"], ["", "", "", "", "1", "2", "4"], ["/u:", "/u:", "/u:", "/u:", "/u:1", "/u:0", "/u:3"], ["", "", "", "", "3", "7", "2"], 
+		["", "", "", "0", "0", "0", ""], ["/u:+", "/u:", "/u:1", "/u:2", "/u:4", "/u:", "/u:"], ["", "", "1", "2", "7", "7", "2"]]).print("columnar_multiplication_1");
+	</script>
 	
 	<p>
 		Mamy więc <span class="math">12,4 ∙ 1,03 = 12,772</span>. Ogólnie, aby obliczyć iloczyn liczb z przecinkiem, mnożymy je bez przecinka, a potem 
@@ -574,66 +586,66 @@
 		W ogólności przesuwamy przecinek dzielnej o tyle pozycji w prawo, ile cyfr po przecinku ma dzielnik. 
 		Przygotowujemy się do dzielenia pisemnego:
 	</p>
-
-					,				
-		3	7	5	,	8	:	1	6
+	
+	<div id="columnar_division_1">
+	</div>
+	<script>
+		Display_table.create_custom([["/u:", "/u:", "/u:", "/u:,", "/u:", "/u:", "/u:", "/u:"], ["3", "7", "5", ",", "8", ":", "1", "6"]]).print("columnar_division_1");
+	</script>
 
 	<p>
 		W <span class="math">37</span> liczba <span class="math">16</span> mieści się dwa razy, zapisujemy więc dwójkę i odejmujemy <span class="math">32</span>, 
 		dopisujemy kolejną cyfrę.
 	</p>
-
-				2		,				
-			3	7	5	,	8	:	1	6
-		-	3	2						
-				5	5					
+	
+	<div id="columnar_division_2">
+	</div>
+	<script>
+		Display_table.create_custom([["/u:", "/u:", "/u:", "/u:2", "/u:", "/u:,", "/u:", "/u:", "/u:", "/u:"], ["", "", "3", "7", "5", ",", "8", ":", "1", "6"], 
+		["/u:-", "/u:", "/u:3", "/u:2", "/u:", "/u:", "/u:", "/u:", "/u:", "/u:"], ["", "", "", "5", "5", "", "", "", "", ""]]).print("columnar_division_2");
+	</script>				
 
 	<p>
 		W liczbie <span class="math">55</span> szesnastka mieści się <span class="math">3</span> razy – zapisujemy <span class="math">3</span>, odejmujemy 
 		<span class="math">48</span> i spisujemy kolejną cyfrę – tym razem już zza przecinka:
 	</p>
-
-				2	3	,				
-			3	7	5	,	8	:	1	6
-		-	3	2						
-				5	5					
-				4	8					
-					7		8			
+	
+	<div id="columnar_division_3">
+	</div>
+	<script>
+		Display_table.create_custom([["/u:", "/u:", "/u:", "/u:2", "/u:3", "/u:,", "/u:", "/u:", "/u:", "/u:"], ["", "", "3", "7", "5", ",", "8", ":", "1", "6"], 
+		["/u:-", "/u:", "/u:3", "/u:2", "/u:", "/u:", "/u:", "/u:", "/u:", "/u:"], ["", "", "", "5", "5", "", "", "", "", ""], ["/u:-", "/u:", "/u:", "/u:4", "/u:8", "/u:", "/u:", "/u:", "/u:", "/u:"], 
+		["", "", "", "", "7", "8", "", "", "", ""]]).print("columnar_division_3");
+	</script>		
 
 	<p>
 		W liczbie <span class="math">78</span> liczba <span class="math">16</span> mieści się <span class="math">4</span> razy – zapisujemy <span class="math">4</span> 
 		i odejmujemy <span class="math">64</span>. W dzielnej nie ma już cyfr do spisania, 
 		jednak jej rozwinięcie dziesiętne możemy przedłużać o dowolną ilość zer. Spisujemy więc cyfrę <span class="math">0</span> i kontynuujemy:
 	</p>
-
-				2	3	,	4			
-			3	7	5	,	8	:	1	6
-		-	3	2						
-				5	5					
-		-		4	8					
-					7		8			
-		-			6		4			
-					1		4	0		
+	
+	<div id="columnar_division_4">
+	</div>
+	<script>
+		Display_table.create_custom([["/u:", "/u:", "/u:", "/u:2", "/u:3", "/u:,", "/u:4", "/u:", "/u:", "/u:"], ["", "", "3", "7", "5", ",", "8", ":", "1", "6"], 
+		["/u:-", "/u:", "/u:3", "/u:2", "/u:", "/u:", "/u:", "/u:", "/u:", "/u:"], ["", "", "", "5", "5", "", "", "", "", ""], ["/u:-", "/u:", "/u:", "/u:4", "/u:8", "/u:", "/u:", "/u:", "/u:", "/u:"], 
+		["", "", "", "", "7", "8", "", "", "", ""], ["/u:-", "/u:", "/u:", "/u:", "/u:6", "/u:4", "/u:", "/u:", "/u:", "/u:"], ["", "", "", "", "1", "4", "0", "", "", ""]]).print("columnar_division_4");
+	</script>		
 
 	<p>
 		Kontynuujemy procedurę, za każdym razem spisując zero. W końcu docieramy do momentu, gdy wynik odejmowania jest zerem. 
 		Dalsze dzielenie nie ma już sensu, więc przerywamy i odczytujemy wynik: <span class="math">37,58 : 1,6 = 23,4875</span>. 
 	</p>
-
-				2	3	,	4	8	7	5
-			3	7	5	,	8	:	1	6
-		-	3	2						
-				5	5					
-		-		4	8					
-					7		8			
-		-			6		4			
-					1		4	0		
-		-			1		2	8		
-							1	2	0	
-		-					1	1	2	
-									8	0
-		-							8	0
-										0
+	
+	<div id="columnar_division_5">
+	</div>
+	<script>
+		Display_table.create_custom([["/u:", "/u:", "/u:", "/u:2", "/u:3", "/u:,", "/u:4", "/u:8", "/u:7", "/u:5"], ["", "", "3", "7", "5", ",", "8", ":", "1", "6"], 
+		["/u:-", "/u:", "/u:3", "/u:2", "/u:", "/u:", "/u:", "/u:", "/u:", "/u:"], ["", "", "", "5", "5", "", "", "", "", ""], ["/u:-", "/u:", "/u:", "/u:4", "/u:8", "/u:", "/u:", "/u:", "/u:", "/u:"], 
+		["", "", "", "", "7", "8", "", "", "", ""], ["/u:-", "/u:", "/u:", "/u:", "/u:6", "/u:4", "/u:", "/u:", "/u:", "/u:"], ["", "", "", "", "1", "4", "0", "", "", ""], ["/u:-", "/u:", "/u:", "/u:", "/u:1", "/u:2", "/u:8", "/u:", "/u:", "/u:"], 
+		["", "", "", "", "", "1", "2", "0", "", ""], ["/u:-", "/u:", "/u:", "/u:", "/u:", "/u:1", "/u:1", "/u:2", "/u:", "/u:"], ["", "", "", "", "", "", "", "8", "0", ""], ["/u:-", "/u:", "/u:", "/u:", "/u:", "/u:", "/u:", "/u:8", "/u:0", "/u:"], 
+		["", "", "", "", "", "", "", "", "0", ""]]).print("columnar_division_5");
+	</script>	
 
 	<p>
 		Nie zawsze będziemy mieć tyle szczęścia, by tak jak przed chwilą dotrzeć do jawnego końca tych żmudnych robótek. 
@@ -641,90 +653,89 @@
 		pory posługiwaliśmy się pojęciem reszty z dzielenia, ale nie jesteśmy już dziećmi – mamy przecież ułamki. W 
 		jaki sposób odkryć rozwinięcie dziesiętne ułamka <span class="math">1/7</span> ? Spróbujmy dokonać dzielenia pisemnego:
 	</p>
-				
-		1	:	7
+	
+	<div id="columnar_division_6">
+	</div>
+	<script>
+		Display_table.create_custom([["/u:", "/u:", "/u:"], ["1", ":", "7"]]).print("columnar_division_6");
+	</script>
 
 	<p>
 		Trochę nie wiadomo, jak się za to zabrać – nie zaszkodzi wzbogacić jedynki o zapasowe zero
 	</p>
-
-			,			
-		1	,	0	:	7
+	
+	<div id="columnar_division_7">
+	</div>
+	<script>
+		Display_table.create_custom([["/u:", "/u:,", "/u:", "/u:", "/u:"], ["1", ",", "0", ":", "7"]]).print("columnar_division_7");
+	</script>
 
 	<p>
 		Teraz możemy już dokonać dzieła: w samej jedynce siódemka się nie mieści, więc w wyniku przed przecinkiem będzie 
 		widniało <span class="math">0</span>.
 	</p>
-
-		0	,			
-		1	,	0	:	7
+	
+	<div id="columnar_division_8">
+	</div>
+	<script>
+		Display_table.create_custom([["/u:0", "/u:,", "/u:", "/u:", "/u:"], ["1", ",", "0", ":", "7"]]).print("columnar_division_8");
+	</script>
 
 	<p>
 		W <span class="math">10</span> siódemka mieści się raz – zapisujemy <span class="math">1</span>, odejmujemy <span class="math">7</span> i spisujemy kolejne 
 		<span class="math">0</span>.
 	</p>
-
-			0	,	1		
-			1	,	0	:	7
-		-			7		
-					3	0	
+	
+	<div id="columnar_division_9">
+	</div>
+	<script>
+		Display_table.create_custom([["/u:", "/u:", "/u:0", "/u:,", "/u:1", "/u:", "/u:"], ["", "", "1", ",", "0", ":", "7"], ["/u:-", "/u:", "/u:", "/u:", "/u:7", "/u:", "/u:"], ["", "", "", "", "3", "0", ""]]).print("columnar_division_9");
+	</script>
+	
 	<p>
 		Kontynuujemy procedurę:
 	</p>
 	
-			0	,	1	4	2	8	5	7	
-			1	,	0	:	7				
-		-			7						
-					3	0					
-		-			2	8					
-						2	0				
-		-				1	4				
-							6	0			
-		-					5	6			
-								4	0		
-		-						3	5		
-									5	0	
-		-							4	9	
-										1	0
+	<div id="columnar_division_10">
+	</div>
+	<script>
+		Display_table.create_custom([["/u:", "/u:", "/u:0", "/u:,", "/u:1", "/u:4", "/u:2", "/u:8", "/u:5", "/u:7", "/u:"], ["", "", "1", ",", "0", ":", "7", "", "", "", ""], ["/u:-", "/u:", "/u:", "/u:", "/u:7", "/u:", "/u:", "/u:", "/u:", "/u:", "/u:"], 
+		["", "", "", "", "3", "0", "", "", "", "", ""], ["/u:-", "/u:", "/u:", "/u:", "/u:2", "/u:8", "/u:", "/u:", "/u:", "/u:", "/u:"], ["", "", "", "", "", "2", "0", "", "", "", ""], 
+		["/u:-", "/u:", "/u:", "/u:", "/u:", "/u:1", "/u:4", "/u:", "/u:", "/u:", "/u:"], ["", "", "", "", "", "", "6", "0", "", "", ""], ["/u:-", "/u:", "/u:", "/u:", "/u:", "/u:", "/u:5", "/u:6", "/u:", "/u:", "/u:"], 
+		["", "", "", "", "", "", "", "4", "0", "", ""], ["/u:-", "/u:", "/u:", "/u:", "/u:", "/u:", "/u:", "/u:3", "/u:5", "/u:", "/u:"], ["", "", "", "", "", "", "", "", "5", "0", ""], 
+		["/u:-", "/u:", "/u:", "/u:", "/u:", "/u:", "/u:", "/u:", "/u:4", "/u:9", "/u:"], ["", "", "", "", "", "", "", "", "", "1", "0"]]).print("columnar_division_10");
+	</script>
+	
 	<p>
 		W tym momencie zauważamy, że zatoczyliśmy koło: w tej chwili mamy do podzielenia <span class="math">10</span> przez <span class="math">7</span> i jest to dokładnie 
 		ta sama czynność, jakiej dokonaliśmy na samym początku słupka. Łatwo przewidzieć, że wszystkie kolejne kroki 
 		przebiegałyby w ten sam sposób i zwracałyby te same wyniki:
 	</p>
-
-			0	,	1	4	2	8	5	7	1	4	2	8	5	7
-			1	,	0	:	7									
-		-			7											
-					3	0										
-		-			2	8										
-						2	0									
-		-				1	4									
-							6	0								
-		-					5	6								
-								4	0							
-		-						3	5							
-									5	0						
-		-							4	9						
-										1	0					
-		-									7					
-											3	0				
-		-									2	8				
-												2	0			
-		-										1	4			
-													6	0		
-		-											5	6		
-														4	0	
-		-												3	5	
-															5	0
-		-													4	9
-															1	0
+	
+	<div id="columnar_division_11">
+	</div>
+	<script>
+		Display_table.create_custom([["/u:", "/u:", "/u:0", "/u:,", "/u:1", "/u:4", "/u:2", "/u:8", "/u:5", "/u:7", "/u:1", "/u:4", "/u:2", "/u:8", "/u:5", "/u:7", "/u:"], ["", "", "1", ",", "0", ":", "7", "", "", "", "", "", "", "", "", "", ""], 
+		["/u:-", "/u:", "/u:", "/u:", "/u:7", "/u:", "/u:", "/u:", "/u:", "/u:", "/u:", "/u:", "/u:", "/u:", "/u:", "/u:", "/u:"], ["", "", "", "", "3", "0", "", "", "", "", "", "", "", "", "", "", ""], 
+		["/u:-", "/u:", "/u:", "/u:", "/u:2", "/u:8", "/u:", "/u:", "/u:", "/u:", "/u:", "/u:", "/u:", "/u:", "/u:", "/u:", "/u:"], ["", "", "", "", "", "2", "0", "", "", "", "", "", "", "", "", "", ""], 
+		["/u:-", "/u:", "/u:", "/u:", "/u:", "/u:1", "/u:4", "/u:", "/u:", "/u:", "/u:", "/u:", "/u:", "/u:", "/u:", "/u:", "/u:"], ["", "", "", "", "", "", "6", "0", "", "", "", "", "", "", "", "", ""], 
+		["/u:-", "/u:", "/u:", "/u:", "/u:", "/u:", "/u:5", "/u:6", "/u:", "/u:", "/u:", "/u:", "/u:", "/u:", "/u:", "/u:", "/u:"], ["", "", "", "", "", "", "", "4", "0", "", "", "", "", "", "", "", ""], 
+		["/u:-", "/u:", "/u:", "/u:", "/u:", "/u:", "/u:", "/u:3", "/u:5", "/u:", "/u:", "/u:", "/u:", "/u:", "/u:", "/u:", "/u:"], ["", "", "", "", "", "", "", "", "5", "0", "", "", "", "", "", "", ""], 
+		["/u:-", "/u:", "/u:", "/u:", "/u:", "/u:", "/u:", "/u:", "/u:4", "/u:9", "/u:", "/u:", "/u:", "/u:", "/u:", "/u:", "/u:"], ["", "", "", "", "", "", "", "", "", "1", "0", "", "", "", "", "", ""],
+		["/u:-", "/u:", "/u:", "/u:", "/u:", "/u:", "/u:", "/u:", "/u:", "/u:", "/u:7", "/u:", "/u:", "/u:", "/u:", "/u:", "/u:"], ["", "", "", "", "", "", "", "", "", "", "3", "0", "", "", "", "", ""],
+		["/u:-", "/u:", "/u:", "/u:", "/u:", "/u:", "/u:", "/u:", "/u:", "/u:", "/u:2", "/u:8", "/u:", "/u:", "/u:", "/u:", "/u:"], ["", "", "", "", "", "", "", "", "", "", "", "2", "0", "", "", "", ""],
+		["/u:-", "/u:", "/u:", "/u:", "/u:", "/u:", "/u:", "/u:", "/u:", "/u:", "/u:", "/u:1", "/u:4", "/u:", "/u:", "/u:", "/u:"], ["", "", "", "", "", "", "", "", "", "", "", "", "6", "0", "", "", ""],
+		["/u:-", "/u:", "/u:", "/u:", "/u:", "/u:", "/u:", "/u:", "/u:", "/u:", "/u:", "/u:", "/u:5", "/u:6", "/u:", "/u:", "/u:"], ["", "", "", "", "", "", "", "", "", "", "", "", "", "4", "0", "", ""],
+		["/u:-", "/u:", "/u:", "/u:", "/u:", "/u:", "/u:", "/u:", "/u:", "/u:", "/u:", "/u:", "/u:", "/u:3", "/u:5", "/u:", "/u:"], ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "5", "0", ""],
+		["/u:-", "/u:", "/u:", "/u:", "/u:", "/u:", "/u:", "/u:", "/u:", "/u:", "/u:", "/u:", "/u:", "/u:", "/u:4", "/u:9", "/u:"], ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "1", "0"]]).print("columnar_division_11");
+	</script>
 
 	<p>
 		Nie ma sensu przedłużanie tej męki – zapisujemy wynik jako okresowy i kończymy robotę: 
 	</p>
 	
-	<p class="math">
-		1 : 7 = 0,(142857)
+	<p class="math" align="center">
+		1 : 7 = 0,Bracket(142857)
 	</p>
 
 	</div>
@@ -773,12 +784,12 @@
 	
 	<p>
 		Trik polega na tym, by pomnożyć równanie obustronnie przez <span class="math">1000</span> (jedynkę i trzy zera – bo tyle cyfr ma okres). 
-		Pomnożenie <span class="math">0,(259)</span> przez <span class="math">1000</span> oznacza przesunięcie przecinka o trzy pozycje w prawo, a więc liczba 
+		Pomnożenie <span class="math">0,Bracket(259)</span> przez <span class="math">1000</span> oznacza przesunięcie przecinka o trzy pozycje w prawo, a więc liczba 
 		<span class="math">0,259259259259…</span> stanie się liczbą <span class="math">259,259259259…</span> Mamy:
 	</p>
 	
 	<p class="math" align="center">
-		259,(259)=1000x
+		259,Bracket(259)=1000x
 	</p>
 	
 	<p>
@@ -786,7 +797,7 @@
 	</p>
 	
 	<p class="math" align="center">
-		259,(259)-0,(259)=1000x-x
+		259,Bracket(259)-0,Bracket(259)=1000x-x
 	</p>
 	
 	<p class="math" align="center">
@@ -802,10 +813,10 @@
 	</p>
 	
 	<ul>
-		<li class="math">0,(132)=132/999=44/333</li>
-		<li class="math">4,(15)=4 15/99=4 5/33=137/33</li>
-		<li class="math">43,(5)=43 5/9=392/9</li>
-		<li class="math">0,(0045)=45/9999=5/1111</li>
+		<li class="math">0,Bracket(132)=132/999=44/333</li>
+		<li class="math">4,Bracket(15)=4 15/99=4 5/33=137/33</li>
+		<li class="math">43,Bracket(5)=43 5/9=392/9</li>
+		<li class="math">0,Bracket(0045)=45/9999=5/1111</li>
 	</ul>
 		
 	<p>
@@ -815,9 +826,9 @@
 	</p>
 	
 	<ul>
-		<li class="math">0,0(34)=0,(34) ∶10=  34/99 ∶10=34/990=17/495</li>
-		<li class="math">1,1(6)=11,(6) ∶10=11 6/9:10=35/3:10=35/30=7/6</li>
-		<li class="math">78,355(1)=78355,(1) ∶1000=78355 1/9 ∶1000=705196/9000=176299/2250</li>
+		<li class="math">0,0Bracket(34)=0,Bracket(34) ∶10=  34/99 ∶10=34/990=17/495</li>
+		<li class="math">1,1Bracket(6)=11,Bracket(6) ∶10=11 6/9:10=35/3:10=35/30=7/6</li>
+		<li class="math">78,355Bracket(1)=78355,Bracket(1) ∶1000=78355 1/9 ∶1000=705196/9000=176299/2250</li>
 	</ul>
 		
 	<p>
@@ -825,12 +836,12 @@
 	</p>
 	
 	<p class="math" align="center">
-		0,(9)=9/9=1
+		0,Bracket(9)=9/9=1
 	</p>
 	
 	<p>
-		Liczba <span class="math">0,(9)=0,99999999999999999999999999999999999…</span> naprawdę bardzo chce być jedynką. Chce być jedynką tak bardzo, 
-		że matematyka dała jej na to przyzwolenie. Mogłoby się wydawać, że <span class="math">0,(9)</span> jest jakby mniejsze niż jeden. Ale 
+		Liczba <span class="math">0,Bracket(9)=0,99999999999999999999999999999999999…</span> naprawdę bardzo chce być jedynką. Chce być jedynką tak bardzo, 
+		że matematyka dała jej na to przyzwolenie. Mogłoby się wydawać, że <span class="math">0,Bracket(9)</span> jest jakby mniejsze niż jeden. Ale 
 		jeśli jest mniejsze, to o ile? Mniejsze o „nieskończenie małą” liczbę. Nieskończenie małą, czyli zerową…
 	<p>
 	
@@ -839,11 +850,11 @@
 	</p>
 	
 	<p class="math" align="center">
-		1-0,(9)=0,(0)1
+		1-0,Bracket(9)=0,(0)1
 	</p>
 	
 	<p>
-		Aby uniknąć upokorzenia na scenie matematycznej, nie zapominajmy, że coś takiego jak <span class="math">0,(0)1</span> nie istnieje. 
+		Aby uniknąć upokorzenia na scenie matematycznej, nie zapominajmy, że coś takiego jak <span class="math">0,Bracket(0)1</span> nie istnieje. 
 		Ubranie zera w okresowy nawias oznacza, że zero będzie się ciągnąć w <b>nieskończoność</b>. Nie można więc powiedzieć, 
 		że na <b>końcu</b> będzie jedynka.
 	</p>

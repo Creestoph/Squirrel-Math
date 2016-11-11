@@ -12,6 +12,7 @@
 	<script src="../.scripts/comment.js"></script>
 	<script src="../.scripts/draggable.js"></script>
 	<script src="../.scripts/math.js"></script>
+	<script src="../.scripts/display_table.js"></script>
 	<script src="division_table.js"></script>
 </head>
 
@@ -669,228 +670,204 @@
         ponad kreską.
     </p>
       
-    <p align = "center">
-        4	6	8	:	2
-    </p>
+	<div id="columnar_division_1">
+	</div>
+	<script>
+		Display_table.create_custom([["/u:", "/u:", "/u:", "/u:", "/u:"], ["4", "6", "8", ":", "2"]]).print("columnar_division_1");
+	</script>
       
     <p>
         Teraz zaczynamy analizować liczbę, którą dzielimy, zaczynając od lewej. Bierzemy cyfrę <span class="math">4</span> i próbujemy podzielić ją 
         przez <span class="math">2</span>. Udało nam się – <span class="math">4 : 2 = 2</span>. Wynik zapisujemy nad dwójką.
     </p>
       
-    <p align = "center">
-        2				
-        4	6	8	:	2
-    </p>
+	<div id="columnar_division_2">
+	</div>
+	<script>
+		Display_table.create_custom([["/u:2", "/u:", "/u:", "/u:", "/u:"], ["4", "6", "8", ":", "2"]]).print("columnar_division_2");
+	</script>  
 
     <p>
         Teraz robimy coś odwrotnego – mnożymy otrzymane <span class="math">2</span> przez dzielnik, czyli przez <span class="math">2</span>. Otrzymujemy <span class="math">4</span> i zapisujemy je pod 
         cyfrą setek dzielnej.
     </p>
-      
-    <p align = "center">
-        2				
-        4	6	8	:	2
-        4				
-    </p>
+    
+	<div id="columnar_division_3">
+	</div>
+	<script>
+		Display_table.create_custom([["/u:2", "/u:", "/u:", "/u:", "/u:"], ["4", "6", "8", ":", "2"], ["4", "", "", "", ""]]).print("columnar_division_3");
+	</script> 
       
     <p>
         W tym momencie odejmujemy zapisaną czwórkę od wyjściowej czwórki. Dostaliśmy <span class="math">0</span>.
     </p>
-      
-    <p align = "center">
-          2				
-          4	6	8	:	2
-        -	4				
-          0				
-    </p>
+    
+	<div id="columnar_division_4">
+	</div>
+	<script>
+		Display_table.create_custom([["/u:", "/u:", "/u:2", "/u:", "/u:", "/u:", "/u:"], ["", "", "4", "6", "8", ":", "2"], ["/u:-", "/u:", "/u:4", "/u:", "/u:", "/u:", "/u:"], ["", "", "0", "", "", "", "", ""]]).print("columnar_division_4");
+	</script> 
       
     <p>
         Z dzielnej przepisujemy kolejną cyfrę, czyli <span class="math">6</span>. 
     </p>
       
-    <p align = "center">
-          2				
-          4	6	8	:	2
-        -	4				
-          0	6			
-    </p>
+	<div id="columnar_division_5">
+	</div>
+	<script>
+		Display_table.create_custom([["/u:", "/u:", "/u:2", "/u:", "/u:", "/u:", "/u:"], ["", "", "4", "6", "8", ":", "2"], ["/u:-", "/u:", "/u:4", "/u:", "/u:", "/u:", "/u:"], ["", "", "0", "6", "", "", "", ""]]).print("columnar_division_5");
+	</script>
       
     <p>
         Teraz powtarzamy serię czynności. Dzielimy <span class="math">6</span> przez <span class="math">2</span>. Dostajemy <span class="math">3</span>. Zapisujemy wynik nad kreską i robimy działanie 
         odwrotne – mnożymy go przez dzielnik i piszemy <span class="math">6</span> na dole.
-    </p>
-      
-    <p align = "center">
-          2	3			
-          4	6	8	:	2
-        -	4				
-          0	6			
-            6		
-    </p>
+	</p>
+    
+	<div id="columnar_division_6">
+	</div>
+	<script>
+		Display_table.create_custom([["/u:", "/u:", "/u:2", "/u:3", "/u:", "/u:", "/u:"], ["", "", "4", "6", "8", ":", "2"], ["/u:-", "/u:", "/u:4", "/u:", "/u:", "/u:", "/u:"], 
+		["", "", "0", "6", "", "", "", ""], ["", "", "", "6", "", "", "", ""]]).print("columnar_division_6");
+	</script>
       
     <p>
         Odejmujemy <span class="math">6 – 6</span> i dostajemy <span class="math">0</span>.
     </p>
-      
-    <p align = "center">
-          2	3			
-          4	6	8	:	2
-        -	4				
-          0	6			
-        -		6			
-            0			
-    </p>
+    
+	<div id="columnar_division_7">
+	</div>
+	<script>
+		Display_table.create_custom([["/u:", "/u:", "/u:2", "/u:3", "/u:", "/u:", "/u:"], ["", "", "4", "6", "8", ":", "2"], ["/u:-", "/u:", "/u:4", "/u:", "/u:", "/u:", "/u:"], 
+		["", "", "0", "6", "", "", "", ""], ["/u:-", "/u:", "/u:", "/u:6", "/u:", "/u:", "/u:", "/u:"], ["", "", "", "0", "", "", ""]]).print("columnar_division_7");
+	</script>
       
     <p>
         Przepisujemy <span class="math">8</span> i powtarzamy czynności. <span class="math">8 : 2 = 4</span>; <span class="math">4 &middot; 2 = 8</span>; <span class="math">8 – 8 = 0</span>.
     </p>
-      
-    <p align = "center">
-          2	3	4		
-          4	6	8	:	2
-        -	4				
-          0	6			
-        -		6			
-            0	8		
-        -			8		
-              0		
-    </p>
+    
+	<div id="columnar_division_8">
+	</div>
+	<script>
+		Display_table.create_custom([["/u:", "/u:", "/u:2", "/u:3", "/u:4", "/u:", "/u:"], ["", "", "4", "6", "8", ":", "2"], ["/u:-", "/u:", "/u:4", "/u:", "/u:", "/u:", "/u:"], 
+		["", "", "0", "6", "", "", "", ""], ["/u:-", "/u:", "/u:", "/u:6", "/u:", "/u:", "/u:", "/u:"], ["", "", "", "0", "8", "", ""], ["/u:-", "/u:", "/u:", "/u:", "/u:8", "/u:", "/u:"], ["", "", "", "", "0", "", ""]]).print("columnar_division_8");
+	</script>
 
     <p>
         Nie mamy już czego przepisać, więc zakończyliśmy męki. Otrzymaliśmy wynik <span class="math">234</span>. Tym razem było nudno, bo 
         wszystkie cyfry ładnie podzieliły się przez <span class="math">2</span>. Zróbmy coś brawurowego – obliczmy <span class="math">5724 : 4</span>
     </p>
-      
-    <p align = "center">
-        5	7	2	4	:	4
-    </p>
+    
+	<div id="columnar_division_9">
+	</div>
+	<script>
+		Display_table.create_custom([["/u:", "/u:", "/u:", "/u:", "/u:", "/u:"], ["5", "7", "2", "4", ":", "4"]]).print("columnar_division_9");
+	</script>
       
     <p>
         Bierzemy pierwszą cyfrę z lewej, czyli <span class="math">5</span>. Dzielimy <span class="math">5 : 4 = 1 r. 1</span>. W tym momencie reszta nas nie interesuje. 
         Kontynuujemy działanie – piszemy wynik <span class="math">1</span>, mnożymy <span class="math">1 &middot; 4 = 4</span> i odejmujemy.
     </p>
-      
-    <p align = "center">
-          1					
-          5	7	2	4	:	4
-        -	4					
-          1					
-    </p>
+    
+	<div id="columnar_division_10">
+	</div>
+	<script>
+		Display_table.create_custom([["/u:", "/u:", "/u:1", "/u:", "/u:", "/u:", "/u:", "/u:"], ["", "", "5", "7", "2", "4", ":", "4"], ["/u:-", "/u:", "/u:4", "/u:", "/u:", "/u:", "/u:", "/u:"], ["", "", "1", "", "", "", "", ""]]).print("columnar_division_10");
+	</script>
       
     <p>
         Przepisujemy kolejną cyfrę, czyli <span class="math">7</span>. Teraz mamy do podzielenia liczbę dwucyfrową. <span class="math">17 : 4 = 4 r. 1</span>. 
         Ignorujemy resztę i piszemy <span class="math">4</span> jako wynik. Mnożymy <span class="math">4 &middot; 4 = 16</span> i odejmujemy.
     </p>
       
-    <p align = "center">
-          1	4				
-          5	7	2	4	:	4
-        -	4					
-          1	7				
-        -	1	6				
-            1				
-    </p>
+	<div id="columnar_division_11">
+	</div>
+	<script>
+		Display_table.create_custom([["/u:", "/u:", "/u:1", "/u:4", "/u:", "/u:", "/u:", "/u:"], ["", "", "5", "7", "2", "4", ":", "4"], ["/u:-", "/u:", "/u:4", "/u:", "/u:", "/u:", "/u:", "/u:"], ["", "", "1", "7", "", "", "", ""],
+		["/u:-", "/u:", "/u:1", "/u:6", "/u:", "/u:", "/u:", "/u:"], ["", "", "", "1", "", "", "", ""]]).print("columnar_division_11");
+	</script>
       
     <p>
         Przepisujemy kolejną cyfrę, czyli <span class="math">2</span>. Dzielimy <span class="math">12 : 4 = 3</span>. 
 		Piszemy <span class="math">3</span> nad kreską, mnożymy <span class="math">3 &middot; 4 = 12</span> i odejmujemy.
     </p>
-      
-    <p align = "center">
-          1	4	3			
-          5	7	2	4	:	4
-        -	4					
-          1	7				
-        -	1	6				
-            1	2			
-        -		1	2			
-              0			
-    </p>
+    
+	<div id="columnar_division_12">
+	</div>
+	<script>
+		Display_table.create_custom([["/u:", "/u:", "/u:1", "/u:4", "/u:3", "/u:", "/u:", "/u:"], ["", "", "5", "7", "2", "4", ":", "4"], ["/u:-", "/u:", "/u:4", "/u:", "/u:", "/u:", "/u:", "/u:"], ["", "", "1", "7", "", "", "", ""],
+		["/u:-", "/u:", "/u:1", "/u:6", "/u:", "/u:", "/u:", "/u:"], ["", "", "", "1", "2", "", "", ""], ["/u:-", "/u:", "/u:", "/u:1", "/u:2", "/u:", "/u:", "/u:"], ["", "", "", "", "0", "", "", ""]]).print("columnar_division_12");
+	</script>
       
     <p>
         Przepisujemy <span class="math">4</span>, dzielimy <span class="math">4 : 4 = 1</span>, mnożymy <span class="math">1 &middot; 4 = 4</span>, odejmujemy <span class="math">4 – 4 = 0</span>.
     </p>
-      
-    <p align = "center">
-          1	4	3	1		
-          5	7	2	4	:	4
-        -	4					
-          1	7				
-        -	1	6				
-            1	2			
-        -		1	2			
-              0	4		
-                4		
-                0		
-    </p>
+    
+	<div id="columnar_division_13">
+	</div>
+	<script>
+		Display_table.create_custom([["/u:", "/u:", "/u:1", "/u:4", "/u:3", "/u:1", "/u:", "/u:"], ["", "", "5", "7", "2", "4", ":", "4"], ["/u:-", "/u:", "/u:4", "/u:", "/u:", "/u:", "/u:", "/u:"], ["", "", "1", "7", "", "", "", ""],
+		["/u:-", "/u:", "/u:1", "/u:6", "/u:", "/u:", "/u:", "/u:"], ["", "", "", "1", "2", "", "", ""], ["/u:-", "/u:", "/u:", "/u:1", "/u:2", "/u:", "/u:", "/u:"], ["", "", "", "", "0", "4", "", ""], 
+		["/u:-", "/u:", "/u:", "/u:", "/u:", "/u:4", "/u:", "/u:"], ["", "", "", "", "", "0", "", ""]]).print("columnar_division_13");
+	</script>
       
     <p>
         Kończymy robotę i odczytujemy wynik <span class="math">1431</span>. Jeśli to było brawurowe, to teraz będziemy dzielić jak szaleni – <span class="math">33684 : 28</span>
     </p>
-      
-    <p>
-        3	3	6	8	4	:	2	8
-    </p>
+    
+	<div id="columnar_division_14">
+	</div>
+	<script>
+		Display_table.create_custom([["/u:", "/u:", "/u:", "/u:", "/u:", "/u:", "/u:", "/u:"], ["3", "3", "6", "8", "4", ":", "2", "8"]]).print("columnar_division_14");
+	</script>
       
     <p>
         Zabieramy się za dzielną od lewej. Chcielibyśmy podzielić <span class="math">3 : 28</span>, jednak takie dzielenie nie ma wiele sensu. 
         Lepiej rozważmy dwie pierwsze cyfry dzielnej, czyli <span class="math">33</span>. Dzielimy <span class="math">33 : 28 = 1 r. 5</span>. Piszemy wynik, czyli <span class="math">1</span>, nad 
         drugą trójką. Potem mnożymy <span class="math">1 &middot; 28 = 28</span> i odejmujemy <span class="math">33 – 28 = 5</span>.
     </p>
-      
-    <p align = "center">
-            1						
-          3	3	6	8	4	:	2	8
-        -	2	8						
-            5						
-    </p>
+    
+	<div id="columnar_division_15">
+	</div>
+	<script>
+		Display_table.create_custom([["/u:", "/u:", "/u:", "/u:1", "/u:", "/u:", "/u:", "/u:", "/u:", "/u:"], ["", "", "3", "3", "6", "8", "4", ":", "2", "8"], ["/u:-", "/u:", "/u:2", "/u:8", "/u:", "/u:", "/u:", "/u:", "/u:", "/u:"],
+		["", "", "", "5", "", "", "", "", "", ""]]).print("columnar_division_15");
+	</script>	
       
     <p>
         Przepisujemy kolejną cyfrę, czyli <span class="math">6</span>. Dzielimy <span class="math">56 : 28 = 2</span>, mnożymy <span class="math">2 &middot; 28 = 56</span> i odejmujemy <span class="math">56 – 56 = 0</span>.
     </p>
-      
-    <p align = "center">
-            1	2					
-          3	3	6	8	4	:	2	8
-        -	2	8						
-            5	6					
-        -		5	6					
-              0					
-    </p>
+    
+	<div id="columnar_division_16">
+	</div>
+	<script>
+		Display_table.create_custom([["/u:", "/u:", "/u:", "/u:1", "/u:2", "/u:", "/u:", "/u:", "/u:", "/u:"], ["", "", "3", "3", "6", "8", "4", ":", "2", "8"], ["/u:-", "/u:", "/u:2", "/u:8", "/u:", "/u:", "/u:", "/u:", "/u:", "/u:"],
+		["", "", "", "5", "6", "", "", "", "", ""], ["/u:-", "/u:", "/u:", "/u:5", "/u:6", "/u:", "/u:", "/u:", "/u:", "/u:"], ["", "", "", "", "0", "", "", "", "", ""]]).print("columnar_division_16");
+	</script>
       
     <p>
         Przepisujemy kolejną cyfrę, czyli <span class="math">8</span>. Dostajemy <span class="math">8 : 28 = 0 r. 8</span>. Piszemy wynik <span class="math">0</span>, mnożymy <span class="math">0 &middot; 28 = 0</span>, 
         odejmujemy <span class="math">8 – 0 = 8</span>.
     </p>
-      
-    <p align = "center">
-            1	2	0				
-          3	3	6	8	4	:	2	8
-        -	2	8						
-            5	6					
-        -		5	6					
-              0	8				
-        -				0				
-                8				
-    </p>
+    
+	<div id="columnar_division_17">
+	</div>
+	<script>
+		Display_table.create_custom([["/u:", "/u:", "/u:", "/u:1", "/u:2", "/u:0", "/u:", "/u:", "/u:", "/u:"], ["", "", "3", "3", "6", "8", "4", ":", "2", "8"], ["/u:-", "/u:", "/u:2", "/u:8", "/u:", "/u:", "/u:", "/u:", "/u:", "/u:"],
+		["", "", "", "5", "6", "", "", "", "", ""], ["/u:-", "/u:", "/u:", "/u:5", "/u:6", "/u:", "/u:", "/u:", "/u:", "/u:"], ["", "", "", "", "0", "8", "", "", "", ""], ["/u:-", "/u:", "/u:", "/u:", "/u:", "/u:0", "/u:", "/u:", "/u:", "/u:"], 
+		["", "", "", "", "", "8", "", "", "", ""]]).print("columnar_division_17");
+	</script>
       
     <p>
         Spisujemy czwórkę, dzielimy <span class="math">84 : 28 = 3</span>, mnożymy <span class="math">3 &middot; 28 = 84</span>, odejmujemy <span class="math">84 – 84 = 0</span>.
     </p>
-      
-    <p align = "center">
-            1	2	0	3			
-          3	3	6	8	4	:	2	8
-        -	2	8						
-            5	6					
-        -		5	6					
-              0	8				
-        -				0				
-                8	4			
-        -				8	4			
-                  0			
-    </p>
+    
+	<div id="columnar_division_17b">
+	</div>
+	<script>
+		Display_table.create_custom([["/u:", "/u:", "/u:", "/u:1", "/u:2", "/u:0", "/u:3", "/u:", "/u:", "/u:"], ["", "", "3", "3", "6", "8", "4", ":", "2", "8"], ["/u:-", "/u:", "/u:2", "/u:8", "/u:", "/u:", "/u:", "/u:", "/u:", "/u:"],
+		["", "", "", "5", "6", "", "", "", "", ""], ["/u:-", "/u:", "/u:", "/u:5", "/u:6", "/u:", "/u:", "/u:", "/u:", "/u:"], ["", "", "", "", "0", "8", "", "", "", ""], ["/u:-", "/u:", "/u:", "/u:", "/u:", "/u:0", "/u:", "/u:", "/u:", "/u:"], 
+		["", "", "", "", "", "8", "4", "", "", ""], ["/u:-", "/u:", "/u:", "/u:", "/u:", "/u:8", "/u:4", "/u:", "/u:", "/u:"], ["", "", "", "", "", "", "0", "", "", ""]]).print("columnar_division_17b");
+	</script>
       
     <p>
         Jakoś poszło. Jak widać, dzielenie w słupku wymaga wykonania w pamięci niektórych działań, nawet tych trudnych. 
@@ -898,48 +875,45 @@
         Możemy jedynie siłować <span class="math">28 + 28 = 56</span>; <span class="math">56 + 28 = 84</span>, w takim razie <span class="math">3 &middot; 28 = 84</span>, czyli <span class="math">84 : 28 = 3</span>. 
         Na deser podzielmy jeszcze <span class="math">102</span> przez <span class="math">9</span>.
     </p>
-      
-    <p align = "center">
-        1	0	2	:	9
-    </p>
+	
+	<div id="columnar_division_18">
+	</div>
+	<script>
+		Display_table.create_custom([["/u:", "/u:", "/u:", "/u:", "/u:"], ["1", "0", "2", ":", "9"]]).print("columnar_division_18");
+	</script>
       
     <p>
         Dzielenie <span class="math">1 : 9</span> jest bez sensu, więc bierzemy pierwsze dwie cyfry i dzielimy – <span class="math">10 : 9 = 1 r 1</span>.
     </p>
-      
-    <p align = "center">
-            1			
-          1	0	2	:	9
-        -		9			
-            1			
-    </p>
+    
+	<div id="columnar_division_19">
+	</div>
+	<script>
+		Display_table.create_custom([["/u:", "/u:", "/u:", "/u:1", "/u:", "/u:", "/u:"], ["", "", "1", "0", "2", ":", "9"], ["/u:-", "/u:", "/u:", "/u:9", "/u:", "/u:", "/u:"], ["", "", "", "1", "", "", ""]]).print("columnar_division_19");
+	</script>
       
     <p>
         Spisujemy <span class="math">2</span> i dzielimy dalej.
     </p>
       
-    <p align = "center">
-            1	1		
-          1	0	2	:	9
-        -		9			
-            1	2		
-        -			9		
-              3		
-    </p>
+	<div id="columnar_division_20">
+	</div>
+	<script>
+		Display_table.create_custom([["/u:", "/u:", "/u:", "/u:1", "/u:1", "/u:", "/u:"], ["", "", "1", "0", "2", ":", "9"], ["/u:-", "/u:", "/u:", "/u:9", "/u:", "/u:", "/u:"], ["", "", "", "1", "2", "", ""], 
+		["/u:-", "/u:", "/u:", "/u:", "/u:9", "/u:", "/u:"], ["", "", "", "", "3", "", ""]]).print("columnar_division_20");
+	</script>
       
     <p>
         Niespodzianka – nie mamy już żadnej cyfry do spisania, a zostało nam jakieś <span class="math">3</span>. Oznacza to, że <span class="math">3</span> jest resztą z 
         dzielenia <span class="math">102</span> przez <span class="math">9</span>, czyli <span class="math">102 : 9 = 11 r. 3</span>
     </p>
-      
-    <p align = "center">
-            1	1	r.	3
-          1	0	2	:	9
-        -		9			
-            1	2		
-        -			9		
-              3		
-    </p>
+	
+	<div id="columnar_division_21">
+	</div>
+	<script>
+		Display_table.create_custom([["/u:", "/u:", "/u:", "/u:1", "/u:1", "/u:r.", "/u:3"], ["", "", "1", "0", "2", ":", "9"], ["/u:-", "/u:", "/u:", "/u:9", "/u:", "/u:", "/u:"], ["", "", "", "1", "2", "", ""], 
+		["/u:-", "/u:", "/u:", "/u:", "/u:9", "/u:", "/u:"], ["", "", "", "", "3", "", ""]]).print("columnar_division_21");
+	</script>
       
     <p class = "type">
         Rozszerzenie
