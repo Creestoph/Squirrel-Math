@@ -632,48 +632,82 @@
         Mnożymy <span class="math">6  &middot; 2 = 12</span>. Rozbijamy wynik na <span class="math">1</span> i <span class="math">2</span>. Zanotowaną jedynkę możemy już przepisać bez zmian.
     </p>
   
-	<div id="columnar_multiplication_15">
+	<div id="columnar_multiplication_16">
 	</div>
 	<script>
-		Display_table.create_custom([["/c:", "/c:", "/c:", "/c:1", "/c:"], ["/c:", "/c:2", "/c:1", "/c:3", "/c:"], ["", "", "6", "2", "9"], ["/u:∙", "/u:", "/u:2", "/u:0", "/u:4"], ["", "2", "5", "1", "6"], 
-		["", "0", "0", "0", ""], ["", "5", "8", "", ""]]).print("columnar_multiplication_15");
+		Display_table.create_custom([["/c:", "/c:", "/c:1", "/c:", "/c:1", "/c:"], ["/c:", "/c:", "/c:2", "/c:1", "/c:3", "/c:"], ["", "", "", "6", "2", "9"], ["/u:∙", "/u:", "/u:", "/u:2", "/u:0", "/u:4"], ["", "", "2", "5", "1", "6"], 
+		["", "", "0", "0", "0", ""], ["1", "2", "5", "8", "", ""]]).print("columnar_multiplication_16");
 	</script>
-  
-    <p align = "center">
-            1		1	
-            2	1	3	
-              6	2	9
-        			2	0	4
-            2	5	1	6
-            0	0	0	
-        1	2	5	8		
-    </p>
 
     <p>
         Wszystkie trzy wyniki dodajemy.
     </p>
   
-    <p align = "center">
-
-              1		1	
-              2	1	3	
-                6	2	9
-        				2	0	4
-              2	5	1	6
-              0	0	0	
-        +	1	2	5	8		
-          1	2	8	3	1	6
-    </p>
+	<div id="columnar_multiplication_17">
+	</div>
+	<script>
+		Display_table.create_custom([["/c:", "/c:", "/c:", "/c:", "/c:1", "/c:", "/c:1", "/c:"], ["/c:", "/c:", "/c:", "/c:", "/c:2", "/c:1", "/c:3", "/c:"], ["", "", "", "", "", "6", "2", "9"], ["/u:∙", "/u:", "/u:", "/u:", "/u:", "/u:2", "/u:0", "/u:4"], ["", "", "", "", "2", "5", "1", "6"], 
+		["", "", "", "", "0", "0", "0", ""], ["/u:+", "/u:", "/u:1", "/u:2", "/u:5", "/u:8", "/u:", "/u:"], ["", "", "1", "2", "8", "3", "1", "6"]]).print("columnar_multiplication_17");
+	</script>
   
     <p>
         No i poznaliśmy prawdę: <span class="math">629  &middot; 204 = 128 316</span>. Jesteśmy przekonani, że ta informacja wzbogaciła Twoje życie.
     </p>
   
+	<p align="center">
+		<input style="width: 800px" name="numberInput" type="text" id="columnar_addition_input" />
+	</p>
+	<script>
+        var columnar_addition = new Columnar_addition( "columnar_multiplication_table","columnar_multiplication_comment", "columnar_operation_button_right", "columnar_operation_button_left");
+        function ColumnarAdditionStartArgs() {
+            var success = columnar_addition.generate_from_input("columnar_multiplication_input","columnar_multiplication_area");
+            if (success)columnar_addition.print_step(0);
+        }
+
+	</script>
+	<p align="center">
+		<button id="columnar_multiplication_start" style="float: center;" onclick="ColumnarAdditionStartArgs()">Start</button>
+	</p>
+	<script>
+		SetInputEnterEvent("columnar_multiplication_input","columnar_multiplication_start")
+	</script>
+	
+	
+	<table align = "center" class="columnar_operation_script" id="columnar_multiplication_area" >
+		<tr>
+			<td id="columnar_operation_button_left" onclick="columnar_multiplication.prev()">
+				<svg height="0" width="30">
+					<defs>
+						<linearGradient id="gradient">
+							<stop offset="20%" stop-color="#C33" />
+							<stop offset="90%" stop-color="#833" />
+						</linearGradient>
+						<linearGradient id="hover_gradient">
+							<stop offset="20%" stop-color="#A33" />
+							<stop offset="90%" stop-color="#433" />
+						</linearGradient>
+					</defs>
+					<polygon points="20,0 0,30 20,60"/>
+				</svg>
+			</td>
+			<td>
+				<div id="columnar_multiplication_table" class="no_selection"></div>
+				<div id="columnar_multiplication_carry" class="no_selection"></div>
+				<p id="columnar_multiplication_comment" class="no_selection"></p>
+			</td>
+			<td id = "columnar_operation_button_right" onclick="columnar_multiplication.next()">
+				<svg height="0" width="30">
+					<polygon points="0,0 20,30 0,60"/>
+				</svg>
+			</td>	
+		</tr>
+	</table>
+  
     <p class = "type">
         Rozszerzenie
     </p>
   
-    <p class = "ostrzezenie">
+    <p class = "warning">
         [wymagana znajomość tematu: Kolejność wykonywania działań]
     </p>
   
@@ -719,25 +753,23 @@
         ułożylibyśmy je tak:
     </p>
   
-    <p align = "center">
-              9	0	6
-            3	0	2	0
-        +	6	0	4	0	0
-    </p>
+	<div id="columnar_multiplication_18">
+	</div>
+	<script>
+		Display_table.create_custom([["", "", "", "", "9", "0", "6"], ["", "", "", "3", "0", "2", "0"], ["/u:+", "/u:", "/u:6", "/u:0", "/u:4", "/u:0", "/u:0"], 
+		["", "", "", "", "", "", ""]]).print("columnar_multiplication_18");
+	</script>
 
     <p>
         Przypomnijmy, jak wygląda to sumowanie w całym słupku:
     </p>
   
-    <p align = "center">
-
-              3	0	2
-        			2	1	3
-              9	0	6
-            3	0	2	
-        +	6	0	4		
-          6	4	3	2	6
-    </p>
+	<div id="columnar_multiplication_19">
+	</div>
+	<script>
+		Display_table.create_custom([["", "", "", "", "3", "0", "2"], ["/u:∙", "/u:", "/u:", "/u:", "/u:2", "/u:1", "/u:3"], ["", "", "", "", "9", "0", "6"], ["", "", "", "3", "0", "2", ""], ["/u:+", "/u:", "/u:6", "/u:0", "/u:4", "/u:", "/u:"], 
+		["", "", "6", "4", "3", "2", "6"]]).print("columnar_multiplication_19");
+	</script>
 
     <p>
         Łatwiej teraz zrozumieć, dlaczego każdy kolejny wynik mnożenia zapisywaliśmy z przesunięciem o cyfrę w lewo: mnożenie 
