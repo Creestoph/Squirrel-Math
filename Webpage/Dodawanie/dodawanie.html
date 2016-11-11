@@ -499,8 +499,8 @@
 	<script>
         var columnar_addition = new Columnar_addition( "columnar_addition_table","columnar_addition_comment", "columnar_addition_button_right", "columnar_addition_button_left");
         function ColumnarAdditionStartArgs() {
-            columnar_addition.generate_from_input("columnar_addition_input","columnar_addition_area");
-            columnar_addition.print_step(0);
+            var success = columnar_addition.generate_from_input("columnar_addition_input","columnar_addition_area");
+            if (success)columnar_addition.print_step(0);
         }
 
 	</script>

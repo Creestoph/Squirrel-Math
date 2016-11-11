@@ -55,9 +55,11 @@ Columnar_addition.prototype.generate_from_input = function (input_id, columnar_a
 	input = input.replace(/,/g,".");
 	try{
 		this.generate_steps(input.split("+"));
+		return true;
 	}
 	catch (err){
-		this.print_error(err.message);
+		this.print_error(err);
+		return false;
 	}
 }
 
@@ -73,25 +75,26 @@ Columnar_addition.prototype.prev = function () {
 Columnar_addition.prototype.print_step = function (i) {
 	document.getElementById(this.button_right_id).style.visibility = "visible";
 	document.getElementById(this.button_left_id).style.visibility = "visible";
-	// if (this.step == 0){
-	// 	document.getElementById(this.button_left_id).style.visibility = "hidden";
-	// }
-	// else if (this.step == this.steps.length-1){
-	// 	document.getElementById(this.button_right_id).style.visibility = "hidden";
-	// }
+	if (this.step == 0){
+		document.getElementById(this.button_left_id).style.visibility = "hidden";
+	}
+	else if (this.step == this.steps.length-1){
+		document.getElementById(this.button_right_id).style.visibility = "hidden";
+	}
 	this.steps[i].print(this.comment_id, this.table_id);
 }
 
 Columnar_addition.prototype.print_error = function (msg) {
+	document.getElementById(this.button_left_id).style.visibility = "hidden";
+	document.getElementById(this.button_right_id).style.visibility = "hidden";
 	document.getElementById(this.comment_id).innerHTML = msg;
-	// document.getElementById(this.button_left_id).style.visibility = "hidden";
-	// document.getElementById(this.button_right_id).style.visibility = "hidden";
+	document.getElementById(this.table_id).innerHTML = "";
 }
 
 Columnar_addition.prototype.generate_steps = function (numbers) {
 	this.steps = [];
 	if (numbers.length == 1) {
-		throw "Wpisz liczby do dodania <br>np. 1234+73";
+		throw "<b>ERROR</b><br>Wpisz liczby do dodania <br>np. 1234+73";
 	}
 	if (numbers.length > 10) {
 		throw "<b>ERROR</b><br>Ani Ty, ani ja nie potrzebujemy aż tylu liczb.";
@@ -101,7 +104,7 @@ Columnar_addition.prototype.generate_steps = function (numbers) {
 			throw "<b>ERROR</b><br>Wprowadzone liczby są zbyt długie.<br>Ich wyświetlenie przeczy design'owi strony.<br>Szanujmy się.";
 		}
 		if (!validate_float(numbers[i])) {
-			throw "Wpisz liczby do dodania <br>np. 1234+73";
+			throw "<b>ERROR</b><br>Wpisz liczby do dodania <br>np. 1234+73";
 		}
 	}
 	for (var i = 0; i < numbers.length; i++) {
