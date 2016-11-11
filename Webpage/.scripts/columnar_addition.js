@@ -3,17 +3,6 @@
  */
 
 
-function SetInputEnterEvent(inputId, btnId)
-{
-	document.getElementById(inputId)
-		.addEventListener("keyup", function(event) {
-			event.preventDefault();
-			if (event.keyCode == 13) {
-				document.getElementById(btnId).click();
-			}
-		});
-}
-
 function Columnar_addition_step(table, comma, highlight_column, comment) {
 	var tab = [];
 	for (var i = 0; i < table.length; i++){
@@ -94,7 +83,7 @@ Columnar_addition.prototype.print_error = function (msg) {
 Columnar_addition.prototype.generate_steps = function (numbers) {
 	this.steps = [];
 	if (numbers.length == 1) {
-		throw "<b>ERROR</b><br>Wpisz liczby do dodania <br>np. 1234+73";
+		throw "Wpisz liczby do dodania <br>np. 1234+73";
 	}
 	if (numbers.length > 10) {
 		throw "<b>ERROR</b><br>Ani Ty, ani ja nie potrzebujemy aż tylu liczb.";
@@ -104,7 +93,7 @@ Columnar_addition.prototype.generate_steps = function (numbers) {
 			throw "<b>ERROR</b><br>Wprowadzone liczby są zbyt długie.<br>Ich wyświetlenie przeczy design'owi strony.<br>Szanujmy się.";
 		}
 		if (!validate_float(numbers[i])) {
-			throw "<b>ERROR</b><br>Wpisz liczby do dodania <br>np. 1234+73";
+			throw "Wpisz liczby do dodania <br>np. 1234+73";
 		}
 	}
 	for (var i = 0; i < numbers.length; i++) {
@@ -112,19 +101,19 @@ Columnar_addition.prototype.generate_steps = function (numbers) {
 		if (numbers[i] == "") numbers[i] = "0";
 		if (numbers[i][0] == ".") numbers[i] = "0" + numbers[i];
 	}
-	var longestBeforeComma = 0;
-	var longestAfterComma = 0;
+	var longest_before_comma = 0;
+	var longest_after_comma = 0;
 	for (var i = 0; i < numbers.length; i++) {
 		var j;
 		for (j = 0; j < numbers[i].length && numbers[i][j] != '.'; j++);
-		if (j > longestBeforeComma) longestBeforeComma = j;
-		if (numbers[i].length - 1 - j > longestAfterComma) longestAfterComma = numbers[i].length - 1 - j;
+		if (j > longest_before_comma) longest_before_comma = j;
+		if (numbers[i].length - 1 - j > longest_after_comma) longest_after_comma = numbers[i].length - 1 - j;
 	}
-	longestBeforeComma += 1;
+	longest_before_comma += 1;
 	var table = [];
 	for (var i = 0; i < numbers.length + 2; i++) {
 		table[i] = [];
-		for (var j = 0; j < longestAfterComma + longestBeforeComma; j++) {
+		for (var j = 0; j < longest_after_comma + longest_before_comma; j++) {
 			table[i][j] = "";
 		}
 	}
@@ -134,10 +123,10 @@ Columnar_addition.prototype.generate_steps = function (numbers) {
 		var beforeComma = j;
 		numbers[i] = numbers[i].replace(".", "")
 		for (var k = 0; k < numbers[i].length; k++) {
-			table[i + 1][longestBeforeComma - beforeComma + k] = numbers[i][k];
+			table[i + 1][longest_before_comma - beforeComma + k] = numbers[i][k];
 		}
 	}
-	this.steps.push(new Columnar_addition_step(table, longestAfterComma, -1, "Zapisujemy " + (table.length == 4 ? "obie" : "wszystkie") + " liczby jedna pod drugą z wyrównaniem do " + (longestAfterComma == 0 ? "prawej" : "przecinka") + " i podkreślamy."));
+	this.steps.push(new Columnar_addition_step(table, longest_after_comma, -1, "Zapisujemy " + (table.length == 4 ? "obie" : "wszystkie") + " liczby jedna pod drugą z wyrównaniem do " + (longest_after_comma == 0 ? "prawej" : "przecinka") + " i podkreślamy."));
 	this.step = 0;
 	var current_column = table[0].length - 1;
 	var digits = [];
@@ -179,13 +168,13 @@ Columnar_addition.prototype.generate_steps = function (numbers) {
 				table[0][current_column - 1] = carry;
 			}
 		}
-		this.steps.push(new Columnar_addition_step(table, longestAfterComma, current_column, comment));
+		this.steps.push(new Columnar_addition_step(table, longest_after_comma, current_column, comment));
 		current_column -= 1;
 	}
 	comment = "Odczytujemy wynik: ";
 	for (var i = 0; i < table[table.length - 1].length; i++)
-		comment += (i == longestBeforeComma ? "," : "") + table[table.length - 1][i];
+		comment += (i == longest_before_comma ? "," : "") + table[table.length - 1][i];
 	comment += ".";
-	this.steps.push(new Columnar_addition_step(table, longestAfterComma, -1, comment));
+	this.steps.push(new Columnar_addition_step(table, longest_after_comma, -1, comment));
 }
 
