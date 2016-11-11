@@ -12,9 +12,14 @@ function Columnar_subtraction_step(table, comma, highlight_column, crossed_field
             if (j == highlight_column) t = "/h" + t;
             if (crossed_fields[i][j])
                 t = "/s" + t;
-            tab[i][j] = t[0] == ':' ? t.replace(/:/g,"") : t;
+            tab[i].push(t[0] == ':' ? t.replace(/:/g,"") : t);
+            if (j == table[i].length - comma - 1){
+                if (i != 0 && i != 1) tab[i].push(",");
+                else tab[i].push("");
+            }
         }
-        if (comma > 0 && i != 0) tab[i].splice(tab[0].length - 1 - comma, 0, ",");
+        if (comma > 0) {
+        }
     }
     this.table = Display_table.create_from_table("-", tab);
     this.comment = comment;
@@ -170,6 +175,7 @@ Columnar_subtraction.prototype.generate_steps = function (numbers) {
                 comment = "Cyfra " + table[k][current_column] + " jest samotna, więc przepisujemy ją bez zmian.";
             else
                 comment = "Odejmujemy liczby " + table[k][current_column] + " i " + table[3][current_column] + ", otrzymujemy " + diff + ". Wynik zapisujemy pod kreską.";
+            this.steps.push(new Columnar_subtraction_step(table, longest_after_comma, current_column,crossed_fields, comment));
         }
         else {
             var i = 0;
@@ -185,23 +191,26 @@ Columnar_subtraction.prototype.generate_steps = function (numbers) {
                     break;
                 }
             }
+            var l = 2;
+            for (; crossed_fields[l][current_column]; l--);
+            crossed_fields[l][current_column] = true;
+            table[l - 1][current_column] = parseInt(table[l][current_column]) + 10;
+
+
             if (i == current_column - 1)
                 comment = "Chcemy odjąć cyfry " + table[k][current_column] + " i " + table[3][current_column] + ". Napotykamy trudności, więc musimy wykonać zapożyczenie. Cyfrę " +
                     table[k][current_column] + " zwiększamy do " + (parseInt(table[k][current_column]) + 10) + " kosztem cyfry bezpośrednio po lewej, którą zmiejszamy do " + table[j - 1][i] + ".";
             else
-                this.comment = "Chcemy odjąć cyfry " + table[k][current_column] + " i " + table[3][current_column] +
+                comment = "Chcemy odjąć cyfry " + table[k][current_column] + " i " + table[3][current_column] +
                     ". Naptykamy trudności, więc chcemy wykonać pożyczkę od cyfry bezpośrednio po lewej. Ponieważ jest ona zerem, zapożyczenia musimy dokonać od dalszej cyfry - od " + (parseInt(table[j - 1][i]) + 1) +
                     ". Zmniejszamy ją do " + table[j - 1][i] + ", wszystkie zera po drodze do 9, a wyjściowe " + table[k][current_column] + " zwiększamy do " +
-                    (parseInt(table[k][current_column]) + 10) +
-                    ". Odejmujemy liczby " + (parseInt(table[k][current_column]) + 10) + " i " + table[3][current_column] + ", otrzymujemy " + (10 + parseInt(diff)) + ". Wynik zapisujemy pod kreską.";
-            i = 2;
-            for (; crossed_fields[i][current_column]; i--);
-            crossed_fields[i][current_column] = true;
-            table[i - 1][current_column] = parseInt(table[i][current_column]) + 10;
-            table[4][current_column] = 10 + parseInt(diff);
+                    (parseInt(table[k][current_column]) + 10) + ".";
 
+            this.steps.push(new Columnar_subtraction_step(table, longest_after_comma, current_column,crossed_fields, comment));
+            table[4][current_column] = 10 + parseInt(diff);
+            comment = "Odejmujemy liczby " + (parseInt(table[k][current_column]) + 10) + " i " + table[3][current_column] + ", otrzymujemy " + (10 + parseInt(diff)) + ". Wynik zapisujemy pod kreską.";
+            this.steps.push(new Columnar_subtraction_step(table, longest_after_comma, current_column,crossed_fields, comment));
         }
-        this.steps.push(new Columnar_subtraction_step(table, longest_after_comma, current_column,crossed_fields, comment));
         current_column -= 1;
     }
 

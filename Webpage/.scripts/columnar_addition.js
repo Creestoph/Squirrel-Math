@@ -8,10 +8,14 @@ function Columnar_addition_step(table, comma, highlight_column, comment) {
 	for (var i = 0; i < table.length; i++){
 		tab[i] = [];
 		for (var j = 0; j < table[i].length; j++){
-			if (j == highlight_column) tab[i][j] = "/h:" + table[i][j];
-			else tab[i][j] = table[i][j];
+			var t = ":" + table[i][j];
+			if (j == highlight_column) t = "/h" + t;
+			tab[i].push(t[0] == ':' ? t.replace(/:/g,"") : t)
+			if (j == table[i].length - comma - 1){
+				if (i != 0) tab[i].push(",");
+				else tab[i].push("");
+			}
 		}
-		if (comma > 0 && i != 0) tab[i].splice(tab[0].length-1-comma,0,",");
 	}
 	this.table = Display_table.create_from_table("+", tab);
 	this.comment = comment;
