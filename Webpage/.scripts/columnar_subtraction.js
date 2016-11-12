@@ -38,11 +38,11 @@ function Columnar_subtraction(table_id, comment_id, button_right_id, button_left
     this.button_left_id = button_left_id;
 }
 
-Columnar_subtraction.prototype.generate_from_input = function (input_id, columnar_addition_area) {
-    document.getElementById(columnar_addition_area).style.visibility = "visible";
-    document.getElementById(columnar_addition_area).style.marginBottom = "60px";
-    document.getElementById(columnar_addition_area).style.height = "400px";
-    document.getElementById(columnar_addition_area).style.padding = "20px";
+Columnar_subtraction.prototype.generate_from_input = function (input_id, columnar_subtraction_area) {
+    document.getElementById(columnar_subtraction_area).style.visibility = "visible";
+    document.getElementById(columnar_subtraction_area).style.marginBottom = "60px";
+    document.getElementById(columnar_subtraction_area).style.height = "400px";
+    document.getElementById(columnar_subtraction_area).style.padding = "20px";
     document.getElementById(this.table_id).style.marginTop = "60px";
     document.getElementById(this.button_left_id).childNodes[0].nextSibling.setAttribute("height", "60px");
     document.getElementById(this.button_right_id).childNodes[0].nextSibling.setAttribute("height", "60px");
