@@ -101,12 +101,12 @@ Columnar_multiplication.prototype.generate_steps = function (numbers) {
         throw "Wpisz dwie liczby do pomnożenia <br>np. 1234*73";
     }
     for (var i = 0; i < numbers.length; i++) {
-        if (numbers[i].length > 39) {
-            throw "<b>ERROR</b><br>Wprowadzone liczby są zbyt długie.<br>Ich wyświetlenie przeczy design'owi strony.<br>Szanujmy się.";
-        }
         if (!validate_float(numbers[i])) {
             throw "Wpisz dwie liczby do pomnożenia <br>np. 1234*73";
         }
+    }
+    if (numbers[0].length + numbers[1].length > 39 || numbers[1].length > 10) {
+        throw "<b>ERROR</b><br>Wprowadzone liczby są zbyt długie.<br>Ich wyświetlenie przeczy design'owi strony.<br>Szanujmy się.";
     }
     var longest = 0;
     var commas = [];
@@ -211,8 +211,10 @@ Columnar_multiplication.prototype.generate_steps = function (numbers) {
             if (t - 1 == -1) {
                 table = Columnar_multiplication.add_first_column(table);
                 t = 0;
+                table[2 + (numbers[1].length - 1 - i)][t] = carry;
             }
-            table[2 + (numbers[1].length - 1 - i)][t] = carry;
+            else
+                table[2 + (numbers[1].length - 1 - i)][t - 1] = carry;
             carry = 0;
             highlight_fields = Columnar_multiplication.empty_highlight(table);
             this.steps.push(new Columnar_multiplication_step(table, highlight_fields, comment, carry, 1, -1));
@@ -220,31 +222,45 @@ Columnar_multiplication.prototype.generate_steps = function (numbers) {
 
     }
     var sum_underline = table.length - 1;
-    var w = parseInt(numbers[0]) * parseInt(numbers[1]) + "";
+
+    var w = "";
+    var sum = 0;
+    var carry = 0;
+    for (var i = table[0].length - 1; i >= 0; i--) {
+        var sum = carry;
+        for (var j = 2; j < table.length; j++) {
+            sum = parseInt(sum) + parseInt(table[j][i] == "" ? "0" : table[j][i]);
+        }
+        w = w + (sum % 10).toString();
+        carry = parseInt(sum / 10);
+    }
+    if (carry > 0) {
+        w = w + carry.toString();
+        table = Columnar_multiplication.add_first_column(table);
+    }
 
     comment = "Otrzymane liczby podkreślamy i wykonujemy ich dodawanie pisemne.";
     highlight_fields = Columnar_multiplication.empty_highlight(table);
     this.steps.push(new Columnar_multiplication_step(table, highlight_fields, comment, carry, 1, sum_underline));
 
-
-    table = Columnar_multiplication.add_first_column(table);
     table[table.length] = [];
     for (var k = 0; k < table[0].length; k++)
         table[table.length - 1].push("");
-    for (var i = w.length - 1; i >= 0; i--) {
-        table[table.length - 1][table[0].length - 1 - (w.length - 1 - i)] = w[i];
+    for (var i = 0; i < w.length; i++) {
+        table[table.length - 1][table[0].length - 1 - i] = w[i];
     }
 
+    w = w.split("").reverse().join("");
     if (commas[0] + commas[1] == 0)
         comment = "Odczytujemy wynik: " + w;
-    else{
+    else {
         var c = commas[0] + commas[1];
         comment = "Odczytujemy liczbę " + w + ". Ponieważ "
-            + numbers_orig[0] + " ma " + commas[0] +
+            + numbers_orig[0].replace(".", ",") + " ma " + commas[0] +
             " cyfr po przecinku, a "
-            + numbers_orig[1] + " ma " + commas[1] +
+            + numbers_orig[1].replace(".", ",") + " ma " + commas[1] +
             " cyfr po przecinku, to wynik musi mieć " + c + " cyfr po przecinku.";
-        w = w.substring(0,w.length-c) + "," + w.substring(w.length-c);
+        w = w.substring(0, w.length - c) + "," + w.substring(w.length - c);
         comment += " Ostatecznie otrzymujemy " + w + ".";
     }
 
