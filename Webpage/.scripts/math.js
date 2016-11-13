@@ -180,6 +180,11 @@ function element_mathML(input)
         pos += 4;
         result = "<mo>></mo>";
     }
+	else if (input[pos] == '≈')
+	{
+		pos ++;
+        result = "<mo>≈</mo>";
+	}
 	else if (input[pos] == '≥')
 	{
 		pos ++;

@@ -13,8 +13,8 @@ function Columnar_subtraction_step(table, comma, highlight_column, crossed_field
             if (crossed_fields[i][j])
                 t = "/s" + t;
             tab[i].push(t[0] == ':' ? t.replace(/:/g,"") : t);
-            if (j == table[i].length - comma - 1){
-                if (i != 0 && i != 1) tab[i].push(",");
+            if (comma!=0 && j == table[i].length - comma - 1){
+                if (i == table.length - 1 || (i != 0 && i != 1 && table[i][j+1]!="")) tab[i].push(",");
                 else tab[i].push("");
             }
         }
@@ -95,9 +95,6 @@ Columnar_subtraction.prototype.generate_steps = function (numbers) {
         throw "Wpisz dwie liczby do odjęcia <br>np. 1234-73";
     }
     for (var i = 0; i < numbers.length; i++) {
-        if (numbers[i].length > 39) {
-            throw "<b>ERROR</b><br>Wprowadzone liczby są zbyt długie.<br>Ich wyświetlenie przeczy design'owi strony.<br>Szanujmy się.";
-        }
         if (!validate_float(numbers[i])) {
             throw "Wpisz dwie liczby do odjęcia <br>np. 1234-73";
         }
@@ -118,6 +115,11 @@ Columnar_subtraction.prototype.generate_steps = function (numbers) {
         if (j > longest_before_comma) longest_before_comma = j;
         if (numbers[i].length - 1 - j > longest_after_comma) longest_after_comma = numbers[i].length - 1 - j;
     }
+	
+	if ((longest_after_comma != 0 && longest_before_comma + longest_after_comma > 38) || (longest_after_comma == 0 && longest_before_comma > 39)){
+            throw "<b>ERROR</b><br>Wprowadzone liczby są zbyt długie.<br>Ich wyświetlenie przeczy design'owi strony.<br>Szanujmy się.";
+    }
+	
     var table = [];
     for (var i = 0; i < numbers.length + 3; i++) {
         table[i] = [];
@@ -147,7 +149,7 @@ Columnar_subtraction.prototype.generate_steps = function (numbers) {
     var current_column = table[0].length - 1;
     var comment;
     var diff;
-    comment = "Zapisujemy " + (table.length == 4 ? "obie" : "wszystkie") + " liczby jedna pod drugą z wyrównaniem do " + (longest_after_comma == 0 ? "prawej" : "przecinka") + " i podkreślamy.";
+    comment = "Zapisujemy obie liczby jedna pod drugą z wyrównaniem do " + (longest_after_comma == 0 ? "prawej" : "przecinka") + " i podkreślamy.";
     this.steps.push(new Columnar_subtraction_step(table, longest_after_comma,-1, crossed_fields, comment));
 
     var r = false;

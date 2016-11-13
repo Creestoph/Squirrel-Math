@@ -159,6 +159,7 @@ Columnar_multiplication.prototype.generate_steps = function (numbers) {
     if (commas[0] + commas[1] > 0)
         comment += " Chwilowo zaniedbujemy przecinki.";
     this.steps.push(new Columnar_multiplication_step(table, highlight_fields, comment, carry, 1, -1));
+	
     for (var i = numbers[1].length - 1; i >= 0; i--) {
         var t;
         var ci = numbers[1].length - 1 - i;
@@ -215,51 +216,81 @@ Columnar_multiplication.prototype.generate_steps = function (numbers) {
             }
             else
                 table[2 + (numbers[1].length - 1 - i)][t - 1] = carry;
+			
+			comment = "Dopisujemy zapamiętane " + carry + ".";
             carry = 0;
             highlight_fields = Columnar_multiplication.empty_highlight(table);
             this.steps.push(new Columnar_multiplication_step(table, highlight_fields, comment, carry, 1, -1));
         }
 
     }
-    var sum_underline = table.length - 1;
+	
+	var w = "";
+	var sum_uderline = -1;
+	if (numbers[1].length == 1)
+	{
+		w = table[table.length - 1].toString();
+		w = w.split(",").join("");
+	}
+	else
+	{
+		sum_underline = table.length - 1;
 
-    var w = "";
-    var sum = 0;
-    var carry = 0;
-    for (var i = table[0].length - 1; i >= 0; i--) {
-        var sum = carry;
-        for (var j = 2; j < table.length; j++) {
-            sum = parseInt(sum) + parseInt(table[j][i] == "" ? "0" : table[j][i]);
-        }
-        w = w + (sum % 10).toString();
-        carry = parseInt(sum / 10);
-    }
-    if (carry > 0) {
-        w = w + carry.toString();
-        table = Columnar_multiplication.add_first_column(table);
-    }
+		var sum = 0;
+		var carry = 0;
+		for (var i = table[0].length - 1; i >= 0; i--) {
+			var sum = carry;
+			for (var j = 2; j < table.length; j++) {
+				sum = parseInt(sum) + parseInt(table[j][i] == "" ? "0" : table[j][i]);
+			}
+			w = w + (sum % 10).toString();
+			carry = parseInt(sum / 10);
+		}
+		if (carry > 0) {
+			w = w + carry.toString();
+			table = Columnar_multiplication.add_first_column(table);
+		}
 
-    comment = "Otrzymane liczby podkreślamy i wykonujemy ich dodawanie pisemne.";
-    highlight_fields = Columnar_multiplication.empty_highlight(table);
-    this.steps.push(new Columnar_multiplication_step(table, highlight_fields, comment, carry, 1, sum_underline));
+		comment = "Otrzymane liczby podkreślamy i wykonujemy ich dodawanie pisemne.";
+		highlight_fields = Columnar_multiplication.empty_highlight(table);
+		this.steps.push(new Columnar_multiplication_step(table, highlight_fields, comment, carry, 1, sum_underline));
 
-    table[table.length] = [];
-    for (var k = 0; k < table[0].length; k++)
-        table[table.length - 1].push("");
-    for (var i = 0; i < w.length; i++) {
-        table[table.length - 1][table[0].length - 1 - i] = w[i];
-    }
+		table[table.length] = [];
+		for (var k = 0; k < table[0].length; k++)
+			table[table.length - 1].push("");
+		for (var i = 0; i < w.length; i++) {
+			table[table.length - 1][table[0].length - 1 - i] = w[i];
+		}
+		 w = w.split("").reverse().join("");
+	}
 
-    w = w.split("").reverse().join("");
+   
     if (commas[0] + commas[1] == 0)
-        comment = "Odczytujemy wynik: " + w;
+        comment = "Odczytujemy wynik: " + w + ".";
     else {
         var c = commas[0] + commas[1];
-        comment = "Odczytujemy liczbę " + w + ". Ponieważ "
-            + numbers_orig[0].replace(".", ",") + " ma " + commas[0] +
-            " cyfr po przecinku, a "
-            + numbers_orig[1].replace(".", ",") + " ma " + commas[1] +
-            " cyfr po przecinku, to wynik musi mieć " + c + " cyfr po przecinku.";
+        comment = "Odczytujemy liczbę " + w + ". Ponieważ " + numbers_orig[0].replace(".", ",") + " ma " + commas[0] + " ";
+		if (commas[0]==1)
+			comment += "cyfrę";
+		else if (commas[0]/10 != 1 && (commas[0]%10 == 2 || commas[0]%10 == 3 || commas[0]%10 == 4))
+			comment += "cyfry";
+		else
+			comment += "cyfr";
+        comment += " po przecinku, a " + numbers_orig[1].replace(".", ",") + " ma " + commas[1] + " ";
+		if (commas[1]==1)
+			comment += "cyfrę";
+		else if (commas[1]/10 != 1 && (commas[1]%10 == 2 || commas[1]%10 == 3 || commas[1]%10 == 4))
+			comment += "cyfry";
+		else
+			comment += "cyfr";
+        comment += " po przecinku, to wynik musi mieć " + c + " ";
+		if (c==1)
+			comment += "cyfrę";
+		else if (c/10 != 1 && (c%10 == 2 || c%10 == 3 || c%10 == 4))
+			comment += "cyfry";
+		else
+			comment += "cyfr";
+		comment+= " po przecinku.";
         w = w.substring(0, w.length - c) + "," + w.substring(w.length - c);
         comment += " Ostatecznie otrzymujemy " + w + ".";
     }

@@ -11,8 +11,8 @@ function Columnar_addition_step(table, comma, highlight_column, comment) {
 			var t = ":" + table[i][j];
 			if (j == highlight_column) t = "/h" + t;
 			tab[i].push(t[0] == ':' ? t.replace(/:/g,"") : t)
-			if (j == table[i].length - comma - 1){
-				if (i != 0) tab[i].push(",");
+			if (comma!=0 && j == table[i].length - comma - 1){
+				if (i==table.length - 1 || (i != 0 && table[i][j+1]!="")) tab[i].push(",");
 				else tab[i].push("");
 			}
 		}
@@ -94,9 +94,6 @@ Columnar_addition.prototype.generate_steps = function (numbers) {
 		throw "<b>ERROR</b><br>Ani Ty, ani ja nie potrzebujemy aż tylu liczb.";
 	}
 	for (var i = 0; i < numbers.length; i++) {
-		if (numbers[i].length > 39) {
-			throw "<b>ERROR</b><br>Wprowadzone liczby są zbyt długie.<br>Ich wyświetlenie przeczy design'owi strony.<br>Szanujmy się.";
-		}
 		if (!validate_float(numbers[i])) {
 			throw "Wpisz liczby do dodania <br>np. 1234+73";
 		}
@@ -114,6 +111,10 @@ Columnar_addition.prototype.generate_steps = function (numbers) {
 		if (j > longest_before_comma) longest_before_comma = j;
 		if (numbers[i].length - 1 - j > longest_after_comma) longest_after_comma = numbers[i].length - 1 - j;
 	}
+	if ((longest_after_comma != 0 && longest_before_comma + longest_after_comma > 38) || (longest_after_comma == 0 && longest_before_comma > 39)){
+            throw "<b>ERROR</b><br>Wprowadzone liczby są zbyt długie.<br>Ich wyświetlenie przeczy design'owi strony.<br>Szanujmy się.";
+    }
+	
 	longest_before_comma += 1;
 	var table = [];
 	for (var i = 0; i < numbers.length + 2; i++) {
