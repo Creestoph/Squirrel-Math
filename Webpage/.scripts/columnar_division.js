@@ -15,7 +15,7 @@ function Columnar_division_step(table, highlight_fields, comment) {
             if (i % 2 == 0) {
                 if (i == 0) {
                     if (table[i + 1][j] == ":") underline = false;
-                    if (table[i][j] != "" || underline) t = "/u" + t;
+                    if (table[i][j].toString() != "" || underline) t = "/u" + t;
                 }
                 else t = "/u" + t;
             }
@@ -174,7 +174,7 @@ Columnar_division.prototype.generate_steps = function (numbers) {
         table[0][i] = ",";
         while (occured.indexOf(n) == -1){
             occured.push(n);
-            if (i >= table[0].length) table = Columnar_division.add_empty_column(table);
+            if (i+1 >= table[0].length) table = Columnar_division.add_empty_column(table);
             table[table.length - 1][i] = "0";
             var x = "";
             for (var j = i; j >= 0 && table[table.length - 1][j] != ""; j--) x = table[table.length - 1][j] + x;
