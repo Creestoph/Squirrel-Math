@@ -8,7 +8,7 @@
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 	<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=MML_HTMLorMML"></script>
-    <script src="../.scripts/columnar_addition.js"></script>
+    <script src="../.scripts/columnar_division.js"></script>
 	<script src="../.scripts/scroll_hide.js"></script>
 	<script src="../.scripts/comment.js"></script>
     <script src="../.scripts/draggable.js"></script>
@@ -498,7 +498,7 @@
 		<input style="width: 800px" name="numberInput" type="text" id="columnar_addition_input" />
 	</p>
 	<script>
-        var columnar_addition = new Columnar_addition( "columnar_addition_table","columnar_addition_comment", "columnar_operation_button_right", "columnar_operation_button_left");
+        var columnar_addition = new Columnar_division( "columnar_addition_table","columnar_addition_comment", "columnar_operation_button_right", "columnar_operation_button_left");
         function ColumnarAdditionStartArgs() {
             var success = columnar_addition.generate_from_input("columnar_addition_input","columnar_addition_area");
             if (success)columnar_addition.print_step(0);
