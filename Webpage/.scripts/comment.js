@@ -31,8 +31,8 @@ function display(event)
     for (var i = 0; i < windows.length; i++)
         if (windows[i].id.indexOf(this.id) > -1)
         {
-            windows[i].style.top = (event.screenY - 120);
-            windows[i].style.left = event.screenX + 15;
+            windows[i].style.top = (event.pageY - 50);
+            windows[i].style.left = event.pageX + 15;
             windows[i].style.visibility = "visible";
         }
     
