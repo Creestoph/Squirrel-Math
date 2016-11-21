@@ -86,18 +86,20 @@ Columnar_addition.prototype.print_error = function (msg) {
 }
 
 Columnar_addition.prototype.generate_steps = function (numbers, is_float = true) {
+	var standard_err = "Wpisz liczby do dodania <br>np. 1234+73";
+	if (!is_float) standard_err = "Wpisz liczby naturalne do dodania <br>np. 1234+73";
 	var validate = validate_float;
 	if (!is_float) validate = validate_int;
 	this.steps = [];
 	if (numbers.length == 1) {
-		throw "Wpisz liczby do dodania <br>np. 1234+73";
+		throw standard_err;
 	}
 	if (numbers.length > 10) {
 		throw "<b>ERROR</b><br>Ani Ty, ani ja nie potrzebujemy aż tylu liczb.";
 	}
 	for (var i = 0; i < numbers.length; i++) {
 		if (!validate(numbers[i])) {
-			throw "Wpisz liczby do dodania <br>np. 1234+73";
+			throw standard_err;
 		}
 	}
 	for (var i = 0; i < numbers.length; i++) {

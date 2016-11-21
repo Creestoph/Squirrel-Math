@@ -90,15 +90,17 @@ Columnar_subtraction.prototype.print_error = function (msg) {
 }
 
 Columnar_subtraction.prototype.generate_steps = function (numbers, is_float = true) {
+    var standard_err = "Wpisz dwie liczby do odjęcia <br>np. 1234-73";
+    if (!is_float) standard_err = "Wpisz dwie naturalne liczby do odjęcia <br>np. 1234-73";
     var validate = validate_float;
     if (!is_float) validate = validate_int;
     this.steps = [];
     if (numbers.length != 2) {
-        throw "Wpisz dwie liczby do odjęcia <br>np. 1234-73";
+        throw standard_err;
     }
     for (var i = 0; i < numbers.length; i++) {
         if (!validate(numbers[i])) {
-            throw "Wpisz dwie liczby do odjęcia <br>np. 1234-73";
+            throw standard_err;
         }
     }
     if (parseFloat(numbers[0]) - parseFloat(numbers[1]) < 0) {

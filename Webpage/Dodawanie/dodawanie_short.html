@@ -12,6 +12,8 @@
 	<script src="../.scripts/draggable.js"></script>
     <script src="../.scripts/math.js"></script>
     <script src="../.scripts/tools.js"></script>
+    <script src="../.scripts/display_table.js"></script>
+    <script src="../.scripts/number_validation.js"></script>
 	<script src="addition_table_short.js"></script>
 </head>
 
@@ -151,10 +153,10 @@
         <input style="width: 800px" name="numberInput" type="text" id="columnar_addition_input" />
     </p>
     <script>
-        var columnar_addition = new Columnar_addition( "columnar_addition_table","columnar_addition_comment", "columnar_addition_button_right", "columnar_addition_button_left");
+        var columnar_addition = new Columnar_addition( "columnar_addition_table","columnar_addition_comment", "columnar_operation_button_right", "columnar_operation_button_left");
         function ColumnarAdditionStartArgs() {
-            columnar_addition.generate_from_input("columnar_addition_input","columnar_addition_area", false);
-            columnar_addition.print_step(0);
+            var success = columnar_addition.generate_from_input("columnar_addition_input","columnar_addition_area",false);
+            if (success)columnar_addition.print_step(0);
         }
 
     </script>
@@ -168,7 +170,7 @@
 
     <table align = "center" class="columnar_operation_script" id="columnar_addition_area" >
         <tr>
-            <td id="columnar_addition_button_left" onclick="columnar_addition.prev()">
+            <td id="columnar_operation_button_left" onclick="columnar_addition.prev()">
                 <svg height="0" width="30">
                     <defs>
                         <linearGradient id="gradient">
@@ -187,14 +189,15 @@
                 <div id="columnar_addition_table" class="no_selection"></div>
                 <p id="columnar_addition_comment" class="no_selection"></p>
             </td>
-            <td id = "columnar_addition_button_right" onclick="columnar_addition.next()">
+            <td id = "columnar_operation_button_right" onclick="columnar_addition.next()">
                 <svg height="0" width="30">
                     <polygon points="0,0 20,30 0,60"/>
                 </svg>
             </td>
         </tr>
     </table>
-    
+
+
     <p class = "type">
         Dowód
     </p>
