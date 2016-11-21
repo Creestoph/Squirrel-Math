@@ -25,7 +25,6 @@
 (2)	Dodaæ animacjê przesuwania podœwietlenia kolumny w dzia³aniach w s³upku
 (2)	Stworzyæ interaktywne (trójwymiarowe?) drzewo lekcji
 (2) 	Dodaæ wyszukiwarkê pojêæ
-(2)	Poprawiæ skrypt comment.js, ¿eby dzia³a³ dobrze na powiêkszonej/pomniejszonej stronie.
 (2)	Ulepszyæ wyœwietlanie skryptu number_to_str.js
 (1)	Pomyœleæ nad nowymi t³ami do lekcji
 (1)	Uogólniæ skrypty do tabliczek dzia³añ w lekcjach "Dodawanie", "Odejmowanie", "Mno¿enie", "Dzielenie"

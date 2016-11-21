@@ -78,7 +78,7 @@ div.proof
 
 div.comment_window
 {
-	position: fixed;
+	position: absolute;
     background: #FEFEFE;
     padding: 6px;
 	border-right: 1px solid black;
