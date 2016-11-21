@@ -44,7 +44,7 @@ function Columnar_multiplication(table_id, comment_id, button_right_id, button_l
     this.button_left_id = button_left_id;
 }
 
-Columnar_multiplication.prototype.generate_from_input = function (input_id, columnar_multiplication_area) {
+Columnar_multiplication.prototype.generate_from_input = function (input_id, columnar_multiplication_area, is_float = true) {
     document.getElementById(columnar_multiplication_area).style.visibility = "visible";
     document.getElementById(columnar_multiplication_area).style.marginBottom = "60px";
     document.getElementById(columnar_multiplication_area).style.height = "400px";
@@ -56,7 +56,7 @@ Columnar_multiplication.prototype.generate_from_input = function (input_id, colu
     input = input.replace(/ /g, "");
     input = input.replace(/,/g, ".");
     try {
-        this.generate_steps(input.split("*"));
+        this.generate_steps(input.split("*"), is_float);
         document.getElementById(this.comment_id).style.marginTop = "60px";
         return true;
     }
@@ -95,13 +95,15 @@ Columnar_multiplication.prototype.print_error = function (msg) {
     document.getElementById(this.table_id).innerHTML = "";
 }
 
-Columnar_multiplication.prototype.generate_steps = function (numbers) {
+Columnar_multiplication.prototype.generate_steps = function (numbers, is_float = true) {
+    var validate = validate_float;
+    if (!is_float) validate = validate_int;
     this.steps = [];
     if (numbers.length != 2) {
         throw "Wpisz dwie liczby do pomnożenia <br>np. 1234*73";
     }
     for (var i = 0; i < numbers.length; i++) {
-        if (!validate_float(numbers[i])) {
+        if (!validate(numbers[i])) {
             throw "Wpisz dwie liczby do pomnożenia <br>np. 1234*73";
         }
     }
@@ -226,7 +228,7 @@ Columnar_multiplication.prototype.generate_steps = function (numbers) {
     }
 	
 	var w = "";
-	var sum_uderline = -1;
+	var sum_underline;
 	if (numbers[1].length == 1)
 	{
 		w = table[table.length - 1].toString();

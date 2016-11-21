@@ -500,7 +500,7 @@
 	<script>
         var columnar_addition = new Columnar_addition( "columnar_addition_table","columnar_addition_comment", "columnar_operation_button_right", "columnar_operation_button_left");
         function ColumnarAdditionStartArgs() {
-            var success = columnar_addition.generate_from_input("columnar_addition_input","columnar_addition_area");
+            var success = columnar_addition.generate_from_input("columnar_addition_input","columnar_addition_area",false);
             if (success)columnar_addition.print_step(0);
         }
 

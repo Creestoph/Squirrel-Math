@@ -34,7 +34,7 @@ function Columnar_addition(table_id, comment_id, button_right_id, button_left_id
 	this.button_left_id = button_left_id;
 }
 
-Columnar_addition.prototype.generate_from_input = function (input_id, columnar_addition_area) {
+Columnar_addition.prototype.generate_from_input = function (input_id, columnar_addition_area, is_float = true) {
 	document.getElementById(columnar_addition_area).style.visibility = "visible";
 	document.getElementById(columnar_addition_area).style.marginBottom = "60px";
 	document.getElementById(columnar_addition_area).style.height = "400px";
@@ -46,7 +46,7 @@ Columnar_addition.prototype.generate_from_input = function (input_id, columnar_a
 	input = input.replace(/ /g,"");
 	input = input.replace(/,/g,".");
 	try{
-		this.generate_steps(input.split("+"));
+		this.generate_steps(input.split("+"), is_float);
 		document.getElementById(this.comment_id).style.marginTop = "60px";
 		return true;
 	}
@@ -85,7 +85,9 @@ Columnar_addition.prototype.print_error = function (msg) {
 	document.getElementById(this.table_id).innerHTML = "";
 }
 
-Columnar_addition.prototype.generate_steps = function (numbers) {
+Columnar_addition.prototype.generate_steps = function (numbers, is_float = true) {
+	var validate = validate_float;
+	if (!is_float) validate = validate_int;
 	this.steps = [];
 	if (numbers.length == 1) {
 		throw "Wpisz liczby do dodania <br>np. 1234+73";
@@ -94,7 +96,7 @@ Columnar_addition.prototype.generate_steps = function (numbers) {
 		throw "<b>ERROR</b><br>Ani Ty, ani ja nie potrzebujemy aż tylu liczb.";
 	}
 	for (var i = 0; i < numbers.length; i++) {
-		if (!validate_float(numbers[i])) {
+		if (!validate(numbers[i])) {
 			throw "Wpisz liczby do dodania <br>np. 1234+73";
 		}
 	}

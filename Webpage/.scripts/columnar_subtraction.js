@@ -38,7 +38,7 @@ function Columnar_subtraction(table_id, comment_id, button_right_id, button_left
     this.button_left_id = button_left_id;
 }
 
-Columnar_subtraction.prototype.generate_from_input = function (input_id, columnar_subtraction_area) {
+Columnar_subtraction.prototype.generate_from_input = function (input_id, columnar_subtraction_area, is_float = true) {
     document.getElementById(columnar_subtraction_area).style.visibility = "visible";
     document.getElementById(columnar_subtraction_area).style.marginBottom = "60px";
     document.getElementById(columnar_subtraction_area).style.height = "400px";
@@ -50,7 +50,7 @@ Columnar_subtraction.prototype.generate_from_input = function (input_id, columna
     input = input.replace(/ /g, "");
     input = input.replace(/,/g, ".");
     try {
-        this.generate_steps(input.split("-"));
+        this.generate_steps(input.split("-"), is_float);
 		document.getElementById(this.comment_id).style.marginTop = "60px";
         return true;
     }
@@ -89,13 +89,15 @@ Columnar_subtraction.prototype.print_error = function (msg) {
     document.getElementById(this.table_id).innerHTML = "";
 }
 
-Columnar_subtraction.prototype.generate_steps = function (numbers) {
+Columnar_subtraction.prototype.generate_steps = function (numbers, is_float = true) {
+    var validate = validate_float;
+    if (!is_float) validate = validate_int;
     this.steps = [];
     if (numbers.length != 2) {
         throw "Wpisz dwie liczby do odjęcia <br>np. 1234-73";
     }
     for (var i = 0; i < numbers.length; i++) {
-        if (!validate_float(numbers[i])) {
+        if (!validate(numbers[i])) {
             throw "Wpisz dwie liczby do odjęcia <br>np. 1234-73";
         }
     }

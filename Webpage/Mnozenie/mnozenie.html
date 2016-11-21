@@ -664,7 +664,7 @@
 	<script>
         var columnar_multiplication = new Columnar_multiplication( "columnar_multiplication_table","columnar_multiplication_comment", "columnar_operation_button_right", "columnar_operation_button_left");
         function ColumnarMultiplicationStartArgs() {
-            var success = columnar_multiplication.generate_from_input("columnar_multiplication_input","columnar_multiplication_area");
+            var success = columnar_multiplication.generate_from_input("columnar_multiplication_input","columnar_multiplication_area", false);
             if (success)columnar_multiplication.print_step(0);
         }
 

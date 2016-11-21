@@ -923,7 +923,7 @@
 		<script>
 			var columnar_division = new Columnar_division( "columnar_division_table","columnar_division_comment", "columnar_operation_button_right", "columnar_operation_button_left");
 			function ColumnarDivisionStartArgs() {
-				var success = columnar_division.generate_from_input("columnar_division_input","columnar_division_area");
+				var success = columnar_division.generate_from_input("columnar_division_input","columnar_division_area", false);
 				if (success)columnar_division.print_step(0);
 			}
 

@@ -40,7 +40,7 @@ function Columnar_division(table_id, comment_id, button_right_id, button_left_id
     this.button_left_id = button_left_id;
 }
 
-Columnar_division.prototype.generate_from_input = function (input_id, columnar_multiplication_area) {
+Columnar_division.prototype.generate_from_input = function (input_id, columnar_multiplication_area, is_float = true) {
     document.getElementById(columnar_multiplication_area).style.visibility = "visible";
     document.getElementById(columnar_multiplication_area).style.marginBottom = "60px";
     document.getElementById(columnar_multiplication_area).style.height = "400px";
@@ -52,7 +52,7 @@ Columnar_division.prototype.generate_from_input = function (input_id, columnar_m
     input = input.replace(/ /g, "");
     input = input.replace(/,/g, ".");
     try {
-        this.generate_steps(input.replace(/:/g, "/").split("/"));
+        this.generate_steps(input.replace(/:/g, "/").split("/"), is_float);
         document.getElementById(this.comment_id).style.marginTop = "60px";
         return true;
     }
@@ -91,13 +91,15 @@ Columnar_division.prototype.print_error = function (msg) {
     document.getElementById(this.table_id).innerHTML = "";
 }
 
-Columnar_division.prototype.generate_steps = function (numbers) {
+Columnar_division.prototype.generate_steps = function (numbers, is_float = true) {
+    var validate = validate_float;
+    if (!is_float) validate = validate_int;
     this.steps = [];
     if (numbers.length != 2) {
         throw "Wpisz dwie liczby do podzielenia <br>np. 1234/73 lub 1234:73";
     }
     for (var i = 0; i < numbers.length; i++) {
-        if (!validate_float(numbers[i])) {
+        if (!validate(numbers[i])) {
             throw "Wpisz dwie liczby do podzielenia <br>np. 1234/73 lub 1234:73";
         }
     }

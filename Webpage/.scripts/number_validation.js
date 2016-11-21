@@ -19,3 +19,10 @@ function validate_float(x) {
 	}
 	return ok;
 }
+function validate_int(x) {
+	var ok = true;
+	for (var i = 0; i < x.length; i++)
+		if (isNaN(parseInt(x[i])))
+			return false;
+	return true;
+}
