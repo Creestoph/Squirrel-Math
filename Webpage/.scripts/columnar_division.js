@@ -92,6 +92,10 @@ Columnar_division.prototype.print_error = function (msg) {
 }
 
 Columnar_division.prototype.generate_steps = function (numbers, is_float = true) {
+    if (parseInt(numbers[1]) == 0){
+        window.alert("NIE WOLNO DZIELIĆ PRZEZ 0!");
+        throw "NIE WOLNO";
+    }
     var standard_err = "Wpisz dwie liczby do podzielenia <br>np. 1234:73";
     if (!is_float) standard_err = "Wpisz dwie liczby naturalne do podzielenia <br>np. 1234:73";
     var validate = validate_float;
@@ -105,9 +109,9 @@ Columnar_division.prototype.generate_steps = function (numbers, is_float = true)
             throw standard_err;
         }
     }
-    // if (numbers[0].length + numbers[1].length > 39 || numbers[1].length > 10) {
-    //     throw "<b>ERROR</b><br>Wprowadzone liczby są zbyt długie.<br>Ich wyświetlenie przeczy design'owi strony.<br>Szanujmy się.";
-    // }
+    if (numbers[0].length + numbers[1].length > 37) {
+        throw "<b>ERROR</b><br>Wprowadzone liczby są zbyt długie.<br>Ich wyświetlenie przeczy design'owi strony.<br>Szanujmy się.";
+    }
     var commas = [];
     var numbers_orig = [];
     for (var i = 0; i < numbers.length; i++) {
@@ -322,11 +326,13 @@ Columnar_division.prototype.generate_steps = function (numbers, is_float = true)
             for (var j = x.length - 1; j >= 0; j--)highlight_fields[table.length - 3][i - (x.length - 1 - j)] = true;
             //for (var h = 0; h < numbers[1].length; h++) highlight_fields[1][numbers[0].length +1+h] = true;
             this.steps.push(new Columnar_division_step(table, highlight_fields, comment));
-
-            if (table[0].length > 30) {
+            var tl = table[0].length-1;
+            while (table[0][tl].toString() == "") tl--;
+            tl++;
+            if (tl > 30) {
                 too_long = true;
                 table = Columnar_division.add_empty_column(table);
-                table[0][table[0].length - 1] = "...";
+                table[0][tl] = "...";
                 comment = "Możemy kontynuować procedurę aż do napotkania okresu rozwinięcia dziesiętnego. Rachunki mogą trwać jeszcze bardzo długo, więc zadowalamy się przybliżonym wynikiem ";
                 var zeros = 1;
                 var result = "";
@@ -380,7 +386,7 @@ Columnar_division.prototype.generate_steps = function (numbers, is_float = true)
                 zeros = 0;
             }
         }
-        var from_end = occured.length - 1 - occured.indexOf(n);
+        var from_end = occured.length - occured.indexOf(n);
         if (from_end == 0) from_end = 1;
         result = result.slice(0, result.length - from_end) + '(' + result.slice(result.length - from_end) + ')';
         comment += (result[0] == ',' ? "0" : "") + result + ".";
