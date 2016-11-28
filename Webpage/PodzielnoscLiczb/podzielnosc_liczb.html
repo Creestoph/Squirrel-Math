@@ -13,6 +13,7 @@
 	<script src="../.scripts/draggable.js"></script>
 	<script src="../.scripts/math.js"></script>
 	<script src="../.scripts/comment.js"></script>
+	<script src="../.scripts/comment_visible.js"></script>
 	<script src="generate_balls.js"></script>
 </head>
 
@@ -685,23 +686,28 @@
 		</p>
 		
 		<p class="math">
-			m=Bracket(Newton(k,0)10^k Bracket(-p)^0+Newton(k,1)10^(k-1)Bracket(-p)^1+Newton(k,2)10^(k-2)Bracket(-p)^2+⋯+Newton(k,k)10^0Bracket(-p)^k)a_k+<br>
-				+Bracket(Newton((k-1),0)10^(k-1)Bracket(-p)^0+Newton((k-1),1)10^(k-2)Bracket(-p)^1+Newton((k-1),2)10^(k-2)Bracket(-p)^2+⋯+Newton((k-1),(k-1))10^0 Bracket(-p)^(k-1))a_(k-1)+<br>
+			m=Bracket(Newton(k,0)10^k Bracket(-p)^0+Newton(k,1)10^(k-1)Bracket(-p)^1+Newton(k,2)10^(k-2)Bracket(-p)^2+⋯+</br>
+				+Newton(k,k)10^0Bracket(-p)^k)a_k+Bracket(Newton((k-1),0)10^(k-1)Bracket(-p)^0+</br>
+				+Newton((k-1),1)10^(k-2)Bracket(-p)^1+Newton((k-1),2)10^(k-2)Bracket(-p)^2+⋯+</br>
+				+Newton((k-1),(k-1))10^0 Bracket(-p)^(k-1))a_(k-1)+<br>
 				+⋯+<br>
 				+Bracket(Newton((1),0) (10)^1 Bracket(-p)^0+Newton((1),1) (10)^0 Bracket(-p)^1 ) a_1+<br>
 				+a_0=<br>
 			=Bracket(10^k+Newton(k,1)10^(k-1)Bracket(-p)^1+Newton(k,2)10^(k-2)Bracket(-p)^2+⋯+Newton(k,k)10^0 Bracket(-p)^k)a_k+<br>
-				+Bracket(10^(k-1)+Newton((k-1),1)10^(k-2) Bracket(-p)^1+Newton((k-1),2)10^(k-2)Bracket(-p)^2+⋯+Newton((k-1),(k-1))10^0 Bracket(-p)^(k-1))a_(k-1)+<br>
+				+Bracket(10^(k-1)+Newton((k-1),1)10^(k-2) Bracket(-p)^1+Newton((k-1),2)10^(k-2)Bracket(-p)^2+⋯<br>+Newton((k-1),(k-1))10^0 Bracket(-p)^(k-1))a_(k-1)+<br>
 				+⋯+<br>
 				+Bracket((10)^1+Newton((1),1) (10)^0 Bracket(-p)^1 ) a_1+<br>
 				+a_0=<br>
 			=(10)^k a_k+ Bracket(-p)Bracket(Newton(k,1)10^(k-1)Bracket(-p)^0+Newton(k,2)10^(k-2)Bracket(-p)^1+⋯+Newton(k,k)10^0 Bracket(-p)^(k-1))a_k+<br>
-				+(10)^(k-1) a_(k-1)+Bracket(-p)Bracket(Newton((k-1),1)10^(k-2)Bracket(-p)^0+Newton((k-1),2)10^(k-2)Bracket(-p)^1+⋯+Newton((k-1),(k-1))10^0 Bracket(-p)^(k-2))a_(k-1)+
+				+(10)^(k-1) a_(k-1)+Bracket(-p)Bracket(Newton((k-1),1)10^(k-2)Bracket(-p)^0+Newton((k-1),2)10^(k-2)Bracket(-p)^1+⋯<br>+Newton((k-1),(k-1))10^0 Bracket(-p)^(k-2))a_(k-1)+<br>
 				+⋯+</br>
 				+(10)^1 a_1+Bracket(-p)Bracket((Newton((1),1) (10)^0 Bracket(-p)^0 ) a_1+</br>
 				+a_0=<br>
 			=(10)^k a_k+(10)^(k-1) a_(k-1)+⋯+(10)^1 a_1+a_0+<br>
-			Bracket(-p)Bracket(Bracket(Newton(k,1) (10)^(k-1) Bracket(-p)^0+Newton(k,2) (10)^(k-2) Bracket(-p)^1+⋯+Newton(k,k) (10)^0 Bracket(-p)^(k-1) )a_k+Bracket(Newton((k-1),1) (10)^(k-2) Bracket(-p)^0+Newton((k-1),2) (10)^(k-2) Bracket(-p)^1+⋯+Newton((k-1),(k-1)) (10)^0 Bracket(-p)^(k-2) ) a_(k-1)+⋯+Bracket(Newton((1),1) (10)^0 Bracket(-p)^0 ) a_1 )=<br>=a-pm'
+			Bracket(-p)Bracket(Bracket(Newton(k,1) (10)^(k-1) Bracket(-p)^0+Newton(k,2) (10)^(k-2) Bracket(-p)^1+⋯<br>
+			+Newton(k,k) (10)^0 Bracket(-p)^(k-1) )a_k+Bracket(Newton((k-1),1) (10)^(k-2) Bracket(-p)^0+Newton((k-1),2) (10)^(k-2) Bracket(-p)^1+⋯<br>
+			+Newton((k-1),(k-1)) (10)^0 Bracket(-p)^(k-2) ) a_(k-1)+⋯
+			<br>+Bracket(Newton((1),1) (10)^0 Bracket(-p)^0 ) a_1 )=<br>=a-pm'
 		</p>
 
 		<p>
@@ -709,7 +715,10 @@
 		</p>
 		
 		<p class="math">
-			Bracket(Newton(k,1) (10)^(k-1) Bracket(-p)^0+Newton(k,2) (10)^(k-2) Bracket(-p)^1+⋯+Newton(k,k) (10)^0 Bracket(-p)^(k-1) )a_k+Bracket(Newton((k-1),1) (10)^(k-2) Bracket(-p)^0+Newton((k-1),2) (10)^(k-2) Bracket(-p)^1+⋯+Newton((k-1),(k-1)) (10)^0 Bracket(-p)^(k-2) ) a_(k-1)+⋯+Bracket(Newton((1),1) (10)^0 Bracket(-p)^0 ) a_1 
+			Bracket(Newton(k,1) (10)^(k-1) Bracket(-p)^0+Newton(k,2) (10)^(k-2) Bracket(-p)^1+⋯<br>
+			+Newton(k,k) (10)^0 Bracket(-p)^(k-1) )a_k+Bracket(Newton((k-1),1) (10)^(k-2) Bracket(-p)^0+Newton((k-1),2) (10)^(k-2) Bracket(-p)^1+⋯<br>
+			+Newton((k-1),(k-1)) (10)^0 Bracket(-p)^(k-2) ) a_(k-1)+⋯
+			<br>+Bracket(Newton((1),1) (10)^0 Bracket(-p)^0 ) a_1
 		</p>
 		
 		<p>
@@ -804,9 +813,11 @@
 		</p>
 
 		<p>
-			gdzie <span class="math">a_0,a_1,…,a_k∈{0,1,2,3,4,5,6,7,8,9}</span> są cyframi tej liczby.[?] Jeśli <span class="math">k&#60;n</span>, to 
+			gdzie <span class="comment_visible" id="Przykładowo liczbę 158 możemy zapisać jako 10^2∙1+10^1∙5+10^0∙8.   k wynosi tu 2."><span class="math">a_0,a_1,…,a_k∈{0,1,2,3,4,5,6,7,8,9}</span>
+			są cyframi tej liczby.</span> <span class="comment_visible" id="Jeśli liczba ma n cyfr lub mniej,  to liczba utworzona przez n ostatnich cyfr to ta sama liczba. Wtedy twierdzenie jest mało pomocne.">
+			Jeśli <span class="math">k&#60;n</span>, to
 			liczba utworzona przez <span class="math">n</span> ostatnich 
-			cyfr tej liczby jest równa <span class="math">a</span> i twierdzenie jest prawdziwe.[?] Gdy <span class="math">k≥n</span>, 
+			cyfr tej liczby jest równa <span class="math">a</span> i twierdzenie jest prawdziwe.</span> Gdy <span class="math">k≥n</span>,
 			liczba utworzona przez 
 			<span class="math">n</span> ostatnich cyfr ma postać
 		</p>
