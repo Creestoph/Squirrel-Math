@@ -93,8 +93,8 @@ Columnar_division.prototype.print_error = function (msg) {
 
 Columnar_division.prototype.generate_steps = function (numbers, is_float = true) {
     if (parseInt(numbers[1]) == 0){
-        window.alert("NIE WOLNO DZIELIĆ PRZEZ 0!");
-        throw "NIE WOLNO";
+		document.getElementById("divide_by_0").style.display = "block";
+        throw "Po prostu nie wolno.";
     }
     var standard_err = "Wpisz dwie liczby do podzielenia <br>np. 1234:73";
     if (!is_float) standard_err = "Wpisz dwie liczby naturalne do podzielenia <br>np. 1234:73";

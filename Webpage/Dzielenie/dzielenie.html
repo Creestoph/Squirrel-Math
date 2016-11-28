@@ -918,6 +918,41 @@
 		Display_table.create_custom([["/u:", "/u:", "/u:", "/u:1", "/u:1", "/u:r.", "/u:3"], ["", "", "1", "0", "2", ":", "9"], ["/u:-", "/u:", "/u:", "/u:9", "/u:", "/u:", "/u:"], ["", "", "", "1", "2", "", ""], 
 		["/u:-", "/u:", "/u:", "/u:", "/u:9", "/u:", "/u:"], ["", "", "", "", "3", "", ""]]).print("columnar_division_21");
 	</script>
+	
+	<div class="modal" id="divide_by_0">
+		<div class = "modal_content">
+			<p align="center" id = "modal_text">Nie wolno dzielić przez 0!</p>
+			<center><button class="modal_close" id = "modal_button" style="float: center" onclick="CloseModal()">Rozumiem</button></center>
+		</div>
+	</div>
+	<script>
+		var modal_display_count = 0;
+		function CloseModal() {
+			document.getElementById("divide_by_0").style.display = "none"; 
+			modal_display_count++;
+			if (modal_display_count == 1)
+			{
+				document.getElementById("modal_text").innerHTML = "Nie próbuj dzielić przez zero!";
+				document.getElementById("modal_button").innerHTML = "Przepraszam";
+			}
+			if (modal_display_count == 2)
+			{
+				document.getElementById("modal_text").innerHTML = "Znowu dzielisz przez 0.";
+				document.getElementById("modal_button").innerHTML = "Już nie będę";
+			}
+			if (modal_display_count == 3)
+			{
+				document.getElementById("divide_by_0").style.backgroundColor = "#000000";
+				document.getElementById("modal_text").innerHTML = "#$#A%64g@##@!!!<br>%%@#%5HGF!<br>-_$@^&##$@%!!!!<br>*$(&#!!AK_==3??";
+				document.getElementById("modal_button").style.display = "none";
+				//window.open('','_self',''); 
+				//window.close();
+				//self.close();
+			}
+		};
+	</script>
+	
+	
 		<p align="center">
 			<input style="width: 800px" name="numberInput" type="text" id="columnar_division_input" />
 		</p>
