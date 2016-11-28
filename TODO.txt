@@ -1,35 +1,34 @@
-(7)	Stworzyæ skrypt do dzielenia w s³upku
-(6)	Ogarn¹æ wyœwietlanie "komentarzy obowi¹zkowych"
-(6)	Sformu³owaæ dowody dzia³añ w s³upku
-(6)	Ulepszyæ skrypt draggable.js aby przesuwa³ kulki po ca³ym ekranie (+ animacja wracania)
-(6)	Ulepszyæ skrypt math.js: mniejsze i wiêksze nawiasy, ogarnianie jednostek (m, kg, l), znaczników (<b>, <i>, <font>), automatyczne ³amanie linii
-(5)	Ramka "Dowód" wygl¹da s³abo (lepszy css i animacja scroll_hide)
-(5)	Udoskonaliæ formatowanie lekcji w Wordzie
-(5)	Dostosowaæ stronê do wersji mobilnej
-(5)	Udoskonaliæ wersje skrócone (wydzieliæ sekcje, wesprzeæ szybkoogarnialnoœæ)
-(5)	Stworzyæ edytor lekcji w HTML
-(5)	Znormalizowaæ wyœwietlanie przyk³adów jako "example"
-(4)	Stworzyæ skrypt do faktoryzacji
-(4)	Dodaæ rozdzia³ o lokatach i kredytach w temacie "Procenty"
-(3)	Dodaæ komentarze w dowodzie "Podzielnoœci liczb"
-(3)	Rozwin¹æ skrypt number_to_str.js na dowolnie du¿e liczby
-(3)	Ogarn¹æ t³umaczenie wymowy i zapisu kolejnych liczb w lekcji "Liczby"
-(3)	Dodaæ okienko podgl¹du definicji przy trudnych pojêciach (najechanie na s³owo np. "asymptota" powinno wyœwietlaæ odpowiedni fragment 
-	odpowiedniej lekcji z wyjaœnieniem)
-(3)	W temacie "Podzielnoœæ liczb" wyjaœniæ sposoby na wyznaczanie NWD i NWW
-(3)	W temacie "Podzielnoœæ liczb" ogarn¹æ jak to jest z podzielnoœci¹ zera przez zero
-(3)	Sprawdziæ czy operator ÷ nie ma jakichœ dzikich w³asnoœci
-(2)	Stworzyæ skrypt wykonuj¹cy dzia³ania do lekcji "Kolejnoœæ wykonywania dzia³añ" 
-(2)	Naprawiæ maskowanie czêœci rozdzia³u "Dodawanie w s³upku" po rozwiniêciu skryptu
-(2)	Dopisaæ brakuj¹ce dowody w "Podzielnoœci liczb"
-(2)	Dodaæ animacjê przesuwania podœwietlenia kolumny w dzia³aniach w s³upku
-(2)	Stworzyæ interaktywne (trójwymiarowe?) drzewo lekcji
-(2) 	Dodaæ wyszukiwarkê pojêæ
-(2)	Ulepszyæ wyœwietlanie skryptu number_to_str.js
-(1)	Pomyœleæ nad nowymi t³ami do lekcji
-(1)	Uogólniæ skrypty do tabliczek dzia³añ w lekcjach "Dodawanie", "Odejmowanie", "Mno¿enie", "Dzielenie"
-(1)	Zablokowaæ mo¿liwoœæ wpisywania przecinka w skrypcie dodawania w s³upku w lekcji "Dodawanie" (przecinek dostêpny tylko w lekcji 
-	"U³amki dziesiêtne")
-(1)	Dodaæ spowolnienie na koñcu animacji scroll_hide
-(1)	W lekcji "Liczby" owce mog³yby nachodziæ jedna na drug¹ (by³yby wiêksze)
-(0)	W tematach "Odejmowanie" oraz "Wprowadzenie" zamieniæ "Oblicze ca³ki" na ostateczn¹ nazwê projektu
+(6)	Ogarn? wy?ietlanie "komentarzy obowi?kowych"
+(6)	Sformu?wa?owody dzia???s?pku
+(6)	Ulepszy?krypt draggable.js aby przesuwa?kulki po ca?m ekranie (+ animacja wracania)
+(6)	Ulepszy?krypt math.js: mniejsze i wi?ze nawiasy, ogarnianie jednostek (m, kg, l), znacznik??<b>, <i>, <font>), automatyczne ?manie linii
+(5)	Ramka "Dow??wygl?a s?bo (lepszy css i animacja scroll_hide)
+(5)	Udoskonali?ormatowanie lekcji w Wordzie
+(5)	Dostosowa?tron?o wersji mobilnej
+(5)	Udoskonali?ersje skr??e (wydzieli?ekcje, wesprze?zybkoogarnialno?)
+(5)	Stworzy?dytor lekcji w HTML
+(5)	Znormalizowa?y?ietlanie przyk?d??ako "example"
+(4)	Stworzy?krypt do faktoryzacji
+(4)	Doda?ozdzia?o lokatach i kredytach w temacie "Procenty"
+(3)	Doda?omentarze w dowodzie "Podzielno?i liczb"
+(3)	Rozwin? skrypt number_to_str.js na dowolnie du? liczby
+(3)	Ogarn? t?maczenie wymowy i zapisu kolejnych liczb w lekcji "Liczby"
+(3)	Doda?kienko podgl?u definicji przy trudnych poj?ach (najechanie na s?wo np. "asymptota" powinno wy?ietla?dpowiedni fragment 
+	odpowiedniej lekcji z wyja?ieniem)
+(3)	W temacie "Podzielno? liczb" wyja?i?posoby na wyznaczanie NWD i NWW
+(3)	W temacie "Podzielno? liczb" ogarn? jak to jest z podzielno?i?zera przez zero
+(3)	Sprawdzi?zy operator ??e ma jakich?dzikich w?sno?i
+(2)	Stworzy?krypt wykonuj?y dzia?nia do lekcji "Kolejno? wykonywania dzia???
+(2)	Naprawi?askowanie cz?i rozdzia? "Dodawanie w s?pku" po rozwini?u skryptu
+(2)	Dopisa?rakuj?e dowody w "Podzielno?i liczb"
+(2)	Doda?nimacj?rzesuwania pod?ietlenia kolumny w dzia?niach w s?pku
+(2)	Stworzy?nteraktywne (tr??miarowe?) drzewo lekcji
+(2) 	Doda?yszukiwark?oj?
+(2)	Ulepszy?y?ietlanie skryptu number_to_str.js
+(1)	Pomy?e?ad nowymi t?mi do lekcji
+(1)	Uog???krypty do tabliczek dzia???lekcjach "Dodawanie", "Odejmowanie", "Mno?nie", "Dzielenie"
+(1)	Zablokowa?o?iwo? wpisywania przecinka w skrypcie dodawania w s?pku w lekcji "Dodawanie" (przecinek dost?y tylko w lekcji 
+	"U?mki dziesi?e")
+(1)	Doda?powolnienie na ko??animacji scroll_hide
+(1)	W lekcji "Liczby" owce mog?by nachodzi?edna na drug?(by?by wi?ze)
+(0)	W tematach "Odejmowanie" oraz "Wprowadzenie" zamieni?Oblicze ca?i" na ostateczn?nazw?rojektu
