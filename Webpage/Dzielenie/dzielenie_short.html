@@ -12,6 +12,10 @@
 	<script src="division_table_short.js"></script>
 	<script src="../.scripts/math.js"></script>
 	<script src="../.scripts/sm_library.js"></script>
+	<script src="../.scripts/display_table.js"></script>
+	<script src="../.scripts/columnar_division.js"></script>
+	<script src="../.scripts/number_validation.js"></script>
+	<script src="../.scripts/tools.js"></script>
 </head>
 
 <body class="lesson">
@@ -214,7 +218,57 @@
     <p align = "center" class="math">
         7 : 3 = 2 r. 1
     </p>
+	<script>
+		Display_table.create_custom([["/u:", "/u:", "/u:", "/u:1", "/u:1", "/u:r.", "/u:3"], ["", "", "1", "0", "2", ":", "9"], ["/u:-", "/u:", "/u:", "/u:9", "/u:", "/u:", "/u:"], ["", "", "", "1", "2", "", ""],
+			["/u:-", "/u:", "/u:", "/u:", "/u:9", "/u:", "/u:"], ["", "", "", "", "3", "", ""]]).print("columnar_division_21");
+	</script>
+	<p align="center">
+		<input style="width: 800px" name="numberInput" type="text" id="columnar_division_input" />
+	</p>
+	<script>
+		var columnar_division = new Columnar_division( "columnar_division_table","columnar_division_comment", "columnar_operation_button_right", "columnar_operation_button_left");
+		function ColumnarDivisionStartArgs() {
+			var success = columnar_division.generate_from_input("columnar_division_input","columnar_division_area", false);
+			if (success)columnar_division.print_step(0);
+		}
 
+	</script>
+	<p align="center">
+		<button id="columnar_division_start" style="float: center;" onclick="ColumnarDivisionStartArgs()">Start</button>
+	</p>
+	<script>
+		SetInputEnterEvent("columnar_division_input","columnar_division_start")
+	</script>
+
+
+	<table align = "center" class="columnar_operation_script" id="columnar_division_area" >
+		<tr>
+			<td id="columnar_operation_button_left" onclick="columnar_division.prev()">
+				<svg height="0" width="30">
+					<defs>
+						<linearGradient id="gradient">
+							<stop offset="20%" stop-color="#C33" />
+							<stop offset="90%" stop-color="#833" />
+						</linearGradient>
+						<linearGradient id="hover_gradient">
+							<stop offset="20%" stop-color="#A33" />
+							<stop offset="90%" stop-color="#433" />
+						</linearGradient>
+					</defs>
+					<polygon points="20,0 0,30 20,60"/>
+				</svg>
+			</td>
+			<td>
+				<div id="columnar_division_table" class="no_selection"></div>
+				<p id="columnar_division_comment" class="no_selection"></p>
+			</td>
+			<td id = "columnar_operation_button_right" onclick="columnar_division.next()">
+				<svg height="0" width="30">
+					<polygon points="0,0 20,30 0,60"/>
+				</svg>
+			</td>
+		</tr>
+	</table>
     <p class = "type">
         Rozszerzenie
     </p>

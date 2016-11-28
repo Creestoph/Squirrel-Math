@@ -279,16 +279,27 @@ Columnar_division.prototype.generate_steps = function (numbers, is_float = true)
                 zeros = 0;
             }
         }
-        comment += (result[0] == ',' ? "0" : "") + result + ".";
+        comment += (result[0] == ',' || result == "" ? "0" : "") + result;
         comment += " r. " + z + ".";
+        var j = 0;
+        while (table[0][j].toString() != "" && j < table[0].length)j++;
+        if (table[0][j].toString() == "") table[0][j] = "r.";
+        else {
+            table = Columnar_division.add_empty_column(table);
+            j = table[0].length-1;
+            table[0][j] = "r.";
+        }
+        if (j+1 > table[0].length -1){
+            table = Columnar_division.add_empty_column(table);
+        }
+        table[0][j+1] = z;
         highlight_fields = Columnar_division.empty_highlight(table);
         this.steps.push(new Columnar_division_step(table, highlight_fields, comment));
         return;
     }
     else if (is_float) {
         var occured = [];
-        occured.push(z.toString());
-        var n = "0";
+        var n = z.toString();
         if (fi == i) {
             fi++;
             table[0][fi] = ",";
