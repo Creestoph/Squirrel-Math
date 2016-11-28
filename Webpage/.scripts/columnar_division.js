@@ -238,7 +238,7 @@ Columnar_division.prototype.generate_steps = function (numbers, is_float = true)
         table = Columnar_division.add_empty_row(table);
         for (var j = z.length - 1; j >= 0; j--)table[table.length - 1][i - (z.length - 1 - j)] = z[j];
 
-        comment = "Mnożymy zapisane w wyniku " + table[0][fi] + " przez dzielnik i otrzymujemy " + parseInt(y) + ". Wykonujemy odejmowanie " + parseInt(x) + "&nbsp;-&nbsp;" + parseInt(y) + "&nbsp;=&nbsp;" + parseInt(z) + ", wynik zapisujemy poniżej.";
+        comment = "Mnożymy zapisane w wyniku " + table[0][fi] + " przez dzielnik i otrzymujemy " + parseInt(y) + ". Wykonujemy odejmowanie<br>" + parseInt(x) + "-" + parseInt(y) + "=" + parseInt(z) + ", wynik zapisujemy poniżej.";
         highlight_fields = Columnar_division.empty_highlight(table);
         for (var j = z.length - 1; j >= 0; j--)highlight_fields[table.length - 1][i - (z.length - 1 - j)] = true;
         for (var j = y.length - 1; j >= 0; j--)highlight_fields[table.length - 2][i - (y.length - 1 - j)] = true;
