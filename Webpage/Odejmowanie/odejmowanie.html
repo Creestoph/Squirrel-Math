@@ -11,7 +11,7 @@
 	<script src="../.scripts/columnar_subtraction.js"></script>
 	<script src="../.scripts/scroll_hide.js"></script>
 	<script src="../.scripts/comment.js"></script>
-	<script src="../.scripts/comment_visible"></script>
+	<script src="../.scripts/comment_visible.js"></script>
 	<script src="../.scripts/draggable.js"></script>
 	<script src="../.scripts/math.js"></script>
     <script src="../.scripts/display_table.js"></script>
@@ -622,15 +622,15 @@
       
     <p align = "center">
         <span class="math">2737 – 683 =</span><br>
-        <span class="math">= 2000 + 700 + 30 + 7 – (600 + 80 + 3) =</span>	Rozbijamy na cyfry<br>
+        <span class="comment_visible" id="Rozbijamy liczbę na cyfry"><span class="math">= 2000 + 700 + 30 + 7 – (600 + 80 + 3) =</span></span><br>
         <span class="math">= 2000 + 700 + 30 + 7 – 600 – 80 – 3 =</span><br>
-        <span class="math">  = 2000 + (700 – 600) + (30 – 80) + (7 – 3) =</span>	Porządkujemy cyfry<br>
-        <span class="math">  = 2000 + (700 – 600) + (30 – 80) + 4 =</span> 	Odejmujemy cyfry jedności<br>
-        <span class="math">   = 2000 + (600 + 100 – 600) + (30 – 80) + 4 =</span>	Zaciągamy pożyczkę<br>
+        <span class="comment_visible" id="Porządkujemy cyfry tysięcy, setek, dziesiątek i jedności"><span class="math">  = 2000 + (700 – 600) + (30 – 80) + (7 – 3) =</span></span><br>
+        <span class="comment_visible" id="Odejmujemy cyfry jedności"><span class="math">  = 2000 + (700 – 600) + (30 – 80) + 4 =</span></span><br>
+        <span class="comment_visible" id="Zaciągamy pożyczkę"><span class="math">   = 2000 + (600 + 100 – 600) + (30 – 80) + 4 =</span></span><br>
         <span class="math"> = 2000 + (600 – 600) + (100 + 30 – 80) + 4 =</span> <br>
         <span class="math"> = 2000 + (600 – 600) + (130 – 80) + 4 =</span><br>
-        <span class="math">  = 2000 + (600 – 600) + 50 + 4 =</span>	Odejmujemy cyfry dziesiątek<br>
-        <span class="math">  = 2000 + 0 + 50 + 4 =</span>	Odejmujemy cyfry setek<br>
+        <span class="comment_visible" id="Odejmujemy cyfry dziesiątek"><span class="math">  = 2000 + (600 – 600) + 50 + 4 =</span></span><br>
+        <span class="comment_visible" id="Odejmujemy cyfry setek"><span class="math">  = 2000 + 0 + 50 + 4 =</span></span><br>
         <span class="math">= 2054</span><br>
     </p>
   
@@ -642,7 +642,7 @@
         <span class="math">1000 – 679 =</span><br>
         <span class="comment_visible" id="Rozbijamy na cyfry"><span class="math">  = 1000 + 0 + 0 + 0 – (600 + 70 + 9) =</span></span><br>
         <span class="math">= 1000 + 0 + 0 + 0 – 600 – 70 – 9 =</span><br>
-        <span class="comment_visible" id="Porządkujemy cyfry"><span class="math">  = 1000 + (0 – 600) + (0 – 70) + (0 – 9) =</span></span><br>
+        <span class="comment_visible" id="Porządkujemy wszystkie cyfry"><span class="math">  = 1000 + (0 – 600) + (0 – 70) + (0 – 9) =</span></span><br>
         <span class="comment_visible" id="Zaciągamy „trzecią” pożyczkę"><span class="math">  = 0 + (1000 – 600) + (0 – 70) + (0 – 9) =</span></span><br>
         <span class="comment_visible" id="Zaciągamy „drugą” pożyczkę"><span class="math">  = 0 + (900 + 100 – 600) + (0 – 70) + (0 – 9) =</span></span><br>
         <span class="math">  = 0 + (900 – 600) + (100 – 70) + (0 – 9) =</span> 	<br>

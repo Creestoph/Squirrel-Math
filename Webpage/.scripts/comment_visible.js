@@ -15,12 +15,12 @@ $(document).ready(function(){
         question_marks[i].id =comments[i].id;
 
 
-        var top = 0;
-        var element = comments[i];
-        do {
-            top += element.offsetTop  || 0;
-            element = element.offsetParent;
-        } while(element.className == "chapter_body");
+        var top = comments[i].offsetTop;
+        var element = comments[i].offsetParent;
+        // do {
+        //     top += element.offsetTop  || 0;
+        //     element = element.offsetParent;
+        // } while(element.className == "chapter_body");
 
         question_marks[i].style.top =top-10;
         question_marks[i].style.visibility = "visible";
