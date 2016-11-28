@@ -14,6 +14,13 @@
 	<script src="../.scripts/comment.js"></script>
 	<script src="../.scripts/display_table.js"></script>
 	<script src="../.scripts/number_validation.js"></script>
+	<script src="../.scripts/columnar_multiplication.js"></script>
+	<script src="../.scripts/columnar_addition.js"></script>
+	<script src="../.scripts/columnar_division.js"></script>
+	<script src="../.scripts/columnar_subtraction.js"></script>
+	<script src="../.scripts/columnar_operation.js"></script>
+	<script src="../.scripts/tools.js"></script>
+	<script src="../.scripts/sm_library.js"></script>
 </head>
 
 <body class="lesson">
@@ -737,6 +744,57 @@
 	<p class="math" align="center">
 		1 : 7 = 0,Bracket(142857)
 	</p>
+		<p align="center">
+			<input style="width: 800px" name="numberInput" type="text" id="columnar_operation_input" />
+		</p>
+		<script>
+			var columnar_operation = new Columnar_operation( "columnar_operation_table","columnar_operation_comment", "columnar_operation_button_right", "columnar_operation_button_left");
+			var operation;
+			function ColumnarOperationStartArgs() {
+				operation = columnar_operation.get_operation("columnar_operation_input", "columnar_operation_area");
+				if (operation !== undefined) {
+					var success = operation.generate_from_input("columnar_operation_input", "columnar_operation_area", true);
+					if (success)operation.print_step(0);
+				}
+			}
+
+		</script>
+		<p align="center">
+			<button id="columnar_operation_start" style="float: center;" onclick="ColumnarOperationStartArgs()">Start</button>
+		</p>
+		<script>
+			SetInputEnterEvent("columnar_operation_input","columnar_operation_start")
+		</script>
+
+
+		<table align = "center" class="columnar_operation_script" id="columnar_operation_area" >
+			<tr>
+				<td id="columnar_operation_button_left" onclick="operation.prev()">
+					<svg height="0" width="30">
+						<defs>
+							<linearGradient id="gradient">
+								<stop offset="20%" stop-color="#C33" />
+								<stop offset="90%" stop-color="#833" />
+							</linearGradient>
+							<linearGradient id="hover_gradient">
+								<stop offset="20%" stop-color="#A33" />
+								<stop offset="90%" stop-color="#433" />
+							</linearGradient>
+						</defs>
+						<polygon points="20,0 0,30 20,60"/>
+					</svg>
+				</td>
+				<td>
+					<div id="columnar_operation_table" class="no_selection"></div>
+					<p id="columnar_operation_comment" class="no_selection"></p>
+				</td>
+				<td id = "columnar_operation_button_right" onclick="operation.next()">
+					<svg height="0" width="30">
+						<polygon points="0,0 20,30 0,60"/>
+					</svg>
+				</td>
+			</tr>
+		</table>
 
 	</div>
 	</div>
