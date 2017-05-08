@@ -1,0 +1,24 @@
+table.factorisation
+{
+	border-collapse: collapse;
+}
+
+table.factorisation td:nth-child(odd)
+{
+	border-right: 1px solid black;
+	height: 30px;
+	padding-right: 5px;
+	text-align: right;
+}
+
+table.factorisation td:nth-child(even)
+{
+	height: 30px;
+	padding-left: 5px;
+	text-align: left;
+}
+
+circle.empty
+{
+	fill: url(#gradient_2);
+}

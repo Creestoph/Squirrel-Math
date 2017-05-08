@@ -1,0 +1,1072 @@
+<!DOCTYPE HTML PUBLIC “-//W3C//DTD HTML 4.01 Transitional//EN”>
+<html lang="pl">
+
+<head>
+	<title>Dzielenie</title>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+	<link rel="stylesheet" href="../lesson_style.css">
+  
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+	<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=MML_HTMLorMML"></script>
+	<script src="../.scripts/scroll_hide.js"></script>
+	<script src="../.scripts/comment.js"></script>
+	<script src="../.scripts/draggable.js"></script>
+	<script src="../.scripts/math.js"></script>
+	<script src="../.scripts/display_table.js"></script>
+	<script src="../.scripts/columnar_division.js"></script>
+	<script src="../.scripts/number_validation.js"></script>
+	<script src="../.scripts/tools.js"></script>
+	<script src="../.scripts/sm_library.js"></script>
+	<script src="division_table.js"></script>
+</head>
+
+<body class="lesson">
+  
+<div class = "menu">
+	<a href="../index.html"><button class = "button_convey" style="position: absolute; left: 10px"><span>Strona główna</span></button></a>
+	<a href="../drzewo.html"><button class = "button_convey" style="position: absolute; left: 250px"><span>Drzewo</span></button></a>
+    <a href="dzielenie_short.html"><button class = "button_convey" style="position: relative; left: 80%"><span>Wersja skrócona</span></button></a>
+</div>
+  
+<div class="main">
+
+    <p class="lesson_title">
+		Dzielenie
+    </p>
+      
+    <p>
+        Idzie nam całkiem nieźle. Dzielenie jest ostatnim z czterech podstawowych działań matematyki. Brzmi dumnie. 
+        Matematyczna idea dzielenia nieco trąci socjalizmem, zakłada bowiem, że należy wszystkim dawać po równo.
+    </p>
+      
+	<div class="chapter">
+	<div class="chapter_name">
+        Ciocia i jej cukierki
+    </div>
+    <hr>
+      
+	<div class="chapter_mask">
+	<div class="chapter_body">
+    <p class = "type"> 
+        Intuicje
+    </p>
+      
+    <p>
+        Dana jest ciocia. Ciocia ma czterech siostrzeńców: Maciusia, Michasia, Krzysia i Onufrego oraz paczkę dwudziestu 
+        cukierków, które przytachała z wyjazdu do Zimbabwe. 
+    </p>
+      
+    <p align = "center">
+        <svg height="200" width="800">
+			<defs>
+				<linearGradient id="gradient">
+					<stop offset="20%" stop-color="#C33" />
+					<stop offset="90%" stop-color="#833" />
+				</linearGradient>
+			</defs>
+			<circle cx="120" cy="110" r="20" class = "draggable"></circle>
+			<circle cx="370" cy="80" r="20" class = "draggable"></circle>
+			<circle cx="510" cy="100" r="20" class = "draggable"></circle>
+			<circle cx="400" cy="40" r="20" class = "draggable"></circle>
+			<circle cx="280" cy="180" r="20" class = "draggable"></circle>
+			<circle cx="680" cy="120" r="20" class = "draggable"></circle>
+			<circle cx="630" cy="70" r="20" class = "draggable"></circle>
+			<circle cx="570" cy="20" r="20" class = "draggable"></circle>
+			<circle cx="320" cy="160" r="20" class = "draggable"></circle>
+			<circle cx="410" cy="130" r="20" class = "draggable"></circle>
+			<circle cx="580" cy="160" r="20" class = "draggable"></circle>
+			<circle cx="690" cy="70" r="20" class = "draggable"></circle>
+			<circle cx="120" cy="40" r="20" class = "draggable"></circle>
+			<circle cx="250" cy="60" r="20" class = "draggable"></circle>
+			<circle cx="310" cy="100" r="20" class = "draggable"></circle>
+			<circle cx="250" cy="140" r="20" class = "draggable"></circle>
+			<circle cx="510" cy="150" r="20" class = "draggable"></circle>
+			<circle cx="340" cy="30" r="20" class = "draggable"></circle>
+			<circle cx="710" cy="150" r="20" class = "draggable"></circle>
+			<circle cx="160" cy="120" r="20" class = "draggable"></circle>
+        </svg>
+    </p> 
+      
+    <p>
+        Po entuzjastycznym przywitaniu ciocia zaczyna częstować cukierkami: Maciuś dostał <span class="math">6</span> cukierków, Michaś dostał 
+        <span class="math">6</span> cukierków, Krzyś dostał <span class="math">6</span> cukierków, a Onufry dostał <span class="math">2</span> cukierki.
+    </p>
+      
+    <p align = "center">
+        <table>
+			<tr style="text-align: center"><td>Maciuś</td><td>Michaś</td><td>Krzyś</td><td>Onufry</td></tr>
+			<tr>
+				<td>
+					<svg height="180" width="150">
+						<circle cx="51" cy="30" r="20" class = "draggable"></circle>
+						<circle cx="109" cy="32" r="20" class = "draggable"></circle>
+						<circle cx="56" cy="94" r="20" class = "draggable"></circle>
+						<circle cx="107" cy="91" r="20" class = "draggable"></circle>
+						<circle cx="54" cy="147" r="20" class = "draggable"></circle>
+						<circle cx="108" cy="143" r="20" class = "draggable"></circle>
+					</svg>
+				</td>
+				<td>
+					<svg height="180" width="150">
+						<circle cx="53" cy="30" r="20" class = "draggable"></circle>
+						<circle cx="108" cy="32" r="20" class = "draggable"></circle>
+						<circle cx="51" cy="94" r="20" class = "draggable"></circle>
+						<circle cx="105" cy="91" r="20" class = "draggable"></circle>
+						<circle cx="53" cy="147" r="20" class = "draggable"></circle>
+						<circle cx="104" cy="143" r="20" class = "draggable"></circle>
+					</svg>
+				</td>
+				<td>
+					<svg height="180" width="150">
+						<circle cx="52" cy="30" r="20" class = "draggable"></circle>
+						<circle cx="104" cy="32" r="20" class = "draggable"></circle>
+						<circle cx="56" cy="94" r="20" class = "draggable"></circle>
+						<circle cx="103" cy="91" r="20" class = "draggable"></circle>
+						<circle cx="51" cy="147" r="20" class = "draggable"></circle>
+						<circle cx="104" cy="143" r="20" class = "draggable"></circle>
+					</svg>
+				</td>
+				<td>
+					<svg height="180" width="150">
+						<circle cx="51" cy="30" r="20" class = "draggable"></circle>
+						<circle cx="109" cy="32" r="20" class = "draggable"></circle>
+					</svg>
+				</td>
+			</tr>
+		</table>
+    </p>
+      
+    <p>
+        Pytanie brzmi: dlaczego Onufremu jest smutno? Pomijając fakt, że może martwić się swoim imieniem, ma prawo 
+        poczuć się ofiarą niesprawiedliwości ze strony cioci. Można było przecież rozdać cukierki inaczej – każdy mógł 
+        dostać <span class="math">5</span> cukierków.
+    </p>
+      
+    <p align = "center">
+        <table>
+			<tr style="text-align: center"><td>Maciuś</td><td>Michaś</td><td>Krzyś</td><td>Onufry</td></tr>
+			<tr>
+				<td>
+					<svg height="180" width="150">
+						<circle cx="51" cy="30" r="20" class = "draggable"></circle>
+						<circle cx="109" cy="32" r="20" class = "draggable"></circle>
+						<circle cx="56" cy="94" r="20" class = "draggable"></circle>
+						<circle cx="107" cy="91" r="20" class = "draggable"></circle>
+						<circle cx="76" cy="147" r="20" class = "draggable"></circle>
+					</svg>
+				</td>
+				<td>
+					<svg height="180" width="150">
+						<circle cx="51" cy="31" r="20" class = "draggable"></circle>
+						<circle cx="109" cy="33" r="20" class = "draggable"></circle>
+						<circle cx="56" cy="92" r="20" class = "draggable"></circle>
+						<circle cx="107" cy="93" r="20" class = "draggable"></circle>
+						<circle cx="76" cy="144" r="20" class = "draggable"></circle>
+					</svg>
+				</td>
+				<td>
+					<svg height="180" width="150">
+						<circle cx="51" cy="33" r="20" class = "draggable"></circle>
+						<circle cx="109" cy="31" r="20" class = "draggable"></circle>
+						<circle cx="56" cy="95" r="20" class = "draggable"></circle>
+						<circle cx="107" cy="93" r="20" class = "draggable"></circle>
+						<circle cx="76" cy="143" r="20" class = "draggable"></circle>
+					</svg>
+				</td>
+				<td>
+					<svg height="180" width="150">
+						<circle cx="51" cy="30" r="20" class = "draggable"></circle>
+						<circle cx="109" cy="31" r="20" class = "draggable"></circle>
+						<circle cx="56" cy="92" r="20" class = "draggable"></circle>
+						<circle cx="107" cy="93" r="20" class = "draggable"></circle>
+						<circle cx="76" cy="141" r="20" class = "draggable"></circle>
+					</svg>
+				</td>
+			</tr>
+        </table>
+    </p>
+      
+    <p>
+        I wszyscy byliby szczęśliwi. Niestety, Onufry ma w życiu ciężko.
+    </p>
+      
+    <p>
+        Rozdawanie cukierków tak, by każdy dostał tyle samo, oddaje istotę dzielenia. Podzielenie <span class="math">20</span> cukierków na <span class="math">4</span> równe 
+        grupy daje <span class="math">5</span> cukierków na każdą grupę. Matematyk ujmie to tak:
+    </p>
+      
+    <p align = "center" class="math">
+        20 : 4 = 5
+    </p>
+      
+    <p>
+        Symbol : czytamy jako „podzielić na”, ewentualnie „dzielone przez”. Oznacza on, że jedną liczbę chcemy rozłożyć na 
+        kilka mniejszych liczb; po jego lewej stronie występuje liczba, którą chcemy rozdzielić, a po prawej stronie jest 
+        informacja, na ile liczb będziemy rozkładać. Jeżeli ktoś ma przeciwwskazania wobec używania dwukropka, może też 
+        stosować zapis
+    </p>
+      
+    <p align = "center">
+        <span class="math">20 Text(&nbsp;/&nbsp;) 4 = 5</span><br>
+        lub<br>
+        <span class="math">20 ÷ 4 = 5</span><br>
+    </p>
+      
+    <p>
+        <span class="comment" id="Jeśli nie pałasz sympatią do kamieni, weź stertę cukierków, kulek, owiec albo apostołów.">Weźmy stertę <span class="math">12</span> kamieni.</span> 
+		Wychodzimy z szalonym pomysłem, by dzielić tę stertę na mniejsze grupki.
+    </p>
+      
+	<div class="example">
+		Dzieląc <span class="math">12</span> kamieni na <span class="math">2</span> równe grupy, dostajemy <span class="math">6</span> kamieni w grupie.
+		<p align = "center"><span class="math">12 : 2 = 6</span><br>
+			<table>
+				<tr>
+					<td>
+						<svg height="150" width="200">
+							<circle cx="51" cy="50" r="20" class = "draggable"></circle>
+							<circle cx="53" cy="102" r="20" class = "draggable"></circle>
+							<circle cx="106" cy="52" r="20" class = "draggable"></circle>
+							<circle cx="107" cy="101" r="20" class = "draggable"></circle>
+							<circle cx="166" cy="53" r="20" class = "draggable"></circle>
+							<circle cx="165" cy="104" r="20" class = "draggable"></circle>
+						</svg>
+					</td>
+					<td>
+						<svg height="150" width="200">
+							<circle cx="51" cy="50" r="20" class = "draggable"></circle>
+							<circle cx="53" cy="102" r="20" class = "draggable"></circle>
+							<circle cx="106" cy="52" r="20" class = "draggable"></circle>
+							<circle cx="107" cy="101" r="20" class = "draggable"></circle>
+							<circle cx="166" cy="53" r="20" class = "draggable"></circle>
+							<circle cx="165" cy="104" r="20" class = "draggable"></circle>
+						</svg>
+					</td>
+				</tr>
+			</table>
+		</p>
+	</div>
+
+	<div class="example">
+		Dzieląc <span class="math">12</span> kamieni na <span class="math">3</span> równe grupy, dostajemy <span class="math">4</span> kamienie w grupie.
+		<p align = "center"><span class="math">12 : 3 = 4</span><br>
+			<table>
+				<tr>
+					<td>
+						<svg height="150" width="150">
+							<circle cx="51" cy="50" r="20" class = "draggable"></circle>
+							<circle cx="53" cy="102" r="20" class = "draggable"></circle>
+							<circle cx="106" cy="52" r="20" class = "draggable"></circle>
+							<circle cx="107" cy="101" r="20" class = "draggable"></circle>
+						</svg>
+					</td>
+					<td>
+						<svg height="150" width="150">
+							<circle cx="51" cy="50" r="20" class = "draggable"></circle>
+							<circle cx="53" cy="102" r="20" class = "draggable"></circle>
+							<circle cx="106" cy="52" r="20" class = "draggable"></circle>
+							<circle cx="107" cy="101" r="20" class = "draggable"></circle>
+						</svg>
+					</td>
+					<td>
+						<svg height="150" width="150">
+							<circle cx="51" cy="50" r="20" class = "draggable"></circle>
+							<circle cx="53" cy="102" r="20" class = "draggable"></circle>
+							<circle cx="106" cy="52" r="20" class = "draggable"></circle>
+							<circle cx="107" cy="101" r="20" class = "draggable"></circle>
+						</svg>
+					</td>
+				</tr>
+			</table>
+		</p>
+	</div>
+
+	<div class="example">
+		Dzieląc <span class="math">12</span> kamieni na <span class="math">4</span> równe grupy, dostajemy <span class="math">3</span> kamienie w grupie.
+		<p align = "center"><span class="math">12 : 4 = 3</span><br>
+			<table>
+				<tr>
+					<td>
+						<svg height="150" width="150">
+							<circle cx="51" cy="50" r="20" class = "draggable"></circle>
+							<circle cx="103" cy="52" r="20" class = "draggable"></circle>
+							<circle cx="77" cy="102" r="20" class = "draggable"></circle>
+						</svg>
+					</td>
+					<td>
+						<svg height="150" width="150">
+							<circle cx="51" cy="50" r="20" class = "draggable"></circle>
+							<circle cx="103" cy="52" r="20" class = "draggable"></circle>
+							<circle cx="77" cy="102" r="20" class = "draggable"></circle>
+						</svg>
+					</td>
+					<td>
+						<svg height="150" width="150">
+							<circle cx="51" cy="50" r="20" class = "draggable"></circle>
+							<circle cx="103" cy="52" r="20" class = "draggable"></circle>
+							<circle cx="77" cy="102" r="20" class = "draggable"></circle>
+						</svg>
+					</td>
+					<td>
+						<svg height="150" width="150">
+							<circle cx="51" cy="50" r="20" class = "draggable"></circle>
+							<circle cx="103" cy="52" r="20" class = "draggable"></circle>
+							<circle cx="77" cy="102" r="20" class = "draggable"></circle>
+						</svg>
+					</td>
+				</tr>
+			</table>
+		</p>
+	</div>
+      
+    <p>
+        Umiejętność dzielenia bywa bardzo przydatna:
+    </p>
+      
+	<div class="example">
+		<span class="comment" id="Jak Pan Bóg przykazał.">Pan Janusz ma <span class="math">2</span> jajka</span> i chce z nich przyrządzić <span class="math">2</span> omlety. 
+		W takim razie musi zużyć jedno jajko na jeden omlet.
+		<p align = "center" class="math">2 : 2 = 1</p>
+	</div>
+
+	<div class="example">
+		Stefan przygotował <span class="math">30 zł</span> na wydatki w <span class="comment" id="czekolady">pijalni</span>. Pojedyncza degustacja 
+		kosztuje <span class="math">6 zł</span>. W takim razie Stefan może 
+		cieszyć się degustacją <span class="math">5</span> razy.
+		<p align = "center" class="math">30 : 6 = 5</p>
+	</div>
+
+	<div class="example">
+		Żona pana Janusza ugotowała dla gości <span class="math">15</span> ziemniaków i <span class="math">6</span> golonek. Na obiad przyszły <span class="math">3</span> osoby. Każda dostała <span class="math">5</span> 
+		ziemniaków i <span class="math">2</span> golonki.
+		<p align = "center" class="math">15 : 3 = 5<br>
+		6 : 3 = 2</p>
+	</div>
+
+	<div class="example">
+		Biegacz przebył <span class="math">5</span> okrążeń boiska w ciągu godziny. Jeśli biegł w równym tempie, przebiegał jedno okrążenie w 
+		ciągu <span class="math">12</span> minut
+		<p align = "center" class="math">60 : 5 = 12</p>
+	</div>
+	  
+	</div>
+	</div>
+	</div>
+      
+	<div class="chapter">
+	<div class="chapter_name">
+        Nazewnictwo
+    </div>
+    <hr>
+
+	<div class="chapter_mask">
+	<div class="chapter_body">
+    <p class = "type">
+        Intuicje
+    </p>
+      
+    <p>
+        Liczbę, którą dzielimy (po lewej znaku <span class="math">:</span> ), nazywamy <i>dzielną</i>. Liczbę, przez którą dzielimy (po prawej znaku <span class="math">:</span> ), 
+        nazywamy <i>dzielnikiem</i>. Wynik dzielenia to <i>iloraz</i>.
+    </p>
+        
+    <p align = "center" class="math">
+        dzielna : dzielnik = iloraz
+    </p>
+      
+    <p>
+        Widzimy tu pewne podobieństwo do formułki odejmowania, w której najpierw występowała odjemna, a potem odjemnik. 
+        Jak widać, nawet w matematyce kobiety mają pierwszeństwo.
+    </p>
+      
+    <ul>
+        <li>W działaniu <span class="math">16 : 2 = 8</span> dzielną jest <span class="math">16</span>, dzielnikiem <span class="math">2</span>, a wynikiem (ilorazem) <span class="math">8</span>.</li>
+        <li>W działaniu <span class="math">9 : 3 = 3</span> dzielną jest <span class="math">9</span>, dzielnikiem <span class="math">3</span>, a wynikiem (ilorazem) <span class="math">3</span>.</li>
+        <li>W działaniu <span class="math">7 = 14 : 2</span> dzielną jest <span class="math">14</span>, dzielnikiem <span class="math">2</span>, a wynikiem (ilorazem) <span class="math">7</span>.</li>
+    </ul>
+      
+	</div>
+	</div>
+	</div>
+	  
+	<div class="chapter">
+	<div class="chapter_name">
+        Dzielenie jako odwrotność mnożenia
+    </div>
+    <hr>
+      
+	<div class="chapter_mask">
+	<div class="chapter_body">
+    <p class = "type">
+        Intuicje
+    </p>
+      
+    <p>
+        Wróćmy do rozkładania <span class="math">12</span> kamieni na grupy. Za każdym razem po pogrupowaniu kamieni możemy stwierdzić, że 
+        wszystkie razem dają wyjściowe <span class="math">12</span> kamieni.
+    </p>
+      
+	<div class="example">
+		<span class="math">12 : 2 = 6</span><br>
+		Z drugiej strony <span class="math">6 + 6 = 12</span> lub inaczej <span class="math">2 &middot; 6 = 12</span>
+	</div>
+
+	<div class="example">
+		<span class="math">12 : 3 = 4</span><br>
+		Jednocześnie <span class="math">4 + 4 + 4 = 12</span>, czyli <span class="math">3 &middot; 4 = 12</span>
+	</div>
+
+	<div class="example">
+		<span class="math">12 : 4 = 3</span><br>
+		Przy okazji <span class="math">3 + 3 + 3 + 3 = 12</span>, więc <span class="math">4 &middot; 3 = 12</span>
+	</div>
+      
+    <p> 
+        Dzielenie jest odwrotne do mnożenia. Gdy chcemy poznać wynik dzielenia, np. <span class="math">28 : 7</span>, możemy zadać sobie pytanie: 
+        przez co należy pomnożyć <span class="math">7</span>, aby otrzymać <span class="math">28</span>? Stwierdzimy, że odpowiedzią jest <span class="math">4</span>. 
+        <!--Mam dylemat: przemienność oznaczyłem jako temat rozszerzony, a tu pojawia się normalnie-->
+        Z przemienności mnożenia wynika ponadto ciekawa zależność. Skoro 
+    </p>
+      
+    <p align = "center">
+        <span class="math">7 &middot; 8 = 56</span>   oraz   <span class="math">8 &middot; 7 = 56</span>, <br>
+        to<br>
+        <span class="math">56 : 7 = 8</span>    oraz   <span class="math">56 : 8 = 7</span><br>
+    </p>
+      
+    <p>
+        Tak samo będzie dla dowolnych dwóch liczb.
+    </p>
+      
+	</div>
+	</div>
+	</div>
+	  
+	<div class="chapter">
+	<div class="chapter_name">
+        Dzielenie przez zero
+    </div>
+    <hr>
+      
+	<div class="chapter_mask">
+	<div class="chapter_body">
+    <p class = "type">
+        Intuicje
+    </p>
+      
+    <p>
+        Po powrocie z Seulu ciocia przywiozła tyle cukierków, że Maciuś, Michaś, Krzyś i Onufry nie byli w stanie ich zjeść. 
+        Każdy z nich postanowił rozdać <span class="math">18</span> cukierków pomiędzy swoich przyjaciół.
+    </p>
+      
+    <ul>
+        <li>Maciuś ma trzech przyjaciół, więc każdy z nich dostał <span class="math">6</span> cukierków.</li>
+        <li>Michaś ma dwóch przyjaciół, więc każdy z nich dostał <span class="math">9</span> cukierków.</li>
+        <li>Krzyś ma jednego przyjaciela, więc oddał mu wszystkie <span class="math">18</span> cukierków.</li>
+        <li>Onufry nie ma przyjaciół. W takim razie…</li>
+    </ul>
+      
+    <p>
+        <span class="comment" id="Nie martw się. Onufry ma więcej problemów.">mamy problem…</span> Ile cukierków powinien dostać każdy z jego przyjaciół, jeśli nie ma przyjaciół? Nie ma osoby, 
+        której można by te cukierki podarować. W takim razie nie ma nawet mowy o dzieleniu. Gdybyśmy napisali 
+    </p>
+      
+    <p align = "center" class="math">
+        18 : 0
+    </p>
+      
+    <p>
+        to popełnilibyśmy <span class="comment" id="Naprawdę śmiertelny. Nawet nie próbuj.">śmiertelny grzech matematyczny</span>. 
+		  Wreszcie przyłapaliśmy matematykę na czymś, czego nie 
+        potrafi – matematyka nie daje sposobu, żeby podzielić przez <span class="math">0</span>. Jest to dosłownie niemożliwe.
+    </p>
+      
+    <p>
+        Ma to nawet sens uwzględniając, że dzielenie jest odwrotne do mnożenia:
+    </p>
+      
+    <ul>
+        <li><span class="math">18 : 3 = 6</span>, ponieważ <span class="math">3 &middot; 6 = 18</span>.</li>
+        <li><span class="math">18 : 2 = 9</span>, ponieważ <span class="math">2 &middot; 9 = 18</span>.</li>
+        <li><span class="math">18 : 1 = 18</span>, ponieważ <span class="math">1 &middot; 18 = 18</span>.</li>
+        <li><span class="math">18 : 0</span> nie ma wartości, ponieważ <span class="math">0 &middot; Text(cokolwiek) = 0</span>.</li>
+    </ul>
+      
+    <p>
+        Nie możemy znaleźć liczby, która pomnożona przez <span class="math">0</span> daje <span class="math">18</span>. Iloczyn zera i dowolnej liczby zawsze wynosi <span class="math">0</span>.
+    </p>
+      
+    <p>
+        Dzielenia przez <span class="math">0</span> należy unikać jak ognia. Prawdopodobnie jeszcze nie raz się sparzysz.
+    </p>
+      
+	</div>
+	</div>
+	</div>
+	  
+	<div class="chapter">
+	<div class="chapter_name">
+        Dzielenie z resztą
+    </div>
+    <hr>
+      
+	<div class="chapter_mask">
+	<div class="chapter_body">
+    <p class = "type">
+        Intuicje
+    </p>
+      
+    <p>
+        Pora na małe wyjaśnienie. We wszystkich przykładach do tej pory specjalnie dobraliśmy takie liczby, żeby „udało” 
+        nam się wykonać dzielenie. A teraz niespodzianka – spróbujmy wykonać dzielenie <span class="math">7 : 3</span>. Chcielibyśmy rozłożyć <span class="math">7</span> 
+        kamieni na <span class="math">3</span> równe sterty… i coś nam nie wychodzi. Rozłożymy po dwa kamienie na jedną stertę i zostaje nam jeden 
+        złośliwy kamień, z którym nie mamy co zrobić.
+    </p>
+      
+    <p align = "center">
+        <table>
+			<tr>
+				<td>
+					<svg height="150" width="100">
+						<circle cx="50" cy="50" r="20" class = "draggable"></circle>
+						<circle cx="50" cy="100" r="20" class = "draggable"></circle>
+					</svg>
+				</td>
+				<td>
+					<svg height="150" width="100">
+						<circle cx="50" cy="50" r="20" class = "draggable"></circle>
+						<circle cx="50" cy="100" r="20" class = "draggable"></circle>
+					</svg>
+				</td>
+				<td>
+					<svg height="150" width="100">
+						<circle cx="50" cy="50" r="20" class = "draggable"></circle>
+						<circle cx="50" cy="100" r="20" class = "draggable"></circle>
+					</svg>
+				</td>
+			</tr>
+			<tr>
+				<td colspan ="3">
+					<svg height="50" width="300">
+						<circle cx="150" cy="25" r="20" class = "draggable"></circle>
+					</svg>
+				</td>
+			</tr>
+        </table>
+    </p>
+
+    <p>
+        Moglibyśmy rozłupać go na trzy mniejsze kamienie równej wielkości, ale przecież nie jesteśmy barbarzyńcami. 
+        W takiej sytuacji mówimy, że została nam reszta. Zapiszemy to w taki sposób: 
+    </p>
+      
+    <p align = "center" class="math">
+        7 : 3 = 2 r. 1
+    </p>
+      
+    <p>
+        Czyli „<span class="math">7</span> podzielić na <span class="math">3</span> to <span class="math">2</span>, reszta <span class="math">1</span>”.
+    </p>
+      
+	<div class="example">
+		Pan Janusz ma <span class="math">4</span> jajka, a na jajecznicę potrzebuje <span class="math">3</span> jajek. Zostanie mu jedno.
+		<p align = "center" class="math">4 : 3 = 1 r. 1</p>
+	</div>
+
+	<div class="example">
+		Stefan zabrał <span class="math">27 zł</span> do pijalni. Jeden <span class="comment" id="czekolady">kufel</span> kosztuje <span class="math">6 zł</span>, więc po czterokrotnej degustacji 
+		zostało mu <span class="math">3 zł</span> na napiwek.
+		<p align = "center" class="math">27 : 6 = 4 r. 3</p>
+	</div>
+
+	<div class="example">
+		Żona pana Janusza przygotowała <span class="math">8</span> golonek dla <span class="math">4</span> gości. Po ostatnim obiedzie jeden z nich się pochorował, więc tym 
+		razem przyszło tylko <span class="math">3</span> gości. Każdy dostał po dwie. Zostały dwie golonki, którymi zajął się pan Janusz.
+		<p align = "center" class="math">8 : 3 = 2 r. 2</p>
+	</div>
+      
+	</div>
+	</div>
+	</div>
+	  
+	<div class="chapter">
+	<div class="chapter_name">
+        Własności dzielenia
+    </div>
+    <hr>
+
+	<div class="chapter_mask">
+	<div class="chapter_body">
+    <p class = "type">
+        Rozszerzenie
+    </p>
+      
+    <p>
+        Co do tego, że dzielenie nie jest przemienne, raczej nie ma zastrzeżeń. Dać <span class="math">14</span> dzieciom <span class="math">2</span> cukierki do zjedzenia, 
+        <span class="comment" id="Co dać 14 cukierkom 2 dzieci do zjedzenia">to nie to samo</span>, co dać <span class="math">2</span> dzieciom <span class="math">14</span> cukierków. 
+    </p>
+      
+    <p>
+        Jeśli chodzi o łączność dzielenia, rozważmy przykład <span class="math">60 : 6 : 2</span>. Licząc na dwa sposoby:
+    </p>
+      
+    <p align = "center">
+        <span class="math">60 : 6 = 10</span><br>
+        <span class="math">10 : 2 = 5</span>
+    </p>
+      
+    <p align = "center">
+        <span class="math">6 : 2 = 3</span><br>
+        <span class="math">60 : 3 = 20</span>
+    </p>
+      
+    <p>
+        Wyniki są dość różne, więc dzielenie nie jest łączne.
+    </p>
+      
+	</div>
+	</div>
+	</div>
+	  
+	<div class="chapter">
+	<div class="chapter_name">
+        Dzielenie w słupku
+    </div>
+    <hr>
+      
+	<div class="chapter_mask">
+	<div class="chapter_body">
+    <p class = "type">
+        Warsztat
+    </p>
+      
+    <p>
+        W przypadku małych liczb warto mieć na uwadze, że dzielenie jest odwrotnością mnożenia. 
+        Zawsze w razie problemów warto zastąpić sobie dzielenie odpowiednim mnożeniem, można nawet wspomóc się 
+        tabliczką mnożenia. Jeśli chcemy znaleźć wynik <span class="math">72 : 8</span>, szukamy kolumny zatytułowanej „<span class="math">8</span>” i szukamy w niej wyniku <span class="math">72</span>. 
+        Wynik występuje w wierszu „<span class="math">9</span>”, w takim razie <span class="math">8 &middot; 9 = 72</span>, więc <span class="math">72 : 8 = 9</span>.
+    </p>
+
+    <br>
+    <p align = "center">
+        <table class="operation_table" id="dividing_table">
+			<tr><th> </th><th>0</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th style="background: #F0E0E0">8</th><th>9</th></tr>
+			<tr><th>0</th><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td style="background: #F0E0E0">0</td><td>0</td></tr>
+			<tr><th>1</th><td>0</td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td style="background: #F0E0E0">8</td><td>9</td></tr>
+			<tr><th>2</th><td>0</td><td>2</td><td>4</td><td>6</td><td>8</td><td>10</td><td>12</td><td>14</td><td style="background: #F0E0E0">16</td><td>18</td></tr>
+			<tr><th>3</th><td>0</td><td>3</td><td>6</td><td>9</td><td>12</td><td>15</td><td>18</td><td>21</td><td style="background: #F0E0E0">24</td><td>27</td></tr>
+			<tr><th>4</th><td>0</td><td>4</td><td>8</td><td>12</td><td>16</td><td>20</td><td>24</td><td>28</td><td style="background: #F0E0E0">32</td><td>36</td></tr>
+			<tr><th>5</th><td>0</td><td>5</td><td>10</td><td>15</td><td>20</td><td>25</td><td>30</td><td>35</td><td style="background: #F0E0E0">40</td><td>45</td></tr>
+			<tr><th>6</th><td>0</td><td>6</td><td>12</td><td>18</td><td>24</td><td>30</td><td>36</td><td>42</td><td style="background: #F0E0E0">48</td><td>54</td></tr>
+			<tr><th>7</th><td>0</td><td>7</td><td>14</td><td>21</td><td>28</td><td>35</td><td>42</td><td>49</td><td style="background: #F0E0E0">56</td><td>63</td></tr>
+			<tr><th>8</th><td>0</td><td>8</td><td>16</td><td>24</td><td>32</td><td>40</td><td>48</td><td>56</td><td style="background: #F0E0E0">64</td><td>72</td></tr>
+			<tr><th>9</th><td>0</td><td>9</td><td>18</td><td>27</td><td>36</td><td>45</td><td>54</td><td>63</td><td style="background: #CA7777">72</td><td>81</td></tr>
+        </table>
+    </p>
+    <p align="center" id ="dividing_table_field" style="visibility: hidden">
+		a
+	</p>
+      
+    <p>
+        Zapewne zdążyłeś już polubić działania w słupku. Oto ich kwintesencja – <i>dzielenie w słupku</i> (czyli 
+        <i>dzielenie pisemne</i>). Spróbujmy podzielić <span class="math">468 : 2</span>. Zapewne spodziewasz się, że zapiszemy obie liczby jedna pod 
+        drugą i podkreślimy je. Otóż nie. Piszemy je jedna obok drugiej i rysujemy kreskę nad obydwiema. Wynik będziemy pisać 
+        ponad kreską.
+    </p>
+      
+	<div id="columnar_division_1">
+	</div>
+	<script>
+		Display_table.create_custom([["/u:", "/u:", "/u:", "/u:", "/u:"], ["4", "6", "8", ":", "2"]]).print("columnar_division_1");
+	</script>
+      
+    <p>
+        Teraz zaczynamy analizować liczbę, którą dzielimy, zaczynając od lewej. Bierzemy cyfrę <span class="math">4</span> i próbujemy podzielić ją 
+        przez <span class="math">2</span>. Udało nam się – <span class="math">4 : 2 = 2</span>. Wynik zapisujemy nad dwójką.
+    </p>
+      
+	<div id="columnar_division_2">
+	</div>
+	<script>
+		Display_table.create_custom([["/u:2", "/u:", "/u:", "/u:", "/u:"], ["4", "6", "8", ":", "2"]]).print("columnar_division_2");
+	</script>  
+
+    <p>
+        Teraz robimy coś odwrotnego – mnożymy otrzymane <span class="math">2</span> przez dzielnik, czyli przez <span class="math">2</span>. Otrzymujemy <span class="math">4</span> i zapisujemy je pod 
+        cyfrą setek dzielnej.
+    </p>
+    
+	<div id="columnar_division_3">
+	</div>
+	<script>
+		Display_table.create_custom([["/u:2", "/u:", "/u:", "/u:", "/u:"], ["4", "6", "8", ":", "2"], ["4", "", "", "", ""]]).print("columnar_division_3");
+	</script> 
+      
+    <p>
+        W tym momencie odejmujemy zapisaną czwórkę od wyjściowej czwórki. Dostaliśmy <span class="math">0</span>.
+    </p>
+    
+	<div id="columnar_division_4">
+	</div>
+	<script>
+		Display_table.create_custom([["/u:", "/u:", "/u:2", "/u:", "/u:", "/u:", "/u:"], ["", "", "4", "6", "8", ":", "2"], ["/u:-", "/u:", "/u:4", "/u:", "/u:", "/u:", "/u:"], ["", "", "0", "", "", "", "", ""]]).print("columnar_division_4");
+	</script> 
+      
+    <p>
+        Z dzielnej przepisujemy kolejną cyfrę, czyli <span class="math">6</span>. 
+    </p>
+      
+	<div id="columnar_division_5">
+	</div>
+	<script>
+		Display_table.create_custom([["/u:", "/u:", "/u:2", "/u:", "/u:", "/u:", "/u:"], ["", "", "4", "6", "8", ":", "2"], ["/u:-", "/u:", "/u:4", "/u:", "/u:", "/u:", "/u:"], ["", "", "0", "6", "", "", "", ""]]).print("columnar_division_5");
+	</script>
+      
+    <p>
+        Teraz powtarzamy serię czynności. Dzielimy <span class="math">6</span> przez <span class="math">2</span>. Dostajemy <span class="math">3</span>. Zapisujemy wynik nad kreską i robimy działanie 
+        odwrotne – mnożymy go przez dzielnik i piszemy <span class="math">6</span> na dole.
+	</p>
+    
+	<div id="columnar_division_6">
+	</div>
+	<script>
+		Display_table.create_custom([["/u:", "/u:", "/u:2", "/u:3", "/u:", "/u:", "/u:"], ["", "", "4", "6", "8", ":", "2"], ["/u:-", "/u:", "/u:4", "/u:", "/u:", "/u:", "/u:"], 
+		["", "", "0", "6", "", "", "", ""], ["", "", "", "6", "", "", "", ""]]).print("columnar_division_6");
+	</script>
+      
+    <p>
+        Odejmujemy <span class="math">6 – 6</span> i dostajemy <span class="math">0</span>.
+    </p>
+    
+	<div id="columnar_division_7">
+	</div>
+	<script>
+		Display_table.create_custom([["/u:", "/u:", "/u:2", "/u:3", "/u:", "/u:", "/u:"], ["", "", "4", "6", "8", ":", "2"], ["/u:-", "/u:", "/u:4", "/u:", "/u:", "/u:", "/u:"], 
+		["", "", "0", "6", "", "", "", ""], ["/u:-", "/u:", "/u:", "/u:6", "/u:", "/u:", "/u:", "/u:"], ["", "", "", "0", "", "", ""]]).print("columnar_division_7");
+	</script>
+      
+    <p>
+        Przepisujemy <span class="math">8</span> i powtarzamy czynności. <span class="math">8 : 2 = 4</span>; <span class="math">4 &middot; 2 = 8</span>; <span class="math">8 – 8 = 0</span>.
+    </p>
+    
+	<div id="columnar_division_8">
+	</div>
+	<script>
+		Display_table.create_custom([["/u:", "/u:", "/u:2", "/u:3", "/u:4", "/u:", "/u:"], ["", "", "4", "6", "8", ":", "2"], ["/u:-", "/u:", "/u:4", "/u:", "/u:", "/u:", "/u:"], 
+		["", "", "0", "6", "", "", "", ""], ["/u:-", "/u:", "/u:", "/u:6", "/u:", "/u:", "/u:", "/u:"], ["", "", "", "0", "8", "", ""], ["/u:-", "/u:", "/u:", "/u:", "/u:8", "/u:", "/u:"], ["", "", "", "", "0", "", ""]]).print("columnar_division_8");
+	</script>
+
+    <p>
+        Nie mamy już czego przepisać, więc zakończyliśmy męki. Otrzymaliśmy wynik <span class="math">234</span>. Tym razem było nudno, bo 
+        wszystkie cyfry ładnie podzieliły się przez <span class="math">2</span>. Zróbmy coś brawurowego – obliczmy <span class="math">5724 : 4</span>
+    </p>
+    
+	<div id="columnar_division_9">
+	</div>
+	<script>
+		Display_table.create_custom([["/u:", "/u:", "/u:", "/u:", "/u:", "/u:"], ["5", "7", "2", "4", ":", "4"]]).print("columnar_division_9");
+	</script>
+      
+    <p>
+        Bierzemy pierwszą cyfrę z lewej, czyli <span class="math">5</span>. Dzielimy <span class="math">5 : 4 = 1 r. 1</span>. W tym momencie reszta nas nie interesuje. 
+        Kontynuujemy działanie – piszemy wynik <span class="math">1</span>, mnożymy <span class="math">1 &middot; 4 = 4</span> i odejmujemy.
+    </p>
+    
+	<div id="columnar_division_10">
+	</div>
+	<script>
+		Display_table.create_custom([["/u:", "/u:", "/u:1", "/u:", "/u:", "/u:", "/u:", "/u:"], ["", "", "5", "7", "2", "4", ":", "4"], ["/u:-", "/u:", "/u:4", "/u:", "/u:", "/u:", "/u:", "/u:"], ["", "", "1", "", "", "", "", ""]]).print("columnar_division_10");
+	</script>
+      
+    <p>
+        Przepisujemy kolejną cyfrę, czyli <span class="math">7</span>. Teraz mamy do podzielenia liczbę dwucyfrową. <span class="math">17 : 4 = 4 r. 1</span>. 
+        Ignorujemy resztę i piszemy <span class="math">4</span> jako wynik. Mnożymy <span class="math">4 &middot; 4 = 16</span> i odejmujemy.
+    </p>
+      
+	<div id="columnar_division_11">
+	</div>
+	<script>
+		Display_table.create_custom([["/u:", "/u:", "/u:1", "/u:4", "/u:", "/u:", "/u:", "/u:"], ["", "", "5", "7", "2", "4", ":", "4"], ["/u:-", "/u:", "/u:4", "/u:", "/u:", "/u:", "/u:", "/u:"], ["", "", "1", "7", "", "", "", ""],
+		["/u:-", "/u:", "/u:1", "/u:6", "/u:", "/u:", "/u:", "/u:"], ["", "", "", "1", "", "", "", ""]]).print("columnar_division_11");
+	</script>
+      
+    <p>
+        Przepisujemy kolejną cyfrę, czyli <span class="math">2</span>. Dzielimy <span class="math">12 : 4 = 3</span>. 
+		Piszemy <span class="math">3</span> nad kreską, mnożymy <span class="math">3 &middot; 4 = 12</span> i odejmujemy.
+    </p>
+    
+	<div id="columnar_division_12">
+	</div>
+	<script>
+		Display_table.create_custom([["/u:", "/u:", "/u:1", "/u:4", "/u:3", "/u:", "/u:", "/u:"], ["", "", "5", "7", "2", "4", ":", "4"], ["/u:-", "/u:", "/u:4", "/u:", "/u:", "/u:", "/u:", "/u:"], ["", "", "1", "7", "", "", "", ""],
+		["/u:-", "/u:", "/u:1", "/u:6", "/u:", "/u:", "/u:", "/u:"], ["", "", "", "1", "2", "", "", ""], ["/u:-", "/u:", "/u:", "/u:1", "/u:2", "/u:", "/u:", "/u:"], ["", "", "", "", "0", "", "", ""]]).print("columnar_division_12");
+	</script>
+      
+    <p>
+        Przepisujemy <span class="math">4</span>, dzielimy <span class="math">4 : 4 = 1</span>, mnożymy <span class="math">1 &middot; 4 = 4</span>, odejmujemy <span class="math">4 – 4 = 0</span>.
+    </p>
+    
+	<div id="columnar_division_13">
+	</div>
+	<script>
+		Display_table.create_custom([["/u:", "/u:", "/u:1", "/u:4", "/u:3", "/u:1", "/u:", "/u:"], ["", "", "5", "7", "2", "4", ":", "4"], ["/u:-", "/u:", "/u:4", "/u:", "/u:", "/u:", "/u:", "/u:"], ["", "", "1", "7", "", "", "", ""],
+		["/u:-", "/u:", "/u:1", "/u:6", "/u:", "/u:", "/u:", "/u:"], ["", "", "", "1", "2", "", "", ""], ["/u:-", "/u:", "/u:", "/u:1", "/u:2", "/u:", "/u:", "/u:"], ["", "", "", "", "0", "4", "", ""], 
+		["/u:-", "/u:", "/u:", "/u:", "/u:", "/u:4", "/u:", "/u:"], ["", "", "", "", "", "0", "", ""]]).print("columnar_division_13");
+	</script>
+      
+    <p>
+        Kończymy robotę i odczytujemy wynik <span class="math">1431</span>. Jeśli to było brawurowe, to teraz będziemy dzielić jak szaleni – <span class="math">33684 : 28</span>
+    </p>
+    
+	<div id="columnar_division_14">
+	</div>
+	<script>
+		Display_table.create_custom([["/u:", "/u:", "/u:", "/u:", "/u:", "/u:", "/u:", "/u:"], ["3", "3", "6", "8", "4", ":", "2", "8"]]).print("columnar_division_14");
+	</script>
+      
+    <p>
+        Zabieramy się za dzielną od lewej. Chcielibyśmy podzielić <span class="math">3 : 28</span>, jednak takie dzielenie nie ma wiele sensu. 
+        Lepiej rozważmy dwie pierwsze cyfry dzielnej, czyli <span class="math">33</span>. Dzielimy <span class="math">33 : 28 = 1 r. 5</span>. Piszemy wynik, czyli <span class="math">1</span>, nad 
+        drugą trójką. Potem mnożymy <span class="math">1 &middot; 28 = 28</span> i odejmujemy <span class="math">33 – 28 = 5</span>.
+    </p>
+    
+	<div id="columnar_division_15">
+	</div>
+	<script>
+		Display_table.create_custom([["/u:", "/u:", "/u:", "/u:1", "/u:", "/u:", "/u:", "/u:", "/u:", "/u:"], ["", "", "3", "3", "6", "8", "4", ":", "2", "8"], ["/u:-", "/u:", "/u:2", "/u:8", "/u:", "/u:", "/u:", "/u:", "/u:", "/u:"],
+		["", "", "", "5", "", "", "", "", "", ""]]).print("columnar_division_15");
+	</script>	
+      
+    <p>
+        Przepisujemy kolejną cyfrę, czyli <span class="math">6</span>. Dzielimy <span class="math">56 : 28 = 2</span>, mnożymy <span class="math">2 &middot; 28 = 56</span> i odejmujemy <span class="math">56 – 56 = 0</span>.
+    </p>
+    
+	<div id="columnar_division_16">
+	</div>
+	<script>
+		Display_table.create_custom([["/u:", "/u:", "/u:", "/u:1", "/u:2", "/u:", "/u:", "/u:", "/u:", "/u:"], ["", "", "3", "3", "6", "8", "4", ":", "2", "8"], ["/u:-", "/u:", "/u:2", "/u:8", "/u:", "/u:", "/u:", "/u:", "/u:", "/u:"],
+		["", "", "", "5", "6", "", "", "", "", ""], ["/u:-", "/u:", "/u:", "/u:5", "/u:6", "/u:", "/u:", "/u:", "/u:", "/u:"], ["", "", "", "", "0", "", "", "", "", ""]]).print("columnar_division_16");
+	</script>
+      
+    <p>
+        Przepisujemy kolejną cyfrę, czyli <span class="math">8</span>. Dostajemy <span class="math">8 : 28 = 0 r. 8</span>. Piszemy wynik <span class="math">0</span>, mnożymy <span class="math">0 &middot; 28 = 0</span>, 
+        odejmujemy <span class="math">8 – 0 = 8</span>.
+    </p>
+    
+	<div id="columnar_division_17">
+	</div>
+	<script>
+		Display_table.create_custom([["/u:", "/u:", "/u:", "/u:1", "/u:2", "/u:0", "/u:", "/u:", "/u:", "/u:"], ["", "", "3", "3", "6", "8", "4", ":", "2", "8"], ["/u:-", "/u:", "/u:2", "/u:8", "/u:", "/u:", "/u:", "/u:", "/u:", "/u:"],
+		["", "", "", "5", "6", "", "", "", "", ""], ["/u:-", "/u:", "/u:", "/u:5", "/u:6", "/u:", "/u:", "/u:", "/u:", "/u:"], ["", "", "", "", "0", "8", "", "", "", ""], ["/u:-", "/u:", "/u:", "/u:", "/u:", "/u:0", "/u:", "/u:", "/u:", "/u:"], 
+		["", "", "", "", "", "8", "", "", "", ""]]).print("columnar_division_17");
+	</script>
+      
+    <p>
+        Spisujemy czwórkę, dzielimy <span class="math">84 : 28 = 3</span>, mnożymy <span class="math">3 &middot; 28 = 84</span>, odejmujemy <span class="math">84 – 84 = 0</span>.
+    </p>
+    
+	<div id="columnar_division_17b">
+	</div>
+	<script>
+		Display_table.create_custom([["/u:", "/u:", "/u:", "/u:1", "/u:2", "/u:0", "/u:3", "/u:", "/u:", "/u:"], ["", "", "3", "3", "6", "8", "4", ":", "2", "8"], ["/u:-", "/u:", "/u:2", "/u:8", "/u:", "/u:", "/u:", "/u:", "/u:", "/u:"],
+		["", "", "", "5", "6", "", "", "", "", ""], ["/u:-", "/u:", "/u:", "/u:5", "/u:6", "/u:", "/u:", "/u:", "/u:", "/u:"], ["", "", "", "", "0", "8", "", "", "", ""], ["/u:-", "/u:", "/u:", "/u:", "/u:", "/u:0", "/u:", "/u:", "/u:", "/u:"], 
+		["", "", "", "", "", "8", "4", "", "", ""], ["/u:-", "/u:", "/u:", "/u:", "/u:", "/u:8", "/u:4", "/u:", "/u:", "/u:"], ["", "", "", "", "", "", "0", "", "", ""]]).print("columnar_division_17b");
+	</script>
+      
+    <p>
+        Jakoś poszło. Jak widać, dzielenie w słupku wymaga wykonania w pamięci niektórych działań, nawet tych trudnych. 
+        Na koniec musieliśmy podzielić <span class="math">84 : 28</span> i słupek w żaden sposób nam w tym nie pomógł. 
+        Możemy jedynie siłować <span class="math">28 + 28 = 56</span>; <span class="math">56 + 28 = 84</span>, w takim razie <span class="math">3 &middot; 28 = 84</span>, czyli <span class="math">84 : 28 = 3</span>. 
+        Na deser podzielmy jeszcze <span class="math">102</span> przez <span class="math">9</span>.
+    </p>
+	
+	<div id="columnar_division_18">
+	</div>
+	<script>
+		Display_table.create_custom([["/u:", "/u:", "/u:", "/u:", "/u:"], ["1", "0", "2", ":", "9"]]).print("columnar_division_18");
+	</script>
+      
+    <p>
+        Dzielenie <span class="math">1 : 9</span> jest bez sensu, więc bierzemy pierwsze dwie cyfry i dzielimy – <span class="math">10 : 9 = 1 r 1</span>.
+    </p>
+    
+	<div id="columnar_division_19">
+	</div>
+	<script>
+		Display_table.create_custom([["/u:", "/u:", "/u:", "/u:1", "/u:", "/u:", "/u:"], ["", "", "1", "0", "2", ":", "9"], ["/u:-", "/u:", "/u:", "/u:9", "/u:", "/u:", "/u:"], ["", "", "", "1", "", "", ""]]).print("columnar_division_19");
+	</script>
+      
+    <p>
+        Spisujemy <span class="math">2</span> i dzielimy dalej.
+    </p>
+      
+	<div id="columnar_division_20">
+	</div>
+	<script>
+		Display_table.create_custom([["/u:", "/u:", "/u:", "/u:1", "/u:1", "/u:", "/u:"], ["", "", "1", "0", "2", ":", "9"], ["/u:-", "/u:", "/u:", "/u:9", "/u:", "/u:", "/u:"], ["", "", "", "1", "2", "", ""], 
+		["/u:-", "/u:", "/u:", "/u:", "/u:9", "/u:", "/u:"], ["", "", "", "", "3", "", ""]]).print("columnar_division_20");
+	</script>
+      
+    <p>
+        Niespodzianka – nie mamy już żadnej cyfry do spisania, a zostało nam jakieś <span class="math">3</span>. Oznacza to, że <span class="math">3</span> jest resztą z 
+        dzielenia <span class="math">102</span> przez <span class="math">9</span>, czyli <span class="math">102 : 9 = 11 r. 3</span>
+    </p>
+	
+	<div id="columnar_division_21">
+	</div>
+	<script>
+		Display_table.create_custom([["/u:", "/u:", "/u:", "/u:1", "/u:1", "/u:r.", "/u:3"], ["", "", "1", "0", "2", ":", "9"], ["/u:-", "/u:", "/u:", "/u:9", "/u:", "/u:", "/u:"], ["", "", "", "1", "2", "", ""], 
+		["/u:-", "/u:", "/u:", "/u:", "/u:9", "/u:", "/u:"], ["", "", "", "", "3", "", ""]]).print("columnar_division_21");
+	</script>
+	
+	<div class="modal" id="divide_by_0">
+		<div class = "modal_content">
+			<p align="center" id = "modal_text">Nie wolno dzielić przez 0!</p>
+			<center><button class="modal_close" id = "modal_button" style="float: center" onclick="CloseModal()">Rozumiem</button></center>
+		</div>
+	</div>
+	<script>
+		var modal_display_count = 0;
+		function CloseModal() {
+			document.getElementById("divide_by_0").style.display = "none"; 
+			modal_display_count++;
+			if (modal_display_count == 1)
+			{
+				document.getElementById("modal_text").innerHTML = "Nie próbuj dzielić przez zero!";
+				document.getElementById("modal_button").innerHTML = "Przepraszam";
+			}
+			if (modal_display_count == 2)
+			{
+				document.getElementById("modal_text").innerHTML = "Znowu dzielisz przez 0.";
+				document.getElementById("modal_button").innerHTML = "Już nie będę";
+			}
+			if (modal_display_count == 3)
+			{
+				document.getElementById("divide_by_0").style.backgroundColor = "#000000";
+				document.getElementById("modal_text").innerHTML = "#$#A%64g@##@!!!<br>%%@#%5HGF!<br>-_$@^&##$@%!!!!<br>*$(&#!!AK_==3??";
+				document.getElementById("modal_button").style.display = "none";
+				//window.open('','_self',''); 
+				//window.close();
+				//self.close();
+			}
+		};
+	</script>
+	
+	
+		<p align="center">
+			<input style="width: 800px" name="numberInput" type="text" id="columnar_division_input" />
+		</p>
+		<script>
+			var columnar_division = new Columnar_division( "columnar_division_table","columnar_division_comment", "columnar_operation_button_right", "columnar_operation_button_left");
+			function ColumnarDivisionStartArgs() {
+				var success = columnar_division.generate_from_input("columnar_division_input","columnar_division_area", false);
+				if (success)columnar_division.print_step(0);
+			}
+
+		</script>
+		<p align="center">
+			<button id="columnar_division_start" style="float: center;" onclick="ColumnarDivisionStartArgs()">Start</button>
+		</p>
+		<script>
+			SetInputEnterEvent("columnar_division_input","columnar_division_start")
+		</script>
+
+
+		<table align = "center" class="columnar_operation_script" id="columnar_division_area" >
+			<tr>
+				<td id="columnar_operation_button_left" onclick="columnar_division.prev()">
+					<svg height="0" width="30">
+						<defs>
+							<linearGradient id="gradient">
+								<stop offset="20%" stop-color="#C33" />
+								<stop offset="90%" stop-color="#833" />
+							</linearGradient>
+							<linearGradient id="hover_gradient">
+								<stop offset="20%" stop-color="#A33" />
+								<stop offset="90%" stop-color="#433" />
+							</linearGradient>
+						</defs>
+						<polygon points="20,0 0,30 20,60"/>
+					</svg>
+				</td>
+				<td>
+					<div id="columnar_division_table" class="no_selection"></div>
+					<p id="columnar_division_comment" class="no_selection"></p>
+				</td>
+				<td id = "columnar_operation_button_right" onclick="columnar_division.next()">
+					<svg height="0" width="30">
+						<polygon points="0,0 20,30 0,60"/>
+					</svg>
+				</td>
+			</tr>
+		</table>
+    <p class = "type">
+        Rozszerzenie
+    </p>
+      
+    <p class = "warning">
+        [wymagana znajomość tematu: Kolejność wykonywania działań]
+    </p>
+      
+    <p>
+        Spróbujmy uchwycić istotę dzielenia w słupku. Weźmy dzielenie <span class="math">33684 : 28</span>. Najpierw badamy rząd tysięcy, czyli 
+        patrzymy na <span class="math">33</span> w liczbie <span class="math">33684</span>. Stwierdzamy, że w <span class="math">33</span> liczba <span class="math">28</span> mieści się raz, więc w <span class="math">33 000</span>
+		liczba <span class="math">28</span> mieści się 
+        <span class="math">1000</span> razy
+    </p>
+      
+    <p align = "center">
+        <span class="math">33 684 =</span> <br>
+        <span class="math">= 28 &middot; 1000 + (33 684 – 28 &middot; 1000) =</span><br>
+        <span class="math">= 28 &middot; 1000 + (33 000 – 28 000 + 684) =</span><br>
+        <span class="math">= 28 &middot; 1000 + (5000 + 684) =</span><br>
+        <span class="math">= 28 &middot; 1000 + 5684</span><br>
+    </p>
+      
+    <p>
+        Teraz rozpatrujemy rząd setek. Stwierdzamy, że w <span class="math">56</span> liczba <span class="math">28</span> mieści się <span class="math">2</span> razy, 
+		więc w <span class="math">5600</span> mieści się <span class="math">200</span> razy
+    </p>
+      
+    <p align = "center">
+        <span class="math">28 &middot; 1000 + 5684 =</span><br>
+        <span class="math">= 28 &middot; 1000 + 28 &middot; 200 + (5684 - 28 &middot; 200) =</span><br>
+        <span class="math">= 28 &middot; 1000 + 28 &middot; 200 + (5600 - 5600 + 84) =</span><br>
+        <span class="math">= 28 &middot; (1000 + 200) + 84</span><br>
+    </p>
+      
+    <p>
+        Rozpatrujemy rząd jedności. W <span class="math">84</span> liczba <span class="math">28</span> mieści się <span class="math">3</span> razy.
+    </p>
+      
+    <p align = "center">
+        <span class="math">28 &middot; (1000 + 200) + 84 =</span><br>
+        <span class="math">= 28 &middot; (1000 + 200) + 28 &middot; 3 =</span><br>
+        <span class="math">= 28 &middot; (1000 + 200 + 3) =</span><br>
+        <span class="math">= 28 &middot; 1203</span><br>
+    </p>
+      
+    <p>
+        W rezultacie <span class="math">33 684 = 28 &middot; 1203</span>, czyli <span class="math">33 684 : 28 = 1203</span>. Jeśli ciągle nie czujesz się przekonany, 
+        możesz spojrzeć na dowód.
+    </p>
+      
+    <p class = "type">
+        Dowód
+    </p>
+      
+    <p class = "warning">
+        [wymagana znajomość tematu: Algebra]
+    </p>
+
+    <!--Poważnie nie wiem czy damy radę…-->
+
+	</div>
+	</div>
+	</div>
+  
+</div>
+
+</body>
+
+</html>
