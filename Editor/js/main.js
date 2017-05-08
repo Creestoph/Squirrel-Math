@@ -3,6 +3,14 @@ var chapter_name_string = 'Nazwa rozdziału';
 var chapter_content_string = 'Treść rozdziału';
 //------------
 
+Element.prototype.insertChildAtIndex = function(child, index) {
+    if (!index) index = 0
+    if (index >= this.children.length) {
+        this.appendChild(child)
+    } else {
+        this.insertBefore(child, this.children[index])
+    }
+}
 
 function newChapter() {
     var chapter = document.createElement('div');
@@ -31,6 +39,97 @@ function newChapter() {
 
 }
 
+function newTable(w, h) {
+    var table = document.createElement('table');
+    for (var i = 0; i < h; i++) {
+        var row = table.insertRow();
+        for (var j =0; j < w; j++) {
+            var cell = row.insertCell(j);
+            cell.style.border = '1px solid black';
+            cell.style.width = '50px';
+            cell.style.height = '50px';
+            var d = document.createElement('div');
+            d.contentEditable = 'true';
+            cell.appendChild(d);
+        }
+    }
+    return table;
+}
+
+function getSelectionStart() {
+    var node = document.getSelection().anchorNode;
+    return (node.nodeType === 3 ? node.parentNode : node);
+}
+
+function nextNode(node) {
+    if (node.hasChildNodes()) {
+        return node.firstChild;
+    } else {
+        while (node && !node.nextSibling) {
+            node = node.parentNode;
+        }
+        if (!node) {
+            return null;
+        }
+        return node.nextSibling;
+    }
+}
+
+function getRangeSelectedNodes(range) {
+    var node = range.startContainer;
+    var endNode = range.endContainer;
+
+    // Special case for a range that is contained within a single node
+    if (node == endNode) {
+        return [node];
+    }
+
+    // Iterate nodes until we hit the end container
+    var rangeNodes = [];
+    while (node && node != endNode) {
+        rangeNodes.push( node = nextNode(node) );
+    }
+
+    // Add partially selected nodes at the start of the range
+    node = range.startContainer;
+    while (node && node != range.commonAncestorContainer) {
+        rangeNodes.unshift(node);
+        node = node.parentNode;
+    }
+
+    return rangeNodes;
+}
+
+function addTable() {
+
+    var node = getSelectionStart();
+    var parent = node.parentNode;
+    var children = parent.childNodes;
+    var index;
+    for (var i = 0; i < children.length; i++){
+        if (children[i].isSameNode(node)){
+            index = i;
+            break;
+        }
+    }
+    parent.insertChildAtIndex(newTable(2,2), index);
+}
+
+
 function addChapter() {
     document.getElementsByClassName('main')[0].appendChild(newChapter());
+}
+
+
+function alignLeft() {
+    var nodes = getRangeSelectedNodes(document.getSelection().getRangeAt(0))
+    for (var i = 0; i < nodes.length; i++)
+        nodes[i].parentNode.setAttribute('align', 'left');
+}
+
+function alignCenter() {
+    var nodes = getRangeSelectedNodes(document.getSelection().getRangeAt(0))
+    for (var i = 0; i < nodes.length; i++)
+        nodes[i].parentNode.setAttribute('align', 'center');
+
 }
