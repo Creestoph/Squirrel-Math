@@ -62,22 +62,39 @@ function newTable(w, h) {
 
 function newCanvas(w,h) {
     var p = document.createElement('p');
+    var canvas = document.createElementNS("http://www.w3.org/2000/svg", 'svg');
+    canvas.setAttribute('width', '300');
+    canvas.setAttribute('height', '300');
+    canvas.setAttribute('tabindex', '-1');
+    canvas.onmousedown = focusCanvas;
+    canvas.onblur = blurCanvas;
+    //canvas.onmousemove = setCursor;
     p.setAttribute('align', 'center');
-    p.onblur = function () {
-        alert('fucus lost');
-    }
-    p.innerHTML = '<svg width="300" height="300" tabindex="-1" onclick="focused_canvas = this" onblur="focused_canvas = null"></svg>'
+    p.appendChild(canvas);
     return p;
 }
 
-function focusCanvas(canvas) {
+function focusCanvas() {
     //turn on menu
-    focused_canvas = canvas;
+    focused_canvas = this;
 }
 
 function blurCanvas() {
     //turn off menu
-    focused_canvas = null;
+}
+
+function addShape(shape) {
+    switch (shape){
+        case 'triangle':
+            var tri = document.createElementNS("http://www.w3.org/2000/svg", 'polygon');
+            tri.setAttribute('points', "10,10 10,50 20,20");
+            tri.setAttribute('style', "fill:lime;stroke:purple;stroke-width:1");
+            tri.setAttribute("transform", "matrix(1 0 0 1 0 0)");
+            tri.onmousedown = selectElement;
+            focused_canvas.appendChild(tri);
+            break;
+    }
+    //turn on menu
 }
 
 function getSelectionStart() {
