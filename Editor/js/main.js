@@ -66,17 +66,17 @@ function newCanvas(w,h) {
     p.onblur = function () {
         alert('fucus lost');
     }
-    p.innerHTML = '<svg width="300" height="300" tabindex="-1" onclick="focused_canvas = this" onblur="focused_canvas = null"></svg>'
+    p.innerHTML = '<svg width="300" height="300" tabindex="-1" onclick="focusCanvas(this)" onblur="blurCanvas()"></svg>'
     return p;
 }
 
 function focusCanvas(canvas) {
-    //turn on menu
+    document.getElementById("canvas_editor").style.display = "block";
     focused_canvas = canvas;
 }
 
 function blurCanvas() {
-    //turn off menu
+    document.getElementById("canvas_editor").style.display = "none";
     focused_canvas = null;
 }
 
@@ -151,6 +151,12 @@ function alignLeft() {
         nodes[i].parentNode.setAttribute('align', 'left');
 }
 
+function alignRight() {
+    var nodes = getRangeSelectedNodes(document.getSelection().getRangeAt(0))
+    for (var i = 0; i < nodes.length; i++)
+        nodes[i].parentNode.setAttribute('align', 'right');
+}
+
 function alignCenter() {
     var nodes = getRangeSelectedNodes(document.getSelection().getRangeAt(0))
     for (var i = 0; i < nodes.length; i++)
@@ -170,7 +176,5 @@ function addCanvas(){
         }
     }
     parent.insertChildAtIndex(newCanvas(300,300), index);
-
-
 }
 

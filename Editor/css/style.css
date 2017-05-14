@@ -646,15 +646,23 @@ table.columnar_operation_script td
 .editor
 {
     background: #fafafa;
+    position: fixed;
+    width: 100%;
+    z-index: 10;
+}
+
+.editor_ghost
+{
+    height: 200px;
 }
 
 .editor_tab_button_2
 {
     background: rgba(0, 0, 0, 0);
-    font-family: Cambria;
-    font-size: 20px;
+    font-family: Corbel;
+    font-size: 17px;
     color: #000000;
-    padding: 20px;
+    padding: 12px 18px 12px 18px;
     margin: 0;
 }
 
@@ -669,9 +677,9 @@ table.columnar_operation_script td
 .editor_tab_button_1
 {
     background: rgba(0, 0, 0, 0);
-    font-family: "Cambria";
-    font-size: 20px;
+    font-size: 17px;
     color: #000000;
+    font-family: Corbel;
     width: 50px;
     height: 50px;
     padding: 0px;
