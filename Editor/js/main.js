@@ -1,7 +1,11 @@
 //variables
 var chapter_name_string = 'Nazwa rozdziału';
 var chapter_content_string = 'Treść rozdziału';
+
+var focused_canvas;
 //------------
+
+
 
 Element.prototype.insertChildAtIndex = function(child, index) {
     if (!index) index = 0
@@ -49,11 +53,31 @@ function newTable(w, h) {
             cell.style.width = '50px';
             cell.style.height = '50px';
             var d = document.createElement('div');
-            d.contentEditable = 'true';
+            cell.contentEditable = 'true';
             cell.appendChild(d);
         }
     }
     return table;
+}
+
+function newCanvas(w,h) {
+    var p = document.createElement('p');
+    p.setAttribute('align', 'center');
+    p.onblur = function () {
+        alert('fucus lost');
+    }
+    p.innerHTML = '<svg width="300" height="300" tabindex="-1" onclick="focused_canvas = this" onblur="focused_canvas = null"></svg>'
+    return p;
+}
+
+function focusCanvas(canvas) {
+    //turn on menu
+    focused_canvas = canvas;
+}
+
+function blurCanvas() {
+    //turn off menu
+    focused_canvas = null;
 }
 
 function getSelectionStart() {
@@ -133,3 +157,20 @@ function alignCenter() {
         nodes[i].parentNode.setAttribute('align', 'center');
 
 }
+
+function addCanvas(){
+    var node = getSelectionStart();
+    var parent = node.parentNode;
+    var children = parent.childNodes;
+    var index;
+    for (var i = 0; i < children.length; i++){
+        if (children[i].isSameNode(node)){
+            index = i;
+            break;
+        }
+    }
+    parent.insertChildAtIndex(newCanvas(300,300), index);
+
+
+}
+
