@@ -24,7 +24,25 @@
 
 <div class="editor">
     <table>
-        <tr>
+        <tr id="canvas_editor" style="display: none">
+            <td> <button onclick="addChapter()" class="editor_tab_button_2">Koło</button> </td>
+            <td> <button onclick="addChapter()" class="editor_tab_button_2">Kwadrat</button> </td>
+            <td> <button onclick="addChapter()" class="editor_tab_button_2">Trójkat</button> </td>
+            <td> <button onclick="addChapter()" class="editor_tab_button_2">Wielokąt</button> </td>
+        </tr>
+        <tr id="shape_menu" style="display: none">
+            <td> <button onclick="addChapter()" class="editor_tab_button_2">Koło</button> </td>
+            <td> <button onclick="addChapter()" class="editor_tab_button_2">Kwadrat</button> </td>
+            <td> <button onclick="addChapter()" class="editor_tab_button_2">Trójkat</button> </td>
+            <td> <button onclick="addChapter()" class="editor_tab_button_2">Wielokąt</button> </td>
+        </tr>
+        <tr id="table_editor" style="display: none">
+            <td> <button onclick="addChapter()" class="editor_tab_button_2">Koło</button> </td>
+            <td> <button onclick="addChapter()" class="editor_tab_button_2">Kwadrat</button> </td>
+            <td> <button onclick="addChapter()" class="editor_tab_button_2">Trójkat</button> </td>
+            <td> <button onclick="addChapter()" class="editor_tab_button_2">Wielokąt</button> </td>
+        </tr>
+        <tr id="equation_editor" style="display: none">
             <td> <button onclick="addChapter()" class="editor_tab_button_2">Koło</button> </td>
             <td> <button onclick="addChapter()" class="editor_tab_button_2">Kwadrat</button> </td>
             <td> <button onclick="addShape('triangle')" class="editor_tab_button_2">Trójkat</button> </td>
@@ -71,14 +89,16 @@
             <td>
                 <button onclick="alignCenter()" class="editor_tab_button_1" style='margin-top: 7px; background-image: url("img/align_center_icon.png"); background-repeat: no-repeat; background-size: 66%; background-position: center center'></button>
             </td>
+            <td>
+                <button onclick="alignRight()" class="editor_tab_button_1" style='margin-top: 7px; background-image: url("img/align_right_icon.png"); background-repeat: no-repeat; background-size: 66%; background-position: center center'></button>
+            </td>
         </tr>
     </table>
     <div id="editor_footer"></div>
 </div>
-
+<div class="editor_ghost"></div>
 
 <div class="main">
-
 
     <p contenteditable="true" class="lesson_title">
         Tytuł lekcji
