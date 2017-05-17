@@ -25,34 +25,39 @@
 <div class="editor">
     <table>
         <tr id="canvas_editor" style="display: none">
-            <td> <button onclick="addChapter()" class="editor_tab_button_2">Koło</button> </td>
-            <td> <button onclick="addChapter()" class="editor_tab_button_2">Kwadrat</button> </td>
-            <td> <button onclick="addShape('triangle')" class="editor_tab_button_2">Trójkat</button> </td>
-            <td> <button onclick="addChapter()" class="editor_tab_button_2">Wielokąt</button> </td>
+            <td>
+                <button onclick="addShape('circle')" class="editor_tab_button_2">Koło</button>
+            </td>
+            <td>
+                <button onclick="addShape('rectangle')" class="editor_tab_button_2">Prostokąt</button>
+            </td>
+            <td>
+                <button onclick="addShape('triangle')" class="editor_tab_button_2">Trójkat</button>
+            </td>
+            <td>
+                <button onclick="addShape('polygon')" class="editor_tab_button_2">Wielokąt</button>
+            </td>
         </tr>
         <tr id="shape_menu" style="display: none">
-            <td> <button onclick="addChapter()" class="editor_tab_button_2">Koło</button> </td>
-            <td> <button onclick="addChapter()" class="editor_tab_button_2">Kwadrat</button> </td>
-            <td> <button onclick="addShape('triangle')" class="editor_tab_button_2">Trójkat</button> </td>
-            <td> <button onclick="addChapter()" class="editor_tab_button_2">Wielokąt</button> </td>
+
         </tr>
         <tr id="table_editor" style="display: none">
-            <td> <button onclick="addChapter()" class="editor_tab_button_2">Koło</button> </td>
-            <td> <button onclick="addChapter()" class="editor_tab_button_2">Kwadrat</button> </td>
-            <td> <button onclick="addChapter()" class="editor_tab_button_2">Trójkat</button> </td>
-            <td> <button onclick="addChapter()" class="editor_tab_button_2">Wielokąt</button> </td>
+
         </tr>
         <tr id="equation_editor" style="display: none">
-            <td> <button onclick="addChapter()" class="editor_tab_button_2">Koło</button> </td>
-            <td> <button onclick="addChapter()" class="editor_tab_button_2">Kwadrat</button> </td>
-            <td> <button onclick="addShape('triangle')" class="editor_tab_button_2">Trójkat</button> </td>
-            <td> <button onclick="addChapter()" class="editor_tab_button_2">Wielokąt</button> </td>
+
         </tr>
     </table>
     <table>
         <tr>
             <td>
                 <button onclick="addChapter()" class="editor_tab_button_2">Dodaj rozdział</button>
+            </td>
+            <td>
+                <button onclick="addExample()" class="editor_tab_button_2">Dodaj przykład</button>
+            </td>
+            <td>
+                <button onclick="addProof()" class="editor_tab_button_2">Dodaj dowód</button>
             </td>
             <td>
                 <button onclick="addTable()" class="editor_tab_button_2">Wstaw tabelę</button>
@@ -75,22 +80,36 @@
                     <b>B</b></button>
             </td>
             <td>
-                <button onclick="document.execCommand('italic',false,null)" class="editor_tab_button_1"><i>I</i></button>
+                <button onclick="document.execCommand('italic',false,null)" class="editor_tab_button_1"><i>I</i>
+                </button>
             </td>
             <td>
-                <button onclick="document.execCommand('underline',false,null)" class="editor_tab_button_1"><u>U</u></button>
+                <button onclick="document.execCommand('underline',false,null)" class="editor_tab_button_1"><u>U</u>
+                </button>
             </td>
             <td>
-                <button onclick="document.execCommand('strikeThrough',false,null)" class="editor_tab_button_1"><strike>abc</strike></button>
+                <button onclick="document.execCommand('strikeThrough',false,null)" class="editor_tab_button_1"><strike>abc</strike>
+                </button>
             </td>
             <td>
-                <button onclick="alignLeft()" class="editor_tab_button_1" style='margin-top: 7px; background-image: url("img/align_left_icon.png"); background-repeat: no-repeat; background-size: 66%; background-position: center center'></button>
+                <button onclick="alignLeft()" class="editor_tab_button_1"
+                        style='margin-top: 7px; background-image: url("img/align_left_icon.png"); background-repeat: no-repeat; background-size: 66%; background-position: center center'></button>
             </td>
             <td>
-                <button onclick="alignCenter()" class="editor_tab_button_1" style='margin-top: 7px; background-image: url("img/align_center_icon.png"); background-repeat: no-repeat; background-size: 66%; background-position: center center'></button>
+                <button onclick="alignCenter()" class="editor_tab_button_1"
+                        style='margin-top: 7px; background-image: url("img/align_center_icon.png"); background-repeat: no-repeat; background-size: 66%; background-position: center center'></button>
             </td>
             <td>
-                <button onclick="alignRight()" class="editor_tab_button_1" style='margin-top: 7px; background-image: url("img/align_right_icon.png"); background-repeat: no-repeat; background-size: 66%; background-position: center center'></button>
+                <button onclick="alignRight()" class="editor_tab_button_1"
+                        style='margin-top: 7px; background-image: url("img/align_right_icon.png"); background-repeat: no-repeat; background-size: 66%; background-position: center center'></button>
+            </td>
+            <td>
+                <button onclick="unorderedList()" class="editor_tab_button_1"
+                        style='margin-top: 7px; background-image: url("img/list_icon.png"); background-repeat: no-repeat; background-size: 66%; background-position: center center'></button>
+            </td>
+            <td>
+                <button onclick="orderedList()" class="editor_tab_button_1"
+                        style='margin-top: 7px; background-image: url("img/ordered_list_icon.png"); background-repeat: no-repeat; background-size: 66%; background-position: center center'></button>
             </td>
         </tr>
     </table>
