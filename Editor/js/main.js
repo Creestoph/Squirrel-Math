@@ -80,7 +80,7 @@ function focusCanvas() {
 }
 
 function blurCanvas() {
-    document.getElementById("canvas_editor").style.display = "none";
+    //document.getElementById("canvas_editor").style.display = "none";
 }
 
 function addShape(shape) {
