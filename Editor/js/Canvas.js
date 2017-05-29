@@ -25,9 +25,11 @@ class Canvas extends HTMLElement {
         this.canvas.setAttribute('tabindex', '-1');
         const a = this;
         this.canvas.onmousemove = function (evt) {
+            evt.stopPropagation();
             Canvas.setCursor(evt, a);
         };
         this.canvas.onmousedown = function (evt) {
+            evt.stopPropagation();
             Canvas.selectElement(evt, a);
         };
         p.setAttribute('align', 'center');
@@ -36,7 +38,7 @@ class Canvas extends HTMLElement {
         this.updateHTML(p);
     }
 
-    getCanvas(){
+    getCanvas() {
         return this.element.firstChild;
     }
 
@@ -53,19 +55,24 @@ class Canvas extends HTMLElement {
             object.vertical = object.canvas.getBoundingClientRect().bottom - object.mouseY < Canvas.margin;
             object.right = object.canvas.getBoundingClientRect().right - object.mouseX < Canvas.margin;
             object.left = object.mouseX - object.canvas.getBoundingClientRect().left < Canvas.margin;
-
-            window.onkeydown = function (evt) {
-                Canvas.deselect(evt, object);
-            };;
-            object.canvas.onmousemove = function (evt) {
-                Canvas.resize(evt, object);
-            };
-            object.canvas.onmouseup = function (evt) {
-                Canvas.deselect(evt, object);
-            };
-            object.canvas.onmouseout = function (evt) {
-                Canvas.deselect(evt, object);
-            };
+            if (object.vertical || object.left || object.right) {
+                window.onkeydown = function (evt) {
+                    evt.stopPropagation();
+                    Canvas.deselect(evt, object);
+                };
+                object.canvas.onmousemove = function (evt) {
+                    evt.stopPropagation();
+                    Canvas.resize(evt, object);
+                };
+                object.canvas.onmouseup = function (evt) {
+                    evt.stopPropagation();
+                    Canvas.deselect(evt, object);
+                };
+                object.canvas.onmouseout = function (evt) {
+                    evt.stopPropagation();
+                    Canvas.deselect(evt, object);
+                };
+            }
         }
     }
 
@@ -105,6 +112,7 @@ class Canvas extends HTMLElement {
         if (object.canvas !== 0) {
             object.canvas.removeAttribute("onmouseup");
             object.canvas.onmousemove = function (evt) {
+                evt.stopPropagation();
                 Canvas.setCursor(evt, object);
             };
             $('html,body').css('cursor', '');

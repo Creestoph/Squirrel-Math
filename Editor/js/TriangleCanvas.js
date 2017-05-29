@@ -12,6 +12,7 @@ class TriangleCanvas extends MovingShape{
         const a = this;
         this.updateHTML(tri);
         tri.onmousedown = function (evt) {
+            evt.stopPropagation();
             MovingShape.select(evt, a);
         };
 

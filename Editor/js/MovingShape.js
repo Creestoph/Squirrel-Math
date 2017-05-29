@@ -33,23 +33,44 @@ class MovingShape extends HTMLElement{
             for (var i = 0; i < object.elementMatrix.length; i++) {
                 object.elementMatrix[i] = parseFloat(object.elementMatrix[i]);
             }
-            object.parent.onmousemove = function(evt){
-                MovingShape.move(evt, object);
-            };
+            const pa = object.parent.onmousemove;
+            const pb = object.parent.onmouseup;
+            const pc = object.parent.onmouseout;
+
+
             object.parent.onmouseup = function(evt){
+                evt.stopPropagation();
                 MovingShape.deselect(evt, object);
+                object.parent.onmousemove = pa;
+                object.parent.onmouseup = pb;
+                object.parent.onmouseout = pc;
             };
             object.parent.onmouseout = function (evt){
+                evt.stopPropagation();
                 MovingShape.deselect(evt, object);
+                object.parent.onmousemove = pa;
+                object.parent.onmouseup = pb;
+                object.parent.onmouseout = pc;
             };
             object.parent.addEventListener("scroll", function (evt) {
+                evt.stopPropagation();
                 MovingShape.deselect(evt, object);
+                object.parent.onmousemove = pa;
+                object.parent.onmouseup = pb;
+                object.parent.onmouseout = pc;
             });
             object.element.onmouseup = function(evt){
+                evt.stopPropagation();
                 MovingShape.deselect(evt, object);
+                object.parent.onmousemove = pa;
+                object.parent.onmouseup = pb;
+                object.parent.onmouseout = pc;
             };
             window.onkeydown = function(evt){
                 MovingShape.deselect(evt, object);
+            };
+            object.parent.onmousemove = function(evt){
+                MovingShape.move(evt, object);
             };
         }
     }
