@@ -6,8 +6,7 @@ var focused_canvas;
 //------------
 
 
-
-Element.prototype.insertChildAtIndex = function(child, index) {
+Element.prototype.insertChildAtIndex = function (child, index) {
     if (!index) index = 0
     if (index >= this.children.length) {
         this.appendChild(child)
@@ -47,7 +46,7 @@ function newTable(w, h) {
     var table = document.createElement('table');
     for (var i = 0; i < h; i++) {
         var row = table.insertRow();
-        for (var j =0; j < w; j++) {
+        for (var j = 0; j < w; j++) {
             var cell = row.insertCell(j);
             cell.style.border = '1px solid black';
             cell.style.width = '50px';
@@ -60,7 +59,7 @@ function newTable(w, h) {
     return table;
 }
 
-function newCanvas(w,h) {
+function newCanvas(w, h) {
     var p = document.createElement('p');
     var canvas = document.createElementNS("http://www.w3.org/2000/svg", 'svg');
     canvas.setAttribute('width', '300');
@@ -84,14 +83,15 @@ function blurCanvas() {
 }
 
 function addShape(shape) {
-    switch (shape){
+    switch (shape) {
         case 'triangle':
-            var tri = document.createElementNS("http://www.w3.org/2000/svg", 'polygon');
-            tri.setAttribute('points', "10,10 10,50 20,20");
-            tri.setAttribute('style', "fill:lime;stroke:purple;stroke-width:1");
-            tri.setAttribute("transform", "matrix(1 0 0 1 0 0)");
-            tri.onmousedown = selectElement;
-            focused_canvas.appendChild(tri);
+            // var tri = document.createElementNS("http://www.w3.org/2000/svg", 'polygon');
+            // tri.setAttribute('points', "10,10 10,50 20,20");
+            // tri.setAttribute('style', "fill:lime;stroke:purple;stroke-width:1");
+            // tri.setAttribute("transform", "matrix(1 0 0 1 0 0)");
+            // tri.onmousedown = selectElement;
+            // focused_canvas.appendChild(tri);
+            new TriangleCanvas(focused_canvas.getCanvas(), 0);
             break;
     }
     //turn on menu
@@ -128,7 +128,7 @@ function getRangeSelectedNodes(range) {
     // Iterate nodes until we hit the end container
     var rangeNodes = [];
     while (node && node != endNode) {
-        rangeNodes.push( node = nextNode(node) );
+        rangeNodes.push(node = nextNode(node));
     }
 
     // Add partially selected nodes at the start of the range
@@ -147,13 +147,13 @@ function addTable() {
     var parent = node.parentNode;
     var children = parent.childNodes;
     var index;
-    for (var i = 0; i < children.length; i++){
-        if (children[i].isSameNode(node)){
+    for (var i = 0; i < children.length; i++) {
+        if (children[i].isSameNode(node)) {
             index = i;
             break;
         }
     }
-    parent.insertChildAtIndex(newTable(2,2), index);
+    parent.insertChildAtIndex(newTable(2, 2), index);
 }
 
 
@@ -181,17 +181,20 @@ function alignCenter() {
 
 }
 
-function addCanvas(){
+function addCanvas() {
     var node = getSelectionStart();
     var parent = node.parentNode;
     var children = parent.childNodes;
     var index;
-    for (var i = 0; i < children.length; i++){
-        if (children[i].isSameNode(node)){
+    for (var i = 0; i < children.length; i++) {
+        if (children[i].isSameNode(node)) {
             index = i;
             break;
         }
     }
-    parent.insertChildAtIndex(newCanvas(300,300), index);
+    focused_canvas = new Canvas(parent, index);
+    focused_canvas.element.addEventListener('click', function () {
+        document.getElementById("canvas_editor").style.display = "block";
+    });
 }
 
