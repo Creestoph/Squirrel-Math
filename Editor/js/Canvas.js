@@ -23,6 +23,7 @@ class Canvas extends HTMLElement {
         this.canvas.setAttribute('width', '300');
         this.canvas.setAttribute('height', '300');
         this.canvas.setAttribute('tabindex', '-1');
+        this.canvas.setAttribute('class', 'editor_canvas');
         const a = this;
         this.canvas.onmousemove = function (evt) {
             evt.stopPropagation();

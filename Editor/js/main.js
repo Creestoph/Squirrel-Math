@@ -131,6 +131,18 @@ function addShape(shape) {
             // focused_canvas.appendChild(tri);
             new TriangleCanvas(focused_canvas.getCanvas(), 0);
             break;
+
+        case 'circle':
+            new CircleCanvas(focused_canvas.getCanvas(), 0);
+            break;
+
+        case 'rectangle':
+            new RectangleCanvas(focused_canvas.getCanvas(), 0);
+            break;
+
+        case 'polygon':
+            new PolygonCanvas(focused_canvas.getCanvas(), 0);
+            break;
     }
     //turn on menu
 }

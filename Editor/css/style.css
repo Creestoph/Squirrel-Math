@@ -699,3 +699,14 @@ table.columnar_operation_script td
     background: #111111;
     height: 10px;
 }
+
+.editor_canvas
+{
+    border: 2px dashed black;
+    outline: none;
+}
+
+.editor_canvas:focus
+{
+    border: 2px dashed rgb(200, 0, 0);
+}
