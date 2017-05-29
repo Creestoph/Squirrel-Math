@@ -154,6 +154,21 @@ function nextNode(node) {
     }
 }
 
+function insertOnActiveIndex(obj, offset=0) {
+    var node = getSelectionStart();
+    var parent = node.parentNode;
+    var children = parent.childNodes;
+    var index;
+    for (var i = 0; i < children.length; i++) {
+        if (children[i].isSameNode(node)) {
+            index = i;
+            break;
+        }
+    }
+    parent.insertChildAtIndex(obj, index+offset);
+
+}
+
 function getRangeSelectedNodes(range) {
     var node = range.startContainer;
     var endNode = range.endContainer;
@@ -180,89 +195,40 @@ function getRangeSelectedNodes(range) {
 }
 
 function addTable() {
-
-    var node = getSelectionStart();
-    var parent = node.parentNode;
-    var children = parent.childNodes;
-    var index;
-    for (var i = 0; i < children.length; i++) {
-        if (children[i].isSameNode(node)) {
-            index = i;
-            break;
-        }
-    }
-    parent.insertChildAtIndex(newTable(2, 2), index);
+    insertOnActiveIndex(newTable(2, 2));
 }
 
 
 function addChapter() {
-    var node = getSelectionStart();
-    var parent = node.parentNode;
-    var children = parent.childNodes;
-    var index;
-    for (var i = 0; i < children.length; i++) {
-        if (children[i].isSameNode(node)) {
-            index = i;
-            break;
-        }
-    }
-    parent.insertChildAtIndex(newChapter(), index);
-    //document.getElementsByClassName('main')[0].appendChild(newChapter());
+    insertOnActiveIndex(newChapter());
 }
 
 function addExample() {
-    var node = getSelectionStart();
-    var parent = node.parentNode;
-    var children = parent.childNodes;
-    var index;
-    for (var i = 0; i < children.length; i++) {
-        if (children[i].isSameNode(node)) {
-            index = i;
-            break;
-        }
-    }
-    parent.insertChildAtIndex(newExample(), index);
-    //document.getElementsByClassName('main')[0].appendChild(newExample());
+    insertOnActiveIndex(newExample());
 }
 
 function addProof() {
-    var node = getSelectionStart();
-    var parent = node.parentNode;
-    var children = parent.childNodes;
-    var index;
-    for (var i = 0; i < children.length; i++) {
-        if (children[i].isSameNode(node)) {
-            index = i;
-            break;
-        }
-    }
-
-    parent.insertChildAtIndex(newProofHeader(), index);
-    parent.insertChildAtIndex(newProof(), index+1);
-    //document.getElementsByClassName('main')[0].appendChild(newProof());
+    insertOnActiveIndex(newProofHeader());
+    insertOnActiveIndex(newProof(), 1);
 }
 
 function addParagraph() {
-    var node = getSelectionStart();
-    var parent = node.parentNode;
-    var children = parent.childNodes;
-    var index;
-    for (var i = 0; i < children.length; i++) {
-        if (children[i].isSameNode(node)) {
-            index = i;
-            break;
-        }
-    }
-
     var paragraph = newParagraph();
-    parent.insertChildAtIndex(paragraph, index);
-    $('p[contenteditable]').keydown(function(e) {
+    insertOnActiveIndex(paragraph, 1);
+
+    paragraph.onkeydown = function (e) {
+        e.stopPropagation();
         if (e.keyCode === 13) {
-            onParagraphEnter(e);
+            addParagraph();
             return false;
         }
-    });
-    return paragraph;
+    };
+    var range = document.createRange();
+    var sel = window.getSelection();
+    range.setStart(paragraph, 0);
+    range.collapse(true);
+    sel.removeAllRanges();
+    sel.addRange(range);
 }
 
 function alignLeft() {
@@ -301,20 +267,9 @@ function addCanvas() {
     });
 }
 
-function onParagraphEnter(e)
-{
-    var paragraph = addParagraph();
-    var range = document.createRange();
-    var sel = window.getSelection();
-    range.setStart(paragraph, 0);
-    range.collapse(true);
-    sel.removeAllRanges();
-    sel.addRange(range);
-}
-
 $('p[contenteditable]').keydown(function(e) {
     if (e.keyCode === 13) {
-        onParagraphEnter(e);
+        addParagraph();
         return false;
     }
 });
