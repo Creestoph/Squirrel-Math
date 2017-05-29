@@ -1,6 +1,9 @@
 //variables
 var chapter_name_string = 'Nazwa rozdziału';
 var chapter_content_string = 'Treść rozdziału';
+var example_content_string = 'Treść przykładu';
+var proof_content_string = 'Treść dowodu';
+var proof_header_string = 'Dowód';
 
 var focused_canvas;
 //------------
@@ -37,9 +40,44 @@ function newChapter() {
     chapter_paragraph.innerHTML = chapter_content_string;
     chapter_body.appendChild(chapter_paragraph);
 
-
     return chapter;
+}
 
+function newExample() {
+    var example = document.createElement('div');
+    example.className += 'example';
+
+    var example_paragraphh = document.createElement('p');
+    example_paragraphh.contentEditable = 'true';
+    example_paragraphh.innerHTML = example_content_string;
+    example.appendChild(example_paragraphh);
+
+    return example;
+}
+
+function newProofHeader() {
+    var header = document.createElement('p');
+    header.innerHTML = proof_header_string;
+    header.className += 'type';
+    return header;
+}
+
+function newProof() {
+    var proof = document.createElement('div');
+    proof.className += 'proof';
+
+    var proof_paragraph = document.createElement('p');
+    proof_paragraph.contentEditable = 'true';
+    proof_paragraph.innerHTML = proof_content_string;
+    proof.appendChild(proof_paragraph);
+
+    return proof;
+}
+
+function newParagraph() {
+    var paragraph = document.createElement('p');
+    paragraph.contentEditable = 'true';
+    return paragraph;
 }
 
 function newTable(w, h) {
@@ -158,9 +196,74 @@ function addTable() {
 
 
 function addChapter() {
-    document.getElementsByClassName('main')[0].appendChild(newChapter());
+    var node = getSelectionStart();
+    var parent = node.parentNode;
+    var children = parent.childNodes;
+    var index;
+    for (var i = 0; i < children.length; i++) {
+        if (children[i].isSameNode(node)) {
+            index = i;
+            break;
+        }
+    }
+    parent.insertChildAtIndex(newChapter(), index);
+    //document.getElementsByClassName('main')[0].appendChild(newChapter());
 }
 
+function addExample() {
+    var node = getSelectionStart();
+    var parent = node.parentNode;
+    var children = parent.childNodes;
+    var index;
+    for (var i = 0; i < children.length; i++) {
+        if (children[i].isSameNode(node)) {
+            index = i;
+            break;
+        }
+    }
+    parent.insertChildAtIndex(newExample(), index);
+    //document.getElementsByClassName('main')[0].appendChild(newExample());
+}
+
+function addProof() {
+    var node = getSelectionStart();
+    var parent = node.parentNode;
+    var children = parent.childNodes;
+    var index;
+    for (var i = 0; i < children.length; i++) {
+        if (children[i].isSameNode(node)) {
+            index = i;
+            break;
+        }
+    }
+
+    parent.insertChildAtIndex(newProofHeader(), index);
+    parent.insertChildAtIndex(newProof(), index+1);
+    //document.getElementsByClassName('main')[0].appendChild(newProof());
+}
+
+function addParagraph() {
+    var node = getSelectionStart();
+    var parent = node.parentNode;
+    var children = parent.childNodes;
+    var index;
+    for (var i = 0; i < children.length; i++) {
+        if (children[i].isSameNode(node)) {
+            index = i;
+            break;
+        }
+    }
+
+    var paragraph = newParagraph();
+    parent.insertChildAtIndex(paragraph, index);
+    $('p[contenteditable]').keydown(function(e) {
+        if (e.keyCode === 13) {
+            onParagraphEnter(e);
+            return false;
+        }
+    });
+    return paragraph;
+}
 
 function alignLeft() {
     var nodes = getRangeSelectedNodes(document.getSelection().getRangeAt(0))
@@ -198,3 +301,20 @@ function addCanvas() {
     });
 }
 
+function onParagraphEnter(e)
+{
+    var paragraph = addParagraph();
+    var range = document.createRange();
+    var sel = window.getSelection();
+    range.setStart(paragraph, 0);
+    range.collapse(true);
+    sel.removeAllRanges();
+    sel.addRange(range);
+}
+
+$('p[contenteditable]').keydown(function(e) {
+    if (e.keyCode === 13) {
+        onParagraphEnter(e);
+        return false;
+    }
+});
