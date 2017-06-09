@@ -36,7 +36,6 @@ function newChapter() {
     chapter_body.className += 'chapter_body';
     chapter_mask.appendChild(chapter_body);
     var chapter_paragraph = document.createElement('p');
-    chapter_paragraph.contentEditable = 'true';
     chapter_paragraph.innerHTML = chapter_content_string;
     chapter_body.appendChild(chapter_paragraph);
 
@@ -48,7 +47,6 @@ function newExample() {
     example.className += 'example';
 
     var example_paragraphh = document.createElement('p');
-    example_paragraphh.contentEditable = 'true';
     example_paragraphh.innerHTML = example_content_string;
     example.appendChild(example_paragraphh);
 
@@ -67,7 +65,6 @@ function newProof() {
     proof.className += 'proof';
 
     var proof_paragraph = document.createElement('p');
-    proof_paragraph.contentEditable = 'true';
     proof_paragraph.innerHTML = proof_content_string;
     proof.appendChild(proof_paragraph);
 
@@ -76,7 +73,6 @@ function newProof() {
 
 function newParagraph() {
     var paragraph = document.createElement('p');
-    paragraph.contentEditable = 'true';
     return paragraph;
 }
 
@@ -90,7 +86,6 @@ function newTable(w, h) {
             cell.style.width = '50px';
             cell.style.height = '50px';
             var d = document.createElement('div');
-            cell.contentEditable = 'true';
             cell.appendChild(d);
         }
     }
@@ -147,11 +142,6 @@ function addShape(shape) {
     //turn on menu
 }
 
-function getSelectionStart() {
-    var node = document.getSelection().anchorNode;
-    return (node.nodeType === 3 ? node.parentNode : node);
-}
-
 function nextNode(node) {
     if (node.hasChildNodes()) {
         return node.firstChild;
@@ -165,19 +155,13 @@ function nextNode(node) {
         return node.nextSibling;
     }
 }
-
+function getSelectionStart() {
+    var node = document.getSelection().anchorNode;
+    return (node.nodeType == 3 ? node.parentNode : node);
+}
 function insertOnActiveIndex(obj, offset=0) {
-    var node = getSelectionStart();
-    var parent = node.parentNode;
-    var children = parent.childNodes;
-    var index;
-    for (var i = 0; i < children.length; i++) {
-        if (children[i].isSameNode(node)) {
-            index = i;
-            break;
-        }
-    }
-    parent.insertChildAtIndex(obj, index+offset);
+    var p = getSelectionStart();
+    p.parentNode.insertBefore(obj, p.nextSibling);
 
 }
 
@@ -220,8 +204,8 @@ function addExample() {
 }
 
 function addProof() {
-    insertOnActiveIndex(newProofHeader());
     insertOnActiveIndex(newProof(), 1);
+    insertOnActiveIndex(newProofHeader());
 }
 
 function addParagraph() {
@@ -278,10 +262,3 @@ function addCanvas() {
         document.getElementById("canvas_editor").style.display = "block";
     });
 }
-
-$('p[contenteditable]').keydown(function(e) {
-    if (e.keyCode === 13) {
-        addParagraph();
-        return false;
-    }
-});

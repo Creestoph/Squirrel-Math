@@ -15,6 +15,5 @@ class TriangleCanvas extends MovingShape{
             evt.stopPropagation();
             MovingShape.select(evt, a);
         };
-
     }
 }
