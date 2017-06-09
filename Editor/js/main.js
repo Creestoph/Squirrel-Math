@@ -120,21 +120,29 @@ function newCanvas(w, h) {
     canvas.setAttribute('width', '300');
     canvas.setAttribute('height', '300');
     canvas.setAttribute('tabindex', '-1');
-    canvas.onmousedown = focusCanvas;
-    canvas.onblur = blurCanvas;
+    canvas.onmousedown = onCanvasFocus();
+    canvas.onblur = onCanvasBlur();
     //canvas.onmousemove = setCursor;
     p.setAttribute('align', 'center');
     p.appendChild(canvas);
     return p;
 }
 
-function focusCanvas() {
+function onCanvasFocus() {
     document.getElementById("canvas_editor").style.display = "block";
     focused_canvas = this;
 }
 
-function blurCanvas() {
+function onCanvasBlur() {
     //document.getElementById("canvas_editor").style.display = "none";
+}
+
+function onShapeFocus() {
+    document.getElementById("shape_editor").style.display = "block";
+}
+
+function onShapeBlur() {
+    document.getElementById("shape_editor").style.display = "none";
 }
 
 function addShape(shape) {
