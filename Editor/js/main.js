@@ -78,27 +78,20 @@ function newParagraph() {
 
 function newListElement() {
     var list_element = document.createElement('li');
-    var display = document.createElement('span');
-    display.className = 'li_display';
-    display.innerHTML = ' <br>';
-    $(display).click(function () {
-        $(this).focus();
-    });
-    $(list_element).click(function () {
-        $(display).focus();
-    });
-    list_element.appendChild(display);
+    list_element.innerHTML = '-    -';
     return list_element;
 }
 
 function newUList() {
     var ulist = document.createElement('ul');
+    ulist.contentEditable = true;
     ulist.appendChild(newListElement());
     return ulist;
 }
 
 function newOList() {
     var ulist = document.createElement('ol');
+    ulist.contentEditable = true;
     ulist.appendChild(newListElement());
     return ulist;
 }
