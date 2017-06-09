@@ -76,6 +76,23 @@ function newParagraph() {
     return paragraph;
 }
 
+function newUList() {
+    var ulist = document.createElement('ul');
+    var list_element = document.createElement('li');
+    list_element.innerHTML = '';
+    list_element.contentEditable = 'true';
+    ulist.appendChild(list_element);
+    return ulist;
+}
+
+function newOList() {
+    var ulist = document.createElement('ol');
+    var list_element = document.createElement('li');
+    list_element.contentEditable = 'true';
+    ulist.appendChild(list_element);
+    return ulist;
+}
+
 function newTable(w, h) {
     var table = document.createElement('table');
     for (var i = 0; i < h; i++) {
@@ -98,21 +115,29 @@ function newCanvas(w, h) {
     canvas.setAttribute('width', '300');
     canvas.setAttribute('height', '300');
     canvas.setAttribute('tabindex', '-1');
-    canvas.onmousedown = focusCanvas;
-    canvas.onblur = blurCanvas;
+    canvas.onmousedown = onCanvasFocus();
+    canvas.onblur = onCanvasBlur();
     //canvas.onmousemove = setCursor;
     p.setAttribute('align', 'center');
     p.appendChild(canvas);
     return p;
 }
 
-function focusCanvas() {
+function onCanvasFocus() {
     document.getElementById("canvas_editor").style.display = "block";
     focused_canvas = this;
 }
 
-function blurCanvas() {
+function onCanvasBlur() {
     //document.getElementById("canvas_editor").style.display = "none";
+}
+
+function onShapeFocus() {
+    document.getElementById("shape_editor").style.display = "block";
+}
+
+function onShapeBlur() {
+    document.getElementById("shape_editor").style.display = "none";
 }
 
 function addShape(shape) {
@@ -165,6 +190,16 @@ function insertOnActiveIndex(obj, offset=0) {
 
 }
 
+function focusNode(n)
+{
+    var range = document.createRange();
+    var sel = window.getSelection();
+    range.setStart(n, 0);
+    range.collapse(true);
+    sel.removeAllRanges();
+    sel.addRange(range);
+}
+
 function getRangeSelectedNodes(range) {
     var node = range.startContainer;
     var endNode = range.endContainer;
@@ -194,7 +229,6 @@ function addTable() {
     insertOnActiveIndex(newTable(2, 2));
 }
 
-
 function addChapter() {
     insertOnActiveIndex(newChapter());
 }
@@ -219,12 +253,19 @@ function addParagraph() {
             return false;
         }
     };
-    var range = document.createRange();
-    var sel = window.getSelection();
-    range.setStart(paragraph, 0);
-    range.collapse(true);
-    sel.removeAllRanges();
-    sel.addRange(range);
+    focusNode(paragraph);
+}
+
+function unorderedList() {
+    var ulist = newUList();
+    insertOnActiveIndex(ulist);
+    focusNode(ulist.firstChild);
+}
+
+function orderedList() {
+    var olist = newOList();
+    insertOnActiveIndex(olist);
+    focusNode(olist.firstChild);
 }
 
 function alignLeft() {
