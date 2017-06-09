@@ -76,19 +76,42 @@ function newParagraph() {
     return paragraph;
 }
 
+function newListElement() {
+    var list_element = document.createElement('li');
+    var display = document.createElement('span');
+    var input = document.createElement('input');
+    display.className = 'li_display';
+    display.innerHTML = "some text";
+    input.type = 'text';
+    input.className="li_edit";
+    input.style="display:none";
+    $(display).click(function () {
+        $(this).hide().siblings(".li_edit").show().val($(this).text()).focus();
+    });
+    $(input).focusout(function(){
+        $(this).hide().siblings(".li_display").show().text($(this).val());
+    });
+    $(input).keydown(function (event) {
+        if (event.which == 13 || event.keyCode == 13) {
+            list_element.parentNode.insertBefore(newListElement(), list_element.nextSibling);
+            return false;
+        }
+        return true;
+    });
+    list_element.appendChild(display);
+    list_element.appendChild(input);
+    return list_element;
+}
+
 function newUList() {
     var ulist = document.createElement('ul');
-    var list_element = document.createElement('li');
-    list_element.innerHTML = '';
-    list_element.contentEditable = 'true';
-    ulist.appendChild(list_element);
+    ulist.appendChild(newListElement());
     return ulist;
 }
 
 function newOList() {
     var ulist = document.createElement('ol');
     var list_element = document.createElement('li');
-    list_element.contentEditable = 'true';
     ulist.appendChild(list_element);
     return ulist;
 }
@@ -186,7 +209,13 @@ function getSelectionStart() {
 }
 function insertOnActiveIndex(obj, offset=0) {
     var p = getSelectionStart();
-    p.parentNode.insertBefore(obj, p.nextSibling);
+    var m = false;
+    var t = p;
+    while (t.parentNode && !m){
+        if (t.className == "main")  m = true;
+        t = t.parentNode;
+    }
+    if (m) p.parentNode.insertBefore(obj, p.nextSibling);
 
 }
 
