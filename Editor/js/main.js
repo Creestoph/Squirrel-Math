@@ -81,12 +81,14 @@ function newListElement() {
     var display = document.createElement('span');
     var input = document.createElement('input');
     display.className = 'li_display';
-    display.innerHTML = "some text";
     input.type = 'text';
     input.className="li_edit";
     input.style="display:none";
     $(display).click(function () {
         $(this).hide().siblings(".li_edit").show().val($(this).text()).focus();
+    });
+    $(list_element).click(function () {
+        $(this).children(".li_display").hide().siblings(".li_edit").show().val($(this).text()).focus();
     });
     $(input).focusout(function(){
         $(this).hide().siblings(".li_display").show().text($(this).val());
