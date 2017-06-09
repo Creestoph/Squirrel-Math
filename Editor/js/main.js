@@ -79,29 +79,15 @@ function newParagraph() {
 function newListElement() {
     var list_element = document.createElement('li');
     var display = document.createElement('span');
-    var input = document.createElement('input');
     display.className = 'li_display';
-    input.type = 'text';
-    input.className="li_edit";
-    input.style="display:none";
+    display.innerHTML = ' <br>';
     $(display).click(function () {
-        $(this).hide().siblings(".li_edit").show().val($(this).text()).focus();
+        $(this).focus();
     });
     $(list_element).click(function () {
-        $(this).children(".li_display").hide().siblings(".li_edit").show().val($(this).text()).focus();
-    });
-    $(input).focusout(function(){
-        $(this).hide().siblings(".li_display").show().text($(this).val());
-    });
-    $(input).keydown(function (event) {
-        if (event.which == 13 || event.keyCode == 13) {
-            list_element.parentNode.insertBefore(newListElement(), list_element.nextSibling);
-            return false;
-        }
-        return true;
+        $(display).focus();
     });
     list_element.appendChild(display);
-    list_element.appendChild(input);
     return list_element;
 }
 
@@ -113,8 +99,7 @@ function newUList() {
 
 function newOList() {
     var ulist = document.createElement('ol');
-    var list_element = document.createElement('li');
-    ulist.appendChild(list_element);
+    ulist.appendChild(newListElement());
     return ulist;
 }
 
