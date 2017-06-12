@@ -78,48 +78,20 @@ function newParagraph() {
 
 function newListElement() {
     var list_element = document.createElement('li');
-    var input = document.createElement('input');
-    input.contentEditable = true;
-    input.type = 'text';
-    input.className="li_edit";
-    $(input).keydown(function (event) {
-        if (event.which == 13 || event.keyCode == 13) {
-            var el = newListElement();
-            list_element.parentNode.insertBefore(el, list_element.nextSibling);
-            $(el).children('.li_edit').focus();
-            return false;
-        }
-        if ((event.which == 8 || event.keyCode == 8) && input.value.length === 0) {
-            if (list_element.parentNode.childNodes.length === 1){
-                list_element.parentNode.remove();
-            }
-            else {
-                $(list_element.previousSibling).children('.li_edit').focus();
-                list_element.remove();
-            }
-            return false;
-        }
-        return true;
-    });
-    list_element.appendChild(input);
     return list_element;
 }
 
 function newUList() {
     var ulist = document.createElement('ul');
-    ulist.contentEditable = false;
     var el = newListElement();
     ulist.appendChild(el);
-    $(el).children('.li_edit').focus();
     return ulist;
 }
 
 function newOList() {
     var ulist = document.createElement('ol');
-    ulist.contentEditable = false;
     var el = newListElement();
     ulist.appendChild(el);
-    $(el).children('.li_edit').focus();
     return ulist;
 }
 

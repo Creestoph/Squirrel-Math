@@ -245,14 +245,12 @@ p.problem
 
 ul
 {
-    list-style: none;
-    display: table;
+    list-style-type: none;
 }
 
 li
 {
-    display: table-row;
-    margin: 50px 0;
+    margin: 0 0 0 0;
 }
 
 ul li:before
@@ -260,7 +258,6 @@ ul li:before
     content: "♣";
     color: #CC2222;
     margin: 0 1em;
-    display: table-cell;
     padding-right:  0.5em
 }
 
@@ -273,6 +270,7 @@ ul ul li:before
 
 ol
 {
+    list-style-type: none;
     counter_reset: foo;
 }
 
@@ -287,7 +285,6 @@ ol li:before
     color: #DD2222;
     margin: 0 1.5em;
     margin: 0 1em;
-    display: table-cell;
     padding-right:  0.5em;
 }
 
