@@ -5,7 +5,12 @@ $(document).ready(function() {
 	  this.value = number.replace(/\B(?=(\d{3})+(?!\d))/g, " ");
 	  numberToStr();
 	});
+	
+	//var t_height = $('#out').height();
+	var t_height = document.getElementById('out').clientHeight;
+	$('#out_mask').css('height', 0);
 });
+
 
 function numberToStr() {
   var out = document.getElementById("out");
@@ -26,18 +31,19 @@ function numberToStr() {
     "duodecylionów", "duodecyliardów"
   ];
   var outstr = "";
+  var ok = true;
   input = input.replace(/ /g, "");
   for (i = 0; i < input.length; i++) {
     if (String(parseInt(input.charAt(i))) !== input.charAt(i)) {
-      out.innerHTML = "Nie umiesz wpisać liczby naturalnej?";
-      return;
+      outstr = "Nie umiesz wpisać liczby naturalnej?";
+      ok = false;
     }
   }
-  if (parseInt(input) === 0) {
-    out.innerHTML = "zero";
-    return;
+  if (parseInt(input) === 0 && ok) {
+    outstr = "zero";
+    ok = false;
   }
-  for (i = input.length - 1; i >= 0; i -= 3) {
+  for (i = input.length - 1; i >= 0 && ok; i -= 3) {
     temp = ""
     tempdz = "";
     if (i - 1 >= 0) tempdz = tempdz.concat(input.charAt(i - 1));
@@ -61,6 +67,12 @@ function numberToStr() {
     else if (parseInt(tempdz) > 0) temp = temp.concat(" " + rzedy[rz]);
     outstr = temp.concat(" " + outstr);
   }
+ 
+
   out.innerHTML = outstr;
+  
+  var t_height = document.getElementById('out').clientHeight;
+  $('#out_mask').css('height', outstr === "" ? 0 : t_height);
+  //$('#out_mask').css('display', outstr === "" ? "none" : "block");
 
 }
