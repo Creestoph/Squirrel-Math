@@ -261,7 +261,7 @@ ul li:before
     color: #CC2222;
     margin: 0 1em;
     display: table-cell;
-    padding-right:  0.5em;
+    padding-right:  0.5em
 }
 
 ul ul li:before
