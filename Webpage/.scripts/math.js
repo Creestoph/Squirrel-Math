@@ -150,6 +150,20 @@ function element_mathML(input)
 		result+="</mtext>";
 		pos++; //)
 	}
+	else if (input.substring(pos, pos+4)=='Root')
+	{
+		pos+=4; //Root
+		var deg = element_mathML(input);
+		pos++;//(
+		var arg = element_mathML(input)
+		pos++;//)
+		result+="<mroot>" + arg + deg + "</mroot>";
+	}
+	else if (input.substring(pos, pos+4)=='Sqrt')
+	{
+		pos+=4; //Sqrt
+		result+="<msqrt>" + element_mathML(input) + "</msqrt>";
+	}
 	else if (input.substring(pos, pos+3)=="NWD")
 	{
 		result = "<mtext>NWD</mtext>";
@@ -215,7 +229,7 @@ function element_mathML(input)
 		pos ++;
         result = "<mo>⇒</mo>";
 	}
-	else if (input[pos] == '⇔')
+	else if (input[pos] == '⇔' || input[pos] == '⟺')
 	{
 		pos ++;
         result = "<mo>⇔</mo>";
@@ -306,6 +320,6 @@ $(document).ready(function(){
 	 maths = document.getElementsByClassName("math");
 	for (k = 0; k < maths.length; k++)
 	{
-		maths[k].innerHTML = '<math xmlns="http://www.w3.org/1998/Math/MathML" display="inline" fontFamily="MathJax">' + to_mathML(maths[k].innerHTML) + "</math>";
+		maths[k].innerHTML = '<math xmlns="http://www.w3.org/1998/Math/MathML" display="inline" fontFamily="Cambria">' + to_mathML(maths[k].innerHTML) + "</math>";
 	}
 });

@@ -1,0 +1,507 @@
+<!DOCTYPE HTML PUBLIC “-//W3C//DTD HTML 4.01 Transitional//EN”>
+<html lang="pl">
+
+<head>
+	<title>Wyrażenia algebraiczne</title>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+	<link rel="stylesheet" href="../lesson_style.css">
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+	<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=MML_HTMLorMML"></script>
+	<script src="../.scripts/scroll_hide.js"></script>
+	<script src="../.scripts/draggable.js"></script>
+	<script src="../.scripts/math.js"></script>
+	<script src="../.scripts/comment.js"></script>
+</head>
+
+<body class="lesson">
+  
+<div class = "menu">
+	<a href="../index.html"><button class = "button_convey" style="position: absolute; left: 10px"><span>Strona główna</span></button></a>
+	<a href="../drzewo.html"><button class = "button_convey" style="position: absolute; left: 250px"><span>Drzewo</span></button></a>
+	<a href="liczby_ujemne_short.html"><button class = "button_convey" style="position: relative; left: 80%"><span>Wersja skrócona</span></button></a>
+</div>
+  
+<div class="main">
+
+	<p class="lesson_title">
+		Wyrażenia algebraiczne
+	</p>
+    
+	<p>
+		Wreszcie przychodzi pora, by przestać bawić się w księgowość, a wkroczyć w prawdziwą matematykę. Dziedzina, którą głównie zajmowaliśmy 
+		się do tej pory, to <i>arytmetyka</i> – stosunkowo żmudna nauka, mówiąca jedynie, jak grzebać w kałuży liczb naturalnych, wymiernych i 
+		całkowitych, aby nie pobrudzić sobie za bardzo rąk. Teraz wchodzimy o szczebel wyżej w wysokiej drabinie abstrakcji – rozpoczynamy 
+		znajomość z <i>algebrą</i>.
+	</p>
+		
+	<div class="chapter">
+	<div class="chapter_name">
+		Wzór na doskonałość
+	</div>
+	<hr>
+	
+	<div class="chapter_mask">
+	<div class="chapter_body">
+		
+	<p class="type">
+		Intuicje
+	</p>
+	
+	<p>
+		Po kilku miesiącach intensywnego odchudzania tabletkami „Nopain” Michaś zaczął dostrzegać rzeczywiste rezultaty – patrząc w lustro, 
+		nie może odmówić swej sylwetce cech boskich. Z obawy przed czyhającą za rogiem anoreksją, Michaś postanowił upewnić się, czy nie grozi 
+		mu niedowaga. Z głową zajętą planowaniem, w jaki sposób zacząłby walkę ze swoją niedowagą, przystąpił do obliczenia swojego BMI: na 
+		lekcjach biologii usłyszał, że wskaźnik BMI uzyskujemy, mnożąc swój wzrost w metrach przez siebie, a następnie dzieląc swoją wagę w 
+		kilogramach przez uzyskany wynik. Jeżeli wskaźnik jest mniejszy niż <span class="math">18,5</span>, mamy niedowagę, wartość między 
+		<span class="math">18,5</span> a <span class="math">25</span> oznacza normę, zaś 
+		wskaźnik powyżej <span class="math">25</span> sugeruje nadwagę.
+	</p>
+
+	<p>
+		Powyższą regułkę matematyk zapisze w postaci <i>wzoru</i>: 
+	</p>
+		
+	<p class="math" align="center">
+		BMI=(waga)/(wzrost∙wzrost)
+	</p>
+		
+	<p>
+		Prawdopodobnie niejedna osoba o niebanalnym poczuciu estetyki zauważy, że użycie polskiego słowa „waga” w uniwersalnym matematycznym
+		wzorze jest przynajmniej nieeleganckie. Z tego powodu zamiast słownych opisów w matematycznych formułach zawsze będziemy używać
+		jednoliterowych oznaczeń:
+	</p>
+	
+	<p class="math" align="center">
+		B=m/(h∙h)
+	</p>
+		
+	<p>
+		Następnie po dumnym zapisaniu wzoru wyjaśnimy z dowolną dokładnością i czułością osobie niewtajemniczonej nasze oznaczenia:
+		<br>
+		&emsp;&emsp;<span class="math">m</span> – masa ciała w kilogramach<br>
+		&emsp;&emsp;<span class="math">h</span> – wzrost w metrach<br>
+		&emsp;&emsp;<span class="math">B</span> – współczynnik BMI niosący konsekwencje: <br>
+		&emsp;&emsp;&emsp;&emsp;<span class="math">B&lt;18,5</span> – niedowaga<br>
+		&emsp;&emsp;&emsp;&emsp;<span class="math">18,5&lt;B&lt;25</span> – norma<br>
+		&emsp;&emsp;&emsp;&emsp;<span class="math">B&gt;25</span> – nadwaga<br>
+	</p>
+		
+	<p>		
+		Z punktu widzenia rachunków, które należy wykonać, zapis za pomocą wzoru jest znacznie bardziej przejrzysty niż wyjaśnienie słowne. 
+		Możemy teraz taśmowo przyjmować kolejnych delikwentów i wydawać wyroki dotyczące ich budowy ciała.
+	</p>
+	
+	<div class="example">
+			Pani Krystyna: waga <span class="math">64 kg</span>, wzrost <span class="math">1,87m</span>
+		<p class="math" align="center">B=64/(1,85∙1,85)≈18,3</p>
+		Niedowaga to niska cena za <span class="math">20</span> miejsce w konkursie top-model.
+	</div>
+	
+	<div class="example">
+			Stefan: waga <span class="math">79 kg</span>, wzrost <span class="math">1,78m</span>
+		<p class="math" align="center">B=79/(1,78∙1,78)≈24,93</p>
+		Waga w normie to ulga dla Stefanowego sumienia, targanego czwartkowym pączkiem z różą.
+	</div>
+	
+	<div class="example">
+			Michaś: waga <span class="math">103 kg</span>, wzrost <span class="math">1,75m</span>
+		<p class="math" align="center">B=103/(1,75*1,75)≈33,63</p>
+		Michaś pełen niedowierzania postanowił przerzucić się na tabletki „Nogain”.
+	</div>
+	</p>
+
+	</div>
+	</div>
+	</div>
+	
+	<div class="chapter">
+	<div class="chapter_name">
+		Oznaczenia literowe
+	</div>
+	<hr>
+	
+	<div class="chapter_mask">
+	<div class="chapter_body">
+
+	<p class="type">
+		Intuicje
+	</p>
+	
+	<p>
+		Aby z łatwością wyrażać ogólne myśli matematyczne, stosujemy litery, które pełnią rolę dość dowolnych liczb – liczb jakby 
+		„czekających na swoją wartość”. We wzorze
+	</p>
+	
+	<p class="math" align="center">
+		B=m/(h∙h)
+	</p>
+	
+	<p>
+		Litery <span class="math">m</span> i <span class="math">h</span> to <i>zmienne</i>, pod które należy podstawić konkretne wartości liczbowe, 
+		kiedy przyjdzie na to pora. 
+	</p>
+		
+	<p>
+		Litery mogą zastępować także dowolne <i>stałe</i> matematyczne lub fizyczne. Dla przykładu weźmy zależność między długością w kilometrach a 
+		długością w milach angielskich:
+	</p>
+	
+	<p class="math" align="center">
+		D=1,609344∙A
+	</p>
+	
+	<p>
+		gdzie <span class="math">A</span> oznacza jakąkolwiek długość wyrażoną w milach angielskich, zaś <span class="math">D</span> 
+		oznacza tę samą długość wyrażoną w kilometrach. Przykładowo podstawiając <span class="math">A=2</span> otrzymamy 
+		<span class="math">D=1,609344∙2=3,218688</span> i oznacza to tyle, że dwie mile angielskie to to samo, co <span class="math">3,218688</span>
+		kilometra. Powyższy wzór moglibyśmy zapisać jako
+	</p>
+	
+	<p class="math" align="center">
+		M=m∙A
+	</p>
+	
+	<p>
+		zastępując literą <span class="math">m</span> dość długą liczbę o stałej wartości <span class="math">1,609344</span>. 
+		Jest to praktyka chętnie stosowana przez fizyków, którzy nie lubią, kiedy w ich wzorach pojawiają się przydługie liczby wymierne.
+	</p>
+		
+	<p>
+		Gdy wzory stają się rozbudowane i wymagają użycia wielu zmiennych, bądź też jeśli do oznaczenia różnych zmiennych chcielibyśmy 
+		zastosować tę samą literę, zaleca się stosowanie <i>indeksów dolnych</i>. Weźmy wzór wynaleziony przez dietetyków mający rzekomo 
+		określać liczbę kalorii, jaką dana osoba powinna spożyć w ciągu dnia:
+	</p>
+	
+	<p class="math" align="center">
+		K=K_(mat)+K_(akt)+K_ż+K_(poż)
+	</p>
+	
+	<p>
+		gdzie:
+		<br>
+		&emsp;&emsp;<span class="math">K_(mat)</span> to kalorie przeznaczone na przemianę materii<br>
+		&emsp;&emsp;<span class="math">K_(akt)</span> to kalorie spalane podczas aktywności fizycznej<br>
+		&emsp;&emsp;<span class="math">K_ż</span> to kalorie potrzebne do wykonywania podstawowych czynności życiowych<br>
+		&emsp;&emsp;<span class="math">K_(poż)</span> to kalorie potrzebne na spalanie pożywienia
+	</p>
+	
+	<p>
+		każdy ze składników powyższej sumy oznacza jakieś kalorie, więc każdy z nich oznaczamy literką <span class="math">K</span>, 
+		jednak dla rozróżnienia <i>indeksujemy</i> 
+		te zmienne adekwatnymi przypisami.
+	</p>
+	
+	<p>
+		Wgłębiając się w dietetyczny szał, <span class="comment" 
+		id="Ponieważ mamy zapędy seksistowskie, uwzględniamy tylko wzory dla mężczyzn. Właściwie tylko statystycznych mężczyzn.">
+		zobaczmy jak wyliczyć każdy z powyższych składników:</span>
+	</p>
+	
+	<ul>
+		<li>
+			<span class="math">K_(mat)=5+9,99∙m + 6,25∙h - 4,92∙a</span><br>
+			gdzie <br>
+			&emsp;&emsp;<span class="math">m</span> oznacza masę ciała w kilogramach<br>
+			&emsp;&emsp;<span class="math">h</span> to wzrost w centymetrach<br>
+			&emsp;&emsp;<span class="math">a</span> to wiek w latach<br><br>
+		</li>
+			
+		<li>
+			<span class="math">K_(akt)=8∙t_(sił)+7∙t_(aero)+0,05∙K_(mat)∙l</span><br>
+			gdzie <br>
+			&emsp;&emsp;<span class="math">t_(sił)</span> – liczba minut poświęconych na trening siłowy<br>
+			&emsp;&emsp;<span class="math">t_(aero)</span> - liczba minut poświęconych na trening aerobowy<br>
+			&emsp;&emsp;<span class="math">l</span> – liczba podjętych treningów<br><br>
+		</li>
+			
+		<li>
+			<span class="math">K_ż=300</span> dla osoby szczupłej, <span class="math">K_ż=800</span> dla osoby tęższej, 
+			<span class="math">K_ż=450</span> dla osoby atletycznie zbudowanej<br><br>
+		</li>
+
+		<li class="math">
+			K_(poż)=0,08∙Bracket(K_(mat)+K_(akt)+K_ż)
+		</li>
+	</ul>
+		
+	<p>
+		Ten jakże złożony wzór możemy z przyjemnością zaaplikować dla przypadku Michasia:
+	<p>
+	
+	<ul>
+		<li>
+			Waga: <span class="math">103 kg</span>, wzrost: <span class="math">175 cm</span>, wiek: <span class="math">14 lat</span><br>
+		<span class="math">K_(mat)=5+9,99∙103 + 6,25∙175 - 4,92∙14=2058,84</span>
+		</li>
+		<li>
+			<span class="math">K_(akt)=0</span> ze względu na brak aktywności fizycznej
+		</li>
+		<li>
+			<span class="math">K_ż=800</span>, z całym szacunkiem dla Michasia
+		</li>
+		<li>
+			<span class="math">K_(poż)=0,08∙Bracket(2058,84+0+800)=228,7072</span>
+		</li>
+	</ul>
+	
+	<p>
+		Stąd
+	</p>
+	
+	<p class="math" align="center">
+		K=2058,84+0+800+228,7072=3087,5472
+	</p>
+		
+	<p>
+		Jeśli kawałek tortu czekoladowego ma <span class="math">700 kcal</span>, Michaś zapełniłby swoje dzienne zapotrzebowanie na 
+		energię czterema kawałkami tortu… 
+		jednak do odważnych świat należy – im większa masa ciała, tym większe zapotrzebowanie na kalorie!
+	</p>
+		
+	</div>
+	</div>
+	</div>
+	
+	<div class="chapter">
+	<div class="chapter_name">
+		Jednomiany
+	</div>
+	<hr>
+	
+	<div class="chapter_mask">
+	<div class="chapter_body">
+
+	<p class="type">
+		Intuicje
+	</p>
+		
+	<p>
+		Bardzo często w różnego rodzaju wzorach i matematycznych zapiskach pojawiają się mieszaniny liczb i liter połączonych działaniami 
+		matematycznymi, coś w rodzaju
+	</p>
+	
+	<p class="math" align="center">
+		5∙a∙b+6∙m+5,5∙g∙h
+	</p>
+	
+	<p>
+		Każdy taki zlepek liczb (<span class="comment" id="i nie tylko">naturalnych, wymiernych, całkowitych…</span> ) oraz liter (zmiennych, stałych, parametrów…) nazywamy 
+		<i>wyrażeniem algebraicznym</i> albo po prostu <i>wyrażeniem</i>. 
+		Wyrażenia algebraiczne bardzo często mają postać kilku iloczynów, które do siebie dodajemy, tak jak powyższa suma 
+		iloczynów <span class="math">5∙a∙b</span>,&nbsp;&nbsp;&nbsp;<span class="math">6∙m</span> oraz 
+		<span class="math">5,5∙g∙h</span>. Ze względu na kolejność wykonywania działań mnożenie wykonujemy w pierwszej kolejności, 
+		a więc kiedy obliczamy wartość wyrażenia algebraicznego (po podstawieniu wartości liczbowych) zawsze musimy najpierw rozpracować poszczególne 
+		grupy iloczynów, a na koniec zajmujemy się ich sumowaniem. O każdym takim iloczynie możemy myśleć jak o unikalnej indywidualności, 
+		jakby bohaterze naszych matematycznych przygód. Sumowanie to tylko wprowadzanie tych bohaterów na scenę, zebranie ich wszystkich 
+		razem w celu odegrania spektaklu. 
+	</p>
+		
+	<p>
+		Każdego takiego bohatera nazywamy <i>jednomianem</i>. Jednomian to iloczyn liczby oraz zmiennych literowych, przykładowo
+	</p>
+	
+	<ul>
+		<li class="math">a∙b∙b</li>
+		<li class="math">-5,4∙m∙f</li>
+		<li class="math">4/3∙x∙y</li>
+	</ul>
+	
+	<p>
+		Liczba widniejąca w postaci cyfr to tzw. <i>współczynnik jednomianu</i>.
+	</p>
+	
+	<ul>
+		<li>W jednomianie <span class="math">25,3∙b∙d∙e</span> współczynnikiem jest <span class="math">25,3</span></li>
+		<li>W jednomianie <span class="math">(a∙b∙c)/3</span> współczynnikiem jest <span class="math">1/3</span> 
+		(bardziej elegancka forma zapisu tego jednomianu to <span class="math">1/3∙a∙b∙c</span>)</li>
+		<li>W jednomianie <span class="math">-x∙y∙z</span> współczynnikiem jest <span class="math">-1</span></li>
+		<li>W jednomianie <span class="math">4</span> współczynnikiem jest <span class="math">4</span></li>
+		<li>W jednomianie <span class="math">h∙3∙n∙2∙j∙j</span> współczynnikiem jest <span class="math">6</span></li>
+	</ul>
+	
+	<p>
+		W jednomianie nie mogą występować inne działania, jak dodawanie, odejmowanie czy dzielenie (dopuszczalne jest dzielenie w postaci ułamka, 
+		którego mianownikiem jest liczba)
+	</p>
+	
+	<p>
+		Wyrażenie będące sumą jednomianów nazywamy <i>sumą algebraiczną</i> lub czasem <i>wielomianem</i>, choć pojęcie wielomianu odnosi się 
+		do trochę innej 
+		idei matematycznej. 
+	</p>
+	
+	<p>
+		Dla przejrzystości zapisu i lepszego poczucia „jedności” i „zbitości” jednomianów pomija się znak mnożenia w 
+		jednomianach. Matematycy nie będą pisać sumy
+	</p>
+	
+	<p class="math" align="center">
+		5∙a∙b+6∙m+5,5∙g∙h
+	</p>
+	
+	<p>
+		Zamiast tego zapisujemy
+	</p>
+	
+	<p class="math" align="center">
+		5ab+6m+5,5gh
+	</p>
+	
+	<p>
+		Dzięki temu zapis jest krótszy i pozwala łatwiej rozróżnić od siebie poszczególne jednomiany, a nie powoduje niejednoznaczności. W 
+		ciągu przyszłej kariery matematycznej szybko odzwyczaisz się od zapisywania kropki mnożenia. W praktyce znak mnożenia zapisujemy tylko
+		wtedy, gdy zapisujemy mnożenie dwóch liczb (zapisanych cyframi, nie za pomocą liter).
+	</p>
+
+	<p>
+		Teraz staje się jasne, dlaczego zmienne zapisujemy za pomocą jednoliterowych oznaczeń. Dla matematyka zapis
+	</p>
+	
+	<p class="math" align="center">
+		BMI=(waga)/(wzrost∙wzrost)
+	</p>
+	
+	<p>
+		oznacza, że
+	</p>
+	
+	<p class="math" align="center">
+		B∙M∙I=(w∙a∙g∙a)/(w∙z∙r∙o∙s∙t∙w∙z∙r∙o∙s∙t)
+	</p>
+	
+	<p>
+		Wciąż, jeśli chcemy dokładnie opisywać swoje zmienne, jak najbardziej dopuszczalne jest ściubienie dopisków w indeksach dolnych zmiennych.
+	</p>
+
+	<p class="type">
+		Rozszerzenie
+	</p>
+	
+	<p class="warning">
+		[wymagana znajomość tematu: Potęgowanie]
+	</p>
+
+	<p>
+		Z estetycznego punktu widzenia wielomiany powinno się zapisywać zaczynając od współczynnika liczbowego, a następnie <span class="comment"
+		id="i tak nikt o to nie dba">wypisując kolejne 
+		zmienne w kolejności alfabetycznej</span>. Jeśli pewna zmienna występuje jako czynnik więcej niż jeden raz, nie piszemy jej dwukrotnie, a 
+		jedynie zwiększamy jej wykładnik.
+		<br>
+		Tak więc:
+	</p>
+	
+	<ul>
+		<li class="math">a∙3∙a∙5∙b∙a∙b∙a^3∙Bracket(-2)∙b^2=-30a^6 b^4</li>
+		<li class="math">c/3∙(b^2)/2∙d∙a^3∙6=a^3 b^2 cd</li>
+		<li class="math">bogdan&nbsp;ma&nbsp;2&nbsp;jajca=2a^4 bcdgj^2 mno</li> 
+		<li class="math">masło=słoma=ałmos</li>
+	</ul>
+	
+	</div>
+	</div>
+	</div>
+	
+	<div class="chapter">
+	<div class="chapter_name">
+		Redukcja wyrazów podobnych
+	</div>
+	<hr>
+	
+	<div class="chapter_mask">
+	<div class="chapter_body">
+
+	<p class="type">
+		Intuicje
+	</p>
+	
+	<p>
+		Oznaczmy przez <span class="math">m</span> wagę pojedynczego bochenka chleba. Gdy położymy na wadze elektronicznej dwa bochenki, wskaże ona masę równą <span class="math">2m</span>. 
+		Gdy położymy na wadze jeszcze trzy bochenki, będziemy mieli <span class="math">5</span> bochenków ledwo mieszczących się na wadze, 
+		która wskaże masę <span class="math">5m</span>. 
+		Stąd prosty wniosek:
+	</p>
+	
+	<p class="math" align="center">
+		2m+3m=5m
+	</p>
+
+	<p>
+		Na zmiennych i stałych wyrażonych literami możemy wykonywać dowolne działania matematyczne. Powyższy przykład pokazuje dodanie do 
+		siebie dwóch jednomianów i uzyskanie w wyniku innego jednomianu. Dodawanie do siebie jednomianów mocno przypomina spostrzeżenia których 
+		dokonywaliśmy dawno temu, w temacie o dodawaniu liczb naturalnych:
+	</p>
+	
+	<p class="math" align="center">
+		2&nbsp;Text(kulki) + 4&nbsp;Text(kulki) = 6&nbsp;Text(kulek)
+	</p>
+	
+	<p class="math" align="center">
+		10&nbsp;Text(owiec) + 7&nbsp;Text(owiec) = 17&nbsp;Text(owiec)
+	</p>
+	
+	<p class="math" align="center">
+		3&nbsp;Text(golonki) + 4&nbsp;Text(golonki) + 2&nbsp;Text(golonki) = 9&nbsp;Text(golonek)
+	</p>
+	
+	<p>
+		Tak samo, jak intuicyjne jest dodawanie do siebie przedmiotów z naszego otoczenia, tak samo nie ma nic dziwnego w dodawaniu do 
+		siebie jednomianów. Jednomiany to podmioty opowiadanej przez nas historii, każdy z nich ma jakby osobowość, charakter opisywany
+		za pomocą iloczynu zmiennych. 
+		Współczynniki jednomianów określają liczbę tych bohaterów. Gdy dodajemy jednomiany, które mają „ten sam charakter”, po 
+		prostu zwiększamy ich ilość. 
+	</p>
+
+	<p>
+		Jak by nie patrzeć:
+	</p>
+	
+	<p class="math" align="center">
+		4abc+10abc+6abc=20abc
+	</p>
+	
+	
+	
+	<p>
+		i nie ma absolutnie żadnego znaczenia, co właściwie reprezentują zmienne <span class="math">a</span>, <span class="math">b</span> i 
+		<span class="math">c</span>. Mogą one reprezentować Twoje najśmielsze pragnienia.
+	</p>
+	
+	<div class="example">
+		Możemy sobie wyobrazić, że <span class="math">a</span> to kaloryczność jednej parówki, <span class="math">b</span> to liczba parówek w 
+		paczce, a <span class="math">c</span> to ilość paczek parówek przewożona od 
+		dostawcy z Warszawy do Grochowa. Wtedy cząstka <span class="math">abc</span> jest bohaterem o imieniu „ilość kalorii, jakie wiezie jedna ciężarówka parówek z 
+		Warszawy do Grochowa”. Jeśli rano ciężarówka zrobiła <span class="math">3</span> kursy, w ciągu dnia <span class="math">10</span> 
+		kursów, a wieczorem <span class="math">6</span> kursów, to w sumie do Grochowa 
+		dostarczono <span class="math">20</span> porcji parówkowo-kalorycznych.
+	</div>
+	
+	<div class="example">
+		Jeśli w jednej klatce schodowej jest <span class="math">a</span> pięter, na jednym piętrze <span class="math">b</span> mieszkań, a w 
+		każdym mieszkaniu żyje średnio <span class="math">c</span> osób, to <span class="math">abc</span> 
+		oznacza liczbę osób mieszkających w jednej klatce. Zliczając <span class="math">4</span> klatki schodowe od strony wschodniej, 
+		<span class="math">6</span> klatek po stronie wschodniej i 
+		<span class="math">10</span> klatek od strony północnej otrzymamy ilość osób mieszkających w całym blokowisku.
+	</div>
+
+	<p>
+		Jeśli w dwóch jednomianach występują dokładnie te same zmienne (w tej samej ilości), to jednomiany te opisują to samo zjawisko, 
+		„mają ten sam charakter” i możemy je do siebie dodać poprzez dodanie ich współczynników. Takie jednomiany nazywamy <i>wyrazami podobnymi</i>. 
+		Nie możemy jednak dodawać jednomianów, które mają różne zmienne lub różnią się liczbą ich wystąpień.
+	</p>
+
+	<ul>
+		<li class="math">2ab+3mn+6ab+5nm-10m+5n=8ab+8mn-10m+5n</li>
+		<li class="math">4abc+3cba+2abd-4dac+5bca+6cab+abd-acb+adb+6cad=17abc+4abd+2acd</li>
+		<li class="math">aab+aba+bba+ab+bab+abba+ba=2aab+2bba+2ab+abba</li>
+	</ul>
+	
+	</div>
+	</div>
+	</div>
+  
+</div>
+
+</body>
+
+</html>

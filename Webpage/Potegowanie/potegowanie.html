@@ -1,0 +1,492 @@
+<!DOCTYPE HTML PUBLIC “-//W3C//DTD HTML 4.01 Transitional//EN”>
+<html lang="pl">
+
+<head>
+	<title>Potęgowanie</title>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+	<link rel="stylesheet" href="../lesson_style.css">
+	<link rel="stylesheet" href="./style.css">
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+	<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=MML_HTMLorMML"></script>
+	<script src="../.scripts/scroll_hide.js"></script>
+	<script src="../.scripts/draggable.js"></script>
+	<script src="../.scripts/math.js"></script>
+	<script src="../.scripts/comment.js"></script>
+</head>
+
+<body class="lesson">
+  
+<div class = "menu">
+	<a href="../index.html"><button class = "button_convey" style="position: absolute; left: 10px"><span>Strona główna</span></button></a>
+	<a href="../drzewo.html"><button class = "button_convey" style="position: absolute; left: 250px"><span>Drzewo</span></button></a>
+	<a href="potegowanie_short.html"><button class = "button_convey" style="position: relative; left: 80%"><span>Wersja skrócona</span></button></a>
+</div>
+  
+<div class="main">
+
+	<p class="lesson_title">
+		Potęgowanie
+	</p>
+    
+	<p>
+		Dodawanie, odejmowanie, mnożenie i dzielenie to dopiero przedsmak tego, co można wyczyniać z liczbami. 
+		Jeśli już wydawało Ci się, że posiadasz pewną władzę nad arytmetyką, czas zobaczyć, czym w matematyce jest prawdziwa potęga.
+	</p>
+
+	<div class="chapter">
+	<div class="chapter_name">
+		Mnożenie to za mało
+	</div>
+	<hr>
+	
+	<div class="chapter_mask">
+	<div class="chapter_body">
+
+	<p class="type">
+		Intuicje
+	</p>
+	
+	<p>
+		Przypomnijmy sobie pierwsze kroki, jakie stawialiśmy w świecie matematyki, 
+		poznając, czym jest mnożenie. Zdefiniowaliśmy je jako wielokrotne dodawanie do siebie tej samej liczby:
+	</p>
+
+	<p class="math" align="center">
+		3+3+3+3+3=5∙3
+	</p>
+
+	<p>
+		Pięciokrotne dodanie do siebie trójki oznaczaliśmy jako „pięć razy trzy”, propagując, że mnożenie jest działaniem wyższego rzędu niż 
+		dodawanie. Na tej samej zasadzie definiujemy potęgowanie, jako działanie wyższego rzędu niż mnożenie:
+	</p>
+	
+	<p class="math" align="center">
+		3∙3∙3∙3∙3=3^5
+	</p>
+
+	<p>
+		Pięciokrotne pomnożenie przez siebie trójki oznaczamy jako „trzy do potęgi piątej” i zapisujemy to jako trójkę posiadającą w 
+		<i>indeksie górnym</i> piątkę. Liczba, którą mnożymy przez siebie wielokrotnie, to <i>podstawa potęgi</i>, a ilość mnożeń, jakich 
+		dokonujemy (mała liczba w prawym górnym rogu), to <i>wykładnik potęgi</i>. 
+	</p>
+	
+	<p>
+		W zagadnieniach informatycznych potęgę zapisujemy z użyciem symbolu <span class="math">Text(^)</span> widocznego na klawiszu 
+		<span class="math">6</span> klawiatury 
+		komputera.
+	</p>
+	
+	<p class="math" align="center">
+		3∙3∙3∙3∙3=3Text(^)5
+	</p>
+	
+	<p>
+		Jest to wygodny zapis, gdy nie mamy możliwości sformatowania tekstu w indeksie górnym.
+	</p>
+	
+	<p class="type">
+		Formalnie
+	</p>
+	
+	<p>
+		Ponieważ osiągamy powoli matematyczną dojrzałość i zapis w postaci wyrażeń algebraicznych nie jest nam obcy, możemy zdefiniować 
+		potęgowanie w trochę bardziej ogólnej formie:
+	</p>
+
+	<center><img src=".images/Screenshot_1.png" align="middle"></img></center>
+	
+	<p>
+		Powyższy zapis ucieszy matematyka bardziej, niż wyjaśnianie potęgowania na kilku przykładach, ze względu na swoją uniwersalność. Jest to dość 
+		formalna definicja potęgowania, która mówi, że pod <span class="math">a</span> oraz <span class="math">b</span> możemy podstawić dowolne 
+		liczby i zinterpretować napis <span class="math">a^b</span> jako pomnożenie 
+		liczby <span class="math">a</span> przez siebie <span class="math">b</span> razy. W takim zapisie liczba <span class="math">a</span> jest podstawą potęgi, zaś liczba <span class="math">b</span> to wykładnik 
+		potęgi, a sam zapis <span class="math">a^b</span> nazywamy potęgą liczby <span class="math">a</span>. 
+	</p>
+
+	<p class="type">
+		Rozszerzenie
+	</p>
+	
+	<p>
+		Co ciekawe, chociaż dodawanie oraz mnożenie są działaniami łącznymi i przemiennymi, potęgowanie nie jest ani łączne, ani przemienne:
+	</p>
+	
+	<ul>
+		<li><span class="math">2^3=2∙2∙2=8</span> nie jest tym samym co <span class="math">3^2=3∙3=9</span></li>
+		<li><span class="math">Bracket(2^2 )^3=Bracket(2*2)^3=4^3=4∙4∙4=64</span> nie jest tym samym, co 
+		<span class="math">2^(Bracket(2^3 ) )=2^Bracket(2*2*2)=2^8=2∙2∙2∙2∙2∙2∙2∙2=256</span></li>
+	</ul>
+
+	</div>
+	</div>
+	</div>
+	
+	<div class="chapter">
+	<div class="chapter_name">
+		Kwadraty i sześciany
+	</div>
+	<hr>
+	
+	<div class="chapter_mask">
+	<div class="chapter_body">
+	
+	<p class="type">
+		Intuicje
+	</p>
+	
+	<p>
+		W praktyce potęgowanie pełni rolę narzędzia matematycznego, dzięki któremu nie musimy pisać nużąco długich iloczynów, gdy jako czynnik 
+		pojawia się kilka razy ta sama liczba. Im dalej zagłębiamy się w matematyczne fantazje, tym bardziej oddalamy się <span class="comment"
+		id="i od Boga.">od przyziemnych, 
+		namacalnych, życiowych zagadnień</span>, przez co ilustrowanie matematyki "codziennymi" problemami staje się niemożliwe.
+		Potęgowanie stoi jeszcze na granicy abstrakcji i przy odrobinie dobrej woli możemy zobaczyć 
+		potęgowanie w akcji.
+	</p>
+
+	<p>
+		Potrzebujemy klocków. Dużo klocków. Potęgowanie może być dobrą zabawą, a żeby tego dowieźć 
+		ustawimy klocki jeden obok drugiego, wzdłuż linii:
+	</p>
+
+	<center><img src=".images/Screenshot_2.png" align="middle"></img></center>
+	
+	<p>
+		Pięć klocków w jednej linii możemy postrzegać jako <span class="math">5^1</span>, jakby piątka występująca w iloczynie tylko jeden raz. 
+		Następnie rozmieśćmy 
+		klocki na podłodze, jeden obok drugiego w regularnych rządkach i kolumnach: 
+	</p>
+
+	<center><img src=".images/Screenshot_3.png" align="middle"></img></center>
+	
+	<p>
+		Mamy pięć poziomych rzędów, a w każdym z nich mieści się pięć klocków, czyli razem:
+	</p>
+	
+	<p class="math" align="center">
+		5∙5=5^2
+	</p>
+	
+	<p>
+		Jeżeli masz pewną wprawę w rozpoznawaniu kształtów geometrycznych, możesz zauważyć, że powyższy obrazek przedstawia klocki ułożone w 
+		kwadrat. Z tego powodu drugą potęgę liczby nazywamy <i>kwadratem</i> tej liczby. Będziemy więc mówić, że 
+		„<span class="math">25</span> jest kwadratem liczby <span class="math">5</span>” lub że „<span class="math">5</span> do kwadratu 
+		wynosi <span class="math">25</span>”.
+		Postępując dalej w naszym szaleństwie, ułóżmy kwadraty z klocków w warstwy, jedna nad drugą:
+	</p>
+
+	<center><img src=".images/Screenshot_4.png" align="middle"></img></center>
+	
+	<p>
+		Liczba klocków w naszej pokaźnej konstrukcji wynosi
+	</p>
+	
+	<p class="math" align="center">
+		5∙5∙5=5^3
+	</p>
+	
+	<p>
+		ponieważ składa się ona z <span class="math">5</span> warstw, a każda ma 
+		<span class="math">25</span> klocków. Kształt, który przypomina nasza konstrukcja, to sześcian i z tego powodu trzecią potęgę liczby 
+		nazywamy <i>sześcianem</i> tej liczby. Będziemy mówić, że „<span class="math">125</span> jest sześcianem liczby <span class="math">5</span>” 
+		lub że „<span class="math">5</span> do sześcianu wynosi <span class="math">125</span>”.
+		Niestety tu nasza wizualizacja się kończy, jak również kończy się specjalne nazewnictwo kolejnych potęg. 
+		<span class="math">5^4</span> będziemy czytać po prostu jako „pięć do potęgi czwartej”. Graficzna reprezentacja czwartej potęgi 
+		wymagałaby właściwie czegoś w rodzaju czwartego wymiaru przestrzennego, a my jeszcze nie jesteśmy gotowi na SF.
+	</p>
+	
+	<p class="type">
+		Warsztat
+	</p>
+	
+	<p>
+		Wkrótce okaże się, że znajomość kwadratów i sześcianów niewielkich liczb naturalnych jest bardzo pomocna, by nabrać biegłości w rachunkach.
+		Jeśli zależy Ci na osiągnięciu poziomu oficera, a nie jedynie marnego kadeta, przyzwyczaj swoje oczy do tych wartości:
+	</p>
+	
+	<p align="center">
+		<table class="table1">
+			<tr><td class="math">0^2=0</td><td class="math">0^3=0</td></tr>
+			<tr><td class="math">1^2=1</td><td class="math">1^3=1</td></tr>
+			<tr><td class="math">2^2=4</td><td class="math">2^3=8</td></tr>
+			<tr><td class="math">3^2=9</td><td class="math">3^3=27</td></tr>
+			<tr><td class="math">4^2=16</td><td class="math">4^3=64</td></tr>
+			<tr><td class="math">5^2=25</td><td class="math">5^3=125</td></tr>
+			<tr><td class="math">6^2=36</td><td class="math">6^3=216</td></tr>
+			<tr><td class="math">7^2=49</td><td class="math">7^3=343</td></tr>
+			<tr><td class="math">8^2=64</td><td class="math">8^3=512</td></tr>
+			<tr><td class="math">9^2=81</td><td class="math">9^3=729</td></tr>
+			<tr><td class="math">10^2=100</td><td class="math">10^3=1000</td></tr>
+			<tr><td class="math">11^2=121</td><td class="math">11^3=1331</td></tr>
+			<tr><td class="math">12^2=144</td><td class="math">12^3=1728</td></tr>
+			<tr><td class="math">13^2=169</td><td class="math">13^3=2197</td></tr>
+			<tr><td class="math">14^2=196</td><td class="math">14^3=2744</td></tr>
+			<tr><td class="math">15^2=225</td><td class="math">15^3=3375</td></tr>
+			<tr><td class="math">16^2=256</td><td class="math">16^3=4096</td></tr>
+			<tr><td class="math">17^2=289</td><td class="math">17^3=4913</td></tr>
+			<tr><td class="math">18^2=324</td><td class="math">18^3=5832</td></tr>
+			<tr><td class="math">19^2=361</td><td class="math">19^3=6859</td></tr>
+			<tr><td class="math">20^2=400</td><td class="math">20^3=8000</td></tr>
+		</table>
+	</p>
+	
+	<p>
+		Aby uchodzić za człowieka wykształconego, powinieneś dobrze znać kwadraty i sześciany pierwszych dziesięciu liczb naturalnych.
+	</p>
+	
+	</div>
+	</div>
+	</div>
+	
+	<div class="chapter">
+	<div class="chapter_name">
+		Potęgowanie a kolejność wykonywania działań
+	</div>
+	<hr>
+	
+	<div class="chapter_mask">
+	<div class="chapter_body">
+
+	<p class="type">
+		Intuicje
+	</p>
+	
+	<p>
+		Ponieważ mnożenie jest działaniem wyższego rzędu niż dodawanie, wykonujemy je jako pierwsze w działaniu. Podobnie, skoro potęgowanie 
+		jest działaniem wyższego rzędu niż mnożenie, będzie ono miało pierwszeństwo  przed mnożeniem. Zaktualizowana kolejność wykonywania 
+		działań wyglądałaby następująco:
+	</p>
+	
+	<ol style="margin-top: 0" class="formula">
+		<li style="text-align: left">Działania w nawiasach;</li>
+		<li style="text-align: left">Potęgowanie;</li>
+		<li style="text-align: left">Mnożenie i dzielenie w kolejności występowania;</li>
+		<li style="text-align: left">Dodawanie i odejmowanie w kolejności występowania.</li>
+	</ol>
+
+	<p>
+		Tak więc:
+	</p>
+	
+	<ul>
+		<li class="math">3∙4^(2+1)+5=3∙4^3+5=3∙64+5=192+5=197</li>
+		<li class="math">6:3^2-Bracket(6:3)^2=6:9-2^2=2/3-4=-10/3</li>
+		<li class="math">2^(3^2 )=2^9=512</li>
+		<li class="math">5^2-4^2-Bracket(-3)^2=25-16-9=0</li>
+	</ul>
+	
+	<p>
+		Warto mieć na uwadze, że zapis <span class="math">-2^4</span> oznacza „dwa do czwartej na minusie”, czyli liczbę ujemną o wartości 
+		<span class="math">-16</span>, ale zapis <span class="math">Bracket(-2)^4</span> to czwarta potęga liczby <span class="math">-2</span>, a 
+		więc <span class="math">16</span>.
+	</p>
+
+	</div>
+	</div>
+	</div>
+	
+	<div class="chapter">
+	<div class="chapter_name">
+		Potęgi o wykładniku całkowitym
+	</div>
+	<hr>
+	
+	<div class="chapter_mask">
+	<div class="chapter_body">
+
+	<p class="type">
+		Intuicje
+	</p>
+	
+	<p>
+		Potrafimy już rozpracowywać zapiski typu <span class="math">a^b</span>, gdzie <span class="math">b</span> jest jakąś liczbą naturalną 
+		typu <span class="math">1</span>, <span class="math">2</span>, <span class="math">3</span>, <span class="math">4</span>, 
+		<span class="math">5</span>… zaś <span class="math">a</span> może być dowolną znaną nam liczbą: dodatnią, ujemną, ułamkową... W ramach ćwiczenia:
+	</p>
+	
+	<ul>
+		<li class="math">2^5=2∙2∙2∙2∙2=32</li>
+		<li class="math">Bracket(-3)^4=Bracket(-3)∙Bracket(-3)∙Bracket(-3)∙Bracket(-3)=81</li>
+		<li class="math">Bracket(5/4)^2=5/4∙5/4=25/16</li>
+		<li class="math">Bracket(-1/7)^3=Bracket(-1/7)∙Bracket(-1/7)∙Bracket(-1/7)=-1/343</li>
+	</ul>
+	
+	<p>
+		Warto zauważyć kilka podstawowych cech potęgowania:
+	</p>
+	
+	<ul>
+		<li>
+			Dowolna liczba podniesiona do potęgi pierwszej to ta sama liczba: 
+			<p class="math" align="center">
+				a^1=a
+			</p>
+		</li>
+		<li>
+			Jedynka podniesiona do dowolnej potęgi wynosi zawsze <span class="math">1</span>: 
+			<p class="math" align="center">
+				1^a=1
+			</p>
+		</li>
+		<li>
+			Zero podniesione do dowolnej potęgi wynosi zawsze <span class="math">0</span>: 
+			<p class="math" align="center">
+				0^a=0
+			</p>
+		</li>
+		<li>
+			Liczba ujemna podniesiona do potęgi parzystej daje wynik dodatni, a do potęgi nieparzystej ujemny:
+			<p class="math" align="center">
+				Text(Jeśli)&nbsp; a&lt;0 Text(, to) &nbsp; a^b&gt;0 &nbsp; Text(dla) &nbsp; b &nbsp; Text(parzystych oraz)&nbsp;a^b&lt;0 &nbsp;
+				Text(dla) &nbsp; b &nbsp; Text(nieparzystych)
+			</p>
+		</li>
+	</ul>
+
+	<p>
+		Zastanówmy się, co się stanie, gdy podniesiemy liczbę do potęgi ujemnej. Warto zwrócić uwagę, że gdy podnosimy liczbę 
+		do coraz wyższych potęg, przy każdym kroku mnożymy poprzedni wynik przez tę liczbę:
+	</p>
+
+	<center><img src=".images/Screenshot_5.png" align="middle"></img></center>
+	
+	<p>
+		Możemy spojrzeć na to z drugiej strony: gdy podnosimy liczbę do coraz niższych potęg, przy każdym kroku dzielimy poprzedni wynik przez 
+		podstawę:
+	</p>
+
+	<center><img src=".images/Screenshot_6.png" align="middle"></img></center>
+	
+	<p>
+		Trzymając się tendencji, pójdźmy jeszcze o kilka kroków w lewo:
+	</p>
+
+	<center><img src=".images/Screenshot_7.png" align="middle"></img></center>
+	
+	<p>
+		Ukradkiem wyłoniła się prosta zależność:
+	</p>
+	
+	<ul>
+		<li><span class="math">3^(-1) = 1/3</span>, podczas gdy <span class="math">3^1=3</span></li>
+		<li><span class="math">3^(-2) = 1/9</span>, podczas gdy <span class="math">3^2=9</span></li>
+		<li><span class="math">3^(-3) = 1/27</span>, podczas gdy <span class="math">3^3=27</span></li>
+		<li><span class="math">3^(-4) = 1/81</span>, podczas gdy <span class="math">3^4=81</span></li>
+	</ul>
+	
+	<p>
+		Docieramy do dwóch wartościowych spostrzeżeń:
+	</p>
+	
+	<ul>
+		<li>Dowolna liczba podniesiona do potęgi zerowej daje <span class="math">1</span>: 
+			<p class="math" align="center">
+				a^0=1
+			</p>
+		</li>
+		<li>
+			Potęga o wykładniku ujemnym jest równa odwrotności potęgi o przeciwnym wykładniku:
+			<p class="math" align="center">
+				a^(-b)=1/(a^b) 
+			</p>
+		</li>
+	</ul>
+	
+	<p>
+		Zauważmy, że przy badaniu potęg o ujemnych wykładnikach dokonywaliśmy dzielenia przez podstawę, a nie zapominajmy, 
+		że nie wolno dzielić przez <span class="math">0</span>. Co za tym idzie, nie wolno podnosić zera do potęg ujemnych. 
+		Kontrowersyjne pozostaje podnoszenie zera do potęgi zerowej. Technicznie rzecz biorąc przejście z <span class="math">0^1</span> do 
+		<span class="math">0^0</span> wymagałoby podzielenia przez <span class="math">0</span>, więc spora część matematyków nie godzi się 
+		na istnienie „zera do zerowej”. Z drugiej strony własność <span class="math">a^0=1</span> dotyczy dokładnie każdej liczby, 
+		zarówno dodatniej, jak i ujemnej, więc dlaczego by nie miała dotyczyć zera?... Ten dylemat podzielił matematyków – według niektórych 
+		<span class="math">0^0</span> nie istnieje, a według innych <span class="math">0^0=1</span>, jakkolwiek dziwnie to nie wygląda.
+	</p>
+
+	<p>
+		Jeśli jesteś ciekaw, jak dobrać się do potęg mających ułamek w wykładniku, zajrzyj do tematu „Pierwiastkowanie”.
+	</p>
+	
+	</div>
+	</div>
+	</div>
+	
+	<div class="chapter">
+	<div class="chapter_name">
+		Własności potęgowania
+	</div>
+	<hr>
+	
+	<div class="chapter_mask">
+	<div class="chapter_body">
+	<p class="type">
+		Formalnie
+	</p>
+
+	<p>
+		Dokonajmy jeszcze kilku przydatnych spostrzeżeń na temat potęgowania. Ponieważ zależy nam na osiągnięciu dojrzałości matematycznej, 
+		będziemy pracować na ogólnym przypadku, czyli na zmiennych literowych. W każdej chwili możesz podstawić sobie pod 
+		<span class="math">a</span>, <span class="math">b</span> lub <span class="math">c</span> jakąś konkretną liczbę i zobaczyć, jak poniższe 
+		wzory działają na żywo.
+	</p>
+
+	<ul>
+		<li>
+			<span class="math">a^b∙a^c=a^(b+c)</span><br>
+			Jeśli liczbę <span class="math">a</span> mnożymy przez siebie <span class="math">b</span> razy, a następnie <span class="math">c</span> razy,
+			to łącznie występuje jako czynnik <span class="math">b+c</span> razy.
+			
+			<center><img src=".images/Screenshot_8.png" align="middle"></img></center>
+		</li>
+
+		<li>
+			<span class="math">(a^b)/(a^c) =a^(b-c)</span><br>
+			Jeśli liczbę <span class="math">a</span> mnożymy przez siebie <span class="math">b</span> razy w liczniku ułamka i 
+			<span class="math">c</span> razy w mianowniku ułamka, to po skróceniu pozostanie <span class="math">b-c</span> czynników.
+
+			<center><img src=".images/Screenshot_9.png" align="middle"></img></center>
+			
+			Wzór ten działa również wtedy, gdy <span class="math">b&lt;c</span>:
+			
+			<center><img src=".images/Screenshot_10.png" align="middle"></img></center>
+		</li>
+		
+		<li><span class="math">(a^b )^c=a^Bracket(b∙c)</span><br>
+			Gdy liczbę <span class="math">a</span> mnożymy przez siebie <span class="math">b</span> razy, a następnie takie grupy 
+			<span class="math">a^b</span> mnożymy przez siebie <span class="math">c</span> razy, to w całym iloczynie <span class="math">a</span>
+			wystąpi <span class="math">b∙c</span> razy.
+
+			<center><img src=".images/Screenshot_11.png" align="middle"></img></center>
+		</li>
+		<li>
+			<span class="math">a^c∙b^c=Bracket(a∙b)^c</span><br>
+			Jeśli liczbę <span class="math">a</span> mnożymy przez siebie <span class="math">c</span> razy, a do tego domnażamy liczbę 
+			<span class="math">b</span> również <span class="math">c</span> razy, to tak, jakbyśmy iloczyn <span class="math">a∙b</span> mnożyli 
+			<span class="math">c</span> razy.
+			
+			<center><img src=".images/Screenshot_12.png" align="middle"></img></center>
+		</li>
+
+		<li>
+			<span class="math">Bracket(a/b)^c=(a^c)/(b^c) </span><br>
+			Gdy podnosimy do potęgi pewien ułamek, możemy osobno zająć się potęgowaniem licznika oraz mianownika.
+			
+			<center><img src=".images/Screenshot_13.png" align="middle"></img></center>
+		</li>
+	</ul>
+	
+	<p>
+		Choć nie jest to takie oczywiste, wszystkie powyższe własności zachodzą bez względu na to, czy 
+		<span class="math">a</span>, <span class="math">b</span> i <span class="math">c</span> są dodatnie, czy ujemne. Zmienne te nawet nie 
+		muszą być całkowite.
+	</p>
+	
+	</div>
+	</div>
+	</div>
+
+  
+</div>
+
+</body>
+
+</html>
