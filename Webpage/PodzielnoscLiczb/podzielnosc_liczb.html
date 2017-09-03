@@ -1476,6 +1476,127 @@
 		Najmniejszą wielokrotność napotkaliśmy dopiero przy <span class="math">30</span>.
 	</p>
 
+	<p class="type">
+		Warsztat
+	</p>
+	
+	<p>
+		Znajdowanie <span class="math">NWW</span> i <span class="math">NWD</span> można nieco przyspieszyć wykorzystując rozkład na czynniki 
+		pierwsze. Bierzemy dwoje delikwentów i rozbijamy ich na iloczyny liczb pierwszych
+	</p>
+		 
+	<table align="center" width="70%">
+		<tr>
+			<td>
+				<table align="center" class="factorisation">
+					<tr><td>120</td><td>2</td></tr>
+					<tr><td>60</td><td>2</td></tr>
+					<tr><td>30</td><td>2</td></tr>
+					<tr><td>15</td><td>3</td></tr>
+					<tr><td>5</td><td>5</td></tr>
+					<tr><td>1</td><td></td></tr>
+				</table>
+			</td>
+			<td>
+				<table align="center" class="factorisation">
+					<tr><td>300</td><td>2</td></tr>
+					<tr><td>150</td><td>2</td></tr>
+					<tr><td>75</td><td>3</td></tr>
+					<tr><td>25</td><td>5</td></tr>
+					<tr><td>5</td><td>5</td></tr>
+					<tr><td>1</td><td></td></tr>
+				</table>
+			</td>
+		</tr>
+	</table>
+		 
+	<p>
+		i zaznaczamy te czynniki, które powtarzają się w obydwu rozkładach.
+	</p>
+
+	<table align="center" width="70%">
+		<tr>
+			<td>
+				<table align="center" class="factorisation">
+					<tr><td>120</td><td style="color: #cc2222; font-weight: bold">2</td></tr>
+					<tr><td>60</td><td style="color: #cc2222; font-weight: bold">2</td></tr>
+					<tr><td>30</td><td>2</td></tr>
+					<tr><td>15</td><td style="color: #cc2222; font-weight: bold">3</td></tr>
+					<tr><td>5</td><td style="color: #cc2222; font-weight: bold">5</td></tr>
+					<tr><td>1</td><td></td></tr>
+				</table>
+			</td>
+			<td>
+				<table align="center" class="factorisation">
+					<tr><td>300</td><td style="color: #cc2222; font-weight: bold">2</td></tr>
+					<tr><td>150</td><td style="color: #cc2222; font-weight: bold">2</td></tr>
+					<tr><td>75</td><td style="color: #cc2222; font-weight: bold">3</td></tr>
+					<tr><td>25</td><td style="color: #cc2222; font-weight: bold">5</td></tr>
+					<tr><td>5</td><td>5</td></tr>
+					<tr><td>1</td><td></td></tr>
+				</table>
+			</td>
+		</tr>
+	</table>
+	
+	<p>
+		Iloczyn zaznaczonych czynników tworzy największy wspólny dzielnik liczb:
+	</p>
+	
+	<p class="math" align="center">
+		NWD Bracket(120,300)=2∙2∙3∙5=60
+	</p>
+	
+	<p>
+		Z kolei iloczyn zaznaczonych czynników wraz ze wszystkimi niezaznaczonymi czynnikami tworzy najmniejszą wspólną wielokrotność:
+	</p>
+	
+	<p class="math" align="center">
+		NWW Bracket(120,300)=2∙2∙3∙5∙2∙5=600
+	</p>
+
+	<p>
+		Dlaczego tak jest? Nie jest tajemnicą, że każdy czynnik występujący w rozkładzie <span class="math">300</span> jest dzielnikiem 
+		<span class="math">300</span>. Podobnie, iloczyn dowolnych czynników z rozkładu także tworzy dzielnik <span class="math">300</span>:
+	</p>
+	
+	<p class="math" align="center">
+		300=2∙2∙3∙5∙5=2∙2∙3∙5&nbsp;&nbsp;&nbsp;∙&nbsp;&nbsp;&nbsp;5=60∙5
+	</p>
+	
+	<p>
+		<span class="math">300</span> jest podzielne przez <span class="math">60</span>, czyli liczba <span class="math">2∙2∙3∙5</span> jest 
+		dzielnikiem <span class="math">300</span>. Tak więc, kiedy wybieramy czynniki występujące w obydwu rozkładach, dostajemy wspólny dzielnik 
+		<span class="math">120</span> i <span class="math">300</span>. Ponieważ wybieramy <b>wszystkie</b> czynniki z obydwu rozkładów, dostajemy 
+		największy wspólny dzielnik <span class="math">120</span> i <span class="math">300</span>.
+	</p>
+
+	<p>
+		Liczba <span class="math">2∙2∙3∙5∙2∙5</span> jest wielokrotnością <span class="math">300</span>, ponieważ wśród jej czynników pojawiają 
+		się wszystkie czynniki <span class="math">300</span>:
+	</p>
+	
+	<p class="math" align="center">
+		2∙2∙3∙5∙2∙5=2∙2∙3∙5∙5&nbsp;&nbsp;&nbsp;∙&nbsp;&nbsp;&nbsp;2=300∙2
+	</p>
+	
+	<p>
+		Podobnie
+	</p>
+	
+	<p class="math" align="center">
+		2∙2∙3∙5∙2∙5=2∙2∙2∙3∙5&nbsp;&nbsp;&nbsp;∙&nbsp;&nbsp;&nbsp;5=120∙5
+	</p>
+	
+	<p>
+		czyli <span class="math">2∙2∙3∙5∙2∙5=600</span> jest wspólną wielokrotnością <span class="math">300</span> i <span class="math">120</span>. 
+		Co więcej, jest to najmniejsza wspólna wielokrotność <span class="math">300</span> i <span class="math">120</span>, ponieważ czynniki 
+		<span class="math">600</span> wybieraliśmy „oszczędnie”: liczba będąca wspólną wielokrotnością <span class="math">300</span> i 
+		<span class="math">120</span> musi posiadać w rozkładzie wszystkie czynniki <span class="math">300</span>, jak również wszystkie czynniki 
+		<span class="math">120</span>; dlatego wybieramy je, ale z pominięciem tych czynników, które się powtarzają – czynniki 
+		<span class="math">2,2,3,5</span> bierzemy tylko raz.
+	</p>
+	
 	<p class = "type">
 		Rozszerzenie
 	</p>

@@ -234,6 +234,11 @@ function element_mathML(input)
 		pos ++;
         result = "<mo>⇔</mo>";
 	}
+	else if (input[pos] == '∧')
+	{
+		pos++;
+		result = "<mo>∧</mo>";
+	}
 	else if (input.substring(pos, pos + 6) == '&nbsp;')
     {
         pos += 6;
@@ -249,7 +254,7 @@ function element_mathML(input)
 		pos++;
 		result = "<mo>-</mo>";
 	}
-    else if (input[pos] == '*' || input[pos] == '∙' || input[pos] == '·')
+    else if (input[pos] == '*' || input[pos] == '∙' || input[pos] == '·' || input[pos] == '⋅')
 	{
 		pos++;
 		result = "<mo>&middot;</mo>";

@@ -90,18 +90,17 @@
 	</p>
 	
 	<p>
-		Ponieważ osiągamy powoli matematyczną dojrzałość i zapis w postaci wyrażeń algebraicznych nie jest nam obcy, możemy zdefiniować 
-		potęgowanie w trochę bardziej ogólnej formie:
+		Formalna definicja potęgi o wykładniku naturalnym przedstawia się następująco:
 	</p>
 
 	<center><img src=".images/Screenshot_1.png" align="middle"></img></center>
 	
 	<p>
-		Powyższy zapis ucieszy matematyka bardziej, niż wyjaśnianie potęgowania na kilku przykładach, ze względu na swoją uniwersalność. Jest to dość 
-		formalna definicja potęgowania, która mówi, że pod <span class="math">a</span> oraz <span class="math">b</span> możemy podstawić dowolne 
-		liczby i zinterpretować napis <span class="math">a^b</span> jako pomnożenie 
-		liczby <span class="math">a</span> przez siebie <span class="math">b</span> razy. W takim zapisie liczba <span class="math">a</span> jest podstawą potęgi, zaś liczba <span class="math">b</span> to wykładnik 
-		potęgi, a sam zapis <span class="math">a^b</span> nazywamy potęgą liczby <span class="math">a</span>. 
+		Definicja ta mówi, że pod <span class="math">a</span> oraz <span class="math">n</span> możemy podstawić dowolne 
+		liczby i zinterpretować napis <span class="math">a^n</span> jako pomnożenie 
+		liczby <span class="math">a</span> przez siebie <span class="math">n</span> razy. W takim zapisie liczba <span class="math">a</span> jest 
+		podstawą potęgi, zaś liczba <span class="math">n</span> to wykładnik potęgi, a sam zapis <span class="math">a^n</span> nazywamy potęgą 
+		liczby <span class="math">a</span>. 
 	</p>
 
 	<p class="type">
@@ -299,7 +298,7 @@
 	</p>
 	
 	<p>
-		Potrafimy już rozpracowywać zapiski typu <span class="math">a^b</span>, gdzie <span class="math">b</span> jest jakąś liczbą naturalną 
+		Potrafimy już rozpracowywać zapiski typu <span class="math">a^n</span>, gdzie <span class="math">n</span> jest jakąś liczbą naturalną 
 		typu <span class="math">1</span>, <span class="math">2</span>, <span class="math">3</span>, <span class="math">4</span>, 
 		<span class="math">5</span>… zaś <span class="math">a</span> może być dowolną znaną nam liczbą: dodatnią, ujemną, ułamkową... W ramach ćwiczenia:
 	</p>
@@ -325,20 +324,20 @@
 		<li>
 			Jedynka podniesiona do dowolnej potęgi wynosi zawsze <span class="math">1</span>: 
 			<p class="math" align="center">
-				1^a=1
+				1^n=1
 			</p>
 		</li>
 		<li>
 			Zero podniesione do dowolnej potęgi wynosi zawsze <span class="math">0</span>: 
 			<p class="math" align="center">
-				0^a=0
+				0^n=0
 			</p>
 		</li>
 		<li>
 			Liczba ujemna podniesiona do potęgi parzystej daje wynik dodatni, a do potęgi nieparzystej ujemny:
 			<p class="math" align="center">
-				Text(Jeśli)&nbsp; a&lt;0 Text(, to) &nbsp; a^b&gt;0 &nbsp; Text(dla) &nbsp; b &nbsp; Text(parzystych oraz)&nbsp;a^b&lt;0 &nbsp;
-				Text(dla) &nbsp; b &nbsp; Text(nieparzystych)
+				Text(Jeśli)&nbsp; a&lt;0 Text(, to) &nbsp; a^n&gt;0 &nbsp; Text(dla) &nbsp; n &nbsp; Text(parzystych oraz)&nbsp;a^n&lt;0 &nbsp;
+				Text(dla) &nbsp; n &nbsp; Text(nieparzystych)
 			</p>
 		</li>
 	</ul>
@@ -375,7 +374,7 @@
 	</ul>
 	
 	<p>
-		Docieramy do dwóch wartościowych spostrzeżeń:
+		Powyższe tendencje stanowią dobrą podstawę, by zdefiniować potęgi dla wykładników całkowitych:
 	</p>
 	
 	<ul>
@@ -387,7 +386,7 @@
 		<li>
 			Potęga o wykładniku ujemnym jest równa odwrotności potęgi o przeciwnym wykładniku:
 			<p class="math" align="center">
-				a^(-b)=1/(a^b) 
+				a^(-n)=1/(a^n) 
 			</p>
 		</li>
 	</ul>
@@ -425,60 +424,183 @@
 	<p>
 		Dokonajmy jeszcze kilku przydatnych spostrzeżeń na temat potęgowania. Ponieważ zależy nam na osiągnięciu dojrzałości matematycznej, 
 		będziemy pracować na ogólnym przypadku, czyli na zmiennych literowych. W każdej chwili możesz podstawić sobie pod 
-		<span class="math">a</span>, <span class="math">b</span> lub <span class="math">c</span> jakąś konkretną liczbę i zobaczyć, jak poniższe 
-		wzory działają na żywo.
+		<span class="math">a</span>, <span class="math">b</span> lub <span class="math">c</span> jakąś konkretną liczbę naturalną i zobaczyć, jak poniższe 
+		twierdzenia działają na żywo.
 	</p>
 
 	<ul>
 		<li>
-			<span class="math">a^b∙a^c=a^(b+c)</span><br>
-			Jeśli liczbę <span class="math">a</span> mnożymy przez siebie <span class="math">b</span> razy, a następnie <span class="math">c</span> razy,
-			to łącznie występuje jako czynnik <span class="math">b+c</span> razy.
+			<span class="math">a^n∙a^m=a^(n+m)</span><br>
+			Jeśli liczbę <span class="math">a</span> mnożymy przez siebie <span class="math">n</span> razy, a następnie <span class="math">m</span> razy,
+			to łącznie występuje jako czynnik <span class="math">n+m</span> razy.
 			
-			<center><img src=".images/Screenshot_8.png" align="middle"></img></center>
+			<p class="type">
+				Dowód
+			</p>
+			<div class="proof">
+				<center><img src=".images/Screenshot_8.png" align="middle"></img></center>
+			</div>
 		</li>
 
 		<li>
-			<span class="math">(a^b)/(a^c) =a^(b-c)</span><br>
-			Jeśli liczbę <span class="math">a</span> mnożymy przez siebie <span class="math">b</span> razy w liczniku ułamka i 
-			<span class="math">c</span> razy w mianowniku ułamka, to po skróceniu pozostanie <span class="math">b-c</span> czynników.
+			<span class="math">(a^n)/(a^m) =a^(n-m)</span><br>
+			Jeśli liczbę <span class="math">a</span> mnożymy przez siebie <span class="math">n</span> razy w liczniku ułamka i 
+			<span class="math">m</span> razy w mianowniku ułamka, to po skróceniu pozostanie <span class="math">n-m</span> czynników.
 
-			<center><img src=".images/Screenshot_9.png" align="middle"></img></center>
-			
-			Wzór ten działa również wtedy, gdy <span class="math">b&lt;c</span>:
-			
-			<center><img src=".images/Screenshot_10.png" align="middle"></img></center>
+			<p class="type">
+				Dowód
+			</p>
+			<div class="proof">
+				Jeśli <span class="math">n≥m</span>:
+				<center><img src=".images/Screenshot_9.png" align="middle"></img></center>
+				Jeśli <span class="math">n&lt;m</span>:
+				<center><img src=".images/Screenshot_10.png" align="middle"></img></center>
+			</div>
 		</li>
 		
-		<li><span class="math">(a^b )^c=a^Bracket(b∙c)</span><br>
-			Gdy liczbę <span class="math">a</span> mnożymy przez siebie <span class="math">b</span> razy, a następnie takie grupy 
-			<span class="math">a^b</span> mnożymy przez siebie <span class="math">c</span> razy, to w całym iloczynie <span class="math">a</span>
-			wystąpi <span class="math">b∙c</span> razy.
-
-			<center><img src=".images/Screenshot_11.png" align="middle"></img></center>
-		</li>
-		<li>
-			<span class="math">a^c∙b^c=Bracket(a∙b)^c</span><br>
-			Jeśli liczbę <span class="math">a</span> mnożymy przez siebie <span class="math">c</span> razy, a do tego domnażamy liczbę 
-			<span class="math">b</span> również <span class="math">c</span> razy, to tak, jakbyśmy iloczyn <span class="math">a∙b</span> mnożyli 
-			<span class="math">c</span> razy.
+		<li><span class="math">Bracket(a^n)^m=a^(n∙m)</span><br>
+			Gdy liczbę <span class="math">a</span> mnożymy przez siebie <span class="math">n</span> razy, a następnie takie grupy 
+			<span class="math">a^n</span> mnożymy przez siebie <span class="math">m</span> razy, to w całym iloczynie <span class="math">a</span>
+			wystąpi <span class="math">n∙m</span> razy.
 			
-			<center><img src=".images/Screenshot_12.png" align="middle"></img></center>
+			<p class="type">
+				Dowód
+			</p>
+			<div class="proof">
+				<center><img src=".images/Screenshot_11.png" align="middle"></img></center>
+			</div>
+		</li>
+		<li>
+			<span class="math">a^n∙b^n=Bracket(a∙b)^n</span><br>
+			Jeśli liczbę <span class="math">a</span> mnożymy przez siebie <span class="math">n</span> razy, a do tego domnażamy liczbę 
+			<span class="math">b</span> również <span class="math">n</span> razy, to tak, jakbyśmy iloczyn <span class="math">a∙b</span> mnożyli 
+			<span class="math">n</span> razy.
+			
+			<p class="type">
+				Dowód
+			</p>
+			<div class="proof">
+				<center><img src=".images/Screenshot_12.png" align="middle"></img></center>
+			</div>
 		</li>
 
 		<li>
-			<span class="math">Bracket(a/b)^c=(a^c)/(b^c) </span><br>
+			<span class="math">Bracket(a/b)^n=(a^n)/(b^n) </span><br>
 			Gdy podnosimy do potęgi pewien ułamek, możemy osobno zająć się potęgowaniem licznika oraz mianownika.
 			
-			<center><img src=".images/Screenshot_13.png" align="middle"></img></center>
+			<p class="type">
+				Dowód
+			</p>
+			<div class="proof">
+				<center><img src=".images/Screenshot_13.png" align="middle"></img></center>
+			</div>
 		</li>
 	</ul>
 	
-	<p>
-		Choć nie jest to takie oczywiste, wszystkie powyższe własności zachodzą bez względu na to, czy 
-		<span class="math">a</span>, <span class="math">b</span> i <span class="math">c</span> są dodatnie, czy ujemne. Zmienne te nawet nie 
-		muszą być całkowite.
+	<p class="type">
+		Formalnie | Rozszerzenie
 	</p>
+	
+	<p class="warning">
+		[wymagana znajomość tematu: Działania na wyrażeniach algebraicznych]
+	</p>
+
+	<p>
+		Powyższe wzory działają także dla wykładników ujemnych. Aby tego dowieść, wykorzystamy własności dla wykładników dodatnich, które 
+		udowodniliśmy powyżej.
+	</p>
+	
+	<ul>
+		<li>
+			<span class="math">a^k∙a^l=a^(k+l)</span>
+			<p class="type">
+				Dowód
+			</p>
+			<div class="proof">
+				<ul>
+					<li>
+						Rozważmy przypadek, gdy tylko jeden z wykładników jest ujemny (ze względu na przemienność mnożenia i dodawania, nie ma 
+						znaczenia, który). Mamy uzasadnić równość
+						<p class="math" align="center">a^k∙a^(-l)=a^(k-l)</p>
+						przy czym same zmienne <span class="math">k</span> oraz <span class="math">l</span> mają wartości naturalne. Wykorzystując 
+						definicję potęgi o ujemnym wykładniku:<br>
+						<p class="math" align="center">a^k∙a^(-l)=a^k∙1/(a^l) =(a^k)/(a^l) =a^(k-l)</p><br>
+					</li>
+					<li>
+						W przypadku obydwu wykładników ujemnych mamy:<br>
+						<p class="math" align="center">a^(-k)∙a^(-l)=1/(a^k) ∙1/(a^l) =1/(a^k∙a^l)=1/(a^(k+l))=a^(-Bracket(k+l) )=a^(-k-l)</p>
+					</li>
+				</ul>
+			</div>
+		</li>
+
+		<li>
+			<span class="math">(a^k)/(a^l) =a^(k-l)</span>
+			<p class="type">
+				Dowód
+			</p>
+			<div class="proof">
+				<ul>
+					<li>
+						Przypadek, gdy wykładnik potęgi w liczniku jest ujemny:
+						<p class="math" align="center">(a^(-k))/(a^l) =(1/(a^k))/(a^l) =1/(a^k∙a^l)=1/(a^(k+l)) =a^(-Bracket(k+l) )=a^(-k-l)</p>
+					</li>
+					<li>
+						Przypadek, gdy wykładnik potęgi w mianowniku jest ujemny:
+						<p class="math" align="center">(a^k)/(a^(-l)) =(a^k)/(1/(a^l))=a^k∙a^l=a^(k+l)=a^(k-Bracket(-l))</p>
+					</li>
+					<li>
+						Przypadek, gdy obydwa wykładniki są ujemne:
+						<p class="math" align="center">(a^(-k))/(a^(-l))=(1/(a^k) )/(1/(a^l) )=1/(a^k) ∙a^l=(a^l)/(a^k) =a^(l-k)=a^(-k+l)=a^(-k-Bracket(-l))</p>
+					</li>
+				</ul>
+			</div>
+		</li>
+		<li>
+			<span class="math">Bracket(a^k)^l=a^(k∙l)</span>
+			<p class="type">
+				Dowód
+			</p>
+			<div class="proof">
+				<ul>
+					<li>
+						Przypadek, gdy wykładnik wewnętrznej potęgi jest ujemny:
+						<p class="math" align="center">Bracket(a^(-k) )^l=Bracket(1/(a^k) )^l=(1^l)/((Bracket(a^k ))^l) =1/(a^(k∙l)) =a^(-Bracket(k∙l))=a^(Bracket(-k)∙l)</p>
+					</li>
+					<li>
+						Przypadek, gdy wykładnik zewnętrznej potęgi jest ujemny:
+						<p class="math" align="center">Bracket(a^k )^(-l)=1/(Bracket(a^k )^l) =1/(a^(k∙l)) =a^(-Bracket(k∙l))=a^(k∙Bracket(-l))</p>
+					</li>
+					<li>
+						Przypadek, gdy obydwa wykładniki są ujemne:
+						<p class="math" align="center">Bracket(a^(-k) )^(-l)=1/(Bracket(a^(-k) )^l)=1/(Bracket(1/(a^k) )^l) =1/((1^l)/(Bracket(a^k )^l) )
+						=1/(1/(a^(k∙l)) )=a^(k∙l)=a^(Bracket(-k)∙Bracket(-l))</p>
+					</li>
+				</ul>
+			</div>
+		</li>
+		<li>
+			<span class="math">a^k∙b^k=Bracket(a∙b)^k</span><br>
+			<p class="type">
+				Dowód
+			</p>
+			<div class="proof">
+				Gdy wykładnik jest ujemny:
+				<p class="math" align="center">a^(-k)∙b^(-k)=1/(a^k) ∙1/(b^k) =1/(a^k∙b^k )=1/(Bracket(a∙b)^k) =Bracket(a∙b)^(-k)</p>
+			</div>
+		</li>
+		<li>
+			<span class="math">Bracket(a/b)^k=(a^k)/(b^k) </span><br>
+			<p class="type">
+				Dowód
+			</p>
+			<div class="proof">
+				Gdy wykładnik jest ujemny:
+				<p class="math" align="center">Bracket(a/b)^(-k)=1/(Bracket(a/b)^k) =1/((a^k)/(b^k))=(b^k)/(a^k)=1/(a^k) ∙b^k=(1/(a^k) )/(1/(b^k) )=
+				(a^(-k))/(b^(-k)) </p>
+			</div>
+		</li>
+	</ul>
 	
 	</div>
 	</div>

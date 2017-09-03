@@ -130,18 +130,21 @@
 	<p>
 		Jeśli <span class="math">a</span> oraz <span class="math">b</span> są liczbami dodatnimi, stwierdzenie, że 
 		<span class="math">Rootn(a)=b</span> jest dokładnie równoważne równości <span class="math">b^n=a</span>. W taki właśnie sposób 
-		definiujemy pierwiastek: <span class="math">Rootn(a)</span> to taka liczba <span class="math">b</span>, dla której <span class="math">b^n=a</span>. 
-		Matematycznie zapiszemy definicję pierwiastka w jednej linijce:
+		definiujemy pierwiastek: Jeśli <span class="math">a</span> jest liczbą nieujemną, <span class="math">Rootn(a)</span> to taka nieujemna 
+		liczba <span class="math">b</span>, dla której <span class="math">b^n=a</span>. 
+		Matematycznie zapiszemy definicję pierwiastka (dla nieujemnych <span class="math">a</span>) w jednej linijce:
 	</p>
 
 	<p class="math" align="center">
-		Rootn(a)=b⟺b^n=a
+		Rootn(a)=b⟺b^n=a ∧ b≥0
 	</p>
 
 	<p>
-		Symbol <span class="math">⟺</span> oznacza równoważność, czyli stwierdzenie, że to, co po lewej stronie jest równoważne z tym, co po prawej stronie.
+		Symbol ∧ to matematyczny spójnik "oraz", w powyższej formule oznacza on, że obydwa warunki są potrzebne do zdefiniowania pierwiastka.
+		Przypadek dla ujemnych <span class="math">a</span> jest trochę bardziej kłopotliwy; wówczas warunek <span class="math">b≥0</span> 
+		nie będzie potrzebny, jednak pojawią się inne obostrzenia. Więcej w sekcji "Ograniczenia".
 	</p>
-
+	
 	</div>
 	</div>
 	</div>
@@ -234,7 +237,7 @@
 	
 	<ul>
 		<li><span class="math">(1,5)^2=2,25</span>, czyli <span class="math">1,5</span> to za dużo</li>
-		<li><span class="math">(1,3)^2=1,69</span>, czyli <span class="math">1,2</span> to za mało</li>
+		<li><span class="math">(1,3)^2=1,69</span>, czyli <span class="math">1,3</span> to za mało</li>
 		<li><span class="math">(1,4)^2=1,96</span>, czyli <span class="math">1,4</span> to wciąż za mało, chociaż jesteśmy już bardzo blisko</li>
 		<li><span class="math">(1,41)^2=1,9881</span>, a więc <span class="math">1,41</span> to już bardzo bliska wartość, choć wciąż za mała</li>
 		<li><span class="math">(1,42)^2=2,0164</span>, czyli powinniśmy szukać pomiędzy <span class="math">1,41</span> a <span class="math">1,42</span></li>
@@ -330,7 +333,7 @@
 	</p>
 
 	<p>
-		Chwilowo liczba „trzy do potęgi jednej drugiej” pozostaje dla nas tajemnicą. Skorzystamy z pewnych własności potęgowania, które 
+		Chwilowo liczba „trzy do potęgi jednej drugiej” pozostaje dla nas tajemnicą. Przypomnijmy sobie własności potęgowania, które 
 		odkryliśmy jakiś czas temu: co by się stało, gdyby 
 		<span class="math">3^(1/2)</span> podnieść do kwadratu?
 	</p>
@@ -344,7 +347,7 @@
 	</p>
 	
 	<p class="math" align="center">
-		Bracket(a^b )^c=a^(b∙c)
+		Bracket(a^n )^m=a^(n∙m)
 	</p>
 	
 	<p>
@@ -372,7 +375,7 @@
 	</p>
 	
 	<p class="math" align="center">
-		Bracket(a^(1/b) )^b=a^(1/b∙b)=a^1=a
+		Bracket(a^(1/n) )^n=a^(1/n∙n)=a^1=a
 	</p>
 	
 	<p>
@@ -380,7 +383,7 @@
 	</p>
 	
 	<p class="math" align="center">
-		a^(1/b)=Rootb(a)
+		a^(1/n)=Rootn(a)
 	</p>
 
 	<p>
@@ -396,15 +399,16 @@
 	</p>
 	
 	<p class="math" align="center">
-		a^(b/c)=a^(1/c∙b)=Bracket(a^(1/c) )^b=Bracket(Rootc(a))^b
+		a^(n/m)=a^(1/m∙n)=Bracket(a^(1/m) )^n=Bracket(Rootm(a))^n
 	</p>
 	
 	<p>
-		Dotarliśmy do bardzo przydatnego wzoru, który wskazuje przejście pomiędzy pierwiastkiem i potęgą:
+		Dotarliśmy do bardzo przydatnego wzoru, który wskazuje przejście pomiędzy pierwiastkiem i potęgą. Stanowi on sensowną definicję potęgi
+		o wykładniku wymiernym:
 	</p>
 	
 	<p class="math" align="center">
-		a^(b/c)=Rootc(a)^b
+		a^(n/m)=Rootm(a)^n
 	</p>
 
 	<p>
@@ -531,7 +535,7 @@
 	</p>
 	
 	<p class="math" align="center">
-		a^(b/c)=Rootc(a)^b
+		a^(n/m)=Rootm(a)^n
 	</p>
 	
 	<p>
@@ -572,27 +576,152 @@
 	
 	<p>
 		Skoro już wiemy, że każdy pierwiastek można przedstawić w postaci potęgi, nie powinno dziwić, że własności potęgowania przenoszą się na 
-		adekwatne własności pierwiastkowania.
+		podobne własności pierwiastkowania. Przyjmujemy, że stopnie pierwiastków mają wartości całkowite. Dla przejrzystości pomijamy cały 
+		cyrk z dodatnimi/ujemnymi wartościami liczb podpierwiastkowych.
 	</p>
 	
 	<ul>
 		<li>
-			<span class="math">Rootc(Rootb(a))=Root(b∙c)(a)</span><br>
-			Uzasadnienie:<br>
-			<p class="math" align="center">Rootc(Rootb(a))=Rootc((a^(1/b)))=Bracket(a^(1/b) )^(1/c)=a^(1/b∙1/c)=a^(1/(b∙c))=Root(b∙c)(a)</p>
+			<span class="math">Rootn(Rootm(a))=Root(n∙m)(a)</span><br>
+			<p class="type">
+				Dowód
+			</p>
+			<div class="proof">
+				Oznaczmy wartość wyrażenia <span class="math">Rootn(Rootm(a))</span> przez <span class="math">x</span>. Zgodnie z definicją 
+				pierwiastkowania:
+				<p class="math" align="center">Rootn(Rootm(a))=x⟺Rootm(a)=x^n⟺a=Bracket(x^n )^m⟺a=x^(n⋅m)⟺Root(n∙m)(a)=x</p>
+				Zatem
+				<p class="math" align="center">Rootn(Rootm(a))=x=Root(n∙m)(a)</p>
+			</div>
 		</li>
 		<li>
-			<span class="math">Rootc((a∙b))=Rootc(a)∙Rootc(b)</span><br>
-			Uzasadnienie:<br>
-			<p class="math" align="center">Rootc((a∙b))=Bracket(a∙b)^(1/c)=a^(1/c)∙b^(1/c)=Rootc(a)∙Rootc(b)</p>
+			<span class="math">Rootn((a∙b))=Rootn(a)∙Rootn(b)</span><br>
+			<p class="type">
+				Dowód
+			</p>
+			<div class="proof">
+				Oznaczmy wartość wyrażenia <span class="math">Rootn(a)</span> przez <span class="math">x</span> oraz wartość wyrażenia 
+				<span class="math">Rootn(b)</span> przez <span class="math">y</span>. Z definicji pierwiastkowania:
+				<p class="math" align="center">Rootn(a)=x⟺a=x^n<br>
+				Rootn(b)=y⟺b=y^n</p>
+				Skoro <span class="math">a=x^n</span> oraz <span class="math">b=y^n</span>, to <span class="math">a⋅b=x^n∙y^n=Bracket(x∙y)^n</span>. 
+				Mamy więc
+				<p class="math" align="center">a⋅b=Bracket(x∙y)^n⟺Rootn((a⋅b))=x∙y=Rootn(a)∙Rootn(b)</p>
+			</div>
+
 		</li>
 		<li>
-			<span class="math">Root(c)((a/b))=Rootc(a)/Rootc(b)</span><br>
-			Uzasadnienie:<br>
-			<p class="math" align="center">Rootc((a/b))=Bracket(a/b)^(1/c)=(a^(1/c))/(b^(1/c)) =Rootc(a)/Rootc(b)</p>
+			<span class="math">Root(n)((a/b))=Rootn(a)/Rootn(b)</span><br>
+			<p class="type">
+				Dowód
+			</p>
+			<div class="proof">
+				Oznaczmy wartość wyrażenia <span class="math">Rootn(a)</span> przez <span class="math">x</span> oraz wartość wyrażenia <span class="math">
+				Rootn(b)</span> przez <span class="math">y</span>. Z definicji pierwiastkowania:
+				<p class="math" align="center">Rootn(a)=x⟺a=x^n<br>
+				Rootn(b)=y⟺b=y^n</p>
+				Skoro <span class="math">a=x^n</span> oraz <span class="math">b=y^n</span>, to <span class="math">a/b=(x^n)/(y^n) =Bracket(x/y)^n</span>. Mamy więc
+				<p class="math" align="center">a/b=Bracket(x/y)^n⟺Rootn((a/b))=x/y=Rootn(a)/Rootn(b)</p>
+			</div>
+
 		</li>
 	</ul>
 
+	<p class="type">
+		Formalnie | Rozszerzenie
+	</p>
+	
+	<p>
+		Możemy teraz pełnoprawnie poszerzyć własności potęgowania na wykładniki wymierne. 
+	</p>
+
+	<ul>
+		<li>
+			<span class="math">a^(p/q)∙a^(r/s)=a^(p/q+r/s)</span>
+			<p class="type">
+				Dowód
+			</p>
+			<div class="proof">
+				<p class="math" align="center">a^(p/q)∙a^(r/s)=(Rootq(a))^p∙(Roots(a))^r=(Roots((Rootq(a)^p )))^s∙(Rootq((Roots(a)^r )))^q=
+				Bracket((Roots((Rootq(a))))^p )^s∙Bracket((Rootq(Roots(a)))^r )^q=<br>
+				=(Root(q∙s)(a))^(p∙s)∙(Root(q∙s)(a)^(r∙q)=(Root(q∙s)(a))^(ps+rq)=
+				a^((ps+rq)/(qs))
+				=a^((ps)/(qs)+(rq)/(qs))=a^(p/q+r/s)</p>
+			</div>
+		</li>
+
+		<li>
+			<span class="math">(a^(p/q))/(a^(r/s)) =a^(p/q-r/s)</span>
+			<p class="type">
+				Dowód
+			</p>
+			<div class="proof">
+				<p class="math" align="center">(a^(p/q))/(a^(r/s)) =a^(p/q)∙a^(-r/s)=a^(p/q)∙a^((-r)/s)=a^(p/q+(-r)/s)=a^(p/q-r/s)</p>
+			</div>
+		</li>
+		
+		<li>
+			<span class="math">Bracket(a^(p/q) )^(r/s)=a^(p/q∙r/s)</span>
+			<p class="type">
+				Dowód
+			</p>
+			<div class="proof">
+				<p class="math" align="center">Bracket(a^(p/q) )^(r/s)=(Roots(((Rootq(a))^p)))^r=
+				Bracket((Roots(Rootq(a)))^p )^r=
+				(Root(q∙s)(a))^(p∙r)=a^((p∙r)/(q∙s))=a^(p/q∙r/s)</p>
+			</div>
+		</li>
+			
+		<li>
+			<span class="math">a^(p/q)∙b^(p/q)=Bracket(a∙b)^(p/q)</span>
+			<p class="type">
+				Dowód
+			</p>
+			<div class="proof">
+				<p class="math" align="center">a^(p/q)∙b^(p/q)=Rootq(a)^p∙Rootq(b)^p=Bracket(Rootq(a)∙Rootq(b))^p=(Rootq((a∙b)))^p=
+				Bracket(a∙b)^(p/q)</p>
+			</div>
+		</li>
+		
+		<li>
+			<span class="math">Bracket(a/b)^(p/q)=(a^(p/q))/(b^(p/q))</span>
+			<p class="type">
+				Dowód
+			</p>
+			<div class="proof">
+				<p class="math" align="center">Bracket(a/b)^(p/q)=(Rootq((a/b)))^p=Bracket(Rootq(a)/Rootq(b))^p=(Rootq(a)^p)/((Rootq(b))^p) =
+				(a^(p/q))/(b^(p/q)) </p>
+			</div>
+		</li>
+	</ul>
+	
+	<p>
+		Co więcej, własności te działają także dla wykładników rzeczywistych. Ucinając w pewnym miejscu rozwinięcie dziesiętne, można 
+		przybliżyć liczbę rzeczywistą (z dowolną dokładnością) do liczby wymiernej, a dla liczb wymiernych nasze własności już działają. 
+		Intuicyjnie możemy sobie wyobrazić, że przybliżając liczbę rzeczywistą coraz dokładniej, coraz bardziej zbliżamy się do jej 
+		rzeczywistej wartości, cały czas zachowując własności potęgowania. W końcu dotrzemy do „nieskończonej” precyzji i okaże się, wykładniki 
+		niewymierne także zachowują powyższe własności.
+	</p>
+
+	<p>
+		Trzy własności pierwiastkowania wykazane na początku tej sekcji także działają dla stopni wymiernych:
+	</p>
+	
+	<p class="type">
+		Dowód
+	</p>
+	<div class="proof">
+		<ul>
+			<li class="math">Root(p/q)((Root(r/s)(a)))=Bracket(a^(s/r) )^(q/p)=a^(s/r∙q/p)=a^((s∙q)/(r∙p))=Root((r∙p)/(s∙q))(a)=Root(r/s∙p/q)(a)</li>
+			<li class="math">Root(p/q)((a∙b))=Bracket(a∙b)^(q/p)=a^(q/p)∙b^(q/p)=Root(p/q)(a)∙Root(p/q)(b)</li>
+			<li class="math">Root(p/q)((a/b))=Bracket(a/b)^(q/p)=(a^(q/p))/(b^(q/p)) =(Root(p/q)(a))/(Root(p/q)(b))</li>
+		</ul>
+	</div>
+	
+	<p>
+		Na podobnej zasadzie własności te działają także dla stopni rzeczywistych.
+	</p>
+	
 	</div>
 	</div>
 	</div>
@@ -693,7 +822,7 @@
 	<div class="chapter_body">
 	
 	<p class="type">
-		Warsztat
+		Warsztat | Rozszerzenie
 	</p>
 	
 	<p class="warning">
@@ -728,7 +857,7 @@
 		<li>Jeśli przybliżymy <span class="math">Sqrt(2)≈1,4</span>, dostaniemy <span class="math">3/Sqrt(2)≈3/1,4≈2,14285714286</span></li>
 		<li>Jeśli przybliżymy <span class="math">Sqrt(2)≈1,41</span>, dostaniemy <span class="math">3/Sqrt(2)≈3/1,41≈2,12765957447</span></li>
 		<li>Jeśli przybliżymy <span class="math">Sqrt(2)≈1,414</span>, dostaniemy <span class="math">3/Sqrt(2)≈3/1,414≈2,1216407355</span></li>
-		<li>Jeśli przybliżymy <span class="math">Sqrt(2)≈1,4142</span>, dostaniemy <span class="math">3/Sqrt(2)≈3/1,4142=2,12134068731</span></li>
+		<li>Jeśli przybliżymy <span class="math">Sqrt(2)≈1,4142</span>, dostaniemy <span class="math">3/Sqrt(2)≈3/1,4142≈2,12134068731</span></li>
 	</ul>
 	
 	<p>
@@ -756,7 +885,7 @@
 		<li>Jeśli przybliżymy <span class="math">Sqrt(2)≈1,4</span>, dostaniemy <span class="math">(3Sqrt(2))/2≈(3∙1,4)/2≈2,1</span></li>
 		<li>Jeśli przybliżymy <span class="math">Sqrt(2)≈1,41</span>, dostaniemy <span class="math">(3Sqrt(2))/2≈(3∙1,41)/2≈2,115</span></li>
 		<li>Jeśli przybliżymy <span class="math">Sqrt(2)≈1,414</span>, dostaniemy <span class="math">(3Sqrt(2))/2≈(3∙1,414)/2≈2,121</span></li>
-		<li>Jeśli przybliżymy <span class="math">Sqrt(2)≈1,4142</span>, dostaniemy <span class="math">(3Sqrt(2))/2≈(3∙1,4142)/2=2,1213</span></li>
+		<li>Jeśli przybliżymy <span class="math">Sqrt(2)≈1,4142</span>, dostaniemy <span class="math">(3Sqrt(2))/2≈(3∙1,4142)/2≈2,1213</span></li>
 	</ul>
 
 	<p>
@@ -869,14 +998,6 @@
 		(4∙15+4∙8Sqrt(2)-Sqrt(2)∙15-Sqrt(2)∙8Sqrt(2)+Sqrt(3)∙15+Sqrt(3)∙8Sqrt(2))/(15^2-(8Sqrt(2))^2 )=<br>
 		=(60+32Sqrt(2)-15Sqrt(2)-16+15Sqrt(3)+8Sqrt(6))/(225-128)=(44+17Sqrt(2)+15Sqrt(3)+8Sqrt(6))/97</li>
 	</ul>
-
-	<p class="type">
-		Warsztat | Rozszerzenie
-	</p>
-	
-	<p class="warning">
-		[wymagana znajomość tematu: Działania na wyrażeniach algebraicznych]
-	</p>
 
 	<p>
 		Jeśli jakiemuś nieszczęśnikowi przyjdzie kiedyś wyciągać niewymierność z mianownika, w którym jako składnik sumy występuje pierwiastek 
