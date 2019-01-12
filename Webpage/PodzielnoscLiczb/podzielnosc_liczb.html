@@ -398,6 +398,9 @@
 	
 	<p>
 		Podobne reguły możemy tworzyć samodzielnie także dla innych liczb. Przykładowo <span class="math">15 = 3 &middot; 5</span>, więc 
+	</p>
+	
+	<p class = "formula">
 		Liczba jest podzielna przez <span class="math">15</span> wtedy i tylko wtedy, gdy jest podzielna przez <span class="math">3</span> i przez <span class="math">5</span>.
 	</p>
 
@@ -605,7 +608,7 @@
 				<span class="math">24 574</span>  jest podzielne przez <span class="math">11</span>.
 			</li>
 			<li>
-				<span class="math">5093</span> jest podzielne przez <span class="math">11</span>, ponieważ <span class="math">3 + 0 – (9 + 5) = –11</span>
+				<span class="math">5093</span> jest podzielne przez <span class="math">11</span>, ponieważ <span class="math">3 + 0 – Bracket(9 + 5) = –11</span>
 				jest podzielne przez <span class="math">11</span>.
 			</li>
 		</ul>
@@ -620,7 +623,7 @@
 		Oznaczmy pozycję cyfry jedności jako <span class="math">0</span>, pozycję cyfry dziesiątek jako <span class="math">1</span> itd. 
 		Liczba daje resztę  z dzielenia przez 
 		<span class="math">p</span> taką 
-		samą, jak reszta z dzielenia przez <span class="math">p</span> sumy cyfr mnożonych przez <span class="math">(10-p)^n</span>, gdzie 
+		samą, jak reszta z dzielenia przez <span class="math">p</span> sumy cyfr mnożonych przez <span class="math">Bracket(10-p)^n</span>, gdzie 
 		<span class="math">n</span> jest pozycją danej cyfry.
 	</p>
 
@@ -639,9 +642,9 @@
 		<p>
 			Co tak naprawdę mówi twierdzenie? Weźmy dla przykładu <span class="math">p=8</span> i rozważmy liczbę <span class="math">158</span>. 
 			Reszta z dzielenia <span class="math">158</span> przez <span class="math">p</span> wynosi <span class="math">6</span>, 
-			ponieważ <span class="math">158 : 8 = 19 r. 6</span>. „Suma cyfr mnożonych przez <span class="math">(10-p)^n</span> ” oznacza tyle, że 
+			ponieważ <span class="math">158 : 8 = 19 r. 6</span>. „Suma cyfr mnożonych przez <span class="math">Bracket(10-p)^n</span> ” oznacza tyle, że 
 			<span class="math">158</span> rozbijamy na cyfry, każdą mnożymy 
-			przez odpowiednią potęgę liczby <span class="math">(10-p)</span>, a potem dodajemy wyniki.
+			przez odpowiednią potęgę liczby <span class="math">Bracket(10-p)</span>, a potem dodajemy wyniki.
 		</p>
 
 		<ul>
@@ -678,35 +681,33 @@
 		</p>
 		
 		<p class="math" align="center">
-			m=(10-p)^k a_k+(10-p)^(k-1) a_(k-1)+⋯+(10-p)^1 a_1+(10-p)^0 a_0
+			m=Bracket(10-p)^k a_k+Bracket(10-p)^(k-1) a_(k-1)+⋯+Bracket(10-p)^1 a_1+Bracket(10-p)^0 a_0
 		</p>
 		
 		<p>
 			Z dwumianu Newtona możemy rozpisać:
 		</p>
 		
-		<p class="math">
-			m=Bracket(Newton(k,0)10^k Bracket(-p)^0+Newton(k,1)10^(k-1)Bracket(-p)^1+Newton(k,2)10^(k-2)Bracket(-p)^2+⋯+</br>
-				+Newton(k,k)10^0Bracket(-p)^k)a_k+Bracket(Newton((k-1),0)10^(k-1)Bracket(-p)^0+</br>
-				+Newton((k-1),1)10^(k-2)Bracket(-p)^1+Newton((k-1),2)10^(k-2)Bracket(-p)^2+⋯+</br>
-				+Newton((k-1),(k-1))10^0 Bracket(-p)^(k-1))a_(k-1)+<br>
+		<p class="math" style="font-size: 18">
+			m=Bracket(Newton(k,0)10^k Bracket(-p)^0+Newton(k,1)10^(k-1)Bracket(-p)^1+Newton(k,2)10^(k-2)Bracket(-p)^2+⋯+Newton(k,k)10^0Bracket(-p)^k)a_k+<br>
+				+Bracket(Newton((k-1),0)10^(k-1)Bracket(-p)^0+Newton((k-1),1)10^(k-2)Bracket(-p)^1+Newton((k-1),2)10^(k-2)Bracket(-p)^2+⋯+Newton((k-1),(k-1))10^0 Bracket(-p)^(k-1))a_(k-1)+<br>
 				+⋯+<br>
 				+Bracket(Newton((1),0) (10)^1 Bracket(-p)^0+Newton((1),1) (10)^0 Bracket(-p)^1 ) a_1+<br>
 				+a_0=<br>
 			=Bracket(10^k+Newton(k,1)10^(k-1)Bracket(-p)^1+Newton(k,2)10^(k-2)Bracket(-p)^2+⋯+Newton(k,k)10^0 Bracket(-p)^k)a_k+<br>
-				+Bracket(10^(k-1)+Newton((k-1),1)10^(k-2) Bracket(-p)^1+Newton((k-1),2)10^(k-2)Bracket(-p)^2+⋯<br>+Newton((k-1),(k-1))10^0 Bracket(-p)^(k-1))a_(k-1)+<br>
+				+Bracket(10^(k-1)+Newton((k-1),1)10^(k-2) Bracket(-p)^1+Newton((k-1),2)10^(k-2)Bracket(-p)^2+⋯+Newton((k-1),(k-1))10^0 Bracket(-p)^(k-1))a_(k-1)+<br>
 				+⋯+<br>
 				+Bracket((10)^1+Newton((1),1) (10)^0 Bracket(-p)^1 ) a_1+<br>
 				+a_0=<br>
 			=(10)^k a_k+ Bracket(-p)Bracket(Newton(k,1)10^(k-1)Bracket(-p)^0+Newton(k,2)10^(k-2)Bracket(-p)^1+⋯+Newton(k,k)10^0 Bracket(-p)^(k-1))a_k+<br>
-				+(10)^(k-1) a_(k-1)+Bracket(-p)Bracket(Newton((k-1),1)10^(k-2)Bracket(-p)^0+Newton((k-1),2)10^(k-2)Bracket(-p)^1+⋯<br>+Newton((k-1),(k-1))10^0 Bracket(-p)^(k-2))a_(k-1)+<br>
+				+(10)^(k-1) a_(k-1)+Bracket(-p)Bracket(Newton((k-1),1)10^(k-2)Bracket(-p)^0+Newton((k-1),2)10^(k-2)Bracket(-p)^1+⋯+Newton((k-1),(k-1))10^0 Bracket(-p)^(k-2))a_(k-1)+<br>
 				+⋯+</br>
-				+(10)^1 a_1+Bracket(-p)Bracket((Newton((1),1) (10)^0 Bracket(-p)^0 ) a_1+</br>
+				+(10)^1 a_1+Bracket(-p)Bracket((Newton((1),1) (10)^0 Bracket(-p)^0 )) a_1+</br>
 				+a_0=<br>
 			=(10)^k a_k+(10)^(k-1) a_(k-1)+⋯+(10)^1 a_1+a_0+<br>
-			Bracket(-p)Bracket(Bracket(Newton(k,1) (10)^(k-1) Bracket(-p)^0+Newton(k,2) (10)^(k-2) Bracket(-p)^1+⋯<br>
-			+Newton(k,k) (10)^0 Bracket(-p)^(k-1) )a_k+Bracket(Newton((k-1),1) (10)^(k-2) Bracket(-p)^0+Newton((k-1),2) (10)^(k-2) Bracket(-p)^1+⋯<br>
-			+Newton((k-1),(k-1)) (10)^0 Bracket(-p)^(k-2) ) a_(k-1)+⋯
+			Bracket(-p)Bracket(Bracket(Newton(k,1) (10)^(k-1) Bracket(-p)^0+Newton(k,2) (10)^(k-2) Bracket(-p)^1+⋯+Newton(k,k) (10)^0 Bracket(-p)^(k-1) )a_k+<br>
+			+Bracket(Newton((k-1),1) (10)^(k-2) Bracket(-p)^0+Newton((k-1),2) (10)^(k-2) Bracket(-p)^1+⋯+Newton((k-1),(k-1)) (10)^0 Bracket(-p)^(k-2) ) a_(k-1)+<br>
+			⋯
 			<br>+Bracket(Newton((1),1) (10)^0 Bracket(-p)^0 ) a_1 )=<br>=a-pm'
 		</p>
 
@@ -714,10 +715,10 @@
 			Gdzie <span class="math">m'</span> jest liczbą całkowitą równą
 		</p>
 		
-		<p class="math">
-			Bracket(Newton(k,1) (10)^(k-1) Bracket(-p)^0+Newton(k,2) (10)^(k-2) Bracket(-p)^1+⋯<br>
-			+Newton(k,k) (10)^0 Bracket(-p)^(k-1) )a_k+Bracket(Newton((k-1),1) (10)^(k-2) Bracket(-p)^0+Newton((k-1),2) (10)^(k-2) Bracket(-p)^1+⋯<br>
-			+Newton((k-1),(k-1)) (10)^0 Bracket(-p)^(k-2) ) a_(k-1)+⋯
+		<p class="math" style="font-size: 18">
+			Bracket(Newton(k,1) (10)^(k-1) Bracket(-p)^0+Newton(k,2) (10)^(k-2) Bracket(-p)^1+⋯+Newton(k,k) (10)^0 Bracket(-p)^(k-1) )a_k+<br>
+			+Bracket(Newton((k-1),1) (10)^(k-2) Bracket(-p)^0+Newton((k-1),2) (10)^(k-2) Bracket(-p)^1+⋯+Newton((k-1),(k-1)) (10)^0 Bracket(-p)^(k-2) ) a_(k-1)+<br>
+			⋯
 			<br>+Bracket(Newton((1),1) (10)^0 Bracket(-p)^0 ) a_1
 		</p>
 		
@@ -1476,12 +1477,130 @@
 		Najmniejszą wielokrotność napotkaliśmy dopiero przy <span class="math">30</span>.
 	</p>
 
+	<p class="type">
+		Warsztat
+	</p>
+	
+	<p>
+		Znajdowanie <span class="math">NWW</span> i <span class="math">NWD</span> można nieco przyspieszyć wykorzystując rozkład na czynniki 
+		pierwsze. Bierzemy dwoje delikwentów i rozbijamy ich na iloczyny liczb pierwszych
+	</p>
+		 
+	<table align="center" width="70%">
+		<tr>
+			<td>
+				<table align="center" class="factorisation">
+					<tr><td>120</td><td>2</td></tr>
+					<tr><td>60</td><td>2</td></tr>
+					<tr><td>30</td><td>2</td></tr>
+					<tr><td>15</td><td>3</td></tr>
+					<tr><td>5</td><td>5</td></tr>
+					<tr><td>1</td><td></td></tr>
+				</table>
+			</td>
+			<td>
+				<table align="center" class="factorisation">
+					<tr><td>300</td><td>2</td></tr>
+					<tr><td>150</td><td>2</td></tr>
+					<tr><td>75</td><td>3</td></tr>
+					<tr><td>25</td><td>5</td></tr>
+					<tr><td>5</td><td>5</td></tr>
+					<tr><td>1</td><td></td></tr>
+				</table>
+			</td>
+		</tr>
+	</table>
+		 
+	<p>
+		i zaznaczamy te czynniki, które powtarzają się w obydwu rozkładach.
+	</p>
+
+	<table align="center" width="70%">
+		<tr>
+			<td>
+				<table align="center" class="factorisation">
+					<tr><td>120</td><td style="color: #cc2222; font-weight: bold">2</td></tr>
+					<tr><td>60</td><td style="color: #cc2222; font-weight: bold">2</td></tr>
+					<tr><td>30</td><td>2</td></tr>
+					<tr><td>15</td><td style="color: #cc2222; font-weight: bold">3</td></tr>
+					<tr><td>5</td><td style="color: #cc2222; font-weight: bold">5</td></tr>
+					<tr><td>1</td><td></td></tr>
+				</table>
+			</td>
+			<td>
+				<table align="center" class="factorisation">
+					<tr><td>300</td><td style="color: #cc2222; font-weight: bold">2</td></tr>
+					<tr><td>150</td><td style="color: #cc2222; font-weight: bold">2</td></tr>
+					<tr><td>75</td><td style="color: #cc2222; font-weight: bold">3</td></tr>
+					<tr><td>25</td><td style="color: #cc2222; font-weight: bold">5</td></tr>
+					<tr><td>5</td><td>5</td></tr>
+					<tr><td>1</td><td></td></tr>
+				</table>
+			</td>
+		</tr>
+	</table>
+	
+	<p>
+		Iloczyn zaznaczonych czynników tworzy największy wspólny dzielnik liczb:
+	</p>
+	
+	<center><img src=".images/Screenshot_1.png" align="middle"></img></center>
+	
+	<p>
+		Z kolei iloczyn zaznaczonych czynników wraz ze wszystkimi niezaznaczonymi czynnikami tworzy najmniejszą wspólną wielokrotność:
+	</p>
+	
+	<center><img src=".images/Screenshot_2.png" align="middle"></img></center>
+
+	<p>
+		Dlaczego tak jest? Nie jest tajemnicą, że każdy czynnik występujący w rozkładzie <span class="math">300</span> jest dzielnikiem 
+		<span class="math">300</span>. Podobnie, iloczyn dowolnych czynników z rozkładu także tworzy dzielnik <span class="math">300</span>:
+	</p>
+	
+	<p class="math" align="center">
+		300=2∙2∙3∙5∙5=2∙2∙3∙5&nbsp;&nbsp;&nbsp;∙&nbsp;&nbsp;&nbsp;5=60∙5
+	</p>
+	
+	<p>
+		<span class="math">300</span> jest podzielne przez <span class="math">60</span>, czyli liczba <span class="math">2∙2∙3∙5</span> jest 
+		dzielnikiem <span class="math">300</span>. Tak więc, kiedy wybieramy czynniki występujące w obydwu rozkładach, dostajemy wspólny dzielnik 
+		<span class="math">120</span> i <span class="math">300</span>. Ponieważ wybieramy <b>wszystkie</b> czynniki z obydwu rozkładów, dostajemy 
+		największy wspólny dzielnik <span class="math">120</span> i <span class="math">300</span>.
+	</p>
+
+	<p>
+		Liczba <span class="math">2∙2∙3∙5∙2∙5</span> jest wielokrotnością <span class="math">300</span>, ponieważ wśród jej czynników pojawiają 
+		się wszystkie czynniki <span class="math">300</span>:
+	</p>
+	
+	<p class="math" align="center">
+		2∙2∙3∙5∙2∙5=2∙2∙3∙5∙5&nbsp;&nbsp;&nbsp;∙&nbsp;&nbsp;&nbsp;2=300∙2
+	</p>
+	
+	<p>
+		Podobnie
+	</p>
+	
+	<p class="math" align="center">
+		2∙2∙3∙5∙2∙5=2∙2∙2∙3∙5&nbsp;&nbsp;&nbsp;∙&nbsp;&nbsp;&nbsp;5=120∙5
+	</p>
+	
+	<p>
+		czyli <span class="math">2∙2∙3∙5∙2∙5=600</span> jest wspólną wielokrotnością <span class="math">300</span> i <span class="math">120</span>. 
+		Co więcej, jest to najmniejsza wspólna wielokrotność <span class="math">300</span> i <span class="math">120</span>, ponieważ czynniki 
+		<span class="math">600</span> wybieraliśmy „oszczędnie”: liczba będąca wspólną wielokrotnością <span class="math">300</span> i 
+		<span class="math">120</span> musi posiadać w rozkładzie wszystkie czynniki <span class="math">300</span>, jak również wszystkie czynniki 
+		<span class="math">120</span>; dlatego wybieramy je, ale z pominięciem tych czynników, które się powtarzają – czynniki 
+		<span class="math" style="color: #cc2222">2</span>, <span class="math" style="color: #cc2222">2</span>, <span class="math" style="color: #cc2222">3</span>, <span class="math" style="color: #cc2222">5</span> 
+		bierzemy tylko raz.
+	</p>
+	
 	<p class = "type">
 		Rozszerzenie
 	</p>
 
 	<p>
-		Mówimy, że dwie liczby są <i>względnie pierwsze</i>, jeśli ich NWD wynosi <span class="math">1</span>. Nie możemy wtedy znaleźć 
+		Mówimy, że dwie liczby są <i>względnie pierwsze</i>, jeśli ich <span class="math">NWD</span> wynosi <span class="math">1</span>. Nie możemy wtedy znaleźć 
 		żadnej <span class="comment" 
 		id="z całym szacunkiem dla jedynki">sensownej</span> liczby, 
 		przez którą można podzielić i jedną, i drugą.

@@ -5,6 +5,7 @@
 	<title>Kolejność wykonywania działań</title>
 	<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 	<link rel="stylesheet" href="../lesson_style.css">
+	<link href="https://fonts.googleapis.com/css?family=Della+Respira|Gentium+Basic|Martel|Sorts+Mill+Goudy" rel="stylesheet">
 	
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 	<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=MML_HTMLorMML"></script>
@@ -351,7 +352,8 @@
 	</p>
 
 	<p>
-		Niektórzy uważają, że zapis z użyciem wielu nawiasów, np. <span class="math">2 + 2 &middot; (2 + 2 &middot; (2 + 2 &middot; (2 + 2)))</span> jest 
+		Niektórzy uważają, że zapis z użyciem wielu nawiasów, np. <span class="math">2 + 2 &middot; Bracket(2 + 2 &middot; Bracket(2 + 2 &middot; 
+		Bracket(2 + 2)))</span> jest 
 		nieprzejrzysty, ponieważ nie widać, gdzie dany nawias się zaczyna, a gdzie kończy. Powyższe wyrażenie można zapisać w inny 
 		sposób:
 	</p>
@@ -385,9 +387,7 @@
 		Najlepiej stosować zawsze nawiasy okrągłe. Gdy robi się ich dużo, te bardziej zewnętrzne mogą być po prostu większe.
 	</p>
 
-	<p align ="center" class="math">
-		2+2 &middot; Bracket(2+2 &middot; Bracket(2+2 &middot; Bracket(2+2)))
-	</p>
+	<center><img src=".images/Screenshot_1.png" align="middle"></img></center>
 
 	</div>
 	</div>
@@ -459,12 +459,12 @@
 
 	<p>
 		Zależność ta jest bardzo ogólna. Gdy chcemy pomnożyć pewną liczbę przez sumę, możemy rozdzielić to mnożenie na dodawanie. 
-		Tak więc <span class="math">7 &middot; 9 = (3 + 4) &middot; 9 = 3 &middot; 9 + 4 &middot; 9</span>. Nie jest to specjalnie odkrywcze. Wziąć 
+		Tak więc <span class="math">7 &middot; 9 = Bracket(3 + 4) &middot; 9 = 3 &middot; 9 + 4 &middot; 9</span>. Nie jest to specjalnie odkrywcze. Wziąć 
 		siedem dziewiątek to to samo, co wziąć trzy dziewiątki, a potem jeszcze <span class="math">4</span> dziewiątki.
 	</p>
 
 	<ul>
-		<li class="math">(3 + 4) &middot; 9 = 7 &middot; 9 = 9 + 9 + 9 + 9 + 9 + 9 + 9</li>
+		<li class="math">Bracket(3 + 4) &middot; 9 = 7 &middot; 9 = 9 + 9 + 9 + 9 + 9 + 9 + 9</li>
 		<li class="math">3 &middot; 9 + 4 &middot; 9 = 9 + 9 + 9&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;&nbsp;&nbsp;&nbsp;9 + 9 + 9 + 9</li>
 	</ul>
 

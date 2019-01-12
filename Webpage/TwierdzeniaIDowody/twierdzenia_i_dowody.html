@@ -1,0 +1,498 @@
+<!DOCTYPE HTML PUBLIC “-//W3C//DTD HTML 4.01 Transitional//EN”>
+<html lang="pl">
+
+<head>
+	<title>Twierdzenia i dowody</title>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+	<link rel="stylesheet" href="../lesson_style.css">
+	<link rel="stylesheet" href="./style.css">
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+	<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=MML_HTMLorMML"></script>
+	<script src="../.scripts/scroll_hide.js"></script>
+	<script src="../.scripts/draggable.js"></script>
+	<script src="../.scripts/math.js"></script>
+	<script src="../.scripts/comment.js"></script>
+</head>
+
+<body class="lesson">
+  
+<div class = "menu">
+	<a href="../index.html"><button class = "button_convey" style="position: absolute; left: 10px"><span>Strona główna</span></button></a>
+	<a href="../drzewo.html"><button class = "button_convey" style="position: absolute; left: 250px"><span>Drzewo</span></button></a>
+	<a href="twierdzenia_i_dowody_short.html"><button class = "button_convey" style="position: relative; left: 80%"><span>Wersja skrócona</span></button></a>
+</div>
+  
+<div class="main">
+
+	<p class="lesson_title">
+		Twierdzenia i dowody
+	</p>
+    
+	<p>
+		Istotą matematyki jest umiejętność logicznego rozumowania oraz umiejętność przekonania innych, że to rozumowanie naprawdę jest logiczne. 
+		Piękno królowej nauk ujawnia się w krystalizowaniu prawdy – ustalaniu, co jest słuszne, czyste i dobre oraz odrzucaniu tego, co fałszywe, 
+		zepsute i złe. Logiczne myślenie przypomina ludzką moralność, a proces myślowy przebiega podobnie do procesu sądowego: matematyk niczym 
+		sędzia będzie cynicznie oceniał nasze myślenie, a my musimy przekonać go, że mamy rację, zaś nasza dusza nieskalana jest matematycznym 
+		grzechem.
+	</p>
+
+	<div class="chapter">
+	<div class="chapter_name">
+		Uniwersalność myślenia
+	</div>
+	<hr>
+	
+	<div class="chapter_mask">
+	<div class="chapter_body">
+
+	<p class="type">
+		Intuicje
+	</p>
+	
+	<p>
+		Niejednokrotnie podczas dotychczasowych matematycznych przygód dokonywaliśmy pewnych „spostrzeżeń”. Zajmując się ułamkami zwykłymi, 
+		zauważyliśmy, że kreskę ułamkową wolno zastąpić znakiem dzielenia, zaś sam ułamek możemy traktować jako inny sposób na zapisanie ilorazu. 
+		Aby objaśnić, o co nam chodzi, posługiwaliśmy się przykładami:
+	</p>
+	
+	<p class="math" align="center">
+		7/3=7:3<br>
+		3/4=3:4<br>
+		6/2=6:2
+	</p>
+	
+	<p>
+		licząc na to, że każdy zauważy tendencję i zrozumie, w jaki sposób zastosować takie przekształcenie dla dowolnych innych liczb. Ze 
+		ścisłego, matematycznego punktu widzenia opieranie reguł na kilku przykładach jest dość… umowne i śliskie. Naszą myśl powinniśmy ubrać w
+		możliwie najbardziej uniwersalną, ogólnikową formę:
+	</p>
+
+	<p class="formula">
+		Dowolny ułamek zwykły można przedstawić w postaci ilorazu, w którym dzielną jest licznik, a dzielnikiem mianownik tego ułamka.
+	</p>
+
+	<p>
+		Tak skonstruowane zdanie załatwia wszystkie przypadki – jest to dość precyzyjna instrukcja postępowania, wyjaśniająca jak przedstawić 
+		jakikolwiek ułamek w postaci dzielenia. Jednak co by nie mówić, przeczytanie i zrozumienie tego przydługiego zdania jest wyczerpujące 
+		umysłowo. W trosce o czas i zdrowie psychiczne użyjemy raczej symbolicznego zapisu:
+	</p>
+	
+	<p class="math" align="center">
+		a/b=a:b
+	</p>
+	
+	<p>
+		Użyliśmy zmiennych oznaczonych literami <span class="math">a</span> i <span class="math">b</span>, aby wyrazić następującą myśl:<br>
+		Przypisz literze <span class="math">a</span> dowolną wartość liczbową, przypisz literze <span class="math">b</span> dowolną (niekoniecznie 
+		inną) wartość liczbową, wstaw w miejsce wystąpień <span class="math">a</span> i <span class="math">b</span> przypisane wartości, a 
+		otrzymasz poprawną równość.
+	</p>
+
+	<p>
+		Dzięki oznaczeniom literowym możemy sformalizować wiele myśli i „spostrzeżeń”, których dokonaliśmy podczas ubiegłych lekcji:
+	</p>
+	
+	<ul>
+		<li>
+			Dodawanie jest przemienne: 
+			<p class="math" align="center">
+				a+b=b+a
+			</p>
+		</li>
+		<li>
+			Dodawanie jest łączne:
+			<p class="math" align="center">
+				a+Bracket(b+c)=Bracket(a+b)+c
+			</p>
+		</li>
+		<li>
+			Mnożenie to wielokrotne dodanie do siebie tej samej liczby: 
+			<p class="math" align="center">
+				<center><img src=".images/Screenshot_1.png" align="middle"></img></center>
+			</p>
+		</li>
+		<li>
+			Odejmowanie to odwrotność dodawania: 
+			<p class="math" align="center">
+				a-b=c⟺a+c=b
+			</p>
+		</li>
+		<li>
+			Każda liczba dzieli się przez <span class="math">1</span>:
+			<p class="math" align="center">
+				1 | a
+			</p>
+		</li>
+		<li>
+			Ułamki można rozszerzać i skracać:
+			<p class="math" align="center">
+				a/b=(a∙c)/(b∙c)
+			</p>
+		</li>
+		<li>
+			Aby pomnożyć ułamki, mnożymy ich liczniki i mianowniki:
+			<p class="math" align="center">
+				a/b∙c/d=(a∙c)/(b∙d)
+			</p>
+		</li>
+		<li>
+			Aby dodać do siebie ułamki, należy sprowadzić je do wspólnego mianownika:
+			<p class="math" align="center">
+				a/b+c/d=(a∙d)/(b∙d)+(c∙b)/(d∙b)=(a∙d+c∙b)/(b∙d)
+			</p>
+		</li>
+		<li>
+			Dzielenie przez ułamek to mnożenie przez jego odwrotność:
+			<p class="math" align="center">	
+				a/b:c/d=a/b∙d/c
+			</p>
+		</li>
+	</ul>
+		
+	<p>
+		Trzykropek wykorzystany w zapisie <span class="math">a∙b=a+a+a+⋯+a</span> jest często używany, by przedstawić sumę lub iloczyn 
+		składników/czynników, których ilość nie jest bliżej znana lub zależy od pewnej zmiennej. Formuła <span class="math">a-b=c⟺a+c=b</span>
+		wykorzystuje symbol równoważności <span class="math">⟺</span>, który informuje, że to, co po lewej, jest równoważne z tym, co po prawej.
+	</p>
+
+	</div>
+	</div>
+	</div>
+	
+	<div class="chapter">
+	<div class="chapter_name">
+		Od pomysłu do twierdzenia
+	</div>
+	<hr>
+
+	<div class="chapter_mask">
+	<div class="chapter_body">
+	
+	<p class="type">
+		Intuicje
+	</p>
+	
+	<p>
+		Zauważenie pewnej tendencji wśród liczb (lub jakichkolwiek obiektów będących przedmiotem naszych matematycznych przygód) to pierwszy krok, 
+		by sformułować <i>twierdzenie</i>, czyli oficjalnie zatwierdzoną i ogólnie przyjętą prawdę matematyczną. Twierdzenie jest jakby regułą, która 
+		jest zawsze prawdziwa i nie można znaleźć od niej wyjątku.
+	</p>
+
+	<p>
+		Zajmując się <span class="math">NWD</span> i <span class="math">NWW</span> liczb moglibyśmy natknąć się na pewną zależność:
+	</p>
+	
+	<ul>
+		<li>Bierzemy liczby <span class="math">6</span> i <span class="math">9</span>. Obliczamy <span class="math">NWD Bracket(6,9)=3</span> oraz 
+		<span class="math">NWW Bracket(6,9)=18</span>. Okazuje się, że iloczyn <span class="math">6∙9=54</span> jest taki sam, jak iloczyn <span class="math">3∙18=54</span>;
+		<li>Bierzemy liczby <span class="math">15</span> i <span class="math">20</span>. Obliczamy <span class="math">NWD Bracket(15,20)=5</span>, 
+		<span class="math">NWW Bracket(15,20)=60</span>. Ponownie okazuje się, że <span class="math">15∙20=300</span> tak samo jak <span class="math">5∙60=300</span>;
+		<li>Bierzemy liczby <span class="math">100</span> i <span class="math">60</span>. Obliczamy <span class="math">NWD Bracket(100,60)=20</span>, 
+		<span class="math">NWW Bracket(100,60)=300</span>; znów otrzymujemy równość: <span class="math">100∙60=20∙300=6000</span>.
+	</ul>
+		
+	<p>
+		Te trzy przykłady wywołują pokusę, by stwierdzić, że dla dowolnych dwóch liczb <span class="math">a</span> i <span class="math">b</span> 
+		zachodzi
+	</p>
+	
+	<p class="math" align="center">
+		a∙b=NWD Bracket(a,b)∙NWW Bracket(a,b)
+	</p>
+
+	<p>
+		Takie stwierdzenie jest cokolwiek śmiałe, ponieważ opiera się jedynie na przesłankach – na podstawie trzech przypadków próbujemy postawić 
+		wniosek dotyczący <b>wszystkich</b> możliwych par liczb. Postawiliśmy <i>hipotezę</i>, czyli stwierdzenie, które wydaje się prawdziwe 
+		(ponieważ nie udało nam się znaleźć kontrprzykładów), chociaż nie jesteśmy go pewni.
+	</p>
+
+	<p>
+		Teraz musimy przeprowadzić <i>dowód</i>, czyli przedstawić ogólne rozumowanie, które uzasadni słuszność naszego przypuszczenia dla wszystkich 
+		przypadków.
+	</p>
+	
+	<p class="type">
+		 Pseudo-dowód
+	</p>
+	
+	<div class="proof">
+		<p>
+			Przypomnijmy sobie, w jaki sposób wyznaczaliśmy <span class="math">NWW</span> i <span class="math">NWD</span> liczb. Dokonywaliśmy 
+			rozkładu na czynniki pierwsze obydwu liczb:
+		</p>
+
+		<p class="math" align="center">
+			120=2∙2∙2∙3∙5<br>
+			300=2∙2∙3∙5∙5
+		</p>
+
+		<p>
+			A następnie wybieraliśmy te czynniki, które pojawiają się w obydwu rozkładach:
+		</p>
+
+		<center><img src=".images/Screenshot_2.png" align="middle"></img></center>
+
+		<p>
+			Czynniki, które pojawiają się w obydwu rozkładach, tworzą <span class="math">NWD</span> tych liczb:
+		</p>
+
+		<center><img src=".images/Screenshot_3.png" align="middle"></img></center>
+
+		<p>
+			A razem z czynnikami pojawiającymi się tylko raz tworzą <span class="math">NWW</span> tych liczb:
+		</p>
+
+		<center><img src=".images/Screenshot_3.png" align="middle"></img></center>
+
+		<p>
+			Dzięki takiemu zapisowi łatwiej zauważyć słuszność naszej hipotezy:
+		</p>
+		
+		<center><img src=".images/Screenshot_4.png" align="middle"></img></center>
+	</div>
+		
+	<p>
+		Teraz jedynie musimy sformalizować nasze rozumowanie i nie opierać się na konkretnych liczbach <span class="math">120</span> i 
+		<span class="math">300</span>, a na dowolnych dwóch <span class="math">a</span> i <span class="math">b</span>.
+	</p>
+
+	<p class="type">
+		Dowód
+	</p>
+	
+	<div class="proof">
+		<p>
+			Weźmy dowolne liczby <span class="math">a</span> i <span class="math">b</span> i dokonajmy ich rozkładu na czynniki pierwsze. 
+			Wybierzmy czynniki pojawiające się w obydwu rozkładach i oznaczmy je jako <span class="math">r_1,r_2,r_3,r_4,…,r_k</span>.
+		</p>
+		
+		<p>
+			Możemy zapisać
+		</p>
+		
+		<p class="math" align="center">
+			a=r_1∙r_2∙r_3∙…∙r_k∙p_1∙p_2∙p_3∙…∙p_n<br>
+			b=r_1∙r_2∙r_3∙…∙r_k∙q_1∙q_2∙q_3∙…∙q_m
+		</p>
+		
+		<p>
+			gdzie <span class="math">p_1,p_2,p_3,…,p_n</span> to pozostałe czynniki występujące w rozkładzie liczby <span class="math">a</span>, 
+			zaś <span class="math">q_1,q_2,q_3,…,q_m</span> to pozostałe czynniki rozkładu <span class="math">b</span>.
+		</p>
+
+		<p>
+			Ponieważ 
+		</p>
+		
+		<p class="math" align="center">
+			NWD Bracket(a,b)=r_1∙r_2∙r_3∙…∙r_k<br>
+			NWW Bracket(a,b)=r_1∙r_2∙r_3∙…∙r_k∙p_1∙p_2∙p_3∙…∙p_n∙q_1∙q_2∙q_3∙…∙q_m
+		</p>
+		
+		<p>
+			to
+		</p>
+		
+		<p class="math" align="center">
+			a∙b=Bracket(r_1∙r_2∙r_3∙…∙r_k∙p_1∙p_2∙p_3∙…∙p_n )∙Bracket(r_1∙r_2∙r_3∙…∙r_k∙q_1∙q_2∙q_3∙…∙q_m )=<br>
+			=Bracket(r_1∙r_2∙r_3∙…∙r_k )∙Bracket(r_1∙r_2∙r_3∙…∙r_k∙p_1∙p_2∙p_3∙…∙p_n∙q_1∙q_2∙q_3∙…∙q_m )=<br>
+			=NWD Bracket(a,b)∙NWW Bracket(a,b)   □
+		</p>
+	</div>
+		
+	<p>
+		Symbol <span class="math">□</span> zapisują matematycy z dobrym humorem, którzy chcą podkreślić sukces dobrze przeprowadzonego dowodu. 
+		Odczytujemy go jako „koniec dowodu” lub „co należało udowodnić”. Niezwykle optymistyczny akcent.
+	</p>
+
+	<p>
+		W ten jakże przyjemny sposób dokonaliśmy pierwszego, choć z pewnością nie ostatniego dowodu matematycznego. Od tej chwili równość
+	</p>
+	
+	<p class="math" align="center">
+		a∙b=NWD Bracket(a,b)∙NWW Bracket(a,b)
+	</p>
+	
+	<p>
+		możemy określić dumnym mianem twierdzenia.
+	</p>
+
+	<p>
+		Dowód przeprowadzony w sposób ogólny, z użyciem algebraicznego zapisu na zmiennych literowych, jest jedynym sposobem na uzasadnianie 
+		własności w matematyce. Nie można przyjmować na wiarę tendencji, które wynikają z kilku zaobserwowanych przykładów. Ktoś mógłby 
+		stwierdzić, że:
+	</p>
+	
+	<p class="math" align="center">
+		0∙0=0<br>
+		1∙1=1
+	</p>
+	
+	<p>
+		Zatem prawdziwa jest równość
+	</p>
+	
+	<p class="math" align="center">
+		a∙a=a
+	</p>
+	
+	<p>
+		Nie jest istotne, czy tendencja dotyczy dwóch, dwudziestu czy dwustu przypadków. Matematyka potrafi zaskakiwać, zdarza się, że hipoteza 
+		okazuje się fałszywa dla bardzo dużych liczb lub złośliwych wyjątków, na które ciężko wpaść metodą prób i błędów.
+	</p>
+	
+	</div>
+	</div>
+	</div>
+	
+	<div class="chapter">
+	<div class="chapter_name">
+		Definicje a twierdzenia
+	</div>
+	<hr>
+
+	<div class="chapter_mask">
+	<div class="chapter_body">
+	
+	<p class="type">
+		Intuicje
+	</p>
+	
+	<p>
+		Aby mieć prawo do osądzania, co jest prawdą a co nie, aby tworzyć reguły opisujące świat matematyki i w ogóle: aby korzystać na poważnie z 
+		formalnych narzędzi matematycznych należy najpierw ustalić, czym właściwie są obiekty, którymi się zajmujemy.
+	</p>
+
+	<p>
+		W prawdziwej matematyce każde pojęcie, każdy zapis, każdy symbol, z którego korzystamy, powinien mieć ścisłą i formalną <i>definicję</i>. 
+	</p>
+	
+	<ul>
+		<li>
+			Zapis
+			<p class="math" align="center">
+				<center><img src=".images/Screenshot_1.png" align="middle"></img></center>
+			</p>
+			stanowi definicję mnożenia. Dzięki niemu dowiadujemy się, w jaki sposób rozumieć symbol <span class="math">∙</span> postawiony 
+			pomiędzy dwiema liczbami: wyrażenie <span class="math">a∙b</span> rozumiemy jako <span class="math">b</span> razy dodaną do siebie 
+			liczbę <span class="math">a</span>.
+		</li>
+		<li>
+			Mówimy, że <span class="math">a</span> jest podzielne przez <span class="math">b</span>, jeśli <span class="math">a/b</span> jest 
+			liczbą całkowitą. W ten sposób definiujemy zwrot „jest podzielne przez” jak również tłumaczymy zapis <span class="math">a | b</span>. 
+			Matematycy zazwyczaj używają innej, prawie równoważnej definicji: <span class="math">a | b</span> jeśli istnieje liczba całkowita 
+			<span class="math">c</span>, dla której <span class="math">a=b∙c</span>.
+		</li>
+		<li>
+			Liczby wymierne definiujemy jako ułamki <span class="math">a/b</span> gdzie <span class="math">a</span> oraz <span class="math">b</span> to 
+			liczby całkowite.
+		</li>
+		<li>
+			<span class="math">NWDBracket(a,b)</span> definiujemy jako największą liczbę naturalną <span class="math">c</span>, taką że <span class="math">c | a</span>
+			oraz <span class="math">c | b</span>.
+		</li>
+		<li>
+			<span class="math">NWWBracket(a,b)</span> definiujemy jako najmniejszą liczbę naturalną <span class="math">c</span>, taką że <span class="math">a | c</span> 
+			oraz <span class="math">b | c</span>.
+		</li>
+	</ul>
+		
+	<p>
+		Definicja stanowi objaśnienie pojęcia / zapisu / symbolu / zwrotu, z którego korzystamy po raz pierwszy. To jakby podanie swojego imienia, 
+		gdy przedstawiamy się obcej osobie. Definiowanie pojęć jest dość swobodne: formułujemy definicję, jeśli tylko zajdzie taka potrzeba. 
+		Moglibyśmy w tej chwili stworzyć definicję „ułamek zwykły nazywamy ładnym, jeśli do jego zapisu potrzeba dwóch cyfr”. 
+	</p>
+
+	<p>
+		Mając definicje, możemy formułować twierdzenia. Gdy już wiemy, czym są nowowprowadzone obiekty matematyczne, możemy dostrzegać pewne 
+		zjawiska z nimi związane. Moglibyśmy sformułować twierdzenie „istnieje <span class="math">56</span> ładnych ułamków zwykłych o różnych 
+		wartościach” i udowodnić je wykorzystując definicję ułamków ładnych:
+	</p>
+	
+	<p class="type">
+		Dowód
+	</p>
+	
+	<div class="proof">
+		<p>
+			Jeśli ułamek <span class="math">a/b</span> jest ładny, liczby <span class="math">a</span> oraz <span class="math">b</span>
+			wykorzystują łącznie dwie cyfry, a więc liczba <span class="math">a</span> musi być jednocyfrowa oraz <span class="math">b</span> 
+			musi być jednocyfrowa. Rozważamy więc ułamki, których liczniki mają jedną z wartości <span class="math">0,1,2,3,4,5,6,7,8,9</span>, 
+			a mianowniki jedną z wartości <span class="math">1,2,3,4,5,6,7,8,9</span> (<span class="math">b</span> nie może mieć wartości <span class="math">0</span>)
+		</p>
+		
+		<p>
+			Jeśli <span class="math">b=1</span>, licznikiem może być <span class="math">0,1,2,3,4,5,6,7,8,9</span>, co daje <span class="math">10</span> 
+			ułamków o różnych wartościach.
+		</p>
+		
+		<p>
+			Jeśli <span class="math">b=2</span>, licznikiem może być <span class="math">1,3,5,7,9</span>, co daje <span class="math">5</span> nowych 
+			ułamków; dla parzystych liczników otrzymalibyśmy jedną z wartości z poprzedniego przypadku.
+		</p>
+		
+		<p>
+			Jeśli <span class="math">b=3</span>, licznikiem może być <span class="math">1,2,4,5,7,8</span>, co daje <span class="math">6</span> 
+			nowych ułamków
+		</p>
+		
+		<p>
+			Jeśli <span class="math">b=4</span>, licznikiem może być <span class="math">1,3,5,7,9</span>, co daje <span class="math">5</span> 
+			nowych ułamków
+		</p>
+		
+		<p>
+			Jeśli <span class="math">b=5</span>, licznikiem może być <span class="math">1,2,3,4,6,7,8,9</span>, co daje <span class="math">8</span> 
+			nowych ułamków
+		</p>
+		
+		<p>
+			Jeśli <span class="math">b=6</span>, licznikiem może być <span class="math">1,5,7</span>, co daje <span class="math">3</span> nowe ułamki; 
+			dla pozostałych liczników otrzymalibyśmy ułamek skracalny o wartości równej jednej z wcześniejszych przypadków
+		</p>
+		
+		<p>
+			Jeśli <span class="math">b=7</span>, licznikiem może być <span class="math">1,2,3,4,5,6,8,9</span>, co daje <span class="math">8</span> 
+			nowych ułamków
+		</p>
+		
+		<p>
+			Jeśli <span class="math">b=8</span>, licznikiem może być <span class="math">1,3,5,7,9</span>, co daje <span class="math">5</span> 
+			nowych ułamków
+		</p>
+		
+		<p>
+			Jeśli <span class="math">b=9</span>, licznikiem może być <span class="math">1,2,4,5,7,8</span>, co daje <span class="math">6</span> nowych 
+			ułamków
+		</p>
+		
+		<p>
+			Łącznie mamy <span class="math">10+5+6+5+8+3+8+5+6=56</span> ułamków o różnych wartościach
+		</p>
+	</div>
+
+	<p>
+		Wprawdzie ani definicja, ani twierdzenie dotyczące ładnych ułamków nie ma dużej przydatności matematycznej, to idea postępowania 
+		matematycznego jest zachowana. Ścisłość i formalizm matematyczny wymagają pewnego rygoru: najpierw definiujemy pojęcia, którymi 
+		będziemy się posługiwać; definicje mogą opierać się tylko na pojęciach, które zostały zdefiniowane wcześniej. Zdefiniowane pojęcia 
+		wykazują cechy i zależności, które formułujemy w postaci twierdzeń. Słuszność twierdzenia wykazujemy za pomocą dowodu.
+	</p>
+
+	<p>
+		Zdarza się, że granica między definicją a twierdzeniem staje się rozmyta. Możemy zdefiniować liczby wymierne jako ułamki o całkowitym 
+		liczniku i mianowniku i sformułować twierdzenie „każda liczba wymierna ma rozwinięcie dziesiętne skończone lub nieskończone okresowe”, 
+		które udowodnilibyśmy wykorzystując wspomnianą definicję. Równie dobrze moglibyśmy zdefiniować liczby wymierne jako liczby, których 
+		rozwinięcie dziesiętne jest skończone lub nieskończone okresowe, a następnie stworzyć twierdzenie „każdą liczbę wymierną można 
+		przedstawić w postaci ułamka zwykłego o całkowitym liczniku i mianowniku”. Kwestia wygody.
+	</p>
+
+	</div>
+	</div>
+	</div>
+  
+</div>
+
+</body>
+
+</html>
