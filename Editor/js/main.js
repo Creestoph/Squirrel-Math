@@ -307,7 +307,4 @@ function addCanvas() {
         }
     }
     focused_canvas = new Canvas(parent, index);
-    focused_canvas.element.addEventListener('click', function () {
-        document.getElementById("canvas_editor").style.display = "block";
-    });
 }

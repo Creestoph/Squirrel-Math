@@ -19,24 +19,33 @@ class Canvas extends HTMLElement {
 
 
         const p = document.createElement('p');
-        this.canvas = document.createElementNS("http://www.w3.org/2000/svg", 'svg');
+        this.canvas = document.createElement('canvas');
         this.canvas.setAttribute('width', '300');
         this.canvas.setAttribute('height', '300');
         this.canvas.setAttribute('tabindex', '-1');
         this.canvas.setAttribute('class', 'editor_canvas');
+        this.canvas.setAttribute('id', 'c');
         const a = this;
-        this.canvas.onmousemove = function (evt) {
-            evt.stopPropagation();
-            Canvas.setCursor(evt, a);
-        };
-        this.canvas.onmousedown = function (evt) {
-            evt.stopPropagation();
-            Canvas.selectElement(evt, a);
-        };
+
         p.setAttribute('align', 'center');
         p.appendChild(this.canvas);
 
         this.updateHTML(p);
+
+        // create a wrapper around native canvas element (with id="c")
+        var canvas = new fabric.Canvas('c');
+
+// create a rectangle object
+        var rect = new fabric.Rect({
+            left: 100,
+            top: 100,
+            fill: 'red',
+            width: 20,
+            height: 20
+        });
+
+// "add" rectangle onto canvas
+        canvas.add(rect);
     }
 
     getCanvas() {
