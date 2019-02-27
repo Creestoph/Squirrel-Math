@@ -1,238 +1,9 @@
-body.lesson
-{
-	/*background-color: #8A1010;*/
-	background-image: url(".images/background.jpg");
-	background-attachment: fixed;
-	background-position: center;
-	background-repeat: no-repeat;
-	background-size: cover;
-	margin: 0;
-}
-
-body.tree
-{
-	background-color: #FFFFFF;
-}
-
-a:link
-{
-	color: #BA0000;
-	text-decoration: none;
-}
-
-a:visited
-{
-	color: #700000;
-	text-decoration: none;
-}
-
-a:hover
-{
-	color: #FA0000;
-	text-decoration: none;
-}
-
-a:active
-{
-	color: #300000;
-	text-decoration: none;
-}
-
-div.main
-{
-	color: #000000; 
-	background: #FEFEFE; 
-	position: relative; 
-	top: 50px;
-	border: 3px solid black;
-	width: 940px;
-	margin: auto; 
-	margin-bottom: 50px;
-	padding-left: 50px;
-	padding-right: 50px;
-	padding-top: 35px;
-	padding-bottom: 35px;
-	box-shadow: inset 0 0 13px 4px rgba(0, 0, 0, 0.3);
-	font-family: "Calibri Light";
-	font-size: 24px;
-}
-
-div.menu
-{
-	color: #000000; 
-	background: #FEFEFE;  
-	top: 0px;
-	border-bottom: 1px solid black; 
-	width: 100%;
-	margin: 0; 
-	padding-top: 10px;
-	padding-bottom: 10px;
-	box-shadow: inset 0 -9px 15px 0px rgba(0, 0, 0, 0.3);
-	height: 70px;
-}
-
-div.proof
-{
-	padding: 10px;
-	margin: 15px;
-	border: 1px solid #777777;
-	border-collapse: collapse;
-}
-
-div.comment_window
-{
-	position: absolute;
-    background: #FEFEFE;
-    padding: 6px;
-	border-right: 1px solid black;
-	border-bottom: 1px solid black;
-	font-family: calibri light;
-	font-size: 15px;
-	box-shadow: inset 0px -15px 15px -5px rgba(0, 0, 0, 0.15);
-}
-
-div.comment_visible_window
-{
-	position: absolute;
-    background: #FEFEFE;
-    padding: 6px;
-	border-right: 1px solid black;
-	border-bottom: 1px solid black;
-	font-family: calibri light;
-	font-size: 15px;
-	box-shadow: inset 0px -15px 15px -5px rgba(0, 0, 0, 0.15);
-}
-
-div.comment_visible_question_mark
-{
-	color: #DD0000;
-	font-family: "Copperplate Gothic Light";
-	font-size: 28px;
-}
-
-div.chapter
-{
-	position: relative;
-}
-
-div.chapter:first-of-type
-{
-	margin-top: 55px;
-}
-
-div.chapter_name
-{
-	position: relative;
-	cursor: pointer;
-	font-family: corbel;
-	text-align: center;
-	line-height: 0%;
-	margin-top: 9px; /*50px*/
-	margin-bottom: 25px;
-}
-
-div.chapter_body
-{
-	position: relative;
-	border: 0px solid black;
-	margin-bottom: 55px;
-	margin-top: 0px;
-	padding: 0px;
-	box-shadow: inset 0 0 0 0 rgba(0, 0, 0, 0.3);
-}
-
-div.chapter_mask
-{
-	overflow: hidden;
-	position: relative;
-	border: 0px solid black;
-	margin: 0; 
-	margin-bottom: 0px;
-	margin-top: 0px;
-	padding: 0px;
-	box-shadow: inset 0 0 0 0 rgba(0, 0, 0, 0.3);
-}
-
-div.example
-{
-	border: 1px solid #888888;
-	border-left: 8px solid #CC3333;
-	padding: 15px;
-	margin: 20px;
-	margin-left: 30px;
-	margin-right: 30px;
-	border-radius: 15px;
-	box-shadow: 0px 0px 13px 0px rgba(0, 0, 0, 0.2);
-}
-
-
+/* ========================================== GENERAL ========================================== */
 
 p:not(.printable)
 {
-	margin: 15px;
-	font-family: calibri light;
-	font-size: 24px; /*24 to standard chyba*/
+	text-align: justify;
 }
-
-p.lesson_title
-{
-	text-align: center;
-	font-size: 50px;
-	font-family: cambria;
-	margin: 50px;
-}
-
-p.lesson_title_short
-{
-	text-align: center;
-	font-size: 50px;
-	font-family: cambria;
-	margin-top: 50px;
-	margin-bottom: 1px;
-}
-
-p.lesson_subtitle
-{
-	text-align: center;
-	font-size: 25px;
-	font-family: cambria;
-	margin-top: 1px;
-	margin-bottom: 50px;
-}
-
-p.type
-{
-	font-family: calibri;
-	font-size: 31px;
-	line-height: 0%;
-	margin-bottom: 25px;
-	margin-top: 40px;
-	text-shadow: 2px 2px #CCCCCC;
-}
-
-p.warning
-{
-	font-family: arial;
-	font-size: 14px;
-	margin-top: 4px;
-	margin-bottom: 8px;
-}	
-
-p.problem
-{
-	font-family: constantia;
-	text-align: center;
-}
-
-.formula
-{
-	text-align: center;
-	text-shadow: 3px 3px #EEEEEE;
-	text-shadow: 2px 2px #DDDDDD;
-	text-shadow: 1px 1px #AAAAAA;
-}
-
-
 
 .no_selection 
 {
@@ -242,7 +13,11 @@ p.problem
     -ms-user-select: none; /* IE10+ */
 }
 
-
+a
+{
+	text-decoration: none;
+	color: inherit;
+}
 
 ul
 {
@@ -258,8 +33,9 @@ li
 
 ul li:before
 {
-	content: "♣";
-	color: #CC2222;
+	/*content: "♣";*/
+	content: "◆";
+	color: #dd3333;
 	margin: 0 1em;  
 	display: table-cell;
 	padding-right:  0.5em;
@@ -267,8 +43,8 @@ ul li:before
 
 ul ul li:before
 {
-	content: "♥";
-	color: #CC2222;
+	content: "◈";
+	color: #dd3333;
 	margin: 0 1.5em;
 }
 
@@ -285,97 +61,23 @@ ol li
 ol li:before
 {
 	content: counter(foo) ")";
-	color: #DD2222;
+	color: #DD3333;
 	margin: 0 1.5em;
 	margin: 0 1em;  
 	display: table-cell;
 	padding-right:  0.5em;
 }
 
-
-
-
-
-.chapter_name + hr
-{
-	height: 12px;
-	border: 0;
-	box-shadow: inset 0 12px 12px -12px rgba(0, 0, 0, 0.5);
-	margin-left: 15px;
-	margin-right: 15px;
-}
-
-.chapter_name:hover + hr
-{
-	height: 12px;
-	border: 0;
-	box-shadow: inset 0 12px 12px -12px rgba(0, 0, 0, 1);
-	margin-left: 15px;
-	margin-right: 15px;
-}
-
-
-
-
-table
-{
-	font-size: 23px;
-}
-
-table.operation_table
-{
-	text-align: center;
-	border-collapse: collapse;
-	border-style: hidden;
-}
-
-table.operation_table td
-{
-	height: 34px;
-	width: 32px;
-	border: 1px solid black;
-}
-
-table.operation_table th 
-{
-    height: 34px;
-    width: 32px;
-    border: 2px solid black;
-    color: #772222;
-    text-shadow: 1px 1px #CCCCCC;
-}
-
-table.tiles
-{
-	border-collapse: collapse;
-}
-
-table.tiles td
-{
-	height: 45px;
-	width: 41px;
-	background-color: #EEDDDD;
-	border: 3px groove #AA2222;
-}
-
-table.tiles td:hover
-{
-	background-color: #DD8888;
-	border-style: ridge;
-}
-
-
-
 button
 {
-	background-color: #AA1111;
+	background-color: #dd3333;
 	border: none;
 	color: white;
 	padding: 15px 32px;
 	text-align: center;
 	text-decoration: none;
 	/*display: inline-block;*/
-	font-size: 16px;
+	font-size: 0.9em;
 	margin: 4px 2px;
 	cursor: pointer;
 }
@@ -391,6 +93,153 @@ button:focus
 	outline: none;
 }
 
+input
+{
+	border-radius: 7px;
+	border: 1px solid #AAAAAA;
+	padding-left: 6px;
+	padding-right: 6px; 
+	height: 25px;
+}
+
+input:focus
+{
+	border-color: #EEAAAA;
+	outline: none;
+	box-shadow: 0 0 15px 0 #FFAAAA;
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none; 
+}
+
+::selection
+{
+	background: #EF0000;
+	color: #FFFFFF;
+}
+
+::moz-selection
+{
+	background: #EF0000;
+	color: #FFFFFF;
+}
+
+.modal
+{
+	display: none;
+    position: fixed;
+    z-index: 1;
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.7);
+}
+
+.modal_content
+{
+	background: #EEEEEE;
+	top: 40%;
+	width: 50%;
+	padding: 30px;
+	margin: auto;
+}
+
+.center
+{
+	margin-left: auto;
+	margin-right: auto;
+}
+
+/* ========================================== MENU ========================================== */
+
+.menu
+{
+	color: #000000; 
+	background: #FEFEFE;  
+	top: 0px;
+	border-bottom: 15px solid black; 
+	width: 100%;
+	margin: 0; 
+	padding-top: 10px;
+	padding-bottom: 10px;
+	height: 100px;
+}
+
+.menu button
+{
+	float: left;
+}
+
+.menu .logo 
+{
+	float: left;
+}
+
+.menu .logo > div
+{
+	transform:  translateX(60px) translateY(24px) rotate(45deg);
+}
+
+.menu .logo-text
+{
+	float: left;
+	padding: 30px 50px 0 50px;
+}
+
+.menu .logo-text-1
+{
+	font-weight: bold;
+	font-family: "Segoe UI";
+	font-size: 1.5em;
+	padding: -50px 0 0 400px;
+	display: inline-block;
+	color: #cc0000;
+}
+
+.menu .logo-text-2
+{
+	font-weight: bold;
+	font-family: "Segoe UI";
+	font-size: 1.5em;
+	color: black;
+}
+
+.menu .logo-black-cell
+{
+	height: 30px;
+	width: 30px;
+	background: black;
+	border: 0px solid white;
+	padding: 4px 4px 0 0;
+	margin: 2px;
+}
+
+.menu .logo-container-cell
+{
+	height: 30px;
+	width: 30px;
+	padding: 4px 4px 0 0;
+	margin: 2px;
+	background: none;
+	border: none;
+}
+
+.menu .logo-red-cell
+{
+	height: 12px;
+	width: 12px;
+	background: #cc0000;
+	border: none;
+	margin: 3px 3px 0 0;
+}
+
 button.button_convey
 {
 	background-color: rgba(0, 0, 0, 0);
@@ -398,11 +247,12 @@ button.button_convey
 	color: black;
 	text-align: center;
 	text-decoration: none;
-	font-size: 20px;
-	margin: 4px 2px;
+	font-size: 1.3em;
+	font-family: "Segoe UI";
+	font-weight: bold;
 	cursor: pointer;
 	display: inline-block;
-	padding: 20px;
+	padding: 30px 20px 20px 20px;
 	transition: all 0.5s;
 	cursor: pointer;
 	margin: 5px;
@@ -447,32 +297,340 @@ button.button_convey span a
 	color: black;
 }
 
-input
+/* ========================================== TREE ========================================== */
+
+body.tree
 {
-	border-radius: 7px;
-	border: 1px solid #AAAAAA;
-	padding-left: 6px;
-	padding-right: 6px; 
-	height: 25px;
+	background-color: #FFFFFF;
 }
 
-input:focus
+.tree a:link
 {
-	border-color: #EEAAAA;
-	outline: none;
-	box-shadow: 0 0 15px 0 #FFAAAA;
+	color: #BA0000;
 }
 
-input[type=number]::-webkit-inner-spin-button, 
-input[type=number]::-webkit-outer-spin-button { 
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none; 
+.tree a:visited
+{
+	color: #700000;
 }
 
+.tree a:hover
+{
+	color: #FA0000;
+}
 
+.tree a:active
+{
+	color: #300000;
+}
 
+/* ========================================== LESSON ========================================== */
 
+body.lesson
+{
+	background-color: #cccccc;
+	/*background-image: url(".images/background.jpg");
+	background-attachment: fixed;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;*/
+	margin: 0;
+}
+
+.main
+{
+	color: #000000; 
+	background: #FEFEFE; 
+	position: relative; 
+	border-right: 3px solid black;
+	margin-right: 300px; 
+	padding: 35px 150px 35px 450px;
+	/*box-shadow: inset 0 0 13px 4px rgba(0, 0, 0, 0.3);*/
+	font-family: "Verdana";
+	font-size: 1.08em;
+}
+
+.proof
+{
+	padding: 10px;
+	margin: 15px;
+	border: 1px solid #777777;
+	border-collapse: collapse;
+}
+
+.comment_window
+{
+	position: absolute;
+    background: #FEFEFE;
+    padding: 6px;
+	border-right: 1px solid black;
+	border-bottom: 1px solid black;
+	font-family: calibri light;
+	font-size: 15px;
+	box-shadow: inset 0px -15px 15px -5px rgba(0, 0, 0, 0.15);
+}
+
+.comment_visible_window
+{
+	position: absolute;
+    background: #FEFEFE;
+    padding: 6px;
+	border-right: 1px solid black;
+	border-bottom: 1px solid black;
+	font-family: calibri light;
+	font-size: 15px;
+	box-shadow: inset 0px -15px 15px -5px rgba(0, 0, 0, 0.15);
+}
+
+.comment_visible_question_mark
+{
+	color: #DD0000;
+	font-family: "Copperplate Gothic Light";
+	font-size: 28px;
+}
+
+.chapter
+{
+	position: relative;
+}
+
+.chapter:first-of-type
+{
+	margin-top: 55px;
+}
+
+.chapter_name
+{
+	position: relative;
+	cursor: pointer;
+	font-family: corbel;
+	font-size: 2em;
+	font-weight: bold;
+	line-height: 0%;
+	margin-top: 9px; /*50px*/
+	margin-bottom: 25px;
+}
+
+.chapter_name + hr
+{
+	width: 0%;
+	border: 2px solid;
+	border-color: white;
+	transition: border-color 0.5s ease-in, width 0.4s;
+	margin-left: 0;
+	margin-right: 0;
+}
+
+.chapter_name:hover + hr
+{
+	width: 100%;
+	border: 2px solid;
+	border-color: black;
+	transition: border-color 0.1s, width 1s;
+	margin-left: 0;
+	margin-right: 0;
+}
+
+.chapter_body
+{
+	position: relative;
+	border: 0px solid black;
+	margin-bottom: 90px;
+	margin-top: 0px;
+	padding: 0px;
+	box-shadow: inset 0 0 0 0 rgba(0, 0, 0, 0.3);
+}
+
+.chapter_mask
+{
+	overflow: hidden;
+	position: relative;
+	border: 0px solid black;
+	margin: 0; 
+	margin-bottom: 0px;
+	margin-top: 0px;
+	padding: 0px;
+	box-shadow: inset 0 0 0 0 rgba(0, 0, 0, 0.3);
+}
+
+.example
+{
+	/*border: 1px solid #888888;*/
+	background-color: #f4f4f4;
+	/*box-shadow: 0px 0px 13px 0px rgba(0, 0, 0, 0.2);*/
+	border-left: 10px solid #dd3333;
+	box-shadow: 2px 2px 3px 0px rgba(0, 0, 0, 0.4);
+	padding: 15px;
+	margin: 20px 30px 20px 30px;
+	/* border-radius: 15px; */
+}
+
+p.lesson_title
+{
+	text-align: center;
+	font-size: 3.2em;
+	font-weight: bold;
+	font-family: "Corbel";
+	margin: 50px;
+	clear:both;
+}
+
+p.lesson_title_short
+{
+	text-align: center;
+	font-size: 50px;
+	font-family: cambria;
+	margin-top: 50px;
+	margin-bottom: 1px;
+}
+
+p.lesson_subtitle
+{
+	text-align: center;
+	font-size: 25px;
+	font-family: cambria;
+	margin-top: 1px;
+	margin-bottom: 50px;
+}
+
+p.type
+{
+	/* line-height: 0%; */
+	display: inline-block;
+	background-color: #dd3333;
+	padding: 5px;
+	color: white;
+	margin-top: 0;
+	margin-bottom: -10px;
+	transition: background-color 0.1s;
+	box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.4);
+}
+
+p.type:hover
+{
+	background-color: #cc3333;
+	transition: background-color 0.1s;
+}
+
+p.warning
+{
+	font-family: arial;
+	color: #888888;
+	font-size: 0.7em;
+	margin-top: 14px;
+	margin-bottom: 8px;
+}	
+
+p.problem
+{
+	font-weight: bold;
+	text-align: center;
+}
+
+.formula
+{
+	text-align: center;
+	text-shadow: 3px 3px #EEEEEE;
+	text-shadow: 2px 2px #DDDDDD;
+	text-shadow: 1px 1px #AAAAAA;
+}
+
+.bookmark
+{
+	padding-left: 40px;
+	padding-right: 40px;
+	height: 60px;
+	line-height: 60px;
+	position: relative;
+	background: black;
+	color: white;
+	font-weight: bold;
+	font-family: "Segoe UI";
+	transition: padding-right 0.4s;
+}
+
+.bookmark:before
+{
+	content: "";
+	position: absolute;
+	left: -12px;
+	bottom: 0;
+	width: 25px;
+	background: black;
+	height: 50%;
+	transform: skew(-40deg);
+}
+
+.bookmark:after
+{
+	content: "";
+	position: absolute;
+	left: -12px;
+	top: 0;
+	width: 25px;
+	background: black;
+	height: 50%;
+	transform: skew(40deg);
+}
+
+.bookmark:hover
+{
+	padding-right: 100px;
+	transition: padding-right 0.5s;
+}
+
+.bookmark-shadow
+{
+	float: right;
+	box-shadow: 3px 3px 5px 0px rgba(0, 0, 0, 0.4);
+	margin-right: -150px;
+	margin-bottom: 30px;
+	padding-left: 20px;
+}
+
+/* ========================================== COMMON ELEMENTS ========================================== */
+
+table.operation_table
+{
+	text-align: center;
+	border-collapse: collapse;
+	border-style: hidden;
+}
+
+table.operation_table td
+{
+	height: 34px;
+	width: 32px;
+	border: 1px solid black;
+}
+
+table.operation_table th 
+{
+    height: 34px;
+    width: 32px;
+    border: 2px solid black;
+    color: #772222;
+    text-shadow: 1px 1px #CCCCCC;
+}
+
+table.tiles
+{
+	border-collapse: collapse;
+}
+
+table.tiles td
+{
+	height: 45px;
+	width: 41px;
+	background-color: #EEDDDD;
+	border: 3px groove #AA2222;
+}
+
+table.tiles td:hover
+{
+	background-color: #DD8888;
+	border-style: ridge;
+}
 
 polygon
 {
@@ -495,17 +653,7 @@ circle
 	cursor: move;
 }
 
-::selection
-{
-	background: #EF0000;
-	color: #FFFFFF;
-}
-
-::moz-selection
-{
-	background: #EF0000;
-	color: #FFFFFF;
-}
+/* ========================================== COLUMNAR OPERATIONS ========================================== */
 
 .strikethrough 
 {
@@ -529,14 +677,9 @@ circle
 	transform:rotate(-60deg);
 }
 
-
-
-
-
 table.columnar_operation
 {
 	border-collapse: collapse; 
-	font-family: Bookman Old Style;
 }
 
 td.columnar_operation_not_carry
@@ -606,31 +749,4 @@ table.columnar_operation_script td
 {
 	width: 80%;
 	vertical-align: top;
-}
-
-
-
-
-
-.modal
-{
-	display: none;
-    position: fixed;
-    z-index: 1;
-    padding-top: 100px;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0,0,0,0.7);
-}
-
-.modal_content
-{
-	background: #EEEEEE;
-	top: 40%;
-	width: 50%;
-	padding: 30px;
-	margin: auto;
 }
