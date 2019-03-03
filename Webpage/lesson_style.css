@@ -1,5 +1,10 @@
 /* ========================================== GENERAL ========================================== */
 
+p
+{
+	margin: 1em 0;
+}
+
 p:not(.printable)
 {
 	text-align: justify;
@@ -350,14 +355,6 @@ body.lesson
 	font-size: 1.08em;
 }
 
-.proof
-{
-	padding: 10px;
-	margin: 15px;
-	border: 1px solid #777777;
-	border-collapse: collapse;
-}
-
 .comment_window
 {
 	position: absolute;
@@ -426,7 +423,7 @@ body.lesson
 	width: 100%;
 	border: 2px solid;
 	border-color: black;
-	transition: border-color 0.1s, width 1s;
+	transition: border-color 0.1s ease 0.2s, width 1s ease 0.2s;
 	margin-left: 0;
 	margin-right: 0;
 }
@@ -512,6 +509,20 @@ p.type:hover
 	transition: background-color 0.1s;
 }
 
+.proof-sticker
+{
+	position: absolute;
+	display: inline-block;
+	padding: 5px;
+	margin: 0px;
+	top: 0;
+	left: -1px;
+	color: white;
+	background-color: #dd3333;
+	transition: background-color 0.1s;
+	box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.4);
+}
+
 p.warning
 {
 	font-family: arial;
@@ -529,10 +540,19 @@ p.problem
 
 .formula
 {
-	text-align: center;
-	text-shadow: 3px 3px #EEEEEE;
-	text-shadow: 2px 2px #DDDDDD;
-	text-shadow: 1px 1px #AAAAAA;
+	text-align: center !important;
+	background-color: #dddddd;
+	padding: 10px;
+	margin: 0px;
+}
+
+.proof
+{
+	position: relative;
+	padding: 40px 10px 10px 10px;
+	margin-bottom: 1em;
+	border: 1px solid #aaaaaa;
+	border-top:  1px solid #dddddd;
 }
 
 .bookmark

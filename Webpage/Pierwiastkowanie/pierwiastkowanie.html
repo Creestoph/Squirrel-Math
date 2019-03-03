@@ -7,8 +7,17 @@
 	<link rel="stylesheet" href="../lesson_style.css">
 	<link rel="stylesheet" href="./style.css">
 	
+	<script type="text/x-mathjax-config">
+		MathJax.Hub.Config({
+			tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}, 
+			CommonHTML: { linebreaks: { automatic: true } }, 
+			"HTML-CSS": { linebreaks: { automatic: true }, fonts: ["STIX-Web"] }, 
+			SVG: { linebreaks: { automatic: true } } 
+		})
+ 	</script>
+	<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-	<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=MML_HTMLorMML"></script>
 	<script src="../.scripts/scroll_hide.js"></script>
 	<script src="../.scripts/draggable.js"></script>
 	<script src="../.scripts/math.js"></script>
@@ -19,17 +28,17 @@
   
 <div class = "menu">
 		<div class="logo">
-				<div>
-						<div class="logo-black-cell" style="float: left"></div>
-						<div class="logo-container-cell" style="float: left">
-							<div class="logo-red-cell" style="float: left"></div>
-							<div class="logo-red-cell" style="float: left"></div>
-							<div class="logo-red-cell" style="float: left"></div>
-							<div class="logo-red-cell" style="float: left"></div>
-						</div>
-						<div class="logo-black-cell" style="float: left; clear: left"></div>
-						<div class="logo-black-cell" style="float: left"></div>
-				</div>
+			<div>
+					<div class="logo-black-cell" style="float: left"></div>
+					<div class="logo-container-cell" style="float: left">
+						<div class="logo-red-cell" style="float: left"></div>
+						<div class="logo-red-cell" style="float: left"></div>
+						<div class="logo-red-cell" style="float: left"></div>
+						<div class="logo-red-cell" style="float: left"></div>
+					</div>
+					<div class="logo-black-cell" style="float: left; clear: left"></div>
+					<div class="logo-black-cell" style="float: left"></div>
+			</div>
 		</div>
 		<div class="logo-text">
 			<span class="logo-text-1">squirrel</span>
@@ -42,7 +51,7 @@
 
 <div class = "main">
 		
-	<a href="liczby_short.html">
+	<a href="pierwiastkowanie_short.html">
 		<div class = "bookmark-shadow">
 			<div class = "bookmark">
 					WERSJA SKRÓCONA
@@ -74,78 +83,78 @@
 	</p>
 	
 	<p>
-		Maciuś uzbierał w skarbonce <span class="math">80 zł</span> na nowy zestaw Lego, a teraz chce naciągnąć rodziców na taką kwotę, żeby w 
-		sumie wyszło <span class="math">130 zł</span> na <span class="comment" 
+		Maciuś uzbierał w skarbonce $80 \text{ zł}$ na nowy zestaw Lego, a teraz chce naciągnąć rodziców na taką kwotę, żeby w 
+		sumie wyszło $130 \text{ zł}$ na <span class="comment" 
 		id="Właściwie patrząc na dzisiejsze ceny, może starczyłoby na kapsułę ratunkową…">mega statek kosmiczny</span>.  
 	</p>
 
-	<p class="math" align="center">
-		80 zł+ Text(∎)=130 zł
-	</p>
+	$$
+		80 \text{ zł}+ \text{∎}=130 \text{ zł}
+	$$
 
 	<p>
 		Aby poznać brakujący składnik, Maciuś musi wykonać odejmowanie, czyli spojrzeć na dodawanie od drugiej strony. 
 	</p>
 
-	<p class="math" align="center">
-		130 zł-80 zł =50zł
-	</p>
+	$$
+		130 \text{ zł}-80 \text{ zł} =50\text{ zł}
+	$$
 
 	<p>
 		Rok później przyjaciele Maciusia postanowili kupić mu na urodziny zestaw <span class="comment" id="Ponieważ dobrze wiedzieli, 
 		że Maciuś nigdy nie zostanie wielkim architektem"> małego architekta</span> za 
-		<span class="math">200 zł</span>. Było ich pięcioro, a każdy z nich powinien mieć równy wkład w prezent. Powstało pytanie, po ile 
+		$200 \text{ zł}$. Było ich pięcioro, a każdy z nich powinien mieć równy wkład w prezent. Powstało pytanie, po ile 
 		powinni się złożyć:
 	</p>
 
-	<p class="math" align="center">
-		5∙Text(∎)=200 zł
-	</p>
+	$$
+		5 \cdot \text{∎}=200 \text{ zł}
+	$$
 
 	<p>
 		Odpowiedź przynosi wykonanie dzielenia:
 	</p>
 
-	<p class="math" align="center">
-		(200 zł)/5=40zł
-	</p>
+	$$
+		\frac{200 \text{ zł}}{5}=40\text{ zł}
+	$$
 
 	<p>
 		Maciuś, szczęśliwy posiadacz od groma klocków, postanowił zbudować dzieło swojego życia: ogromną, wypełnioną w środku bryłę w
 		sześciennym kształcie. Oczywiście Maciuś wie, że idealna bryła powinna mieć tyle samo klocków wysokości, szerokości i głębokości. 
 		Ponieważ Maciuś nigdy nie był normalnym dzieckiem, postanowił najpierw policzyć, ile ma klocków, aby zdecydować się co do wymiarów 
-		pokaźnej budowli. Okazało się, że jest ich <span class="math">512</span> w przeliczeniu na klocki jednostkowe. Pytanie brzmi, jakie powinny być wymiary budowli, 
-		aby starczyło na nią <span class="math">512</span> klocków? Pojawia się dylemat:
+		pokaźnej budowli. Okazało się, że jest ich $512$ w przeliczeniu na klocki jednostkowe. Pytanie brzmi, jakie powinny być wymiary budowli, 
+		aby starczyło na nią $512$ klocków? Pojawia się dylemat:
 	</p>
 
-	<p class="math" align="center">
-		Text(∎)^3=512
-	</p>
+	$$
+		\text{∎}^3=512
+	$$
 
 	<p>
 		Gdy przypomnimy sobie wartości podstawowych kwadratów i sześcianów liczb, dotrzemy do prawdy:
 	</p>
 
-	<p class="math" align="center">
+	$$
 		8^3=512
-	</p>
+	$$
 
 	<p>
-		A więc Maciuś może pozwolić sobie na niesamowitą budowlę o wymiarach <span class="math">8×8×8</span> klocków.
+		A więc Maciuś może pozwolić sobie na niesamowitą budowlę o wymiarach $8×8×8$ klocków.
 	</p>
 	
 	<p>
 		Operacja, której dokonaliśmy, aby poznać odpowiedź, to właśnie działanie odwrotne do potęgowania: dokonaliśmy pierwiastkowania liczby 
-		<span class="math">512</span>.
+		$512$.
 	</p>
 
-	<p class="math" align="center">
-		Root3(512)=8
-	</p>
+	$$
+		\sqrt[3]{512}=8
+	$$
 
 	<p>
-		Powyższy zapis odczytujemy „pierwiastek trzeciego stopnia z <span class="math">512</span> wynosi <span class="math">8</span>” i oznacza on 
-		właśnie tyle, że <span class="math">8</span> podniesione do potęgi trzeciej daje <span class="math">512</span>.
+		Powyższy zapis odczytujemy „pierwiastek trzeciego stopnia z $512$ wynosi $8$” i oznacza on 
+		właśnie tyle, że $8$ podniesione do potęgi trzeciej daje $512$.
 	</p>
 
 	<p class="type">
@@ -153,20 +162,20 @@
 	</p>
 	
 	<p>
-		Jeśli <span class="math">a</span> oraz <span class="math">b</span> są liczbami dodatnimi, stwierdzenie, że 
-		<span class="math">Rootn(a)=b</span> jest dokładnie równoważne równości <span class="math">b^n=a</span>. W taki właśnie sposób 
-		definiujemy pierwiastek: Jeśli <span class="math">a</span> jest liczbą nieujemną, <span class="math">Rootn(a)</span> to taka nieujemna 
-		liczba <span class="math">b</span>, dla której <span class="math">b^n=a</span>. 
-		Matematycznie zapiszemy definicję pierwiastka (dla nieujemnych <span class="math">a</span>) w jednej linijce:
+		Jeśli $a$ oraz $b$ są liczbami dodatnimi, stwierdzenie, że 
+		$\sqrt[n]{a}=b$ jest dokładnie równoważne równości $b^n=a$. W taki właśnie sposób 
+		definiujemy pierwiastek: Jeśli $a$ jest liczbą nieujemną, $\sqrt[n]{a}$ to taka nieujemna 
+		liczba $b$, dla której $b^n=a$. 
+		Matematycznie zapiszemy definicję pierwiastka (dla nieujemnych $a$) w jednej linijce:
 	</p>
 
-	<p class="math" align="center">
-		Rootn(a)=b⟺b^n=a ∧ b≥0
-	</p>
+	$$
+		\sqrt[n]{a}=b \Leftrightarrow b^n=a ∧ b≥0
+	$$
 
 	<p>
 		Symbol ∧ to matematyczny spójnik "oraz", w powyższej formule oznacza on, że obydwa warunki są potrzebne do zdefiniowania pierwiastka.
-		Przypadek dla ujemnych <span class="math">a</span> jest trochę bardziej kłopotliwy; wówczas warunek <span class="math">b≥0</span> 
+		Przypadek dla ujemnych $a$ jest trochę bardziej kłopotliwy; wówczas warunek $b≥0$ 
 		nie będzie potrzebny, jednak pojawią się inne obostrzenia. Więcej w sekcji "Ograniczenia".
 	</p>
 	
@@ -189,7 +198,7 @@
 	
 	<p>
 		O pierwiastkowaniu należy myśleć jak o działaniu, które przyjmuje dwa parametry i zwraca w odpowiedzi wynik. Liczba zapisana pod 
-		symbolem <span class="math">Sqrt(&nbsp;&nbsp;&nbsp;)</span> to <i>liczba podpierwiastkowa</i>, a liczba umieszczona „na dłoni” tego symbolu w lewym górnym rogu 
+		symbolem $sqrt{\ \ \ }$ to <i>liczba podpierwiastkowa</i>, a liczba umieszczona „na dłoni” tego symbolu w lewym górnym rogu 
 		to <i>stopień pierwiastka</i>. 
 	</p>
 
@@ -197,16 +206,16 @@
 		Ponieważ drugą potęgę liczby nazywamy kwadratem, a trzecią sześcianem tej liczby, analogiczne nazewnictwo wprowadzono dla 
 		pierwiastków: pierwiastek drugiego stopnia nazywamy <i>pierwiastkiem kwadratowym</i>, a pierwiastek trzeciego stopnia <i>pierwiastkiem 
 		sześciennym</i>. Co więcej, ponieważ pierwiastki kwadratowe spotyka się w matematyce najczęściej, zwyczajowo pomija się dwójkę do 
-		oznaczania pierwiastka drugiego stopnia. Zapisy: <span class="math">Root2(25)=5</span> oraz <span class="math">Sqrt(25)=5</span> oznaczają 
+		oznaczania pierwiastka drugiego stopnia. Zapisy: $\sqrt[2]{25}=5$ oraz $\sqrt{25}=5$ oznaczają 
 		dokładnie to samo. Zazwyczaj kiedy mówimy po 
-		prostu „pierwiastek z <span class="math">4</span>” mamy na myśli właśnie pierwiastek kwadratowy.
+		prostu „pierwiastek z $4$” mamy na myśli właśnie pierwiastek kwadratowy.
 	</p>
 		
 	<p>
-		W dziedzinie informatycznej do oznaczania pierwiastka drugiego stopnia stosuje się oznaczenie <span class="math">Text(sqrt)</span>
+		W dziedzinie informatycznej do oznaczania pierwiastka drugiego stopnia stosuje się oznaczenie $\text{sqrt}$
 		jako skrót od „square root” – 
 		pierwiastek kwadratowy. Jeśli chcesz obliczyć pierwiastek kwadratowy z 
-		<span class="math">25</span> w wyszukiwarce lub w kalkulatorze internetowym, spróbuj wpisać <span class="math">Text(sqrt)Bracket(25)</span>.
+		$25$ w wyszukiwarce lub w kalkulatorze internetowym, spróbuj wpisać $\text{sqrt}(25)$.
 	</p>
 
 	</div>
@@ -231,21 +240,19 @@
 		nieco zmodyfikowanej formie:
 	</p>
 
-	<p align="center">
-		<table class="table1">
-			<tr><td class="math">Sqrt(0)=0</td><td class="math">Root3(0)=0</td></tr>
-			<tr><td class="math">Sqrt(1)=1</td><td class="math">Root3(1)=1</td></tr>
-			<tr><td class="math">Sqrt(4)=2</td><td class="math">Root3(8)=2</td></tr>
-			<tr><td class="math">Sqrt(9)=3</td><td class="math">Root3(27)=3</td></tr>
-			<tr><td class="math">Sqrt(16)=4</td><td class="math">Root3(64)=4</td></tr>
-			<tr><td class="math">Sqrt(25)=5</td><td class="math">Root3(125)=5</td></tr>
-			<tr><td class="math">Sqrt(36)=6</td><td class="math">Root3(216)=6</td></tr>
-			<tr><td class="math">Sqrt(49)=7</td><td class="math">Root3(343)=7</td></tr>
-			<tr><td class="math">Sqrt(64)=8</td><td class="math">Root3(512)=8</td></tr>
-			<tr><td class="math">Sqrt(81)=9</td><td class="math">Root3(729)=9</td></tr>
-			<tr><td class="math">Sqrt(100)=10</td><td class="math">Root3(1000)=10</td></tr>
-		</table>
-	</p>
+	<table class="table1 center">
+		<tr><td>$\sqrt{0}=0$</td><td>$\sqrt[3]{0}=0$</td></tr>
+		<tr><td>$\sqrt{1}=1$</td><td>$\sqrt[3]{1}=1$</td></tr>
+		<tr><td>$\sqrt{4}=2$</td><td>$\sqrt[3]{8}=2$</td></tr>
+		<tr><td>$\sqrt{9}=3$</td><td>$\sqrt[3]{27}=3$</td></tr>
+		<tr><td>$\sqrt{16}=4$</td><td>$\sqrt[3]{64}=4$</td></tr>
+		<tr><td>$\sqrt{25}=5$</td><td>$\sqrt[3]{125}=5$</td></tr>
+		<tr><td>$\sqrt{36}=6$</td><td>$\sqrt[3]{216}=6$</td></tr>
+		<tr><td>$\sqrt{49}=7$</td><td>$\sqrt[3]{343}=7$</td></tr>
+		<tr><td>$\sqrt{64}=8$</td><td>$\sqrt[3]{512}=8$</td></tr>
+		<tr><td>$\sqrt{81}=9$</td><td>$\sqrt[3]{729}=9$</td></tr>
+		<tr><td>$\sqrt{100}=10$</td><td>$\sqrt[3]{1000}=10$</td></tr>
+	</table>
 
 	<p>
 		Obliczanie pierwiastka jest bardzo łatwe, jeżeli pierwiastkujemy liczbę, którą rozpoznajemy jako odpowiednią potęgę liczby naturalnej. 
@@ -253,34 +260,34 @@
 	</p>
 
 	<p>
-		Jaką wartość ma <span class="math">Sqrt(2)</span> ? Innymi słowy, jaka liczba podniesiona do kwadratu daje <span class="math">2</span>? 
-		Zauważmy, że <span class="math">1</span> podniesione do kwadratu daje <span class="math">1</span>, czyli mniej niż chcemy, a 
-		<span class="math">2</span> podniesione do kwadratu daje <span class="math">4</span>, czyli więcej niż chcemy. Możemy więc podejrzewać, 
-		że tajemnicza wartość <span class="math">Sqrt(2)</span> leży gdzieś pomiędzy <span class="math">1</span> a <span class="math">2</span>, czyli
+		Jaką wartość ma $\sqrt{2}$ ? Innymi słowy, jaka liczba podniesiona do kwadratu daje $2$? 
+		Zauważmy, że $1$ podniesione do kwadratu daje $1$, czyli mniej niż chcemy, a 
+		$2$ podniesione do kwadratu daje $4$, czyli więcej niż chcemy. Możemy więc podejrzewać, 
+		że tajemnicza wartość $\sqrt{2}$ leży gdzieś pomiędzy $1$ a $2$, czyli
 		z pewnością musi to być liczba z częścią ułamkową. A więc próbujemy:
 	</p>
 	
 	<ul>
-		<li><span class="math">(1,5)^2=2,25</span>, czyli <span class="math">1,5</span> to za dużo</li>
-		<li><span class="math">(1,3)^2=1,69</span>, czyli <span class="math">1,3</span> to za mało</li>
-		<li><span class="math">(1,4)^2=1,96</span>, czyli <span class="math">1,4</span> to wciąż za mało, chociaż jesteśmy już bardzo blisko</li>
-		<li><span class="math">(1,41)^2=1,9881</span>, a więc <span class="math">1,41</span> to już bardzo bliska wartość, choć wciąż za mała</li>
-		<li><span class="math">(1,42)^2=2,0164</span>, czyli powinniśmy szukać pomiędzy <span class="math">1,41</span> a <span class="math">1,42</span></li>
+		<li>$(1,5)^2=2,25$, czyli $1,5$ to za dużo</li>
+		<li>$(1,3)^2=1,69$, czyli $1,3$ to za mało</li>
+		<li>$(1,4)^2=1,96$, czyli $1,4$ to wciąż za mało, chociaż jesteśmy już bardzo blisko</li>
+		<li>$(1,41)^2=1,9881$, a więc $1,41$ to już bardzo bliska wartość, choć wciąż za mała</li>
+		<li>$(1,42)^2=2,0164$, czyli powinniśmy szukać pomiędzy $1,41$ a $1,42$</li>
 	</ul>
 		
 	<p>
 		Grę w zgaduj zgadula moglibyśmy kontynuować jeszcze bardzo, bardzo długo. Gdyby starczyło nam cierpliwości, znaleźlibyśmy więcej 
-		cyfr mistycznej liczby <span class="math">Sqrt(2)</span>:
+		cyfr mistycznej liczby $\sqrt{2}$:
 	</p>
 
-	<p class="math" align="center">
-		Sqrt(2)=1,414213562373095048801688724209698078569671875376948073176…
-	</p>
+	$$
+		\sqrt{2}=1,414213562373095048801688724209698078569671875376948073176…
+	$$
 
 	<p>
 		Do tej pory zawsze, gdy obcowaliśmy z ułamkami dziesiętnymi, rozwinięcie dziesiętne albo kończyło się w pewnym miejscu, albo zaczynało 
-		zataczać pętle, ujawniając swój okres. Okazuje się, że w przypadku liczby <span class="math">Sqrt(2)</span> nic takiego nie ma miejsca: 
-		rozwinięcie dziesiętne <span class="math">Sqrt(2)</span> jest <b>nieskończone</b> i <b>nieokresowe</b>. Z powodu takiego zachowania wyróżnia się nowy 
+		zataczać pętle, ujawniając swój okres. Okazuje się, że w przypadku liczby $\sqrt{2}$ nic takiego nie ma miejsca: 
+		rozwinięcie dziesiętne $\sqrt{2}$ jest <b>nieskończone</b> i <b>nieokresowe</b>. Z powodu takiego zachowania wyróżnia się nowy 
 		rodzaj liczb: <i>liczby niewymierne</i>. Wprowadźmy istotne rozróżnienie:
 	</p>
 
@@ -307,29 +314,27 @@
 
 	<p>
 		W praktyce najczęściej spotykanymi pierwiastkami są pierwiastki kwadratowe i sześcienne. Gdy w przyszłości w trakcie obliczeń 
-		napotkamy np. <span class="math">Sqrt(5)</span>, nie będziemy próbowali „obliczyć go” przez rozpisanie rozwinięcia dziesiętnego – zostawimy go 
+		napotkamy np. $\sqrt{5}$, nie będziemy próbowali „obliczyć go” przez rozpisanie rozwinięcia dziesiętnego – zostawimy go 
 		w spokoju. Liczby niewymierne są w pewnym sensie nietykalne obliczeniowo.
 	</p>
 
 	<p>
 		Mimo wszystko dobrze jest mieć wyobrażenie, jak mniej więcej wyglądają niektóre pierwiastki:
 	</p>
-	
-	<p align="center">
-		<table class="table1">
-			<tr><td class="math">Sqrt(0)=0</td><td class="math">Root3(0)=0</td></tr>
-			<tr><td class="math">Sqrt(1)=1</td><td class="math">Root3(1)=1</td></tr>
-			<tr><td class="math">Sqrt(2)≈1,41</td><td class="math">Root3(2)≈1,26</td></tr>
-			<tr><td class="math">Sqrt(3)≈1,73</td><td class="math">Root3(3)≈1,44</td></tr>
-			<tr><td class="math">Sqrt(4)=2</td><td class="math">Root3(4)≈1,59</td></tr>
-			<tr><td class="math">Sqrt(5)≈2,24</td><td class="math">Root3(5)≈1,71</td></tr>
-			<tr><td class="math">Sqrt(6)≈2,45</td><td class="math">Root3(6)≈1,82</td></tr>
-			<tr><td class="math">Sqrt(7)≈2,65</td><td class="math">Root3(7)≈1,91</td></tr>
-			<tr><td class="math">Sqrt(8)≈2,83</td><td class="math">Root3(8)=2</td></tr>
-			<tr><td class="math">Sqrt(9)=3</td><td class="math">Root3(9)≈2,08</td></tr>
-			<tr><td class="math">Sqrt(10)≈3,16</td><td class="math">Root3(10)≈2,15</td></tr>
-		</table>
-	</p>
+
+	<table class="table1 center">
+		<tr><td>$\sqrt{0}=0$</td><td>$\sqrt[3]{0}=0$</td></tr>
+		<tr><td>$\sqrt{1}=1$</td><td>$\sqrt[3]{1}=1$</td></tr>
+		<tr><td>$\sqrt{2}≈1,41$</td><td>$\sqrt[3]{2}≈1,26$</td></tr>
+		<tr><td>$\sqrt{3}≈1,73$</td><td>$\sqrt[3]{3}≈1,44$</td></tr>
+		<tr><td>$\sqrt{4}=2$</td><td>$\sqrt[3]{4}≈1,59$</td></tr>
+		<tr><td>$\sqrt{5}≈2,24$</td><td>$\sqrt[3]{5}≈1,71$</td></tr>
+		<tr><td>$\sqrt{6}≈2,45$</td><td>$\sqrt[3]{6}≈1,82$</td></tr>
+		<tr><td>$\sqrt{7}≈2,65$</td><td>$\sqrt[3]{7}≈1,91$</td></tr>
+		<tr><td>$\sqrt{8}≈2,83$</td><td>$\sqrt[3]{8}=2$</td></tr>
+		<tr><td>$\sqrt{9}=3$</td><td>$\sqrt[3]{9}≈2,08$</td></tr>
+		<tr><td>$\sqrt{10}≈3,16$</td><td>$\sqrt[3]{10}≈2,15$</td></tr>
+	</table>
 		
 	</div>
 	</div>
@@ -353,88 +358,88 @@
 		rozgryźć wartość
 	</p>
 
-	<p class="math" align="center">
-		3^(1/2)
-	</p>
+	$$
+		3^{\frac{1}{2}}
+	$$
 
 	<p>
 		Chwilowo liczba „trzy do potęgi jednej drugiej” pozostaje dla nas tajemnicą. Przypomnijmy sobie własności potęgowania, które 
 		odkryliśmy jakiś czas temu: co by się stało, gdyby 
-		<span class="math">3^(1/2)</span> podnieść do kwadratu?
+		$3^{\frac{1}{2}}$ podnieść do kwadratu?
 	</p>
 	
-	<p class="math" align="center">
-		Bracket(3^(1/2) )^2=3^(1/2∙2)=3^1=3
-	</p>
+	$$
+		(3^{\frac{1}{2}})^2=3^{\frac{1}{2} \cdot 2}=3^1=3
+	$$
 	
 	<p>
 		Skorzystaliśmy z własności 
 	</p>
 	
-	<p class="math" align="center">
-		Bracket(a^n )^m=a^(n∙m)
-	</p>
+	$$
+		(a^n )^m=a^{n \cdot m}
+	$$
 	
 	<p>
 		która mówi, że gdy potęgę podnosimy do potęgi, mnożymy przez siebie wykładniki. Odkryliśmy ciekawą rzecz: 
-		<span class="math">3^(1/2)</span> to taka liczba, że jak ją podniesiemy do kwadratu, dostaniemy <span class="math">3</span>. A 
-		przecież „liczba, która podniesiona do kwadratu, daje <span class="math">3</span>” to nic innego niż <span class="math">Sqrt(3)</span>. 
+		$3^{\frac{1}{2}}$ to taka liczba, że jak ją podniesiemy do kwadratu, dostaniemy $3$. A 
+		przecież „liczba, która podniesiona do kwadratu, daje $3$” to nic innego niż $\sqrt{3}$. 
 		Wniosek jest nieunikniony:
 	</p>
 	
-	<p class="math" align="center">
-		3^(1/2)=Sqrt(3)
-	</p>
+	$$
+		3^{\frac{1}{2}}=\sqrt{3}
+	$$
 
 	<p>
 		Trik stosuje się do wszystkich wykładników typu „jeden przez coś”:
 	</p>
 	
 	<ul>
-		<li><span class="math">Bracket(5^(1/3) )^3=5^(1/3∙3)=5^1=5</span>, a więc <span class="math">5^(1/3)=Root3(5)</span></li>
-		<li><span class="math">Bracket(9^(1/5) )^5=9^(1/5∙5)=9^1=9</span>, a więc <span class="math">9^(1/5)=Root5(9)</span></li>
+		<li>$(5^{\frac{1}{3}})^3=5^{\frac{1}{3} \cdot 3}=5^1=5$, a więc $5^{\frac{1}{3}}=\sqrt[3]{5}$</li>
+		<li>$(9^\frac{1}{5} )^5=9^{\frac{1}{5} \cdot 5}=9^1=9$, a więc $9^{\frac{1}{5}}=\sqrt[5]{9}$</li>
 	</ul>
 
 	<p>
 		W ogólności:
 	</p>
 	
-	<p class="math" align="center">
-		Bracket(a^(1/n) )^n=a^(1/n∙n)=a^1=a
-	</p>
+	$$
+		(a^{\frac{1}{n}} )^n=a^{\frac{1}{n} \cdot n}=a^1=a
+	$$
 	
 	<p>
 		a więc
 	</p>
 	
-	<p class="math" align="center">
-		a^(1/n)=Rootn(a)
-	</p>
+	$$
+		a^{\frac{1}{n}}=\sqrt[n]{a}
+	$$
 
 	<p>
 		Poszerzmy nasze rozumowanie na wykładniki typu „coś przez coś”. Ponownie pomocna będzie własność dotycząca mnożenia wykładników:
 	</p>
 	
-	<p class="math" align="center">
-		7^(3/5)=7^(1/5∙3)=Bracket(7^(1/5) )^3=Root5(7)^3
-	</p>
+	$$
+		7^{\frac{3}{5}}=7^{\frac{1}{5} \cdot 3}=(7^{\frac{1}{5}} )^3=\sqrt[5]{7}^3
+	$$
 	
 	<p>
 		W ogólności:
 	</p>
 	
-	<p class="math" align="center">
-		a^(n/m)=a^(1/m∙n)=Bracket(a^(1/m) )^n=Bracket(Rootm(a))^n
-	</p>
+	$$
+		a^{\frac{n}{m}}=a^{\frac{1}{m} \cdot n}=(a^{\frac{1}{m}} )^n=(\sqrt[m]{a})^n
+	$$
 	
 	<p>
 		Dotarliśmy do bardzo przydatnego wzoru, który wskazuje przejście pomiędzy pierwiastkiem i potęgą. Stanowi on sensowną definicję potęgi
 		o wykładniku wymiernym:
 	</p>
 	
-	<p class="math" align="center">
-		a^(n/m)=Rootm(a)^n
-	</p>
+	$$
+		a^{\frac{n}{m}}=\sqrt[m]{a}^n
+	$$
 
 	<p>
 		To spostrzeżenie rozwiązuje przy okazji inny dylemat – <span class="comment" id="Oczywiście - z należytym szacunkiem">jak traktować 
@@ -442,9 +447,9 @@
 	</p>
 
 	<ul>
-		<li class="math">Root(1/3)(4)=4^(1/(1/3))=4^3=64</li>
-		<li class="math">Root(3/4)(27)=27^(1/(3/4))=27^(4/3)=Root3(27)^4=3^4=81</li>
-		<li class="math">Root(-1 2/3)(32)=Root(-5/3)(32)=32^(-3/5)=1/((32)^(3/5)) =1/(Root5(32)^3) =1/(2^3) =1/8</li>
+		<li>$\sqrt[\frac{1}{3}]{4}=4^{\frac{1}{\frac{1}{3}}}=4^3=64$</li>
+		<li>$\sqrt[\frac{3}{4}]{27}=27^{\frac{1}{\frac{3}{4}}}=27^{\frac{4}{3}}=\sqrt[3]{27}^4=3^4=81$</li>
+		<li>$\sqrt[-1 \frac{2}{3}]{32}=\sqrt[-\frac{5}{3}]{32}=32^{-\frac{3}{5}}=\frac{1}{32^\frac{3}{5}} = \frac{1}{\sqrt[5]{32}^3} = \frac{1}{2^3} = \frac{1}{8}$</li>
 	</ul>
 
 	</div>
@@ -466,21 +471,20 @@
 	
 	<p>
 		Zbyt ciekawskie osoby, które lubią pytania „co by było gdyby” pewnie zastanawiają się, jak wykonuje się potęgowanie o wykładniku 
-		niewymiernym. Przykładowo, jak oblicza się <span class="math">3^(Sqrt(2))</span> ? Otóż: nie oblicza się. Najlepiej zostawić to w spokoju i 
+		niewymiernym. Przykładowo, jak oblicza się $3^\sqrt{2}$ ? Otóż: nie oblicza się. Najlepiej zostawić to w spokoju i 
 		nie tykać kijem, ale jeśli ktoś jest bardzo ciekaw wartości liczbowej takiego mutanta, może dokonywać przybliżeń. 
-		<span class="math">Sqrt(2)</span> to około <span class="math">1,41</span>, więc <span class="math">3^(Sqrt(2))</span> to około 
-		<span class="math">3^1,41=3^(141/100)=Root100(3)^141≈4,70696500172</span>. Jeśli zależy nam na dokładniejszym wyniku, musimy lepiej 
-		przybliżyć <span class="math">Sqrt(2)</span>. Jeśli weźmiemy <span class="math">Sqrt(2)≈1,414213562373095048801688724209698078569671</span>,
-		to  <span class="math">3^(Sqrt(2))</span> przybliżymy jako
-		<span class="math">3^1,414213562373095048801688724209698078569671=
-		3^(414213562373095048801688724209698078569671/100000000000000000000000000000000000000000)=<br>
-		=Root100000000000000000000000000000000000000000(3)^414213562373095048801688724209698078569671≈
-		4,72880438784
-		</span>
+		$\sqrt{2}$ to około $1,41$, więc $3^\sqrt{2}$ to około 
+		$3^{1,41}=3^{\frac{141}{100}}=\sqrt[100]{3}^{141}≈4,70696500172$. Jeśli zależy nam na dokładniejszym wyniku, musimy lepiej 
+		przybliżyć $\sqrt{2}$. Jeśli weźmiemy $\sqrt{2}≈1,414213562373095048801688724209698078569671$,
+		to  $3^\sqrt{2}$ przybliżymy jako
+		$3^1,414213562373095048801688724209698078569671=
+		3^\frac{414213562373095048801688724209698078569671}{100000000000000000000000000000000000000000}=\\
+		=\sqrt[100000000000000000000000000000000000000000]{3}^414213562373095048801688724209698078569671≈
+		4,72880438784$
 	</p>
 		
 	<p>
-		Coraz dokładniejsze przybliżenia <span class="math">Sqrt(2)</span> będą wywoływać coraz mniej znaczące modyfikacje w pożądanym wyniku.
+		Coraz dokładniejsze przybliżenia $\sqrt{2}$ będą wywoływać coraz mniej znaczące modyfikacje w pożądanym wyniku.
 	</p>
 	
 	</div>
@@ -501,23 +505,23 @@
 	</p>
 	
 	<p>
-		Wykonywanie dzielenia narzucało dość istotną zasadę: nie wolno dzielić przez <span class="math">0</span>. Pierwiastkowanie również 
+		Wykonywanie dzielenia narzucało dość istotną zasadę: nie wolno dzielić przez $0$. Pierwiastkowanie również 
 		narzuca kilka ograniczeń, istnieją pierwiastki zabronione.
 	</p>
 
 	<p>
-		Wiemy już że dowolna liczba podniesiona do potęgi zerowej daje <span class="math">1</span>:
+		Wiemy już że dowolna liczba podniesiona do potęgi zerowej daje $1$:
 	</p>
 	
-	<p class="math" align="center">
+	$$
 		a^0=1
-	</p>
+	$$
 	
 	<p>
 		Dlatego, jak się dobrze zastanowić, nie ma sensu pytać o pierwiastek zerowego stopnia. Pierwiastek typu 
-		<span class="math">Root0(3)</span> stawiałby pytanie „jaka liczba podniesiona do potęgi <span class="math">0</span> daje <span class="math">3</span>?” 
-		z oczywistą odpowiedzią: „żadna”. Podobnie, pierwiastek <span class="math">Root0(1)</span> stawia pytanie: „jaka liczba podniesiona do 
-		potęgi <span class="math">0</span> daje <span class="math">1</span>?” na co odpowiedź brzmi „każda”. Ponieważ tego typu rozmówki 
+		$\sqrt[0]{3}$ stawiałby pytanie „jaka liczba podniesiona do potęgi $0$ daje $3$?” 
+		z oczywistą odpowiedzią: „żadna”. Podobnie, pierwiastek $\sqrt[0]{1}$ stawia pytanie: „jaka liczba podniesiona do 
+		potęgi $0$ daje $1$?” na co odpowiedź brzmi „każda”. Ponieważ tego typu rozmówki 
 		podpadają pod paranoiczne, zabrania się pierwiastkowania z zerowym stopniem.
 	</p>
 	
@@ -525,15 +529,15 @@
 		Wiemy także, że podnoszenie liczb ujemnych do parzystych potęg daje wynik dodatni:
 	</p>
 	
-	<p class="math" align="center">
-		Bracket(-3)^2=Bracket(-3)∙Bracket(-3)=9
-	</p>
+	$$
+		(-3)^2=(-3) \cdot (-3)=9
+	$$
 	
 	<p>
-		Oczywiście podnoszenie liczb dodatnich do kwadratu także daje wynik dodatni. Uwzględniając <span class="math">0</span>, które 
-		podniesione do kwadratu daje <span class="math">0</span>, możemy stwierdzić ogólnie, że <b>każda</b> liczba podniesiona do kwadratu daje wynik 
-		nieujemny (dodatni lub zerowy). Co mógłby oznaczać pierwiastek z liczby ujemnej? <span class="math">Sqrt(-4)</span> to rzekomo taka liczba, 
-		która podniesiona do kwadratu daje <span class="math">-4</span>… Trochę ciężko o  takiego delikwenta, skoro podniesienie do kwadratu nie 
+		Oczywiście podnoszenie liczb dodatnich do kwadratu także daje wynik dodatni. Uwzględniając $0$, które 
+		podniesione do kwadratu daje $0$, możemy stwierdzić ogólnie, że <b>każda</b> liczba podniesiona do kwadratu daje wynik 
+		nieujemny (dodatni lub zerowy). Co mógłby oznaczać pierwiastek z liczby ujemnej? $\sqrt{-4}$ to rzekomo taka liczba, 
+		która podniesiona do kwadratu daje $-4$… Trochę ciężko o  takiego delikwenta, skoro podniesienie do kwadratu nie 
 		może dawać liczby ujemnej. Ustalamy więc zasadę: nie wolno wyciągać pierwiastków parzystego stopnia z liczb ujemnych. 
 	</p>
 
@@ -541,8 +545,8 @@
 		Rygor ten nie dotyczy pierwiastków nieparzystego stopnia:
 	</p>
 	
-	<p align="center">
-		<span class="math">Root3((-8))=-2</span>, ponieważ <span class="math">Bracket(-2)^3=-8</span>
+	<p style="text-align: center">
+		$\sqrt[3]{-8}=-2$, ponieważ $(-2)^3=-8$
 	</p>
 		
 	<p>
@@ -550,23 +554,23 @@
 		nieuwagę bardzo łatwo można wpaść w pułapkę:
 	</p>
 
-	<p class="math" align="center">
-		-1=Bracket(-1)^1=Bracket(-1)^(2/2)=Bracket(-1)^(2∙1/2)=Bracket(Bracket(-1)^2 )^(1/2)=Sqrt(Bracket(-1)^2 )=Sqrt(1)=1
-	</p>
+	$$
+		-1=(-1)^1=(-1)^{\frac{2}{2}}=(-1)^{2 \cdot \frac{1}{2}}=((-1)^2 )^{\frac{1}{2}}=\sqrt{(-1)^2 }=\sqrt{1}=1
+	$$
 
 	<p>
-		Właśnie za pomocą kilku przekształceń pokazaliśmy, że <span class="math">-1=1</span>. Stwierdzenie „mieć ciastko i zjeść ciastko 
+		Właśnie za pomocą kilku przekształceń pokazaliśmy, że $-1=1$. Stwierdzenie „mieć ciastko i zjeść ciastko 
 		to przecież to samo” brzmi cokolwiek nihilistycznie, dlatego miejmy na uwadze rolę licznika i mianownika w wykładniku we wzorze
 	</p>
 	
-	<p class="math" align="center">
-		a^(n/m)=Rootm(a)^n
-	</p>
+	$$
+		a^{\frac{n}{m}}=\sqrt[m]{a}^n
+	$$
 	
 	<p>
 		Gdy podnosimy liczbę do potęgi ułamkowej, powinniśmy najpierw dokonać pierwiastkowania ze względu na mianownik, a 
 		dopiero później potęgowania ze względu na licznik. Kolejność ta nie ma znaczenia dla dodatnich 
-		<span class="math">a</span>, jednak zmienia dużo w przypadku <span class="math">a</span> poniżej zera.
+		$a$, jednak zmienia dużo w przypadku $a$ poniżej zera.
 	</p>
 
 	<p class="type">
@@ -575,10 +579,10 @@
 	
 	<p>
 		Tak naprawdę… wolno wyciągać pierwiastki parzystego stopnia z liczb ujemnych. Ale w tym momencie wychodzimy poza rozważania na temat 
-		liczb rzeczywistych. W lekcji „Liczby zespolone” dowiemy się, że liczbę <span class="math">Sqrt(-1)</span> traktuje się w sposób specjalny, 
+		liczb rzeczywistych. W lekcji „Liczby zespolone” dowiemy się, że liczbę $\sqrt{-1}$ traktuje się w sposób specjalny, 
 		jak upośledzone dziecko rozkoszy cielesnych matematyka po czterdziestce ze swoją niewyżytą wyobraźnią. Pierwiastki z 
-		liczb ujemnych nazywamy (całkiem poważnie) <i>liczbami urojonymi</i>, a dla <span class="math">Sqrt(-1)</span> wprowadzono specjalne oznaczenie: 
-		<span class="math">Sqrt(-1)=i</span>, literka <span class="math">i</span> na cześć słowa „imaginary” – wyimaginowany, urojony. Aby zajmować się liczbami 
+		liczb ujemnych nazywamy (całkiem poważnie) <i>liczbami urojonymi</i>, a dla $\sqrt{-1}$ wprowadzono specjalne oznaczenie: 
+		$\sqrt{-1}=i$, literka $i$ na cześć słowa „imaginary” – wyimaginowany, urojony. Aby zajmować się liczbami 
 		zespolonymi na poważnie, trzeba przebyć jeszcze dość długą drogę.
 	</p>
 
@@ -605,52 +609,49 @@
 		cyrk z dodatnimi/ujemnymi wartościami liczb podpierwiastkowych.
 	</p>
 	
-	<ul>
-		<li>
-			<span class="math">Rootn(Rootm(a))=Root(n∙m)(a)</span><br>
-			<p class="type">
-				Dowód
-			</p>
-			<div class="proof">
-				Oznaczmy wartość wyrażenia <span class="math">Rootn(Rootm(a))</span> przez <span class="math">x</span>. Zgodnie z definicją 
-				pierwiastkowania:
-				<p class="math" align="center">Rootn(Rootm(a))=x⟺Rootm(a)=x^n⟺a=Bracket(x^n )^m⟺a=x^(n⋅m)⟺Root(n∙m)(a)=x</p>
-				Zatem
-				<p class="math" align="center">Rootn(Rootm(a))=x=Root(n∙m)(a)</p>
-			</div>
-		</li>
-		<li>
-			<span class="math">Rootn((a∙b))=Rootn(a)∙Rootn(b)</span><br>
-			<p class="type">
-				Dowód
-			</p>
-			<div class="proof">
-				Oznaczmy wartość wyrażenia <span class="math">Rootn(a)</span> przez <span class="math">x</span> oraz wartość wyrażenia 
-				<span class="math">Rootn(b)</span> przez <span class="math">y</span>. Z definicji pierwiastkowania:
-				<p class="math" align="center">Rootn(a)=x⟺a=x^n<br>
-				Rootn(b)=y⟺b=y^n</p>
-				Skoro <span class="math">a=x^n</span> oraz <span class="math">b=y^n</span>, to <span class="math">a⋅b=x^n∙y^n=Bracket(x∙y)^n</span>. 
-				Mamy więc
-				<p class="math" align="center">a⋅b=Bracket(x∙y)^n⟺Rootn((a⋅b))=x∙y=Rootn(a)∙Rootn(b)</p>
-			</div>
+	<p class="formula">
+		$$\sqrt[n]{\sqrt[m]{a}}=\sqrt[n \cdot m]{a}$$
+	</p>
+	<div class="proof">
+		<div class="proof-sticker">
+			Dowód
+		</div>
+		Oznaczmy wartość wyrażenia $\sqrt[n]{\sqrt[m]{a}}$ przez $x$. Zgodnie z definicją 
+		pierwiastkowania:
+		$$ \sqrt[n]{\sqrt[m]{a}}=x \Leftrightarrow \sqrt[m]{a}=x^n \Leftrightarrow a=(x^n )^m \Leftrightarrow a=x^{n \cdot m} \Leftrightarrow \sqrt[n \cdot m]{a}=x$$
+		Zatem
+		$$\sqrt[n]{\sqrt[m]{a}}=x=\sqrt[n \cdot m]{a}$$
+	</div>
+	<br><br>
 
-		</li>
-		<li>
-			<span class="math">Root(n)((a/b))=Rootn(a)/Rootn(b)</span><br>
-			<p class="type">
-				Dowód
-			</p>
-			<div class="proof">
-				Oznaczmy wartość wyrażenia <span class="math">Rootn(a)</span> przez <span class="math">x</span> oraz wartość wyrażenia <span class="math">
-				Rootn(b)</span> przez <span class="math">y</span>. Z definicji pierwiastkowania:
-				<p class="math" align="center">Rootn(a)=x⟺a=x^n<br>
-				Rootn(b)=y⟺b=y^n</p>
-				Skoro <span class="math">a=x^n</span> oraz <span class="math">b=y^n</span>, to <span class="math">a/b=(x^n)/(y^n) =Bracket(x/y)^n</span>. Mamy więc
-				<p class="math" align="center">a/b=Bracket(x/y)^n⟺Rootn((a/b))=x/y=Rootn(a)/Rootn(b)</p>
-			</div>
+	<p class="formula">
+		$$\sqrt[n]{a \cdot b}=\sqrt[n]{a} \cdot  \sqrt[n]{b}$$
+	</p>
+	<div class="proof">
+		<div class="proof-sticker">Dowód</div>
+		Oznaczmy wartość wyrażenia $\sqrt[n]{a}$ przez $x$ oraz wartość wyrażenia 
+		$ \sqrt[n]{b}$ przez $y$. Z definicji pierwiastkowania:
+		$$\sqrt[n]{a}=x \Leftrightarrow a=x^n\\
+			\sqrt[n]{b}=y \Leftrightarrow b=y^n$$
+		Skoro $a=x^n$ oraz $b=y^n$, to $a \cdot b=x^n \cdot y^n=(x \cdot y)^n$. 
+		Mamy więc
+		$$a \cdot b=(x \cdot y)^n \Leftrightarrow \sqrt[n]{a \cdot b}=x \cdot y=\sqrt[n]{a} \cdot  \sqrt[n]{b}$$
+	</div>
+	<br><br>
 
-		</li>
-	</ul>
+	<p class="formula">
+		$$\sqrt[n]{\frac{a}{b}}=\frac{\sqrt[n]{a}}{\sqrt[n]{b}}$$
+	</p>
+	<div class="proof">
+		<div class="proof-sticker">Dowód</div>
+		Oznaczmy wartość wyrażenia $\sqrt[n]{a}$ przez $x$ oraz wartość wyrażenia $
+			\sqrt[n]{b}$ przez $y$. Z definicji pierwiastkowania:
+		$$\sqrt[n]{a}=x \Leftrightarrow a=x^n \\
+			\sqrt[n]{b}=y \Leftrightarrow b=y^n$$
+		Skoro $a=x^n$ oraz $b=y^n$, to $\frac{a}{b}=\frac{x^n}{y^n} = (\frac{x}{y})^n$. Mamy więc
+		$$\frac{a}{b} = (\frac{x}{y})^n \Leftrightarrow \sqrt[n]{\frac{a}{b}} = \frac{x}{y} = \frac{\sqrt[n]{a}}{\sqrt[n]{b}} $$
+	</div>
+	<br><br>
 
 	<p class="type">
 		Formalnie | Rozszerzenie
@@ -660,66 +661,59 @@
 		Możemy teraz pełnoprawnie poszerzyć własności potęgowania na wykładniki wymierne. 
 	</p>
 
-	<ul>
-		<li>
-			<span class="math">a^(p/q)∙a^(r/s)=a^(p/q+r/s)</span>
-			<p class="type">
-				Dowód
-			</p>
-			<div class="proof">
-				<p class="math" align="center">a^(p/q)∙a^(r/s)=(Rootq(a))^p∙(Roots(a))^r=(Roots((Rootq(a)^p )))^s∙(Rootq((Roots(a)^r )))^q=
-				Bracket((Roots((Rootq(a))))^p )^s∙Bracket((Rootq(Roots(a)))^r )^q=<br>
-				=(Root(q∙s)(a))^(p∙s)∙(Root(q∙s)(a)^(r∙q)=(Root(q∙s)(a))^(ps+rq)=
-				a^((ps+rq)/(qs))
-				=a^((ps)/(qs)+(rq)/(qs))=a^(p/q+r/s)</p>
-			</div>
-		</li>
+	<p class="formula">
+		$$a^{\frac{p}{q}} \cdot a^{\frac{r}{s}} = a^{\frac{p}{q}+\frac{r}{s}}$$
+	</p>
+	<div class="proof">
+		<div class="proof-sticker">Dowód</div>
+		$$a^{\frac{p}{q}} \cdot a^{\frac{r}{s}} = (\sqrt[q]{a})^p \cdot (\sqrt[s]{a})^r = (\sqrt[n]{\sqrt[q]{a}^p})^s \cdot (\sqrt[q]{\sqrt[s]{a}^r})^q=
+		( \sqrt[s]{ \sqrt[q]{a} }^p )^s \cdot (\sqrt[q]{\sqrt[s]{a}}^r )^q =\\
+		=\sqrt[q \cdot s]{a}^{p \cdot s} \cdot (\sqrt[q \cdot s]{a}^{r \cdot q}=\sqrt[q \cdot s]{a}^{ps+rq}=
+		a^{\frac{ps+rq}{qs}}
+		=a^{\frac{ps}{qs}+\frac{rq}{qs}}=a^{\frac{p}{q}+\frac{r}{s}}$$
+	</div>
+	<br><br>
 
-		<li>
-			<span class="math">(a^(p/q))/(a^(r/s)) =a^(p/q-r/s)</span>
-			<p class="type">
-				Dowód
-			</p>
-			<div class="proof">
-				<p class="math" align="center">(a^(p/q))/(a^(r/s)) =a^(p/q)∙a^(-r/s)=a^(p/q)∙a^((-r)/s)=a^(p/q+(-r)/s)=a^(p/q-r/s)</p>
-			</div>
-		</li>
-		
-		<li>
-			<span class="math">Bracket(a^(p/q) )^(r/s)=a^(p/q∙r/s)</span>
-			<p class="type">
-				Dowód
-			</p>
-			<div class="proof">
-				<p class="math" align="center">Bracket(a^(p/q) )^(r/s)=(Roots(((Rootq(a))^p)))^r=
-				Bracket((Roots(Rootq(a)))^p )^r=
-				(Root(q∙s)(a))^(p∙r)=a^((p∙r)/(q∙s))=a^(p/q∙r/s)</p>
-			</div>
-		</li>
-			
-		<li>
-			<span class="math">a^(p/q)∙b^(p/q)=Bracket(a∙b)^(p/q)</span>
-			<p class="type">
-				Dowód
-			</p>
-			<div class="proof">
-				<p class="math" align="center">a^(p/q)∙b^(p/q)=Rootq(a)^p∙Rootq(b)^p=Bracket(Rootq(a)∙Rootq(b))^p=(Rootq((a∙b)))^p=
-				Bracket(a∙b)^(p/q)</p>
-			</div>
-		</li>
-		
-		<li>
-			<span class="math">Bracket(a/b)^(p/q)=(a^(p/q))/(b^(p/q))</span>
-			<p class="type">
-				Dowód
-			</p>
-			<div class="proof">
-				<p class="math" align="center">Bracket(a/b)^(p/q)=(Rootq((a/b)))^p=Bracket(Rootq(a)/Rootq(b))^p=(Rootq(a)^p)/((Rootq(b))^p) =
-				(a^(p/q))/(b^(p/q)) </p>
-			</div>
-		</li>
-	</ul>
-	
+	<p class="formula">
+		$$\frac{a^{\frac{p}{q}}}{a^{\frac{r}{s}}} = a^{\frac{p}{q}-\frac{r}{s}}$$
+	</p>
+	<div class="proof">
+		<div class="proof-sticker">Dowód</div>
+		$$\frac{a^{\frac{p}{q}}}{a^{\frac{r}{s}}} = a^{\frac{p}{q}} \cdot a^{-\frac{r}{s}}=a^{\frac{p}{q}} \cdot a^{\frac{-r}{s}}=
+		a^{\frac{p}{q}+\frac{-r}{s}}=a^{\frac{p}{q}-\frac{r}{s}}$$
+	</div>
+	<br><br>
+
+	<p class="formula">
+		$$(a^{\frac{p}{q}})^{\frac{r}{s}} = a^{\frac{p}{q} \cdot \frac{r}{s}}$$
+	</p>
+	<div class="proof">
+		<div class="proof-sticker">Dowód</div>
+		$$ (a^\frac{p}{q} )^{\frac{r}{s}} = (\sqrt[s]{ \sqrt[q]{a}^p })^r = (\sqrt[s]{ \sqrt[q]{a} }^p)^r =
+		(\sqrt[q \cdot s]{a})^{p \cdot r}=a^{\frac{p \cdot r}{q \cdot s}}=a^{\frac{p}{q} \cdot \frac{r}{s}}$$
+	</div>
+	<br><br>
+
+	<p class="formula">
+		$$a^\frac{p}{q} \cdot b^{\frac{p}{q}}=(a \cdot b)^{\frac{p}{q}}$$
+	</p>
+	<div class="proof">
+		<div class="proof-sticker">Dowód</div>
+		$$ a^{\frac{p}{q}} \cdot b^{\frac{p}{q}} = \sqrt[q]{a}^p \cdot \sqrt[q]{b}^p = (\sqrt[q]{a} \cdot \sqrt[q]{b})^p = (\sqrt[q]{a \cdot b})^p =
+		(a \cdot b)^{\frac{p}{q}} $$
+	</div>
+	<br><br>
+
+	<p class="formula">
+		$$(\frac{a}{b})^{\frac{p}{q}}=\frac{a^{\frac{p}{q}}}{b^\frac{p}{q}}$$
+	</p>
+	<div class="proof">
+		<div class="proof-sticker">Dowód</div>
+		$$(\frac{a}{b})^{\frac{p}{q}} = (\sqrt[q]{\frac{a}{b}})^p = (\frac{\sqrt[q]{a}}{\sqrt[q]{b}})^p=\frac{\sqrt[q]{a}^p}{\sqrt[q]{b}^p} =
+		\frac{a^\frac{p}{q}}{b^\frac{p}{q}} $$
+	</div>
+	<br><br>
+
 	<p>
 		Co więcej, własności te działają także dla wykładników rzeczywistych. Ucinając w pewnym miejscu rozwinięcie dziesiętne, można 
 		przybliżyć liczbę rzeczywistą (z dowolną dokładnością) do liczby wymiernej, a dla liczb wymiernych nasze własności już działają. 
@@ -732,14 +726,15 @@
 		Trzy własności pierwiastkowania wykazane na początku tej sekcji także działają dla stopni wymiernych:
 	</p>
 	
-	<p class="type">
-		Dowód
-	</p>
 	<div class="proof">
+		<div class="proof-sticker">Dowód</div>
 		<ul>
-			<li class="math">Root(p/q)((Root(r/s)(a)))=Bracket(a^(s/r) )^(q/p)=a^(s/r∙q/p)=a^((s∙q)/(r∙p))=Root((r∙p)/(s∙q))(a)=Root(r/s∙p/q)(a)</li>
-			<li class="math">Root(p/q)((a∙b))=Bracket(a∙b)^(q/p)=a^(q/p)∙b^(q/p)=Root(p/q)(a)∙Root(p/q)(b)</li>
-			<li class="math">Root(p/q)((a/b))=Bracket(a/b)^(q/p)=(a^(q/p))/(b^(q/p)) =(Root(p/q)(a))/(Root(p/q)(b))</li>
+			<li>$\sqrt[\frac{p}{q}]{\sqrt[\frac{r}{s}]{a}} = (a^{\frac{s}{r}} )^\frac{q}{p} = a^{\frac{s}{r} \cdot \frac{q}{p}} = 
+				a^{\frac{s \cdot q}{r \cdot p}} = \sqrt[\frac{r \cdot p}{s \cdot q}]{a} = \sqrt[\frac{r}{s} \cdot \frac{p}{q}]{a}$</li>
+			<li>$\sqrt[\frac{p}{q}]{a \cdot b} = (a \cdot b)^{\frac{q}{p}} = a^\frac{q}{p} \cdot b^\frac{q}{p} = 
+				\sqrt[\frac{p}{q}]{a} \cdot \sqrt[\frac{p}{q}]{b}$</li>
+			<li>$\sqrt[\frac{p}{q}]{\frac{a}{b}} = (\frac{a}{b})^\frac{q}{p} = \frac{a^{\frac{q}{p}}}{b^{\frac{q}{p}}} = 
+				\frac{\sqrt[\frac{p}{q}]{a}}{\sqrt[\frac{p}{q}]{b}}$</li>
 		</ul>
 	</div>
 	
@@ -774,63 +769,62 @@
 		Upraszczanie pierwiastków wykorzystuje drugą z wyżej wymienionych własności pierwiastkowania:
 	</p>
 	
-	<p class="math" align="center">
-		Sqrt(20)=Sqrt(4∙5)=Sqrt(4)∙Sqrt(5)=2∙Sqrt(5)=2Sqrt(5)
-	</p>
+	$$
+		\sqrt{20}=\sqrt{4 \cdot 5} = \sqrt{4} \cdot \sqrt{5} = 2 \cdot \sqrt{5}=2\sqrt{5}
+	$$
 
 	<p>
-		Liczba <span class="math">20</span> jest liczbą złożoną, a jednym z jej czynników składowych jest <span class="math">4</span> – czyli 
-		dobrze znany nam kwadrat <span class="math">2</span>. Możemy dokonać uproszczenia nazywanego wyłączaniem czynnika przed pierwiastek i 
-		zapisać <span class="math">Sqrt(20)</span> w postaci <span class="math">2Sqrt(5)</span>. Zaleta jest m.in. taka, że mało kto zna na pamięć wartość 
-		<span class="math">Sqrt(20)</span>, ale są tacy, którzy pamiętają przybliżenie <span class="math">Sqrt(5)≈2,24</span>, co pozwala na oszacowanie 
-		<span class="math">Sqrt(20)≈2∙2,24=4,48</span>.
+		Liczba $20$ jest liczbą złożoną, a jednym z jej czynników składowych jest $4$ – czyli 
+		dobrze znany nam kwadrat $2$. Możemy dokonać uproszczenia nazywanego wyłączaniem czynnika przed pierwiastek i 
+		zapisać $\sqrt{20}$ w postaci $2\sqrt{5}$. Zaleta jest m.in. taka, że mało kto zna na pamięć wartość 
+		$\sqrt{20}$, ale są tacy, którzy pamiętają przybliżenie $\sqrt{5}≈2,24$, co pozwala na oszacowanie 
+		$\sqrt{20}≈2 \cdot 2,24=4,48$.
 	</p>
 
 	<p>
 		Aby najpełniej wyłączyć czynnik przed pierwiastek, musimy dokonać rozkładu na czynniki pierwsze liczby podpierwiastkowej. Spróbujmy 
-		uprościć <span class="math">Sqrt(6804)</span>. Najpierw dokonujemy rozkładu:
+		uprościć $\sqrt{6804}$. Najpierw dokonujemy rozkładu:
 	</p>
 
-	<p align="center">
-		<table class="factorisation">
-			<tr><td>6804</td><td>2</td></tr>
-			<tr><td>3402</td><td>2</td></tr>
-			<tr><td>1701</td><td>3</td></tr>
-			<tr><td>567</td><td>3</td></tr>
-			<tr><td>189</td><td>3</td></tr>
-			<tr><td>63</td><td>3</td></tr>
-			<tr><td>21</td><td>3</td></tr>
-			<tr><td>7</td><td>7</td></tr>
-			<tr><td>1</td><td></td></tr>
-		</table>
-	</p>	
+	<table class="factorisation center">
+		<tr><td>6804</td><td>2</td></tr>
+		<tr><td>3402</td><td>2</td></tr>
+		<tr><td>1701</td><td>3</td></tr>
+		<tr><td>567</td><td>3</td></tr>
+		<tr><td>189</td><td>3</td></tr>
+		<tr><td>63</td><td>3</td></tr>
+		<tr><td>21</td><td>3</td></tr>
+		<tr><td>7</td><td>7</td></tr>
+		<tr><td>1</td><td></td></tr>
+	</table>
 
-	<p class="math" align="center">
-		6804=2∙2∙3∙3∙3∙3∙3∙7=2^2∙3^5∙7
-	</p>
+	$$
+		6804 = 2 \cdot 2 \cdot 3 \cdot 3 \cdot 3 \cdot 3 \cdot 3 \cdot 7 = 2^2 \cdot 3^5 \cdot 7
+	$$
 
 	<p>
 		Interesują nas te czynniki pierwsze, które występują przynajmniej w drugiej potędze – to właśnie je będziemy wyłączać przed pierwiastek.
 	</p>
 
-	<p class="math" align="center">
-		Sqrt(6804)=Sqrt(2^2∙3^2∙3^2∙3∙7)=Sqrt(2^2∙3^2∙3^2 )∙Sqrt(3∙7)=2∙3∙3∙Sqrt(3∙7)=18Sqrt(21)
-	</p>
+	$$
+		\sqrt{6804} = \sqrt{2^2 \cdot 3^2 \cdot 3^2 \cdot 3 \cdot 7} = \sqrt{2^2 \cdot 3^2 \cdot 3^2 } \cdot \sqrt{3 \cdot 7} = 
+		2 \cdot 3 \cdot 3 \cdot \sqrt{3 \cdot 7} = 18\sqrt{21}
+	$$
 
 	<p>
-		Możemy też wyłączać przed pierwiastek trochę bardziej „na żywioł”. Weźmy <span class="math">Sqrt(20250)</span>.
+		Możemy też wyłączać przed pierwiastek trochę bardziej „na żywioł”. Weźmy $\sqrt{20250}$.
 	</p>
 	
 	<ul>
-		<li>Sprawdzamy, czy liczba podpierwiastkowa dzieli się przez <span class="math">4</span>. <span class="math">20250</span> nie jest 
-		podzielne przez <span class="math">4</span>, więc nie wyciągniemy dwójki przed pierwiastek.</li> 
-		<li>Sprawdzamy więc, czy <span class="math">20250</span> dzieli się przez <span class="math">9</span> – skoro tak, wyciągamy 
-		<span class="math">Sqrt(20250)=Sqrt(9)∙Sqrt(2250)=3Sqrt(2250)</span>.</li> 
-		<li>Do skutku próbujemy wyciągnąć <span class="math">9</span> spod pierwiastka, przy kolejnej próbie: 
-		<span class="math">3Sqrt(2250)=3∙Sqrt(9)∙Sqrt(250)=3∙3∙Sqrt(250)=9Sqrt(250)</span>. </li>
-		<li>Więcej razy nie wyciągniemy <span class="math">9</span> spod pierwiastka, więc próbujemy wyciągać kwadrat kolejnej liczby pierwszej: 
-		<span class="math">25</span>. Odnosimy zwycięstwo: <span class="math">9Sqrt(250)=9∙Sqrt(25)∙Sqrt(10)=9∙5∙Sqrt(10)=45Sqrt(10)</span>. </li>
-		<li>Pierwiastek z <span class="math">10</span> dość zauważalnie jest już nierozkładalny.</li>
+		<li>Sprawdzamy, czy liczba podpierwiastkowa dzieli się przez $4$. $20250$ nie jest 
+		podzielne przez $4$, więc nie wyciągniemy dwójki przed pierwiastek.</li> 
+		<li>Sprawdzamy więc, czy $20250$ dzieli się przez $9$ – skoro tak, wyciągamy 
+		$\sqrt{20250} = \sqrt{9} \cdot \sqrt{2250} = 3\sqrt{2250}$.</li> 
+		<li>Do skutku próbujemy wyciągnąć $9$ spod pierwiastka, przy kolejnej próbie: 
+		$3\sqrt{2250} = 3 \cdot \sqrt{9} \cdot \sqrt{250} = 3 \cdot 3 \cdot \sqrt{250} = 9\sqrt{250}$. </li>
+		<li>Więcej razy nie wyciągniemy $9$ spod pierwiastka, więc próbujemy wyciągać kwadrat kolejnej liczby pierwszej: 
+		$25$. Odnosimy zwycięstwo: $9\sqrt{250}=9 \cdot \sqrt{25} \cdot \sqrt{10}=9 \cdot 5 \cdot \sqrt{10}=45\sqrt{10}$. </li>
+		<li>Pierwiastek z $10$ dość zauważalnie jest już nierozkładalny.</li>
 	</ul>
 
 	</div>
@@ -851,7 +845,7 @@
 	</p>
 	
 	<p class="warning">
-		[wymagana znajomość tematu: Działania na wyrażeniach algebraicznych]
+		wymagana znajomość tematu: Działania na wyrażeniach algebraicznych
 	</p>
 
 	<p>
@@ -859,105 +853,103 @@
 		Otóż matematycznie nieeleganckie jest pozostawianie pierwiastków w mianowniku ułamka. Liczbę
 	</p>
 
-	<p class="math" align="center">
-		3/Sqrt(2)
-	</p>
+	$$
+		\frac{3}{\sqrt{2}}
+	$$
 
 	<p>
-		można zapisać w innej postaci rozszerzając licznik i mianownik przez <span class="math">Sqrt(2)</span>:
+		można zapisać w innej postaci rozszerzając licznik i mianownik przez $\sqrt{2}$:
 	</p>
 		
-	<p class="math" align="center">
-		3/Sqrt(2)=(3∙Sqrt(2))/(Sqrt(2)∙Sqrt(2))=(3∙Sqrt(2))/(Sqrt(2)^2) =(3Sqrt(2))/2
-	</p>
+	$$
+		\frac{3}{\sqrt{2}} = \frac{3 \cdot \sqrt{2}}{\sqrt{2} \cdot \sqrt{2}} = \frac{3 \cdot \sqrt{2}}{\sqrt{2}^2} = \frac{3\sqrt{2}}{2}
+	$$
 
 	<p>
-		Ułamki <span class="math">3/Sqrt(2)</span> oraz <span class="math">(3Sqrt(2))/2</span> reprezentują dokładnie tę samą liczbę, jednak zapis 
+		Ułamki $\frac{3}{\sqrt{2}}$ oraz $\frac{3\sqrt{2}}{2}$ reprezentują dokładnie tę samą liczbę, jednak zapis 
 		w drugiej 
 		formie ma zasadniczą przewagę: pozwala na dokładniejsze szacowanie wartości. Przypuśćmy, że chcemy poznać przybliżoną wartość 
-		dziesiętną liczby <span class="math">3/Sqrt(2)</span>, w tym celu musimy najpierw dokonać przybliżenia <span class="math">Sqrt(2)</span>:
+		dziesiętną liczby $\frac{3}{\sqrt{2}}$, w tym celu musimy najpierw dokonać przybliżenia $\sqrt{2}$:
 	</p>
 	
 	<ul>
-		<li>Jeśli przybliżymy <span class="math">Sqrt(2)≈1,4</span>, dostaniemy <span class="math">3/Sqrt(2)≈3/1,4≈2,14285714286</span></li>
-		<li>Jeśli przybliżymy <span class="math">Sqrt(2)≈1,41</span>, dostaniemy <span class="math">3/Sqrt(2)≈3/1,41≈2,12765957447</span></li>
-		<li>Jeśli przybliżymy <span class="math">Sqrt(2)≈1,414</span>, dostaniemy <span class="math">3/Sqrt(2)≈3/1,414≈2,1216407355</span></li>
-		<li>Jeśli przybliżymy <span class="math">Sqrt(2)≈1,4142</span>, dostaniemy <span class="math">3/Sqrt(2)≈3/1,4142≈2,12134068731</span></li>
+		<li>Jeśli przybliżymy $\sqrt{2}≈1,4$, dostaniemy $\frac{3}{\sqrt{2}}≈\frac{3}{1,4}≈2,14285714286$</li>
+		<li>Jeśli przybliżymy $\sqrt{2}≈1,41$, dostaniemy $\frac{3}{\sqrt{2}}≈\frac{3}{1,41}≈2,12765957447$</li>
+		<li>Jeśli przybliżymy $\sqrt{2}≈1,414$, dostaniemy $\frac{3}{\sqrt{2}}≈\frac{3}{1,414}≈2,1216407355$</li>
+		<li>Jeśli przybliżymy $\sqrt{2}≈1,4142$, dostaniemy $\frac{3}{\sqrt{2}}≈\frac{3}{1,4142}≈2,12134068731$</li>
 	</ul>
 	
 	<p>
-		Im więcej weźmiemy cyfr rozwinięcia <span class="math">Sqrt(2)</span>, tym wierniej przybliżymy rzeczywistą wartość <span class="math">3/Sqrt(2)</span>. 
+		Im więcej weźmiemy cyfr rozwinięcia $\sqrt{2}$, tym wierniej przybliżymy rzeczywistą wartość $\frac{3}{\sqrt{2}}$. 
 		Biorąc przybliżenie 
 	</p>
 	
-	<p class="math" align="center">
-		Sqrt(2)≈1,414213562373095048801688724209698078569671875376948073176
-	</p>
+	$$
+		\sqrt{2} ≈ 1,414213562373095048801688724209698078569671875376948073176
+	$$
 	
 	<p>
 		otrzymamy
 	</p>
 	
-	<p class="math" align="center">
-		3/Sqrt(2)≈2,12132034356
-	</p>
+	$$
+		\frac{3}{\sqrt{2}}≈2,12132034356
+	$$
 	
 	<p>
-		I wynik ten możemy uznać za zadowalająco dokładny. Sprawdźmy dla porównania, jak wygląda szacowanie liczby <span class="math">(3Sqrt(2))/2</span>:
+		I wynik ten możemy uznać za zadowalająco dokładny. Sprawdźmy dla porównania, jak wygląda szacowanie liczby $\frac{3\sqrt{2}}{2}$:
 	</p>
 	
 	<ul>
-		<li>Jeśli przybliżymy <span class="math">Sqrt(2)≈1,4</span>, dostaniemy <span class="math">(3Sqrt(2))/2≈(3∙1,4)/2≈2,1</span></li>
-		<li>Jeśli przybliżymy <span class="math">Sqrt(2)≈1,41</span>, dostaniemy <span class="math">(3Sqrt(2))/2≈(3∙1,41)/2≈2,115</span></li>
-		<li>Jeśli przybliżymy <span class="math">Sqrt(2)≈1,414</span>, dostaniemy <span class="math">(3Sqrt(2))/2≈(3∙1,414)/2≈2,121</span></li>
-		<li>Jeśli przybliżymy <span class="math">Sqrt(2)≈1,4142</span>, dostaniemy <span class="math">(3Sqrt(2))/2≈(3∙1,4142)/2≈2,1213</span></li>
+		<li>Jeśli przybliżymy $\sqrt{2}≈1,4$, dostaniemy $\frac{3\sqrt{2}}{2}≈\frac{3 \cdot 1,4}{2}≈2,1$</li>
+		<li>Jeśli przybliżymy $\sqrt{2}≈1,41$, dostaniemy $\frac{3\sqrt{2}}{2}≈\frac{3 \cdot 1,41}{2}≈2,115$</li>
+		<li>Jeśli przybliżymy $\sqrt{2}≈1,414$, dostaniemy $\frac{3\sqrt{2}}{2}≈\frac{3 \cdot 1,414}{2}≈2,121$</li>
+		<li>Jeśli przybliżymy $\sqrt{2}≈1,4142$, dostaniemy $\frac{3\sqrt{2}}{2}≈\frac{3 \cdot 1,4142}{2}≈2,1213$</li>
 	</ul>
 
 	<p>
-		Oprócz tego, że obliczanie przybliżonych wartości <span class="math">(3Sqrt(2))/2</span> jest znacznie łatwiejsze od obliczania 
-		<span class="math">3/Sqrt(2)</span> (mnożenie przez ułamek dziesiętny jest prostsze, niż dzielenie przez ułamek dziesiętny), daje także 
+		Oprócz tego, że obliczanie przybliżonych wartości $\frac{3\sqrt{2}}{2}$ jest znacznie łatwiejsze od obliczania 
+		$\frac{3}{\sqrt{2}}$ (mnożenie przez ułamek dziesiętny jest prostsze, niż dzielenie przez ułamek dziesiętny), daje także 
 		dokładniejsze wyniki. Zbierzmy wnioski w tabeli:
 	</p>
 
-	<p align="center">
-		<table class="table2">
-			<tr>
-				<th>Szacowanie <span class="math">Sqrt(2)</span></th>
-				<th>Szacowanie <span class="math">3/Sqrt(2)</span></th>
-				<th>Różnica od dokładnego wyniku</th>
-				<th>Szacowanie <span class="math">(3Sqrt(2))/2</span></th>
-				<th>Różnica od dokładnego wyniku</th>
-			</tr>
-			<tr>
-				<td class="math">1,4</td>
-				<td class="math">2,14285714286</td>
-				<td class="math">0,0215367993</td>
-				<td class="math">2,1</td>
-				<td class="math">0,02132034356</td>
-			</tr>
-			<tr>
-				<td class="math">1,41</td>	
-				<td class="math">2,12765957447</td>
-				<td class="math">0,00633923091</td>
-				<td class="math">2,115</td>
-				<td class="math">0,00632034356</td>
-			</tr>
-			<tr>
-				<td class="math">1,414</td>	
-				<td class="math">2,1216407355</td>	
-				<td class="math">0,00032039194</td>
-				<td class="math">2,121</td>	
-				<td class="math">0,00032034356</td>
-			</tr>
-			<tr>
-				<td class="math">1,4142</td>
-				<td class="math">2,12134068731</td>	
-				<td class="math">0,00002034375</td>	
-				<td class="math">2,1213</td>
-				<td class="math">0,00002034355</td>
-			</tr>
-		</table>
-	</p>
+	<table class="table2 center">
+		<tr>
+			<th>Szacowanie $\sqrt{2}$</th>
+			<th>Szacowanie $\frac{3}{\sqrt{2}}$</th>
+			<th>Różnica od dokładnego wyniku</th>
+			<th>Szacowanie $\frac{3\sqrt{2}}{2}$</th>
+			<th>Różnica od dokładnego wyniku</th>
+		</tr>
+		<tr>
+			<td>$1,4$</td>
+			<td>$2,14285714286$</td>
+			<td>$0,0215367993$</td>
+			<td>$2,1$</td>
+			<td>$0,02132034356$</td>
+		</tr>
+		<tr>
+			<td>$1,41$</td>	
+			<td>$2,12765957447$</td>
+			<td>$0,00633923091$</td>
+			<td>42,115$</td>
+			<td>$0,00632034356$</td>
+		</tr>
+		<tr>
+			<td>$1,414$</td>	
+			<td>$2,1216407355$</td>	
+			<td>$0,00032039194$</td>
+			<td>$2,121$</td>	
+			<td>$0,00032034356$</td>
+		</tr>
+		<tr>
+			<td>$1,4142$</td>
+			<td>$2,12134068731$</td>	
+			<td>$0,00002034375$</td>	
+			<td>$2,1213$</td>
+			<td>$0,00002034355$</td>
+		</tr>
+	</table>
 	
 	<p>
 		Przybliżenia otrzymane po wyciągnięciu niewymierności z mianownika różnią się mniej od dokładnego wyniku, niż przybliżenia z 
@@ -970,22 +962,23 @@
 	</p>
 	
 	<ul>
-		<li class="math">10/Sqrt(5)=(10∙Sqrt(5))/(Sqrt(5)∙Sqrt(5))=(10Sqrt(5))/5=2Sqrt(5)</li>
-		<li class="math">Sqrt((3/5))=Sqrt(3)/Sqrt(5)=(Sqrt(3)∙Sqrt(5))/(Sqrt(5)∙Sqrt(5))=Sqrt(3∙5)/5=Sqrt(15)/5
-		<li class="math">7/Root3(6)=(7∙Root3(6)∙Root3(6))/(Root3(6)∙Root3(6)∙Root3(6))=(7Root3(36))/6
-		<li class="math">10/Root4(75)=(10∙Root4(75)∙Root4(75)∙Root4(75))/(Root4(75)∙Root4(75)∙Root4(75)∙Root4(75))=(10∙Root4(75)^3)/75=
-		(10∙Root4((Bracket(5^2∙3)^3 )))/75=(10∙Root4((5^6∙3^3)))/75=
-		(10∙Root4((5^4∙5^2∙3^3)))/75=<br>
-		=(10∙5∙Root4((5^2∙3^3)))/75=(2Root4(675))/3</li>
+		<li>$\frac{10}{\sqrt{5}} = \frac{10 \cdot \sqrt{5}}{\sqrt{5} \cdot \sqrt{5}} = \frac{10\sqrt{5}}{5} = 2\sqrt{5}$</li>
+		<li>$\sqrt{\frac{3}{5}} = \frac{\sqrt{3}}{\sqrt{5}} = \frac{\sqrt{3} \cdot \sqrt{5}}{\sqrt{5} \cdot \sqrt{5}} = \frac{\sqrt{3 \cdot 5}}{5} =
+			\frac{\sqrt{15}}{5}$</li>
+		<li>$\frac{7}{\sqrt[3]{6}} = \frac{7 \cdot \sqrt[3]{6} \cdot \sqrt[3]{6}}{\sqrt[3]{6} \cdot \sqrt[3]{6} \cdot \sqrt[3]{6}} = \frac{7\sqrt[3]{36}}{6}$</li>
+		<li>$\frac{10}{\sqrt[4]{75}} = \frac{10 \cdot \sqrt[4]{75} \cdot \sqrt[4]{75} \cdot \sqrt[4]{75}}{\sqrt[4]{75} \cdot \sqrt[4]{75} \cdot \sqrt[4]{75} \cdot \sqrt[4]{75}} =
+			\frac{10 \cdot \sqrt[4]{75}^3}{75} = \frac{10 \cdot \sqrt[4]{(5^2 \cdot 3)^3}}{75} = \frac{10 \cdot \sqrt[4]{5^6 \cdot 3^3}}{75} =
+			\frac{10 \cdot \sqrt[4]{5^4 \cdot 5^2 \cdot 3^3}}{75} = \\
+			= \frac{10 \cdot 5 \cdot \sqrt[4]{5^2 \cdot 3^3}}{75} = \frac{2\sqrt[4]{675}}{3}$</li>
 	</ul>
 
 	<p>
 		Nieco kłopotliwe jest usuwanie z mianownika pierwiastka będącego składnikiem sumy:
 	</p>
 	
-	<p class="math" align="center">
-		5/(2+Sqrt(3))
-	</p>
+	$$
+		\frac{5}{2+\sqrt{3}}
+	$$
 	
 	<p>
 		Idea wyciągania niewymierności z mianownika polega na takim zmodyfikowaniu ułamka, aby pierwiastek w mianowniku uległ podniesieniu 
@@ -994,34 +987,36 @@
 		skróconego mnożenia na różnicę kwadratów:
 	</p>
 
-	<p class="math" align="center">
-		5/(2+Sqrt(3))=(5∙Bracket(2-Sqrt(3)))/(Bracket(2+Sqrt(3))∙Bracket(2-Sqrt(3)) )=(10-5Sqrt(3))/(2^2-Sqrt(3)^2 )=(10-5Sqrt(3))/(4-3)=(10-5Sqrt(3))/1=10-5Sqrt(3)
-	</p>
+	$$
+		\frac{5}{2+\sqrt{3}} = \frac{5 \cdot (2-\sqrt{3})}{(2+\sqrt{3}) \cdot (2-\sqrt{3})} = \frac{10-5\sqrt{3}}{2^2-\sqrt{3}^2} = \frac{10-5\sqrt{3}}{4-3} 
+		= \frac{10-5\sqrt{3}}{1} = 10-5\sqrt{3}
+	$$
 
 	<p>
 		Rozszerzamy licznik i mianownik ułamka przez różnicę składników w mianowniku, a następnie korzystamy ze wzoru
 	</p>
 	
-	<p class="math" align="center">
-		Bracket(a-b)Bracket(a+b)=a^2-b^2
-	</p>
+	$$
+		(a-b)(a+b) = a^2-b^2
+	$$
 	
 	<p>
 		dzięki któremu pierwiastek w mianowniku znika.
 	</p>
 	
 	<ul>
-		<li class="math">(5+Sqrt(3))/(4+3Sqrt(2))=(Bracket(5+Sqrt(3))∙Bracket(4-3Sqrt(2)))/(Bracket(4+3Sqrt(2))∙Bracket(4-3Sqrt(2)) )=
-		(5∙4-5∙3Sqrt(2)+Sqrt(3)∙4-Sqrt(3)∙3Sqrt(2))/(4^2-Bracket(3Sqrt(2))^2 )=
-		=(20-15Sqrt(2)+4Sqrt(3)-3Sqrt(6))/(16-3^2∙Sqrt(2)^2 )=<br>
-		=(20-15Sqrt(2)+4Sqrt(3)-3Sqrt(6))/(16-18)=(20-15Sqrt(2)+4Sqrt(3)-3Sqrt(6))/(-2)=(15Sqrt(2)+3Sqrt(6))/2-10-2Sqrt(3)</li>
-		<li class="math">2/(3-Sqrt(7))=(2∙Bracket(3+Sqrt(7)))/(Bracket(3-Sqrt(7))∙Bracket(3+Sqrt(7)) )=(6+2Sqrt(7))/(3^2-Sqrt(7)^2 )=(6+2Sqrt(7))/(9-7)=(6+2Sqrt(7))/2=3+Sqrt(7)</li>
-		<li class="math">1/(4-Sqrt(2)-Sqrt(3))=(4-Sqrt(2)+Sqrt(3))/(Bracket(4-Sqrt(2)-Sqrt(3))∙Bracket(4-Sqrt(2)+Sqrt(3)) )=
-		(4-Sqrt(2)+Sqrt(3))/(Bracket(4-Sqrt(2))^2-Sqrt(3)^2 )=(4-Sqrt(2)+Sqrt(3))/(4^2-2∙4∙Sqrt(2)+Sqrt(2)^2-3)=
-		(4-Sqrt(2)+Sqrt(3))/(16-8Sqrt(2)+2-3)=<br>
-		=(4-Sqrt(2)+Sqrt(3))/(15-8Sqrt(2))=(Bracket(4-Sqrt(2)+Sqrt(3))∙Bracket(15+8Sqrt(2)))/(Bracket(15-8Sqrt(2))∙Bracket(15+8Sqrt(2)) )=
-		(4∙15+4∙8Sqrt(2)-Sqrt(2)∙15-Sqrt(2)∙8Sqrt(2)+Sqrt(3)∙15+Sqrt(3)∙8Sqrt(2))/(15^2-(8Sqrt(2))^2 )=<br>
-		=(60+32Sqrt(2)-15Sqrt(2)-16+15Sqrt(3)+8Sqrt(6))/(225-128)=(44+17Sqrt(2)+15Sqrt(3)+8Sqrt(6))/97</li>
+		<li>$\frac{5+\sqrt{3}}{4+3\sqrt{2}} = \frac{(5+\sqrt{3}) \cdot (4-3\sqrt{2})}{(4+3\sqrt{2}) \cdot (4-3\sqrt{2})}=
+		\frac{5 \cdot 4-5 \cdot 3\sqrt{2}+\sqrt{3} \cdot 4-\sqrt{3} \cdot 3\sqrt{2}}{4^2-(3\sqrt{2})^2} =
+		\frac{20-15\sqrt{2}+4\sqrt{3}-3\sqrt{6}}{16-3^2 \cdot \sqrt{2}^2} =\\
+		=\frac{20-15\sqrt{2}+4\sqrt{3}-3\sqrt{6}}{16-18} = \frac{20-15\sqrt{2}+4\sqrt{3}-3\sqrt{6}}{-2} = \frac{15\sqrt{2}+3\sqrt{6}}{2}-10-2\sqrt{3}$</li>
+		<li>$\frac{2}{3-\sqrt{7}} = \frac{2 \cdot (3+\sqrt{7})}{(3-\sqrt{7}) \cdot (3+\sqrt{7})} = \frac{6+2\sqrt{7}}{3^2-\sqrt{7}^2} = 
+			\frac{6+2\sqrt{7}}{9-7} = \frac{6+2\sqrt{7}}{2}=3+\sqrt{7}$</li>
+		<li>$\frac{1}{4-\sqrt{2}-\sqrt{3}} = \frac{4-\sqrt{2}+\sqrt{3}}{(4-\sqrt{2}-\sqrt{3}) \cdot (4-\sqrt{2}+\sqrt{3})} =
+		\frac{4-\sqrt{2}+\sqrt{3}}{((4-\sqrt{2})^2-\sqrt{3}^2} = \frac{4-\sqrt{2}+\sqrt{3}}{4^2-2 \cdot 4 \cdot \sqrt{2}+\sqrt{2}^2-3} =
+		\frac{4-\sqrt{2}+\sqrt{3}}{16-8\sqrt{2}+2-3} = \\
+		= \frac{4-\sqrt{2}+\sqrt{3}}{15-8\sqrt{2}} = \frac{(4-\sqrt{2}+\sqrt{3}) \cdot (15+8\sqrt{2})}{(15-8\sqrt{2}) \cdot (15+8\sqrt{2})} =
+		\frac{4 \cdot 15+4 \cdot 8\sqrt{2}-\sqrt{2} \cdot 15-\sqrt{2} \cdot 8\sqrt{2}+\sqrt{3} \cdot 15+\sqrt{3} \cdot 8\sqrt{2}}{15^2-(8\sqrt{2})^2 }=\\
+		= \frac{60+32\sqrt{2}-15\sqrt{2}-16+15\sqrt{3}+8\sqrt{6}}{225-128} = \frac{44+17\sqrt{2}+15\sqrt{3}+8\sqrt{6}}{97}$</li>
 	</ul>
 
 	<p>
@@ -1029,41 +1024,41 @@
 		inny niż kwadratowy – szczerze współczujemy. Wzór na różnicę kwadratów
 	</p>
 	
-	<p class="math" align="center">
-		Bracket(a-b)Bracket(a+b)=a^2-b^2
-	</p>
+	$$
+		(a-b)(a+b)=a^2-b^2
+	$$
 	
 	<p>
 		należy wówczas zastąpić odpowiednim wzorem na sumę/różnicę wyższych potęg. Dla pierwiastków trzeciego stopnia przydatne będą wzory
 	</p>
 	
-	<p class="math" align="center">
-		Bracket(a-b)Bracket(a^2+ab+b^2 )=a^3-b^3<br>
-		Bracket(a+b)Bracket(a^2-ab+b^2 )=a^3+b^3
-	</p>
+	$$
+		(a-b)(a^2+ab+b^2 )=a^3-b^3\\
+		(a+b)(a^2-ab+b^2 )=a^3+b^3
+	$$
 	
 	<p>
 		Dla pierwiastków czwartego stopnia:
 	</p>
 	
-	<p class="math" align="center">
-		Bracket(a-b)Bracket(a+b)Bracket(a^2+b^2)=a^4-b^4
-	</p>
+	$$
+		(a-b)(a+b)(a^2+b^2)=a^4-b^4
+	$$
 	
 	<p>
 		itd.
 	</p>
 	
 	<ul>
-		<li class="math">3/(2+Root3(5))=(3∙Bracket(2^2-2Root3(5)+Root3(5)^2 ))/(Bracket(2+Root3(5))∙Bracket(2^2-2Root3(5)+Root3(5)^2 ) )=
-		(3∙Bracket(2^2-2Root3(5)+Root3(5)^2 ))/(Bracket(2+Root3(5))∙Bracket(2^2-2Root3(5)+Root3(5)^2 ) )=
-		(12-6Root3(5)+3Root3(25))/(2^3+Root3(5)^3 )=(12-6Root3(5)+3Root3(25))/(8+5)=<br>
-		=(12-6Root3(5)+3Root3(25))/13</li>
-		<li class="math">2/(1-Root4(3))=
-		(2∙Bracket(1+Root3(3))∙Bracket(1^2+Root4(3)^2 ))/(Bracket(1-Root4(3))∙Bracket(1+Root4(3))∙Bracket(1^2+Root4(3)^2 ) )=
-		(2Bracket(1+Root4(3))∙Bracket(1+Root4(9)))/(1^4-Root4(3)^4 )=(2Bracket(1+Root4(9)+Root4(3)+Root4(3)∙Root4(9)))/(1-3)=<br>
-		=(2Bracket(1+Root4(9)+Root4(3)+Root4(27)))/(-2)=
-		-1-Root4(9)-Root4(3)-Root4(27)</li>
+		<li>$\frac{3}{(2+\sqrt[3]{5}} = \frac{3 \cdot (2^2-2\sqrt[3]{5}+\sqrt[3]{5}^2 )}{(2+\sqrt[3]{5}) \cdot (2^2-2\sqrt[3]{5}+\sqrt[3]{5}^2 )} =
+		\frac{3 \cdot (2^2-2\sqrt[3]{5}+\sqrt[3]{5}^2 )}{(2+\sqrt[3]{5}) \cdot (2^2-2\sqrt[3]{5}+\sqrt[3]{5}^2 )} =
+		\frac{12-6\sqrt[3]{5}+3\sqrt[3]{25}}{2^3+\sqrt[3]{5}^3} = \frac{12-6\sqrt[3]{5}+3\sqrt[3]{25}}{8+5} =\\
+		=\frac{12-6\sqrt[3]{5}+3\sqrt[3]{25}}{13}$</li>
+		<li>$\frac{2}{1-\sqrt[4]{3}}=
+		\frac{2 \cdot (1+\sqrt[3]{3}) \cdot (1^2+\sqrt[4]{3}^2 )}{(1-\sqrt[4]{3}) \cdot (1+\sqrt[4]{3}) \cdot (1^2+\sqrt[4]{3}^2 )} =
+		\frac{2(1+\sqrt[4]{3}) \cdot (1+\sqrt[4]{9})}{1^4-\sqrt[4]{3}^4} = \frac{2(1+\sqrt[4]{9}+\sqrt[4]{3}+\sqrt[4]{3} \cdot \sqrt[4]{9})}{1-3} =\\
+		=\frac{2(1+\sqrt[4]{9}+\sqrt[4]{3}+\sqrt[4]{27})}{-2}=
+		-1-\sqrt[4]{9}-\sqrt[4]{3}-\sqrt[4]{27}$</li>
 	</ul>
 
 	</div>

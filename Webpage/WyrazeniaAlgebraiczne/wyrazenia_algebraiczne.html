@@ -5,12 +5,20 @@
 	<title>Wyrażenia algebraiczne</title>
 	<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 	<link rel="stylesheet" href="../lesson_style.css">
-	
+
+	<script type="text/x-mathjax-config">
+		MathJax.Hub.Config({
+			tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}, 
+			CommonHTML: { linebreaks: { automatic: true } }, 
+			"HTML-CSS": { linebreaks: { automatic: true }, fonts: ["STIX-Web"] }, 
+			SVG: { linebreaks: { automatic: true } } 
+		})
+ 	</script>
+	<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-	<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=MML_HTMLorMML"></script>
 	<script src="../.scripts/scroll_hide.js"></script>
 	<script src="../.scripts/draggable.js"></script>
-	<script src="../.scripts/math.js"></script>
 	<script src="../.scripts/comment.js"></script>
 </head>
 
@@ -19,15 +27,15 @@
 <div class = "menu">
 		<div class="logo">
 				<div>
-						<div class="logo-black-cell" style="float: left"></div>
-						<div class="logo-container-cell" style="float: left">
-							<div class="logo-red-cell" style="float: left"></div>
-							<div class="logo-red-cell" style="float: left"></div>
-							<div class="logo-red-cell" style="float: left"></div>
-							<div class="logo-red-cell" style="float: left"></div>
-						</div>
-						<div class="logo-black-cell" style="float: left; clear: left"></div>
-						<div class="logo-black-cell" style="float: left"></div>
+					<div class="logo-black-cell" style="float: left"></div>
+					<div class="logo-container-cell" style="float: left">
+						<div class="logo-red-cell" style="float: left"></div>
+						<div class="logo-red-cell" style="float: left"></div>
+						<div class="logo-red-cell" style="float: left"></div>
+						<div class="logo-red-cell" style="float: left"></div>
+					</div>
+					<div class="logo-black-cell" style="float: left; clear: left"></div>
+					<div class="logo-black-cell" style="float: left"></div>
 				</div>
 		</div>
 		<div class="logo-text">
@@ -78,18 +86,18 @@
 		nie może odmówić swej sylwetce cech boskich. Z obawy przed czyhającą za rogiem anoreksją, Michaś postanowił upewnić się, czy nie grozi 
 		mu niedowaga. Z głową zajętą planowaniem, w jaki sposób zacząłby walkę ze swoją niedowagą, przystąpił do obliczenia swojego BMI: na 
 		lekcjach biologii usłyszał, że wskaźnik BMI uzyskujemy, mnożąc swój wzrost w metrach przez siebie, a następnie dzieląc swoją wagę w 
-		kilogramach przez uzyskany wynik. Jeżeli wskaźnik jest mniejszy niż <span class="math">18,5</span>, mamy niedowagę, wartość między 
-		<span class="math">18,5</span> a <span class="math">25</span> oznacza normę, zaś 
-		wskaźnik powyżej <span class="math">25</span> sugeruje nadwagę.
+		kilogramach przez uzyskany wynik. Jeżeli wskaźnik jest mniejszy niż $18,5$, mamy niedowagę, wartość między 
+		$18,5$ a $25$ oznacza normę, zaś 
+		wskaźnik powyżej $25$ sugeruje nadwagę.
 	</p>
 
 	<p>
 		Powyższą regułkę matematyk zapisze w postaci <i>wzoru</i>: 
 	</p>
 		
-	<p class="math" align="center">
-		BMI=(waga)/(wzrost∙wzrost)
-	</p>
+	$$
+		BMI=\frac{waga}{wzrost \cdot wzrost}
+	$$
 		
 	<p>
 		Prawdopodobnie niejedna osoba o niebanalnym poczuciu estetyki zauważy, że użycie polskiego słowa „waga” w uniwersalnym matematycznym
@@ -97,19 +105,19 @@
 		jednoliterowych oznaczeń:
 	</p>
 	
-	<p class="math" align="center">
-		B=m/(h∙h)
-	</p>
+	$$
+		B=\frac{m}{h \cdot h}
+	$$
 		
 	<p>
 		Następnie po dumnym zapisaniu wzoru wyjaśnimy z dowolną dokładnością i czułością osobie niewtajemniczonej nasze oznaczenia:
 		<br>
-		&emsp;&emsp;<span class="math">m</span> – masa ciała w kilogramach<br>
-		&emsp;&emsp;<span class="math">h</span> – wzrost w metrach<br>
-		&emsp;&emsp;<span class="math">B</span> – współczynnik BMI niosący konsekwencje: <br>
-		&emsp;&emsp;&emsp;&emsp;<span class="math">B&lt;18,5</span> – niedowaga<br>
-		&emsp;&emsp;&emsp;&emsp;<span class="math">18,5&lt;B&lt;25</span> – norma<br>
-		&emsp;&emsp;&emsp;&emsp;<span class="math">B&gt;25</span> – nadwaga<br>
+		&emsp;&emsp;$m$ – masa ciała w kilogramach<br>
+		&emsp;&emsp;$h$ – wzrost w metrach<br>
+		&emsp;&emsp;$B$ – współczynnik BMI niosący konsekwencje: <br>
+		&emsp;&emsp;&emsp;&emsp;$B \lt 18,5$ – niedowaga<br>
+		&emsp;&emsp;&emsp;&emsp;$18,5 \lt B \lt 25$ – norma<br>
+		&emsp;&emsp;&emsp;&emsp;$B&gt;25$ – nadwaga<br>
 	</p>
 		
 	<p>		
@@ -118,20 +126,20 @@
 	</p>
 	
 	<div class="example">
-			Pani Krystyna: waga <span class="math">64 kg</span>, wzrost <span class="math">1,87m</span>
-		<p class="math" align="center">B=64/(1,85∙1,85)≈18,3</p>
-		Niedowaga to niska cena za <span class="math">20</span> miejsce w konkursie top-model.
+		Pani Krystyna: waga $64 \text{ kg}$, wzrost $1,87 \text{ m}$
+		$$B=\frac{64}{1,85 \cdot 1,85}≈18,3$$
+		Niedowaga to niska cena za $20$ miejsce w konkursie top-model.
 	</div>
 	
 	<div class="example">
-			Stefan: waga <span class="math">79 kg</span>, wzrost <span class="math">1,78m</span>
-		<p class="math" align="center">B=79/(1,78∙1,78)≈24,93</p>
+		Stefan: waga $79 \text{ kg}$, wzrost $1,78 \text{ m}$
+		$$B=\frac{79}{1,78 \cdot 1,78}≈24,93$$
 		Waga w normie to ulga dla Stefanowego sumienia, targanego czwartkowym pączkiem z różą.
 	</div>
 	
 	<div class="example">
-			Michaś: waga <span class="math">103 kg</span>, wzrost <span class="math">1,75m</span>
-		<p class="math" align="center">B=103/(1,75*1,75)≈33,63</p>
+		Michaś: waga $103 \text{ kg}$, wzrost $1,75 \text{ m}$
+		$$B=\frac{103}{1,75 \cdot 1,75}≈33,63$$
 		Michaś pełen niedowierzania postanowił przerzucić się na tabletki „Nogain”.
 	</div>
 	</p>
@@ -158,12 +166,12 @@
 		„czekających na swoją wartość”. We wzorze
 	</p>
 	
-	<p class="math" align="center">
-		B=m/(h∙h)
-	</p>
+	$$
+		B=\frac{m}{h \cdot h}
+	$$
 	
 	<p>
-		Litery <span class="math">m</span> i <span class="math">h</span> to <i>zmienne</i>, pod które należy podstawić konkretne wartości liczbowe, 
+		Litery $m$ i $h$ to <i>zmienne</i>, pod które należy podstawić konkretne wartości liczbowe, 
 		kiedy przyjdzie na to pora. 
 	</p>
 		
@@ -172,28 +180,28 @@
 		daleko przemieszcza się światło w ciągu zadanego czasu:
 	</p>
 	
-	<p class="math" align="center">
-		d=299&nbsp;792&nbsp;458∙t
-	</p>
+	$$
+		d=299&nbsp;792&nbsp;458 \cdot t
+	$$
 	
 	<p>
-		gdzie <span class="math">t</span> oznacza jakąkolwiek wartość wyrażoną w sekundach, zaś <span class="math">d</span> 
-		oznacza oznacza ilość metrów, jakie światło przebędzie w ciągu tylu sekund. Przykładowo podstawiając <span class="math">t=60</span> otrzymamy 
-		<span class="math">d=299&nbsp;792&nbsp;458∙60=17&nbsp;987&nbsp;547&nbsp;480</span> i oznacza to tyle, że w ciągu <span class="math">60</span>
-		sekund (w ciągu minuty) światło przebywa <span class="math">17&nbsp;987&nbsp;547&nbsp;480</span> metrów, czyli prawie <span class="math">18</span>
-		milionów kilometrów. Dla porównania, w ciągu <span class="math">499</span> sekund (<span class="math">8</span> minut i <span class="math">19</span> sekund)
-		światło przebywa <span class="math">149&nbsp;600&nbsp;000&nbsp;000</span> metrów, czyli odległość od Ziemi do Słońca. Tak więc gdyby Słońce nagle zgasło, 
-		<span class="comment" id="pomijając problemy z zamarznięciem i inne anomalie">zauważylibyśmy to dopiero po <span class="math">8</span> minutach</span>. 
+		gdzie $t$ oznacza jakąkolwiek wartość wyrażoną w sekundach, zaś $d$ 
+		oznacza oznacza ilość metrów, jakie światło przebędzie w ciągu tylu sekund. Przykładowo podstawiając $t=60$ otrzymamy 
+		$d=299&nbsp;792&nbsp;458 \cdot 60=17&nbsp;987&nbsp;547&nbsp;480$ i oznacza to tyle, że w ciągu $60$
+		sekund (w ciągu minuty) światło przebywa $17&nbsp;987&nbsp;547&nbsp;480$ metrów, czyli prawie $18$
+		milionów kilometrów. Dla porównania, w ciągu $499$ sekund ($8$ minut i $19$ sekund)
+		światło przebywa $149&nbsp;600&nbsp;000&nbsp;000$ metrów, czyli odległość od Ziemi do Słońca. Tak więc gdyby Słońce nagle zgasło, 
+		<span class="comment" id="pomijając problemy z zamarznięciem i inne anomalie">zauważylibyśmy to dopiero po $8$ minutach$. 
 		Powyższy wzór moglibyśmy zapisać jako
 	</p>
 	
-	<p class="math" align="center">
-		d=c∙t
-	</p>
+	$$
+		d=c \cdot t
+	$$
 	
 	<p>
-		zastępując literą <span class="math">c</span> dość długą liczbę o stałej wartości <span class="math">299&nbsp;792&nbsp;458</span>. 
-		Stała <span class="math">c</span> w fizyce nosi nazwę "prędkość światła w próżni" i pojawia się w całkiem wielu wzorach opisujących fale świetlne oraz energię.
+		zastępując literą $c$ dość długą liczbę o stałej wartości $299&nbsp;792&nbsp;458$. 
+		Stała $c$ w fizyce nosi nazwę "prędkość światła w próżni" i pojawia się w całkiem wielu wzorach opisujących fale świetlne oraz energię.
 		Uznawanie często używanych wartości za stałe jest praktyką chętnie stosowaną przez fizyków, którzy nie lubią, kiedy w ich wzorach pojawiają 
 		się przydługie liczby wymierne.
 	</p>
@@ -204,21 +212,21 @@
 		określać liczbę kalorii, jaką dana osoba powinna spożyć w ciągu dnia:
 	</p>
 	
-	<p class="math" align="center">
-		K=K_(mat)+K_(akt)+K_ż+K_(poż)
-	</p>
+	$$
+		K=K_{mat}+K_{akt}+K_ż+K_{poż}
+	$$
 	
 	<p>
 		gdzie:
 		<br>
-		&emsp;&emsp;<span class="math">K_(mat)</span> to kalorie przeznaczone na przemianę materii<br>
-		&emsp;&emsp;<span class="math">K_(akt)</span> to kalorie spalane podczas aktywności fizycznej<br>
-		&emsp;&emsp;<span class="math">K_ż</span> to kalorie potrzebne do wykonywania podstawowych czynności życiowych<br>
-		&emsp;&emsp;<span class="math">K_(poż)</span> to kalorie potrzebne na spalanie pożywienia
+		&emsp;&emsp;$K_{mat}$ to kalorie przeznaczone na przemianę materii<br>
+		&emsp;&emsp;$K_{akt}$ to kalorie spalane podczas aktywności fizycznej<br>
+		&emsp;&emsp;$K_ż$ to kalorie potrzebne do wykonywania podstawowych czynności życiowych<br>
+		&emsp;&emsp;$K_{poż}$ to kalorie potrzebne na spalanie pożywienia
 	</p>
 	
 	<p>
-		każdy ze składników powyższej sumy oznacza jakieś kalorie, więc każdy z nich oznaczamy literką <span class="math">K</span>, 
+		każdy ze składników powyższej sumy oznacza jakieś kalorie, więc każdy z nich oznaczamy literką $K$, 
 		jednak dla rozróżnienia <i>indeksujemy</i> 
 		te zmienne adekwatnymi przypisami.
 	</p>
@@ -231,28 +239,28 @@
 	
 	<ul>
 		<li>
-			<span class="math">K_(mat)=5+9,99∙m + 6,25∙h - 4,92∙a</span><br>
+			$K_{mat}=5+9,99 \cdot m + 6,25 \cdot h - 4,92 \cdot a$<br>
 			gdzie <br>
-			&emsp;&emsp;<span class="math">m</span> oznacza masę ciała w kilogramach<br>
-			&emsp;&emsp;<span class="math">h</span> to wzrost w centymetrach<br>
-			&emsp;&emsp;<span class="math">a</span> to wiek w latach<br><br>
+			&emsp;&emsp;$m$ oznacza masę ciała w kilogramach<br>
+			&emsp;&emsp;$h$ to wzrost w centymetrach<br>
+			&emsp;&emsp;$a$ to wiek w latach<br><br>
 		</li>
 			
 		<li>
-			<span class="math">K_(akt)=8∙t_(sił)+7∙t_(aero)+0,05∙K_(mat)∙l</span><br>
+			$K_{akt}=8 \cdot t_{sił}+7 \cdot t_{aero}+0,05 \cdot K_{mat} \cdot l$<br>
 			gdzie <br>
-			&emsp;&emsp;<span class="math">t_(sił)</span> – liczba minut poświęconych na trening siłowy<br>
-			&emsp;&emsp;<span class="math">t_(aero)</span> - liczba minut poświęconych na trening aerobowy<br>
-			&emsp;&emsp;<span class="math">l</span> – liczba podjętych treningów<br><br>
+			&emsp;&emsp;$t_{sił}$ – liczba minut poświęconych na trening siłowy<br>
+			&emsp;&emsp;$t_{aero}$ - liczba minut poświęconych na trening aerobowy<br>
+			&emsp;&emsp;$l$ – liczba podjętych treningów<br><br>
 		</li>
 			
 		<li>
-			<span class="math">K_ż=300</span> dla osoby szczupłej, <span class="math">K_ż=800</span> dla osoby tęższej, 
-			<span class="math">K_ż=450</span> dla osoby atletycznie zbudowanej<br><br>
+			$K_ż=300$ dla osoby szczupłej, $K_ż=800$ dla osoby tęższej, 
+			$K_ż=450$ dla osoby atletycznie zbudowanej<br><br>
 		</li>
 
-		<li class="math">
-			K_(poż)=0,08∙Bracket(K_(mat)+K_(akt)+K_ż)
+		<li>
+			$K_{poż}=0,08 \cdot (K_{mat}+K_{akt}+K_ż)$
 		</li>
 	</ul>
 		
@@ -262,17 +270,17 @@
 	
 	<ul>
 		<li>
-			Waga: <span class="math">103 kg</span>, wzrost: <span class="math">175 cm</span>, wiek: <span class="math">14 lat</span><br>
-		<span class="math">K_(mat)=5+9,99∙103 + 6,25∙175 - 4,92∙14=2058,84</span>
+			Waga: $103 \text{ kg}$, wzrost: $175 \text{ cm}$, wiek: $14 \text{ lat}$<br>
+			$K_{mat}=5+9,99 \cdot 103 + 6,25 \cdot 175 - 4,92 \cdot 14=2058,84$
 		</li>
 		<li>
-			<span class="math">K_(akt)=0</span> ze względu na brak aktywności fizycznej
+			$K_{akt}=0$ ze względu na brak aktywności fizycznej
 		</li>
 		<li>
-			<span class="math">K_ż=800</span>, z całym szacunkiem dla Michasia
+			$K_ż=800$, z całym szacunkiem dla Michasia
 		</li>
 		<li>
-			<span class="math">K_(poż)=0,08∙Bracket(2058,84+0+800)=228,7072</span>
+			$K_{poż}=0,08 \cdot (2058,84+0+800)=228,7072$
 		</li>
 	</ul>
 	
@@ -280,12 +288,12 @@
 		Stąd
 	</p>
 	
-	<p class="math" align="center">
+	$$
 		K=2058,84+0+800+228,7072=3087,5472
-	</p>
+	$$
 		
 	<p>
-		Jeśli kawałek tortu czekoladowego ma <span class="math">700 kcal</span>, Michaś zapełniłby swoje dzienne zapotrzebowanie na 
+		Jeśli kawałek tortu czekoladowego ma $700 \text{ kcal}$, Michaś zapełniłby swoje dzienne zapotrzebowanie na 
 		energię czterema kawałkami tortu… 
 		jednak do odważnych świat należy – im większa masa ciała, tym większe zapotrzebowanie na kalorie!
 	</p>
@@ -312,16 +320,16 @@
 		matematycznymi, coś w rodzaju
 	</p>
 	
-	<p class="math" align="center">
-		5∙a∙b+6∙m+5,5∙g∙h
-	</p>
+	$$
+		5 \cdot a \cdot b+6 \cdot m+5,5 \cdot g \cdot h
+	$$
 	
 	<p>
 		Każdy taki zlepek liczb (<span class="comment" id="i nie tylko">naturalnych, wymiernych, całkowitych…</span> ) oraz liter (zmiennych, stałych, parametrów…) nazywamy 
 		<i>wyrażeniem algebraicznym</i> albo po prostu <i>wyrażeniem</i>. 
 		Wyrażenia algebraiczne bardzo często mają postać kilku iloczynów, które do siebie dodajemy, tak jak powyższa suma 
-		iloczynów <span class="math">5∙a∙b</span>,&nbsp;&nbsp;&nbsp;<span class="math">6∙m</span> oraz 
-		<span class="math">5,5∙g∙h</span>. Ze względu na kolejność wykonywania działań mnożenie wykonujemy w pierwszej kolejności, 
+		iloczynów $5 \cdot a \cdot b$,&nbsp;&nbsp;&nbsp;$6 \cdot m$ oraz 
+		$5,5 \cdot g \cdot h$. Ze względu na kolejność wykonywania działań mnożenie wykonujemy w pierwszej kolejności, 
 		a więc kiedy obliczamy wartość wyrażenia algebraicznego (po podstawieniu wartości liczbowych) zawsze musimy najpierw rozpracować poszczególne 
 		grupy iloczynów, a na koniec zajmujemy się ich sumowaniem. O każdym takim iloczynie możemy myśleć jak o unikalnej indywidualności, 
 		jakby bohaterze naszych matematycznych przygód. Sumowanie to tylko wprowadzanie tych bohaterów na scenę, zebranie ich wszystkich 
@@ -333,9 +341,9 @@
 	</p>
 	
 	<ul>
-		<li class="math">a∙b∙b</li>
-		<li class="math">-5,4∙m∙f</li>
-		<li class="math">4/3∙x∙y</li>
+		<li>$a \cdot b \cdot b$</li>
+		<li>$-5,4 \cdot m \cdot f$</li>
+		<li>$\frac{4}{3} \cdot x \cdot y$</li>
 	</ul>
 	
 	<p>
@@ -343,12 +351,12 @@
 	</p>
 	
 	<ul>
-		<li>W jednomianie <span class="math">25,3∙b∙d∙e</span> współczynnikiem jest <span class="math">25,3</span></li>
-		<li>W jednomianie <span class="math">(a∙b∙c)/3</span> współczynnikiem jest <span class="math">1/3</span> 
-		(bardziej elegancka forma zapisu tego jednomianu to <span class="math">1/3∙a∙b∙c</span>)</li>
-		<li>W jednomianie <span class="math">-x∙y∙z</span> współczynnikiem jest <span class="math">-1</span></li>
-		<li>W jednomianie <span class="math">4</span> współczynnikiem jest <span class="math">4</span></li>
-		<li>W jednomianie <span class="math">h∙3∙n∙2∙j∙j</span> współczynnikiem jest <span class="math">6</span></li>
+		<li>W jednomianie $25,3 \cdot b \cdot d \cdot e$ współczynnikiem jest $25,3$</li>
+		<li>W jednomianie $\frac{a \cdot b \cdot c}{3}$ współczynnikiem jest $\frac{1}{3}$ 
+		(bardziej elegancka forma zapisu tego jednomianu to $\frac{1}{3} \cdot a \cdot b \cdot c$)</li>
+		<li>W jednomianie $-x \cdot y \cdot z$ współczynnikiem jest $-1$</li>
+		<li>W jednomianie $4$ współczynnikiem jest $4$</li>
+		<li>W jednomianie $h \cdot 3 \cdot n \cdot 2 \cdot j \cdot j$ współczynnikiem jest $6$</li>
 	</ul>
 	
 	<p>
@@ -358,8 +366,7 @@
 	
 	<p>
 		Wyrażenie będące sumą jednomianów nazywamy <i>sumą algebraiczną</i> lub czasem <i>wielomianem</i>, choć pojęcie wielomianu odnosi się 
-		do trochę innej 
-		idei matematycznej. 
+		do trochę innej idei matematycznej. 
 	</p>
 	
 	<p>
@@ -367,17 +374,17 @@
 		jednomianach. Matematycy nie będą pisać sumy
 	</p>
 	
-	<p class="math" align="center">
-		5∙a∙b+6∙m+5,5∙g∙h
-	</p>
+	$$
+		5 \cdot a \cdot b+6 \cdot m+5,5 \cdot g \cdot h
+	$$
 	
 	<p>
 		Zamiast tego zapisujemy
 	</p>
 	
-	<p class="math" align="center">
+	$$
 		5ab+6m+5,5gh
-	</p>
+	$$
 	
 	<p>
 		Dzięki temu zapis jest krótszy i pozwala łatwiej rozróżnić od siebie poszczególne jednomiany, a nie powoduje niejednoznaczności. W 
@@ -389,17 +396,17 @@
 		Teraz staje się jasne, dlaczego zmienne zapisujemy za pomocą jednoliterowych oznaczeń. Dla matematyka zapis
 	</p>
 	
-	<p class="math" align="center">
-		BMI=(waga)/(wzrost∙wzrost)
-	</p>
+	$$
+		BMI=\frac{waga}{wzrost \cdot wzrost}
+	$$
 	
 	<p>
 		oznacza, że
 	</p>
 	
-	<p class="math" align="center">
-		B∙M∙I=(w∙a∙g∙a)/(w∙z∙r∙o∙s∙t∙w∙z∙r∙o∙s∙t)
-	</p>
+	$$
+		B \cdot M \cdot I=\frac{w \cdot a \cdot g \cdot a}{w \cdot z \cdot r \cdot o \cdot s \cdot t \cdot w \cdot z \cdot r \cdot o \cdot s \cdot t}
+	$$
 	
 	<p>
 		Wciąż, jeśli chcemy dokładnie opisywać swoje zmienne, jak najbardziej dopuszczalne jest ściubienie dopisków w indeksach dolnych zmiennych.

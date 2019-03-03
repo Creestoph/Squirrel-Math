@@ -89,6 +89,7 @@ Display_table.prototype.print = function (target_id) {
     }
     table += "</table>";
     document.getElementById(target_id).innerHTML = table;
+    MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
 }
 
 Display_table.create_custom = function (strs) {

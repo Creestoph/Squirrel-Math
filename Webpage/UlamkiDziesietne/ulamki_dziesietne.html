@@ -6,8 +6,17 @@
 	<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 	<link rel="stylesheet" href="../lesson_style.css">
 	
+	<script type="text/x-mathjax-config">
+		MathJax.Hub.Config({
+			tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}, 
+			CommonHTML: { linebreaks: { automatic: true } }, 
+			"HTML-CSS": { linebreaks: { automatic: true }, fonts: ["STIX-Web"] }, 
+			SVG: { linebreaks: { automatic: true } } 
+		})
+ 	</script>
+	<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-	<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=MML_HTMLorMML"></script>
 	<script src="../.scripts/scroll_hide.js"></script>
 	<script src="../.scripts/draggable.js"></script>
 	<script src="../.scripts/math.js"></script>
@@ -27,15 +36,15 @@
 <div class = "menu">
 		<div class="logo">
 				<div>
-						<div class="logo-black-cell" style="float: left"></div>
-						<div class="logo-container-cell" style="float: left">
-							<div class="logo-red-cell" style="float: left"></div>
-							<div class="logo-red-cell" style="float: left"></div>
-							<div class="logo-red-cell" style="float: left"></div>
-							<div class="logo-red-cell" style="float: left"></div>
-						</div>
-						<div class="logo-black-cell" style="float: left; clear: left"></div>
-						<div class="logo-black-cell" style="float: left"></div>
+					<div class="logo-black-cell" style="float: left"></div>
+					<div class="logo-container-cell" style="float: left">
+						<div class="logo-red-cell" style="float: left"></div>
+						<div class="logo-red-cell" style="float: left"></div>
+						<div class="logo-red-cell" style="float: left"></div>
+						<div class="logo-red-cell" style="float: left"></div>
+					</div>
+					<div class="logo-black-cell" style="float: left; clear: left"></div>
+					<div class="logo-black-cell" style="float: left"></div>
 				</div>
 		</div>
 		<div class="logo-text">
@@ -64,10 +73,10 @@
 	<p>
 		Życie wyłącznie z ułamkami zwykłymi byłoby bardzo ciężkie i smutne. Wystarczy wyobrazić sobie konkurs na top modelkę, 
 		w którym komisja spisywałaby wymiary kandydatek: <br>
-		Krystyna, lat <span class="math">29</span>, wzrost: <span class="math">11925/67</span>cm, waga: <span class="math">789/12</span>kg, biust: 
-		<span class="math">171/2</span>cm, talia: <span class="math">355/6</span>cm, biodra: <span class="math">968/11</span>cm. <br>
-		Bożena, lat <span class="math">21</span>, wzrost: <span class="math">1268/7</span>cm, waga: <span class="math">2379/34</span>kg, biust: 
-		<span class="math">4319/54</span>cm, talia: <span class="math">987/17</span>cm, biodra: <span class="math">629/7</span>cm.<br>
+		Krystyna, lat $29$, wzrost: $\frac{11925}{67} \text{ cm}$, waga: $\frac{789}{12} \text{ kg}$, biust: 
+		$\frac{171}{2} \text{ cm}$, talia: $\frac{355}{6} \text{ cm}$, biodra: $\frac{968}{11} \text{ cm}$. <br>
+		Bożena, lat $21$, wzrost: $\frac{1268}{7} \text{ cm}$, waga: $\frac{2379}{34} \text{ kg}$, biust: 
+		$\frac{4319}{54} \text{ cm}$, talia: $\frac{987}{17} \text{ cm}$, biodra: $\frac{629}{7} \text{ cm}$.<br>
 		Obok stolika jurorów urzęduje sztab matematyków, którzy sprowadzają wszystkie parametry do wspólnego mianownika, 
 		a następnie porównują liczniki biustu, talii i bioder. Da się z tym żyć, jednak co to za życie.
 	</p>
@@ -94,43 +103,43 @@
 		W tym celu stosuje się przecinek. Liczbę zapisaną w postaci 
 	</p>
 	
-	<p align="center" class="math">
+	$$
 		21,7
-	</p>
+	$$
 	
 	<p>
-		rozumiemy jako liczbę mieszaną <span class="math">21 7/10</span>, czyli ułamek <span class="math">217/10</span>. Liczba 
+		rozumiemy jako liczbę mieszaną $21 \frac{7}{10}$, czyli ułamek $\frac{217}{10}$. Liczba 
 	</p>
 	
-	<p align = "center" class="math">
+	$$
 		0,74
+	$$
+	
+	<p>
+		Oznacza ułamek $\frac{74}{100}$ lub ekscentrycznie zapisaną liczbę mieszaną $0 \frac{74}{100}$. 
 	</p>
 	
 	<p>
-		Oznacza ułamek <span class="math">74/100</span> lub ekscentrycznie zapisaną liczbę mieszaną <span class="math">0 74/100</span>. 
-	</p>
-	
-	<p>
-		Liczba zapisana za pomocą przecinka zawsze zawiera ułamek, którego mianownik to <span class="math">10</span>, <span class="math">100</span>, 
-		<span class="math">1000</span>, <span class="math">10000</span> itd. 
+		Liczba zapisana za pomocą przecinka zawsze zawiera ułamek, którego mianownik to $10$, $100$, 
+		$1000$, $10000$ itd. 
 		Zer w mianowniku zawsze będzie tyle, ile cyfr występuje po przecinku.
 	</p>
 	
 	<ul>
-		<li class="math">
-			0,873=873/1000
+		<li>
+			$0,873=\frac{873}{1000}$
 		</li>
-		<li class="math">
-			37,843=37 843/1000=37843/1000
+		<li>
+			$37,843=37 \frac{843}{1000}=\frac{37843}{1000}$
 		</li>
-		<li class="math">
-			0,000001=1/1000000
+		<li>
+			$0,000001=\frac{1}{1000000}$
 		</li>
 	</ul>
 	
 	<p>
 		Liczba zapisana z użyciem przecinka to właśnie ułamek dziesiętny. Ułamki dziesiętne dominują w fizyce i naukach 
-		technicznych. Matematyka jest jedyną <span class="comment" id="dziedziną „życia”">dziedziną życia</span>, 
+		technicznych. Matematyka jest jedyną <span class="comment" id="dziedziną „życia”">dziedziną życia$, 
 		w której ułamki zwykłe stosuje się częściej niż dziesiętne.
 	</p>
 	
@@ -158,7 +167,7 @@
 	
 	<p>
 		W przestarzałych źródłach możemy znaleźć słowo „koma” (ang. comma - przecinek) zaznaczające pozycję przecinka. 
-		Dziś zamiast czytać <span class="math">1,67</span> jako „jeden koma sześćdziesiąt siedem” mówimy „jeden przecinek sześćdziesiąt siedem” albo 
+		Dziś zamiast czytać $1,67$ jako „jeden koma sześćdziesiąt siedem” mówimy „jeden przecinek sześćdziesiąt siedem” albo 
 		profesjonalniej „jeden i sześćdziesiąt siedem setnych”. 
 	</p>
 	
@@ -171,13 +180,13 @@
 	
 	<ul>
 		<li>	
-			W liczbie <span class="math">121,34</span> cyfrą setek jest <span class="math">1</span>, cyfrą dziesiątek jest <span class="math">2</span>, cyfrą jedności 
-			jest <span class="math">1</span>, cyfrą części dziesiętnych jest <span class="math">3</span>, cyfrą części setnych jest <span class="math">4</span>.
+			W liczbie $121,34$ cyfrą setek jest $1$, cyfrą dziesiątek jest $2$, cyfrą jedności 
+			jest $1$, cyfrą części dziesiętnych jest $3$, cyfrą części setnych jest $4$.
 		</li>
 	</ul>
 	
 	<p>
-		Chociaż liczba <span class="math">121,34</span> zapisana jest przy pomocy <span class="math">5</span> cyfr, nie mówimy, że jest to liczba pięciocyfrowa. 
+		Chociaż liczba $121,34$ zapisana jest przy pomocy $5$ cyfr, nie mówimy, że jest to liczba pięciocyfrowa. 
 		Gdy mówimy o iluś-cyfrowej liczbie, mamy na myśli liczby naturalne. W przeciwnym razie nazwa ta wprowadzałaby 
 		zbyt wiele niejednoznaczności.
 	</p>
@@ -188,7 +197,7 @@
 	</p>
 	
 	<ul>
-		<li>W liczbie <span class="math">35,034</span> cecha ma wartość <span class="math">35</span>, zaś mantysa <span class="math">0,034</span>.</li>
+		<li>W liczbie $35,034$ cecha ma wartość $35$, zaś mantysa $0,034$.</li>
 	</ul>
 
 	</div>
@@ -223,37 +232,37 @@
 	
 	<p>
 		Ponieważ Krzyś jest perfekcjonistą, chce dokładnie określić szerokość biurka. W tym celu dzieli w myślach tasiemkę z 
-		miarką na <span class="math">10</span> równych części.
+		miarką na $10$ równych części.
 	</p>
 
 	<center><img src=".images/Screenshot_2.png" align="middle"></img></center>
 	
 	<p>
-		Każda z nich ma długość <span class="math">1/10</span>m, czyli <span class="math">0,1 m</span>. Spostrzegawczy Krzyś zauważa, że do szerokości biurka 
-		najlepiej dopasowuje się <span class="math">8</span> takich fragmentów, czyli <span class="math">8/10 m=0,8 m</span>. Jednak ta 
+		Każda z nich ma długość $1/10 \text{ m}$, czyli $0,1 \text{ m}$. Spostrzegawczy Krzyś zauważa, że do szerokości biurka 
+		najlepiej dopasowuje się $8$ takich fragmentów, czyli $\frac{8}{10} \text{ m}=0,8 \text{ m}$. Jednak ta 
 		dokładność wciąż nie zadowala Krzysia – teraz tasiemka nie dosięga krawędzi stołu.
 	</p>
 
 	<center><img src=".images/Screenshot_3.png" align="middle"></img></center>
 	
 	<p>
-		Idealna długość tasiemki będzie mieścić się gdzieś pomiędzy <span class="math">0,8 m</span> a <span class="math">0,9 m</span>. Dla uzyskania perfekcyjnego wyniku 
-		Krzyś dzieli dziewiąty segment taśmy na <span class="math">10</span> fragmentów. Każdy z nich ma długość <span class="math">1/10</span> takiego 
-		segmentu, czyli <span class="math">1/100 m=0,01 m</span>.
+		Idealna długość tasiemki będzie mieścić się gdzieś pomiędzy $0,8 \text{ m}$ a $0,9 \text{ m}$. Dla uzyskania perfekcyjnego wyniku 
+		Krzyś dzieli dziewiąty segment taśmy na $10$ fragmentów. Każdy z nich ma długość $\frac{1}{10}$ takiego 
+		segmentu, czyli $\frac{1}{100} \text{ m}=0,01 \text{ m}$.
 	</p>
 
 	<center><img src=".images/Screenshot_4.png" align="middle"></img></center>
 	
 	<p>
-		Gdy weźmiemy <span class="math">4</span> takie mini-segmenty, tasiemka całkiem nieźle dotyka krawędzi stołu. Wyznaczamy więc orientacyjną 
-		długość biurka na <span class="math">0,84 m</span>. Aby osiągnąć samospełnienie, Krzyś wyciąga lupę. Stwierdza, że <span class="math">0,84 m</span> nadal nie jest 
+		Gdy weźmiemy $4$ takie mini-segmenty, tasiemka całkiem nieźle dotyka krawędzi stołu. Wyznaczamy więc orientacyjną 
+		długość biurka na $0,84 \text{ m}$. Aby osiągnąć samospełnienie, Krzyś wyciąga lupę. Stwierdza, że $0,84 \text{ m}$ nadal nie jest 
 		idealną długością.
 	</p>
 
 	<center><img src=".images/Screenshot_5.png" align="middle"></img></center>
 	
 	<p>
-		Długość <span class="math">0,842 m</span> jest dla Krzysia zadowalająco dokładna.
+		Długość $0,842 \text{ m}$ jest dla Krzysia zadowalająco dokładna.
 	</p>
 		
 	</div>
@@ -278,7 +287,7 @@
 	</p>
 
 	<p>
-		Gdyby Krzyś nie był pedantem, zadowoliłby się wynikiem pomiarów przy <span class="math">0,8 m</span>. Wtedy Krzyś dokonałby <i>przybliżenia</i> 
+		Gdyby Krzyś nie był pedantem, zadowoliłby się wynikiem pomiarów przy $0,8 \text{ m}$. Wtedy Krzyś dokonałby <i>przybliżenia</i> 
 		lub inaczej <span class="comment" id="Słownik podaje, że „szacowny” oznacza „posiadający dużą wartość”. Nie jest 
 		to w pełni prawda – w matematyce szacować można także bardzo małe liczby."><i>szacowania</i></span> długości biurka. 
 		W praktyce przybliżanie wielkości to po prostu branie na oko. W matematyce 
@@ -286,12 +295,12 @@
 	</p>
 
 	<p>
-		Najczęściej dokonywanym przybliżeniem jest <i>zaokrąglenie</i> liczby. Weźmy wynik pomiarów Krzysia równy <span class="math">0,842 m</span>. 
+		Najczęściej dokonywanym przybliżeniem jest <i>zaokrąglenie</i> liczby. Weźmy wynik pomiarów Krzysia równy $0,842 \text{ m}$. 
 	</p>
 	<ul>
-		<li>Zaokrąglenie <span class="math">0,842</span> do części setnych wynosi <span class="math">0,84</span>.</li>
-		<li>Zaokrąglenie <span class="math">0,842</span> do części dziesiętnych wynosi <span class="math">0,8</span>.</li>
-		<li>Zaokrąglenie <span class="math">0,842</span> do jedności wynosi <span class="math">1</span>.</li>
+		<li>Zaokrąglenie $0,842$ do części setnych wynosi $0,84$.</li>
+		<li>Zaokrąglenie $0,842$ do części dziesiętnych wynosi $0,8$.</li>
+		<li>Zaokrąglenie $0,842$ do jedności wynosi $1$.</li>
 	</ul>
 	
 	<p>
@@ -301,27 +310,27 @@
 	<p>
 		Zaokrąglenia zawsze dokonujemy do pewnej cyfry, np. do części tysięcznych, do części setnych, do części dziesiętnych, 
 		do jedności, albo do wyższych cyfr – do dziesiątek, do setek, do tysięcy. Aby zaokrąglić liczbę do części dziesiętnych, 
-		patrzymy na cyfrę bezpośrednio po prawej - cyfrę części setnych. Jeśli wynosi ona <span class="math">0</span>, <span class="math">1</span>, 
-		<span class="math">2</span>, <span class="math">3</span> albo <span class="math">4</span>, 
-		przybliżenie polega po prostu na ucięciu cyfry części setnych i wszystkich kolejnych. Jeśli jednak wynosi <span class="math">5</span>, 
-		<span class="math">6</span>, <span class="math">7</span>, <span class="math">8</span> 
-		albo <span class="math">9</span>, cyfrę części dziesiętnych zwiększamy o <span class="math">1</span> i ucinamy wszystkie z prawej.
+		patrzymy na cyfrę bezpośrednio po prawej - cyfrę części setnych. Jeśli wynosi ona $0$, $1$, 
+		$2$, $3$ albo $4$, 
+		przybliżenie polega po prostu na ucięciu cyfry części setnych i wszystkich kolejnych. Jeśli jednak wynosi $5$, 
+		$6$, $7$, $8$ 
+		albo $9$, cyfrę części dziesiętnych zwiększamy o $1$ i ucinamy wszystkie z prawej.
 	</p>
 	
 	<ul>
-		<li>Zaokrąglenie <span class="math">17,65401</span> do części dziesięciotysięcznych wynosi <span class="math">17,6540</span>.</li>
-		<li>Zaokrąglenie <span class="math">17,65401</span> do części tysięcznych wynosi <span class="math">17,654</span>.</li>
-		<li>Zaokrąglenie <span class="math">17,65401</span> do części setnych wynosi <span class="math">17,65</span>.</li>
-		<li>Zaokrąglenie <span class="math">17,65401</span> do części dziesiętnych wynosi <span class="math">17,7</span>.</li>
-		<li>Zaokrąglenie <span class="math">17,65401</span> do jedności wynosi <span class="math">18</span>.</li>
-		<li>Zaokrąglenie <span class="math">17,65401</span> do dziesiątek wynosi <span class="math">20</span>.</li>
-		<li>Zaokrąglenie <span class="math">17,65401</span> do setek wynosi <span class="math">0</span>.</li>
+		<li>Zaokrąglenie $17,65401$ do części dziesięciotysięcznych wynosi $17,6540$.</li>
+		<li>Zaokrąglenie $17,65401$ do części tysięcznych wynosi $17,654$.</li>
+		<li>Zaokrąglenie $17,65401$ do części setnych wynosi $17,65$.</li>
+		<li>Zaokrąglenie $17,65401$ do części dziesiętnych wynosi $17,7$.</li>
+		<li>Zaokrąglenie $17,65401$ do jedności wynosi $18$.</li>
+		<li>Zaokrąglenie $17,65401$ do dziesiątek wynosi $20$.</li>
+		<li>Zaokrąglenie $17,65401$ do setek wynosi $0$.</li>
 	</ul>
 
 	<p>
 		Symbolicznie określenie przybliżenia wyraża znak ≈ przypominający znak równości po kilku głębszych. 
-		Możemy zapisać <span class="math">17,65401≈17,65</span> lub <span class="math">17,65401≈17,7</span> lub <span class="math">17,65401≈18</span>. 
-		Czasem zamiast podwójnej fali spotyka się też <span class="math">≅</span>, 
+		Możemy zapisać $17,65401≈17,65$ lub $17,65401≈17,7$ lub $17,65401≈18$. 
+		Czasem zamiast podwójnej fali spotyka się też $≅$, 
 		jednak na poziomie wyższej matematyki symbol ten przybiera inne znaczenie.
 	</p>
 	
@@ -329,14 +338,14 @@
 		<li>
 			Według międzynarodowych przeliczników miar długości mila angielska to <span class="comment" id="Poprawnie liczbę 
 			tę wypadałoby odczytać „jeden i sześćset dziewięć tysięcy trzysta czterdzieści cztery milionowe”. W praktyce i 
-			tak czytamy „jeden przecinek sześć zero dziewięć trzy cztery cztery”."><span class="math">1,609344</span></span> kilometra. Od patrzenia na taką 
-			liczbę bolą oczy. W praktyce wystarczy nam pojęcie, że mila to około <span class="math">1,6</span> kilometra, czyli <span class="math">1,609344 km ≈ 1,6 km</span>
+			tak czytamy „jeden przecinek sześć zero dziewięć trzy cztery cztery”.">$1,609344$</span> kilometra. Od patrzenia na taką 
+			liczbę bolą oczy. W praktyce wystarczy nam pojęcie, że mila to około $1,6$ kilometra, czyli $1,609344 \text{ km} ≈ 1,6 \text{ km}$
 		</li>
 	</ul>
 
 	<p>
 		W zapisie dziesiętnym cyfry z lewej strony mają większą wagę i mocniej wpływają na wielkość liczby niż cyfry po 
-		prawej stronie. Każda cyfra ma wagę <span class="math">10</span> razy większą niż cyfra bezpośrednio po prawej. Gdy czytamy liczbę od lewej do 
+		prawej stronie. Każda cyfra ma wagę $10$ razy większą niż cyfra bezpośrednio po prawej. Gdy czytamy liczbę od lewej do 
 		prawej, kolejne cyfry mają coraz mniejsze znaczenie i jedynie precyzują wartość liczby. Z tego powodu w praktyce 
 		możemy czasami „zaniedbać” niektóre cyfry i oglądać liczbę w uproszczonej postaci. 
 	</p>
@@ -348,9 +357,9 @@
 	<p>
 		W kontekście ułamków dziesiętnych wprowadzono wątpliwej przydatności pojęcia <span class="comment" id="Ty też bądź 
 		bohaterem w swoim domu."><i>podłoga</i> i <i>sufit</i></span>. Podłoga liczby to jej 
-		część całkowita. Symbolicznie zdanie „część całkowita (podłoga) liczby <span class="math">24,389</span> wynosi <span class="math">24</span>” zapisujemy jako: 
-		<span class="comment" id ="Podobnie ⌊Łazienka pana Janusza⌋=różowe kafle"><span class="math">⌊24,389⌋=24</span></span>. Podłoga to jakby "przybliżanie liczby w 
-		dół". Z kolei sufit to "przybliżanie liczby w górę". Symbolicznie <span class="math">⌈24,389⌉=25</span>. Podłoga i sufit liczb naturalnych są równe.
+		część całkowita. Symbolicznie zdanie „część całkowita (podłoga) liczby $24,389$ wynosi $24$” zapisujemy jako: 
+		<span class="comment" id ="Podobnie ⌊Łazienka pana Janusza⌋=różowe kafle">$⌊24,389⌋=24$</span>. Podłoga to jakby "przybliżanie liczby w 
+		dół". Z kolei sufit to "przybliżanie liczby w górę". Symbolicznie $⌈24,389⌉=25$. Podłoga i sufit liczb naturalnych są równe.
 	</p>
 
 	</div>
@@ -370,37 +379,37 @@
 	</p>
 	
 	<p>
-		Liczba <span class="math">2/10</span> zapisana jako ułamek dziesiętny to <span class="math">0,2</span>. Jeśli przypomnimy sobie właściwości 
+		Liczba $2/10$ zapisana jako ułamek dziesiętny to $0,2$. Jeśli przypomnimy sobie właściwości 
 		rozszerzania ułamków zwykłych, stwierdzimy, że 
 	</p>
 	
-	<p class="math" align = "center">
-		2/10=20/100
-	</p>
+	$$
+		\frac{2}{10}=\frac{20}{100}
+	$$
 	
 	<p>
-		Z kolei <span class="math">20/100</span> zapisane w postaci dziesiętnej to <span class="math">0,20</span>. Oznacza to, że
+		Z kolei $20/100$ zapisane w postaci dziesiętnej to $0,20$. Oznacza to, że
 	</p>
 	
-	<p class="math" align="center">
+	$$
 		0,2 = 0,20
-	</p>
+	$$
 	
 	<p>
 		Kontynuując tendencję rozszerzania licznika i mianownika przez 10 otrzymamy
 	</p>
 	
-	<p class="math" align="center">
-		2/10=20/100=200/1000=2000/10000=20000/100000=...
-	</p>
+	$$
+		\frac{2}{10}=\frac{20}{100}=\frac{200}{1000}=\frac{2000}{10000}=\frac{20000}{100000}=...
+	$$
 	
 	<p>
 		czyli
 	</p>
 	
-	<p class="math" align="center">
+	$$
 		0,2 = 0,20 = 0,200 = 0,2000 = 0,20000 = …
-	</p>
+	$$
 	
 	<p>
 		Dopisywanie zer po przecinku na końcu liczby nic nie zmienia: możemy dopisywać zera bez opamiętania, tak długo, 
@@ -408,20 +417,20 @@
 		jego wartości.
 	</p>
 	
-	<p class="math" align="center">
-		2/10=0,2000000000…
-	</p>
+	$$
+		\frac{2}{10}=0,2000000000…
+	$$
 	
 	<p>
 		Każdej liczbie o skończonym rozwinięciu dziesiętnym możemy urodzić (trochę na siłę) nieskończone rozwinięcie dziesiętne. 
 	</p>
 		
 	<p>
-		Niektóre ułamki zwykłe nie posiadają skończonego rozwinięcia. Zastanówmy się nad zamianą ułamka <span class="math">1/3</span>
+		Niektóre ułamki zwykłe nie posiadają skończonego rozwinięcia. Zastanówmy się nad zamianą ułamka $\frac{1}{3}$
 		na ułamek dziesiętny. Gdybyśmy wzięli bardzo dokładną miarkę krawiecką o długości metra i przecięli ją dokładnie w 
-		jednej trzeciej długości, otrzymalibyśmy fragment o długości <span class="math">0,33333333333333… m</span>. Żadne skończone rozwinięcie nie 
-		przedstawi dokładnej długości <span class="math">1/3</span> miarki. Krzyś mógłby stwierdzić, że <span class="math">1/3≈0,3</span>. Przyjrzawszy się bliżej, 
-		Krzyś skoryguje spostrzeżenie do <span class="math">1/3≈0,33</span>. Jednak perfekcjonizm Krzysia nie zostanie zaspokojony, dopóki 
+		jednej trzeciej długości, otrzymalibyśmy fragment o długości $0,33333333333333… m$. Żadne skończone rozwinięcie nie 
+		przedstawi dokładnej długości $\frac{1}{3}$ miarki. Krzyś mógłby stwierdzić, że $\frac{1}{3}≈0,3$. Przyjrzawszy się bliżej, 
+		Krzyś skoryguje spostrzeżenie do $\frac{1}{3}≈0,33$. Jednak perfekcjonizm Krzysia nie zostanie zaspokojony, dopóki 
 		szacowanie nie będzie w pełni dokładne. Niestety, Krzyś został skazany na nieskończone korygowanie przybliżenia. 
 	</p>
 
@@ -431,30 +440,30 @@
 		Niektóre ułamki zwykłe mają mniej eleganckie rozwinięcia dziesiętne. Przykładowo
 	</p>
 	<ul>
-		<li class="math">1/6=0,166666666666666666666666666666666666666666666…</li>
-		<li class="math">1/7=0,142857142857142857142857142857142857142857142…</li>
-		<li class="math">1/11=0,09090909090909090909090909090909090909090909…</li>
-		<li class="math">1/23=0,04347826086956521739130434782608695652173913…</li>
-		<li class="math">1/36=0,02777777777777777777777777777777777777777777…</li>
+		<li>$\frac{1}{6}=0,166666666666666666666666666666666666666666666…$</li>
+		<li>$\frac{1}{7}=0,142857142857142857142857142857142857142857142…$</li>
+		<li>$\frac{1}{11}=0,09090909090909090909090909090909090909090909…$</li>
+		<li>$\frac{1}{23}=0,04347826086956521739130434782608695652173913…$</li>
+		<li>$\frac{1}{36}=0,02777777777777777777777777777777777777777777…$</li>
 	</ul>
 	
 	<p>
-		W powyższych rozwinięciach zauważamy pewne tendencje. W rozwinięciu ułamka <span class="math">1/7</span>
-		powtarza się zbitek liczb <span class="math">142857</span>. Taki powtarzający się fragment nieskończonego rozwinięcia dziesiętnego nazywamy okresem. 
+		W powyższych rozwinięciach zauważamy pewne tendencje. W rozwinięciu ułamka $\frac{1}{7}$
+		powtarza się zbitek liczb $142857$. Taki powtarzający się fragment nieskończonego rozwinięcia dziesiętnego nazywamy okresem. 
 		Gdy uda nam się zauważyć okres w rozwinięciu, możemy zapisać ułamek w bardziej przejrzystej formie: 
 	</p>
 	
-	<p class="math" align = "center">
-		1/7=0,Bracket(142857)
-	</p>
+	$$
+		\frac{1}{7}=0,(142857)
+	$$
 	
 	<p>
 		Co czytamy jako „zero i sto czterdzieści dwa tysiące osiemset pięćdziesiąt siedem milionowych w okresie”. Podobnie 
 	</p>
 	
-	<p class="math" align="center">
-		1/36=0,02Bracket(7)
-	</p>
+	$$
+		\frac{1}{36}=0,02(7)
+	$$
 	
 	<p>
 		Tu już nikt nie wie, jak się to czyta.
@@ -542,54 +551,54 @@
 	</script>	
 
 	<p>
-		Zanim przystąpimy do mnożenia i dzielenia ułamków dziesiętnych, zauważmy pewne własności. Gdy chcemy pomnożyć <span class="math">53,243</span> 
-		przez <span class="math">10</span>, otrzymamy:
+		Zanim przystąpimy do mnożenia i dzielenia ułamków dziesiętnych, zauważmy pewne własności. Gdy chcemy pomnożyć $53,243$ 
+		przez $10$, otrzymamy:
 	</p>
 	
-	<p class="math" align="center">
-		53,243∙10=53 243/1000∙10=53243/1000∙10=53243/100=532 43/100=532,43
-	</p>
+	$$
+		53,243\cdot10=53 \frac{243}{1000}\cdot10=\frac{53243}{1000}\cdot10=\frac{53243}{100}=532 \frac{43}{100}=532,43
+	$$
 	
 	<p>
-		Okazuje się, że pomnożenie liczby dziesiętnej przez <span class="math">10</span> jest równoważne z przesunięciem przecinka o jedną pozycję w prawo. 
+		Okazuje się, że pomnożenie liczby dziesiętnej przez $10$ jest równoważne z przesunięciem przecinka o jedną pozycję w prawo. 
 		W tym momencie cyfry dziesiątek stają się cyframi setek, cyfry jedności stają się cyframi dziesiątek, 
-		cyfry części dziesiętnych stają się cyframi jedności itd., w rezultacie liczba zyskuje <span class="math">10</span> razy większą 
-		wartość. Na tej samej zasadzie mnożenie przez <span class="math">100</span> jest równoważne przesunięciu przecinka o dwie pozycje w 
-		prawo, mnożenie przez <span class="math">1000</span> oznacza przesunięcie przecinka o trzy miejsca itd.
+		cyfry części dziesiętnych stają się cyframi jedności itd., w rezultacie liczba zyskuje $10$ razy większą 
+		wartość. Na tej samej zasadzie mnożenie przez $100$ jest równoważne przesunięciu przecinka o dwie pozycje w 
+		prawo, mnożenie przez $1000$ oznacza przesunięcie przecinka o trzy miejsca itd.
 	</p>
 	
 	<p>
-		Podobnie, gdybyśmy chcieli podzielić <span class="math">53,243</span> przez <span class="math">10</span>, mielibyśmy
+		Podobnie, gdybyśmy chcieli podzielić $53,243$ przez $10$, mielibyśmy
 	</p>
 	
-	<p class="math" align="center">
-		53,243∶10=53 243/1000 ∶10=53243/1000 ∶10=53243/10000=5 3243/10000=5,3243
-	</p>
+	$$
+		53,243∶10=53 \frac{243}{1000} :10=\frac{53243}{1000} :10=\frac{53243}{10000}=5 \frac{3243}{10000}=5,3243
+	$$
 	
 	<p>
-		Czyli dzielenie przez <span class="math">10</span> jest tym samym, co przesunięcie przecinka o jedną pozycję w lewo, dzielenie przez <span class="math">100</span> 
+		Czyli dzielenie przez $10$ jest tym samym, co przesunięcie przecinka o jedną pozycję w lewo, dzielenie przez $100$ 
 		jest przesunięciem przecinka o dwie pozycje w lewo itd.
 	</p>
 	
 	<ul>
-		<li class="math">45,292 ∙ 100 = 4529,2</li>
-		<li class="math">347 ∙ 10 = 347,0000 ∙ 10 = 3470,000 = 3470</li>
-		<li class="math">0,349 : 10 = 0,0349</li>
-		<li class="math">94 : 1000 = 94,0 : 1000 = 0,0940 = 0,094</li>
+		<li>$45,292 \cdot 100 = 4529,2$</li>
+		<li>$347 \cdot 10 = 347,0000 \cdot 10 = 3470,000 = 3470$</li>
+		<li>$0,349 : 10 = 0,0349$</li>
+		<li>$94 : 1000 = 94,0 : 1000 = 0,0940 = 0,094$</li>
 	</ul>
 	
 	<p>
-		Mając to na uwadze, spróbujmy pomnożyć dwie dowolne liczby dziesiętne. Przypuśćmy, że chcemy pomnożyć liczby <span class="math">12,4</span> 
-		oraz <span class="math">1,03</span>. Zauważmy, że 
+		Mając to na uwadze, spróbujmy pomnożyć dwie dowolne liczby dziesiętne. Przypuśćmy, że chcemy pomnożyć liczby $12,4$ 
+		oraz $1,03$. Zauważmy, że 
 	</p>
 	
-	<p class="math" align="center">
-		12,4 ∙1,03=124/10∙103/100=(124∙103)/1000
-	</p>
+	$$
+		12,4 \cdot1,03=\frac{124}{10}\cdot \frac{103}{100}=\frac{124\cdot103}{1000}
+	$$
 	
 	<p>
-		Oznacza to, że wynik takiego mnożenia będzie taki, jak wynik <span class="math">124∙103</span> z przecinkiem przesuniętym o trzy pozycje w lewo. 
-		Mnożenie <span class="math">124∙103</span> wykonujemy standardową metodą
+		Oznacza to, że wynik takiego mnożenia będzie taki, jak wynik $124\cdot103$ z przecinkiem przesuniętym o trzy pozycje w lewo. 
+		Mnożenie $124\cdot103$ wykonujemy standardową metodą
 	</p>
 	
 	<div id="columnar_multiplication_1">
@@ -600,18 +609,18 @@
 	</script>
 	
 	<p>
-		Mamy więc <span class="math">12,4 ∙ 1,03 = 12,772</span>. Ogólnie, aby obliczyć iloczyn liczb z przecinkiem, mnożymy je bez przecinka, a potem 
+		Mamy więc $12,4 \cdot 1,03 = 12,772$. Ogólnie, aby obliczyć iloczyn liczb z przecinkiem, mnożymy je bez przecinka, a potem 
 		wstawiamy przecinek w odpowiednim miejscu (wynik powinien mieć tyle cyfr po przecinku, co pierwsza i druga łącznie).
 	</p>
 
 	<p>
-		Dzielenie liczb dziesiętnych jest już bardziej wyczynowym sportem. Weźmy dla przykładu <span class="math">37,58 : 1,6</span>. Na początek 
+		Dzielenie liczb dziesiętnych jest już bardziej wyczynowym sportem. Weźmy dla przykładu $37,58 : 1,6$. Na początek 
 		wygodnie jest pozbyć się przecinka z dzielnika i „przerzucić go” do dzielnej:
 	</p>
 	
-	<p class="math" align="center">
-		37,58∶1,6=3758/100 ∶  16/10=3758/100  ∙  10/16=3758/10  ∙  1/16=3758/10 ∶16=375,8∶16
-	</p>
+	$$
+		37,58∶1,6=\frac{3758}{100} ∶  \frac{16}{10}=\frac{3758}{100} \cdot \frac{10}{16}=\frac{3758}{10} \cdot \frac{1}{16}=\frac{3758}{10} :16=375,8∶16
+	$$
 	
 	<p>
 		W ogólności przesuwamy przecinek dzielnej o tyle pozycji w prawo, ile cyfr po przecinku ma dzielnik. 
@@ -625,7 +634,7 @@
 	</script>
 
 	<p>
-		W <span class="math">37</span> liczba <span class="math">16</span> mieści się dwa razy, zapisujemy więc dwójkę i odejmujemy <span class="math">32</span>, 
+		W $37$ liczba $16$ mieści się dwa razy, zapisujemy więc dwójkę i odejmujemy $32$, 
 		dopisujemy kolejną cyfrę.
 	</p>
 	
@@ -637,8 +646,8 @@
 	</script>				
 
 	<p>
-		W liczbie <span class="math">55</span> szesnastka mieści się <span class="math">3</span> razy – zapisujemy <span class="math">3</span>, odejmujemy 
-		<span class="math">48</span> i spisujemy kolejną cyfrę – tym razem już zza przecinka:
+		W liczbie $55$ szesnastka mieści się $3$ razy – zapisujemy $3$, odejmujemy 
+		$48$ i spisujemy kolejną cyfrę – tym razem już zza przecinka:
 	</p>
 	
 	<div id="columnar_division_3">
@@ -650,9 +659,9 @@
 	</script>		
 
 	<p>
-		W liczbie <span class="math">78</span> liczba <span class="math">16</span> mieści się <span class="math">4</span> razy – zapisujemy <span class="math">4</span> 
-		i odejmujemy <span class="math">64</span>. W dzielnej nie ma już cyfr do spisania, 
-		jednak jej rozwinięcie dziesiętne możemy przedłużać o dowolną ilość zer. Spisujemy więc cyfrę <span class="math">0</span> i kontynuujemy:
+		W liczbie $78$ liczba $16$ mieści się $4$ razy – zapisujemy $4$ 
+		i odejmujemy $64$. W dzielnej nie ma już cyfr do spisania, 
+		jednak jej rozwinięcie dziesiętne możemy przedłużać o dowolną ilość zer. Spisujemy więc cyfrę $0$ i kontynuujemy:
 	</p>
 	
 	<div id="columnar_division_4">
@@ -665,7 +674,7 @@
 
 	<p>
 		Kontynuujemy procedurę, za każdym razem spisując zero. W końcu docieramy do momentu, gdy wynik odejmowania jest zerem. 
-		Dalsze dzielenie nie ma już sensu, więc przerywamy i odczytujemy wynik: <span class="math">37,58 : 1,6 = 23,4875</span>. 
+		Dalsze dzielenie nie ma już sensu, więc przerywamy i odczytujemy wynik: $37,58 : 1,6 = 23,4875$. 
 	</p>
 	
 	<div id="columnar_division_5">
@@ -680,9 +689,9 @@
 
 	<p>
 		Nie zawsze będziemy mieć tyle szczęścia, by tak jak przed chwilą dotrzeć do jawnego końca tych żmudnych robótek. 
-		Czasami wynik jest liczbą o nieskończonym rozwinięciu dziesiętnym. Zastanówmy się nad działaniem <span class="math">1 : 7</span>. Do tej 
+		Czasami wynik jest liczbą o nieskończonym rozwinięciu dziesiętnym. Zastanówmy się nad działaniem $1 : 7$. Do tej 
 		pory posługiwaliśmy się pojęciem reszty z dzielenia, ale nie jesteśmy już dziećmi – mamy przecież ułamki. W 
-		jaki sposób odkryć rozwinięcie dziesiętne ułamka <span class="math">1/7</span> ? Spróbujmy dokonać dzielenia pisemnego:
+		jaki sposób odkryć rozwinięcie dziesiętne ułamka $\frac{1}{7}$ ? Spróbujmy dokonać dzielenia pisemnego:
 	</p>
 	
 	<div id="columnar_division_6">
@@ -703,7 +712,7 @@
 
 	<p>
 		Teraz możemy już dokonać dzieła: w samej jedynce siódemka się nie mieści, więc w wyniku przed przecinkiem będzie 
-		widniało <span class="math">0</span>.
+		widniało $0$.
 	</p>
 	
 	<div id="columnar_division_8">
@@ -713,8 +722,8 @@
 	</script>
 
 	<p>
-		W <span class="math">10</span> siódemka mieści się raz – zapisujemy <span class="math">1</span>, odejmujemy <span class="math">7</span> i spisujemy kolejne 
-		<span class="math">0</span>.
+		W $10$ siódemka mieści się raz – zapisujemy $1$, odejmujemy $7$ i spisujemy kolejne 
+		$0$.
 	</p>
 	
 	<div id="columnar_division_9">
@@ -738,7 +747,7 @@
 	</script>
 	
 	<p>
-		W tym momencie zauważamy, że zatoczyliśmy koło: w tej chwili mamy do podzielenia <span class="math">10</span> przez <span class="math">7</span> i jest to dokładnie 
+		W tym momencie zauważamy, że zatoczyliśmy koło: w tej chwili mamy do podzielenia $10$ przez $7$ i jest to dokładnie 
 		ta sama czynność, jakiej dokonaliśmy na samym początku słupka. Łatwo przewidzieć, że wszystkie kolejne kroki 
 		przebiegałyby w ten sam sposób i zwracałyby te same wyniki:
 	</p>
@@ -765,60 +774,61 @@
 		Nie ma sensu przedłużanie tej męki – zapisujemy wynik jako okresowy i kończymy robotę: 
 	</p>
 	
-	<p class="math" align="center">
-		1 : 7 = 0,Bracket(142857)
+	$$
+		1 : 7 = 0,(142857)
+	$$
+
+	<p style="text-align: center">
+		<input style="width: 800px" name="numberInput" type="text" id="columnar_operation_input" />
 	</p>
-		<p align="center">
-			<input style="width: 800px" name="numberInput" type="text" id="columnar_operation_input" />
-		</p>
-		<script>
-			var columnar_operation = new Columnar_operation( "columnar_operation_table","columnar_operation_comment", "columnar_operation_button_right", "columnar_operation_button_left");
-			var operation;
-			function ColumnarOperationStartArgs() {
-				operation = columnar_operation.get_operation("columnar_operation_input", "columnar_operation_area");
-				if (operation !== undefined) {
-					var success = operation.generate_from_input("columnar_operation_input", "columnar_operation_area", true);
-					if (success)operation.print_step(0);
-				}
+	<script>
+		var columnar_operation = new Columnar_operation( "columnar_operation_table","columnar_operation_comment", "columnar_operation_button_right", "columnar_operation_button_left");
+		var operation;
+		function ColumnarOperationStartArgs() {
+			operation = columnar_operation.get_operation("columnar_operation_input", "columnar_operation_area");
+			if (operation !== undefined) {
+				var success = operation.generate_from_input("columnar_operation_input", "columnar_operation_area", true);
+				if (success)operation.print_step(0);
 			}
+		}
 
-		</script>
-		<p align="center">
-			<button id="columnar_operation_start" style="float: center;" onclick="ColumnarOperationStartArgs()">Start</button>
-		</p>
-		<script>
-			SetInputEnterEvent("columnar_operation_input","columnar_operation_start")
-		</script>
+	</script>
+	<p style="text-align: center">
+		<button id="columnar_operation_start" style="float: center;" onclick="ColumnarOperationStartArgs()">Start</button>
+	</p>
+	<script>
+		SetInputEnterEvent("columnar_operation_input","columnar_operation_start")
+	</script>
 
 
-		<table align = "center" class="columnar_operation_script" id="columnar_operation_area" >
-			<tr>
-				<td id="columnar_operation_button_left" onclick="operation.prev()">
-					<svg height="0" width="30">
-						<defs>
-							<linearGradient id="gradient">
-								<stop offset="20%" stop-color="#C33" />
-								<stop offset="90%" stop-color="#833" />
-							</linearGradient>
-							<linearGradient id="hover_gradient">
-								<stop offset="20%" stop-color="#A33" />
-								<stop offset="90%" stop-color="#433" />
-							</linearGradient>
-						</defs>
-						<polygon points="20,0 0,30 20,60"/>
-					</svg>
-				</td>
-				<td>
-					<div id="columnar_operation_table" class="no_selection"></div>
-					<p id="columnar_operation_comment" class="no_selection"></p>
-				</td>
-				<td id = "columnar_operation_button_right" onclick="operation.next()">
-					<svg height="0" width="30">
-						<polygon points="0,0 20,30 0,60"/>
-					</svg>
-				</td>
-			</tr>
-		</table>
+	<table class="columnar_operation_script center" id="columnar_operation_area" >
+		<tr>
+			<td id="columnar_operation_button_left" onclick="operation.prev()">
+				<svg height="0" width="30">
+					<defs>
+						<linearGradient id="gradient">
+							<stop offset="20%" stop-color="#C33" />
+							<stop offset="90%" stop-color="#833" />
+						</linearGradient>
+						<linearGradient id="hover_gradient">
+							<stop offset="20%" stop-color="#A33" />
+							<stop offset="90%" stop-color="#433" />
+						</linearGradient>
+					</defs>
+					<polygon points="20,0 0,30 20,60"/>
+				</svg>
+			</td>
+			<td>
+				<div id="columnar_operation_table" class="no_selection"></div>
+				<p id="columnar_operation_comment" class="no_selection"></p>
+			</td>
+			<td id = "columnar_operation_button_right" onclick="operation.next()">
+				<svg height="0" width="30">
+					<polygon points="0,0 20,30 0,60"/>
+				</svg>
+			</td>
+		</tr>
+	</table>
 
 	</div>
 	</div>
@@ -837,7 +847,7 @@
 	</p>
 	
 	<p class="warning">
-		[wymagana znajomość tematu: Równania]
+		wymagana znajomość tematu: Równania
 	</p>
 
 	<p>
@@ -850,55 +860,55 @@
 	</p>
 	
 	<ul>
-		<li class="math">0,347=  347/1000</li>
-		<li class="math">43,25=4325/100=173/4</li>
-		<li class="math">0,0000005=5/10000000=1/2000000</li>
+		<li>$0,347=  \frac{347}{1000}$</li>
+		<li>$43,25=\frac{4325}{100}=\frac{173}{4}$</li>
+		<li>$0,0000005=\frac{5}{10000000}=\frac{1}{2000000}$</li>
 	</ul>
 
 	<p>
-		Sprawa nieco się komplikuje, gdy mamy do czynienia z okresami. Spróbujmy dowiedzieć się prawdy o liczbie <span class="math">0,(259)</span>. 
+		Sprawa nieco się komplikuje, gdy mamy do czynienia z okresami. Spróbujmy dowiedzieć się prawdy o liczbie $0,(259)$. 
 		Oznaczmy tymczasowo
 	</p>
 	
-	<p class="math" align="center">
-		0,Bracket(259)=x
-	</p>
+	$$
+		0,(259)=x
+	$$
 	
 	<p>
-		Trik polega na tym, by pomnożyć równanie obustronnie przez <span class="math">1000</span> (jedynkę i trzy zera – bo tyle cyfr ma okres). 
-		Pomnożenie <span class="math">0,Bracket(259)</span> przez <span class="math">1000</span> oznacza przesunięcie przecinka o trzy pozycje w prawo, a więc liczba 
-		<span class="math">0,259259259259…</span> stanie się liczbą <span class="math">259,259259259…</span> Mamy:
+		Trik polega na tym, by pomnożyć równanie obustronnie przez $1000$ (jedynkę i trzy zera – bo tyle cyfr ma okres). 
+		Pomnożenie $0,(259)$ przez $1000$ oznacza przesunięcie przecinka o trzy pozycje w prawo, a więc liczba 
+		$0,259259259259…$ stanie się liczbą $259,259259259…$ Mamy:
 	</p>
 	
-	<p class="math" align="center">
-		259,Bracket(259)=1000x
-	</p>
+	$$
+		259,(259)=1000x
+	$$
 	
 	<p>
 		Wszystko staje się jasne, gdy odejmiemy dwa powyższe równania stronami:
 	</p>
 	
-	<p class="math" align="center">
-		259,Bracket(259)-0,Bracket(259)=1000x-x
-	</p>
+	$$
+		259,(259)-0,(259)=1000x-x
+	$$
 	
-	<p class="math" align="center">
+	$$
 		259=999x
-	</p>
+	$$
 	
-	<p class="math" align="center">
-		x=259/999
-	</p>
+	$$
+		x=\frac{259}{999}
+	$$
 	
 	<p>
-		Tajemnica rozwiązana: <span class="math">0,(259)=259/999=7/27</span>. Analizując powyższą metodę, możemy przewidzieć, że
+		Tajemnica rozwiązana: $0,(259)=\frac{259}{999}=\frac{7}{27}$. Analizując powyższą metodę, możemy przewidzieć, że
 	</p>
 	
 	<ul>
-		<li class="math">0,Bracket(132)=132/999=44/333</li>
-		<li class="math">4,Bracket(15)=4 15/99=4 5/33=137/33</li>
-		<li class="math">43,Bracket(5)=43 5/9=392/9</li>
-		<li class="math">0,Bracket(0045)=45/9999=5/1111</li>
+		<li>$0,(132)=\frac{132}{999}=\frac{44}{333}$</li>
+		<li>$4,(15)=4 \frac{15}{99}=4 \frac{5}{33}=\frac{137}{33}$</li>
+		<li>$43,(5)=43 \frac{5}{9}=\frac{392}{9}$</li>
+		<li>$0,(0045)=\frac{45}{9999}=\frac{5}{1111}$</li>
 	</ul>
 		
 	<p>
@@ -908,22 +918,22 @@
 	</p>
 	
 	<ul>
-		<li class="math">0,0Bracket(34)=0,Bracket(34) ∶10=  34/99 ∶10=34/990=17/495</li>
-		<li class="math">1,1Bracket(6)=11,Bracket(6) ∶10=11 6/9:10=35/3:10=35/30=7/6</li>
-		<li class="math">78,355Bracket(1)=78355,Bracket(1) ∶1000=78355 1/9 ∶1000=705196/9000=176299/2250</li>
+		<li>$0,0(34)=0,(34) :10=  \frac{34}{99} :10=\frac{34}{990}=\frac{17}{495}$</li>
+		<li>$1,1(6)=11,(6) :10=11 \frac{6}{9}:10=\frac{35}{3}:10=\frac{35}{30}=\frac{7}{6}$</li>
+		<li>$78,355(1)=78355,(1) ∶1000=78355 \frac{1}{9} :1000=\frac{705196}{9000}=\frac{176299}{2250}$</li>
 	</ul>
 		
 	<p>
 		Przy okazji natrafiliśmy na dość kontrowersyjną równość, mianowicie
 	</p>
 	
-	<p class="math" align="center">
-		0,Bracket(9)=9/9=1
-	</p>
+	$$
+		0,(9)=\frac{9}{9}=1
+	$$
 	
 	<p>
-		Liczba <span class="math">0,Bracket(9)=0,99999999999999999999999999999999999…</span> naprawdę bardzo chce być jedynką. Chce być jedynką tak bardzo, 
-		że matematyka dała jej na to przyzwolenie. Mogłoby się wydawać, że <span class="math">0,Bracket(9)</span> jest jakby mniejsze niż jeden. Ale 
+		Liczba $0,(9)=0,99999999999999999999999999999999999…$ naprawdę bardzo chce być jedynką. Chce być jedynką tak bardzo, 
+		że matematyka dała jej na to przyzwolenie. Mogłoby się wydawać, że $0,(9)$ jest jakby mniejsze niż jeden. Ale 
 		jeśli jest mniejsze, to o ile? Mniejsze o „nieskończenie małą” liczbę. Nieskończenie małą, czyli zerową…
 	<p>
 	
@@ -931,12 +941,12 @@
 		W przypływie geniuszu niektórych mogłoby olśnić, że 
 	</p>
 	
-	<p class="math" align="center">
-		1-0,Bracket(9)=0,Bracket(0)1
-	</p>
+	$$
+		1-0,(9)=0,(0)1
+	$$
 	
 	<p>
-		Aby uniknąć upokorzenia na scenie matematycznej, nie zapominajmy, że coś takiego jak <span class="math">0,Bracket(0)1</span> nie istnieje. 
+		Aby uniknąć upokorzenia na scenie matematycznej, nie zapominajmy, że coś takiego jak $0,(0)1$ nie istnieje. 
 		Ubranie zera w okresowy nawias oznacza, że zero będzie się ciągnąć w <b>nieskończoność</b>. Nie można więc powiedzieć, 
 		że na <b>końcu</b> będzie jedynka.
 	</p>
