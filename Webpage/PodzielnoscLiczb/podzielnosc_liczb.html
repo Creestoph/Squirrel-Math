@@ -20,7 +20,6 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 	<script src="../.scripts/scroll_hide.js"></script>
 	<script src="../.scripts/draggable.js"></script>
-	<script src="../.scripts/math.js"></script>
 	<script src="../.scripts/comment.js"></script>
 	<script src="../.scripts/comment_visible.js"></script>
 	<script src="generate_balls.js"></script>
@@ -662,9 +661,9 @@
 	</p>
 
 	<div class ="proof">
-		<div class = "proof-sticker">Dowód</div>
+		<div class = "proof-sticker">Uzasadnienie</div>
 		<p class="warning">
-				wymagana znajomość tematu: Dwumian Newtona
+			wymagana znajomość tematu: Dwumian Newtona
 		</p>
 		<p>
 			Co tak naprawdę mówi twierdzenie? Weźmy dla przykładu $p=8$ i rozważmy liczbę $158$. 
@@ -767,35 +766,35 @@
 		$p$ liczbę $7$ i otrzymamy żądaną cechę. 
 	</div>
 	<div class="example">
-		Jeśli w miejsce $p$ wstawimy liczbę $9$, twierdzenie będzie brzmiało:
+		<p>Jeśli w miejsce $p$ wstawimy liczbę $9$, twierdzenie będzie brzmiało:</p>
 		<p class ="formula">
 			Oznaczmy pozycję cyfry jedności jako $0$, pozycję cyfry dziesiątek jako $1$ itd. 
 			Liczba daje resztę  z dzielenia przez $p$ 
 			taką samą, jak reszta z dzielenia przez $p$ sumy cyfr mnożonych przez $1^n$, gdzie 
 			$n$ jest pozycją danej cyfry.
 		</p>
-		Ponieważ mnożenie przez $1$ nic nie zmienia, wystarczy nam sumować cyfry danej liczby. 
+		<p>Ponieważ mnożenie przez $1$ nic nie zmienia, wystarczy nam sumować cyfry danej liczby.</p>
 	</div>
 	<div class="example">
-		Jeśli wstawimy w miejsce $p$ liczbę $11$, twierdzenie będzie brzmiało:
+		<p>Jeśli wstawimy w miejsce $p$ liczbę $11$, twierdzenie będzie brzmiało:</p>
 		<p class="formula">
 			Oznaczmy pozycję cyfry jedności jako $0$, pozycję cyfry dziesiątek jako $1$ itd. 
 			Liczba daje resztę z dzielenia przez $p$ 
 			taką samą, jak reszta z dzielenia przez $p$ sumy cyfr mnożonych przez $(-1)^n$, 
 			gdzie $n$ jest pozycją danej cyfry.
 		</p>
-		Jest to równoważne z tym, że liczby o pozycjach parzystych bierzemy ze znakiem $+$, 
-		a liczby o pozycjach nieparzystych bierzemy ze znakiem $-$.
+		<p>Jest to równoważne z tym, że liczby o pozycjach parzystych bierzemy ze znakiem $+$, 
+		a liczby o pozycjach nieparzystych bierzemy ze znakiem $-$.</p>
 	</div>
 	<div class="example">
-		Z podzielnością przez $3$ jest trochę ciekawiej. Wynika ona z przypadku dla $p=9$:
+		<p>Z podzielnością przez $3$ jest trochę ciekawiej. Wynika ona z przypadku dla $p=9$:</p>
 		<p class ="formula">
 			Liczba daje resztę  z dzielenia przez $9$ taką samą, jak suma cyfr tej liczby.
 		</p>
-		Gdy liczba jest podzielna przez $3$, daje resztę $0$, $3$ 
+		<p>Gdy liczba jest podzielna przez $3$, daje resztę $0$, $3$ 
 		lub $6$ z dzielenia przez $9$. Wtedy suma cyfr daje taką samą resztę z 
 		dzielenia przez $9$, czyli także jest podzielna przez $3$. To samo w drugą stronę: 
-		jeśli suma cyfr liczby jest podzielna przez $3$, to liczba też jest podzielna przez $3$.
+		jeśli suma cyfr liczby jest podzielna przez $3$, to liczba też jest podzielna przez $3$.</p>
 	</div>
 
 	<p>
@@ -811,6 +810,7 @@
 	</p>
 
 	<div class ="proof">
+		<div class = "proof-sticker">Uzasadnienie</div>
 		<p>
 			Spójrzmy, czemu tak się dzieje. Weźmy dla przykładu $n=2$, czyli cechę podzielności przez 
 			$4$. Gdy chcemy stwierdzić, że 
@@ -857,7 +857,7 @@
 		</p>
 
 		$$
-			a=10^k a_k+⋯+10^n a_n+10^{n-1} a_{n-1}+⋯+10^1 a_1+10^0 a_0=<br>
+			a=10^k a_k+⋯+10^n a_n+10^{n-1} a_{n-1}+⋯+10^1 a_1+10^0 a_0=\\
 			=2^k 5^k a_k+⋯+2^n 5^n a_n+q=2^n (2^{k-n} 5^k a_k+⋯+2^0 5^n a_n )+q
 		$$
 
@@ -899,9 +899,8 @@
 	</p>
 
 	<div class = "proof">
-		<p>
-			Dowód przebiega analogicznie jak w przypadku poprzedniego twierdzenia.
-		</p>
+		<div class = "proof-sticker">Uzasadnienie</div>
+		Dowód przebiega analogicznie jak w przypadku poprzedniego twierdzenia.
 	</div>
 
 	<div class ="proof">

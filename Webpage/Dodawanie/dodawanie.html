@@ -140,8 +140,8 @@ interact('.draggable')
     </p>
       
     <p>
-        Dodawanie najprościej zrozumieć jako <span class="comment" id="Takie że widzisz [przyp. tłum.]">wizualne</span> łączenie obiektów. 
-		<span class="comment" id="Jak prawdziwi matematycy">Rozłóżmy na stole kulki.</span>
+        Dodawanie to inaczej łączenie, powiększanie, scalanie mniejszych elementów w większą całość. 
+		<span class="comment" id="Kulki zostały rzucone">Rozłóżmy na stole kulki.</span>
     </p>
       
     <p style="text-align: center">
@@ -173,7 +173,7 @@ interact('.draggable')
     $$
       
     <p>
-        Znaczek $+$ rozumiemy jako „oraz”, a znaczek $=$ jako „to to samo, co”. Znaczki te to pierwsze symbole matematyczne, z jakimi masz 
+        Znaczek $+$ rozumiemy jako „oraz”, a znaczek $=$ jako „to to samo, co”. Znaczki te to pierwsze <i>symbole matematyczne</i>, z jakimi masz 
 		<span class="comment" id="Czujesz ją?">przyjemność</span> 
 		się spotkać. Bardziej profesjonalnie symbol $+$ czytamy jako „dodać”. Mniej profesjonalnie jako „plus”. Symbol $=$ czytamy jako „równa się”. Ma on 
 		dużo szerszą i ogólniejszą rolę, niż tylko opowiadanie o łączeniu kulek. Symbol $=$ mówi tyle, że po jego lewej stronie jest dokładnie to samo, co po 
@@ -236,11 +236,9 @@ interact('.draggable')
         Istnieją one niezależnie, po prostu jako liczby. Powyższe przykłady można zapisać ogólniej, bez powiązania z kulami:
     </p>
       
-    <p style="text-align: center">
-        $2 + 4 = 6$<br>
-        $2 + 2 = 4$<br>
-        $3 + 4 + 6 = 13$<br>
-    </p>
+        $$2 + 4 = 6\\
+        2 + 2 = 4\\
+        3 + 4 + 6 = 13$$
       
     <p>
         Jeśli w trakcie nauki dodawania napotkasz trudności, zawsze możesz wyobrazić lub narysować sobie odpowiedni obrazek z 
@@ -320,7 +318,7 @@ interact('.draggable')
     </p>
         
     $$
-        składnik + składnik = suma
+        \text{składnik} + \text{składnik} = \text{suma}
     $$
       
     <ul>
@@ -346,7 +344,8 @@ interact('.draggable')
     </p>
       
     <p>
-        <span class="comment" id="Oprócz tego, że jest świetną zabawą">Czyli co można powiedzieć o dodawaniu</span>. Przyjrzyjmy się ponownie kulkom:
+        Dodawanie ma pewne specyficzne <span class="comment" id="Jak choćby to, że jest świetną zabawą">cechy, które ujawniają się niezależnie od 
+        kontekstu</span>. Przyjrzyjmy się ponownie kulkom:
     </p>
       
     <p style="text-align: center">
@@ -480,10 +479,10 @@ interact('.draggable')
         <tr><th>6</th><td>6</td><td>7</td><td>8</td><td>9</td><td>10</td><td>11</td><td>12</td><td>13</td><td style="background: #F0E0E0">14</td><td>15</td></tr>
         <tr><th>7</th><td>7</td><td>8</td><td>9</td><td>10</td><td>11</td><td>12</td><td>13</td><td>14</td><td style="background: #F0E0E0">15</td><td>16</td></tr>
         <tr><th>8</th><td>8</td><td>9</td><td>10</td><td>11</td><td>12</td><td>13</td><td>14</td><td>15</td><td style="background: #F0E0E0">16</td><td>17</td></tr>
-        <tr style="background: #F0E0E0"><th>9</th><td>9</td><td>10</td><td>11</td><td>12</td><td>13</td><td>14</td><td>15</td><td>16</td><td style="background: #CA7777">17</td><td>18</td></tr>
+        <tr style="background: #F0E0E0"><th>9</th><td>9</td><td>10</td><td>11</td><td>12</td><td>13</td><td>14</td><td>15</td><td>16</td><td style="background: #CC4444">17</td><td>18</td></tr>
     </table>
     <p style = "text-align: center" id="adding_table_field" class="math" style="visibility: hidden;">
-		a
+		&nbsp;
 	</p> 
       
     <p>
@@ -494,88 +493,103 @@ interact('.draggable')
     <p>
         Większy problem z dodawaniem pojawia się wtedy, gdy chcemy dodać liczby dwucyfrowe lub jeszcze większe. Oczywiście 
         moglibyśmy rozszerzyć tabliczkę dodawania dalej niż do dziewiątki, jednak… bądźmy realistami. Bardziej pomocna 
-        okazuje się technika <i>dodawania w słupku</i> zwana też <i>dodawaniem pisemnym</i>. Najlepiej nauczmy się jej na przykładzie – 
-        bądźmy odważni i spróbujmy dodać $127$ oraz $32$. Piszemy dwie liczby jedna pod drugą tak, by cyfry jedności, 
-		cyfry dziesiątek, cyfry setek itd. znajdowały się jedna pod drugą (wyrównujemy do prawej) i podkreślamy tak zapisane liczby. Pod kreską wkrótce 
-        pojawi się wynik.
+        okazuje się technika <i>dodawania w słupku</i> zwana też <i>dodawaniem pisemnym</i>. Najlepiej nauczmy się jej na przykładach.
     </p>
       
-	<div id="columnar_addition_1"></div>
-	<script>
-        Display_table.create_from_table("+",[[], ["1", "2", "7"], ["", "3", "2"], []]).print("columnar_addition_1");
-	</script>
+    <div class="example">
+        <p> 
+            Bądźmy odważni i spróbujmy dodać $127$ oraz $32$. Piszemy dwie liczby jedna pod drugą tak, by cyfry jedności, 
+            cyfry dziesiątek, cyfry setek itd. znajdowały się jedna pod drugą (wyrównujemy do prawej) i podkreślamy tak zapisane liczby. Pod kreską wkrótce 
+            pojawi się wynik.
+        </p>
 
-    <p>
-        Poszukiwanie wyniku polega teraz na tym, by dodawać do siebie kolejne <span class="comment" id="Dobrze, masz rację. Dodajemy do siebie LICZBY 
-		reprezentowane przez cyfry.">cyfry</span> (jedności do jedności, dziesiątek do 
-        dziesiątek itd. – w tej kolejności), a wynik dodawania zapisywać pod kreską. 
-    </p>
+        <div id="columnar_addition_1"></div>
+        <script>
+            Display_table.create_from_table("+",[[], ["1", "2", "7"], ["", "3", "2"], []]).print("columnar_addition_1");
+        </script>
 
-    <ul>
-        <li>$7 + 2 = 9$, więc pod siódemką i dwójką piszemy $9$.</li>
-        <li>$2 + 3 = 5$, więc pod dwójką i trójką piszemy $5$.</li>
-        <li>$1$ nie ma swojego towarzysza, więc przepisujemy ją w niezmienionej postaci.</li>
-    </ul>
-      
-	<div id="columnar_addition_2"></div>
-	<script>
-		 Display_table.create_from_table("+",[[], ["1", "2", "7"], ["", "3", "2"], ["1", "5", "9"]]).print("columnar_addition_2");
-	</script>
+        <p>
+            Poszukiwanie wyniku polega teraz na tym, by dodawać do siebie kolejne <span class="comment" id="Dobrze, masz rację. Dodajemy do siebie LICZBY 
+            reprezentowane przez cyfry.">cyfry</span> (jedności do jedności, dziesiątek do 
+            dziesiątek itd. – w tej kolejności), a wynik dodawania zapisywać pod kreską. 
+        </p>
+
+        <ul>
+            <li>$7 + 2 = 9$, więc pod siódemką i dwójką piszemy $9$.</li>
+            <li>$2 + 3 = 5$, więc pod dwójką i trójką piszemy $5$.</li>
+            <li>$1$ nie ma swojego towarzysza, więc przepisujemy ją w niezmienionej postaci.</li>
+        </ul>
+            
+        <div id="columnar_addition_2"></div>
+        <script>
+                Display_table.create_from_table("+",[[], ["1", "2", "7"], ["", "3", "2"], ["1", "5", "9"]]).print("columnar_addition_2");
+        </script>
+            
+        <p>
+            Wynikiem dodawania $127 + 32$ jest $159$. Nie było tak źle, prawda?
+        </p>
+    </div>
+
+    <div class="example">
+        <p>
+            Spróbujmy się zmierzyć z trochę trudniejszym 
+            przypadkiem – dodajmy $256$ i $947$. Zaczynamy tak samo:
+        </p>
         
-    <p>
-        Wynikiem dodawania $127 + 32$ jest $159$. Nie było tak źle, prawda? Spróbujmy się zmierzyć z trochę trudniejszym 
-        przypadkiem – dodajmy $256$ i $947$. Zaczynamy tak samo:
-    </p>
-      
-	<div id="columnar_addition_3"></div>
-	<script>
-		Display_table.create_from_table("+",[[], ["2", "5", "6"], ["9", "4", "7"], []]).print("columnar_addition_3");
-	</script>
+        <div id="columnar_addition_3"></div>
+        <script>
+            Display_table.create_from_table("+",[[], ["2", "5", "6"], ["9", "4", "7"], []]).print("columnar_addition_3");
+        </script>
+
+        <p>
+            Teraz dodajmy szóstkę do siódemki. Otrzymujemy $13$ – pojawia się problem, bo przecież nie zapiszemy dwóch cyfr pod 
+            szóstką i siódemką. Zrobimy więc tak – rozbijmy $13$ na dwie cyfry, pod szóstką i siódemką napiszemy $3$, a $1$ przenieśmy do 
+            następnej kolumny.
+        </p>
+        
+        <div id="columnar_addition_4"></div>
+        <script>
+            Display_table.create_from_table("+",[["", "1", ""], ["2", "5", "6"], ["9", "4", "7"], ["", "", "3"]]).print("columnar_addition_4");
+        </script>
+        
+        
+        <p>
+            Teraz dodajemy wszystkie trzy cyfry: $1$, $5$ i $4$ – dostajemy $10$. Ponieważ wynik jest dwucyfrowy, w 
+            tej kolumnie piszemy $0$, 
+            a $1$ przenosimy dalej.
+        </p>
+        
+        <div id="columnar_addition_5"></div>
+        <script>
+            Display_table.create_from_table("+",[["1", "1", ""], ["2", "5", "6"], ["9", "4", "7"], ["", "0", "3"]]).print("columnar_addition_5");
+        </script>
+        
+        <p>
+            Dodajemy $1 + 2 + 9$. Wynik $12$ rozbijamy na $2$ i $1$.
+        </p>
+        
+        <div id="columnar_addition_6"></div>
+        <script>
+            Display_table.create_from_table("+",[["1", "1", "1", ""], ["", "2", "5", "6"], ["", "9", "4", "7"], ["", "2", "0", "3"]]).print("columnar_addition_6");
+        </script>
+        
+        <p>
+            Przeniesiona jedynka jest samotna, więc przepisujemy ją bez zmian.
+        </p>
+        
+        <div id="columnar_addition_7"></div>
+        <script>
+            Display_table.create_from_table("+",[["1", "1", "1", ""], ["", "2", "5", "6"], ["", "9", "4", "7"], ["1", "2", "0", "3"]]).print("columnar_addition_7");
+        </script>
+        
+        <p>
+            Dostaliśmy wynik: $256 + 947 = 1203$.
+        </p>
+    </div>
 
     <p>
-        Teraz dodajmy szóstkę do siódemki. Otrzymujemy $13$ – pojawia się problem, bo przecież nie zapiszemy dwóch cyfr pod 
-        szóstką i siódemką. Zrobimy więc tak – rozbijmy $13$ na dwie cyfry, pod szóstką i siódemką napiszemy $3$, a $1$ przenieśmy do 
-        następnej kolumny.
-    </p>
-      
-    <div id="columnar_addition_4"></div>
-	<script>
-		Display_table.create_from_table("+",[["", "1", ""], ["2", "5", "6"], ["9", "4", "7"], ["", "", "3"]]).print("columnar_addition_4");
-	</script>
-	  
-	  
-    <p>
-        Teraz dodajemy wszystkie trzy cyfry: $1$, $5$ i $4$ – dostajemy $10$. Ponieważ wynik jest dwucyfrowy, w 
-		tej kolumnie piszemy $0$, 
-        a $1$ przenosimy dalej.
-    </p>
-      
-    <div id="columnar_addition_5"></div>
-	<script>
-		Display_table.create_from_table("+",[["1", "1", ""], ["2", "5", "6"], ["9", "4", "7"], ["", "0", "3"]]).print("columnar_addition_5");
-	</script>
-	  
-    <p>
-        Dodajemy $1 + 2 + 9$. Wynik $12$ rozbijamy na $2$ i $1$.
-    </p>
-      
-	<div id="columnar_addition_6"></div>
-	<script>
-		Display_table.create_from_table("+",[["1", "1", "1", ""], ["", "2", "5", "6"], ["", "9", "4", "7"], ["", "2", "0", "3"]]).print("columnar_addition_6");
-	</script>
-	  
-    <p>
-        Przeniesiona jedynka jest samotna, więc przepisujemy ją bez zmian.
-    </p>
-      
-    <div id="columnar_addition_7"></div>
-	<script>
-		Display_table.create_from_table("+",[["1", "1", "1", ""], ["", "2", "5", "6"], ["", "9", "4", "7"], ["1", "2", "0", "3"]]).print("columnar_addition_7");
-	</script>
-      
-    <p>
-        Dostaliśmy wynik: $256 + 947 = 1203$. Jeśli dodawanie w słupku sprawia wrażenie <span class="comment" id="Masz problem z poprawnością polityczną?">
-		  czarnej magii</span>, prześledź jeszcze dowolne własne przykłady:
+        Jeśli dodawanie w słupku sprawia wrażenie <span class="comment" id="Masz problem z poprawnością polityczną?">
+		 czarnej magii</span>, prześledź jeszcze dowolne własne przykłady:
     </p>
       
 	<p style="text-align: center">
@@ -629,7 +643,10 @@ interact('.draggable')
     <p class ="type">
         Rozszerzenie
 	</p>
-      
+    <p class="warning">
+        wymagana znajomość tematu: Kolejność wykonywania działań
+    </p>  
+
     <p>
         Być może jesteś ciekaw, dlaczego magiczna metoda dodawania w słupku jest matematycznie poprawna. Czemu jakieś dodawanie 
         cyfr w kolumnach i przepisywanie jedynek do kolejnej kolumny w ogóle działa? W pierwszym przykładzie $127 + 32 = 159$ 
@@ -637,63 +654,110 @@ interact('.draggable')
     </p>
       
     $$
-        127 + 32 = 100 + 20 + 7 + 30 + 2
+        127 + 32 = (100 + 20 + 7) + (30 + 2)
     $$
       
     <p>
-        Ponieważ dodawanie jest przemienne, nie ma znaczenia kolejność zapisania składników, więc:
+        Ponieważ dodawanie jest przemienne, nie ma znaczenia kolejność zapisania składników. Ponieważ jest łączne, możemy rozłożyć nawiasy tak, jak nam wygodnie:
     </p>
       
     $$
-        100 + 20 + 7 + 30 + 2 = 100 + 20 + 30 + 7 + 2
+        (100 + 20 + 7) + (30 + 2) = 100 + (20 + 30) + (7 + 2) = 100 + 50 + 9 = 159
     $$
       
     <p>
-        Ponieważ dodawanie jest łączne, możemy zająć się tą sumą tak, jak nam wygodnie:
-    </p>
-      
-    $$
-        100 + 20 + 30 + 7 + 2 = 100 + 50 + 9 = 159
-    $$
-      
-    <p>
-        W gruncie rzeczy to, co uczyniliśmy, to właśnie sumowanie cyfr jedności ($7 + 2$), dziesiątek ($20 + 30$) i 
-		setek ($100$), 
+        W gruncie rzeczy to, co uczyniliśmy, to właśnie sumowanie cyfr jedności $(7 + 2)$, dziesiątek $(20 + 30)$ i 
+		setek $(100)$, 
         by otrzymać wynik końcowy. Tak jak w słupku. Zobaczmy jeszcze jak działa $256 + 947 = 1203$:
     </p>
 
     <p style="text-align: center">
         $256 + 947 =$<br>
-        $= 200 + 50 + 6 + 900 + 40 + 7 =$<br>
-        <span class="comment_visible" id="ustalamy wygodną kolejność składników">$= 200 + 900 + 50 + 40 + 6 + 7 =$</span><br>
-        <span class="comment_visible" id="dodajemy_cyfry_jedności">$= 200 + 900 + 50 + 40 + 13 =$</span><br>
-        <span class="comment_visible" id="rozbijamy 13 na dwie cyfry">$= 200 + 900 + 50 + 40 + 10 + 3 =$</span><br>
-        <span class="comment_visible" id="dodajemy cyfry dziesiątek">$= 200 + 900 + 100 + 3 =$</span><br>
-        <span class="comment_visible" id="dodajemy cyfry setek">$= 1200 + 3 =$</span><br>
-        <span class="comment_visible" id="rozbijamy 12 na 1 i 2">$= 1000 + 200 + 3 =$</span><br>
+        $= (200 + 50 + 6) + (900 + 40 + 7) =$<br>
+        <span class="comment_visible" id="ustalamy wygodną kolejność składników">$= (200 + 900) + (50 + 40) + (6 + 7) =$</span><br>
+        <span class="comment_visible" id="dodajemy cyfry jedności">$= (200 + 900) + (50 + 40) + 13 =$</span><br>
+        <span class="comment_visible" id="rozbijamy 13 na dwie cyfry">$= (200 + 900) + (50 + 40) + (10 + 3) =$</span><br>
+        <span class="comment_visible" id="przenosimy jedynkę do następnej kolumny">$= (200 + 900) + (50 + 40 + 10) + 3 =$</span><br>
+        <span class="comment_visible" id="dodajemy cyfry dziesiątek">$= (200 + 900) + 100 + 3 =$</span><br>
+        <span class="comment_visible" id="przenosimy jedynkę do następnej kolumny">$= (200 + 900 + 100) + 0 + 3 =$</span><br>
+        <span class="comment_visible" id="dodajemy cyfry setek">$= 1200 + 0 + 3 =$</span><br>
+        <span class="comment_visible" id="rozbijamy 12 na 1 i 2">$= (1000 + 200) + 0 + 3 =$</span><br>
+        $= 1000 + 200 + 0 + 3 =$<br>
         $1203$
     </p>
       
     <p>
-        Dla przejrzystości zapisaliśmy to działanie w kilku linijkach. Kiedy przenosimy nasze obliczenia do następnej linijki w 
-        miejscu znaku równości, zwyczajowo zapisujemy $=$ dwa razy: na końcu poprzedniej linijki i na początku nowej.
-    </p>
-      
-    <p>
-        <span class="comment" id = "To znaczy, że jesteś prawdziwym matematykiem.">Jeżeli wykazujesz skrajny cynizm</span>, będziesz oczekiwał bardziej 
-		  formalnego wyjaśnienia zagadki dodawania w słupku. Proszę bardzo:
+        Ponieważ zależy nam na kompletności materiałów matematycznych zebranych na tej stronie, poniżej przedstawiamy formalne omówienie dodawania w słupku 
+        wraz z czymś co matematycy nazywają "dowodem poprawności". W istocie jest to przerost formy nad treścią i generalnie nie polecamy nurkować w tę
+        niepotrzebnie zawiłą matematykę. Szczególnie, jeśli dopiero rozpoczynasz swoją przygodę w świecie liczb.
     </p>
       
     <p class = "type">
-        Dowód
+        Formalnie
     </p>
       
     <p class = "warning">
-        wymagana znajomość tematu: Algebra
+        wymagana znajomość tematu: Szeregi liczbowe
     </p>
         
     <p>
-        uzupełnię w odpowiednim czasie
+        Formalnie algorytm dodawania pisemnego przedstawia się następująco. Dane są liczby $a_1, a_2, ..., a_n$ o reprezentacjach dziesiętnych
+        $a_i = \sum_{j = 0}^{l_i} 10^j a_{i, j}$, gdzie $l_i$ oznacza długość (liczbę cyfr) liczby $a_i$, zaś $a_{i, j} \in \{0, 1, 2, 3, 4, 5, 6, 7, 8, 9\}$. 
+        Poszukiwana jest reprezentacja dziesiętna ich sumy $s = \sum_{i = 1}^{n} a_i$. Dodawanie pisemne przebiega następująco:
+    </p>
+
+    <p>
+        Weźmy $l = \max\{l_1, l_2, ..., l_n \}$ i wprowadźmy $a_i = \sum_{j = 0}^{l} 10^j a_{i, j}$, przy czym $a_{i, j} = 0$ dla $j > l_i$. Wtedy
+    </p>
+
+    $$ 
+        s = \sum_{i = 1}^{n} a_i = \sum_{i = 1}^{n} \sum_{j = 0}^{l} 10^j a_{ij} = \sum_{j = 0}^{l} \sum_{i = 1}^{n} 10^j a_{ij} = 
+        \sum_{j = 0}^{l} 10^j \sum_{i = 1}^{n} a_{ij}
+    $$
+
+    <p>
+        Rozważmy wartość $\sum_{i = 1}^{n} a_{i, 0}$ (odpowada ona sumie cyfr jedności w dodawaniu pisemnym). Niech $r_1$ oznacza część
+        całkowitą z dzielenia tej liczby przez $10$, zaś $s_0$ jej resztę z dzielenia przez $10$. Inaczej mówiąc, niech $\sum_{i = 1}^{n} a_{i, 0} = 10r_1 + s_0$.
+        Mamy wtedy:
+    </p>
+
+    $$ 
+        s = 10^0 \sum_{i = 1}^{n} a_{i, 0} + 10^1 \sum_{i = 1}^{n} a_{i, 1} + ... + 10^l \sum_{i = 1}^{n} a_{i, l} = 
+        10^0 \left(10r_1 + s_0 \right) + 10^1 \sum_{i = 1}^{n} a_{i, 1} + ... + 10^l \sum_{i = 1}^{n} a_{i, l} = \\
+        = 10^0s_0 + 10^1 \left(r_1 + \sum_{i = 1}^{n} a_{i, 1} \right) + ... + 10^l \sum_{i = 1}^{n} a_{i, l}
+    $$
+
+    <p>
+        Rozważmy wartość $r_1 + \sum_{i = 1}^{n} a_{i, 1}$ (odpowada ona sumie cyfr dziesiątek w dodawaniu pisemnym). Niech $r_2$ oznacza część
+        całkowitą z dzielenia tej liczby przez $10$, zaś $s_1$ jej resztę z dzielenia przez $10$, czyli $r_1 + \sum_{i = 1}^{n} a_{i, 1} = 10r_2 + s_1$.
+        Mamy wtedy:
+    </p>
+
+    $$ 
+        s = s_0 + 10^1 \left(r_1 + \sum_{i = 1}^{n} a_{i, 1} \right) + 10^2 \sum_{i = 1}^{n} a_{i, 2} + ... + 10^l \sum_{i = 1}^{n} a_{i, l} = 
+        s_0 + 10^1 \left(10r_2 + s_1 \right) + 10^2 \sum_{i = 1}^{n} a_{i, 2} + ... + 10^l \sum_{i = 1}^{n} a_{i, l} = \\
+        = s_0 + 10^1 s_1  + 10^2 \left( r_2 + \sum_{i = 1}^{n} a_{i, 2} \right) + ... + 10^l \sum_{i = 1}^{n} a_{i, l}
+    $$
+
+    <p>
+        Kontynuujemy postępowanie w kolejnych iteracjach aż do $l$-tego kroku. Na zasadzie indukcji otrzymujemy wtedy postać:
+    </p>
+
+    $$
+        s =  s_0 + 10^1 s_1 + 10^2 s_2 + ... +  10^l s_l + 10^{l+1}r_{l+1}
+    $$
+
+    <p>
+        Rozwijając do postaci dziesiętnej liczbę $r_{l+1} = \sum_{j = 0}^{k} 10^j r_{l+1, j}$ otrzymujemy poszukiwaną reprezentację liczby $s$:
+    </p>
+
+    $$
+        s =  s_0 + 10^1 s_1 + 10^2 s_2 + ... +  10^l s_l + 10^{l+1} r_{l+1, 0} + 10^{l+2} r_{l+1, 1} + ... + 10^{l+1 + k} r_{l+1, k}
+    $$
+
+    <p>
+        Ponieważ liczby $s_0, s_1, ..., s_l$ stanowią reszty z dzielenia przez $10$, mają reprezentację jednocyfrową. Stąd liczby 
+        $s_0, s_1, ..., s_l, r_{l+1, 0}, r_{l+1, 1}, ..., r_{l+1, k}$ odpowiadają kolejnym (czytanym od prawej) cyfrom liczby $s$.
     </p>
 
 	</div>
