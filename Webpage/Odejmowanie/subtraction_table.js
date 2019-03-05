@@ -21,7 +21,7 @@ $(document).ready(function(){
 					{
 						 for (r = 0; r < table.rows.length; r++)
 							  table.rows[r].cells[j].style.background = "#F0E0E0";
-						 table.rows[i].cells[j].style.background = "#CA7777";
+						 table.rows[i].cells[j].style.background = "#CC4444";
 
 						 field.innerHTML = (i + j - 2) + " - " + (j - 1) + " = " + (i - 1);
 						 field.style.visibility = "visible";
@@ -36,7 +36,7 @@ $(document).ready(function(){
 
 		 for (r = 0; r < this.rows.length; r++)
 			  this.rows[r].cells[4].style.background = "#F0E0E0";
-		 this.rows[5].cells[4].style.background = "#CA7777";
+		 this.rows[5].cells[4].style.background = "#CC4444";
 
 		 field.innerHTML = "a";
 		 field.style.visibility = "hidden";

@@ -2,7 +2,7 @@
 
 p
 {
-	margin: 1em 0;
+	margin: 1.08em 0;
 }
 
 p:not(.printable)
@@ -696,7 +696,7 @@ circle
 {
 	position: absolute;
 	content: "";
-	left: 0;
+	left: -1px;
 	top: 50%;
 	right: 0;
 	border-top: 2px solid;
@@ -730,7 +730,7 @@ td.columnar_operation_underlined
 
 td.columnar_operation_carry
 {
-	font-size: 15px;
+	font-size: 0.7em;
 	vertical-align: center;
 	text-align: center;
 	height: 19px;
