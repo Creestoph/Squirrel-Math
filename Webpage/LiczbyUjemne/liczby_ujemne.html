@@ -5,24 +5,57 @@
 	<title>Liczby ujemne</title>
 	<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 	<link rel="stylesheet" href="../lesson_style.css">
-	
+
+	<script type="text/x-mathjax-config">
+		MathJax.Hub.Config({
+			tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}, 
+			CommonHTML: { linebreaks: { automatic: true } }, 
+			"HTML-CSS": { linebreaks: { automatic: true }, fonts: ["STIX-Web"] }, 
+			SVG: { linebreaks: { automatic: true } } 
+		})
+ 	</script>
+	<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-	<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=MML_HTMLorMML"></script>
 	<script src="../.scripts/scroll_hide.js"></script>
 	<script src="../.scripts/draggable.js"></script>
-	<script src="../.scripts/math.js"></script>
 	<script src="../.scripts/comment.js"></script>
 </head>
 
 <body class="lesson">
   
 <div class = "menu">
-	<a href="../index.html"><button class = "button_convey" style="position: absolute; left: 10px"><span>Strona główna</span></button></a>
-	<a href="../drzewo.html"><button class = "button_convey" style="position: absolute; left: 250px"><span>Drzewo</span></button></a>
-	<a href="liczby_ujemne_short.html"><button class = "button_convey" style="position: relative; left: 80%"><span>Wersja skrócona</span></button></a>
+		<div class="logo">
+				<div>
+					<div class="logo-black-cell" style="float: left"></div>
+					<div class="logo-container-cell" style="float: left">
+						<div class="logo-red-cell" style="float: left"></div>
+						<div class="logo-red-cell" style="float: left"></div>
+						<div class="logo-red-cell" style="float: left"></div>
+						<div class="logo-red-cell" style="float: left"></div>
+					</div>
+					<div class="logo-black-cell" style="float: left; clear: left"></div>
+					<div class="logo-black-cell" style="float: left"></div>
+				</div>
+		</div>
+		<div class="logo-text">
+			<span class="logo-text-1">squirrel</span>
+			<span class="logo-text-2">math</span>
+		</div>
+
+	<a href="../index.html"><button class = "button_convey"><span>STRONA GŁÓWNA</span></button></a>
+	<a href="../drzewo.html"><button class = "button_convey"><span>DRZEWO</span></button></a>
 </div>
-  
-<div class="main">
+
+<div class = "main">
+		
+	<a href="liczby_ujemne_short.html">
+		<div class = "bookmark-shadow">
+			<div class = "bookmark">
+					WERSJA SKRÓCONA
+			</div>
+		</div>
+	</a>
 
 	<p class="lesson_title">
 		Liczby ujemne
@@ -51,18 +84,18 @@
 		W temacie o odejmowaniu dość niechętnie wypowiadaliśmy się na temat brawurowych prób odejmowania większej liczby od mniejszej. 
 		<span class="comment" id="Z wyjątkiem dzielenia przez zero…">Jako że w matematyce nie ma rzeczy niemożliwych</span>, 
 		pora sprostać takiemu wyzwaniu. Liczby ujemne służą do przedstawiania wartości 
-		mniejszych niż <span class="math">0</span>. Liczba <span class="math">-1</span> (czyt. minus jeden) ma wartość o <span class="math">1</span> mniejszą niż zero, <span class="math">-2</span>
+		mniejszych niż $0$. Liczba $-1$ (czyt. minus jeden) ma wartość o $1$ mniejszą niż zero, $-2$
 		to dwa poniżej zera itd. Jeśli rozszerzymy 
 		pojęcie liczb naturalnych o liczby ujemne, dostaniemy dość pokaźną kolekcję:
 	</p>
 	
-	<p align="center">
-		<span class="math">…</span>, <span class="math">-12</span>, <span class="math">-11</span>, <span class="math">-10</span>, <span class="math">-9</span>, 
-		<span class="math">-8</span>, <span class="math">-7</span>, <span class="math">-6</span>, <span class="math">-5</span>, <span class="math">-4</span>, 
-		<span class="math">-3</span>, <span class="math">-2</span>, <span class="math">-1</span>, <span class="math">0</span>, <span class="math">1</span>, 
-		<span class="math">2</span>, <span class="math">3</span>, <span class="math">4</span>, <span class="math">5</span>, <span class="math">6</span>, 
-		<span class="math">7</span>, <span class="math">8</span>, <span class="math">9</span>, <span class="math">10</span>, <span class="math">11</span>, 
-		<span class="math">12</span>, <span class="math">…</span>
+	<p style="text-align: center">
+		$…$, $-12$, $-11$, $-10$, $-9$, 
+		$-8$, $-7$, $-6$, $-5$, $-4$, 
+		$-3$, $-2$, $-1$, $0$, $1$, 
+		$2$, $3$, $4$, $5$, $6$, 
+		$7$, $8$, $9$, $10$, $11$, 
+		$12$, $…$
 	</p>
 	
 	<p>
@@ -74,13 +107,13 @@
 	</p>
 	
 	<ul>
-		<li>Przy <span class="math">40°C</span> umiera się z gorąca.</li>
-		<li>Przy <span class="math">30°C</span> narzeka się na upał i wzywa majstra od klimatyzacji.</li>
-		<li>Przy <span class="math">20°C</span> jest komfortowo, ale nikt nie zwraca na to uwagi.</li>
-		<li>Przy <span class="math">10°C</span> robi się chłodno i ludzie marudzą, że lato się kończy.</li>
-		<li>Przy <span class="math">0°C</span> narzeka się na mróz. Woda ma dość, więc zamarza.</li> 
-		<li>Przy <span class="math">-10°C</span> ludzie marudzą, że w pięciu warstwach ubrania jest niewygodnie.</li>
-		<li>Przy <span class="math">-20°C</span> <span class="Chyba że jest się ciepłą kluchą.">umiera się z zimna</span>.</li>
+		<li>Przy $40°C$ umiera się z gorąca.</li>
+		<li>Przy $30°C$ narzeka się na upał i wzywa majstra od klimatyzacji.</li>
+		<li>Przy $20°C$ jest komfortowo, ale nikt nie zwraca na to uwagi.</li>
+		<li>Przy $10°C$ robi się chłodno i ludzie marudzą, że lato się kończy.</li>
+		<li>Przy $0°C$ narzeka się na mróz. Woda ma dość, więc zamarza.</li> 
+		<li>Przy $-10°C$ ludzie marudzą, że w pięciu warstwach ubrania jest niewygodnie.</li>
+		<li>Przy $-20°C$ <span class="comment" id="Chyba że jest się ciepłą kluchą."> umiera się z zimna</span>.</li>
 	</ul>
 
 	</div>
@@ -105,8 +138,8 @@
 	</p>
 	
 	<p>
-		Kreska stojąca przed liczbami ujemnymi to symbol „minus” – taki sam, jakiego używamy przy odejmowaniu liczb. Jego rolą jest określenie 
-		<i>znaku liczby</i> – <span class="comment" id="przynajmniej na razie">każda</span> liczba w matematyce jest dodatnia, ujemna albo 
+		Kreska stojąca przed liczbami ujemnymi to symbol „minus” - taki sam, jakiego używamy przy odejmowaniu liczb. Jego rolą jest określenie 
+		<i>znaku liczby</i> - <span class="comment" id="przynajmniej na razie">każda</span> liczba w matematyce jest dodatnia, ujemna albo 
 		jest zerem. Czasami liczby ujemne wraz z zerem obejmuje się mianem 
 		<i>niedodatnie</i>, a liczby dodatnie wraz z zerem nazywa się <i>nieujemnymi</i>. 
 	</p>
@@ -116,9 +149,9 @@
 	</p>
 	
 	<ul>
-		<li>Liczby <span class="math">2</span> i <span class="math">-2</span> to liczby przeciwne</li>
-		<li>Liczby <span class="math">2372783</span> i <span class="math">-2372783</span> to liczby przeciwne</li>
-		<li>Liczba <span class="math">0</span> jest przeciwna sama do siebie</li>
+		<li>Liczby $2$ i $-2$ to liczby przeciwne</li>
+		<li>Liczby $2372783$ i $-2372783$ to liczby przeciwne</li>
+		<li>Liczba $0$ jest przeciwna sama do siebie</li>
 	</ul>
 
 	<p>
@@ -127,9 +160,9 @@
 	</p>
 	
 	<ul>
-		<li>Wartość bezwzględna liczby <span class="math">-10</span> wynosi <span class="math">10:&nbsp;&nbsp;&nbsp;|-10|=10</span></li>
-		<li>Wartość bezwzględna liczby <span class="math">6</span> wynosi <span class="math">6:&nbsp;&nbsp;&nbsp;|6|=6</span></li>
-		<li>Wartość bezwzględna liczby <span class="math">0</span> wynosi <span class="math">0:&nbsp;&nbsp;&nbsp;|0|=0</span></li>
+		<li>Wartość bezwzględna liczby $-10$ wynosi $10:&nbsp;&nbsp;&nbsp;|-10|=10$</li>
+		<li>Wartość bezwzględna liczby $6$ wynosi $6:&nbsp;&nbsp;&nbsp;|6|=6$</li>
+		<li>Wartość bezwzględna liczby $0$ wynosi $0:&nbsp;&nbsp;&nbsp;|0|=0$</li>
 	</ul>
 
 	</div>
@@ -159,15 +192,16 @@
 	</p>
 	
 	<p>
-		Przypuśćmy, że chcemy dodać liczby <span class="math">3</span> i <span class="math">5</span>. Nasze pytanie brzmi „Jeśli do liczby <span class="math">3</span> dodamy <span class="math">5</span>, ile otrzymamy?”. 
+		Przypuśćmy, że chcemy dodać liczby $3$ i $5$. Nasze pytanie brzmi „Jeśli do liczby $3$ dodamy $5$, ile otrzymamy?”. 
 		Oś liczbowa zwraca odpowiedź: 
-		znajdujemy na osi liczbowej trójkę, a następnie skaczemy o <span class="math">5</span> pozycji w prawo i lądujemy na ósemce.
+		znajdujemy na osi liczbowej trójkę, a następnie skaczemy o $5$ pozycji w prawo i lądujemy na ósemce.
 	</p>
 
 	<center><img src=".images/Screenshot_2.png" align="middle"></img></center>
 
 	<p>
-		Podobnie, gdybyśmy chcieli wykonać odejmowanie <span class="math">6 – 4</span>, zaczęlibyśmy od liczby <span class="math">6</span>, przeskoczyli o <span class="math">4</span> pozycji w prawo i skończyli na dwójce.
+		Podobnie, gdybyśmy chcieli wykonać odejmowanie $6 - 4$, zaczęlibyśmy od liczby $6$, 
+		przeskoczyli o $4$ pozycje w lewo i skończyli na dwójce.
 	</p>
 	
 
@@ -179,133 +213,133 @@
 	
 	<ul>
 		<li>
-			<span class="math">–7 + 5 = –2</span>
+			$-7 + 5 = -2$
 
 		<center><img src=".images/Screenshot_4.png" align="middle"></img></center>
 		</li>
 		<li>
-			<span class="math">8 – 12 = –4</span>
+			$8 - 12 = -4$
 
 		<center><img src=".images/Screenshot_5.png" align="middle"></img></center>
 		</li>
 	</ul>
 		
 	<p>
-		Zastanówmy się, co gdyby chcieć dodać do 4 liczbę -2. Możemy skorzystać z przemienności dodawania, by otrzymać
+		Zastanówmy się, co gdyby chcieć dodać do $4$ liczbę $-2$. Możemy skorzystać z przemienności dodawania, by otrzymać
 	</p>
 	
-	<p class="math">
-		 4 + Bracket(-2) = -2 + 4 = -2
-	</p>
+	$$
+		 4 + (-2) = -2 + 4 = 2
+	$$
 		
 		<center><img src=".images/Screenshot_6.png" align="middle"></img></center>
 
 	<p>
-		Liczbę <span class="math">-2</span> zapisaliśmy w nawiasie, ponieważ <span class="math">4 +-2</span> wygląda głupio. Liczby ujemne zapisujemy w nawiasie, jeśli przed nimi stoi jakiś 
+		Liczbę $-2$ zapisaliśmy w nawiasie, ponieważ $4 +-2$ wygląda głupio. Liczby ujemne zapisujemy w nawiasie, jeśli przed nimi stoi jakiś 
 		znak działania. Po znaku równości oraz na początku działania można zapisać liczbę ujemną bez nawiasu.
 	</p>
 	
 	<p>
-		Powyższe działanie możemy ugryźć inaczej: na osi liczbowej zaczynamy od czwórki i przesuwamy się o <span class="math">-2</span> pozycji w prawo… tylko co to 
+		Powyższe działanie możemy ugryźć inaczej: na osi liczbowej zaczynamy od czwórki i przesuwamy się o $-2$ pozycji w prawo… tylko co to 
 		znaczy? Zauważmy pewne tendencje:
 	</p>
 	
 	<ul>
 		<li>
-			<span class="math">4 + 3 = 7</span>
+			$4 + 3 = 7$
 			<center><img src=".images/Screenshot_7.png" align="middle"></img></center>
 		</li>
 		
 		<li>
-			<span class="math">4 + 2 = 6</span>
+			$4 + 2 = 6$
 			<center><img src=".images/Screenshot_8.png" align="middle"></img></center>
 		</li>
 		
 		<li>
-			<span class="math">4 + 1 = 5</span>
+			$4 + 1 = 5$
 			<center><img src=".images/Screenshot_9.png" align="middle"></img></center>
 		</li>
 		
 		<li>
-			<span class="math">4 + 0 = 4</span>
+			$4 + 0 = 4$
 			<center><img src=".images/Screenshot_10.png" align="middle"></img></center>
 		</li>
 		
 		<li>
-			<span class="math">4 + Bracket(-1) = 3</span>
+			$4 + (-1) = 3$
 			<center><img src=".images/Screenshot_11.png" align="middle"></img></center>
 		</li>
 		
 		<li>
-			<span class="math">4 + Bracket(-2) = 2</span>
+			$4 + (-2) = 2$
 			<center><img src=".images/Screenshot_12.png" align="middle"></img></center>
 		</li>
 		
 	</ul>
 	
 	<p>
-		Rzeczywiście: przeskakiwanie o <span class="math">-2</span> pozycje w prawo jest tym samym, co przeskakiwanie o dwie pozycje w lewo. 
+		Rzeczywiście: przeskakiwanie o $-2$ pozycje w prawo jest tym samym, co przeskakiwanie o dwie pozycje w lewo. 
 		A przecież przeskakiwanie w lewo symbolizuje odejmowanie.
 	</p>
 	
-	<p align="center" class="math">
-		4 + Bracket(-2) = 4 – 2 = 2
-	</p>
+	$$
+		4 + (-2) = 4 - 2 = 2
+	$$
 	
 	<p>
-		To dość ogólna zasada: dodawanie liczby ujemnej jest równoważne odejmowaniu liczby do niej przeciwnej. Występujące obok siebie <span class="math">+</span> i <span class="math">–</span> zwykle 
+		To dość ogólna zasada: dodawanie liczby ujemnej jest równoważne odejmowaniu liczby do niej przeciwnej. Występujące obok siebie $+$ i $-$ zwykle 
 		można zastąpić pojedynczym minusem.
 	</p>
 
 	<p>
-		Zastanówmy się jeszcze nad odejmowaniem liczby ujemnej. Działanie <span class="math">5 – Bracket(–3)</span> możemy rozumieć jako „przesunięcie piątki o <span class="math">-3</span> pozycje w lewo”, 
-		a więc „przesunięcie piątki o <span class="math">3</span> pozycje w prawo”
+		Zastanówmy się jeszcze nad odejmowaniem liczby ujemnej. Działanie $5 - (-3)$ możemy rozumieć jako „przesunięcie piątki o $-3$ pozycje w lewo”, 
+		a więc „przesunięcie piątki o $3$ pozycje w prawo”
 	</p>
 	
-	<p align="center" class="math">
-		5 – Bracket(–3) = 5 + 3 = 8
-	</p>
+	$$
+		5 - (-3) = 5 + 3 = 8
+	$$
 
 	<center><img src=".images/Screenshot_13.png" align="middle"></img></center>
 
 	<p>
-		Odejmowanie liczby ujemnej jest równoważne dodawaniu liczby do niej przeciwnej. Dwa znaki <span class="math">–</span> występujące obok siebie możemy zastąpić 
-		pojedynczym znakiem <span class="math">+</span>.
+		Odejmowanie liczby ujemnej jest równoważne dodawaniu liczby do niej przeciwnej. Dwa znaki $-$ występujące obok siebie możemy zastąpić 
+		pojedynczym znakiem $+$.
 	</p>
 	
 	<div class="example">
-		Stefan z <span class="math">30 zł</span> w portfelu wybrał się do cukierni „Drożdże Bogdana”. Kupił pięć rogalików za <span class="math">3 zł</span>, zostało mu więc <span class="math">15 zł</span>.
-		<p align="center" class="math">
-			30 zł – 5 ∙ 3zł = 30 zł – 15 zł = 15 zł
-		</p>
-		Czekając na wydanie reszty, spostrzegł niebiański tort biszkoptowy wyceniony na <span class="math">50 zł</span>. Wiedząc, że nie może mu się oprzeć, 
-		kupił tort na krechę. Teraz Stefan jest winien Bogdanowi <span class="math">35 zł</span>. 
-		<p align="center" class="math">
-			15 zł – 50 zł = –35 
-		</p>
-		Można powiedzieć, że stan konta Stefana wynosi <span class="math">–35 zł</span>.
+		Stefan z $30 \text{ zł}$ w portfelu wybrał się do cukierni „Drożdże Bogdana”. Kupił pięć rogalików za $3 \text{ zł}$, zostało mu więc $15 \text{ zł}$.
+		$$
+			30 \text{ zł} - 5  \cdot  3\text{ zł} = 30 \text{ zł} - 15 \text{ zł} = 15 \text{ zł}
+		$$
+		Czekając na wydanie reszty, spostrzegł niebiański tort biszkoptowy wyceniony na $50 \text{ zł}$. Wiedząc, że nie może mu się oprzeć, 
+		kupił tort na krechę. Teraz Stefan jest winien Bogdanowi $35 \text{ zł}$. 
+		$$
+			15 \text{ zł} - 50 \text{ zł} = -35 \text{ zł}
+		$$
+		Można powiedzieć, że stan konta Stefana wynosi $-35 \text{ zł}$.
 	</div>
 	<div class="example">
-		Po powrocie do domu Stefan zaczął buszować w Internecie. Reklama „wyciskarki do cytryn za jedyne <span class="math">20 zł</span>” wyskoczyła w 
+		Po powrocie do domu Stefan zaczął buszować w Internecie. Reklama „wyciskarki do cytryn za jedyne $20 \text{ zł}$” wyskoczyła w 
 		przeglądarce tak nachalnie, że Stefan zdecydował się na zakup. Zrealizował zamówienie na stronie sprzedawcy i zobowiązał się do 
-		„płatności przy odbiorze”. Oznacza to, że stan konta Stefana jeszcze zmalał – Stefan dodał sobie kolejny dług do zapłaty
-		<p align="center" class="math">
-			–35 zł + Bracket(–20 zł) = –55 zł
-		</p>
+		„płatności przy odbiorze”. Oznacza to, że stan konta Stefana jeszcze zmalał - Stefan dodał sobie kolejny dług do zapłaty
+		$$
+			-35 \text{ zł} + (-20 \text{ zł}) = -55 \text{ zł}
+		$$
 	</div>
 	<div class="example">
-		Następnego dnia Stefan znalazł na chodniku banknot <span class="math">50 zł</span>. Uradowany od razu zapłacił Bogdanowi za tort. Jego stan konta wzrósł, 
+		Następnego dnia Stefan znala\text{ zł} na chodniku banknot $50 \text{ zł}$. Uradowany od razu zapłacił Bogdanowi za tort. Jego stan konta wzrósł, 
 		chociaż nadal jest zadłużony.
-		<p align="center" class="math">
-			–55zł + 50 zł = –5 zł
-		</p>
+		$$
+			-55\text{ zł} + 50 \text{ zł} = -5 \text{ zł}
+		$$
 	</div>
 	<div class="example">
-		Wieczorem Stefan uświadomił sobie, że nienawidzi cytryn. Złożył rezygnację z zamówienia. W ten sposób pozbył się długu na <span class="math">20 zł</span>
-		(z jego stanu konta został wymazany dług na <span class="math">20 zł</span>).
-		<p align="center" class="math">
-			–5 zł – Bracket(–20 zł) = 15 zł
-		</p>
+		Wieczorem Stefan uświadomił sobie, że nienawidzi cytryn. \text{ zł}ożył rezygnację z zamówienia. W ten sposób pozbył się długu na $20 \text{ zł}$
+		(z jego stanu konta został wymazany dług na $20 \text{ zł}$).
+		$$
+			-5 \text{ zł} - (-20 \text{ zł}) = 15 \text{ zł}
+		$$
 	</div>
 
 	</div>
@@ -325,23 +359,23 @@
 	</p>
 	
 	<p>
-		Mnożenie to po prostu wielokrotne dodawanie. Działanie <span class="math">5 ∙ Bracket(-2)</span> możemy interpretować jako
+		Mnożenie to po prostu wielokrotne dodawanie. Działanie $5  \cdot  (-2)$ możemy interpretować jako
 	</p>
 	
-	<p align="center" class="math">
-		Bracket(-2) + Bracket(-2) + Bracket(-2) + Bracket(-2) + Bracket(-2) = -10
-	</p>
+	$$
+		(-2) + (-2) + (-2) + (-2) + (-2) = -10
+	$$
 	
 	<p>
 		Jeśli tylko jeden z czynników jest ujemny, sprawa nie jest skomplikowana. Jak jednak rozumieć działanie
 	</p>
 	
-	<p align="center">
-		<span class="math">Bracket(-3) ∙ Bracket(-2)</span> ?
+	<p style="text-align: center">
+		$(-3)  \cdot  (-2)$ ?
 	</p>
 	
 	<p>
-		Wyobraźmy sobie kolejne wielokrotności liczby <span class="math">-2</span>
+		Wyobraźmy sobie kolejne wielokrotności liczby $-2$
 	</p>
 
 	<center><img src=".images/Screenshot_14.png" align="middle"></img></center>
@@ -350,33 +384,33 @@
 		Ponownie okazuje się, że podwójny minus daje plus:
 	</p>
 	
-	<p align="center" class="math">
-		Bracket(-3) ∙ Bracket(-2) = 6
-	</p>
+	$$
+		(-3)  \cdot  (-2) = 6
+	$$
 
 	<p>
 		Dzielenie liczb ujemnych wygląda podobnie. Skoro
 	</p>
 	
-	<p align="center" class="math">
-		5 ∙ Bracket(-2) = Bracket(-2) + Bracket(-2) + Bracket(-2) + Bracket(-2) + Bracket(-2) = -10
-	</p>
+	$$
+		5  \cdot  (-2) = (-2) + (-2) + (-2) + (-2) + (-2) = -10
+	$$
 	
 	<p>
 		to
 	</p>
 	
-	<p align="center" class="math">
-		Bracket(-10) : 5 = -2
-	</p>
+	$$
+		(-10) : 5 = -2
+	$$
 	
 	<p>
 		a także
 	</p>
 	
-	<p align="center" class="math">
-		Bracket(-10) : Bracket(-2) = 5
-	</p>
+	$$
+		(-10) : (-2) = 5
+	$$
 
 	<p>
 		Działania na liczbach ujemnych przebiegają właściwie tak samo jako działania na liczbach dodatnich. Trzeba jedynie uważać na znaki.
@@ -393,25 +427,25 @@
 	</p>
 	
 	<div class="example">
-		Stefan – znany lekkoduch – zaciągnął pożyczkę na <span class="math">200 zł</span> u sześciu różnych osób. Jego konto jest <span class="math">1200 zł</span> na minusie.
-		<p align="center" class="math">
-			6 ∙ Bracket(–200 zł) = –1200 zł
-		</p>
+		Stefan - znany lekkoduch - zaciągnął pożyczkę na $200 \text{ zł}$ u sześciu różnych osób. Jego konto jest $1200 \text{ zł}$ na minusie.
+		$$
+			6  \cdot  (-200 \text{ zł}) = -1200 \text{ zł}
+		$$
 	</div>
 	<div class="example">
 		Sytuacja wygląda kiepsko, więc Stefan zadzwonił do czterech znajomych sprzed lat, którzy winni mu byli przysługę. Stefan i jego 
-		kumple podzielili zadłużenie pomiędzy siebie – teraz każdy musi się zrzucić po <span class="math">240 zł</span>.
-		<p align="center" class="math">
-			–1200 zł : 5 = –240 zł
-		</p>
+		kumple podzielili zadłużenie pomiędzy siebie - teraz każdy musi się zrzucić po $240 \text{ zł}$.
+		$$
+			-1200 \text{ zł} : 5 = -240 \text{ zł}
+		$$
 	</div>
 	<div class="example">
 		Marcel i Gucio niesamowicie śmierdzą. Zawsze, kiedy siedzą w klasie, uprzykrzają życie towarzyszom. Gdyby stworzyć 
-		„punkty przyjemności zapachu” każdy z nich miałby <span class="math">–10</span> punktów. Dzisiejszego dnia zdarzył się cud: obydwoje nie przyszli na zajęcia. 
-		W klasie od razu czuć niespotykany powiew świeżości na </span>+20</span> punktów.
-		<p align="center" class="math">
-			Bracket(–2) ∙ Bracket(–10) = 20
-		</p>
+		„punkty przyjemności zapachu” każdy z nich miałby $-10$ punktów. Dzisiejszego dnia zdarzył się cud: obydwoje nie przyszli na zajęcia. 
+		W klasie od razu czuć niespotykany powiew świeżości na $+20$ punktów.
+		$$
+			(-2)  \cdot  (-10) = 20
+		$$
 	</div>
 	
 	</div>

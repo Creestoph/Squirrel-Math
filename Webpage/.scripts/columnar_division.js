@@ -65,11 +65,11 @@ Columnar_division.prototype.generate_from_input = function (input_id, columnar_m
 
 Columnar_division.prototype.next = function () {
     this.step += 1;
-    this.print_step(this.step)
+    this.print_step(this.step);
 }
 Columnar_division.prototype.prev = function () {
     this.step -= 1;
-    this.print_step(this.step)
+    this.print_step(this.step);
 }
 
 Columnar_division.prototype.print_step = function (i) {

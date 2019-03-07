@@ -1,14 +1,20 @@
-#sheep_1 img[src="../.images/sheep.jpg"]
+.sheep_big img[src="../.images/sheep.png"]
 {
-	height: 55px;
+	height: 70px;
 }
 
-#sheep_2 img[src="../.images/sheep.jpg"]
+
+.sheep_big
 {
-	height: 55px;
+	margin-bottom: -0.5em;
 }
 
-#sheep_3 img[src="../.images/sheep.jpg"]
+.sheep_small img[src="../.images/sheep.png"]
 {
-	height: 25px;
+	height: 30px;
+}
+
+.sheep_small
+{
+	margin-bottom: -1em;
 }

@@ -1,0 +1,644 @@
+<!DOCTYPE HTML PUBLIC “-//W3C//DTD HTML 4.01 Transitional//EN”>
+<html lang="pl">
+
+<head>
+	<title>Potęgowanie</title>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+	<link rel="stylesheet" href="../lesson_style.css">
+	<link rel="stylesheet" href="./style.css">
+
+	<script type="text/x-mathjax-config">
+		MathJax.Hub.Config({
+			tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}, 
+			CommonHTML: { linebreaks: { automatic: true } }, 
+			"HTML-CSS": { linebreaks: { automatic: true }, fonts: ["STIX-Web"] }, 
+			SVG: { linebreaks: { automatic: true } } 
+		})
+ 	</script>
+	<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+	<script src="../.scripts/scroll_hide.js"></script>
+	<script src="../.scripts/draggable.js"></script>
+	<script src="../.scripts/comment.js"></script>
+</head>
+
+<body class="lesson">
+  
+<div class = "menu">
+		<div class="logo">
+				<div>
+					<div class="logo-black-cell" style="float: left"></div>
+					<div class="logo-container-cell" style="float: left">
+						<div class="logo-red-cell" style="float: left"></div>
+						<div class="logo-red-cell" style="float: left"></div>
+						<div class="logo-red-cell" style="float: left"></div>
+						<div class="logo-red-cell" style="float: left"></div>
+					</div>
+					<div class="logo-black-cell" style="float: left; clear: left"></div>
+					<div class="logo-black-cell" style="float: left"></div>
+				</div>
+		</div>
+		<div class="logo-text">
+			<span class="logo-text-1">squirrel</span>
+			<span class="logo-text-2">math</span>
+		</div>
+
+	<a href="../index.html"><button class = "button_convey"><span>STRONA GŁÓWNA</span></button></a>
+	<a href="../drzewo.html"><button class = "button_convey"><span>DRZEWO</span></button></a>
+</div>
+
+<div class = "main">
+		
+	<a href="liczby_short.html">
+		<div class = "bookmark-shadow">
+			<div class = "bookmark">
+					WERSJA SKRÓCONA
+			</div>
+		</div>
+	</a>
+
+	<p class="lesson_title">
+		Potęgowanie
+	</p>
+    
+	<p>
+		Dodawanie, odejmowanie, mnożenie i dzielenie to dopiero przedsmak tego, co można wyczyniać z liczbami. 
+		Jeśli już wydawało Ci się, że posiadasz pewną władzę nad arytmetyką, czas zobaczyć, czym w matematyce jest prawdziwa potęga.
+	</p>
+
+	<div class="chapter">
+	<div class="chapter_name">
+		Mnożenie to za mało
+	</div>
+	<hr>
+	
+	<div class="chapter_mask">
+	<div class="chapter_body">
+
+	<p class="type">
+		Intuicje
+	</p>
+	
+	<p>
+		Przypomnijmy sobie pierwsze kroki, jakie stawialiśmy w świecie matematyki, 
+		poznając, czym jest mnożenie. Zdefiniowaliśmy je jako wielokrotne dodawanie do siebie tej samej liczby:
+	</p>
+
+	$$
+		3+3+3+3+3=5 \cdot 3
+	$$
+	<p>
+		Pięciokrotne dodanie do siebie trójki oznaczaliśmy jako „pięć razy trzy”, propagując, że mnożenie jest działaniem wyższego rzędu niż 
+		dodawanie. Na tej samej zasadzie definiujemy potęgowanie, jako działanie wyższego rzędu niż mnożenie:
+	</p>
+	
+	$$
+		3 \cdot 3 \cdot 3 \cdot 3 \cdot 3=3^5
+	$$
+
+	<p>
+		Pięciokrotne pomnożenie przez siebie trójki oznaczamy jako „trzy do potęgi piątej” i zapisujemy to jako trójkę posiadającą w 
+		<i>indeksie górnym</i> piątkę. Liczba, którą mnożymy przez siebie wielokrotnie, to <i>podstawa potęgi</i>, a ilość mnożeń, jakich 
+		dokonujemy (mała liczba w prawym górnym rogu), to <i>wykładnik potęgi</i>. 
+	</p>
+	
+	<p>
+		W zagadnieniach informatycznych potęgę zapisujemy z użyciem symbolu $ \text{^}$ widocznego na klawiszu 
+		$6$ klawiatury 
+		komputera.
+	</p>
+	
+	$$
+		3 \cdot 3 \cdot 3 \cdot 3 \cdot 3=3 \text{^}5
+	$$
+	
+	<p>
+		Jest to wygodny zapis, gdy nie mamy możliwości sformatowania tekstu w indeksie górnym.
+	</p>
+	
+	<p class="type">
+		Formalnie
+	</p>
+	
+	<p>
+		Formalna definicja potęgi o wykładniku naturalnym przedstawia się następująco:
+	</p>
+
+	<center><img src=".images/Screenshot_1.png" align="middle"></img></center>
+	
+	<p>
+		Definicja ta mówi, że pod $a$ oraz $n$ możemy podstawić dowolne 
+		liczby i zinterpretować napis $a^n$ jako pomnożenie 
+		liczby $a$ przez siebie $n$ razy. W takim zapisie liczba $a$ jest 
+		podstawą potęgi, zaś liczba $n$ to wykładnik potęgi, a sam zapis $a^n$ nazywamy potęgą 
+		liczby $a$. 
+	</p>
+
+	<p class="type">
+		Rozszerzenie
+	</p>
+	
+	<p>
+		Co ciekawe, chociaż dodawanie oraz mnożenie są działaniami łącznymi i przemiennymi, potęgowanie nie jest ani łączne, ani przemienne:
+	</p>
+	
+	<ul>
+		<li>$2^3=2 \cdot 2 \cdot 2=8$ nie jest tym samym co $3^2=3 \cdot 3=9$</li>
+		<li>$(2^2 )^3=(2 \cdot 2)^3=4^3=4 \cdot 4 \cdot 4=64$ nie jest tym samym, co 
+		$2^{2^3}=2^{2 \cdot 2 \cdot 2}=2^8=2 \cdot 2 \cdot 2 \cdot 2 \cdot 2 \cdot 2 \cdot 2 \cdot 2=256$</li>
+	</ul>
+
+	</div>
+	</div>
+	</div>
+	
+	<div class="chapter">
+	<div class="chapter_name">
+		Kwadraty i sześciany
+	</div>
+	<hr>
+	
+	<div class="chapter_mask">
+	<div class="chapter_body">
+	
+	<p class="type">
+		Intuicje
+	</p>
+	
+	<p>
+		W praktyce potęgowanie pełni rolę narzędzia matematycznego, dzięki któremu nie musimy pisać nużąco długich iloczynów, gdy jako czynnik 
+		pojawia się kilka razy ta sama liczba. Im dalej zagłębiamy się w matematyczne fantazje, tym bardziej oddalamy się <span class="comment"
+		id="i od Boga.">od przyziemnych, 
+		namacalnych, życiowych zagadnień</span>, przez co ilustrowanie matematyki "codziennymi" problemami staje się niemożliwe.
+		Potęgowanie stoi jeszcze na granicy abstrakcji i przy odrobinie dobrej woli możemy zobaczyć 
+		potęgowanie w akcji.
+	</p>
+
+	<p>
+		Potrzebujemy klocków. Dużo klocków. Potęgowanie może być dobrą zabawą, a żeby tego dowieźć 
+		ustawimy klocki jeden obok drugiego, wzdłuż linii:
+	</p>
+
+	<center><img src=".images/Screenshot_2.png" align="middle"></img></center>
+	
+	<p>
+		Pięć klocków w jednej linii możemy postrzegać jako $5^1$, jakby piątka występująca w iloczynie tylko jeden raz. 
+		Następnie rozmieśćmy 
+		klocki na podłodze, jeden obok drugiego w regularnych rządkach i kolumnach: 
+	</p>
+
+	<center><img src=".images/Screenshot_3.png" align="middle"></img></center>
+	
+	<p>
+		Mamy pięć poziomych rzędów, a w każdym z nich mieści się pięć klocków, czyli razem:
+	</p>
+	
+	$$
+		5 \cdot 5=5^2
+	$$
+	
+	<p>
+		Jeżeli masz pewną wprawę w rozpoznawaniu kształtów geometrycznych, możesz zauważyć, że powyższy obrazek przedstawia klocki ułożone w 
+		kwadrat. Z tego powodu drugą potęgę liczby nazywamy <i>kwadratem</i> tej liczby. Będziemy więc mówić, że 
+		„$25$ jest kwadratem liczby $5$” lub że „$5$ do kwadratu 
+		wynosi $25$”.
+		Postępując dalej w naszym szaleństwie, ułóżmy kwadraty z klocków w warstwy, jedna nad drugą:
+	</p>
+
+	<center><img src=".images/Screenshot_4.png" align="middle"></img></center>
+	
+	<p>
+		Liczba klocków w naszej pokaźnej konstrukcji wynosi
+	</p>
+	
+	$$
+		5 \cdot 5 \cdot 5=5^3
+	$$
+	
+	<p>
+		ponieważ składa się ona z $5$ warstw, a każda ma 
+		$25$ klocków. Kształt, który przypomina nasza konstrukcja, to sześcian i z tego powodu trzecią potęgę liczby 
+		nazywamy <i>sześcianem</i> tej liczby. Będziemy mówić, że „$125$ jest sześcianem liczby $5$” 
+		lub że „$5$ do sześcianu wynosi $125$”.
+		Niestety tu nasza wizualizacja się kończy, jak również kończy się specjalne nazewnictwo kolejnych potęg. 
+		$5^4$ będziemy czytać po prostu jako „pięć do potęgi czwartej”. Graficzna reprezentacja czwartej potęgi 
+		wymagałaby właściwie czegoś w rodzaju czwartego wymiaru przestrzennego, a my jeszcze nie jesteśmy gotowi na SF.
+	</p>
+	
+	<p class="type">
+		Warsztat
+	</p>
+	
+	<p>
+		Wkrótce okaże się, że znajomość kwadratów i sześcianów niewielkich liczb naturalnych jest bardzo pomocna, by nabrać biegłości w rachunkach.
+		Jeśli zależy Ci na osiągnięciu poziomu oficera, a nie jedynie marnego kadeta, przyzwyczaj swoje oczy do tych wartości:
+	</p>
+	
+	<table class="table1 center">
+		<tr><td>$0^2=0$</td><td>$0^3=0$</td></tr>
+		<tr><td>$1^2=1$</td><td>$1^3=1$</td></tr>
+		<tr><td>$2^2=4$</td><td>$2^3=8$</td></tr>
+		<tr><td>$3^2=9$</td><td>$3^3=27$</td></tr>
+		<tr><td>$4^2=16$</td><td>$4^3=64$</td></tr>
+		<tr><td>$5^2=25$</td><td>$5^3=125$</td></tr>
+		<tr><td>$6^2=36$</td><td>$6^3=216$</td></tr>
+		<tr><td>$7^2=49$</td><td>$7^3=343$</td></tr>
+		<tr><td>$8^2=64$</td><td>$8^3=512$</td></tr>
+		<tr><td>$9^2=81$</td><td>$9^3=729$</td></tr>
+		<tr><td>$10^2=100$</td><td>$10^3=1000$</td></tr>
+		<tr><td>$11^2=121$</td><td>$11^3=1331$</td></tr>
+		<tr><td>$12^2=144$</td><td>$12^3=1728$</td></tr>
+		<tr><td>$13^2=169$</td><td>$13^3=2197$</td></tr>
+		<tr><td>$14^2=196$</td><td>$14^3=2744$</td></tr>
+		<tr><td>$15^2=225$</td><td>$15^3=3375$</td></tr>
+		<tr><td>$16^2=256$</td><td>$16^3=4096$</td></tr>
+		<tr><td>$17^2=289$</td><td>$17^3=4913$</td></tr>
+		<tr><td>$18^2=324$</td><td>$18^3=5832$</td></tr>
+		<tr><td>$19^2=361$</td><td>$19^3=6859$</td></tr>
+		<tr><td>$20^2=400$</td><td>$20^3=8000$</td></tr>
+	</table>
+	
+	<p>
+		Aby uchodzić za człowieka wykształconego, powinieneś dobrze znać kwadraty i sześciany pierwszych dziesięciu liczb naturalnych.
+	</p>
+	
+	</div>
+	</div>
+	</div>
+	
+	<div class="chapter">
+	<div class="chapter_name">
+		Potęgowanie a kolejność wykonywania działań
+	</div>
+	<hr>
+	
+	<div class="chapter_mask">
+	<div class="chapter_body">
+
+	<p class="type">
+		Intuicje
+	</p>
+	
+	<p>
+		Ponieważ mnożenie jest działaniem wyższego rzędu niż dodawanie, wykonujemy je jako pierwsze w działaniu. Podobnie, skoro potęgowanie 
+		jest działaniem wyższego rzędu niż mnożenie, będzie ono miało pierwszeństwo  przed mnożeniem. Zaktualizowana kolejność wykonywania 
+		działań wyglądałaby następująco:
+	</p>
+	
+	<ol style="margin-top: 0" class="formula">
+		<li style="text-align: left">Działania w nawiasach;</li>
+		<li style="text-align: left">Potęgowanie;</li>
+		<li style="text-align: left">Mnożenie i dzielenie w kolejności występowania;</li>
+		<li style="text-align: left">Dodawanie i odejmowanie w kolejności występowania.</li>
+	</ol>
+
+	<p>
+		Tak więc:
+	</p>
+	
+	<ul>
+		<li>$3 \cdot 4^{2+1}+5=3 \cdot 4^3+5=3 \cdot 64+5=192+5=197$</li>
+		<li>$6:3^2-(6:3)^2=6:9-2^2=\frac{2}{3}-4=-\frac{10}{3}$</li>
+		<li>$2^{3^2}=2^9=512$</li>
+		<li>$5^2-4^2-(-3)^2=25-16-9=0$</li>
+	</ul>
+	
+	<p>
+		Warto mieć na uwadze, że zapis $-2^4$ oznacza „dwa do czwartej na minusie”, czyli liczbę ujemną o wartości 
+		$-16$, ale zapis $(-2)^4$ to czwarta potęga liczby $-2$, a 
+		więc $16$.
+	</p>
+
+	</div>
+	</div>
+	</div>
+	
+	<div class="chapter">
+	<div class="chapter_name">
+		Potęgi o wykładniku całkowitym
+	</div>
+	<hr>
+	
+	<div class="chapter_mask">
+	<div class="chapter_body">
+
+	<p class="type">
+		Intuicje
+	</p>
+	
+	<p>
+		Potrafimy już rozpracowywać zapiski typu $a^n$, gdzie $n$ jest jakąś liczbą naturalną 
+		typu $1$, $2$, $3$, $4$, 
+		$5$… zaś $a$ może być dowolną znaną nam liczbą: dodatnią, ujemną, ułamkową... W ramach ćwiczenia:
+	</p>
+	
+	<ul>
+		<li>$2^5=2 \cdot 2 \cdot 2 \cdot 2 \cdot 2=32$</li>
+		<li>$(-3)^4=(-3) \cdot (-3) \cdot (-3) \cdot (-3)=81$</li>
+		<li>$(\frac{5}{4})^2=\frac{5}{4} \cdot \frac{5}{4}=\frac{25}{16}$</li>
+		<li>$(-\frac{1}{7})^3=(-\frac{1}{7}) \cdot (-\frac{1}{7}) \cdot (-\frac{1}{7})=-\frac{1}{343}$</li>
+	</ul>
+	
+	<p>
+		Warto zauważyć kilka podstawowych cech potęgowania:
+	</p>
+	
+	<ul>
+		<li>
+			Dowolna liczba podniesiona do potęgi pierwszej to ta sama liczba: 
+			$$
+				a^1=a
+			$$
+		</li>
+		<li>
+			Jedynka podniesiona do dowolnej potęgi wynosi zawsze $1$: 
+			$$
+				1^n=1
+			$$
+		</li>
+		<li>
+			Zero podniesione do dowolnej potęgi wynosi zawsze $0$: 
+			$$
+				0^n=0
+			$$
+		</li>
+		<li>
+			Liczba ujemna podniesiona do potęgi parzystej daje wynik dodatni, a do potęgi nieparzystej ujemny:
+			$$
+				\text{Jeśli} \  a \lt 0 \text{, to}  \  a^n \gt 0  \  \text{dla}  \  n  \  \text{parzystych oraz} \ a^n \lt 0  \ 
+				\text{dla}  \  n  \  \text{nieparzystych}
+			$$
+		</li>
+	</ul>
+
+	<p>
+		Zastanówmy się, co się stanie, gdy podniesiemy liczbę do potęgi ujemnej. Warto zwrócić uwagę, że gdy podnosimy liczbę 
+		do coraz wyższych potęg, przy każdym kroku mnożymy poprzedni wynik przez tę liczbę:
+	</p>
+
+	<center><img src=".images/Screenshot_5.png" align="middle"></img></center>
+	
+	<p>
+		Możemy spojrzeć na to z drugiej strony: gdy podnosimy liczbę do coraz niższych potęg, przy każdym kroku dzielimy poprzedni wynik przez 
+		podstawę:
+	</p>
+
+	<center><img src=".images/Screenshot_6.png" align="middle"></img></center>
+	
+	<p>
+		Trzymając się tendencji, pójdźmy jeszcze o kilka kroków w lewo:
+	</p>
+
+	<center><img src=".images/Screenshot_7.png" align="middle"></img></center>
+	
+	<p>
+		Ukradkiem wyłoniła się prosta zależność:
+	</p>
+	
+	<ul>
+		<li>$3^{-1} = \frac{1}{3}$, podczas gdy $3^1=3$</li>
+		<li>$3^{-2} = \frac{1}{9}$, podczas gdy $3^2=9$</li>
+		<li>$3^{-3} = \frac{1}{27}$, podczas gdy $3^3=27$</li>
+		<li>$3^{-4} = \frac{1}{81}$, podczas gdy $3^4=81$</li>
+	</ul>
+	
+	<p>
+		Powyższe tendencje stanowią dobrą podstawę, by zdefiniować potęgi dla wykładników całkowitych:
+	</p>
+	
+	<ul>
+		<li>Dowolna liczba podniesiona do potęgi zerowej daje $1$: 
+			$$
+				a^0=1
+			$$
+		</li>
+		<li>
+			Potęga o wykładniku ujemnym jest równa odwrotności potęgi o przeciwnym wykładniku:
+			$$
+				a^{-n}=\frac{1}{a^n} 
+			$$
+		</li>
+	</ul>
+	
+	<p>
+		Zauważmy, że przy badaniu potęg o ujemnych wykładnikach dokonywaliśmy dzielenia przez podstawę, a nie zapominajmy, 
+		że nie wolno dzielić przez $0$. Co za tym idzie, nie wolno podnosić zera do potęg ujemnych. 
+		Kontrowersyjne pozostaje podnoszenie zera do potęgi zerowej. Technicznie rzecz biorąc przejście z $0^1$ do 
+		$0^0$ wymagałoby podzielenia przez $0$, więc spora część matematyków nie godzi się 
+		na istnienie „zera do zerowej”. Z drugiej strony własność $a^0=1$ dotyczy dokładnie każdej liczby, 
+		zarówno dodatniej, jak i ujemnej, więc dlaczego by nie miała dotyczyć zera?... Ten dylemat podzielił matematyków – według niektórych 
+		$0^0$ nie istnieje, a według innych $0^0=1$, jakkolwiek dziwnie to nie wygląda.
+	</p>
+
+	<p>
+		Jeśli jesteś ciekaw, jak dobrać się do potęg mających ułamek w wykładniku, zajrzyj do tematu „Pierwiastkowanie”.
+	</p>
+	
+	</div>
+	</div>
+	</div>
+	
+	<div class="chapter">
+	<div class="chapter_name">
+		Własności potęgowania
+	</div>
+	<hr>
+	
+	<div class="chapter_mask">
+	<div class="chapter_body">
+	<p class="type">
+		Formalnie
+	</p>
+
+	<p>
+		Dokonajmy jeszcze kilku przydatnych spostrzeżeń na temat potęgowania. Ponieważ zależy nam na osiągnięciu dojrzałości matematycznej, 
+		będziemy pracować na ogólnym przypadku, czyli na zmiennych literowych. W każdej chwili możesz podstawić sobie pod 
+		$a$, $b$ lub $c$ jakąś konkretną liczbę naturalną i zobaczyć, jak poniższe 
+		twierdzenia działają na żywo.
+	</p>
+
+	<ul>
+		<li>
+			$a^n \cdot a^m=a^{n+m}$<br>
+			Jeśli liczbę $a$ mnożymy przez siebie $n$ razy, a następnie $m$ razy,
+			to łącznie występuje jako czynnik $n+m$ razy.
+			
+			<p class="type">
+				Dowód
+			</p>
+			<div class="proof">
+				<center><img src=".images/Screenshot_8.png" align="middle"></img></center>
+			</div>
+		</li>
+
+		<li>
+			$\frac{a^n}{a^m} =a^{n-m}$<br>
+			Jeśli liczbę $a$ mnożymy przez siebie $n$ razy w liczniku ułamka i 
+			$m$ razy w mianowniku ułamka, to po skróceniu pozostanie $n-m$ czynników.
+
+			<p class="type">
+				Dowód
+			</p>
+			<div class="proof">
+				Jeśli $n≥m$:
+				<center><img src=".images/Screenshot_9.png" align="middle"></img></center>
+				Jeśli $n \lt m$:
+				<center><img src=".images/Screenshot_10.png" align="middle"></img></center>
+			</div>
+		</li>
+		
+		<li>$(a^n)^m=a^{n \cdot m}$<br>
+			Gdy liczbę $a$ mnożymy przez siebie $n$ razy, a następnie takie grupy 
+			$a^n$ mnożymy przez siebie $m$ razy, to w całym iloczynie $a$
+			wystąpi $n \cdot m$ razy.
+			
+			<p class="type">
+				Dowód
+			</p>
+			<div class="proof">
+				<center><img src=".images/Screenshot_11.png" align="middle"></img></center>
+			</div>
+		</li>
+		<li>
+			$a^n \cdot b^n=(a \cdot b)^n$<br>
+			Jeśli liczbę $a$ mnożymy przez siebie $n$ razy, a do tego domnażamy liczbę 
+			$b$ również $n$ razy, to tak, jakbyśmy iloczyn $a \cdot b$ mnożyli 
+			$n$ razy.
+			
+			<p class="type">
+				Dowód
+			</p>
+			<div class="proof">
+				<center><img src=".images/Screenshot_12.png" align="middle"></img></center>
+			</div>
+		</li>
+
+		<li>
+			$(\frac{a}{b})^n=\frac{a^n}{b^n} $<br>
+			Gdy podnosimy do potęgi pewien ułamek, możemy osobno zająć się potęgowaniem licznika oraz mianownika.
+			
+			<p class="type">
+				Dowód
+			</p>
+			<div class="proof">
+				<center><img src=".images/Screenshot_13.png" align="middle"></img></center>
+			</div>
+		</li>
+	</ul>
+	
+	<p class="type">
+		Formalnie | Rozszerzenie
+	</p>
+	
+	<p class="warning">
+		wymagana znajomość tematu: Działania na wyrażeniach algebraicznych
+	</p>
+
+	<p>
+		Powyższe wzory działają także dla wykładników ujemnych. Aby tego dowieść, wykorzystamy własności dla wykładników dodatnich, które 
+		udowodniliśmy powyżej.
+	</p>
+	
+	<ul>
+		<li>
+			$a^k \cdot a^l=a^{k+l}$
+			<p class="type">
+				Dowód
+			</p>
+			<div class="proof">
+				<ul>
+					<li>
+						Rozważmy przypadek, gdy tylko jeden z wykładników jest ujemny (ze względu na przemienność mnożenia i dodawania, nie ma 
+						znaczenia, który). Mamy uzasadnić równość
+						$$a^k \cdot a^{-l}=a^{k-l}$$
+						przy czym same zmienne $k$ oraz $l$ mają wartości naturalne. Wykorzystując 
+						definicję potęgi o ujemnym wykładniku:<br>
+						$$a^k \cdot a^{-l}=a^k \cdot \frac{1}{a^l} = \frac{a^k}{a^l} =a^{k-l}$$
+					</li>
+					<li>
+						W przypadku obydwu wykładników ujemnych mamy:<br>
+						$$a^{-k} \cdot a^{-l}=\frac{1}{a^k}  \cdot \frac{1}{a^l} =\frac{1}{a^k \cdot a^l}=\frac{1}{a^{k+l}}=a^{-(k+l) }=a^{-k-l}$$
+					</li>
+				</ul>
+			</div>
+		</li>
+
+		<li>
+			$\frac{a^k}{a^l} =a^{k-l}$
+			<p class="type">
+				Dowód
+			</p>
+			<div class="proof">
+				<ul>
+					<li>
+						Przypadek, gdy wykładnik potęgi w liczniku jest ujemny:
+						$$\frac{a^{-k}}{a^l} =\frac{\frac{1}{a^k}}{a^l} =\frac{1}{a^k \cdot a^l}=\frac{1}{a^{k+l}} =a^{-(k+l) }=a^{-k-l}$$
+					</li>
+					<li>
+						Przypadek, gdy wykładnik potęgi w mianowniku jest ujemny:
+						$$\frac{a^k}{a^{-l}} =\frac{a^k}{\frac{1}{a^l}}=a^k \cdot a^l=a^{k+l}=a^{k-(-l)}$$
+					</li>
+					<li>
+						Przypadek, gdy obydwa wykładniki są ujemne:
+						$$\frac{a^{-k}}{a^{-l}}=\frac{\frac{1}{a^k}}{\frac{1}{a^l}}=\frac{1}{a^k}  \cdot a^l=\frac{a^l}{a^k} =a^{l-k}=a^{-k+l}=a^{-k-(-l)}$$
+					</li>
+				</ul>
+			</div>
+		</li>
+		<li>
+			$(a^k)^l=a^{k \cdot l}$
+			<p class="type">
+				Dowód
+			</p>
+			<div class="proof">
+				<ul>
+					<li>
+						Przypadek, gdy wykładnik wewnętrznej potęgi jest ujemny:
+						$$(a^{-k} )^l=(\frac{1}{a^k} )^l=\frac{1^l}{(a^k)^l} =\frac{1}{a^{k \cdot l}} =a^{-(k \cdot l)}=a^{(-k) \cdot l}$$
+					</li>
+					<li>
+						Przypadek, gdy wykładnik zewnętrznej potęgi jest ujemny:
+						$$(a^k )^{-l}=\frac{1}{(a^k )^l}=\frac{1}{a^{k \cdot l}} =a^{-(k \cdot l)}=a^{k \cdot (-l)}$$
+					</li>
+					<li>
+						Przypadek, gdy obydwa wykładniki są ujemne:
+						$$(a^{-k} )^{-l}=\frac{1}{(a^{-k} )^l}=\frac{1}{ (\frac{1}{a^k} )^l} =\frac{1}{ \frac{1^l}{(a^k )^l} }
+						=\frac{1}{\frac{1}{a^{k \cdot l} }}=a^{k \cdot l}=a^{(-k) \cdot (-l)}$$
+					</li>
+				</ul>
+			</div>
+		</li>
+		<li>
+			$a^k \cdot b^k=(a \cdot b)^k$<br>
+			<p class="type">
+				Dowód
+			</p>
+			<div class="proof">
+				Gdy wykładnik jest ujemny:
+				$$a^{-k} \cdot b^{-k}=\frac{1}{a^k}  \cdot \frac{1}{b^k} = \frac{1}{a^k \cdot b^k}=\frac{1}{(a \cdot b)^k} =(a \cdot b)^{-k}$$
+			</div>
+		</li>
+		<li>
+			$(\frac{a}{b})^k=\frac{a^k}{b^k} $<br>
+			<p class="type">
+				Dowód
+			</p>
+			<div class="proof">
+				Gdy wykładnik jest ujemny:
+				$$(\frac{a}{b})^{-k}=\frac{1}{\frac{a}{b}^k} =\frac{1}{\frac{a^k}{b^k}}=\frac{b^k}{a^k}=\frac{1}{a^k}  \cdot b^k=\frac{\frac{1}{a^k}}{\frac{1}{b^k}}=
+				\frac{a^{-k}}{b^{-k}}$$
+			</div>
+		</li>
+	</ul>
+	
+	</div>
+	</div>
+	</div>
+
+  
+</div>
+
+</body>
+
+</html>

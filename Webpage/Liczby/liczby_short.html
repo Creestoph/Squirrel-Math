@@ -15,9 +15,27 @@
 <body class = "lesson">
   
 <div class = "menu">
-	<a href="../index.html"><button class = "button_convey" style="position: absolute; left: 10px"><span>Strona główna</span></button></a>
-	<a href="../drzewo.html"><button class = "button_convey" style="position: absolute; left: 250px"><span>Drzewo</span></button></a>
-    <a href="liczby.html"><button class = "button_convey" style="position: relative; left: 80%"><span>Wersja pełna</span></button></a>
+    <div class="logo">
+        <div>
+            <div class="logo-black-cell" style="float: left"></div>
+            <div class="logo-container-cell" style="float: left">
+                <div class="logo-red-cell" style="float: left"></div>
+                <div class="logo-red-cell" style="float: left"></div>
+                <div class="logo-red-cell" style="float: left"></div>
+                <div class="logo-red-cell" style="float: left"></div>
+            </div>
+            <div class="logo-black-cell" style="float: left; clear: left"></div>
+            <div class="logo-black-cell" style="float: left"></div>
+        </div>
+    </div>
+    <div class="logo-text">
+        <span class="logo-text-1">squirrel</span>
+        <span class="logo-text-2">math</span>
+    </div>
+
+	<a href="../index.html"><button class = "button_convey"><span>STRONA GŁÓWNA</span></button></a>
+	<a href="../drzewo.html"><button class = "button_convey"><span>DRZEWO</span></button></a>
+    <a href="liczby.html"><button class = "button_convey"><span>WERSJA PEŁNA</span></button></a>
 </div>
   
 <div class = "main">
@@ -121,18 +139,6 @@
   
     <p>
         Liczby, które poznaliśmy, czyli <span class="math">1</span>, <span class="math">2</span>, <span class="math">3</span>, <span class="math">4</span>, <span class="math">5</span>, <span class="math">6</span>, <span class="math">7</span>, <span class="math">…</span> nazywamy liczbami naturalnymi.
-    </p>
-  
-    <p class = "type">
-        Definicja formalna
-    </p>
-  
-    <p class = "warning">
-        [wymagana znajomość tematu: zbiory liczbowe]
-    </p>
-        
-    <p>
-        Liczba naturalna – każdy element zbioru liczb naturalnych
     </p>
   
     <p class = "type">
@@ -283,7 +289,11 @@
 
 	<div style="text-align: center">
 		<input style="width: 800px" type="text" id="number_to_str" />
-		<p align="center" id="out"></p>
+		<center>
+			<div id="out_mask" style="overflow: hidden; transition: height 1s ease; border: 1px solid #dddddd; border-top: none; width: 797px; display: block; margin-top: -10px">
+				<div align="center" id="out" style="padding: 30px 20px 30px 20px; font-size: 20px"></div>
+			</div>
+		</center>
 	</div>
      
 </div>
