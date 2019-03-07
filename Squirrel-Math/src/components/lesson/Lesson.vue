@@ -21,7 +21,14 @@
     name: "Lesson",
     data() {
       return {
-        chapters: []
+        chapters: [],
+        robert: 'a',
+        ks: [1,2,3,4,5]
+      }
+    },
+    methods: {
+      robertize(){
+        this.robert = 'roberto'
       }
     },
     components:{
