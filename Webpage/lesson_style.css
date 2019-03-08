@@ -348,22 +348,22 @@ body.tree
 	background-color: #FFFFFF;
 }
 
-.tree a:link
+a.link:link
 {
 	color: #BA0000;
 }
 
-.tree a:visited
+a.link:visited
 {
-	color: #700000;
+	color: #990000;
 }
 
-.tree a:hover
+a.link:hover
 {
 	color: #FA0000;
 }
 
-.tree a:active
+a.link:active
 {
 	color: #300000;
 }
@@ -399,7 +399,7 @@ body.lesson
 {
 	.main
 	{
-		max-width: 1200px;
+		max-width: 1100px;
 		position: relative; 
 		margin-right: 14%; 
 		padding: 35px 7% 35px 21%;

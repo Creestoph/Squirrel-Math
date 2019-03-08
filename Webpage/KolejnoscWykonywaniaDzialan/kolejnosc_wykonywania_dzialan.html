@@ -81,25 +81,62 @@
 	</p>
 
 	<p>
-		Co zrobić, kiedy napotkamy działanie, w którym występuje więcej niż jeden z symboli $+  -  \cdot  :$ ? Zacznijmy od 
-		kolizji plusa z minusem. Weźmy działanie:
+		Co zrobić, kiedy napotkamy działanie, w którym występuje więcej niż jeden z symboli $+  -  \cdot  :$ ? 
 	</p>
 
-	$$
-		3 + 6 - 2
-	$$
+	<div class="example">
+			<p>
+					Zacznijmy od 
+					kolizji plusa z minusem. Weźmy działanie:
+			</p>
+			$$
+				3 + 6 - 2
+			$$
+
+		<p>
+			Rozumiemy je tak, że liczbę $3$ powiększamy o $6$, a potem pomniejszamy o $2$. W takim razie liczymy:
+		</p>
+
+		<ul>
+			<li>Powiększamy o $6:\ \ \ \ 3 + 6 = 9$</li>
+			<li>Pomniejszamy o $2:\ \ \ \ 9 - 2 = 7$</li>
+		</ul>
+
+		<p>
+			Czyli $3 + 6 - 2 = 7$. 
+		</p>
+	</div>
+
+	<div class="example">
+		<p>
+			Możemy wziąć nawet dłuższe i bardziej rozbudowane działanie.
+		</p>
+
+		$$
+			7 - 2 + 11 - 16 + 5 + 3 + 1 - 5
+		$$
+
+		<p>
+			Zaczynami od siódemki i bierzemy ją w obroty:
+		</p>
+
+		<ul>
+			<li>Pomniejszamy o $2:\ \ \ \ 7 - 2 = 5$</li>
+			<li>Powiększamy o $11:\ \ \ \ 5 + 11 = 16$</li>
+			<li>Pomniejszamy o $16:\ \ \ \ 16 - 16 = 0$</li>
+			<li>Powiększamy o $5:\ \ \ \ 0 + 5 = 5$</li>
+			<li>Powiększamy o $3:\ \ \ \ 5 + 3 = 8$</li>
+			<li>Powiększamy o $1:\ \ \ \ 8 + 1 = 9$</li>
+			<li>Pomniejszamy o $5:\ \ \ \ 9 - 5 = 4$</li>
+		</ul>
+
+		<p>
+			Kończymy na czwórce. 
+		</p>
+	</div>
 
 	<p>
-		Rozumiemy je tak, że liczbę $3$ powiększamy o $6$, a potem pomniejszamy o $2$. W takim razie liczymy:
-	</p>
-
-	<ul>
-		<li>Powiększamy o $6:&nbsp;&nbsp;&nbsp;&nbsp;3 + 6 = 9$</li>
-		<li>Pomniejszamy o $2:&nbsp;&nbsp;&nbsp;&nbsp;9 - 2 = 7$</li>
-	</ul>
-
-	<p>
-		Czyli $3 + 6 - 2 = 7$. Możemy wziąć nawet dłuższe i bardziej rozbudowane działanie.
+		Kiedy robimy wszystkie te powiększenia i pomniejszenia, mówimy, że wykonujemy <i>przekształcenia</i>. Działanie 
 	</p>
 
 	$$
@@ -107,30 +144,7 @@
 	$$
 
 	<p>
-		Zaczynami od siódemki i bierzemy ją w obroty:
-	</p>
-
-	<ul>
-		<li>Pomniejszamy o $2:&nbsp;&nbsp;&nbsp;&nbsp;7 - 2 = 5$</li>
-		<li>Powiększamy o $11:&nbsp;&nbsp;&nbsp;&nbsp;5 + 11 = 16$</li>
-		<li>Pomniejszamy o $16:&nbsp;&nbsp;&nbsp;&nbsp;16 - 16 = 0$</li>
-		<li>Powiększamy o $5:&nbsp;&nbsp;&nbsp;&nbsp;0 + 5 = 5$</li>
-		<li>Powiększamy o $3:&nbsp;&nbsp;&nbsp;&nbsp;5 + 3 = 8$</li>
-		<li>Powiększamy o $1:&nbsp;&nbsp;&nbsp;&nbsp;8 + 1 = 9$</li>
-		<li>Pomniejszamy o $5:&nbsp;&nbsp;&nbsp;&nbsp;9 - 5 = 4$</li>
-	</ul>
-
-	<p>
-		Kończymy na czwórce. Kiedy robimy wszystkie te powiększenia i pomniejszenia, mówimy, że wykonujemy <i>przekształcenia</i>. 
-		Działanie 
-	</p>
-
-	$$
-		7 - 2 + 11 - 16 + 5 + 3 + 1 - 5
-	$$
-
-	<p>
-		Możemy więc przekształcić do prostszej postaci - zapisujemy to tak:
+		Możemy <i>przekształcić</i> do prostszej postaci i zapisujemy to tak:
 	</p>
 
 	$$
@@ -155,7 +169,7 @@
 	$$
 
 	<p>
-		Wykonując je poprawnie, czyli od lewej do prawej, dostajemy
+		Wykonując je poprawnie, czyli od lewej do prawej, najpierw liczymy różnicę, a potem sumę.
 	</p>
 
 	$$
@@ -163,7 +177,7 @@
 	$$
 
 	<p>
-		Gdyby pokusiło nas obliczyć od prawej do lewej, mielibyśmy
+		Gdyby pokusiło nas obliczyć od prawej do lewej, czyli najpierw sumę, a potem różnicę, mielibyśmy
 	</p>
 
 	$$
@@ -174,52 +188,54 @@
 		czyli dość istotnie mniej.
 	</p>
 
-	<p>
-		Zobaczmy teraz, co się stanie, gdy dołączymy mnożenie. Działanie
-	</p>
+	<div class="example">
+		<p>
+			Dołączmy do gry mnożenie. Działanie
+		</p>
 
-	$$
-		3 \cdot 4 + 5
-	$$
-	<p>
-		rozumiemy tak: trzy razy bierzemy czwórkę i jeszcze dodajemy $5$. Liczymy więc:
-	</p>
+		$$
+			3 \cdot 4 + 5
+		$$
+		<p>
+			rozumiemy tak: trzy razy bierzemy czwórkę i jeszcze dodajemy $5$:
+		</p>
 
-	$$
-		3 \cdot 4 + 5 = 12 + 5 = 17
-	$$
+		$$
+			3 \cdot 4 + 5 = 12 + 5 = 17
+		$$
+	</div>
 
-	<p>
-		Weźmy teraz działanie
-	</p>
+	<div class = "example">
+		<p>
+			Weźmy teraz działanie
+		</p>
 
-	$$
-		9 + 2 \cdot 4
-	$$
+		$$
+			9 + 2 \cdot 4
+		$$
 
-	<p>
-		mamy tu na myśli, że dziewiątkę powiększamy o dwa razy wziętą czwórkę. W takim razie:
-	</p>
+		<p>
+			Taki zapis interpretujemy jako dziewiątkę powiększoną o dwa razy wziętą czwórkę. W takim razie:
+		</p>
 
-	$$
-		9 + 2 \cdot 4 = 9 + 8 = 17
-	$$
+		$$
+			9 + 2 \cdot 4 = 9 + 8 = 17
+		$$
+	</div>
 
-	<p>
-		Widzimy, że zasada liczenia od lewej do prawej przestaje obowiązywać. Gdy znajdziemy w działaniu mnożenie, wykonujemy je, 
-		zanim cokolwiek dodamy. Tak samo z odejmowaniem:
-	</p>
-
-	<ul>
-		<li>
+	<div class = "example">
 			$3 \cdot 4 - 5$ oznacza, że trzy razy bierzemy czwórkę i odejmujemy od tego $5$.
-			<p style="text-align: center">$3 \cdot 4 - 5 = 12 - 5 = 7$</p>
-		</li>
-		<li>
+			$$3 \cdot 4 - 5 = 12 - 5 = 7$$
+	</div>
+	<div class = "example">
 			$9 - 2 \cdot 4$ oznacza, że dziewiątkę pomniejszamy o dwa razy wziętą czwórkę.
-			<p style="text-align: center">$9 - 2 \cdot 4 = 9 - 8 = 1$</p>
-		</li>
-	</ul>
+			$$9 - 2 \cdot 4 = 9 - 8 = 1$$
+	</div>
+
+	<p>
+		Gdy na scenę wchodzi mnożenie, zasada liczenia od lewej do prawej przestaje obowiązywać. Gdy znajdziemy w działaniu mnożenie, wykonujemy je, 
+		zanim cokolwiek dodamy albo odejmiemy.
+	</p>
 
 	<p>
 		Do pełni szczęścia potrzeba nam jeszcze dzielenia. Matematycy umówili się, że dzielenie jest równorzędne z mnożeniem. 
@@ -248,19 +264,19 @@
 		$6 + 3 \cdot 10 : 5 - 6 : 3 + 5 - 2 : 1 \cdot 4$ zawiera wszystkie działania. Zaczynami od mnożenia i dzielenia, czyli 
 		najpierw rozbrajamy fragmenty $3 \cdot 10 : 5,  6 : 3$ oraz $2 : 1 \cdot 4$. W tych cząstkach dzielenie i mnożenie 
 		wykonujemy od lewej do prawej. Na koniec zostaje nam dodawanie i odejmowanie od lewej do prawej.
-		<p style="text-align: center">$6 + 3 \cdot 10 : 5 - 6 : 3 + 5 - 2 : 1 \cdot 4 = $<br>
-		$= 6 + 30 : 5 - 2 + 5 - 2 \cdot 4 = $<br>
-		$= 6 + 6 - 2 + 5 - 8 =$<br>
-		$= 12 - 2 + 5 - 8 = $<br>
-		$= 10 + 5 - 8 = $<br>
-		$= 15 - 8 = $<br>
-		$= 7$
-		</p>
+		$$6 + 3 \cdot 10 : 5 - 6 : 3 + 5 - 2 : 1 \cdot 4 = \\
+		= 6 + 30 : 5 - 2 + 5 - 2 \cdot 4 = \\
+		= 6 + 6 - 2 + 5 - 8 =\\
+		= 12 - 2 + 5 - 8 =\\
+		= 10 + 5 - 8 = \\
+		= 15 - 8 = \\
+		= 7$$
 	</div>
 
 	<p>
-		To „pierwszeństwo” mnożenia i dzielenia względem dodawania i odejmowania ma sens. Odejmowanie jest odwrotne do dodawania, 
-		więc te działania są równorzędne, czyli „równouprawnione”. Mnożenie jest jednak „wyższego rzędu”, ponieważ wywodzi się z 
+		To „pierwszeństwo” mnożenia i dzielenia względem dodawania i odejmowania jest wyłącznie kwestią umowy, która ma zapobiec niejednoznacznościom.
+		A jednocześnie ma dobrze odpowiada intuicjom. Odejmowanie jest odwrotne do dodawania, 
+		więc te działania są równorzędne, jakby „równouprawnione”. Mnożenie jest jednak „wyższego rzędu”, ponieważ wywodzi się z 
 		dodawania przez jego wielokrotne powtarzanie. Dzielenie jest odwrotne do mnożenia, więc te dwa działania także są 
 		równouprawnione. Fachowo mówi się, że mnożenie i dzielenie <i>wiążą mocniej</i> niż dodawanie i odejmowanie.
 	</p>
@@ -292,17 +308,15 @@
 		Każdego roku Maciuś dostawał na urodziny, imieniny, dzień dziecka i Boże Narodzenie od mamy, cioci i babci po dwie pary 
 		majtek. Maciuś gromadził prezenty przez $20$ lat, aż w końcu postanowił otworzyć sklep z bielizną. Połowę towaru wykupił 
 		bogaty biznesmen z Ameryki. Następnie do sklepu wkroczyło $4$ fanów odzieży męskiej i każdy z nich kupił $30$ par majtek. 
-		W nocy sklep został okradziony, w wyniku czego zniknęło 100 par majtek. Maciusiowi pozostało więc $20$ par, które zachował 
-		na pamiątkę.
-		<p style="text-align: center">
-			$4 \cdot 3 \cdot 2 \cdot 20 : 2 - 4 \cdot 30 - 100 = $<br>
-			$= 12 \cdot 2 \cdot 20 : 2 - 4 \cdot 30 - 100 = $<br>
-			$= 24 \cdot 20 : 2 - 4 \cdot 30 - 100 =$<br>
-			$=  480 : 2 - 4 \cdot 30 - 100 = $<br>
-			$= 240 - 120 - 100 = $<br>
-			$= 120 - 100 = $<br>
-			$= 20$
-		</p>
+		W nocy sklep został okradziony, w wyniku czego zniknęło $100$ par majtek. Ile majtek pozostało w sklepie?
+		$$4 \cdot 3 \cdot 2 \cdot 20 : 2 - 4 \cdot 30 - 100 = \\
+		= 12 \cdot 2 \cdot 20 : 2 - 4 \cdot 30 - 100 = \\
+		= 24 \cdot 20 : 2 - 4 \cdot 30 - 100 = \\
+		=  480 : 2 - 4 \cdot 30 - 100 = \\
+		= 240 - 120 - 100 = \\
+		= 120 - 100 = \\
+		= 20$$
+		Pozostałe $20$ par Maciuś postanowił zachować na pamiątkę.
 	</div>
 
 	</div>
@@ -335,7 +349,8 @@
 		kumulacja $70$ dzieci.</span> Napotkaliśmy obliczenia, w których najpierw należy wykonać dodawanie, a potem mnożenie. Jak zapisać 
 		takie działanie? Zgodnie z umową zapis $5 \cdot 7 + 7$ wymaga najpierw mnożenia, a potem dodawania - takie działanie daje wynik $42$. 
 		<span class="comment" id="Chcemy przecież oddać 70 dzieci.">Nie tego chcemy</span>. 
-		Z pomocą przychodzą nawiasy. Działanie, o które nam chodzi, będzie wyglądało tak:
+		Z pomocą przychodzą nawiasy. Matematycy wprowadzili je do zapisu, aby wymusić pierwszeństwo działania wiążącego słabiej.
+		Wyrażenie, o które nam chodzi, będzie wyglądało tak:
 	</p>
 
 	$$
@@ -343,14 +358,10 @@
 	$$
 
 	<p>
-		Matematycy wprowadzili zapis z nawiasami, aby wymusić pierwszeństwo działania wiążącego słabiej.
+		Wszystkie dotychczasowe przepisy dotyczące zapisu i interpretacji wyrażeń matematycznych podsumowuje reguła zwana kolejnością wykonywania działań.
 	</p>
 
-	<p>
-		Teraz możemy już ustanowić pełną regułę, zwaną kolejnością wykonywania działań.
-	</p>
-
-	<span class="formula">
+	<div class="formula">
 		<p align="left" style="margin-bottom: 0">
 			W dowolnym działaniu obliczenia wykonujemy według kolejności:
 		</p>
@@ -359,10 +370,11 @@
 			<li style="text-align: left">Mnożenie i dzielenie w kolejności występowania;</li>
 			<li style="text-align: left">Dodawanie i odejmowanie w kolejności występowania.</li>
 		</ol>
-	</span>
+	</div>
 
 	<p>
-		Nawiasów możemy stosować dowolnie dużo, możemy nawet <i>zagnieżdżać</i> nawiasy, czyli stosować nawias wewnątrz nawiasu.
+		Nawiasów możemy stosować dowolnie dużo, możemy nawet <i>zagnieżdżać</i> nawiasy, czyli stosować nawias wewnątrz nawiasu. Wtedy zaczynamy obliczenia od 
+		nawiasów położonych najgłębiej.
 	</p>
 
 	<div class="example">
@@ -408,10 +420,12 @@
 	<p>
 		Nie polecamy takiego sposobu zapisu z kilku przyczyn:
 		<ul>
-			<li>Nie można użyć więcej niż trzech nawiasów, bo matematykom zabrakło pomysłów na więcej bazgrołów nawiasowych.</li>
+			<li>Nie można użyć więcej niż trzech nawiasów, bo matematykom zabrakło pomysłów na więcej bazgrołów nawiasowych (ewentualnie po klamrowym można znowu 
+				użyć okragłego i kontynuować cyklicznie)
+			</li>
 			<li>Nawiasy kwadratowe i klamrowe mają w matematyce również inne zastosowania, przez co czasem moglibyśmy napotkać 
 			dwuznaczności.</li>
-			<li>Trzeba zapamiętać, w jakiej kolejności zapisywać nawiasy. Inna kolejność będzie uważana za błędną.</li>
+			<li>Trzeba zapamiętać, w jakiej kolejności zapisywać nawiasy. Inna kolejność będzie postrzegana jako ekstrawagancja lub błąd.</li>
 		</ul>
 	</p>
 
@@ -419,8 +433,10 @@
 		Najlepiej stosować zawsze nawiasy okrągłe. Gdy robi się ich dużo, te bardziej zewnętrzne mogą być po prostu większe.
 	</p>
 
-	<img src=".images/Screenshot_1.png" class="center"></img>
-
+	$$
+		2 + 2 \cdot \Bigl(2 + 2 \cdot \bigl( 2 + 2 \cdot (2 + 2) \bigr) \Bigr)
+	$$
+	
 	</div>
 	</div>
 	</div>
