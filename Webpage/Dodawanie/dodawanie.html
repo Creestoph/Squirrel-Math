@@ -3,7 +3,8 @@
 
 <head>
 	<title>Dodawanie</title>
-	<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 	<link rel="stylesheet" href="../lesson_style.css">
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
@@ -112,7 +113,7 @@ interact('.draggable')
     <a href="dodawanie_short.html">
         <div class = "bookmark-shadow">
             <div class = "bookmark">
-                    WERSJA SKRÓCONA
+                WERSJA SKRÓCONA
             </div>
         </div>
     </a>
@@ -701,13 +702,14 @@ interact('.draggable')
     </p>
         
     <p>
-        Formalnie algorytm dodawania pisemnego przedstawia się następująco. Dane są liczby $a_1, a_2, ..., a_n$ o reprezentacjach dziesiętnych
+        Formalnie algorytm dodawania pisemnego przedstawia się następująco. Dane są liczby $a_1, a_2, \dotsc, a_n$ o reprezentacjach dziesiętnych
         $a_i = \sum_{j = 0}^{l_i} 10^j a_{i, j}$, gdzie $l_i$ oznacza długość (liczbę cyfr) liczby $a_i$, zaś $a_{i, j} \in \{0, 1, 2, 3, 4, 5, 6, 7, 8, 9\}$. 
         Poszukiwana jest reprezentacja dziesiętna ich sumy $s = \sum_{i = 1}^{n} a_i$.
     </p>
 
     <p>
-        Weźmy $l = \max\{l_1, l_2, ..., l_n \}$ i wprowadźmy $a_i = \sum_{j = 0}^{l} 10^j a_{i, j}$, przy czym $a_{i, j} = 0$ dla $j > l_i$. Wtedy
+        Weźmy $l = \max\{l_1, l_2, \dotsc l_n \}$ i rozszerzmy zapis dziesiętny liczb $a_i$ do doługości $l$ cyfr (przez dopisanie odpowiedniej ilości
+        zer z przodu): $a_i = \sum_{j = 0}^{l} 10^j a_{i, j}$, przy czym $a_{i, j} = 0$ dla $j > l_i$. Wtedy
     </p>
 
     $$ 
@@ -722,21 +724,21 @@ interact('.draggable')
     </p>
 
     $$ 
-        s = 10^0 \sum_{i = 1}^{n} a_{i, 0} + 10^1 \sum_{i = 1}^{n} a_{i, 1} + ... + 10^l \sum_{i = 1}^{n} a_{i, l} = 
-        10^0 \left(10r_1 + s_0 \right) + 10^1 \sum_{i = 1}^{n} a_{i, 1} + ... + 10^l \sum_{i = 1}^{n} a_{i, l} = \\
-        = 10^0s_0 + 10^1 \left(r_1 + \sum_{i = 1}^{n} a_{i, 1} \right) + ... + 10^l \sum_{i = 1}^{n} a_{i, l}
+        s = 10^0 \sum_{i = 1}^{n} a_{i, 0} + 10^1 \sum_{i = 1}^{n} a_{i, 1} + \dotsb + 10^l \sum_{i = 1}^{n} a_{i, l} = 
+        10^0 \left(10r_1 + s_0 \right) + 10^1 \sum_{i = 1}^{n} a_{i, 1} + \dotsb + 10^l \sum_{i = 1}^{n} a_{i, l} = \\
+        = 10^0s_0 + 10^1 \left(r_1 + \sum_{i = 1}^{n} a_{i, 1} \right) + \dotsb + 10^l \sum_{i = 1}^{n} a_{i, l}
     $$
 
     <p>
-        Rozważmy wartość $r_1 + \sum_{i = 1}^{n} a_{i, 1}$ (odpowada ona sumie cyfr dziesiątek w dodawaniu pisemnym). Niech $r_2$ oznacza część
+        Rozważmy wartość $r_1 + \sum_{i = 1}^{n} a_{i, 1}$ (odpowada ona sumie cyfr w kolumnie dziesiątek dodawania pisemnego). Niech $r_2$ oznacza część
         całkowitą z dzielenia tej liczby przez $10$, zaś $s_1$ jej resztę z dzielenia przez $10$, czyli $r_1 + \sum_{i = 1}^{n} a_{i, 1} = 10r_2 + s_1$.
         Mamy wtedy:
     </p>
 
     $$ 
-        s = s_0 + 10^1 \left(r_1 + \sum_{i = 1}^{n} a_{i, 1} \right) + 10^2 \sum_{i = 1}^{n} a_{i, 2} + ... + 10^l \sum_{i = 1}^{n} a_{i, l} = 
-        s_0 + 10^1 \left(10r_2 + s_1 \right) + 10^2 \sum_{i = 1}^{n} a_{i, 2} + ... + 10^l \sum_{i = 1}^{n} a_{i, l} = \\
-        = s_0 + 10^1 s_1  + 10^2 \left( r_2 + \sum_{i = 1}^{n} a_{i, 2} \right) + ... + 10^l \sum_{i = 1}^{n} a_{i, l}
+        s = s_0 + 10^1 \left(r_1 + \sum_{i = 1}^{n} a_{i, 1} \right) + 10^2 \sum_{i = 1}^{n} a_{i, 2} + \dotsb + 10^l \sum_{i = 1}^{n} a_{i, l} = 
+        s_0 + 10^1 \left(10r_2 + s_1 \right) + 10^2 \sum_{i = 1}^{n} a_{i, 2} + \dotsb + 10^l \sum_{i = 1}^{n} a_{i, l} = \\
+        = s_0 + 10^1 s_1  + 10^2 \left( r_2 + \sum_{i = 1}^{n} a_{i, 2} \right) + \dotsb + 10^l \sum_{i = 1}^{n} a_{i, l}
     $$
 
     <p>
@@ -744,7 +746,7 @@ interact('.draggable')
     </p>
 
     $$
-        s =  s_0 + 10^1 s_1 + 10^2 s_2 + ... +  10^l s_l + 10^{l+1}r_{l+1}
+        s =  s_0 + 10^1 s_1 + 10^2 s_2 + \dotsb +  10^l s_l + 10^{l+1}r_{l+1}
     $$
 
     <p>
@@ -752,12 +754,12 @@ interact('.draggable')
     </p>
 
     $$
-        s =  s_0 + 10^1 s_1 + 10^2 s_2 + ... +  10^l s_l + 10^{l+1} r_{l+1, 0} + 10^{l+2} r_{l+1, 1} + ... + 10^{l+1 + k} r_{l+1, k}
+        s =  s_0 + 10^1 s_1 + 10^2 s_2 + \dotsb +  10^l s_l + 10^{l+1} r_{l+1, 0} + 10^{l+2} r_{l+1, 1} + \dotsb + 10^{l+1 + k} r_{l+1, k}
     $$
 
     <p>
-        Ponieważ liczby $s_0, s_1, ..., s_l$ stanowią reszty z dzielenia przez $10$, mają reprezentację jednocyfrową. Stąd liczby 
-        $s_0, s_1, ..., s_l, r_{l+1, 0}, r_{l+1, 1}, ..., r_{l+1, k}$ odpowiadają kolejnym (czytanym od prawej) cyfrom liczby $s$.
+        Ponieważ liczby $s_0, s_1, \dotsc, s_l$ stanowią reszty z dzielenia przez $10$, mają reprezentację jednocyfrową. Stąd liczby 
+        $s_0, s_1, \dotsc, s_l, r_{l+1, 0}, r_{l+1, 1}, \dotsc, r_{l+1, k}$ odpowiadają kolejnym (czytanym od prawej) cyfrom liczby $s$.
     </p>
 
 	</div>

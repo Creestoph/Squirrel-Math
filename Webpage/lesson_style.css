@@ -200,7 +200,7 @@ table
 .menu .logo-text
 {
 	float: left;
-	padding: 30px 50px 0 50px;
+	padding: 32px 50px 0 50px;
 }
 
 .menu .logo-text-1
@@ -243,11 +243,11 @@ table
 
 .menu .logo-red-cell
 {
-	height: 12px;
-	width: 12px;
+	height: 40%;
+	width: 40%;
 	background: #cc0000;
 	border: none;
-	margin: 3px 3px 0 0;
+	margin: 10% 10% 0 0;
 }
 
 button.button_convey
@@ -262,10 +262,11 @@ button.button_convey
 	font-weight: bold;
 	cursor: pointer;
 	display: inline-block;
-	padding: 30px 20px 20px 20px;
+	padding: 0 20px;
+	line-height: 100px;
 	transition: all 0.5s;
 	cursor: pointer;
-	margin: 5px;
+	margin: 0 5px;
 }
 
 button.button_convey:hover
@@ -305,6 +306,39 @@ button.button_convey:hover span:after
 button.button_convey span a
 {
 	color: black;
+}
+
+@media screen and (max-width: 700px)
+{
+	.menu
+	{
+		height: 80px;
+		border-bottom: 10px solid black; 
+	}
+
+	.menu .logo 
+	{
+		margin-right: 50px;
+	}
+
+	.menu .logo-text
+	{
+		display: none;
+	}
+
+	.menu .logo-black-cell, .menu .logo-container-cell
+	{
+		height: 20px;
+		width: 20px;
+		padding: 3px 3px 0 0;
+		margin: 2px;
+	}
+
+	button.button_convey
+	{
+		line-height: 80px;
+		font-size: 1.2em;
+	}
 }
 
 /* ========================================== TREE ========================================== */
@@ -347,17 +381,34 @@ body.lesson
 	margin: 0;
 }
 
-.main
+@media screen and (max-width: 1200px)
 {
-	color: #000000; 
-	background: #FEFEFE; 
-	position: relative; 
-	border-right: 3px solid black;
-	margin-right: 300px; 
-	padding: 35px 150px 35px 450px;
-	/*box-shadow: inset 0 0 13px 4px rgba(0, 0, 0, 0.3);*/
-	font-family: "Verdana";
-	font-size: 1.08em;
+	.main
+	{
+		position: relative; 
+		padding: 35px 6% 35px 6%;
+		font-family: "Verdana";
+		font-size: 1.08em;
+		color: #000000; 
+		background: #FEFEFE; 
+	}
+}
+
+
+@media screen and (min-width: 1200px)
+{
+	.main
+	{
+		max-width: 1200px;
+		position: relative; 
+		margin-right: 14%; 
+		padding: 35px 7% 35px 21%;
+		font-family: "Verdana";
+		font-size: 1.08em;
+		color: #000000; 
+		background: #FEFEFE; 
+		border-right: 3px solid black;
+	}
 }
 
 .comment_window
@@ -408,9 +459,8 @@ body.lesson
 	font-family: corbel;
 	font-size: 2em;
 	font-weight: bold;
-	line-height: 0%;
 	margin-top: 9px; /*50px*/
-	margin-bottom: 25px;
+	margin-bottom:-7px;
 }
 
 .chapter_name + hr
@@ -473,7 +523,7 @@ p.lesson_title
 	font-size: 3.2em;
 	font-weight: bold;
 	font-family: "Corbel";
-	margin: 50px;
+	margin: 50px auto;
 	clear:both;
 }
 
@@ -612,13 +662,29 @@ p.problem
 	transition: padding-right 0.5s;
 }
 
-.bookmark-shadow
+@media screen and (max-width: 1200px)
 {
-	float: right;
-	box-shadow: 3px 3px 5px 0px rgba(0, 0, 0, 0.4);
-	margin-right: -150px;
-	margin-bottom: 30px;
-	padding-left: 20px;
+	.bookmark-shadow
+	{
+		float: right;
+		overflow: auto;
+		margin-right: -7%;
+		margin-bottom: 30px;
+		padding-left: 30px;
+	}
+}
+
+@media screen and (min-width: 1200px)
+{
+	.bookmark-shadow
+	{
+		float: right;
+		overflow: auto;
+		box-shadow: 4px 3px 5px 0px rgba(0, 0, 0, 0.4);
+		margin-right: -13%;
+		margin-bottom: 30px;
+		padding-left: 30px;
+	}
 }
 
 /* ========================================== COMMON ELEMENTS ========================================== */
