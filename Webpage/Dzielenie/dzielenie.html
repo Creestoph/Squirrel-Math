@@ -1051,113 +1051,112 @@
 			</td>
 		</tr>
 	</table>
-    <p class = "type">
+
+    <p class = "type optional-hide">
         Rozszerzenie
     </p>
-      
-    <p class = "warning">
-        wymagana znajomość tematu: Kolejność wykonywania działań
-    </p>
-      
-    <p>
-        Spróbujmy uchwycić matematyczną istotę dzielenia w słupku. Weźmy dzielenie $33684 : 28$. Najpierw badamy rząd tysięcy, czyli 
-        patrzymy na $33$ w liczbie $33684$. Stwierdzamy, że w $33$ liczba $28$ mieści się raz, więc w $33 000$
-		liczba $28$ mieści się 
-        $1000$ razy
-    </p>
-      
-    <p style="text-align: center">
-        $33 684 =$ <br>
-        $= 28 \cdot 1000 + (33 684 - 28 \cdot 1000) =$<br>
-        $= 28 \cdot 1000 + (33 000 - 28 000 + 684) =$<br>
-        $= 28 \cdot 1000 + (5000 + 684) =$<br>
-        $= 28 \cdot 1000 + 5684$<br>
-    </p>
-      
-    <p>
-        Teraz rozpatrujemy rząd setek. Stwierdzamy, że w $56$ liczba $28$ mieści się $2$ razy, 
-		więc w $5600$ mieści się $200$ razy
-    </p>
-      
-    <p style="text-align: center">
-        $28 \cdot 1000 + 5684 =$<br>
-        $= 28 \cdot 1000 + 28 \cdot 200 + (5684 - 28 \cdot 200) =$<br>
-        $= 28 \cdot 1000 + 28 \cdot 200 + (5600 - 5600 + 84) =$<br>
-        $= 28 \cdot (1000 + 200) + 84$<br>
-    </p>
-      
-    <p>
-        Rozpatrujemy rząd jedności. W $84$ liczba $28$ mieści się $3$ razy.
-    </p>
-      
-    <p style="text-align: center">
-        $28 \cdot (1000 + 200) + 84 =$<br>
-        $= 28 \cdot (1000 + 200) + 28 \cdot 3 =$<br>
-        $= 28 \cdot (1000 + 200 + 3) =$<br>
-        $= 28 \cdot 1203$<br>
-    </p>
-      
-    <p>
-        W rezultacie $33 684 = 28 \cdot 1203$, czyli $33 684 : 28 = 1203$. 
-    </p>
-      
-	<p class = "type">
-		Formalnie
-	</p>
+    <p class = "warning">wymagana znajomość tematu: Kolejność wykonywania działań</p>
+	<div>
+		<p>
+			Spróbujmy uchwycić matematyczną istotę dzielenia w słupku. Weźmy dzielenie $33684 : 28$. Najpierw badamy rząd tysięcy, czyli 
+			patrzymy na $33$ w liczbie $33684$. Stwierdzamy, że w $33$ liczba $28$ mieści się raz, więc w $33 000$
+			liczba $28$ mieści się 
+			$1000$ razy
+		</p>
 		
-	<p class = "warning">
-		wymagana znajomość tematu: Indukcja matematyczna
-	</p>
+		<p style="text-align: center">
+			$33 684 =$ <br>
+			$= 28 \cdot 1000 + (33 684 - 28 \cdot 1000) =$<br>
+			$= 28 \cdot 1000 + (33 000 - 28 000 + 684) =$<br>
+			$= 28 \cdot 1000 + (5000 + 684) =$<br>
+			$= 28 \cdot 1000 + 5684$<br>
+		</p>
+		
+		<p>
+			Teraz rozpatrujemy rząd setek. Stwierdzamy, że w $56$ liczba $28$ mieści się $2$ razy, 
+			więc w $5600$ mieści się $200$ razy
+		</p>
+		
+		<p style="text-align: center">
+			$28 \cdot 1000 + 5684 =$<br>
+			$= 28 \cdot 1000 + 28 \cdot 200 + (5684 - 28 \cdot 200) =$<br>
+			$= 28 \cdot 1000 + 28 \cdot 200 + (5600 - 5600 + 84) =$<br>
+			$= 28 \cdot (1000 + 200) + 84$<br>
+		</p>
+		
+		<p>
+			Rozpatrujemy rząd jedności. W $84$ liczba $28$ mieści się $3$ razy.
+		</p>
+		
+		<p style="text-align: center">
+			$28 \cdot (1000 + 200) + 84 =$<br>
+			$= 28 \cdot (1000 + 200) + 28 \cdot 3 =$<br>
+			$= 28 \cdot (1000 + 200 + 3) =$<br>
+			$= 28 \cdot 1203$<br>
+		</p>
+		
+		<p>
+			W rezultacie $33 684 = 28 \cdot 1203$, czyli $33 684 : 28 = 1203$. 
+		</p>
+		
+		<p class = "type">
+			Formalnie
+		</p>
+			
+		<p class = "warning">
+			wymagana znajomość tematu: Indukcja matematyczna
+		</p>
 
-	<p>
-		Formalnie algorytm dzielenia pisemnego przedstawia się następująco. Dany jest dzielnik $b$ oraz dzielna $a$ o reprezentacji dziesiętnej
-		$a = \sum_{j = 0}^l 10^j a_j$, gdzie $l$ oznacza długość (liczbę cyfr) $a$, zaś $a_j \in \{0, 1, 2, 3, 4, 5, 6, 7, 8, 9\}$.
-		Poszukiwana jest reprezentacja dziesiętna ich ilorazu $q = a : b$.
-	</p>
+		<p>
+			Formalnie algorytm dzielenia pisemnego przedstawia się następująco. Dany jest dzielnik $b$ oraz dzielna $a$ o reprezentacji dziesiętnej
+			$a = \sum_{j = 0}^l 10^j a_j$, gdzie $l$ oznacza długość (liczbę cyfr) $a$, zaś $a_j \in \{0, 1, 2, 3, 4, 5, 6, 7, 8, 9\}$.
+			Poszukiwana jest reprezentacja dziesiętna ich ilorazu $q = a : b$.
+		</p>
 
-	<p>
-		Oznaczmy przez $c_l, r_{l-1}$ część całkowitą i resztę z dzielenia $a_l$ przez $b$, tzn. $a_l = c_l \cdot b + r_{l-1}$. Odpowiada to
-		wykonywaniu dzielenia najbardziej znaczącej cyfry przez dzielnik $b$ podczas dzielenia pisemnego. Jednocześnie $r_{l-1} = a_l - c_l \cdot b$, 
-		co odpowiada operacjom mnożenia i odejmowania w procedurze dzielenia pisemnego. Należy zwrócić uwagę, że $a_l \leq 9$, więc $0 \leq c_l \leq 9$ oraz 
-		oczywiście $r_{l-1} \lt b$ jako reszta z dzielenia przez $b$.
-	</p>
+		<p>
+			Oznaczmy przez $c_l, r_{l-1}$ część całkowitą i resztę z dzielenia $a_l$ przez $b$, tzn. $a_l = c_l \cdot b + r_{l-1}$. Odpowiada to
+			wykonywaniu dzielenia najbardziej znaczącej cyfry przez dzielnik $b$ podczas dzielenia pisemnego. Jednocześnie $r_{l-1} = a_l - c_l \cdot b$, 
+			co odpowiada operacjom mnożenia i odejmowania w procedurze dzielenia pisemnego. Należy zwrócić uwagę, że $a_l \leq 9$, więc $0 \leq c_l \leq 9$ oraz 
+			oczywiście $r_{l-1} \lt b$ jako reszta z dzielenia przez $b$.
+		</p>
 
-	$$
-		a = 10^l a_l + 10^{l - 1} a_{l - 1} + \sum_{j = 0}^{l-2} 10^j a_j = 
-		10^{l} \left(c_{l} \cdot b + r_{l-1}\right) + 10^{l - 1} a_{l - 1} + \sum_{j = 0}^{l-2} 10^j a_j = \\
-		= b \cdot 10^{l} c_{l} + 10^{l - 1} \cdot 10r_{l-1} + 10^{l - 1} a_{l - 1} + \sum_{j = 0}^{l-2} 10^j a_j =
-		b \cdot 10^{l} c_{l} + 10^{l - 1} \left(a_{l - 1} + 10r_{l-1}\right) + \sum_{j = 0}^{l-2} 10^j a_j
-	$$
+		$$
+			a = 10^l a_l + 10^{l - 1} a_{l - 1} + \sum_{j = 0}^{l-2} 10^j a_j = 
+			10^{l} \left(c_{l} \cdot b + r_{l-1}\right) + 10^{l - 1} a_{l - 1} + \sum_{j = 0}^{l-2} 10^j a_j = \\
+			= b \cdot 10^{l} c_{l} + 10^{l - 1} \cdot 10r_{l-1} + 10^{l - 1} a_{l - 1} + \sum_{j = 0}^{l-2} 10^j a_j =
+			b \cdot 10^{l} c_{l} + 10^{l - 1} \left(a_{l - 1} + 10r_{l-1}\right) + \sum_{j = 0}^{l-2} 10^j a_j
+		$$
 
-	<p>
-		Oznaczmy przez $c_{l-1}, r_{l-2}$ część całkowitą i resztę z dzielenia $a_{l-1} + 10r_{l-1}$ przez $b$, tzn. 
-		$a_{l-1} + 10r_{l-1} = c_{l-1} \cdot b + r_{l-2}$. Zauważmy, że $a_{l-1} \leq 9$, $r_{l-1} \leq b-1$ oraz $-r_{l-2} \leq 0$, więc
-		$$c_{l-1} \cdot b = a_{l-1} + 10r_{l-1} - r_{l-2} \leq 9 + 10(b-1) + 0 = 10b - 1 \lt 10b$$ 
-		czyli $c_{l-1} \cdot b \lt 10b$, stąd $c_{l-1} \lt 10$, więc również $0 \leq c_{l-1} \leq 9$.
-	</p>	
+		<p>
+			Oznaczmy przez $c_{l-1}, r_{l-2}$ część całkowitą i resztę z dzielenia $a_{l-1} + 10r_{l-1}$ przez $b$, tzn. 
+			$a_{l-1} + 10r_{l-1} = c_{l-1} \cdot b + r_{l-2}$. Zauważmy, że $a_{l-1} \leq 9$, $r_{l-1} \leq b-1$ oraz $-r_{l-2} \leq 0$, więc
+			$$c_{l-1} \cdot b = a_{l-1} + 10r_{l-1} - r_{l-2} \leq 9 + 10(b-1) + 0 = 10b - 1 \lt 10b$$ 
+			czyli $c_{l-1} \cdot b \lt 10b$, stąd $c_{l-1} \lt 10$, więc również $0 \leq c_{l-1} \leq 9$.
+		</p>	
 
-	$$
-		a = b \cdot 10^{l} c_{l} + 10^{l - 1} \left(a_{l - 1} + 10r_{l-1}\right) + 10^{l - 2} a_{l - 2} + \sum_{j = 0}^{l-3} 10^j a_j =
-		b \cdot 10^{l} c_{l} + 10^{l - 1} \left( c_{l-1} \cdot b + r_{l-2} \right) + 10^{l - 2} a_{l - 2} + \sum_{j = 0}^{l-3} 10^j a_j =\\
-		= b \cdot 10^{l} c_{l} + b \cdot 10^{l - 1} c_{l-1} + 10^{l - 2} \left(a_{l - 2} + 10r_{l-2} \right) + \sum_{j = 0}^{l-3} 10^j a_j =
-		b \left(10^{l} c_{l} + 10^{l - 1} c_{l-1} \right) + 10^{l - 2} \left(a_{l - 2} + 10r_{l-2} \right) + \sum_{j = 0}^{l-3} 10^j a_j
-	$$
+		$$
+			a = b \cdot 10^{l} c_{l} + 10^{l - 1} \left(a_{l - 1} + 10r_{l-1}\right) + 10^{l - 2} a_{l - 2} + \sum_{j = 0}^{l-3} 10^j a_j =
+			b \cdot 10^{l} c_{l} + 10^{l - 1} \left( c_{l-1} \cdot b + r_{l-2} \right) + 10^{l - 2} a_{l - 2} + \sum_{j = 0}^{l-3} 10^j a_j =\\
+			= b \cdot 10^{l} c_{l} + b \cdot 10^{l - 1} c_{l-1} + 10^{l - 2} \left(a_{l - 2} + 10r_{l-2} \right) + \sum_{j = 0}^{l-3} 10^j a_j =
+			b \left(10^{l} c_{l} + 10^{l - 1} c_{l-1} \right) + 10^{l - 2} \left(a_{l - 2} + 10r_{l-2} \right) + \sum_{j = 0}^{l-3} 10^j a_j
+		$$
 
-	<p>
-		Na zasadzie indukcji rozpisujemy liczbę $a$ do postaci
-	</p>
+		<p>
+			Na zasadzie indukcji rozpisujemy liczbę $a$ do postaci
+		</p>
 
-	$$
-		a = b \left(10^{l} c_{l} + 10^{l - 1} c_{l-1} + 10^{l - 2} c_{l-2} + \dotsb + 10^0 c_0 \right)
-	$$
+		$$
+			a = b \left(10^{l} c_{l} + 10^{l - 1} c_{l-1} + 10^{l - 2} c_{l-2} + \dotsb + 10^0 c_0 \right)
+		$$
 
-	<p>
-		Skąd wprost wynika postać dziesiętna ilorazu $q$:
-	</p>
+		<p>
+			Skąd wprost wynika postać dziesiętna ilorazu $q$:
+		</p>
 
-	$$
-		q = a : b = 10^{l} c_{l} + 10^{l - 1} c_{l-1} + 10^{l - 2} c_{l-2} + \dotsb + 10^0 c_0
-	$$
+		$$
+			q = a : b = 10^{l} c_{l} + 10^{l - 1} c_{l-1} + 10^{l - 2} c_{l-2} + \dotsb + 10^0 c_0
+		$$
+	</div>
 
 	</div>
 	</div>

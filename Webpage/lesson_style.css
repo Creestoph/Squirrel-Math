@@ -372,12 +372,12 @@ a.link:active
 
 body.lesson
 {
-	background-color: #cccccc;
-	/*background-image: url(".images/background.jpg");
+	/* background-color: #cccccc;*/
+	background-image: url(".images/background.png");
 	background-attachment: fixed;
 	background-position: center;
 	background-repeat: no-repeat;
-	background-size: cover;*/
+	background-size: cover;
 	margin: 0;
 }
 
@@ -513,7 +513,7 @@ body.lesson
 	border-left: 10px solid #dd3333;
 	box-shadow: 2px 2px 3px 0px rgba(0, 0, 0, 0.4);
 	padding: 15px;
-	margin: 20px 30px 20px 30px;
+	margin: 30px 30px;
 	/* border-radius: 15px; */
 }
 
@@ -550,7 +550,9 @@ p.type
 	/* line-height: 0%; */
 	display: inline-block;
 	background-color: #dd3333;
-	padding: 5px;
+	padding: 0 5px;
+	height: 31px;
+	line-height: 31px;
 	color: white;
 	margin-top: 0;
 	margin-bottom: -10px;
@@ -562,6 +564,72 @@ p.type:hover
 {
 	background-color: #cc3333;
 	transition: background-color 0.1s;
+}
+
+p.optional-hide:after
+{
+	content: ">";
+	display: inline-block;
+	background: #aa0000;
+	margin: 0 0 5px 5px;
+    width: 21px;
+    height: 21px;
+    border-radius: 50%;
+    text-align: center;
+	vertical-align: middle;
+	font-family: Consolas;
+	line-height: 21px;
+	font-size: 21px;
+	transition: transform 0.5s;
+}
+
+
+p.optional-hide:hover:after
+{
+	background: #990000;
+	transform: rotate(90deg);
+	transition: transform 0.5s;
+}
+
+p.optional-show:after
+{
+	content: ">";
+	display: inline-block;
+	background: #aa0000;
+	margin: 0 0 5px 5px;
+    width: 21px;
+    height: 21px;
+    border-radius: 50%;
+    text-align: center;
+	vertical-align: middle;
+	font-family: Consolas;
+	line-height: 21px;
+	font-size: 21px;
+	transform: rotate(90deg);
+	transition: transform 0.5s;
+}
+
+p.optional-show:hover:after
+{
+	background: #990000;
+	transform: rotate(0deg);
+	transition: transform 0.5s;
+}
+
+p.optional-show ~ div
+{
+	margin: -5px;
+	padding: 5px;
+}
+
+p.optional-hide:hover ~ div
+{
+	background: #fff0f0;
+}
+
+p.optional-show:hover ~ div
+{
+	background: #fff0f0;
 }
 
 .proof-sticker
