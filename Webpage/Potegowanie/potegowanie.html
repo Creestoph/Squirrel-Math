@@ -261,7 +261,8 @@
 	</table>
 	
 	<p>
-		Aby uchodzić za człowieka wykształconego, powinieneś dobrze znać kwadraty i sześciany pierwszych dziesięciu liczb naturalnych.
+		Aby uchodzić za człowieka wykształconego, <span class="comment" id="No przynajmniej kwadraty">powinieneś dobrze znać kwadraty i sześciany pierwszych 
+		dziesięciu liczb naturalnych.</span>
 	</p>
 	
 	</div>
@@ -454,79 +455,82 @@
 
 	<p>
 		Dokonajmy jeszcze kilku przydatnych spostrzeżeń na temat potęgowania. Ponieważ zależy nam na osiągnięciu dojrzałości matematycznej, 
-		będziemy pracować na ogólnym przypadku, czyli na zmiennych literowych. W każdej chwili możesz podstawić sobie pod 
-		$a$, $b$ lub $c$ jakąś konkretną liczbę naturalną i zobaczyć, jak poniższe 
+		wprowadzimy ogólne przypadki, czyli będziemy pracować na zmiennych literowych. W każdej chwili możemy podstawić pod 
+		$a$, $b$ lub $c$ jakąś konkretne liczby naturalne i zobaczyć, jak poniższe 
 		twierdzenia działają na żywo.
 	</p>
 
-	<ul>
-		<li>
-			$a^n \cdot a^m=a^{n+m}$<br>
-			Jeśli liczbę $a$ mnożymy przez siebie $n$ razy, a następnie $m$ razy,
-			to łącznie występuje jako czynnik $n+m$ razy.
-			
-			<p class="type">
-				Dowód
-			</p>
-			<div class="proof">
-				<center><img src=".images/Screenshot_8.png" align="middle"></img></center>
-			</div>
-		</li>
+	
+	<p class="formula">
+		Jeśli liczbę $n$-tą potęgę pewnej liczby pomnożymy przez $m$-tą potęgę tej liczby, to otrzymamy potęgę o wykładniku $n+m$
+		$$a^n \cdot a^m=a^{n+m}$$
+	</p>
+	<div class="proof">
+		<div class = "proof-sticker">Uzasadnienie</div>
+		$$2 ^3 \cdot 2^5 = 2 \cdot 2 \cdot 2 \ \ \ \cdot \ \ \ 2 \cdot 2 \cdot 2 \cdot 2 \cdot 2 = 2^8$$
+		$$3 ^2 \cdot 3^4 = 3 \cdot 3 \ \ \ \cdot \ \ \ 3 \cdot 3 \cdot 3 \cdot 3 = 3^6$$
+	</div>
+	<div class="proof">
+		<div class = "proof-sticker">Dowód</div>
+		$$
+			a^n \cdot a^m = \underbrace{a \cdot a \cdot a \cdot a \cdot \dotsb \cdot a}_{n} \ \cdot \ \underbrace{a \cdot a \dotsb \cdot a}_{m} = 
+			\underbrace{a \cdot a \cdot a \cdot a \cdot a \cdot a \cdot a \cdot \dotsb \cdot a}_{n + m} = a^{n + m}
+		$$
+	</div>
+	<br><br>
 
-		<li>
-			$\frac{a^n}{a^m} =a^{n-m}$<br>
-			Jeśli liczbę $a$ mnożymy przez siebie $n$ razy w liczniku ułamka i 
-			$m$ razy w mianowniku ułamka, to po skróceniu pozostanie $n-m$ czynników.
+	<p class="formula">
+		Jeśli liczbę $n$-tą potęgę pewnej liczby podzielimy przez $m$-tą potęgę tej liczby, to otrzymamy potęgę o wykładniku $n-m$
+		$$\frac{a^n}{a^m} =a^{n-m}$$
+	</p>
+	<div class="proof">
+		<div class = "proof-sticker">Uzasadnienie</div>
+		\frac{2^6}{2^4} = \frac{}
+	</div>
+	<div class="proof">
+		<div class = "proof-sticker">Dowód</div>
+		Jeśli $n≥m$:
+		<center><img src=".images/Screenshot_9.png" align="middle"></img></center>
+		Jeśli $n \lt m$:
+		<center><img src=".images/Screenshot_10.png" align="middle"></img></center>
+	</div>
 
-			<p class="type">
-				Dowód
-			</p>
-			<div class="proof">
-				Jeśli $n≥m$:
-				<center><img src=".images/Screenshot_9.png" align="middle"></img></center>
-				Jeśli $n \lt m$:
-				<center><img src=".images/Screenshot_10.png" align="middle"></img></center>
-			</div>
-		</li>
-		
-		<li>$(a^n)^m=a^{n \cdot m}$<br>
-			Gdy liczbę $a$ mnożymy przez siebie $n$ razy, a następnie takie grupy 
-			$a^n$ mnożymy przez siebie $m$ razy, to w całym iloczynie $a$
-			wystąpi $n \cdot m$ razy.
-			
-			<p class="type">
-				Dowód
-			</p>
-			<div class="proof">
-				<center><img src=".images/Screenshot_11.png" align="middle"></img></center>
-			</div>
-		</li>
-		<li>
-			$a^n \cdot b^n=(a \cdot b)^n$<br>
-			Jeśli liczbę $a$ mnożymy przez siebie $n$ razy, a do tego domnażamy liczbę 
-			$b$ również $n$ razy, to tak, jakbyśmy iloczyn $a \cdot b$ mnożyli 
-			$n$ razy.
-			
-			<p class="type">
-				Dowód
-			</p>
-			<div class="proof">
-				<center><img src=".images/Screenshot_12.png" align="middle"></img></center>
-			</div>
-		</li>
+	<p class="formula">
+		Jeśli liczbę $n$-tą potęgę pewnej liczby podniesiemy do potęgi $m$, to otrzymamy w wykładniku $n \cdot m$
+		$$(a^n)^m=a^{n \cdot m}$$
+	</p>
+	<div class="proof">
+		<div class = "proof-sticker">Uzasadnienie</div>
+	</div>
+	<div class="proof">
+		<div class = "proof-sticker">Dowód</div>
+		<center><img src=".images/Screenshot_11.png" align="middle"></img></center>
+	</div>
 
-		<li>
-			$(\frac{a}{b})^n=\frac{a^n}{b^n} $<br>
-			Gdy podnosimy do potęgi pewien ułamek, możemy osobno zająć się potęgowaniem licznika oraz mianownika.
-			
-			<p class="type">
-				Dowód
-			</p>
-			<div class="proof">
-				<center><img src=".images/Screenshot_13.png" align="middle"></img></center>
-			</div>
-		</li>
-	</ul>
+	<p class="formula">
+		Iloczyn $n$-tej potęgi liczby $a$ i $n$-tej potęgi liczby $b$ jest równy $n$-tej potędze liczby $a \cdot b$
+		$$a^n \cdot b^n=(a \cdot b)^n$$
+	</p>
+	<div class="proof">
+		<div class = "proof-sticker">Uzasadnienie</div>
+	</div>
+	<div class="proof">
+		<div class = "proof-sticker">Dowód</div>
+		<center><img src=".images/Screenshot_12.png" align="middle"></img></center>
+	</div>
+
+	<p>Gdy podnosimy do potęgi pewien ułamek, możemy osobno zająć się potęgowaniem licznika oraz mianownika.</p>
+	<p class="formula">
+		Iloraz $n$-tej potęgi liczby $a$ przez $n$-tą potęgę liczby $b$ jest równy $n$-tej potędze liczby $\frac{a}{b}$
+		$$(\frac{a}{b})^n=\frac{a^n}{b^n} $$
+	</p>
+	<div class="proof">
+		<div class = "proof-sticker">Uzasadnienie</div>
+	</div>
+	<div class="proof">
+		<div class = "proof-sticker">Dowód</div>
+		<center><img src=".images/Screenshot_13.png" align="middle"></img></center>
+	</div>
 	
 	<p class="type">
 		Formalnie | Rozszerzenie
@@ -544,10 +548,8 @@
 	<ul>
 		<li>
 			$a^k \cdot a^l=a^{k+l}$
-			<p class="type">
-				Dowód
-			</p>
 			<div class="proof">
+				<div class = "proof-sticker">Dowód</div>
 				<ul>
 					<li>
 						Rozważmy przypadek, gdy tylko jeden z wykładników jest ujemny (ze względu na przemienność mnożenia i dodawania, nie ma 
@@ -567,10 +569,8 @@
 
 		<li>
 			$\frac{a^k}{a^l} =a^{k-l}$
-			<p class="type">
-				Dowód
-			</p>
 			<div class="proof">
+				<div class = "proof-sticker">Dowód</div>
 				<ul>
 					<li>
 						Przypadek, gdy wykładnik potęgi w liczniku jest ujemny:
@@ -589,10 +589,8 @@
 		</li>
 		<li>
 			$(a^k)^l=a^{k \cdot l}$
-			<p class="type">
-				Dowód
-			</p>
 			<div class="proof">
+				<div class = "proof-sticker">Dowód</div>
 				<ul>
 					<li>
 						Przypadek, gdy wykładnik wewnętrznej potęgi jest ujemny:
@@ -612,20 +610,16 @@
 		</li>
 		<li>
 			$a^k \cdot b^k=(a \cdot b)^k$<br>
-			<p class="type">
-				Dowód
-			</p>
 			<div class="proof">
+				<div class = "proof-sticker">Dowód</div>
 				Gdy wykładnik jest ujemny:
 				$$a^{-k} \cdot b^{-k}=\frac{1}{a^k}  \cdot \frac{1}{b^k} = \frac{1}{a^k \cdot b^k}=\frac{1}{(a \cdot b)^k} =(a \cdot b)^{-k}$$
 			</div>
 		</li>
 		<li>
 			$(\frac{a}{b})^k=\frac{a^k}{b^k} $<br>
-			<p class="type">
-				Dowód
-			</p>
 			<div class="proof">
+				<div class = "proof-sticker">Dowód</div>
 				Gdy wykładnik jest ujemny:
 				$$(\frac{a}{b})^{-k}=\frac{1}{\frac{a}{b}^k} =\frac{1}{\frac{a^k}{b^k}}=\frac{b^k}{a^k}=\frac{1}{a^k}  \cdot b^k=\frac{\frac{1}{a^k}}{\frac{1}{b^k}}=
 				\frac{a^{-k}}{b^{-k}}$$

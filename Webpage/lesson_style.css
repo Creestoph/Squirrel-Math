@@ -2,7 +2,7 @@
 
 p
 {
-	margin: 1.08em 0;
+	margin: 1.7em 0;
 }
 
 p:not(.printable)
@@ -67,10 +67,17 @@ ol li:before
 {
 	content: counter(foo) ")";
 	color: #DD3333;
-	margin: 0 1.5em;
 	margin: 0 1em;  
 	display: table-cell;
 	padding-right:  0.5em;
+}
+
+@media screen and (max-width: 700px)
+{
+	ul, ol
+	{
+		padding-left: 0;
+	}
 }
 
 button
@@ -346,6 +353,8 @@ button.button_convey span a
 body.tree
 {
 	background-color: #FFFFFF;
+	font-family: "Verdana";
+	font-size: 0.95em;
 }
 
 a.link:link
@@ -372,12 +381,12 @@ a.link:active
 
 body.lesson
 {
-	/* background-color: #cccccc;*/
-	background-image: url(".images/background.png");
+	background-color: #cccccc;
+	/*background-image: url(".images/background.png");
 	background-attachment: fixed;
 	background-position: center;
 	background-repeat: no-repeat;
-	background-size: cover;
+	background-size: cover;*/
 	margin: 0;
 }
 
@@ -405,6 +414,7 @@ body.lesson
 		padding: 35px 7% 35px 21%;
 		font-family: "Verdana";
 		font-size: 1.08em;
+		line-height: 1.7em;
 		color: #000000; 
 		background: #FEFEFE; 
 		border-right: 3px solid black;
@@ -555,7 +565,7 @@ p.type
 	line-height: 31px;
 	color: white;
 	margin-top: 0;
-	margin-bottom: -10px;
+	margin-bottom: -1.6em;
 	transition: background-color 0.1s;
 	box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.4);
 }
@@ -651,7 +661,7 @@ p.warning
 	font-family: arial;
 	color: #888888;
 	font-size: 0.7em;
-	margin-top: 14px;
+	margin-top: 1.8em;
 	margin-bottom: 8px;
 }	
 
