@@ -126,7 +126,9 @@
 		Formalna definicja potęgi o wykładniku naturalnym przedstawia się następująco:
 	</p>
 
-	<center><img src=".images/Screenshot_1.png" align="middle"></img></center>
+	$$
+		a^n = \underbrace{a \cdot a \cdot a \cdot a \cdot \dotsb \cdot a}_n
+	$$
 	
 	<p>
 		Definicja ta mówi, że pod $a$ oraz $n$ możemy podstawić dowolne 
@@ -456,7 +458,7 @@
 	<p>
 		Dokonajmy jeszcze kilku przydatnych spostrzeżeń na temat potęgowania. Ponieważ zależy nam na osiągnięciu dojrzałości matematycznej, 
 		wprowadzimy ogólne przypadki, czyli będziemy pracować na zmiennych literowych. W każdej chwili możemy podstawić pod 
-		$a$, $b$ lub $c$ jakąś konkretne liczby naturalne i zobaczyć, jak poniższe 
+		$a$, $b$ lub $n$ jakieś konkretne liczby i zobaczyć, jak poniższe 
 		twierdzenia działają na żywo.
 	</p>
 
@@ -485,15 +487,26 @@
 	</p>
 	<div class="proof">
 		<div class = "proof-sticker">Uzasadnienie</div>
-		\frac{2^6}{2^4} = \frac{}
+		$$\frac{2^6}{2^4} = \frac{2 \cdot 2 \cdot 2 \cdot 2 \cdot 2 \cdot 2}{2 \cdot 2 \cdot 2 \cdot 2} =
+		\require{cancel} \frac{\cancel{2 \cdot 2 \cdot 2 \cdot 2} \ \ \ \cdot \ \ \  2 \cdot 2}{\cancel{2 \cdot 2 \cdot 2 \cdot 2}} = 
+		2 \cdot 2 = 2^2$$
+		$$\frac{5^3}{5^7} = \frac{5 \cdot 5 \cdot 5}{5 \cdot 5 \cdot 5 \cdot 5 \cdot 5 \cdot 5 \cdot 5} =
+		\frac{\cancel{5 \cdot 5 \cdot 5}}{\cancel{5 \cdot 5 \cdot 5} \ \ \ \cdot \ \ \ 5 \cdot 5 \cdot 5 \cdot 5} = 
+		\frac{1}{5 \cdot 5 \cdot 5 \cdot 5} = \frac{1}{5^4} = 5^{-4}
+		$$
 	</div>
 	<div class="proof">
 		<div class = "proof-sticker">Dowód</div>
 		Jeśli $n≥m$:
-		<center><img src=".images/Screenshot_9.png" align="middle"></img></center>
+		$$ \frac{a^n}{a^m} = 
+		\frac{\overbrace{a \cdot a \cdot a \cdot a \cdot a \cdot \cancel{a \cdot a \cdot \dotsb \cdot a}}^{n} }{\underbrace {\cancel{a \cdot a \cdot \dotsb \cdot a}}_m } =
+		\underbrace{a \cdot a \cdot a \cdot \dotsb \cdot a}_{n-m} = a^{n - m}$$
 		Jeśli $n \lt m$:
-		<center><img src=".images/Screenshot_10.png" align="middle"></img></center>
+		$$ \frac{a^n}{a^m} = 
+		\frac{\overbrace{\cancel{a \cdot a \cdot \dotsb \cdot a}}^{n} }{\underbrace {a \cdot a \cdot a \cdot a \cdot a \cdot \cancel{a \cdot a \cdot \dotsb \cdot a}}_m } =
+		\frac{1}{\underbrace{a \cdot a \cdot a \cdot \dotsb \cdot a}_{m-n}} = \frac{1}{a^{m - n}} = a^{n - m}$$
 	</div>
+	<br><br>
 
 	<p class="formula">
 		Jeśli liczbę $n$-tą potęgę pewnej liczby podniesiemy do potęgi $m$, to otrzymamy w wykładniku $n \cdot m$
@@ -501,137 +514,198 @@
 	</p>
 	<div class="proof">
 		<div class = "proof-sticker">Uzasadnienie</div>
+		$$
+			(2^3)^4 = 2^3 \cdot 2^3 \cdot 2^3 \cdot 2^3 = (2 \cdot 2 \cdot 2) \cdot (2 \cdot 2 \cdot 2) \cdot (2 \cdot 2 \cdot 2) \cdot (2 \cdot 2 \cdot 2) =
+			2 \cdot 2 \cdot 2 \cdot 2 \cdot 2 \cdot 2 \cdot 2 \cdot 2 \cdot 2 \cdot 2 \cdot 2 \cdot 2 = 2^{12}
+		$$
+		$$
+			(3^2)^3 = 3^2 \cdot 3^2 \cdot 3^2 = (3 \cdot 3) \cdot (3 \cdot 3) \cdot (3 \cdot 3) =
+			3 \cdot 3 \cdot 3 \cdot 3 \cdot 3 \cdot 3 = 3^6
+		$$
 	</div>
 	<div class="proof">
 		<div class = "proof-sticker">Dowód</div>
-		<center><img src=".images/Screenshot_11.png" align="middle"></img></center>
+		$$
+			(a^n)^m = \underbrace {a^n \cdot a^n \cdot a^n \cdot \dotsb \cdot a^n}_m = 
+			\underbrace{\underbrace {a \cdot a \cdot \dotsb \cdot a}_n \cdot \underbrace {a \cdot a \cdot \dotsb \cdot a}_n \cdot 
+			\underbrace {a \cdot a \cdot \dotsb \cdot a}_n \cdot \dotsb \cdot \underbrace {a \cdot a \cdot \dotsb \cdot a}_n}_m = a^{n \cdot m}
+		$$
 	</div>
+	<br><br>
 
 	<p class="formula">
-		Iloczyn $n$-tej potęgi liczby $a$ i $n$-tej potęgi liczby $b$ jest równy $n$-tej potędze liczby $a \cdot b$
-		$$a^n \cdot b^n=(a \cdot b)^n$$
+		$n$-te potęga liczby $a \cdot b$ jest równa iloczynowi $n$-tej potęgi liczby $a$ i $n$-tej potęgi liczby $b$
+		$$(a \cdot b)^n = a^n \cdot b^n$$
 	</p>
 	<div class="proof">
 		<div class = "proof-sticker">Uzasadnienie</div>
+		$$
+			(5 \cdot 2)^3 = (5 \cdot 2) \cdot (5 \cdot 2) \cdot (5 \cdot 2) = 5 \cdot 2 \cdot 5 \cdot 2 \cdot 5 \cdot 2 =
+			5 \cdot 5 \cdot 5 \ \ \ \cdot \ \ \ 2 \cdot 2 \cdot 2 = 5^3 \cdot 2^3
+		$$
+		$$
+			\left( 3 \cdot \frac{1}{2} \right)^4 = \left(3 \cdot \frac{1}{2}\right) \cdot \left(3 \cdot \frac{1}{2}\right) \cdot \left(3 \cdot \frac{1}{2}\right) \cdot \left(3 \cdot \frac{1}{2}\right) =
+			3 \cdot 3 \cdot 3 \cdot 3 \cdot \frac{1}{2} \cdot \frac{1}{2} \cdot \frac{1}{2} \cdot \frac{1}{2} = 3^4 \cdot \left(\frac{1}{2}\right)^4
+		$$
+		
 	</div>
 	<div class="proof">
 		<div class = "proof-sticker">Dowód</div>
-		<center><img src=".images/Screenshot_12.png" align="middle"></img></center>
+		$$
+			(a \cdot b)^n = \underbrace{a \cdot b \ \ \cdot \ \ a \cdot b \ \ \cdot \ \ a \cdot b \ \ \cdot \ \ \dotsb \ \ \cdot \ \ a \cdot b}_n = 
+			\underbrace{a \cdot a \cdot a \cdot \dotsb \cdot a}_n \ \ \cdot \ \ \underbrace{b \cdot b \cdot b \cdot \dotsb \cdot b}_n = a^n \cdot b^n
+		$$
 	</div>
+	<br><br>
 
-	<p>Gdy podnosimy do potęgi pewien ułamek, możemy osobno zająć się potęgowaniem licznika oraz mianownika.</p>
 	<p class="formula">
 		Iloraz $n$-tej potęgi liczby $a$ przez $n$-tą potęgę liczby $b$ jest równy $n$-tej potędze liczby $\frac{a}{b}$
-		$$(\frac{a}{b})^n=\frac{a^n}{b^n} $$
+		$$\left(\frac{a}{b} \right)^n=\frac{a^n}{b^n} $$
 	</p>
 	<div class="proof">
 		<div class = "proof-sticker">Uzasadnienie</div>
+		$$
+			\left(\frac{2}{3} \right)^5 = \frac{2}{3} \cdot \frac{2}{3} \cdot \frac{2}{3} \cdot \frac{2}{3} \cdot \frac{2}{3} = 
+			\frac{2 \cdot 2 \cdot 2 \cdot 2 \cdot 2}{3 \cdot 3 \cdot 3 \cdot 3 \cdot 3} = \frac{2^5}{3^5}
+		$$
+		$$
+			\left(\frac{5}{7} \right)^2 = \frac{5}{7} \cdot \frac{5}{7} = 
+			\frac{5 \cdot 5}{7 \cdot 7} = \frac{5^2}{7^2}
+		$$
 	</div>
 	<div class="proof">
 		<div class = "proof-sticker">Dowód</div>
-		<center><img src=".images/Screenshot_13.png" align="middle"></img></center>
-	</div>
-	
-	<p class="type">
+		$$
+			\left(\frac{a}{b} \right)^n = \underbrace{\frac{a}{b} \cdot \frac{a}{b} \cdot \frac{a}{b} \cdot \dotsb \cdot \frac{a}{b}}_n = 
+			\frac{\overbrace{a \cdot a \cdot a \cdot \dotsb \cdot a}^n}{\underbrace{b \cdot b \cdot b \cdot \dotsb \cdot b}_n} = \frac{a^n}{b^n}
+		$$
+		</div>
+	<br><br>
+
+	<p class="type optional-hide">
 		Formalnie | Rozszerzenie
 	</p>
-	
-	<p class="warning">
-		wymagana znajomość tematu: Działania na wyrażeniach algebraicznych
+	<p class="warning">wymagana znajomość tematu: Działania na wyrażeniach algebraicznych</p>
+	<div>
+		<p>
+			Powyższe wzory działają także dla wykładników ujemnych. Aby tego dowieść, wykorzystamy własności dla wykładników dodatnich, które 
+			udowodniliśmy powyżej.
+		</p>
+
+		<p class="formula">
+			$a^k \cdot a^l=a^{k+l}$ dla $k$ i $l$ całkowitych
+		</p>
+		<div class="proof">
+			<div class = "proof-sticker">Dowód</div>
+			<ul>
+				<li>
+					Rozważmy przypadek, gdy tylko jeden z wykładników jest ujemny (ze względu na przemienność mnożenia i dodawania, nie ma 
+					znaczenia, który). Mamy uzasadnić równość
+					$$a^k \cdot a^{-l}=a^{k-l}$$
+					przy czym same zmienne $k$ oraz $l$ mają wartości naturalne. Wykorzystując 
+					definicję potęgi o ujemnym wykładniku:<br>
+					$$a^k \cdot a^{-l}=a^k \cdot \frac{1}{a^l} = \frac{a^k}{a^l} =a^{k-l}$$
+				</li>
+				<li>
+					W przypadku obydwu wykładników ujemnych mamy:<br>
+					$$a^{-k} \cdot a^{-l}=\frac{1}{a^k}  \cdot \frac{1}{a^l} =\frac{1}{a^k \cdot a^l}=\frac{1}{a^{k+l}}=a^{-(k+l) }=a^{-k-l}$$
+				</li>
+			</ul>
+		</div>
+		<br><br>
+
+		<p class="formula">
+			$\frac{a^k}{a^l} =a^{k-l}$ dla $k$ i $l$ całkowitych
+		</p>
+		<div class="proof">
+			<div class = "proof-sticker">Dowód</div>
+			<ul>
+				<li>
+					Przypadek, gdy wykładnik potęgi w liczniku jest ujemny:
+					$$\frac{a^{-k}}{a^l} =\frac{\frac{1}{a^k}}{a^l} =\frac{1}{a^k \cdot a^l}=\frac{1}{a^{k+l}} =a^{-(k+l) }=a^{-k-l}$$
+				</li>
+				<li>
+					Przypadek, gdy wykładnik potęgi w mianowniku jest ujemny:
+					$$\frac{a^k}{a^{-l}} =\frac{a^k}{\frac{1}{a^l}}=a^k \cdot a^l=a^{k+l}=a^{k-(-l)}$$
+				</li>
+				<li>
+					Przypadek, gdy obydwa wykładniki są ujemne:
+					$$\frac{a^{-k}}{a^{-l}}=\frac{\frac{1}{a^k}}{\frac{1}{a^l}}=\frac{1}{a^k}  \cdot a^l=\frac{a^l}{a^k} =a^{l-k}=a^{-k+l}=a^{-k-(-l)}$$
+				</li>
+			</ul>
+		</div>
+		<br><br>
+
+		<p class="formula">
+			$(a^k)^l=a^{k \cdot l}$ dla $k$ i $l$ całkowitych
+		</p>
+		<div class="proof">
+			<div class = "proof-sticker">Dowód</div>
+			<ul>
+				<li>
+					Przypadek, gdy wykładnik wewnętrznej potęgi jest ujemny:
+					$$(a^{-k} )^l=\left(\frac{1}{a^k} \right)^l=\frac{1^l}{(a^k)^l} =\frac{1}{a^{k \cdot l}} =a^{-(k \cdot l)}=a^{(-k) \cdot l}$$
+				</li>
+				<li>
+					Przypadek, gdy wykładnik zewnętrznej potęgi jest ujemny:
+					$$(a^k )^{-l}=\frac{1}{(a^k )^l}=\frac{1}{a^{k \cdot l}} =a^{-(k \cdot l)}=a^{k \cdot (-l)}$$
+				</li>
+				<li>
+					Przypadek, gdy obydwa wykładniki są ujemne:
+					$$(a^{-k} )^{-l}=\frac{1}{(a^{-k} )^l}=\frac{1}{ \left(\frac{1}{a^k} \right)^l} =\frac{1}{ \frac{1^l}{(a^k )^l} }
+					=\frac{1}{\frac{1}{a^{k \cdot l} }}=a^{k \cdot l}=a^{(-k) \cdot (-l)}$$
+				</li>
+			</ul>
+		</div>
+		<br><br>
+
+		<p class="formula">
+			$(a \cdot b)^k = a^k \cdot b^k$ dla $k$ całkowitego
+		</p>
+		<div class="proof">
+			<div class = "proof-sticker">Dowód</div>
+			Gdy wykładnik jest ujemny:
+			$$(a \cdot b)^{-k} = \frac{1}{(a \cdot b)^k} = \frac{1}{a^k \cdot b^k} = \frac{1}{a^k} \cdot \frac{1}{b^k} = a^{-k} \cdot b^{-k}=\frac{1}{a^k}  \cdot \frac{1}{b^k}$$
+		</div>
+		<br><br>
+
+		<p class="formula">
+			$\left(\frac{a}{b}\right)^k=\frac{a^k}{b^k}$ dla $k$ całkowitego
+		</p>
+		<div class="proof">
+			<div class = "proof-sticker">Dowód</div>
+			Gdy wykładnik jest ujemny:
+			$$\left(\frac{a}{b}\right)^{-k}=\frac{1}{\left(\frac{a}{b}\right)^k} =\frac{1}{\frac{a^k}{b^k}}=\frac{b^k}{a^k}=\frac{1}{a^k}  \cdot b^k=\frac{\frac{1}{a^k}}{\frac{1}{b^k}}=
+			\frac{a^{-k}}{b^{-k}}$$
+		</div>
+		<br><br>
+
+	</div>
+
+	</div>
+	</div>
+	</div>
+
+	<div class="chapter">
+	<div class="chapter_name">
+		Notacja wykładnicza
+	</div>
+	<hr>
+
+	<div class="chapter_mask">
+	<div class="chapter_body">
+	<p class="type">
+		Rozszerzenie
 	</p>
 
 	<p>
-		Powyższe wzory działają także dla wykładników ujemnych. Aby tego dowieść, wykorzystamy własności dla wykładników dodatnich, które 
-		udowodniliśmy powyżej.
+		LOL
 	</p>
-	
-	<ul>
-		<li>
-			$a^k \cdot a^l=a^{k+l}$
-			<div class="proof">
-				<div class = "proof-sticker">Dowód</div>
-				<ul>
-					<li>
-						Rozważmy przypadek, gdy tylko jeden z wykładników jest ujemny (ze względu na przemienność mnożenia i dodawania, nie ma 
-						znaczenia, który). Mamy uzasadnić równość
-						$$a^k \cdot a^{-l}=a^{k-l}$$
-						przy czym same zmienne $k$ oraz $l$ mają wartości naturalne. Wykorzystując 
-						definicję potęgi o ujemnym wykładniku:<br>
-						$$a^k \cdot a^{-l}=a^k \cdot \frac{1}{a^l} = \frac{a^k}{a^l} =a^{k-l}$$
-					</li>
-					<li>
-						W przypadku obydwu wykładników ujemnych mamy:<br>
-						$$a^{-k} \cdot a^{-l}=\frac{1}{a^k}  \cdot \frac{1}{a^l} =\frac{1}{a^k \cdot a^l}=\frac{1}{a^{k+l}}=a^{-(k+l) }=a^{-k-l}$$
-					</li>
-				</ul>
-			</div>
-		</li>
 
-		<li>
-			$\frac{a^k}{a^l} =a^{k-l}$
-			<div class="proof">
-				<div class = "proof-sticker">Dowód</div>
-				<ul>
-					<li>
-						Przypadek, gdy wykładnik potęgi w liczniku jest ujemny:
-						$$\frac{a^{-k}}{a^l} =\frac{\frac{1}{a^k}}{a^l} =\frac{1}{a^k \cdot a^l}=\frac{1}{a^{k+l}} =a^{-(k+l) }=a^{-k-l}$$
-					</li>
-					<li>
-						Przypadek, gdy wykładnik potęgi w mianowniku jest ujemny:
-						$$\frac{a^k}{a^{-l}} =\frac{a^k}{\frac{1}{a^l}}=a^k \cdot a^l=a^{k+l}=a^{k-(-l)}$$
-					</li>
-					<li>
-						Przypadek, gdy obydwa wykładniki są ujemne:
-						$$\frac{a^{-k}}{a^{-l}}=\frac{\frac{1}{a^k}}{\frac{1}{a^l}}=\frac{1}{a^k}  \cdot a^l=\frac{a^l}{a^k} =a^{l-k}=a^{-k+l}=a^{-k-(-l)}$$
-					</li>
-				</ul>
-			</div>
-		</li>
-		<li>
-			$(a^k)^l=a^{k \cdot l}$
-			<div class="proof">
-				<div class = "proof-sticker">Dowód</div>
-				<ul>
-					<li>
-						Przypadek, gdy wykładnik wewnętrznej potęgi jest ujemny:
-						$$(a^{-k} )^l=(\frac{1}{a^k} )^l=\frac{1^l}{(a^k)^l} =\frac{1}{a^{k \cdot l}} =a^{-(k \cdot l)}=a^{(-k) \cdot l}$$
-					</li>
-					<li>
-						Przypadek, gdy wykładnik zewnętrznej potęgi jest ujemny:
-						$$(a^k )^{-l}=\frac{1}{(a^k )^l}=\frac{1}{a^{k \cdot l}} =a^{-(k \cdot l)}=a^{k \cdot (-l)}$$
-					</li>
-					<li>
-						Przypadek, gdy obydwa wykładniki są ujemne:
-						$$(a^{-k} )^{-l}=\frac{1}{(a^{-k} )^l}=\frac{1}{ (\frac{1}{a^k} )^l} =\frac{1}{ \frac{1^l}{(a^k )^l} }
-						=\frac{1}{\frac{1}{a^{k \cdot l} }}=a^{k \cdot l}=a^{(-k) \cdot (-l)}$$
-					</li>
-				</ul>
-			</div>
-		</li>
-		<li>
-			$a^k \cdot b^k=(a \cdot b)^k$<br>
-			<div class="proof">
-				<div class = "proof-sticker">Dowód</div>
-				Gdy wykładnik jest ujemny:
-				$$a^{-k} \cdot b^{-k}=\frac{1}{a^k}  \cdot \frac{1}{b^k} = \frac{1}{a^k \cdot b^k}=\frac{1}{(a \cdot b)^k} =(a \cdot b)^{-k}$$
-			</div>
-		</li>
-		<li>
-			$(\frac{a}{b})^k=\frac{a^k}{b^k} $<br>
-			<div class="proof">
-				<div class = "proof-sticker">Dowód</div>
-				Gdy wykładnik jest ujemny:
-				$$(\frac{a}{b})^{-k}=\frac{1}{\frac{a}{b}^k} =\frac{1}{\frac{a^k}{b^k}}=\frac{b^k}{a^k}=\frac{1}{a^k}  \cdot b^k=\frac{\frac{1}{a^k}}{\frac{1}{b^k}}=
-				\frac{a^{-k}}{b^{-k}}$$
-			</div>
-		</li>
-	</ul>
-	
 	</div>
 	</div>
 	</div>
 
-  
 </div>
 
 </body>

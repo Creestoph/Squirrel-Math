@@ -142,9 +142,9 @@
 		</li>
 		<li>
 			Mnożenie to wielokrotne dodanie do siebie tej samej liczby: 
-			<p class="math" align="center">
-				<center><img src=".images/Screenshot_1.png" align="middle"></img></center>
-			</p>
+			$$
+				a \cdot b = \underbrace{a + a + a + \dotsb + a}_b
+			$$
 		</li>
 		<li>
 			Odejmowanie to odwrotność dodawania: 
@@ -388,7 +388,7 @@
 	
 	<div class="chapter">
 	<div class="chapter_name">
-		Definicje a twierdzenia
+		Definicje i twierdzenia
 	</div>
 	<hr>
 
@@ -411,7 +411,9 @@
 	<ul>
 		<li>
 			Zapis
-			<center><img src=".images/Screenshot_1.png" align="middle"></img></center>
+			$$
+				a \cdot b = \underbrace{a + a + a + \dotsb + a}_b
+			$$
 			stanowi definicję mnożenia. Dzięki niemu dowiadujemy się, w jaki sposób rozumieć symbol  $ \cdot $ postawiony 
 			pomiędzy dwiema liczbami: wyrażenie  $a \cdot b$ rozumiemy jako  $b$ razy dodaną do siebie 
 			liczbę  $a$.
@@ -516,10 +518,56 @@
 
 	<p>
 		Zdarza się, że matematycy pochodzący z różnych środowisk nie dogadają się, co jest definicją a co twierdzeniem. Możemy zdefiniować liczby wymierne jako ułamki o całkowitym 
-		liczniku i mianowniku i sformułować twierdzenie „każda liczba wymierna ma rozwinięcie dziesiętne skończone lub nieskończone okresowe”, 
-		które udowodnilibyśmy wykorzystując wspomnianą definicję. Równie dobrze moglibyśmy zdefiniować liczby wymierne jako liczby, których 
+		liczniku i mianowniku i sformułować twierdzenie „każda liczba wymierna ma rozwinięcie dziesiętne skończone lub nieskończone okresowe”.
+		Udowodnilibyśmy je pokazując, że każdy ułamek zwykły można przedstawić jako ułamek dziesiętny, tak jak w lekcji 
+		<a href="../UlamkiDziesietne/ulamki_dziesietne.html" class="link">Ułamki dziesiętne</a>
+		(w sekcji "Działania na ułamkach dziesiętnych"). Równie dobrze moglibyśmy zdefiniować liczby wymierne jako liczby, których 
 		rozwinięcie dziesiętne jest skończone lub nieskończone okresowe, a następnie stworzyć twierdzenie „każdą liczbę wymierną można 
-		przedstawić w postaci ułamka zwykłego o całkowitym liczniku i mianowniku”. Kwestia wygody.
+		przedstawić w postaci ułamka zwykłego o całkowitym liczniku i mianowniku”. Udowodnilibyśmy je pokazując, jak dowolny ułamek dziesiętny zamienić 
+		na ułamek zwykły (tak jak w sekcji "Zamiana ułamków dziesiętnych na zwykłe"). Obydwie te definicje są równoważne i właściwie kwestią wygody jest, 
+		z której mamy ochotę korzystać.
+	</p>
+
+	<p class="type">
+		Rozszerzenie
+	</p>
+
+	<p>
+		Chcielibyśmy dokonać pewnej uwagi na temat formalizmu treści przedstawianych na stronach Squirrel-Math. Wygłosiliśmy powyżej dumne przemówienie na temat 
+		tego, jak powinno się pielęgnować matematyczną czystość poprzez skrupulatne definiowanie pojęć i dowodzenie twierdzeń, a jednocześnie sami niejednokrotnie 
+		pozwalamy sobie na bardzo poważne odstępstwa od tych ideałów. Wykpiliśmy się z definiowania liczb naturalnych na zasadzie "liczby, jakie są, każdy widzi". 
+		Dodawanie wyjaśniliśmy na kulkach, owcach i jabłkach. Własności ułamków zwykłych czy dziesiętnych (które w gruncie rzeczy da się opisać formalnie 
+		w postaci twierdzeń) opchnęliśmy poprzez kilka przykładów i analogii. 
+	</p>
+
+	<p>
+		Kierujemy się (względnie) prostą zasadą. Chcemy wprowadzić nowe pojęcia tak, żeby zostały zrozumiane. Stawiamy przejrzystość na pierwszym miejscu. 
+		Im głębiej zanurkujemy w matematyczną otchłań, tym bardziej formalizmy będą wypierać podejścia intuicyjne, aż w pewnym momencie dotrzemy do tematów,
+		które funkcjonują jedynie jako abstrakcyjne twory matematycznego języka. Będziemy starać się, na tyle, na na ile to możliwe, nie pozostawiać niedopowiedzeń 
+		oraz dowodzić wszelkich stwierdzeń, które matematyk może uznać za zbyt śmiałe. W minionych lekcjach nie posiadaliśmy potrzebnych do tego narzędzi.
+		Właściwie nie posiadaliśmy nic. Oprócz jabłek. I owiec. 
+	</p>
+
+	<p>
+		Wielu owiec.
+	</p>
+
+	<p>
+		Co ciekawe, pojęcia tak podstawowe, jak liczba, dodawanie, dzielenie (a nawet pojęcia takie jak "zdanie" lub "dowód"!) posiadają swoje bardzo formalne, 
+		bardzo ścisłe, bardzo matematyczne definicje. Jednak żeby dobrze je zrozumieć, potrzebne jest całkiem spore wykształcenie (jakkolwiek dziwne by to nie było).
+		Gdy dotrzemy do tematów takich, jak "Teoria mnogości", wprowadzimy zaległe definicje pojęć z zakresu podstaw matematyki. Póki co jest, jak jest, balansujemy 
+		na granicy między intuicjami a formalizmem, przechylając się raczej w stronę intuicji. 
+	</p>
+
+	<p>
+		Bardziej radykalne osobistości mogą dokonać zarzutu, że gdzieś po drodze popadniemy w błędne koło: bo najpierw przyjmujemy pewne definicje na wiarę, 
+		potem na ich podstawie wyprowadzamy bardziej skomplikowane pojęcia i własności, a dopiero później, mając te bardziej skomplikowane twory, zdefiniujemy 
+		rzeczy, od których zaczęliśmy cały proces. No więc: niestety, tak będzie. Staramy się unikać zapętleń, jeśli tylko nie odbywa się to kosztem przejrzystości.
+		Gdy osiągniesz status weterana matematycznego, możesz spojrzeć na Ścieżkę prawdy, która realizowana jest równolegle do drzewa dydaktycznego, 
+		po którym obecnie się poruszasz. Ścieżka prawdy zaczyna tam, gdzie zaczyna się matematyka i prowadzi się według ścisłego rygoru matematycznego. 
+		Nie ma tam miejsca na błędne koła, jak również na intuicje. Z tego powodu zalecamy kierować się Ścieżką dydaktyczną, a ewentualnie kiedyś spojrzeć 
+		na Ścieżkę prawdy. Trochę jak ze Star Warsami. Najpierw dobrze jest zobaczyć Lorda Vadera w akcji, a dopiero potem dowiedzieć się, skąd Vader się wziął
+		i dlaczego jest jaki jest.
 	</p>
 
 	</div>
