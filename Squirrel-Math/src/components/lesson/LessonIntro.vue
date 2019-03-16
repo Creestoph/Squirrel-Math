@@ -1,5 +1,9 @@
 <template>
-
+  <div class="row">
+    <dic class="col">
+      <slot></slot>
+    </dic>
+  </div>
 </template>
 
 <script>
