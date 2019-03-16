@@ -1,9 +1,7 @@
 <template>
-  <div class="row">
-    <div class="col">
-      <slot></slot>
-    </div>
-  </div>
+  <p class="lesson_title">
+    <slot></slot>
+  </p>
 </template>
 
 <script>

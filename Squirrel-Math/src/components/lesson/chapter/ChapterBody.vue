@@ -1,6 +1,6 @@
 <template>
-<div class="row">
-  <div class="col">
+<div class="chapter_mask">
+  <div class="chapter_body">
     <slot></slot>
   </div>
 </div>

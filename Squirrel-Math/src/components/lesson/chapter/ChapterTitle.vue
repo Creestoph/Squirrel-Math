@@ -1,8 +1,9 @@
 <template>
-  <div class="row">
-    <div class="col">
+  <div>
+    <div class="chapter_name">
       <slot></slot>
     </div>
+    <hr>
   </div>
 </template>
 

@@ -1,9 +1,7 @@
 <template>
-  <div class="row">
-    <div class="col">
-      <chapter-title>{{title}}</chapter-title>
-      <chapter-body>{{body}}</chapter-body>
-    </div>
+  <div class="chapter">
+    <chapter-title><slot name="title"></slot></chapter-title>
+    <chapter-body><slot></slot></chapter-body>
   </div>
 </template>
 
@@ -13,7 +11,6 @@
 
   export default {
     name: "LessonChapter",
-    props: ['title', 'body'],
     components: {
       ChapterTitle,
       ChapterBody
