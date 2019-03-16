@@ -9,7 +9,6 @@ table.factorisation td:nth-child(odd)
 	height: 30px;
 	padding-right: 5px;
 	text-align: right;
-	font-family: Cambria Math;
 }
 
 table.factorisation td:nth-child(even)
@@ -17,7 +16,6 @@ table.factorisation td:nth-child(even)
 	height: 30px;
 	padding-left: 5px;
 	text-align: left;
-	font-family: Cambria Math;
 }
 
 circle.empty

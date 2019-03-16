@@ -44,7 +44,7 @@ Columnar_operation_node.prototype.print = function () {
     if (this.style_ids.indexOf("c") == -1)
         this.style_ids.push("n")
     class_str = " class = \"" + this.style_ids.map(Columnar_operation_node.style_id_to_style_name).join(" ") + "\"";
-    return "<td" + class_str + ">" + this.value + "</td>";
+    return this.value ? "<td" + class_str + ">$" + this.value + "$</td>" : "<td" + class_str + "></td>";
 }
 
 Columnar_operation_node.style_dictionary = {};
@@ -89,6 +89,7 @@ Display_table.prototype.print = function (target_id) {
     }
     table += "</table>";
     document.getElementById(target_id).innerHTML = table;
+    MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
 }
 
 Display_table.create_custom = function (strs) {

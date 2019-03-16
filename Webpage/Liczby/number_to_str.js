@@ -62,10 +62,16 @@ function numberToStr() {
     }
     x = parseInt(input.charAt(i));
     rz = (input.length - i - 1) / 3;
-    if (parseInt(tempdz) === 1 && rz > 0) temp = rzedy1[rz];
+    if (rz >= rzedy.length)
+    {
+      outstr = "To dla mnie za dużo. Daj mi spokój.";
+      ok = false;
+    }
+    else if (parseInt(tempdz) === 1 && rz > 0) temp = rzedy1[rz];
     else if (x < 5 && x > 1 && input.charAt(i-1) !== '1') temp = temp.concat(" " + rzedy234[rz]);
     else if (parseInt(tempdz) > 0) temp = temp.concat(" " + rzedy[rz]);
-    outstr = temp.concat(" " + outstr);
+    if (ok)
+      outstr = temp.concat(" " + outstr);
   }
  
 

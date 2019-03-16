@@ -6,24 +6,57 @@
 	<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 	<link rel="stylesheet" href="../lesson_style.css">
 	<link rel="stylesheet" href="./style.css">
+
+	<script type="text/x-mathjax-config">
+		MathJax.Hub.Config({
+			tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}, 
+			CommonHTML: { linebreaks: { automatic: true } }, 
+			"HTML-CSS": { linebreaks: { automatic: true }, fonts: ["STIX-Web"] }, 
+			SVG: { linebreaks: { automatic: true } } 
+		})
+ 	</script>
+	<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 	
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-	<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=MML_HTMLorMML"></script>
 	<script src="../.scripts/scroll_hide.js"></script>
 	<script src="../.scripts/draggable.js"></script>
-	<script src="../.scripts/math.js"></script>
 	<script src="../.scripts/comment.js"></script>
 </head>
 
 <body class="lesson">
   
 <div class = "menu">
-	<a href="../index.html"><button class = "button_convey" style="position: absolute; left: 10px"><span>Strona główna</span></button></a>
-	<a href="../drzewo.html"><button class = "button_convey" style="position: absolute; left: 250px"><span>Drzewo</span></button></a>
-	<a href="twierdzenia_i_dowody_short.html"><button class = "button_convey" style="position: relative; left: 80%"><span>Wersja skrócona</span></button></a>
+		<div class="logo">
+				<div>
+					<div class="logo-black-cell" style="float: left"></div>
+					<div class="logo-container-cell" style="float: left">
+						<div class="logo-red-cell" style="float: left"></div>
+						<div class="logo-red-cell" style="float: left"></div>
+						<div class="logo-red-cell" style="float: left"></div>
+						<div class="logo-red-cell" style="float: left"></div>
+					</div>
+					<div class="logo-black-cell" style="float: left; clear: left"></div>
+					<div class="logo-black-cell" style="float: left"></div>
+				</div>
+		</div>
+		<div class="logo-text">
+			<span class="logo-text-1">squirrel</span>
+			<span class="logo-text-2">math</span>
+		</div>
+
+	<a href="../index.html"><button class = "button_convey"><span>STRONA GŁÓWNA</span></button></a>
+	<a href="../drzewo.html"><button class = "button_convey"><span>DRZEWO</span></button></a>
 </div>
-  
-<div class="main">
+
+<div class = "main">
+		
+	<a href="liczby_short.html">
+		<div class = "bookmark-shadow">
+			<div class = "bookmark">
+					WERSJA SKRÓCONA
+			</div>
+		</div>
+	</a>
 
 	<p class="lesson_title">
 		Twierdzenia i dowody
@@ -56,11 +89,11 @@
 		Aby objaśnić, o co nam chodzi, posługiwaliśmy się przykładami:
 	</p>
 	
-	<p class="math" align="center">
-		7/3=7:3<br>
-		3/4=3:4<br>
-		6/2=6:2
-	</p>
+	$$
+		\frac{7}{3}=7:3\\
+		\frac{3}{4}=3:4\\
+		\frac{6}{2}=6:2
+	$$
 	
 	<p>
 		licząc na to, że każdy zauważy tendencję i zrozumie, w jaki sposób zastosować takie przekształcenie dla dowolnych innych liczb. Ze 
@@ -78,14 +111,14 @@
 		umysłowo. W trosce o czas i zdrowie psychiczne użyjemy raczej symbolicznego zapisu:
 	</p>
 	
-	<p class="math" align="center">
-		a/b=a:b
-	</p>
+	$$
+		\frac{a}{b}=a:b
+	$$
 	
 	<p>
-		Użyliśmy zmiennych oznaczonych literami <span class="math">a</span> i <span class="math">b</span>, aby wyrazić następującą myśl:<br>
-		Przypisz literze <span class="math">a</span> dowolną wartość liczbową, przypisz literze <span class="math">b</span> dowolną (niekoniecznie 
-		inną, byle nie <span class="math">0</span>) wartość liczbową, wstaw w miejsce wystąpień <span class="math">a</span> i <span class="math">b</span> przypisane wartości, a 
+		Użyliśmy zmiennych oznaczonych literami  $a$ i  $b$, aby wyrazić następującą myśl:<br>
+		Przypisz literze  $a$ dowolną wartość liczbową, przypisz literze  $b$ dowolną (niekoniecznie 
+		inną, byle nie $0$) wartość liczbową, wstaw w miejsce wystąpień $a$ i $b$ przypisane wartości, a 
 		otrzymasz poprawną równość.
 	</p>
 
@@ -96,15 +129,15 @@
 	<ul>
 		<li>
 			Dodawanie jest przemienne: 
-			<p class="math" align="center">
+			$$
 				a+b=b+a
-			</p>
+			$$
 		</li>
 		<li>
 			Dodawanie jest łączne:
-			<p class="math" align="center">
-				a+Bracket(b+c)=Bracket(a+b)+c
-			</p>
+			$$
+				a+(b+c)=(a+b)+c
+			$$
 		</li>
 		<li>
 			Mnożenie to wielokrotne dodanie do siebie tej samej liczby: 
@@ -114,47 +147,47 @@
 		</li>
 		<li>
 			Odejmowanie to odwrotność dodawania: 
-			<p class="math" align="center">
-				a-b=c⟺a+c=b
-			</p>
+			$$
+				a-b=c \Leftrightarrow a+c=b
+			$$
 		</li>
 		<li>
-			Każda liczba dzieli się przez <span class="math">1</span>:
-			<p class="math" align="center">
-				1 | a
-			</p>
+			Każda liczba dzieli się przez  $1$:
+			$$
+				1 \mid a
+			$$
 		</li>
 		<li>
 			Ułamki można rozszerzać i skracać:
-			<p class="math" align="center">
-				a/b=(a∙c)/(b∙c)
-			</p>
+			$$
+				\frac{a}{b}=\frac{a \cdot c}{b \cdot c}
+			$$
 		</li>
 		<li>
 			Aby pomnożyć ułamki, mnożymy ich liczniki i mianowniki:
-			<p class="math" align="center">
-				a/b∙c/d=(a∙c)/(b∙d)
-			</p>
+			$$
+				\frac{a}{b} \cdot \frac{c}{d}=\frac{a \cdot c}{b \cdot d}
+			$$
 		</li>
 		<li>
 			Aby dodać do siebie ułamki, należy sprowadzić je do wspólnego mianownika:
-			<p class="math" align="center">
-				a/b+c/d=(a∙d)/(b∙d)+(c∙b)/(d∙b)=(a∙d+c∙b)/(b∙d)
-			</p>
+			$$
+				\frac{a}{b}+\frac{c}{d}=\frac{a \cdot d}{b \cdot d}+\frac{c \cdot b}{d \cdot b}=\frac{a \cdot d+c \cdot b}{b \cdot d}
+			$$
 		</li>
 		<li>
 			Dzielenie przez ułamek to mnożenie przez jego odwrotność:
-			<p class="math" align="center">	
-				a/b:c/d=a/b∙d/c
-			</p>
+			$$
+				\frac{a}{b}:\frac{c}{d}=\frac{a}{b} \cdot \frac{d}{c}
+			$$
 		</li>
 	</ul>
 		
 	<p>
-		Trzykropek wykorzystany w zapisie <span class="math">a∙b=a+a+a+⋯+a</span> jest często używany, by przedstawić sumę lub iloczyn 
-		składników/czynników, których ilość nie jest bliżej znana lub zależy od pewnej zmiennej. Formuła <span class="math">a-b=c⟺a+c=b</span>
-		wykorzystuje <span class="comment_visible" id="Warto zaznaczyć różnicę między znakiem równości = a znakiem równoważności ⟺. Znak równości stawiamy pomiędzy dwoma liczbami/wyrażeniami
-		algebraicznymi/obiektami matematycznymi, które są takie same (mają tą samą wartość). Równoważność dotyczy dwóch stwierdzeń (zdań), które wyrażają dokładnie taką samą myśl.">symbol równoważności <span class="math">⟺</span>, który informuje, że to, co po lewej, jest równoważne z tym, co po prawej.</span>
+		Trzykropek wykorzystany w zapisie  $a \cdot b=a+a+a+⋯+a$ jest często używany, by przedstawić sumę lub iloczyn 
+		składników/czynników, których ilość nie jest bliżej znana lub zależy od pewnej zmiennej. Formuła  $a-b=c \Leftrightarrow a+c=b$
+		wykorzystuje <span class="comment_visible" id="Warto zaznaczyć różnicę między znakiem równości $=$ a znakiem równoważności $ \Leftrightarrow $. Znak równości stawiamy pomiędzy dwoma liczbami/wyrażeniami
+		algebraicznymi/obiektami matematycznymi, które są takie same (mają tą samą wartość). Równoważność dotyczy dwóch stwierdzeń (zdań), które wyrażają dokładnie taką samą myśl.">symbol równoważności $ \Leftrightarrow $, który informuje, że to, co po lewej, jest równoważne z tym, co po prawej.</span>
 	</p>
 
 	</div>
@@ -181,26 +214,26 @@
 	</p>
 
 	<p>
-		Zajmując się <span class="math">NWD</span> i <span class="math">NWW</span> liczb moglibyśmy natknąć się na pewną zależność:
+		Zajmując się  $NWD$ i  $NWW$ liczb moglibyśmy natknąć się na pewną zależność:
 	</p>
 	
 	<ul>
-		<li>Bierzemy liczby <span class="math">6</span> i <span class="math">9</span>. Obliczamy <span class="math">NWD Bracket(6,9)=3</span> oraz 
-		<span class="math">NWW Bracket(6,9)=18</span>. Okazuje się, że iloczyn <span class="math">6∙9=54</span> jest taki sam, jak iloczyn <span class="math">3∙18=54</span>;
-		<li>Bierzemy liczby <span class="math">15</span> i <span class="math">20</span>. Obliczamy <span class="math">NWD Bracket(15,20)=5</span>, 
-		<span class="math">NWW Bracket(15,20)=60</span>. Ponownie okazuje się, że <span class="math">15∙20=300</span> tak samo jak <span class="math">5∙60=300</span>;
-		<li>Bierzemy liczby <span class="math">100</span> i <span class="math">60</span>. Obliczamy <span class="math">NWD Bracket(100,60)=20</span>, 
-		<span class="math">NWW Bracket(100,60)=300</span>; znów otrzymujemy równość: <span class="math">100∙60=20∙300=6000</span>.
+		<li>Bierzemy liczby  $6$ i  $9$. Obliczamy  $NWD (6,9)=3$ oraz 
+		 $NWW (6,9)=18$. Okazuje się, że iloczyn  $6 \cdot 9=54$ jest taki sam, jak iloczyn  $3 \cdot 18=54$;
+		<li>Bierzemy liczby  $15$ i  $20$. Obliczamy  $NWD (15,20)=5$, 
+		 $NWW (15,20)=60$. Ponownie okazuje się, że  $15 \cdot 20=300$ tak samo jak  $5 \cdot 60=300$;
+		<li>Bierzemy liczby  $100$ i  $60$. Obliczamy  $NWD (100,60)=20$, 
+		 $NWW (100,60)=300$; znów otrzymujemy równość:  $100 \cdot 60=20 \cdot 300=6000$.
 	</ul>
 		
 	<p>
-		Te trzy przykłady wywołują pokusę, by stwierdzić, że dla dowolnych dwóch liczb <span class="math">a</span> i <span class="math">b</span> 
+		Te trzy przykłady wywołują pokusę, by stwierdzić, że dla dowolnych dwóch liczb  $a$ i  $b$ 
 		zachodzi
 	</p>
 	
-	<p class="math" align="center">
-		a∙b=NWD Bracket(a,b)∙NWW Bracket(a,b)
-	</p>
+	$$
+		a \cdot b=NWD (a,b) \cdot NWW (a,b)
+	$$
 
 	<p>
 		Takie stwierdzenie jest cokolwiek śmiałe, ponieważ opiera się jedynie na przesłankach – na podstawie trzech przypadków próbujemy postawić 
@@ -219,14 +252,14 @@
 	
 	<div class="proof">
 		<p>
-			Przypomnijmy sobie, w jaki sposób wyznaczaliśmy <span class="math">NWW</span> i <span class="math">NWD</span> liczb. Dokonywaliśmy 
+			Przypomnijmy sobie, w jaki sposób wyznaczaliśmy  $NWW$ i  $NWD$ liczb. Dokonywaliśmy 
 			rozkładu na czynniki pierwsze obydwu liczb:
 		</p>
 
-		<p class="math" align="center">
-			120=2∙2∙2∙3∙5<br>
-			300=2∙2∙3∙5∙5
-		</p>
+		$$
+			120=2 \cdot 2 \cdot 2 \cdot 3 \cdot 5\\
+			300=2 \cdot 2 \cdot 3 \cdot 5 \cdot 5
+		$$
 
 		<p>
 			A następnie wybieraliśmy te czynniki, które pojawiają się w obydwu rozkładach:
@@ -235,27 +268,27 @@
 		<center><img src=".images/Screenshot_2.png" align="middle"></img></center>
 
 		<p>
-			Czynniki, które pojawiają się w obydwu rozkładach, tworzą <span class="math">NWD</span> tych liczb:
+			Czynniki, które pojawiają się w obydwu rozkładach, tworzą  $NWD$ tych liczb:
 		</p>
 
 		<center><img src=".images/Screenshot_3.png" align="middle"></img></center>
 
 		<p>
-			A razem z czynnikami pojawiającymi się tylko raz tworzą <span class="math">NWW</span> tych liczb:
+			A razem z czynnikami pojawiającymi się tylko raz tworzą  $NWW$ tych liczb:
 		</p>
 
-		<center><img src=".images/Screenshot_3.png" align="middle"></img></center>
+		<center><img src=".images/Screenshot_4.png" align="middle"></img></center>
 
 		<p>
 			Dzięki takiemu zapisowi łatwiej zauważyć słuszność naszej hipotezy:
 		</p>
 		
-		<center><img src=".images/Screenshot_4.png" align="middle"></img></center>
+		<center><img src=".images/Screenshot_5.png" align="middle"></img></center>
 	</div>
 		
 	<p>
-		Teraz jedynie musimy sformalizować nasze rozumowanie i nie opierać się na konkretnych liczbach <span class="math">120</span> i 
-		<span class="math">300</span>, a na dowolnych dwóch <span class="math">a</span> i <span class="math">b</span>.
+		Teraz jedynie musimy sformalizować nasze rozumowanie i nie opierać się na konkretnych liczbach  $120$ i 
+		 $300$, a na dowolnych dwóch  $a$ i  $b$.
 	</p>
 
 	<p class="type">
@@ -264,59 +297,57 @@
 	
 	<div class="proof">
 		<p>
-			Weźmy dowolne liczby <span class="math">a</span> i <span class="math">b</span> i dokonajmy ich rozkładu na czynniki pierwsze. 
-			Wybierzmy czynniki pojawiające się w obydwu rozkładach i oznaczmy je jako <span class="math">r_1,r_2,r_3,r_4,…,r_k</span>.
+			Weźmy dowolne liczby  $a$ i  $b$ i dokonajmy ich rozkładu na czynniki pierwsze. 
+			Wybierzmy czynniki pojawiające się w obydwu rozkładach i oznaczmy je jako  $r_1,r_2,r_3,r_4,…,r_k$.
 		</p>
 		
 		<p>
 			Możemy zapisać
 		</p>
 		
-		<p class="math" align="center">
-			a=r_1∙r_2∙r_3∙…∙r_k∙p_1∙p_2∙p_3∙…∙p_n<br>
-			b=r_1∙r_2∙r_3∙…∙r_k∙q_1∙q_2∙q_3∙…∙q_m
-		</p>
+		$$
+			a=r_1 \cdot r_2 \cdot r_3 \cdot … \cdot r_k \cdot p_1 \cdot p_2 \cdot p_3 \cdot … \cdot p_n\\
+			b=r_1 \cdot r_2 \cdot r_3 \cdot … \cdot r_k \cdot q_1 \cdot q_2 \cdot q_3 \cdot … \cdot q_m
+		$$
 		
 		<p>
-			gdzie <span class="math">p_1,p_2,p_3,…,p_n</span> to pozostałe czynniki występujące w rozkładzie liczby <span class="math">a</span>, 
-			zaś <span class="math">q_1,q_2,q_3,…,q_m</span> to pozostałe czynniki rozkładu <span class="math">b</span>.
+			gdzie  $p_1,p_2,p_3,…,p_n$ to pozostałe czynniki występujące w rozkładzie liczby  $a$, 
+			zaś  $q_1,q_2,q_3,…,q_m$ to pozostałe czynniki rozkładu  $b$.
 		</p>
 
 		<p>
 			Ponieważ 
 		</p>
 		
-		<p class="math" align="center">
-			NWD Bracket(a,b)=r_1∙r_2∙r_3∙…∙r_k<br>
-			NWW Bracket(a,b)=r_1∙r_2∙r_3∙…∙r_k∙p_1∙p_2∙p_3∙…∙p_n∙q_1∙q_2∙q_3∙…∙q_m
-		</p>
+		$$
+			NWD (a,b)=r_1 \cdot r_2 \cdot r_3 \cdot … \cdot r_k\\
+			NWW (a,b)=r_1 \cdot r_2 \cdot r_3 \cdot … \cdot r_k \cdot p_1 \cdot p_2 \cdot p_3 \cdot … \cdot p_n \cdot q_1 \cdot q_2 \cdot q_3 \cdot … \cdot q_m
+		$$
 		
 		<p>
 			to
 		</p>
 		
-		<p class="math" align="center">
-			a∙b=Bracket(r_1∙r_2∙r_3∙…∙r_k∙p_1∙p_2∙p_3∙…∙p_n )∙Bracket(r_1∙r_2∙r_3∙…∙r_k∙q_1∙q_2∙q_3∙…∙q_m )=<br>
-			=Bracket(r_1∙r_2∙r_3∙…∙r_k )∙Bracket(r_1∙r_2∙r_3∙…∙r_k∙p_1∙p_2∙p_3∙…∙p_n∙q_1∙q_2∙q_3∙…∙q_m )=<br>
-			=NWD Bracket(a,b)∙NWW Bracket(a,b)   □
-		</p>
+		$$
+			a \cdot b=(r_1 \cdot r_2 \cdot r_3 \cdot … \cdot r_k \cdot p_1 \cdot p_2 \cdot p_3 \cdot … \cdot p_n ) \cdot (r_1 \cdot r_2 \cdot r_3 \cdot … \cdot r_k \cdot q_1 \cdot q_2 \cdot q_3 \cdot … \cdot q_m )=\\
+			=(r_1 \cdot r_2 \cdot r_3 \cdot … \cdot r_k ) \cdot (r_1 \cdot r_2 \cdot r_3 \cdot … \cdot r_k \cdot p_1 \cdot p_2 \cdot p_3 \cdot … \cdot p_n \cdot q_1 \cdot q_2 \cdot q_3 \cdot … \cdot q_m )=\\
+			=NWD (a,b) \cdot NWW (a,b)   □
+		$$
 	</div>
 		
 	<p>
-		Symbol <span class="math">□</span> zapisują matematycy z dobrym humorem, którzy chcą podkreślić sukces dobrze przeprowadzonego dowodu. 
+		Symbol  $□$ zapisują matematycy z dobrym humorem, którzy chcą podkreślić sukces dobrze przeprowadzonego dowodu. 
 		Odczytujemy go jako „koniec dowodu” lub „co należało udowodnić”. Niezwykle optymistyczny akcent.
 	</p>
 
 	<p>
-		W ten jakże przyjemny sposób dokonaliśmy pierwszego, choć z pewnością nie ostatniego dowodu matematycznego. Od tej chwili równość
+		W ten jakże przyjemny sposób dokonaliśmy pierwszego, choć z pewnością nie ostatniego dowodu matematycznego. Od tej chwili następującą równość możemy określić dumnym mianem twierdzenia:
 	</p>
 	
-	<p class="math" align="center">
-		a∙b=NWD Bracket(a,b)∙NWW Bracket(a,b)
-	</p>
-	
-	<p>
-		możemy określić dumnym mianem twierdzenia.
+	<p class="formula">
+		$$
+			a \cdot b=NWD (a,b) \cdot NWW (a,b)
+		$$
 	</p>
 
 	<p>
@@ -325,18 +356,18 @@
 		stwierdzić, że:
 	</p>
 	
-	<p class="math" align="center">
-		0∙0=0<br>
-		1∙1=1
-	</p>
+	$$
+		0 \cdot 0=0\\
+		1 \cdot 1=1
+	$$
 	
 	<p>
 		Zatem prawdziwa jest równość
 	</p>
 	
-	<p class="math" align="center">
-		a∙a=a
-	</p>
+	$$
+		a \cdot a=a
+	$$
 	
 	<p>
 		Nie jest istotne, czy tendencja dotyczy dwóch, dwudziestu czy dwustu przypadków. Matematyka potrafi zaskakiwać, zdarza się, że hipoteza 
@@ -372,30 +403,28 @@
 	<ul>
 		<li>
 			Zapis
-			<p class="math" align="center">
-				<center><img src=".images/Screenshot_1.png" align="middle"></img></center>
-			</p>
-			stanowi definicję mnożenia. Dzięki niemu dowiadujemy się, w jaki sposób rozumieć symbol <span class="math">∙</span> postawiony 
-			pomiędzy dwiema liczbami: wyrażenie <span class="math">a∙b</span> rozumiemy jako <span class="math">b</span> razy dodaną do siebie 
-			liczbę <span class="math">a</span>.
+			<center><img src=".images/Screenshot_1.png" align="middle"></img></center>
+			stanowi definicję mnożenia. Dzięki niemu dowiadujemy się, w jaki sposób rozumieć symbol  $ \cdot $ postawiony 
+			pomiędzy dwiema liczbami: wyrażenie  $a \cdot b$ rozumiemy jako  $b$ razy dodaną do siebie 
+			liczbę  $a$.
 		</li>
 		<li>
-			Mówimy, że <span class="math">a</span> jest podzielne przez <span class="math">b</span>, jeśli <span class="math">a/b</span> jest 
-			liczbą całkowitą. W ten sposób definiujemy zwrot „jest podzielne przez” jak również tłumaczymy zapis <span class="math">a | b</span>. 
-			Matematycy zazwyczaj używają innej, prawie równoważnej definicji: <span class="math">a | b</span> jeśli istnieje liczba całkowita 
-			<span class="math">c</span>, dla której <span class="math">a=b∙c</span>.
+			Mówimy, że  $a$ jest podzielne przez  $b$, jeśli  $a/b$ jest 
+			liczbą całkowitą. W ten sposób definiujemy zwrot „jest podzielne przez” jak również tłumaczymy zapis  $a | b$. 
+			Matematycy zazwyczaj używają innej, prawie równoważnej definicji:  $a | b$ jeśli istnieje liczba całkowita 
+			 $c$, dla której  $a=b \cdot c$.
 		</li>
 		<li>
-			Liczby wymierne definiujemy jako ułamki <span class="math">a/b</span> gdzie <span class="math">a</span> oraz <span class="math">b</span> to 
+			Liczby wymierne definiujemy jako ułamki  $a/b$ gdzie  $a$ oraz  $b$ to 
 			liczby całkowite.
 		</li>
 		<li>
-			<span class="math">NWDBracket(a,b)</span> definiujemy jako największą liczbę naturalną <span class="math">c</span>, taką że <span class="math">c | a</span>
-			oraz <span class="math">c | b</span>.
+			 $NWD(a,b)$ definiujemy jako największą liczbę naturalną  $c$, taką że  $c | a$
+			oraz  $c | b$.
 		</li>
 		<li>
-			<span class="math">NWWBracket(a,b)</span> definiujemy jako najmniejszą liczbę naturalną <span class="math">c</span>, taką że <span class="math">a | c</span> 
-			oraz <span class="math">b | c</span>.
+			 $NWW(a,b)$ definiujemy jako najmniejszą liczbę naturalną  $c$, taką że  $a | c$ 
+			oraz  $b | c$.
 		</li>
 	</ul>
 		
@@ -407,7 +436,7 @@
 
 	<p>
 		Mając definicje, możemy formułować twierdzenia. Gdy już wiemy, czym są nowowprowadzone obiekty matematyczne, możemy dostrzegać pewne 
-		zjawiska z nimi związane. Moglibyśmy sformułować twierdzenie „istnieje <span class="math">56</span> ładnych ułamków zwykłych o różnych 
+		zjawiska z nimi związane. Moglibyśmy sformułować twierdzenie „istnieje  $56$ ładnych ułamków zwykłych o różnych 
 		wartościach” i udowodnić je wykorzystując definicję ułamków ładnych:
 	</p>
 	
@@ -417,59 +446,59 @@
 	
 	<div class="proof">
 		<p>
-			Jeśli ułamek <span class="math">a/b</span> jest ładny, liczby <span class="math">a</span> oraz <span class="math">b</span>
-			wykorzystują łącznie dwie cyfry, a więc liczba <span class="math">a</span> musi być jednocyfrowa oraz <span class="math">b</span> 
-			musi być jednocyfrowa. Rozważamy więc ułamki, których liczniki mają jedną z wartości <span class="math">0,1,2,3,4,5,6,7,8,9</span>, 
-			a mianowniki jedną z wartości <span class="math">1,2,3,4,5,6,7,8,9</span> (<span class="math">b</span> nie może mieć wartości <span class="math">0</span>)
+			Jeśli ułamek  $a/b$ jest ładny, liczby  $a$ oraz  $b$
+			wykorzystują łącznie dwie cyfry, a więc liczba  $a$ musi być jednocyfrowa oraz  $b$ 
+			musi być jednocyfrowa. Rozważamy więc ułamki, których liczniki mają jedną z wartości  $0,1,2,3,4,5,6,7,8,9$, 
+			a mianowniki jedną z wartości  $1,2,3,4,5,6,7,8,9$ ( $b$ nie może mieć wartości  $0$)
 		</p>
 		
 		<p>
-			Jeśli <span class="math">b=1</span>, licznikiem może być <span class="math">0,1,2,3,4,5,6,7,8,9</span>, co daje <span class="math">10</span> 
+			Jeśli  $b=1$, licznikiem może być  $0,1,2,3,4,5,6,7,8,9$, co daje  $10$ 
 			ułamków o różnych wartościach.
 		</p>
 		
 		<p>
-			Jeśli <span class="math">b=2</span>, licznikiem może być <span class="math">1,3,5,7,9</span>, co daje <span class="math">5</span> nowych 
+			Jeśli  $b=2$, licznikiem może być  $1,3,5,7,9$, co daje  $5$ nowych 
 			ułamków; dla parzystych liczników otrzymalibyśmy jedną z wartości z poprzedniego przypadku.
 		</p>
 		
 		<p>
-			Jeśli <span class="math">b=3</span>, licznikiem może być <span class="math">1,2,4,5,7,8</span>, co daje <span class="math">6</span> 
+			Jeśli  $b=3$, licznikiem może być  $1,2,4,5,7,8$, co daje  $6$ 
 			nowych ułamków
 		</p>
 		
 		<p>
-			Jeśli <span class="math">b=4</span>, licznikiem może być <span class="math">1,3,5,7,9</span>, co daje <span class="math">5</span> 
+			Jeśli  $b=4$, licznikiem może być  $1,3,5,7,9$, co daje  $5$ 
 			nowych ułamków
 		</p>
 		
 		<p>
-			Jeśli <span class="math">b=5</span>, licznikiem może być <span class="math">1,2,3,4,6,7,8,9</span>, co daje <span class="math">8</span> 
+			Jeśli  $b=5$, licznikiem może być  $1,2,3,4,6,7,8,9$, co daje  $8$ 
 			nowych ułamków
 		</p>
 		
 		<p>
-			Jeśli <span class="math">b=6</span>, licznikiem może być <span class="math">1,5,7</span>, co daje <span class="math">3</span> nowe ułamki; 
+			Jeśli  $b=6$, licznikiem może być  $1,5,7$, co daje  $3$ nowe ułamki; 
 			dla pozostałych liczników otrzymalibyśmy ułamek skracalny o wartości równej jednej z wcześniejszych przypadków
 		</p>
 		
 		<p>
-			Jeśli <span class="math">b=7</span>, licznikiem może być <span class="math">1,2,3,4,5,6,8,9</span>, co daje <span class="math">8</span> 
+			Jeśli  $b=7$, licznikiem może być  $1,2,3,4,5,6,8,9$, co daje  $8$ 
 			nowych ułamków
 		</p>
 		
 		<p>
-			Jeśli <span class="math">b=8</span>, licznikiem może być <span class="math">1,3,5,7,9</span>, co daje <span class="math">5</span> 
+			Jeśli  $b=8$, licznikiem może być  $1,3,5,7,9$, co daje  $5$ 
 			nowych ułamków
 		</p>
 		
 		<p>
-			Jeśli <span class="math">b=9</span>, licznikiem może być <span class="math">1,2,4,5,7,8</span>, co daje <span class="math">6</span> nowych 
+			Jeśli  $b=9$, licznikiem może być  $1,2,4,5,7,8$, co daje  $6$ nowych 
 			ułamków
 		</p>
 		
 		<p>
-			Łącznie mamy <span class="math">10+5+6+5+8+3+8+5+6=56</span> ułamków o różnych wartościach
+			Łącznie mamy  $10+5+6+5+8+3+8+5+6=56$ ułamków o różnych wartościach
 		</p>
 	</div>
 
