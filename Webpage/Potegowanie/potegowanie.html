@@ -699,8 +699,115 @@
 	</p>
 
 	<p>
-		LOL
+		Zapis z użyciem potęgi bywa przydatny do reprezentacji liczb o wartościach bardzo dużych lub bardzo bliskich zera. Przypomnijmy sobie kilka ogromnych liczb 
+		z rozdziału "Liczby giganty" lekcji "Liczby":
 	</p>
+
+	<ul>
+		<li>$1\ 000$ - tysiąc to jedynka i $3$ zera</li>
+		<li>$1\ 000\ 000$ - milion to jedynka i $6$ zer</li>
+		<li>$1\ 000\ 000\ 000$ - miliard to jedynka i $9$ zer</li>
+		<li>$1\ 000\ 000\ 000\ 000$ - bilion to jedynka i $12$ zer</li>
+		<li>$1\ 000\ 000\ 000\ 000\ 000$ - biliard to jedynka i $15$ zer</li>
+		<li>$1\ 000\ 000\ 000\ 000\ 000\ 000$ - trylion to jedynka i $18$ zer</li>
+		<li>$1\ 000\ 000\ 000\ 000\ 000\ 000\ 000$ - tryliard to jedynka i $21$ zer</li>
+		<li>$1\ 000\ 000\ 000\ 000\ 000\ 000\ 000\ 000$ - kwadrylion to jedynka i $24$ zera</li>
+		<li>$1\ 000\ 000\ 000\ 000\ 000\ 000\ 000\ 000\ 000$ - kwadryliard to jedynka i $27$ zer</li>
+	</ul>
+
+	<p>
+		Zapis tak dużych liczb staje się dość uciążliwy ze względu na przytłaczająco dużą ilość cyfr. Właściwie bardziej wymowny jest opis informujący, ile 
+		zer posiada ta liczba z tyłu. A przecież każdego z tych kolosów da się zapisać zwięźle za pomocą potegi dziesiątki:
+	</p>
+
+	<ul>
+		<li>$10^3$ - tysiąc to jedynka i $3$ zera</li>
+		<li>$10^6$ - milion to jedynka i $6$ zer</li>
+		<li>$10^9$ - miliard to jedynka i $9$ zer</li>
+		<li>$10^{12}$ - bilion to jedynka i $12$ zer</li>
+		<li>$10^{15}$ - biliard to jedynka i $15$ zer</li>
+		<li>$10^{18}$ - trylion to jedynka i $18$ zer</li>
+		<li>$10^{21}$ - tryliard to jedynka i $21$ zer</li>
+		<li>$10^{24}$ - kwadrylion to jedynka i $24$ zera</li>
+		<li>$10^{27}$ - kwadryliard to jedynka i $27$ zer</li>
+	</ul>
+
+	<p>
+		Z ciekawszych liczb warty wspomnienia jest googol: $10^{80}$ przekraczający szacowaną liczbę atomów we Wszechświecie oraz googolplex: $10^{10^{80}}$ mający 
+		w swoim zapisie googol zer. Przy okazji chcielibyśmy zwrócić uwagę, że liczby postaci $10^{6n}$ to kolejne "liony". Dla $n = 1$ jest to <b>mi</b>lion, dla
+		$n = 2$ <b>bi</b>lion, dla $n = 3$ <b>try</b>lion itd. Z kolei liczby postaci $10^{6n + 3}$ to kolejne "liardy". Dla $n = 1$ mamy <b>mi</b>liard, dla 
+		$n = 2$ <b>bi</b>liard itd.
+	</p>
+
+	<p>
+		Użycie potęgi pozwala na zwięzły zapis również innych ogromnych liczb, niekoniecznie składających się jedynie z jedynki i zer. 
+		Stała fizyczna $c = 299\ 792\ 458$ opisuje, ile metrów pokonuje światło w ciągu jednej sekundy. Jeśli nie używamy tej stałej do przeprowadzania 
+		bardzo poważnych i dokładnych obliczeń, powinno wystarczyć nam pojęcie, że stała ta ma przybliżoną wartość $c \approx 300\ 000\ 000$, którą z kolei 
+		można zapisać w skrócie jako $c \approx 3 \cdot 10^8$ czyli w istocie jest to "trójka i osiem zer". Odległość od Ziemi do Słońca wynosi 
+		$149\ 600\ 000 \text{ m}$, czyli w skrócie $1,496 \cdot 10^8$ metrów.
+	</p>
+
+	<p>
+		Na podobnej zasadzie zapisuje się liczby o bardzo małej wartości. Wielkość mrówki wynosi około $5 \text{ mm}$. Malutkie pajęczaki zwane roztoczami 
+		osiągają rozmiary rzędu $0,1 \text{ mm}$. Atomy, czyli najmniejsze znane nauce budulce otaczającego nas świata, mają rozmiary skali $0,0000001 \text{ mm}$, czyli inaczej 
+		$\frac{1}{10\ 000\ 000} = \frac{1}{10^7} = 10^{-7}$ milimetra. Wartość $10^{-7}$ możemy interpretować jako 
+		"ułamek dziesiętny, który ma łącznie 7 zer z przodu (jedno przed przecinkiem i 6 po przecinku) i jedynkę na końcu". Na przykład atom wodoru ma rozmiar 
+		$0,000000037 \text{ mm}$, czyli $3,7 \cdot 10^{-8} \text{ mm}$.
+	</p>
+
+	<p>
+		Formalnie rzecz ujmując, liczba jest zapisana w postaci wykładniczej, jeśli ma postać 
+	</p>
+
+	$$
+		c \cdot 10^m
+	$$
+
+	<p>
+		Gdzie $c$ przedstawia ułamek dziesiętny o wartości od $1$ (włącznie) do $10$ (bez dziesięciu): $1 \leq c \lt 10$,
+		zaś $m$ jest dowolną liczbą całkowitą, dodatnią, ujemną lub zerową. Właściwie liczba $c$ może przedstawiać także ujemny ułamek, czyli tak na prawdę 
+		dopuszczamy również $-10 \lt c \leq -1$. Oto kilka liczb zapisanych w postaci notacji wykładniczej:
+	</p>
+
+	<ul>
+		<li>Masa Ziemi wynosi około $5 980\ 000\ 000\ 000\ 000\ 000\ 000\ 000 = 5,98 \cdot 10^{24}$ kilogramów</li>
+		<li>Obwód Ziemi (tzn. długość, jaką pokonamy, odbywając podróż dookoła świata) wynosi: $40\ 075 \approx 4 \cdot 10^4$ kilometrów</li>
+		<li>Masa atomu (dokładniej atomu wodoru) wynosi około: $0,000000000000000000000001673 = 1,673 \cdot 10^{-24}$ grama</li>
+		<li>Temperaturę jądra Słońca szacuję się na $15\ 709\ 999\ 700 \approx 1,57 \cdot 10^{10}$ stopni Celsjusza</li>
+	</ul>
+
+	<p class="type">
+		Warsztat | Rozszerzenie
+	</p>
+
+	<p>
+		Aby zapisać liczbę w postaci notacji wykładniczej, musimy zapisać ją w postaci ułamka dziesiętnego (z użyciem przecinka), odpowiednio przesunąć 
+		przecinek i dopisać dziesiątkę w odpowiedniej potędze.
+	</p>
+
+	<ul>
+		<li>
+			Jeśli mamy do czynienia z liczbą większą niż $1$ (lub mniejszą niż $-1$): lokalizujemy przecinek (jeśli liczba jest całkowita, wstawiamy 
+			przecinek na końcu liczby) i przesuwamy go w lewo aż do pierwszej cyfry (kończymy z przecinkiem na prawo od pierwszej cyfry); zliczamy, ile 
+			razy przesunęliśmy przecinek i wstawiamy tę liczbę w wykładniku dziesiątki
+		</li>
+		<li>
+			Jeśli mamy do czyninia z liczbą od $-1$ do $1$: lokalizujemy przecinek i przesuwamy go w prawo aż do napotkania pierwszej cyfry, 
+			która nie jest zerem (kończymy z przecinkiem na prawo od pierwszej niezerowej cyfry); zliczamy, o ile 
+			cyfr przesunęliśmy przecinek i wstawiamy tę ilość na minusie w wykładniku dziesiątki
+		</li>
+	</ul>
+
+	<p>
+		W praktyce:
+	</p>
+
+	<ul>
+		<li>$15\ 374 = 15\ 374,0 = 1,5374 \cdot 10^4$ (przecinek powędrował 4 miejsca w lewo)</li>
+		<li>$-10\ 004\ 321,364 = -1,0004321364 \cdot 10^7 \approx -10^7$ (przecinek powędrował 7 miejsc w lewo)</li>
+		<li>$0,0423 = 4,23 \cdot 10^{-2}$ (przecinek powędrował 2 miejsa w prawo)</li>
+		<li>$0,0009999 = 9,999 \cdot 10^{-4} \approx 10 \cdot 10^{-4} = 10^{-3}$ (przecinek powędrował 4 miejsa w prawo)</li>
+	</ul>
 
 	</div>
 	</div>

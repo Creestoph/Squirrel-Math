@@ -546,19 +546,21 @@ p.lesson_title
 p.lesson_title_short
 {
 	text-align: center;
-	font-size: 50px;
-	font-family: cambria;
-	margin-top: 50px;
-	margin-bottom: 1px;
+	font-size: 3.2em;
+	font-weight: bold;
+	font-family: "Corbel";
+	margin: 50px auto 5px auto;
+	clear:both;
 }
 
 p.lesson_subtitle
 {
 	text-align: center;
-	font-size: 25px;
-	font-family: cambria;
-	margin-top: 1px;
-	margin-bottom: 50px;
+	font-size: 1.6em;
+	font-weight: bold;
+	font-family: "Corbel";
+	margin: 5px auto 50px auto;
+	clear: both;
 }
 
 p.type
