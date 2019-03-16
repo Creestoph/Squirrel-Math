@@ -3,7 +3,8 @@
 
 <head>
 	<title>Odejmowanie</title>
-	<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 	<link rel="stylesheet" href="../lesson_style.css">
     
     <script type="text/x-mathjax-config">
@@ -31,26 +32,27 @@
 <body class="lesson">
 
 <div class = "menu">
-        <div class="logo">
-                <div>
-                        <div class="logo-black-cell" style="float: left"></div>
-                        <div class="logo-container-cell" style="float: left">
-                            <div class="logo-red-cell" style="float: left"></div>
-                            <div class="logo-red-cell" style="float: left"></div>
-                            <div class="logo-red-cell" style="float: left"></div>
-                            <div class="logo-red-cell" style="float: left"></div>
-                        </div>
-                        <div class="logo-black-cell" style="float: left; clear: left"></div>
-                        <div class="logo-black-cell" style="float: left"></div>
+    <a href="../index.html">
+        <div class="logo" >
+            <div>
+                <div class="logo-black-cell" style="float: left"></div>
+                <div class="logo-container-cell" style="float: left">
+                    <div class="logo-red-cell" style="float: left"></div>
+                    <div class="logo-red-cell" style="float: left"></div>
+                    <div class="logo-red-cell" style="float: left"></div>
+                    <div class="logo-red-cell" style="float: left"></div>
                 </div>
+                <div class="logo-black-cell" style="float: left; clear: left"></div>
+                <div class="logo-black-cell" style="float: left"></div>
+            </div>
         </div>
         <div class="logo-text">
             <span class="logo-text-1">squirrel</span>
             <span class="logo-text-2">math</span>
         </div>
-
-    <a href="../index.html"><button class = "button_convey"><span>STRONA GŁÓWNA</span></button></a>
+    </a>
     <a href="../drzewo.html"><button class = "button_convey"><span>DRZEWO</span></button></a>
+    <a href="../drzewo.html"><button class = "button_convey"><span>EDYTOR</span></button></a>
 </div>
 
 <div class = "main">
@@ -650,132 +652,137 @@
 		</tr>
 	</table>
       
-	<p class = "type">
+	<p class = "type optional-hide">
         Rozszerzenie
     </p>
-  
-    <p class = "warning">
-        wymagana znajomość tematu: Kolejność wykonywania działań
-    </p>
+    <p class = "warning">wymagana znajomość tematu: Kolejność wykonywania działań</p>
+    <div>
+        <p>
+            Jeśli jesteś dociekliwy, możemy przyjrzeć się metodzie odejmowania w słupku i zobaczyć, dlaczego te wszystkie pożyczki 
+            działają poprawnie. Weźmy pod lupę przykład $2737 - 683$.
+        </p>
         
-    <p>
-        Jeśli jesteś dociekliwy, możemy przyjrzeć się metodzie odejmowania w słupku i zobaczyć, dlaczego te wszystkie pożyczki 
-        działają poprawnie. Weźmy pod lupę przykład $2737 - 683$.
-    </p>
-      
-    <p style="text-align: center">
-        $2737 - 683 =$<br>
-        <span class="comment_visible" id="Rozbijamy liczbę na cyfry">$= (2000 + 700 + 30 + 7) - (600 + 80 + 3) =$</span><br>
-        $= 2000 + 700 + 30 + 7 - 600 - 80 - 3 =$<br>
-        <span class="comment_visible" id="Porządkujemy cyfry tysięcy, setek, dziesiątek i jedności">$  = 2000 + (700 - 600) + (30 - 80) + (7 - 3) =$</span><br>
-        <span class="comment_visible" id="Odejmujemy cyfry jedności">$ = 2000 + (700 - 600) + (30 - 80) + 4 =$</span><br>
-        <span class="comment_visible" id="Zaciągamy pożyczkę">$   = 2000 + (600 + 100 - 600) + (30 - 80) + 4 =$</span><br>
-        $ = 2000 + (600 - 600) + (100 + 30 - 80) + 4 =$ <br>
-        $ = 2000 + (600 - 600) + (130 - 80) + 4 =$<br>
-        <span class="comment_visible" id="Odejmujemy cyfry dziesiątek">$  = 2000 + (600 - 600) + 50 + 4 =$</span><br>
-        <span class="comment_visible" id="Odejmujemy cyfry setek">$  = 2000 + 0 + 50 + 4 =$</span><br>
-        $= 2054$<br>
-    </p>
-  
-    <p>
-        Spójrzmy jeszcze na $1000 - 679$.
-    </p>
-       
-    <p style="text-align: center">
-        $1000 - 679 =$<br>
-        <span class="comment_visible" id="Rozbijamy na cyfry">$  = (1000 + 0 + 0 + 0) - (600 + 70 + 9) =$</span><br>
-        $ = 1000 + 0 + 0 + 0 - 600 - 70 - 9 =$<br>
-        <span class="comment_visible" id="Porządkujemy wszystkie cyfry">$  = 1000 + (0 - 600) + (0 - 70) + (0 - 9) =$</span><br>
-        <span class="comment_visible" id="Zaciągamy „trzecią” pożyczkę">$  = 0 + (1000 - 600) + (0 - 70) + (0 - 9) =$</span><br>
-        <span class="comment_visible" id="Zaciągamy „drugą” pożyczkę">$  = 0 + (900 + 100 - 600) + (0 - 70) + (0 - 9) =$</span><br>
-        $  = 0 + (900 - 600) + (100 - 70) + (0 - 9) =$ 	<br>
-        <span class="comment_visible" id="Zaciągamy „pierwszą” pożyczkę">$  = 0 + (900 - 600) + (90 + 10 - 70) + (0 - 9) =$</span><br>
-        $= 0 + (900 - 600) + (90 - 70) + (10 - 9) =$<br>
-        <span class="comment_visible" id="Odejmujemy wszystkie cyfry">$  = 0 + 300 + 20 + 1$</span><br>
-        $= 321$<br>
-    </p>
-      
-    <p>
-        Poniżej omawiamy dodawanie pisemne z formalnego punktu widzenia, zaspokajając dociekliwość najbardziej zagorzałych matematyków. Nie polecamy zagłębiać
-        się w poniższe wywody, jeśli nie jesteś matematycznym weteranem, który lubi znać odpowiedź na każde pytanie.
-    </p>
-  
-    <p class = "type">
-        Formalnie
-    </p>
+        <p style="text-align: center">
+            $2737 - 683 =$<br>
+            <span class="comment_visible" id="Rozbijamy liczbę na cyfry">$= (2000 + 700 + 30 + 7) - (600 + 80 + 3) =$</span><br>
+            $= 2000 + 700 + 30 + 7 - 600 - 80 - 3 =$<br>
+            <span class="comment_visible" id="Porządkujemy cyfry tysięcy, setek, dziesiątek i jedności">$  = 2000 + (700 - 600) + (30 - 80) + (7 - 3) =$</span><br>
+            <span class="comment_visible" id="Odejmujemy cyfry jedności">$ = 2000 + (700 - 600) + (30 - 80) + 4 =$</span><br>
+            <span class="comment_visible" id="Zaciągamy pożyczkę">$   = 2000 + (600 + 100 - 600) + (30 - 80) + 4 =$</span><br>
+            $ = 2000 + (600 - 600) + (100 + 30 - 80) + 4 =$ <br>
+            $ = 2000 + (600 - 600) + (130 - 80) + 4 =$<br>
+            <span class="comment_visible" id="Odejmujemy cyfry dziesiątek">$  = 2000 + (600 - 600) + 50 + 4 =$</span><br>
+            <span class="comment_visible" id="Odejmujemy cyfry setek">$  = 2000 + 0 + 50 + 4 =$</span><br>
+            $= 2054$<br>
+        </p>
+    
+        <p>
+            Spójrzmy jeszcze na $1000 - 679$.
+        </p>
         
-    <p class = "warning">
-        wymagana znajomość tematu: Indukcja matematyczna
-    </p>
-      
-    <p>
-        Formalnie algorytm odejmowania pisemnego przedstawia się następująco. Dane są liczby $a$ i $b$ ($a \geq b$) o reprezentacjach dziesiętnych
-        $a = \sum_{j = 0}^{l_a} 10^j a_j, b = \sum_{j = 0}^{l_b} 10^j b_j$, gdzie $l_a, l_b$ oznaczają długość (liczbę cyfr) odpowiednio liczb $a$ i $b$, zaś 
-        $a_j, b_j \in \{0, 1, 2, 3, 4, 5, 6, 7, 8, 9\}$. 
-        Poszukiwana jest reprezentacja dziesiętna ich różnicy $d = a - b$.
-    </p>
-      
-    <p>
-        Z założenia $a \geq b$ wynika, że $l_a \geq l_b$. Wobec tego wprowadźmy $l = l_a, a = \sum_{j = 0}^{l} 10^j a_j, b = \sum_{j = 0}^{l} 10^j b_j$, 
-        przy czym $b_j = 0$ dla $j > l_b$. Wtedy
-    </p>
+        <p style="text-align: center">
+            $1000 - 679 =$<br>
+            <span class="comment_visible" id="Rozbijamy na cyfry">$  = (1000 + 0 + 0 + 0) - (600 + 70 + 9) =$</span><br>
+            $ = 1000 + 0 + 0 + 0 - 600 - 70 - 9 =$<br>
+            <span class="comment_visible" id="Porządkujemy wszystkie cyfry">$  = 1000 + (0 - 600) + (0 - 70) + (0 - 9) =$</span><br>
+            <span class="comment_visible" id="Zaciągamy „trzecią” pożyczkę">$  = 0 + (1000 - 600) + (0 - 70) + (0 - 9) =$</span><br>
+            <span class="comment_visible" id="Zaciągamy „drugą” pożyczkę">$  = 0 + (900 + 100 - 600) + (0 - 70) + (0 - 9) =$</span><br>
+            $  = 0 + (900 - 600) + (100 - 70) + (0 - 9) =$ 	<br>
+            <span class="comment_visible" id="Zaciągamy „pierwszą” pożyczkę">$  = 0 + (900 - 600) + (90 + 10 - 70) + (0 - 9) =$</span><br>
+            $= 0 + (900 - 600) + (90 - 70) + (10 - 9) =$<br>
+            <span class="comment_visible" id="Odejmujemy wszystkie cyfry">$  = 0 + 300 + 20 + 1$</span><br>
+            $= 321$<br>
+        </p>
+        
+        <p>
+            Poniżej omawiamy dodawanie pisemne z formalnego punktu widzenia, zaspokajając dociekliwość najbardziej zagorzałych matematyków. Nie polecamy zagłębiać
+            się w poniższe wywody, jeśli nie jesteś matematycznym weteranem, który lubi znać odpowiedź na każde pytanie.
+        </p>
+  
+        <p class = "type">
+            Formalnie
+        </p>
+        <p class = "warning">wymagana znajomość tematu: Indukcja matematyczna</p>
+        <p>
+            Formalnie algorytm odejmowania pisemnego przedstawia się następująco. Dane są liczby $a$ i $b$ ($a \geq b$) o reprezentacjach dziesiętnych
+            $a = \sum_{j = 0}^{l_a} 10^j a_j, b = \sum_{j = 0}^{l_b} 10^j b_j$, gdzie $l_a, l_b$ oznaczają długość (liczbę cyfr) odpowiednio liczb $a$ i $b$, zaś 
+            $a_j, b_j \in \{0, 1, 2, 3, 4, 5, 6, 7, 8, 9\}$, zakłądamy też $a_{l_a}, b_{l_b} \neq 0$.
+            Poszukiwana jest reprezentacja dziesiętna ich różnicy $d = a - b$.
+        </p>
+        
+        <p>
+            Z założenia $a \geq b$ wynika, że $l_a \geq l_b$. Wobec tego wprowadźmy symbol $l = l_a$ (wtedy $a = \sum_{j = 0}^{l} 10^j a_j$) oraz rozwińmy
+            postać dziesiętną liczby $b$ do długości $l$ cyfr przez dodanie zer z przodu: $b = \sum_{j = 0}^{l} 10^j b_j$, 
+            przy czym $b_j = 0$ dla $j > l_b$. Wtedy
+        </p>
 
-    $$
-        d = a - b = \sum_{j = 0}^{l} 10^j a_j - \sum_{j = 0}^{l} 10^j b_j = \sum_{j = 0}^{l} 10^j \left(a_j - b_j \right)
-    $$
+        $$
+            d = a - b = \sum_{j = 0}^{l} 10^j a_j - \sum_{j = 0}^{l} 10^j b_j = \sum_{j = 0}^{l} 10^j \left(a_j - b_j \right)
+        $$
 
-    <p>
-        Dokonamy teraz kroku indukcyjnego, który odpowiada wyznaczeniu różnicy cyfr $a_i$ oraz $b_i$ z tej samej kolumny podczas odejmowania pisemnego. Niech $c_k$
-        oznacza różnicę obliczoną dla kolumny $k$. Zakładamy, że w momencie wykonywania $i$-tego kroku wartości
-        $c_0, c_1, ..., c_{i-1}$ zostały już obliczone i mieszczą się w zbiorze $\{0, 1, 2, 3, 4, 5, 6, 7, 8, 9\}$. Oznaczmy 
-        przez $r_i$ ewentualne zapożyczenie dokonane na kolumnie $i$. $r_i$ będzie przyjmować wartość $1$, jeśli zapożyczenie zostało dokonane lub $0$ jeśli nie zostało.
-        Dla kroku zerowego ustalamy $r_0 = 0$. Zakładamy, że liczbę $d$ można przedstawić w postaci
-        $$
-            d = c_0 + 10^1c_1 + 10^2c_2 + ... + 10^i(a_i - r_i - b_i) + \sum_{j = i + 1}^{l} 10^j \left(a_j - b_j \right)
-        $$
-        W wyniku obecnego kroku indukcyjnego będziemy chcieli rozwinąć tę postać o jeden element dalej, czyli wyznaczyć wartości $c_i$ oraz $r_{i+1}$.
-        Rozważmy dwa przypadki:
-    </p>
+        <p>
+            Dokonamy teraz kroku indukcyjnego, który odpowiada wyznaczeniu różnicy cyfr $a_i$ oraz $b_i$ z tej samej kolumny podczas odejmowania pisemnego. Niech $c_k$
+            oznacza różnicę obliczoną dla kolumny $k$. Zakładamy, że w momencie wykonywania $i$-tego kroku wartości
+            $c_0, c_1, ..., c_{i-1}$ zostały już obliczone i mieszczą się w zbiorze $\{0, 1, 2, 3, 4, 5, 6, 7, 8, 9\}$. Oznaczmy 
+            przez $r_i$ ewentualne zapożyczenie dokonane na kolumnie $i$. $r_i$ będzie przyjmować wartość $1$, jeśli zapożyczenie zostało dokonane lub $0$, jeśli nie zostało.
+            Dla kroku zerowego ustalamy $r_0 = 0$. Zakładamy więc, że w momencie sumowania cyfr $i$-tej kolumny liczbę $d$ można przedstawić w postaci
+            $$
+                d = c_0 + 10^1c_1 + 10^2c_2 + ... + 10^i(a_i - r_i - b_i) + \sum_{j = i + 1}^{l} 10^j \left(a_j - b_j \right)
+            $$
+            W wyniku obecnego kroku indukcyjnego będziemy chcieli rozwinąć tę postać o jeden element dalej, co sprowadza się do wyznaczenia wartości $c_i$ oraz $r_{i+1}$.
+            Rozważmy dwa przypadki:
+        </p>
 
-    <ol>
-        <li>
-            <p>$a_i - r_i \geq b_i$</p>
-            <p>
-                Wyznaczamy $c_i = a_i - r_i - b_i$. Z założenia dla tego przypadku wynika, że $c_i \geq 0$, ponadto $a_i \leq 9$, więc również $c_i \leq 9$, czyli
-                $0 \leq c_i \leq 9$. Ustalamy $r_{i+1} = 0$. Mamy więc
-                $$
-                    d = c_0 + 10^1c_1 + ... + 10^i c_i + 10^{i+1}(a_{i+1} - r_{i+1} - b_{i+1}) + \sum_{j = i + 2}^{l} 10^j \left(a_j - b_j \right)
-                $$
-            </p>
-        </li>
-        <li>
-            <p>$a_i - r_i \lt b_i$</p>
-            <p>
-                Wyznaczamy $c_i = 10 + a_i - r_i - b_i$. Z założenia $a_i - r_i \lt b_i$, czyli $a_i - r_i \leq b_i - 1 \Rightarrow$ $a_i - b_i \leq r_i - 1
-                \Rightarrow 10 - r_i + a_i - b_i \leq 10 - r_i + r_i - 1 \Rightarrow c_i \leq 9$. Ponadto $-r_i \geq -1$ oraz $-b_i \geq -9$, więc 
-                $10 + a_i - r_i - b_i \geq 10 + 0 - 1 - 9 \Rightarrow c_i \geq 0$, a więc $0 \leq c_i \leq 9$. Ustalamy $r_{i+1} = 1$. Mamy więc 
-                $$
-                    d = c_0 + 10^1c_1 + 10^2c_2 + ... + 10^i(10 - 10 + a_i - r_i - b_i) + 10^{i+1}(a_{i+1} - b_{i+1}) + \sum_{j = i + 2}^{l} 10^j \left(a_j - b_j \right) =\\
-                      = c_0 + 10^1c_1 + 10^2c_2 + ... + 10^i(10 + a_i - r_i - b_i) + 10^{i+1}(a_{i+1} - 1 - b_{i+1}) + \sum_{j = i + 1}^{l} 10^j \left(a_j - b_j \right) =\\
-                      = c_0 + 10^1c_1 + 10^2c_2 + ... + 10^ic_i + 10^{i+1}(a_{i+1} - r_{i+1} - b_{i+1}) + \sum_{j = i + 1}^{l} 10^j \left(a_j - b_j \right)
-                $$
-            </p>
-        </li>
-    </ol>
+        <ol>
+            <li>
+                <p>$a_i - r_i \geq b_i$</p>
+                <p>
+                    Przypadek ten odpowiada sytuacji, w której od cyfry odjemnej jest odejmowana cyfra o mniejszej (lub równej) wartości.
+                    Ustalamy $c_i = a_i - r_i - b_i, r_{i+1} = 0$ Z założenia dla tego przypadku wynika, że $c_i \geq 0$, ponadto $a_i \leq 9$, więc również $c_i \leq 9$, czyli
+                    $0 \leq c_i \leq 9$. Mamy więc
+                    $$
+                        d = c_0 + 10^1c_1 + ... + 10^i c_i + 10^{i+1}(a_{i+1} - r_{i+1} - b_{i+1}) + \sum_{j = i + 2}^{l} 10^j \left(a_j - b_j \right)
+                    $$
+                </p>
+            </li>
+            <li>
+                <p>$a_i - r_i \lt b_i$</p>
+                <p>
+                    Przypadek ten odpowiada sytuacji, w której od cyfry o mniejszej wartości jest odejmowana cyfra o większej wartości, wobec czego
+                    zachodzi potrzeba dokonania zapożyczenia z kolejnej kolumny.
+                    Ustalamy $c_i = 10 + a_i - r_i - b_i, r_{i+1} = 1$. Z założenia $a_i - r_i \lt b_i$ zachodzą implikacje:
+                    $$a_i - r_i \leq b_i - 1\\
+                    a_i - b_i \leq r_i - 1\\
+                    10 - r_i + a_i - b_i \leq 10 - r_i + r_i - 1 \\
+                    c_i \leq 9$$
+                    Ponadto $a_i \geq 0$, $-r_i \geq -1$ oraz $-b_i \geq -9$, więc 
+                    $$10 + a_i - r_i - b_i \geq 10 + 0 - 1 - 9 \\
+                    c_i \geq 0$$
+                    a zatem $0 \leq c_i \leq 9$. Mamy więc 
+                    $$
+                        d = c_0 + 10^1c_1 + 10^2c_2 + ... + 10^i(10 - 10 + a_i - r_i - b_i) + 10^{i+1}(a_{i+1} - b_{i+1}) + \sum_{j = i + 2}^{l} 10^j \left(a_j - b_j \right) =\\
+                        = c_0 + 10^1c_1 + 10^2c_2 + ... + 10^i(10 + a_i - r_i - b_i) + 10^{i+1}(a_{i+1} - 1 - b_{i+1}) + \sum_{j = i + 1}^{l} 10^j \left(a_j - b_j \right) =\\
+                        = c_0 + 10^1c_1 + 10^2c_2 + ... + 10^ic_i + 10^{i+1}(a_{i+1} - r_{i+1} - b_{i+1}) + \sum_{j = i + 1}^{l} 10^j \left(a_j - b_j \right)
+                    $$
+                </p>
+            </li>
+        </ol>
 
-    <p>
-        Na zasadzie indukcji liczba $d$ zostaje rozwinięta do postaci dziesiętnej:
-        $$
-            d = c_0 + 10^1c_1 + 10^2c_2 + ... + 10^lc_l
-        $$
-        Pozostaje jeszcze uzasadnić, że $r_{l+1} = 0$, czyli że nie zostało wykonane zapożyczenie z kolumny na pozycji większej niż $l$. Dowodząc nie wprost,
-        przypuśćmy, że $r_{l+1} = 1$. Cofając się o jeden krok wstecz w dokonanej indukcji, stwierdzamy, że $a_l - r_l \lt b_l$ (gdyby było inaczej, wartość
-        $r_{l+1}$ zostałaby ustalona na $0$). Z pierwotego założenia $a \geq b$ wynika, że $a_l \geq b_l$ (najbardziej znacząca cyfra $a$ jest nie mniejsza niż
-        najbardziej znacząca cyfra $b$). W takim razie jedyną sytuacją spełniającą wszystkie warunki jest przypadek $a_l = b_l, r_l = 1$. Ponownie, oznacza to,
-        że $a_{l - 1} - r_{l - 1} \lt b_{l - 1}$, przy czym z uwagi na równość najbardziej znaczących cyfr $a$ i $b$ musi zachodzić $a_{l-1} \geq b_{l-1}$
-        (w przeciwnym razie $a \lt b$). To zaś implikuje $a_{l-1} = b_{l-1}, r_{l-1} = 1$. Kontynuując rozumowanie wstecz, dochodzimy do wniosku,
-        że $r_0 = 1$ wbrew założeniu indukcyjnemu, co kończy dowód nie wprost.
-    </p>
+        <p>
+            Na zasadzie indukcji liczba $d$ zostaje rozwinięta do postaci dziesiętnej:
+            $$
+                d = c_0 + 10^1c_1 + 10^2c_2 + ... + 10^lc_l
+            $$
+            Pozostaje jeszcze uzasadnić, że $r_{l+1} = 0$, czyli że nie zostało wykonane zapożyczenie z kolumny na pozycji większej niż $l$. Dowodząc nie wprost,
+            przypuśćmy, że $r_{l+1} = 1$. Cofając się o jeden krok wstecz w dokonanej indukcji, stwierdzamy, że dla kolumny $l$ zaszedł przypadek ($2$): 
+            $a_l - r_l \lt b_l$ (gdyby było inaczej, wartość
+            $r_{l+1}$ zostałaby ustalona na $0$). Z pierwotego założenia $a \geq b$ wynika, że $a_l \geq b_l$ (najbardziej znacząca cyfra $a$ jest nie mniejsza niż
+            najbardziej znacząca cyfra $b$). W takim razie jedyną sytuacją spełniającą wszystkie warunki jest przypadek $a_l = b_l, r_l = 1$. Ponownie, oznacza to,
+            że $a_{l - 1} - r_{l - 1} \lt b_{l - 1}$, przy czym z uwagi na równość najbardziej znaczących cyfr $a$ i $b$ musi zachodzić $a_{l-1} \geq b_{l-1}$
+            (w przeciwnym razie $a \lt b$). To zaś implikuje $a_{l-1} = b_{l-1}, r_{l-1} = 1$. Kontynuując rozumowanie wstecz, dochodzimy do wniosku,
+            że $r_0 = 1$ wbrew założeniu indukcyjnemu, co kończy dowód nie wprost.
+        </p>
+    </div>
 
 	</div>
 	</div>

@@ -23,7 +23,7 @@ $(document).ready(function(){
 							  table.rows[r].cells[j].style.background = "#F0E0E0";
 						 for (r = 0; r < table.rows[i].cells.length; r++)
 							  table.rows[i].cells[r].style.background = "#F0E0E0";
-						 table.rows[i].cells[j].style.background = "#CA7777";
+						 table.rows[i].cells[j].style.background = "#CC4444";
 
 						 field.innerHTML = (j - 1) + " &middot; " + (i - 1) + " = " + ((i-1)*(j-1));
 						 field.style.visibility = "visible";
@@ -37,10 +37,10 @@ $(document).ready(function(){
 					this.rows[i].cells[j].style.background = "#FFFFFF";
 
 		 for (r = 0; r < this.rows.length; r++)
-			  this.rows[r].cells[8].style.background = "#F0E0E0";
+			  this.rows[r].cells[7].style.background = "#F0E0E0";
 		 for (r = 0; r < this.rows[10].cells.length; r++)
 			  this.rows[9].cells[r].style.background = "#F0E0E0";
-		 this.rows[9].cells[8].style.background = "#CA7777";
+		 this.rows[9].cells[7].style.background = "#CC4444";
 
 		 field.innerHTML = "a";
 		 field.style.visibility = "hidden";

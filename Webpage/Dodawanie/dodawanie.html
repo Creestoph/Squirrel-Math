@@ -3,7 +3,8 @@
 
 <head>
 	<title>Dodawanie</title>
-	<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 	<link rel="stylesheet" href="../lesson_style.css">
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
@@ -85,23 +86,23 @@ interact('.draggable')
 <body class="lesson">
 
 <div class = "menu">
-        <div class="logo">
-                <div>
-                        <div class="logo-black-cell" style="float: left"></div>
-                        <div class="logo-container-cell" style="float: left">
-                            <div class="logo-red-cell" style="float: left"></div>
-                            <div class="logo-red-cell" style="float: left"></div>
-                            <div class="logo-red-cell" style="float: left"></div>
-                            <div class="logo-red-cell" style="float: left"></div>
-                        </div>
-                        <div class="logo-black-cell" style="float: left; clear: left"></div>
-                        <div class="logo-black-cell" style="float: left"></div>
-                </div>
+    <div class="logo">
+        <div>
+            <div class="logo-black-cell" style="float: left"></div>
+            <div class="logo-container-cell" style="float: left">
+                <div class="logo-red-cell" style="float: left"></div>
+                <div class="logo-red-cell" style="float: left"></div>
+                <div class="logo-red-cell" style="float: left"></div>
+                <div class="logo-red-cell" style="float: left"></div>
+            </div>
+            <div class="logo-black-cell" style="float: left; clear: left"></div>
+            <div class="logo-black-cell" style="float: left"></div>
         </div>
-        <div class="logo-text">
-            <span class="logo-text-1">squirrel</span>
-            <span class="logo-text-2">math</span>
-        </div>
+    </div>
+    <div class="logo-text">
+        <span class="logo-text-1">squirrel</span>
+        <span class="logo-text-2">math</span>
+    </div>
 
     <a href="../index.html"><button class = "button_convey"><span>STRONA GŁÓWNA</span></button></a>
     <a href="../drzewo.html"><button class = "button_convey"><span>DRZEWO</span></button></a>
@@ -112,7 +113,7 @@ interact('.draggable')
     <a href="dodawanie_short.html">
         <div class = "bookmark-shadow">
             <div class = "bookmark">
-                    WERSJA SKRÓCONA
+                WERSJA SKRÓCONA
             </div>
         </div>
     </a>
@@ -593,7 +594,7 @@ interact('.draggable')
     </p>
       
 	<p style="text-align: center">
-		<input style="width: 800px" name="numberInput" type="text" id="columnar_addition_input" />
+		<input style="width: 85%" name="numberInput" type="text" id="columnar_addition_input" />
 	</p>
 	<script>
         var columnar_addition = new Columnar_addition( "columnar_addition_table","columnar_addition_comment", "columnar_operation_button_right", "columnar_operation_button_left");
@@ -604,14 +605,14 @@ interact('.draggable')
 
 	</script>
 	<p style="text-align: center">
-            <button id="columnar_addition_start" style="float: center;" onclick="ColumnarAdditionStartArgs()">Start</button>
+        <button id="columnar_addition_start" style="float: center;" onclick="ColumnarAdditionStartArgs()">Start</button>
 	</p>
 	<script>
 		SetInputEnterEvent("columnar_addition_input","columnar_addition_start")
 	</script>
 	
 	
-	<table class = "center" class="columnar_operation_script" id="columnar_addition_area" >
+	<table class="columnar_operation_script center" id="columnar_addition_area" >
 		<tr>
 			<td id="columnar_operation_button_left" onclick="columnar_addition.prev()">
 				<svg height="0" width="30">
@@ -640,125 +641,127 @@ interact('.draggable')
 		</tr>
 	</table>
 	  
-    <p class ="type">
+    <p class ="type optional-hide">
         Rozszerzenie
 	</p>
     <p class="warning">
         wymagana znajomość tematu: Kolejność wykonywania działań
     </p>  
-
-    <p>
-        Być może jesteś ciekaw, dlaczego magiczna metoda dodawania w słupku jest matematycznie poprawna. Czemu jakieś dodawanie 
-        cyfr w kolumnach i przepisywanie jedynek do kolejnej kolumny w ogóle działa? W pierwszym przykładzie $127 + 32 = 159$ 
-        stosunkowo łatwo to zrozumieć. $127$ można zapisać jako $100 + 20 +7$, a $32$ jako $30 + 2$. W takim razie
-    </p>
-      
-    $$
-        127 + 32 = (100 + 20 + 7) + (30 + 2)
-    $$
-      
-    <p>
-        Ponieważ dodawanie jest przemienne, nie ma znaczenia kolejność zapisania składników. Ponieważ jest łączne, możemy rozłożyć nawiasy tak, jak nam wygodnie:
-    </p>
-      
-    $$
-        (100 + 20 + 7) + (30 + 2) = 100 + (20 + 30) + (7 + 2) = 100 + 50 + 9 = 159
-    $$
-      
-    <p>
-        W gruncie rzeczy to, co uczyniliśmy, to właśnie sumowanie cyfr jedności $(7 + 2)$, dziesiątek $(20 + 30)$ i 
-		setek $(100)$, 
-        by otrzymać wynik końcowy. Tak jak w słupku. Zobaczmy jeszcze jak działa $256 + 947 = 1203$:
-    </p>
-
-    <p style="text-align: center">
-        $256 + 947 =$<br>
-        $= (200 + 50 + 6) + (900 + 40 + 7) =$<br>
-        <span class="comment_visible" id="ustalamy wygodną kolejność składników">$= (200 + 900) + (50 + 40) + (6 + 7) =$</span><br>
-        <span class="comment_visible" id="dodajemy cyfry jedności">$= (200 + 900) + (50 + 40) + 13 =$</span><br>
-        <span class="comment_visible" id="rozbijamy 13 na dwie cyfry">$= (200 + 900) + (50 + 40) + (10 + 3) =$</span><br>
-        <span class="comment_visible" id="przenosimy jedynkę do następnej kolumny">$= (200 + 900) + (50 + 40 + 10) + 3 =$</span><br>
-        <span class="comment_visible" id="dodajemy cyfry dziesiątek">$= (200 + 900) + 100 + 3 =$</span><br>
-        <span class="comment_visible" id="przenosimy jedynkę do następnej kolumny">$= (200 + 900 + 100) + 0 + 3 =$</span><br>
-        <span class="comment_visible" id="dodajemy cyfry setek">$= 1200 + 0 + 3 =$</span><br>
-        <span class="comment_visible" id="rozbijamy 12 na 1 i 2">$= (1000 + 200) + 0 + 3 =$</span><br>
-        $= 1000 + 200 + 0 + 3 =$<br>
-        $1203$
-    </p>
-      
-    <p>
-        Ponieważ zależy nam na kompletności materiałów matematycznych zebranych na tej stronie, poniżej przedstawiamy formalne omówienie dodawania w słupku 
-        wraz z czymś co matematycy nazywają "dowodem poprawności". W istocie jest to przerost formy nad treścią i generalnie nie polecamy nurkować w tę
-        niepotrzebnie zawiłą matematykę. Szczególnie, jeśli dopiero rozpoczynasz swoją przygodę w świecie liczb.
-    </p>
-      
-    <p class = "type">
-        Formalnie
-    </p>
-      
-    <p class = "warning">
-        wymagana znajomość tematu: Szeregi liczbowe
-    </p>
+    <div>
+        <p>
+            Być może jesteś ciekaw, dlaczego magiczna metoda dodawania w słupku jest matematycznie poprawna. Czemu jakieś dodawanie 
+            cyfr w kolumnach i przepisywanie jedynek do kolejnej kolumny w ogóle działa? W pierwszym przykładzie $127 + 32 = 159$ 
+            stosunkowo łatwo to zrozumieć. $127$ można zapisać jako $100 + 20 +7$, a $32$ jako $30 + 2$. W takim razie
+        </p>
         
-    <p>
-        Formalnie algorytm dodawania pisemnego przedstawia się następująco. Dane są liczby $a_1, a_2, ..., a_n$ o reprezentacjach dziesiętnych
-        $a_i = \sum_{j = 0}^{l_i} 10^j a_{i, j}$, gdzie $l_i$ oznacza długość (liczbę cyfr) liczby $a_i$, zaś $a_{i, j} \in \{0, 1, 2, 3, 4, 5, 6, 7, 8, 9\}$. 
-        Poszukiwana jest reprezentacja dziesiętna ich sumy $s = \sum_{i = 1}^{n} a_i$.
-    </p>
+        $$
+            127 + 32 = (100 + 20 + 7) + (30 + 2)
+        $$
+        
+        <p>
+            Ponieważ dodawanie jest przemienne, nie ma znaczenia kolejność zapisania składników. Ponieważ jest łączne, możemy rozłożyć nawiasy tak, jak nam wygodnie:
+        </p>
+        
+        $$
+            (100 + 20 + 7) + (30 + 2) = 100 + (20 + 30) + (7 + 2) = 100 + 50 + 9 = 159
+        $$
+        
+        <p>
+            W gruncie rzeczy to, co uczyniliśmy, to właśnie sumowanie cyfr jedności $(7 + 2)$, dziesiątek $(20 + 30)$ i 
+            setek $(100)$, 
+            by otrzymać wynik końcowy. Tak jak w słupku. Zobaczmy jeszcze jak działa $256 + 947 = 1203$:
+        </p>
 
-    <p>
-        Weźmy $l = \max\{l_1, l_2, ..., l_n \}$ i wprowadźmy $a_i = \sum_{j = 0}^{l} 10^j a_{i, j}$, przy czym $a_{i, j} = 0$ dla $j > l_i$. Wtedy
-    </p>
+        <p style="text-align: center">
+            $256 + 947 =$<br>
+            $= (200 + 50 + 6) + (900 + 40 + 7) =$<br>
+            <span class="comment_visible" id="ustalamy wygodną kolejność składników">$= (200 + 900) + (50 + 40) + (6 + 7) =$</span><br>
+            <span class="comment_visible" id="dodajemy cyfry jedności">$= (200 + 900) + (50 + 40) + 13 =$</span><br>
+            <span class="comment_visible" id="rozbijamy 13 na dwie cyfry">$= (200 + 900) + (50 + 40) + (10 + 3) =$</span><br>
+            <span class="comment_visible" id="przenosimy jedynkę do następnej kolumny">$= (200 + 900) + (50 + 40 + 10) + 3 =$</span><br>
+            <span class="comment_visible" id="dodajemy cyfry dziesiątek">$= (200 + 900) + 100 + 3 =$</span><br>
+            <span class="comment_visible" id="przenosimy jedynkę do następnej kolumny">$= (200 + 900 + 100) + 0 + 3 =$</span><br>
+            <span class="comment_visible" id="dodajemy cyfry setek">$= 1200 + 0 + 3 =$</span><br>
+            <span class="comment_visible" id="rozbijamy 12 na 1 i 2">$= (1000 + 200) + 0 + 3 =$</span><br>
+            $= 1000 + 200 + 0 + 3 =$<br>
+            $1203$
+        </p>
+        
+        <p>
+            Ponieważ zależy nam na kompletności materiałów matematycznych zebranych na tej stronie, poniżej przedstawiamy formalne omówienie dodawania w słupku 
+            wraz z czymś co matematycy nazywają "dowodem poprawności". W istocie jest to przerost formy nad treścią i generalnie nie polecamy nurkować w tę
+            niepotrzebnie zawiłą matematykę. Szczególnie, jeśli dopiero rozpoczynasz swoją przygodę w świecie liczb.
+        </p>
+        
+        <p class = "type">
+            Formalnie
+        </p>
+        
+        <p class = "warning">
+            wymagana znajomość tematu: Szeregi liczbowe
+        </p>
+            
+        <p>
+            Formalnie algorytm dodawania pisemnego przedstawia się następująco. Dane są liczby $a_1, a_2, \dotsc, a_n$ o reprezentacjach dziesiętnych
+            $a_i = \sum_{j = 0}^{l_i} 10^j a_{i, j}$, gdzie $l_i$ oznacza długość (liczbę cyfr) liczby $a_i$, zaś $a_{i, j} \in \{0, 1, 2, 3, 4, 5, 6, 7, 8, 9\}$. 
+            Poszukiwana jest reprezentacja dziesiętna ich sumy $s = \sum_{i = 1}^{n} a_i$.
+        </p>
 
-    $$ 
-        s = \sum_{i = 1}^{n} a_i = \sum_{i = 1}^{n} \sum_{j = 0}^{l} 10^j a_{ij} = \sum_{j = 0}^{l} \sum_{i = 1}^{n} 10^j a_{ij} = 
-        \sum_{j = 0}^{l} 10^j \sum_{i = 1}^{n} a_{ij}
-    $$
+        <p>
+            Weźmy $l = \max\{l_1, l_2, \dotsc l_n \}$ i rozszerzmy zapis dziesiętny liczb $a_i$ do doługości $l$ cyfr (przez dopisanie odpowiedniej ilości
+            zer z przodu): $a_i = \sum_{j = 0}^{l} 10^j a_{i, j}$, przy czym $a_{i, j} = 0$ dla $j > l_i$. Wtedy
+        </p>
 
-    <p>
-        Rozważmy wartość $\sum_{i = 1}^{n} a_{i, 0}$ (odpowada ona sumie cyfr jedności w dodawaniu pisemnym). Niech $r_1$ oznacza część
-        całkowitą z dzielenia tej liczby przez $10$, zaś $s_0$ jej resztę z dzielenia przez $10$. Inaczej mówiąc, niech $\sum_{i = 1}^{n} a_{i, 0} = 10r_1 + s_0$.
-        Mamy wtedy:
-    </p>
+        $$ 
+            s = \sum_{i = 1}^{n} a_i = \sum_{i = 1}^{n} \sum_{j = 0}^{l} 10^j a_{ij} = \sum_{j = 0}^{l} \sum_{i = 1}^{n} 10^j a_{ij} = 
+            \sum_{j = 0}^{l} 10^j \sum_{i = 1}^{n} a_{ij}
+        $$
 
-    $$ 
-        s = 10^0 \sum_{i = 1}^{n} a_{i, 0} + 10^1 \sum_{i = 1}^{n} a_{i, 1} + ... + 10^l \sum_{i = 1}^{n} a_{i, l} = 
-        10^0 \left(10r_1 + s_0 \right) + 10^1 \sum_{i = 1}^{n} a_{i, 1} + ... + 10^l \sum_{i = 1}^{n} a_{i, l} = \\
-        = 10^0s_0 + 10^1 \left(r_1 + \sum_{i = 1}^{n} a_{i, 1} \right) + ... + 10^l \sum_{i = 1}^{n} a_{i, l}
-    $$
+        <p>
+            Rozważmy wartość $\sum_{i = 1}^{n} a_{i, 0}$ (odpowada ona sumie cyfr jedności w dodawaniu pisemnym). Niech $r_1$ oznacza część
+            całkowitą z dzielenia tej liczby przez $10$, zaś $s_0$ jej resztę z dzielenia przez $10$. Inaczej mówiąc, niech $\sum_{i = 1}^{n} a_{i, 0} = 10r_1 + s_0$.
+            Mamy wtedy:
+        </p>
 
-    <p>
-        Rozważmy wartość $r_1 + \sum_{i = 1}^{n} a_{i, 1}$ (odpowada ona sumie cyfr dziesiątek w dodawaniu pisemnym). Niech $r_2$ oznacza część
-        całkowitą z dzielenia tej liczby przez $10$, zaś $s_1$ jej resztę z dzielenia przez $10$, czyli $r_1 + \sum_{i = 1}^{n} a_{i, 1} = 10r_2 + s_1$.
-        Mamy wtedy:
-    </p>
+        $$ 
+            s = 10^0 \sum_{i = 1}^{n} a_{i, 0} + 10^1 \sum_{i = 1}^{n} a_{i, 1} + \dotsb + 10^l \sum_{i = 1}^{n} a_{i, l} = 
+            10^0 \left(10r_1 + s_0 \right) + 10^1 \sum_{i = 1}^{n} a_{i, 1} + \dotsb + 10^l \sum_{i = 1}^{n} a_{i, l} = \\
+            = 10^0s_0 + 10^1 \left(r_1 + \sum_{i = 1}^{n} a_{i, 1} \right) + \dotsb + 10^l \sum_{i = 1}^{n} a_{i, l}
+        $$
 
-    $$ 
-        s = s_0 + 10^1 \left(r_1 + \sum_{i = 1}^{n} a_{i, 1} \right) + 10^2 \sum_{i = 1}^{n} a_{i, 2} + ... + 10^l \sum_{i = 1}^{n} a_{i, l} = 
-        s_0 + 10^1 \left(10r_2 + s_1 \right) + 10^2 \sum_{i = 1}^{n} a_{i, 2} + ... + 10^l \sum_{i = 1}^{n} a_{i, l} = \\
-        = s_0 + 10^1 s_1  + 10^2 \left( r_2 + \sum_{i = 1}^{n} a_{i, 2} \right) + ... + 10^l \sum_{i = 1}^{n} a_{i, l}
-    $$
+        <p>
+            Rozważmy wartość $r_1 + \sum_{i = 1}^{n} a_{i, 1}$ (odpowada ona sumie cyfr w kolumnie dziesiątek dodawania pisemnego). Niech $r_2$ oznacza część
+            całkowitą z dzielenia tej liczby przez $10$, zaś $s_1$ jej resztę z dzielenia przez $10$, czyli $r_1 + \sum_{i = 1}^{n} a_{i, 1} = 10r_2 + s_1$.
+            Mamy wtedy:
+        </p>
 
-    <p>
-        Kontynuujemy postępowanie w kolejnych iteracjach aż do $l$-tego kroku. Na zasadzie indukcji otrzymujemy wtedy postać:
-    </p>
+        $$ 
+            s = s_0 + 10^1 \left(r_1 + \sum_{i = 1}^{n} a_{i, 1} \right) + 10^2 \sum_{i = 1}^{n} a_{i, 2} + \dotsb + 10^l \sum_{i = 1}^{n} a_{i, l} = 
+            s_0 + 10^1 \left(10r_2 + s_1 \right) + 10^2 \sum_{i = 1}^{n} a_{i, 2} + \dotsb + 10^l \sum_{i = 1}^{n} a_{i, l} = \\
+            = s_0 + 10^1 s_1  + 10^2 \left( r_2 + \sum_{i = 1}^{n} a_{i, 2} \right) + \dotsb + 10^l \sum_{i = 1}^{n} a_{i, l}
+        $$
 
-    $$
-        s =  s_0 + 10^1 s_1 + 10^2 s_2 + ... +  10^l s_l + 10^{l+1}r_{l+1}
-    $$
+        <p>
+            Kontynuujemy postępowanie w kolejnych iteracjach aż do $l$-tego kroku. Na zasadzie indukcji otrzymujemy wtedy postać:
+        </p>
 
-    <p>
-        Rozwijając do postaci dziesiętnej liczbę $r_{l+1} = \sum_{j = 0}^{k} 10^j r_{l+1, j}$ otrzymujemy poszukiwaną reprezentację liczby $s$:
-    </p>
+        $$
+            s =  s_0 + 10^1 s_1 + 10^2 s_2 + \dotsb +  10^l s_l + 10^{l+1}r_{l+1}
+        $$
 
-    $$
-        s =  s_0 + 10^1 s_1 + 10^2 s_2 + ... +  10^l s_l + 10^{l+1} r_{l+1, 0} + 10^{l+2} r_{l+1, 1} + ... + 10^{l+1 + k} r_{l+1, k}
-    $$
+        <p>
+            Rozwijając do postaci dziesiętnej liczbę $r_{l+1} = \sum_{j = 0}^{k} 10^j r_{l+1, j}$ otrzymujemy poszukiwaną reprezentację liczby $s$:
+        </p>
 
-    <p>
-        Ponieważ liczby $s_0, s_1, ..., s_l$ stanowią reszty z dzielenia przez $10$, mają reprezentację jednocyfrową. Stąd liczby 
-        $s_0, s_1, ..., s_l, r_{l+1, 0}, r_{l+1, 1}, ..., r_{l+1, k}$ odpowiadają kolejnym (czytanym od prawej) cyfrom liczby $s$.
-    </p>
+        $$
+            s =  s_0 + 10^1 s_1 + 10^2 s_2 + \dotsb +  10^l s_l + 10^{l+1} r_{l+1, 0} + 10^{l+2} r_{l+1, 1} + \dotsb + 10^{l+1 + k} r_{l+1, k}
+        $$
+
+        <p>
+            Ponieważ liczby $s_0, s_1, \dotsc, s_l$ stanowią reszty z dzielenia przez $10$, mają reprezentację jednocyfrową. Stąd liczby 
+            $s_0, s_1, \dotsc, s_l, r_{l+1, 0}, r_{l+1, 1}, \dotsc, r_{l+1, k}$ odpowiadają kolejnym (czytanym od prawej) cyfrom liczby $s$.
+        </p>
+    </div>
 
 	</div>
 	</div>

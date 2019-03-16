@@ -1,18 +1,959 @@
 <template>
-  <router-view></router-view>
+  <div>
+    <app-menu></app-menu>
+    <router-view></router-view>
+  </div>
 </template>
 
 <script>
   import Home from './components/Home'
+  import Menu from './components/Menu'
 
   export default {
     name: 'App',
     components: {
-      Home
+      Home,
+      AppMenu: Menu
     }
   }
 </script>
 
-<style scoped>
+<style>
+/* ========================================== GENERAL ========================================== */
 
+p
+{
+	margin: 1.7em 0;
+}
+
+p:not(.printable)
+{
+	text-align: justify;
+}
+
+.no_selection 
+{
+    -webkit-user-select: none; /* webkit (safari, chrome) browsers */
+    -moz-user-select: none; /* mozilla browsers */
+    -khtml-user-select: none; /* webkit (konqueror) browsers */
+    -ms-user-select: none; /* IE10+ */
+}
+
+a
+{
+	text-decoration: none;
+	color: inherit;
+}
+
+ul
+{
+	list-style: none;
+	display: table;
+}
+
+li
+{
+	display: table-row;
+	margin: 50px 0;
+}
+
+ul li:before
+{
+	/*content: "♣";*/
+	content: "◆";
+	color: #dd3333;
+	margin: 0 1em;  
+	display: table-cell;
+	padding-right:  0.5em;
+}
+
+ul ul li:before
+{
+	content: "◈";
+	color: #dd3333;
+	margin: 0 1.5em;
+}
+
+ol
+{
+	counter_reset: foo;
+}
+
+ol li
+{
+	counter-increment: foo;
+}
+
+ol li:before
+{
+	content: counter(foo) ")";
+	color: #DD3333;
+	margin: 0 1em;  
+	display: table-cell;
+	padding-right:  0.5em;
+}
+
+@media screen and (max-width: 700px)
+{
+	ul, ol
+	{
+		padding-left: 0;
+	}
+}
+
+button
+{
+	background-color: #dd3333;
+	border: none;
+	color: white;
+	padding: 15px 32px;
+	text-align: center;
+	text-decoration: none;
+	/*display: inline-block;*/
+	font-size: 0.9em;
+	margin: 4px 2px;
+	cursor: pointer;
+}
+
+button:hover
+{
+	box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+	background-color: #771111;
+}
+
+button:focus
+{
+	outline: none;
+}
+
+input
+{
+	border-radius: 7px;
+	border: 1px solid #AAAAAA;
+	padding-left: 6px;
+	padding-right: 6px; 
+	height: 25px;
+}
+
+input:focus
+{
+	border-color: #EEAAAA;
+	outline: none;
+	box-shadow: 0 0 15px 0 #FFAAAA;
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none; 
+}
+
+::selection
+{
+	background: #EF0000;
+	color: #FFFFFF;
+}
+
+::moz-selection
+{
+	background: #EF0000;
+	color: #FFFFFF;
+}
+
+.modal
+{
+	display: none;
+    position: fixed;
+    z-index: 1;
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.7);
+}
+
+.modal_content
+{
+	background: #EEEEEE;
+	top: 40%;
+	width: 50%;
+	padding: 30px;
+	margin: auto;
+}
+
+.center
+{
+	margin-left: auto;
+	margin-right: auto;
+}
+
+table
+{
+	font-size: 1em;
+}
+
+/* ========================================== MENU ========================================== */
+
+.menu
+{
+	color: #000000; 
+	background: #FEFEFE;  
+	top: 0px;
+	border-bottom: 15px solid black; 
+	width: 100%;
+	margin: 0; 
+	padding-top: 10px;
+	padding-bottom: 10px;
+	height: 100px;
+}
+
+.menu button
+{
+	float: left;
+}
+
+.menu .logo 
+{
+	float: left;
+}
+
+.menu .logo > div
+{
+	transform:  translateX(60px) translateY(24px) rotate(45deg);
+}
+
+.menu .logo-text
+{
+	float: left;
+	padding: 32px 50px 0 50px;
+}
+
+.menu .logo-text-1
+{
+	font-weight: bold;
+	font-family: "Segoe UI";
+	font-size: 1.5em;
+	padding: -50px 0 0 400px;
+	display: inline-block;
+	color: #cc0000;
+}
+
+.menu .logo-text-2
+{
+	font-weight: bold;
+	font-family: "Segoe UI";
+	font-size: 1.5em;
+	color: black;
+}
+
+.menu .logo-black-cell
+{
+	height: 30px;
+	width: 30px;
+	background: black;
+	border: 0px solid white;
+	padding: 4px 4px 0 0;
+	margin: 2px;
+}
+
+.menu .logo-container-cell
+{
+	height: 30px;
+	width: 30px;
+	padding: 4px 4px 0 0;
+	margin: 2px;
+	background: none;
+	border: none;
+}
+
+.menu .logo-red-cell
+{
+	height: 40%;
+	width: 40%;
+	background: #cc0000;
+	border: none;
+	margin: 10% 10% 0 0;
+}
+
+button.button_convey
+{
+	background-color: rgba(0, 0, 0, 0);
+	border: none;
+	color: black;
+	text-align: center;
+	text-decoration: none;
+	font-size: 1.3em;
+	font-family: "Segoe UI";
+	font-weight: bold;
+	cursor: pointer;
+	display: inline-block;
+	padding: 0 20px;
+	line-height: 100px;
+	transition: all 0.5s;
+	cursor: pointer;
+	margin: 0 5px;
+}
+
+button.button_convey:hover
+{
+	box-shadow: none;
+}
+
+button.button_convey span 
+{
+	display: inline-block;
+	position: relative;
+	transition: 0.5s;
+}
+
+button.button_convey span:after 
+{
+	content: '»';
+	position: absolute;
+	opacity: 0;
+	top: 0;
+	right: -20px;
+	transition: 0.5s;
+}
+
+button.button_convey:hover span 
+{
+	padding-right: 25px;
+	text-shadow: 2px 2px #CCCCCC;
+}
+
+button.button_convey:hover span:after 
+{
+	opacity: 1;
+	right: 0;
+}
+
+button.button_convey span a
+{
+	color: black;
+}
+
+@media screen and (max-width: 700px)
+{
+	.menu
+	{
+		height: 80px;
+		border-bottom: 10px solid black; 
+	}
+
+	.menu .logo 
+	{
+		margin-right: 50px;
+	}
+
+	.menu .logo-text
+	{
+		display: none;
+	}
+
+	.menu .logo-black-cell, .menu .logo-container-cell
+	{
+		height: 20px;
+		width: 20px;
+		padding: 3px 3px 0 0;
+		margin: 2px;
+	}
+
+	button.button_convey
+	{
+		line-height: 80px;
+		font-size: 1.2em;
+	}
+}
+
+/* ========================================== TREE ========================================== */
+
+body.tree
+{
+	background-color: #FFFFFF;
+	font-family: "Verdana";
+	font-size: 0.95em;
+}
+
+a.link:link
+{
+	color: #BA0000;
+}
+
+a.link:visited
+{
+	color: #990000;
+}
+
+a.link:hover
+{
+	color: #FA0000;
+}
+
+a.link:active
+{
+	color: #300000;
+}
+
+/* ========================================== LESSON ========================================== */
+
+.lesson
+{
+	background-color: #cccccc;
+	/*background-image: url(".images/background.png");
+	background-attachment: fixed;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;*/
+	margin: 0;
+}
+
+@media screen and (max-width: 1200px)
+{
+	.main
+	{
+		position: relative; 
+		padding: 35px 6% 35px 6%;
+		font-family: "Verdana";
+		font-size: 1.08em;
+		color: #000000; 
+		background: #FEFEFE; 
+	}
+}
+
+
+@media screen and (min-width: 1200px)
+{
+	.main
+	{
+		max-width: 1100px;
+		position: relative; 
+		margin-right: 14%; 
+		padding: 35px 6.5% 35px 19.5%;
+		font-family: "Verdana";
+		font-size: 1.08em;
+		line-height: 1.7em;
+		color: #000000; 
+		background: #FEFEFE; 
+		border-right: 3px solid black;
+	}
+}
+
+.main > p
+{
+	padding: 0 25px;
+}
+
+.comment_window
+{
+	position: absolute;
+    background: #FEFEFE;
+    padding: 6px;
+	border-right: 1px solid black;
+	border-bottom: 1px solid black;
+	font-family: calibri light;
+	font-size: 15px;
+	box-shadow: inset 0px -15px 15px -5px rgba(0, 0, 0, 0.15);
+}
+
+.comment_visible_window
+{
+	position: absolute;
+    background: #FEFEFE;
+    padding: 6px;
+	border-right: 1px solid black;
+	border-bottom: 1px solid black;
+	font-family: calibri light;
+	font-size: 15px;
+	box-shadow: inset 0px -15px 15px -5px rgba(0, 0, 0, 0.15);
+}
+
+.comment_visible_question_mark
+{
+	color: #DD0000;
+	font-family: "Copperplate Gothic Light";
+	font-size: 28px;
+}
+
+.chapter
+{
+	position: relative;
+}
+
+.chapter:first-of-type
+{
+	margin-top: 55px;
+}
+
+.chapter_name
+{
+	position: relative;
+	cursor: pointer;
+	font-family: corbel;
+	font-size: 2em;
+	font-weight: bold;
+	margin-top: 9px; /*50px*/
+	margin-bottom:-7px;
+	padding: 0 25px;
+}
+
+.chapter_name + hr
+{
+	width: 0%;
+	border: 2px solid;
+	border-color: white;
+	transition: border-color 0.5s ease-in, width 0.4s;
+	margin-left: 25px;
+	margin-right: 25px;
+}
+
+.chapter_name:hover + hr
+{
+	width: 100%;
+	border: 2px solid;
+	border-color: black;
+	transition: border-color 0.1s ease 0.2s, width 1s ease 0.2s;
+	margin-left: 25px;
+	margin-right: 25px;
+}
+
+.chapter_body
+{
+	position: relative;
+	border: 0px solid black;
+	margin-bottom: 90px;
+	margin-top: 0px;
+	padding: 0 25px;
+	box-shadow: inset 0 0 0 0 rgba(0, 0, 0, 0.3);
+}
+
+.chapter_mask
+{
+	overflow: hidden;
+	position: relative;
+	border: 0px solid black;
+	margin: 0; 
+	margin-bottom: 0px;
+	margin-top: 0px;
+	padding: 0px;
+	box-shadow: inset 0 0 0 0 rgba(0, 0, 0, 0.3);
+}
+
+.example
+{
+	/*border: 1px solid #888888;*/
+	background-color: #f4f4f4;
+	/*box-shadow: 0px 0px 13px 0px rgba(0, 0, 0, 0.2);*/
+	border-left: 10px solid #dd3333;
+	box-shadow: 2px 2px 3px 0px rgba(0, 0, 0, 0.4);
+	padding: 15px;
+	margin: 30px 30px;
+	/* border-radius: 15px; */
+}
+
+p.lesson_title
+{
+	text-align: center;
+	font-size: 3.2em;
+	font-weight: bold;
+	font-family: "Corbel";
+	margin: 50px auto;
+	clear:both;
+}
+
+p.lesson_title_short
+{
+	text-align: center;
+	font-size: 3.2em;
+	font-weight: bold;
+	font-family: "Corbel";
+	margin: 50px auto 5px auto;
+	clear:both;
+}
+
+p.lesson_subtitle
+{
+	text-align: center;
+	font-size: 1.6em;
+	font-weight: bold;
+	font-family: "Corbel";
+	margin: 5px auto 50px auto;
+	clear: both;
+}
+
+p.type
+{
+	/* line-height: 0%; */
+	display: inline-block;
+	background-color: #dd3333;
+	padding: 0 5px;
+	height: 31px;
+	line-height: 31px;
+	color: white;
+	margin-top: 0;
+	margin-bottom: -1.6em;
+	transition: background-color 0.1s;
+	box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.4);
+}
+
+p.type:hover
+{
+	background-color: #cc3333;
+	transition: background-color 0.1s;
+}
+
+p.optional-hide:after
+{
+	content: ">";
+	display: inline-block;
+	background: #aa0000;
+	margin: 0 0 5px 5px;
+    width: 21px;
+    height: 21px;
+    border-radius: 50%;
+    text-align: center;
+	vertical-align: middle;
+	font-family: Consolas;
+	line-height: 21px;
+	font-size: 21px;
+	transition: transform 0.5s;
+}
+
+
+p.optional-hide:hover:after
+{
+	background: #990000;
+	transform: rotate(90deg);
+	transition: transform 0.5s;
+}
+
+p.optional-show:after
+{
+	content: ">";
+	display: inline-block;
+	background: #aa0000;
+	margin: 0 0 5px 5px;
+    width: 21px;
+    height: 21px;
+    border-radius: 50%;
+    text-align: center;
+	vertical-align: middle;
+	font-family: Consolas;
+	line-height: 21px;
+	font-size: 21px;
+	transform: rotate(90deg);
+	transition: transform 0.5s;
+}
+
+p.optional-show:hover:after
+{
+	background: #990000;
+	transform: rotate(0deg);
+	transition: transform 0.5s;
+}
+
+p.optional-show ~ div
+{
+	margin: -5px -25px;
+	padding: 5px 25px;
+}
+
+p.optional-hide:hover ~ div
+{
+	background: #fff0f0;
+}
+
+p.optional-show:hover ~ div
+{
+	background: #fff0f0;
+}
+
+.proof-sticker
+{
+	position: absolute;
+	display: inline-block;
+	padding: 5px;
+	margin: 0px;
+	top: 0;
+	left: -1px;
+	color: white;
+	background-color: #dd3333;
+	transition: background-color 0.1s;
+	box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.4);
+}
+
+p.warning
+{
+	font-family: arial;
+	color: #888888;
+	font-size: 0.7em;
+	margin-top: 1.8em;
+	margin-bottom: 8px;
+}	
+
+.proof .warning
+{
+	font-family: arial;
+	color: #888888;
+	font-size: 0.7em;
+	margin-top: 0
+}	
+
+p.problem
+{
+	font-weight: bold;
+	text-align: center;
+}
+
+.formula
+{
+	text-align: center !important;
+	background-color: #dddddd;
+	padding: 10px;
+	margin: 0px;
+}
+
+.proof
+{
+	position: relative;
+	padding: 40px 10px 10px 10px;
+	margin-bottom: 1em;
+	border: 1px solid #aaaaaa;
+	border-top:  1px solid #dddddd;
+	background: #ffffff;
+}
+
+.bookmark
+{
+	padding-left: 40px;
+	padding-right: 40px;
+	height: 60px;
+	line-height: 60px;
+	position: relative;
+	background: black;
+	color: white;
+	font-weight: bold;
+	font-family: "Segoe UI";
+	transition: padding-right 0.4s;
+}
+
+.bookmark:before
+{
+	content: "";
+	position: absolute;
+	left: -12px;
+	bottom: 0;
+	width: 25px;
+	background: black;
+	height: 50%;
+	transform: skew(-40deg);
+}
+
+.bookmark:after
+{
+	content: "";
+	position: absolute;
+	left: -12px;
+	top: 0;
+	width: 25px;
+	background: black;
+	height: 50%;
+	transform: skew(40deg);
+}
+
+.bookmark:hover
+{
+	padding-right: 100px;
+	transition: padding-right 0.5s;
+}
+
+@media screen and (max-width: 1200px)
+{
+	.bookmark-shadow
+	{
+		float: right;
+		overflow: auto;
+		margin-right: -7%;
+		margin-bottom: 30px;
+		padding-left: 30px;
+	}
+}
+
+@media screen and (min-width: 1200px)
+{
+	.bookmark-shadow
+	{
+		float: right;
+		overflow: auto;
+		box-shadow: 4px 3px 5px 0px rgba(0, 0, 0, 0.4);
+		margin-right: -13%;
+		margin-bottom: 30px;
+		padding-left: 30px;
+	}
+}
+
+/* ========================================== COMMON ELEMENTS ========================================== */
+
+table.operation_table
+{
+	text-align: center;
+	border-collapse: collapse;
+	border-style: hidden;
+}
+
+table.operation_table td
+{
+	height: 34px;
+	width: 32px;
+	border: 1px solid black;
+}
+
+table.operation_table th 
+{
+    height: 34px;
+    width: 32px;
+    border: 2px solid black;
+    color: #772222;
+}
+
+table.tiles
+{
+	border-collapse: collapse;
+}
+
+table.tiles td
+{
+	height: 45px;
+	width: 41px;
+	background-color: #EEDDDD;
+	border: 3px groove #AA2222;
+}
+
+table.tiles td:hover
+{
+	background-color: #DD8888;
+	border-style: ridge;
+}
+
+polygon
+{
+	/*fill: #DD2222; */
+	fill: url(#gradient);
+	stroke-width:0;
+	box-shadow: 0 0px 100px 0 rgba(0,0,0,0.24);
+}
+
+circle
+{
+	/*fill: #DD2222; */
+	fill: url(#gradient);
+	stroke-width:0;
+	box-shadow: 0 0px 100px 0 rgba(0,0,0,0.24);
+}
+
+.draggable
+{
+	cursor: move;
+}
+
+/* ========================================== COLUMNAR OPERATIONS ========================================== */
+
+.strikethrough 
+{
+	position: relative;
+}
+
+.strikethrough:before 
+{
+	position: absolute;
+	content: "";
+	left: -1px;
+	top: 50%;
+	right: 0;
+	border-top: 2px solid;
+	border-color: inherit;
+
+	-webkit-transform:rotate(-60deg);
+	-moz-transform:rotate(-60deg);
+	-ms-transform:rotate(-60deg);
+	-o-transform:rotate(-60deg);
+	transform:rotate(-60deg);
+}
+
+table.columnar_operation
+{
+	border-collapse: collapse; 
+}
+
+td.columnar_operation_not_carry
+{
+	padding-top: 0px;
+	padding-bottom: 0px;
+	padding-left: 2px;
+	padding-right: 2px;
+	height: 27px;
+}
+
+td.columnar_operation_underlined
+{
+	border-bottom: 1pt solid black;
+}
+
+td.columnar_operation_carry
+{
+	font-size: 0.7em;
+	vertical-align: center;
+	text-align: center;
+	height: 19px;
+}
+
+td.columnar_operation_highlight
+{
+	background: #FFCCCC;
+}
+
+table.columnar_operation_script
+{
+	border: 1px solid #888888;
+	width: 80%;
+	height: 0px;
+	text-align: center;
+	padding: 0px; /*20px*/
+	visibility: hidden;
+	box-shadow: 0px 0px 13px 0px rgba(0, 0, 0, 0.2);
+}
+
+table.columnar_operation_script td
+{
+	vertical-align: center;
+}
+
+#columnar_operation_button_left:hover
+{
+	transform: scale(1.2);
+}
+
+#columnar_operation_button_left:hover polygon
+{
+	fill: url(#hover_gradient);
+}
+
+#columnar_operation_button_right:hover
+{
+	transform: scale(1.2);
+}
+
+#columnar_operation_button_right:hover polygon
+{
+	fill: url(#hover_gradient);
+}
+
+#columnar_operation_button_left + td
+{
+	width: 80%;
+	vertical-align: top;
+}
 </style>
