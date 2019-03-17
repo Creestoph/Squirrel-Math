@@ -5,6 +5,9 @@
         </router-link>          
         <router-link tag="div" to="/tree" class="btn btn-light">
           Tree
+        </router-link>     
+        <router-link tag="div" to="/editor" class="btn btn-light">
+          Editor
         </router-link>
     </div>
 </template>
