@@ -6,13 +6,11 @@
 </template>
 
 <script>
-  import Home from './components/Home'
   import Menu from './components/Menu'
 
   export default {
     name: 'App',
     components: {
-      Home,
       AppMenu: Menu
     }
   }
@@ -20,6 +18,10 @@
 
 <style>
 /* ========================================== GENERAL ========================================== */
+
+* {
+	box-sizing: content-box;
+}
 
 p
 {
@@ -195,197 +197,14 @@ table
 	font-size: 1em;
 }
 
-/* ========================================== MENU ========================================== */
-
-.menu
-{
-	color: #000000; 
-	background: #FEFEFE;  
-	top: 0px;
-	border-bottom: 15px solid black; 
-	width: 100%;
-	margin: 0; 
-	padding-top: 10px;
-	padding-bottom: 10px;
-	height: 100px;
-}
-
-.menu button
-{
-	float: left;
-}
-
-.menu .logo 
-{
-	float: left;
-}
-
-.menu .logo > div
-{
-	transform:  translateX(60px) translateY(24px) rotate(45deg);
-}
-
-.menu .logo-text
-{
-	float: left;
-	padding: 32px 50px 0 50px;
-}
-
-.menu .logo-text-1
-{
-	font-weight: bold;
-	font-family: "Segoe UI";
-	font-size: 1.5em;
-	padding: -50px 0 0 400px;
-	display: inline-block;
-	color: #cc0000;
-}
-
-.menu .logo-text-2
-{
-	font-weight: bold;
-	font-family: "Segoe UI";
-	font-size: 1.5em;
-	color: black;
-}
-
-.menu .logo-black-cell
-{
-	height: 30px;
-	width: 30px;
-	background: black;
-	border: 0px solid white;
-	padding: 4px 4px 0 0;
-	margin: 2px;
-}
-
-.menu .logo-container-cell
-{
-	height: 30px;
-	width: 30px;
-	padding: 4px 4px 0 0;
-	margin: 2px;
-	background: none;
-	border: none;
-}
-
-.menu .logo-red-cell
-{
-	height: 40%;
-	width: 40%;
-	background: #cc0000;
-	border: none;
-	margin: 10% 10% 0 0;
-}
-
-button.button_convey
-{
-	background-color: rgba(0, 0, 0, 0);
-	border: none;
-	color: black;
-	text-align: center;
-	text-decoration: none;
-	font-size: 1.3em;
-	font-family: "Segoe UI";
-	font-weight: bold;
-	cursor: pointer;
-	display: inline-block;
-	padding: 0 20px;
-	line-height: 100px;
-	transition: all 0.5s;
-	cursor: pointer;
-	margin: 0 5px;
-}
-
-button.button_convey:hover
-{
-	box-shadow: none;
-}
-
-button.button_convey span 
-{
-	display: inline-block;
-	position: relative;
-	transition: 0.5s;
-}
-
-button.button_convey span:after 
-{
-	content: '»';
-	position: absolute;
-	opacity: 0;
-	top: 0;
-	right: -20px;
-	transition: 0.5s;
-}
-
-button.button_convey:hover span 
-{
-	padding-right: 25px;
-	text-shadow: 2px 2px #CCCCCC;
-}
-
-button.button_convey:hover span:after 
-{
-	opacity: 1;
-	right: 0;
-}
-
-button.button_convey span a
-{
-	color: black;
-}
-
-@media screen and (max-width: 700px)
-{
-	.menu
-	{
-		height: 80px;
-		border-bottom: 10px solid black; 
-	}
-
-	.menu .logo 
-	{
-		margin-right: 50px;
-	}
-
-	.menu .logo-text
-	{
-		display: none;
-	}
-
-	.menu .logo-black-cell, .menu .logo-container-cell
-	{
-		height: 20px;
-		width: 20px;
-		padding: 3px 3px 0 0;
-		margin: 2px;
-	}
-
-	button.button_convey
-	{
-		line-height: 80px;
-		font-size: 1.2em;
-	}
-}
-
-/* ========================================== TREE ========================================== */
-
-body.tree
-{
-	background-color: #FFFFFF;
-	font-family: "Verdana";
-	font-size: 0.95em;
-}
-
 a.link:link
 {
-	color: #BA0000;
+	color: #cc3333;
 }
 
 a.link:visited
 {
-	color: #990000;
+	color: #665555;
 }
 
 a.link:hover
@@ -399,54 +218,6 @@ a.link:active
 }
 
 /* ========================================== LESSON ========================================== */
-
-.lesson
-{
-	background-color: #cccccc;
-	/*background-image: url(".images/background.png");
-	background-attachment: fixed;
-	background-position: center;
-	background-repeat: no-repeat;
-	background-size: cover;*/
-	margin: 0;
-}
-
-@media screen and (max-width: 1200px)
-{
-	.main
-	{
-		position: relative; 
-		padding: 35px 6% 35px 6%;
-		font-family: "Verdana";
-		font-size: 1.08em;
-		color: #000000; 
-		background: #FEFEFE; 
-	}
-}
-
-
-@media screen and (min-width: 1200px)
-{
-	.main
-	{
-		max-width: 1100px;
-		position: relative; 
-		margin-right: 14%; 
-		padding: 35px 6.5% 35px 19.5%;
-		font-family: "Verdana";
-		font-size: 1.08em;
-		line-height: 1.7em;
-		color: #000000; 
-		background: #FEFEFE; 
-		border-right: 3px solid black;
-	}
-}
-
-.main > p
-{
-	padding: 0 25px;
-}
-
 .comment_window
 {
 	position: absolute;
@@ -462,8 +233,8 @@ a.link:active
 .comment_visible_window
 {
 	position: absolute;
-    background: #FEFEFE;
-    padding: 6px;
+  background: #FEFEFE;
+  padding: 6px;
 	border-right: 1px solid black;
 	border-bottom: 1px solid black;
 	font-family: calibri light;
@@ -478,70 +249,6 @@ a.link:active
 	font-size: 28px;
 }
 
-.chapter
-{
-	position: relative;
-}
-
-.chapter:first-of-type
-{
-	margin-top: 55px;
-}
-
-.chapter_name
-{
-	position: relative;
-	cursor: pointer;
-	font-family: corbel;
-	font-size: 2em;
-	font-weight: bold;
-	margin-top: 9px; /*50px*/
-	margin-bottom:-7px;
-	padding: 0 25px;
-}
-
-.chapter_name + hr
-{
-	width: 0%;
-	border: 2px solid;
-	border-color: white;
-	transition: border-color 0.5s ease-in, width 0.4s;
-	margin-left: 25px;
-	margin-right: 25px;
-}
-
-.chapter_name:hover + hr
-{
-	width: 100%;
-	border: 2px solid;
-	border-color: black;
-	transition: border-color 0.1s ease 0.2s, width 1s ease 0.2s;
-	margin-left: 25px;
-	margin-right: 25px;
-}
-
-.chapter_body
-{
-	position: relative;
-	border: 0px solid black;
-	margin-bottom: 90px;
-	margin-top: 0px;
-	padding: 0 25px;
-	box-shadow: inset 0 0 0 0 rgba(0, 0, 0, 0.3);
-}
-
-.chapter_mask
-{
-	overflow: hidden;
-	position: relative;
-	border: 0px solid black;
-	margin: 0; 
-	margin-bottom: 0px;
-	margin-top: 0px;
-	padding: 0px;
-	box-shadow: inset 0 0 0 0 rgba(0, 0, 0, 0.3);
-}
-
 .example
 {
 	/*border: 1px solid #888888;*/
@@ -552,16 +259,6 @@ a.link:active
 	padding: 15px;
 	margin: 30px 30px;
 	/* border-radius: 15px; */
-}
-
-p.lesson_title
-{
-	text-align: center;
-	font-size: 3.2em;
-	font-weight: bold;
-	font-family: "Corbel";
-	margin: 50px auto;
-	clear:both;
 }
 
 p.lesson_title_short
@@ -594,9 +291,14 @@ p.type
 	line-height: 31px;
 	color: white;
 	margin-top: 0;
-	margin-bottom: -1.6em;
+	margin-bottom: 0.1em;
 	transition: background-color 0.1s;
 	box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.4);
+}
+
+p.type + *
+{
+		margin-top: 0;
 }
 
 p.type:hover
@@ -611,10 +313,10 @@ p.optional-hide:after
 	display: inline-block;
 	background: #aa0000;
 	margin: 0 0 5px 5px;
-    width: 21px;
-    height: 21px;
-    border-radius: 50%;
-    text-align: center;
+	width: 21px;
+	height: 21px;
+	border-radius: 50%;
+	text-align: center;
 	vertical-align: middle;
 	font-family: Consolas;
 	line-height: 21px;
@@ -636,10 +338,10 @@ p.optional-show:after
 	display: inline-block;
 	background: #aa0000;
 	margin: 0 0 5px 5px;
-    width: 21px;
-    height: 21px;
-    border-radius: 50%;
-    text-align: center;
+	width: 21px;
+	height: 21px;
+	border-radius: 50%;
+	text-align: center;
 	vertical-align: middle;
 	font-family: Consolas;
 	line-height: 21px;
@@ -690,8 +392,8 @@ p.warning
 	font-family: arial;
 	color: #888888;
 	font-size: 0.7em;
-	margin-top: 1.8em;
-	margin-bottom: 8px;
+	margin-top: -0.1em;
+	margin-bottom: -1.7em;
 }	
 
 .proof .warning

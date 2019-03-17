@@ -1,9 +1,11 @@
 <template>    
-<div>
-    
-        <router-link v-for="c in chapters" :key="c" tag="div" :to="'/' + c" class="btn btn-light">
-          {{c}}
-        </router-link>
+<div class="tree">
+  <br>
+  <ul>
+    <li v-for="(value, key) in chapters" :key="key">
+      <router-link  tag="a" :to="'/' + key" class="link">{{value}}</router-link>
+    </li>
+  </ul>
 </div>
 </template>
 
@@ -13,12 +15,35 @@
     name: "Tree",
     data(){
         return {
-            chapters: ['dodawanie']
+            chapters: {
+              'wprowadzenie': 'Wprowadzenie',
+              'liczba': 'Liczba',
+              'dodawanie': 'Dodawanie',
+              'odejmowanie': 'Odejmowanie',
+              'mnozenie': 'Mnożenie', 
+              'dzielenie': 'Dzielenie', 
+              'kolejnosc-wykonywania-dzialan': 'Kolejność wykonywania działań', 
+              'podzielnosc-liczb': 'Podzielność liczb',
+              'ulamki-zwykle': 'Ułamki zwykłe',
+              'ulamki-dziesietne': 'Ułamki dziesiętne',
+              'procenty': 'Procenty',
+              'liczby-ujemne': 'Liczby ujemne',
+              'wyrazenia-algebraiczne': 'Wyrażenia algebraiczne',
+              'twierdzenia-i-dowody': 'Twierdzenia i dowody',
+              'potegowanie': 'Potęgowanie',
+              'pierwiastkowanie': 'Pierwiastkowanie',
+              'dzialania-na-wyrazeniach-algebraicznych': 'Działania na wyrażeniach algebraicznych'
+            }
         }
     }
   }
 </script>
 
 <style scoped>
-
+  body.tree
+  {
+    background-color: #FFFFFF;
+    font-family: "Verdana";
+    font-size: 0.95em;
+  }
 </style>

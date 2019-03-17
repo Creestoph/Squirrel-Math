@@ -1,0 +1,357 @@
+<!DOCTYPE HTML PUBLIC “-//W3C//DTD HTML 4.01 Transitional//EN”>
+<html lang="pl">
+
+<head>
+	<title>Dzielenie</title>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+	<link rel="stylesheet" href="../lesson_style.css">
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+	<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=MML_HTMLorMML"></script>
+	<script src="../.scripts/draggable.js"></script>
+	<script src="division_table_short.js"></script>
+	<script src="../.scripts/math.js"></script>
+	<script src="../.scripts/sm_library.js"></script>
+	<script src="../.scripts/display_table.js"></script>
+	<script src="../.scripts/columnar_division.js"></script>
+	<script src="../.scripts/number_validation.js"></script>
+	<script src="../.scripts/tools.js"></script>
+</head>
+
+<body class="lesson">
+  
+<div class = "menu">
+	<a href="../index.html"><button class = "button_convey" style="position: absolute; left: 10px"><span>Strona główna</span></button></a>
+	<a href="../drzewo.html"><button class = "button_convey" style="position: absolute; left: 250px"><span>Drzewo</span></button></a>
+    <a href="dzielenie.html"><button class = "button_convey" style="position: relative; left: 80%"><span>Wersja pełna</span></button></a>
+</div>
+  
+<div class="main">
+
+    <p class="lesson_title_short">
+		Dzielenie
+    </p>
+    <p class="lesson_subtitle">
+		w pigułce
+	</p>
+      
+	<p class = "type">
+        Intuicje
+    </p>
+	  
+    <p>
+        Dzielenie polega na rozkładaniu jednej liczby na kilka równych liczb. Gdybyśmy chcieli rozłożyć <span class="math">20</span> kulek na <span class="math">4</span> równe grupki,
+		otrzymalibyśmy po <span class="math">5</span> kulek na grupę.
+    </p>
+      
+    <p align = "center">
+        <svg height="200" width="800">
+			<defs>
+				<linearGradient id="gradient">
+					<stop offset="20%" stop-color="#C33" />
+					<stop offset="90%" stop-color="#833" />
+				</linearGradient>
+			</defs>
+			<circle cx="120" cy="110" r="20" class = "draggable"></circle>
+			<circle cx="370" cy="80" r="20" class = "draggable"></circle>
+			<circle cx="510" cy="100" r="20" class = "draggable"></circle>
+			<circle cx="400" cy="40" r="20" class = "draggable"></circle>
+			<circle cx="280" cy="180" r="20" class = "draggable"></circle>
+			<circle cx="680" cy="120" r="20" class = "draggable"></circle>
+			<circle cx="630" cy="70" r="20" class = "draggable"></circle>
+			<circle cx="570" cy="20" r="20" class = "draggable"></circle>
+			<circle cx="320" cy="160" r="20" class = "draggable"></circle>
+			<circle cx="410" cy="130" r="20" class = "draggable"></circle>
+			<circle cx="580" cy="160" r="20" class = "draggable"></circle>
+			<circle cx="690" cy="70" r="20" class = "draggable"></circle>
+			<circle cx="120" cy="40" r="20" class = "draggable"></circle>
+			<circle cx="250" cy="60" r="20" class = "draggable"></circle>
+			<circle cx="310" cy="100" r="20" class = "draggable"></circle>
+			<circle cx="250" cy="140" r="20" class = "draggable"></circle>
+			<circle cx="510" cy="150" r="20" class = "draggable"></circle>
+			<circle cx="340" cy="30" r="20" class = "draggable"></circle>
+			<circle cx="710" cy="150" r="20" class = "draggable"></circle>
+			<circle cx="160" cy="120" r="20" class = "draggable"></circle>
+        </svg>
+    </p> 
+      
+	<br>
+    <p align = "center">
+        <table>
+			<tr>
+				<td>
+					<svg height="180" width="150">
+						<circle cx="51" cy="30" r="20" class = "draggable"></circle>
+						<circle cx="109" cy="32" r="20" class = "draggable"></circle>
+						<circle cx="56" cy="94" r="20" class = "draggable"></circle>
+						<circle cx="107" cy="91" r="20" class = "draggable"></circle>
+						<circle cx="76" cy="147" r="20" class = "draggable"></circle>
+					</svg>
+				</td>
+				<td>
+					<svg height="180" width="150">
+						<circle cx="51" cy="31" r="20" class = "draggable"></circle>
+						<circle cx="109" cy="33" r="20" class = "draggable"></circle>
+						<circle cx="56" cy="92" r="20" class = "draggable"></circle>
+						<circle cx="107" cy="93" r="20" class = "draggable"></circle>
+						<circle cx="76" cy="144" r="20" class = "draggable"></circle>
+					</svg>
+				</td>
+				<td>
+					<svg height="180" width="150">
+						<circle cx="51" cy="33" r="20" class = "draggable"></circle>
+						<circle cx="109" cy="31" r="20" class = "draggable"></circle>
+						<circle cx="56" cy="95" r="20" class = "draggable"></circle>
+						<circle cx="107" cy="93" r="20" class = "draggable"></circle>
+						<circle cx="76" cy="143" r="20" class = "draggable"></circle>
+					</svg>
+				</td>
+				<td>
+					<svg height="180" width="150">
+						<circle cx="51" cy="30" r="20" class = "draggable"></circle>
+						<circle cx="109" cy="31" r="20" class = "draggable"></circle>
+						<circle cx="56" cy="92" r="20" class = "draggable"></circle>
+						<circle cx="107" cy="93" r="20" class = "draggable"></circle>
+						<circle cx="76" cy="141" r="20" class = "draggable"></circle>
+					</svg>
+				</td>
+			</tr>
+        </table>
+    </p>
+      
+    <p>
+        Zapis
+    </p>
+      
+    <p align = "center" class="math">
+        20 : 4 = 5
+    </p>
+      
+	<p>
+		Oznacza, że gdy liczbę <span class="math">20</span> rozłożymy na <span class="math">4</span> równe części, każda z nich będzie miała wartość <span class="math">5</span>. Symbol <span class="math">:</span>
+		czytamy jako "podzielić na"
+		lub "dzielone przez". Równoważny jest zapis
+	</p>
+      
+    <p align = "center">
+        <span class="math">20 Text(&nbsp;/&nbsp;) 4 = 5</span><br>
+        lub<br>
+        <span class="math">20 ÷ 4 = 5</span><br>
+    </p>
+      
+    <p>
+        Liczbę, którą dzielimy (po lewej znaku <span class="math">:</span> ), nazywamy <i>dzielną</i>. Liczbę, przez którą dzielimy (po prawej znaku <span class="math">:</span> ), 
+        nazywamy <i>dzielnikiem</i>. Wynik dzielenia to <i>iloraz</i>.
+    </p>
+        
+    <p align = "center" class="math">
+        dzielna : dzielnik = iloraz
+    </p>
+      
+    <ul>
+        <li>W działaniu <span class="math">16 : 2 = 8</span> dzielną jest <span class="math">16</span>, dzielnikiem <span class="math">2</span>, a wynikiem (ilorazem) <span class="math">8</span>.</li>
+    </ul>
+      
+    <p>
+        Dzielenie jest działaniem odwrotnym do mnożenia. Gdy chcemy poznać wynik dzielenia, np. <span class="math">28 : 7</span>, możemy zadać sobie pytanie: 
+        przez co należy pomnożyć <span class="math">7</span>, aby otrzymać <span class="math">28</span>? Odpowiedzią jest <span class="math">4</span>. 
+    </p>
+      
+	<p align="center">
+		<span class="math">28 : 7 = 4</span> bo <span class="math">4 &middot; 7 = 28</span>
+	</p>
+
+	<p>
+        Bardzo problematyczne w matematyce jest dzielenie przez liczbę <span class="math">0</span>. Jaki mógłby być wynik dzielenia <span class="math">18 : 0</span> ? Korzystając z powyższej 
+		obserwacji, stwierdzamy że
+    </p>
+      
+	<p align ="center">
+        <span class="math">18 : 0</span> nie ma wartości, ponieważ <span class="math">0 &middot; <b>Text(cokolwiek)</b> = 0</span>
+    </p>
+      
+    <p>
+        Dzielenie przez <span class="math">0</span> jest niewykonalne. Dzielenia przez <span class="math">0</span> należy unikać jak ognia.
+    </p>
+      
+    <p>
+        Wynik dzielenia nie zawsze jest liczbą naturalną. O ile przykłady <span class="math">12 : 3 = 4</span> albo <span class="math">28 : 4 = 7</span> dają się wykonać dość łatwo, tak
+		dzielenie <span class="math">7 : 3</span> nie daje oczywistego wyniku - nie da się rozłożyć liczby <span class="math">7</span> na <span class="math">3</span> równe liczby naturalne.
+    </p>
+      
+    <p align = "center">
+        <table>
+			<tr>
+				<td>
+					<svg height="150" width="100">
+						<circle cx="50" cy="50" r="20" class = "draggable"></circle>
+						<circle cx="50" cy="100" r="20" class = "draggable"></circle>
+					</svg>
+				</td>
+				<td>
+					<svg height="150" width="100">
+						<circle cx="50" cy="50" r="20" class = "draggable"></circle>
+						<circle cx="50" cy="100" r="20" class = "draggable"></circle>
+					</svg>
+				</td>
+				<td>
+					<svg height="150" width="100">
+						<circle cx="50" cy="50" r="20" class = "draggable"></circle>
+						<circle cx="50" cy="100" r="20" class = "draggable"></circle>
+					</svg>
+				</td>
+			</tr>
+			<tr>
+				<td colspan ="3">
+					<svg height="50" width="300">
+						<circle cx="150" cy="25" r="20" class = "draggable"></circle>
+					</svg>
+				</td>
+			</tr>
+        </table>
+    </p>
+
+    <p>
+        W takiej sytuacji mówimy, że została nam reszta. Zapiszemy to w taki sposób: 
+    </p>
+      
+    <p align = "center" class="math">
+        7 : 3 = 2 r. 1
+    </p>
+	<script>
+		Display_table.create_custom([["/u:", "/u:", "/u:", "/u:1", "/u:1", "/u:r.", "/u:3"], ["", "", "1", "0", "2", ":", "9"], ["/u:-", "/u:", "/u:", "/u:9", "/u:", "/u:", "/u:"], ["", "", "", "1", "2", "", ""],
+			["/u:-", "/u:", "/u:", "/u:", "/u:9", "/u:", "/u:"], ["", "", "", "", "3", "", ""]]).print("columnar_division_21");
+	</script>
+	<p align="center">
+		<input style="width: 800px" name="numberInput" type="text" id="columnar_division_input" />
+	</p>
+	<script>
+		var columnar_division = new Columnar_division( "columnar_division_table","columnar_division_comment", "columnar_operation_button_right", "columnar_operation_button_left");
+		function ColumnarDivisionStartArgs() {
+			var success = columnar_division.generate_from_input("columnar_division_input","columnar_division_area", false);
+			if (success)columnar_division.print_step(0);
+		}
+
+	</script>
+	<p align="center">
+		<button id="columnar_division_start" style="float: center;" onclick="ColumnarDivisionStartArgs()">Start</button>
+	</p>
+	<script>
+		SetInputEnterEvent("columnar_division_input","columnar_division_start")
+	</script>
+
+
+	<table align = "center" class="columnar_operation_script" id="columnar_division_area" >
+		<tr>
+			<td id="columnar_operation_button_left" onclick="columnar_division.prev()">
+				<svg height="0" width="30">
+					<defs>
+						<linearGradient id="gradient">
+							<stop offset="20%" stop-color="#C33" />
+							<stop offset="90%" stop-color="#833" />
+						</linearGradient>
+						<linearGradient id="hover_gradient">
+							<stop offset="20%" stop-color="#A33" />
+							<stop offset="90%" stop-color="#433" />
+						</linearGradient>
+					</defs>
+					<polygon points="20,0 0,30 20,60"/>
+				</svg>
+			</td>
+			<td>
+				<div id="columnar_division_table" class="no_selection"></div>
+				<p id="columnar_division_comment" class="no_selection"></p>
+			</td>
+			<td id = "columnar_operation_button_right" onclick="columnar_division.next()">
+				<svg height="0" width="30">
+					<polygon points="0,0 20,30 0,60"/>
+				</svg>
+			</td>
+		</tr>
+	</table>
+    <p class = "type">
+        Rozszerzenie
+    </p>
+      
+    <p>
+        Dzielenie nie jest przemienne, ponieważ <span class="math">14 : 2</span> to nie to samo, co <span class="math">2 : 14</span>.
+    </p>
+      
+    <p>
+        Dzielenie nie jest też łączne. Licząc <span class="math">60 : 6 : 2</span> od lewej do prawej dostaniemy <span class="math">60 : 6 : 2 = 10 : 2 = 5</span>. Licząc od prawej do lewej
+		dostaniemy <span class="math">60 : 6 : 2 = 60 : 3 = 20</span>.
+    </p>
+      
+    <p class = "type">
+        Warsztat
+    </p>
+      
+    <p>
+        Aby obliczyć wynik dzielenia małych liczb warto mieć na uwadze, że dzielenie jest odwrotnością mnożenia - można wtedy korzystać z
+		tabliczki mnożenia.
+    </p>
+
+    <br>
+    <p align = "center">
+        <table class="operation_table" id="dividing_table">
+			<tr><th> </th><th>0</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th style="background: #F0E0E0">8</th><th>9</th></tr>
+			<tr><th>0</th><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td style="background: #F0E0E0">0</td><td>0</td></tr>
+			<tr><th>1</th><td>0</td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td style="background: #F0E0E0">8</td><td>9</td></tr>
+			<tr><th>2</th><td>0</td><td>2</td><td>4</td><td>6</td><td>8</td><td>10</td><td>12</td><td>14</td><td style="background: #F0E0E0">16</td><td>18</td></tr>
+			<tr><th>3</th><td>0</td><td>3</td><td>6</td><td>9</td><td>12</td><td>15</td><td>18</td><td>21</td><td style="background: #F0E0E0">24</td><td>27</td></tr>
+			<tr><th>4</th><td>0</td><td>4</td><td>8</td><td>12</td><td>16</td><td>20</td><td>24</td><td>28</td><td style="background: #F0E0E0">32</td><td>36</td></tr>
+			<tr><th>5</th><td>0</td><td>5</td><td>10</td><td>15</td><td>20</td><td>25</td><td>30</td><td>35</td><td style="background: #F0E0E0">40</td><td>45</td></tr>
+			<tr><th>6</th><td>0</td><td>6</td><td>12</td><td>18</td><td>24</td><td>30</td><td>36</td><td>42</td><td style="background: #F0E0E0">48</td><td>54</td></tr>
+			<tr><th>7</th><td>0</td><td>7</td><td>14</td><td>21</td><td>28</td><td>35</td><td>42</td><td>49</td><td style="background: #F0E0E0">56</td><td>63</td></tr>
+			<tr><th>8</th><td>0</td><td>8</td><td>16</td><td>24</td><td>32</td><td>40</td><td>48</td><td>56</td><td style="background: #F0E0E0">64</td><td>72</td></tr>
+			<tr><th>9</th><td>0</td><td>9</td><td>18</td><td>27</td><td>36</td><td>45</td><td>54</td><td>63</td><td style="background: #CA7777">72</td><td>81</td></tr>
+        </table>
+    </p>
+
+    <p align ="center" id="dividing_table_field">
+		72 : 8 = 9
+	</p>
+      
+    <p>
+        W przypadku większych liczb pomocne jest <i>dzielenie w słupku</i> zwane też <i>dzieleniem pisemnym</i>).
+        ponad kreską. Aby podzielić <span class="math">56432</span> przez <span class="math">12</span>, zapisujemy obydwie liczby jedna obok drugiej i rysujemy kreskę ponad nimi.
+		Następnie analizujemy liczbę <span class="math">56432</span> od lewej strony - próbujemy wydzielić w niej fragment, który podzielimy przez <span class="math">12</span>. Bierzemy
+		jej pierwsze dwie cyfry (<span class="math">56</span>) i dzielimy przez <span class="math">12</span>. Dostajemy wynik <span class="math">4 r. 8</span>. 
+		Pomijamy resztę i zapisujemy <span class="math">4</span> ponad kreską, nad cząstką
+		<span class="math">56</span>. Od <span class="math">56</span> odejmujemy <span class="math">4 &middot 12</span>, czyli <span class="math">48</span> i dostajemy wynik <span class="math">8</span>,
+		który zapisujemy poniżej. Do cyfry <span class="math">8</span> dopisujemy kolejną cyfrę
+		dzielnej, czyli <span class="math">4</span> i powtarzamy schemat. <span class="math">84 : 12 = 7</span>, więc zapisujemy <span class="math">7</span> nad kreską, następnie od <span class="math">84</span> 
+		odejmujemy <span class="math">12 &middot; 7 = 84</span> i
+		otrzymujemy <span class="math">0</span>. Do <span class="math">0</span> dopisujem kolejną cyfrę, czyli <span class="math">3</span>. Dzielimy <span class="math">3 : 12 = 0 r. 3</span>, wynik <span class="math">0</span>
+		zapisujemy nad kreską, odejmujemy <span class="math">0 &middot; 12 = 0</span>, dostajemy <span class="math">3</span>. Spisujemy cyfrę <span class="math">2</span> i dzielimy <span class="math">32 : 12 = 2 r. 8</span>.
+		Spisujemy wynik <span class="math">2</span> i wykonujemy odejmowanie. Ponieważ nie
+		nie ma już cyfr do spisania, pozostałą liczbę <span class="math">8</span> traktujemy jako resztę z dzielenia. Ostatecznie <span class="math">56432 : 12 = 4702 r. 8</span>.
+    </p>
+      
+    <p align = "center">
+            1	2	0	3			
+          3	3	6	8	4	:	2	8
+        -	2	8						
+            5	6					
+        -		5	6					
+              0	8				
+        -				0				
+                8	4			
+        -				8	4			
+                  0			
+    </p>
+      
+    <p class = "type">
+        Dowód
+    </p>
+      
+    <p class = "warning">
+        [wymagana znajomość tematu: Algebra]
+    </p>
+    <!--Poważnie nie wiem czy damy radę…-->
+  
+</div>
+
+</body>
+
+</html>

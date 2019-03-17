@@ -19,5 +19,8 @@
 </script>
 
 <style scoped>
-
+  .chapter
+  {
+    position: relative;
+  }
 </style>
