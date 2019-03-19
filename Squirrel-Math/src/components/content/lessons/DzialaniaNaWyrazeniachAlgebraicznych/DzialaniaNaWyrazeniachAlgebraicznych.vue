@@ -12,7 +12,7 @@
 
 		<lesson-chapter><template #title>Porządkowanie jednomianów</template>   
 		<p class="type">
-			Intuicje
+			Warsztat
 		</p>
 		
 		<p>
@@ -20,10 +20,6 @@
 			id="I tak nikt o to nie dba">wypisując kolejne 
 			zmienne w kolejności alfabetycznej</span>. Dzięki potęgowaniu możemy uczynić jednomiany jeszcze przejrzystszymi: jeśli pewna zmienna występuje 
 			jako czynnik więcej niż jeden raz, nie piszemy jej dwukrotnie, a jedynie zwiększamy jej wykładnik.
-		</p>
-		
-		<p>
-			Tak więc:
 		</p>
 		
 		<ul>
@@ -118,10 +114,17 @@
 		</p>
 
 		<ul>
-			<li><img src="./.images/Screenshot_1.png" align="middle"></li>
-			<li><img src="./.images/Screenshot_2.png" align="middle"></li>
-			<li><img src="./.images/Screenshot_3.png" align="middle"></li>
-			<li><img src="./.images/Screenshot_4.png" align="middle"></li>
+			<li>
+				$\color{#000000}{2ab} + \color{#dd3333}{3mn} + \color{#000000}{7ab} + \color{#dd3333}{5mn} - \color{#ffaaaa}{10m} + \color{#aaaaaa}{5n}\ \ =\ \  
+				\color{#000000}{9ab} + \color{#dd3333}{ 8mn} - \color{#ffaaaa}{10m} + \color{#aaaaaa}{5n}$
+			</li>
+			<li>$4abc + 3cba +  \color{#dd3333}{2abd} - \color{#ffaaaa}{4dac} + 5bca + 6cab +  \color{#dd3333}{abd} - acb +  \color{#dd3333}{adb} + \color{#ffaaaa}{6cad} 
+				\ \ =\ \  17abc + \color{#dd3333}{4abd} + \color{#ffaaaa}{2acd}$	
+			</li>
+			<li>
+				$aab + aba + \color{#dd3333}{bba} + \color{#ffaaaa}{ab} + \color{#dd3333}{bab} + \color{#aaaaaa}{abba} + \color{#ffaaaa}{ba} 
+				\ \ =\ \  2a^2b + \color{#dd3333}{2ab^2} + \color{#ffaaaa}{2ab} + \color{#aaaaaa}{a^2b^2}$
+			</li>
 		</ul>
 		</lesson-chapter>
 
@@ -151,13 +154,13 @@
 		$$
 
 		<p>
-			Odejmowanie, to zabieranie od tego, co po lewej, tego, co po prawej. Wprowadzamy „lewych” bohaterów na scenę:
+			Odejmowanie to zabieranie od tego, co po lewej, tego, co po prawej. Wprowadzamy „lewych” bohaterów na scenę:
 		</p>
 
 		<center><img src="./.images/Screenshot_5.png" align="middle"></center>
 		
 		<p>
-			A następnie <span class="comment" id="W wersji dla młodszych: zwalniamy">zabijamy</span> ich tylu, ilu zażyczył sobie reżyser „po prawej stronie”:
+			A następnie <span class="comment" id="W wersji dla młodszych: zwalniamy">zabijamy</span> ich tylu, ilu zażyczył sobie reżyser po znaku odejmowania:
 		</p>
 
 		<center><img src="./.images/Screenshot_6.png" align="middle"></center>
@@ -183,7 +186,7 @@
 			Tym razem reżyser ma wyraźnie ma zły nastrój, gdyż chce zabić więcej aktorów, niż ma do dyspozycji. Możemy sobie wyobrazić, że 
 			obliczenia dotyczą finansów, a jednomiany $ab$, $ab^2$, $a^2 b^3$, 
 			a wyrażają pewne kwoty pieniężne. Odejmując od $3a$ kwotę $5a$, stajemy się zadłużeni na 
-			$2a$, więc jesteśmy na minusie. Tak samo, skoro nie posiadamy żadnych „$a^2 b^3$”, ale ktoś od 
+			$2a$, więc jesteśmy na minusie. Tak samo, skoro nie posiadamy żadnych $a^2 b^3$, ale ktoś od 
 			nas chce aż $2a^2 b^3$, to mamy dług wielkości $2a^2 b^3$. Tak więc:
 		</p>
 
@@ -194,7 +197,7 @@
 		$$
 
 		<p>
-			W ramach  obliczeń wygodnie jest myśleć o odejmowaniu sumy jak o odejmowaniu poszczególnych składników:
+			Z obliczeniowego punktu widzenia, gdy odejmujemy sumę, tak na prawe odejmujemy osobno jej poszczególne składniki:
 		</p>
 
 		$$
@@ -207,20 +210,18 @@
 			W ten sposób możemy obliczać jeszcze bardziej skomplikowane różnice:
 		</p>
 		
-		<ul>
-			<li>$(3a-2b+c)-(6a+5b-3c)=\\
+		<div class="example">
+			$$(3a-2b+c)-(6a+5b-3c)=\\
 			=3a-2b+c-6a-5b-(-3c)=\\
 			=3a-2b+c-6a-5b+3c=\\
-			=-3a-7b+4c$
-			</li>
+			=-3a-7b+4c$$
+		</div>
 
-			<li>$-(2a^2 b-3abc-(-3ab)+abc)-(-3ab-(-a^2 b+abc-(3abc+2ab)))=\\
-			=-(2a^2 b-3abc+3ab+abc)-(-3ab-(-a^2 b+abc-3abc-2ab))=\\
-			=-2a^2 b+3abc-3ab-abc-(-3ab+a^2 b-abc+3abc+2ab)=\\
+		<div class="example">
+			$$-(2a^2 b-3abc+3ab+abc)-(-3ab+a^2 b-abc+3abc+2ab)=\\
 			=-2a^2 b+3abc-3ab-abc+3ab-a^2 b+abc-3abc-2ab=\\
-			=-3a^2 b-2ab$
-			</li>
-		</ul>
+			=-3a^2 b-2ab$$
+		</div>
 			
 		<p>
 			Wystarczy trzymać się reguły: minus stojący przed nawiasem odwraca znaki wszystkich składników wewnątrz. Zalecamy wielką ostrożność przy 
@@ -293,33 +294,54 @@
 			(a+b)(c+d)=ac+ad+bc+bd
 		$$
 
+		<p class="type">
+			Warsztat
+		</p>
+
 		<p>
-			W ogólności, gdy mnożymy przez siebie dwa nawiasy zawierające sumy algebraiczne, mnożymy składniki „każdy z każdym”:
+			W ogólności, gdy mnożymy przez siebie dwa nawiasy zawierające sumy algebraiczne, mnożymy składniki „każdy z każdym”.
+			Jest to uogólnienie własności zwanej "rozdzielnością mnożenia względem dodawania", o której wspomnieliśmy pobieżnie w temacie 
+			<router-link tag="a" :to="'/kolejnosc-wykonywania-dzialan'" class="link">Kolejność wykonywania działań</router-link>.
 		</p>
 
 		<center><img src="./.images/Screenshot_10.png" align="middle"></center>
 		
-		<ul>
-			<li>$(a+b+c)(a+b)=\\
-			=a^2+ab+ba+b^2+ca+cb=\\
-			=a^2+2ab+b^2+ac+bc$$</li>
-			<li>$(2a-3b)(3a^2+4ab^3 )=\\
+		<div class="example">
+			Mnożymy prawy nawias kolejno przez $a$, $b$ i $c$, a następnie redukujemy wyrazy podobne.
+			$$(a+b+c)(a+b)=\\
+			=(a^2+ab)+(ba+b^2)+(ca+cb)=\\
+			=a^2+2ab+b^2+ac+bc$$
+		</div>
+
+		<div class="example">
+			Mnożymy składniki prawego nawiasu przez $2a$ oraz przez $-3b$, pamiętając, że mnożenie przez liczbę ujemną odwraca znak wyrażenia.
+			$$(2a-3b)(3a^2+4ab^3 )=\\
 			=2a \cdot 3a^2+2a \cdot 4ab^3-3b \cdot 3a^2-3b \cdot 4ab^3=\\
-			=6a^3+8a^2 b^3-9a^2 b-12ab^4$</li>
-			<li>$-(2a-2b)(3b^2-6a^2 )=\\
+			=6a^3+8a^2 b^3-9a^2 b-12ab^4$$
+		</div>
+
+		<div class="example">
+			Mnożymy prawy nawias przez $2a$ oraz przez $-2b$. Należy zachować szczególną ostrożność przy mnożeniu liczb ujemnych: iloczyn elementów "na minusie"
+			przez elementy "bez minusa" daje w wyniku minus, zaś iloczyn dwóch elementów "na minusie" da w wyniku plus. Na sam koniec zdejmujemy minus stojący 
+			przed całym wyrażeniem, odwracając wszystkie znaki wewnątrz nawiasu.
+			$$-(2a-2b)(3b^2-6a^2 )=\\
 			=-(2a \cdot 3b^2+2a \cdot (-6a^2 )-2b \cdot 3b^2-2b \cdot (-6a^2 ))=\\
-			-(6ab^2-12a^3-6b^3+12a^2 b)=\\
-			=-6ab^2+12a^3+6b^3-12a^2 b$</li>
-			<li>$(a+b)(b+c)(a+c)=\\
+			=-(6ab^2-12a^3-6b^3+12a^2 b)=\\
+			=-6ab^2+12a^3+6b^3-12a^2 b$$
+		</div>
+
+		<div class="example">
+			Najpierw mnożymy nawias pierwszy przez drugi, a następnie zajmujemy się mnożeniem przez trzeci.
+			$$(a+b)(b+c)(a+c)=\\
 			=(ab+ac+b^2+bc)(a+c)=\\
-			=a^2 b+a^2 c+ab^2+abc+abc+ac^2+b^2 c+bc^2=\\
-			=a^2 b+a^2 c+ab^2+b^2 c+ac^2+bc^2+2abc$</li>
-		</ul>
+			=(a^2 b+a^2 c+ab^2+abc) + (abc+ac^2+b^2 c+bc^2)=\\
+			=a^2 b+a^2 c+ab^2+b^2 c+ac^2+bc^2+2abc$$
+		</div>
 		</lesson-chapter>
 
 		<lesson-chapter><template #title>Potęgowanie wyrażeń algebraicznych</template>   
 		<p class="type">
-			Intuicje
+			Warsztat
 		</p>
 		
 		<p>
@@ -328,10 +350,9 @@
 		</p>
 
 		<ul>
-			<li>$(2a+b)^2=(2a+b)(2a+b)=4a^2+2ab+b2a+b^2=4a^2+4ab+b^2$</li>
-			<li>$(a^2-b)^3=(a^2-b)(a^2-b)(a^2-b)=(a^4-a^2 b-ba^2-b(-b))(a^2-b)=\\
-			=(a^4-2a^2 b+b^2 )(a^2-b)=a^6-2a^4 b+a^2 b^2-ba^4-b(-2a^2 b)-b^3=\\
-			=a^6-2a^4 b+a^2 b^2-ba^4+2a^2 b^2-b^3=a^6-3a^4 b+3a^2 b^2-b^3$
+			<li>$(2a-b)^2=(2a-b)(2a-b)=4a^2-2ab-b \cdot 2a+b^2=4a^2-4ab+b^2$</li>
+			<li>$(n+3)^3=(n+3)(n+3)(n+3)=(n^2 + 3n + 3n + 9)(n + 3)=\\
+			=(n^2 + 6n + 9)(n + 3)=(n^3 + 6n^2 + 9n) + (3n^2 + 18n + 27)=n^3 + 9n^2 + 27n + 27$
 			</li>
 		</ul>
 
@@ -358,18 +379,29 @@
 		</ul>
 
 		<p>
-			Istotnie, pamiętanie każdego z tych wzorów pozwoli nam oszczędzić aż jednej linijki przekształceń. Miejmy jednak na uwadze, że w tak 
-			sformułowanych wzorach litery $a$ oraz $b$ mogą zastępować dowolne wartości liczbowe, w tym 
-			także dowolne wyrażenia algebraiczne, nie ważne jak bardzo złożone. Literki $a$ oraz $b$ 
+			Istotnie, pamiętając każdy z tych wzorów, zaoszczędzimy sobie aż jednej linijki przekształceń. Miejmy jednak na uwadze, że w tak 
+			sformułowanych wzorach litery $a$ oraz $b$ mogą zastępować <b>dowolne</b> wartości liczbowe, a także 
+			<b>dowolne</b> wyrażenia algebraiczne, nie ważne jak bardzo złożone. Literki $a$ oraz $b$ 
 			możemy traktować jak okienka, w które wolno nam wstawić jakiekolwiek jajko-niespodziankę. Możemy więc walić na ślepo:
 		</p>
 		
-		<ul>
-			<li>$(3a^2 b+5ab)^2=(3a^2 b)^2+2(3a^2 b)(5ab)+(5ab)^2=9a^4 b^2+30a^3 b^2+25a^2 b^2$</li>
-			<li>$(\frac{1}{2} a^2-2b)^2=(\frac{1}{2} a^2)^2-2(\frac{1}{2} a^2 )(2b)+(2b)^2=\frac{1}{4} a^4-2a^2 b+4b^2$</li>
-			<li>$(a+b+c)^2=(a+b)^2+2(a+b)c+c^2=a^2+2ab+b^2+2ac+2bc+c^2=\\
-			=a^2+b^2+c^2+2ab+2ac+2bc$</li>
-		</ul>
+		<div class="example">
+			We wzorze na kwadrat sumy, w miejsce okienka "$a$" wstawiamy wyrażenie $3n^2m$, a w miejsce okienka "$b$" wyrażenie $5nm$
+			$$(3n^2m+5nm)^2=(3n^2 m)^2+2(3n^2 m)(5nm)+(5nm)^2=9n^4 m^2+30n^3 m^2+25n^2 m^2$$
+		</div>
+		<div class="example">
+			We wzorze na kwadrat różnicy, w miejsce okienka "$a$" wstawiamy $1000$, a w miejsce "$b$" wstawiamy $1$
+			$$999^2 = (1000 - 1)^2 = 1000^2 - 2\cdot1000\cdot1 + 1^2 = 1\ 000\ 000 - 2000 + 1 = 998\ 001$$
+		</div>
+		<div class="example">
+			We wzorze na kawadrat sumy, w miejsce okienka "$a$" wstawiamy wyrażenie $a+b$, a w miejsce okienka "$b$" literkę $c$
+			$$(a+b+c)^2=(a+b)^2+2(a+b)c+c^2=a^2+2ab+b^2+2ac+2bc+c^2=\\
+			=a^2+b^2+c^2+2ab+2ac+2bc$$
+		</div>
+		<div class="example">
+			We wzorze na różnicę kwadratów, w miejsce "$a$" wstawiamy $50$, a w miejsce okienka "$b$" wartośc $1$
+			$$51 \cdot 49 = (50 + 1)(50 - 1) = 50^2 - 1^2 = 2500 - 1 = 2499$$
+		</div>
 
 		<p>
 			Cyniczniejsi z was wciąż mogą bagatelizować wagę tych wzorów. Dydaktycy jednak wiedzą, co robią, gdy tłuką je do głowy. Gdy będziemy 
@@ -405,11 +437,11 @@
 		
 		<ul>
 			<li>$(a+b)^3=(a+b) (a+b)^2=(a+b)(a^2+2ab+b^2 )=\\
-			=a^3+2a^2 b+ab^2+ba^2+2ab^2+b^3=a^3+3a^2 b+3ab^2+b^3$</li>
+			=(a^3+2a^2 b+ab^2) + (ba^2+2ab^2+b^3) = a^3+3a^2 b+3ab^2+b^3$</li>
 			<li>$(a-b)^3=(a-b) (a-b)^2=(a-b)(a^2-2ab+b^2 )=\\
-			=a^3-2a^2 b+ab^2-ba^2-b(-2ab)-b^3=a^3-3a^2 b+3ab^2-b^3$</li>
-			<li>$(a+b)(a^2-ab+b^2 )=a^3-a^2 b+ab^2+ba^2-ab^2+b^3=a^3+b^3$</li>
-			<li>$(a-b)(a^2+ab+b^2 )=a^3+a^2 b+ab^2-ba^2-ab^2-b^3=a^3-b^3$</li>
+			=(a^3-2a^2 b+ab^2) + (-ba^2-b(-2ab)-b^3) = a^3-3a^2 b+3ab^2-b^3$</li>
+			<li>$(a+b)(a^2-ab+b^2 )=(a^3-a^2 b+ab^2) + (ba^2-ab^2+b^3) = a^3+b^3$</li>
+			<li>$(a-b)(a^2+ab+b^2 )=(a^3+a^2 b+ab^2) - (ba^2-ab^2-b^3) = a^3-b^3$</li>
 		</ul>
 			
 		<p>
@@ -501,13 +533,13 @@
 			<div class="proof-sticker">Dowód</div>
 			$(a-b)(a^{n-1}+a^{n-2} b+a^{n-3} b^2+a^{n-4} b^3+⋯+a^2 b^{n-3}+ab^{n-2}+b^{n-1} )=\\
 			=a^n+a^{n-1} b+a^{n-2} b^2+a^{n-3} b^3+⋯+a^3 b^{n-3}+a^2 b^{n-2}+ab^{n-1}+\\
-			\ \ \ \ \ \ \ \ \ \ \ -a^{n-1} b-a^{n-2} b^2-a^{n-3} b^3-a^{n-4} b^4-…-a^2 b^{n-2}-ab^{n-1}-b^n=\\
+			\ \ \ \ \ \ \ \ -a^{n-1} b-a^{n-2} b^2-a^{n-3} b^3-a^{n-4} b^4-…-a^2 b^{n-2}-ab^{n-1}-b^n=\\
 			=a^n-b^n  □
 			$
 		</div>
 
 		<p>
-			Wzory na sumę potęg dotyczą tylko wykładników nieparzystych:
+			Wzory na sumę potęg dotyczą tylko wykładników nieparzystych. Wzory na sumę potęg parzystych nie istnieją.
 		</p>
 		
 		<ul>
@@ -521,26 +553,30 @@
 		</p>
 		
 		$$
-			a^n-b^n=(a+b)(a^{n-1}-a^{n-2} b+a^{n-3} b^2-a^{n-4} b^3+⋯+a^2 b^{n-3}-ab^{n-2}+b^{n-1})
+			a^n+b^n=(a+b)(a^{n-1}-a^{n-2} b+a^{n-3} b^2-a^{n-4} b^3+⋯+a^2 b^{n-3}-ab^{n-2}+b^{n-1})
 		$$
 
 		<div class="proof">
 			<div class="proof-sticker">Dowód</div>
 			$(a+b)(a^{n-1}-a^{n-2} b+a^{n-3} b^2-a^{n-4} b^3+⋯+a^2 b^{n-3}-ab^{n-2}+b^{n-1})=\\
 			=a^n-a^{n-1} b+a^{n-2} b^2-a^{n-3} b^3+⋯+a^3 b^{n-3}-a^2 b^{n-2}+ab^{n-1}+\\
-			\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ a^{n-1} b-a^{n-2} b^2+a^{n-3} b^3-a^{n-4} b^4+⋯+a^2 b^{n-2}-ab^{n-1}+b^n=\\
-			=a^n+b^n  □
-			$
+			\ \ \ \ \ \ \ \ \ \ \ \ a^{n-1} b-a^{n-2} b^2+a^{n-3} b^3-a^{n-4} b^4+⋯+a^2 b^{n-2}-ab^{n-1}+b^n=\\
+			=a^n+b^n  □$
+			<br>
+			Uwaga: własność ta wynika ze wzoru na różnicę potęg: gdy we wzorze 
+			$$
+				a^n-b^n=(a-b)(a^{n-1}+a^{n-2} b+a^{n-3} b^2+a^{n-4} b^3+⋯+a^2 b^{n-3}+ab^{n-2}+b^{n-1})
+			$$
+			zamienimy $b$ na $-b$, znaki odwrócą się przy składnikach mających $b$ w nieparzystej potędzie. Jeśli $n$ jest nieparzyste, po 
+			lewej i prawej stronie pojawią się wyrażenia ze wzoru na sumę potęg (zaś dla $n$ parzystych po lewej stronie wciąż mielibyśmy różnicę).
+			Dla $n$ parzystych nie moglibyśmy dokonać powyższego rozpisania: skoro co drugi element w nawiasie jest "na plusie", a co drugi "na minusie",
+			ostatni składnik $b^{n-1}$ nie pojawiłby się ze znakiem $+$. 
 		</div>
-
-		<p>
-			Wzory na sumę potęg parzystych nie istnieją.
-		</p>
 		</lesson-chapter>
 
 		<lesson-chapter><template #title>Wyłączanie czynnika przed nawias</template>   	
 		<p class="type">
-			Intuicje
+			Warsztat
 		</p>
 		
 		<p>
@@ -551,7 +587,7 @@
 		
 		<ul>
 			<li>$2(a+b)=2a+2b$</lI>
-			<li>$2(2b+3c)=4ab+6ac$</li>
+			<li>$2a(2b+3c)=4ab+6ac$</li>
 			<li>$-3(4a+5b)=-12a-15b$</li>
 		</ul>
 
@@ -575,10 +611,9 @@
 		$$
 		
 		<p>
-			Szukamy zmiennych, które pojawiają się w każdym jednomianie; jeśli dana zmienna występuje w różnych potęgach, wybieramy najmniejszy 
-			wykładnik i dolepiamy ją do wyłączanego czynnika. Zmienna $a$ powtarza się w każdym składniku w potęgach 
-			$a^2$, $a^3$ i $a^5$; wybieramy najmniejszą potęgę 
-			$(a^2)$ i wyłączamy tę cząstkę przed nawias:
+			Szukamy zmiennych, które pojawiają się w każdym jednomianie: zmienna $a$ powtarza się w kolejnych składnikach z potegą 
+			$a^2$, $a^3$ i $a^5$; wybieramy najmniejszą potęgę $(a^2)$ i wyłączamy tę cząstkę przed nawias. Jednocześnie dla każdej 
+			zmiennej wewnątrz nawiasu zmniejszamy wykładnik $a$ o $2$
 		</p>
 		
 		$$
@@ -586,9 +621,7 @@
 		$$
 
 		<p>
-			W wyniku tej operacji każdy ze składników w nawiasie jest mniejszy $a^2$ razy (zmniejszamy wykładnik każdej 
-			zmiennej $a$ o $2$). Zmienna $b$ pojawia się w kolejnych 
-			składnikach jako $b$, $b^4$ i $b^3$; wyłączamy najmniejszą potęgę, 
+			Zmienna $b$ pojawia się w kolejnych składnikach jako $b$, $b^4$ i $b^3$; wyłączamy najmniejszą potęgę, 
 			czyli $b$, zmniejszając każdy składnik $b$-krotnie:
 		</p>
 
@@ -615,14 +648,13 @@
 
 		<p>
 			ponieważ wyłączanie  czynnika nie może zmienić wartości wyrażenia, ma jedynie przedstawić je w innej formie. Dokonaliśmy najpełniejszego 
-			wyłączenia przed nawias – nie możemy w żaden sposób wzmocnić czynnika przed nawiasem, aby po wymnożeniu otrzymać wyjściową sumę. 
+			wyłączenia przed nawias – nie możemy w żaden sposób wzmocnić czynnika przed nawiasem, aby po wymnożeniu wyrażenie wciąż przedstawiało wyjściową sumę. 
 			Mając wprawne oko, można dokonywać wyłączania czynnika za jednym zamachem:
 		</p>
 
 		<ul>
-			<li>$16a^4 b^6 c^3+14a^3 b^7 c^4+18a^2 b^4 c^5=2a^2 b^4 c^3 (8a^2 b^2+7ab^3 c+9c^2)$</li>
-			<li>$15ab^{10} c^{12} de^3-30a^6 b^{13} c^3 d^2+75b^4 d^7 e^6=15b^4 d(ab^6c^{12}e^3-2a^6b^9c^3d+5d^6e^6)$</li>
-			<li>$-2m^3 n^4-4n^4 k^5-8k^5 m^3=-2(m^3 n^4+2n^4 k^5+4k^5 m^3)$</li>
+			<li>$16a^4 b^6 c^3+14a^3 b^7 c^4 - 18a^2 b^4 c^5 = 2a^2 b^4 c^3 (8a^2 b^2+7ab^3 c - 9c^2)$</li>
+			<li>$-2m^3-4n^4 m^5-8k m^3=-2m^3(1+2n^4 m^2+4k^5)$</li>
 		</ul>
 
 		<p class="type">
@@ -666,7 +698,7 @@
 
 		<lesson-chapter><template #title>Działania na ułamkach algebraicznych</template>  
 		<p class="type">
-			Intuicje
+			Warsztat
 		</p>
 		
 		<p>
@@ -692,16 +724,16 @@
 		</p>
 			
 		$$
-			\frac{3a^2+2b^2}{ab}-\frac{2a+3b}{b} = \frac{3a^2+2b^2}{ab}-\frac{(2a+3b) \cdot a}{b \cdot a} = \frac{3a^2+2b^2}{ab}-\frac{2a^2+3ab}{ab} = 
+			\frac{3a^2+2b^2}{ab}-\frac{(2a+3b) \cdot a}{b \cdot a} = \frac{3a^2+2b^2}{ab}-\frac{2a^2+3ab}{ab} = 
 			\frac{3a^2+2b^2-(2a^2+3ab)}{ab} = \frac{a^2-3ab+2b^2}{ab}
 		$$
 
 		<p>
-			Gdyby rozszerzyć ułamki bardziej ordynarnie, musielibyśmy później dokonać wyłączenia czynnika przed nawias i skrócenia:
+			Gdyby wykonać powyższy przykład, rozszerzając ułamki bardziej ordynarnie, musielibyśmy później dokonać wyłączenia czynnika przed nawias i skrócenia:
 		</p>
 		
 		$$
-			\frac{3a^2+2b^2}{ab}-\frac{2a+3b}{b} = \frac{(3a^2+2b^2 ) \cdot b}{ab \cdot b}-\frac{(2a+3b) \cdot ab}{b \cdot ab} = 
+			\frac{(3a^2+2b^2 ) \cdot b}{ab \cdot b}-\frac{(2a+3b) \cdot ab}{b \cdot ab} = 
 			\frac{3a^2 b+2b^3}{ab^2}-\frac{2a^2 b+3ab^2}{ab^2} = \frac{3a^2 b+2b^3-(2a^2 b+3ab^2 )}{ab^2} =\\
 			=\frac{a^2 b-3ab^2+2b^3}{ab^2} = \frac{b(a^2-3ab+2b^2 )}{ab^2} = \frac{a^2-3ab+2b^2}{ab}
 		$$
@@ -717,19 +749,23 @@
 		$$
 
 		<p>
-			Mnożenie i dzielenie ułamków jest stosunkowo bardziej schematyczne. Aby pomnożyć ułamki, mnożymy ich liczniki i mianowniki. Dzielenie to 
+			Mnożenie i dzielenie ułamków jest raczej schematyczne. Aby pomnożyć ułamki, mnożymy ich liczniki i mianowniki. Dzielenie to 
 			mnożenie przez odwrotność.
 		</p>
 		
-		<ul>
-			<li>$\frac{a^2 c}{2bd^2} \cdot \frac{4cd}{ba^2} = \frac{a^2 c \cdot 4cd}{2bd^2 \cdot ba^2} = \frac{4a^2 c^2 d}{2a^2 b^2 d^2} = \frac{2c^2}{b^2 d}$</li>
-			<li>$\frac{x+y}{3} \cdot \frac{x-y}{2} = \frac{(x+y)(x-y)}{3 \cdot 2} = \frac{x^2-y^2}{6}$</li>
-			<li>$\frac{ \frac{a+b}{3} + \frac{1}{a} }{ \frac{a}{b} + \frac{a}{a+b}} = \frac{ \frac{a(a+b)}{3a} + \frac{3}{3a}}{ \frac{a(a+b)}{b(a+b)}+\frac{ab}{b(a+b)}} =
-			\frac{ \frac{a^2+ab+3}{3a} }{ \frac{a^2+ab+ab}{ab+b^2} } = \frac{a^2+ab+3}{3a} \cdot \frac{ab+b^2}{a^2+2ab} =\\
-			=\frac{(a^2+ab+3)(ab+b^2 )}{(3a)(a^2+2ab)} =
-			\frac{a^3 b+a^2 b^2+a^2 b^2+ab^3+3ab+3b^2}{3a^3+6a^2 b} = \frac{a^3 b+2a^2 b^2+ab^3+3ab+3b^2}{3a^3+6a^2 b}$
-			</li>
-		</ul>
+		<div class="example">
+			$$\frac{a}{c} \cdot \frac{6ab}{d} \cdot \frac{a^2 c}{2bd^2} \cdot \frac{4cd}{ba^2} = 
+			\frac{\require{cancel} a }{\cancel {c}} \cdot \frac{\cancel{6}^3 a \cancel{b}}{5} \cdot \frac{\cancel{a^2} \cancel{c}}{\cancel{2} \cancel{b} d^\cancel{2}} \cdot \frac{4c\cancel{d}}{b\cancel{a^2}} =
+			\frac{12a^2c}{5bd}$$
+		</div>
+		<div class="example">
+			$$\frac{x+y}{3} : \frac{2}{x-y} = \frac{x+y}{3} \cdot \frac{x-y}{2} = \frac{(x+y)(x-y)}{3 \cdot 2} = \frac{x^2-y^2}{6}$$
+		</div>		
+
+		<div class="example">
+			$$\frac{1}{\frac{1}{x} + \frac{1}{y}} = \frac{1}{\frac{x}{xy} + \frac{y}{xy}} = \frac{1}{\frac{x + y}{xy}} = 
+			\frac{xy}{x + y}$$
+		</div>
 		
 		</lesson-chapter>
 	</lesson>

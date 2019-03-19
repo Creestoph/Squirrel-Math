@@ -756,9 +756,9 @@
 		</p>
 
 		<div style="text-align: center">
-			<input style="width: 800px" type="text" id="number_to_str" />
+			<input style="width: 80%" type="text" id="number_to_str" />
 			<center>
-				<div id="out_mask" style="overflow: hidden; transition: height 1s ease; border: 1px solid #dddddd; border-top: none; width: 797px; display: block; margin-top: -10px">
+				<div id="out_mask" style="overflow: hidden; transition: height 1s ease; border: 1px solid #dddddd; border-top: none; width: 80%; display: block; margin-top: -10px">
 					<div class="center" id="out" style="padding: 30px 20px 30px 20px; font-size: 0.8em"></div>
 				</div>
 			</center>

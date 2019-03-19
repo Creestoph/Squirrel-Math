@@ -23,6 +23,11 @@
     box-shadow: inset 0 0 0 0 rgba(0, 0, 0, 0.3);
   }
 
+  .chapter_body > *:first-child 
+  {
+    margin-top: 0;
+  }
+
   .chapter_mask
   {
     overflow: hidden;

@@ -1,9 +1,9 @@
 <template>
   <div class="lesson">
     <div class="main">
-      <router-link tag="a" to="/dodawanie_short">
+      <router-link tag="a" :to="toggleShortRoute">
         <div class="bookmark-shadow">
-          <div class="bookmark">WERSJA SKRÓCONA</div>
+          <div class="bookmark">{{toggleShortText}}</div>
         </div>
       </router-link>
       <slot></slot>
@@ -20,10 +20,22 @@ export default {
   name: "Lesson",
   data() {
     return {
+      toggleShortRoute: "",
+      toggleShortText: "",
       chapters: []
     };
   },
   mounted() {
+    if (this.$route.path.includes("-short"))
+    {
+      this.toggleShortRoute = this.$route.path.substr(0, this.$route.path.lastIndexOf("-"));
+      this.toggleShortText = "WERSJA PEŁNA";
+    }
+    else
+    {
+      this.toggleShortRoute = this.$route.path + "-short";
+      this.toggleShortText = "WERSJA SKRÓCONA";
+    }
     MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
   },
   components: {
