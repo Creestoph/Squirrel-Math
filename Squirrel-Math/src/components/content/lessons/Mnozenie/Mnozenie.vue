@@ -795,7 +795,7 @@
 
         <p>
             gdzie cyfry zapisuj dziesiętnego każdej z liczb $p_i$ są znane. Zagadnienie sprowadza się do dokonania dodawania pisemnego tych liczb. Formalne 
-            omówienie dodawania pisemnego zostało dokonane w temacie <a class="link" href="../Dodawanie/dodawanie.html">Dodawanie</a>.
+            omówienie dodawania pisemnego zostało dokonane w temacie <router-link tag="a" :to="'/dodawanie'" class="link">Dodawanie</router-link>.
         </p>
     </div>
 

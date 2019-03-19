@@ -358,7 +358,7 @@
 	</p>
 
 	<p class="formula">
-		Jeśli liczbę $n$-tą potęgę pewnej liczby pomnożymy przez $m$-tą potęgę tej liczby, to otrzymamy potęgę o wykładniku $n+m$
+		Jeśli $n$-tą potęgę pewnej liczby pomnożymy przez $m$-tą potęgę tej liczby, to otrzymamy potęgę o wykładniku $n+m$
 		$$a^n \cdot a^m=a^{n+m}$$
 	</p>
 	<div class="proof">
@@ -376,7 +376,7 @@
 	<br><br>
 
 	<p class="formula">
-		Jeśli liczbę $n$-tą potęgę pewnej liczby podzielimy przez $m$-tą potęgę tej liczby, to otrzymamy potęgę o wykładniku $n-m$
+		Jeśli $n$-tą potęgę pewnej liczby podzielimy przez $m$-tą potęgę tej liczby, to otrzymamy potęgę o wykładniku $n-m$
 		$$\frac{a^n}{a^m} =a^{n-m}$$
 	</p>
 	<div class="proof">
@@ -572,7 +572,6 @@
 			$$\left(\frac{a}{b}\right)^{-k}=\frac{1}{\left(\frac{a}{b}\right)^k} =\frac{1}{\frac{a^k}{b^k}}=\frac{b^k}{a^k}=\frac{1}{a^k}  \cdot b^k=\frac{\frac{1}{a^k}}{\frac{1}{b^k}}=
 			\frac{a^{-k}}{b^{-k}}$$
 		</div>
-		<br><br>
 
 	</div>
     </lesson-chapter>
@@ -583,8 +582,8 @@
 	</p>
 
 	<p>
-		Zapis z użyciem potęgi bywa przydatny do reprezentacji liczb o wartościach bardzo dużych lub bardzo bliskich zera. Przypomnijmy sobie kilka ogromnych liczb 
-		z rozdziału "Liczby giganty" lekcji "Liczby":
+		Zapis z użyciem potęgi bywa przydatny do reprezentacji liczb o wartościach bardzo dużych lub bardzo bliskich zera. Przypomnijmy sobie kilka olbrzymów 
+		z rozdziału "Liczby giganty" lekcji <router-link tag="a" :to="'/liczba'" class="link">Liczba</router-link>
 	</p>
 
 	<ul>
@@ -635,7 +634,7 @@
 		Na podobnej zasadzie zapisuje się liczby o bardzo małej wartości. Wielkość mrówki wynosi około $5 \text{ mm}$. Malutkie pajęczaki zwane roztoczami 
 		osiągają rozmiary rzędu $0,1 \text{ mm}$. Atomy, czyli najmniejsze znane nauce budulce otaczającego nas świata, mają rozmiary skali $0,0000001 \text{ mm}$, czyli inaczej 
 		$\frac{1}{10\ 000\ 000} = \frac{1}{10^7} = 10^{-7}$ milimetra. Wartość $10^{-7}$ możemy interpretować jako 
-		"ułamek dziesiętny, który ma łącznie 7 zer z przodu (jedno przed przecinkiem i 6 po przecinku) i jedynkę na końcu". Na przykład atom wodoru ma rozmiar 
+		"ułamek dziesiętny, który ma łącznie $7$ zer z przodu (jedno przed przecinkiem i $6$ po przecinku) i jedynkę na końcu". Na przykład atom wodoru ma rozmiar 
 		$0,000000037 \text{ mm}$, czyli $3,7 \cdot 10^{-8} \text{ mm}$.
 	</p>
 
@@ -649,16 +648,23 @@
 
 	<p>
 		Gdzie $c$ przedstawia ułamek dziesiętny o wartości od $1$ (włącznie) do $10$ (bez dziesięciu): $1 \leq c \lt 10$,
-		zaś $m$ jest dowolną liczbą całkowitą, dodatnią, ujemną lub zerową. Właściwie liczba $c$ może przedstawiać także ujemny ułamek, czyli tak na prawdę 
+		zaś $m$ jest dowolną liczbą całkowitą, dodatnią, ujemną lub zerową. Właściwie liczba $c$ może przedstawiać także ujemną wartość, czyli tak na prawdę 
 		dopuszczamy również $-10 \lt c \leq -1$. Oto kilka liczb zapisanych w postaci notacji wykładniczej:
 	</p>
 
 	<ul>
-		<li>Masa Ziemi wynosi około $5 980\ 000\ 000\ 000\ 000\ 000\ 000\ 000 = 5,98 \cdot 10^{24}$ kilogramów</li>
-		<li>Obwód Ziemi (tzn. długość, jaką pokonamy, odbywając podróż dookoła świata) wynosi: $40\ 075 \approx 4 \cdot 10^4$ kilometrów</li>
+		<li>Masa Ziemi wynosi około $5\ 980\ 000\ 000\ 000\ 000\ 000\ 000\ 000 = 5,98 \cdot 10^{24}$ kilogramów</li>
+		<li>Obwód Ziemi (tzn. długość drogi, jaką pokonamy, odbywając podróż dookoła świata) wynosi: $40\ 075 \approx 4 \cdot 10^4$ kilometrów</li>
 		<li>Masa atomu (dokładniej atomu wodoru) wynosi około: $0,000000000000000000000001673 = 1,673 \cdot 10^{-24}$ grama</li>
 		<li>Temperaturę jądra Słońca szacuję się na $15\ 709\ 999\ 700 \approx 1,57 \cdot 10^{10}$ stopni Celsjusza</li>
 	</ul>
+
+	<p> 
+		Z notacją wykładniczą spotykamy się również, gdy wykonujemy obliczenia na dużych liczbach za pomocą kalkulatora. Gdy spróbujesz na kalkulatorze 
+		lub w przeglądarce pomnożyć przez siebie piątkę $20$ razy (czyli obliczyć $5^{20}$), jest spora szansa, że zobaczysz w wyniku coś podobnego do 
+		$9.5367432\text{e+}13$. Jest to właśnie przybliżony wynik zapisany przy pomocy notacji wykładniczej: $9,5367432 \cdot 10^{13}$. Literka $\text{e}$, od angielskiego 
+		"exponent" (wykładnik), oddziela cyfry wyniku od wykładnika dziesiątki (plus oznacza wykładnik dodatni, minus ujemny). 
+	</p>
 
 	<p class="type">
 		Warsztat | Rozszerzenie

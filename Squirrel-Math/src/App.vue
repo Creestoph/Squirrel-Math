@@ -199,12 +199,12 @@ table
 
 a.link:link
 {
-	color: #cc3333;
+	color: #dd3333;
 }
 
 a.link:visited
 {
-	color: #665555;
+	color: #990000;
 }
 
 a.link:hover
@@ -382,9 +382,9 @@ p.optional-show:hover ~ div
 	top: 0;
 	left: -1px;
 	color: white;
-	background-color: #dd3333;
+	background-color: #aaaaaa;
 	transition: background-color 0.1s;
-	box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.4);
+	boax-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.4);
 }
 
 p.warning
@@ -422,10 +422,15 @@ p.problem
 {
 	position: relative;
 	padding: 40px 10px 10px 10px;
-	margin-bottom: 1em;
 	border: 1px solid #aaaaaa;
 	border-top:  1px solid #dddddd;
+	border-bottom:  1px solid #dddddd;
 	background: #ffffff;
+}
+
+.proof + .proof
+{
+	border-top: 1em solid #dddddd;
 }
 
 .bookmark

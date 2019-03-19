@@ -434,7 +434,7 @@
 		Zdarza się, że matematycy pochodzący z różnych środowisk nie dogadają się, co jest definicją a co twierdzeniem. Możemy zdefiniować liczby wymierne jako ułamki o całkowitym 
 		liczniku i mianowniku i sformułować twierdzenie „każda liczba wymierna ma rozwinięcie dziesiętne skończone lub nieskończone okresowe”.
 		Udowodnilibyśmy je pokazując, że każdy ułamek zwykły można przedstawić jako ułamek dziesiętny, tak jak w lekcji 
-		<a href="../UlamkiDziesietne/ulamki_dziesietne.html" class="link">Ułamki dziesiętne</a>
+		<router-link tag="a" :to="'/ulamki-dziesietne'" class="link">Ułamki dziesiętne</router-link>
 		(w sekcji "Działania na ułamkach dziesiętnych"). Równie dobrze moglibyśmy zdefiniować liczby wymierne jako liczby, których 
 		rozwinięcie dziesiętne jest skończone lub nieskończone okresowe, a następnie stworzyć twierdzenie „każdą liczbę wymierną można 
 		przedstawić w postaci ułamka zwykłego o całkowitym liczniku i mianowniku”. Udowodnilibyśmy je pokazując, jak dowolny ułamek dziesiętny zamienić 

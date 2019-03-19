@@ -40,10 +40,10 @@
 </script>
 
 <style scoped>
-  body.tree
+  .tree
   {
     background-color: #FFFFFF;
-    font-family: "Verdana";
-    font-size: 0.95em;
+    font-family: "Segoe UI";
+    font-size: 1em;
   }
 </style>

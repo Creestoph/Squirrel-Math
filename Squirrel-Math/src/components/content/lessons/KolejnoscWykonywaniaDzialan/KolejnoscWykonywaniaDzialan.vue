@@ -20,13 +20,13 @@
 		</p>
 
 		<div class="example">
-				<p>
-						Zacznijmy od 
-						kolizji plusa z minusem. Weźmy działanie:
-				</p>
-				$$
-					3 + 6 - 2
-				$$
+			<p>
+				Zacznijmy od 
+				kolizji plusa z minusem. Weźmy działanie:
+			</p>
+			$$
+				3 + 6 - 2
+			$$
 
 			<p>
 				Rozumiemy je tak, że liczbę $3$ powiększamy o $6$, a potem pomniejszamy o $2$. W takim razie liczymy:
@@ -124,16 +124,12 @@
 		</p>
 
 		<div class="example">
-			<p>
-				Dołączmy do gry mnożenie. Działanie
-			</p>
+			Dołączmy do gry mnożenie. Działanie
 
 			$$
 				3 \cdot 4 + 5
 			$$
-			<p>
-				rozumiemy tak: trzy razy bierzemy czwórkę i jeszcze dodajemy $5$:
-			</p>
+			rozumiemy tak: trzy razy bierzemy czwórkę i jeszcze dodajemy $5$:
 
 			$$
 				3 \cdot 4 + 5 = 12 + 5 = 17
@@ -141,17 +137,13 @@
 		</div>
 
 		<div class = "example">
-			<p>
-				Weźmy teraz działanie
-			</p>
+			Weźmy teraz działanie
 
 			$$
 				9 + 2 \cdot 4
 			$$
 
-			<p>
-				Taki zapis interpretujemy jako dziewiątkę powiększoną o dwa razy wziętą czwórkę. W takim razie:
-			</p>
+			Taki zapis interpretujemy jako dziewiątkę powiększoną o dwa razy wziętą czwórkę. W takim razie:
 
 			$$
 				9 + 2 \cdot 4 = 9 + 8 = 17
