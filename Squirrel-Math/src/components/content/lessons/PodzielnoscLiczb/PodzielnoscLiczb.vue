@@ -1512,20 +1512,20 @@
 		<tr>
 			<td>
 				<table class="factorisation center">
-					<tr><td>$120$</td><td style="color: #cc2222; font-weight: bold">$2$</td></tr>
-					<tr><td>$60$</td><td style="color: #cc2222; font-weight: bold">$2$</td></tr>
+					<tr><td>$120$</td><td style="color: #cc2222; font-weight: bold">$\bf 2$</td></tr>
+					<tr><td>$60$</td><td style="color: #cc2222; font-weight: bold">$\bf 2$</td></tr>
 					<tr><td>$30$</td><td>$2$</td></tr>
-					<tr><td>$15$</td><td style="color: #cc2222; font-weight: bold">$3$</td></tr>
-					<tr><td>$5$</td><td style="color: #cc2222; font-weight: bold">$5$</td></tr>
+					<tr><td>$15$</td><td style="color: #cc2222; font-weight: bold">$\bf 3$</td></tr>
+					<tr><td>$5$</td><td style="color: #cc2222; font-weight: bold">$\bf 5$</td></tr>
 					<tr><td>$1$</td><td></td></tr>
 				</table>
 			</td>
 			<td>
 				<table class="factorisation center">
-					<tr><td>$300$</td><td style="color: #cc2222; font-weight: bold">$2$</td></tr>
-					<tr><td>$150$</td><td style="color: #cc2222; font-weight: bold">$2$</td></tr>
-					<tr><td>$75$</td><td style="color: #cc2222; font-weight: bold">$3$</td></tr>
-					<tr><td>$25$</td><td style="color: #cc2222; font-weight: bold">$5$</td></tr>
+					<tr><td>$300$</td><td style="color: #cc2222; font-weight: bold">$\bf 2$</td></tr>
+					<tr><td>$150$</td><td style="color: #cc2222; font-weight: bold">$\bf 2$</td></tr>
+					<tr><td>$75$</td><td style="color: #cc2222; font-weight: bold">$\bf 3$</td></tr>
+					<tr><td>$25$</td><td style="color: #cc2222; font-weight: bold">$\bf 5$</td></tr>
 					<tr><td>$5$</td><td>$5$</td></tr>
 					<tr><td>$1$</td><td></td></tr>
 				</table>

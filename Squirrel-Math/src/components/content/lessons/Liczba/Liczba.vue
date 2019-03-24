@@ -634,7 +634,7 @@
 		</p>
 
 		<p>
-			W większości języków programowania istnieją struktury zwane "tablicami" które pozwalają przechowywać dane w uporządkowany sposób. W większości języków (choć nie w kazdym) odwołujemy się do elementów tablicy, rozpoczynając od zerowego. Jeśli w języku programowania pierwszy element oznaczany jest numerem $1$, to język ten po prostu nie jest szanowany.
+			Prawie w każdym języku programowania istnieją struktury zwane "tablicami" które pozwalają przechowywać dane w uporządkowany sposób. W większości języków (choć nie w kazdym) odwołujemy się do elementów tablicy, rozpoczynając od zerowego. Jeśli w języku programowania pierwszy element oznaczany jest numerem $1$, to język ten po prostu nie jest szanowany.
 		</p>
 
 		<p>
