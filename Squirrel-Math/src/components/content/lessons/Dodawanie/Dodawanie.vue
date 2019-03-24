@@ -340,10 +340,7 @@
             pojawi się wynik.
         </p>
 
-        <div id="columnar_addition_1"></div>
-        <lol>
-            Display_table.create_from_table("+",[[], ["1", "2", "7"], ["", "3", "2"], []]).print("columnar_addition_1");
-        </lol>
+        <columnar-operation-table :operation='"+"' :numbers='[[], ["1", "2", "7"], ["", "3", "2"], []]'></columnar-operation-table>
 
         <p>
             Poszukiwanie wyniku polega teraz na tym, by dodawać do siebie kolejne <span class="comment" id="Dobrze, masz rację. Dodajemy do siebie LICZBY 
@@ -357,10 +354,7 @@
             <li>$1$ nie ma swojego towarzysza, więc przepisujemy ją w niezmienionej postaci.</li>
         </ul>
             
-        <div id="columnar_addition_2"></div>
-        <lol>
-                Display_table.create_from_table("+",[[], ["1", "2", "7"], ["", "3", "2"], ["1", "5", "9"]]).print("columnar_addition_2");
-        </lol>
+        <columnar-operation-table :operation='"+"' :numbers='[[], ["1", "2", "7"], ["", "3", "2"], ["1", "5", "9"]]'></columnar-operation-table>
             
         <p>
             Wynikiem dodawania $127 + 32$ jest $159$. Nie było tak źle, prawda?
@@ -373,10 +367,7 @@
             przypadkiem – dodajmy $256$ i $947$. Zaczynamy tak samo:
         </p>
         
-        <div id="columnar_addition_3"></div>
-        <LOL>
-            Display_table.create_from_table("+",[[], ["2", "5", "6"], ["9", "4", "7"], []]).print("columnar_addition_3");
-        </LOL>
+        <columnar-operation-table :operation='"+"' :numbers='[[], ["2", "5", "6"], ["9", "4", "7"], []]'></columnar-operation-table>
 
         <p>
             Teraz dodajmy szóstkę do siódemki. Otrzymujemy $13$ – pojawia się problem, bo przecież nie zapiszemy dwóch cyfr pod 
@@ -384,10 +375,7 @@
             następnej kolumny.
         </p>
         
-        <div id="columnar_addition_4"></div>
-        <LOL>
-            Display_table.create_from_table("+",[["", "1", ""], ["2", "5", "6"], ["9", "4", "7"], ["", "", "3"]]).print("columnar_addition_4");
-        </LOL>
+        <columnar-operation-table :operation='"+"' :numbers='[["", "1", ""], ["2", "5", "6"], ["9", "4", "7"], ["", "", "3"]]'></columnar-operation-table>
         
         
         <p>
@@ -395,29 +383,20 @@
             tej kolumnie piszemy $0$, 
             a $1$ przenosimy dalej.
         </p>
-        
-        <div id="columnar_addition_5"></div>
-        <LOL>
-            Display_table.create_from_table("+",[["1", "1", ""], ["2", "5", "6"], ["9", "4", "7"], ["", "0", "3"]]).print("columnar_addition_5");
-        </LOL>
+
+        <columnar-operation-table :operation='"+"' :numbers='[["1", "1", ""], ["2", "5", "6"], ["9", "4", "7"], ["", "0", "3"]]'></columnar-operation-table>
         
         <p>
             Dodajemy $1 + 2 + 9$. Wynik $12$ rozbijamy na $2$ i $1$.
         </p>
         
-        <div id="columnar_addition_6"></div>
-        <LOL>
-            Display_table.create_from_table("+",[["1", "1", "1", ""], ["", "2", "5", "6"], ["", "9", "4", "7"], ["", "2", "0", "3"]]).print("columnar_addition_6");
-        </LOL>
+        <columnar-operation-table :operation='"+"' :numbers='[["1", "1", "1", ""], ["", "2", "5", "6"], ["", "9", "4", "7"], ["", "2", "0", "3"]]'></columnar-operation-table>
         
         <p>
             Przeniesiona jedynka jest samotna, więc przepisujemy ją bez zmian.
         </p>
         
-        <div id="columnar_addition_7"></div>
-        <LOL>
-            Display_table.create_from_table("+",[["1", "1", "1", ""], ["", "2", "5", "6"], ["", "9", "4", "7"], ["1", "2", "0", "3"]]).print("columnar_addition_7");
-        </LOL>
+        <columnar-operation-table :operation='"+"' :numbers='[["1", "1", "1", ""], ["", "2", "5", "6"], ["", "9", "4", "7"], ["1", "2", "0", "3"]]'></columnar-operation-table>
         
         <p>
             Dostaliśmy wynik: $256 + 947 = 1203$.
@@ -608,6 +587,7 @@ import LessonTitle from "../../../lesson/LessonTitle";
 import LessonIntro from "../../../lesson/LessonIntro";
 import LessonChapter from "../../../lesson/chapter/LessonChapter";
 import Lesson from "../../../lesson/Lesson";
+import ColumnarOperationTable from "../../../utils/columnar_operation_table/ColumnarOperationTable"
 
 export default {
   name: "Dodawanie",
@@ -620,7 +600,8 @@ export default {
     LessonIntro,
     LessonTitle,
     LessonChapter,
-    Lesson
+    Lesson,
+    ColumnarOperationTable
   }
 };
 </script>
