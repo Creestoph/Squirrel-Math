@@ -320,6 +320,21 @@
         </ul>
     </lesson-chapter>
 
+    <lesson-chapter><template #title>Czy zero jest liczbą naturalną?</template>   
+        <p>
+        Wśród matematyków z różnych środowisk panuje niezgoda, czy $0$ powinno się uznawać za liczbę naturalną, czy nie. Według niektórych 
+        liczby naturalne powinny zaczynać się od zera: $0$, $1$, $2$, $3$, $\dots$, a według innych od jedynki: $1$, $2$, $3$, $4$, $\dots$. 
+        Jest to w pewnym sensie kwestia gustu i preferencji: czy według Ciebie kolejne przedmioty / wydarzenia / punkty regulaminu powinno numerować się 
+        zaczynając od zera, czy od jedynki? Jeśli krzykniesz "start", a potem odliczasz, ile sekund minęło od startu, to w chwili wykrzyknięcia zaczniesz 
+        odliczanie od zera, czy od jednej sekundy? 
+        </p>
+
+        <p> 
+            Według matematyki Squirrel-Math zero jest liczbą naturalną.
+        </p>
+    </lesson-chapter>
+
+
     <lesson-chapter><template #title>Nowe pojęcia</template> 
         <p>
             <b>Liczby naturalne</b> to jeden ($1$), dwa ($2$), trzy ($3$), cztery ($4$), pięć ($5$), sześć ($6$), siedem ($7$), osiem ($8$), 

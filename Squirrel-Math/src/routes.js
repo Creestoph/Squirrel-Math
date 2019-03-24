@@ -13,10 +13,14 @@ import OdejmowanieShort from './components/content/lessons/Odejmowanie/Odejmowan
 import Mnozenie from './components/content/lessons/Mnozenie/Mnozenie'
 import MnozenieShort from './components/content/lessons/Mnozenie/MnozenieShort'
 import Dzielenie from './components/content/lessons/Dzielenie/Dzielenie'
+import DzielenieShort from './components/content/lessons/Dzielenie/DzielenieShort'
 import KolejnoscWykonywaniaDzialan from './components/content/lessons/KolejnoscWykonywaniaDzialan/KolejnoscWykonywaniaDzialan'
-import UlamkiZwykle from './components/content/lessons/UlamkiZwykle/UlamkiZwykle'
-import UlamkiDziesietne from './components/content/lessons/UlamkiDziesietne/UlamkiDziesietne'
+import KolejnoscWykonywaniaDzialanShort from './components/content/lessons/KolejnoscWykonywaniaDzialan/KolejnoscWykonywaniaDzialanShort'
 import PodzielnoscLiczb from './components/content/lessons/PodzielnoscLiczb/PodzielnoscLiczb'
+import PodzielnoscLiczbShort from './components/content/lessons/PodzielnoscLiczb/PodzielnoscLiczbShort'
+import UlamkiZwykle from './components/content/lessons/UlamkiZwykle/UlamkiZwykle'
+import UlamkiZwykleShort from './components/content/lessons/UlamkiZwykle/UlamkiZwykleShort'
+import UlamkiDziesietne from './components/content/lessons/UlamkiDziesietne/UlamkiDziesietne'
 import Procenty from './components/content/lessons/Procenty/Procenty'
 import LiczbyUjemne from './components/content/lessons/LiczbyUjemne/LiczbyUjemne'
 import WyrazeniaAlgebraiczne from './components/content/lessons/WyrazeniaAlgebraiczne/WyrazeniaAlgebraiczne'
@@ -36,11 +40,11 @@ export const routes = [
   { path: '/dodawanie', component: Dodawanie }, { path: '/dodawanie-short', component: DodawanieShort },
   { path: '/odejmowanie', component: Odejmowanie }, { path: '/odejmowanie-short', component: OdejmowanieShort },
   { path: '/mnozenie', component: Mnozenie }, { path: '/mnozenie-short', component: MnozenieShort },
-  { path: '/dzielenie', component: Dzielenie },
-  { path: '/kolejnosc-wykonywania-dzialan', component: KolejnoscWykonywaniaDzialan },
-  { path: '/ulamki-zwykle', component: UlamkiZwykle },
+  { path: '/dzielenie', component: Dzielenie }, { path: '/dzielenie-short', component: DzielenieShort },
+  { path: '/kolejnosc-wykonywania-dzialan', component: KolejnoscWykonywaniaDzialan },  { path: '/kolejnosc-wykonywania-dzialan-short', component: KolejnoscWykonywaniaDzialanShort },
+  { path: '/podzielnosc-liczb', component: PodzielnoscLiczb }, { path: '/podzielnosc-liczb-short', component: PodzielnoscLiczbShort },
+  { path: '/ulamki-zwykle', component: UlamkiZwykle },  { path: '/ulamki-zwykle-short', component: UlamkiZwykleShort },
   { path: '/ulamki-dziesietne', component: UlamkiDziesietne },
-  { path: '/podzielnosc-liczb', component: PodzielnoscLiczb },
   { path: '/procenty', component: Procenty },
   { path: '/liczby-ujemne', component: LiczbyUjemne },
   { path: '/wyrazenia-algebraiczne', component: WyrazeniaAlgebraiczne },
