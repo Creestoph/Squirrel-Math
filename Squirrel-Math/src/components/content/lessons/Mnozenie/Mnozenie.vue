@@ -364,13 +364,8 @@
             obydwie liczby jedna pod drugą z wyrównaniem do prawej i podkreślamy.
         </p>
         
-        <columnar-operation-table :operation='""' :numbers='[["1", "1", "1", ""], ["", "2", "5", "6"], ["", "9", "4", "7"], ["", "2", "0", "3"]]'></columnar-operation-table>
+        <columnar-operation-table :operation='""' :numbers='[["", "", "1", "3", "4"], ["/u:\\cdot", "/u:", "/u:", "/u:", "/u:2"], ["", "", "", "", ""]]'></columnar-operation-table>
 
-        <div id="columnar_multiplication_1">
-        </div>
-        <LOL>
-            Display_table.create_custom([["", "", "1", "3", "4"], ["/u:\\cdot", "/u:", "/u:", "/u:", "/u:2"], ["", "", "", "", ""]]).print("columnar_multiplication_1");
-        </LOL>
         
         <p>
             Teraz mnożymy kolejne cyfry górnej liczby przez $2$ i wynik zapisujemy pod kreską. 
