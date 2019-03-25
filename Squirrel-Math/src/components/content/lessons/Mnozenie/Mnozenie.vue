@@ -364,11 +364,7 @@
             obydwie liczby jedna pod drugą z wyrównaniem do prawej i podkreślamy.
         </p>
         
-        <div id="columnar_multiplication_1">
-        </div>
-        <LOL>
-            Display_table.create_custom([["", "", "1", "3", "4"], ["/u:\\cdot", "/u:", "/u:", "/u:", "/u:2"], ["", "", "", "", ""]]).print("columnar_multiplication_1");
-        </LOL>
+        <columnar-operation-table :operation='""' :numbers='[["", "", "1", "3", "4"], ["/u:\\cdot", "/u:", "/u:", "/u:", "/u:2"], ["", "", "", "", ""]]'></columnar-operation-table>
         
         <p>
             Teraz mnożymy kolejne cyfry górnej liczby przez $2$ i wynik zapisujemy pod kreską. 
@@ -809,6 +805,7 @@ import LessonTitle from "../../../lesson/LessonTitle";
 import LessonIntro from "../../../lesson/LessonIntro";
 import LessonChapter from "../../../lesson/chapter/LessonChapter";
 import Lesson from "../../../lesson/Lesson";
+import ColumnarOperationTable from "../../../utils/columnar_operation_table/ColumnarOperationTable"
 
 export default {
   name: "Mnozenie",
@@ -821,7 +818,8 @@ export default {
     LessonIntro,
     LessonTitle,
     LessonChapter,
-    Lesson
+    Lesson,
+    ColumnarOperationTable
   }
 };
 </script>
