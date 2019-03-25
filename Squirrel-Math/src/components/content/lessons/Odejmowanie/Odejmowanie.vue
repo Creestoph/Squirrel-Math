@@ -308,10 +308,7 @@
             podkreślamy.
         </p>
         
-        <div id="columnar_subtraction_1"></div>
-        <LOL>
-            Display_table.create_from_table("-",[[], [], ["3", "6", "9", "8"], ["1", "2", "7", "4"], []]).print("columnar_subtraction_1");
-        </LOL>
+        <columnar-operation-table :operation='"-"' :numbers='[[], [], ["3", "6", "9", "8"], ["1", "2", "7", "4"], []]'></columnar-operation-table>
         
         <p>
             Teraz odejmujemy po kolei cyfry jedności, cyfry dziesiątek, cyfry setek i cyfry tysięcy. Wyniki zapisujemy odpowiednio pod kreską
@@ -323,10 +320,7 @@
             </ul>
         </p>    
         
-        <div id="columnar_subtraction_2"></div>
-        <LOL>
-            Display_table.create_from_table("-",[[], [], ["3", "6", "9", "8"], ["1", "2", "7", "4"], ["2", "4", "2", "4"]]).print("columnar_subtraction_2");
-        </LOL>
+        <columnar-operation-table :operation='"-"' :numbers='[[], [], ["3", "6", "9", "8"], ["1", "2", "7", "4"], ["2", "4", "2", "4"]]'></columnar-operation-table>
         
         <p>
             Odczytujemy, że wynik odejmowania to $2424$. Proste, prawda? Trochę zbyt proste.
@@ -338,19 +332,13 @@
             Teraz czas na intensywne wrażenia: obliczmy $2737 - 683$.
         </p>
 
-        <div id="columnar_subtraction_3"></div>
-        <LOL>
-            Display_table.create_from_table("-",[[], [], ["2", "7", "3", "7"], ["", "6", "8", "3"], []]).print("columnar_subtraction_3");
-        </LOL>
+        <columnar-operation-table :operation='"-"' :numbers='[[], [], ["2", "7", "3", "7"], ["", "6", "8", "3"], []]'></columnar-operation-table>
 
         <p>
             Odejmujemy cyfrę jedności od cyfry jedności: $7 - 3 = 4$.
         </p>
 
-        <div id="columnar_subtraction_4"></div>
-        <LOL>
-            Display_table.create_from_table("-",[[], [], ["2", "7", "3", "7"], ["", "6", "8", "3"], ["", "", "", "4"]]).print("columnar_subtraction_4");
-        </LOL>
+        <columnar-operation-table :operation='"-"' :numbers='[[], [], ["2", "7", "3", "7"], ["", "6", "8", "3"], ["", "", "", "4"]]'></columnar-operation-table>
         
         <p>
             Odejmujemy cyfrę dziesiątek od cyfry dziesiątek: $3 - 8 = …$ no i mamy problem. 
@@ -360,11 +348,7 @@
             o $1$ (robimy z niej $6$).
         </p>
     
-        <div id="columnar_subtraction_5"></div>
-        <LOL>
-            Display_table.create_from_table("-",[[], ["", "6", "13"], ["2", "/s: 7", "/s: 3", "7"], ["", "6", "8", "3"], ["", "", "", "4"]]).print("columnar_subtraction_5");
-        </LOL>
-    
+        <columnar-operation-table :operation='"-"' :numbers='[[], ["", "6", "13"], ["2", "/s: 7", "/s: 3", "7"], ["", "6", "8", "3"], ["", "", "", "4"]]'></columnar-operation-table>
             
         <p>
             Po takim zabiegu reszta działań jest łatwa:
@@ -375,10 +359,7 @@
             </ul>
         </p>
         
-        <div id="columnar_subtraction_6"></div>
-        <LOL>
-            Display_table.create_from_table("-",[[], ["", "6", "13"], ["2", "/s: 7", "/s: 3", "7"], ["", "6", "8", "3"], ["2", "0", "5", "4"]]).print("columnar_subtraction_6");
-        </LOL>
+        <columnar-operation-table :operation='"-"' :numbers='[[], ["", "6", "13"], ["2", "/s: 7", "/s: 3", "7"], ["", "6", "8", "3"], ["2", "0", "5", "4"]]'></columnar-operation-table>
         
         <p>
             Wynikiem jest $2054$. Największym problemem przy odejmowaniu w słupku jest wykonywanie „pożyczania”, czyli właśnie 
@@ -392,37 +373,25 @@
             Zobaczmy, jak odjąć $1358 - 489$.
         </p>
 
-        <div id="columnar_subtraction_7"></div>
-        <LOL>
-            Display_table.create_from_table("-",[[], [], ["1", "3", "5", "8"], ["", "4", "8", "9"], []]).print("columnar_subtraction_7");
-        </LOL>
+        <columnar-operation-table :operation='"-"' :numbers='[[], [], ["1", "3", "5", "8"], ["", "4", "8", "9"], []]'></columnar-operation-table>
 
         <p>
             Próbujemy odjąć $8 - 9$. Ponieważ są problemy, robimy pożyczkę i odejmujemy $18 - 9 = 9$.
         </p>
     
-        <div id="columnar_subtraction_8"></div>
-        <LOL>
-            Display_table.create_from_table("-",[[], ["", "", "4", "18"], ["1", "3", "/s: 5", "/s: 8"], ["", "4", "8", "9"], ["", "", "", "9"]]).print("columnar_subtraction_8");
-        </LOL>
+        <columnar-operation-table :operation='"-"' :numbers='[[], ["", "", "4", "18"], ["1", "3", "/s: 5", "/s: 8"], ["", "4", "8", "9"], ["", "", "", "9"]]'></columnar-operation-table>
             
         <p>
             Teraz pora na $4 - 8$. Widzimy, że znowu są problemy, więc dokonujemy kolejnej pożyczki i odejmujemy $14 - 8 = 6$.
         </p>
     
-        <div id="columnar_subtraction_9"></div>
-        <LOL>
-            Display_table.create_from_table("-",[["", "", "14", ""], ["", "2", "/s: 4", "18"], ["1", "/s: 3", "/s: 5", "/s: 8"], ["", "4", "8", "9"], ["", "", "6", "9"]]).print("columnar_subtraction_9");
-        </LOL>
+        <columnar-operation-table :operation='"-"' :numbers='[["", "", "14", ""], ["", "2", "/s: 4", "18"], ["1", "/s: 3", "/s: 5", "/s: 8"], ["", "4", "8", "9"], ["", "", "6", "9"]]'></columnar-operation-table>
 
         <p>
             Odejmowanie $2 - 4$ ponownie wymaga zaciągnięcia pożyczki. 
         </p>
         
-        <div id="columnar_subtraction_10"></div>
-        <LOL>
-            Display_table.create_from_table("-",[["", "12", "14", ""], ["0", "/s: 2", "/s: 4", "18"], ["/s: 1", "/s: 3", "/s: 5", "/s: 8"], ["", "4", "8", "9"], ["", "8", "6", "9"]]).print("columnar_subtraction_10");
-        </LOL>
+        <columnar-operation-table :operation='"-"' :numbers='[["", "12", "14", ""], ["0", "/s: 2", "/s: 4", "18"], ["/s: 1", "/s: 3", "/s: 5", "/s: 8"], ["", "4", "8", "9"], ["", "8", "6", "9"]]'></columnar-operation-table>
         
         <p>
             Z zapożyczonej jedynki nic już nie zostało. Skoro tak, to $869$ jest ostatecznym wynikiem.
@@ -435,10 +404,7 @@
             Jeśli go zrozumiesz, odejmowanie w słupku nie będzie miało przed Tobą tajemnic.
         </p>
 
-        <div id="columnar_subtraction_11"></div>
-        <LOL>
-            Display_table.create_from_table("-",[[], [], ["1", "0", "0", "0"], ["", "6", "7", "9"], []]).print("columnar_subtraction_11");
-        </LOL>
+        <columnar-operation-table :operation='"-"' :numbers='[[], [], ["1", "0", "0", "0"], ["", "6", "7", "9"], []]'></columnar-operation-table>
 
         <p>
             Na dobry początek dostajemy $0 - 9$. Widać, że musimy zaciągnąć pożyczkę. Ale nawet zaciąganie pożyczki 
@@ -448,38 +414,25 @@
             Przesuńmy się w takim razie jeszcze bardziej na lewo i dokonajmy pożyczki z cyfry tysięcy:
         </p>
         
-        <div id="columnar_subtraction_12"></div>
-        <LOL>
-            Display_table.create_from_table("-",[[], ["0", "10", "", ""], ["/s: 1", "/s: 0", "0", "0"], ["", "6", "7", "9"], []]).print("columnar_subtraction_12");
-        </LOL>
+        <columnar-operation-table :operation='"-"' :numbers='[[], ["0", "10", "", ""], ["/s: 1", "/s: 0", "0", "0"], ["", "6", "7", "9"], []]'></columnar-operation-table>
 
         <p>
             Teraz możemy wykonać pożyczkę o krok wcześniej
         </p>
 
-        <div id="columnar_subtraction_13"></div>
-        <LOL>
-            Display_table.create_from_table("-",[["", "9", "", ""], ["0", "/s: 10", "10", ""], ["/s: 1", "/s: 0", "/s: 0", "0"], ["", "6", "7", "9"], []]).print("columnar_subtraction_13");
-        </LOL>
+        <columnar-operation-table :operation='"-"' :numbers='[["", "9", "", ""], ["0", "/s: 10", "10", ""], ["/s: 1", "/s: 0", "/s: 0", "0"], ["", "6", "7", "9"], []]'></columnar-operation-table>
         
         <p>
             I jeszcze o krok wcześniej:
         </p>
         
-        <div id="columnar_subtraction_14"></div>
-        <LOL>
-            Display_table.create_from_table("-",[["", "9", "9", ""], ["0", "/s: 10", "/s: 10", "10"], ["/s: 1", "/s: 0", "/s: 0", "/s: 0"], ["", "6", "7", "9"], []]).print("columnar_subtraction_14");
-        </LOL>
+        <columnar-operation-table :operation='"-"' :numbers='[["", "9", "9", ""], ["0", "/s: 10", "/s: 10", "10"], ["/s: 1", "/s: 0", "/s: 0", "/s: 0"], ["", "6", "7", "9"], []]'></columnar-operation-table>
 
         <p>
             Wreszcie możemy wykonać odejmowanie i otrzymać wynik $321$.
         </p>
         
-        <div id="columnar_subtraction_15"></div>
-        <LOL>
-            Display_table.create_from_table("-",[["", "9", "9", ""], ["0", "/s: 10", "/s: 10", "10"], ["/s: 1", "/s: 0", "/s: 0", "/s: 0"], ["", "6", "7", "9"], ["", "3", "2", "1"]]).print("columnar_subtraction_15");
-        </LOL>
-    
+        <columnar-operation-table :operation='"-"' :numbers='[["", "9", "9", ""], ["0", "/s: 10", "/s: 10", "10"], ["/s: 1", "/s: 0", "/s: 0", "/s: 0"], ["", "6", "7", "9"], ["", "3", "2", "1"]]'></columnar-operation-table>
     </div>
 
     <p>
@@ -680,6 +633,7 @@ import LessonTitle from "../../../lesson/LessonTitle";
 import LessonIntro from "../../../lesson/LessonIntro";
 import LessonChapter from "../../../lesson/chapter/LessonChapter";
 import Lesson from "../../../lesson/Lesson";
+import ColumnarOperationTable from "../../../utils/columnar_operation_table/ColumnarOperationTable";
 
 export default {
   name: "Odejmowanie",
@@ -692,7 +646,8 @@ export default {
     LessonIntro,
     LessonTitle,
     LessonChapter,
-    Lesson
+    Lesson,
+    ColumnarOperationTable,
   }
 };
 </script>

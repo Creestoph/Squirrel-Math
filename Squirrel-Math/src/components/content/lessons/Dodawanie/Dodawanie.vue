@@ -587,7 +587,7 @@ import LessonTitle from "../../../lesson/LessonTitle";
 import LessonIntro from "../../../lesson/LessonIntro";
 import LessonChapter from "../../../lesson/chapter/LessonChapter";
 import Lesson from "../../../lesson/Lesson";
-import ColumnarOperationTable from "../../../utils/columnar_operation_table/ColumnarOperationTable"
+import ColumnarOperationTable from "../../../utils/columnar_operation_table/ColumnarOperationTable";
 
 export default {
   name: "Dodawanie",

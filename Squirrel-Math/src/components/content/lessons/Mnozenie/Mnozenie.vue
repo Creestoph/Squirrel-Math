@@ -364,6 +364,8 @@
             obydwie liczby jedna pod drugą z wyrównaniem do prawej i podkreślamy.
         </p>
         
+        <columnar-operation-table :operation='""' :numbers='[["1", "1", "1", ""], ["", "2", "5", "6"], ["", "9", "4", "7"], ["", "2", "0", "3"]]'></columnar-operation-table>
+
         <div id="columnar_multiplication_1">
         </div>
         <LOL>
@@ -809,6 +811,7 @@ import LessonTitle from "../../../lesson/LessonTitle";
 import LessonIntro from "../../../lesson/LessonIntro";
 import LessonChapter from "../../../lesson/chapter/LessonChapter";
 import Lesson from "../../../lesson/Lesson";
+import ColumnarOperationTable from "../../../utils/columnar_operation_table/ColumnarOperationTable";
 
 export default {
   name: "Mnozenie",
@@ -821,7 +824,8 @@ export default {
     LessonIntro,
     LessonTitle,
     LessonChapter,
-    Lesson
+    Lesson,
+    ColumnarOperationTable
   }
 };
 </script>

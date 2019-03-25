@@ -76,8 +76,35 @@
 		<lesson-chapter><template #title>Dodawanie i odejmowanie ułamków</template> 
 		<p>
 			Aby dodać/odjąć dwa ułamki, sprowadzamy je do wspólnego mianownika, a następnie dodajemy/odejmujemy ich liczniki. 
+			$$
+				\frac{1}{6} + \frac{3}{4} = \frac{2}{12} + \frac{9}{12} = \frac{11}{12}
+			$$
+			$$
+				\frac{1}{2} - \frac{2}{5} = \frac{5}{10} - \frac{4}{10} = \frac{1}{10}
+			$$
 		</p>
-		
+		</lesson-chapter>
+
+		<lesson-chapter><template #title>Mnożenie ułamków</template> 
+			<p> 
+				Aby pomnożyć dwa ułamki, mnożymy przez siebie ich liczniki oraz ich mianowniki.
+			</p>
+			$$
+				\frac{3}{4} \cdot \frac{5}{7} = \frac{3 \cdot 5}{4 \cdot 7} = \frac{15}{28}
+			$$
+			$$
+				\frac{5} \cdot \frac{2}{13} = \frac{5 \cdot 2}{13} = \frac{10}{13}
+			$$
+		</lesson-chapter>
+
+		<lesson-chapter><template #title>Dzielenie ułamków</template>
+		<p>
+			Aby podzielić przez ułamek, należy zamienić miejscami jego licznik i mianownik i wykonać mnożenie przez otrzymaną <i>odwrotność</i>
+		</p>
+
+		$$
+			\frac{}
+		$$
 		</lesson-chapter>
 
     </lesson>
