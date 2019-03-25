@@ -364,8 +364,18 @@
             obydwie liczby jedna pod drugą z wyrównaniem do prawej i podkreślamy.
         </p>
         
-        <columnar-operation-table :operation='""' :numbers='[["", "", "1", "3", "4"], ["/u:\\cdot", "/u:", "/u:", "/u:", "/u:2"], ["", "", "", "", ""]]'></columnar-operation-table>
+<<<<<<< HEAD
+        <columnar-operation-table :operation='""' :numbers='[["1", "1", "1", ""], ["", "2", "5", "6"], ["", "9", "4", "7"], ["", "2", "0", "3"]]'></columnar-operation-table>
 
+        <div id="columnar_multiplication_1">
+        </div>
+        <LOL>
+            Display_table.create_custom([["", "", "1", "3", "4"], ["/u:\\cdot", "/u:", "/u:", "/u:", "/u:2"], ["", "", "", "", ""]]).print("columnar_multiplication_1");
+        </LOL>
+=======
+        <columnar-operation-table :operation='""' :numbers='[["", "", "1", "3", "4"], ["/u:\\cdot", "/u:", "/u:", "/u:", "/u:2"], ["", "", "", "", ""]]'></columnar-operation-table>
+>>>>>>> 008c3761ccf9935e3ac1fec6bfadf97c1e7cc812
+        
         <p>
             Teraz mnożymy kolejne cyfry górnej liczby przez $2$ i wynik zapisujemy pod kreską. 
             <ul>
@@ -375,8 +385,11 @@
             </ul>
         </p>
         
-        <columnar-operation-table :operation='""' :numbers='[["", "", "1", "3", "4"], ["/u:\\cdot", "/u:", "/u:", "/u:", "/u:2"], ["", "", "2", "6", "8"]]'></columnar-operation-table>
-
+        <div id="columnar_multiplication_2">
+        </div>
+        <LOL>
+            Display_table.create_custom([["", "", "1", "3", "4"], ["/u:\\cdot", "/u:", "/u:", "/u:", "/u:2"], ["", "", "2", "6", "8"]]).print("columnar_multiplication_2");
+        </LOL>
     </div>
 
     <div class="example">
@@ -385,7 +398,11 @@
             $302  \cdot 213$
         </p>
         
-        <columnar-operation-table :operation='""' :numbers='[["", "", "3", "0", "2"], ["/u:\\cdot", "/u:", "/u:2", "/u:1", "/u:3"], ["", "", "", "", ""]]'></columnar-operation-table>
+        <div id="columnar_multiplication_3">
+        </div>
+        <LOL>
+            Display_table.create_custom([["", "", "3", "0", "2"], ["/u:\\cdot", "/u:", "/u:2", "/u:1", "/u:3"], ["", "", "", "", ""]]).print("columnar_multiplication_3");
+        </LOL>
         
         <p>
             Zaczynamy od mnożenia górnej liczby przez cyfrę jedności dolnej.
@@ -396,7 +413,11 @@
             </ul>
         </p>
     
-        <columnar-operation-table :operation='""' :numbers='[["", "", "3", "0", "2"], ["/u:\\cdot", "/u:", "/u:2", "/u:1", "/u:3"], ["", "", "9", "0", "6"]]'></columnar-operation-table>
+        <div id="columnar_multiplication_4">
+        </div>
+        <LOL>
+            Display_table.create_custom([["", "", "3", "0", "2"], ["/u:\\cdot", "/u:", "/u:2", "/u:1", "/u:3"], ["", "", "9", "0", "6"]]).print("columnar_multiplication_4");
+        </LOL>
             
         <p>
             Teraz będziemy mnożyć górną liczbę przez cyfrę dziesiątek dolnej. Wynik będziemy zapisywać pod poprzednim wynikiem, 
@@ -407,8 +428,12 @@
                 <li>$3  \cdot 1 = 3$, więc wynik $3$ piszemy pod trójką z przesunięciem w lewo</li>
             </ul>
         </p>
-
-        <columnar-operation-table :operation='""' :numbers='[["", "", "3", "0", "2"], ["/u:\\cdot", "/u:", "/u:2", "/u:1", "/u:3"], ["", "", "9", "0", "6"], ["", "3", "0", "2", ""]]'></columnar-operation-table>
+    
+        <div id="columnar_multiplication_5">
+        </div>
+        <LOL>
+            Display_table.create_custom([["", "", "3", "0", "2"], ["/u:\\cdot", "/u:", "/u:2", "/u:1", "/u:3"], ["", "", "9", "0", "6"], ["", "3", "0", "2", ""]]).print("columnar_multiplication_5");
+        </LOL>
     
         <p>
             Konsekwentnie mnożymy górną liczbę przez cyfrę setek dolnej. Wynik zapisujemy pod poprzednim z przesunięciem o dwie 
@@ -420,8 +445,12 @@
             </ul>
         </p>
 
-        <columnar-operation-table :operation='""' :numbers='[["", "", "3", "0", "2"], ["/u:\\cdot", "/u:", "/u:2", "/u:1", "/u:3"], ["", "", "9", "0", "6"], ["", "3", "0", "2", ""], ["6", "0", "4", "", ""]]'></columnar-operation-table>
-
+        <div id="columnar_multiplication_6">
+        </div>
+        <LOL>
+            Display_table.create_custom([["", "", "3", "0", "2"], ["/u:\\cdot", "/u:", "/u:2", "/u:1", "/u:3"], ["", "", "9", "0", "6"], ["", "3", "0", "2", ""], ["6", "0", "4", "", ""]]).print("columnar_multiplication_6");
+        </LOL>
+    
         <p>
             Najgorsze za nami. Teraz wszystkie trzy otrzymane wyniki musimy do siebie dodać. Robimy to znaną nam już metodą 
             dodawania w słupku.
@@ -437,8 +466,12 @@
             </ul>
         </p>
     
-        <columnar-operation-table :operation='""' :numbers='[["", "", "", "", "3", "0", "2"], ["/u:\\cdot", "/u:", "/u:", "/u:", "/u:2", "/u:1", "/u:3"], ["", "", "", "", "9", "0", "6"], ["", "", "", "3", "0", "2", ""], ["/u:+", "/u:", "/u:6", "/u:0", "/u:4", "/u:", "/u:"], 
-            ["", "", "6", "4", "3", "2", "6"]]'></columnar-operation-table>
+        <div id="columnar_multiplication_7">
+        </div>
+        <LOL>
+            Display_table.create_custom([["", "", "", "", "3", "0", "2"], ["/u:\\cdot", "/u:", "/u:", "/u:", "/u:2", "/u:1", "/u:3"], ["", "", "", "", "9", "0", "6"], ["", "", "", "3", "0", "2", ""], ["/u:+", "/u:", "/u:6", "/u:0", "/u:4", "/u:", "/u:"], 
+            ["", "", "6", "4", "3", "2", "6"]]).print("columnar_multiplication_7");
+        </LOL>
     
         <p>
             Otrzymaliśmy wynik $64326$. Zasłużyłeś na nagrodę.
@@ -450,7 +483,11 @@
             Będzie nią mnożenie liczb $629$ i $204$.
         </p>
 
-        <columnar-operation-table :operation='""' :numbers='[["", "", "6", "2", "9"], ["/u:\\cdot", "/u:", "/u:2", "/u:0", "/u:4"], ["", "", "", "", ""]]'></columnar-operation-table>
+        <div id="columnar_multiplication_8">
+        </div>
+        <LOL>
+            Display_table.create_custom([["", "", "6", "2", "9"], ["/u:\\cdot", "/u:", "/u:2", "/u:0", "/u:4"], ["", "", "", "", ""]]).print("columnar_multiplication_8");
+        </LOL>
     
         <p>
             Zaczynamy od mnożenia górnej liczby przez $4$. Mnożymy $9  \cdot 4$ i otrzymujemy $36$. Sytuacja problematyczna, bo 
@@ -458,33 +495,53 @@
             czego $6$ piszemy jako wynik, zaś $3$ przenosimy do następnej kolumny.
         </p>
     
-        <columnar-operation-table :operation='""' :numbers='[["/c:", "/c:", "/c:", "/c:3", "/c:"], ["", "", "6", "2", "9"], ["/u:\\cdot", "/u:", "/u:2", "/u:0", "/u:4"], ["", "", "", "", "6"]]'></columnar-operation-table>
+        <div id="columnar_multiplication_9">
+        </div>
+        <LOL>
+            Display_table.create_custom([["/c:", "/c:", "/c:", "/c:3", "/c:"], ["", "", "6", "2", "9"], ["/u:\\cdot", "/u:", "/u:2", "/u:0", "/u:4"], ["", "", "", "", "6"]]).print("columnar_multiplication_9");
+        </LOL>
     
         <p>
             Teraz mnożymy $2 \cdot 4 = 8$. Trójkę, którą sobie zanotowaliśmy, dodajemy teraz do wyniku. Dostajemy $11$. Ponieważ 
             znowu wynik jest dwucyfrowy, rozbijamy go na dwie cyfry: pod kreską piszemy $1$ i przenosimy $1$ do następnej kolumny.
         </p>
     
-        <columnar-operation-table :operation='""' :numbers='[["/c:", "/c:", "/c:1", "/c:3", "/c:"], ["", "", "6", "2", "9"], ["/u:\\cdot", "/u:", "/u:2", "/u:0", "/u:4"], ["", "", "", "1", "6"]]'></columnar-operation-table>
+        <div id="columnar_multiplication_10">
+        </div>
+        <LOL>
+            Display_table.create_custom([["/c:", "/c:", "/c:1", "/c:3", "/c:"], ["", "", "6", "2", "9"], ["/u:\\cdot", "/u:", "/u:2", "/u:0", "/u:4"], ["", "", "", "1", "6"]]).print("columnar_multiplication_10");
+        </LOL>
     
         <p>
             Mnożymy $6 \cdot 4 = 24$. Do wyniku dodajemy zanotowaną jedynkę i dostajemy $25$. Wynik rozbijamy na $2$ i $5$.
         </p>
     
-        <columnar-operation-table :operation='""' :numbers='[["/c:", "/c:2", "/c:1", "/c:3", "/c:"], ["", "", "6", "2", "9"], ["/u:\\cdot", "/u:", "/u:2", "/u:0", "/u:4"], ["", "", "5", "1", "6"]]'></columnar-operation-table>
+        <div id="columnar_multiplication_11">
+        </div>
+        <LOL>
+            Display_table.create_custom([["/c:", "/c:2", "/c:1", "/c:3", "/c:"], ["", "", "6", "2", "9"], ["/u:\\cdot", "/u:", "/u:2", "/u:0", "/u:4"], ["", "", "5", "1", "6"]]).print("columnar_multiplication_11");
+        </LOL>
     
         <p>
             Pomnożyliśmy już wszystkie cyfry przez $4$, ale mamy jeszcze zanotowaną dwójkę, przepisujemy ją jak stoi.
         </p>
     
-        <columnar-operation-table :operation='""' :numbers='[["/c:", "/c:2", "/c:1", "/c:3", "/c:"], ["", "", "6", "2", "9"], ["/u:\\cdot", "/u:", "/u:2", "/u:0", "/u:4"], ["", "2", "5", "1", "6"]]'></columnar-operation-table>
+        <div id="columnar_multiplication_12">
+        </div>
+        <LOL>
+            Display_table.create_custom([["/c:", "/c:2", "/c:1", "/c:3", "/c:"], ["", "", "6", "2", "9"], ["/u:\\cdot", "/u:", "/u:2", "/u:0", "/u:4"], ["", "2", "5", "1", "6"]]).print("columnar_multiplication_12");
+        </LOL>
 
         <p>
             Teraz przechodzimy do mnożenia przez $0$. Większych problemów nie napotykamy, pamiętamy tylko o przesunięciu wyniku w 
             lewo.
         </p>
     
-        <columnar-operation-table :operation='""' :numbers='[["/c:", "/c:2", "/c:1", "/c:3", "/c:"], ["", "", "6", "2", "9"], ["/u:\\cdot", "/u:", "/u:2", "/u:0", "/u:4"], ["", "2", "5", "1", "6"], ["", "0", "0", "0", ""]]'></columnar-operation-table>
+        <div id="columnar_multiplication_13">
+        </div>
+        <LOL>
+            Display_table.create_custom([["/c:", "/c:2", "/c:1", "/c:3", "/c:"], ["", "", "6", "2", "9"], ["/u:\\cdot", "/u:", "/u:2", "/u:0", "/u:4"], ["", "2", "5", "1", "6"], ["", "0", "0", "0", ""]]).print("columnar_multiplication_13");
+        </LOL>
 
         <p>
             Pozostaje nam wymnożyć górną liczbę przez $2$. Obliczmy $9  \cdot 2 = 18$ i wynik dwucyfrowy rozbijamy. $8$ piszemy pod kreską z 
@@ -492,29 +549,45 @@
             $1$ jeszcze wyżej.
         </p>
     
-        <columnar-operation-table :operation='""' :numbers='[["/c:", "/c:", "/c:", "/c:1", "/c:"], ["/c:", "/c:2", "/c:1", "/c:3", "/c:"], ["", "", "6", "2", "9"], ["/u:\\cdot", "/u:", "/u:2", "/u:0", "/u:4"], ["", "2", "5", "1", "6"], 
-            ["", "0", "0", "0", ""], ["", "", "8", "", ""]]'></columnar-operation-table>
+        <div id="columnar_multiplication_14">
+        </div>
+        <LOL>
+            Display_table.create_custom([["/c:", "/c:", "/c:", "/c:1", "/c:"], ["/c:", "/c:2", "/c:1", "/c:3", "/c:"], ["", "", "6", "2", "9"], ["/u:\\cdot", "/u:", "/u:2", "/u:0", "/u:4"], ["", "2", "5", "1", "6"], 
+            ["", "0", "0", "0", ""], ["", "", "8", "", ""]]).print("columnar_multiplication_14");
+        </LOL>
     
         <p>
             Mnożymy $2  \cdot 2 = 4$ i dodajemy zanotowaną jedynkę. Dostajemy $5$.
         </p>
     
-        <columnar-operation-table :operation='""' :numbers='[["/c:", "/c:", "/c:", "/c:1", "/c:"], ["/c:", "/c:2", "/c:1", "/c:3", "/c:"], ["", "", "6", "2", "9"], ["/u:\\cdot", "/u:", "/u:2", "/u:0", "/u:4"], ["", "2", "5", "1", "6"], 
-            ["", "0", "0", "0", ""], ["", "5", "8", "", ""]]'></columnar-operation-table>
+        <div id="columnar_multiplication_15">
+        </div>
+        <LOL>
+            Display_table.create_custom([["/c:", "/c:", "/c:", "/c:1", "/c:"], ["/c:", "/c:2", "/c:1", "/c:3", "/c:"], ["", "", "6", "2", "9"], ["/u:\\cdot", "/u:", "/u:2", "/u:0", "/u:4"], ["", "2", "5", "1", "6"], 
+            ["", "0", "0", "0", ""], ["", "5", "8", "", ""]]).print("columnar_multiplication_15");
+        </LOL>
     
         <p>
             Mnożymy $6  \cdot 2 = 12$. Rozbijamy wynik na $1$ i $2$. Zanotowaną jedynkę możemy już przepisać bez zmian.
         </p>
     
-        <columnar-operation-table :operation='""' :numbers='[["/c:", "/c:", "/c:1", "/c:", "/c:1", "/c:"], ["/c:", "/c:", "/c:2", "/c:1", "/c:3", "/c:"], ["", "", "", "6", "2", "9"], ["/u:\\cdot", "/u:", "/u:", "/u:2", "/u:0", "/u:4"], ["", "", "2", "5", "1", "6"], 
-            ["", "", "0", "0", "0", ""], ["1", "2", "5", "8", "", ""]]'></columnar-operation-table>
+        <div id="columnar_multiplication_16">
+        </div>
+        <LOL>
+            Display_table.create_custom([["/c:", "/c:", "/c:1", "/c:", "/c:1", "/c:"], ["/c:", "/c:", "/c:2", "/c:1", "/c:3", "/c:"], ["", "", "", "6", "2", "9"], ["/u:\\cdot", "/u:", "/u:", "/u:2", "/u:0", "/u:4"], ["", "", "2", "5", "1", "6"], 
+            ["", "", "0", "0", "0", ""], ["1", "2", "5", "8", "", ""]]).print("columnar_multiplication_16");
+        </LOL>
 
         <p>
             Wszystkie trzy wyniki dodajemy.
         </p>
     
-        <columnar-operation-table :operation='""' :numbers='[["/c:", "/c:", "/c:", "/c:", "/c:1", "/c:", "/c:1", "/c:"], ["/c:", "/c:", "/c:", "/c:", "/c:2", "/c:1", "/c:3", "/c:"], ["", "", "", "", "", "6", "2", "9"], ["/u:\\cdot", "/u:", "/u:", "/u:", "/u:", "/u:2", "/u:0", "/u:4"], ["", "", "", "", "2", "5", "1", "6"], 
-            ["", "", "", "", "0", "0", "0", ""], ["/u:+", "/u:", "/u:1", "/u:2", "/u:5", "/u:8", "/u:", "/u:"], ["", "", "1", "2", "8", "3", "1", "6"]]'></columnar-operation-table>
+        <div id="columnar_multiplication_17">
+        </div>
+        <LOL>
+            Display_table.create_custom([["/c:", "/c:", "/c:", "/c:", "/c:1", "/c:", "/c:1", "/c:"], ["/c:", "/c:", "/c:", "/c:", "/c:2", "/c:1", "/c:3", "/c:"], ["", "", "", "", "", "6", "2", "9"], ["/u:\\cdot", "/u:", "/u:", "/u:", "/u:", "/u:2", "/u:0", "/u:4"], ["", "", "", "", "2", "5", "1", "6"], 
+            ["", "", "", "", "0", "0", "0", ""], ["/u:+", "/u:", "/u:1", "/u:2", "/u:5", "/u:8", "/u:", "/u:"], ["", "", "1", "2", "8", "3", "1", "6"]]).print("columnar_multiplication_17");
+        </LOL>
     
         <p>
             No i poznaliśmy prawdę: $629  \cdot 204 = 128 316$. Jesteśmy przekonani, że ta informacja wzbogaciła Twoje życie.
@@ -742,7 +815,11 @@ import LessonTitle from "../../../lesson/LessonTitle";
 import LessonIntro from "../../../lesson/LessonIntro";
 import LessonChapter from "../../../lesson/chapter/LessonChapter";
 import Lesson from "../../../lesson/Lesson";
+<<<<<<< HEAD
 import ColumnarOperationTable from "../../../utils/columnar_operation_table/ColumnarOperationTable";
+=======
+import ColumnarOperationTable from "../../../utils/columnar_operation_table/ColumnarOperationTable"
+>>>>>>> 008c3761ccf9935e3ac1fec6bfadf97c1e7cc812
 
 export default {
   name: "Mnozenie",

@@ -575,11 +575,7 @@
 			ponad kreską.
 		</p>
 		
-		<div id="columnar_division_1">
-		</div>
-		<LOL>
-			Display_table.create_custom([["/u:", "/u:", "/u:", "/u:", "/u:"], ["9", "7", "8", ":", "2"]]).print("columnar_division_1");
-		</LOL>
+        <columnar-operation-table :operation='""' :numbers='[["/u:", "/u:", "/u:", "/u:", "/u:"], ["9", "7", "8", ":", "2"]]'></columnar-operation-table>
 		
 		<p>
 			Teraz zaczynamy analizować liczbę, którą dzielimy, zaczynając od lewej. Bierzemy cyfrę $9$ i próbujemy podzielić ją 
@@ -588,76 +584,48 @@
 			Wynik zapisujemy nad kreską.
 		</p>
 		
-		<div id="columnar_division_2">
-		</div>
-		<LOL>
-			Display_table.create_custom([["/u:4", "/u:", "/u:", "/u:", "/u:"], ["9", "7", "8", ":", "2"]]).print("columnar_division_2");
-		</LOL>  
+        <columnar-operation-table :operation='""' :numbers='[["/u:4", "/u:", "/u:", "/u:", "/u:"], ["9", "7", "8", ":", "2"]]'></columnar-operation-table>
 
 		<p>
 			Teraz robimy coś odwrotnego - mnożymy otrzymane $4$ przez dzielnik, czyli przez $2$. Otrzymujemy $8$ i zapisujemy je pod 
 			cyfrą setek dzielnej.
 		</p>
 		
-		<div id="columnar_division_3">
-		</div>
-		<LOL>
-			Display_table.create_custom([["/u:4", "/u:", "/u:", "/u:", "/u:"], ["9", "7", "8", ":", "2"], ["8", "", "", "", ""]]).print("columnar_division_3");
-		</LOL> 
+        <columnar-operation-table :operation='""' :numbers='[["/u:4", "/u:", "/u:", "/u:", "/u:"], ["9", "7", "8", ":", "2"], ["8", "", "", "", ""]]'></columnar-operation-table> 
 		
 		<p>
 			W tym momencie odejmujemy zapisaną ósemkę od wyjściowej dziewiątki. Dostaliśmy $1$.
 		</p>
 		
-		<div id="columnar_division_4">
-		</div>
-		<LOL>
-			Display_table.create_custom([["/u:", "/u:", "/u:4", "/u:", "/u:", "/u:", "/u:"], ["", "", "9", "7", "8", ":", "2"], ["/u:-", "/u:", "/u:8", "/u:", "/u:", "/u:", "/u:"], ["", "", "1", "", "", "", "", ""]]).print("columnar_division_4");
-		</LOL> 
-		
+        <columnar-operation-table :operation='""' :numbers='[["/u:", "/u:", "/u:4", "/u:", "/u:", "/u:", "/u:"], ["", "", "9", "7", "8", ":", "2"], ["/u:-", "/u:", "/u:8", "/u:", "/u:", "/u:", "/u:"], ["", "", "1", "", "", "", "", ""]]'></columnar-operation-table> 
+
 		<p>
 			Z dzielnej przepisujemy kolejną cyfrę, czyli $7$. 
 		</p>
 		
-		<div id="columnar_division_5">
-		</div>
-		<LOL>
-			Display_table.create_custom([["/u:", "/u:", "/u:4", "/u:", "/u:", "/u:", "/u:"], ["", "", "9", "7", "8", ":", "2"], ["/u:-", "/u:", "/u:8", "/u:", "/u:", "/u:", "/u:"], ["", "", "1", "7", "", "", "", ""]]).print("columnar_division_5");
-		</LOL>
+        <columnar-operation-table :operation='""' :numbers='[["/u:", "/u:", "/u:4", "/u:", "/u:", "/u:", "/u:"], ["", "", "9", "7", "8", ":", "2"], ["/u:-", "/u:", "/u:8", "/u:", "/u:", "/u:", "/u:"], ["", "", "1", "7", "", "", "", ""]]'></columnar-operation-table> 
 		
 		<p>
 			Teraz powtarzamy serię czynności. Sprawdzamy, ile razy dwójka mieści się w $17$. Zapisujemy wynik $8$ nad kreską i robimy działanie 
 			odwrotne - mnożymy go przez dzielnik i piszemy $16$ na dole.
 		</p>
 		
-		<div id="columnar_division_6">
-		</div>
-		<LOL>
-			Display_table.create_custom([["/u:", "/u:", "/u:4", "/u:8", "/u:", "/u:", "/u:"], ["", "", "9", "7", "8", ":", "2"], ["/u:-", "/u:", "/u:8", "/u:", "/u:", "/u:", "/u:"], 
-			["", "", "1", "7", "", "", "", ""], ["", "", "1", "6", "", "", "", ""]]).print("columnar_division_6");
-		</LOL>
+        <columnar-operation-table :operation='""' :numbers='[["/u:", "/u:", "/u:4", "/u:8", "/u:", "/u:", "/u:"], ["", "", "9", "7", "8", ":", "2"], ["/u:-", "/u:", "/u:8", "/u:", "/u:", "/u:", "/u:"], 
+			["", "", "1", "7", "", "", "", ""], ["", "", "1", "6", "", "", "", ""]]'></columnar-operation-table> 
 		
 		<p>
 			Odejmujemy $17 - 16$ i dostajemy $1$.
 		</p>
-		
-		<div id="columnar_division_7">
-		</div>
-		<LOL>
-			Display_table.create_custom([["/u:", "/u:", "/u:4", "/u:8", "/u:", "/u:", "/u:"], ["", "", "9", "7", "8", ":", "2"], ["/u:-", "/u:", "/u:8", "/u:", "/u:", "/u:", "/u:"], 
-			["", "", "1", "7", "", "", "", ""], ["/u:-", "/u:", "/u:1", "/u:6", "/u:", "/u:", "/u:", "/u:"], ["", "", "", "1", "", "", ""]]).print("columnar_division_7");
-		</LOL>
+
+        <columnar-operation-table :operation='""' :numbers='[["/u:", "/u:", "/u:4", "/u:8", "/u:", "/u:", "/u:"], ["", "", "9", "7", "8", ":", "2"], ["/u:-", "/u:", "/u:8", "/u:", "/u:", "/u:", "/u:"], 
+			["", "", "1", "7", "", "", "", ""], ["/u:-", "/u:", "/u:1", "/u:6", "/u:", "/u:", "/u:", "/u:"], ["", "", "", "1", "", "", ""]]'></columnar-operation-table>
 		
 		<p>
 			Przepisujemy $8$ i powtarzamy czynności. Osiemnastka zawiera $9$ dwójek, $9 \cdot 2 = 18$, $18 - 18 = 0$.
 		</p>
 		
-		<div id="columnar_division_8">
-		</div>
-		<LOL>
-			Display_table.create_custom([["/u:", "/u:", "/u:4", "/u:8", "/u:9", "/u:", "/u:"], ["", "", "9", "7", "8", ":", "2"], ["/u:-", "/u:", "/u:8", "/u:", "/u:", "/u:", "/u:"], 
-			["", "", "1", "7", "", "", "", ""], ["/u:-", "/u:", "/u:1", "/u:6", "/u:", "/u:", "/u:", "/u:"], ["", "", "", "1", "8", "", ""], ["/u:-", "/u:", "/u:", "/u:1", "/u:8", "/u:", "/u:"], ["", "", "", "", "0", "", ""]]).print("columnar_division_8");
-		</LOL>
+        <columnar-operation-table :operation='""' :numbers='[["/u:", "/u:", "/u:4", "/u:8", "/u:9", "/u:", "/u:"], ["", "", "9", "7", "8", ":", "2"], ["/u:-", "/u:", "/u:8", "/u:", "/u:", "/u:", "/u:"], 
+			["", "", "1", "7", "", "", "", ""], ["/u:-", "/u:", "/u:1", "/u:6", "/u:", "/u:", "/u:", "/u:"], ["", "", "", "1", "8", "", ""], ["/u:-", "/u:", "/u:", "/u:1", "/u:8", "/u:", "/u:"], ["", "", "", "", "0", "", ""]]'></columnar-operation-table> 
 
 		<p>
 			Nie mamy już czego przepisać, więc zakończyliśmy męki. Otrzymaliśmy wynik $489$. Tym razem było nudno, bo 
@@ -670,57 +638,37 @@
 			Zróbmy coś brawurowego - obliczmy $5724 : 4$
 		</p>
 
-		<div id="columnar_division_9">
-		</div>
-		<LOL>
-			Display_table.create_custom([["/u:", "/u:", "/u:", "/u:", "/u:", "/u:"], ["5", "7", "2", "4", ":", "4"]]).print("columnar_division_9");
-		</LOL>
+        <columnar-operation-table :operation='""' :numbers='[["/u:", "/u:", "/u:", "/u:", "/u:", "/u:"], ["5", "7", "2", "4", ":", "4"]]'></columnar-operation-table> 
 		
 		<p>
 			Bierzemy pierwszą cyfrę z lewej, czyli $5$. Czwórka miesci się raz w piątce - piszemy wynik $1$. Następnie 
 			mnożymy $1 \cdot 4 = 4$ i odejmujemy.
 		</p>
 		
-		<div id="columnar_division_10">
-		</div>
-		<LOL>
-			Display_table.create_custom([["/u:", "/u:", "/u:1", "/u:", "/u:", "/u:", "/u:", "/u:"], ["", "", "5", "7", "2", "4", ":", "4"], ["/u:-", "/u:", "/u:4", "/u:", "/u:", "/u:", "/u:", "/u:"], ["", "", "1", "", "", "", "", ""]]).print("columnar_division_10");
-		</LOL>
+        <columnar-operation-table :operation='""' :numbers='[["/u:", "/u:", "/u:1", "/u:", "/u:", "/u:", "/u:", "/u:"], ["", "", "5", "7", "2", "4", ":", "4"], ["/u:-", "/u:", "/u:4", "/u:", "/u:", "/u:", "/u:", "/u:"], ["", "", "1", "", "", "", "", ""]]'></columnar-operation-table> 
 		
 		<p>
 			Przepisujemy kolejną cyfrę, czyli $7$. $4$ mieści się $4$ razy w $17$, więc piszemy $4$ jako wynik. Mnożymy $4 \cdot 4 = 16$ i odejmujemy.
 		</p>
 		
-		<div id="columnar_division_11">
-		</div>
-		<LOL>
-			Display_table.create_custom([["/u:", "/u:", "/u:1", "/u:4", "/u:", "/u:", "/u:", "/u:"], ["", "", "5", "7", "2", "4", ":", "4"], ["/u:-", "/u:", "/u:4", "/u:", "/u:", "/u:", "/u:", "/u:"], ["", "", "1", "7", "", "", "", ""],
-			["/u:-", "/u:", "/u:1", "/u:6", "/u:", "/u:", "/u:", "/u:"], ["", "", "", "1", "", "", "", ""]]).print("columnar_division_11");
-		</LOL>
+        <columnar-operation-table :operation='""' :numbers='[["/u:", "/u:", "/u:1", "/u:4", "/u:", "/u:", "/u:", "/u:"], ["", "", "5", "7", "2", "4", ":", "4"], ["/u:-", "/u:", "/u:4", "/u:", "/u:", "/u:", "/u:", "/u:"], ["", "", "1", "7", "", "", "", ""],
+			["/u:-", "/u:", "/u:1", "/u:6", "/u:", "/u:", "/u:", "/u:"], ["", "", "", "1", "", "", "", ""]]'></columnar-operation-table> 
 		
 		<p>
 			Przepisujemy kolejną cyfrę, czyli $2$. Dzielimy $12 : 4 = 3$. 
 			Piszemy $3$ nad kreską, mnożymy $3 \cdot 4 = 12$ i odejmujemy.
 		</p>
 		
-		<div id="columnar_division_12">
-		</div>
-		<LOL>
-			Display_table.create_custom([["/u:", "/u:", "/u:1", "/u:4", "/u:3", "/u:", "/u:", "/u:"], ["", "", "5", "7", "2", "4", ":", "4"], ["/u:-", "/u:", "/u:4", "/u:", "/u:", "/u:", "/u:", "/u:"], ["", "", "1", "7", "", "", "", ""],
-			["/u:-", "/u:", "/u:1", "/u:6", "/u:", "/u:", "/u:", "/u:"], ["", "", "", "1", "2", "", "", ""], ["/u:-", "/u:", "/u:", "/u:1", "/u:2", "/u:", "/u:", "/u:"], ["", "", "", "", "0", "", "", ""]]).print("columnar_division_12");
-		</LOL>
+        <columnar-operation-table :operation='""' :numbers='[["/u:", "/u:", "/u:1", "/u:4", "/u:3", "/u:", "/u:", "/u:"], ["", "", "5", "7", "2", "4", ":", "4"], ["/u:-", "/u:", "/u:4", "/u:", "/u:", "/u:", "/u:", "/u:"], ["", "", "1", "7", "", "", "", ""],
+			["/u:-", "/u:", "/u:1", "/u:6", "/u:", "/u:", "/u:", "/u:"], ["", "", "", "1", "2", "", "", ""], ["/u:-", "/u:", "/u:", "/u:1", "/u:2", "/u:", "/u:", "/u:"], ["", "", "", "", "0", "", "", ""]]'></columnar-operation-table> 
 		
 		<p>
 			Przepisujemy $4$, dzielimy $4 : 4 = 1$, mnożymy $1 \cdot 4 = 4$, odejmujemy $4 - 4 = 0$.
 		</p>
 		
-		<div id="columnar_division_13">
-		</div>
-		<LOL>
-			Display_table.create_custom([["/u:", "/u:", "/u:1", "/u:4", "/u:3", "/u:1", "/u:", "/u:"], ["", "", "5", "7", "2", "4", ":", "4"], ["/u:-", "/u:", "/u:4", "/u:", "/u:", "/u:", "/u:", "/u:"], ["", "", "1", "7", "", "", "", ""],
+        <columnar-operation-table :operation='""' :numbers='[["/u:", "/u:", "/u:1", "/u:4", "/u:3", "/u:1", "/u:", "/u:"], ["", "", "5", "7", "2", "4", ":", "4"], ["/u:-", "/u:", "/u:4", "/u:", "/u:", "/u:", "/u:", "/u:"], ["", "", "1", "7", "", "", "", ""],
 			["/u:-", "/u:", "/u:1", "/u:6", "/u:", "/u:", "/u:", "/u:"], ["", "", "", "1", "2", "", "", ""], ["/u:-", "/u:", "/u:", "/u:1", "/u:2", "/u:", "/u:", "/u:"], ["", "", "", "", "0", "4", "", ""], 
-			["/u:-", "/u:", "/u:", "/u:", "/u:", "/u:4", "/u:", "/u:"], ["", "", "", "", "", "0", "", ""]]).print("columnar_division_13");
-		</LOL>
+			["/u:-", "/u:", "/u:", "/u:", "/u:", "/u:4", "/u:", "/u:"], ["", "", "", "", "", "0", "", ""]]'></columnar-operation-table> 
 		
 		<p>
 			Kończymy robotę i odczytujemy wynik $1431$. 
@@ -731,11 +679,8 @@
 		<p>
 			Jeśli to było brawurowe, to teraz będziemy dzielić jak szaleni - $33684 : 28$
 		</p>
-		<div id="columnar_division_14">
-		</div>
-		<LOL>
-			Display_table.create_custom([["/u:", "/u:", "/u:", "/u:", "/u:", "/u:", "/u:", "/u:"], ["3", "3", "6", "8", "4", ":", "2", "8"]]).print("columnar_division_14");
-		</LOL>
+
+        <columnar-operation-table :operation='""' :numbers='[["/u:", "/u:", "/u:", "/u:", "/u:", "/u:", "/u:", "/u:"], ["3", "3", "6", "8", "4", ":", "2", "8"]]'></columnar-operation-table> 
 		
 		<p>
 			Zabieramy się za dzielną od lewej, czyli bierzemy pierwszą z brzegu trójkę. $28$ nie mieści się ani raz w trójce, co oznacza, że 
@@ -743,48 +688,32 @@
 			Piszemy wynik, czyli $1$, nad drugą trójką. Potem mnożymy $1 \cdot 28 = 28$ i odejmujemy $33 - 28 = 5$.
 		</p>
 		
-		<div id="columnar_division_15">
-		</div>
-		<LOL>
-			Display_table.create_custom([["/u:", "/u:", "/u:", "/u:1", "/u:", "/u:", "/u:", "/u:", "/u:", "/u:"], ["", "", "3", "3", "6", "8", "4", ":", "2", "8"], ["/u:-", "/u:", "/u:2", "/u:8", "/u:", "/u:", "/u:", "/u:", "/u:", "/u:"],
-			["", "", "", "5", "", "", "", "", "", ""]]).print("columnar_division_15");
-		</LOL>	
+        <columnar-operation-table :operation='""' :numbers='[["/u:", "/u:", "/u:", "/u:1", "/u:", "/u:", "/u:", "/u:", "/u:", "/u:"], ["", "", "3", "3", "6", "8", "4", ":", "2", "8"], ["/u:-", "/u:", "/u:2", "/u:8", "/u:", "/u:", "/u:", "/u:", "/u:", "/u:"],
+			["", "", "", "5", "", "", "", "", "", ""]]'></columnar-operation-table> 
 		
 		<p>
 			Przepisujemy kolejną cyfrę, czyli $6$. $28$ idealnie mieści się dwa razy w $56$. Mnożymy $2 \cdot 28 = 56$ i odejmujemy $56 - 56 = 0$.
 		</p>
 		
-		<div id="columnar_division_16">
-		</div>
-		<LOL>
-			Display_table.create_custom([["/u:", "/u:", "/u:", "/u:1", "/u:2", "/u:", "/u:", "/u:", "/u:", "/u:"], ["", "", "3", "3", "6", "8", "4", ":", "2", "8"], ["/u:-", "/u:", "/u:2", "/u:8", "/u:", "/u:", "/u:", "/u:", "/u:", "/u:"],
-			["", "", "", "5", "6", "", "", "", "", ""], ["/u:-", "/u:", "/u:", "/u:5", "/u:6", "/u:", "/u:", "/u:", "/u:", "/u:"], ["", "", "", "", "0", "", "", "", "", ""]]).print("columnar_division_16");
-		</LOL>
-		
+        <columnar-operation-table :operation='""' :numbers='[["/u:", "/u:", "/u:", "/u:1", "/u:2", "/u:", "/u:", "/u:", "/u:", "/u:"], ["", "", "3", "3", "6", "8", "4", ":", "2", "8"], ["/u:-", "/u:", "/u:2", "/u:8", "/u:", "/u:", "/u:", "/u:", "/u:", "/u:"],
+			["", "", "", "5", "6", "", "", "", "", ""], ["/u:-", "/u:", "/u:", "/u:5", "/u:6", "/u:", "/u:", "/u:", "/u:", "/u:"], ["", "", "", "", "0", "", "", "", "", ""]]'></columnar-operation-table> 
+
 		<p>
 			Przepisujemy kolejną cyfrę, czyli $8$. $28$ nie mieści się w $8$, więc piszemy wynik $0$, mnożymy $0 \cdot 28 = 0$, 
 			odejmujemy $8 - 0 = 8$.
 		</p>
 		
-		<div id="columnar_division_17">
-		</div>
-		<LOL>
-			Display_table.create_custom([["/u:", "/u:", "/u:", "/u:1", "/u:2", "/u:0", "/u:", "/u:", "/u:", "/u:"], ["", "", "3", "3", "6", "8", "4", ":", "2", "8"], ["/u:-", "/u:", "/u:2", "/u:8", "/u:", "/u:", "/u:", "/u:", "/u:", "/u:"],
+        <columnar-operation-table :operation='""' :numbers='[["/u:", "/u:", "/u:", "/u:1", "/u:2", "/u:0", "/u:", "/u:", "/u:", "/u:"], ["", "", "3", "3", "6", "8", "4", ":", "2", "8"], ["/u:-", "/u:", "/u:2", "/u:8", "/u:", "/u:", "/u:", "/u:", "/u:", "/u:"],
 			["", "", "", "5", "6", "", "", "", "", ""], ["/u:-", "/u:", "/u:", "/u:5", "/u:6", "/u:", "/u:", "/u:", "/u:", "/u:"], ["", "", "", "", "0", "8", "", "", "", ""], ["/u:-", "/u:", "/u:", "/u:", "/u:", "/u:0", "/u:", "/u:", "/u:", "/u:"], 
-			["", "", "", "", "", "8", "", "", "", ""]]).print("columnar_division_17");
-		</LOL>
+			["", "", "", "", "", "8", "", "", "", ""]]'></columnar-operation-table> 
 		
 		<p>
 			Spisujemy czwórkę, sprawdzamy że $84 : 28 = 3$, mnożymy $3 \cdot 28 = 84$, odejmujemy $84 - 84 = 0$.
 		</p>
 		
-		<div id="columnar_division_17b">
-		</div>
-		<LOL>
-			Display_table.create_custom([["/u:", "/u:", "/u:", "/u:1", "/u:2", "/u:0", "/u:3", "/u:", "/u:", "/u:"], ["", "", "3", "3", "6", "8", "4", ":", "2", "8"], ["/u:-", "/u:", "/u:2", "/u:8", "/u:", "/u:", "/u:", "/u:", "/u:", "/u:"],
+        <columnar-operation-table :operation='""' :numbers='[["/u:", "/u:", "/u:", "/u:1", "/u:2", "/u:0", "/u:3", "/u:", "/u:", "/u:"], ["", "", "3", "3", "6", "8", "4", ":", "2", "8"], ["/u:-", "/u:", "/u:2", "/u:8", "/u:", "/u:", "/u:", "/u:", "/u:", "/u:"],
 			["", "", "", "5", "6", "", "", "", "", ""], ["/u:-", "/u:", "/u:", "/u:5", "/u:6", "/u:", "/u:", "/u:", "/u:", "/u:"], ["", "", "", "", "0", "8", "", "", "", ""], ["/u:-", "/u:", "/u:", "/u:", "/u:", "/u:0", "/u:", "/u:", "/u:", "/u:"], 
-			["", "", "", "", "", "8", "4", "", "", ""], ["/u:-", "/u:", "/u:", "/u:", "/u:", "/u:8", "/u:4", "/u:", "/u:", "/u:"], ["", "", "", "", "", "", "0", "", "", ""]]).print("columnar_division_17b");
-		</LOL>
+			["", "", "", "", "", "8", "4", "", "", ""], ["/u:-", "/u:", "/u:", "/u:", "/u:", "/u:8", "/u:4", "/u:", "/u:", "/u:"], ["", "", "", "", "", "", "0", "", "", ""]]'></columnar-operation-table> 
 		
 		<p>
 			Jakoś poszło. Jak widać, dzielenie w słupku wymaga wykonania w pamięci niektórych działań, nawet tych trudnych. 
@@ -799,44 +728,28 @@
 			Na deser podzielmy jeszcze $102$ przez $9$.
 		</p>
 
-		<div id="columnar_division_18">
-		</div>
-		<LOL>
-			Display_table.create_custom([["/u:", "/u:", "/u:", "/u:", "/u:"], ["1", "0", "2", ":", "9"]]).print("columnar_division_18");
-		</LOL>
+        <columnar-operation-table :operation='""' :numbers='[["/u:", "/u:", "/u:", "/u:", "/u:"], ["1", "0", "2", ":", "9"]]'></columnar-operation-table> 
 		
 		<p>
 			W jedynce dziewiątka się nie mieści, więc bierzemy pierwsze dwie cyfry i sprawdzamy, że w $10$ mieści się jedna $9$.
 		</p>
 		
-		<div id="columnar_division_19">
-		</div>
-		<LOL>
-			Display_table.create_custom([["/u:", "/u:", "/u:", "/u:1", "/u:", "/u:", "/u:"], ["", "", "1", "0", "2", ":", "9"], ["/u:-", "/u:", "/u:", "/u:9", "/u:", "/u:", "/u:"], ["", "", "", "1", "", "", ""]]).print("columnar_division_19");
-		</LOL>
+        <columnar-operation-table :operation='""' :numbers='[["/u:", "/u:", "/u:", "/u:1", "/u:", "/u:", "/u:"], ["", "", "1", "0", "2", ":", "9"], ["/u:-", "/u:", "/u:", "/u:9", "/u:", "/u:", "/u:"], ["", "", "", "1", "", "", ""]]'></columnar-operation-table> 
 		
 		<p>
 			Spisujemy $2$ i dzielimy dalej.
 		</p>
 		
-		<div id="columnar_division_20">
-		</div>
-		<LOL>
-			Display_table.create_custom([["/u:", "/u:", "/u:", "/u:1", "/u:1", "/u:", "/u:"], ["", "", "1", "0", "2", ":", "9"], ["/u:-", "/u:", "/u:", "/u:9", "/u:", "/u:", "/u:"], ["", "", "", "1", "2", "", ""], 
-			["/u:-", "/u:", "/u:", "/u:", "/u:9", "/u:", "/u:"], ["", "", "", "", "3", "", ""]]).print("columnar_division_20");
-		</LOL>
+        <columnar-operation-table :operation='""' :numbers='[["/u:", "/u:", "/u:", "/u:1", "/u:1", "/u:", "/u:"], ["", "", "1", "0", "2", ":", "9"], ["/u:-", "/u:", "/u:", "/u:9", "/u:", "/u:", "/u:"], ["", "", "", "1", "2", "", ""], 
+			["/u:-", "/u:", "/u:", "/u:", "/u:9", "/u:", "/u:"], ["", "", "", "", "3", "", ""]]'></columnar-operation-table> 
 		
 		<p>
 			Niespodzianka - nie mamy już żadnej cyfry do spisania, a zostało nam jakieś $3$. Oznacza to, że $3$ jest resztą z 
 			dzielenia $102$ przez $9$, czyli $102 : 9 = 11 \ r. 3$
 		</p>
 		
-		<div id="columnar_division_21">
-		</div>
-		<LOL>
-			Display_table.create_custom([["/u:", "/u:", "/u:", "/u:1", "/u:1", "/u:r.", "/u:3"], ["", "", "1", "0", "2", ":", "9"], ["/u:-", "/u:", "/u:", "/u:9", "/u:", "/u:", "/u:"], ["", "", "", "1", "2", "", ""], 
-			["/u:-", "/u:", "/u:", "/u:", "/u:9", "/u:", "/u:"], ["", "", "", "", "3", "", ""]]).print("columnar_division_21");
-		</LOL>
+        <columnar-operation-table :operation='""' :numbers='[["/u:", "/u:", "/u:", "/u:1", "/u:1", "/u:r.", "/u:3"], ["", "", "1", "0", "2", ":", "9"], ["/u:-", "/u:", "/u:", "/u:9", "/u:", "/u:", "/u:"], ["", "", "", "1", "2", "", ""], 
+			["/u:-", "/u:", "/u:", "/u:", "/u:9", "/u:", "/u:"], ["", "", "", "", "3", "", ""]]'></columnar-operation-table> 
 	</div>
 
 	<div class="modal" id="divide_by_0">
@@ -1037,6 +950,7 @@ import LessonTitle from "../../../lesson/LessonTitle";
 import LessonIntro from "../../../lesson/LessonIntro";
 import LessonChapter from "../../../lesson/chapter/LessonChapter";
 import Lesson from "../../../lesson/Lesson";
+import ColumnarOperationTable from "../../../utils/columnar_operation_table/ColumnarOperationTable";
 
 export default {
   name: "Dzielenie",
@@ -1049,7 +963,8 @@ export default {
     LessonIntro,
     LessonTitle,
     LessonChapter,
-    Lesson
+	Lesson,
+	ColumnarOperationTable,
   }
 };
 </script>

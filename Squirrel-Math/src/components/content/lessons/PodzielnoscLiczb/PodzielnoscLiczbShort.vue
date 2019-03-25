@@ -9,71 +9,57 @@
 			Wystarczy skorzystać z poniższych reguł zwanych cechami podzielności.
 		</p>
 
-		<div class="example">
-			<p class = "formula">
-				Liczba jest podzielna przez $2$ wtedy i tylko wtedy, gdy jej ostatnią cyfrą jest 
-				$0$, $2$, $4$, $6$ lub $8$.
-			</p>
-			<p>
-				$18$ jest podzielne przez $2$, ponieważ ostatnią cyfrą jest $8$
-			</p>
-		</div>
+		<p class = "formula">
+			Liczba jest podzielna przez $2$ wtedy i tylko wtedy, gdy jej ostatnią cyfrą jest 
+			$0$, $2$, $4$, $6$ lub $8$.
+		</p>
+		<p class='mt-0'>
+			$18$ jest podzielne przez $2$, ponieważ ostatnią cyfrą jest $8$
+		</p>
+	
+		<p class ="formula">
+			Liczba jest podzielna przez $3$ wtedy i tylko wtedy, gdy suma jej cyfr jest podzielna przez $3$.
+		</p>
+		<p class='mt-0'>
+			$123$ jest podzielne przez $3$, ponieważ $1 + 0+0+2+0+0 + 3 = 6$ jest podzielne przez $3$.
+		</p>
 		
-		<div class="example">	
-			<p class ="formula">
-				Liczba jest podzielna przez $3$ wtedy i tylko wtedy, gdy suma jej cyfr jest podzielna przez $3$.
-			</p>
-			<p>
-				$123$ jest podzielne przez $3$, ponieważ $1 + 0+0+2+0+0 + 3 = 6$ jest podzielne przez $3$.
-			</p>
-		</div>
-			
-		<div class="example">
-			<p class ="formula">
-				Liczba jest podzielna przez $4$ wtedy i tylko wtedy, gdy jej dwie ostatnie cyfry tworzą liczbę podzielną przez 
-				$4$.
-			</p>
-			<p>
-				$712$ jest podzielne przez $4$, ponieważ $12$ jest podzielne przez $4$.
-			</p>
-		</div>
+		<p class ="formula">
+			Liczba jest podzielna przez $4$ wtedy i tylko wtedy, gdy jej dwie ostatnie cyfry tworzą liczbę podzielną przez 
+			$4$.
+		</p>
+		<p class='mt-0'>
+			$712$ jest podzielne przez $4$, ponieważ $12$ jest podzielne przez $4$.
+		</p>
+	
+		<p class ="formula">
+			Liczba jest podzielna przez $5$ wtedy i tylko wtedy, gdy jej ostatnią cyfrą jest $0$ lub $5$.
+		</p>
+		<p class='mt-0'>
+			$125$ jest podzielne przez $5$, ponieważ ostatnią cyfrą jest $5$.
+		</p>
 		
-		<div class="example">
-			<p class ="formula">
-				Liczba jest podzielna przez $5$ wtedy i tylko wtedy, gdy jej ostatnią cyfrą jest $0$ lub $5$.
-			</p>
-			<p>
-				$125$ jest podzielne przez $5$, ponieważ ostatnią cyfrą jest $5$.
-			</p>
-		</div>
-			
-		<div class="example">	
-			<p class ="formula">
-				Liczba jest podzielna przez $8$ wtedy i tylko wtedy, gdy jej trzy ostatnie cyfry tworzą liczbę podzielną przez 
-				$8$. 
-			</p>
-			<p>
-				$1008$ jest podzielne przez $8$, ponieważ $8$ jest podzielne przez $8$.
-			</p>
-		</div>
-			
-		<div class="example">
-			<p class ="formula">
-				Liczba jest podzielna przez $9$ wtedy i tylko wtedy, gdy suma jej cyfr jest podzielna przez $9$. 
-			</p>
-			<p>
-				$123 456 789$ jest podzielne przez $9$, ponieważ $1 + 2 + 3 + 4 + 5 + 6 + 7 + 8 + 9 = 45$ jest podzielne przez $9$.
-			</p>
-		</div>
-			
-		<div class="example">
-			<p class ="formula">
-				Liczba jest podzielna przez $10$ wtedy i tylko wtedy, gdy jej ostatnią cyfrą jest $0$. 
-			</p>
-			<p>
-				$1 000 000$ jest podzielny przez $10$, ponieważ ostatnią cyfrą jest $0$.
-			</p>
-		</div>
+		<p class ="formula">
+			Liczba jest podzielna przez $8$ wtedy i tylko wtedy, gdy jej trzy ostatnie cyfry tworzą liczbę podzielną przez 
+			$8$. 
+		</p>
+		<p class='mt-0'>
+			$1008$ jest podzielne przez $8$, ponieważ $8$ jest podzielne przez $8$.
+		</p>
+		
+		<p class ="formula">
+			Liczba jest podzielna przez $9$ wtedy i tylko wtedy, gdy suma jej cyfr jest podzielna przez $9$. 
+		</p>
+		<p class='mt-0'>
+			$123 456 789$ jest podzielne przez $9$, ponieważ $1 + 2 + 3 + 4 + 5 + 6 + 7 + 8 + 9 = 45$ jest podzielne przez $9$.
+		</p>
+		
+		<p class ="formula">
+			Liczba jest podzielna przez $10$ wtedy i tylko wtedy, gdy jej ostatnią cyfrą jest $0$. 
+		</p>
+		<p class='mt-0'>
+			$1 000 000$ jest podzielny przez $10$, ponieważ ostatnią cyfrą jest $0$.
+		</p>
 
 		</lesson-chapter>
 
