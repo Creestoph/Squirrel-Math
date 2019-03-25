@@ -283,6 +283,9 @@
     </p>
       
     <br>
+
+    <operation-table :default_loperand="3" :default_roperand="7" :f="function(a,b){return a+b}" :operator="'+'"></operation-table>
+
     <table class="operation_table center">
         <tr><th> </th><th>0</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th></tr>
         <tr><th>0</th><td>0</td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td><td>9</td></tr>
@@ -588,6 +591,7 @@ import LessonIntro from "../../../lesson/LessonIntro";
 import LessonChapter from "../../../lesson/chapter/LessonChapter";
 import Lesson from "../../../lesson/Lesson";
 import ColumnarOperationTable from "../../../utils/columnar_operation_table/ColumnarOperationTable";
+import OperationTable from "../../../utils/operation_table/OperationTable"
 
 export default {
   name: "Dodawanie",
@@ -601,7 +605,8 @@ export default {
     LessonTitle,
     LessonChapter,
     Lesson,
-    ColumnarOperationTable
+    ColumnarOperationTable,
+    OperationTable
   }
 };
 </script>
