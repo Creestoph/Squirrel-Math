@@ -546,23 +546,10 @@
     </p>
 
     <br>
-	<table class="operation_table center" id="dividing_table">
-		<tr><th> </th><th>0</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th style="background: #F0E0E0">8</th><th>9</th></tr>
-		<tr><th>0</th><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td style="background: #F0E0E0">0</td><td>0</td></tr>
-		<tr><th>1</th><td>0</td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td style="background: #F0E0E0">8</td><td>9</td></tr>
-		<tr><th>2</th><td>0</td><td>2</td><td>4</td><td>6</td><td>8</td><td>10</td><td>12</td><td>14</td><td style="background: #F0E0E0">16</td><td>18</td></tr>
-		<tr><th>3</th><td>0</td><td>3</td><td>6</td><td>9</td><td>12</td><td>15</td><td>18</td><td>21</td><td style="background: #F0E0E0">24</td><td>27</td></tr>
-		<tr><th>4</th><td>0</td><td>4</td><td>8</td><td>12</td><td>16</td><td>20</td><td>24</td><td>28</td><td style="background: #F0E0E0">32</td><td>36</td></tr>
-		<tr><th>5</th><td>0</td><td>5</td><td>10</td><td>15</td><td>20</td><td>25</td><td>30</td><td>35</td><td style="background: #F0E0E0">40</td><td>45</td></tr>
-		<tr><th>6</th><td>0</td><td>6</td><td>12</td><td>18</td><td>24</td><td>30</td><td>36</td><td>42</td><td style="background: #F0E0E0">48</td><td>54</td></tr>
-		<tr><th>7</th><td>0</td><td>7</td><td>14</td><td>21</td><td>28</td><td>35</td><td>42</td><td>49</td><td style="background: #F0E0E0">56</td><td>63</td></tr>
-		<tr><th>8</th><td>0</td><td>8</td><td>16</td><td>24</td><td>32</td><td>40</td><td>48</td><td>56</td><td style="background: #F0E0E0">64</td><td>72</td></tr>
-		<tr><th>9</th><td>0</td><td>9</td><td>18</td><td>27</td><td>36</td><td>45</td><td>54</td><td>63</td><td style="background: #CC4444">72</td><td>81</td></tr>
-	</table>
-    <p id ="dividing_table_field" style="visibility: hidden; text-align: center">
-		a
-	</p>
       
+	<operation-table :default_loperand="8" :default_roperand="9" 
+    :f="function(a,b){return a*b}" :print="function(a,b,c){return a > 0 ? c + ' : ' + a + ' = ' + b : '0 : 0 nie ma wartości'}"></operation-table>
+
     <p>
         Zapewne zdążyłeś już polubić działania w słupku. Oto ich kwintesencja - <i>dzielenie w słupku</i> (czyli 
 		<i>dzielenie pisemne</i>).
@@ -951,6 +938,7 @@ import LessonIntro from "../../../lesson/LessonIntro";
 import LessonChapter from "../../../lesson/chapter/LessonChapter";
 import Lesson from "../../../lesson/Lesson";
 import ColumnarOperationTable from "../../../utils/columnar_operation_table/ColumnarOperationTable";
+import OperationTable from "../../../utils/operation_table/OperationTable";
 
 export default {
   name: "Dzielenie",
@@ -965,6 +953,7 @@ export default {
     LessonChapter,
 	Lesson,
 	ColumnarOperationTable,
+    OperationTable
   }
 };
 </script>
