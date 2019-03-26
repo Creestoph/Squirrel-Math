@@ -26,7 +26,7 @@ $(document).ready(function(){
 						 if (j!=1)
 							field.innerHTML = ((i-1)*(j-1)) + " : " + (j - 1) + " = " + (i - 1);
 						else
-							field.innerHTML = (i-1) + " : 0 nie ma wartości"
+							field.innerHTML = "0 : 0 nie ma wartości"
 						 field.style.visibility = "visible";
 					}
 	}

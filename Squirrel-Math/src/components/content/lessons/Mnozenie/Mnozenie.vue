@@ -349,6 +349,8 @@
 		a
 	</p>
 
+    <operation-table :default_loperand="6" :default_roperand="8" :f="function(a,b){return a*b}" :operator="'\\cdot'"></operation-table>
+
     <p>
         Ponieważ mnożenie jest przemienne, równie dobrze możemy znaleźć kolumnę zatytułowaną „$8$” i wiersz zatytułowany „$6$”.
     </p>
@@ -743,6 +745,7 @@ import LessonIntro from "../../../lesson/LessonIntro";
 import LessonChapter from "../../../lesson/chapter/LessonChapter";
 import Lesson from "../../../lesson/Lesson";
 import ColumnarOperationTable from "../../../utils/columnar_operation_table/ColumnarOperationTable";
+import OperationTable from "../../../utils/operation_table/OperationTable";
 
 export default {
   name: "Mnozenie",
@@ -756,7 +759,8 @@ export default {
     LessonTitle,
     LessonChapter,
     Lesson,
-    ColumnarOperationTable
+    ColumnarOperationTable,
+    OperationTable
   }
 };
 </script>
