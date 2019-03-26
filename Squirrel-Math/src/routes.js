@@ -21,8 +21,11 @@ import PodzielnoscLiczbShort from './components/content/lessons/PodzielnoscLiczb
 import UlamkiZwykle from './components/content/lessons/UlamkiZwykle/UlamkiZwykle'
 import UlamkiZwykleShort from './components/content/lessons/UlamkiZwykle/UlamkiZwykleShort'
 import UlamkiDziesietne from './components/content/lessons/UlamkiDziesietne/UlamkiDziesietne'
+import UlamkiDziesietneShort from './components/content/lessons/UlamkiDziesietne/UlamkiDziesietneShort'
 import Procenty from './components/content/lessons/Procenty/Procenty'
+import ProcentyShort from './components/content/lessons/Procenty/ProcentyShort'
 import LiczbyUjemne from './components/content/lessons/LiczbyUjemne/LiczbyUjemne'
+import LiczbyUjemneShort from './components/content/lessons/LiczbyUjemne/LiczbyUjemneShort'
 import WyrazeniaAlgebraiczne from './components/content/lessons/WyrazeniaAlgebraiczne/WyrazeniaAlgebraiczne'
 import TwierdzeniaIDowody from './components/content/lessons/TwierdzeniaIDowody/TwierdzeniaIDowody'
 import Potegowanie from './components/content/lessons/Potegowanie/Potegowanie'
@@ -44,9 +47,9 @@ export const routes = [
   { path: '/kolejnosc-wykonywania-dzialan', component: KolejnoscWykonywaniaDzialan },  { path: '/kolejnosc-wykonywania-dzialan-short', component: KolejnoscWykonywaniaDzialanShort },
   { path: '/podzielnosc-liczb', component: PodzielnoscLiczb }, { path: '/podzielnosc-liczb-short', component: PodzielnoscLiczbShort },
   { path: '/ulamki-zwykle', component: UlamkiZwykle },  { path: '/ulamki-zwykle-short', component: UlamkiZwykleShort },
-  { path: '/ulamki-dziesietne', component: UlamkiDziesietne },
-  { path: '/procenty', component: Procenty },
-  { path: '/liczby-ujemne', component: LiczbyUjemne },
+  { path: '/ulamki-dziesietne', component: UlamkiDziesietne },  { path: '/ulamki-dziesietne-short', component: UlamkiDziesietneShort },
+  { path: '/procenty', component: Procenty }, { path: '/procenty-short', component: ProcentyShort },
+  { path: '/liczby-ujemne', component: LiczbyUjemne }, { path: '/liczby-ujemne-short', component: LiczbyUjemneShort },
   { path: '/wyrazenia-algebraiczne', component: WyrazeniaAlgebraiczne },
   { path: '/twierdzenia-i-dowody', component: TwierdzeniaIDowody },
   { path: '/potegowanie', component: Potegowanie },

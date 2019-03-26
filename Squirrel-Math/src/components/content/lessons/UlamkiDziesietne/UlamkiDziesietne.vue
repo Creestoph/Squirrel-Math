@@ -311,14 +311,13 @@
 		<p>
 			Każdej liczbie o skończonym rozwinięciu dziesiętnym możemy urodzić (trochę na siłę) nieskończone rozwinięcie dziesiętne. 
 		</p>
-			
+
 		<p>
-			Niektóre ułamki zwykłe nie posiadają skończonego rozwinięcia. Zastanówmy się nad zamianą ułamka $\frac{1}{3}$
-			na ułamek dziesiętny. Gdybyśmy wzięli bardzo dokładną miarkę krawiecką o długości metra i przecięli ją dokładnie w 
-			jednej trzeciej długości, otrzymalibyśmy fragment o długości $0,33333333333333… m$. Żadne skończone rozwinięcie nie 
-			przedstawi dokładnej długości $\frac{1}{3}$ miarki. Krzyś mógłby stwierdzić, że $\frac{1}{3}≈0,3$. Przyjrzawszy się bliżej, 
-			Krzyś skoryguje spostrzeżenie do $\frac{1}{3}≈0,33$. Jednak perfekcjonizm Krzysia nie zostanie zaspokojony, dopóki 
-			szacowanie nie będzie w pełni dokładne. Niestety, Krzyś został skazany na nieskończone korygowanie przybliżenia. 
+			Niektóre ułamki zwykłe nie posiadają skończonego rozwinięcia. Zastanówmy się, jak zapisać ułamek dziesiętny równy $\frac{1}{3}$. 
+			Szukamy takiego ułamka dziesiętnego, który pomnożony przez $3$ 
+			ma wartość $1$. Pierwszą myślą jest $0,3$, jednak $3 \cdot \frac{3}{10} = \frac{9}{10}$, czyli trochę za mało. Lepszym pomysłem jest ułamek 
+			$0,33$, wtedy $3 \cdot \frac{33}{100} = \frac{99}{100}$. Jeszcze bliżej dokładnej liczby będzie ułamek $0,333$ albo $0,3333$, jednak każdy z nich 
+			jest za mały. Okazuje się, że dokładna wartość będzie miała po przecinku nieskończenie wiele trójek: $0,33333333333333...$
 		</p>
 
 		<center><img src="./.images//Screenshot_6.png" align="middle"></center>

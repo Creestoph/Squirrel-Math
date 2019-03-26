@@ -350,13 +350,11 @@
             określamy liczby trzycyfrowe, czterocyfrowe itd.
         </p>
         <p>
-            <b>Cyfra jedności</b> to cyfra znajdująca się najbardziej z prawej strony w zapisie liczby: $12\color{#dd3333}{1}, 434\color{#dd3333}{0}$. <br>
+            <b>Cyfra jedności</b> to cyfra znajdująca się najbardziej z prawej strony w zapisie liczby naturalnej: $12\color{#dd3333}{1}, 434\color{#dd3333}{0}$. <br>
             <b>Cyfra dziesiątek</b> to cyfra na lewo od cyfry jedności: $1\color{#dd3333}{2}1, 43\color{#dd3333}{4}0$. <br>
             <b>Cyfra setek</b> to cyfra na lewo od cyfry dziesiątek: $\color{#dd3333}{1}21, 4\color{#dd3333}{3}40$. <br>
             <b>Cyfra tysięcy</b> to cyfra na lewo od cyfry setek: $\color{#dd3333}{4}340$. 
         </p>
-
-
     </lesson-chapter>
 
   </lesson>
