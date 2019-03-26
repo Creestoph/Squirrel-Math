@@ -12,7 +12,7 @@
         </tr>
      </table>
     <p style = "text-align: center" class="math">
-        {{loperand.toString() + operator + roperand.toString() + '=' + f(loperand, roperand)}}
+        {{print(loperand.toString(), roperand.toString(), f(loperand, roperand).toString())}}
 	</p> 
   </div>
 </template>
@@ -20,7 +20,7 @@
 <script>
     export default {
         name: "OperationTable",
-        props: ['default_loperand', 'default_roperand', 'f', 'operator'],
+        props: ['default_loperand', 'default_roperand', 'f', 'print'],
         data() {
             return {
                 loperand: null,
