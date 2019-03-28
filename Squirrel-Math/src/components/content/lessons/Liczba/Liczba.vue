@@ -1358,8 +1358,7 @@ $$18 = 18$$
         Czasem zamiast odstępów stosuje się też kropki: $136.747.980.490.006$.
         <span
           class="comment"
-          id="Jak dotrzesz do tematu "Ułamki dziesiętne", 
-			to zrozumiesz"
+          id="Jak dotrzesz do tematu 'Ułamki dziesiętne', to zrozumiesz"
         >Nie polecamy jednak tej metody</span>.
       </p>
 
