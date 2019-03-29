@@ -23,8 +23,9 @@
         font-size: 3.2em;
         font-weight: bold;
         font-family: "Corbel";
-        margin: 50px auto 5px auto;
+        margin: 50px auto 0.22em auto;
         clear:both;
+        line-height: 0.55em;
     }
 
     p.lesson_subtitle
@@ -33,7 +34,7 @@
         font-size: 1.6em;
         font-weight: bold;
         font-family: "Corbel";
-        margin: 5px auto 50px auto;
+        margin: 0 auto 50px auto;
         clear: both;
     }
 </style>

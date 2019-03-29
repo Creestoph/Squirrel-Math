@@ -251,15 +251,21 @@ a.link:active
 
 .example
 {
-	/*border: 1px solid #888888;*/
 	background-color: #f4f4f4;
-	/*box-shadow: 0px 0px 13px 0px rgba(0, 0, 0, 0.2);*/
 	border-left: 10px solid #dd3333;
 	box-shadow: 2px 2px 3px 0px rgba(0, 0, 0, 0.4);
 	padding: 15px;
 	margin: 30px 30px;
-	/* border-radius: 15px; */
 }
+
+@media screen and (max-width: 700px)
+{
+	.example
+	{
+		margin: 30px 0;
+	}
+}
+
 
 p.type
 {
@@ -411,75 +417,6 @@ p.problem
 .proof + .proof
 {
 	border-top: 1em solid #dddddd;
-}
-
-.bookmark
-{
-	padding-left: 40px;
-	padding-right: 40px;
-	height: 60px;
-	line-height: 60px;
-	position: relative;
-	background: black;
-	color: white;
-	font-weight: bold;
-	font-family: "Segoe UI";
-	transition: padding-right 0.4s;
-}
-
-.bookmark:before
-{
-	content: "";
-	position: absolute;
-	left: -12px;
-	bottom: 0;
-	width: 25px;
-	background: black;
-	height: 50%;
-	transform: skew(-40deg);
-}
-
-.bookmark:after
-{
-	content: "";
-	position: absolute;
-	left: -12px;
-	top: 0;
-	width: 25px;
-	background: black;
-	height: 50%;
-	transform: skew(40deg);
-}
-
-.bookmark:hover
-{
-	padding-right: 100px;
-	transition: padding-right 0.5s;
-}
-
-@media screen and (max-width: 1200px)
-{
-	.bookmark-shadow
-	{
-		float: right;
-		overflow: auto;
-		margin-right: -7%;
-		margin-bottom: 30px;
-		padding-left: 30px;
-	}
-}
-
-@media screen and (min-width: 1200px)
-{
-	.bookmark-shadow
-	{
-		float: right;
-		overflow: auto;
-		box-shadow: 4px 3px 5px 0px rgba(0, 0, 0, 0.4);
-		margin-right: -13%;
-		margin-bottom: 30px;
-		padding-left: 30px;
-	}
 }
 
 /* ========================================== COMMON ELEMENTS ========================================== */

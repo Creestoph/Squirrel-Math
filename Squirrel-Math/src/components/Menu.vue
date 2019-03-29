@@ -144,26 +144,42 @@
     transition: 0.5s;
   }
 
-  button.button_convey span:after 
+  @media screen and (min-width: 500px)
   {
-    content: '»';
-    position: absolute;
-    opacity: 0;
-    top: 0;
-    right: -20px;
-    transition: 0.5s;
+    button.button_convey span:after 
+    {
+      content: '»';
+      position: absolute;
+      opacity: 0;
+      top: 0;
+      right: -20px;
+      transition: 0.5s;
+    }
+
+    button.button_convey:hover span 
+    {
+      padding-right: 25px;
+      text-shadow: 2px 2px #CCCCCC;
+    }
+
+    button.button_convey:hover span:after 
+    {
+      opacity: 1;
+      right: 0;
+    }
   }
 
-  button.button_convey:hover span 
+  @media screen and (max-width: 500px)
   {
-    padding-right: 25px;
-    text-shadow: 2px 2px #CCCCCC;
-  }
+      button.button_convey
+      {
+        padding: 0 5px;
+      }
 
-  button.button_convey:hover span:after 
-  {
-    opacity: 1;
-    right: 0;
+      button.button_convey:hover span 
+      {
+        text-shadow: 2px 2px #CCCCCC;
+      }
   }
 
   button.button_convey span a
