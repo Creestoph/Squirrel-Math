@@ -399,53 +399,7 @@
 		 czarnej magii</span>, prześledź jeszcze dowolne własne przykłady:
     </p>
       
-	<p style="text-align: center">
-		<input style="width: 85%" name="numberInput" type="text" id="columnar_addition_input" />
-	</p>
-	<LOL>
-        var columnar_addition = new Columnar_addition( "columnar_addition_table","columnar_addition_comment", "columnar_operation_button_right", "columnar_operation_button_left");
-        function ColumnarAdditionStartArgs() {
-            var success = columnar_addition.generate_from_input("columnar_addition_input","columnar_addition_area",false);
-            if (success)columnar_addition.print_step(0);
-        }
-
-	</LOL>
-	<p style="text-align: center">
-        <button id="columnar_addition_start" style="float: center;" onclick="ColumnarAdditionStartArgs()">Start</button>
-	</p>
-	<LOL>
-		SetInputEnterEvent("columnar_addition_input","columnar_addition_start")
-	</LOL>
-	
-	
-	<table class="columnar_operation_script center" id="columnar_addition_area" >
-		<tr>
-			<td id="columnar_operation_button_left" onclick="columnar_addition.prev()">
-				<svg height="0" width="30">
-					<defs>
-						<linearGradient id="gradient">
-							<stop offset="20%" stop-color="#C33" />
-							<stop offset="90%" stop-color="#833" />
-						</linearGradient>
-						<linearGradient id="hover_gradient">
-							<stop offset="20%" stop-color="#A33" />
-							<stop offset="90%" stop-color="#433" />
-						</linearGradient>
-					</defs>
-					<polygon points="20,0 0,30 20,60"/>
-				</svg>
-			</td>
-			<td>
-				<div id="columnar_addition_table" class="no_selection"></div>
-				<p id="columnar_addition_comment" class="no_selection"></p>
-			</td>
-			<td id = "columnar_operation_button_right" onclick="columnar_addition.next()">
-				<svg height="0" width="30">
-					<polygon points="0,0 20,30 0,60"/>
-				</svg>
-			</td>	
-		</tr>
-	</table>
+    <columnar-addition></columnar-addition>
 	  
     <p class ="type optional-hide">
         Rozszerzenie
@@ -580,6 +534,7 @@ import LessonChapter from "../../../lesson/chapter/LessonChapter";
 import Lesson from "../../../lesson/Lesson";
 import ColumnarOperationTable from "../../../utils/columnar_operation_table/ColumnarOperationTable";
 import OperationTable from "../../../utils/operation_table/OperationTable"
+import ColumnarAddition from "../../../utils/columnar_operation/ColumnarAddition"
 
 export default {
   name: "Dodawanie",
@@ -594,7 +549,8 @@ export default {
     LessonChapter,
     Lesson,
     ColumnarOperationTable,
-    OperationTable
+    OperationTable,
+    ColumnarAddition
   }
 };
 </script>

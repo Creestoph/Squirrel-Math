@@ -1,7 +1,7 @@
 /**
  * Created by Creestoph on 31.10.2016.
  */
-function validate_float(x) {
+export function validate_float(x) {
 	var was_comma = false;
 	var ok = true;
 	for (var i = 0; i < x.length; i++) {
@@ -19,7 +19,7 @@ function validate_float(x) {
 	}
 	return ok;
 }
-function validate_int(x) {
+export function validate_int(x) {
 	var ok = true;
 	for (var i = 0; i < x.length; i++)
 		if (isNaN(parseInt(x[i])))
