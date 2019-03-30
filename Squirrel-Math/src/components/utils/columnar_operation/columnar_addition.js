@@ -2,6 +2,8 @@
  * Created by Creestoph on 31.10.2016.
  */
 
+import {validate_float, validate_int} from "../number_validation"
+import {Display_table} from "../columnar_operation_table/display_table"
 
 function Columnar_addition_step(table, comma, highlight_column, comment) {
 	var tab = [];
@@ -25,8 +27,6 @@ Columnar_addition_step.prototype.print = function (coment_target_id, table_targe
 	coment_target_id.innerHTML = this.comment;
 	this.table.print(table_target_id);
 }
-import {validate_float, validate_int} from "../number_validation"
-import {Display_table} from "../columnar_operation_table/display_table"
 
 export class Columnar_addition {
 	constructor(table_id, comment_id, button_right_id, button_left_id) {
