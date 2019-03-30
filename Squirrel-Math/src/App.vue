@@ -539,45 +539,4 @@ td.columnar_operation_highlight
 	background: #FFCCCC;
 }
 
-table.columnar_operation_script
-{
-	border: 1px solid #888888;
-	width: 80%;
-	height: 0px;
-	text-align: center;
-	padding: 0px; /*20px*/
-	visibility: hidden;
-	box-shadow: 0px 0px 13px 0px rgba(0, 0, 0, 0.2);
-}
-
-table.columnar_operation_script td
-{
-	vertical-align: center;
-}
-
-#columnar_operation_button_left:hover
-{
-	transform: scale(1.2);
-}
-
-#columnar_operation_button_left:hover polygon
-{
-	fill: url(#hover_gradient);
-}
-
-#columnar_operation_button_right:hover
-{
-	transform: scale(1.2);
-}
-
-#columnar_operation_button_right:hover polygon
-{
-	fill: url(#hover_gradient);
-}
-
-#columnar_operation_button_left + td
-{
-	width: 80%;
-	vertical-align: top;
-}
 </style>

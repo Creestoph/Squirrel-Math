@@ -29,6 +29,7 @@ import LiczbyUjemneShort from './components/content/lessons/LiczbyUjemne/LiczbyU
 import WyrazeniaAlgebraiczne from './components/content/lessons/WyrazeniaAlgebraiczne/WyrazeniaAlgebraiczne'
 import WyrazeniaAlgebraiczneShort from './components/content/lessons/WyrazeniaAlgebraiczne/WyrazeniaAlgebraiczneShort'
 import TwierdzeniaIDowody from './components/content/lessons/TwierdzeniaIDowody/TwierdzeniaIDowody'
+import TwierdzeniaIDowodyShort from './components/content/lessons/TwierdzeniaIDowody/TwierdzeniaIDowodyShort'
 import Potegowanie from './components/content/lessons/Potegowanie/Potegowanie'
 import Pierwiastkowanie from './components/content/lessons/Pierwiastkowanie/Pierwiastkowanie'
 import DzialaniaNaWyrazeniachAlgebraicznych from './components/content/lessons/DzialaniaNaWyrazeniachAlgebraicznych/DzialaniaNaWyrazeniachAlgebraicznych'
@@ -52,7 +53,7 @@ export const routes = [
   { path: '/procenty', component: Procenty }, { path: '/procenty-short', component: ProcentyShort },
   { path: '/liczby-ujemne', component: LiczbyUjemne }, { path: '/liczby-ujemne-short', component: LiczbyUjemneShort },
   { path: '/wyrazenia-algebraiczne', component: WyrazeniaAlgebraiczne }, { path: '/wyrazenia-algebraiczne-short', component: WyrazeniaAlgebraiczneShort },
-  { path: '/twierdzenia-i-dowody', component: TwierdzeniaIDowody },
+  { path: '/twierdzenia-i-dowody', component: TwierdzeniaIDowody }, { path: '/twierdzenia-i-dowody-short', component: TwierdzeniaIDowodyShort },
   { path: '/potegowanie', component: Potegowanie },
   { path: '/pierwiastkowanie', component: Pierwiastkowanie },
   { path: '/dzialania-na-wyrazeniach-algebraicznych', component: DzialaniaNaWyrazeniachAlgebraicznych },

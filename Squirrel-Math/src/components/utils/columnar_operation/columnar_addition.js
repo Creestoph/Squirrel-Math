@@ -40,7 +40,6 @@ export class Columnar_addition {
 		columnar_addition_area.style.visibility = "visible";
 		columnar_addition_area.style.marginBottom = "60px";
 		columnar_addition_area.style.height = "400px";
-		columnar_addition_area.style.padding = "20px";
 		this.table_id.style.marginTop = "60px";
 		this.button_left_id.childNodes[0].setAttribute("height", "60px");
 		this.button_right_id.childNodes[0].setAttribute("height", "60px");
