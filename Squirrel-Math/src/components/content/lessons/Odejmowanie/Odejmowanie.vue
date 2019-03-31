@@ -431,57 +431,9 @@
         odejmować nawet duże liczby w pamięci. A jeśli nie, to przecież zawsze jest kalkulator.
     </p>
       
-	<p style = "text-align: center">
-		<input style="width: 800px" name="numberInput" type="text" id="columnar_subtraction_input" />
-	</p>
-
-        <LOL>
-            var columnar_subtraction = new Columnar_subtraction( "columnar_subtraction_table","columnar_subtraction_comment", "columnar_operation_button_right", "columnar_operation_button_left");
-            function ColumnarSubtractionStartArgs() {
-                var success = columnar_subtraction.generate_from_input("columnar_subtraction_input","columnar_subtraction_area", false);
-                if (success)columnar_subtraction.print_step(0);
-            }
-
-        </LOL>
-	
-	<p style="text-align: center">
-		<button id="columnar_subtraction_start" style="float: center;"
-		onclick="ColumnarSubtractionStartArgs()">Start</button>
-	</p>
-	
-	<LOL>
-		SetInputEnterEvent("columnar_subtraction_input","columnar_subtraction_start")
-	</LOL>
-	
-	<table class="columnar_operation_script center" id="columnar_subtraction_area" >
-		<tr>
-			<td id="columnar_operation_button_left" onclick="columnar_subtraction.prev()">
-				<svg height="0" width="30">
-					<defs>
-						<linearGradient id="gradient">
-						  <stop offset="20%" stop-color="#C33" />
-						  <stop offset="90%" stop-color="#833" />
-						</linearGradient>
-						<linearGradient id="hover_gradient">
-						  <stop offset="20%" stop-color="#A33" />
-						  <stop offset="90%" stop-color="#433" />
-						</linearGradient>
-					</defs>
-					<polygon points="20,0 0,30 20,60"/>
-				</svg>
-			</td>
-			<td>
-				<div id="columnar_subtraction_table" class="no_selection"></div>
-				<p id="columnar_subtraction_comment" class="no_selection"></p>
-			</td>
-			<td id = "columnar_operation_button_right" onclick="columnar_subtraction.next()">
-				<svg height="0" width="30">
-					<polygon points="0,0 20,30 0,60"/>
-				</svg>
-			</td>	
-		</tr>
-	</table>
       
+    <columnar-operation :operation="'subtraction'" :floats="false"></columnar-operation>
+
 	<p class = "type optional-hide">
         Rozszerzenie
     </p>

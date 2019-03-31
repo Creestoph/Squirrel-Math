@@ -586,56 +586,8 @@
 			1 : 7 = 0,(142857)
 		$$
 
-		<p style="text-align: center">
-			<input style="width: 800px" name="numberInput" type="text" id="columnar_operation_input" />
-		</p>
-		<LOL>
-			var columnar_operation = new Columnar_operation( "columnar_operation_table","columnar_operation_comment", "columnar_operation_button_right", "columnar_operation_button_left");
-			var operation;
-			function ColumnarOperationStartArgs() {
-				operation = columnar_operation.get_operation("columnar_operation_input", "columnar_operation_area");
-				if (operation !== undefined) {
-					var success = operation.generate_from_input("columnar_operation_input", "columnar_operation_area", true);
-					if (success)operation.print_step(0);
-				}
-			}
-
-		</LOL>
-		<p style="text-align: center">
-			<button id="columnar_operation_start" style="float: center;" onclick="ColumnarOperationStartArgs()">Start</button>
-		</p>
-		<LOL>
-			SetInputEnterEvent("columnar_operation_input","columnar_operation_start")
-		</LOL>
-
-		<table class="columnar_operation_script center" id="columnar_operation_area" >
-			<tr>
-				<td id="columnar_operation_button_left" onclick="operation.prev()">
-					<svg height="0" width="30">
-						<defs>
-							<linearGradient id="gradient">
-								<stop offset="20%" stop-color="#C33" />
-								<stop offset="90%" stop-color="#833" />
-							</linearGradient>
-							<linearGradient id="hover_gradient">
-								<stop offset="20%" stop-color="#A33" />
-								<stop offset="90%" stop-color="#433" />
-							</linearGradient>
-						</defs>
-						<polygon points="20,0 0,30 20,60"/>
-					</svg>
-				</td>
-				<td>
-					<div id="columnar_operation_table" class="no_selection"></div>
-					<p id="columnar_operation_comment" class="no_selection"></p>
-				</td>
-				<td id = "columnar_operation_button_right" onclick="operation.next()">
-					<svg height="0" width="30">
-						<polygon points="0,0 20,30 0,60"/>
-					</svg>
-				</td>
-			</tr>
-		</table>
+		
+    	<columnar-operation :operation="'all'" :floats="true"></columnar-operation>
 
 		</lesson-chapter>
 

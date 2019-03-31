@@ -509,54 +509,8 @@
     
     </div>
 
-	<p style="text-align: center">
-		<input style="width: 800px" name="numberInput" type="text" id="columnar_multiplication_input" />
-	</p>
-	<LOL>
-        var columnar_multiplication = new Columnar_multiplication( "columnar_multiplication_table","columnar_multiplication_comment", "columnar_operation_button_right", "columnar_operation_button_left");
-        function ColumnarMultiplicationStartArgs() {
-            var success = columnar_multiplication.generate_from_input("columnar_multiplication_input","columnar_multiplication_area", false);
-            if (success)columnar_multiplication.print_step(0);
-        }
 
-	</LOL>
-	<p style="text-align: center">
-		<button id="columnar_multiplication_start" style="float: center;" onclick="ColumnarMultiplicationStartArgs()">Start</button>
-	</p>
-	<LOL>
-		SetInputEnterEvent("columnar_multiplication_input","columnar_multiplication_start")
-	</LOL>
-	
-	
-	<table class="columnar_operation_script center" id="columnar_multiplication_area" >
-		<tr>
-			<td id="columnar_operation_button_left" onclick="columnar_multiplication.prev()">
-				<svg height="0" width="30">
-					<defs>
-						<linearGradient id="gradient">
-							<stop offset="20%" stop-color="#C33" />
-							<stop offset="90%" stop-color="#833" />
-						</linearGradient>
-						<linearGradient id="hover_gradient">
-							<stop offset="20%" stop-color="#A33" />
-							<stop offset="90%" stop-color="#433" />
-						</linearGradient>
-					</defs>
-					<polygon points="20,0 0,30 20,60"/>
-				</svg>
-			</td>
-			<td>
-				<div id="columnar_multiplication_table" class="no_selection"></div>
-				<div id="columnar_multiplication_carry" class="no_selection"></div>
-				<p id="columnar_multiplication_comment" class="no_selection"></p>
-			</td>
-			<td id = "columnar_operation_button_right" onclick="columnar_multiplication.next()">
-				<svg height="0" width="30">
-					<polygon points="0,0 20,30 0,60"/>
-				</svg>
-			</td>	
-		</tr>
-	</table>
+    <columnar-operation :operation="'multiplication'" :floats="false"></columnar-operation>
   
     <p class = "type optional-hide">
         Rozszerzenie
