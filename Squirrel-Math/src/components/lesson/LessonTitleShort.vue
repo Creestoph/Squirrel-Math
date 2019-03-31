@@ -23,9 +23,9 @@
         font-size: 3.2em;
         font-weight: bold;
         font-family: "Corbel";
-        margin: 50px auto 0.22em auto;
+        margin: 50px auto 0 auto;
         clear:both;
-        line-height: 0.55em;
+        line-height: 1em;
     }
 
     p.lesson_subtitle
