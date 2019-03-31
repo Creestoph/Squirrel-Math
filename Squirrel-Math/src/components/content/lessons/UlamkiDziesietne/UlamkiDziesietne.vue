@@ -586,7 +586,8 @@
 			1 : 7 = 0,(142857)
 		$$
 
-    	<columnar-operation :operation="''" :floats="true"></columnar-operation>
+		
+    	<columnar-operation :operation="'all'" :floats="true"></columnar-operation>
 
 		</lesson-chapter>
 

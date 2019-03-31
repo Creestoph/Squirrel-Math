@@ -427,7 +427,7 @@
     </p>
       
 	<columnar-operation :operation="'subtraction'" :floats="false"></columnar-operation>
-      
+
 	<p class = "type optional-hide">
         Rozszerzenie
     </p>
