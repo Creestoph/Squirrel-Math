@@ -399,7 +399,7 @@
 		 czarnej magii</span>, prześledź jeszcze dowolne własne przykłady:
     </p>
       
-    <columnar-addition></columnar-addition>
+    <columnar-operation :operation="'addition'" :floats="false"></columnar-operation>
 	  
     <p class ="type optional-hide">
         Rozszerzenie
@@ -534,7 +534,7 @@ import LessonChapter from "../../../lesson/chapter/LessonChapter";
 import Lesson from "../../../lesson/Lesson";
 import ColumnarOperationTable from "../../../utils/columnar_operation_table/ColumnarOperationTable";
 import OperationTable from "../../../utils/operation_table/OperationTable"
-import ColumnarAddition from "../../../utils/columnar_operation/ColumnarAddition"
+import ColumnarOperation from "../../../utils/columnar_operation/ColumnarOperation"
 
 export default {
   name: "Dodawanie",
@@ -550,7 +550,7 @@ export default {
     Lesson,
     ColumnarOperationTable,
     OperationTable,
-    ColumnarAddition
+    ColumnarOperation
   }
 };
 </script>

@@ -2,6 +2,8 @@
  * Created by InvincibleWombat on 11.11.2016.
  */
 
+import {validate_float, validate_int} from "../number_validation"
+import {Display_table} from "../columnar_operation_table/display_table"
 
 function Columnar_subtraction_step(table, comma, highlight_column, crossed_fields, comment) {
     var tab = [];
@@ -26,70 +28,70 @@ function Columnar_subtraction_step(table, comma, highlight_column, crossed_field
 }
 
 Columnar_subtraction_step.prototype.print = function (coment_target_id, table_target_id) {
-    document.getElementById(coment_target_id).innerHTML = this.comment;
+    coment_target_id.innerHTML = this.comment;
     this.table.print(table_target_id);
 }
 
-
-function Columnar_subtraction(table_id, comment_id, button_right_id, button_left_id) {
+export class Columnar_subtraction{
+    
+constructor(table_id, comment_id, button_right_id, button_left_id) {
     this.comment_id = comment_id;
     this.table_id = table_id;
     this.button_right_id = button_right_id;
     this.button_left_id = button_left_id;
 }
 
-Columnar_subtraction.prototype.generate_from_input = function (input_id, columnar_subtraction_area, is_float = true) {
-    document.getElementById(columnar_subtraction_area).style.visibility = "visible";
-    document.getElementById(columnar_subtraction_area).style.marginBottom = "60px";
-    document.getElementById(columnar_subtraction_area).style.height = "400px";
-    document.getElementById(columnar_subtraction_area).style.padding = "20px";
-    document.getElementById(this.table_id).style.marginTop = "60px";
-    document.getElementById(this.button_left_id).childNodes[0].nextSibling.setAttribute("height", "60px");
-    document.getElementById(this.button_right_id).childNodes[0].nextSibling.setAttribute("height", "60px");
-    var input = document.getElementById(input_id).value;
+generate_from_input(input_id, columnar_subtraction_area, is_float = true) {
+    columnar_subtraction_area.style.visibility = "visible";
+    columnar_subtraction_area.style.marginBottom = "60px";
+    columnar_subtraction_area.style.height = "auto";
+    this.table_id.style.marginTop = "60px";
+    this.button_left_id.childNodes[0].setAttribute("height", "60px");
+    this.button_right_id.childNodes[0].setAttribute("height", "60px");
+    var input = input_id.value;
     input = input.replace(/ /g, "");
     input = input.replace(/,/g, ".");
     try {
         this.generate_steps(input.split("-"), is_float);
-		document.getElementById(this.comment_id).style.marginTop = "60px";
+		this.comment_id.style.marginTop = "60px";
         return true;
     }
     catch (err) {
-		document.getElementById(this.comment_id).style.marginTop = "120px";
+		this.comment_id.style.marginTop = "120px";
         this.print_error(err);
         return false;
     }
 }
 
-Columnar_subtraction.prototype.next = function () {
+next() {
     this.step += 1;
     this.print_step(this.step)
 }
-Columnar_subtraction.prototype.prev = function () {
+prev() {
     this.step -= 1;
     this.print_step(this.step)
 }
 
-Columnar_subtraction.prototype.print_step = function (i) {
-    document.getElementById(this.button_right_id).style.visibility = "visible";
-    document.getElementById(this.button_left_id).style.visibility = "visible";
+print_step(i) {
+    this.button_right_id.style.visibility = "visible";
+    this.button_left_id.style.visibility = "visible";
     if (this.step == 0) {
-        document.getElementById(this.button_left_id).style.visibility = "hidden";
+        this.button_left_id.style.visibility = "hidden";
     }
     else if (this.step == this.steps.length - 1) {
-        document.getElementById(this.button_right_id).style.visibility = "hidden";
+        this.button_right_id.style.visibility = "hidden";
     }
     this.steps[i].print(this.comment_id, this.table_id);
 }
 
-Columnar_subtraction.prototype.print_error = function (msg) {
-    document.getElementById(this.button_left_id).style.visibility = "hidden";
-    document.getElementById(this.button_right_id).style.visibility = "hidden";
-    document.getElementById(this.comment_id).innerHTML = msg;
-    document.getElementById(this.table_id).innerHTML = "";
+print_error(msg) {
+    this.button_left_id.style.visibility = "hidden";
+    this.button_right_id.style.visibility = "hidden";
+    this.comment_id.innerHTML = msg;
+    this.table_id.innerHTML = "";
 }
 
-Columnar_subtraction.prototype.generate_steps = function (numbers, is_float = true) {
+generate_steps(numbers, is_float = true) {
     var standard_err = "Wpisz dwie liczby do odjęcia <br>np. 1234-73";
     if (!is_float) standard_err = "Wpisz dwie naturalne liczby do odjęcia <br>np. 1234-73";
     var validate = validate_float;
@@ -229,3 +231,5 @@ Columnar_subtraction.prototype.generate_steps = function (numbers, is_float = tr
     this.steps.push(new Columnar_subtraction_step(table, longest_after_comma, -1,crossed_fields, comment));
 }
 
+
+}
