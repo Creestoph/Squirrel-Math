@@ -17,7 +17,7 @@
           
       <p>
         Dodawanie to inaczej łączenie, powiększanie, scalanie mniejszych elementów w większą całość. 
-        <span class="comment" id="Kulki zostały rzucone">Rozłóżmy na stole kulki.</span>
+        <comment text="Kulki zostały rzucone">Rozłóżmy na stole kulki.</comment>
       </p>
         
       <p style="text-align: center">
@@ -528,8 +528,9 @@ import LessonIntro from "../../../lesson/LessonIntro";
 import LessonChapter from "../../../lesson/chapter/LessonChapter";
 import Lesson from "../../../lesson/Lesson";
 import ColumnarOperationTable from "../../../utils/columnar_operation_table/ColumnarOperationTable";
-import OperationTable from "../../../utils/operation_table/OperationTable"
+import OperationTable from "../../../utils/OperationTable"
 import ColumnarOperation from "../../../utils/columnar_operation/ColumnarOperation"
+import Comment from "../../../utils/Comment"
 
 export default {
   name: "Dodawanie",
@@ -545,7 +546,8 @@ export default {
     Lesson,
     ColumnarOperationTable,
     OperationTable,
-    ColumnarOperation
+    ColumnarOperation,
+    Comment
   }
 };
 </script>
