@@ -859,6 +859,7 @@ import LessonChapter from "../../../lesson/chapter/LessonChapter";
 import Lesson from "../../../lesson/Lesson";
 import ColumnarOperationTable from "../../../utils/columnar_operation_table/ColumnarOperationTable";
 import OperationTable from "../../../utils/operation_table/OperationTable";
+import ColumnarOperation from "../../../utils/columnar_operation/ColumnarOperation"
 
 export default {
   name: "Dzielenie",
@@ -873,7 +874,8 @@ export default {
     LessonChapter,
 	Lesson,
 	ColumnarOperationTable,
-    OperationTable
+	OperationTable,
+	ColumnarOperation
   }
 };
 </script>

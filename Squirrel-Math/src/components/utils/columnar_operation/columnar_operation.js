@@ -15,10 +15,7 @@ export class Columnar_operation {
     }
 
     get_operation(input_id, columnar_addition_area) {
-        columnar_addition_area.style.visibility = "visible";
-        columnar_addition_area.style.marginBottom = "60px";
-        columnar_addition_area.style.height = "400px";
-        this.table_id.style.marginTop = "60px";
+
         var input = input_id.value;
         if (input.indexOf("+") != -1 && input.indexOf("-") == -1 && input.indexOf("*") == -1 && input.indexOf(":") == -1 && input.indexOf("/") == -1) {
             return new Columnar_addition(this.table_id, this.comment_id, this.button_right_id, this.button_left_id);

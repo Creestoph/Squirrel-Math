@@ -46,6 +46,7 @@ generate_from_input(input_id, columnar_subtraction_area, is_float = true) {
     columnar_subtraction_area.style.marginBottom = "60px";
     columnar_subtraction_area.style.height = "auto";
     this.table_id.style.marginTop = "60px";
+    columnar_subtraction_area.childNodes[0].style.minHeight = "400px";
     this.button_left_id.childNodes[0].setAttribute("height", "60px");
     this.button_right_id.childNodes[0].setAttribute("height", "60px");
     var input = input_id.value;

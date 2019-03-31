@@ -39,7 +39,8 @@ export class Columnar_addition {
 	generate_from_input(input_id, columnar_addition_area, is_float = true) {
 		columnar_addition_area.style.visibility = "visible";
 		columnar_addition_area.style.marginBottom = "60px";
-        columnar_addition_area.style.height = "auto";
+		columnar_addition_area.style.height = "auto";
+        columnar_addition_area.childNodes[0].style.minHeight = "400px";		
 		this.table_id.style.marginTop = "60px";
 		this.button_left_id.childNodes[0].setAttribute("height", "60px");
 		this.button_right_id.childNodes[0].setAttribute("height", "60px");

@@ -180,77 +180,17 @@
 			w niej pole z wartością $72$. Wiersz, w którym znajduje się ta liczba: $9$ stanowi wynik dzielenia.
 		</p>
 
-		<table class="operation_table center" id="dividing_table">
-			<tr><th> </th><th>0</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th style="background: #F0E0E0">8</th><th>9</th></tr>
-			<tr><th>0</th><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td style="background: #F0E0E0">0</td><td>0</td></tr>
-			<tr><th>1</th><td>0</td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td style="background: #F0E0E0">8</td><td>9</td></tr>
-			<tr><th>2</th><td>0</td><td>2</td><td>4</td><td>6</td><td>8</td><td>10</td><td>12</td><td>14</td><td style="background: #F0E0E0">16</td><td>18</td></tr>
-			<tr><th>3</th><td>0</td><td>3</td><td>6</td><td>9</td><td>12</td><td>15</td><td>18</td><td>21</td><td style="background: #F0E0E0">24</td><td>27</td></tr>
-			<tr><th>4</th><td>0</td><td>4</td><td>8</td><td>12</td><td>16</td><td>20</td><td>24</td><td>28</td><td style="background: #F0E0E0">32</td><td>36</td></tr>
-			<tr><th>5</th><td>0</td><td>5</td><td>10</td><td>15</td><td>20</td><td>25</td><td>30</td><td>35</td><td style="background: #F0E0E0">40</td><td>45</td></tr>
-			<tr><th>6</th><td>0</td><td>6</td><td>12</td><td>18</td><td>24</td><td>30</td><td>36</td><td>42</td><td style="background: #F0E0E0">48</td><td>54</td></tr>
-			<tr><th>7</th><td>0</td><td>7</td><td>14</td><td>21</td><td>28</td><td>35</td><td>42</td><td>49</td><td style="background: #F0E0E0">56</td><td>63</td></tr>
-			<tr><th>8</th><td>0</td><td>8</td><td>16</td><td>24</td><td>32</td><td>40</td><td>48</td><td>56</td><td style="background: #F0E0E0">64</td><td>72</td></tr>
-			<tr><th>9</th><td>0</td><td>9</td><td>18</td><td>27</td><td>36</td><td>45</td><td>54</td><td>63</td><td style="background: #CC4444">72</td><td>81</td></tr>
-		</table>
-		<p id ="dividing_table_field" style="visibility: hidden; text-align: center">
-			72 : 8 = 9
-		</p>
+		<operation-table :default_loperand="8" :default_roperand="9" 
+    :f="function(a,b){return a*b}" :print="function(a,b,c){return a > 0 ? c + ' : ' + a + ' = ' + b : '0 : 0 nie ma wartości'}"></operation-table>
 
 		<p>
 			Dla większych liczb stosuje się metodę <i>dzielenia w słupku</i>, zwaną też <i>dzieleniem pisemnym</i>. 
 			Wpisz poniżej liczby do podzielenia, np. $700893 : 12$
 		</p>
 
-		<p style="text-align: center">
-			<input style="width: 800px" name="numberInput" type="text" id="columnar_division_input" />
-		</p>
-		<LOL>
-			var columnar_division = new Columnar_division( "columnar_division_table","columnar_division_comment", "columnar_operation_button_right", "columnar_operation_button_left");
-			function ColumnarDivisionStartArgs() {
-				var success = columnar_division.generate_from_input("columnar_division_input","columnar_division_area", false);
-				if (success)columnar_division.print_step(0);
-			}
-
-		</LOL>
-		<p style="text-align: center">
-			<button id="columnar_division_start" style="float: center;" onclick="ColumnarDivisionStartArgs()">Start</button>
-		</p>
-		<LOL>
-			SetInputEnterEvent("columnar_division_input","columnar_division_start")
-		</LOL>
-
-
-		<table class="columnar_operation_script center" id="columnar_division_area" >
-			<tr>
-				<td id="columnar_operation_button_left" onclick="columnar_division.prev()">
-					<svg height="0" width="30">
-						<defs>
-							<linearGradient id="gradient">
-								<stop offset="20%" stop-color="#C33" />
-								<stop offset="90%" stop-color="#833" />
-							</linearGradient>
-							<linearGradient id="hover_gradient">
-								<stop offset="20%" stop-color="#A33" />
-								<stop offset="90%" stop-color="#433" />
-							</linearGradient>
-						</defs>
-						<polygon points="20,0 0,30 20,60"/>
-					</svg>
-				</td>
-				<td>
-					<div id="columnar_division_table" class="no_selection"></div>
-					<p id="columnar_division_comment" class="no_selection"></p>
-				</td>
-				<td id = "columnar_operation_button_right" onclick="columnar_division.next()">
-					<svg height="0" width="30">
-						<polygon points="0,0 20,30 0,60"/>
-					</svg>
-				</td>
-			</tr>
-		</table>
-
-        </lesson-chapter>
+    <columnar-operation :operation="'division'" :floats="false"></columnar-operation>
+		
+    </lesson-chapter>
 
 		<lesson-chapter><template #title>Nowe pojęcia</template>
 		<p>
@@ -268,7 +208,6 @@
 			nią dzielną, udałoby się wykonać dzielenie bez problemu i otrzymać w wyniku liczbę naturalną. W działaniu $14 : 4 = 3 r. 2$ liczba $2$ jest 
 			resztą z dzielenia, ponieważ w czternastce mieszczą się trzy czwórki i pozostaje jeszcze niepodzielne $2$.
 		</p>
-
 		</lesson-chapter>
 
     </lesson>
@@ -279,6 +218,8 @@ import LessonTitleShort from "../../../lesson/LessonTitleShort";
 import LessonIntro from "../../../lesson/LessonIntro";
 import LessonChapter from "../../../lesson/chapter/LessonChapter";
 import Lesson from "../../../lesson/Lesson";
+import OperationTable from "../../../utils/operation_table/OperationTable";
+import ColumnarOperation from "../../../utils/columnar_operation/ColumnarOperation";
 
 export default {
   name: "DzielenieShort",
@@ -291,7 +232,9 @@ export default {
     LessonIntro,
     LessonTitleShort,
     LessonChapter,
-    Lesson
+		Lesson,
+		OperationTable,
+    ColumnarOperation
   }
 };
 </script>
