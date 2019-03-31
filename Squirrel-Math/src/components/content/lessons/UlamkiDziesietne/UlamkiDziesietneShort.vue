@@ -89,9 +89,11 @@
 			<li>$6,3 : 2,1 = 3$</li>
 		</ul>
 		<p>
-			Każde z tych działań można wykonywać w słupku, zwłaszcza w liczb z wieloma cyframi. Wpisz poniżej dowolne działanie, np. $23,6 + 7,504$, 
-			$56,061 - 2,32$, $7,453 \cdot 4,06$, $1 : 7$. 
+			Każde z tych działań można wykonywać w słupku, zwłaszcza w liczb z wieloma cyframi. Wpisz poniżej dowolne działanie, np. $23,6 + 7,504$ lub
+			$56,061 - 2,32$ lub $7,453 \cdot 4,06$ lub $1 : 7$. 
 		</p>
+    <columnar-operation :operation="''" :floats="true"></columnar-operation>
+
 		</lesson-chapter>
 
 		<lesson-chapter><template #title>Zamiana ułamków zwykłych na dziesiętne</template> 
@@ -165,6 +167,7 @@ import LessonTitleShort from "../../../lesson/LessonTitleShort";
 import LessonIntro from "../../../lesson/LessonIntro";
 import LessonChapter from "../../../lesson/chapter/LessonChapter";
 import Lesson from "../../../lesson/Lesson";
+import ColumnarOperation from "../../../utils/columnar_operation/ColumnarOperation";
 
 export default {
   name: "UlamkiDziesietneShort",
@@ -177,7 +180,8 @@ export default {
     LessonIntro,
     LessonTitleShort,
     LessonChapter,
-    Lesson
+		Lesson,
+    ColumnarOperation		
   }
 };
 </script>

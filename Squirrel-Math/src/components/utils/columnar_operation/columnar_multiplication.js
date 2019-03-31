@@ -50,6 +50,7 @@ export class Columnar_multiplication {
         columnar_multiplication_area.style.visibility = "visible";
         columnar_multiplication_area.style.marginBottom = "60px";
         columnar_multiplication_area.style.height = "auto";
+        columnar_multiplication_area.childNodes[0].style.minHeight = "400px";
         this.table_id.style.marginTop = "60px";
         this.button_left_id.childNodes[0].setAttribute("height", "60px");
         this.button_right_id.childNodes[0].setAttribute("height", "60px");

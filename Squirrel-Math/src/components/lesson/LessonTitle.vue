@@ -19,5 +19,6 @@
     font-family: "Corbel";
     margin: 50px auto;
     clear:both;
+    line-height: 1em;
   }
 </style>

@@ -712,6 +712,7 @@ import LessonIntro from "../../../lesson/LessonIntro";
 import LessonChapter from "../../../lesson/chapter/LessonChapter";
 import Lesson from "../../../lesson/Lesson";
 import ColumnarOperationTable from "../../../utils/columnar_operation_table/ColumnarOperationTable";
+import ColumnarOperation from "../../../utils/columnar_operation/ColumnarOperation";
 
 export default {
 	name: "UlamkiDziesietne",
@@ -725,7 +726,8 @@ export default {
 		LessonTitle,
 		LessonChapter,
 		Lesson,
-		ColumnarOperationTable
+		ColumnarOperationTable,
+    	ColumnarOperation
 	}
 };
 </script>

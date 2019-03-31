@@ -46,6 +46,7 @@ export class Columnar_division {
         columnar_multiplication_area.style.visibility = "visible";
         columnar_multiplication_area.style.marginBottom = "60px";
         columnar_multiplication_area.style.height = "auto";
+        columnar_multiplication_area.childNodes[0].style.minHeight = "400px";
         this.table_id.style.marginTop = "60px";
         this.button_left_id.childNodes[0].setAttribute("height", "60px");
         this.button_right_id.childNodes[0].setAttribute("height", "60px");
@@ -341,10 +342,10 @@ export class Columnar_division {
                 var tl = table[0].length - 1;
                 while (table[0][tl].toString() == "") tl--;
                 tl++;
-                if (tl > 30) {
+                if (tl > 27) {
                     too_long = true;
                     table = Columnar_division.add_empty_column(table);
-                    table[0][tl] = "...";
+                    table[0][tl] = "\\dots";
                     comment = "Możemy kontynuować procedurę aż do napotkania okresu rozwinięcia dziesiętnego. Rachunki mogą trwać jeszcze bardzo długo, więc zadowalamy się przybliżonym wynikiem ";
                     var zeros = 1;
                     var result = "";
@@ -357,7 +358,7 @@ export class Columnar_division {
                         }
 
                     }
-                    comment += (result[0] == ',' ? "0" : "") + result + ".";
+                    comment += "$" + (result[0] == ',' ? "0" : "") + result + "$.";
                     highlight_fields = Columnar_division.empty_highlight(table);
                     this.steps.push(new Columnar_division_step(table, highlight_fields, comment));
                     return;

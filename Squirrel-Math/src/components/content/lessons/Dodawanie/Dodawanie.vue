@@ -306,12 +306,7 @@
     </p>
       
     <br>
-    <operation-table 
-    :default_loperand="8" 
-    :default_roperand="9" 
-    :f="function(a,b){return a+b}" 
-    :print="function(a,b,c){return a + ' + ' + b + ' = ' + c}"
-    ></operation-table>
+    <operation-table :default_loperand="8" :default_roperand="9" :f="function(a,b){return a+b}" :print="function(a,b,c){return a + ' + ' + b + ' = ' + c}"></operation-table>
       
     <p>
         Ponieważ dodawanie jest przemienne, możemy równie dobrze znaleźć dziewiątkę u góry i ósemkę po lewej – znowu trafimy na 

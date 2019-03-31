@@ -509,9 +509,8 @@
     
     </div>
 
+	<columnar-operation :operation="'multiplication'" :floats="false"></columnar-operation>
 
-    <columnar-operation :operation="'multiplication'" :floats="false"></columnar-operation>
-  
     <p class = "type optional-hide">
         Rozszerzenie
     </p>
@@ -559,23 +558,15 @@
             ułożylibyśmy je tak:
         </p>
     
-        <div id="columnar_multiplication_18">
-        </div>
-        <LOL>
-            Display_table.create_custom([["", "", "", "", "9", "0", "6"], ["", "", "", "3", "0", "2", "0"], ["/u:+", "/u:", "/u:6", "/u:0", "/u:4", "/u:0", "/u:0"], 
-            ["", "", "", "", "", "", ""]]).print("columnar_multiplication_18");
-        </LOL>
+        <columnar-operation-table :operation='""' :numbers='[["", "", "", "", "9", "0", "6"], ["", "", "", "3", "0", "2", "0"], ["/u:+", "/u:", "/u:6", "/u:0", "/u:4", "/u:0", "/u:0"], 
+            ["", "", "", "", "", "", ""]]'></columnar-operation-table>
 
         <p>
             Przypomnijmy, jak wygląda to sumowanie w całym słupku:
         </p>
     
-        <div id="columnar_multiplication_19">
-        </div>
-        <LOL>
-            Display_table.create_custom([["", "", "", "", "3", "0", "2"], ["/u:\\cdot", "/u:", "/u:", "/u:", "/u:2", "/u:1", "/u:3"], ["", "", "", "", "9", "0", "6"], ["", "", "", "3", "0", "2", ""], ["/u:+", "/u:", "/u:6", "/u:0", "/u:4", "/u:", "/u:"], 
-            ["", "", "6", "4", "3", "2", "6"]]).print("columnar_multiplication_19");
-        </LOL>
+        <columnar-operation-table :operation='""' :numbers='[["", "", "", "", "3", "0", "2"], ["/u:\\cdot", "/u:", "/u:", "/u:", "/u:2", "/u:1", "/u:3"], ["", "", "", "", "9", "0", "6"], ["", "", "", "3", "0", "2", ""], ["/u:+", "/u:", "/u:6", "/u:0", "/u:4", "/u:", "/u:"], 
+            ["", "", "6", "4", "3", "2", "6"]]'></columnar-operation-table>
 
         <p>
             Łatwiej teraz zrozumieć, dlaczego każdy kolejny wynik mnożenia zapisywaliśmy z przesunięciem o cyfrę w lewo: mnożenie 
@@ -685,6 +676,7 @@ import LessonChapter from "../../../lesson/chapter/LessonChapter";
 import Lesson from "../../../lesson/Lesson";
 import ColumnarOperationTable from "../../../utils/columnar_operation_table/ColumnarOperationTable";
 import OperationTable from "../../../utils/OperationTable";
+import ColumnarOperation from "../../../utils/columnar_operation/ColumnarOperation";
 
 export default {
   name: "Mnozenie",
@@ -699,7 +691,8 @@ export default {
     LessonChapter,
     Lesson,
     ColumnarOperationTable,
-    OperationTable
+    OperationTable,
+    ColumnarOperation
   }
 };
 </script>

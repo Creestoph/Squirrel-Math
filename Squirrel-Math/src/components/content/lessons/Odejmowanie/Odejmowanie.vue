@@ -277,12 +277,7 @@
 		skorzystać z tabliczki dodawania:
     </p>
 
-    <operation-table 
-    :default_loperand="3" 
-    :default_roperand="4" 
-    :f="function(a,b){return a+b}" 
-    :print="function(a,b,c){return c + ' - ' + a + ' = ' + b}"
-    ></operation-table>
+    <operation-table :default_loperand="3" :default_roperand="4"  :f="function(a,b){return a+b}" :print="function(a,b,c){return c + ' - ' + a + ' = ' + b}"></operation-table>
 
     <p>
         Patrzymy na kolumnę zatytułowaną jako „$3$”. Jedziemy wzrokiem wzdłuż niej, aż napotkamy interesujący nas wynik - $7$. 
@@ -431,8 +426,7 @@
         odejmować nawet duże liczby w pamięci. A jeśli nie, to przecież zawsze jest kalkulator.
     </p>
       
-      
-    <columnar-operation :operation="'subtraction'" :floats="false"></columnar-operation>
+	<columnar-operation :operation="'subtraction'" :floats="false"></columnar-operation>
 
 	<p class = "type optional-hide">
         Rozszerzenie
@@ -576,6 +570,7 @@ import LessonChapter from "../../../lesson/chapter/LessonChapter";
 import Lesson from "../../../lesson/Lesson";
 import ColumnarOperationTable from "../../../utils/columnar_operation_table/ColumnarOperationTable";
 import OperationTable from "../../../utils/OperationTable";
+import ColumnarOperation from "../../../utils/columnar_operation/ColumnarOperation";
 
 export default {
   name: "Odejmowanie",
@@ -590,7 +585,8 @@ export default {
     LessonChapter,
     Lesson,
     ColumnarOperationTable,
-    OperationTable
+    OperationTable,
+    ColumnarOperation
   }
 };
 </script>
