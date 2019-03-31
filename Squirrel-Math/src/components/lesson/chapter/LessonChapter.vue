@@ -1,26 +1,34 @@
 <template>
   <div class="chapter">
-    <chapter-title><slot name="title"></slot></chapter-title>
-    <chapter-body><slot></slot></chapter-body>
+    <chapter-title @click.native="trigger.call()">
+      <slot name="title"></slot>
+    </chapter-title>
+    <chapter-body :trigger="trigger">
+      <slot></slot>
+    </chapter-body>
   </div>
 </template>
 
 <script>
-  import ChapterTitle from './ChapterTitle'
-  import ChapterBody from './ChapterBody'
+import ChapterTitle from "./ChapterTitle";
+import ChapterBody from "./ChapterBody";
 
-  export default {
-    name: "LessonChapter",
-    components: {
-      ChapterTitle,
-      ChapterBody
-    }
+export default {
+  name: "LessonChapter",
+  components: {
+    ChapterTitle,
+    ChapterBody
+  },
+  data() {
+    return {
+      trigger: { call: function() {} }
+    };
   }
+};
 </script>
 
 <style scoped>
-  .chapter
-  {
-    position: relative;
-  }
+.chapter {
+  position: relative;
+}
 </style>
