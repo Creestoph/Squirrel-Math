@@ -33,7 +33,7 @@ function Columnar_multiplication_step(table, highlight_fields, comment, carry, m
 }
 
 Columnar_multiplication_step.prototype.print = function (coment_target_id, table_target_id, carry_target_id) {
-    document.getElementById(coment_target_id).innerHTML = this.comment;
+    coment_target_id.innerHTML = this.comment;
     //document.getElementById(carry_target_id).innerHTML = this.carry;
     this.table.print(table_target_id);
 }
@@ -49,7 +49,7 @@ export class Columnar_multiplication {
     generate_from_input(input_id, columnar_multiplication_area, is_float = true) {
         columnar_multiplication_area.style.visibility = "visible";
         columnar_multiplication_area.style.marginBottom = "60px";
-        columnar_multiplication_area.style.height = "400px";
+        columnar_multiplication_area.style.height = "auto";
         this.table_id.style.marginTop = "60px";
         this.button_left_id.childNodes[0].setAttribute("height", "60px");
         this.button_right_id.childNodes[0].setAttribute("height", "60px");

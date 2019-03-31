@@ -1,5 +1,6 @@
 <template>
   <div>
+    <zero-division-error></zero-division-error>
     <p style="text-align: center">
       <input style="width: 85%" name="numberInput" type="text" ref="columnar_operation_input">
     </p>
@@ -53,6 +54,7 @@ import { Columnar_subtraction } from "./columnar_subtraction";
 import { Columnar_division } from "./columnar_division";
 import { Columnar_multiplication } from "./columnar_multiplication";
 import { Columnar_operation } from "./columnar_operation";
+import ZeroDivisionError from "./ZeroDivisionError"
 
 export default {
   name: "ColumnarOperation",
@@ -132,6 +134,9 @@ export default {
       this.columnar_operation.prev();
       MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
     }
+  },
+  components: {
+    ZeroDivisionError
   }
 };
 </script>

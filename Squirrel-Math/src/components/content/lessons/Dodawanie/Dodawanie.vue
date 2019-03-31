@@ -399,7 +399,7 @@
 		 czarnej magii</span>, prześledź jeszcze dowolne własne przykłady:
     </p>
       
-    <columnar-operation :operation="'subtraction'" :floats="true"></columnar-operation>
+    <columnar-operation :operation="'addition'" :floats="false"></columnar-operation>
 	  
     <p class ="type optional-hide">
         Rozszerzenie

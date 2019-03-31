@@ -28,7 +28,7 @@ function Columnar_subtraction_step(table, comma, highlight_column, crossed_field
 }
 
 Columnar_subtraction_step.prototype.print = function (coment_target_id, table_target_id) {
-    document.getElementById(coment_target_id).innerHTML = this.comment;
+    coment_target_id.innerHTML = this.comment;
     this.table.print(table_target_id);
 }
 
@@ -44,7 +44,7 @@ constructor(table_id, comment_id, button_right_id, button_left_id) {
 generate_from_input(input_id, columnar_subtraction_area, is_float = true) {
     columnar_subtraction_area.style.visibility = "visible";
     columnar_subtraction_area.style.marginBottom = "60px";
-    columnar_subtraction_area.style.height = "400px";
+    columnar_subtraction_area.style.height = "auto";
     this.table_id.style.marginTop = "60px";
     this.button_left_id.childNodes[0].setAttribute("height", "60px");
     this.button_right_id.childNodes[0].setAttribute("height", "60px");

@@ -2,6 +2,7 @@
  * Created by InvincibleWombat on 11.11.2016.
  */
 import { validate_float, validate_int } from "../number_validation"
+import { divide } from "../sm_library"
 import { Display_table } from "../columnar_operation_table/display_table"
 
 function Columnar_division_step(table, highlight_fields, comment) {
@@ -30,7 +31,7 @@ function Columnar_division_step(table, highlight_fields, comment) {
 }
 
 Columnar_division_step.prototype.print = function (coment_target_id, table_target_id) {
-    document.getElementById(coment_target_id).innerHTML = this.comment;
+    coment_target_id.innerHTML = this.comment;
     this.table.print(table_target_id);
 }
 
@@ -44,7 +45,7 @@ export class Columnar_division {
     generate_from_input(input_id, columnar_multiplication_area, is_float = true) {
         columnar_multiplication_area.style.visibility = "visible";
         columnar_multiplication_area.style.marginBottom = "60px";
-        columnar_multiplication_area.style.height = "400px";
+        columnar_multiplication_area.style.height = "auto";
         this.table_id.style.marginTop = "60px";
         this.button_left_id.childNodes[0].setAttribute("height", "60px");
         this.button_right_id.childNodes[0].setAttribute("height", "60px");
