@@ -68,7 +68,7 @@
         <p>
             Gdy wykonujemy dodawanie, liczbę, od której odejmujemy (po lewej), nazywamy <b>odjemną</b>, a liczbę, którą odejmujemy (po prawej), nazywamy 
         	<b>odjemnikiem</b>. Wynik odejmowania to <b>różnica</b>. W działaniu $10 - 4 = 6$ odjemną jest $10$, odjemnikiem jest 
-			$4$, a różnicą $6$.
+					$4$, a różnicą $6$.
         </p>
 		$$
 			\text{odjemna} - \text{odjemnik} = \text{różnica}

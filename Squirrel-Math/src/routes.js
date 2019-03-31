@@ -33,6 +33,7 @@ import TwierdzeniaIDowodyShort from './components/content/lessons/TwierdzeniaIDo
 import Potegowanie from './components/content/lessons/Potegowanie/Potegowanie'
 import PotegowanieShort from './components/content/lessons/Potegowanie/PotegowanieShort'
 import Pierwiastkowanie from './components/content/lessons/Pierwiastkowanie/Pierwiastkowanie'
+import PierwiastkowanieShort from './components/content/lessons/Pierwiastkowanie/PierwiastkowanieShort'
 import DzialaniaNaWyrazeniachAlgebraicznych from './components/content/lessons/DzialaniaNaWyrazeniachAlgebraicznych/DzialaniaNaWyrazeniachAlgebraicznych'
 
 export const routes = [
@@ -56,6 +57,6 @@ export const routes = [
   { path: '/wyrazenia-algebraiczne', component: WyrazeniaAlgebraiczne }, { path: '/wyrazenia-algebraiczne-short', component: WyrazeniaAlgebraiczneShort },
   { path: '/twierdzenia-i-dowody', component: TwierdzeniaIDowody }, { path: '/twierdzenia-i-dowody-short', component: TwierdzeniaIDowodyShort },
   { path: '/potegowanie', component: Potegowanie },  { path: '/potegowanie-short', component: PotegowanieShort },
-  { path: '/pierwiastkowanie', component: Pierwiastkowanie },
+  { path: '/pierwiastkowanie', component: Pierwiastkowanie }, { path: '/pierwiastkowanie-short', component: PierwiastkowanieShort },
   { path: '/dzialania-na-wyrazeniach-algebraicznych', component: DzialaniaNaWyrazeniachAlgebraicznych },
 ];
