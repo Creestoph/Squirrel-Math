@@ -1,5 +1,6 @@
 
 import Home from './components/content/Home'
+import HomeShort from './components/content/HomeShort'
 import Editor from './components/Editor'
 import Tree from './components/content/Tree'
 import DrzewoHD from './components/content/DrzewoHD'
@@ -35,9 +36,10 @@ import PotegowanieShort from './components/content/lessons/Potegowanie/Potegowan
 import Pierwiastkowanie from './components/content/lessons/Pierwiastkowanie/Pierwiastkowanie'
 import PierwiastkowanieShort from './components/content/lessons/Pierwiastkowanie/PierwiastkowanieShort'
 import DzialaniaNaWyrazeniachAlgebraicznych from './components/content/lessons/DzialaniaNaWyrazeniachAlgebraicznych/DzialaniaNaWyrazeniachAlgebraicznych'
+import DzialaniaNaWyrazeniachAlgebraicznychShort from './components/content/lessons/DzialaniaNaWyrazeniachAlgebraicznych/DzialaniaNaWyrazeniachAlgebraicznychShort'
 
 export const routes = [
-  { path: '', component: Home },
+  { path: '', component: Home }, { path: '/-short', component: HomeShort },
   { path: '/editor', component: Editor },
   { path: '/tree', component: Tree },
   { path: '/drzewoHD', component: DrzewoHD },
@@ -58,5 +60,5 @@ export const routes = [
   { path: '/twierdzenia-i-dowody', component: TwierdzeniaIDowody }, { path: '/twierdzenia-i-dowody-short', component: TwierdzeniaIDowodyShort },
   { path: '/potegowanie', component: Potegowanie },  { path: '/potegowanie-short', component: PotegowanieShort },
   { path: '/pierwiastkowanie', component: Pierwiastkowanie }, { path: '/pierwiastkowanie-short', component: PierwiastkowanieShort },
-  { path: '/dzialania-na-wyrazeniach-algebraicznych', component: DzialaniaNaWyrazeniachAlgebraicznych },
+  { path: '/dzialania-na-wyrazeniach-algebraicznych', component: DzialaniaNaWyrazeniachAlgebraicznych }, { path: '/dzialania-na-wyrazeniach-algebraicznych-short', component: DzialaniaNaWyrazeniachAlgebraicznychShort },
 ];

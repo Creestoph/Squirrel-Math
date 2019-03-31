@@ -25,7 +25,7 @@
 		<ul>
 			<li>$a \cdot 3 \cdot a \cdot 5 \cdot b \cdot a \cdot b \cdot a^3 \cdot (-2) \cdot b^2=-30a^6 b^4$</li>
 			<li>$\frac{c}{3} \cdot \frac{b^2}{2} \cdot d \cdot a^3 \cdot 6=a^3 b^2 cd$</li>
-			<li>$bogdanma2jajca=2a^4 bcdgj^2 mno $</li>
+			<li>$bogdan \cdot ma \cdot 2 \cdot jajca=2a^4 bcdgj^2 mno $</li>
 			<li>$masło=słoma=ałmos$</li>
 		</ul>
 		
@@ -654,7 +654,7 @@
 
 		<ul>
 			<li>$16a^4 b^6 c^3+14a^3 b^7 c^4 - 18a^2 b^4 c^5 = 2a^2 b^4 c^3 (8a^2 b^2+7ab^3 c - 9c^2)$</li>
-			<li>$-2m^3-4n^4 m^5-8k m^3=-2m^3(1+2n^4 m^2+4k^5)$</li>
+			<li>$-2m^3-4n^4 m^5-8k^5 m^3=-2m^3(1+2n^4 m^2+4k^5)$</li>
 		</ul>
 
 		<p class="type">

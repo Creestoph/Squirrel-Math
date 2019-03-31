@@ -1,7 +1,7 @@
 <template>
   <div class="lesson">
     <div class="main">
-      <router-link tag="a" :to="toggleShortRoute">
+      <router-link tag="a" :to="toggleShortRoute" v-show="hasShortVersion">
         <div class="bookmark-shadow">
           <div class="bookmark">{{toggleShortText}}</div>
         </div>
@@ -24,6 +24,7 @@ export default {
   name: "Lesson",
   data() {
     return {
+      hasShortVersion: false,
       toggleShortRoute: "",
       toggleShortText: "",
       fullClass: "",
@@ -32,6 +33,12 @@ export default {
     };
   },
   mounted() {
+    this.hasShortVersion = this.$route.path != "/wprowadzenie";
+    console.log(this.$route.path);
+    console.log(this.$route.path == "/wprowadzenie");
+    console.log(this.hasShortVersion);
+
+
     if (this.$route.path.includes("-short"))
     {
       this.toggleShortRoute = this.$route.path.substr(0, this.$route.path.lastIndexOf("-"));

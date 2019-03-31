@@ -224,7 +224,7 @@
 				<p>
 					Gdy wykonujemy pierwiastkowanie, liczbę, której z której pierwiastek wyciągamy, nazywamy <b>liczbą podpierwiastkową</b>, 
 					a liczba zapisana po lewej stronie nad symbolem pierwiastka to <b>stopień pierwiastka</b>. W zapisie $\sqrt[5]{243} = 3$ liczba 
-					$254$ jest liczbą podpierwiastkową, a $5$ to stopień pierwiastka.
+					$243$ jest liczbą podpierwiastkową, a $5$ to stopień pierwiastka.
 				</p>
 
 				<p> 
