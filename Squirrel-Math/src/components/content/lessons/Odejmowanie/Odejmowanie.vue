@@ -575,7 +575,7 @@ import LessonIntro from "../../../lesson/LessonIntro";
 import LessonChapter from "../../../lesson/chapter/LessonChapter";
 import Lesson from "../../../lesson/Lesson";
 import ColumnarOperationTable from "../../../utils/columnar_operation_table/ColumnarOperationTable";
-import OperationTable from "../../../utils/operation_table/OperationTable";
+import OperationTable from "../../../utils/OperationTable";
 
 export default {
   name: "Odejmowanie",

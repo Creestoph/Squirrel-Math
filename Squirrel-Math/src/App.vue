@@ -218,17 +218,7 @@ a.link:active
 }
 
 /* ========================================== LESSON ========================================== */
-.comment_window
-{
-	position: absolute;
-    background: #FEFEFE;
-    padding: 6px;
-	border-right: 1px solid black;
-	border-bottom: 1px solid black;
-	font-family: calibri light;
-	font-size: 15px;
-	box-shadow: inset 0px -15px 15px -5px rgba(0, 0, 0, 0.15);
-}
+
 
 .comment_visible_window
 {
