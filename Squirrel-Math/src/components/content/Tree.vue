@@ -32,7 +32,8 @@
               'twierdzenia-i-dowody': 'Twierdzenia i dowody',
               'potegowanie': 'Potęgowanie',
               'pierwiastkowanie': 'Pierwiastkowanie',
-              'dzialania-na-wyrazeniach-algebraicznych': 'Działania na wyrażeniach algebraicznych'
+              'dzialania-na-wyrazeniach-algebraicznych': 'Działania na wyrażeniach algebraicznych',
+              'rownania': 'Równania'
             }
         }
     }
