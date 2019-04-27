@@ -64,7 +64,7 @@
 
     <p>
       <b>Dziedzinę równania</b> stanowią wszystkie liczby, które "potencjalnie" mogą stanowić rozwiązanie równania. Z dziedziny wyklucza się takie wartości, które 
-      wstawione w miejsce $x$ utworzyłbyby wyrażenia niezdefiniowane. Na przykład dziedziną równania $\frac{2}{x} = 4$ są wszystkie liczby oprócz $0$, ponieważ dzielenie przez
+      wstawione w miejsce $x$ utworzyłyby wyrażenia niezdefiniowane. Na przykład dziedziną równania $\frac{2}{x} = 4$ są wszystkie liczby oprócz $0$, ponieważ dzielenie przez
       $0$ jest niedozwolone.
     </p>
 

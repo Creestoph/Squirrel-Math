@@ -43,8 +43,8 @@
     </p>
 
     <p>
-        Stosowanie symbolu $\text{∎}$ dla określenia nieznanej wartości jest cokolwiek niepraktyczne. Bardziej serdeczne jest zastosowanie pewnej literki. Z jakiegoś powodu 
-        przyjęło się globalnie, że niewiadomą w równaniu zapisuje się za pomoca litery $x$:
+        Stosowanie symbolu $\text{∎}$ dla określenia nieznanej wartości jest cokolwiek niepraktyczne. Bardziej serdecznie wyglądałoby zamiast niego jakieś oznaczenie literowe. 
+        Z niewiadomego powodu przyjęło się globalnie, że niewiadomą w równaniu zapisuje się za pomocą litery $x$:
     </p>
 
 	$$40 + x = 120$$
@@ -75,14 +75,14 @@
     <div class="example">
         Jaka liczba pomnożona przez samą siebie daje $9$?
         $$x \cdot x = 9$$
-        Znając dobrze tabliczkę mnożenia odpowiemy bez wachania, że rozwiązaniem jest $x = 3$. Jednak w tym równaniu kryje się pułapka! W miejsce $x$ można wstawić także 
+        Znając dobrze tabliczkę mnożenia, odpowiemy bez wachania, że rozwiązaniem jest $x = 3$. Jednak w tym równaniu kryje się pułapka! W miejsce $x$ można wstawić także 
         liczbę ujemną: $-3$, ponieważ $(-3) \cdot (-3)$ także ma wartość $9$. Okazuje się, że to równanie ma dwa rozwiązania.
     </div>
 
     <div class="example">
         $$(x - 3) \cdot (x  + 2) \cdot (x - 5) = 0$$
         Na powyższe równanie możemy spojrzeć w taki sposób: mamy trzy liczby, $(x - 3)$, $(x + 2)$ oraz $(x - 5)$, każda z nich zależy od niewiadomej $x$. Ich iloczyn 
-        ma być równy $0$. Skoro iloczyn trzech liczb ma być zerem, to z pewnością któraś z nich musi być zerem: w przeciwnym razie mielibyśmy iloczyn dodatnich i ujemnych 
+        ma być równy $0$. Skoro iloczyn trzech liczb ma być zerem, to z pewnością któraś z nich musi być zerem: w przeciwnym razie mielibyśmy iloczyn dodatnich/ujemnych 
         liczb, które w wyniku dadzą coś różnego od zera. W takim razie $x - 3$ jest zerem lub $x + 2$ jest zerem lub $x - 5$ jest zerem. W pierwszym przypadku warunek spełnia
         $x = 3$, w drugim przypadku $x = -2$ a w trzecim $x = 5$. W takim razie równanie ma trzy rozwiązania: $3$, $-2$ oraz $5$. Możemy wziąć dowolną z tych liczb, wstawić 
         ją zamiast każdego iksa, a otrzymamy poprawnie zapisane działanie.
@@ -203,7 +203,7 @@
         których rozwiązaniami są liczby całkowite, nazywa się <i>równaniami diofantycznymi</i>. Jego autorstwu przypisuje się jedną z pierwszych zagadek w historii: 
         suma dwóch liczb wynosi $100$, a ich różnica $40$. Jakie to liczby?<br><br>
 
-        Oznaczmy przez $x$ mniejszą z tych liczb, wtedy większa z nich będzie o $40$ większa, czyli będzie to $x + 40$. Ich suma wynosi $100$, czyli 
+        Oznaczmy przez $x$ mniejszą z tych liczb. Druga z nich będzie o $40$ większa, czyli będzie to $x + 40$. Ich suma wynosi $100$, czyli 
         $$\begin{align} 
         x + (x + 40) &= 100\\
         2x + 40 &= 100 &\color{#888888}{| -40}\\
@@ -274,8 +274,8 @@
         $$1 = \frac{0}{0}$$
         A przecież przez $0$ dzielić nie wolno. Z tego powodu <b>przed</b> przystąpieniem do rachunków powinniśmy zauważyć, że w pierwotnym równaniu znajduje się mianownik 
         z niewiadomą $x - 1$, czyli już na samym początku wiadomo, że zabroniona jest wartość $x = 1$. Jest to tzw. określenie dziedziny równania: określiliśmy, że 
-        "potencjalne" rozwiązania mieszczą się wszędzie z wyjątkiem jedynki. Po rozwiązaniu równania otrzymujemy $x = 1$, jednak rozwiązanie to jest spoza dziedziny, 
-        wobec czego równanie nie ma rozwiązań.
+        "potencjalne" rozwiązania mieszczą się wszędzie z wyjątkiem jedynki. Po dokonaniu przekształceń równania otrzymujemy $x = 1$, jednak rozwiązanie to jest spoza dziedziny, 
+        wobec czego <b>równanie nie ma rozwiązań.</b>
     </p>
 	</lesson-chapter>
 

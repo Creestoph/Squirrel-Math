@@ -33,7 +33,8 @@
               'potegowanie': 'Potęgowanie',
               'pierwiastkowanie': 'Pierwiastkowanie',
               'dzialania-na-wyrazeniach-algebraicznych': 'Działania na wyrażeniach algebraicznych',
-              'rownania': 'Równania'
+              'rownania': 'Równania',
+              'zbiory-liczbowe': 'Zbiory Liczbowe'
             }
         }
     }

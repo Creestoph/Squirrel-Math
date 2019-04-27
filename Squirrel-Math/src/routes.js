@@ -39,6 +39,8 @@ import DzialaniaNaWyrazeniachAlgebraicznych from './components/content/lessons/D
 import DzialaniaNaWyrazeniachAlgebraicznychShort from './components/content/lessons/DzialaniaNaWyrazeniachAlgebraicznych/DzialaniaNaWyrazeniachAlgebraicznychShort'
 import Rownania from './components/content/lessons/Rownania/Rownania'
 import RownaniaShort from './components/content/lessons/Rownania/RownaniaShort'
+import ZbioryLiczbowe from './components/content/lessons/ZbioryLiczbowe/ZbioryLiczbowe'
+import ZbioryLiczboweShort from './components/content/lessons/ZbioryLiczbowe/ZbioryLiczboweShort'
 
 export const routes = [
   { path: '', component: Home }, { path: '/-short', component: HomeShort },
@@ -64,4 +66,5 @@ export const routes = [
   { path: '/pierwiastkowanie', component: Pierwiastkowanie }, { path: '/pierwiastkowanie-short', component: PierwiastkowanieShort },
   { path: '/dzialania-na-wyrazeniach-algebraicznych', component: DzialaniaNaWyrazeniachAlgebraicznych }, { path: '/dzialania-na-wyrazeniach-algebraicznych-short', component: DzialaniaNaWyrazeniachAlgebraicznychShort },
   { path: '/rownania', component: Rownania }, { path: '/rownania-short', component: RownaniaShort },
+  { path: '/zbiory-liczbowe', component: ZbioryLiczbowe }, { path: '/zbiory-liczbowe-short', component: ZbioryLiczboweShort },
 ];
