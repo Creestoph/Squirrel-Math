@@ -4,7 +4,7 @@
 
     <lesson-intro>   
     <p>
-        Każdy sadownik dobrze wie, że aby doczekać się owoców ciężkiej pracy, najpierw trzeba dokonać zasiewu i poczekać, aż rośliny się zakorzenią, zaś 
+        Każdy sadownik dobrze wie, że aby doczekać się owoców ciężkiej pracy, najpierw trzeba dokonać zasiewu i pozwolić, by rośliny się zakorzeniły, a 
         potem należy je pielęgnować i troskliwie uprawiać. Podobnie jest z wiedzą matematyczną. A teraz przyszła pora na zbiory.
 	</p>
     </lesson-intro>   
@@ -16,8 +16,8 @@
     <p> 
         Zbiór to jedno z tych pojęć matematycznych, które ciężko się definiuje, bo przecież każdy dobrze wie, czym jest zbiór. Albo Kolekcja. Ugrupowanie. Zgromadzenie.
         Archiwum. Zestaw. Asortyment. Kompozycja. Agregat. Zespół. Mieszanina. Komplet. Konglomerat. Chyba każdy wie, o co chodzi. Kiedy matematycy dochodzą do wniosku, że 
-        jakieś słowo rozumie się samo przez się , nadają takiemu określeniu miano <i>pojęcia pierwotnego</i>, to znaczy, że nie ma ono formalnej definicji: po prostu zakłada się, że istnieje 
-        coś takiego jak zbiór i że składa się on z jakichś elementów. Co ciekawe, na pojęciu zbioru opiera się bardzo obszerna część matematyki zwana Teorią mnogości, która 
+        jakieś słowo rozumie się samo przez się, nadają takiemu określeniu miano <i>pojęcia pierwotnego</i>, to znaczy, że nie ma ono formalnej definicji: po prostu zakłada się, że istnieje 
+        coś takiego jak zbiór i że zbiory składają się z jakichś elementów. Co ciekawe, na pojęciu zbioru opiera się bardzo obszerna część matematyki zwana teorią mnogości, która 
         stanowi podwaliny dla absolutnie <b>wszystkich</b> innych dziedzin matematyki. W lekcji "Podstawy matematyki" okaże się nawet, że liczby naturalne czy całkowite 
         definiuje się na podstawie zbiorów. Albo dodawanie. Właściwie w matematyce wszystko jest zbiorem albo wywodzi się ze zbiorów.
     </p>
@@ -109,7 +109,7 @@
         Intuicje
     </p>
     <p> 
-        Gdy dochodzi do starcia dwóch drogich armii, spodziewamy się, że mocniejsza jest ta, która składa się z większej liczby członków. To samo dotyczy 
+        Gdy dochodzi do starcia dwóch wrogich armii, spodziewamy się, że mocniejsza jest ta, która składa się z większej liczby żołnierzy. To samo dotyczy 
         wszystkich zbiorów w matematyce: moc zbioru to liczba elementów, z jakich się składa. Będziemy zapisywać moc zbioru za pomocą dwóch pionowych kresek, 
         tak samo, jak wartość bezwzględną:
     </p>
@@ -145,15 +145,15 @@
     </p>
 
     <ul>
-        <li>Zbiór $A = \{1, 2, A\}$ posiada jako jeden z elementów samego siebie. Wobec tego nie dorzucamy go do naszego worka o nazwie $X$</li>
-        <li>Zbiór $\{4, 5, 6\}$ składa się tylko z trzech liczb i nie zawiera samego siebie. Wobec tego znajdzie się w worku $X$</li>
+        <li>Zbiór $A = \{1, 2, A\}$ posiada jako jeden z elementów samego siebie. Wobec tego nie dorzucamy go do naszego worka o nazwie $X$.</li>
+        <li>Zbiór $\{4, 5, 6\}$ składa się tylko z trzech liczb i nie zawiera samego siebie. Wobec tego znajdzie się w worku $X$.</li>
     </ul>
 
     <p>
-        Przypuśćmy, że udałoby nam się stworzyć pokaźną kolekcję $X$ "wszystkich zbiorów, które się nie zawierają" . Pytanie brzmi: czy zbiór $X$ zawiera samego siebie?
+        Przypuśćmy, że udałoby nam się stworzyć pokaźną kolekcję $X$ "wszystkich zbiorów, które się nie zawierają". Pytanie brzmi: czy zbiór $X$ zawiera samego siebie?
         Jeśli tak, to nie spełnia powyższego warunku. Jeśli nie, to go spełnia, więc powinien się znaleźć w kolekcji $X$. Z powodu wystąpienia tej niedogodności
         nie wolno w ogóle dopuszczać myśli, że istnieje coś takiego, jak "zbiór wszystkich zbiorów, które się nie zawierają". A nawet w ogóle: nie dopuszcza się czegoś takiego, 
-        jak "zbiór, który się zawiera".
+        jak "zbiór wszystkich zbiorów" jak również nie dopuszcza się "zbiorów, które się zawierają".
     </p>
 	</lesson-chapter>
 
@@ -178,7 +178,7 @@
 
     <p>
         Należy zwrócić uwagę, że symbole $\in$ (przynależności do zbioru) oraz $\subseteq$ (zawierania) mają różne znaczenie. Pierwszy z nich wskazuje, że jakiś obiekt 
-        został wrzucony do worka stanowiącego zbiór. Drugi, że pewna garść obiektów znajduje się w tym worku. Do zbioru $\{1, 2, 3\}$ należą trzy elementy:
+        znajduje się w worku stanowiącym zbiór. Drugi, że pewna garść obiektów znajduje się w tym worku. Do zbioru $\{1, 2, 3\}$ należą trzy elementy:
     </p>
 
     <ul>
@@ -205,7 +205,7 @@
     <p>
         Zbiór wszystkich podzbiorów zbioru $A$ nazywamy jego zbiorem potęgowym. Stosujemy do tego zapis $\mathcal{P}(A)$ (zapisujemy literkę P - od angielskiego 
         powerset - w dość fikuśny sposób, żeby odróżniała się od innych dużych liter; tak właśnie będziemy oznaczać zbiór potęgowy). Zbierając powyżej wylistowane 
-        podzbiory jedynko-dwójko-trójki, dostaniemy zbiór potęgowy:
+        podzbiory jedynko-dwójko-trójki, dostaniemy jej zbiór potęgowy:
     </p>
 
     $$\mathcal{P}\bigl(\{1, 2, 3\}\bigr) = \bigl\{ \emptyset, \{1\}, \{2\}, \{3\}, \{1, 2\}, \{1, 3\}, \{2, 3\}, \{1, 2, 3\} \bigr\}$$
@@ -219,62 +219,63 @@
         Krzyś i Maciuś niedawno wkroczyli w świat kinematografii i stawiają pierwsze kroki w stronę filmowej ekspertyzy. Oto zbiór filmów, które obejrzał Krzysiu:
     </p>
 
-    $$K = \{\text{Selekcja naturalna}, \text{Całkowite zaćmienie}, \text{Ukryty wymiar}, \text{Rzeczywistość boli}, \text{Potęga strachu} \}$$
+    $$K = \{\text{Suma wszystkich strachów}, \text{Wymierny ogrodnik}, \text{Siedem}, \text{Przerwana lekcja matematyki}, \text{Mianowniki rozrabiają} \}$$
 
     <p>
         Zaś filmy, które obejrzał Maciuś, to:
     </p>
 
-    $$M = \{ \text{Suma wszystkich strachów}, \text{Różnice nie do pogodzenia}, \text{Czynnik kontroli}, \text{Dzielna pani Brisby}, \text{Potęga strachu}, \text{Rzeczywistość boli} \}$$
+    $$M = \{ \text{Symetria}, \text{Dzielnik Bridget Jones}, \text{Mianowniki rozrabiają}, \text{Ukryte działania}, \text{Macierz: Reaktywacja}, \text{Siedem} \}$$
 	
     <p> 
-        Przy najbliższym spotkaniu będą mogli wymienić się wrażeniami z filmów, które obydwaj widzieli, czyli $\text{Rzeczywistość boli}$ oraz $\text{Potęga strachu}$. 
+        Przy najbliższym spotkaniu będą mogli wymienić się wrażeniami z filmów, które obydwaj widzieli, czyli $\text{Siedem}$ oraz $\text{Mianowniki rozrabiają}$. 
         Jest to <i>część wspólna zbiorów</i> ich doświadczeń filmowych. Część wspólną nazywa się również <i>przekrojem</i>; nazwa ta nabierze więcej sensu, gdy poznamy 
         więcej zagadnień z dziedziny geometrii. Symbolicznie:
     </p>
 
-    $$K \cap M = \{\text{Rzeczywistość boli}, \text{Potęga strachu}\}$$
+    $$K \cap M = \{\text{Siedem}, \text{Mianowniki rozrabiają}\}$$
 
     <p> 
-        Gdyby Michaś i Krzyś zechcieli połączyć siły, by popisać się swoją zbiorczą wiedzą filmową, mogliby opowiedzieć o dziewięciu tytułach. Zbiór filmów, które widział Krzyś 
+        Gdyby Maciuś i Krzyś zechcieli połączyć siły, by popisać się swoją zbiorczą wiedzą filmową, mogliby opowiedzieć o dziewięciu tytułach. Zbiór filmów, które widział Krzyś 
         lub Maciuś, nazywa się <i>sumą zbiorów</i> Maciusiowego i Krzysiowego:
     </p>
 
-    $$K \cup M = \{\text{Selekcja naturalna}, \text{Całkowite zaćmienie}, \text{Ukryty wymiar}, \text{Rzeczywistość boli}, \text{Suma wszystkich strachów}, 
-    \text{Różnice nie do pogodzenia}, \text{Czynnik kontroli}, \text{Dzielna pani Brisby}, \text{Potęga strachu}\}$$
+    $$K \cup M = \{\text{Suma wszystkich strachów}, \text{Wymierny ogrodnik}, \text{Siedem}, \text{Przerwana lekcja matematyki}, \text{Mianowniki rozrabiają}, 
+    \text{Symetria}, \text{Dzielnik Bridget Jones}, \text{Ukryte działania}, \text{Macierz: Reaktywacja}\}$$
 
     <p> 
         Sumowanie zbiorów bywa podchwytliwe: mimo że moc zbioru Krzysia wynosi $5$, a moc zbioru Maciusia wynosi $6$, moc ich sumy wynosi $9$, czyli nie jest to po prostu 
         wynik dodawania $5 + 6$. Wynika to z tego, że elementy, które powtarzają się w obydwu zbiorach (czyli ich część wspólną) zliczamy tylko jednokrotnie. Uwzględniając, że 
         wśród $5 + 6$ filmów dwa powtarzają się w obydwu zbiorach, moglibyśmy zapisać $9 = 5 + 6 - 2$. Taki rachunek uogólnia się na dowolne dwa zbiory o skończonej liczbie 
-        elementów: $|K \cup M| = |K| + |M| - |K \cap M|$
+        elementów: $|K \cup M| = |K| + |M| - |K \cap M|.$
     </p>
 
     <p> 
         <i>Różnica zbiorów</i> składa się ze wszystkich elementów, które znajdują się w jednym z nich, a nie znajdują się w drugim. Różnicę zbiorów zapisuje się 
-        w bardzo dziwny sposób: $K \setminus M$. Jest to zbiór wszystkich tych filmów, które widział Krzyś, a nie widział ich Michaś:
+        w bardzo dziwny sposób: $K \setminus M$. Jest to zbiór wszystkich tych filmów, które widział Krzyś, a nie widział ich Maciuś:
     </p>
 
-    $$K \setminus M = \{\text{Selekcja naturalna}, \text{Całkowite zaćmienie}, \text{Ukryty wymiar}\}$$
+    $$K \setminus M = \{\text{Suma wszystkich strachów}, \text{Wymierny ogrodnik}, \text{Przerwana lekcja matematyki} \}$$
 
     <p> 
-        Ponownie, w przypadku różnicy nieintuicyjne są własności dotyczące liczby elementów poszczególnych zbiorów. Zbiór $K$ ma moc 5, zbiór $M$ ma moc 6, ale różnica "$K$ 
+        Ponownie, w przypadku różnicy nieintuicyjne są własności dotyczące liczby elementów poszczególnych zbiorów. Zbiór $K$ ma moc $5$, zbiór $M$ ma moc $6$, ale różnica "$K$ 
         bez $M$" składa się z trzech elementów - czyli z pięciu bez dwóch będących częścią wspólną. W kontekście zbiorów różnicę możemy rozumieć jako odjęcie 
         części wspólnej: $|K \setminus M| = |K| - |K \cap M|$.
     </p>
 
     <p>
-        Powyższe filmy stanowią kilka pozycji, które Maciuś mógłby obejrzeć w przyszłości, być mooże za rekomendacją Krzysia. Jednak świat kinematografii ma znacznie więcej 
+        Powyższe filmy stanowią kilka pozycji, które Maciuś mógłby obejrzeć w przyszłości, być może za rekomendacją Krzysia. Jednak świat kinematografii ma znacznie więcej 
         do zaoferowania, przed Maciusiem jeszcze cała masa superprodukcji i mnóstwo wrażeń. Wśród filmów, których Maciuś jeszcze nie widział, 
-        są takie tytuły, jak $\text{Selekcja naturalna}$, $\text{Całkowite zaćmienie}$, $\text{Ukryty wymiar}$, $\text{Ukryte działania}$, $\text{Nice Guys. Równi goście}$, 
-        $\text{Pierwiastek ludzki}$, $\text{Pierwszy człowiek}$ i wiele, wiele innych. Zbiór wszystkich filmów, których nie widział Maciuś, nazywamy <i>dopełnieniem zbioru</i> 
+        są takie tytuły, jak $\text{Suma wszystkich strachów}$, $\text{Wymierny ogrodnik}$, $\text{Przerwana lekcja matematyki}$, $\text{Wyprowadzona}$, $\text{Dangerous minus}$,
+        $\text{Numer 23}$, $\text{Jestem numerem cztery}$, $\text{Nienawistna ósemka}$, $\text{Nine - dziewięć}$, 
+        i wiele, wiele innych. Zbiór wszystkich filmów, których nie widział Maciuś, nazywamy <i>dopełnieniem zbioru</i> 
         filmów, które widział; taki zbiór oznaczamy symbolem $M'$. Jest on bardzo duży, więc pozwolimy sobie nie wypisywać wszystkich jego elementów.
     </p>
 
     <p> 
         Dopełnienie zbioru ma sens tylko wtedy, gdy wiemy, w jakich kategoriach się poruszamy. Dopełnienie zbioru filmów, które widział Maciuś, składa się ze wszystkich 
-        <b>filmów</b> których nie widział - a nie ze wszystkich możliwych zbiorów w ogóle. Moglibyśmy zdefiniować zbiór $\Omega$ który składa się ze wszystkich filmów, jakie 
-        wytworzyła ludzkość (wybraliśmy wymowną greckę OMEGA, żeby zaznaczyć, jak potężny jest to zbiór). W kontekście naszych rozważań taki zbiór nazywamy 
+        <b>filmów</b> których nie widział - a nie ze wszystkich możliwych zbiorów w ogóle. Moglibyśmy zdefiniować zbiór $\Omega$, który składa się ze wszystkich filmów, jakie 
+        wytworzyła ludzkość (wybraliśmy wymowną grecką literę OMEGA, żeby zaznaczyć, jak potężny jest to zbiór). W kontekście naszych rozważań taki zbiór nazywamy 
         <i>uniwersum</i> - jest to zbiór wszystkich możliwych elementów, którymi aktualnie się chcemy zajmować. Dopełnienie zbioru $M$ będą stanowić wszystkie elementy 
         $\Omega$ oprócz tych w $M$, czyli generalnie: $M' = \Omega \setminus M$.
     </p>
@@ -286,7 +287,7 @@
     </p>
     <p> 
         Wszystkie działania na zbiorach, które przedstawiliśmy w poprzedniej sekcji, bardzo ładnie wyglądają na obrazkach przedstawiających zbiory w postaci 
-        luźno pojętych bazgrolów. Zbiór możemy sobie wyobrażać jako swobodną chmurę, w której dryfują zawieszone elementy zbioru. 
+        luźno zarysowanych kształtów. Zbiór możemy sobie wyobrażać jako swobodną chmurę, w której dryfują zawieszone elementy zbioru. 
     </p>
 
 	<center><img src="./.images/Screenshot_5.png" align="middle"></center>
@@ -319,7 +320,7 @@
     </p>
 
     <p>
-        Liczby naturalne to te, które służą do zliczania obiektów - liczymy, ile jabłek mieści się w koszyku Eustachego i liczymy kolejno: jeden, dwa, trzy, cztery... .
+        Liczby naturalne to te, które służą do zliczania obiektów - sprawdzamy, ile jabłek mieści się w koszyku Eustachego i liczymy kolejno: jeden, dwa, trzy, cztery... .
         Zbiór liczb naturalnych oznaczać będziemy od tej pory stylizowaną literą $\mathbb{N}$, jak Naturalne.
     </p>
 
@@ -354,8 +355,8 @@
         Liczby niewymierne to wszystkie te, których z różnych przyczyn nie da się zapisać w postaci ułamków zwykłych $\frac{p}{q}$. Do tej pory z liczbami niewymiernymi 
         mieliśmy styczność przy okazji badania pierwiastków - udowodniliśmy, że liczba $\sqrt{2}$ (jak i większość pozostałych pierwiastków) jest niewymierna. Oprócz pierwiastków, 
         niewymierne są wszystkie liczby, które mają po przecinku nieskończenie wiele cyfr i nie ujawnia się wśród nich cykliczność. Moglibyśmy na przykład utworzyć sztuczną 
-        liczbę niewymierną: $0,101001000100001...$, której rozwinięcie dziesiętne składa się z kolejnych jedynek rozdzielonych coraz większą liczbą zer. Jakkolwiek dziwne nie 
-        wydawałyby się takie twory, liczby niewymierne pojawiają się w otaczającym nas świecie; lekcje poświęcone geometrii ujawnią, że liczby niewymierne pojawiają się 
+        liczbę niewymierną: $1,101001000100001...$, której rozwinięcie dziesiętne składa się z kolejnych jedynek rozdzielonych coraz większą liczbą zer. Jakkolwiek dziwne nie 
+        wydawałyby się takie twory, liczby niewymierne da się odnaleźć w otaczającym nas świecie; lekcje poświęcone geometrii ujawnią, że liczby niewymierne pojawiają się 
         bezustannie przy kształtach kwadratowych lub kolistych. Zbiór liczb niewymiernych oznaczamy po prostu jako $\mathbb{Q}'$, czyli dopełnienie zbioru liczb wymiernych (nieważne, 
         że w niektórych polskich źródłach znajdzie się oznaczenie $\mathbb{NW}$). Gdyby zaznaczyć wszystkie liczby niewymierne na osi, powstałaby sieczka podobna do tej 
         poprzedniej. Miejsca, które wtedy były dziurami, zostaną teraz zapełnione, a te, w których znajdowała się kropka wymierna, teraz będą wybrakowane.
@@ -385,7 +386,7 @@
     </p>
     <p> 
         Gdy do osi liczbowej przyłożymy marker i za jednym pociągnięciem zaznaczymy jej fragment, otrzymamy podzbiór $\mathbb{R}$ zwany przedziałem. Jest to po prostu zakres 
-        liczb od jednej wartości do drugiej (wraz ze wszystkimi liczbami rzeczywistymi pomiędzy). Przedział składający się z liczb od dwóch do pięciu będziemy oznaczać 
+        liczb rzeczywistych od jednej wartości do drugiej. Przedział składający się z liczb od dwóch do pięciu będziemy oznaczać 
         jako $[2, 5]$. 
     </p>
 

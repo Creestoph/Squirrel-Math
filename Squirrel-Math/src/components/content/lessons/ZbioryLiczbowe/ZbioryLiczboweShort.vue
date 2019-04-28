@@ -11,7 +11,7 @@
     </p>
 
     <p>
-      Zbiór nie jest uporządkowany, oznacza, że jego elementy można wypisywać w dowolnej kolejności: $\{12, 43, 5, 10, 33\} = \{43, 5, 33, 12, 10\}$.
+      Zbiór nie jest uporządkowany, co oznacza, że jego elementy można wypisywać w dowolnej kolejności: $\{12, 43, 5, 10, 33\} = \{43, 5, 33, 12, 10\}$.
     </p>
 
     <p>
@@ -52,7 +52,7 @@
     <p>
       <i>Suma zbiorów</i> $A$ i $B$ to zbiór wszystkich elementów znajdujących się w zbiorze $A$ wraz ze wszystkimi elementami zbioru $B$ (jeśli jakiś element 
       pojawia się dwukrotnie, umiejszczamy go w sumie tylko raz); symbolicznie: $A \cup B$.
-      $$\{1, 2, 3\} \cap \{2, 3, 4, 5\} = \{1, 2, 3, 4, 5\}$$     
+      $$\{1, 2, 3\} \cup \{2, 3, 4, 5\} = \{1, 2, 3, 4, 5\}$$     
     </p>
 	  <center><img src="./.images/Screenshot_20.png" align="middle"></center>
 
@@ -108,6 +108,12 @@
     </p>
     $$\mathbb{R} = \{0, 51.45, 1.101001000100001..., 0.(2), -5, \sqrt{3}, 3.1415926535..., ...\}$$
 	  <center><img src="./.images/Screenshot_13.png" align="middle"></center>
+
+    <p>
+      Symbole powyższych zbiorów z plusem lub minusem w indeksie dolnym oznaczają ich obcięcie do elementów dodatnich lub ujemnych, na przykład $\mathbb{R}_+$ oznacza zbiór liczb 
+      rzeczywistych dodatnich.
+    </p>
+
     </lesson-chapter>
 
     <lesson-chapter><template #title>Przedziały liczbowe</template>
@@ -117,10 +123,10 @@
 
     <ul>
       <li>$[2, 5]$ to przykład przedziału <i>obustronnie domkniętego</i>, składa się z liczb od $2$ do $5$ wraz z $2$ i $5$.</li>
-      <li>$(-4, 1)$ to przykład przedziału <i>obustronnie otwartego</i>, składa się z liczb od $-$ do $1$ bez z $-4$ i $1$.</li>
-      <li>$[-6, 4)$ to przedział lewostronnie domknięty, a $(0, 3]$ jest prawostronnie domknięty</li>
-      <li>$[2, \infty)$ składa się ze wszystkich liczb o wartości dwa lub większej ($\infty$ to symbol nieskończoności)</li>
-      <li>$(-\infty, 4)$ składa się ze wszystkich liczb o mniejszych niż $4$</li>
+      <li>$(-4, 1)$ to przykład przedziału <i>obustronnie otwartego</i>, składa się z liczb od $-4$ do $1$ bez z $-4$ i $1$.</li>
+      <li>$[-6, 4)$ to przedział <i>lewostronnie domknięty</i>, a $(0, 3]$ jest <i>prawostronnie domknięty</i>.</li>
+      <li>$[2, \infty)$ składa się ze wszystkich liczb o wartości dwa lub większej ($\infty$ to symbol nieskończoności).</li>
+      <li>$(-\infty, 4)$ składa się ze wszystkich liczb o mniejszych niż $4$.</li>
     </ul>
 
     <center><img src="./.images/Screenshot_14.png" align="middle"></center>
@@ -129,6 +135,34 @@
     <center><img src="./.images/Screenshot_17.png" align="middle"></center>
     <center><img src="./.images/Screenshot_18.png" align="middle"></center>
 
+    </lesson-chapter>
+
+    <lesson-chapter><template #title>Nowe pojęcia</template>
+    <p> 
+      <b>Zbiór pusty</b> (oznaczany symbbolem $\emptyset$) to zbiór nieposiadający elementów.<br>
+      <b>Moc zbioru</b> to liczba jego elementów. Zbiór $A = \{2, 3, 5, 7, 11\}$ ma moc $5$, symbolicznie: $|A|=5$.
+    </p>
+
+    <p>
+      <b>Podzbiór</b> pewnego zbioru składa się z pewnej liczby elementów tego zbioru, np. $\{1, 2, 3\}$ jest podzbiorem $\{1, 2, 3, 4, 5\}$, symbolicznie 
+      $\{1, 2, 3\} \subseteq \{1, 2, 3, 4, 5\}$.<br>
+      <b>Podzbiór właściwy</b> pewnego zbioru to jego podzbiór, który jest od niego różny, np. $\{1, 2, 3\} \subset \{1, 2, 3, 4, 5\}$.
+    </p>
+
+    <p>
+      <b>Część wspólna (przekrój) zbiorów</b> to zbiór elementów należących jednocześnie do obydwu zbiorów: $\{1, 2\} \cap \{2, 3\} = \{2\}$.<br>
+      <b>Suma zbiorów</b> to zbiór elementów należących do pierwszego lub drugiego zbioru: $\{1, 2\} \cup \{2, 3\} = \{1, 2, 3\}$.<br>
+      <b>Różnica zbiorów</b> to zbiór elementów znajdujących się w pierwszym ale nie w drugim zbiorze: $\{1, 2\} \setminus \{2, 3\} = \{1\}$.<br>
+      <b>Dopełnienie zbioru</b> zawartego w innym zbiorze, zwanym <b>uniwersum</b>, to różnica uniwersum i tego zbioru: $A' = \Omega \setminus A$
+    </p>
+
+    <p>
+      <b>Przedział rzeczywisty</b> to podzbiór $\mathbb{R}$ liczb znajdujących się pomiędzy dwiema wartościami, zwanymi <b>końcami przedziału</b><br>
+      <b>Przedział obustronnie domknięty</b> zawiera końce przedziału: $x \in [2, 5] \Leftrightarrow 2 \leq x \leq 5$.<br>
+      <b>Przedział obustronnie otwarty</b> nie zawiera końców przedziału: $x \in (2, 5) \Leftrightarrow 2 \lt x \lt 5$.<br>
+      <b>Przedział prawostronnie domknięty</b> zawiera prawy i nie zawiera lewego końca: $x \in (2, 5] \Leftrightarrow 2 \lt x \leq 5$.<br>
+      <b>Przedział lewostronnie domknięty</b> zawiera lewy i nie zawiera prawego końca: $x \in [2, 5) \Leftrightarrow 2 \leq x \lt 5$.
+    </p>
     </lesson-chapter>
 
   </lesson>

@@ -1,6 +1,6 @@
 <template>
   <lesson>
-    <lesson-title>Równania</lesson-title>
+    <lesson-title>Równania i nierówności</lesson-title>
 
     <lesson-chapter><template #title>Czym są równania</template>
     <p>
@@ -25,7 +25,19 @@
     </p>
     </lesson-chapter>
 
-    <lesson-chapter><template #title>Podstawowe techniki</template>
+    <lesson-chapter><template #title>Czym są nierówości</template>
+    <p> 
+      Nierówności to problemy przypominające równania, jednak zamiast znaku $=$ występują operatory porównywania: $\lt$ (mniejsze niż), $\gt$ (większe niż), 
+      $\leq$ (mniejsze lub równe), $\geq$ (większe lub równe). Nierówności 
+      posiadają przeważnie nieskończenie wiele rozwiązań, na przykład nierówność $x \lt 5$ stanowi kryterium wyznaczające liczby o wartości mniejszej niż $5$. Rozwiązania 
+      tej nierówności to między innymi $4$, $0$, $-10$, $4.999$. Przykładem bardziej skomplikowanej nierówności jest 
+      $$3x + 2 \lt x + 8$$
+      Rozwiązanie nierówności będzie polegało na wskazaniu jej <i>zbioru rozwiązań</i>. Na obecnym etapie 
+      nierówność uznamy za rozwiązaną, gdy zostanie uproszczona do postaci $x \geq 2$, $x \lt -10$, $x \leq \frac{5}{2}$ lub podobnej.
+    </p>
+    </lesson-chapter>
+
+    <lesson-chapter><template #title>Podstawowe techniki rozwiązywania równań</template>
     <p>
       Na równaniach można dokonywać przekształceń, które nie zmieniają istoty tego równania, ale ułatwiają znalezienie rozwiązania. Wolno dokonywać
       obustronnego dodawania, odejmowania oraz mnożenia i dzielenia stron równości przez tą samą liczbę. 
@@ -54,23 +66,48 @@
     </div>
     </lesson-chapter>
 
+    <lesson-chapter><template #title>Podstawowe techniki rozwiązywania nierówności</template>
+    <p> 
+      Techniki opisane w powyższej sekcji działają także dla nierówności, z jednym istotnym zastrzeżeniem: podczas dzielenia lub mnożenia obu stron nierówności 
+      przez liczbę ujemną, należy dokonać odwrócenia znaku nierówności. Na przykład nierówność $x \lt 4$ po pomnożeniu przez $-1$ powinna przyjąć postać $-x \gt -4$.
+    </p>
+
+    <div class="example">
+        Aby uprościć nierówność $3x + 2 \lt x + 8$, odejmujemy od obu jej stron $x$ oraz $2$ i dzielimy przez $2$ (nie zmieniając znaku nierówności).
+        $$\begin{align} 
+        3x + 2 &\lt x + 8\ \ \ \ \ \ \ \ \color{#888888}{| -x}\\
+        2x + 2 &\lt 8\ \ \ \ \ \ \ \ \ \ \ \ \ \ \color{#888888}{| -2}\\
+        2x &\lt 6\ \ \ \ \ \ \ \ \ \ \ \ \ \  \color{#888888}{| :2}\\
+        x &\lt 3
+        \end{align}$$
+    </div>
+
+    <div class="example">
+      Aby uprościć nierówność $-4x - 3 \leq 9$, dodajemy obustronnie $3$ i dzielimy przez $-4$, odwracając znak nierówności.
+      $$\begin{align} -4x - 3 &\leq 9\ \ \ \ \ \ \ \ \color{#888888}{| +3}\\
+      -4x &\leq 12\ \ \ \ \ \ \color{#888888}{| :(-4)}\\
+      x &\geq -3
+      \end{align}$$
+    </div>
+    </lesson-chapter>
+
     <lesson-chapter><template #title>Nowe pojęcia</template>
     <p>
-      <b>Niewiadoma</b> to nieznana wartość liczbowa, której obliczenie jest celem rozwiązywania równania. Oznaczana jest pewną literą, zwyczajowo $x$, która pojawia się 
-      w wyrażeniach algebraicznych obu stron równania.<br>
+      <b>Niewiadoma</b> to nieznana wartość liczbowa, której obliczenie jest celem rozwiązywania równań i nierówności. Oznaczana jest pewną literą, zwyczajowo $x$, która 
+      pojawia się w wyrażeniach algebraicznych po obu stronach znaku równości lub nierówności.<br>
       <b>Rozwiązanie równania (pierwiastek równania)</b> to wartość liczbowa, która, wstawiona w miejsce występowania niewiadomej, tworzy poprawnie zapisaną równość. Mówimy, że 
       liczby będące rozwiązaniem równania <b>spełniają</b> to równanie.
     </p>
 
     <p>
-      <b>Dziedzinę równania</b> stanowią wszystkie liczby, które "potencjalnie" mogą stanowić rozwiązanie równania. Z dziedziny wyklucza się takie wartości, które 
+      <b>Dziedzinę równania/nierówności</b> stanowią wszystkie liczby, które "potencjalnie" mogą stanowić rozwiązanie. Z dziedziny wyklucza się takie wartości, które 
       wstawione w miejsce $x$ utworzyłyby wyrażenia niezdefiniowane. Na przykład dziedziną równania $\frac{2}{x} = 4$ są wszystkie liczby oprócz $0$, ponieważ dzielenie przez
       $0$ jest niedozwolone.
     </p>
 
     <p>
-      <b>Równanie sprzeczne</b> to równanie, którego nie spełnia żadna liczba z dziedziny, np. $x \cdot x = -4$.<br>
-      <b>Równanie tożsamościowe</b> to równanie, które spełnia każda liczba z dziedziny, np. $\frac{x}{x} = 1$.
+      <b>Równanie sprzeczne</b> to równanie, którego nie spełnia żadna liczba z dziedziny, np. $x \cdot x = -4$. Analogiczne znaczenie ma <b>nierówność sprzeczna</b><br>
+      <b>Równanie tożsamościowe</b> to równanie, które spełnia każda liczba z dziedziny, np. $\frac{x}{x} = 1$ Analogiczne znaczenie ma <b>nierówność tożsamościowa</b>.
     </p>
     </lesson-chapter>
 
