@@ -268,7 +268,7 @@
     </div>
     <div class="example">
          Sprobujmy wykonać powyższy przykład inną metodą. Najpierw dodajemy obustronnie $4x$:
-        $$\begin{align} -4x - 3 &\leq 9\ \ \ \ \ \ \ \ \color{#888888}{| +4x}\\
+        $$\begin{align} -4x - 3 &\leq 9\ \ \ \ \ \ \ \ \ \ \ \color{#888888}{| +4x}\\
         -3 &\leq 4x + 9
         \end{align}$$
         Następnie odejmujemy obustronnie $9$:
@@ -452,7 +452,7 @@ import LessonChapter from "../../../lesson/chapter/LessonChapter";
 import Lesson from "../../../lesson/Lesson";
 
 export default {
-  name: "Rownania",
+  name: "RownaniaINierownosci",
   data() {
     return {
       chapters: []

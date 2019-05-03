@@ -1,6 +1,6 @@
 <template>
   <lesson>
-    <lesson-title>Równania i nierówności</lesson-title>
+    <lesson-title-short>Równania i nierówności</lesson-title-short>
 
     <lesson-chapter><template #title>Czym są równania</template>
     <p>
@@ -115,13 +115,13 @@
 </template>
 
 <script>
-import LessonTitle from "../../../lesson/LessonTitle";
+import LessonTitleShort from "../../../lesson/LessonTitleShort";
 import LessonIntro from "../../../lesson/LessonIntro";
 import LessonChapter from "../../../lesson/chapter/LessonChapter";
 import Lesson from "../../../lesson/Lesson";
 
 export default {
-  name: "RownaniaShort",
+  name: "RownaniaINierownosciShort",
   data() {
     return {
       chapters: []
@@ -129,7 +129,7 @@ export default {
   },
   components: {
     LessonIntro,
-    LessonTitle,
+    LessonTitleShort,
     LessonChapter,
     Lesson,
   }

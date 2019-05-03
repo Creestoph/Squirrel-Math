@@ -37,10 +37,11 @@ import Pierwiastkowanie from './components/content/lessons/Pierwiastkowanie/Pier
 import PierwiastkowanieShort from './components/content/lessons/Pierwiastkowanie/PierwiastkowanieShort'
 import DzialaniaNaWyrazeniachAlgebraicznych from './components/content/lessons/DzialaniaNaWyrazeniachAlgebraicznych/DzialaniaNaWyrazeniachAlgebraicznych'
 import DzialaniaNaWyrazeniachAlgebraicznychShort from './components/content/lessons/DzialaniaNaWyrazeniachAlgebraicznych/DzialaniaNaWyrazeniachAlgebraicznychShort'
-import Rownania from './components/content/lessons/Rownania/Rownania'
-import RownaniaShort from './components/content/lessons/Rownania/RownaniaShort'
+import RownaniaINierownosci from './components/content/lessons/RownaniaINierownosci/RownaniaINierownosci'
+import RownaniaINierownosciShort from './components/content/lessons/RownaniaINierownosci/RownaniaINierownosciShort'
 import ZbioryLiczbowe from './components/content/lessons/ZbioryLiczbowe/ZbioryLiczbowe'
 import ZbioryLiczboweShort from './components/content/lessons/ZbioryLiczbowe/ZbioryLiczboweShort'
+import RownaniaINierownosciLiniowe from './components/content/lessons/RownaniaINierownosciLiniowe/RownaniaINierownosciLiniowe'
 
 export const routes = [
   { path: '', component: Home }, { path: '/-short', component: HomeShort },
@@ -65,6 +66,7 @@ export const routes = [
   { path: '/potegowanie', component: Potegowanie },  { path: '/potegowanie-short', component: PotegowanieShort },
   { path: '/pierwiastkowanie', component: Pierwiastkowanie }, { path: '/pierwiastkowanie-short', component: PierwiastkowanieShort },
   { path: '/dzialania-na-wyrazeniach-algebraicznych', component: DzialaniaNaWyrazeniachAlgebraicznych }, { path: '/dzialania-na-wyrazeniach-algebraicznych-short', component: DzialaniaNaWyrazeniachAlgebraicznychShort },
-  { path: '/rownania', component: Rownania }, { path: '/rownania-short', component: RownaniaShort },
+  { path: '/rownania-i-nierownosci', component: RownaniaINierownosci }, { path: '/rownania-i-nierownosci-short', component: RownaniaINierownosciShort },
   { path: '/zbiory-liczbowe', component: ZbioryLiczbowe }, { path: '/zbiory-liczbowe-short', component: ZbioryLiczboweShort },
+  { path: '/rownania-i-nierownosci-liniowe', component: RownaniaINierownosciLiniowe }, { path: '/rownania-i-nierownosci-liniowe-short', component: RownaniaINierownosciLiniowe },
 ];

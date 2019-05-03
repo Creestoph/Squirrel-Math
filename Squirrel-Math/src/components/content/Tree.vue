@@ -33,8 +33,9 @@
               'potegowanie': 'Potęgowanie',
               'pierwiastkowanie': 'Pierwiastkowanie',
               'dzialania-na-wyrazeniach-algebraicznych': 'Działania na wyrażeniach algebraicznych',
-              'rownania': 'Równania i nierówności',
-              'zbiory-liczbowe': 'Zbiory Liczbowe'
+              'rownania-i-nierownosci': 'Równania i nierówności',
+              'zbiory-liczbowe': 'Zbiory Liczbowe',
+              'rownania-i-nierownosci-liniowe': 'Równania i nierówności liniowe'
             }
         }
     }
