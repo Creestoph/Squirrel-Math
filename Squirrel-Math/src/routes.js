@@ -42,6 +42,7 @@ import RownaniaINierownosciShort from './components/content/lessons/RownaniaINie
 import ZbioryLiczbowe from './components/content/lessons/ZbioryLiczbowe/ZbioryLiczbowe'
 import ZbioryLiczboweShort from './components/content/lessons/ZbioryLiczbowe/ZbioryLiczboweShort'
 import RownaniaINierownosciLiniowe from './components/content/lessons/RownaniaINierownosciLiniowe/RownaniaINierownosciLiniowe'
+import RownaniaINierownosciLinioweShort from './components/content/lessons/RownaniaINierownosciLiniowe/RownaniaINierownosciLinioweShort'
 
 export const routes = [
   { path: '', component: Home }, { path: '/-short', component: HomeShort },
@@ -68,5 +69,5 @@ export const routes = [
   { path: '/dzialania-na-wyrazeniach-algebraicznych', component: DzialaniaNaWyrazeniachAlgebraicznych }, { path: '/dzialania-na-wyrazeniach-algebraicznych-short', component: DzialaniaNaWyrazeniachAlgebraicznychShort },
   { path: '/rownania-i-nierownosci', component: RownaniaINierownosci }, { path: '/rownania-i-nierownosci-short', component: RownaniaINierownosciShort },
   { path: '/zbiory-liczbowe', component: ZbioryLiczbowe }, { path: '/zbiory-liczbowe-short', component: ZbioryLiczboweShort },
-  { path: '/rownania-i-nierownosci-liniowe', component: RownaniaINierownosciLiniowe }, { path: '/rownania-i-nierownosci-liniowe-short', component: RownaniaINierownosciLiniowe },
+  { path: '/rownania-i-nierownosci-liniowe', component: RownaniaINierownosciLiniowe }, { path: '/rownania-i-nierownosci-liniowe-short', component: RownaniaINierownosciLinioweShort },
 ];

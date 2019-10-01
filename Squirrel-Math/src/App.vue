@@ -248,6 +248,11 @@ a.link:active
 	margin: 30px 30px;
 }
 
+.example:hover
+{
+	background-color: #eeeeee;
+}
+
 @media screen and (max-width: 700px)
 {
 	.example

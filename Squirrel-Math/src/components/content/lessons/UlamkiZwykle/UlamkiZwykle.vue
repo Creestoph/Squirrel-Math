@@ -362,7 +362,7 @@
 	</p>
 
 	<p>
-		Na dobry początek zajmijmy się mnożeniem ułamka przez liczbę naturanlną. Mnożenie to wielokrotne dodawanie – prawidłowość ta dotyczy także ułamków. 
+		Na dobry początek zajmijmy się mnożeniem ułamka przez liczbę naturalną. Mnożenie to wielokrotne dodawanie – prawidłowość ta dotyczy także ułamków. 
 		Dodawanie do siebie pięciokrotnie ułamka $\frac{2}{13}$ daje wynik
 	</p>
 
@@ -656,7 +656,7 @@
 
 	<p>
 		Gdy dzielimy pewną liczbę przez ułamek, zadajemy pytanie: ile razy ułamek mieści się w tej liczbie? Odpowiedź na nie jest raczej prosta, jeśli 
-		dzielimy przez siebie mianowniki o równych mianownikach:
+		dzielimy przez siebie ułamki o równych mianownikach:
 	</p>
 
 	<ul>

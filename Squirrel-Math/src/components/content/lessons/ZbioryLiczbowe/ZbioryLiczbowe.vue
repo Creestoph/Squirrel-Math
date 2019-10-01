@@ -15,7 +15,7 @@
     </p>
     <p> 
         Zbiór to jedno z tych pojęć matematycznych, które ciężko się definiuje, bo przecież każdy dobrze wie, czym jest zbiór. Albo Kolekcja. Ugrupowanie. Zgromadzenie.
-        Archiwum. Zestaw. Asortyment. Kompozycja. Agregat. Zespół. Mieszanina. Komplet. Konglomerat. Chyba każdy wie, o co chodzi. Kiedy matematycy dochodzą do wniosku, że 
+        Zestaw. Kompozycja. Agregat. Zespół. Mieszanina. Konglomerat. Chyba każdy wie, o co chodzi. Kiedy matematycy dochodzą do wniosku, że 
         jakieś słowo rozumie się samo przez się, nadają takiemu określeniu miano <i>pojęcia pierwotnego</i>, to znaczy, że nie ma ono formalnej definicji: po prostu zakłada się, że istnieje 
         coś takiego jak zbiór i że zbiory składają się z jakichś elementów. Co ciekawe, na pojęciu zbioru opiera się bardzo obszerna część matematyki zwana teorią mnogości, która 
         stanowi podwaliny dla absolutnie <b>wszystkich</b> innych dziedzin matematyki. W lekcji "Podstawy matematyki" okaże się nawet, że liczby naturalne czy całkowite 
@@ -139,7 +139,7 @@
 
     <p> 
         Istnieją pewne ograniczenia co do tego, jakie zbiory nieskończone można stworzyć, a jakich nie można. Na przykład matematyka nie pozwala na stworzenie 
-        "zbioru wszystkich czerwonych rzeczy". Wynika to z tego, że nie istnieje coś takiego, jak "zbiór wszystkich możliwych zbiorów" (a więc także zbiór wszystkich "czerwonych"
+        "zbioru wszystkich czerwonych rzeczy" albo po prostu "zbioru wszystkich rzeczy". Wynika to z tego, że nie istnieje coś takiego, jak "zbiór wszystkich możliwych zbiorów" (a więc także zbiór wszystkich "czerwonych"
         zbiorów). Wiąże się to z ciekawą sprzecznością nazywaną <i>paradoksem Russela</i>. Wyobraźmy sobie próbę stworzenia zbioru $X$, który składałby się ze wszystkich 
         zbiorów, które się nie zawierają.
     </p>
@@ -268,7 +268,7 @@
         do zaoferowania, przed Maciusiem jeszcze cała masa superprodukcji i mnóstwo wrażeń. Wśród filmów, których Maciuś jeszcze nie widział, 
         są takie tytuły, jak $\text{Suma wszystkich strachów}$, $\text{Wymierny ogrodnik}$, $\text{Przerwana lekcja matematyki}$, $\text{Wyprowadzona}$, $\text{Dangerous minus}$,
         $\text{Numer 23}$, $\text{Jestem numerem cztery}$, $\text{Nienawistna ósemka}$, $\text{Nine - dziewięć}$, 
-        i wiele, wiele innych. Zbiór wszystkich filmów, których nie widział Maciuś, nazywamy <i>dopełnieniem zbioru</i> 
+        i wiele, wiele innych. Zbiór <b>wszystkich</b> filmów, których nie widział Maciuś, nazywamy <i>dopełnieniem zbioru</i> 
         filmów, które widział; taki zbiór oznaczamy symbolem $M'$. Jest on bardzo duży, więc pozwolimy sobie nie wypisywać wszystkich jego elementów.
     </p>
 
@@ -394,7 +394,7 @@
 
     <p> 
         Przedział ten nazywa się <i>obustronnie domkniętym</i>, ponieważ zawiera liczby od dwóch do pięciu <b>włącznie</b> z dwójką i piątką. Przedział ten składa się 
-        z liczb, które są większe lub równe $2$ i jednocześnie mniejsze lub równe $5$, czyli w skrócie składa się $x$ spełniających warunek $2 \leq x \leq 5$. Niektórzy 
+        z liczb, które są większe lub równe $2$ i jednocześnie mniejsze lub równe $5$, czyli w skrócie składa się z $x$ spełniających warunek $2 \leq x \leq 5$. Niektórzy 
         dla oznaczania przedziałów domkniętych preferują oznaczenie $\langle 2, 5 \rangle$. 
     </p>
 
@@ -424,12 +424,13 @@
         tego przedziału - że jest elementem tego podzbioru liczb rzeczywistych. Należy pamiętać, że nieskończoność nie jest liczbą rzeczywistą, a symbol $\infty$ stanowi jedynie 
         umowne oznaczenie końca przedziału, coś w rodzaju "wyobrażenia" nieskończoności, a nie "wartości równej nieskończoność". 
     </p>
+    
+	<center><img src="./.images/Screenshot_18.png" align="middle"></center>
 
     <p>
         Przedział od minus nieskończoności do plus nieskończoności stanowi po prostu całą oś rzeczywistą: $(-\infty, \infty) = \mathbb{R}$.
     </p>
 
-	<center><img src="./.images/Screenshot_18.png" align="middle"></center>
 
     </lesson-chapter>
 

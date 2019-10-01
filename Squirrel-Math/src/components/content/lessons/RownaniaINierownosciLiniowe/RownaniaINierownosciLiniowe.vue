@@ -121,8 +121,8 @@
         Właściwie zagadkę można rozwiązać nawet bez rozwiązywania równania, jeśli założymy, że szukany wiek stanowi całkowitą liczbę lat.
         Wiemy, że wiek Diofantosa jest liczbą podzielną przez $12$ oraz przez $7$, czyli jest ich wspólną wielokrotnością. Najmniejszą niezerową wielokrotnością jest właśnie $84$, 
         a następna wynosi aż $168$, czyli trochę za dużo, nawet jak na przedwiecznego mistrza matematyki.
-
     </div>
+    
     <div class="example"> 
         Pewna dwucyfrowa liczba ma cyfrę dziesiątek o $1$ mniejszą od cyfry jedności. Gdyby zamienić jej cyfry miejscami, otrzymalibyśmy liczbę większą o $\frac{1}{5}$ jej 
         wartości. Jaka to liczba?<br><br>
@@ -368,31 +368,383 @@
     </p>
     <ul>
         <li>Rozwiązaniem nierówności $x > 2$ jest zbiór liczb rzeczywistych większych od $2$, czyli przedział obustronnie otwarty $(2, \infty)$.</li>
-        <li>Rozwiązaniem nierówności $x \leq \frac{5}{2}$ jest zbiór liczb nie większych niż pięć drugich, czyli przedział prawostronnie domknięty $(-\infty, \frac{5}{2}]$.</li>
+        <li>Rozwiązaniem nierówności $x \leq \frac{5}{2}$ jest zbiór liczb nie większych niż pięć drugich, czyli przedział prawostronnie domknięty $\left(-\infty, \frac{5}{2} \right]$.</li>
         <li>Rozwiązaniem $x + 5 \geq 3$ jest zbiór liczb, które powiększone o $5$ mają wartość co najmniej $3$, czyli liczby od $-2$ wzwyż: $[-2, \infty)$.</li>
     </ul>
 
     <p> 
         Rozwiązywanie bardziej skomplikowanych nierówności przebiega podobnie do rozwiązywania równań: możemy dokonywać obustronnego dodawania, odejmowania, 
         mnożenia i dzielenia, należy tylko uważać na mnożenie i dzielenie obustronnie przez liczby ujemne: wówczas należy dokonać odwrócenia znaku nierówności, na przykład 
-        warunek $-x \lt -4$ po pomnożeniu przez $-1$ przyjmuje postać $x \gt 4$ (liczby większe od $4$ są na minusie mniejsze od $-4$).
+        warunek $-x \lt -4$ po pomnożeniu przez $-1$ przyjmuje postać $x \gt 4$ (liczby, które na minusie są mniejsze od $-4$, to liczby większe od $4$).
     </p>
 
     <div class="example"> 
         Jakie liczby po pomnożeniu przez $3$ i odjęciu $7$ stają się większe?<br><br>
         Rozwiązujemy nierówność:
         $$\begin{align}
-        3x - 7 &\gt x \color{#888888}{|-3x}\\
-        -7 &\gt -2x \color{#888888}{|:(-2)}\\
+        3x - 7 &\gt x \ \ \ \ \ \ \ \ \ \ \color{#888888}{|-3x}\\
+        -7 &\gt -2x \ \ \ \ \ \color{#888888}{|:(-2)}\\
         \frac{7}{2} &\lt x
         \end{align}$$
-        Rozwiązaniem nierówności jest zbiór liczb większych od $3\frac{1}{2}$, czyli przedział $(3\frac{1}{2}, \infty)$. Możemy ogłosić znalezione rozwiązanie poprzez zapis: 
-        $x \in (3\frac{1}{2}, \infty)$.
+        Rozwiązaniem nierówności jest zbiór liczb większych od $3\frac{1}{2}$, czyli przedział $\left(3\frac{1}{2}, \infty\right)$. Możemy ogłosić znalezione rozwiązanie poprzez zapis: 
+        $x \in \left(3\frac{1}{2}, \infty \right)$.
 	    <center><img src="./.images/Screenshot_3.png" align="middle"></center>
+    </div>
+
+    <div class="example">
+        Jeśli jeden kufel piwa kosztuje $8\text{ zł}$, to ile piw można wypić, nie wydając więcej niż $50\text{ zł}$? <br><br> 
+
+        Dziedziną tej nierówności są liczby naturalne: nie możemy przecież zamówić ułamkowej liczby piw. Nierówność ma bardzo prostą postać:
+        $$\begin{align}
+        8x &\leq 50\ \ \ \ \color{#888888}{|:8}\\
+        x &\leq 6 \frac{1}{4}
+        \end{align}$$
+        i odpowiada przedziałowi $\left(-\infty, 6\frac{1}{4}\right]$, jednak ponieważ nie interesują nas rozwiązania ułamkowe lub ujemne, spośród wartości z tego przedziału należałoby 
+        wziąć tylko liczby naturalne, czyli część wspólną tego przedziału z liczbami naturalnymi. Moglibyśmy zapisać jako rozwiązanie $x \in \mathbb{N} \cap \left(-\infty, 6\frac{1}{4}\right]$ 
+        albo po prostu $x \in \{0, 1, 2, 3, 4, 5, 6\}$.
+	    <center><img src="./.images/Screenshot_5.png" align="middle"></center>
+    </div>
+
+    <div class="example">
+        Babcia Teresa próbuje sobie przypomnieć, ile kosztuje kilogram czereśni w sklepie Eustachego. Pamięta jedynie, że 
+        za $2$ kilogramy czereśni oraz pół kilograma truskawek po $10 \text{ zł / kg}$ zapłaciła banknotem $20 \text{ zł}$ i dostała resztę,
+        zaś innym razem za pół kilograma czereśni i trzy koszyki malin po $6 \text{ zł}$ musiała zapłacić ponad $20 \text{ zł}$. 
+
+        Otrzymujemy dwie nierówności: 
+        $$\begin{align} 
+        2x + \frac{1}{2} \cdot 10 &\lt 20\\
+        2x + 5 &\lt 20\\
+        2x &\lt 15\\
+        x &\lt 7,5
+        \end{align}
+
+        $$\begin{align} 
+        \frac{1}{2}x + 3 \cdot 6 &\gt 20\\
+        \frac{1}{2}x + 18 &\gt 20\\
+        \frac{1}{2}x &\gt 2\\
+        x &\gt 4
+        \end{align}
+
+        Zatem cena czereśni mieści się pomiędzy $4$ a $7,5$, co odpowiada rozwiązaniu $x \in (4, 7.5)$.
+	    <center><img src="./.images/Screenshot_6.png" align="middle"></center>
+    </div>
+
+    <div class="example">
+        Na koniec zmierzmy się z nierównością, w której niewiadoma pojawia się w mianowniku. Za dziedzinę 
+        przyjmijmy liczby rzeczywiste (to znaczy, jako rozwiązania dopuszczamy dowolne liczby dodatnie i ujemne).
+
+        $$\frac{x - 7}{x - 3} > 0$$
+
+        Kuszącym posunięciem byłoby obustronne pomnożenie nierówności przez $x - 3$, nie wiemy jednak, czy liczba $x - 3$ jest
+        dodatnia, czy ujemna (w związku z tym, czy powinniśmy odwrócić znak nierówności). Zwróćmy uwagę, że ułamek ma wartość dodatnią
+        w dwóch przypadkach: gdy licznik oraz mianownik są jednocześnie dodatnie lub gdy licznik oraz mianownik są jednocześnie ujemne.
+        <ol>
+            <li>
+                W przypadku dodatniego licznika i mianownika mamy dwie nierówności:
+                <div style="text-align: center">
+                    $\Bigl\{ \begin{matrix} x - 7 > 0 \\ x - 3 > 0 \end{matrix}$, czyli $\Bigl\{ \begin{matrix} x > 7 \\
+                    x > 3 \end{matrix}$
+                </div>
+                które spełnione są przez liczby z przedziału $(7, \infty)$.
+            </li>
+            <li>
+                W przypadku ujemnego licznika i mianownika mamy 
+                <div style="text-align: center">
+                    $\Bigl\{ \begin{matrix} x - 7 \lt 0 \\ x - 3 \lt 0 \end{matrix}$, czyli 
+                    $\Bigl\{ \begin{matrix} x \lt 7 \\ x \lt 3 \end{matrix}$
+                </div>
+                Obie nierówności są spełnione przez liczby z przedziału $(-\infty, 3)$.
+            </li>
+        </ol>
+        Ostatecznie, rozwiązaniem nierówności są wszystkie liczby z przypadku 1) jak również wszystkie z przypadku 2), czyli 
+        $x \in (-\infty, 3) \cup (7, +\infty)$.
+
+	    <center><img src="./.images/Screenshot_7.png" align="middle"></center>
     </div>
 
 	</lesson-chapter>
 
+	<lesson-chapter><template #title>Równania i nierówności z wartością bezwzględną</template>
+    <p class = "type">
+		Warsztat
+	</p>
+    <p> 
+        Równania w tym podrozdziale nie kwalifikują się już do kategorii liniowych, jednak rozwiązuje się je dość podobnie.
+        Przypomnijmy, że wartość bezwzględna liczby to jej wartość z pominięciem znaku, na przykład $|5| = 5$, $|0| = 0$, $|-7| = 7$.
+        Gdy bierzemy wartość bezwzględną z liczby nieujemnej, otrzymujemy tę samą wartość, zaś gdy z ujemnej, otrzymujemy wartość do niej 
+        przeciwną.
+        Formalnie: dla dowolnej liczby $x$ jej wartość bezwzględna $|x|$ jest równa $x$, 
+        jeśli $x \geq 0$ oraz $-x$, jeśli $x \lt 0$. W skrócie:
+        $$|x| = \Bigl\{ \begin{matrix} x \ \ \ \ \text{ jeśli } x \geq 0 \\ -x \ \ \ \text{ jeśli } x \lt 0 \end{matrix}$$
+        Na przykład $|5|$ jest równa $5$, ponieważ $5 \geq 0$, ale $|-7|$ wynosi $-(-7)$, ponieważ $-7 \lt 0$. 
+        W przypadku, gdy wartość bezwzględna została nałożona na pewne wyrażenie algebraiczne ze zmiennymi czy niewiadomymi,  
+        będziemy mogli ją opuścić, jeśli wyrażenie ma wartość nieujemną. Jeśli wyrażenie ma wartość ujemną, 
+        będziemy opuszczać wartość bezwzględną, a przed całym wyrażeniem stawiać znak minusa.
+    </p>
+    <p>
+        Przejdźmy do konkretów. Spróbujemy zmierzyć się z równaniami, w których na niewiadomą nałożona jest wartość bezwzględna. 
+    </p>
+
+    <div class="example">
+        $$
+            |x - 3| = 5
+        $$
+        <p> 
+            W takich równaniach musimy rozważać przypadki, zależnie od tego, czy $x - 3$ jest liczbą dodatnią, czy ujemną. 
+        </p>
+        <ol>
+            <li>Rozważamy tylko takie $x$, dla których $x - 3 \geq 0$, czyli $x \geq 3$. Wartość bezwzględną możemy zdjąć bez zmiany znaku i
+                równanie upraszcza się do postaci $x - 3 = 5$, czyli $x = 8$. Rozwiązanie zgadza się z założeniem, że $x \geq 3$.
+            </li>
+            <li>
+                Rozważamy $x \lt 3$. Wewnątrz wartości bezwzględnej znajduje się wartość ujemna, więc zdejmujemy ją ze zmianą znaku, 
+                upraszczając równanie do postaci $-(x - 3) = 5$, czyli $-x + 3 = 5$, co daje $x = -2$. Rozwiązanie mieści się w dziedzinie 
+                $x \lt 3$.
+            </li>
+        </ol>
+        <p>
+            Równanie ma dwa rozwiązania: $x = 8$ oraz $x = -2$.
+        </p>
+    </div>
+
+    <div class="example">
+        <p> 
+            Obliczenia stają się trudniejsze, jeśli w równaniu pojawia się więcej wartości bezwzględnych:
+        </p>
+
+        $$
+            |x + 2| + |x - 3| = 7
+        $$
+
+        <p> 
+            Musimy rozważyć więcej przypadków, w zależności od tego, czy $x + 2$ ma wartość dodatnią czy nie oraz czy $x - 3$ ma wartość 
+            dodatnią czy nie. Prześledźmy możliwe przypadki, obserwując, jak w zależności od $x$ zmienia się dodatniość/ujemność obydwu
+            składowych. Wyrażenie $x + 2$ zmienia znak przy $x$ o wartości $-2$. Dla mniejszych $x$ wyrażenie jest ujemne, dla wiekszych dodatnie.
+            Wyrażenie $x - 3$ zmienia znak przy $x = 3$, dla mniejszych $x$ jest ujemne, a dla większych dodatnie. Wobec tego możemy rozbić 
+            dziedzinę równania na trzy przedziały:
+        </p>
+
+        <ol> 
+            <li>
+                $x \in (-\infty, -2)$<br>
+                Dla $x$ z takiego przedziału obydwa wyrażenia są ujemne, więc obydwie wartości bezwzględne znikną ze zmianą znaku:
+                $$\begin{align}
+                -(x + 2) - (x - 3) &= 7\\
+                -x - 2 - x + 3 &= 7\\
+                -2x + 1 &= 7\\
+                -2x &= 6\\
+                x &= -3
+                \end{align}$$
+                Rozwiązanie $x = -3$ mieści się w dziedzinie $(-\infty, -2)$.
+            </li>
+            <li>
+                $x \in [-2, 3)$<br>
+                Dla $x$ pomiędzy $-2$ a $3$ "lewe" wyrażenie jest dodatnie, a "prawe" ujemne, więc tylko prawa wartość bezwzględna 
+                przy zniesieniu powoduje zmianę znaku:
+                $$\begin{align}
+                x + 2 - (x - 3) &= 7\\
+                x + 2 - x + 3 &= 7\\
+                5 &= 7
+                \end{align}$$
+                Bez względu na wartość $x$ ciężko byłoby uwierzyć, że $5 = 7$. Jest to przykład równania sprzecznego, czyli bez rozwiązania.
+            </li>
+            <li>
+                $x \in [3, \infty)$<br>
+                Dla $x$ od $3$ wzwyż obydiwe wartości bezwzględne zachowują kulturalną dodatniość: 
+                $$\begin{align}
+                x + 2 + x - 3 &= 7\\
+                2x - 1 &= 7\\
+                2x &= 8\\
+                x &= 4
+                \end{align}$$
+                Rozwiązanie $x = 4$ mieści się w dziedzinie $[3, \infty)$.
+            </li>
+        </ol>
+
+        <p> 
+            Ostatecznie otrzymujemy dwa rozwiązania równania: $x = -3$ oraz $x = 4$. Możemy sprawdzić, że obie liczby rzeczywiście 
+            spełniają wyjściowe równanie:
+            $$
+            |-3 + 2| + |-3 - 3| = |-1| + |-6| = 1 + 6 = 7\\
+            |4 + 2| + |4 - 3| = |6| + |1| = 6 + 1 = 7
+            $$
+        </p>
+    </div>
+
+    <div class="example">
+        <p> 
+            Spróbujmy rozwiązać w ten sam sposób jeszcze jedno równanie:
+        </p>
+
+        $$ |3x + 3| + |-3x + 6| - 9 = 0 $$
+
+        <p> 
+            Zachowanie pierwszej wartości bezwzględnej zależy od spełnienia nierówności $3x + 3 \geq 0$, czyli równoważnie $3x \geq -3$, 
+            czyli $x \geq -1$. Dla $x$ o wartości od $-1$ wzwyż wyrażenie jest nieujemne, a dla mniejszych ujemne. Druga wartość 
+            bezwzględna zadaje nierówność $-3x + 6 \geq 0$, czyli $-3x \geq -6$, czyli $x \leq 2$ (zwracamy uwagę na odwrócenie znaku 
+            nierówności). Wyrażenie jest <b>nieujmene</b> dla $x$ <b>mniejszych</b> od $2$ oraz ujemne dla $x$ większych od $2$.
+            Rozbijamy nierówność na trzy przypadki, rozgraniczone wartościami $-1$ i $2$:
+        </p>
+
+        <ol> 
+            <li>
+                $x \in (-\infty, -1)$<br>
+                Lewa wartość bezwzględna zmienia znak, a prawa nie.
+                $$\begin{align}
+                -(3x + 3) + (-3x + 6) - 9 &= 0\\
+                -3x - 3 - 3x + 6 - 9 &= 0\\
+                -6x - 6 &= 0\\
+                -6x &= 6\\            
+                x &= -1\\            
+                \end{align}$$
+                Ponieważ za dziedzinę przyjęliśmy przedział otwarty $(-\infty, -1)$ bez minus-jedynki, rozwiązanie nie mieści się
+                w dziedzinie, a więc przypadek 1) pozostawia nas bez rozwiązań. ($x = -1$ pojawi się jako rozwiązanie przypadku 2); mogliśmy 
+                równie dobrze przyjąć tutaj przedział domknięty $(-\infty, -1]$, wtedy $x = -1$ pojawiłoby się jako rozwiązanie przypadku 1), a nie 2)).
+            </li>
+            <li>
+                $x \in [-1, 2)$<br>
+                Obie wartości bezwzględne znikają bez zmiany znaku.
+                $$\begin{align}
+                3x + 3 + (-3x + 6) - 9 &= 0\\
+                0 &= 0          
+                \end{align}$$
+                Bez względu na wartość $x$, ciężko się nie zgodzić, że $0 = 0$. Otrzymaliśmy równanie tożsamościowe, czyli takie, którego 
+                rozwiązaniem jest każda liczba z dziedziny, czyli $x \in [-1, 2)$.
+            </li>
+            <li>
+                $x \in [2, \infty)$<br>
+                Tylko prawa wartość bezwzględna zmienia znak.
+                $$\begin{align}
+                3x + 3 - (-3x + 6) - 9 &= 0\\
+                3x + 3 + 3x - 6 - 9 &= 0\\
+                6x - 12 &= 0\\
+                6x &= 12\\
+                x &= 2\\
+                \end{align}$$
+                Rozwiązanie $x = 2$ mieści się w dziedzinie $[2, \infty)$.
+            </li>
+        </ol>
+
+        <p> 
+            Ostatecznie, z pierwszego przypadku nie dostajemy rozwiązań, z drugiego dostajemy ich całe mnóstwo: $x \in [-1, 2)$, a 
+            z trzeciego $x = 2$. Dodając tę dwójkę do przedziału możemy zapisać w skrócie: $x \in [-1, 2]$. Innymi słowy, 
+            równanie jest spełnione przez każdą liczbę od $-1$ do $2$ (włącznie).
+        </p>
+    </div>
+
+    <div class="example">
+        $$||x - 3| - 2| = 1$$
+
+        Rozpracujemy podwójną wartość bezwzględną, zaczynając od tej wewnętrznej. Rozważmy przypadki:
+        <ol>
+            <li>
+                $x \in (-\infty, 3)$<br>
+                Dla iksów mniejszych od $3$ wyrażenie w wewnętrznej wartości bezwzględnej jest ujemne, więc całość upraszcza się 
+                do postaci:
+                $$\begin{align}
+                |-(x - 3) - 2| &= 1\\
+                |-x + 3 - 2| &= 1\\
+                |-x + 1| &= 1
+                \end{align}$$
+                Rozwiązując równanie dalej (tak samo, jak w pierwszym przykładzie, albo po prostu zgadując wyniki) otrzymamy 
+                dwa rozwiązania: $x = 0$ oraz $x = 2$. Obydwa mieszczą się w dziedzinie $(-\infty, 3)$.
+            </li>
+            <li>
+                $x \in [3, \infty)$<br>
+                Tym razem wewnętrzna wartość bezwzględna znika bez zmiany znaku:
+                $$\begin{align}
+                |x - 3 - 2| &= 1\\
+                |x - 5| &= 1
+                \end{align}$$
+                Dość łatwo sprawdzić, że równanie spełniają dwie liczby: $x = 4$ oraz $x = 6$ (obydwie wewnątrz dziedziny $[3, \infty)$). 
+            </li>
+        </ol>
+        Równanie ma cztery rozwiązania: $x \in \{0, 2, 4, 6\}$.
+    </div>
+
+	</lesson-chapter>
+
+    <lesson-chapter><template #title>Wartość bezwzględna obrazowo</template>
+    <p class = "type">
+		Intuicje
+	</p>
+
+    <p>
+        Równania z wartością bezwzględną mają przyjemną interpretację graficzną. Zaznaczmy na osi liczbowej dwa punkty o eleganckich 
+        nazwach $a$ i $b$. Nie jesteśmy małostkowi, więc rozważamy ogólny przypadek, gdzie $a$ i $b$ mogą oznaczać dowolne dwie liczby 
+        rzeczywiste. Spróbujmy obliczyć odległość pomiędzy tymi liczbami.
+    </p>
+
+    <p>
+        Jeżeli liczba $a$ jest mniejsza od liczby $b$, odległość między nimi obliczylibyśmy jako $b - a$. Na przykład dla $a = 3$
+        i $b = 7$ odległość między nimi wynosi $b - a = 7 - 3 = 4$.
+    </p>
+
+	<center><img src="./.images/Screenshot_8.png" align="middle"></center>
+
+    <p>
+        Jeżeli liczba $a$ jest większa od liczby $b$, odległość wynosiłaby $a - b$. Na przykład między $a = 3$
+        i $b = -1$ jest odległość $a - b = 3 - (-1) = 4$.
+    </p>
+
+	<center><img src="./.images/Screenshot_9.png" align="middle"></center>
+
+    <p>
+        W skrócie, dla dowolnych rzeczywistych $a$ i $b$: 
+        $$
+            \text{Odległość między } a \text{ i } b \text{ wynosi } a - b \text{, jeśli }
+            b \leq a \text{ oraz } b - a \text{, jeśli } a \lt b
+        $$
+        Równoważnie: 
+        $$
+            \text{Odległość między } a \text{ i } b \text{ wynosi } a - b \text{, jeśli } a - b \geq 0 \text{ oraz } -(a - b) 
+            \text{, jeśli } a - b \lt 0
+        $$
+        Czyli w skrócie:  
+        $$        
+            \text{Odległość między } a \text{ i } b \text{ wynosi } |a - b|
+        $$
+        Wartość bezwzględna z różnicy dwóch wyrażeń oznacza odległość pomiędzy nimi na osi liczbowej.
+    </p>
+
+    <p> 
+        Mając to olśnienie za sobą, możemy spojrzeć z oświeconym umysłem na równanie $|x - 3| = 5$. Jest to następujący problem:
+        Odległość między jaką liczbą a trójką wynosi $5$? To jest, jaka liczba jest odległa od trójki o pięć?
+    </p>
+
+	<center><img src="./.images/Screenshot_10.png" align="middle"></center>
+
+    <p> 
+        Równanie $|x - (-2)| + |x - 3| = 7$ moglibyśmy przetłumaczyć jakoś tak: jaka liczba ma taką własność, że jej odległość od $3$ wraz z 
+        jej odległością od $-2$ sumuje się do $7$? Liczbę taką znaleźlibyśmy, biorąc sznurek o długości $7$, przymocowując jego końce 
+        w punktach $-2$ oraz $3$ i napinając go palcem wzdłuż osi liczbowej; palec wskazałby wartość $x$.
+    </p>
+
+	<center><img src="./.images/Screenshot_11.png" align="middle"></center>
+	<center><img src="./.images/Screenshot_12.png" align="middle"></center>
+
+    <div class="example">
+        Dzięki potędze wyobraźni z łatwością możemy podawać rozwiązania prostych równań i nierówności z wartością bezwzględną. 
+        Na przykład nierówność 
+        $$|x - 2| \leq 4$$
+        rozwiązują wszystkie liczby, których odległość od $2$ wynosi $4$ lub mniej (od dwójki możemy spacerować na prawo i lewo, byle 
+        nie dalej niż o $4$).
+
+        $$x \in [-2, 6]$$
+
+        <center><img src="./.images/Screenshot_13.png" align="middle"></center>
+    </div>
+
+    <div class="example">
+        Nierówność z odwrotnie skierowanym znakiem:
+        $$|x + 3| > 2$$
+        Ma interptetację: "jakie liczby są odległe od $-3$ o więcej niż $2$"? Są to zarówno liczby mniejsze od $-5$, jak również 
+        większe od $-1$, więc rozwiązanie możemy zapisać jako sumę przedziałów:
+        $$ x \in (-\infty, -5) \cup (-1, \infty)$$
+        <center><img src="./.images/Screenshot_14.png" align="middle"></center>
+    </div>
+
+	</lesson-chapter>
 
   </lesson>
 </template>

@@ -295,7 +295,8 @@
 
 		<p>
 			Powyższy dówód został przeprowadzony według schematu znanego jako <i>dowód przez sprzeczność</i>. Chcemy przekonać kogoś, do swoich racji, 
-			czyli uzasadnić słuszność jakiegoś stwierdzenia. Zastanawiamy się "a co by było gdyby" - rozważamy scenariusz przeczący stwierdzeniu, 
+			czyli uzasadnić słuszność jakiegoś stwierdzenia. Rozważamy, czy jest możliwe, żeby to stwiedzenie nie było 
+			prawdziwe. Zastanawiamy się "a co by było gdyby" i rozważamy scenariusz przeczący stwierdzeniu, 
 			którego dowodzimy. Poprzez logiczne kroki rozumowania zbliżamy się do nieuniknionej katastrofy. Podsumowujemy argumentację stwierdzeniem "gdyby było 
 			inaczej niż ja mówię, to wszystko by się kompletnie pokopało". To bardzo mocny przekaz. Ciężko się z nim kłócić.
 		</p>
