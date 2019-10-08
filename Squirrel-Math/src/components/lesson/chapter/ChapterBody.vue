@@ -14,6 +14,26 @@ export default {
   props: ["trigger"],
   mounted() {
     const obj = this;
+    $("[class *= optional]").click(event => {
+      if ($(event.target).hasClass('optional-show'))
+      {
+        $($(event.target).nextAll('div')[0]).slideUp(1000, () => {
+          $(event.target).removeClass('optional-show'); 
+          $(event.target).addClass('optional-hide');
+        });
+      }
+      else
+      {
+        $($(event.target).nextAll('div')[0]).slideDown(1000, () => {
+          $(event.target).removeClass('optional-hide');
+          $(event.target).addClass('optional-show');
+        });
+      }
+    })
+
+    $(".optional-hide").each(function() {
+      $($(this).nextAll('div')[0]).slideUp(0);
+    });
     this.trigger.call = function() {
       if (animate == 1) {
         var dmask = $(obj.$refs.chapter_mask);
