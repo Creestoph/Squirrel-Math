@@ -44,7 +44,7 @@
 		Matematyka doskonale mogłaby się obyć bez procentów. Jednak nie hipermarkety, banki, przedsiębiorstwa. Procenty stosujemy z prostego 
 		powodu: dobrze działają na wyobraźnię. Najczęściej procentów używamy do opisania „części czegoś”. 
 		Dość łatwo sobie uzmysłowić, że $100\%$ odpowiada pełni, jedności, a pomniejsze procenty to coraz mniejsze fragmenty całości. 
-		Gdy widzimy informację, że $40\%$ <span class="comment" id="parówki pana Janusza">parówki</span> stanowi woda, mamy dość dobre wyobrażenie, 
+		Gdy widzimy informację, że $40\%$ <comment text="parówki pana Janusza">parówki</comment> stanowi woda, mamy dość dobre wyobrażenie, 
 		jak bardzo… ciekła… jest ta parówka. 
 	</p>
 
@@ -61,7 +61,7 @@
 	</div>
 	<div class="example">
 		Batonik „Banana Ecstasy” ma nałożony podatek VAT w wysokości $23\%$. Oznacza to, że gdy płacimy za kupowany batonik, 
-		$\frac{23}{100}$ tej kwoty jest <span class="comment" id="kradzione">odprowadzane</span> do skarbu państwa.
+		$\frac{23}{100}$ tej kwoty jest <comment text="kradzione">odprowadzane</comment> do skarbu państwa.
 	</div>
     </lesson-chapter>
 
@@ -286,7 +286,7 @@
 	<p>
 		Czasami interesuje nas zagadnienie odwrotne do obliczania podwyżki o dany procent: „O ile procent większa jest jedna liczba od drugiej?” 
 		Początkowo pączek różany u Bogdana kosztował $2 \text{ zł}$, a teraz kosztuje $2,25 \text{ zł}$. Podejrzliwe dzieci chcą 
-		wiedzieć, jak bardzo Bogdan z nich zdziera. <span class="comment" id="Ach ta dzisiejsza młodzież…">Chcą więc się dowiedzieć</span>
+		wiedzieć, jak bardzo Bogdan z nich zdziera. <comment text="Ach ta dzisiejsza młodzież…">Chcą więc się dowiedzieć</comment>
 		„o ile procent podwyższono cenę $2 \text{ zł}$, skoro wyszło $2,25 \text{ zł}$ ?”. 
 		Nowa cena jest o $0,25 \text{ zł}$ większa od pierwotnej. Wystarczy obliczyć, jaką 
 		część początkowej ceny stanowi $0,25 \text{ zł}$:
@@ -357,7 +357,7 @@
 	Czyli Chipsy „Lay’s Prosto z Pieca” powinny zawierać $9\%$ tłuszczu. Obniżka wynosi zatem $21$ punktów procentowych.
 	</div>
 	<div class="example">
-		<span class="comment" id="Raczej nie musimy mieć bujnej wyobraźni.">Wyobraźmy sobie kraj, w którym poziom bezrobocia jest wysoki</span>
+		<comment text="Raczej nie musimy mieć bujnej wyobraźni.">Wyobraźmy sobie kraj, w którym poziom bezrobocia jest wysoki</comment>
 		i sięga $15\%$. Jeśli pewien szanowny polityk ogłosi, że obniży bezrobocie o $10\%$, to nie oczekujmy, 
 		że w wyniku będzie ono wynosiło $5\%$. 
 		Liczba o $10\%$ mniejsza niż $15\%$ to

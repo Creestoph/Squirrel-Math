@@ -236,7 +236,7 @@
 	$$
 	
 	<p>
-		Każdy taki zlepek liczb (<span class="comment" id="i nie tylko">naturalnych, wymiernych, całkowitych…</span> ) oraz liter (zmiennych, stałych, parametrów…) nazywamy 
+		Każdy taki zlepek liczb (<comment text="i nie tylko">naturalnych, wymiernych, całkowitych…</comment> ) oraz liter (zmiennych, stałych, parametrów…) nazywamy 
 		<i>wyrażeniem algebraicznym</i> albo po prostu <i>wyrażeniem</i>. 
 		Wyrażenia algebraiczne bardzo często mają postać kilku iloczynów, które do siebie dodajemy, tak jak powyższa suma 
 		iloczynów $(5 \cdot a \cdot b)$, $(6 \cdot m)$ oraz 

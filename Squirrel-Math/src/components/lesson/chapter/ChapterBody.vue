@@ -29,11 +29,12 @@ export default {
             if (classList[i].includes("height"))
               var dh = parseInt(classList[i].replace("height", ""));
           }
-          d.animate({ top: "+=" + dh }, 1100, "swing", function() {
+          d.animate({ top: 0 }, 1100, "swing", function() {
             animate = 1;
           });
           dmask.animate({ height: "+=" + dh }, 1100, "swing", function() {
             animate = 1;
+            dmask.css('overflow', 'visible');
           });
         } else {
           d.addClass("hidden");
@@ -50,6 +51,7 @@ export default {
           });
           dmask.animate({ height: "+=" + dh }, 1100, "swing", function() {
             animate = 1;
+            dmask.css('overflow', 'hidden');
           });
         }
       }
@@ -62,9 +64,10 @@ export default {
 .chapter_body {
   position: relative;
   border: 0px solid black;
-  margin-bottom: 90px;
+  margin-bottom: 0px;
   margin-top: 0px;
   padding: 0 25px;
+  padding-bottom: 90px;
   box-shadow: inset 0 0 0 0 rgba(0, 0, 0, 0.3);
 }
 
@@ -73,13 +76,10 @@ export default {
 }
 
 .chapter_mask {
-  overflow: hidden;
   position: relative;
   border: 0px solid black;
   margin: 0;
-  margin-bottom: 0px;
-  margin-top: 0px;
-  padding: 0px;
+  padding: 0;
   box-shadow: inset 0 0 0 0 rgba(0, 0, 0, 0.3);
 }
 </style>

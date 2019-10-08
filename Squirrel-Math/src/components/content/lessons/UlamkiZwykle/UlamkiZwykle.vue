@@ -29,7 +29,7 @@
 		zjada $3$ spośród nich, to mówimy, że zjadł $\frac{3}{8}$ tortu. Napis $\frac{3}{8}$ czytamy jako 
 		„trzy ósme” – mówi on tyle, że spośród ośmiu części 
 		całości wzięliśmy trzy części. Gdy bierzemy dwa herbatniki spośród pięciu w paczce, to 
-		<span class="comment" id="Właściwie… nie przypominam sobie wspólnego konsumowania herbatników.">zjadamy</span> 
+		<comment text="Właściwie… nie przypominam sobie wspólnego konsumowania herbatników.">zjadamy</comment> 
 		$\frac{2}{5}$ („dwie piąte”) paczki. 
 		Pół hot-doga to to samo, co $\frac{1}{2}$ („jedna druga”) hot-doga.
 	</p>
@@ -888,7 +888,7 @@
 	</p>
 
 	<p>
-		Gdy mówiliśmy, że znak dzielenia można zawsze zastąpić kreską ułamkową, <span class="comment" id="My nigdy nie żartujemy.">nie żartowaliśmy</span>. 
+		Gdy mówiliśmy, że znak dzielenia można zawsze zastąpić kreską ułamkową, <comment text="My nigdy nie żartujemy.">nie żartowaliśmy</comment>. 
 		Do postaci ułamka można sprowadzać dowolnie rozbudowane działania zawierające dzielenie:
 	</p>
 

@@ -776,7 +776,7 @@
         Pojęcie liczby najprościej uzmysłowić sobie poprzez ilość owiec w trzódce. Jednak liczba jako taka jest tworem znacznie bardziej
         ogólnym i abstrakcyjnym niż owca. Liczba może dotyczyć jakiegokolwiek namacalnego obiektu. Możemy określić liczbę kupionych
         samochodów, liczbę zjedzonych paluszków albo liczbę obalonych
-        <span class="comment" id="+18">flaszek</span>.
+        <comment text="+18">flaszek</comment>.
         W matematyce jednak liczba występuje samodzielnie, jako twór
         istniejący sam dla siebie i bez odniesienia do owiec ani flaszek. Matematyk po prostu przyjmuje, że jest coś takiego jak liczba jeden,
         liczba dwa, liczba trzy itd., choć nic nie stoi na przeszkodzie, żeby dopowiedzieć sobie „jedna owca”, „dwie owce”, „trzy owce”.
@@ -799,7 +799,7 @@
         prostuje kolejne palce i przebiega myślami przez kolejne cyfry: $1$, $2$, $3$, $4$, $5$, $6$, $7$, $8$, $9$. Prostując ostatniego palca
         dobija do liczby dziesięć, którą zapisujemy symbolicznie jako $10$. Pasterzowi Eustachemu skończyły się palce, a owiec do zliczenia wciąż całe mnóstwo.
         Eustachy prosi o pomoc swojego znajomego Wirgiliusza: "Wirgiliuszu, mój najdroższy, wyciągnij proszę palec".
-        <span class="comment" id="I nastał spokój">I wtedy Wirgiliusz najdroższy wyciąga palec.</span> Palec jego (wyciągnięty) symbolizuje, że Eustachy doliczył do liczby dziesięć. Na to Eustachy chowa wszystkie
+        <comment text="I nastał spokój">I wtedy Wirgiliusz najdroższy wyciąga palec.</comment> Palec jego (wyciągnięty) symbolizuje, że Eustachy doliczył do liczby dziesięć. Na to Eustachy chowa wszystkie
         palce i leci od nowa. Idąc dalej, Eustachy dociera do liczby jedenaście, którą zapiszemy jako $11$. Kolejno nadchodzą:
       </p>
 
@@ -1153,10 +1153,7 @@
       <p>
         Nie należy mylić pojęcia liczby z pojęciem cyfry. Liczba ma matematyczną wartość i to na liczbach niedługo będziemy
         wykonywali
-        <span
-          class="comment"
-          id="Jeśli odezwał się w tobie skryty chirurg, to rozminąłeś się z powołaniem."
-        >operacje</span>.
+        <comment text="Jeśli odezwał się w tobie skryty chirurg, to rozminąłeś się z powołaniem.">operacje</comment>.
         Cyfra jest niczym więcej niż graficznym sposobem na zapisanie liczby. Można powiedzieć, że cyfry są
         tym dla liczb, czym litery dla słów.
       </p>
@@ -1168,7 +1165,7 @@
 
       <p>
         Pasterz miał $7$ owiec. W ciemnej dolinie odnalazł zbłąkaną owieczkę, więc
-        <span class="comment" id="Przez wzgląd na swoje imię.">poprowadził ją właściwą ścieżką.</span> Teraz ma już $8$ owieczek.
+        <comment text="Przez wzgląd na swoje imię.">poprowadził ją właściwą ścieżką.</comment> Teraz ma już $8$ owieczek.
         Trudno się nie zgodzić, że teraz pasterz ma więcej owieczek niż do tej pory, czyli mówiąc inaczej, przedtem miał mniej niż ma teraz.
         W ten sam sposób, jeśli pasterz Eustachy ma $18$ owieczek, a pasterz Wirgiliusz ma $67$ owieczek, to Eustachy jest zazdrosny.
       </p>
@@ -1269,10 +1266,7 @@ $$18 = 18$$
 
       <p>
         I teraz pytanie brzmi: czy jeśli coś numerujesz po kolei, to zaczynasz od zera, czy od jedynki? Jest to kwestia sporna, która mogłaby poróżnić ludzi.
-        <span
-          class="comment"
-          id="właściwie to dziwne, że nie było o to wojny"
-        >A zwłaszcza matematyków.</span> Większość osób zapewne powiedziałaby, że
+        <comment text="właściwie to dziwne, że nie było o to wojny">A zwłaszcza matematyków.</comment> Większość osób zapewne powiedziałaby, że
         numeruje rzeczy od jedynki. Taka numeracja przychodzi, chciałoby się powiedzieć, naturalnie, gdy liczymy po kolei jakieś przedmioty: mam jeden żeton, dwa żetony, trzy żetony itd.
         Jednak gdy odliczamy, ile sekund minęło od pewnego wydarzenia, powinniśmy zaczynać od zera. Powiedzmy, że Maciuś spuszcza kamyczek z trzeciego piętra i
         odlicza w głowie, ile sekund minie do chwili stuknięcia kamyczka o ziemię. W momencie, gdy Maciuś wypuszcza kamyk z ręki, powinien zacząć odliczanie
@@ -1356,10 +1350,7 @@ $$18 = 18$$
         Żeby odczytanie tych liczb było łatwiejsze, przeważnie stosuje się odstęp pomiędzy kolejnymi partiami trzech zer.
         Liczbę $136\ 747\ 980\ 490\ 006$ można zapisać oczywiście bez odstępów jako $136747980490006$. Sam oceń, który zapis jest przystępniejszy.
         Czasem zamiast odstępów stosuje się też kropki: $136.747.980.490.006$.
-        <span
-          class="comment"
-          id="Jak dotrzesz do tematu 'Ułamki dziesiętne', to zrozumiesz"
-        >Nie polecamy jednak tej metody</span>.
+        <comment text="Jak dotrzesz do tematu 'Ułamki dziesiętne', to zrozumiesz">Nie polecamy jednak tej metody</comment>.
       </p>
 
       <p>
@@ -1412,7 +1403,7 @@ $$18 = 18$$
             style="padding-right: 20px"
           >$1\ 000\ 000\ 000\ 000\ 000\ 000\ 000\ 000\ 000\ 000\ 000\ 000$</td>
           <td>
-            <span class="comment" id="Wiem o czym myślisz, perwersie">sekstylion</span>
+            <comment text="Wiem o czym myślisz, perwersie">sekstylion</comment>
           </td>
         </tr>
         <tr>
@@ -1502,15 +1493,9 @@ $$18 = 18$$
       </ul>
       <!--przykłady poniżej trzeba by zweryfikować / wymyślić inne-->
       <p>
-        <span
-          class="comment"
-          id="Spokojnie, my też nie."
-        >Prawdopodobnie nie uzmysławiasz sobie, jak wielkie są te liczby</span>.
+        <comment text="Spokojnie, my też nie.">Prawdopodobnie nie uzmysławiasz sobie, jak wielkie są te liczby</comment>.
         Liczba wszystkich ludzi na świecie wynosi trochę ponad
-        <span
-          class="comment"
-          id="Jeśli czytasz to w przyszłości, wspomnij stare dobre czasy."
-        >$7\ 000\ 000\ 000$</span>.
+        <comment text="Jeśli czytasz to w przyszłości, wspomnij stare dobre czasy.">$7\ 000\ 000\ 000$</comment>.
         Liczba gwiazd w naszej
         galaktyce to około $100\ 000\ 000\ 000$. Szacuje się, że w całym Wszechświecie
         jest $40\ 000\ 000\ 000\ 000\ 000\ 000\ 000$ planet.

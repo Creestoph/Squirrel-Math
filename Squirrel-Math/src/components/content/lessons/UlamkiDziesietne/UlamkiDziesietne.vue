@@ -66,7 +66,7 @@
 		
 		<p>
 			Liczba zapisana z użyciem przecinka to właśnie ułamek dziesiętny. Ułamki dziesiętne dominują w fizyce i naukach 
-			technicznych. Matematyka jest jedyną <span class="comment" id="dziedziną „życia”">dziedziną życia</span>, 
+			technicznych. Matematyka jest jedyną <comment text="dziedziną „życia”">dziedziną życia</comment>, 
 			w której ułamki zwykłe stosuje się częściej niż dziesiętne.
 		</p>
 		</lesson-chapter>
@@ -124,9 +124,9 @@
 		</p>
 		
 		<p>
-			Przydatność liczb w zapisie dziesiętnym wychodzi na jaw przy mierzeniu <span class="comment" id = "Wprawdzie nie 
+			Przydatność liczb w zapisie dziesiętnym wychodzi na jaw przy mierzeniu <comment text="Wprawdzie nie 
 			tłumaczyliśmy jeszcze, czym jest długość, jednak mając Cię za osobę rozgarniętą, zakładamy, że wiesz, czym jest 
-			metr.">długości</span>. 
+			metr.">długości</comment>. 
 		</p>
 		
 		<p>

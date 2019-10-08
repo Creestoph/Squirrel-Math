@@ -20,7 +20,7 @@
 
     <p class="problem"> 
         Gutek zbiera na wymarzony zestaw Lego, który kosztuje $120 \text{ zł}$. 
-		<span class="comment" id="Zwyczajowo zwaną kieszonkowym">Ciężką pracą</span>
+		<comment text="Zwyczajowo zwaną kieszonkowym">Ciężką pracą</comment>
 		zarobił $40 \text{ zł}$ i zastanawia się, ile 
 		jeszcze musi uzbierać. Stoi więc przed problemem:
 		$$40 + \text{∎} = 120$$

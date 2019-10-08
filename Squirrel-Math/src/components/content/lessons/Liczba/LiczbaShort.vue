@@ -141,7 +141,7 @@
         <p>
             Pojęcie liczby najprościej uzmysłowić sobie poprzez ilość owiec w trzódce. Jednak liczba jako taka jest tworem znacznie bardziej 
             ogólnym i abstrakcyjnym niż owca. Liczba może dotyczyć jakiegokolwiek namacalnego obiektu. Możemy określić liczbę kupionych 
-            samochodów, liczbę zjedzonych paluszków albo liczbę obalonych <span class="comment" id ="+18">flaszek</span>. 
+            samochodów, liczbę zjedzonych paluszków albo liczbę obalonych <comment text="+18">flaszek</comment>. 
             W matematyce jednak liczba występuje samodzielnie, jako twór 
             istniejący sam dla siebie i bez odniesienia do owiec ani flaszek. Matematyk po prostu przyjmuje, że jest coś takiego jak liczba jeden, 
             liczba dwa, liczba trzy itd., choć nic nie stoi na przeszkodzie, żeby dopowiedzieć sobie „jedna owca”, „dwie owce”, „trzy owce”. 

@@ -156,7 +156,7 @@
 		</p>
 		<ul>
 			<li>$124$ jest podzielne przez $4$, ponieważ $24$ jest podzielne przez $4$.</li>
-			<li>$1000$ jest podzielny przez $4$, <span class="comment" id="Dokładniej 00">ponieważ $0$</span> jest podzielne przez $4$.</li>
+			<li>$1000$ jest podzielny przez $4$, <comment text="Dokładniej 00">ponieważ $0$</comment> jest podzielne przez $4$.</li>
 			<li>$12 894 782 712$ jest podzielne przez $4$, ponieważ $12$ jest podzielne przez $4$.</li>
 		</ul>
 	</div>
@@ -1005,7 +1005,7 @@
 	</ul>
 
 	<p>
-		Poszukiwanie dzielników liczby to tak na prawdę <span class="comment" id="Bardzo głębokie pytanie">pytanie</span>, na ile równych 
+		Poszukiwanie dzielników liczby to tak na prawdę <comment text="Bardzo głębokie pytanie">pytanie</comment>, na ile równych 
 		grupek możemy podzielić stertę kamieni. 
 		Gdy weźmiemy kupkę $60$ kamieni, możemy to zrobić na całkiem sporo sposobów - możemy dzielić kamienie na 
 		$1$ grupkę 
@@ -1149,7 +1149,7 @@
 		albo $11$ kamieni… Za każdym razem 
 		jedyne co możemy, to zostawić stertę taką, jak ją Pan Bóg stworzył, albo rozrzucić wszystkie kamienie w cały świat. Gdy 
 		liczba ma tylko dwa dzielniki: <span class="math">1</span> oraz samą siebie, mówimy, że jest <i>liczbą pierwszą</i>. 
-		<span class="comment" id="Czyli kilka pierwszych liczb pierwszych">Kilka początkowych liczb pierwszych</span> to:
+		<comment text="Czyli kilka pierwszych liczb pierwszych">Kilka początkowych liczb pierwszych</comment> to:
 	</p>
 
 	<p style="text-align: center">

@@ -5,9 +5,9 @@
     <lesson-intro>   
     <p>
         Skoro nauczyliśmy się powiększać jedną liczbę o drugą, to teraz wypadałoby powiedzieć o pomniejszaniu jednej o drugą. 
-        Istotę odejmowania słusznie ujął <span class="comment" id="Sidney Polak stwierdził również, że „człowiek jest tylko sumą oddechów”. 
+        Istotę odejmowania słusznie ujął <comment text="Sidney Polak stwierdził również, że „człowiek jest tylko sumą oddechów”. 
 		Skoro już umiesz dodawać, jesteś w stanie ocenić słuszność jego śmiałej teorii.">Sidney Polak: „Popatrz jak wszystko szybko się zmienia, 
-		coś jest, a później tego nie ma”.</span>
+		coś jest, a później tego nie ma”.</comment>
 	</p>
     </lesson-intro>   
 	<lesson-chapter><template #title>Baba z wozu, koniom lżej</template>
@@ -18,11 +18,11 @@
     <p>
         Zastanawiało Cię kiedyś, czemu koniom lżej? W chwili początkowej mamy wóz, a na nim babę. 
         Biedne konie męczą się z ciągnięciem ciężaru wozu i damy słusznego rozmiaru. Następnie obserwujemy, że baba z wozu. 
-        Wtedy ciężar, który konie mają dźwigać, ogranicza się jedynie do wozu, <span class="comment" id="co kończy dowód">a więc koniom lżej</span>.
+        Wtedy ciężar, który konie mają dźwigać, ogranicza się jedynie do wozu, <comment text="co kończy dowód">a więc koniom lżej</comment>.
     </p>
         
     <p>
-        <span class="comment" id="Wiem, że nie mogłeś się doczekać">Wróćmy lepiej do kulek na stole</span>. Powiedzmy, 
+        <comment text="Wiem, że nie mogłeś się doczekać">Wróćmy lepiej do kulek na stole</comment>. Powiedzmy, 
 		że rozłożyliśmy $7$ kulek.
     </p>
       
@@ -68,8 +68,8 @@
         
     <p>
         Znaczek $-$ podobnie jak $+$ jest symbolem matematycznym. 
-		<span class="comment" id = "Jak dorośniesz, zrozumiesz różnicę.">
-		Sam znaczek nazywa się „minus”, ale w działaniu czytamy go jako „odjąć”.</span> Znaczy on tyle, że od tego, co po lewej stronie, 
+		<comment text="Jak dorośniesz, zrozumiesz różnicę.">
+		Sam znaczek nazywa się „minus”, ale w działaniu czytamy go jako „odjąć”.</comment> Znaczy on tyle, że od tego, co po lewej stronie, 
 		zabieramy (czyli odejmujemy) to, co po prawej stronie. 
         Symbol $=$ jest Ci już znany. Mówi on tyle, że 
 		$7 \text{ kulek} - 4 \text{ kulki}$ to to samo, co $3 \text{ kulki}$. 
@@ -87,7 +87,7 @@
 
 	<div class="example">
 		Pan Janusz niósł na urodziny pana Marka $5$ butelek 
-		<span class="comment" id = "Lekcja zawiera lokowanie produktu.">Piccolo</span>. 
+		<comment text="Lekcja zawiera lokowanie produktu.">Piccolo</comment>. 
 		Zamyślony teorią odejmowania potknął się o krawężnik i stłukł $2$ butelki. Do celu doniósł jedynie 
 		$3$ butelki.
 		$$5\ \text{butelek} - 2\ \text{butelki} = 3\ \text{butelki}$$
@@ -161,7 +161,7 @@
     </p> 
     
     <p>
-        Obrazek ten może nas <span class="comment" id="Chłoń go pełną piersią.">zainspirować</span> do stwierdzenia, że:
+        Obrazek ten może nas <comment text="Chłoń go pełną piersią.">zainspirować</comment> do stwierdzenia, że:
     </p>
         
     <p style="text-align: center">
@@ -201,7 +201,7 @@
 
 	<div class="example">
 		Gutek zbiera na wymarzony zestaw Lego, który kosztuje $120 \text{ zł}$. 
-		<span class="comment" id="Zwyczajowo zwaną kieszonkowym">Ciężką pracą</span>
+		<comment text="Zwyczajowo zwaną kieszonkowym">Ciężką pracą</comment>
 		zarobił $40 \text{ zł}$ i zastanawia się, ile 
 		jeszcze musi uzbierać. Stoi więc przed problemem:
 		$$40 + \text{∎} = 120$$
@@ -218,10 +218,10 @@
     
     <p>
         Przy wprowadzaniu nazw odjemna i odjemnik dumnie ogłosiliśmy, że w odejmowaniu ma znaczenie, czy liczba stoi przed 
-        znakiem $-$, czy po nim. <span class="comment" id="Chyba że jesteś wrażliwy. Wtedy po prostu to przeczytaj.">
-		Wyobraź sobie</span>, że w stadzie jest $10$ owiec, a wilk zjada spośród nich dwie. Pozostaje $8$ owiec. 
-        $10 - 2 = 8$ i <span class="comment" id="Pomijając fakt, że dwie owce właśnie zostały zagryzione.">z tym 
-		większego problemu nie ma</span>. Teraz wyobraź sobie, że w stadzie są dwie owce, a wilk zjada spośród 
+        znakiem $-$, czy po nim. <comment text="Chyba że jesteś wrażliwy. Wtedy po prostu to przeczytaj.">
+		Wyobraź sobie</comment>, że w stadzie jest $10$ owiec, a wilk zjada spośród nich dwie. Pozostaje $8$ owiec. 
+        $10 - 2 = 8$ i <comment text="Pomijając fakt, że dwie owce właśnie zostały zagryzione.">z tym 
+		większego problemu nie ma</comment>. Teraz wyobraź sobie, że w stadzie są dwie owce, a wilk zjada spośród 
         nich $10$. Sytuacja taka najpewniej pozwoliłaby rozwiązać problem głodu na świecie, jednak rzeczywistość nie 
 		jest łaskawa. 
         Jak widać, $10 - 2$ to nie to samo, co $2 - 10$, a więc odejmowanie nie jest przemienne.
@@ -265,8 +265,8 @@
     </p>
     
     <p>
-        Podobnie jak w przypadku dodawania, matematycy pokusili się na wynalezienie metody <span class="comment" id="Nie bój się, będzie dobrze.">
-		<i>odejmowania w słupku</i></span> zwanej też 
+        Podobnie jak w przypadku dodawania, matematycy pokusili się na wynalezienie metody <comment text="Nie bój się, będzie dobrze.">
+		<i>odejmowania w słupku</i></comment> zwanej też 
         <i>odejmowaniem pisemnym</i>.
     </p>
     
@@ -326,8 +326,8 @@
         
         <p>
             Odejmujemy cyfrę dziesiątek od cyfry dziesiątek: $3 - 8 = …$ no i mamy problem. 
-            <span class="comment" id="Chyba że jesteś poborcą podatkowym.">
-            Ciężko byłoby zabrać od czegoś małego coś dużego.</span> Robimy taki trik: trójkę zwiększamy o $10$ 
+            <comment text="Chyba że jesteś poborcą podatkowym.">
+            Ciężko byłoby zabrać od czegoś małego coś dużego.</comment> Robimy taki trik: trójkę zwiększamy o $10$ 
             (robimy z niej $13$) kosztem cyfry po lewej - siódemkę zmniejszamy 
             o $1$ (robimy z niej $6$).
         </p>
@@ -420,7 +420,7 @@
     </div>
 
     <p>
-        <span class="comment" id="to nie zaciągaj kredytu hipotecznego. To cię zrujnuje">Jeśli czujesz się trochę zagubiony w tych wszystkich pożyczkach,</span>
+        <comment text="to nie zaciągaj kredytu hipotecznego. To cię zrujnuje">Jeśli czujesz się trochę zagubiony w tych wszystkich pożyczkach,</comment>
         prześledź dowolne własne przykłady wpisując je do poniższego pola. Poza tym nie martw się,
         odejmowanie w słupku jest głównie po to, żeby męczyć nim dzieci w podstawówce. Z czasem nabierzesz wprawy w liczeniu i będziesz w stanie
         odejmować nawet duże liczby w pamięci. A jeśli nie, to przecież zawsze jest kalkulator.

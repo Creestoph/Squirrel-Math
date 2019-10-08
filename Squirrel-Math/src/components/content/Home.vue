@@ -69,7 +69,7 @@
 	
 	<p>
 		Większość lekcji zaopatrzona jest w dodatkowe komentarze. Częśc z nich to swego rodzaju „easter eggi” - cyniczne żarty, które można odkryć jedynie najeżdżając
-		na powiązane słowo lub zdanie (jak <span class="comment" id="To miejsce czeka na Twój cyniczny żart">TUTAJ</span>). Komentarze, które pomagają w zrozumieniu
+		na powiązane słowo lub zdanie (jak <comment text="To miejsce czeka na Twój cyniczny żart">TUTAJ</comment>). Komentarze, które pomagają w zrozumieniu
 		trudnych pojęć / przekształceń matematycznych / dowodów będą zaznaczone na marginesie za pomocą <span class="comment_visible" id ="Mniej więcej takiego">czerwonego pytajnika</span>.
 	</p>
 	

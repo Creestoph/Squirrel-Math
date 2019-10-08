@@ -4,7 +4,7 @@
 
     <lesson-intro>   
     <p>
-        Pierwszym i najprostszym rodzajem równań, które rozpracujemy <span class="comment" id="a może raczej od $x$ do $x$">od $a$ do $z$</span> są równania liniowe.
+        Pierwszym i najprostszym rodzajem równań, które rozpracujemy <comment text="a może raczej od $x$ do $x$">od $a$ do $z$</comment> są równania liniowe.
         Ich rozwiązywanie jest tak proste, jak podejmowanie decyzji w grach z liniową fabułą.
 	</p>
     </lesson-intro>   

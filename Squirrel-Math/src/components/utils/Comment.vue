@@ -19,8 +19,8 @@ export default {
     onMouseOver(event) {
       this.popup = true;
       this.mousePos = {
-        x: event.offsetX + 15,
-        y: event.offsetY - 25
+        x: event.clientX + 15,
+        y: event.clientY - 55
       };
     }
   }
@@ -33,7 +33,7 @@ export default {
 }
 .comment_window
 {
-	position: absolute;
+	position: fixed;
     background: #FEFEFE;
     padding: 6px;
 	border-right: 1px solid black;
@@ -41,5 +41,7 @@ export default {
 	font-family: calibri light;
 	font-size: 15px;
     box-shadow: inset 0px -15px 15px -5px rgba(0, 0, 0, 0.15);
+    z-index: 10000;
+    pointer-events: none;
 }
 </style>

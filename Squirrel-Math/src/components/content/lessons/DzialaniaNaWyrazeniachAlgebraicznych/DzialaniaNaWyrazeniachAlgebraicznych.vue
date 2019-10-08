@@ -16,9 +16,8 @@
 		</p>
 		
 		<p>
-			Z estetycznego punktu widzenia jednomiany powinno się zapisywać, zaczynając od współczynnika liczbowego, a następnie <span class="comment"
-			id="I tak nikt o to nie dba">wypisując kolejne 
-			zmienne w kolejności alfabetycznej</span>. Dzięki potęgowaniu możemy uczynić jednomiany jeszcze przejrzystszymi: jeśli pewna zmienna występuje 
+			Z estetycznego punktu widzenia jednomiany powinno się zapisywać, zaczynając od współczynnika liczbowego, a następnie <comment text="I tak nikt o to nie dba">wypisując kolejne 
+			zmienne w kolejności alfabetycznej</comment>. Dzięki potęgowaniu możemy uczynić jednomiany jeszcze przejrzystszymi: jeśli pewna zmienna występuje 
 			jako czynnik więcej niż jeden raz, nie piszemy jej dwukrotnie, a jedynie zwiększamy jej wykładnik.
 		</p>
 		
@@ -160,7 +159,7 @@
 		<center><img src="./.images/Screenshot_5.png" align="middle"></center>
 		
 		<p>
-			A następnie <span class="comment" id="W wersji dla młodszych: zwalniamy">zabijamy</span> ich tylu, ilu zażyczył sobie reżyser po znaku odejmowania:
+			A następnie <comment text="W wersji dla młodszych: zwalniamy">zabijamy</comment> ich tylu, ilu zażyczył sobie reżyser po znaku odejmowania:
 		</p>
 
 		<center><img src="./.images/Screenshot_6.png" align="middle"></center>
