@@ -154,9 +154,9 @@
 	</p>
 	
 	<p>
-		Wgłębiając się w dietetyczny szał, <span class="comment" 
-		id="Ponieważ mamy zapędy seksistowskie, uwzględniamy tylko wzory dla mężczyzn. Właściwie tylko statystycznych mężczyzn.">
-		zobaczmy, jak wyliczyć każdy z powyższych składników:</span>
+		Wgłębiając się w dietetyczny szał, <comment 
+		text="Ponieważ mamy zapędy seksistowskie, uwzględniamy tylko wzory dla mężczyzn. Właściwie tylko statystycznych mężczyzn.">
+		zobaczmy, jak wyliczyć każdy z powyższych składników:</comment>
 	</p>
 	
 	<ul>

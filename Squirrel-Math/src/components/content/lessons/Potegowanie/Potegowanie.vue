@@ -93,9 +93,9 @@
 	
 	<p>
 		W praktyce potęgowanie pełni rolę narzędzia matematycznego, dzięki któremu nie musimy pisać nużąco długich iloczynów, gdy jako czynnik 
-		pojawia się kilka razy ta sama liczba. Im dalej zagłębiamy się w matematyczne fantazje, tym bardziej oddalamy się <span class="comment"
-		id="i od Boga.">od przyziemnych, 
-		namacalnych, życiowych zagadnień</span>, przez co ilustrowanie matematyki "codziennymi" problemami staje się niemożliwe.
+		pojawia się kilka razy ta sama liczba. Im dalej zagłębiamy się w matematyczne fantazje, tym bardziej oddalamy się <comment text=
+		"i od Boga.">od przyziemnych, 
+		namacalnych, życiowych zagadnień</comment>, przez co ilustrowanie matematyki "codziennymi" problemami staje się niemożliwe.
 		Potęgowanie stoi jeszcze na granicy abstrakcji i przy odrobinie dobrej woli możemy zobaczyć 
 		potęgowanie w akcji.
 	</p>
@@ -185,8 +185,8 @@
 	</table>
 	
 	<p>
-		Aby uchodzić za człowieka wykształconego, <span class="comment" id="No przynajmniej kwadraty">powinieneś dobrze znać kwadraty i sześciany pierwszych 
-		dziesięciu liczb naturalnych.</span>
+		Aby uchodzić za człowieka wykształconego, <comment text="No przynajmniej kwadraty">powinieneś dobrze znać kwadraty i sześciany pierwszych 
+		dziesięciu liczb naturalnych.</comment>
 	</p>
     </lesson-chapter>
 

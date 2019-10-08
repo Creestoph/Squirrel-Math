@@ -24,8 +24,8 @@
 
     <p>
         Wróćmy do rzeczonych owoców, które uprawia poczciwy Eustachy. Słonecznego poniedziałkowego popołudnia Eustachy zebrał do koszyka soczyste plony:
-        jabłka, cytryny i marchewkę (a ponieważ każde dziecko Matki Natury jest niepowtarzalne, <span class="comment" id="Mimo że niektóre z nich są szare lub czarne, 
-        Eustachy zapewnia, że wszystkie są świeże">owoce mają różne kolory i rozmiary</span>).
+        jabłka, cytryny i marchewkę (a ponieważ każde dziecko Matki Natury jest niepowtarzalne, <comment text="Mimo że niektóre z nich są szare lub czarne, 
+        Eustachy zapewnia, że wszystkie są świeże">owoce mają różne kolory i rozmiary</comment>).
     </p>
 
     <!--<div class="container">

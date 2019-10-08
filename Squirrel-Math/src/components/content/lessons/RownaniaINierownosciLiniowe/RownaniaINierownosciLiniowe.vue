@@ -196,9 +196,9 @@
     <ul> 
         <li>
             Czas potrzebny na wykonanie jakiegoś zadania jest odwrotnie proporcjonalny do liczby osób, która się nim zajmuje. Spodziewamy się, że 
-            gdy zatrudnimy trzy razy więcej pracowników, ukończą to zadanie trzykrotnie szybciej. <span class="comment" id="Na przykład w informatyce czas wykonywania 
+            gdy zatrudnimy trzy razy więcej pracowników, ukończą to zadanie trzykrotnie szybciej. <comment text="Na przykład w informatyce czas wykonywania 
             zadania jest wprost proporcjonalny do liczby zajmujących się nim osób">Chociaż z drugiej strony, gdzie kucharek sześć, tam nie 
-            ma co jeść.</span>
+            ma co jeść.</comment>
         </li>
         <li>
             Wysokość nagrody w Lotto jest odwrotnie proporcjonalna do liczby osób, które tego dnia wylosowały szczęśliwe numery. Jeśli kumulacja 
@@ -289,9 +289,9 @@
     </p>
 
     <div class="example"> 
-        W podstawówce im. Diofantosa z Aleksandrii liczba uczennic jest o $150$ mniejsza od liczby uczniów, a stosunek chłopców do dziewcząt w tej szkole <span 
-        class="comment" id="jest naganny; rozwydrzeni młodzieńcy ciągle dokuczają uciśnionym niewiastom">wynosi 
-        $3 : 2$</span>. Ilu podopiecznych liczy ta szkoła?<br><br>
+        W podstawówce im. Diofantosa z Aleksandrii liczba uczennic jest o $150$ mniejsza od liczby uczniów, a stosunek chłopców do dziewcząt w tej szkole <comment 
+        text="jest naganny; rozwydrzeni młodzieńcy ciągle dokuczają uciśnionym niewiastom">wynosi 
+        $3 : 2$</comment>. Ilu podopiecznych liczy ta szkoła?<br><br>
 
         Jeśli $x$ to liczba chłopców, a $x - 150$ to liczba dziewczat, to stosunek $\frac{3}{2}$ możemy zapisać jako $\frac{x}{x - 150}$. 
         $$\frac{x}{x - 150} = \frac{3}{2}$$

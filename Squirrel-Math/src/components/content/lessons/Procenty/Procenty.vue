@@ -21,10 +21,10 @@
 	<p>
 		Stoczywszy zacięty bój z panią Krystyną o pierwszeństwo w kolejce do mięsnego, pan Janusz zaopatruje się w dwa kilogramy parówek babuni. 
 		Kierując się roztropnością i poradami matki, 
-		uważnie czyta skład zakupionych kiełbasek: <span class="comment" id="Może zawierać śladowe ilości orzechów arachidowych">
+		uważnie czyta skład zakupionych kiełbasek: <comment text="Może zawierać śladowe ilości orzechów arachidowych">
 		„Woda: $40\%$, Skóry wieprzowe: $30\%$, Seler: $10\%$, 
 		Konserwanty: $10\%$, Mięso drobiowe: $4\%$, Skrobia ziemniaczana: $4\%$, 
-		Gorczyca: $1\%$, Polepszacze smaku: $1\%$”</span>. Zadowolony z dobrego zakupu kieruje się do kasy.
+		Gorczyca: $1\%$, Polepszacze smaku: $1\%$”</comment>. Zadowolony z dobrego zakupu kieruje się do kasy.
 	</p>
 
 	<p>
@@ -107,9 +107,9 @@
 	
 	<div class="example">
 		Dumny z udanego zakupu, pan Janusz udaje się z parówkami w torebce foliowej do eleganckiej restauracji włoskiej, by świętować 
-		dobrze dokonaną oszczędność. Zamawia spaghetti i <span class="comment" id="Czy masz ukończone 18 lat?  Tak - zrozumiałem, 
+		dobrze dokonaną oszczędność. Zamawia spaghetti i <comment text="Czy masz ukończone 18 lat?  Tak - zrozumiałem, 
 		wkraczam / Nie - powrót do bezpieczeństwa"> butelkę $0,75 \text{ l}$ wina Château de Camensac zawierającego 
-		$13\%$ alkoholu</span>. 
+		$13\%$ alkoholu</comment>. 
 		Wypicie całej butelki zapewnia panu Januszowi niezapomniane doznania oraz $13\% \cdot 0,75 \text{ l} = 0,13 \cdot 0,75 \text{ l} = 0,0975 \text{ l}$ alkoholu w 
 		organizmie.
 	</div>
@@ -119,14 +119,14 @@
 		się $0,09 \text{ kg}$ alkoholu. Płyny limfatyczne stanowią $70\%$ masy ciała, czyli szacując po sylwetce 
 		$70\% \cdot 100 \text{ kg} = 70 \text{ kg}$ ważą Januszowskie 
 		płyny limfatyczne. W takim razie ile jest procent alkoholu we krwi Janusza? Niezawodne narzędzie oznajmia 
-		zawartość $\frac{0,09 \text{ kg}}{70 \text{ kg}}≈0,00129=0,129\%$ alkoholu. Przejażdżka <span class="comment" id="zależy od łapówki">
-		zapewne</span> skończy się w tym miejscu.
+		zawartość $\frac{0,09 \text{ kg}}{70 \text{ kg}}≈0,00129=0,129\%$ alkoholu. Przejażdżka <comment text="zależy od łapówki">
+		zapewne</comment> skończy się w tym miejscu.
 	</div>
 	
 	<p>
 		Procenty dobrze służą do wyrażania ułamków rzędu jednej setnej. Wtedy przed znakiem $\%$ będzie stała liczba naturalna. Gdy schodzimy na 
-		rząd jednej tysięcznej, do użytku wchodzą <i>promile</i> wyrażane symbolem $‰$. <span class="comment" id="Jak dobrze pójdzie, 
-		stanie się to polskim przysłowiem.">Powszechnie mówi się, że pan Janusz ma $1,29‰$ alkoholu we krwi</span>, nie zaś 
+		rząd jednej tysięcznej, do użytku wchodzą <i>promile</i> wyrażane symbolem $‰$. <comment text="Jak dobrze pójdzie, 
+		stanie się to polskim przysłowiem.">Powszechnie mówi się, że pan Janusz ma $1,29‰$ alkoholu we krwi</comment>, nie zaś 
 		$0,129\%$.
 	</p>
 

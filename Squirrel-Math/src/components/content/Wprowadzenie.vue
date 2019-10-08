@@ -26,9 +26,9 @@
     </p>
     
     <p>
-		Squirrel-Math to projekt zapoczątkowany przez studentów informatyki z Politechniki Wrocławskiej. Założenie jest proste – czemu by nie zebrać <span class="comment"
-		id = "Rzeczywiście okiełznanie „całej” wiedzy matematycznej to przedsięwzięcie raczej nieosiągalne, ale na 
-		dobry początek zadowolimy się poziomem maturalnym.">całej</span>
+		Squirrel-Math to projekt zapoczątkowany przez studentów informatyki z Politechniki Wrocławskiej. Założenie jest proste – czemu by nie zebrać <comment
+		text = "Rzeczywiście okiełznanie „całej” wiedzy matematycznej to przedsięwzięcie raczej nieosiągalne, ale na 
+		dobry początek zadowolimy się poziomem maturalnym.">całej</comment>
 		wiedzy matematycznej w jednym podręczniku, który pozwoli przyswoić ją w sposób przystępny, intuicyjny i uporządkowany? 
 		Obecnie strudzony uczeń żądny wiedzy matematycznej musi przebyć długą i ciężką drogę, żeby ją zdobyć – program nauczania ciągnie się 
 		przez długie lata szkolne, piętrząc chaos przez ciągłe skakanie od podręcznika do podręcznika. Wiedza przekazywana jest wyrywkowo, 

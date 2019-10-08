@@ -271,8 +271,8 @@
 	</p>
 
 	<p>
-		Ułamki to – bez uprzedzeń – też liczby, więc można na nich wykonywać działania. Możemy ułamki <span class="comment" 
-		id="A co, myślałeś że zabawy z działaniami się skończyły?">dodawać, odejmować, mnożyć i dzielić</span>.
+		Ułamki to – bez uprzedzeń – też liczby, więc można na nich wykonywać działania. Możemy ułamki <comment 
+		text="A co, myślałeś że zabawy z działaniami się skończyły?">dodawać, odejmować, mnożyć i dzielić</comment>.
 	</p> 
 
 	<p>

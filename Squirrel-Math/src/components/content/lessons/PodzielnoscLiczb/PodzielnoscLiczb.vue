@@ -4,8 +4,8 @@
 
     <lesson-intro>
 	<p>
-		Uwaga: Lekcja ociera się o dział matematyki zwany <i>teorią liczb</i>. <span class="comment" id="Może zawierać śladowe ilości orzechów arachidowych.">
-		Temat zawiera duże ilości nowych pojęć, twierdzeń i zależności.</span> Wchodzisz na własne ryzyko. 
+		Uwaga: Lekcja ociera się o dział matematyki zwany <i>teorią liczb</i>. <comment text="Może zawierać śladowe ilości orzechów arachidowych.">
+		Temat zawiera duże ilości nowych pojęć, twierdzeń i zależności.</comment> Wchodzisz na własne ryzyko. 
 	</p>
 		
 	<p>
@@ -57,8 +57,8 @@
 	<ul>
 		<li>$15 \mid 75$</li>
 		<li>$10 \mid 20$</li>
-		<li><span class="comment" id='czyt. „trzy nie dzieli siedmiu” - nie zaś „trzyłsiedem”'>$3 ∤ 7$</span></li>
-		<li><span class="comment" id='czyt. „dziewięć nie dzieli dwudziestu” - nie zaś „dziewięćłdwadzieścia'>$9 ∤ 20$</span></li>
+		<li><comment text='czyt. „trzy nie dzieli siedmiu” - nie zaś „trzyłsiedem”'>$3 ∤ 7$</comment></li>
+		<li><comment text='czyt. „dziewięć nie dzieli dwudziestu” - nie zaś „dziewięćłdwadzieścia'>$9 ∤ 20$</comment></li>
 	</ul>
     </lesson-chapter>
 
@@ -1078,8 +1078,8 @@
 		Matematycy nie mają pojęcia, czy istnieje nieparzysta liczba doskonała. Jeśli taką znajdziesz, nie ukrywaj się z tym. 
 		Prawdopodobnie czeka Cię chwała, sława i pieniądze. Miej jednak na uwadze, że liczba taka ma przynajmniej $1500$ cyfr. 
 		Wszystkie mniejsze matematycy już zdyskwalifikowali. Natknęliśmy się na pierwszy 
-		<span class="comment" id="Jeśli żyjesz w dalekiej przyszłości i 
-		problem ten jest już rozwiązany, zgłoś proszę tę nieścisłość do administracji strony.">nierozwiązany problem matematyki</span>:
+		<comment text="Jeśli żyjesz w dalekiej przyszłości i 
+		problem ten jest już rozwiązany, zgłoś proszę tę nieścisłość do administracji strony.">nierozwiązany problem matematyki</comment>:
 	</p>
 
 	<p class = "formula">
@@ -1164,8 +1164,8 @@
 
 	<p>
 		Liczby pierwsze to bardzo niesforne istoty. Ze względu na to, że na nic się nie dzielą, nazywa się je czasem 
-		<span class="comment" id="Jeśli nie wiesz, czym są 
-		atomy, pozwolimy Ci cierpieć z powodu niewiedzy.">atomami</span> wśród liczb.
+		<comment text="Jeśli nie wiesz, czym są 
+		atomy, pozwolimy Ci cierpieć z powodu niewiedzy.">atomami</comment> wśród liczb.
 	</p>
 
 	<p>
@@ -1600,8 +1600,7 @@
 	<div class = "optional-show">
 		<p>
 			Mówimy, że dwie liczby są <i>względnie pierwsze</i>, jeśli ich $NWD$ wynosi $1$. Nie możemy wtedy znaleźć 
-			żadnej <span class="comment" 
-			id="z całym szacunkiem dla jedynki">sensownej</span> liczby, 
+			żadnej <comment text="z całym szacunkiem dla jedynki">sensownej</comment> liczby, 
 			przez którą można podzielić i jedną, i drugą.
 		</p>
 		<ul>

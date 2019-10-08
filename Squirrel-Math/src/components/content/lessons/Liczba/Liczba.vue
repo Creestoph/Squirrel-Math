@@ -1505,14 +1505,12 @@ $$18 = 18$$
           id="Jeśli nie wiesz, czym jest atom, przyjmij, że jedynka i 80 zer to BARDZO dużo."
         >atomów</span>
         w całym Wszechświecie zapisujemy jako jedynkę i $80$ zer.
-        <span
-          class="comment"
-          id="Googolplex to jedynka i googol zer. Zaś googol jest liczbą większą
+        <comment text="Googolplex to jedynka i googol zer. Zaś googol jest liczbą większą
 			niż liczba atomów we wszechświecie. Nawet gdyby posłużyć się jednym atomem do zapisania jednego zera tej liczby, Wszechświat wciąż będzie na to za mały."
         >
           Nie da się zapisać
           wszystkich cyfr liczby googolplex
-        </span>.
+        </comment>.
       </p>
 
       <p>Jeśli powyższe kompendium wzbudza w Tobie trwogę, możesz tu z pełną dowolnością sprawdzić pisownię jakiejkolwiek liczby:</p>

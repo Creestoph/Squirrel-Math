@@ -17,8 +17,8 @@
 		
 		<p>
 			Maciuś uzbierał w skarbonce $80 \text{ zł}$ na nowy zestaw Lego, a teraz chce naciągnąć rodziców na taką kwotę, żeby w 
-			sumie wyszło $130 \text{ zł}$ na <span class="comment" 
-			id="Właściwie patrząc na dzisiejsze ceny, może starczyłoby na figurkę Chewbacki">Falcona Millenium</span>.  
+			sumie wyszło $130 \text{ zł}$ na <comment text= 
+			"Właściwie patrząc na dzisiejsze ceny, może starczyłoby na figurkę Chewbacki">Falcona Millenium</comment>.  
 		</p>
 
 		$$
@@ -34,8 +34,8 @@
 		$$
 
 		<p>
-			Rok później przyjaciele Maciusia postanowili kupić mu na urodziny zestaw <span class="comment" id="Ponieważ dobrze wiedzieli, 
-			że Maciuś nigdy nie zostanie wielkim architektem"> małego architekta</span> za 
+			Rok później przyjaciele Maciusia postanowili kupić mu na urodziny zestaw <comment text="Ponieważ dobrze wiedzieli, 
+			że Maciuś nigdy nie zostanie wielkim architektem"> małego architekta</comment> za 
 			$200 \text{ zł}$. Było ich pięcioro, a każdy z nich powinien mieć równy wkład w prezent. Powstało pytanie, po ile 
 			powinni się złożyć:
 		</p>
@@ -398,8 +398,8 @@
 		$$
 
 		<p>
-			To spostrzeżenie rozwiązuje przy okazji inny dylemat – <span class="comment" id="Oczywiście - z należytym szacunkiem">jak traktować 
-			pierwiastki o stopniu wymiernym</span>:
+			To spostrzeżenie rozwiązuje przy okazji inny dylemat – <comment text="Oczywiście - z należytym szacunkiem">jak traktować 
+			pierwiastki o stopniu wymiernym</comment>:
 		</p>
 
 		<ul>
