@@ -72,7 +72,7 @@ export default {
 	{
 		float: right;
 		overflow: auto;
-		margin-right: -7%;
+		margin-right: calc(-7% - 25px);
 		margin-bottom: 30px;
 		padding-left: 30px;
 	}
@@ -85,7 +85,7 @@ export default {
 		float: right;
 		overflow: auto;
 		box-shadow: 6px 3px 5px 0px rgba(0, 0, 0, 0.4);
-		margin-right: -13%;
+		margin-right: calc(-13% - 25px);
 		margin-bottom: 30px;
 		padding-left: 30px;
 	}
@@ -106,11 +106,9 @@ export default {
     float: left;
     height: 60px;
     line-height: 60px;
-    margin-top: -35px;
     font-weight: bold;
 	  font-family: "Segoe UI";
     text-align: center;
-    margin-bottom: 2em;
   }
 
   .bookmark-min div.active
