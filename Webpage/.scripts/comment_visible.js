@@ -20,7 +20,7 @@ $(document).ready(function(){
         do {
             top += element.offsetTop  || 0;
             element = element.offsetParent;
-        } while(element.className == "chapter_body");
+        } while(element && element.className == "chapter_body");
 
         question_marks[i].style.top =top-10;
         question_marks[i].style.visibility = "visible";
@@ -54,7 +54,8 @@ $(document).ready(function(){
                     }
             });
 
-        element.appendChild(question_marks[i]);
+		if (element)
+			element.appendChild(question_marks[i]);
 
         var win = document.createElement("div");
         win.className = "comment_visible_window";
@@ -64,7 +65,8 @@ $(document).ready(function(){
         win.style.top = question_marks[i].style.top;
         win.style.left = 20;
 
-        element.appendChild(win);
+		if (element)
+			element.appendChild(win);
         windows[window_position] = win;
         window_position++;
 
