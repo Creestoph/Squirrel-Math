@@ -153,7 +153,7 @@
       </div>
     </lesson-chapter>
 
-    <lesson-chapter><template #title>Nazewnictwo</template>    
+    <lesson-chapter id="test"><template #title>Nazewnictwo</template>    
       <p class = "type">
           Intuicje
       </p>
