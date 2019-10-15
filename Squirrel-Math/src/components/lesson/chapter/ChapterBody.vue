@@ -86,7 +86,6 @@ export default {
   border: 0px solid black;
   margin-bottom: 0px;
   margin-top: 0px;
-  padding: 0 25px;
   padding-bottom: 90px;
   box-shadow: inset 0 0 0 0 rgba(0, 0, 0, 0.3);
 }

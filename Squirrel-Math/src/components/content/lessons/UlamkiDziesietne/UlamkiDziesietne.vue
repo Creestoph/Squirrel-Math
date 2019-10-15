@@ -361,7 +361,7 @@
 		</p>
 		</lesson-chapter>
 
-		<lesson-chapter><template #title>Działania na ułamkach dziesiętnych</template>   
+		<lesson-chapter id="operations-on-decimals"><template #title>Działania na ułamkach dziesiętnych</template>   
 		<p class = "type">
 			Warsztat
 		</p>
@@ -591,7 +591,7 @@
 
 		</lesson-chapter>
 
-		<lesson-chapter><template #title>Zamiana ułamków dziesiętnych na zwykłe</template>  
+		<lesson-chapter id="conversion-of-decimals-to-fractions"><template #title>Zamiana ułamków dziesiętnych na zwykłe</template>  
 	
 		<p class = "type">
 			Warsztat | Rozszerzenie

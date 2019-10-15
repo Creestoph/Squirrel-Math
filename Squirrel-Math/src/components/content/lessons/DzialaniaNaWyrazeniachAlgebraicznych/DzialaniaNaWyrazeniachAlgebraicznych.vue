@@ -300,7 +300,7 @@
 		<p>
 			W ogólności, gdy mnożymy przez siebie dwa nawiasy zawierające sumy algebraiczne, mnożymy składniki „każdy z każdym”.
 			Jest to uogólnienie własności zwanej "rozdzielnością mnożenia względem dodawania", o której wspomnieliśmy pobieżnie w temacie 
-			<router-link tag="a" :to="'/kolejnosc-wykonywania-dzialan'" class="link">Kolejność wykonywania działań</router-link>.
+			<router-link tag="a" :to="'/kolejnosc-wykonywania-dzialan#distributive-property'" class="link">Kolejność wykonywania działań</router-link>.
 		</p>
 
 		<center><img src="./.images/Screenshot_10.png" align="middle"></center>

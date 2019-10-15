@@ -1281,7 +1281,7 @@ $$18 = 18$$
       </p>
     </lesson-chapter>
 
-    <lesson-chapter>
+    <lesson-chapter id="giant-numbers">
       <template #title>Liczby giganty</template>
       <p class="type">Rozszerzenie</p>
 

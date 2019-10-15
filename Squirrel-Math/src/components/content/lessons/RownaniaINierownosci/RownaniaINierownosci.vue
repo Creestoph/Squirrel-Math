@@ -188,7 +188,7 @@
     </div>
 	</lesson-chapter>
 
-    <lesson-chapter><template #title>Rozwiązywanie nierówności</template>
+    <lesson-chapter id="inequalities"><template #title>Rozwiązywanie nierówności</template>
     <p class="type">
         Intuicje    
     </p>

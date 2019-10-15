@@ -355,7 +355,7 @@
 		$$
 		</lesson-chapter>
 
-    <lesson-chapter><template #title>Rozdzielność mnożenia względem dodawania</template>
+    <lesson-chapter id="distributive-property"><template #title>Rozdzielność mnożenia względem dodawania</template>
 		<p class="type">
 			Intuicje
 		</p>

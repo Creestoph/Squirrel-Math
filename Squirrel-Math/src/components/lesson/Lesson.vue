@@ -1,13 +1,15 @@
 <template>
   <div class="lesson">
+    <router-link tag="a" :to="toggleShortRoute" v-show="hasShortVersion">
+      <div class="bookmark-min">
+        <div :class="fullClass">WERSJA PEŁNA</div>
+        <div :class="shortClass">WERSJA SKRÓCONA</div>
+      </div>
+    </router-link>
     <div class="main">
       <router-link tag="a" :to="toggleShortRoute" v-show="hasShortVersion">
         <div class="bookmark-shadow">
           <div class="bookmark">{{toggleShortText}}</div>
-        </div>
-         <div class="bookmark-min">
-          <div :class="fullClass">WERSJA PEŁNA</div>
-          <div :class="shortClass">WERSJA SKRÓCONA</div>
         </div>
       </router-link>
       <slot></slot>
@@ -75,7 +77,7 @@ export default {
 @media screen and (max-width: 1200px) {
   .main {
     position: relative;
-    padding: 35px 6% 35px 6%;
+    padding: 35px calc(6% + 25px) 35px calc(6% + 25px);
     font-family: "Verdana";
     font-size: 1.08em;
     color: #000000;
@@ -85,7 +87,8 @@ export default {
 
 @media screen and (max-width: 500px) {
   .main {
-    padding: 35px 0 35px 0;
+    padding: calc(35px + 2em) 25px 35px 25px;
+    clear: both;
   }
 }
 
@@ -94,7 +97,7 @@ export default {
     max-width: 1100px;
     position: relative;
     margin-right: 14%;
-    padding: 35px 6.5% 35px 19.5%;
+    padding: 35px calc(6.5% + 25px) 35px calc(19.5% + 25px);
     font-family: "Verdana";
     font-size: 1.08em;
     line-height: 1.7em;
@@ -157,7 +160,7 @@ export default {
 	{
 		float: right;
 		overflow: auto;
-		margin-right: -7%;
+		margin-right: calc(-7% - 25px);
 		margin-bottom: 30px;
 		padding-left: 30px;
 	}
@@ -170,7 +173,7 @@ export default {
 		float: right;
 		overflow: auto;
 		box-shadow: 6px 3px 5px 0px rgba(0, 0, 0, 0.4);
-		margin-right: -13%;
+		margin-right: calc(-13% - 25px);
 		margin-bottom: 30px;
 		padding-left: 30px;
 	}
@@ -191,11 +194,9 @@ export default {
     float: left;
     height: 60px;
     line-height: 60px;
-    margin-top: -35px;
     font-weight: bold;
 	  font-family: "Segoe UI";
     text-align: center;
-    margin-bottom: 2em;
   }
 
   .bookmark-min div.active

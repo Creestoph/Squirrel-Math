@@ -362,7 +362,7 @@
 		Intuicje
 	</p>
     <p> 
-        W temacie <router-link tag="a" :to="'/rownania-i-nierownosci'" class="link">Równania i nierówności</router-link> pobieżnie omówiliśmy, jak rozwiązywać 
+        W temacie <router-link tag="a" :to="'/rownania-i-nierownosci#inequalities'" class="link">Równania i nierówności</router-link> pobieżnie omówiliśmy, jak rozwiązywać 
         proste nierówności, a dokładniej: jak upraszczać nierówności. Od tej pory przez rozwiązanie nierówności będziemy rozumieć zbiór wszystkich $x$, które 
         spełniają tę nierówność.
     </p>
