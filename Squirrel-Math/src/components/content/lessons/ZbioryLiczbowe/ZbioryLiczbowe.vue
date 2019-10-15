@@ -1,5 +1,5 @@
 <template>
-  <lesson>
+  <lesson routeShortVersion="/zbiory-liczbowe-short" routeLongVersion="/zbiory-liczbowe">
     <lesson-title>Zbiory liczbowe</lesson-title>
 
     <lesson-intro>   

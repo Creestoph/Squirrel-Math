@@ -1,5 +1,5 @@
 ﻿<template>
-  <lesson>
+  <lesson routeShortVersion="/wyrazenia-algebraiczne-short" routeLongVersion="/wyrazenia-algebraiczne">
     <lesson-title-short>Wyrażenia algebraiczne</lesson-title-short>    
         
 			<lesson-chapter><template #title>Litery zamiast liczb </template>		

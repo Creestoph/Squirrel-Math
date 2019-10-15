@@ -1,5 +1,5 @@
 ﻿<template>
-    <lesson>
+    <lesson routeShortVersion="/pierwiastkowanie-short" routeLongVersion="/pierwiastkowanie">
         <lesson-title-short>Pierwiastkowanie</lesson-title-short>    
         
         <lesson-chapter><template #title>Czym jest pierwiastek</template> 

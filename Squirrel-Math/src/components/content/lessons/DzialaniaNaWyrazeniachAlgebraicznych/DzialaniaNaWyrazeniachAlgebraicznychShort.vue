@@ -1,5 +1,5 @@
 ﻿<template>
-    <lesson>
+    <lesson routeShortVersion="/dzialania-na-wyrazeniach-algebraicznych-short" routeLongVersion="/dzialania-na-wyrazeniach-algebraicznych">
         <lesson-title-short>Działania na wyrażeniach algebraicznych</lesson-title-short>    
         
         <lesson-chapter><template #title>Mnożenie jednomianów</template> 

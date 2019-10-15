@@ -45,7 +45,8 @@ import RownaniaINierownosciLiniowe from './components/content/lessons/RownaniaIN
 import RownaniaINierownosciLinioweShort from './components/content/lessons/RownaniaINierownosciLiniowe/RownaniaINierownosciLinioweShort'
 
 export const routes = [
-  { path: '', component: Home }, { path: '/-short', component: HomeShort },
+  { path: '', component: Home }, 
+  { path: '/home-short', component: HomeShort },
   { path: '/editor', component: Editor },
   { path: '/tree', component: Tree },
   { path: '/drzewoHD', component: DrzewoHD },

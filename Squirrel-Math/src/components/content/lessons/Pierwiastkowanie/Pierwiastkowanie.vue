@@ -1,5 +1,5 @@
 <template>
-  <lesson>
+  <lesson routeShortVersion="/pierwiastkowanie-short" routeLongVersion="/pierwiastkowanie">
     <lesson-title>Pierwiastkowanie</lesson-title>
 
     <lesson-intro>

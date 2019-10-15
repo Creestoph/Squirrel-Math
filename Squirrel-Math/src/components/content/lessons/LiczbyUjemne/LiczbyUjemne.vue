@@ -1,5 +1,5 @@
 <template>
-	<lesson>
+	<lesson routeShortVersion="/liczby-ujemne-short" routeLongVersion="/liczby-ujemne">
 		<lesson-title>Liczby ujemne</lesson-title>
 
 		<lesson-intro>

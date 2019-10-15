@@ -1,5 +1,5 @@
 ﻿<template>
-    <lesson>
+    <lesson routeShortVersion="/liczby-ujemne-short" routeLongVersion="/liczby-ujemne">
         <lesson-title-short>Liczby ujemne</lesson-title-short>    
         
         <lesson-chapter><template #title>Czym są liczby ujemne</template> 
