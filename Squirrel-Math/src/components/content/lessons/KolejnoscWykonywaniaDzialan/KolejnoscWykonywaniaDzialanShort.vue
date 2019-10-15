@@ -1,5 +1,5 @@
 <template>
-    <lesson>
+    <lesson routeShortVersion="/kolejnosc-wykonywania-dzialan-short" routeLongVersion="/kolejnosc-wykonywania-dzialan">
         <lesson-title-short>Kolejność wykonywania działań</lesson-title-short>    
         
         <lesson-chapter><template #title>Najpierw $:$ i $\cdot$ a potem $+$ i $-$</template> 

@@ -1,5 +1,5 @@
 <template>
-  <lesson>
+  <lesson routeShortVersion="/wyrazenia-algebraiczne-short" routeLongVersion="/wyrazenia-algebraiczne">
     <lesson-title>Wyrażenia algebraiczne</lesson-title>
 
     <lesson-intro>

@@ -1,5 +1,5 @@
 ﻿<template>
-    <lesson>
+    <lesson routeShortVersion="/procenty-short" routeLongVersion="/procenty">
         <lesson-title-short>Procenty</lesson-title-short>    
         
         <lesson-chapter><template #title>Czym jest procent</template> 

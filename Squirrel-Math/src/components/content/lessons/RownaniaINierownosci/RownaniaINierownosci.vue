@@ -1,5 +1,5 @@
 <template>
-  <lesson>
+  <lesson routeShortVersion="/rownania-i-nierownosci-short" routeLongVersion="/rownania-i-nierownosci">
     <lesson-title>Równania i nierówności</lesson-title>
 
     <lesson-intro>   

@@ -1,5 +1,5 @@
 <template>
-	<lesson>
+	<lesson routeShortVersion="/kolejnosc-wykonywania-dzialan-short" routeLongVersion="/kolejnosc-wykonywania-dzialan">
 		<lesson-title>Kolejność wykonywania działań</lesson-title>
 
 		<lesson-intro>

@@ -1,5 +1,5 @@
 <template>
-  <lesson>
+  <lesson routeShortVersion="/odejmowanie-short" routeLongVersion="/odejmowanie">
     <lesson-title>Odejmowanie</lesson-title>
 
     <lesson-intro>   

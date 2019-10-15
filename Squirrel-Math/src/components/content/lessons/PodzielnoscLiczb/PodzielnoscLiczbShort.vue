@@ -1,5 +1,5 @@
 ﻿<template>
-    <lesson>
+    <lesson routeShortVersion="/podzielnosc-liczb-short" routeLongVersion="/podzielnosc-liczb">
         <lesson-title-short>Podzielność liczb</lesson-title-short>    
         
         <lesson-chapter><template #title>Cechy podzielności</template> 

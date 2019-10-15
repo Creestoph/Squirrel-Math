@@ -1,5 +1,5 @@
 <template>
-    <lesson>
+    <lesson routeShortVersion="/liczba-short" routeLongVersion="/liczba">
         <lesson-title-short>Liczba</lesson-title-short>    
         
         <lesson-chapter><template #title>Czym jest liczba</template>

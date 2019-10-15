@@ -1,5 +1,5 @@
 <template>
-  <lesson>
+  <lesson routeShortVersion="/mnozenie-short" routeLongVersion="/mnozenie">
     <lesson-title>Mnożenie</lesson-title>
 
     <lesson-intro>
