@@ -1,5 +1,5 @@
 <template>
-  <lesson>
+  <lesson routeShortVersion="/home-short" routeLongVersion="/">
     <lesson-title>Witajcie!</lesson-title>
 
     <lesson-intro>

@@ -1,5 +1,5 @@
 <template>
-  <lesson>
+  <lesson routeShortVersion="/liczba-short" routeLongVersion="/liczba">
     <lesson-title>Liczba</lesson-title>
 
     <lesson-intro>

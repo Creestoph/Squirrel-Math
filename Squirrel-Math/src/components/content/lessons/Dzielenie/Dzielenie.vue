@@ -1,5 +1,5 @@
 <template>
-  <lesson>
+  <lesson routeShortVersion="/dzielenie-short" routeLongVersion="/dzielenie">
     <lesson-title>Dzielenie</lesson-title>
 
     <lesson-intro>

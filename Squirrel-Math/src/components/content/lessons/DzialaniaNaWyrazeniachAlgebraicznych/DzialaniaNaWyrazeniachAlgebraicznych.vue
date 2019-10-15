@@ -1,5 +1,5 @@
 <template>
-	<lesson>
+	<lesson routeShortVersion="/dzialania-na-wyrazeniach-algebraicznych-short" routeLongVersion="/dzialania-na-wyrazeniach-algebraicznych">
 		<lesson-title>Działania na wyrażeniach algebraicznych</lesson-title>
 
 		<lesson-intro>   

@@ -1,5 +1,5 @@
 <template>
-  <lesson>
+  <lesson routeShortVersion="/potegowanie-short" routeLongVersion="/potegowanie">
     <lesson-title>Potęgowanie</lesson-title>
 
     <lesson-intro>

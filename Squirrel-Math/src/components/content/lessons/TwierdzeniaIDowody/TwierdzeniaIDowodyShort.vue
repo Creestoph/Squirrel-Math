@@ -1,5 +1,5 @@
 <template>
-    <lesson>
+    <lesson routeShortVersion="/twierdzenia-i-dowody-short" routeLongVersion="/twierdzenia-i-dowody">
         <lesson-title-short>Twierdzenia i dowody</lesson-title-short>    
         
         <lesson-chapter><template #title>Zapis symboliczny</template> 

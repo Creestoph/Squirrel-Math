@@ -1,5 +1,5 @@
 ﻿<template>
-  <lesson>
+  <lesson routeShortVersion="/ulamki-zwykle-short" routeLongVersion="/ulamki-zwykle">
     <lesson-title>Ułamki zwykłe</lesson-title>
 
     <lesson-intro>

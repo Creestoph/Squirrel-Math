@@ -1,5 +1,5 @@
 <template>
-  <lesson>
+  <lesson routeShortVersion="/dodawanie-short" routeLongVersion="/dodawanie">
     <lesson-title>Dodawanie</lesson-title>
 
     <lesson-intro>
