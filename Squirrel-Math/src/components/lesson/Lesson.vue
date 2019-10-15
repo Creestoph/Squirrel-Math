@@ -11,18 +11,12 @@
 </template>
 
 <script>
-import LessonTitle from "./LessonTitle";
-import LessonIntro from "./LessonIntro";
 import LessonVersionButton from "./LessonVersionButton";
-import LessonChapter from "./chapter/LessonChapter";
 
 export default {
   name: "Lesson",
   props: ["routeLongVersion", "routeShortVersion"],
   components: {
-    LessonIntro,
-    LessonTitle,
-    LessonChapter,
     LessonVersionButton
   }
 };

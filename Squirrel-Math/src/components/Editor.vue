@@ -1,5 +1,5 @@
 <template>
-  <lesson>
+  <!-- <lesson>
     <lesson-title :serializer="titleSerializer" contenteditable="true">
       <span style="color: red">a</span> Dodawanie
     </lesson-title>
@@ -16,47 +16,109 @@
     </lesson-chapter>
     <button @click="serialize()">serialize</button>
     <button @click="addChapter()">add chapter</button>
-  </lesson>
+  </lesson> -->
+  <div>
+    <editor-menu @addChapter="addChapter()" @test="test()"></editor-menu>
+    <lesson-dynamic :data="data"></lesson-dynamic>
+  </div>
 </template>
 
 <script>
-import LessonTitle from "./lesson/LessonTitle";
-import LessonIntro from "./lesson/LessonIntro";
-import LessonChapter from "./lesson/chapter/LessonChapter";
-import Lesson from "./lesson/Lesson";
-import { Serializer } from "../scripts/serializer";
+import LessonDynamic from "./editor/LessonDynamic";
+import EditorMenu from "./editor/menu/EditorMenu";
 
 export default {
   name: "Editor",
-  data() {
+  data(){
     return {
-      titleSerializer: new Serializer("lesson-title"),
-      introSerializer: new Serializer("lesson-intro"),
-      chapterSerializers: [new Serializer("lesson-chapter")]
-    };
-  },
-  methods: {
-    serialize() {
-      let str =
-        this.titleSerializer.serialize() + this.introSerializer.serialize();
-      for (let i = 0; i < this.chapterSerializers.length; i++) {
-        str += this.chapterSerializers[i].serialize();
+      data: 
+      {
+        "routeShortVersion": "",
+        "routeLongVersion": "",
+        "title": 
+        {
+          "name": "LessonTitle",
+          "data": "My title",
+        },
+        "intro": 
+        {
+          "name": "LessonIntro",
+          "data": [{ "name": "p", "data": "My intro"}],
+        },
+        "chapters":
+        [
+          {
+            "name": "LessonChapter",
+            "data": 
+            {
+              "title": "My chapter",
+              "nodes": "Some nodes"
+            }
+          }
+        ]
       }
-      str = "<lesson>" + str + "</lesson>";
-      str = str.replace(/data-v-[a-z0-9]*="[^"]*"/g, "");
-      console.log(str);
+    }
+  },
+  methods:{
+    addChapter(){
+      this.data.chapters.push(
+        {
+            "name": "LessonChapter",
+            "data": 
+            {
+              "title": "My chapter",
+              "nodes": "Some nodes"
+            }
+        });
     },
-    addChapter() {
-      this.chapterSerializers.push(new Serializer("lesson-chapter"));
+    test() {
+      console.log(this.data);
     }
   },
   components: {
-    LessonIntro,
-    LessonTitle,
-    LessonChapter,
-    Lesson
+    LessonDynamic,
+    EditorMenu,
   }
 };
+
+
+// import LessonTitle from "./lesson/LessonTitle";
+// import LessonIntro from "./lesson/LessonIntro";
+// import LessonChapter from "./lesson/chapter/LessonChapter";
+// import Lesson from "./lesson/Lesson";
+// import { Serializer } from "../scripts/serializer";
+
+// export default {
+//   name: "Editor",
+//   data() {
+//     return {
+//       titleSerializer: new Serializer("lesson-title"),
+//       introSerializer: new Serializer("lesson-intro"),
+//       chapterSerializers: [new Serializer("lesson-chapter")]
+//     };
+//   },
+//   methods: {
+//     serialize() {
+//       let str =
+//         this.titleSerializer.serialize() + this.introSerializer.serialize();
+//       for (let i = 0; i < this.chapterSerializers.length; i++) {
+//         str += this.chapterSerializers[i].serialize();
+//       }
+//       str = "<lesson>" + str + "</lesson>";
+//       str = str.replace(/data-v-[a-z0-9]*="[^"]*"/g, "");
+//       console.log(str);
+//     },
+//     addChapter() {
+//       this.chapterSerializers.push(new Serializer("lesson-chapter"));
+//     }
+//   },
+//   components: {
+//     LessonIntro,
+//     LessonTitle,
+//     LessonChapter,
+//     Lesson
+//   }
+// };
 </script>
 
 <style scoped>
