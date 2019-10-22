@@ -72,8 +72,7 @@ export default {
 	{
 		float: right;
 		overflow: auto;
-		margin-right: calc(-7% - 25px);
-		margin-bottom: 30px;
+    margin: 35px -5px 30px 0;
 		padding-left: 30px;
 	}
 }
@@ -85,7 +84,7 @@ export default {
 		float: right;
 		overflow: auto;
 		box-shadow: 6px 3px 5px 0px rgba(0, 0, 0, 0.4);
-		margin-right: calc(-13% - 25px);
+		margin: 35px -15px 30px 0;
 		margin-bottom: 30px;
 		padding-left: 30px;
 	}
@@ -118,7 +117,7 @@ export default {
   }
 }
 
-@media screen and (min-width: 500px)
+@media screen and (min-width: 501px)
 {
   .bookmark-min
   {
