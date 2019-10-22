@@ -1,5 +1,5 @@
 <template>
-  <p class="lesson_title" ref="main" :contenteditable="editable">
+  <p class="lesson_title" ref="main" :contenteditable="contenteditable">
     <slot></slot>
   </p>
 </template>
@@ -7,7 +7,7 @@
 <script>
     export default {
         name: "LessonTitle",
-        props: ['serializer', 'editable'],
+        props: ['serializer', 'contenteditable'],
         mounted() {
           if (this.serializer){
             const t = this;

@@ -26,6 +26,7 @@
 <script>
 import LessonDynamic from "./editor/LessonDynamic";
 import EditorMenu from "./editor/menu/EditorMenu";
+import { EventBus } from "@/event-bus.js";
 
 export default {
   name: "Editor",
@@ -72,6 +73,7 @@ export default {
         });
     },
     test() {
+      EventBus.$emit('editor-save')
       console.log(this.data);
     }
   },

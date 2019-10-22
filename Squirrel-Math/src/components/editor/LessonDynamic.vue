@@ -3,9 +3,9 @@
     :routeShortVersion="data.routeShortVersion"
     :routeLongVersion="data.routeLongVersion"
     >
-    <lesson-title-dynamic :data="data.title.data"></lesson-title-dynamic>
-    <lesson-intro-dynamic :data="data.intro.data"></lesson-intro-dynamic>
-    <lesson-chapter-dynamic v-for="(chapter, i) in data.chapters" :key="i" :data="chapter.data"></lesson-chapter-dynamic>
+    <lesson-title-dynamic :data="data.title"></lesson-title-dynamic>
+    <lesson-intro-dynamic :data="data.intro"></lesson-intro-dynamic>
+    <lesson-chapter-dynamic v-for="(chapter, i) in data.chapters" :key="i" :data="chapter"></lesson-chapter-dynamic>
     </lesson>
 </template>
 
