@@ -1,5 +1,5 @@
 <template>
-    <lesson 
+    <lesson
     :routeShortVersion="data.routeShortVersion"
     :routeLongVersion="data.routeLongVersion"
     >

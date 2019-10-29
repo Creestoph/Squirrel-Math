@@ -1,7 +1,7 @@
 <template>
     <lesson-title ref="main" contenteditable="true">
     {{data.data}}
-    </lesson-title> 
+    </lesson-title>
 </template>
 
 <script>

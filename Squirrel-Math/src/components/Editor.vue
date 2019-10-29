@@ -32,16 +32,16 @@ export default {
   name: "Editor",
   data(){
     return {
-      data: 
+      data:
       {
         "routeShortVersion": "",
         "routeLongVersion": "",
-        "title": 
+        "title":
         {
           "name": "LessonTitle",
           "data": "My title",
         },
-        "intro": 
+        "intro":
         {
           "name": "LessonIntro",
           "data": [{ "name": "p", "data": "My intro"}],
@@ -50,7 +50,7 @@ export default {
         [
           {
             "name": "LessonChapter",
-            "data": 
+            "data":
             {
               "title": "My chapter",
               "nodes": "Some nodes"
@@ -65,14 +65,16 @@ export default {
       this.data.chapters.push(
         {
             "name": "LessonChapter",
-            "data": 
+            "data":
             {
               "title": "My chapter",
               "nodes": "Some nodes"
             }
         });
+      this.$forceUpdate();
     },
     test() {
+      console.log(this.data);
       EventBus.$emit('editor-save')
       console.log(this.data);
     }
