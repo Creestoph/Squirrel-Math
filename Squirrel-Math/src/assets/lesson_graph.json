@@ -229,7 +229,7 @@
     },
     {
         "title": "Wykres funkcji",
-        "requires": ["Funkcja", "Układ współrzędnych"],
+        "requires": ["Funkcje", "Układ współrzędnych"],
         "field": "Analiza matematyczna",
         "level": "Liceum"
     },
@@ -271,13 +271,13 @@
     },
     {
         "title": "Wielomiany",
-        "requires": ["Równania liniowe"],
+        "requires": ["Równania i nierówności liniowe"],
         "field": "Algebra",
         "level": "Liceum"
     },
     {
         "title": "Zmienne losowe",
-        "requires": ["Funkcja", "Prawdopodobieństwo warunkowe"],
+        "requires": ["Funkcje", "Prawdopodobieństwo warunkowe"],
         "field": "Probabilistyka",
         "level": "Studia inżynierskie"
     },
@@ -319,7 +319,7 @@
     },
     {
         "title": "Granica ciągu",
-        "requires": ["Wielomian", "Zdania logiczne", "Ciąg arytmetyczny i geometryczny"],
+        "requires": ["Wielomiany", "Zdania logiczne", "Ciąg arytmetyczny i geometryczny"],
         "field": "Analiza matematyczna",
         "level": "Liceum"
     },
@@ -372,7 +372,7 @@
         "level": "Studia inżynierskie"
     },
     {
-        "title": "Rowinięcia funkcji w szereg",
+        "title": "Rozwinięcia funkcji w szereg",
         "requires": ["Pochodna funkcji", "Szeregi liczbowe"],
         "field": "Analiza matematyczna",
         "level": "Studia inżynierskie"
