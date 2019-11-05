@@ -22,9 +22,9 @@ export default {
   name: "Lesson",
   props: ["routeLongVersion", "routeShortVersion"],
   components: {
-    LessonIntro,
-    LessonTitle,
-    LessonChapter,
+    // LessonIntro,
+    // LessonTitle,
+    // LessonChapter,
     LessonVersionButton
   }
 };
