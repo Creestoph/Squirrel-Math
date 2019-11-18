@@ -18,73 +18,54 @@
     <button @click="addChapter()">add chapter</button>
   </lesson> -->
   <div>
-    <editor-menu @addChapter="addChapter()" @test="test()"></editor-menu>
-    <lesson-dynamic :data="data"></lesson-dynamic>
+    <editor-menu
+      @addChapter="addChapter()"
+      @test="test()"
+    />
+    <lesson-node :data="data" />
   </div>
 </template>
 
-<script>
-import LessonDynamic from "./editor/LessonDynamic";
-import EditorMenu from "./editor/menu/EditorMenu";
+<script lang="ts">
+import LessonNode from "./editor/LessonNode.vue";
+import EditorMenu from "./editor/menu/EditorMenu.vue";
 import { EventBus } from "@/event-bus.js";
+import Vue from "vue";
+import Component from "vue-class-component";
+import * as data from "./editor/data";
 
-export default {
-  name: "Editor",
-  data(){
-    return {
-      data:
-      {
-        "routeShortVersion": "",
-        "routeLongVersion": "",
-        "title":
-        {
-          "name": "LessonTitle",
-          "data": "My title",
-        },
-        "intro":
-        {
-          "name": "LessonIntro",
-          "data": [{ "name": "p", "data": "My intro"}],
-        },
-        "chapters":
-        [
-          {
-            "name": "LessonChapter",
-            "data":
-            {
-              "title": "My chapter",
-              "nodes": "Some nodes"
-            }
-          }
-        ]
-      }
-    }
-  },
-  methods:{
-    addChapter(){
-      this.data.chapters.push(
-        {
-            "name": "LessonChapter",
-            "data":
-            {
-              "title": "My chapter",
-              "nodes": "Some nodes"
-            }
-        });
-      this.$forceUpdate();
-    },
-    test() {
-      console.log(this.data);
-      EventBus.$emit('editor-save')
-      console.log(this.data);
-    }
-  },
+@Component({
   components: {
-    LessonDynamic,
-    EditorMenu,
+    LessonNode,
+    EditorMenu
   }
-};
-
+})
+export default class Editor extends Vue {
+  data!: data.LessonNodeData;
+  created() {
+    this.data = new data.LessonNodeData(
+      "",
+      "",
+      new data.LessonTitleNodeData("My title"),
+      new data.LessonIntroNodeData([new data.ParagraphNodeData("Some intro")]),
+      [
+        new data.LessonChapterNodeData("My chapter", [
+          new data.ParagraphNodeData("Some content")
+        ])
+      ]
+    );
+  }
+  addChapter() {
+    this.data.chapters.push(
+      new data.LessonChapterNodeData("My chapter", [new data.ParagraphNodeData("Some content")])
+    );
+    this.$forceUpdate();
+  }
+  test() {
+    EventBus.$emit("editor-save");
+    console.log(this.data);
+  }
+}
 
 // import LessonTitle from "./lesson/LessonTitle";
 // import LessonIntro from "./lesson/LessonIntro";
@@ -125,5 +106,4 @@ export default {
 // };
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>

@@ -1,10 +1,14 @@
 <template>
-    <div>
-        <ul>
-            <li @click="$emit('addChapter')">Add Chapter</li>
-            <li @click="$emit('test')">Test</li>
-        </ul>
-    </div> 
+  <div>
+    <ul>
+      <li @click="$emit('addChapter')">
+        Add Chapter
+      </li>
+      <li @click="$emit('test')">
+        Test
+      </li>
+    </ul>
+  </div> 
 </template>
 
 <script>
