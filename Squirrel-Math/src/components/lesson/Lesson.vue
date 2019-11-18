@@ -1,11 +1,13 @@
 <template>
-  <div class="lesson">
-    <div class="main">
+  <div id="whole">
+    <div class="lesson">
       <lesson-version-button 
       v-if="routeShortVersion && routeLongVersion" 
       :routeLongVersion="routeLongVersion" 
       :routeShortVersion="routeShortVersion"></lesson-version-button>
-      <slot></slot>
+      <div class="lesson-content">
+        <slot></slot>
+      </div>
     </div>
   </div>
 </template>
@@ -17,13 +19,16 @@ export default {
   name: "Lesson",
   props: ["routeLongVersion", "routeShortVersion"],
   components: {
+    // LessonIntro,
+    // LessonTitle,
+    // LessonChapter,
     LessonVersionButton
   }
 };
 </script>
 
 <style scoped>
-.lesson {
+#whole {
   background-color: #cccccc;
   /*background-image: url(".images/background.png");
     background-attachment: fixed;
@@ -33,36 +38,39 @@ export default {
   margin: 0;
 }
 
-@media screen and (max-width: 1200px) {
-  .main {
+  .lesson {
     position: relative;
-    padding: 35px 6% 35px 6%;
     font-family: "Verdana";
     font-size: 1.08em;
     color: #000000;
     background: #fefefe;
+    clear: both;
+  }
+
+@media screen and (max-width: 1200px) {
+  .lesson-content {
+      padding: 35px calc(6% + 25px) 35px calc(6% + 25px);
   }
 }
 
 @media screen and (max-width: 500px) {
-  .main {
-    padding: 35px 0 35px 0;
+  .lesson-content {
+    padding: 100px 25px 35px 25px;
   }
 }
 
 @media screen and (min-width: 1200px) {
-  .main {
-    max-width: 1100px;
-    position: relative;
+  .lesson {
     margin-right: 14%;
-    padding: 35px 6.5% 35px 19.5%;
-    font-family: "Verdana";
-    font-size: 1.08em;
     line-height: 1.7em;
-    color: #000000;
-    background: #fefefe;
     border-right: 3px solid black;
   }
+
+  .lesson-content {
+    padding: 35px calc(7% + 25px) 35px calc(23% + 25px);
+  }
 }
+
+
 
 </style>

@@ -20,7 +20,6 @@
 <style scoped>
   div
   {
-    padding: 0 25px;
     margin-bottom: 55px;
   }
 </style>

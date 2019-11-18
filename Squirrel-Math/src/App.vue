@@ -397,7 +397,6 @@ p.problem
 	background-color: #dddddd;
 	padding: 10px;
 	margin: 0px;
-	width: 100%;
 }
 
 .proof

@@ -35,7 +35,6 @@
     font-weight: bold;
     margin-top: 9px; /*50px*/
     margin-bottom:-11px;
-    padding: 0 25px;
   }
 
   .chapter_name > div + hr
@@ -44,8 +43,7 @@
     border: 2px solid;
     border-color: white;
     transition: border-color 0.5s ease-in, width 0.4s;
-    margin-left: 25px;
-    margin-right: 25px;
+    margin-left: 0px;
   }
 
   .chapter_name > div:hover + hr
@@ -54,7 +52,6 @@
     border: 2px solid;
     border-color: black;
     transition: border-color 0.1s ease 0.2s, width 1s ease 0.2s;
-    margin-left: 25px;
-    margin-right: 25px;
+    margin-left: 0px;
   }
 </style>

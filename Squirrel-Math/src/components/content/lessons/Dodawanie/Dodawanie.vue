@@ -153,7 +153,7 @@
       </div>
     </lesson-chapter>
 
-    <lesson-chapter id="test"><template #title>Nazewnictwo</template>    
+    <lesson-chapter><template #title>Nazewnictwo</template>    
       <p class = "type">
           Intuicje
       </p>
@@ -269,7 +269,7 @@
       </p>
     </lesson-chapter>
 
-    <lesson-chapter><template #title>Dodawanie w słupku</template>    
+    <lesson-chapter id="columnar-addition-formal-proof"><template #title>Dodawanie w słupku</template>    
     <p class = "type">
         Warsztat
     </p>
@@ -398,7 +398,7 @@
 	  
     <p class ="type optional-hide">
         Rozszerzenie
-	</p>
+	  </p>
     <p class="warning">
         wymagana znajomość tematu: Kolejność wykonywania działań
     </p>  

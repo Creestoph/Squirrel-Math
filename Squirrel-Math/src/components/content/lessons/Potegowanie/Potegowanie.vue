@@ -583,7 +583,7 @@
 
 	<p>
 		Zapis z użyciem potęgi bywa przydatny do reprezentacji liczb o wartościach bardzo dużych lub bardzo bliskich zera. Przypomnijmy sobie kilka olbrzymów 
-		z rozdziału "Liczby giganty" lekcji <router-link tag="a" :to="'/liczba'" class="link">Liczba</router-link>
+		z rozdziału lekcji <router-link tag="a" :to="'/liczba#giant-numbers'" class="link">Liczba: Liczby giganty</router-link>.
 	</p>
 
 	<ul>
