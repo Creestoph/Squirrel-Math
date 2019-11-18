@@ -1,13 +1,17 @@
 <template>
-  <div class="chapter_mask" ref="chapter_mask">
-    <div class="chapter_body" ref="chapter_body">
+  <div 
+  class="chapter_mask" 
+  ref="chapter_mask">
+    <div 
+    class="chapter_body" 
+    ref="chapter_body">
       <slot></slot>
     </div>
   </div>
 </template>
 
 <script>
-import $ from 'jquery'
+import $ from "jquery";
 
 let animate = true;
 export default {
@@ -16,24 +20,21 @@ export default {
   mounted() {
     const obj = this;
     $("[class *= optional]").click(event => {
-      if ($(event.target).hasClass('optional-show'))
-      {
-        $($(event.target).nextAll('div')[0]).slideUp(1000, () => {
-          $(event.target).removeClass('optional-show'); 
-          $(event.target).addClass('optional-hide');
+      if ($(event.target).hasClass("optional-show")) {
+        $($(event.target).nextAll("div")[0]).slideUp(1000, () => {
+          $(event.target).removeClass("optional-show");
+          $(event.target).addClass("optional-hide");
+        });
+      } else {
+        $($(event.target).nextAll("div")[0]).slideDown(1000, () => {
+          $(event.target).removeClass("optional-hide");
+          $(event.target).addClass("optional-show");
         });
       }
-      else
-      {
-        $($(event.target).nextAll('div')[0]).slideDown(1000, () => {
-          $(event.target).removeClass('optional-hide');
-          $(event.target).addClass('optional-show');
-        });
-      }
-    })
+    });
 
     $(".optional-hide").each(function() {
-      $($(this).nextAll('div')[0]).slideUp(0);
+      $($(this).nextAll("div")[0]).slideUp(0);
     });
     this.trigger.call = function() {
       if (animate == 1) {
@@ -55,7 +56,7 @@ export default {
           });
           dmask.animate({ height: "+=" + dh1 }, 1100, "swing", function() {
             animate = 1;
-            dmask.css('overflow', 'visible');
+            dmask.css("overflow", "visible");
           });
         } else {
           d.addClass("hidden");
@@ -72,7 +73,7 @@ export default {
           });
           dmask.animate({ height: "+=" + dh2 }, 1100, "swing", function() {
             animate = 1;
-            dmask.css('overflow', 'hidden');
+            dmask.css("overflow", "hidden");
           });
         }
       }
