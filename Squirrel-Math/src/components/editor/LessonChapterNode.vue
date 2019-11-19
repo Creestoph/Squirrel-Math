@@ -19,6 +19,7 @@
 <script lang="ts">
 import LessonChapter from "@/components/lesson/chapter/LessonChapter.vue";
 import ParagraphNode from './ParagraphNode.vue'
+import ListNode from './ListNode.vue'
 import Vue from 'vue';
 import Component from 'vue-class-component';
 import { Prop } from 'vue-property-decorator';
@@ -27,7 +28,8 @@ import * as data from './data';
 @Component({
   components: {
     LessonChapter,
-    ParagraphNode
+    ParagraphNode,
+    ListNode
   }
 })
 export default class LessonChapterNode extends Vue {

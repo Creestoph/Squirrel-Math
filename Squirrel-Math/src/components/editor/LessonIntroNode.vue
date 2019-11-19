@@ -12,6 +12,7 @@
 <script lang="ts">
 import LessonIntro from "@/components/lesson/LessonIntro.vue";
 import ParagraphNode from './ParagraphNode.vue'
+import ListNode from './ListNode.vue'
 import Component from 'vue-class-component';
 import { Prop } from 'vue-property-decorator';
 import Vue from 'vue';
@@ -20,7 +21,8 @@ import * as data from './data'
 @Component({
   components: {
     LessonIntro,
-    ParagraphNode
+    ParagraphNode,
+    ListNode
   }
 })
 export default class LessonIntroNode extends Vue {

@@ -1,6 +1,7 @@
 import { Guid } from "guid-typescript";
 
 
+
 export abstract class NodeData {
     id!: string
     name!: string
@@ -8,6 +9,10 @@ export abstract class NodeData {
         this.id = Guid.create().toString()
         this.name = name
     }
+}
+
+export abstract class LeafNodeData extends NodeData{
+
 }
 
 export class LessonTitleNodeData extends NodeData {
@@ -20,8 +25,8 @@ export class LessonTitleNodeData extends NodeData {
 
 
 export class LessonIntroNodeData extends NodeData {
-    nodes!: ParagraphNodeData[]
-    constructor(nodes: ParagraphNodeData[]) {
+    nodes!: LeafNodeData[]
+    constructor(nodes: LeafNodeData[]) {
         super('lesson-intro-node')
         this.nodes = nodes
     }
@@ -30,8 +35,8 @@ export class LessonIntroNodeData extends NodeData {
 
 export class LessonChapterNodeData extends NodeData {
     title!: string
-    nodes!: ParagraphNodeData[]
-    constructor(title: string, nodes: ParagraphNodeData[]){
+    nodes!: LeafNodeData[]
+    constructor(title: string, nodes: LeafNodeData[]){
         super('lesson-chapter-node')
         this.title = title
         this.nodes = nodes  
@@ -62,10 +67,18 @@ export class LessonNodeData extends NodeData {
 }
 
 
-export class ParagraphNodeData extends NodeData {
+export class ParagraphNodeData extends LeafNodeData{
     data!: string
     constructor(data: string){
         super('paragraph-node')
         this.data = data
+    }
+}
+
+export class ListNodeData extends LeafNodeData {
+    nodes: string[] = []
+    constructor(nodes: string[]){
+        super('list-node')
+        this.nodes = nodes
     }
 }

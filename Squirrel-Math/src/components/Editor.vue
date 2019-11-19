@@ -47,7 +47,7 @@ export default class Editor extends Vue {
       "",
       "",
       new data.LessonTitleNodeData("My title"),
-      new data.LessonIntroNodeData([new data.ParagraphNodeData("Some intro")]),
+      new data.LessonIntroNodeData([new data.ParagraphNodeData("Some intro"), new data.ListNodeData(['a','b','c'])]),
       [
         new data.LessonChapterNodeData("My chapter", [
           new data.ParagraphNodeData("Some content")
