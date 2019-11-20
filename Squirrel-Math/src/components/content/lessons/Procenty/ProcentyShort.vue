@@ -34,7 +34,7 @@
 
 		<ul>
 			<li>$4\%$ z $2 \text{ kg}$ wynosi $4\% \cdot 2 \text{ kg} = \frac{4}{100} \cdot 2\text{ kg} = \frac{8}{100} \text{ kg} = 0,08 \text{ kg} = 80 \text{ g}$.</li>
-			<li>$50% z 1\ 000\ 000$ wynosi $\frac{50}{100} \cdot 1\ 000\ 000 = \frac{1}{2} \cdot 1\ 000\ 000 = 500\ 000$.</li> 
+			<li>$50\%$ z $1\ 000\ 000$ wynosi $\frac{50}{100} \cdot 1\ 000\ 000 = \frac{1}{2} \cdot 1\ 000\ 000 = 500\ 000$.</li> 
 		</ul>
         </lesson-chapter>
 

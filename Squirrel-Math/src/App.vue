@@ -1,20 +1,20 @@
 <template>
   <div>
-    <app-menu></app-menu>
-	<!-- <keep-alive> -->
-		
+    <!-- <app-menu></app-menu> -->
+	<interactive-tree></interactive-tree>
     <router-view></router-view>
-	<!-- </keep-alive> -->
   </div>
 </template>
 
 <script>
   import Menu from './components/Menu'
+  import InteractiveTree from './components/content/InteractiveTree'
 
   export default {
     name: 'App',
     components: {
-      AppMenu: Menu
+	  AppMenu: Menu,
+	  InteractiveTree
     }
   }
 </script>

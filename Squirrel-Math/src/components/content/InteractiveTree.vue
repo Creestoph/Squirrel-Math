@@ -280,7 +280,7 @@ export default {
 canvas[resize] {
   width: 100%;
   height: 800px;
-  position: absolute;
+  position: fixed;
   background: #eeeeee;
 }
 
@@ -289,7 +289,7 @@ canvas[resize] {
 }
 
 #tree-tools {
-  position: absolute;
+  position: fixed;
   right: 0px;
 }
 
