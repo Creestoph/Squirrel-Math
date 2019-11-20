@@ -34,3 +34,5 @@ new Vue({
   components: { App },
   template: '<App/>'
 })
+
+export default router;

@@ -1,7 +1,10 @@
 <template>
   <div>
     <app-menu></app-menu>
+	<!-- <keep-alive> -->
+		
     <router-view></router-view>
+	<!-- </keep-alive> -->
   </div>
 </template>
 
@@ -31,6 +34,7 @@ p
 p:not(.printable)
 {
 	text-align: justify;
+	line-height: 26.4px;
 }
 
 .no_selection 
@@ -241,8 +245,8 @@ a.link:active
 
 .example
 {
-	background-color: #f4f4f4;
-	border-left: 10px solid #dd3333;
+	background-color: #f6f6f6;
+	border-left: 3px solid #dd3333;
 	box-shadow: 2px 2px 3px 0px rgba(0, 0, 0, 0.4);
 	padding: 15px;
 	margin: 30px 30px;
@@ -274,12 +278,14 @@ p.type
 	margin-top: 0;
 	margin-bottom: 0.1em;
 	transition: background-color 0.1s;
-	box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.4);
+	/* box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.4); */
+	font-size: 0.9em;
+	font-family: Corbel;
 }
 
 p.type + *
 {
-		margin-top: 0;
+	margin-top: 0;
 }
 
 p.type:hover
@@ -365,7 +371,7 @@ p.optional-show:hover ~ div
 	color: white;
 	background-color: #aaaaaa;
 	transition: background-color 0.1s;
-	boax-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.4);
+	box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.4);
 }
 
 p.warning
@@ -394,7 +400,7 @@ p.problem
 .formula
 {
 	text-align: center !important;
-	background-color: #dddddd;
+	background-color: #e0e0e0;
 	padding: 10px;
 	margin: 0px;
 }
@@ -404,14 +410,14 @@ p.problem
 	position: relative;
 	padding: 40px 10px 10px 10px;
 	border: 1px solid #aaaaaa;
-	border-top:  1px solid #dddddd;
-	border-bottom:  1px solid #dddddd;
+	border-top:  1px solid #e0e0e0;
+	border-bottom:  1px solid #e0e0e0;
 	background: #ffffff;
 }
 
 .proof + .proof
 {
-	border-top: 1em solid #dddddd;
+	border-top: 1em solid #e0e0e0;
 }
 
 /* ========================================== COMMON ELEMENTS ========================================== */

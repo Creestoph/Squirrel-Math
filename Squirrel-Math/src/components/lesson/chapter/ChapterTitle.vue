@@ -24,7 +24,7 @@
     position: relative;
     cursor: pointer;
     font-family: corbel;
-    font-size: 2em;
+    font-size: 1.9em;
     font-weight: bold;
     margin-top: 9px; /*50px*/
     margin-bottom:-11px;

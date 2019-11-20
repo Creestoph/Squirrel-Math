@@ -43,8 +43,7 @@ export default {
 
   .lesson {
     position: relative;
-    font-family: "Verdana";
-    font-size: 1.08em;
+    font-family: "Segoe UI";
     color: #000000;
     background: #fefefe;
     clear: both;

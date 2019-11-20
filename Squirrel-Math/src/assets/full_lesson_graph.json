@@ -114,14 +114,18 @@
         "level": "Szkoła podstawowa"
     },
     {
+        "title": "A1",
+        "requires": ["Wyrażenia algebraiczne", "Pola i obwody"]
+    },
+    {
         "title": "Układ współrzędnych",
-        "requires": ["Wyrażenia algebraiczne", "Pola i obwody"],
+        "requires": ["A1"],
         "field": "Geometria analityczna",
         "level": "Szkoła podstawowa"
     },
     {
         "title": "Trójkąty",
-        "requires": ["Wyrażenia algebraiczne", "Pola i obwody"],
+        "requires": ["A1"],
         "field": "Geometria płaska",
         "level": "Szkoła podstawowa"
     },
@@ -271,7 +275,7 @@
     },
     {
         "title": "Wielomiany",
-        "requires": ["Równania i nierówności liniowe"],
+        "requires": ["Równania kwadratowe"],
         "field": "Algebra",
         "level": "Liceum"
     },
@@ -302,6 +306,12 @@
     {
         "title": "Funkcja kwadratowa",
         "requires": ["Równania kwadratowe", "Przekształcenia funkcji"],
+        "field": "Algebra",
+        "level": "Liceum"
+    },
+    {
+        "title": "Funkcja wykładnicza",
+        "requires": ["Logarytmy", "Przekształcenia funkcji"],
         "field": "Algebra",
         "level": "Liceum"
     },
@@ -349,7 +359,7 @@
     },
     {
         "title": "Pochodna funkcji",
-        "requires": ["Granica funkcji"],
+        "requires": ["Granica funkcji", "Funkcje trygonometryczne", "Funkcja wykładnicza"],
         "field": "Analiza matematyczna",
         "level": "Liceum"
     },
@@ -366,14 +376,18 @@
         "level": "Liceum"
     },
     {
+        "title": "A2",
+        "requires": ["Pochodna funkcji", "Szeregi liczbowe"]
+    },
+    {
         "title": "Całkowanie",
-        "requires": ["Pochodna funkcji", "Szeregi liczbowe"],
+        "requires": ["A2"],
         "field": "Analiza matematyczna",
         "level": "Studia inżynierskie"
     },
     {
         "title": "Rozwinięcia funkcji w szereg",
-        "requires": ["Pochodna funkcji", "Szeregi liczbowe"],
+        "requires": ["A2"],
         "field": "Analiza matematyczna",
         "level": "Studia inżynierskie"
     },

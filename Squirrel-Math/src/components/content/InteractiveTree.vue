@@ -1,144 +1,255 @@
 <template>    
-<div>
-<button @click="save()">SAVE</button>
-<canvas id="tree-canvas" width = "3000px" height = "3000px"></canvas>
+<div id = "tree-container">
+  <canvas ref="canvas" resize="true"></canvas>
+  <div id="tree-tools">
+    <button v-if="!editMode" @click="enableEdit()">Edit</button>
+    <button v-if="editMode" @click="save()">Save</button>
+    <button v-if="editMode" @click="discard()">Discard</button>
+  </div>   
+  <tooltip id="lessonSummary" :visible="displayLesson" timeout="750" :offset="{x: 50, y: -50}">
+    <div v-if="displayLesson">
+      <div id="displaylessonTitle">{{displayLesson.title}}</div>
+      <b>Dział:</b> {{displayLesson.field}}<br>
+      <b>Poziom:</b> {{displayLesson.level}}<br>
+      <b>Wymagane:</b>
+      <div v-for="(item, i) in displayLesson.requires" :key="i">
+        {{item}}<br>
+      </div>
+    </div>
+  </tooltip>
 </div>
 </template>
 
 <script>
-import graphLessons from "../../assets/lesson_graph.json"
+import graphLessons from "../../assets/current_lesson_graph.json"
+import graphCoordinates from "../../assets/current_graph_coordinates.json"
 import paper from "paper"
+import router from "../../main"
+import Tooltip from "../utils/Tooltip"
 
 export default {
   name: "InteractiveTree",
   methods: {
+    download(data, filename, type) {
+      var file = new Blob([data], {type: type});
+      if (window.navigator.msSaveOrOpenBlob) // IE10+
+          window.navigator.msSaveOrOpenBlob(file, filename);
+      else { // Others
+          var a = document.createElement("a"),
+                  url = URL.createObjectURL(file);
+          a.href = url;
+          a.download = filename;
+          document.body.appendChild(a);
+          a.click();
+          setTimeout(function() {
+              document.body.removeChild(a);
+              window.URL.revokeObjectURL(url);  
+          }, 0); 
+      }
+    },  
+    enableEdit() {
+      this.editMode = true;
+    },
+    save(){
+      this.editMode = false;
+      var t = [];
+      for (var name in this.lessons) {
+        t.push([name, this.positions[name].x, this.positions[name].y]);
+      }
+      this.download(JSON.stringify(t), 'current_graph_coordinates.json', 'application/json')
+    },
+    discard(){
+      this.editMode = false;
+      this.centerGraph();
+      this.displayLessons();
+    },
+    addEventHandlers() {
+      var hitOptions = { segments: false, stroke: false, fill: true, tolerance: 5 };
+      const component = this;
+      const canvas = this.$refs.canvas
+      this.mypaper.tool = new paper.Tool();
+      
+      this.mypaper.view.onResize = function(event) {
+        component.centerGraph();
+        component.displayLessons();
+      }
+
+      this.mypaper.tool.onMouseMove = function(event) {
+        var hitResult = component.mypaper.project.hitTest(event.point, hitOptions);
+        if (!hitResult || hitResult.type != 'fill') {
+          canvas.style.cursor = "default";
+          if (component.hoveredObject) {
+            component.hoveredObject.style.fillColor = 'black';
+            var lessonName = component.hoveredObject.content
+            for (var req of component.lessons[lessonName].requires)
+              component.edges[lessonName][req].style.strokeColor = 'black';
+            component.hoveredObject = null;
+            component.displayLesson = null;
+          }
+        }
+        else {
+          canvas.style.cursor = "pointer";
+          if (!component.hoveredObject) {
+            component.hoveredObject = hitResult.item;
+            component.hoveredObject.style.fillColor = '#dd3333';
+            var lessonName = hitResult.item.content;
+            component.displayLesson = component.lessons[lessonName];
+            for (var req of component.lessons[lessonName].requires)
+            {
+              component.edges[lessonName][req].style.strokeColor = '#dd3333';
+              component.edges[lessonName][req].bringToFront();
+            }
+          }
+        }
+      }
+      
+      this.mypaper.tool.onMouseDown = function(event) {
+        component.clickedObject = null;
+        var hitResult = component.mypaper.project.hitTest(event.point, hitOptions);
+        if (!hitResult || hitResult.type != "fill")
+          return;
+        if (component.editMode)
+          component.clickedObject = hitResult.item;
+        else 
+          router.push(component.lessons[hitResult.item.content].url);
+      }
+
+      this.mypaper.tool.onMouseDrag = function(event) {
+        if (component.clickedObject) {
+          var clickedTitle = component.clickedObject.content;
+          var deltaX = event.delta.x;
+          var deltaY = event.delta.y;
+          component.clickedObject.position = new paper.Point(component.clickedObject.position.x + deltaX, component.clickedObject.position.y + deltaY);
+          component.positions[clickedTitle].x = component.clickedObject.position.x;
+          component.positions[clickedTitle].y = component.clickedObject.position.y;
+          for (var path of Object.values(component.edges[clickedTitle])) {
+            if (path.segments.length == 4) {            
+              path.segments[0].point.x += deltaX;
+              path.segments[0].point.y += deltaY;
+              path.segments[1].point.x += deltaX;
+            } 
+            else {            
+              path.segments[0].point.x += deltaX;
+              path.segments[0].point.y += deltaY;
+              path.segments[1].point.x += deltaX;
+              path.segments[3].point.x = (path.segments[1].point.x + path.segments[4].point.x) / 2;
+              path.segments[2].point.x = (path.segments[1].point.x + path.segments[4].point.x) / 2;
+            }
+          }
+          for (var upper of component.lessons[clickedTitle].isRequiredBy) {
+            var path = component.edges[upper][clickedTitle];
+            if (path.segments.length == 4) {
+              path.segments[3].point.x += deltaX;
+              path.segments[3].point.y += deltaY;
+              path.segments[2].point.x += deltaX;
+              if (path.segments[3].point.y < path.segments[2].point.y + 5) {
+                path.segments[2].point.y = path.segments[3].point.y - 5;
+                path.segments[1].point.y = path.segments[3].point.y - 5;
+              }
+            }
+            else {
+              path.segments[5].point.y += deltaY;
+              path.segments[5].point.x += deltaX;
+              path.segments[4].point.y += deltaY;
+              path.segments[4].point.x += deltaX;
+              path.segments[3].point.y += deltaY;
+              path.segments[3].point.x = (path.segments[1].point.x + path.segments[4].point.x) / 2;
+              path.segments[2].point.x = (path.segments[1].point.x + path.segments[4].point.x) / 2;
+            }
+          }
+        }
+      }
+
+      this.mypaper.tool.onMouseUp = function(event) {
+        if (component.editMode) {
+          for (var pos of Object.values(component.positions)) {
+            pos.x = Math.floor((pos.x + 5) / 10)*10;
+            pos.y = Math.floor((pos.y + 5) / 10)*10;
+          }
+          component.displayLessons();
+        }
+      }
+    },
+    initialize() {
+      this.mypaper = new paper.PaperScope()
+      this.mypaper.setup(this.$refs.canvas);
+      this.mypaper.activate();
+      this.addEventHandlers();
+    },
     loadLessons() {
       for (var lesson of graphLessons)
-        this.lessons[lesson.title] = {requires: lesson.requires, isRequiredBy: [], field: lesson.field, level: lesson.level};
+        this.lessons[lesson.title] = {
+          title: lesson.title,
+          requires: lesson.requires, 
+          isRequiredBy: [], 
+          field: lesson.field, 
+          level: lesson.level, 
+          url: lesson.url,
+        };
       for (var lesson of graphLessons)
         for (var req of lesson.requires)
           this.lessons[req].isRequiredBy.push(lesson.title);  
     },
-    calculateGraph() {
-      var allCalculated = false;
-      while (!allCalculated) {
-        allCalculated = true;
-      for (var name in this.lessons)
-        if (!this.positions[name]) {
-          allCalculated = false;
-          if (this.lessons[name].requires.length == 0)
-            this.positions[name] = {x: 800, y: 2000};
-          var highestRequiredY = 10000;
-          var highestRequiredX;
-          for (var j = 0; j < this.lessons[name].requires.length; j++) {
-            if (!this.positions[this.lessons[name].requires[j]])
-              break;
-            if (this.positions[this.lessons[name].requires[j]].y < highestRequiredY)
-              highestRequiredY = this.positions[this.lessons[name].requires[j]].y
-              highestRequiredX = this.positions[this.lessons[name].requires[j]].x
-          }
-          if (highestRequiredY < 10000)
-            this.positions[name] = {x: highestRequiredX + Math.random()*200 - 100, y: highestRequiredY - 40};
-        }
+    centerGraph() {
+      var minX = 10000, maxX = 0, minY = 10000;
+      for (var lesson of graphCoordinates) {
+        minX = Math.min(minX, lesson[1]);
+        maxX = Math.max(maxX, lesson[1]);
+        minY = Math.min(minY, lesson[2]);
       }
-
-    },      
-    download(data, filename, type) {
-    var file = new Blob([data], {type: type});
-    if (window.navigator.msSaveOrOpenBlob) // IE10+
-        window.navigator.msSaveOrOpenBlob(file, filename);
-    else { // Others
-        var a = document.createElement("a"),
-                url = URL.createObjectURL(file);
-        a.href = url;
-        a.download = filename;
-        document.body.appendChild(a);
-        a.click();
-        setTimeout(function() {
-            document.body.removeChild(a);
-            window.URL.revokeObjectURL(url);  
-        }, 0); 
-    }
-    },  
-    save(){
-      var t = []
-      for (var name in this.lessons) {
-        t.push([name, this.positions[name].x, this.positions[name].y]);
-      }
-      this.download(JSON.stringify(t), 'lolek.json', 'application/json')
+      var centerX = (minX + maxX) / 2;
+      for (var lesson of graphCoordinates)
+        this.positions[lesson[0]] = { x: this.mypaper.view.center.x + lesson[1] - centerX, y: 85 + lesson[2] - minY };
     },
+    loadGraph() {
+      for (var lesson of graphLessons)
+        this.positions[lesson.title] = {x: 100, y: 100};
+      this.centerGraph();
+    },     
     displayLessons() {
-      var canvas = document.getElementById("tree-canvas");
-      paper.setup(canvas);
-      var tool = new paper.Tool();
-      paper.install(window);
-      
-      //add text nodes
+      this.mypaper.project.clear();
+
+      //add text edges
+      var fontSize = 16;
       for (var name in this.lessons) {
         var text = new paper.PointText(this.positions[name].x, this.positions[name].y);
         text.content = name;
         text.style.justification = 'center';
-        this.nodes[name] = [];   
+        text.style.fontFamily = 'Segoe UI';
+        text.style.fontSize = fontSize;
+        this.edges[name] = [];   
       }
       
       //add edges
       for (var name in this.lessons) {
         for (var req of this.lessons[name].requires) {
           var edge = new paper.Path();
-          edge.strokeColor = 'black';
-          var randomization = Math.random()*10 - 5;
-          edge.add(new paper.Point(this.positions[name].x, this.positions[name].y + 5))
-          edge.add(new paper.Point(this.positions[name].x, this.positions[name].y + 10))
-          edge.add(new paper.Point(this.positions[req].x + randomization, this.positions[name].y + 10))
-          edge.add(new paper.Point(this.positions[req].x + randomization, this.positions[req].y - 10))
-          this.nodes[name][req] = [
-            edge.segments[edge.segments.length - 4], 
-            edge.segments[edge.segments.length - 3], 
-            edge.segments[edge.segments.length - 2], 
-            edge.segments[edge.segments.length - 1]
-          ];                   
-        }
-      }
-      paper.view.draw();
-
-      var hitOptions = {
-        segments: false,
-        stroke: false,
-        fill: true,
-        tolerance: 5
-      };
-
-      const component = this;
-
-      tool.onMouseDown = function(event) {
-        component.clickedObject = null;
-        var hitResult = paper.project.hitTest(event.point, hitOptions);
-        if (!hitResult || hitResult.type != "fill")
-          return;
-        component.clickedObject = hitResult.item;
-      }
-
-      tool.onMouseDrag = function(event) {
-        if (component.clickedObject) {
-          var clickedTitle = component.clickedObject.content;
-          component.clickedObject.position = new Point(component.clickedObject.position.x + event.delta.x, component.clickedObject.position.y + event.delta.y);
-          component.positions[clickedTitle].x = component.clickedObject.position.x;
-          component.positions[clickedTitle].y = component.clickedObject.position.y;
-          for (var path of Object.values(component.nodes[clickedTitle])) {
-            path[0].point.x += event.delta.x;
-            path[0].point.y += event.delta.y;
-            path[1].point.x += event.delta.x;
+          edge.style.strokeColor = 'black';
+          edge.style.strokeWidth = 3;
+          this.edges[name][req] = edge;
+          if (this.lessons[name].requires.length == 1) {
+            edge.add(new paper.Point(this.positions[name].x, this.positions[name].y + 5))
+            edge.add(new paper.Point(this.positions[name].x, this.positions[req].y - fontSize - 10))
+            edge.add(new paper.Point(this.positions[req].x, this.positions[req].y - fontSize - 10))
+            edge.add(new paper.Point(this.positions[req].x, this.positions[req].y - fontSize))
           }
-          for (var upper of component.lessons[clickedTitle].isRequiredBy) {
-            var path = component.nodes[upper][clickedTitle];
-            path[1].point.y += event.delta.y;
-            path[2].point.x += event.delta.x;
-            path[2].point.y += event.delta.y;
-            path[3].point.x += event.delta.x;
-            path[3].point.y += event.delta.y;
+          else if (this.lessons[req].isRequiredBy.length == 1) {
+            edge.add(new paper.Point(this.positions[name].x, this.positions[name].y + 5))
+            edge.add(new paper.Point(this.positions[name].x, this.positions[name].y + 15))
+            edge.add(new paper.Point(this.positions[req].x, this.positions[name].y + 15))
+            edge.add(new paper.Point(this.positions[req].x, this.positions[req].y - fontSize))
+          }
+          else {
+            edge.add(new paper.Point(this.positions[name].x, this.positions[name].y + 5))
+            edge.add(new paper.Point(this.positions[name].x, this.positions[name].y + 15))
+            edge.add(new paper.Point((this.positions[name].x + this.positions[req].x)/2, this.positions[name].y + 15))
+            edge.add(new paper.Point((this.positions[name].x + this.positions[req].x)/2, this.positions[req].y - fontSize - 10))
+            edge.add(new paper.Point(this.positions[req].x, this.positions[req].y - fontSize - 10))
+            edge.add(new paper.Point(this.positions[req].x, this.positions[req].y - fontSize))
           }
         }
       }
+      this.mypaper.view.draw();
     }
   },
   data() {
@@ -146,17 +257,68 @@ export default {
       lessons: [],
       positions: [],
       clickedObject: null,
-      nodes: []
+      hoveredObject: null,
+      edges: [],
+      editMode: false,
+      displayLesson: null,
+      mypaper: null
     } 
   },
   mounted() {
+    this.initialize();
     this.loadLessons();
-    this.calculateGraph();
+    this.loadGraph();
     this.displayLessons();
+  },
+  components: {
+    Tooltip
   }
 }
 </script>
 
 <style scoped>
+canvas[resize] {
+  width: 100%;
+  height: 800px;
+  position: absolute;
+  background: #eeeeee;
+}
 
+#tree-container {
+  position: relative;
+}
+
+#tree-tools {
+  position: absolute;
+  right: 0px;
+}
+
+#tree-tools button{
+  display: block;
+  width: 80px;
+  padding-top: 7px;
+  padding-bottom: 0px;
+  background: none;
+  font-size: 0.8em;
+  color: #777777;
+}
+
+#tree-tools button:hover{
+  box-shadow: none;
+  text-decoration: underline;
+}
+
+#lessonSummary {
+  border: 2px solid black;
+  background: white;
+  padding: 10px;
+  font-size: 0.8em;
+}
+
+#displaylessonTitle {
+  font-weight: bold;
+  font-size: 1.7em;
+  font-family: "Corbel";
+  margin-bottom: 10px;
+}
 </style>
