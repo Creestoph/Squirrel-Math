@@ -199,7 +199,7 @@ export default {
       }
       var centerX = (minX + maxX) / 2;
       for (var lesson of graphCoordinates)
-        this.positions[lesson[0]] = { x: this.mypaper.view.center.x + lesson[1] - centerX, y: 85 + lesson[2] - minY };
+        this.positions[lesson[0]] = { x: this.mypaper.view.center.x + lesson[1] - centerX, y: 130 + lesson[2] - minY };
     },
     loadGraph() {
       for (var lesson of graphLessons)

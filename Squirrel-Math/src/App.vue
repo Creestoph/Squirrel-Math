@@ -1,13 +1,13 @@
 <template>
   <div>
-    <!-- <app-menu></app-menu> -->
 	<interactive-tree></interactive-tree>
     <router-view></router-view>
+    <app-menu></app-menu>
   </div>
 </template>
 
 <script>
-  import Menu from './components/Menu'
+  import Menu from './components/NewMenu'
   import InteractiveTree from './components/content/InteractiveTree'
 
   export default {
@@ -28,7 +28,7 @@
 
 p
 {
-	margin: 1.7em 0;
+	margin: 1.2em 0;
 }
 
 p:not(.printable)
