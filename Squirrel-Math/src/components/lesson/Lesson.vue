@@ -1,14 +1,24 @@
 <template>
   <div>
     <div id="whole">
-      <div ref="lesson" class="lesson">
+      <div
+        ref="lesson"
+        class="lesson"
+      >
         <lesson-version-button 
-        v-if="routeShortVersion && routeLongVersion" 
-        :routeLongVersion="routeLongVersion" 
-        :routeShortVersion="routeShortVersion"></lesson-version-button>
-        <button ref="expandButton" id="expand-button" @click="lessonHidden ? expandLesson() : hideLesson()">&lt;</button>
+          v-if="routeShortVersion && routeLongVersion" 
+          :route-long-version="routeLongVersion" 
+          :route-short-version="routeShortVersion"
+        />
+        <button
+          ref="expandButton"
+          id="expand-button"
+          @click="lessonHidden ? expandLesson() : hideLesson()"
+        >
+          &lt;
+        </button>
         <div class="lesson-content">
-          <slot></slot>
+          <slot />
         </div>
       </div>
     </div>
@@ -25,9 +35,9 @@ export default {
   name: "Lesson",
   props: ["routeLongVersion", "routeShortVersion"],
   components: {
-    LessonIntro,
-    LessonTitle,
-    LessonChapter,
+    // LessonIntro,
+    // LessonTitle,
+    // LessonChapter,
     LessonVersionButton
   },
   methods: {

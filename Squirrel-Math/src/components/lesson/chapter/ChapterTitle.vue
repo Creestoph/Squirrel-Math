@@ -1,7 +1,7 @@
 <template>
   <div class="chapter_name">
     <div>
-      <slot></slot>
+      <slot />
     </div>
     <hr>
   </div>

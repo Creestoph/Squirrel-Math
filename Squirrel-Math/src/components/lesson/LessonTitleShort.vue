@@ -1,13 +1,13 @@
 <template>
-    <div>
-        <p class="lesson_title_short">
-            <slot></slot>
-        </p>
+  <div>
+    <p class="lesson_title_short">
+      <slot />
+    </p>
 
-        <p class="lesson_subtitle">
-            W pigułce
-        </p>  
-    </div>
+    <p class="lesson_subtitle">
+      W pigułce
+    </p>  
+  </div>
 </template>
 
 <script>

@@ -1,13 +1,22 @@
 <template>
-    <router-link tag="a" :to="routeLongVersion == $route.path ? routeShortVersion : routeLongVersion">
+  <router-link
+    tag="a"
+    :to="routeLongVersion == $route.path ? routeShortVersion : routeLongVersion"
+  >
     <div class="bookmark-shadow">
-        <div class="bookmark">{{routeLongVersion == $route.path ? "WERSJA SKRÓCONA" : "WERSJA PEŁNA"}}</div>
+      <div class="bookmark">
+        {{ routeLongVersion == $route.path ? "WERSJA SKRÓCONA" : "WERSJA PEŁNA" }}
+      </div>
     </div>
     <div class="bookmark-min">
-        <div :class="routeLongVersion == $route.path ? 'active' : ''">WERSJA PEŁNA</div>
-        <div :class="routeLongVersion == $route.path ? '' : 'active'">WERSJA SKRÓCONA</div>
+      <div :class="routeLongVersion == $route.path ? 'active' : ''">
+        WERSJA PEŁNA
+      </div>
+      <div :class="routeLongVersion == $route.path ? '' : 'active'">
+        WERSJA SKRÓCONA
+      </div>
     </div>
-    </router-link>
+  </router-link>
 </template>
 
 <script>

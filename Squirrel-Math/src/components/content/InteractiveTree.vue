@@ -1,30 +1,57 @@
 <template>    
-<div id = "tree-container">
-  <canvas ref="canvas" resize="true"></canvas>
-  <div id="tree-tools">
-    <button v-if="!editMode" @click="enableEdit()">Edit</button>
-    <button v-if="editMode" @click="save()">Save</button>
-    <button v-if="editMode" @click="discard()">Discard</button>
-  </div>   
-  <tooltip id="lessonSummary" :visible="displayLesson" timeout="750" :offset="{x: 50, y: -50}">
-    <div v-if="displayLesson">
-      <div id="displaylessonTitle">{{displayLesson.title}}</div>
-      <b>Dział:</b> {{displayLesson.field}}<br>
-      <b>Poziom:</b> {{displayLesson.level}}<br>
-      <b>Wymagane:</b>
-      <div v-for="(item, i) in displayLesson.requires" :key="i">
-        {{item}}<br>
+  <div id="tree-container">
+    <canvas
+      ref="canvas"
+      resize="true"
+    />
+    <div id="tree-tools">
+      <button
+        v-if="!editMode"
+        @click="enableEdit()"
+      >
+        Edit
+      </button>
+      <button
+        v-if="editMode"
+        @click="save()"
+      >
+        Save
+      </button>
+      <button
+        v-if="editMode"
+        @click="discard()"
+      >
+        Discard
+      </button>
+    </div>   
+    <tooltip
+      id="lessonSummary"
+      :visible="displayLesson"
+      timeout="750"
+      :offset="{x: 50, y: -50}"
+    >
+      <div v-if="displayLesson">
+        <div id="displaylessonTitle">
+          {{ displayLesson.title }}
+        </div>
+        <b>Dział:</b> {{ displayLesson.field }}<br>
+        <b>Poziom:</b> {{ displayLesson.level }}<br>
+        <b>Wymagane:</b>
+        <div
+          v-for="(item, i) in displayLesson.requires"
+          :key="i"
+        >
+          {{ item }}<br>
+        </div>
       </div>
-    </div>
-  </tooltip>
-</div>
+    </tooltip>
+  </div>
 </template>
 
 <script>
 import graphLessons from "../../assets/current_lesson_graph.json"
 import graphCoordinates from "../../assets/current_graph_coordinates.json"
 import paper from "paper"
-import router from "../../main"
 import Tooltip from "../utils/Tooltip"
 
 export default {
@@ -111,7 +138,7 @@ export default {
         if (component.editMode)
           component.clickedObject = hitResult.item;
         else 
-          router.push(component.lessons[hitResult.item.content].url);
+          component.$router.push(component.lessons[hitResult.item.content].url);
       }
 
       this.mypaper.tool.onMouseDrag = function(event) {

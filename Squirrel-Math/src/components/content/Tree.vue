@@ -1,12 +1,21 @@
 <template>    
-<div class="tree">
-  <br>
-  <ul>
-    <li v-for="(value, key) in chapters" :key="key">
-      <router-link  tag="a" :to="'/' + key" class="link">{{value}}</router-link>
-    </li>
-  </ul>
-</div>
+  <div class="tree">
+    <br>
+    <ul>
+      <li
+        v-for="(value, key) in chapters"
+        :key="key"
+      >
+        <router-link
+          tag="a"
+          :to="'/' + key"
+          class="link"
+        >
+          {{ value }}
+        </router-link>
+      </li>
+    </ul>
+  </div>
 </template>
 
 <script>

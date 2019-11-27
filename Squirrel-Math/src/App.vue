@@ -1,8 +1,8 @@
 <template>
   <div>
-	<interactive-tree></interactive-tree>
-    <router-view></router-view>
-    <app-menu></app-menu>
+    <interactive-tree />
+    <router-view />
+    <app-menu />
   </div>
 </template>
 
@@ -21,6 +21,12 @@
 
 <style>
 /* ========================================== GENERAL ========================================== */
+
+/* https://stackoverflow.com/questions/34550467/why-is-there-a-default-margin-on-the-body-element/34550634 */
+body {
+	margin: 0;
+	padding: 0;
+}
 
 * {
 	box-sizing: content-box;

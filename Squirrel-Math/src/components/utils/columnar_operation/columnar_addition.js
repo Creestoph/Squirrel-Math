@@ -7,7 +7,7 @@ import {Display_table} from "../columnar_operation_table/display_table"
 
 function Columnar_addition_step(table, comma, highlight_column, comment) {
 	var tab = [];
-	for (var i = 0; i < table.length; i++) {
+	for (let i = 0; i < table.length; i++) {
 		tab[i] = [];
 		for (var j = 0; j < table[i].length; j++) {
 			var t = ":" + table[i][j];
@@ -99,12 +99,12 @@ export class Columnar_addition {
 		if (numbers.length > 10) {
 			throw "<b>ERROR</b><br>Ani Ty, ani ja nie potrzebujemy aż tylu liczb.";
 		}
-		for (var i = 0; i < numbers.length; i++) {
+		for (let i = 0; i < numbers.length; i++) {
 			if (!validate(numbers[i])) {
 				throw standard_err;
 			}
 		}
-		for (var i = 0; i < numbers.length; i++) {
+		for (let i = 0; i < numbers.length; i++) {
 			while (numbers[i][0] == "0") numbers[i] = numbers[i].replace("0", "");
 			if (numbers[i] == "") numbers[i] = "0";
 			if (numbers[i][0] == ".") numbers[i] = "0" + numbers[i];
@@ -123,14 +123,14 @@ export class Columnar_addition {
 
 		longest_before_comma += 1;
 		var table = [];
-		for (var i = 0; i < numbers.length + 2; i++) {
+		for (let i = 0; i < numbers.length + 2; i++) {
 			table[i] = [];
-			for (var j = 0; j < longest_after_comma + longest_before_comma; j++) {
+			for (let j = 0; j < longest_after_comma + longest_before_comma; j++) {
 				table[i][j] = "";
 			}
 		}
-		for (var i = 0; i < numbers.length; i++) {
-			var j;
+		for (let i = 0; i < numbers.length; i++) {
+			let j;
 			for (j = 0; j < numbers[i].length && numbers[i][j] != '.'; j++);
 			var beforeComma = j;
 			numbers[i] = numbers[i].replace(".", "")
@@ -145,7 +145,7 @@ export class Columnar_addition {
 		var comment = "";
 		while (current_column >= 0) {
 			digits = [];
-			for (var i = 0; i < table.length - 1; i++) {
+			for (let i = 0; i < table.length - 1; i++) {
 				if (table[i][current_column] != "") digits.push(table[i][current_column]);
 			}
 			if (digits.length == 0) break;
@@ -159,12 +159,12 @@ export class Columnar_addition {
 			}
 			else {
 				var sum = 0;
-				for (var i = 0; i < digits.length; i++) sum += parseInt(digits[i]);
+				for (let i = 0; i < digits.length; i++) sum += parseInt(digits[i]);
 				var carry = parseInt(sum / 10);
 				comment += "Dodajemy cyfry ";
 				if (digits.length == 2) comment += digits[0] + " i " + digits[1] + ", ";
 				else {
-					for (var i = 0; i < digits.length - 1; i++) {
+					for (let i = 0; i < digits.length - 1; i++) {
 						comment += digits[i] + ", ";
 					}
 					comment += digits[digits.length - 1] + " i ";
@@ -184,7 +184,7 @@ export class Columnar_addition {
 			current_column -= 1;
 		}
 		comment = "Odczytujemy wynik: ";
-		for (var i = 0; i < table[table.length - 1].length; i++)
+		for (let i = 0; i < table[table.length - 1].length; i++)
 			comment += (i == longest_before_comma ? "," : "") + table[table.length - 1][i];
 		comment += ".";
 		this.steps.push(new Columnar_addition_step(table, longest_after_comma, -1, comment));

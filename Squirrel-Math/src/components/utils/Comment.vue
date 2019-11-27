@@ -1,7 +1,15 @@
 <template>
-  <span class="comment" @mouseover="onMouseOver($event)" @mouseout="popup = false">
-    <div class="comment_window" v-if="popup" :style="{top: mousePos.y + 'px', left:mousePos.x + 'px'}">{{text}}</div>
-    <slot></slot>
+  <span
+    class="comment"
+    @mouseover="onMouseOver($event)"
+    @mouseout="popup = false"
+  >
+    <div
+      class="comment_window"
+      v-if="popup"
+      :style="{top: mousePos.y + 'px', left:mousePos.x + 'px'}"
+    >{{ text }}</div>
+    <slot />
   </span>
 </template>
 

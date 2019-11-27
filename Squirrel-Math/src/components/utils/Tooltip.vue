@@ -1,7 +1,14 @@
 <template>
-  <transition name="fade" v-if="visible">
-    <div class="sm-tooltip" v-if="privVisible" :style="{top: mousePos.y + 'px', left:mousePos.x + 'px'}">
-      <slot></slot>
+  <transition
+    name="fade"
+    v-if="visible"
+  >
+    <div
+      class="sm-tooltip"
+      v-if="privVisible"
+      :style="{top: mousePos.y + 'px', left:mousePos.x + 'px'}"
+    >
+      <slot />
     </div>
   </transition>
 </template>

@@ -7,9 +7,9 @@ import {Display_table} from "../columnar_operation_table/display_table"
 
 function Columnar_subtraction_step(table, comma, highlight_column, crossed_fields, comment) {
     var tab = [];
-    for (var i = 0; i < table.length; i++) {
+    for (let i = 0; i < table.length; i++) {
         tab[i] = [];
-        for (var j = 0; j < table[i].length; j++) {
+        for (let j = 0; j < table[i].length; j++) {
             var t = ":" + table[i][j];
             if (j == highlight_column) t = "/h" + t;
             if (crossed_fields[i][j])
@@ -19,8 +19,6 @@ function Columnar_subtraction_step(table, comma, highlight_column, crossed_field
                 if (i == table.length - 1 || (i != 0 && i != 1 && table[i][j+1]!="")) tab[i].push(",");
                 else tab[i].push("");
             }
-        }
-        if (comma > 0) {
         }
     }
     this.table = Display_table.create_from_table("-", tab);
@@ -101,7 +99,7 @@ generate_steps(numbers, is_float = true) {
     if (numbers.length != 2) {
         throw standard_err;
     }
-    for (var i = 0; i < numbers.length; i++) {
+    for (let i = 0; i < numbers.length; i++) {
         if (!validate(numbers[i])) {
             throw standard_err;
         }
@@ -109,15 +107,15 @@ generate_steps(numbers, is_float = true) {
     if (parseFloat(numbers[0]) - parseFloat(numbers[1]) < 0) {
         throw "Odjemnik jest większy niż odjemna...";
     }
-    for (var i = 0; i < numbers.length; i++) {
+    for (let i = 0; i < numbers.length; i++) {
         while (numbers[i][0] == "0") numbers[i] = numbers[i].replace("0", "");
         if (numbers[i] == "") numbers[i] = "0";
         if (numbers[i][0] == ".") numbers[i] = "0" + numbers[i];
     }
     var longest_before_comma = 0;
     var longest_after_comma = 0;
-    for (var i = 0; i < numbers.length; i++) {
-        var j;
+    for (let i = 0; i < numbers.length; i++) {
+        let j;
         for (j = 0; j < numbers[i].length && numbers[i][j] != '.'; j++);
         if (j > longest_before_comma) longest_before_comma = j;
         if (numbers[i].length - 1 - j > longest_after_comma) longest_after_comma = numbers[i].length - 1 - j;
@@ -128,26 +126,26 @@ generate_steps(numbers, is_float = true) {
     }
 	
     var table = [];
-    for (var i = 0; i < numbers.length + 3; i++) {
+    for (let i = 0; i < numbers.length + 3; i++) {
         table[i] = [];
-        for (var j = 0; j < longest_after_comma + longest_before_comma; j++) {
+        for (let j = 0; j < longest_after_comma + longest_before_comma; j++) {
             table[i][j] = "";
         }
     }
-    for (var i = 0; i < numbers.length; i++) {
-        var j;
+    for (let i = 0; i < numbers.length; i++) {
+        let j;
         for (j = 0; j < numbers[i].length && numbers[i][j] != '.'; j++);
         var beforeComma = j;
         numbers[i] = numbers[i].replace(".", "")
-        for (var k = 0; k < numbers[i].length; k++) {
+        for (let k = 0; k < numbers[i].length; k++) {
             table[i + 2][longest_before_comma - beforeComma + k] = numbers[i][k];
         }
     }
 
     var crossed_fields = [];
-    for (var i = 0; i < numbers.length + 3; i++) {
+    for (let i = 0; i < numbers.length + 3; i++) {
         crossed_fields[i] = [];
-        for (var j = 0; j < longest_after_comma + longest_before_comma; j++) {
+        for (let j = 0; j < longest_after_comma + longest_before_comma; j++) {
             crossed_fields[i][j] = false;
         }
     }
@@ -160,8 +158,8 @@ generate_steps(numbers, is_float = true) {
     this.steps.push(new Columnar_subtraction_step(table, longest_after_comma,-1, crossed_fields, comment));
 
     var r = false;
-    for (var i = table[0].length - longest_after_comma; i < table[0].length; i++) {
-        for (var j = 2; j < 4; j++) {
+    for (let i = table[0].length - longest_after_comma; i < table[0].length; i++) {
+        for (let j = 2; j < 4; j++) {
             if (table[j][i] == "") {
                 table[j][i] = "0";
                 comment = "Wypełniamy puste miejsca zerami.";
@@ -225,7 +223,7 @@ generate_steps(numbers, is_float = true) {
 
     comment = "Odczytujemy wynik: ";
     var w = "";
-    for (var i = 0; i < table[table.length - 1].length; i++)
+    for (let i = 0; i < table[table.length - 1].length; i++)
         w += (i== longest_before_comma ? "," : "")+table[table.length - 1][i];
     while (w[0] == "0") w = w.replace("0","");
     comment += (w=="" ? "0" : w)+".";

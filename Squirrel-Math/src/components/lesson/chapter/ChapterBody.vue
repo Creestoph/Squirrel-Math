@@ -1,38 +1,42 @@
 <template>
-  <div class="chapter_mask" ref="chapter_mask">
-    <div class="chapter_body" ref="chapter_body">
-      <slot></slot>
+  <div 
+    class="chapter_mask" 
+    ref="chapter_mask"
+  >
+    <div 
+      class="chapter_body" 
+      ref="chapter_body"
+    >
+      <slot />
     </div>
   </div>
 </template>
 
 <script>
-let animate = true;
+import $ from "jquery";
 
+let animate = true;
 export default {
   name: "ChapterBody",
   props: ["trigger"],
   mounted() {
     const obj = this;
     $("[class *= optional]").click(event => {
-      if ($(event.target).hasClass('optional-show'))
-      {
-        $($(event.target).nextAll('div')[0]).slideUp(1000, () => {
-          $(event.target).removeClass('optional-show'); 
-          $(event.target).addClass('optional-hide');
+      if ($(event.target).hasClass("optional-show")) {
+        $($(event.target).nextAll("div")[0]).slideUp(1000, () => {
+          $(event.target).removeClass("optional-show");
+          $(event.target).addClass("optional-hide");
+        });
+      } else {
+        $($(event.target).nextAll("div")[0]).slideDown(1000, () => {
+          $(event.target).removeClass("optional-hide");
+          $(event.target).addClass("optional-show");
         });
       }
-      else
-      {
-        $($(event.target).nextAll('div')[0]).slideDown(1000, () => {
-          $(event.target).removeClass('optional-hide');
-          $(event.target).addClass('optional-show');
-        });
-      }
-    })
+    });
 
     $(".optional-hide").each(function() {
-      $($(this).nextAll('div')[0]).slideUp(0);
+      $($(this).nextAll("div")[0]).slideUp(0);
     });
     this.trigger.call = function() {
       if (animate == 1) {
@@ -47,31 +51,31 @@ export default {
 
           for (var i = 0; i < classList.length; i++) {
             if (classList[i].includes("height"))
-              var dh = parseInt(classList[i].replace("height", ""));
+              var dh1 = parseInt(classList[i].replace("height", ""));
           }
           d.animate({ top: 0 }, 1100, "swing", function() {
             animate = 1;
           });
-          dmask.animate({ height: "+=" + dh }, 1100, "swing", function() {
+          dmask.animate({ height: "+=" + dh1 }, 1100, "swing", function() {
             animate = 1;
-            dmask.css('overflow', 'visible');
+            dmask.css("overflow", "visible");
           });
         } else {
           d.addClass("hidden");
           d.removeClass("not_hidden");
           var toadd = true;
-          for (var i = 0; i < classList.length; i++) {
-            if (classList[i].includes("height")) toadd = false;
+          for (var i1 = 0; i1 < classList.length; i1++) {
+            if (classList[i1].includes("height")) toadd = false;
           }
           if (toadd) dmask.addClass("height" + dmask.height());
 
-          var dh = -dmask.height();
+          var dh2 = -dmask.height();
           d.animate({ top: "+=" + dh }, 1100, "swing", function() {
             animate = 1;
           });
-          dmask.animate({ height: "+=" + dh }, 1100, "swing", function() {
+          dmask.animate({ height: "+=" + dh2 }, 1100, "swing", function() {
             animate = 1;
-            dmask.css('overflow', 'hidden');
+            dmask.css("overflow", "hidden");
           });
         }
       }

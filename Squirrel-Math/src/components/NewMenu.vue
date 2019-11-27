@@ -1,27 +1,54 @@
 <template>
-    <div class="menu-trapeze">
-        <div class = "menu">
-            <router-link tag="a" to="/">
-                <div class="logo" >
-                    <div>
-                        <div class="logo-black-cell" style="float: left"></div>
-                        <div class="logo-container-cell" style="float: left">
-                            <div class="logo-red-cell" style="float: left"></div>
-                            <div class="logo-red-cell" style="float: left"></div>
-                            <div class="logo-red-cell" style="float: left"></div>
-                            <div class="logo-red-cell" style="float: left"></div>
-                        </div>
-                        <div class="logo-black-cell" style="float: left; clear: left"></div>
-                        <div class="logo-black-cell" style="float: left"></div>
-                    </div>
-                </div>
-                <div class="logo-text">
-                    <span class="logo-text-1">squirrel</span>
-                    <span class="logo-text-2">math</span>
-                </div>
-            </router-link>
+  <div class="menu-trapeze">
+    <div class="menu">
+      <router-link
+        tag="a"
+        to="/"
+      >
+        <div class="logo">
+          <div>
+            <div
+              class="logo-black-cell"
+              style="float: left"
+            />
+            <div
+              class="logo-container-cell"
+              style="float: left"
+            >
+              <div
+                class="logo-red-cell"
+                style="float: left"
+              />
+              <div
+                class="logo-red-cell"
+                style="float: left"
+              />
+              <div
+                class="logo-red-cell"
+                style="float: left"
+              />
+              <div
+                class="logo-red-cell"
+                style="float: left"
+              />
+            </div>
+            <div
+              class="logo-black-cell"
+              style="float: left; clear: left"
+            />
+            <div
+              class="logo-black-cell"
+              style="float: left"
+            />
+          </div>
         </div>
+        <div class="logo-text">
+          <span class="logo-text-1">squirrel</span>
+          <span class="logo-text-2">math</span>
+        </div>
+      </router-link>
     </div>
+  </div>
 </template>
 
 <script>

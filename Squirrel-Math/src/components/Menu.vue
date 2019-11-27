@@ -1,26 +1,67 @@
 <template>
-  <div class = "menu">
-      <router-link tag="a" to="/">
-          <div class="logo" >
-              <div>
-                  <div class="logo-black-cell" style="float: left"></div>
-                  <div class="logo-container-cell" style="float: left">
-                      <div class="logo-red-cell" style="float: left"></div>
-                      <div class="logo-red-cell" style="float: left"></div>
-                      <div class="logo-red-cell" style="float: left"></div>
-                      <div class="logo-red-cell" style="float: left"></div>
-                  </div>
-                  <div class="logo-black-cell" style="float: left; clear: left"></div>
-                  <div class="logo-black-cell" style="float: left"></div>
-              </div>
+  <div class="menu">
+    <router-link
+      tag="a"
+      to="/"
+    >
+      <div class="logo">
+        <div>
+          <div
+            class="logo-black-cell"
+            style="float: left"
+          />
+          <div
+            class="logo-container-cell"
+            style="float: left"
+          >
+            <div
+              class="logo-red-cell"
+              style="float: left"
+            />
+            <div
+              class="logo-red-cell"
+              style="float: left"
+            />
+            <div
+              class="logo-red-cell"
+              style="float: left"
+            />
+            <div
+              class="logo-red-cell"
+              style="float: left"
+            />
           </div>
-          <div class="logo-text">
-              <span class="logo-text-1">squirrel</span>
-              <span class="logo-text-2">math</span>
-          </div>
-      </router-link>
-      <router-link tag="a" to="/tree"><button class = "button_convey"><span>DRZEWO</span></button></router-link>
-      <router-link tag="a" to="/editor"><button class = "button_convey"><span>EDYTOR</span></button></router-link>
+          <div
+            class="logo-black-cell"
+            style="float: left; clear: left"
+          />
+          <div
+            class="logo-black-cell"
+            style="float: left"
+          />
+        </div>
+      </div>
+      <div class="logo-text">
+        <span class="logo-text-1">squirrel</span>
+        <span class="logo-text-2">math</span>
+      </div>
+    </router-link>
+    <router-link
+      tag="a"
+      to="/tree"
+    >
+      <button class="button_convey">
+        <span>DRZEWO</span>
+      </button>
+    </router-link>
+    <router-link
+      tag="a"
+      to="/editor"
+    >
+      <button class="button_convey">
+        <span>EDYTOR</span>
+      </button>
+    </router-link>
   </div>
 </template>
 

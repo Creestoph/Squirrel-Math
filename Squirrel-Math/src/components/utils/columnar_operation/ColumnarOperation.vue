@@ -1,13 +1,26 @@
 <template>
   <div>
-    <zero-division-error></zero-division-error>
+    <zero-division-error />
     <p style="text-align: center">
-      <input style="width: 85%" name="numberInput" type="text" ref="columnar_operation_input">
+      <input
+        style="width: 85%"
+        name="numberInput"
+        type="text"
+        ref="columnar_operation_input"
+      >
     </p>
     <p style="text-align: center">
-      <button style="float: center;" @click="ColumnarOperationStartArgs()">Start</button>
+      <button
+        style="float: center;"
+        @click="ColumnarOperationStartArgs()"
+      >
+        Start
+      </button>
     </p>
-    <div class="columnar_operation_script center" ref="columnar_operation_area">
+    <div
+      class="columnar_operation_script center"
+      ref="columnar_operation_area"
+    >
       <table>
         <tr>
           <td
@@ -15,31 +28,55 @@
             id="columnar_operation_button_left"
             @click="prev()"
           >
-            <svg height="0" width="30">
+            <svg
+              height="0"
+              width="30"
+            >
               <defs>
                 <linearGradient id="gradient">
-                  <stop offset="20%" stop-color="#C33"></stop>
-                  <stop offset="90%" stop-color="#833"></stop>
+                  <stop
+                    offset="20%"
+                    stop-color="#C33"
+                  />
+                  <stop
+                    offset="90%"
+                    stop-color="#833"
+                  />
                 </linearGradient>
                 <linearGradient id="hover_gradient">
-                  <stop offset="20%" stop-color="#A33"></stop>
-                  <stop offset="90%" stop-color="#433"></stop>
+                  <stop
+                    offset="20%"
+                    stop-color="#A33"
+                  />
+                  <stop
+                    offset="90%"
+                    stop-color="#433"
+                  />
                 </linearGradient>
               </defs>
-              <polygon points="20,0 0,30 20,60"></polygon>
+              <polygon points="20,0 0,30 20,60" />
             </svg>
           </td>
           <td>
-            <div ref="columnar_operation_table" class="no_selection"></div>
-            <p ref="columnar_operation_comment" class="no_selection"></p>
+            <div
+              ref="columnar_operation_table"
+              class="no_selection"
+            />
+            <p
+              ref="columnar_operation_comment"
+              class="no_selection"
+            />
           </td>
           <td
             ref="columnar_operation_button_right"
             id="columnar_operation_button_right"
             @click="next()"
           >
-            <svg height="0" width="30">
-              <polygon points="0,0 20,30 0,60"></polygon>
+            <svg
+              height="0"
+              width="30"
+            >
+              <polygon points="0,0 20,30 0,60" />
             </svg>
           </td>
         </tr>
