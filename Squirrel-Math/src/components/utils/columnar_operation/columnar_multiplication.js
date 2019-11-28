@@ -6,7 +6,7 @@ import { validate_float, validate_int } from "../number_validation"
 import { Display_table } from "../columnar_operation_table/display_table"
 function Columnar_multiplication_step(table, highlight_fields, comment, carry, mul_underline, sum_underline) {
     var tab = [];
-    for (var i = 0; i < table.length; i++) {
+    for (let i = 0; i < table.length; i++) {
         tab[i] = [];
         if (i == mul_underline) {
             tab[i].push("/u:\\cdot");
@@ -20,7 +20,7 @@ function Columnar_multiplication_step(table, highlight_fields, comment, carry, m
             tab[i].push("");
             tab[i].push("");
         }
-        for (var j = 0; j < table[i].length; j++) {
+        for (let j = 0; j < table[i].length; j++) {
             var t = ":" + table[i][j];
             if (highlight_fields[i][j]) t = "/h" + t;
             if (i == mul_underline || i == sum_underline) t = "/u" + t;
@@ -106,7 +106,7 @@ export class Columnar_multiplication {
         if (numbers.length != 2) {
             throw standard_err;
         }
-        for (var i = 0; i < numbers.length; i++) {
+        for (let i = 0; i < numbers.length; i++) {
             if (!validate(numbers[i])) {
                 throw standard_err;
             }
@@ -117,12 +117,12 @@ export class Columnar_multiplication {
         var longest = 0;
         var commas = [];
         var numbers_orig = [];
-        for (var i = 0; i < numbers.length; i++) {
+        for (let i = 0; i < numbers.length; i++) {
             while (numbers[i][0] == "0") numbers[i] = numbers[i].replace("0", "");
             if (numbers[i] == "") numbers[i] = "0";
             var l = numbers[i].length;
             commas[i] = 0;
-            for (var j = 0; j < l; j++) {
+            for (let j = 0; j < l; j++) {
                 if (numbers[i][j] == '.') {
                     l = l - 1
                     commas[i] = l - j;
@@ -136,23 +136,23 @@ export class Columnar_multiplication {
 
 
         var table = [];
-        for (var i = 0; i < numbers.length; i++) {
+        for (let i = 0; i < numbers.length; i++) {
             table[i] = [];
-            for (var j = 0; j < longest; j++) {
+            for (let j = 0; j < longest; j++) {
                 table[i][j] = "";
             }
         }
-        for (var i = 0; i < numbers.length; i++) {
-            var l = numbers[i].length;
-            for (var k = 0; k < numbers[i].length; k++) {
+        for (let i = 0; i < numbers.length; i++) {
+            let l = numbers[i].length;
+            for (let k = 0; k < numbers[i].length; k++) {
                 table[i][longest - numbers[i].length + k] = numbers[i][k];
             }
         }
 
         var highlight_fields = [];
-        for (var i = 0; i < table.length; i++) {
+        for (let i = 0; i < table.length; i++) {
             highlight_fields[i] = [];
-            for (var j = 0; j < table[0].length; j++) {
+            for (let j = 0; j < table[0].length; j++) {
                 highlight_fields[i][j] = false;
             }
         }
@@ -166,7 +166,7 @@ export class Columnar_multiplication {
             comment += " Chwilowo zaniedbujemy przecinki.";
         this.steps.push(new Columnar_multiplication_step(table, highlight_fields, comment, carry, 1, -1));
 
-        for (var i = numbers[1].length - 1; i >= 0; i--) {
+        for (let i = numbers[1].length - 1; i >= 0; i--) {
             var t;
             var ci = numbers[1].length - 1 - i;
             comment = "Przystępujemy do mnożenia liczby " + numbers[0] + " przez " + numbers[1][i] + ".";
@@ -175,7 +175,7 @@ export class Columnar_multiplication {
                 highlight_fields[0][table[0].length - 1 - k] = true;
             highlight_fields[1][table[1].length - 1 - ci] = true;
             this.steps.push(new Columnar_multiplication_step(table, highlight_fields, comment, carry, 1, -1));
-            for (var j = numbers[0].length - 1; j >= 0; j--) {
+            for (let j = numbers[0].length - 1; j >= 0; j--) {
                 var cj = numbers[0].length - 1 - j;
                 mul = parseInt(numbers[1][i]) * parseInt(numbers[0][j]) + carry;
                 comment = "Mnożymy cyfry " + numbers[1][i] + " i " + numbers[0][j];
@@ -189,7 +189,7 @@ export class Columnar_multiplication {
                 }
                 if (typeof table[2 + ci] == 'undefined') {
                     table[2 + ci] = [];
-                    for (var k = 0; k < table[0].length; k++)
+                    for (let k = 0; k < table[0].length; k++)
                         table[2 + ci].push("");
                 }
                 table[2 + ci][t] = mul % 10;
@@ -240,11 +240,11 @@ export class Columnar_multiplication {
         else {
             sum_underline = table.length - 1;
 
-            var sum = 0;
-            var carry = 0;
-            for (var i = table[0].length - 1; i >= 0; i--) {
-                var sum = carry;
-                for (var j = 2; j < table.length; j++) {
+            let sum = 0;
+            let carry = 0;
+            for (let i = table[0].length - 1; i >= 0; i--) {
+                let sum = carry;
+                for (let j = 2; j < table.length; j++) {
                     sum = parseInt(sum) + parseInt(table[j][i] == "" ? "0" : table[j][i]);
                 }
                 w = w + (sum % 10).toString();
@@ -260,9 +260,9 @@ export class Columnar_multiplication {
             this.steps.push(new Columnar_multiplication_step(table, highlight_fields, comment, carry, 1, sum_underline));
 
             table[table.length] = [];
-            for (var k = 0; k < table[0].length; k++)
+            for (let k = 0; k < table[0].length; k++)
                 table[table.length - 1].push("");
-            for (var i = 0; i < w.length; i++) {
+            for (let i = 0; i < w.length; i++) {
                 table[table.length - 1][table[0].length - 1 - i] = w[i];
             }
             w = w.split("").reverse().join("");
@@ -305,10 +305,10 @@ export class Columnar_multiplication {
 
     static add_first_column(tab) {
         var tab1 = [];
-        for (var i = 0; i < tab.length; i++) {
+        for (let i = 0; i < tab.length; i++) {
             tab1[i] = [];
             tab1[i].push("");
-            for (var j = 0; j < tab[i].length; j++) {
+            for (let j = 0; j < tab[i].length; j++) {
                 tab1[i].push(tab[i][j]);
             }
         }
@@ -316,9 +316,9 @@ export class Columnar_multiplication {
     }
     static empty_highlight(tab) {
         var tab1 = [];
-        for (var i = 0; i < tab.length; i++) {
+        for (let i = 0; i < tab.length; i++) {
             tab1[i] = [];
-            for (var j = 0; j < tab[i].length; j++) {
+            for (let j = 0; j < tab[i].length; j++) {
                 tab1[i].push(false);
             }
         }

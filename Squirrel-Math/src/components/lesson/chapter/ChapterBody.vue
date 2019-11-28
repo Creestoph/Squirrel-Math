@@ -1,11 +1,13 @@
 <template>
   <div 
-  class="chapter_mask" 
-  ref="chapter_mask">
+    class="chapter_mask" 
+    ref="chapter_mask"
+  >
     <div 
-    class="chapter_body" 
-    ref="chapter_body">
-      <slot></slot>
+      class="chapter_body" 
+      ref="chapter_body"
+    >
+      <slot />
     </div>
   </div>
 </template>
@@ -88,7 +90,7 @@ export default {
   border: 0px solid black;
   margin-bottom: 0px;
   margin-top: 0px;
-  padding-bottom: 90px;
+  padding-bottom: 70px;
   box-shadow: inset 0 0 0 0 rgba(0, 0, 0, 0.3);
 }
 

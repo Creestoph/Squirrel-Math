@@ -1,10 +1,10 @@
 <template>
   <div class="chapter">
     <chapter-title @click.native="trigger.call()">
-      <slot name="title"></slot>
+      <slot name="title" />
     </chapter-title>
     <chapter-body :trigger="trigger">
-      <slot></slot>
+      <slot />
     </chapter-body>
   </div>
 </template>

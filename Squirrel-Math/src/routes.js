@@ -3,6 +3,7 @@ import Home from './components/content/Home'
 import HomeShort from './components/content/HomeShort'
 import Editor from './components/Editor'
 import Tree from './components/content/Tree'
+import InteractiveTree from './components/content/InteractiveTree'
 import DrzewoHD from './components/content/DrzewoHD'
 import Wprowadzenie from './components/content/Wprowadzenie'
 import Liczba from './components/content/lessons/Liczba/Liczba'
@@ -49,6 +50,7 @@ export const routes = [
   { path: '/home-short', component: HomeShort },
   { path: '/editor', component: Editor },
   { path: '/tree', component: Tree },
+  { path: '/newtree', component: InteractiveTree },
   { path: '/drzewoHD', component: DrzewoHD },
 
   { path: '/wprowadzenie', component: Wprowadzenie },

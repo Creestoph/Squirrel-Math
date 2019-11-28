@@ -1,6 +1,5 @@
 <template>
-  <div ref="main">
-  </div>
+  <div ref="main" />
 </template>
 
 <script>

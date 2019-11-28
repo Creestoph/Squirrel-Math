@@ -8,7 +8,7 @@ import { Display_table } from "../columnar_operation_table/display_table"
 function Columnar_division_step(table, highlight_fields, comment) {
     var tab = [];
     var underline = true;
-    for (var i = 0; i < table.length; i++) {
+    for (let i = 0; i < table.length; i++) {
         tab[i] = [];
         if (i % 2 == 0 && i > 0) tab[i].push("/u:-");
         else tab[i].push("");
@@ -106,7 +106,7 @@ export class Columnar_division {
         if (numbers.length != 2) {
             throw standard_err;
         }
-        for (var i = 0; i < numbers.length; i++) {
+        for (let i = 0; i < numbers.length; i++) {
             if (!validate(numbers[i])) {
                 throw standard_err;
             }
@@ -116,7 +116,7 @@ export class Columnar_division {
         }
         var commas = [];
         var numbers_orig = [];
-        for (var i = 0; i < numbers.length; i++) {
+        for (let i = 0; i < numbers.length; i++) {
             while (numbers[i][0] == "0") numbers[i] = numbers[i].replace("0", "");
             if (numbers[i] == "") numbers[i] = "0";
             if (numbers[i][0] == ',' || numbers[i][0] == '.') numbers[i] = "0" + numbers[i];
@@ -134,34 +134,34 @@ export class Columnar_division {
         }
 
         var decmial_places_1 = 0;
-        for (var i = 0; i < numbers[1].length; i++)
+        for (let i = 0; i < numbers[1].length; i++)
             if (numbers[1][i] == ',')
                 decmial_places_1 = numbers[1].length - 1 - i;
         var decmial_places_0 = 0;
-        for (var i = 0; i < numbers[0].length; i++)
+        for (let i = 0; i < numbers[0].length; i++)
             if (numbers[0][i] == ',')
                 decmial_places_0 = numbers[0].length - 1 - i;
         var decimal_diff = decmial_places_0 - decmial_places_1;
         numbers[0] = numbers[0].replace(",", "");
         if (decimal_diff < 0)
-            for (var i = 0; i < (-1) * decimal_diff; i++) numbers[0] += "0";
+            for (let i = 0; i < (-1) * decimal_diff; i++) numbers[0] += "0";
         else if (decimal_diff > 0)
             numbers[0] = numbers[0].slice(0, numbers[0].length - decimal_diff) + "," + numbers[0].slice(numbers[0].length - decimal_diff);
         numbers[1] = numbers[1].replace(",", "");
         var table = [];
-        for (var i = 0; i < 2; i++) {
+        for (let i = 0; i < 2; i++) {
             table[i] = [];
-            for (var j = 0; j < numbers[1].length + numbers[0].length + 1; j++) {
+            for (let j = 0; j < numbers[1].length + numbers[0].length + 1; j++) {
                 table[i][j] = "";
             }
         }
-        for (var i = 0; i < numbers.length; i++) {
+        for (let i = 0; i < numbers.length; i++) {
             while (numbers[i][0] == "0") numbers[i] = numbers[i].replace("0", "");
             if (numbers[i] == "") numbers[i] = "0";
         }
         var k = 0;
-        for (var i = 0; i < numbers.length; i++) {
-            for (var j = 0; j < numbers[i].length; j++) {
+        for (let i = 0; i < numbers.length; i++) {
+            for (let j = 0; j < numbers[i].length; j++) {
                 table[1][k] = numbers[i][j];
                 k = k + 1;
             }
@@ -171,7 +171,7 @@ export class Columnar_division {
             }
         }
 
-        for (var i = 0; i < table[0].length; i++) if (table[1][i] == ',') table[0][i] = ',';
+        for (let i = 0; i < table[0].length; i++) if (table[1][i] == ',') table[0][i] = ',';
         var comment = "";
         if (decmial_places_1 > 0) {
             comment += "Przed przystapieniem do dzielenia pozbywamy się przecinka w dzielniku. Ponieważ liczba " + numbers_orig[1] + " ma " + decmial_places_1;
@@ -213,14 +213,14 @@ export class Columnar_division {
         //for (var h = 0; h < numbers[1].length; h++) highlight_fields[1][numbers[0].length +1+h] = true;
         this.steps.push(new Columnar_division_step(table, highlight_fields, comment));
 
-        var i = 1;
+        let i = 1;
         var fi = i;
         var z = parseInt(table[3][0]);
         for (; fi < numbers[0].length; fi++) {
             if (numbers[0][fi] == ',') fi++;
             table[table.length - 1][i] = numbers[0][fi];
             var x = "";
-            for (var j = i; j >= 0 && table[table.length - 1][j] != ""; j--) x = table[table.length - 1][j] + x;
+            for (let j = i; j >= 0 && table[table.length - 1][j] != ""; j--) x = table[table.length - 1][j] + x;
             table[0][fi] = parseInt(divide(parseInt(x), parseInt(numbers[1])));
 
 
@@ -229,22 +229,22 @@ export class Columnar_division {
             highlight_fields = Columnar_division.empty_highlight(table);
             highlight_fields[0][fi] = true;
             highlight_fields[1][fi] = true;
-            for (var j = i; j >= 0 && table[table.length - 1][j] != ""; j--) highlight_fields[table.length - 1][j] = true;
-            for (var h = 0; h < numbers[1].length; h++) highlight_fields[1][numbers[0].length + 1 + h] = true;
+            for (let j = i; j >= 0 && table[table.length - 1][j] != ""; j--) highlight_fields[table.length - 1][j] = true;
+            for (let h = 0; h < numbers[1].length; h++) highlight_fields[1][numbers[0].length + 1 + h] = true;
             this.steps.push(new Columnar_division_step(table, highlight_fields, comment));
 
             var y = parseInt(parseInt(table[0][fi]) * parseInt(numbers[1])).toString();
             table = Columnar_division.add_empty_row(table);
-            for (var j = y.length - 1; j >= 0; j--)table[table.length - 1][i - (y.length - 1 - j)] = y[j];
+            for (let j = y.length - 1; j >= 0; j--)table[table.length - 1][i - (y.length - 1 - j)] = y[j];
             z = parseInt(parseInt(x) - parseInt(y)).toString();
             table = Columnar_division.add_empty_row(table);
-            for (var j = z.length - 1; j >= 0; j--)table[table.length - 1][i - (z.length - 1 - j)] = z[j];
+            for (let j = z.length - 1; j >= 0; j--)table[table.length - 1][i - (z.length - 1 - j)] = z[j];
 
             comment = "Mnożymy zapisane w wyniku " + table[0][fi] + " przez dzielnik i otrzymujemy " + parseInt(y) + ". Wykonujemy odejmowanie<br>" + parseInt(x) + "-" + parseInt(y) + "=" + parseInt(z) + ", wynik zapisujemy poniżej.";
             highlight_fields = Columnar_division.empty_highlight(table);
-            for (var j = z.length - 1; j >= 0; j--)highlight_fields[table.length - 1][i - (z.length - 1 - j)] = true;
-            for (var j = y.length - 1; j >= 0; j--)highlight_fields[table.length - 2][i - (y.length - 1 - j)] = true;
-            for (var j = x.length - 1; j >= 0; j--)highlight_fields[table.length - 3][i - (x.length - 1 - j)] = true;
+            for (let j = z.length - 1; j >= 0; j--)highlight_fields[table.length - 1][i - (z.length - 1 - j)] = true;
+            for (let j = y.length - 1; j >= 0; j--)highlight_fields[table.length - 2][i - (y.length - 1 - j)] = true;
+            for (let j = x.length - 1; j >= 0; j--)highlight_fields[table.length - 3][i - (x.length - 1 - j)] = true;
             //for (var h = 0; h < numbers[1].length; h++) highlight_fields[1][numbers[0].length +1+h] = true;
             this.steps.push(new Columnar_division_step(table, highlight_fields, comment));
             i++
@@ -256,7 +256,7 @@ export class Columnar_division {
             comment = "Ponieważ w dzielnej nie ma już cyfr do spisania, a w wyniku odejmowania otrzymaliśmy 0, kończymy procedurę. Odcztujemy wynik ";
             var zeros = 1;
             var result = "";
-            for (var j = 0; j < table[0].length; j++) {
+            for (let j = 0; j < table[0].length; j++) {
                 if (table[0][j] == '0' && zeros != 1)
                     result += table[0][j].toString();
                 else if (table[0][j] != '0') {
@@ -271,9 +271,9 @@ export class Columnar_division {
         }
         else if (!is_float) {
             comment = "Ponieważ w dzielnej nie ma już cyfr do spisania, traktujemy pozostałe " + parseInt(z) + " jako resztę z dzielenia. Odcztujemy wynik ";
-            var zeros = 1;
-            var result = "";
-            for (var j = 0; j < table[0].length; j++) {
+            let zeros = 1;
+            let result = "";
+            for (let j = 0; j < table[0].length; j++) {
                 if (table[0][j] == '0' && zeros != 1)
                     result += table[0][j].toString();
                 else if (table[0][j] != '0') {
@@ -283,7 +283,7 @@ export class Columnar_division {
             }
             comment += (result[0] == ',' || result == "" ? "0" : "") + result;
             comment += " r. " + z + ".";
-            var j = 0;
+            let j = 0;
             while (table[0][j].toString() != "" && j < table[0].length) j++;
             if (table[0][j].toString() == "") table[0][j] = "r.";
             else {
@@ -312,8 +312,8 @@ export class Columnar_division {
                 occured.push(n);
                 if (fi + 1 >= table[0].length) table = Columnar_division.add_empty_column(table);
                 table[table.length - 1][i] = "0";
-                var x = "";
-                for (var j = i; j >= 0 && table[table.length - 1][j] != ""; j--) x = table[table.length - 1][j] + x;
+                let x = "";
+                for (let j = i; j >= 0 && table[table.length - 1][j] != ""; j--) x = table[table.length - 1][j] + x;
                 table[0][fi] = parseInt(divide(parseInt(x), parseInt(numbers[1])));
 
                 comment = "Kolejną cyfrą rozwinięcia dziesiętnego dzielnej jest 0. Dopisujemy więc 0 i próbujemy wykonać dzielenie " + parseInt(x) + " przez " + numbers[1] + ". Liczba " + numbers[1] + " mieści się "
@@ -321,22 +321,22 @@ export class Columnar_division {
                 highlight_fields = Columnar_division.empty_highlight(table);
                 highlight_fields[0][fi] = true;
                 if (fi < numbers[0].length) highlight_fields[1][fi] = true;
-                for (var j = i; j >= 0 && table[table.length - 1][j] != ""; j--) highlight_fields[table.length - 1][j] = true;
-                for (var h = 0; h < numbers[1].length; h++) highlight_fields[1][numbers[0].length + 1 + h] = true;
+                for (let j = i; j >= 0 && table[table.length - 1][j] != ""; j--) highlight_fields[table.length - 1][j] = true;
+                for (let h = 0; h < numbers[1].length; h++) highlight_fields[1][numbers[0].length + 1 + h] = true;
                 this.steps.push(new Columnar_division_step(table, highlight_fields, comment));
 
-                var y = parseInt(parseInt(table[0][fi]) * parseInt(numbers[1])).toString();
+                let y = parseInt(parseInt(table[0][fi]) * parseInt(numbers[1])).toString();
                 table = Columnar_division.add_empty_row(table);
-                for (var j = y.length - 1; j >= 0; j--)table[table.length - 1][i - (y.length - 1 - j)] = y[j];
+                for (let j = y.length - 1; j >= 0; j--)table[table.length - 1][i - (y.length - 1 - j)] = y[j];
                 z = parseInt(parseInt(x) - parseInt(y)).toString();
                 table = Columnar_division.add_empty_row(table);
-                for (var j = z.length - 1; j >= 0; j--)table[table.length - 1][i - (z.length - 1 - j)] = z[j];
+                for (let j = z.length - 1; j >= 0; j--)table[table.length - 1][i - (z.length - 1 - j)] = z[j];
 
                 comment = "Mnożymy zapisane w wyniku " + table[0][fi] + " przez dzielnik i otrzymujemy " + parseInt(y) + ". Wykonujemy odejmowanie " + parseInt(x) + "&nbsp;-&nbsp;" + parseInt(y) + "&nbsp;=&nbsp;" + parseInt(z) + ", wynik zapisujemy poniżej.";
                 highlight_fields = Columnar_division.empty_highlight(table);
-                for (var j = z.length - 1; j >= 0; j--)highlight_fields[table.length - 1][i - (z.length - 1 - j)] = true;
-                for (var j = y.length - 1; j >= 0; j--)highlight_fields[table.length - 2][i - (y.length - 1 - j)] = true;
-                for (var j = x.length - 1; j >= 0; j--)highlight_fields[table.length - 3][i - (x.length - 1 - j)] = true;
+                for (let j = z.length - 1; j >= 0; j--)highlight_fields[table.length - 1][i - (z.length - 1 - j)] = true;
+                for (let j = y.length - 1; j >= 0; j--)highlight_fields[table.length - 2][i - (y.length - 1 - j)] = true;
+                for (let j = x.length - 1; j >= 0; j--)highlight_fields[table.length - 3][i - (x.length - 1 - j)] = true;
                 //for (var h = 0; h < numbers[1].length; h++) highlight_fields[1][numbers[0].length +1+h] = true;
                 this.steps.push(new Columnar_division_step(table, highlight_fields, comment));
                 var tl = table[0].length - 1;
@@ -347,9 +347,9 @@ export class Columnar_division {
                     table = Columnar_division.add_empty_column(table);
                     table[0][tl] = "\\dots";
                     comment = "Możemy kontynuować procedurę aż do napotkania okresu rozwinięcia dziesiętnego. Rachunki mogą trwać jeszcze bardzo długo, więc zadowalamy się przybliżonym wynikiem ";
-                    var zeros = 1;
-                    var result = "";
-                    for (var j = 0; j < table[0].length; j++) {
+                    let zeros = 1;
+                    let result = "";
+                    for (let j = 0; j < table[0].length; j++) {
                         if (table[0][j] == '0' && zeros != 1)
                             result += table[0][j].toString();
                         else if (table[0][j] != '0') {
@@ -366,9 +366,9 @@ export class Columnar_division {
                 if (parseInt(z) == 0) {
 
                     comment = "Ponieważ w wyniku odejmowania otrzymaliśmy 0, kończymy procedurę. Odcztujemy wynik ";
-                    var zeros = 1;
-                    var result = "";
-                    for (var j = 0; j < table[0].length; j++) {
+                    let zeros = 1;
+                    let result = "";
+                    for (let j = 0; j < table[0].length; j++) {
                         if (table[0][j] == '0' && zeros != 1)
                             result += table[0][j].toString();
                         else if (table[0][j] != '0') {
@@ -386,12 +386,12 @@ export class Columnar_division {
                 n = z;
             }
             table[table.length - 1][i] = "0";
-            var x = "";
-            for (var j = i; j >= 0 && table[table.length - 1][j] != ""; j--) x = table[table.length - 1][j] + x;
+            let x = "";
+            for (let j = i; j >= 0 && table[table.length - 1][j] != ""; j--) x = table[table.length - 1][j] + x;
             comment = "Po spisaniu zera otrzymujemy do podzielenia liczbę " + parseInt(x) + " - taką samą jak kilka kroków wcześniej. Wszystkie kolejne operacje przynosiłyby cyklicznie takie same wyniki - zatem wyznaczyliśmy okres. Odczytujemy wynik ";
-            var zeros = 1;
-            var result = "";
-            for (var j = 0; j < table[0].length; j++) {
+            let zeros = 1;
+            let result = "";
+            for (let j = 0; j < table[0].length; j++) {
                 if (table[0][j] == '0' && zeros != 1)
                     result += table[0][j].toString();
                 else if (table[0][j] != '0') {
@@ -406,7 +406,7 @@ export class Columnar_division {
             var temp = table[0][table[0].length - from_end - 1];
             table[0][table[0].length - from_end - 1] = '(';
             var temp1;
-            for (var b = table[0].length - from_end; b < table[0].length; b++) {
+            for (let b = table[0].length - from_end; b < table[0].length; b++) {
                 temp1 = table[0][b];
                 table[0][b] = temp;
                 temp = temp1;
@@ -416,7 +416,7 @@ export class Columnar_division {
             table = Columnar_division.add_empty_column(table);
             table[0][table[0].length - 1] = ')';
             highlight_fields = Columnar_division.empty_highlight(table);
-            for (var h = 0; h < highlight_fields[highlight_fields.length - from_end * 2 - 1].length; h++)
+            for (let h = 0; h < highlight_fields[highlight_fields.length - from_end * 2 - 1].length; h++)
                 if (table[highlight_fields.length - from_end * 2 - 1][h].toString() != "") highlight_fields[highlight_fields.length - from_end * 2 - 1][h] = true;
             this.steps.push(new Columnar_division_step(table, highlight_fields, comment));
             return;
@@ -427,7 +427,7 @@ export class Columnar_division {
         var tab1 = [];
         for (var i = 0; i < tab.length; i++) {
             tab1[i] = [];
-            for (var j = 0; j < tab[i].length; j++) {
+            for (let j = 0; j < tab[i].length; j++) {
                 tab1[i].push(false);
             }
         }
@@ -435,23 +435,23 @@ export class Columnar_division {
     }
     static add_empty_row(tab) {
         var tab1 = [];
-        for (var i = 0; i < tab.length; i++) {
+        for (let i = 0; i < tab.length; i++) {
             tab1[i] = [];
-            for (var j = 0; j < tab[i].length; j++) {
+            for (let j = 0; j < tab[i].length; j++) {
                 tab1[i].push(tab[i][j]);
             }
         }
         tab1[tab1.length] = [];
-        for (var j = 0; j < tab[0].length; j++) {
+        for (let j = 0; j < tab[0].length; j++) {
             tab1[tab1.length - 1].push("");
         }
         return tab1;
     }
     static add_empty_column(tab) {
         var tab1 = [];
-        for (var i = 0; i < tab.length; i++) {
+        for (let i = 0; i < tab.length; i++) {
             tab1[i] = [];
-            for (var j = 0; j < tab[i].length; j++) {
+            for (let j = 0; j < tab[i].length; j++) {
                 tab1[i].push(tab[i][j]);
             }
             tab1[i].push("");

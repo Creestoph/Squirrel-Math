@@ -1,7 +1,7 @@
 <template>
   <div class="chapter_name">
     <div>
-      <slot></slot>
+      <slot />
     </div>
     <hr>
   </div>
@@ -16,7 +16,7 @@
 <style scoped>
   .chapter_name
   {
-    margin-bottom:-10px;
+    margin-bottom:-3px; /*11px*/
   }
 
   .chapter_name > div
@@ -24,10 +24,10 @@
     position: relative;
     cursor: pointer;
     font-family: corbel;
-    font-size: 2em;
+    font-size: 1.9em;
     font-weight: bold;
     margin-top: 9px; /*50px*/
-    margin-bottom:-11px;
+    margin-bottom:-3px; /*11px*/
   }
 
   .chapter_name > div + hr
