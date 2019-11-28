@@ -363,12 +363,12 @@
 	</p>
     <p> 
         W temacie <router-link tag="a" :to="'/rownania-i-nierownosci'" class="link">Równania i nierówności</router-link> pobieżnie omówiliśmy, jak rozwiązywać 
-        proste nierówności, a dokładniej: jak upraszczać nierówności. Od tej pory przez rozwiązanie nierówności będziemy rozumieć zbiór wszystkich $x$, które 
+        proste nierówności, a dokładniej: jak upraszczać nierówności. Od tej pory przez "rozwiązanie nierówności" będziemy rozumieć zbiór wszystkich $x$, które 
         spełniają tę nierówność.
     </p>
     <ul>
         <li>Rozwiązaniem nierówności $x > 2$ jest zbiór liczb rzeczywistych większych od $2$, czyli przedział obustronnie otwarty $(2, \infty)$.</li>
-        <li>Rozwiązaniem nierówności $x \leq \frac{5}{2}$ jest zbiór liczb nie większych niż pięć drugich, czyli przedział prawostronnie domknięty $(-\infty, \frac{5}{2}]$.</li>
+        <li>Rozwiązaniem nierówności $x \leq \frac{5}{2}$ jest zbiór liczb nie większych niż pięć drugich, czyli przedział prawostronnie domknięty $\left(-\infty, \frac{5}{2}\right]$.</li>
         <li>Rozwiązaniem $x + 5 \geq 3$ jest zbiór liczb, które powiększone o $5$ mają wartość co najmniej $3$, czyli liczby od $-2$ wzwyż: $[-2, \infty)$.</li>
     </ul>
 
@@ -379,16 +379,34 @@
     </p>
 
     <div class="example"> 
-        Jakie liczby po pomnożeniu przez $3$ i odjęciu $7$ stają się większe?<br><br>
+        Jakie liczby po pomnożeniu przez $3$ i pomniejszeniu o $7$ stają się większe?<br><br>
+
         Rozwiązujemy nierówność:
         $$\begin{align}
-        3x - 7 &\gt x \color{#888888}{|-3x}\\
-        -7 &\gt -2x \color{#888888}{|:(-2)}\\
+        3x - 7 &\gt x \ \ \ \ \ \ \ \ \ \color{#888888}{|-3x}\\
+        -7 &\gt -2x \ \ \ \ \color{#888888}{|:(-2)}\\
         \frac{7}{2} &\lt x
         \end{align}$$
-        Rozwiązaniem nierówności jest zbiór liczb większych od $3\frac{1}{2}$, czyli przedział $(3\frac{1}{2}, \infty)$. Możemy ogłosić znalezione rozwiązanie poprzez zapis: 
-        $x \in (3\frac{1}{2}, \infty)$.
+        Rozwiązaniem nierówności jest zbiór liczb większych od $3\frac{1}{2}$, czyli przedział $\left(3\frac{1}{2}, \infty \right)$. Możemy ogłosić znalezione rozwiązanie poprzez zapis: 
+        $x \in \left(3\frac{1}{2}, \infty \right)$.
 	    <center><img src="./.images/Screenshot_3.png" align="middle"></center>
+    </div>
+
+    <div class="example"> 
+        Jeśli jeden kufel piwa kosztuje $8\text{ zł}$, to ile piw można wypić, nie wydając więcej niż $50\text{ zł}$? <br><br> 
+
+        Dziedziną tej nierówności są liczby naturalne: nie możemy przecież zamówić ułamkowej liczby piw. Nierówność ma bardzo prostą postać:
+        $$\begin{align}
+        8x &\leq 50\ \ \ \ \color{#888888}{|:8}\\
+        x &\leq 6 \frac{1}{4}
+        \end{align}$$
+        i odpowiada przedziałowi $\left(-\infty, 6\frac{1}{4}\right]$, jednak ponieważ nie interesują nas rozwiązania ułamkowe lub ujemne, spośród wartości z tego przedziału należałoby 
+        wziąć tylko liczby narutalne, czyli część wspólną tego przedziału z liczbami naturalnymi. Moglibyśmy zapisać jako rozwiązanie $x \in \mathbb{N} \cap \left(-\infty, 6\frac{1}{4}\right]$ 
+        albo po prostu $x \in \{0, 1, 2, 3, 4, 5, 6\}$.
+    </div>
+
+    <div class="example"> 
+        
     </div>
 
 	</lesson-chapter>
