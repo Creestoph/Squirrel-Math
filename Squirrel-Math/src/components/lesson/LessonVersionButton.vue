@@ -115,7 +115,7 @@ export default {
     height: 60px;
     line-height: 60px;
     font-weight: bold;
-	  font-family: "Segoe UI";
+    font-family: "Segoe UI";
     text-align: center;
   }
 

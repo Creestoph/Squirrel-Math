@@ -13,8 +13,8 @@
   export default {
     name: 'App',
     components: {
-	  AppMenu: Menu,
-	  InteractiveTree
+		AppMenu: Menu,
+		InteractiveTree
     }
   }
 </script>

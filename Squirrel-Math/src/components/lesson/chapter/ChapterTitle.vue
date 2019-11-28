@@ -16,7 +16,7 @@
 <style scoped>
   .chapter_name
   {
-    margin-bottom:-10px;
+    margin-bottom:-3px; /*11px*/
   }
 
   .chapter_name > div
@@ -27,7 +27,7 @@
     font-size: 1.9em;
     font-weight: bold;
     margin-top: 9px; /*50px*/
-    margin-bottom:-11px;
+    margin-bottom:-3px; /*11px*/
   }
 
   .chapter_name > div + hr

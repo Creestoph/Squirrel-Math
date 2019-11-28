@@ -80,7 +80,7 @@ export default {
     save(){
       this.editMode = false;
       var t = [];
-      for (var name in this.lessons) {
+      for (let name in this.lessons) {
         t.push([name, this.positions[name].x, this.positions[name].y]);
       }
       this.download(JSON.stringify(t), 'current_graph_coordinates.json', 'application/json')
@@ -108,7 +108,7 @@ export default {
           if (component.hoveredObject) {
             component.hoveredObject.style.fillColor = 'black';
             var lessonName = component.hoveredObject.content
-            for (var req of component.lessons[lessonName].requires)
+            for (let req of component.lessons[lessonName].requires)
               component.edges[lessonName][req].style.strokeColor = 'black';
             component.hoveredObject = null;
             component.displayLesson = null;
@@ -119,9 +119,9 @@ export default {
           if (!component.hoveredObject) {
             component.hoveredObject = hitResult.item;
             component.hoveredObject.style.fillColor = '#dd3333';
-            var lessonName = hitResult.item.content;
+            let lessonName = hitResult.item.content;
             component.displayLesson = component.lessons[lessonName];
-            for (var req of component.lessons[lessonName].requires)
+            for (let req of component.lessons[lessonName].requires)
             {
               component.edges[lessonName][req].style.strokeColor = '#dd3333';
               component.edges[lessonName][req].bringToFront();
@@ -149,7 +149,7 @@ export default {
           component.clickedObject.position = new paper.Point(component.clickedObject.position.x + deltaX, component.clickedObject.position.y + deltaY);
           component.positions[clickedTitle].x = component.clickedObject.position.x;
           component.positions[clickedTitle].y = component.clickedObject.position.y;
-          for (var path of Object.values(component.edges[clickedTitle])) {
+          for (let path of Object.values(component.edges[clickedTitle])) {
             if (path.segments.length == 4) {            
               path.segments[0].point.x += deltaX;
               path.segments[0].point.y += deltaY;
@@ -163,8 +163,8 @@ export default {
               path.segments[2].point.x = (path.segments[1].point.x + path.segments[4].point.x) / 2;
             }
           }
-          for (var upper of component.lessons[clickedTitle].isRequiredBy) {
-            var path = component.edges[upper][clickedTitle];
+          for (let upper of component.lessons[clickedTitle].isRequiredBy) {
+            let path = component.edges[upper][clickedTitle];
             if (path.segments.length == 4) {
               path.segments[3].point.x += deltaX;
               path.segments[3].point.y += deltaY;
@@ -189,7 +189,7 @@ export default {
 
       this.mypaper.tool.onMouseUp = function(event) {
         if (component.editMode) {
-          for (var pos of Object.values(component.positions)) {
+          for (let pos of Object.values(component.positions)) {
             pos.x = Math.floor((pos.x + 5) / 10)*10;
             pos.y = Math.floor((pos.y + 5) / 10)*10;
           }
@@ -204,7 +204,7 @@ export default {
       this.addEventHandlers();
     },
     loadLessons() {
-      for (var lesson of graphLessons)
+      for (let lesson of graphLessons)
         this.lessons[lesson.title] = {
           title: lesson.title,
           requires: lesson.requires, 
@@ -213,23 +213,23 @@ export default {
           level: lesson.level, 
           url: lesson.url,
         };
-      for (var lesson of graphLessons)
-        for (var req of lesson.requires)
+      for (let lesson of graphLessons)
+        for (let req of lesson.requires)
           this.lessons[req].isRequiredBy.push(lesson.title);  
     },
     centerGraph() {
       var minX = 10000, maxX = 0, minY = 10000;
-      for (var lesson of graphCoordinates) {
+      for (let lesson of graphCoordinates) {
         minX = Math.min(minX, lesson[1]);
         maxX = Math.max(maxX, lesson[1]);
         minY = Math.min(minY, lesson[2]);
       }
       var centerX = (minX + maxX) / 2;
-      for (var lesson of graphCoordinates)
+      for (let lesson of graphCoordinates)
         this.positions[lesson[0]] = { x: this.mypaper.view.center.x + lesson[1] - centerX, y: 130 + lesson[2] - minY };
     },
     loadGraph() {
-      for (var lesson of graphLessons)
+      for (let lesson of graphLessons)
         this.positions[lesson.title] = {x: 100, y: 100};
       this.centerGraph();
     },     
@@ -238,8 +238,8 @@ export default {
 
       //add text edges
       var fontSize = 16;
-      for (var name in this.lessons) {
-        var text = new paper.PointText(this.positions[name].x, this.positions[name].y);
+      for (let name in this.lessons) {
+        let text = new paper.PointText(this.positions[name].x, this.positions[name].y);
         text.content = name;
         text.style.justification = 'center';
         text.style.fontFamily = 'Segoe UI';
@@ -249,7 +249,7 @@ export default {
       
       //add edges
       for (var name in this.lessons) {
-        for (var req of this.lessons[name].requires) {
+        for (let req of this.lessons[name].requires) {
           var edge = new paper.Path();
           edge.style.strokeColor = 'black';
           edge.style.strokeWidth = 3;

@@ -39,7 +39,7 @@
         "requires": ["Dzielenie"],
         "field": "Teoria liczb",
         "level": "Szkoła podstawowa",
-        "url": "/mnozenie"
+        "url": "/podzielnosc-liczb"
     },
     {
         "title": "Kolejność wykonywania działań",
