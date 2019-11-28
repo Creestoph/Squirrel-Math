@@ -103,7 +103,7 @@
         $$x + 6 = 4x$$
         Możemy wyobrazić sobie, że $x$ to paczka o nieznanej wadze, zaś między jedną taką paczką a czterema paczkami jest odstęp sześciu jednostek.
         W takim razie $3$ paczki mają wagę $6$, czyli jedna paczka ma wagę $2$, zatem $x = 2$.
-	    <center><img src="./.images/Screenshot_1.png" align="middle"></center>
+        <center><img src="./.images/Screenshot_1.png" align="middle"></center>
     </div>
 	</lesson-chapter>
 
@@ -136,13 +136,13 @@
         3x + 3 - 3 &= 9 - 3\\
         3x &= 6
         \end{align}$$
-	    <center><img src="./.images/Screenshot_3.png" align="middle"></center>
+        <center><img src="./.images/Screenshot_3.png" align="middle"></center>
         Teraz każde z ramion szalki rozdzielamy na trzy równe porcje. Każda z porcji na lewej szalce będzie miała taką samą wagę, jak porcja na prawej szalce.
         $$\begin{align} 3x &= 6\ \ \ \ \ \ \ \ \color{#888888}{| :3}\\
         3x : 3 &= 6 : 3\\
         x &= 2
         \end{align}$$
-	    <center><img src="./.images/Screenshot_4.png" align="middle"></center>
+        <center><img src="./.images/Screenshot_4.png" align="middle"></center>
         Otrzymujemy rozwiązanie równania: $2$.
     </div>
 

@@ -211,7 +211,7 @@
 	</lesson-chapter>
 
     <lesson-chapter><template #title>Własności odejmowania</template>   
-	  
+    
     <p class = "type">
         Rozszerzenie
     </p>

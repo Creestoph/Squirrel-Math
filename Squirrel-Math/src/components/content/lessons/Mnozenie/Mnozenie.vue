@@ -307,7 +307,7 @@
         Metoda ta zawsze jest poprawna, jednak cokolwiek pracochłonna. Zapewniamy, że w swojej karierze matematycznej mnożenie 
         będziesz napotykał na każdym kroku. Z tego powodu przynajmniej mnożenie liczb jednocyfrowych dobrze jest <comment text=" wkuć">opanować</comment>
         na wysokim poziomie. Podstawą każdego wprawnego <comment text="gościa co dobrze liczy">rachmistrza</comment> jest <i>tabliczka mnożenia</i>, 
-		  która działa bardzo podobnie do tabliczki dodawania.
+		która działa bardzo podobnie do tabliczki dodawania.
     </p>
       
     <br>

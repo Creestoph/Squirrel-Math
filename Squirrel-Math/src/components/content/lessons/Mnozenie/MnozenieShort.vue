@@ -52,7 +52,7 @@
             Większe liczby zwykle <i>mnoży się w słupku</i> (wykonuje <i>mnożenie pisemne</i>). Wpisz poniżej dowolne dwie liczby, np. $629 \text{ * } 204$
         </p>
 
- 	    <columnar-operation :operation="'multiplication'" :floats="false"></columnar-operation>
+        <columnar-operation :operation="'multiplication'" :floats="false"></columnar-operation>
 
         </lesson-chapter>
 

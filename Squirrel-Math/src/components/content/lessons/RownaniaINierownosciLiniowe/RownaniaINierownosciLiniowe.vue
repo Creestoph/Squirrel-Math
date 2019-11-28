@@ -322,7 +322,7 @@
         \end{align}$$
         Szerokość zdjęcia wynosi więc $4x = 20$, a wysokość $3x = 15$, czyli zdjęcie z ramką ma wymiary $30 \text{ cm}$ na $25 \text{ cm}$.
 
-	    <center><img src="./.images/Screenshot_2.png" align="middle"></center>
+        <center><img src="./.images/Screenshot_2.png" align="middle"></center>
     </div>
 
     <div class="example"> 
@@ -389,7 +389,7 @@
         \end{align}$$
         Rozwiązaniem nierówności jest zbiór liczb większych od $3\frac{1}{2}$, czyli przedział $\left(3\frac{1}{2}, \infty\right)$. Możemy ogłosić znalezione rozwiązanie poprzez zapis: 
         $x \in \left(3\frac{1}{2}, \infty \right)$.
-	    <center><img src="./.images/Screenshot_3.png" align="middle"></center>
+        <center><img src="./.images/Screenshot_3.png" align="middle"></center>
     </div>
 
     <div class="example">
@@ -403,7 +403,7 @@
         i odpowiada przedziałowi $\left(-\infty, 6\frac{1}{4}\right]$, jednak ponieważ nie interesują nas rozwiązania ułamkowe lub ujemne, spośród wartości z tego przedziału należałoby 
         wziąć tylko liczby naturalne, czyli część wspólną tego przedziału z liczbami naturalnymi. Moglibyśmy zapisać jako rozwiązanie $x \in \mathbb{N} \cap \left(-\infty, 6\frac{1}{4}\right]$ 
         albo po prostu $x \in \{0, 1, 2, 3, 4, 5, 6\}$.
-	    <center><img src="./.images/Screenshot_5.png" align="middle"></center>
+        <center><img src="./.images/Screenshot_5.png" align="middle"></center>
     </div>
 
     <div class="example">
@@ -427,7 +427,7 @@
         \end{align}
 
         Zatem cena czereśni mieści się pomiędzy $4$ a $7,5$, co odpowiada rozwiązaniu $x \in (4, 7.5)$.
-	    <center><img src="./.images/Screenshot_6.png" align="middle"></center>
+        <center><img src="./.images/Screenshot_6.png" align="middle"></center>
     </div>
 
     <div class="example">
@@ -460,7 +460,7 @@
         Ostatecznie, rozwiązaniem nierówności są wszystkie liczby z przypadku 1) jak również wszystkie z przypadku 2), czyli 
         $x \in (-\infty, 3) \cup (7, +\infty)$.
 
-	    <center><img src="./.images/Screenshot_7.png" align="middle"></center>
+        <center><img src="./.images/Screenshot_7.png" align="middle"></center>
     </div>
 
 	</lesson-chapter>

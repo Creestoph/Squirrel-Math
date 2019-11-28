@@ -48,20 +48,20 @@
       $$\{1, 2, 3\} \cap \{2, 3, 4, 5\} = \{2, 3\}$$
     </p>
 
-	  <center><img src="./.images/Screenshot_19.png" align="middle"></center>
+    <center><img src="./.images/Screenshot_19.png" align="middle"></center>
 
     <p>
       <i>Suma zbiorów</i> $A$ i $B$ to zbiór wszystkich elementów znajdujących się w zbiorze $A$ wraz ze wszystkimi elementami zbioru $B$ (jeśli jakiś element 
       pojawia się dwukrotnie, umiejszczamy go w sumie tylko raz); symbolicznie: $A \cup B$.
       $$\{1, 2, 3\} \cup \{2, 3, 4, 5\} = \{1, 2, 3, 4, 5\}$$     
     </p>
-	  <center><img src="./.images/Screenshot_20.png" align="middle"></center>
+    <center><img src="./.images/Screenshot_20.png" align="middle"></center>
 
     <p>
       <i>Różnica zbiorów</i> $A$ i $B$ to zbiór wszystkich elementów $A$ oprócz tych, które znajdują się w $B$, symbolicznie: $A \setminus B$.
       $$\{1, 2, 3\} \setminus \{2, 3, 4, 5\} = \{1\}$$     
     </p>
-	  <center><img src="./.images/Screenshot_21.png" align="middle"></center>
+    <center><img src="./.images/Screenshot_21.png" align="middle"></center>
 
     <p>
       <i>Dopełnienie zbioru</i> $A$ to zbiór wszystkich elementów, które nie mieszczą się w zbiorze $A$, symbolicznie: $A'$. Aby wyznaczać dopełnienie zbioru, należy 
@@ -69,7 +69,7 @@
       w ramach obecnych tu przykładów uniwersum stanowią liczby naturalne, to:
     </p>
     $$\{1, 2, 3\}' = \{0, 4, 5, 6, 7, 8, 9, ...\}$$     
-	  <center><img src="./.images/Screenshot_22.png" align="middle"></center>
+    <center><img src="./.images/Screenshot_22.png" align="middle"></center>
     </lesson-chapter>
 
     <lesson-chapter><template #title>Rodzaje liczb</template>
@@ -82,19 +82,19 @@
     </p>
     $$\mathbb{N} = \{0, 1, 2, 3, 4, 5, 6, ...\}$$
 
-  	<center><img src="./.images/Screenshot_9.png" align="middle"></center>
+    <center><img src="./.images/Screenshot_9.png" align="middle"></center>
 
     <p>
       <b>Liczby całkowite</b> to liczby naturalne wraz z liczbami do nich przeciwnymi. Zbiór liczb całkowitych będziemy oznaczać $\mathbb{Z}$.
     </p>
     $$\mathbb{Z} = \{ ..., -4, -3, -2, -1, 0, 1, 2, 3, 4, ...\}$$
-	  <center><img src="./.images/Screenshot_10.png" align="middle"></center>
+    <center><img src="./.images/Screenshot_10.png" align="middle"></center>
 
     <p>
       <b>Liczby wymierne</b> stanowią ułamki postaci $\frac{p}{q}$, gdzie $p$ i $q$ to liczby całkowite. Ich zbiór będziemy oznaczać $\mathbb{Q}$.
     </p>
     $$\mathbb{Q} = \bigl\{0, 1, \frac{1}{2}, -\frac{1}{3}, -7, \frac{5}{7}, -3.14, ...\bigr\}$$
-	  <center><img src="./.images/Screenshot_11.png" align="middle"></center>
+    <center><img src="./.images/Screenshot_11.png" align="middle"></center>
 
     <p>
       <b>Liczby niewymierne</b> to liczby, których nie da się zapisać w postaci ułamka zwykłego $\frac{p}{q}$. Mają nieskończone rozwinięcie dziesiętne, które nie posiada okresu. 
@@ -102,13 +102,13 @@
       zbioru liczb wymiernych: $\mathbb{Q}'$.
     </p>
     $$\mathbb{Q}' = \bigl\{\sqrt{2}, \sqrt{3}, 0.12345678910111213..., 1.101001000100001...,  ...\bigr\}$$
-	  <center><img src="./.images/Screenshot_12.png" align="middle"></center>
+    <center><img src="./.images/Screenshot_12.png" align="middle"></center>
 
     <p>
       Liczby rzeczywiste: $\mathbb{R}$ to liczby wymierne wraz z niewymiernymi. Są to właściwie wszystkie liczby, które można zaobserwować w prawdziwym świecie.
     </p>
     $$\mathbb{R} = \{0, 51.45, 1.101001000100001..., 0.(2), -5, \sqrt{3}, 3.1415926535..., ...\}$$
-	  <center><img src="./.images/Screenshot_13.png" align="middle"></center>
+    <center><img src="./.images/Screenshot_13.png" align="middle"></center>
 
     <p>
       Symbole powyższych zbiorów z plusem lub minusem w indeksie dolnym będą oznaczać ich obcięcie do elementów dodatnich lub 

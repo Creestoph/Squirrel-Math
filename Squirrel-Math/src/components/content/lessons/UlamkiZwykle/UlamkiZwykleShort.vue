@@ -4,7 +4,7 @@
         
     <lesson-chapter><template #title>Czym są ułamki?</template> 
 		<p>
-        	Liczby naturalne pozwalają jedynie na opis "pełnych", "całych" liczb jak $1$, $2$, $3$, 
+			Liczby naturalne pozwalają jedynie na opis "pełnych", "całych" liczb jak $1$, $2$, $3$, 
 			$...$ i nie dają sposobu na wyrażenie "połówek".
 			Do zapisu części całości stosuje się ułamki. Jeśli dzielimy tort na $8$ kawałków i bierzemy spośród nich $3$ 
 			kawałki, to bierzemy $\frac{3}{8}$ tortu.

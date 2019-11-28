@@ -128,7 +128,7 @@
 		</lesson-chapter>
 
 		<lesson-chapter><template #title>Dzielenie z resztą</template>
-		 <p>
+		<p>
 			Wynik dzielenia nie zawsze jest liczbą naturalną. O ile przykłady $12 : 3 = 4$ albo $28 : 4 = 7$ dają się wykonać dość łatwo, tak
 			dzielenie $7 : 3$ nie daje oczywistego wyniku - nie da się rozłożyć liczby $7$ na $3$ równe liczby naturalne.
 		</p>
@@ -195,8 +195,7 @@
 		<lesson-chapter><template #title>Nowe pojęcia</template>
 		<p>
             Gdy wykonujemy dzielenie, liczbę, od której dzielimy (po lewej), nazywamy <b>dzielną</b>, a liczbę, którą odejmujemy (po prawej), nazywamy 
-        	<b>dzielnikiem</b>. Wynik odejmowania to <b>iloraz</b>. W działaniu $42 : 6 = 7$ dzielną jest $42$, dzielnikiem jest 
-			$6$, a różnicą $7$.
+			<b>dzielnikiem</b>. Wynik odejmowania to <b>iloraz</b>. W działaniu $42 : 6 = 7$ dzielną jest $42$, dzielnikiem jest $6$, a różnicą $7$.
         </p>
 
 		$$

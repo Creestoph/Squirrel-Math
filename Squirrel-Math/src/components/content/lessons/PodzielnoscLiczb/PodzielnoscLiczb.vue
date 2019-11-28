@@ -1478,7 +1478,7 @@
 		Znajdowanie $NWW$ i $NWD$ można nieco przyspieszyć wykorzystując rozkład na czynniki 
 		pierwsze. Bierzemy dwoje delikwentów i rozbijamy ich na iloczyny liczb pierwszych
 	</p>
-		 
+ 
 	<table style="width: 100%">
 		<tr>
 			<td>
@@ -1503,7 +1503,7 @@
 			</td>
 		</tr>
 	</table>
-		 
+
 	<p>
 		Zaznaczamy te czynniki, które powtarzają się w obydwu rozkładach.
 	</p>
@@ -1546,8 +1546,7 @@
 	</p>
 	
 	$$
-		NWW(120, 300) = {\bf \color{#dd3333}{2}} \cdot {\bf \color{#dd3333}{2}} \cdot {\bf \color{#dd3333}{3}} \cdot {\bf \color{#dd3333}{5}} \cdot 2 \cdot 5
-		 = 600
+		NWW(120, 300) = {\bf \color{#dd3333}{2}} \cdot {\bf \color{#dd3333}{2}} \cdot {\bf \color{#dd3333}{3}} \cdot {\bf \color{#dd3333}{5}} \cdot 2 \cdot 5 = 600
 	$$
 
 	<p>

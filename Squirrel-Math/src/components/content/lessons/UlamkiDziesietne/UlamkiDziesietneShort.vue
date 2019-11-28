@@ -2,9 +2,9 @@
     <lesson routeShortVersion="/ulamki-dziesietne-short" routeLongVersion="/ulamki-dziesietne">
         <lesson-title-short>Ułamki dziesiętne</lesson-title-short>    
         
-    	<lesson-chapter><template #title>Czym są ułamki dziesiętne?</template> 
+		<lesson-chapter><template #title>Czym są ułamki dziesiętne?</template> 
 		<p>
-        	Ułamek dziesiętny to inny sposób zapisu ułamka zwykłego. Składa się on z części całkowitej i części ułamkowej rozdzielonych przecinkiem.
+			Ułamek dziesiętny to inny sposób zapisu ułamka zwykłego. Składa się on z części całkowitej i części ułamkowej rozdzielonych przecinkiem.
 			Liczbę po przecinku można traktować jak licznik, którego mianownik to $10$, jeśli po przecinku jest jedna cyfra, $100$, jeśli po przecinku 
 			są dwie cyfry, $1000$, jeśli po przecinku są trzy cyfry itd:
 		</p>
@@ -23,7 +23,7 @@
 		</p>
 		</lesson-chapter>
 
-    	<lesson-chapter><template #title>Zera po przecinku nie mają znaczenia</template> 
+		<lesson-chapter><template #title>Zera po przecinku nie mają znaczenia</template> 
 		<p> 
 			Poprzez skracanie ułamków zwykłych możemy stwiedzić, że:
 		</p>
@@ -37,7 +37,7 @@
 		</p>
 		</lesson-chapter>
 
-    	<lesson-chapter><template #title>Przybliżenia</template> 
+		<lesson-chapter><template #title>Przybliżenia</template> 
 		<p>
 			W przypadku bardzo dużych liczb albo takich, które mają w zapisie dużo cyfr, często nie interesuje nas jej dokładna wartość. W 2018 roku 
 			w Polsce mieszkało $38\ 432\ 992$ ludzi, jednak mało kogo interesuje aż tak precyzjna wielkość: przeważnie wystarczająca jest informacja, 
@@ -58,7 +58,7 @@
 			<li>Zaokrąglenie $97,6501$ do setek wynosi $100$.</li>
 			<li>Zaokrąglenie $97,6501$ do tysięcy wynosi $0$.</li>
 		</ul>
-    	</lesson-chapter>
+		</lesson-chapter>
 
 		<lesson-chapter><template #title>Okres dziesiętny</template> 
 		<p>

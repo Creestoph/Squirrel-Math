@@ -390,15 +390,14 @@
     </div>
 
     <p>
-        Jeśli dodawanie w słupku sprawia wrażenie <comment text="Masz problem z poprawnością polityczną?">
-		 czarnej magii</comment>, prześledź jeszcze dowolne własne przykłady:
-    </p>
+      Jeśli dodawanie w słupku sprawia wrażenie <comment text="Masz problem z poprawnością polityczną?">czarnej magii</comment>, prześledź jeszcze dowolne własne przykłady:
+    </p>  
       
     <columnar-operation :operation="'addition'" :floats="false"></columnar-operation>
-	  
+
     <p class ="type optional-hide">
-        Rozszerzenie
-	  </p>
+      Rozszerzenie
+    </p>
     <p class="warning">
         wymagana znajomość tematu: Kolejność wykonywania działań
     </p>  

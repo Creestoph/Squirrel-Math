@@ -43,7 +43,7 @@
 		</p>
         </lesson-chapter>			
 
-    	<lesson-chapter><template #title>Potęgi o wykładniku całkowitym</template>  
+		<lesson-chapter><template #title>Potęgi o wykładniku całkowitym</template>  
 		<p>
 			Określimy teraz definicje potęg dla wykładników innych niż dodatnie. 
 		</p>
@@ -66,7 +66,7 @@
 		<center><img src="./.images/Screenshot_7.png" align="middle"></center>
         </lesson-chapter>			
 
-    	<lesson-chapter><template #title>Własności potegowania</template>  
+		<lesson-chapter><template #title>Własności potegowania</template>  
 		<p> 
 			Dla dowolnych $a$, $b$, $n$ i $m$ (także ujemnych) spełnione są poniższe równości. Niejednokrotnie okażą się one przydatne w przyszłości.
 		</p>
@@ -143,7 +143,7 @@
 
         </lesson-chapter>					
 
-    	<lesson-chapter><template #title>Notacja wykładnicza</template> 
+		<lesson-chapter><template #title>Notacja wykładnicza</template> 
 		<p> 
 			W naukach przyrodniczych często wykorzystuje <i>notację wykładniczą</i>, czyli skrótowy zapis liczb o dużej liczbie cyfr. Ma on postać 
 		</p>
@@ -164,7 +164,7 @@
 		</ul>
         </lesson-chapter>					
 
-    	<lesson-chapter><template #title>Nowe pojęcia</template> 
+		<lesson-chapter><template #title>Nowe pojęcia</template> 
 		<p> 
 			Gdy wykonujemy potęgowanie, liczbę, której mnożenie wykonujemy wielokrotnie, to <b>podstawa potęgi</b>, a liczba mnożeń, które wykonujemy, 
 			to <b>wykładnik</b>. Wykładnik zapisujemy jako małą liczbę na prawo i u góry podstawy, czyli w jej <b>indeksie górnym</b>. W potędze 

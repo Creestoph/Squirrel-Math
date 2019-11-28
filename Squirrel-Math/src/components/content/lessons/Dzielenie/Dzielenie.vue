@@ -409,9 +409,8 @@
     $$
       
     <p>
-        to popełnilibyśmy <comment text="Naprawdę śmiertelny. Nawet nie próbuj.">śmiertelny grzech matematyczny</comment>. 
-		  Wreszcie przyłapaliśmy matematykę na czymś, czego nie 
-        potrafi - matematyka nie daje sposobu, żeby podzielić przez $0$. Jest to dosłownie niemożliwe.
+        to popełnilibyśmy <comment text="Naprawdę śmiertelny. Nawet nie próbuj.">śmiertelny grzech matematyczny</comment>. Wreszcie przyłapaliśmy matematykę na czymś, 
+		czego nie potrafi - matematyka nie daje sposobu, żeby podzielić przez $0$. Jest to dosłownie niemożliwe.
     </p>
       
     <p>

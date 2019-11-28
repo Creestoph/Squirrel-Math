@@ -65,7 +65,7 @@
         x &\in \left(3\frac{1}{2}, \infty \right)
         \end{align}
         $$
-	    <center><img src="./.images/Screenshot_3.png" align="middle"></center>
+        <center><img src="./.images/Screenshot_3.png" align="middle"></center>
     </div>
 
     <div class="example">
@@ -76,7 +76,7 @@
         x &\lt 7,5\\
         x &\in (-\infty, 7.5) 
         \end{align}$$
-	    <center><img src="./.images/Screenshot_15.png" align="middle"></center>
+        <center><img src="./.images/Screenshot_15.png" align="middle"></center>
     </div>
     </lesson-chapter>
 

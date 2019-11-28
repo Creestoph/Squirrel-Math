@@ -218,13 +218,15 @@ export default {
           this.lessons[req].isRequiredBy.push(lesson.title);  
     },
     centerGraph() {
-      var minX = 10000, maxX = 0, minY = 10000;
+      var minX = 10000, maxX = 0, minY = 10000, maxY = 0;
       for (let lesson of graphCoordinates) {
         minX = Math.min(minX, lesson[1]);
         maxX = Math.max(maxX, lesson[1]);
         minY = Math.min(minY, lesson[2]);
+        maxY = Math.max(maxY, lesson[2]);
       }
       var centerX = (minX + maxX) / 2;
+      var centerY = (minY + maxY) / 2;
       for (let lesson of graphCoordinates)
         this.positions[lesson[0]] = { x: this.mypaper.view.center.x + lesson[1] - centerX, y: 130 + lesson[2] - minY };
     },
@@ -306,7 +308,7 @@ export default {
 <style scoped>
 canvas[resize] {
   width: 100%;
-  height: 800px;
+  height: 100%;
   position: fixed;
   background: #eeeeee;
 }
@@ -340,6 +342,7 @@ canvas[resize] {
   background: white;
   padding: 10px;
   font-size: 0.8em;
+  font-family: "Segoe UI";
 }
 
 #displaylessonTitle {

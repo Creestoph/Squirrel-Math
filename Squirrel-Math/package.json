@@ -13,6 +13,7 @@
     "core-js": "^3.3.2",
     "jquery": "^3.4.1",
     "node-sass": "^4.13.0",
+    "paper": "^0.12.3",
     "sass-loader": "^8.0.0",
     "vue": "^2.6.10",
     "vue-class-component": "^7.0.2",
@@ -46,6 +47,7 @@
       "parser": "@typescript-eslint/parser"
     },
     "rules": {
+      "no-console": "off",
       "vue/no-unused-components": "warning"
     }
   },

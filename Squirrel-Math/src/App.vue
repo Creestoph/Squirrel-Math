@@ -2,7 +2,7 @@
   <div>
     <interactive-tree />
     <router-view />
-    <app-menu />
+    <app-menu/>
   </div>
 </template>
 
@@ -15,7 +15,7 @@
     components: {
 		AppMenu: Menu,
 		InteractiveTree
-    }
+	},
   }
 </script>
 

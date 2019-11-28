@@ -142,11 +142,11 @@
 	
 	<ul>
 		<li>Bierzemy liczby  $6$ i  $9$. Obliczamy  $NWD (6,9)=3$ oraz 
-		 $NWW (6,9)=18$. Okazuje się, że iloczyn  $6 \cdot 9=54$ jest taki sam, jak iloczyn  $3 \cdot 18=54$;</li>
+		$NWW (6,9)=18$. Okazuje się, że iloczyn  $6 \cdot 9=54$ jest taki sam, jak iloczyn  $3 \cdot 18=54$;</li>
 		<li>Bierzemy liczby  $15$ i  $20$. Obliczamy  $NWD (15,20)=5$, 
-		 $NWW (15,20)=60$. Ponownie okazuje się, że  $15 \cdot 20=300$ tak samo jak  $5 \cdot 60=300$;</li>
+		$NWW (15,20)=60$. Ponownie okazuje się, że  $15 \cdot 20=300$ tak samo jak  $5 \cdot 60=300$;</li>
 		<li>Bierzemy liczby  $100$ i  $60$. Obliczamy  $NWD (100,60)=20$, 
-		 $NWW (100,60)=300$; znów otrzymujemy równość:  $100 \cdot 60=20 \cdot 300=6000$.</li>
+		$NWW (100,60)=300$; znów otrzymujemy równość:  $100 \cdot 60=20 \cdot 300=6000$.</li>
 	</ul>
 		
 	<p>
@@ -220,7 +220,7 @@
 		
 	<p>
 		Teraz jedynie musimy sformalizować nasze rozumowanie i nie opierać się na konkretnych liczbach  $120$ i 
-		 $300$, a na dowolnych dwóch  $a$ i  $b$.
+		$300$, a na dowolnych dwóch  $a$ i  $b$.
 	</p>
 	
 	<div class="proof">
@@ -334,18 +334,18 @@
 			Mówimy, że  $a$ jest podzielne przez  $b$, jeśli  $\frac{a}{b}$ jest 
 			liczbą całkowitą. W ten sposób definiujemy zwrot „jest podzielne przez” jak również tłumaczymy zapis  $a \mid b$. 
 			Matematycy zazwyczaj używają innej, prawie równoważnej definicji:  $a \mid b$ jeśli istnieje liczba całkowita 
-			 $c$, dla której  $a=b \cdot c$.
+			$c$, dla której  $a=b \cdot c$.
 		</li>
 		<li>
 			Liczby wymierne definiujemy jako ułamki  $\frac{a}{b}$ gdzie  $a$ oraz  $b$ to 
 			liczby całkowite.
 		</li>
 		<li>
-			 $NWD(a,b)$ definiujemy jako największą liczbę naturalną  $c$, taką że  $c \mid a$
+			$NWD(a,b)$ definiujemy jako największą liczbę naturalną  $c$, taką że  $c \mid a$
 			oraz  $c \mid b$.
 		</li>
 		<li>
-			 $NWW(a,b)$ definiujemy jako najmniejszą liczbę naturalną  $c$, taką że  $a \mid c$ 
+			$NWW(a,b)$ definiujemy jako najmniejszą liczbę naturalną  $c$, taką że  $a \mid c$ 
 			oraz  $b \mid c$.
 		</li>
 	</ul>

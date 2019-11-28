@@ -827,7 +827,7 @@
 		\frac{\color{#dd3333}{\bf 20}}{3} \cdot \frac{\color{#000000}{\bf 5}}{\color{#dd3333}{\bf 6}} \cdot \frac{7}{\color{#000000}{\bf 5} \cdot 1} = 
 		\frac{\color{#dd3333}{\bf 10}}{3} \cdot \frac{\color{#000000}{\bf 1}}{\color{#dd3333}{\bf 3}} \cdot \frac{7}{\color{#000000}{\bf 1} \cdot 1} = 
 		\frac{70}{9}
- 	$$
+	$$
 
 	<p>
 		Na papierze tego typu zapiski odbywają się poprzez serię skreśleń, przez co ich forma jest krótsza. Jeśli chcemy wykonywać skracanie ułamków, gdy 

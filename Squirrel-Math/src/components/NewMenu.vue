@@ -1,5 +1,5 @@
 <template>
-  <div class="menu-trapeze">
+  <div class="menu-trapeze" ref="logo">
     <div class="menu">
       <router-link
         tag="a"
@@ -42,7 +42,7 @@
             />
           </div>
         </div>
-        <div class="logo-text">
+        <div class="logo-text" ref="logoText">
           <span class="logo-text-1">squirrel</span>
           <span class="logo-text-2">math</span>
         </div>
@@ -55,31 +55,84 @@
 
   export default {
     name: "Menu",
+    mounted() {
+      addEventListener("scroll", this.resizeLogo)
+    },
+    destroyed() {
+      removeEventListener("scroll", this.resizeLogo)
+    },
+    methods: {
+      resizeLogo() {
+        var logo = this.$refs.logo
+        if (document.body.scrollTop > 5 || document.documentElement.scrollTop > 5) {
+          if (!logo.classList.contains('small')) {
+            logo.classList.toggle('small');
+            this.$refs.logoText.style.display = 'none';
+          }
+        } 
+        else {
+          if (logo.classList.contains('small')) {
+            logo.classList.toggle('small');
+            setTimeout(_ => { 
+              if (!logo.classList.contains('small')) 
+                this.$refs.logoText.style.display = 'block'
+            }, 500);
+          }
+        }
+      }
+    }
   }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+  $transition-length: 0.7s;
+
   .menu-trapeze 
   {
-    position: absolute;
+    position: fixed;
     top: 0px;
-    left: -30px;
+    left: -130px;
     border-bottom: 7px solid black; 
     border-right: 9.9px solid black; 
     background: #FEFEFE; 
     transform: skew(-45deg);
-    width: 350px;
+    width: 450px;
     height: 120px;
+    transition: all  $transition-length;
+  }
+
+ .menu-trapeze.small
+  {
+    width: 230px;
+    height: 90px;
+    border-bottom: 4px solid black;
+    border-right: 5.65px solid black;
+    transition: all $transition-length;
+
+    .menu
+    {
+      padding: 0 0 0 90px;
+      transition: padding $transition-length;
+    }
+
+    .menu .logo-black-cell, .menu .logo-container-cell
+    {
+      height: 20px;
+      width: 20px;
+      padding: 3px 3px 0 0;
+      margin: 2px;
+      transition: all $transition-length;
+    }
   }
 
   .menu
   {
     color: #000000; 
     margin: 0; 
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding: 10px 0 10px 100px;
     position: fixed;
     transform: skew(45deg);
+    transition: padding $transition-length;
   }
 
   .menu button
@@ -129,6 +182,7 @@
     border: 0px solid white;
     padding: 4px 4px 0 0;
     margin: 2px;
+    transition: all $transition-length;
   }
 
   .menu .logo-container-cell
@@ -139,6 +193,7 @@
     margin: 2px;
     background: none;
     border: none;
+    transition: all $transition-length;
   }
 
   .menu .logo-red-cell
