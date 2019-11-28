@@ -1,5 +1,5 @@
 <template>
-  <lesson>
+  <lesson routeShortVersion="/zbiory-liczbowe-short" routeLongVersion="/zbiory-liczbowe">
     <lesson-title-short>Zbiory liczbowe</lesson-title-short>
 
     <lesson-chapter><template #title>Zapis zbioru</template>
@@ -28,7 +28,8 @@
     <ul>
       <li>Zbiór $\{5, 9, 1\}$ jest podzbiorem zbioru $\{ 4, 5, 2, 9, 12, 31, 1 \}$, co zapisujemy $\{5, 9, 1\} \subseteq \{ 4, 5, 2, 9, 12, 31, 1 \}$.</li>
       <li>Nie wybierając żadnego elementu wyjściowego zbioru, dostajemy <i>zbiór pusty</i> oznaczany symbolem $\emptyset$. Zbiór pusty jest podzbiorem dowolnego zbioru.</li>
-      <li>Możemy wybrać wszystkie elementy tego zbioru: $\{ 4, 5, 2, 9, 12, 31, 1 \} \subseteq \{ 4, 5, 2, 9, 12, 31, 1 \}$. Podzbiór, który nie składa się ze wszystkich 
+      <li>Możemy także wybrać wszystkie elementy tego zbioru: $\{ 4, 5, 2, 9, 12, 31, 1 \} \subseteq \{ 4, 5, 2, 9, 12, 31, 1 \}$.
+        Podzbiór, który <b>nie</b> składa się ze wszystkich 
         elementów rodzica, to <i>podzbiór właściwy</i>. Możemy zapisać $\{5, 9, 1\} \subset \{ 4, 5, 2, 9, 12, 31, 1 \}$ lub równoważnie 
         $\{5, 9, 1\} \subsetneq \{ 4, 5, 2, 9, 12, 31, 1 \}$.
       </li>
@@ -110,8 +111,8 @@
 	  <center><img src="./.images/Screenshot_13.png" align="middle"></center>
 
     <p>
-      Symbole powyższych zbiorów z plusem lub minusem w indeksie dolnym oznaczają ich obcięcie do elementów dodatnich lub ujemnych, na przykład $\mathbb{R}_+$ oznacza zbiór liczb 
-      rzeczywistych dodatnich.
+      Symbole powyższych zbiorów z plusem lub minusem w indeksie dolnym będą oznaczać ich obcięcie do elementów dodatnich lub 
+      ujemnych, na przykład $\mathbb{R}_+$ będzie oznaczać zbiór liczb rzeczywistych dodatnich.
     </p>
 
     </lesson-chapter>
@@ -123,7 +124,7 @@
 
     <ul>
       <li>$[2, 5]$ to przykład przedziału <i>obustronnie domkniętego</i>, składa się z liczb od $2$ do $5$ wraz z $2$ i $5$.</li>
-      <li>$(-4, 1)$ to przykład przedziału <i>obustronnie otwartego</i>, składa się z liczb od $-4$ do $1$ bez z $-4$ i $1$.</li>
+      <li>$(-4, 1)$ to przykład przedziału <i>obustronnie otwartego</i>, składa się z liczb od $-4$ do $1$ bez $-4$ i $1$.</li>
       <li>$[-6, 4)$ to przedział <i>lewostronnie domknięty</i>, a $(0, 3]$ jest <i>prawostronnie domknięty</i>.</li>
       <li>$[2, \infty)$ składa się ze wszystkich liczb o wartości dwa lub większej ($\infty$ to symbol nieskończoności).</li>
       <li>$(-\infty, 4)$ składa się ze wszystkich liczb o mniejszych niż $4$.</li>
@@ -153,11 +154,11 @@
       <b>Część wspólna (przekrój) zbiorów</b> to zbiór elementów należących jednocześnie do obydwu zbiorów: $\{1, 2\} \cap \{2, 3\} = \{2\}$.<br>
       <b>Suma zbiorów</b> to zbiór elementów należących do pierwszego lub drugiego zbioru: $\{1, 2\} \cup \{2, 3\} = \{1, 2, 3\}$.<br>
       <b>Różnica zbiorów</b> to zbiór elementów znajdujących się w pierwszym ale nie w drugim zbiorze: $\{1, 2\} \setminus \{2, 3\} = \{1\}$.<br>
-      <b>Dopełnienie zbioru</b> zawartego w innym zbiorze, zwanym <b>uniwersum</b>, to różnica uniwersum i tego zbioru: $A' = \Omega \setminus A$
+      <b>Dopełnienie zbioru</b> zawartego w innym zbiorze, zwanym <b>uniwersum</b>, to różnica uniwersum i tego zbioru: $A' = \Omega \setminus A$.
     </p>
 
     <p>
-      <b>Przedział rzeczywisty</b> to podzbiór $\mathbb{R}$ liczb znajdujących się pomiędzy dwiema wartościami, zwanymi <b>końcami przedziału</b><br>
+      <b>Przedział rzeczywisty</b> to podzbiór $\mathbb{R}$ liczb znajdujących się pomiędzy dwiema wartościami, zwanymi <b>końcami przedziału</b>.<br>
       <b>Przedział obustronnie domknięty</b> zawiera końce przedziału: $x \in [2, 5] \Leftrightarrow 2 \leq x \leq 5$.<br>
       <b>Przedział obustronnie otwarty</b> nie zawiera końców przedziału: $x \in (2, 5) \Leftrightarrow 2 \lt x \lt 5$.<br>
       <b>Przedział prawostronnie domknięty</b> zawiera prawy i nie zawiera lewego końca: $x \in (2, 5] \Leftrightarrow 2 \lt x \leq 5$.<br>

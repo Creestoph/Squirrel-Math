@@ -1,5 +1,5 @@
 <template>
-	<lesson>
+	<lesson routeShortVersion="/ulamki-dziesietne-short" routeLongVersion="/ulamki-dziesietne">
 		<lesson-title>Ułamki dziesiętne</lesson-title>
 
 		<lesson-intro>
@@ -66,7 +66,7 @@
 		
 		<p>
 			Liczba zapisana z użyciem przecinka to właśnie ułamek dziesiętny. Ułamki dziesiętne dominują w fizyce i naukach 
-			technicznych. Matematyka jest jedyną <span class="comment" id="dziedziną „życia”">dziedziną życia</span>, 
+			technicznych. Matematyka jest jedyną <comment text="dziedziną „życia”">dziedziną życia</comment>, 
 			w której ułamki zwykłe stosuje się częściej niż dziesiętne.
 		</p>
 		</lesson-chapter>
@@ -124,14 +124,14 @@
 		</p>
 		
 		<p>
-			Przydatność liczb w zapisie dziesiętnym wychodzi na jaw przy mierzeniu <span class="comment" id = "Wprawdzie nie 
+			Przydatność liczb w zapisie dziesiętnym wychodzi na jaw przy mierzeniu <comment text="Wprawdzie nie 
 			tłumaczyliśmy jeszcze, czym jest długość, jednak mając Cię za osobę rozgarniętą, zakładamy, że wiesz, czym jest 
-			metr.">długości</span>. 
+			metr.">długości</comment>. 
 		</p>
 		
 		<p>
-			Pewnego dnia Krzyś postanowił zmierzyć szerokość swojego biurka. Wziął miarkę o długości <span class="comment" 
-			id="Jeśli ta tasiemka na Twoim monitorze nie ma metra, powinieneś zaopatrzyć się w większy wyświetlacz.">metra</span>.  
+			Pewnego dnia Krzyś postanowił zmierzyć szerokość swojego biurka. Wziął miarkę o długości <comment
+			text="Jeśli ta tasiemka na Twoim monitorze nie ma metra, powinieneś zaopatrzyć się w większy wyświetlacz.">metra</comment>.  
 			Jeden metr to dość dużo – miarka okazała się wystawać poza krawędź biurka
 		</p>
 
@@ -185,8 +185,8 @@
 
 		<p>
 			Gdyby Krzyś nie był pedantem, zadowoliłby się wynikiem pomiarów przy $0,8 \text{ m}$. Wtedy Krzyś dokonałby <i>przybliżenia</i> 
-			lub inaczej <span class="comment" id="Słownik podaje, że „szacowny” oznacza „posiadający dużą wartość”. Nie jest 
-			to w pełni prawda – w matematyce szacować można także bardzo małe liczby."><i>szacowania</i></span> długości biurka. 
+			lub inaczej <comment text="Słownik podaje, że „szacowny” oznacza „posiadający dużą wartość”. Nie jest 
+			to w pełni prawda – w matematyce szacować można także bardzo małe liczby."><i>szacowania</i></comment> długości biurka. 
 			W praktyce przybliżanie wielkości to po prostu branie na oko. W matematyce 
 			jednak metody przybliżania liczb są ściśle określone.
 		</p>
@@ -233,9 +233,9 @@
 		
 		<ul>
 			<li>
-				Według międzynarodowych przeliczników miar długości mila angielska to <span class="comment" id="Poprawnie liczbę 
+				Według międzynarodowych przeliczników miar długości mila angielska to <comment text="Poprawnie liczbę 
 				tę wypadałoby odczytać „jeden i sześćset dziewięć tysięcy trzysta czterdzieści cztery milionowe”. W praktyce i 
-				tak czytamy „jeden przecinek sześć zero dziewięć trzy cztery cztery”.">$1,609344$</span> kilometra. Od patrzenia na taką 
+				tak czytamy „jeden przecinek sześć zero dziewięć trzy cztery cztery”.">$1,609344$</comment> kilometra. Od patrzenia na taką 
 				liczbę bolą oczy. W praktyce wystarczy nam pojęcie, że mila to około $1,6$ kilometra, czyli $1,609344 \text{ km} ≈ 1,6 \text{ km}$
 			</li>
 		</ul>
@@ -252,10 +252,10 @@
 		</p>
 		
 		<p>
-			W kontekście ułamków dziesiętnych wprowadzono wątpliwej przydatności pojęcia <span class="comment" id="Ty też bądź 
-			bohaterem w swoim domu."><i>podłoga</i> i <i>sufit</i></span>. Podłoga liczby to jej 
+			W kontekście ułamków dziesiętnych wprowadzono wątpliwej przydatności pojęcia <comment text="Ty też bądź 
+			bohaterem w swoim domu."><i>podłoga</i> i <i>sufit</i></comment>. Podłoga liczby to jej 
 			część całkowita. Symbolicznie zdanie „część całkowita (podłoga) liczby $24,389$ wynosi $24$” zapisujemy jako: 
-			<span class="comment" id ="Podobnie ⌊Łazienka pana Janusza⌋=różowe kafle">$⌊24,389⌋=24$</span>. Podłoga to jakby "przybliżanie liczby w 
+			<comment text ="Podobnie ⌊Łazienka pana Janusza⌋=różowe kafle">$⌊24,389⌋=24$</comment>. Podłoga to jakby "przybliżanie liczby w 
 			dół". Z kolei sufit to "przybliżanie liczby w górę". Symbolicznie $⌈24,389⌉=25$. Podłoga i sufit liczb naturalnych są równe.
 		</p>
 		</lesson-chapter>
@@ -361,7 +361,7 @@
 		</p>
 		</lesson-chapter>
 
-		<lesson-chapter><template #title>Działania na ułamkach dziesiętnych</template>   
+		<lesson-chapter id="operations-on-decimals"><template #title>Działania na ułamkach dziesiętnych</template>   
 		<p class = "type">
 			Warsztat
 		</p>
@@ -591,7 +591,7 @@
 
 		</lesson-chapter>
 
-		<lesson-chapter><template #title>Zamiana ułamków dziesiętnych na zwykłe</template>  
+		<lesson-chapter id="conversion-of-decimals-to-fractions"><template #title>Zamiana ułamków dziesiętnych na zwykłe</template>  
 	
 		<p class = "type">
 			Warsztat | Rozszerzenie

@@ -1,5 +1,5 @@
 <template>
-  <lesson>
+  <lesson routeShortVersion="/wyrazenia-algebraiczne-short" routeLongVersion="/wyrazenia-algebraiczne">
     <lesson-title>Wyrażenia algebraiczne</lesson-title>
 
     <lesson-intro>
@@ -154,9 +154,9 @@
 	</p>
 	
 	<p>
-		Wgłębiając się w dietetyczny szał, <span class="comment" 
-		id="Ponieważ mamy zapędy seksistowskie, uwzględniamy tylko wzory dla mężczyzn. Właściwie tylko statystycznych mężczyzn.">
-		zobaczmy, jak wyliczyć każdy z powyższych składników:</span>
+		Wgłębiając się w dietetyczny szał, <comment 
+		text="Ponieważ mamy zapędy seksistowskie, uwzględniamy tylko wzory dla mężczyzn. Właściwie tylko statystycznych mężczyzn.">
+		zobaczmy, jak wyliczyć każdy z powyższych składników:</comment>
 	</p>
 	
 	<ul>
@@ -236,7 +236,7 @@
 	$$
 	
 	<p>
-		Każdy taki zlepek liczb (<span class="comment" id="i nie tylko">naturalnych, wymiernych, całkowitych…</span> ) oraz liter (zmiennych, stałych, parametrów…) nazywamy 
+		Każdy taki zlepek liczb (<comment text="i nie tylko">naturalnych, wymiernych, całkowitych…</comment> ) oraz liter (zmiennych, stałych, parametrów…) nazywamy 
 		<i>wyrażeniem algebraicznym</i> albo po prostu <i>wyrażeniem</i>. 
 		Wyrażenia algebraiczne bardzo często mają postać kilku iloczynów, które do siebie dodajemy, tak jak powyższa suma 
 		iloczynów $(5 \cdot a \cdot b)$, $(6 \cdot m)$ oraz 

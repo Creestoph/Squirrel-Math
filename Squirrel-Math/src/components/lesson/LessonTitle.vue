@@ -1,6 +1,6 @@
 <template>
   <p class="lesson_title">
-    <slot></slot>
+    <slot />
   </p>
 </template>
 

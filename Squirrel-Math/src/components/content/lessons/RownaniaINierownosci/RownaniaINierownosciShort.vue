@@ -1,5 +1,5 @@
 <template>
-  <lesson>
+  <lesson routeShortVersion="/rownania-i-nierownosci-short" routeLongVersion="/rownania-i-nierownosci">
     <lesson-title-short>Równania i nierówności</lesson-title-short>
 
     <lesson-chapter><template #title>Czym są równania</template>
@@ -58,7 +58,7 @@
     </div>
 
     <div class="example">
-      Aby rozwiązać równaie $\frac{1}{2}x - 3 = 1$, dodajemy obustronnie $3$ i mnożymy przez $2$:
+      Aby rozwiązać równanie $\frac{1}{2}x - 3 = 1$, dodajemy obustronnie $3$ i mnożymy przez $2$:
       $$\begin{align} \frac{1}{2}x - 3 &= 1 &\color{#888888}{| +3}\\
       \frac{1}{2}x &= 4 &\color{#888888}{| \cdot 2}\\
       x &= 8

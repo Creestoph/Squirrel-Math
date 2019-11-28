@@ -1,11 +1,11 @@
 ﻿<template>
-    <lesson>
+    <lesson routeShortVersion="/pierwiastkowanie-short" routeLongVersion="/pierwiastkowanie">
         <lesson-title-short>Pierwiastkowanie</lesson-title-short>    
         
         <lesson-chapter><template #title>Czym jest pierwiastek</template> 
 				<p> 
 					Podobnie jak odejmowanie jest odwrotnością dodawania, a dzielenie odwrotnością mnożenia, tak pierwiastkowanie to odwrotność potęgowania. 
-					Odpowiedź na pytanie "jaką liczbę należy podnieść do potęgi $3$ by otrzymać $8$", przynosi pierwiastkowanie: 
+					Odpowiedź na pytanie "jaką liczbę należy podnieść do potęgi $3$ by otrzymać $125$", przynosi pierwiastkowanie: 
 				</p>
 
 				$$

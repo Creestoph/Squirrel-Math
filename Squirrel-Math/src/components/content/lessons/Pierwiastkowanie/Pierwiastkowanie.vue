@@ -1,5 +1,5 @@
 <template>
-  <lesson>
+  <lesson routeShortVersion="/pierwiastkowanie-short" routeLongVersion="/pierwiastkowanie">
     <lesson-title>Pierwiastkowanie</lesson-title>
 
     <lesson-intro>
@@ -17,8 +17,8 @@
 		
 		<p>
 			Maciuś uzbierał w skarbonce $80 \text{ zł}$ na nowy zestaw Lego, a teraz chce naciągnąć rodziców na taką kwotę, żeby w 
-			sumie wyszło $130 \text{ zł}$ na <span class="comment" 
-			id="Właściwie patrząc na dzisiejsze ceny, może starczyłoby na figurkę Chewbacki">Falcona Millenium</span>.  
+			sumie wyszło $130 \text{ zł}$ na <comment text= 
+			"Właściwie patrząc na dzisiejsze ceny, może starczyłoby na figurkę Chewbacki">Falcona Millenium</comment>.  
 		</p>
 
 		$$
@@ -34,8 +34,8 @@
 		$$
 
 		<p>
-			Rok później przyjaciele Maciusia postanowili kupić mu na urodziny zestaw <span class="comment" id="Ponieważ dobrze wiedzieli, 
-			że Maciuś nigdy nie zostanie wielkim architektem"> małego architekta</span> za 
+			Rok później przyjaciele Maciusia postanowili kupić mu na urodziny zestaw <comment text="Ponieważ dobrze wiedzieli, 
+			że Maciuś nigdy nie zostanie wielkim architektem"> małego architekta</comment> za 
 			$200 \text{ zł}$. Było ich pięcioro, a każdy z nich powinien mieć równy wkład w prezent. Powstało pytanie, po ile 
 			powinni się złożyć:
 		</p>
@@ -295,7 +295,8 @@
 
 		<p>
 			Powyższy dówód został przeprowadzony według schematu znanego jako <i>dowód przez sprzeczność</i>. Chcemy przekonać kogoś, do swoich racji, 
-			czyli uzasadnić słuszność jakiegoś stwierdzenia. Zastanawiamy się "a co by było gdyby" - rozważamy scenariusz przeczący stwierdzeniu, 
+			czyli uzasadnić słuszność jakiegoś stwierdzenia. Rozważamy, czy jest możliwe, żeby to stwiedzenie nie było 
+			prawdziwe. Zastanawiamy się "a co by było gdyby" i rozważamy scenariusz przeczący stwierdzeniu, 
 			którego dowodzimy. Poprzez logiczne kroki rozumowania zbliżamy się do nieuniknionej katastrofy. Podsumowujemy argumentację stwierdzeniem "gdyby było 
 			inaczej niż ja mówię, to wszystko by się kompletnie pokopało". To bardzo mocny przekaz. Ciężko się z nim kłócić.
 		</p>
@@ -397,8 +398,8 @@
 		$$
 
 		<p>
-			To spostrzeżenie rozwiązuje przy okazji inny dylemat – <span class="comment" id="Oczywiście - z należytym szacunkiem">jak traktować 
-			pierwiastki o stopniu wymiernym</span>:
+			To spostrzeżenie rozwiązuje przy okazji inny dylemat – <comment text="Oczywiście - z należytym szacunkiem">jak traktować 
+			pierwiastki o stopniu wymiernym</comment>:
 		</p>
 
 		<ul>

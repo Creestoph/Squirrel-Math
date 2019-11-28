@@ -1,7 +1,7 @@
 <template>
   <div class="chapter_name">
     <div>
-      <slot></slot>
+      <slot />
     </div>
     <hr>
   </div>
@@ -16,7 +16,7 @@
 <style scoped>
   .chapter_name
   {
-    margin-bottom:-10px;
+    margin-bottom:-3px; /*11px*/
   }
 
   .chapter_name > div
@@ -24,11 +24,10 @@
     position: relative;
     cursor: pointer;
     font-family: corbel;
-    font-size: 2em;
+    font-size: 1.9em;
     font-weight: bold;
     margin-top: 9px; /*50px*/
-    margin-bottom:-11px;
-    padding: 0 25px;
+    margin-bottom:-3px; /*11px*/
   }
 
   .chapter_name > div + hr
@@ -37,8 +36,7 @@
     border: 2px solid;
     border-color: white;
     transition: border-color 0.5s ease-in, width 0.4s;
-    margin-left: 25px;
-    margin-right: 25px;
+    margin-left: 0px;
   }
 
   .chapter_name > div:hover + hr
@@ -47,7 +45,6 @@
     border: 2px solid;
     border-color: black;
     transition: border-color 0.1s ease 0.2s, width 1s ease 0.2s;
-    margin-left: 25px;
-    margin-right: 25px;
+    margin-left: 0px;
   }
 </style>

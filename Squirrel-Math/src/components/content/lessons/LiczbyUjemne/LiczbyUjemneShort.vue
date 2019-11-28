@@ -1,5 +1,5 @@
 ﻿<template>
-    <lesson>
+    <lesson routeShortVersion="/liczby-ujemne-short" routeLongVersion="/liczby-ujemne">
         <lesson-title-short>Liczby ujemne</lesson-title-short>    
         
         <lesson-chapter><template #title>Czym są liczby ujemne</template> 
@@ -109,9 +109,9 @@
 		</p>
 
 		<p> 
-			<b>Liczby przeciwne</b> to liczby różniące się jedynie znakiem. Przeciwne do siebie są $2$ i $-2$, $4734$ i $-4734$; zero jest przeciwne samo do siebie.
+			<b>Liczby przeciwne</b> to liczby różniące się jedynie znakiem. Przeciwne do siebie są $2$ i $-2$, $4734$ i $-4734$; zero jest przeciwne samo do siebie.<br>
 			<b>Wartość bezwzględna</b> liczby to jej wartość z pominięciem znaku, symbolicznie $|-3| = 3$, $|5| = 5$, $|0| = 0$ (czytamy 
-			"wartość bezwzględna liczby -3 wynosi 3")
+			"wartość bezwzględna liczby $-3$ wynosi $3$")
 			
 		</p>
 		</lesson-chapter>					

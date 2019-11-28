@@ -1,9 +1,22 @@
 <template>
   <div class="text-center">
-    <input style="width: 80%" type="text" v-model="inputString" @keyup="recalc()">
-      <div class="mask" :style="{height: numberString === '' ? 0 : lastH + 'px'}">
-        <div class="center out" ref="out">{{numberString}}</div>
+    <input
+      style="width: 80%"
+      type="text"
+      v-model="inputString"
+      @keyup="recalc()"
+    >
+    <div
+      class="mask"
+      :style="{height: numberString === '' ? 0 : lastH + 'px'}"
+    >
+      <div
+        class="center out"
+        ref="out"
+      >
+        {{ numberString }}
       </div>
+    </div>
   </div>
 </template>
 

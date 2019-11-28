@@ -1,7 +1,17 @@
 <template>
-  <div class="modal" id="divide_by_0" ref="divide_by_0">
-    <div class="modal_content" style="text-align: center">
-      <p style="text-align: center" ref="modal_text">
+  <div
+    class="modal"
+    id="divide_by_0"
+    ref="divide_by_0"
+  >
+    <div
+      class="modal_content"
+      style="text-align: center"
+    >
+      <p
+        style="text-align: center"
+        ref="modal_text"
+      >
         Nie wolno dzielić przez 0!
         <br>
       </p>
@@ -10,7 +20,9 @@
         ref="modal_button"
         style="float: center"
         @click="CloseModal()"
-      >Rozumiem</button>
+      >
+        Rozumiem
+      </button>
     </div>
   </div>
 </template>

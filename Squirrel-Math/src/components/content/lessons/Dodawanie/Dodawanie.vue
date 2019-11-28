@@ -1,5 +1,5 @@
 <template>
-  <lesson>
+  <lesson routeShortVersion="/dodawanie-short" routeLongVersion="/dodawanie">
     <lesson-title>Dodawanie</lesson-title>
 
     <lesson-intro>
@@ -50,7 +50,7 @@
         
       <p>
         Znaczek $+$ rozumiemy jako „oraz”, a znaczek $=$ jako „to to samo, co”. Znaczki te to pierwsze <i>symbole matematyczne</i>, z jakimi masz 
-        <span class="comment" id="Czujesz ją?">przyjemność</span> 
+        <comment text="Czujesz ją?">przyjemność</comment> 
         się spotkać. Bardziej profesjonalnie symbol $+$ czytamy jako „dodać”. Mniej profesjonalnie jako „plus”. Symbol $=$ czytamy jako „równa się”. Ma on 
         dużo szerszą i ogólniejszą rolę, niż tylko opowiadanie o łączeniu kulek. Symbol $=$ mówi tyle, że po jego lewej stronie jest dokładnie to samo, co po 
         prawej stronie. Można na przykład zapisać, że 
@@ -135,8 +135,8 @@
       </div>
       
       <div class="example">
-        <span class="comment" id = "To ile czasu spędzi w toalecie?">Jeśli pan Janusz zjadł na śniadanie $3$ golonki, na obiad $4$ golonki, a na kolację 
-        $2$ golonki,</span> 
+        <comment text="To ile czasu spędzi w toalecie?">Jeśli pan Janusz zjadł na śniadanie $3$ golonki, na obiad $4$ golonki, a na kolację 
+        $2$ golonki,</comment> 
         to w ciągu całego dnia zjadł $9$ golonek.
           
         $$
@@ -145,7 +145,7 @@
       </div>
           
       <div class="example">
-        Jeśli $5$ razy w ciągu dnia wypijesz dwie <span class="comment" id="soku">szklaneczki</span>, to łącznie wypijesz $10$ szklaneczek.
+        Jeśli $5$ razy w ciągu dnia wypijesz dwie <comment text="soku">szklaneczki</comment>, to łącznie wypijesz $10$ szklaneczek.
           
         $$
           2 + 2 + 2 + 2 + 2 = 10
@@ -163,8 +163,8 @@
       </p>
         
       <p class="problem">
-          Jaś zjadł 3 jabłka, a Małgosia 5 jabłek. <span class="comment" id="Tak naprawdę nie wiadomo. Niektóre jabłka mogły zjeść osobno.">
-      Ile jabłek zjadły razem dzieci</span>?
+          Jaś zjadł 3 jabłka, a Małgosia 5 jabłek. <comment text="Tak naprawdę nie wiadomo. Niektóre jabłka mogły zjeść osobno.">
+      Ile jabłek zjadły razem dzieci</comment>?
       </p>
           
       <p>
@@ -191,8 +191,8 @@
       </p>
        
       <p>
-          Dodawanie ma pewne specyficzne <span class="comment" id="Jak choćby to, że jest świetną zabawą">cechy, które ujawniają się niezależnie od 
-          kontekstu</span>. Przyjrzyjmy się ponownie kulkom:
+          Dodawanie ma pewne specyficzne <comment text="Jak choćby to, że jest świetną zabawą">cechy, które ujawniają się niezależnie od 
+          kontekstu</comment>. Przyjrzyjmy się ponownie kulkom:
       </p>
          
       <p style="text-align: center">
@@ -269,7 +269,7 @@
       </p>
     </lesson-chapter>
 
-    <lesson-chapter><template #title>Dodawanie w słupku</template>    
+    <lesson-chapter id="columnar-addition-formal-proof"><template #title>Dodawanie w słupku</template>    
     <p class = "type">
         Warsztat
     </p>
@@ -329,8 +329,8 @@
         <columnar-operation-table :operation='"+"' :numbers='[[], ["1", "2", "7"], ["", "3", "2"], []]'></columnar-operation-table>
 
         <p>
-            Poszukiwanie wyniku polega teraz na tym, by dodawać do siebie kolejne <span class="comment" id="Dobrze, masz rację. Dodajemy do siebie LICZBY 
-            reprezentowane przez cyfry.">cyfry</span> (jedności do jedności, dziesiątek do 
+            Poszukiwanie wyniku polega teraz na tym, by dodawać do siebie kolejne <comment text="Dobrze, masz rację. Dodajemy do siebie LICZBY 
+            reprezentowane przez cyfry.">cyfry</comment> (jedności do jedności, dziesiątek do 
             dziesiątek itd. – w tej kolejności), a wynik dodawania zapisywać pod kreską. 
         </p>
 
@@ -390,15 +390,15 @@
     </div>
 
     <p>
-        Jeśli dodawanie w słupku sprawia wrażenie <span class="comment" id="Masz problem z poprawnością polityczną?">
-		 czarnej magii</span>, prześledź jeszcze dowolne własne przykłady:
+        Jeśli dodawanie w słupku sprawia wrażenie <comment text="Masz problem z poprawnością polityczną?">
+		 czarnej magii</comment>, prześledź jeszcze dowolne własne przykłady:
     </p>
       
     <columnar-operation :operation="'addition'" :floats="false"></columnar-operation>
 	  
     <p class ="type optional-hide">
         Rozszerzenie
-	</p>
+	  </p>
     <p class="warning">
         wymagana znajomość tematu: Kolejność wykonywania działań
     </p>  
@@ -530,7 +530,6 @@ import Lesson from "../../../lesson/Lesson";
 import ColumnarOperationTable from "../../../utils/columnar_operation_table/ColumnarOperationTable";
 import OperationTable from "../../../utils/OperationTable"
 import ColumnarOperation from "../../../utils/columnar_operation/ColumnarOperation"
-import Comment from "../../../utils/Comment"
 
 export default {
   name: "Dodawanie",
@@ -546,8 +545,7 @@ export default {
     Lesson,
     ColumnarOperationTable,
     OperationTable,
-    ColumnarOperation,
-    Comment
+    ColumnarOperation
   }
 };
 </script>

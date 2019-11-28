@@ -1,11 +1,11 @@
 <template>
-	<lesson>
+	<lesson routeShortVersion="/liczby-ujemne-short" routeLongVersion="/liczby-ujemne">
 		<lesson-title>Liczby ujemne</lesson-title>
 
 		<lesson-intro>
 		<p>
 			Pewnego słonecznego popołudnia Jaś spacerował polną dróżką z koszykiem jabłek w ręce. Gdzieś w krzakach przycisnął go 
-			<span class="comment" id="TM">mały głód</span>. 
+			<comment text="TM">mały głód</comment>. 
 			Spojrzał żałobnie na dwa lśniące w słońcu jabłka wewnątrz koszyka… Czymże są dwa jabłka w obliczu Jasiowego apetytu? W końcu ścisk w 
 			żołądku nie dał za wygraną. Jaś zjadł trzy jabłka. Ile jabłek zostało w koszyku? 
 		</p>
@@ -18,7 +18,7 @@
 		
 		<p>
 			W temacie o odejmowaniu dość niechętnie wypowiadaliśmy się na temat brawurowych prób odejmowania większej liczby od mniejszej. 
-			<span class="comment" id="Z wyjątkiem dzielenia przez zero…">Jako że w matematyce nie ma rzeczy niemożliwych</span>, 
+			<comment text="Z wyjątkiem dzielenia przez zero…">Jako że w matematyce nie ma rzeczy niemożliwych</comment>, 
 			pora sprostać takiemu wyzwaniu. Liczby ujemne służą do przedstawiania wartości 
 			mniejszych niż $0$. Liczba $-1$ (czyt. minus jeden) ma wartość o $1$ mniejszą niż zero, $-2$
 			to dwa poniżej zera itd. Jeśli rozszerzymy 
@@ -49,7 +49,7 @@
 			<li>Przy $10°C$ robi się chłodno i ludzie marudzą, że lato się kończy.</li>
 			<li>Przy $0°C$ narzeka się na mróz. Woda ma dość, więc zamarza.</li> 
 			<li>Przy $-10°C$ ludzie marudzą, że w pięciu warstwach ubrania jest niewygodnie.</li>
-			<li>Przy $-20°C$ <span class="comment" id="Chyba że jest się ciepłą kluchą."> umiera się z zimna</span>.</li>
+			<li>Przy $-20°C$ <comment text="Chyba że jest się ciepłą kluchą."> umiera się z zimna</comment>.</li>
 		</ul>
 		</lesson-chapter>
 
@@ -60,12 +60,12 @@
 		
 		<p>
 			Zarówno <i>liczb dodatnich</i> (na prawo od zera) jak i liczb ujemnych (na lewo od zera) jest nieskończenie wiele. Liczby ujemne, 
-			zero i liczby dodatnie nazywamy <span class="comment" id="i ja, i ty, i wszyscy dookoła">wspólnie</span> <i>liczbami całkowitymi</i>. 
+			zero i liczby dodatnie nazywamy <comment text="i ja, i ty, i wszyscy dookoła">wspólnie</comment> <i>liczbami całkowitymi</i>. 
 		</p>
 		
 		<p>
 			Kreska stojąca przed liczbami ujemnymi to symbol „minus” - taki sam, jakiego używamy przy odejmowaniu liczb. Jego rolą jest określenie 
-			<i>znaku liczby</i> - <span class="comment" id="przynajmniej na razie">każda</span> liczba w matematyce jest dodatnia, ujemna albo 
+			<i>znaku liczby</i> - <comment text="przynajmniej na razie">każda</comment> liczba w matematyce jest dodatnia, ujemna albo 
 			jest zerem. Czasami liczby ujemne wraz z zerem obejmuje się mianem 
 			<i>niedodatnie</i>, a liczby dodatnie wraz z zerem nazywa się <i>nieujemnymi</i>. 
 		</p>

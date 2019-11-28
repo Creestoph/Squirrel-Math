@@ -1,5 +1,5 @@
 ﻿<template>
-    <lesson>
+    <lesson routeShortVersion="/potegowanie-short" routeLongVersion="/potegowanie">
         <lesson-title-short>Potęgowanie</lesson-title-short>    
         
         <lesson-chapter><template #title>Czym jest potęga</template> 

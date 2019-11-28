@@ -3,6 +3,7 @@ import Home from './components/content/Home'
 import HomeShort from './components/content/HomeShort'
 import Editor from './components/Editor'
 import Tree from './components/content/Tree'
+import InteractiveTree from './components/content/InteractiveTree'
 import DrzewoHD from './components/content/DrzewoHD'
 import Wprowadzenie from './components/content/Wprowadzenie'
 import Liczba from './components/content/lessons/Liczba/Liczba'
@@ -42,11 +43,14 @@ import RownaniaINierownosciShort from './components/content/lessons/RownaniaINie
 import ZbioryLiczbowe from './components/content/lessons/ZbioryLiczbowe/ZbioryLiczbowe'
 import ZbioryLiczboweShort from './components/content/lessons/ZbioryLiczbowe/ZbioryLiczboweShort'
 import RownaniaINierownosciLiniowe from './components/content/lessons/RownaniaINierownosciLiniowe/RownaniaINierownosciLiniowe'
+import RownaniaINierownosciLinioweShort from './components/content/lessons/RownaniaINierownosciLiniowe/RownaniaINierownosciLinioweShort'
 
 export const routes = [
-  { path: '', component: Home }, { path: '/-short', component: HomeShort },
+  { path: '', component: Home }, 
+  { path: '/home-short', component: HomeShort },
   { path: '/editor', component: Editor },
   { path: '/tree', component: Tree },
+  { path: '/newtree', component: InteractiveTree },
   { path: '/drzewoHD', component: DrzewoHD },
 
   { path: '/wprowadzenie', component: Wprowadzenie },
@@ -68,5 +72,5 @@ export const routes = [
   { path: '/dzialania-na-wyrazeniach-algebraicznych', component: DzialaniaNaWyrazeniachAlgebraicznych }, { path: '/dzialania-na-wyrazeniach-algebraicznych-short', component: DzialaniaNaWyrazeniachAlgebraicznychShort },
   { path: '/rownania-i-nierownosci', component: RownaniaINierownosci }, { path: '/rownania-i-nierownosci-short', component: RownaniaINierownosciShort },
   { path: '/zbiory-liczbowe', component: ZbioryLiczbowe }, { path: '/zbiory-liczbowe-short', component: ZbioryLiczboweShort },
-  { path: '/rownania-i-nierownosci-liniowe', component: RownaniaINierownosciLiniowe }, { path: '/rownania-i-nierownosci-liniowe-short', component: RownaniaINierownosciLiniowe },
+  { path: '/rownania-i-nierownosci-liniowe', component: RownaniaINierownosciLiniowe }, { path: '/rownania-i-nierownosci-liniowe-short', component: RownaniaINierownosciLinioweShort },
 ];

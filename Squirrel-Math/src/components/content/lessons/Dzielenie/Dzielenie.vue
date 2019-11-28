@@ -1,5 +1,5 @@
 <template>
-  <lesson>
+  <lesson routeShortVersion="/dzielenie-short" routeLongVersion="/dzielenie">
     <lesson-title>Dzielenie</lesson-title>
 
     <lesson-intro>
@@ -169,7 +169,7 @@
     </p>
       
     <p>
-        <span class="comment" id="Jeśli nie pałasz sympatią do kamieni, weź stertę cukierków, kulek, owiec albo apostołów.">Weźmy stertę $12$ kamieni.</span> 
+        <comment text="Jeśli nie pałasz sympatią do kamieni, weź stertę cukierków, kulek, owiec albo apostołów.">Weźmy stertę $12$ kamieni.</comment> 
 		Wychodzimy z szalonym pomysłem, by dzielić tę stertę na mniejsze grupki.
     </p>
       
@@ -280,13 +280,13 @@
     </p>
       
 	<div class="example">
-		<span class="comment" id="Jak Pan Bóg przykazał.">Pan Janusz ma $2$ jajka</span> i chce z nich przyrządzić $2$ omlety. 
+		<comment text="Jak Pan Bóg przykazał.">Pan Janusz ma $2$ jajka</comment> i chce z nich przyrządzić $2$ omlety. 
 		W takim razie musi zużyć jedno jajko na jeden omlet.
 		$$2 : 2 = 1$$
 	</div>
 
 	<div class="example">
-		Stefan przygotował $30 \text{ zł}$ na wydatki w <span class="comment" id="czekolady">pijalni</span>. Pojedyncza degustacja 
+		Stefan przygotował $30 \text{ zł}$ na wydatki w <comment text="czekolady">pijalni</comment>. Pojedyncza degustacja 
 		kosztuje $6 \text{ zł}$. W takim razie Stefan może 
 		cieszyć się degustacją $5$ razy.
 		$$30 : 6 = 5$$
@@ -400,7 +400,7 @@
     </ul>
       
     <p>
-        <span class="comment" id="Nie martw się. Onufry ma więcej problemów.">mamy problem…</span> Ile cukierków powinien dostać każdy z jego przyjaciół, jeśli nie ma przyjaciół? Nie ma osoby, 
+        <comment text="Nie martw się. Onufry ma więcej problemów.">mamy problem…</comment> Ile cukierków powinien dostać każdy z jego przyjaciół, jeśli nie ma przyjaciół? Nie ma osoby, 
         której można by te cukierki podarować. W takim razie nie ma nawet mowy o dzieleniu. Gdybyśmy napisali 
     </p>
       
@@ -409,7 +409,7 @@
     $$
       
     <p>
-        to popełnilibyśmy <span class="comment" id="Naprawdę śmiertelny. Nawet nie próbuj.">śmiertelny grzech matematyczny</span>. 
+        to popełnilibyśmy <comment text="Naprawdę śmiertelny. Nawet nie próbuj.">śmiertelny grzech matematyczny</comment>. 
 		  Wreszcie przyłapaliśmy matematykę na czymś, czego nie 
         potrafi - matematyka nie daje sposobu, żeby podzielić przez $0$. Jest to dosłownie niemożliwe.
     </p>
@@ -492,7 +492,7 @@
 	</div>
 
 	<div class="example">
-		Stefan zabrał $27 \text{ zł}$ do pijalni. Jeden <span class="comment" id="czekolady">kufel</span> kosztuje $6 \text{ zł}$, więc po czterokrotnej degustacji 
+		Stefan zabrał $27 \text{ zł}$ do pijalni. Jeden <comment text="czekolady">kufel</comment> kosztuje $6 \text{ zł}$, więc po czterokrotnej degustacji 
 		zostało mu $3 \text{ zł}$ na napiwek.
 		$$27 : 6 = 4 \ r. 3$$
 	</div>
@@ -511,7 +511,7 @@
       
     <p>
         Co do tego, że dzielenie nie jest przemienne, raczej nie ma zastrzeżeń. Dać $14$ dzieciom $2$ cukierki do zjedzenia, 
-        <span class="comment" id="co dać 14 cukierkom 2 dzieci do zjedzenia">to nie to samo</span>, co dać $2$ dzieciom $14$ cukierków. 
+        <comment text="co dać 14 cukierkom 2 dzieci do zjedzenia">to nie to samo</comment>, co dać $2$ dzieciom $14$ cukierków. 
     </p>
       
     <p>

@@ -1,10 +1,10 @@
 <template>
-	<lesson>
+	<lesson routeShortVersion="/kolejnosc-wykonywania-dzialan-short" routeLongVersion="/kolejnosc-wykonywania-dzialan">
 		<lesson-title>Kolejność wykonywania działań</lesson-title>
 
 		<lesson-intro>
 		<p>
-			<span class="comment" id="Myszka komputerowa to nie zabawka.">Dzierżysz w rękach potężne narzędzie</span>. Umiejąc dodawać, 
+			<comment text="Myszka komputerowa to nie zabawka.">Dzierżysz w rękach potężne narzędzie</comment>. Umiejąc dodawać, 
 			odejmować, mnożyć i dzielić, możesz wyruszać na podbój świata. 
 			Najpierw jednak musisz zmierzyć się ze wszystkimi czterema działaniami na raz.
 		</p>
@@ -262,10 +262,10 @@
 		</p>
 
 		<p>
-			W ciągu jednego roku wpuszcza się $7 + 7 = 14$ dzieci, <span class="comment" id="I po problemie.">więc w ciągu $5$ lat będzie to 
-			kumulacja $70$ dzieci.</span> Napotkaliśmy obliczenia, w których najpierw należy wykonać dodawanie, a potem mnożenie. Jak zapisać 
+			W ciągu jednego roku wpuszcza się $7 + 7 = 14$ dzieci, <comment text="I po problemie.">więc w ciągu $5$ lat będzie to 
+			kumulacja $70$ dzieci.</comment> Napotkaliśmy obliczenia, w których najpierw należy wykonać dodawanie, a potem mnożenie. Jak zapisać 
 			takie działanie? Zgodnie z umową zapis $5 \cdot 7 + 7$ wymaga najpierw mnożenia, a potem dodawania - takie działanie daje wynik $42$. 
-			<span class="comment" id="Chcemy przecież oddać 70 dzieci.">Nie tego chcemy</span>. 
+			<comment text="Chcemy przecież oddać 70 dzieci.">Nie tego chcemy</comment>. 
 			Z pomocą przychodzą nawiasy. Matematycy wprowadzili je do zapisu, aby wymusić pierwszeństwo działania wiążącego słabiej.
 			Wyrażenie, o które nam chodzi, będzie wyglądało tak:
 		</p>
@@ -355,7 +355,7 @@
 		$$
 		</lesson-chapter>
 
-    <lesson-chapter><template #title>Rozdzielność mnożenia względem dodawania</template>
+    <lesson-chapter id="distributive-property"><template #title>Rozdzielność mnożenia względem dodawania</template>
 		<p class="type">
 			Intuicje
 		</p>

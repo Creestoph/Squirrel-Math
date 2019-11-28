@@ -1,11 +1,11 @@
 ﻿<template>
-  <lesson>
+  <lesson routeShortVersion="/podzielnosc-liczb-short" routeLongVersion="/podzielnosc-liczb">
     <lesson-title>Podzielność liczb</lesson-title>
 
     <lesson-intro>
 	<p>
-		Uwaga: Lekcja ociera się o dział matematyki zwany <i>teorią liczb</i>. <span class="comment" id="Może zawierać śladowe ilości orzechów arachidowych.">
-		Temat zawiera duże ilości nowych pojęć, twierdzeń i zależności.</span> Wchodzisz na własne ryzyko. 
+		Uwaga: Lekcja ociera się o dział matematyki zwany <i>teorią liczb</i>. <comment text="Może zawierać śladowe ilości orzechów arachidowych.">
+		Temat zawiera duże ilości nowych pojęć, twierdzeń i zależności.</comment> Wchodzisz na własne ryzyko. 
 	</p>
 		
 	<p>
@@ -57,8 +57,8 @@
 	<ul>
 		<li>$15 \mid 75$</li>
 		<li>$10 \mid 20$</li>
-		<li><span class="comment" id='czyt. „trzy nie dzieli siedmiu” - nie zaś „trzyłsiedem”'>$3 ∤ 7$</span></li>
-		<li><span class="comment" id='czyt. „dziewięć nie dzieli dwudziestu” - nie zaś „dziewięćłdwadzieścia'>$9 ∤ 20$</span></li>
+		<li><comment text='czyt. „trzy nie dzieli siedmiu” - nie zaś „trzyłsiedem”'>$3 ∤ 7$</comment></li>
+		<li><comment text='czyt. „dziewięć nie dzieli dwudziestu” - nie zaś „dziewięćłdwadzieścia'>$9 ∤ 20$</comment></li>
 	</ul>
     </lesson-chapter>
 
@@ -156,7 +156,7 @@
 		</p>
 		<ul>
 			<li>$124$ jest podzielne przez $4$, ponieważ $24$ jest podzielne przez $4$.</li>
-			<li>$1000$ jest podzielny przez $4$, <span class="comment" id="Dokładniej 00">ponieważ $0$</span> jest podzielne przez $4$.</li>
+			<li>$1000$ jest podzielny przez $4$, <comment text="Dokładniej 00">ponieważ $0$</comment> jest podzielne przez $4$.</li>
 			<li>$12 894 782 712$ jest podzielne przez $4$, ponieważ $12$ jest podzielne przez $4$.</li>
 		</ul>
 	</div>
@@ -1005,7 +1005,7 @@
 	</ul>
 
 	<p>
-		Poszukiwanie dzielników liczby to tak na prawdę <span class="comment" id="Bardzo głębokie pytanie">pytanie</span>, na ile równych 
+		Poszukiwanie dzielników liczby to tak na prawdę <comment text="Bardzo głębokie pytanie">pytanie</comment>, na ile równych 
 		grupek możemy podzielić stertę kamieni. 
 		Gdy weźmiemy kupkę $60$ kamieni, możemy to zrobić na całkiem sporo sposobów - możemy dzielić kamienie na 
 		$1$ grupkę 
@@ -1078,8 +1078,8 @@
 		Matematycy nie mają pojęcia, czy istnieje nieparzysta liczba doskonała. Jeśli taką znajdziesz, nie ukrywaj się z tym. 
 		Prawdopodobnie czeka Cię chwała, sława i pieniądze. Miej jednak na uwadze, że liczba taka ma przynajmniej $1500$ cyfr. 
 		Wszystkie mniejsze matematycy już zdyskwalifikowali. Natknęliśmy się na pierwszy 
-		<span class="comment" id="Jeśli żyjesz w dalekiej przyszłości i 
-		problem ten jest już rozwiązany, zgłoś proszę tę nieścisłość do administracji strony.">nierozwiązany problem matematyki</span>:
+		<comment text="Jeśli żyjesz w dalekiej przyszłości i 
+		problem ten jest już rozwiązany, zgłoś proszę tę nieścisłość do administracji strony.">nierozwiązany problem matematyki</comment>:
 	</p>
 
 	<p class = "formula">
@@ -1149,7 +1149,7 @@
 		albo $11$ kamieni… Za każdym razem 
 		jedyne co możemy, to zostawić stertę taką, jak ją Pan Bóg stworzył, albo rozrzucić wszystkie kamienie w cały świat. Gdy 
 		liczba ma tylko dwa dzielniki: <span class="math">1</span> oraz samą siebie, mówimy, że jest <i>liczbą pierwszą</i>. 
-		<span class="comment" id="Czyli kilka pierwszych liczb pierwszych">Kilka początkowych liczb pierwszych</span> to:
+		<comment text="Czyli kilka pierwszych liczb pierwszych">Kilka początkowych liczb pierwszych</comment> to:
 	</p>
 
 	<p style="text-align: center">
@@ -1164,8 +1164,8 @@
 
 	<p>
 		Liczby pierwsze to bardzo niesforne istoty. Ze względu na to, że na nic się nie dzielą, nazywa się je czasem 
-		<span class="comment" id="Jeśli nie wiesz, czym są 
-		atomy, pozwolimy Ci cierpieć z powodu niewiedzy.">atomami</span> wśród liczb.
+		<comment text="Jeśli nie wiesz, czym są 
+		atomy, pozwolimy Ci cierpieć z powodu niewiedzy.">atomami</comment> wśród liczb.
 	</p>
 
 	<p>
@@ -1600,8 +1600,7 @@
 	<div class = "optional-show">
 		<p>
 			Mówimy, że dwie liczby są <i>względnie pierwsze</i>, jeśli ich $NWD$ wynosi $1$. Nie możemy wtedy znaleźć 
-			żadnej <span class="comment" 
-			id="z całym szacunkiem dla jedynki">sensownej</span> liczby, 
+			żadnej <comment text="z całym szacunkiem dla jedynki">sensownej</comment> liczby, 
 			przez którą można podzielić i jedną, i drugą.
 		</p>
 		<ul>

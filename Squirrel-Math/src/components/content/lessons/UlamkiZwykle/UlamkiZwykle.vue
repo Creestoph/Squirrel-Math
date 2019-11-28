@@ -1,5 +1,5 @@
 ﻿<template>
-  <lesson>
+  <lesson routeShortVersion="/ulamki-zwykle-short" routeLongVersion="/ulamki-zwykle">
     <lesson-title>Ułamki zwykłe</lesson-title>
 
     <lesson-intro>
@@ -29,7 +29,7 @@
 		zjada $3$ spośród nich, to mówimy, że zjadł $\frac{3}{8}$ tortu. Napis $\frac{3}{8}$ czytamy jako 
 		„trzy ósme” – mówi on tyle, że spośród ośmiu części 
 		całości wzięliśmy trzy części. Gdy bierzemy dwa herbatniki spośród pięciu w paczce, to 
-		<span class="comment" id="Właściwie… nie przypominam sobie wspólnego konsumowania herbatników.">zjadamy</span> 
+		<comment text="Właściwie… nie przypominam sobie wspólnego konsumowania herbatników.">zjadamy</comment> 
 		$\frac{2}{5}$ („dwie piąte”) paczki. 
 		Pół hot-doga to to samo, co $\frac{1}{2}$ („jedna druga”) hot-doga.
 	</p>
@@ -271,8 +271,8 @@
 	</p>
 
 	<p>
-		Ułamki to – bez uprzedzeń – też liczby, więc można na nich wykonywać działania. Możemy ułamki <span class="comment" 
-		id="A co, myślałeś że zabawy z działaniami się skończyły?">dodawać, odejmować, mnożyć i dzielić</span>.
+		Ułamki to – bez uprzedzeń – też liczby, więc można na nich wykonywać działania. Możemy ułamki <comment 
+		text="A co, myślałeś że zabawy z działaniami się skończyły?">dodawać, odejmować, mnożyć i dzielić</comment>.
 	</p> 
 
 	<p>
@@ -362,7 +362,7 @@
 	</p>
 
 	<p>
-		Na dobry początek zajmijmy się mnożeniem ułamka przez liczbę naturanlną. Mnożenie to wielokrotne dodawanie – prawidłowość ta dotyczy także ułamków. 
+		Na dobry początek zajmijmy się mnożeniem ułamka przez liczbę naturalną. Mnożenie to wielokrotne dodawanie – prawidłowość ta dotyczy także ułamków. 
 		Dodawanie do siebie pięciokrotnie ułamka $\frac{2}{13}$ daje wynik
 	</p>
 
@@ -656,7 +656,7 @@
 
 	<p>
 		Gdy dzielimy pewną liczbę przez ułamek, zadajemy pytanie: ile razy ułamek mieści się w tej liczbie? Odpowiedź na nie jest raczej prosta, jeśli 
-		dzielimy przez siebie mianowniki o równych mianownikach:
+		dzielimy przez siebie ułamki o równych mianownikach:
 	</p>
 
 	<ul>
@@ -888,7 +888,7 @@
 	</p>
 
 	<p>
-		Gdy mówiliśmy, że znak dzielenia można zawsze zastąpić kreską ułamkową, <span class="comment" id="My nigdy nie żartujemy.">nie żartowaliśmy</span>. 
+		Gdy mówiliśmy, że znak dzielenia można zawsze zastąpić kreską ułamkową, <comment text="My nigdy nie żartujemy.">nie żartowaliśmy</comment>. 
 		Do postaci ułamka można sprowadzać dowolnie rozbudowane działania zawierające dzielenie:
 	</p>
 

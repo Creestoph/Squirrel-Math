@@ -1,5 +1,5 @@
 <template>
-  <lesson>
+  <lesson routeShortVersion="/rownania-i-nierownosci-short" routeLongVersion="/rownania-i-nierownosci">
     <lesson-title>Równania i nierówności</lesson-title>
 
     <lesson-intro>   
@@ -20,7 +20,7 @@
 
     <p class="problem"> 
         Gutek zbiera na wymarzony zestaw Lego, który kosztuje $120 \text{ zł}$. 
-		<span class="comment" id="Zwyczajowo zwaną kieszonkowym">Ciężką pracą</span>
+		<comment text="Zwyczajowo zwaną kieszonkowym">Ciężką pracą</comment>
 		zarobił $40 \text{ zł}$ i zastanawia się, ile 
 		jeszcze musi uzbierać. Stoi więc przed problemem:
 		$$40 + \text{∎} = 120$$
@@ -188,7 +188,10 @@
     </div>
 	</lesson-chapter>
 
-    <lesson-chapter><template #title>Rozwiązywanie nierówności</template>
+    <lesson-chapter id="inequalities"><template #title>Rozwiązywanie nierówności</template>
+    <p class="type">
+        Intuicje    
+    </p>
     <p>
         Nierówność to trochę luźniej pojęta wersja równań: tam, gdzie stał znak $=$, teraz pojawi się dziubek, który służył do porównywania liczb: $\lt$, $\gt$, $\leq$ lub $\geq$. 
         Równanie stawiało pytanie: co należy wstawić pod $x$, aby otrzymać poprawnie zapisane przekształcenie? Nierówność stawia pytanie: jakie wartości $x$ będą spełniały 
@@ -219,7 +222,7 @@
 
     <div class="example">
         $$3x + 2 \lt x + 8$$
-        Na lewej szalce kładziemy trzy paczki i cztery ciężarki, a na prawej jedną paczkę i dwa ciężarki. Waga nie jest w równowadze: prawa szalka ma większą wagę (przechyla 
+        Na lewej szalce kładziemy trzy paczki i dwa ciężarki, a na prawej jedną paczkę i osiem ciężarków. Waga nie jest w równowadze: prawa szalka ma większą wagę (przechyla 
         się w dół pod swoim ciężarem).
         <center><img src="./.images/Screenshot_11.png" align="middle"></center>
         Z obydwu szalek zabieramy po dwia ciężarki i po jednej paczce. Przechylenie wagi pozostaje niezmienne.
@@ -249,7 +252,7 @@
     </p>
     <center><img src="./.images/Screenshot_15.png" align="middle"></center>
     <p> 
-        Widzimy, że jeśli na poczatku zachodził warunek $L \lt P$, to po przerzuceniu wartości na przeciwną stronę zachodzi $-L \gt -P$. Nie jest nic dziwnego: skoro 
+        Widzimy, że jeśli na poczatku zachodził warunek $L \lt P$, to po przerzuceniu wartości na przeciwną stronę zachodzi $-L \gt -P$. Nic dziwnego: skoro 
         skoro na początku prawa strona nierówności była większa od lewej, to po przemnożeniu przez $-1$ prawa strona jest "bardziej ujemna" od lewej, czyli ma mniejszą 
         wartość.
     </p>
@@ -380,7 +383,7 @@
 	</p>
     <p> 
         Z formalnego punktu widzenia, przed przystąpieniem do rozwiązywania równania lub nierówności, powinno się określić, jakie liczby "teoretycznie" mogą, a jakie nie mogą stanowić 
-        rozwiązanie. Nie jest to wprawdzie istotne przy rozwiązywaniu podstawowych równań jak te, które poznaliśmy do tej pory. Jednak nadejdą mroczne czasy, a wtedy będziemy 
+        rozwiązania. Nie jest to wprawdzie istotne przy rozwiązywaniu podstawowych równań jak te, które poznaliśmy do tej pory. Jednak nadejdą mroczne czasy, a wtedy będziemy 
         musieli być silni. Nie zaszkodzi przestrzec już teraz, że nieostrożność może wprowadzić nas w pułapkę. Rozważmy równanie 
         $$x = \frac{x - 1}{x - 1}$$
         Moglibyśmy poddać się rozumowaniu: po prawej stronie widzimy ułamek $\frac{x - 1}{x - 1}$, czyli ułamek, który ma taki sam licznik jak i mianownik. Bez względu na to, jaką 

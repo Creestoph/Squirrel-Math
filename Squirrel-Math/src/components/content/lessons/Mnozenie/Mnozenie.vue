@@ -1,5 +1,5 @@
 <template>
-  <lesson>
+  <lesson routeShortVersion="/mnozenie-short" routeLongVersion="/mnozenie">
     <lesson-title>Mnożenie</lesson-title>
 
     <lesson-intro>
@@ -74,7 +74,7 @@
     </p>
       
     <p>
-        Trzymajmy się jednak <span class="comment" id="Chciałeś coś powiedzieć?">jedynej słusznej metody</span> i używajmy symbolu $\cdot$ na określenie mnożenia. 
+        Trzymajmy się jednak <comment text="Chciałeś coś powiedzieć?">jedynej słusznej metody</comment> i używajmy symbolu $\cdot$ na określenie mnożenia. 
 		Kropkę tę czytamy jako „razy”. Zapis $4 \cdot 6$ (cztery razy sześć) mówi tyle, że należy cztery razy dodać do siebie szóstkę. Można więc 
         zapisać
     </p>
@@ -88,7 +88,7 @@
     </p>
 
     <p class="problem" style="text-align: center">
-        Jeśli 5 razy w ciągu dnia wypijesz dwie <span class="comment" id="soku">szklaneczki</span>, to łącznie wypijesz 10 szklaneczek.
+        Jeśli 5 razy w ciągu dnia wypijesz dwie <comment text="soku">szklaneczki</comment>, to łącznie wypijesz 10 szklaneczek.
     </p>
     
     <b>
@@ -98,7 +98,7 @@
     </b>
 
     <p>
-        Dzięki potężnym narzędziom, którymi teraz władamy, <span class="comment" id="Od razu chce się żyć.">możemy zastosować krótszy zapis</span>:
+        Dzięki potężnym narzędziom, którymi teraz władamy, <comment text="Od razu chce się żyć.">możemy zastosować krótszy zapis</comment>:
     </p>
       
     $$
@@ -111,7 +111,7 @@
 	</div>
 
 	<div class="example">
-		<span class="comment" id="to będziesz gruby. Po prostu.">Jeśli rano, w południe i wieczorem zjesz po $4$ pączki</span>, to w ciągu dnia zjesz $12$ pączków.
+		<comment text="to będziesz gruby. Po prostu.">Jeśli rano, w południe i wieczorem zjesz po $4$ pączki</comment>, to w ciągu dnia zjesz $12$ pączków.
 		$$4 + 4 + 4 = 3  \cdot 4 = 12$$
 	</div>
 
@@ -162,8 +162,8 @@
     <br>
   
     <p>
-        Poczyniliśmy słuszne spostrzeżenie, że <span class="comment" id="Wiemy, że rozbijanie kafli to dobra rzecz, ale nie praktykuj tego w domu.">
-		$24$ kafelki można rozbić</span> na $4$ rzędy po $6$ kafli i zapisać 
+        Poczyniliśmy słuszne spostrzeżenie, że <comment text="Wiemy, że rozbijanie kafli to dobra rzecz, ale nie praktykuj tego w domu.">
+		$24$ kafelki można rozbić</comment> na $4$ rzędy po $6$ kafli i zapisać 
     </p>
       
     $$
@@ -305,8 +305,8 @@
       
     <p>
         Metoda ta zawsze jest poprawna, jednak cokolwiek pracochłonna. Zapewniamy, że w swojej karierze matematycznej mnożenie 
-        będziesz napotykał na każdym kroku. Z tego powodu przynajmniej mnożenie liczb jednocyfrowych dobrze jest <span class="comment" id=" wkuć">opanować</span>
-        na wysokim poziomie. Podstawą każdego wprawnego <span class="comment" id="gościa co dobrze liczy">rachmistrza</span> jest <i>tabliczka mnożenia</i>, 
+        będziesz napotykał na każdym kroku. Z tego powodu przynajmniej mnożenie liczb jednocyfrowych dobrze jest <comment text=" wkuć">opanować</comment>
+        na wysokim poziomie. Podstawą każdego wprawnego <comment text="gościa co dobrze liczy">rachmistrza</comment> jest <i>tabliczka mnożenia</i>, 
 		  która działa bardzo podobnie do tabliczki dodawania.
     </p>
       
@@ -660,7 +660,7 @@
 
         <p>
             gdzie cyfry zapisuj dziesiętnego każdej z liczb $p_i$ są znane. Zagadnienie sprowadza się do dokonania dodawania pisemnego tych liczb. Formalne 
-            omówienie dodawania pisemnego zostało dokonane w temacie <router-link tag="a" :to="'/dodawanie'" class="link">Dodawanie</router-link>.
+            omówienie dodawania pisemnego zostało dokonane w temacie <router-link tag="a" :to="'/dodawanie#columnar-addition-formal-proof'" class="link">Dodawanie</router-link>.
         </p>
     </div>
 

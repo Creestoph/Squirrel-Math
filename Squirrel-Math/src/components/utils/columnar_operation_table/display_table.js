@@ -81,9 +81,9 @@ export class Display_table {
     print(target) {
 
         var table = "<table align = \"center\" class=\"columnar_operation\">";
-        for (var i = 0; i < this.nodes.length; i++) {
+        for (let i = 0; i < this.nodes.length; i++) {
             table += "<tr>";
-            for (var j = 0; j < this.nodes[i].length; j++) {
+            for (let j = 0; j < this.nodes[i].length; j++) {
                 table += this.nodes[i][j].print();
             }
             table += "</tr>";
@@ -94,9 +94,9 @@ export class Display_table {
 
     static create_custom(strs) {
         var nodes = [];
-        for (var i = 0; i < strs.length; i++) {
+        for (let i = 0; i < strs.length; i++) {
             nodes[i] = [];
-            for (var j = 0; j < strs[i].length; j++) {
+            for (let j = 0; j < strs[i].length; j++) {
                 nodes[i][j] = new Columnar_operation_node(strs[i][j]);
             }
         }
@@ -129,7 +129,7 @@ export class Display_table {
                         nodes[i][0] = new Columnar_operation_node(t[0] == ':' ? t.substring(1) : t);
                         nodes[i][1] = new Columnar_operation_node(t[0] == ':' ? t.substring(1) : t);
                     }
-                    for (var j = 0; j < numbers[i].length; j++) {
+                    for (let j = 0; j < numbers[i].length; j++) {
                         t = style + (numbers[i][j].length > 0 && numbers[i][j][0] == "/" ? "" : ":") + numbers[i][j]
                         nodes[i][j + 2] = new Columnar_operation_node(t[0] == ':' ? t.substring(1) : t);
                     }
@@ -150,7 +150,7 @@ export class Display_table {
                         nodes[i][0] = new Columnar_operation_node(t[0] == ':' ? t.substring(1) : t);
                         nodes[i][1] = new Columnar_operation_node(t[0] == ':' ? t.substring(1) : t);
                     }
-                    for (var j = 0; j < numbers[i].length; j++) {
+                    for (let j = 0; j < numbers[i].length; j++) {
                         t = style + (numbers[i][j].length > 0 && numbers[i][j][0] == "/" ? "" : ":") + numbers[i][j];
                         nodes[i][j + 2] = new Columnar_operation_node(t[0] == ':' ? t.substring(1) : t);
                     }

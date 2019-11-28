@@ -1,11 +1,18 @@
 <template>
-  <lesson>
+  <lesson
+    route-short-version="/home-short"
+    route-long-version="/"
+  >
     <lesson-title>Do roboty!</lesson-title>
 	
-			<br><br><br>
-			<center><img src="./.images/squirrel.png" width="60%"></center>
-			<br><br><br><br>
-	
+    <br><br><br>
+    <center>
+      <img
+        src="./.images/squirrel.png"
+        width="60%"
+      >
+    </center>
+    <br><br><br><br>
   </lesson>
 </template>
 
