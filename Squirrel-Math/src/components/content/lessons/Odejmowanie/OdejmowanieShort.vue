@@ -53,7 +53,7 @@
 			w niej pole z wartością $17$. Wiersz, w którym znajduje się ta liczba: $9$ stanowi wynik odejmowania.
         </p>
 
-		<operation-table :default_loperand="3" :default_roperand="4"  :f="function(a,b){return a+b}" :print="function(a,b,c){return c + ' - ' + a + ' = ' + b}"></operation-table>
+		<operation-table :defaultLoperand="3" :defaultRoperand="4"  :f="function(a,b){return a+b}" :print="function(a,b,c){return c + ' - ' + a + ' = ' + b}"></operation-table>
 
         <p>
 			Dla większych liczb stosuje się metodę <i>odejmowania w słupku</i>, zwaną też <i>odejmowaniem pisemnym</i>. 

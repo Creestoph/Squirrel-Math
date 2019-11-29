@@ -37,9 +37,7 @@
         przez długie lata szkolne, piętrząc chaos przez ciągłe skakanie od podręcznika do podręcznika. Wiedza przekazywana jest wyrywkowo, 
         niespójnie, a często wręcz niedbale. Częste problemy w opanowaniu nauk matematycznych nie wynikają z tego, że matematyka sama w sobie jest trudna.
         Po prostu nie jest podparta właściwymi intuicjami. Jeśli zaś uczeń wyprzedza program i chce czegoś więcej, to musi szukać wiedzy tajemnej 
-        w źródłach fachowych, z których bardzo ciężko uczyć się <comment text="Bez urazy.">
-          laikowi
-        </comment>.
+        w źródłach fachowych, z których bardzo ciężko uczyć się <comment text="Bez urazy.">laikowi</comment>.
       </p>
     
       <p>

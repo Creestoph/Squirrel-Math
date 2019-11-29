@@ -58,8 +58,8 @@
                 this.roperand = rop;
             },
             reset(){
-            this.loperand = this.default_loperand;
-            this.roperand = this.default_roperand;
+              this.loperand = this.defaultLoperand;
+              this.roperand = this.defaultRoperand;
             }
         }
     }

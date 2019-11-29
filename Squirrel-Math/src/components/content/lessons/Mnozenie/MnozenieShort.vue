@@ -45,7 +45,7 @@
         </p>
 
         <br>
-        <operation-table :default_loperand="6" :default_roperand="8" 
+        <operation-table :defaultLoperand="6" :defaultRoperand="8" 
         :f="function(a,b){return a*b}" :print="function(a,b,c){return a + ' · ' + b + ' = ' + c}"></operation-table>
 
         <p>

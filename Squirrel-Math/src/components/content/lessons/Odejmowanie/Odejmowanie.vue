@@ -1,5 +1,6 @@
 <template>
   <lesson routeShortVersion="/odejmowanie-short" routeLongVersion="/odejmowanie">
+
     <lesson-title>Odejmowanie</lesson-title>
 
     <lesson-intro>   
@@ -9,6 +10,7 @@
 		Skoro już umiesz dodawać, jesteś w stanie ocenić słuszność jego śmiałej teorii.">Sidney Polak: „Popatrz jak wszystko szybko się zmienia, 
 		coś jest, a później tego nie ma”.</comment>
 	</p>
+
     </lesson-intro>   
 	<lesson-chapter><template #title>Baba z wozu, koniom lżej</template>
     <p class = "type">
@@ -277,7 +279,7 @@
 		skorzystać z tabliczki dodawania:
     </p>
 
-    <operation-table :default_loperand="3" :default_roperand="4"  :f="function(a,b){return a+b}" :print="function(a,b,c){return c + ' - ' + a + ' = ' + b}"></operation-table>
+    <operation-table :defaultLoperand="3" :defaultRoperand="4"  :f="function(a,b){return a+b}" :print="function(a,b,c){return c + ' - ' + a + ' = ' + b}"></operation-table>
 
     <p>
         Patrzymy na kolumnę zatytułowaną jako „$3$”. Jedziemy wzrokiem wzdłuż niej, aż napotkamy interesujący nas wynik - $7$. 

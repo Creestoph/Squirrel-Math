@@ -52,7 +52,7 @@
             Spójrz na kolumnę zatytułowaną "$8$" i wiersz zatytułowany "$9$", a w odpowiedniej kratce odnajdziesz wynik $17$. 
         </p>
 
-        <operation-table :default_loperand="8" :default_roperand="9" :f="function(a,b){return a+b}" :print="function(a,b,c){return a + ' + ' + b + ' = ' + c}"></operation-table>
+        <operation-table :defaultLoperand="8" :defaultRoperand="9" :f="function(a,b){return a+b}" :print="function(a,b,c){return a + ' + ' + b + ' = ' + c}"></operation-table>
 
         <p>
             Liczby dwucyfrowe lub większe wygodnie dodaje się <i>w słupku</i>. Wpisz poniżej liczby do dodania, np. $13264 + 752$, aby poznać 

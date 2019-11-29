@@ -1,7 +1,12 @@
 [
     {
-        "title": "Liczba",
+        "title": "Wprowadzenie",
         "requires": [],
+        "url": "/wprowadzenie"
+    },
+    {
+        "title": "Liczba",
+        "requires": ["Wprowadzenie"],
         "field": "Arytmetyka",
         "level": "Przedszkole",
         "url": "/liczba"

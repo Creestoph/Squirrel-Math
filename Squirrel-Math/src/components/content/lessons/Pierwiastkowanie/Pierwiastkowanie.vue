@@ -127,7 +127,7 @@
 			sześciennym</i>. Co więcej, ponieważ pierwiastki kwadratowe spotyka się w matematyce najczęściej, zwyczajowo pomija się dwójkę do 
 			oznaczania pierwiastka drugiego stopnia. Zapisy: $\sqrt[2]{25}=5$ oraz $\sqrt{25}=5$ oznaczają 
 			dokładnie to samo. Zazwyczaj kiedy mówimy po 
-			prostu „pierwiastek z $4$” mamy na myśli właśnie pierwiastek kwadratowy.
+			prostu „pierwiastek z $4$”, mamy na myśli właśnie pierwiastek kwadratowy.
 		</p>
 			
 		<p>
@@ -444,7 +444,7 @@
 		</p>
 
 		<p>
-			Wiemy już że dowolna liczba podniesiona do potęgi zerowej daje $1$:
+			Wiemy już, że dowolna liczba podniesiona do potęgi zerowej daje $1$:
 		</p>
 		
 		$$
@@ -669,7 +669,7 @@
 				Co więcej, własności te działają także dla wykładników rzeczywistych. Ucinając w pewnym miejscu rozwinięcie dziesiętne, można 
 				przybliżyć liczbę rzeczywistą (z dowolną dokładnością) do liczby wymiernej, a dla liczb wymiernych nasze własności już działają. 
 				Intuicyjnie możemy sobie wyobrazić, że przybliżając liczbę rzeczywistą coraz dokładniej, coraz bardziej zbliżamy się do jej 
-				rzeczywistej wartości, cały czas zachowując własności potęgowania. W końcu dotrzemy do „nieskończonej” precyzji i okaże się, wykładniki 
+				rzeczywistej wartości, cały czas zachowując własności potęgowania. W końcu dotrzemy do „nieskończonej” precyzji i okaże się, że wykładniki 
 				niewymierne także zachowują powyższe własności.
 			</p>
 

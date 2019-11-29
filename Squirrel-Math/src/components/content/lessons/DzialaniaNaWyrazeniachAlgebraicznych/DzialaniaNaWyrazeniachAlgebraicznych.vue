@@ -25,7 +25,7 @@
 			<li>$a \cdot 3 \cdot a \cdot 5 \cdot b \cdot a \cdot b \cdot a^3 \cdot (-2) \cdot b^2=-30a^6 b^4$</li>
 			<li>$\frac{c}{3} \cdot \frac{b^2}{2} \cdot d \cdot a^3 \cdot 6=a^3 b^2 cd$</li>
 			<li>$bogdan \cdot ma \cdot 2 \cdot jajca=2a^4 bcdgj^2 mno $</li>
-			<li>$masło=słoma=ałmos$</li>
+			<li>$dodawanie=oddawanie=a^2d^2einow$</li>
 		</ul>
 		
 		<p>

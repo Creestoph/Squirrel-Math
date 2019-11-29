@@ -43,14 +43,16 @@ export default {
   methods: {
     hideLesson() {
       if (!this.lessonHidden) {
-        this.$refs.lesson.style.transform = "translateX(-92%)";
+        //this.$refs.lesson.style.transform = "translateX(-92%)";
+        this.$refs.lesson.style.left = '-80%';
         this.lessonHidden = true;
         setTimeout(() => this.$refs.expandButton.innerHTML = ">", 1000);
       }
     },
     expandLesson() {
       if (this.lessonHidden) {
-        this.$refs.lesson.style.transform = "translateX(0)";
+        //this.$refs.lesson.style.transform = "translateX(0)";
+        this.$refs.lesson.style.left = '0';
         this.lessonHidden = false;
         setTimeout(() => this.$refs.expandButton.innerHTML = "<", 1000);
       }
@@ -104,19 +106,21 @@ export default {
   color: #000000;
   background: #fefefe;
   clear: both;
-  transform: translateX(-92%);
-  transition: transform 1s;
-}
-
-@media screen and (max-width: 1200px) {
-  .lesson-content {
-      padding: 35px calc(6% + 25px) 35px calc(6% + 25px);
-  }
+  left: -80%;
+  transition: left 1s;
+  /* transform: translateX(-92%); */
+  /* transition: transform 1s; */
 }
 
 @media screen and (max-width: 500px) {
   .lesson-content {
     padding: 100px 25px 35px 25px;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .lesson-content {
+      padding: 35px calc(6% + 25px) 35px calc(6% + 25px);
   }
 }
 
@@ -130,6 +134,9 @@ export default {
 
   .lesson-content {
     padding: 35px calc(7% + 25px) 35px calc(23% + 25px);
+    margin: auto;
+    max-width: 970px;
+    min-height: 899px;
   }
 }
 

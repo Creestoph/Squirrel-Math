@@ -546,7 +546,7 @@
 
     <br>
       
-	<operation-table :default_loperand="8" :default_roperand="9" 
+	<operation-table :defaultLoperand="8" :defaultRoperand="9" 
     :f="function(a,b){return a*b}" :print="function(a,b,c){return a > 0 ? c + ' : ' + a + ' = ' + b : '0 : 0 nie ma wartości'}"></operation-table>
 
     <p>
