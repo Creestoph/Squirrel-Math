@@ -103,7 +103,7 @@
         potrafili rozwikłać. Brzmiała ona:
         "Tu jest grobowiec, w którym złożono prochy Diofantosa. Przez jedną szóstą jego życia Bóg obdarzył go młodością, przez dalszą, dwunastą część życia jego policzki były 
         pokryte brodą. Po siódmej dalszej części życia doświadczył szczęścia małżeńskiego, w którego piątym roku został ojcem syna. Nieszczęśliwie syn żył tylko połowę lat 
-        ojca, który pozostał w smutku przez cztery ostatnie lata swego życia. Przechodniu, oblicz długość jego życia!""<br><br> 
+        ojca, który pozostał w smutku przez cztery ostatnie lata swego życia. Przechodniu, oblicz długość jego życia!"<br><br> 
 
         Oznaczmy przez $x$ szukaną długość życia. Na $x$ lat życia Diofantosa składają się: $\frac{1}{6}x$ (młodość), $\frac{1}{12}x$ (okres brody), $\frac{1}{7}x$ 
         (okres przedmałżeński),
@@ -197,7 +197,7 @@
         <li>
             Czas potrzebny na wykonanie jakiegoś zadania jest odwrotnie proporcjonalny do liczby osób, która się nim zajmuje. Spodziewamy się, że 
             gdy zatrudnimy trzy razy więcej pracowników, ukończą to zadanie trzykrotnie szybciej. <comment text="Na przykład w informatyce czas wykonywania 
-            zadania jest wprost proporcjonalny do liczby zajmujących się nim osób">Chociaż z drugiej strony, gdzie kucharek sześć, tam nie 
+            zadania jest WPROST proporcjonalny do liczby zajmujących się nim osób">Chociaż z drugiej strony, gdzie kucharek sześć, tam nie 
             ma co jeść.</comment>
         </li>
         <li>
@@ -465,7 +465,7 @@
 
 	</lesson-chapter>
 
-	<lesson-chapter><template #title>Równania i nierówności z wartością bezwzględną</template>
+	<lesson-chapter id="equations-with-absolute-value"><template #title>Równania i nierówności z wartością bezwzględną</template>
     <p class = "type">
 		Warsztat
 	</p>

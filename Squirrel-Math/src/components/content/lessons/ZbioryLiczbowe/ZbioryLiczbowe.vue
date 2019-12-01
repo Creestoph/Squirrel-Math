@@ -140,9 +140,12 @@
     <p> 
         Istnieją pewne ograniczenia co do tego, jakie zbiory nieskończone można stworzyć, a jakich nie można. Na przykład matematyka nie pozwala na stworzenie 
         "zbioru wszystkich czerwonych rzeczy" albo po prostu "zbioru wszystkich rzeczy". Wynika to z tego, że nie istnieje coś takiego, jak "zbiór wszystkich możliwych zbiorów" (a więc także zbiór wszystkich "czerwonych"
-        zbiorów). Wiąże się to z ciekawą sprzecznością nazywaną <i>paradoksem Russela</i>. Wyobraźmy sobie próbę stworzenia zbioru $X$, który składałby się ze wszystkich 
-        zbiorów, które się nie zawierają.
+        zbiorów). Wiąże się to z ciekawą sprzecznością nazywaną <i>paradoksem Russela</i>. Wyobraźmy sobie próbę stworzenia następującego zbioru $X$: 
     </p>
+
+    $$
+        \text{Zbiór } X \text{ składa się ze wszystkich zbiorów, które się nie posiadają wśród elementów samego siebie}
+    $$
 
     <ul>
         <li>Zbiór $A = \{1, 2, A\}$ posiada jako jeden z elementów samego siebie. Wobec tego nie dorzucamy go do naszego worka o nazwie $X$.</li>
@@ -150,10 +153,10 @@
     </ul>
 
     <p>
-        Przypuśćmy, że udałoby nam się stworzyć pokaźną kolekcję $X$ "wszystkich zbiorów, które się nie zawierają". Pytanie brzmi: czy zbiór $X$ zawiera samego siebie?
+        Przypuśćmy, że udałoby nam się stworzyć pokaźną kolekcję $X$ "wszystkich zbiorów, które nie posiadają samego siebie". Pytanie brzmi: czy zbiór $X$ posiada samego siebie?
         Jeśli tak, to nie spełnia powyższego warunku. Jeśli nie, to go spełnia, więc powinien się znaleźć w kolekcji $X$. Z powodu wystąpienia tej niedogodności
-        nie wolno w ogóle dopuszczać myśli, że istnieje coś takiego, jak "zbiór wszystkich zbiorów, które się nie zawierają". A nawet w ogóle: nie dopuszcza się czegoś takiego, 
-        jak "zbiór wszystkich zbiorów" jak również nie dopuszcza się "zbiorów, które się zawierają".
+        nie wolno w ogóle dopuszczać myśli, że istnieje coś takiego, jak "zbiór wszystkich zbiorów, które się nie posiadają". A nawet w ogóle: nie dopuszcza się czegoś takiego, 
+        jak "zbiór wszystkich zbiorów" jak również nie dopuszcza się "zbiorów, które się posiadają".
     </p>
 	</lesson-chapter>
 
@@ -269,12 +272,13 @@
         są takie tytuły, jak $\text{Suma wszystkich strachów}$, $\text{Wymierny ogrodnik}$, $\text{Przerwana lekcja matematyki}$, $\text{Wyprowadzona}$, $\text{Dangerous minus}$,
         $\text{Numer 23}$, $\text{Jestem numerem cztery}$, $\text{Nienawistna ósemka}$, $\text{Nine - dziewięć}$, 
         i wiele, wiele innych. Zbiór <b>wszystkich</b> filmów, których nie widział Maciuś, nazywamy <i>dopełnieniem zbioru</i> 
-        filmów, które widział; taki zbiór oznaczamy symbolem $M'$. Jest on bardzo duży, więc pozwolimy sobie nie wypisywać wszystkich jego elementów.
+        filmów, które widział; taki zbiór oznaczamy symbolem $M'$ (stosuje się również oznaczenie $M^c$, mała literka $c$ pochodzi z angielskiego "complement" - dopełnienie). 
+        Jest on bardzo duży, więc pozwolimy sobie nie wypisywać wszystkich jego elementów.
     </p>
 
     <p> 
         Dopełnienie zbioru ma sens tylko wtedy, gdy wiemy, w jakich kategoriach się poruszamy. Dopełnienie zbioru filmów, które widział Maciuś, składa się ze wszystkich 
-        <b>filmów</b> których nie widział - a nie ze wszystkich możliwych zbiorów w ogóle. Moglibyśmy zdefiniować zbiór $\Omega$, który składa się ze wszystkich filmów, jakie 
+        <b>filmów</b> których nie widział - a nie ze wszystkich możliwych rzeczy w ogóle. Moglibyśmy zdefiniować zbiór $\Omega$, który składa się ze wszystkich filmów, jakie 
         wytworzyła ludzkość (wybraliśmy wymowną grecką literę OMEGA, żeby zaznaczyć, jak potężny jest to zbiór). W kontekście naszych rozważań taki zbiór nazywamy 
         <i>uniwersum</i> - jest to zbiór wszystkich możliwych elementów, którymi aktualnie się chcemy zajmować. Dopełnienie zbioru $M$ będą stanowić wszystkie elementy 
         $\Omega$ oprócz tych w $M$, czyli generalnie: $M' = \Omega \setminus M$.
@@ -341,7 +345,7 @@
     <p> 
         Liczby wymierne to ułamki postaci $\frac{p}{q}$ gdzie $p$ i $q$ to liczby całkowite (moglibyśmy zapisać: $p \in \mathbb{Z}$ oraz $q \in \mathbb{Z} \setminus\{0\}$). Liczby wymierne służą do 
         mierzenia (wymierzania) różnych wielkości, na przykład długości. Gdy określimy jakąś jednostkę długości, na przykład jeden centymetr, to długości wymierne 
-        będą stanowiły pewną wielokrotność tej jednostki lub pewna wielokrotność tej długości zrówna się z pewną wielokrotnośćią jednostki (gdy położymy obok siebie 
+        będą stanowiły pewną wielokrotność tej jednostki lub pewna wielokrotność tej długości zrówna się z pewną wielokrotnością jednostki (gdy położymy obok siebie 
         trzy patyczki długości $\frac{10}{3} \text{ cm}$, możemy je zmierzyć dziesięciocentymetrową linijką). Dla liczb wymiernych zarezerowowano literę 
         $\mathbb{Q}$ odpowiadającą angielskiemu Quotient - iloraz (nie należy zwracać uwagi na polskie źródła, w których stosuje się literę $\mathbb{W}$). Gdyby na osi liczbowej 
         zaznaczyć wszystkie punkty odpowiadające liczbom wymiernym, powstałoby bardzo gęste pokrycie kropkami, ale jednak - w niektórych miejscach wciąż byłyby dziury. 

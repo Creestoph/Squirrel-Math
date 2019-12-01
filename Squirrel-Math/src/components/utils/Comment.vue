@@ -24,7 +24,7 @@ export default {
 
 <style scoped lang="scss">
 .comment:hover {
-  background: #eeeeee;
+  background: #e9e9e9;
 }
 .comment-window
 {

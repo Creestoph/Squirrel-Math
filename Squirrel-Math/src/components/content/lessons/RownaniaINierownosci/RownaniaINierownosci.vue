@@ -129,7 +129,7 @@
         Niewiadomą $x$ będziemy traktować jak paczuszkę o nieznanej wadze, a liczby, przy których zmienna się nie pojawia, jak pewną ilość ciężarków jednostkowych. 
         Gdy położymy na jednej szalce wagi $3$ paczki i $3$ ciężarki, a na drugiej szalce $9$ ciężarków, to waga będzie w równowadze.
         <center><img src="./.images/Screenshot_2.png" align="middle"></center>
-        Gdy z obu stron szalki odejmiemy po trzy ciężarki, waga wciąż będzie w równowadze. Rozwiązując równanie, możemy zanotować obok wynonane przekształcenie i przepisać
+        Gdy z obu stron szalki odejmiemy po trzy ciężarki, waga wciąż będzie w równowadze. Rozwiązując równanie, możemy zanotować obok wykonane przekształcenie i przepisać
         równanie w nowej postaci:
 
         $$\begin{align} 3x + 3 &= 9\ \ \ \ \ \ \ \ \color{#888888}{| -3}\\

@@ -43,6 +43,8 @@ import ZbioryLiczbowe from './components/content/lessons/ZbioryLiczbowe/ZbioryLi
 import ZbioryLiczboweShort from './components/content/lessons/ZbioryLiczbowe/ZbioryLiczboweShort'
 import RownaniaINierownosciLiniowe from './components/content/lessons/RownaniaINierownosciLiniowe/RownaniaINierownosciLiniowe'
 import RownaniaINierownosciLinioweShort from './components/content/lessons/RownaniaINierownosciLiniowe/RownaniaINierownosciLinioweShort'
+import RownaniaKwadratowe from './components/content/lessons/RownaniaKwadratowe/RownaniaKwadratowe'
+import RownaniaKwadratoweShort from './components/content/lessons/RownaniaKwadratowe/RownaniaKwadratoweShort'
 
 export const routes = [
   { path: '', component: Home }, 
@@ -71,4 +73,5 @@ export const routes = [
   { path: '/rownania-i-nierownosci', component: RownaniaINierownosci }, { path: '/rownania-i-nierownosci-short', component: RownaniaINierownosciShort },
   { path: '/zbiory-liczbowe', component: ZbioryLiczbowe }, { path: '/zbiory-liczbowe-short', component: ZbioryLiczboweShort },
   { path: '/rownania-i-nierownosci-liniowe', component: RownaniaINierownosciLiniowe }, { path: '/rownania-i-nierownosci-liniowe-short', component: RownaniaINierownosciLinioweShort },
+  { path: '/rownania-kwadratowe', component: RownaniaKwadratowe }, { path: '/rownania-kwadratowe-short', component: RownaniaKwadratoweShort },
 ];

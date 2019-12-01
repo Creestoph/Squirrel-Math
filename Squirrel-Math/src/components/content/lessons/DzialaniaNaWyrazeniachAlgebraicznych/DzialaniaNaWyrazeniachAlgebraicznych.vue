@@ -338,7 +338,7 @@
 		</div>
 		</lesson-chapter>
 
-		<lesson-chapter><template #title>Potęgowanie wyrażeń algebraicznych</template>   
+		<lesson-chapter id="powering-algebraic-sums"><template #title>Potęgowanie wyrażeń algebraicznych</template>   
 		<p class="type">
 			Warsztat
 		</p>
@@ -360,11 +360,13 @@
 			potęgami w wyrażeniach algebraicznych. Dla drugiej potęgi wyróżniono trzy wzory skróconego mnożenia.
 		</p>
 
-		<ul class="formula">
-			<li style="text-align: left">Kwadrat sumy: $(a+b)^2=a^2+2ab+b^2$</li>	
-			<li style="text-align: left">Kwadrat różnicy: $(a-b)^2=a^2-2ab+b^2$</li>
-			<li style="text-align: left">Różnica kwadratów: $(a-b)(a+b)=a^2-b^2$</li>
-		</ul>
+		<div class="formula">
+			<ul>
+				<li style="text-align: left">Kwadrat sumy: $(a+b)^2=a^2+2ab+b^2$</li>	
+				<li style="text-align: left">Kwadrat różnicy: $(a-b)^2=a^2-2ab+b^2$</li>
+				<li style="text-align: left">Różnica kwadratów: $(a-b)(a+b)=a^2-b^2$</li>
+			</ul>
+		</div>
 
 		<p>
 			Na pierwszy rzut oka trudno docenić wkład tych wzorów w nasze życie. Dumna nazwa „wzory skróconego mnożenia” to przecież nic innego niż 

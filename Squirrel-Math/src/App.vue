@@ -233,8 +233,8 @@ a.link:active
 .comment_visible_window
 {
 	position: absolute;
-  background: #FEFEFE;
-  padding: 6px;
+	background: #FEFEFE;
+	padding: 6px;
 	border-right: 1px solid black;
 	border-bottom: 1px solid black;
 	font-family: calibri light;
@@ -251,6 +251,7 @@ a.link:active
 
 .example
 {
+	text-align: justify;
 	background-color: #f6f6f6;
 	border-left: 3px solid #dd3333;
 	box-shadow: 2px 2px 3px 0px rgba(0, 0, 0, 0.4);
@@ -260,7 +261,7 @@ a.link:active
 
 .example:hover
 {
-	background-color: #eeeeee;
+	background-color: #f2f2f2;
 }
 
 @media screen and (max-width: 700px)
