@@ -46,7 +46,8 @@
       "parser": "@typescript-eslint/parser"
     },
     "rules": {
-      "vue/no-unused-components": "warning"
+      "vue/no-unused-components": "warning",
+      "no-console": "warn"
     }
   },
   "postcss": {

@@ -18,21 +18,18 @@
     <button @click="addChapter()">add chapter</button>
   </lesson> -->
   <div>
-    <editor-menu
-      @addChapter="addChapter()"
-      @test="test()"
-    />
-    <lesson-node :data="data" />
+    <editor-menu @addChapter="addChapter()" @test="test()" />
+    <lesson-node :data="node" />
   </div>
 </template>
 
 <script lang="ts">
 import LessonNode from "./editor/LessonNode.vue";
 import EditorMenu from "./editor/menu/EditorMenu.vue";
-import { EventBus } from "@/event-bus.js";
 import Vue from "vue";
 import Component from "vue-class-component";
 import * as data from "./editor/data";
+import {deepCopy} from '@/scripts/deepCopy'
 
 @Component({
   components: {
@@ -41,29 +38,43 @@ import * as data from "./editor/data";
   }
 })
 export default class Editor extends Vue {
-  data!: data.LessonNodeData;
+  focusedId: string|null = null;
+  node!: data.LessonNodeData;
   created() {
-    this.data = new data.LessonNodeData(
+    this.node = new data.LessonNodeData(
       "",
       "",
       new data.LessonTitleNodeData("My title"),
-      new data.LessonIntroNodeData([new data.ParagraphNodeData("Some intro"), new data.ListNodeData(['a','b','c'])]),
+      new data.LessonIntroNodeData([
+        new data.ParagraphNodeData("Some intro"),
+        new data.ListNodeData(["a", "b", "c"])
+      ]),
       [
         new data.LessonChapterNodeData("My chapter", [
           new data.ParagraphNodeData("Some content")
         ])
       ]
-    );
+    )
+  }
+  mounted(){
+    //@ts-ignore
+    this.$eventBus.$on('editor-focus', (id: string) => {this.focusedId = id})
   }
   addChapter() {
-    this.data.chapters.push(
-      new data.LessonChapterNodeData("My chapter", [new data.ParagraphNodeData("Some content")])
-    );
-    this.$forceUpdate();
+    var i = this.node.chapters.findIndex(x => x.id == this.focusedId)
+    i = i < 0 ? i = this.node.chapters.length : i + 1
+    this.node.chapters.splice(i, 0,
+      new data.LessonChapterNodeData("My chapter", [
+        new data.ParagraphNodeData("Some content")
+      ])
+    )
+    this.node = deepCopy(this.node)
+    this.$forceUpdate()
   }
   test() {
-    EventBus.$emit("editor-save");
-    console.log(this.data);
+    //@ts-ignore
+    this.$eventBus.$emit("editor-save");
+    console.log(this.node);
   }
 }
 

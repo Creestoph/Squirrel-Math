@@ -5,7 +5,6 @@
 </template>
 
 <script lang="ts">
-import { EventBus } from "@/event-bus.js"
 import Vue from 'vue'
 import {Prop, Component} from 'vue-property-decorator'
 import * as data from './data'

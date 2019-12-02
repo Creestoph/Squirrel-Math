@@ -6,6 +6,7 @@ import router from '@/router/index'
 import Comment from "@/components/utils/Comment.vue"
 
 Vue.component('Comment', Comment);
+Vue.prototype.$eventBus = new Vue(); // Global event bus
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

@@ -6,7 +6,7 @@
     <lesson-title-node :data="data.title" />
     <lesson-intro-node :data="data.intro" />
     <lesson-chapter-node
-      v-for="chapter in data.chapters"
+      v-for="chapter in chapters"
       :key="chapter.id"
       :data="chapter"
     />
@@ -33,6 +33,10 @@ import * as data from './data'
 export default class LessonNode extends Vue {
   @Prop()
   data!: data.LessonNodeData
+  
+  get chapters() {
+    return this.data.chapters
+  }
 }
 </script>
 

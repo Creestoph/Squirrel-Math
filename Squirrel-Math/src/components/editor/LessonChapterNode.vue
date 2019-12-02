@@ -1,8 +1,7 @@
 <template>
   <lesson-chapter
     :contenteditable="true"
-    @focus.native="data.focused=true"
-    @blur.native="data.focused=false"
+    @focus.native="$eventBus.$emit('editor-focus', data.id)"
   >
     <template v-slot:title>
       {{ data.title }}
