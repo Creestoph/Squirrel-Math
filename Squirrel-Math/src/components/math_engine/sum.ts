@@ -1,6 +1,7 @@
 import { Expression } from './expression';
 import { Integer, instanceOfNumber, Number } from './number';
 import { Product } from './product';
+import { Quotient } from './quotient';
 
 export class Sum implements Expression {
     addends: Expression[] = [];
@@ -39,9 +40,19 @@ export class Sum implements Expression {
         for (let i = 0; i < this.addends.length; i++) {
             if (this.addends[i].equals(new Integer(0)))
                 this.addends.splice(i--, 1);
+            if (this.addends[i] instanceof Quotient) {
+                let a = this.addends.splice(i, 1)[0] as Quotient;
+                return new Quotient(Sum.of(a.numerator, Product.of(a.denominator, ...this.addends)), a.denominator).simplify();
+            }
             for (let j = 0; j < i; j++) {
                 let coefficient_i: Number = new Integer(1), coefficient_j: Number = new Integer(1);
                 let expression_i: Expression = this.addends[i], expression_j: Expression = this.addends[j];
+                if (instanceOfNumber(expression_i) && instanceOfNumber(expression_j)) {
+                    coefficient_i = expression_i;
+                    coefficient_j = expression_j;
+                    expression_i = Integer.one;
+                    expression_j = Integer.one;
+                }
                 if (this.addends[i] instanceof Product && instanceOfNumber((this.addends[i] as Product).factors[0])) {
                     coefficient_i = (this.addends[i] as Product).factors[0] as Number;
                     expression_i = new Product();
@@ -68,6 +79,7 @@ export class Sum implements Expression {
         }
         if (this.addends.length == 1)
             return this.addends[0];
+        this.addends.sort((a, b) => a.inSumBefore(b) ? -1 : 1);
         return this;
     }
 
@@ -77,5 +89,16 @@ export class Sum implements Expression {
 
     precedence(): number {
         return 0;
+    }
+
+    inSumBefore(other: Expression): boolean {
+        if (other instanceof Sum)
+            return other.addends.length < this.addends.length;
+        return false;
+    }
+    inProductBefore(other: Expression): boolean {
+        if (other instanceof Sum)
+            return other.addends.length > this.addends.length;
+        return false;
     }
 }

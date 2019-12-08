@@ -767,8 +767,18 @@
 			$$\frac{1}{\frac{1}{x} + \frac{1}{y}} = \frac{1}{\frac{x}{xy} + \frac{y}{xy}} = \frac{1}{\frac{x + y}{xy}} = 
 			\frac{xy}{x + y}$$
 		</div>
-		
 		</lesson-chapter>
+
+		<lesson-chapter><template #title>Przećwicz to!</template>  
+		<p class="type">
+			Warsztat
+		</p>
+		<p> 
+			Wpisz poniżej swoje ulubione wyrażenie algebraiczne i zobacz, w jaki sposób można je uprościć.
+		</p>
+		<algebraic-calculator></algebraic-calculator>
+		</lesson-chapter>
+
 	</lesson>
 </template>
 
@@ -777,6 +787,7 @@ import LessonTitle from "../../../lesson/LessonTitle";
 import LessonIntro from "../../../lesson/LessonIntro";
 import LessonChapter from "../../../lesson/chapter/LessonChapter";
 import Lesson from "../../../lesson/Lesson";
+import AlgebraicCalculator from "./AlgebraicCalculator";
 
 export default {
 	name: "DzialaniaNaWyrazeniachAlgebraicznych",
@@ -789,7 +800,8 @@ export default {
 		LessonIntro,
 		LessonTitle,
 		LessonChapter,
-		Lesson
+		Lesson,
+		AlgebraicCalculator
 	}
 };
 </script>

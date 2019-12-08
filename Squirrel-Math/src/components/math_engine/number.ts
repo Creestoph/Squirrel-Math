@@ -6,12 +6,25 @@ export abstract class Number implements Expression {
     abstract simplify(): Expression;
     abstract equals(other: Expression): boolean;
     abstract isNegative(): boolean;
-    precedence(): number {
-        return Infinity;
-    }
+
     abstract multiply(n: Number): Number;
     abstract add(n: Number): Number;
     abstract opposite(): Number;
+    abstract lessThan(n: Number): boolean;
+
+    precedence(): number {
+        return Infinity;
+    }
+    inSumBefore(other: Expression): boolean {
+        if (other instanceof Number)
+            return this.lessThan(other);
+        return false;
+    }
+    inProductBefore(other: Expression): boolean {
+        if (other instanceof Number)
+            return this.lessThan(other);
+        return true;
+    }
  }
 
  export function instanceOfNumber(expression: Expression): expression is Number {
@@ -20,7 +33,19 @@ export abstract class Number implements Expression {
 
 export class Integer extends Number {
     int: number = 0;
-    
+    static readonly zero = new Integer(0);
+    static readonly one = new Integer(1);
+
+    /**
+     * @param a  inclusive lower bound
+     * @param b  inclusive upper bound
+     */
+    static random(a: number, b: number): Integer {
+        a = Math.ceil(a);
+        b = Math.floor(b);
+        return new Integer(Math.random()*(b - a + 1) + a);
+    }
+
     constructor(int: number) {
         super();
         this.int = Math.floor(int);
@@ -41,6 +66,16 @@ export class Integer extends Number {
             return this.int == other.float;
         else if (other instanceof Fraction)
             return this.int == other.asDecimal().float;
+        return false;
+    }
+
+    lessThan(other: Number): boolean {
+        if (other instanceof Integer)
+            return this.int < other.int;
+        else if (other instanceof Decimal)
+            return this.int < other.float;
+        else if (other instanceof Fraction)
+            return this.int < other.asDecimal().float;
         return false;
     }
 
@@ -77,6 +112,14 @@ export class Decimal extends Number {
     float: number;
     mantissaLength: number = 0;
 
+    /**
+     * @param a  inclusive lower bound
+     * @param b  exclusive upper bound
+     */
+    static random(a: number, b: number): Decimal {
+        return new Decimal(Math.random()*(b - a) + a);
+    }
+
     constructor(float: number) {
         super();
         this.float = float;
@@ -102,6 +145,16 @@ export class Decimal extends Number {
             return this.float == other.float;
         else if (other instanceof Fraction)
             return this.float == other.asDecimal().float;
+        return false;
+    }
+
+    lessThan(other: Number): boolean {
+        if (other instanceof Integer)
+            return this.float < other.int;
+        else if (other instanceof Decimal)
+            return this.float < other.float;
+        else if (other instanceof Fraction)
+            return this.float < other.asDecimal().float;
         return false;
     }
 
@@ -167,6 +220,16 @@ export class Fraction extends Number {
             return this.asDecimal().float == other.float;
         else if (other instanceof Fraction)
             return this.asDecimal().float == other.asDecimal().float;
+        return false;
+    }
+
+    lessThan(other: Number): boolean {
+        if (other instanceof Integer)
+            return this.asDecimal().float < other.int;
+        else if (other instanceof Decimal)
+            return this.asDecimal().float < other.float;
+        else if (other instanceof Fraction)
+            return this.asDecimal().float < other.asDecimal().float;
         return false;
     }
 

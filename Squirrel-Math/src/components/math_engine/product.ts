@@ -2,6 +2,7 @@ import { Expression } from './expression';
 import { instanceOfNumber, Integer, Number } from './number';
 import { Sum } from './sum';
 import { Power } from './power';
+import { Quotient } from './quotient';
 
 export class Product implements Expression {
     factors: Expression[] = [];
@@ -16,9 +17,9 @@ export class Product implements Expression {
         let result = "";
         this.factors.forEach((f, i) => {
             let withBrackets = f.precedence() < this.precedence() || (i > 0 && f.isNegative());
-            if (i > 0 && !withBrackets && instanceOfNumber(f))
+            if (i > 0 && !withBrackets && (instanceOfNumber(f) || f instanceof Quotient))
                 result += " \\cdot ";
-            if (i == 0 && this.factors.length > 1 && f.equals(new Integer(-1)))
+            if (i == 0 && this.factors.length > 1 && f.equals(new Integer(-1)) && !(!this.factors[1].isNegative() && instanceOfNumber(this.factors[1])))
                 result += "-";
             else if (withBrackets)
                 result += "\\left(" + f.toMathJax() + "\\right)";
@@ -36,7 +37,12 @@ export class Product implements Expression {
         let own = this.simplify();
         other = other.simplify();
         if (own instanceof Product && other instanceof Product) {
-            return false;
+            if (own.factors.length != other.factors.length)
+                return false;
+            for (let i = 0; i < own.factors.length; i++)
+                if (!own.factors[i].equals(other.factors[i]))
+                    return false;
+            return true;
         }
         if (!(own instanceof Product) && !(other instanceof Product)) {
             return own.equals(other);
@@ -70,6 +76,11 @@ export class Product implements Expression {
             //zero
             if (this.factors[i].equals(new Integer(0)))
                 return new Integer(0);
+            //fractions
+            if (this.factors[i] instanceof Quotient) {
+                let f = this.factors.splice(i, 1)[0] as Quotient;
+                return new Quotient(Product.of(f.numerator, ...this.factors), f.denominator).simplify();
+            }
             //merging numbers
             if (i > 0 && instanceOfNumber(this.factors[i])) {
                 let f = this.factors.splice(i--, 1)[0];
@@ -102,10 +113,35 @@ export class Product implements Expression {
         
         if (this.factors.length == 1)
             return this.factors[0];
+        this.factors.sort((a, b) => a.inProductBefore(b) ? -1 : 1);
         return this;
     }
 
     precedence(): number {
         return 1;
+    }
+
+    inSumBefore(other: Expression): boolean {
+        if (other instanceof Sum)
+            false;
+        if (other instanceof Power)
+            return this.factors.length > 0 && this.factors[0].inSumBefore(other);
+        if (other instanceof Product) {
+            let i = (this.factors.length > 0 && instanceOfNumber(this.factors[0]) ? 1 : 0);
+            let j = (other.factors.length > 0 && instanceOfNumber(other.factors[0]) ? 1 : 0);
+            for (; i < this.factors.length && j < other.factors.length; i++, j++) {
+                if (other.factors[i].inSumBefore(this.factors[i]))
+                    return false;
+                if (this.factors[i].inSumBefore(other.factors[i]))
+                    return true;
+            }
+            return other.factors.length - j < this.factors.length - i;
+        }
+        return false;
+    }
+    inProductBefore(other: Expression): boolean {
+        if (other instanceof Product)
+            return other.factors.length < this.factors.length;
+        return true;
     }
 }

@@ -1,4 +1,6 @@
 import { Expression } from './expression';
+import { Number } from './number';
+import { Power } from './power';
 
 export class Variable implements Expression {
     name: string = "";
@@ -29,5 +31,31 @@ export class Variable implements Expression {
 
     precedence(): number {
         return Infinity;
+    }
+
+    inSumBefore(other: Expression): boolean {
+        if (other instanceof Number)
+            return true;
+        if (other instanceof Variable)
+            return this.inProductBefore(other);
+        return false;
+    }
+    inProductBefore(other: Expression): boolean {
+        if (other instanceof Variable) {
+            if (this.name == other.name) {
+                if (!other.index && this.index)
+                    return true;
+                if (other.index && !this.index)
+                    return false;
+                if (this.index && other.index)
+                    return this.index < other.index;
+                return false;
+            }
+            return this.name < other.name;
+        }  
+        if (other instanceof Power) {
+            return this.inProductBefore(other.base);
+        }
+        return false;
     }
 }

@@ -73,15 +73,15 @@ export default class SimpleQuadraticEquationsTraining extends Vue {
     }
 
     next() {
-        this.correctX1.numerator.int = (Math.random() > 0.6 ? 1 : -1)*Math.floor(Math.random()*10);
-        if (this.correctX1.numerator.int == 0 || Math.random() < 0.8)
-            this.correctX1.denominator.int = 1;
+        this.correctX1.numerator = Integer.random(0, 9).multiply(new Integer(Math.random() > 0.6 ? 1 : -1)) as Integer;
+        if (this.correctX1.numerator.equals(Integer.zero) || Math.random() < 0.8)
+            this.correctX1.denominator = Integer.one;
         else
             do {
-                this.correctX1.denominator.int = 1 + Math.floor(Math.random()*4);
+                this.correctX1.denominator = Integer.random(1, 4);
             } while (AlgebraicAlgorithms.gcd(this.correctX1.numerator.int, this.correctX1.denominator.int) > 1);
-        this.correctX2.numerator.int = (Math.random() > 0.6 ? 1 : -1)*Math.floor(Math.random()*10);
-        this.correctX2.denominator.int = 1;
+        this.correctX2.numerator = Integer.random(0, 9).multiply(new Integer(Math.random() > 0.6 ? 1 : -1)) as Integer;
+        this.correctX2.denominator = Integer.one;
 
         let equationPolynomial = Product.of(Polynomial.withCoefficients([this.correctX1.numerator.opposite(), this.correctX1.denominator], this.varX), 
             Polynomial.withCoefficients([this.correctX2.numerator.opposite(), this.correctX2.denominator], this.varX)).simplify();
