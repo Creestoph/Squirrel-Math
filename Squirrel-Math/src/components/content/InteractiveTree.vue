@@ -95,7 +95,8 @@ export default {
       const component = this;
       const canvas = this.$refs.canvas
       this.mypaper.tool = new paper.Tool();
-      
+      const redColor = '#dd3333';
+
       this.mypaper.view.onResize = function(event) {
         component.centerGraph();
         component.displayLessons();
@@ -118,12 +119,12 @@ export default {
           canvas.style.cursor = "pointer";
           if (!component.hoveredObject) {
             component.hoveredObject = hitResult.item;
-            component.hoveredObject.style.fillColor = '#dd3333';
+            component.hoveredObject.style.fillColor = redColor;
             let lessonName = hitResult.item.content;
             component.displayLesson = component.lessons[lessonName];
             for (let req of component.lessons[lessonName].requires)
             {
-              component.edges[lessonName][req].style.strokeColor = '#dd3333';
+              component.edges[lessonName][req].style.strokeColor = redColor;
               component.edges[lessonName][req].bringToFront();
             }
           }
@@ -305,12 +306,14 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+@import "@/style/global";
+
 canvas[resize] {
   width: 100%;
   height: 100%;
   position: fixed;
-  background: #eeeeee;
+  background: $light-gray;
 }
 
 #tree-container {
@@ -329,7 +332,7 @@ canvas[resize] {
   padding-bottom: 0px;
   background: none;
   font-size: 0.8em;
-  color: #777777;
+  color: $half-gray;
 }
 
 #tree-tools button:hover{

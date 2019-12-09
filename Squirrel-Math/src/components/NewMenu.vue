@@ -85,6 +85,7 @@
 </script>
 
 <style scoped lang="scss">
+  @import "@/style/global";
   $transition-length: 0.7s;
 
   .menu-trapeze 
@@ -94,7 +95,7 @@
     left: -130px;
     border-bottom: 7px solid black; 
     border-right: 9.9px solid black; 
-    background: #FEFEFE; 
+    background: white; 
     transform: skew(-45deg);
     width: 450px;
     height: 120px;
@@ -127,7 +128,7 @@
 
   .menu
   {
-    color: #000000; 
+    color: black; 
     margin: 0; 
     padding: 10px 0 10px 100px;
     position: fixed;
@@ -163,7 +164,7 @@
     font-size: 1.5em;
     padding: -50px 0 0 400px;
     display: inline-block;
-    color: #cc0000;
+    color: $logo-red;
   }
 
   .menu .logo-text-2
@@ -200,7 +201,7 @@
   {
     height: 40%;
     width: 40%;
-    background: #cc0000;
+    background: $logo-red;
     border: none;
     margin: 10% 10% 0 0;
   }

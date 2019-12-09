@@ -1,27 +1,24 @@
 <template>
-  <div 
-    class="chapter_mask" 
-    ref="chapter_mask"
-  >
-    <div 
-      class="chapter_body" 
-      ref="chapter_body"
-    >
+  <div class="chapter-mask" ref="chapterMask">
+    <div class="chapter-body" ref="chapterBody">
       <slot />
     </div>
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import $ from "jquery";
+import { Component, Prop } from 'vue-property-decorator';
+import Vue from 'vue';
 
-let animate = true;
-export default {
-  name: "ChapterBody",
-  props: ["trigger"],
+@Component
+export default class ChapterBody extends Vue {  
+  animate: boolean = true;
+  maskHeight: number = 0;
+  zipped: boolean = false;
+
   mounted() {
-    const obj = this;
-    $("[class *= optional]").click(event => {
+    $("[class *= optional]").click((event: any) => {
       if ($(event.target).hasClass("optional-show")) {
         $($(event.target).nextAll("div")[0]).slideUp(1000, () => {
           $(event.target).removeClass("optional-show");
@@ -38,54 +35,36 @@ export default {
     $(".optional-hide").each(function() {
       $($(this).nextAll("div")[0]).slideUp(0);
     });
-    this.trigger.call = function() {
-      if (animate == 1) {
-        var dmask = $(obj.$refs.chapter_mask);
-        var d = $(obj.$refs.chapter_body);
-        var classList = dmask.attr("class").split(" ");
-
-        animate = 0;
-        if (d.hasClass("hidden")) {
-          d.addClass("not_hidden");
-          d.removeClass("hidden");
-
-          for (var i = 0; i < classList.length; i++) {
-            if (classList[i].includes("height"))
-              var dh1 = parseInt(classList[i].replace("height", ""));
-          }
-          d.animate({ top: 0 }, 1100, "swing", function() {
-            animate = 1;
-          });
-          dmask.animate({ height: "+=" + dh1 }, 1100, "swing", function() {
-            animate = 1;
-            dmask.css("overflow", "visible");
-          });
-        } else {
-          d.addClass("hidden");
-          d.removeClass("not_hidden");
-          var toadd = true;
-          for (var i1 = 0; i1 < classList.length; i1++) {
-            if (classList[i1].includes("height")) toadd = false;
-          }
-          if (toadd) dmask.addClass("height" + dmask.height());
-
-          var dh2 = -dmask.height();
-          d.animate({ top: "+=" + dh }, 1100, "swing", function() {
-            animate = 1;
-          });
-          dmask.animate({ height: "+=" + dh2 }, 1100, "swing", function() {
-            animate = 1;
-            dmask.css("overflow", "hidden");
-          });
-        }
-      }
-    };
   }
-};
+  
+  toggleZip() {
+    const component = this;
+
+    if (this.animate) {
+      this.animate = false;
+
+      let mask: any = $(this.$refs.chapterMask);
+      let body: any = $(this.$refs.chapterBody);
+      if (this.zipped) {
+        body.animate({ top: 0 }, 1100, "swing", () => component.animate = true );
+        mask.animate({ height: "+=" + component.maskHeight }, 1100, "swing", () => {
+          mask.css("overflow", "visible");
+          mask.css("height", "");
+        });
+      } 
+      else {
+        this.maskHeight = mask.height();
+        body.animate({ top: "+=" + (-component.maskHeight) }, 1100, "swing", () => component.animate = true);
+        mask.animate({ height: "+=" + (-component.maskHeight) }, 1100, "swing", () => mask.css("overflow", "hidden"));
+      }
+      this.zipped = !this.zipped;
+    }
+  }
+}
 </script>
 
 <style scoped>
-.chapter_body {
+.chapter-body {
   position: relative;
   border: 0px solid black;
   margin-bottom: 0px;
@@ -94,11 +73,11 @@ export default {
   box-shadow: inset 0 0 0 0 rgba(0, 0, 0, 0.3);
 }
 
-.chapter_body > *:first-child {
+.chapter-body > *:first-child {
   margin-top: 0;
 }
 
-.chapter_mask {
+.chapter-mask {
   position: relative;
   border: 0px solid black;
   margin: 0;

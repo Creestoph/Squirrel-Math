@@ -5,24 +5,25 @@
   </span>
 </template>
 
-<script>
-import Tooltip from "./Tooltip"
+<script lang="ts">
+import Tooltip from "@/components/utils/Tooltip.vue"
+import { Prop, Component } from "vue-property-decorator";
+import Vue from "vue";
 
-export default {
-  name: "Comment",
-  props: ["text"],
-  data() {
-    return {
-      popup: false,
-    };
-  },
+@Component({
   components: {
     Tooltip
   }
-};
+})
+export default class Comment extends Vue {
+  popup: boolean = false;
+  @Prop() text!: string;
+}
 </script>
 
 <style scoped lang="scss">
+@import "@/style/global";
+
 .comment:hover {
   background: #e9e9e9;
 }

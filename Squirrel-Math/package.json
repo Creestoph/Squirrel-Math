@@ -9,6 +9,7 @@
     "lint-nofix-quiet": "vue-cli-service lint --no-fix --quiet"
   },
   "dependencies": {
+    "@types/jquery": "^3.3.31",
     "bootstrap-vue": "^2.0.4",
     "core-js": "^3.3.2",
     "jquery": "^3.4.1",

@@ -1,9 +1,9 @@
 <template>
   <div class="chapter">
-    <chapter-title @click.native="trigger.call()">
+    <chapter-title @click.native="bodyZip()">
       <slot name="title" />
     </chapter-title>
-    <chapter-body :trigger="trigger">
+    <chapter-body ref="body">
       <slot />
     </chapter-body>
   </div>
@@ -19,10 +19,10 @@ export default {
     ChapterTitle,
     ChapterBody
   },
-  data() {
-    return {
-      trigger: { call: function() {} }
-    };
+  methods: {
+    bodyZip() {
+      this.$refs.body.toggleZip();
+    }
   }
 };
 </script>

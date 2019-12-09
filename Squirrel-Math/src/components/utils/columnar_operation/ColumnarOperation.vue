@@ -7,20 +7,14 @@
         name="numberInput"
         type="text"
         ref="columnar_operation_input"
-      >
+      />
     </p>
     <p style="text-align: center">
-      <button
-        style="float: center;"
-        @click="ColumnarOperationStartArgs()"
-      >
+      <button style="float: center;" @click="ColumnarOperationStartArgs()">
         Start
       </button>
     </p>
-    <div
-      class="columnar_operation_script center"
-      ref="columnar_operation_area"
-    >
+    <div class="columnar_operation_script center" ref="columnar_operation_area">
       <table>
         <tr>
           <td
@@ -28,54 +22,30 @@
             id="columnar_operation_button_left"
             @click="prev()"
           >
-            <svg
-              height="0"
-              width="30"
-            >
+            <svg height="0" width="30">
               <defs>
                 <linearGradient id="gradient">
-                  <stop
-                    offset="20%"
-                    stop-color="#C33"
-                  />
-                  <stop
-                    offset="90%"
-                    stop-color="#833"
-                  />
+                  <stop offset="20%" stop-color="#C33" />
+                  <stop offset="90%" stop-color="#833" />
                 </linearGradient>
                 <linearGradient id="hover_gradient">
-                  <stop
-                    offset="20%"
-                    stop-color="#A33"
-                  />
-                  <stop
-                    offset="90%"
-                    stop-color="#433"
-                  />
+                  <stop offset="20%" stop-color="#A33" />
+                  <stop offset="90%" stop-color="#433" />
                 </linearGradient>
               </defs>
               <polygon points="20,0 0,30 20,60" />
             </svg>
           </td>
           <td>
-            <div
-              ref="columnar_operation_table"
-              class="no_selection"
-            />
-            <p
-              ref="columnar_operation_comment"
-              class="no_selection"
-            />
+            <div ref="columnar_operation_table" class="no_selection" />
+            <p ref="columnar_operation_comment" class="no_selection" />
           </td>
           <td
             ref="columnar_operation_button_right"
             id="columnar_operation_button_right"
             @click="next()"
           >
-            <svg
-              height="0"
-              width="30"
-            >
+            <svg height="0" width="30">
               <polygon points="0,0 20,30 0,60" />
             </svg>
           </td>
@@ -91,7 +61,7 @@ import { Columnar_subtraction } from "./columnar_subtraction";
 import { Columnar_division } from "./columnar_division";
 import { Columnar_multiplication } from "./columnar_multiplication";
 import { Columnar_operation } from "./columnar_operation";
-import ZeroDivisionError from "./ZeroDivisionError"
+import ZeroDivisionError from "./ZeroDivisionError";
 
 export default {
   name: "ColumnarOperation",

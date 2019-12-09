@@ -20,6 +20,6 @@ import {Display_table} from "./display_table.js"
     }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 
 </style>

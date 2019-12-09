@@ -1,57 +1,47 @@
 <template>
-  <transition
-    name="fade"
-    v-if="visible"
-  >
-    <div
-      class="sm-tooltip"
-      v-if="privVisible"
-      :style="{top: mousePos.y + 'px', left:mousePos.x + 'px'}"
-    >
+  <transition name="fade" v-if="visible">
+    <div class="sm-tooltip" v-if="privVisible" :style="{top: mousePos.y + 'px', left: mousePos.x + 'px'}">
       <slot />
     </div>
   </transition>
 </template>
 
-<script>
-export default {
-  name: "Tooltip",
-  props: ["offset", "timeout", "visible"],
-  data() {
-    return {
-      mousePos: { x: 0, y: 0 },
-      privVisible: false,
-      currentTimeout: null
-    };
-  },
-  methods: {
-    onMouseOver(event) {
-      this.mousePos = {
-        x: Math.floor(event.clientX + this.offset.x),
-        y: Math.floor(event.clientY + this.offset.y)
-      };
+<script lang="ts">
+import Vue from 'vue'
+import { Component, Prop, Watch } from 'vue-property-decorator'
+import Point from '@/components/utils/point'
+
+@Component
+export default class Tooltip extends Vue {
+  mousePos: Point = new Point(0, 0);
+  privVisible: boolean = false;
+  currentTimeout: number = 0;
+  @Prop({default: new Point(0, 0)}) offset!: Point;
+  @Prop({default: 0}) timeout!: number;
+  @Prop({default: false}) visible!: boolean;
+  
+  @Watch('visible')
+  visibleChanged(val: boolean) {
+    if (val)
+      this.currentTimeout = setTimeout(() => this.privVisible = this.visible, this.timeout);
+    else {
+      clearTimeout(this.currentTimeout);
+      this.privVisible = false;
     }
-  },
-  watch: {
-    visible(val){
-      if (val){
-        this.currentTimeout = setTimeout(() => {
-          this.privVisible = this.visible
-        }, this.timeout)
-      }
-      else {
-        clearTimeout(this.currentTimeout)
-        this.privVisible = false
-      }
-    }
-  },
+  }
+
   mounted() {
     window.addEventListener("mousemove", this.onMouseOver);
-  },
+  }
+
   destroyed() {
     window.removeEventListener("mousemove", this.onMouseOver);
   }
-};
+
+  onMouseOver(event: MouseEvent) {
+    this.mousePos = new Point(Math.floor(event.clientX + this.offset.x), Math.floor(event.clientY + this.offset.y));
+  }
+}
 </script>
 
 <style scoped lang="scss">

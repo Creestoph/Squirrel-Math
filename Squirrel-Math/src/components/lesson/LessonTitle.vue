@@ -10,7 +10,7 @@
     }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
   p.lesson_title
   {
     text-align: center;

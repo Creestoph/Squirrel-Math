@@ -76,9 +76,11 @@ export default {
 };
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+@import "@/style/global";
+
 #whole {
-  background-color: #cccccc;
+  background-color: $dark-gray;
   margin: 0;
 }
 
@@ -86,12 +88,12 @@ export default {
   position: absolute;
   width: 70px;
   height: 70px;
-  background: #dd0000;
+  background: $main-red;
   right: -40px;
   top: 300px;
-  border: 5px solid #990000;
+  border: 5px solid $dark-red;
   border-radius: 40px;
-  color: #ffffff;
+  color: white;
   font-size: 3em;
   line-height: 0.5em;
   text-align: center;
@@ -103,8 +105,8 @@ export default {
 .lesson {
   position: relative;
   font-family: "Segoe UI";
-  color: #000000;
-  background: #fefefe;
+  color: black;
+  background: white;
   clear: both;
   left: -80%;
   transition: left 1s;

@@ -279,7 +279,7 @@
 		skorzystać z tabliczki dodawania:
     </p>
 
-    <operation-table :defaultLoperand="3" :defaultRoperand="4"  :f="function(a,b){return a+b}" :print="function(a,b,c){return c + ' - ' + a + ' = ' + b}"></operation-table>
+    <operation-table :defaultLoperand="3" :defaultRoperand="4"  :f="(a,b) => a+b" :print="(a,b,c) => c + ' - ' + a + ' = ' + b"></operation-table>
 
     <p>
         Patrzymy na kolumnę zatytułowaną jako „$3$”. Jedziemy wzrokiem wzdłuż niej, aż napotkamy interesujący nas wynik - $7$. 

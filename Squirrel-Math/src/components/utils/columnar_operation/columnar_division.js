@@ -2,7 +2,6 @@
  * Created by InvincibleWombat on 11.11.2016.
  */
 import { validate_float, validate_int } from "../number_validation"
-import { divide } from "../sm_library"
 import { Display_table } from "../columnar_operation_table/display_table"
 
 function Columnar_division_step(table, highlight_fields, comment) {
@@ -190,7 +189,7 @@ export class Columnar_division {
 
         var highlight_fields;
         this.step = 0;
-        table[0][0] = parseInt(divide(parseInt(table[1][0]), parseInt(numbers[1])));
+        table[0][0] = Math.floor(parseInt(table[1][0]) / parseInt(numbers[1]));
 
         comment = "Analizujemy dzielną od lewej strony. Bierzemy cyfrę " + table[1][0] + " i próbujemy podzielić ją przez " + numbers[1] + ". Liczba " + numbers[1] + " mieści się "
             + table[0][0] + " raz" + (table[0][0] == '1' ? "" : "y") + " w liczbie " + table[1][0] + ", więc nad kreską zapisujemy " + table[0][0] + ".";
@@ -221,7 +220,7 @@ export class Columnar_division {
             table[table.length - 1][i] = numbers[0][fi];
             var x = "";
             for (let j = i; j >= 0 && table[table.length - 1][j] != ""; j--) x = table[table.length - 1][j] + x;
-            table[0][fi] = parseInt(divide(parseInt(x), parseInt(numbers[1])));
+            table[0][fi] = Math.floor(parseInt(x) / parseInt(numbers[1]));
 
 
             comment = "Dopisujemy cyfrę " + numbers[0][fi] + " i próbujemy wykonać dzielenie " + parseInt(x) + " przez " + numbers[1] + ". Liczba " + numbers[1] + " mieści się "
@@ -314,7 +313,7 @@ export class Columnar_division {
                 table[table.length - 1][i] = "0";
                 let x = "";
                 for (let j = i; j >= 0 && table[table.length - 1][j] != ""; j--) x = table[table.length - 1][j] + x;
-                table[0][fi] = parseInt(divide(parseInt(x), parseInt(numbers[1])));
+                table[0][fi] = Math.floor(parseInt(x) / parseInt(numbers[1]));
 
                 comment = "Kolejną cyfrą rozwinięcia dziesiętnego dzielnej jest 0. Dopisujemy więc 0 i próbujemy wykonać dzielenie " + parseInt(x) + " przez " + numbers[1] + ". Liczba " + numbers[1] + " mieści się "
                     + table[0][fi] + " raz" + (table[0][fi] == '1' ? "" : "y") + " w liczbie " + parseInt(x) + ", więc nad kreską zapisujemy " + table[0][fi] + ".";
