@@ -1,14 +1,13 @@
 <template>
   <div>
-    <!-- <app-menu />
-    <router-view /> -->
-    <tip-tap-editor />
+    <app-menu />
+    <router-view />
   </div>
 </template>
 
 <script>
 import Menu from "./components/Menu";
-import TipTapEditor from "@/components/editor/TipTapEditor.vue";
+import TipTapEditor from "@/components/editor/TipTap/TipTapEditor.vue";
 
 export default {
   name: "App",

@@ -1,7 +1,7 @@
 
 import Home from './components/content/Home'
 import HomeShort from './components/content/HomeShort'
-import Editor from './components/Editor'
+import TipTapEditor from './components/editor/TipTap/TipTapEditor.vue'
 import Tree from './components/content/Tree'
 import DrzewoHD from './components/content/DrzewoHD'
 import Wprowadzenie from './components/content/Wprowadzenie'
@@ -47,7 +47,7 @@ import RownaniaINierownosciLinioweShort from './components/content/lessons/Rowna
 export const routes = [
   { path: '', component: Home }, 
   { path: '/home-short', component: HomeShort },
-  { path: '/editor', component: Editor },
+  { path: '/editor', component: TipTapEditor },
   { path: '/tree', component: Tree },
   { path: '/drzewoHD', component: DrzewoHD },
 
