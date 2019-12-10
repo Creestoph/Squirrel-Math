@@ -1,5 +1,5 @@
 import { Sum } from './sum';
-import { Number, Integer } from './number';
+import { Number, Integer } from './numbers';
 import { Variable } from './variable';
 import { Monomial } from './monomial';
 

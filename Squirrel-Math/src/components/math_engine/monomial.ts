@@ -1,6 +1,5 @@
 import { Variable } from './variable';
-import { Expression } from './expression';
-import { Number, Decimal, Integer } from './number';
+import { Number } from './numbers';
 import { Product } from './product';
 import { Power } from './power';
 

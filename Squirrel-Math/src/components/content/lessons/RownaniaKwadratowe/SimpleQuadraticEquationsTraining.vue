@@ -18,8 +18,8 @@ import Vue from 'vue';
 import { Component } from 'vue-property-decorator'
 import { Polynomial } from '@/components/math_engine/polynomial'
 import { Variable } from '../../../math_engine/variable';
-import { Integer, Fraction } from '@/components/math_engine/number';
-import { AlgebraicAlgorithms } from '../../../math_engine/algebraic_algorithms';
+import { Integer, Fraction } from '@/components/math_engine/numbers';
+import { gcd } from '../../../math_engine/algebraic_algorithms';
 import { Product } from '../../../math_engine/product';
 import { Sum } from '../../../math_engine/sum';
 import { Power } from '../../../math_engine/power';
@@ -79,7 +79,7 @@ export default class SimpleQuadraticEquationsTraining extends Vue {
         else
             do {
                 this.correctX1.denominator = Integer.random(1, 4);
-            } while (AlgebraicAlgorithms.gcd(this.correctX1.numerator.int, this.correctX1.denominator.int) > 1);
+            } while (gcd(this.correctX1.numerator.int, this.correctX1.denominator.int) > 1);
         this.correctX2.numerator = Integer.random(0, 9).multiply(new Integer(Math.random() > 0.6 ? 1 : -1)) as Integer;
         this.correctX2.denominator = Integer.one;
 

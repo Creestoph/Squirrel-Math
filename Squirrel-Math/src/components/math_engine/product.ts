@@ -1,5 +1,5 @@
 import { Expression } from './expression';
-import { instanceOfNumber, Integer, Number } from './number';
+import { instanceOfNumber, Integer, Number } from './numbers';
 import { Sum } from './sum';
 import { Power } from './power';
 import { Quotient } from './quotient';
@@ -17,7 +17,7 @@ export class Product implements Expression {
         let result = "";
         this.factors.forEach((f, i) => {
             let withBrackets = f.precedence() < this.precedence() || (i > 0 && f.isNegative());
-            if (i > 0 && !withBrackets && (instanceOfNumber(f) || f instanceof Quotient))
+            if (i > 0 && !withBrackets && (instanceOfNumber(f) || f instanceof Quotient) && !this.factors[i-1].equals(new Integer(-1)))
                 result += " \\cdot ";
             if (i == 0 && this.factors.length > 1 && f.equals(new Integer(-1)) && !(!this.factors[1].isNegative() && instanceOfNumber(this.factors[1])))
                 result += "-";
@@ -51,6 +51,8 @@ export class Product implements Expression {
     } 
 
     simplify(): Expression {
+        if (this.factors.length == 0)
+            return Integer.one;
         this.factors.forEach((f, i) => this.factors[i] = f.simplify());
         //product of products
         for (let i = 0; i < this.factors.length; i++) {

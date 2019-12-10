@@ -1,4 +1,4 @@
-import { Integer, instanceOfNumber } from './number';
+import { Integer, instanceOfNumber, Decimal } from './numbers';
 import { Sum } from './sum';
 import { Variable } from './variable';
 import { Product } from './product';
@@ -20,6 +20,8 @@ export interface Expression {
     let result: Sum = new Sum();
     let addend: Expression | null = null;
     let position = 0;
+    let lastToken: Expression | null = null;
+    let rememberedMinus: boolean = false;
 
     let nextToken = function(): Expression {
         let char = text[position];
@@ -42,6 +44,13 @@ export interface Expression {
             let number = "";
             while (text[position] >= '0' && text[position] <= '9')
                 number += text[position++];
+            if (text[position] == '.' || text[position] == ',') {
+                number += '.';
+                position++;
+                while (text[position] >= '0' && text[position] <= '9')
+                    number += text[position++];
+                return new Decimal(parseFloat(number));
+            }
             return new Integer(parseInt(number));
         }
         else {
@@ -50,27 +59,38 @@ export interface Expression {
         }
     }
 
+    let injectToken = function(){
+        if (lastToken) {
+            if (rememberedMinus) {
+                if (instanceOfNumber(lastToken))
+                    lastToken = lastToken.multiply(new Integer(-1));
+                else 
+                    lastToken = Product.of(new Integer(-1), lastToken);
+                rememberedMinus = false;
+            }
+            if (!addend)
+                addend = lastToken;
+            else if (addend instanceof Product)
+                addend.factors.push(lastToken)
+            else 
+                addend = Product.of(addend, lastToken);
+        }
+    }
+
     while (position < text.length) {
         let char = text[position];
-        if (char == '+') {
+        if (char == '+' || char == '-') {
+            injectToken();
             if (addend)
                 result.addends.push(addend);
+            lastToken = null;
             addend = null;
             position++;
-        }
-        else if (char == '-') {
-            if (addend)
-                result.addends.push(addend);
-            position++;
-            let next = nextToken();
-            if (instanceOfNumber(next))
-                addend = next.multiply(new Integer(-1));
-            else
-                addend = Product.of(new Integer(-1), next);
-            position++;
+            if (char == '-')
+                rememberedMinus = true;
         }
         else if (char == '*') {
-            if (!addend)
+            if (!lastToken)
                 throw "Niepoprawny symbol * " + (position == 0 ? "na początku" : "po " + text.substr(0, position));
             position++;
         }
@@ -78,53 +98,34 @@ export interface Expression {
             position++;
         }
         else if (char == '_') {
-            if (!addend)
-                throw "Niepoprawny symbol _ " + (position == 0 ? "na początku" : "po " + text.substr(0, position));
             position++;
-            let index = "";
-            if (text[position] == '(') {
-                while (text[++position] != ')')
-                    index += text[position];
-                position++;
-            }
+            let index = nextToken().toMathJax();
+            if (!lastToken || !(lastToken instanceof Variable))
+                throw "Niepoprawny symbol _ " + (position == 0 ? "na początku" : "po " + text.substr(0, position));
             else
-                index = text[position];
-            if (addend instanceof Variable)
-                addend.index = index;
-            else if (addend instanceof Product && addend.factors[addend.factors.length - 1] instanceof Variable)
-                (addend.factors[addend.factors.length - 1] as Variable).index = index;
+                lastToken.index = index;
         }
         else if (char == '^') {
-            if (!addend)
+            if (!lastToken)
                 throw "Niepoprawny symbol ^ " + (position == 0 ? "na początku" : "po " + text.substr(0, position));
             position++;
             let exponent = nextToken();
-            if (addend instanceof Product)
-                addend.factors.push(new Power(addend.factors.pop() as Expression, exponent));
-            else
-                addend = new Power(addend, exponent);
+            lastToken = new Power(lastToken, exponent);
         }
         else if (char == '/' || char == ':') {
-            if (!addend)
+            if (!lastToken)
                 throw "Niepoprawny symbol / " + (position == 0 ? "na początku" : "po " + text.substr(0, position));
             position++;
             let denominator = nextToken();
-            if (addend instanceof Product)
-                addend.factors.push(new Quotient(addend.factors.pop() as Expression, denominator));
-            else
-                addend = new Quotient(addend, denominator);
+            lastToken = new Quotient(lastToken, denominator);
         }
         else {
-            let expression = nextToken();
-            if (!addend)
-                addend = expression;
-            else if (addend instanceof Product)
-                addend.factors.push(expression)
-            else 
-                addend = Product.of(addend, expression);
+            injectToken();
+            lastToken = nextToken();
         }
 
     }
+    injectToken();
     if (addend)
         result.addends.push(addend);
     if (result.addends.length == 0)

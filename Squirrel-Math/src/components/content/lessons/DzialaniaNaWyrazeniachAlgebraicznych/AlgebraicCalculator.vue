@@ -10,13 +10,6 @@
 import Vue from 'vue';
 import { Expression, parseExpression } from '../../../math_engine/expression';
 import { Component } from 'vue-property-decorator'
-import { Polynomial } from '@/components/math_engine/polynomial'
-import { Variable } from '../../../math_engine/variable';
-import { Integer, Fraction } from '@/components/math_engine/number';
-import { AlgebraicAlgorithms } from '../../../math_engine/algebraic_algorithms';
-import { Product } from '../../../math_engine/product';
-import { Sum } from '../../../math_engine/sum';
-import { Power } from '../../../math_engine/power';
 declare var MathJax:any
 
 @Component

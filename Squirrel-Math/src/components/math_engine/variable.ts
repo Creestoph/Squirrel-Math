@@ -1,5 +1,5 @@
 import { Expression } from './expression';
-import { Number } from './number';
+import { Number } from './numbers';
 import { Power } from './power';
 
 export class Variable implements Expression {

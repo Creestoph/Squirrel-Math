@@ -1,7 +1,7 @@
 <template>
-  <p class="lesson_title">
+  <div class="lesson_title">
     <slot />
-  </p>
+  </div>
 </template>
 
 <script>
@@ -11,7 +11,7 @@
 </script>
 
 <style scoped lang="scss">
-  p.lesson_title
+  .lesson_title
   {
     text-align: center;
     font-size: 3.2em;

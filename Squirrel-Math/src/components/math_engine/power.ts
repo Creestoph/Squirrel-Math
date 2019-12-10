@@ -1,8 +1,9 @@
 import { Expression } from './expression';
-import { Integer, Number, instanceOfNumber } from './number';
+import { Integer, Number, instanceOfNumber } from './numbers';
 import { Sum } from './sum';
 import { Product } from './product';
 import { Variable } from './variable';
+import { Quotient } from './quotient';
 
 export class Power implements Expression {
     base: Expression;
@@ -13,7 +14,7 @@ export class Power implements Expression {
     }
 
     toMathJax(): string {
-        return (this.base.precedence() <= this.precedence() ? "(" + this.base.toMathJax() + ")" :  "{" + this.base.toMathJax() + "}") + "^{" + this.exponent.toMathJax() + "}";
+        return (this.base.precedence() <= this.precedence() ? "\\left(" + this.base.toMathJax() + "\\right)" :  "{" + this.base.toMathJax() + "}") + "^{" + this.exponent.toMathJax() + "}";
     }
 
     isNegative(): boolean {
@@ -31,7 +32,8 @@ export class Power implements Expression {
             return new Integer(0);
         else if (this.base.equals(new Integer(1)))
             return new Integer(1);
-        
+        if (this.exponent.isNegative())
+            return new Quotient(Integer.one, new Power(this.base, Product.of(new Integer(-1), this.exponent))).simplify();
         if (this.base instanceof Sum && this.exponent instanceof Integer) {
             let result = new Product();
             for (let i = 0; i < this.exponent.int; i++)
@@ -42,8 +44,12 @@ export class Power implements Expression {
     }
 
     equals(other: Expression): boolean {
+        let own = this.simplify();
+        other = other.simplify();
+        if (!(own instanceof Power))
+            return own.equals(other);
         if (other instanceof Power)
-            return this.base.equals(other.base) && this.exponent.equals(other.exponent);
+            return own.base.equals(other.base) && own.exponent.equals(other.exponent);
         return false;
     }
 
