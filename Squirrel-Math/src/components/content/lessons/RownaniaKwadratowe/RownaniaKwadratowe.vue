@@ -159,7 +159,8 @@
             \end{align}
         $$
         <p> 
-            Równanie ma dwa rozwiązania: $x = 4 + \frac{\sqrt{46}}{2}$ oraz $x = 4 - \frac{\sqrt{46}}{2}$. Niestety, nie zawsze rozwiązania równań kwadratowych są wymierne.
+            Równanie ma dwa rozwiązania: $x = 4 + \frac{\sqrt{46}}{2}$ oraz $x = 4 - \frac{\sqrt{46}}{2}$. Niestety, równania kwadratowe dość często dają rozwiązania 
+            niewymierne.
         </p>
     </div>
     <div class="example">
@@ -315,7 +316,7 @@
     <p> 
         Na powyższych przykładach wypracowaliśmy metodę rozwiązywania dowolnych równań kwadratowych zapisanych według schematu:
     </p>
-    $$ax^2 + bx + c = 0, a \neq 0$$
+    $$ax^2 + bx + c = 0,\ \ \ a \neq 0$$
     <p> 
         Wystarczy postępować według kroków:
     </p>
@@ -355,10 +356,10 @@
     </p>
     <ul>
         <li>
-            Jeżeli przy pewnych konkretnych wartościach $a, b, c$ okazuje się, że wyrażenie $b^2 - 4ac$ jest ujemne, to ułamek $\frac{\sqrt{b^2 - 4ac}^2}{(2a)^2}$
+            Jeżeli przy pewnych konkretnych wartościach $a, b, c$ okazuje się, że wyrażenie $b^2 - 4ac$ jest ujemne, to ułamek $\frac{b^2 - 4ac}{(2a)^2}$
             jest w całości ujemny (bo ma dodatni mianownik). W takim razie 
-            w wyjściowym równaniu: $\left(x + \frac{b}{2a}\right)^2 - \frac{b^2 - 4ac}{(2a)^2} = 0$ lewa strona jest kwadratem, 
-            od którego odejmujemy ujemny ułamek, a więc w całości ma na pewno dodatnią wartość. W takim przypadku nie może zachodzić równość z zerem, czyli równanie 
+            w wyjściowym równaniu: $\left(x + \frac{b}{2a}\right)^2 - \frac{b^2 - 4ac}{(2a)^2} = 0$ lewa strona stanowi różnicę, w której odjemną jest kwadrat, 
+            a odjemnikiem ujemny ułamek, a więc cała różnica ma na pewno dodatnią wartość. W takim przypadku nie może zachodzić równość z zerem, czyli równanie 
             nie ma rozwiązań.
         </li>
         <li>
@@ -402,7 +403,7 @@
     </p>
     <p> 
         Gdzieś od połowy tego rozdziału w obliczeniach przewija się trudny do przeoczenia zlepek algebraiczny: $b^2 - 4ac$. Ten charakterystyczny zestaw liter 
-        będzie pojawiał się notorycznie w trakcie naszej znajomoości z równaniami (a w przyszłości także funkcjami) kwadratowymi. Z uwagi na wysoką rozpoznawalność oraz 
+        będzie pojawiał się notorycznie w trakcie naszej znajomości z równaniami (a w przyszłości także funkcjami) kwadratowymi. Z uwagi na wysoką rozpoznawalność oraz 
         nieoczywiste zachowanie pod pierwiastkiem wyrażenie to uzyskało swoją indywidualną nazwę: <i>delta równania kwadratowego</i> oraz zarezerwowano dla niego 
         unikalny symbol $\Delta$. Trójkącik ten jest w istocie czwartą literą alfabetu greckiego o nazwie "delta".
     </p>
@@ -514,14 +515,14 @@
     </p>
 
     <p> 
-        Sprawa jest znacznie prostsza, gdy współczynnik przy $x^2$ jest jedynką, a pozostałe współczynniki są całkowite.
+        Zacznijmy od prostych przypadków, gdy współczynnik przy $x^2$ jest jedynką, a pozostałe współczynniki są całkowite.
     </p>
 
     <div class="example">
         Spójrzmy na równanie 
         $$x^2 - 9x + 20 = 0$$
         Chcemy przedstawić je w postaci iloczynowej - spróbujemy odgadnąć, jakie liczby należy wstawić w miejsce kropek:
-        $$(x - ...)(x - ...) = 0$$
+        $$(x - \ldots)(x - \ldots) = 0$$
         Ze wzorów Viète'a wiemy, że liczba $20$ stanowi iloczyn poszukiwanych liczb, zaś $-9$ to ich suma na minusie (czyli $9$ to ich suma po prostu).
         Problem sprowadza się do odgadnięcia takich dwóch liczb, by ich iloczyn wynosił $20$, a suma $9$. Próbujemy rozłożyć $20$ na czynniki: $2$ i $10$ dają za dużą sumę, 
         ale $4$ i $5$ sumują się właśnie do $9$. A więc po prostu:
@@ -535,51 +536,85 @@
     </div>
     <div class="example">
         $$x^2 + x - 12 = 0$$
-        Suma ma wynosić $-1$, a iloczyn $-12$. Jedna z nich musi być dodatnia, a druga ujemna. Odgadujemy $x = -4$ i $x = 3$.
+        Suma ma wynosić $-1$, a iloczyn $-12$. Jedna z nich musi być dodatnia, a druga ujemna, przy czym ta ujemna musi być większa (co do wartości bezwzględnej).
+        Odgadujemy $x = -4$ i $x = 3$.
         $$(x + 4)(x - 3) = 0$$
     </div>
     <div class="example">
         $$x^2 - 2x - 35 = 0$$
-        Suma: 2, iloczyn: -35. Rozwiązania muszą być przeciwnych znaków, przy czyn tym razem dodatnie musi być większe co do wartości bezwzględnej niż ujemne. Zgadujemy $x = 7$ i $x = -5$.
+        Suma: $2$, iloczyn: $-35$. Rozwiązania muszą być przeciwnych znaków, przy czym tym razem dodatnie musi być większe co do wartości bezwzględnej niż ujemne. Zgadujemy $x = 7$ i $x = -5$.
         $$(x - 7)(x + 5)$$
+    </div>
+    <div class="example">
+        $$x^2 + 9x + 8 = 0$$
+        Suma: $-9$, iloczyn: $8$. Skoro iloczyn ma wyjść dodatni, a suma ujemna, obydwa rozwiązania muszą być ujemne: $x = -8$ i $x = -1$.
+        $$(x + 8)(x + 1)$$
     </div>
 
     <p> 
-        Jeśli współczynnik $a$ przy $x^2$ nie jest równy $1$, proponujemy przekształcić równanie, dzieląc obustronne przez $a$.
+        Jeśli współczynnik $a$ przy $x^2$ nie jest równy $1$, metoda trochę się komplikuje. Przypuśćmy, że rozwiązania równania nie są całkowite, lecz ułamkowe. Oznaczmy 
+        je przez $\frac{n}{m}$ oraz $\frac{p}{q}$. Postać iloczynowa takiego przypadku przedstawia się jako
+    </p>
+
+    $$
+        (mx - n)(qx - p)
+    $$
+
+    <p> 
+        Po rozpisaniu do postaci kanonicznej:
+    </p>
+
+    $$
+        \left(mq\right) x^2 - \left(nq + mp\right) x + np
+    $$
+
+    <p> 
+        Widzimy, że współczynnik stojący przy $x^2$ musi stanowić iloczyn mianowników rozwiązań, wyraz wolny stanowi iloczyn liczników, a środkowy współczynnik $\left(nq + mp\right)$ 
+        stanowi nieoczywisty splot: mianownik pierwszego razy licznik drugiego plus mianownik drugiego razy licznik pierwszego.
     </p>
 
     <div class="example">
         $$
-            2x^2 - 7x + 3 = 0\\
-            x^2 - 3,5x + 1,5 = 0
+            5x^2 - 13x + 6 = 0
         $$
-        Iloczyn ma wynosić $1,5$, zaś suma $3,5$. Przypadki z ułamkami są ciut trudniejsze, lecz dla nas nic nie jest niemożliwe. Iloczyn równy $1,5$ sugeruje, że 
-        jednym z rozwiązań jest ułamek o mianowniku $2$. Istotnie, nasze żądania spełniają $x = \frac{1}{2}$ i $x = 3$. 
-        $$(2x - 1)(x - 3)$$
+        Współczynnik $5$ stanowi iloczyn mianowników rozwiązań. Ponieważ jedynym rozkładem piątki na czynniki jest $\bf 5 \cdot \bf 1$, z pewnością jedno z rozwiązań ma w mianowniku 
+        $\bf{5}$, a drugie ma w mianowniku $\bf{1}$ (czyli jest liczbą całkowitą). Szóstka z kolei sugeruje, że jeden z liczników wynosi $\color{#dd3333}3$, a drugi 
+        $\color{#dd3333}2$. Trzynastka musi powstać 
+        jako $\color{#dd3333} 3$ plus $\color{#dd3333} 2$, przy czym jedna z tych liczb będzie pomnożona przez $\bf 5$, a druga przez $\bf 1$, czyli 
+        $13 = {\bf 1} \cdot \color{#dd3333} 3 + {\bf 5} \cdot \color{#dd3333} 2$. Skoro trójkę mnożymy przez $1$, jedynka ta dotyczy mianownika dwójki. Z kolei mnożenie dwójki 
+        przez $5$ oznacza, że piątka idzie do mianownika trójki. Mamy więc rozwiązania: $x = \frac{\color{#dd3333}{3}}{\bf 5}$ oraz $x = \color{#dd3333} 2$. 
+        $$(5x - 3)(x - 2)$$
     </div>
     <div class="example">
         $$
-            2x^2 - 7x + 3 = 0\\
-            x^2 - 3,5x + 1,5 = 0
+            3x^2 - 17x + 20 = 0
         $$
-        Iloczyn ma wynosić $1,5$, zaś suma $3,5$. Przypadki z ułamkami są ciut trudniejsze, lecz dla nas nic nie jest niemożliwe. Iloczyn równy $1,5$ sugeruje, że 
-        jednym z rozwiązań jest ułamek o mianowniku $2$. Istotnie, nasze żądania spełniają $x = \frac{1}{2}$ i $x = 3$. 
-        $$(2x - 1)(x - 3)$$
+        Iloczyn liczników ma dać $20$, a ich (tak jakby) suma $17$, przy czym w tej sumie jeden z liczników będzie trzeba pomnożyć przez $3$, a drugi przez $1$. Zgadujemy 
+        rozkład $20 = 4 \cdot 5$ i zastanawiamy się, jak przedstawić $17$ jako $\ldots \cdot 4 + \ldots \cdot 5$, tak by w jedno z tych miejsc wylądowało $3$, a w drugie $1$.
+        Dostrzegamy, że $17 = 3 \cdot 4 + 5 \cdot 1$, skąd wniosek, że rozwiązaniami są $x = 4$ oraz $x = \frac{5}{3}$. 
+        $$(3x - 5)(x - 4) = 0$$
     </div>
-    <div class="example">
+     <div class="example">
         $$
-            3x^2 + 7x - 6\\
-            x^2 + 2\frac{1}{3}x - 2
+            6x^2 - x - 35 = 0
         $$
-        Iloczyn $-2$, suma $-2\frac{1}{3}$. Jedna z liczb ujemna, jedna z nich ma mianownik $3$. Skoro iloczyn nie jest ułamkowy, to licznik drugiej musi znieść się 
-        z mianownikiem $3$. A więc $\frac{2}{3}$ i $-3$. 
-        $$(3x - 2)(x + 3) = 0$$
+        Znaki sugerują, że jedno z rozwiązań musi być ujemne, a drugie dodatnie. Rozkładamy $35$ na liczniki $5$ oraz $7$ i próbujemy tak nimi zmanipulować przez czynniki 
+        $2$ i $3$, by ich różnica dała $1$. Dostrzegamy, że $1 = 3 \cdot 5 - 2 \cdot 7$, co daje ułamkowe rozwiązania $x = \frac{5}{2}$ oraz $x = -\frac{7}{3}$ (minus dotyczy 
+        $\frac{7}{3}$, ponieważ w odgadniętej różnicy licznik $7$ jest na minusie).
+        $$(2x - 5)(3x + 7) = 0$$
+        Choć rozwiązanie tego równania w pamięci nie jest łatwe, zapewniamy, że jest możliwe przy pewnej wprawie. Polecamy dla porównania użyć wzoru na deltę. Prowadzi on 
+        do tragicznych rachunków.
     </div>
 
     <p> 
         Przez zgadnięcie wyniku da się z powodzeniem rozwiązywać równania kwadratowe, których współczynniki są małe, najlepiej nieułamkowe, a rozwiązania wymierne. 
         Przed starciem z dowolnym równaniem kwadratowym polecamy poświęcić kilkadziesiąt sekund na próbę odgadnięcia rozkładu na czynniki. Jeżeli wydaje się 
         to trudne, należy skorzystać ze wzoru na deltę.
+    </p>
+
+    <p> 
+        Skorzystaj z poniższego okienka, by poćwiczyć choć przez chwilę grę w zgadywanie równań kwadratowych. Jedno poprawnie 
+        zgadnięte rozwiązanie = jedna szczęśliwa wiewiórka więcej.
     </p>
 
     <simple-quadratic-equations-training></simple-quadratic-equations-training>

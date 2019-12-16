@@ -138,8 +138,13 @@ export default {
           return;
         if (component.editMode)
           component.clickedObject = hitResult.item;
-        else 
-          component.$router.push(component.lessons[hitResult.item.content].url);
+        else {
+          if (this.boldOne)
+            this.boldOne.style.fontWeight = 'normal';
+          this.boldOne = hitResult.item;
+          this.boldOne.style.fontWeight = 'bold';
+          component.$router.push(component.lessons[this.boldOne.content].url);
+        }
       }
 
       this.mypaper.tool.onMouseDrag = function(event) {
@@ -288,6 +293,7 @@ export default {
       positions: [],
       clickedObject: null,
       hoveredObject: null,
+      boldOne: null,
       edges: [],
       editMode: false,
       displayLesson: null,
