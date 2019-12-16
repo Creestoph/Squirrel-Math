@@ -245,7 +245,7 @@ export default {
         let text = new paper.PointText(this.positions[name].x, this.positions[name].y);
         text.content = name;
         text.style.justification = 'center';
-        text.style.fontFamily = 'Segoe UI';
+        text.style.fontFamily = "Segoe UI, sans";
         text.style.fontSize = fontSize;
         this.edges[name] = [];   
       }
@@ -345,13 +345,13 @@ canvas[resize] {
   background: white;
   padding: 10px;
   font-size: 0.8em;
-  font-family: "Segoe UI";
+  font-family: $main-font;
 }
 
 #displaylessonTitle {
   font-weight: bold;
   font-size: 1.7em;
-  font-family: "Corbel";
+  font-family: $secondary-font;
   margin-bottom: 10px;
 }
 </style>

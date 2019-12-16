@@ -33,7 +33,7 @@ export default class Comment extends Vue {
   padding: 6px;
 	border-right: 1px solid black;
 	border-bottom: 1px solid black;
-	font-family: calibri light;
+	font-family: $main-font;
 	font-size: 15px;
   line-height: 1em;
   box-shadow: inset 0px -15px 15px -5px rgba(0, 0, 0, 0.15);

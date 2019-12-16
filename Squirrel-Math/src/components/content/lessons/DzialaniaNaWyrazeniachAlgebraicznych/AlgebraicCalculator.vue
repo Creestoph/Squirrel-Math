@@ -1,6 +1,6 @@
 <template>
     <div id="whole">
-        <input v-model="input">
+        <input v-model="input" v-on:keyup.enter="simplify()">
         <button @click="simplify()">Uprość</button>
         <div id="result" ref="resultDiv"></div>
     </div>

@@ -29,7 +29,11 @@ export interface Expression {
             let bracket = "";
             position++;
             let open = 1;
-            while (open > 0 && position < text.length) {
+            let openPosition = position;
+            while (open > 0) {
+                if (position == text.length) 
+                    throw "Niedomknięty nawias otwarty po " + char + " " + (position == 0 ? "na początku" : "po " + text.substr(0, position));
+
                 if (text[position] == '(')
                     open++;
                 if (text[position] == ')')
@@ -53,10 +57,12 @@ export interface Expression {
             }
             return new Integer(parseInt(number));
         }
-        else {
+        else if (char >= 'a' && char <= 'z' || char >= 'A' && char <= 'Z') {
             position++;
             return new Variable(char);
         }
+        else
+            throw "Niepoprawny symbol " + char + " " + (position == 0 ? "na początku" : "po " + text.substr(0, position));
     }
 
     let injectToken = function(){
@@ -93,6 +99,9 @@ export interface Expression {
             if (!lastToken)
                 throw "Niepoprawny symbol * " + (position == 0 ? "na początku" : "po " + text.substr(0, position));
             position++;
+        }
+        else if (char == '=') {
+            throw "Znak równości tu nie pasuje, wpisz jedynie wyrażenie algebraiczne";
         }
         else if (char == ' ' || char=='\t' || char=='\n' || char=='\r') {
             position++;

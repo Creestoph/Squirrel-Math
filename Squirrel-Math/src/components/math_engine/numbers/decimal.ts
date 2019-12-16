@@ -26,7 +26,7 @@ export class Decimal extends Number {
     }
 
     toMathJax(): string {
-        return ("" + this.float).replace(".", ",");
+        return "" + this.float;
     }
 
     isNegative(): boolean {

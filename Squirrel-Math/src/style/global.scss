@@ -21,6 +21,11 @@ $tile-fill-hover: #dd8888;
 
 $logo-red: #cc0000;
 
+
+$main-font: 'Segoe UI', 'sans';
+$secondary-font: 'Corbel', 'sans';
+$geometric-font: 'Consolas', 'FreeMono';
+
 p
 {
 	margin: 1.2em 0;
@@ -235,7 +240,7 @@ a.link:active
 .comment_visible_question_mark
 {
 	color: $main-red;
-	font-family: "Copperplate Gothic Light";
+	font-family: $geometric-font;
 	font-size: 28px;
 }
 
@@ -276,7 +281,7 @@ p.type
 	transition: background-color 0.1s;
 	/* box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.4); */
 	font-size: 0.9em;
-	font-family: Corbel;
+	font-family: $secondary-font;
 }
 
 p.type + *
@@ -301,7 +306,7 @@ p.optional-hide:after
 	border-radius: 50%;
 	text-align: center;
 	vertical-align: middle;
-	font-family: Consolas;
+	font-family: $geometric-font;
 	line-height: 21px;
 	font-size: 21px;
 	transition: transform 0.5s;
@@ -325,7 +330,7 @@ p.optional-show:after
 	border-radius: 50%;
 	text-align: center;
 	vertical-align: middle;
-	font-family: Consolas;
+	font-family: $geometric-font;
 	line-height: 21px;
 	font-size: 21px;
 	transform: rotate(90deg);
@@ -371,11 +376,11 @@ p.optional-show:hover ~ div
 
 p.warning
 {
-	font-family: arial;
+	font-family: $secondary-font;
 	color: $darker-gray;
-	font-size: 0.7em;
-	margin-top: -0.1em;
-	margin-bottom: -1.7em;
+	font-size: 0.8em;
+	margin-top: -0.2em;
+	margin-bottom: -1.5em;
 }	
 
 .proof .warning
