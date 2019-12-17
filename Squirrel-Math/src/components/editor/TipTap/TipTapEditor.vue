@@ -51,8 +51,8 @@
           Remove Chapter
         </button>
 
-        <button class="menubar__button" @click="commands.iframe({ src: '/' })">
-          iframe
+        <button class="menubar__button" @click="test() ">
+          tag
         </button>
 
         <button
@@ -128,6 +128,7 @@ import ChapterTitle from "./ChapterTitle";
 import ChapterBody from "./ChapterBody";
 import Placeholder from "./Placeholder";
 import Intro from "./Intro";
+import SemanticTag from "./SemanticTag.js";
 
 @Component({
   components: {
@@ -161,6 +162,7 @@ export default class TipTapEditor extends Vue {
         new ChapterBody(),
         new ChapterTitle(),
         new Intro(),
+        new SemanticTag(),
         new Placeholder({
           showOnlyCurrent: false,
           emptyNodeText: (node: any) => {
@@ -179,12 +181,16 @@ export default class TipTapEditor extends Vue {
   beforeDestroy() {
     if (this.editor) this.editor.destroy();
   }
+  test(){
+    //@ts-ignore
+    console.log(this.editor!.nodes)
+  }
 }
 </script>
 
 <style lang="scss">
 .editor {
-  *:not(div).is-empty::before {
+  *:not(div):not(.type).is-empty::before {
     content: attr(data-empty-text);
     color: #aaa;
     pointer-events: none;

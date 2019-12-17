@@ -12,7 +12,7 @@ export default class ChapterTitle extends Node {
   // take a look at https://prosemirror.net/docs/guide/#schema for a detailed explanation
   get schema() {
     return {
-      content: 'block+',
+      content: 'semantic_tag (block | semantic_tag)+',
       parseDOM: [
         { tag: 'div[chapter_body]', getAttrs(dom) {
          return dom.querySelector(":scope > div.chapter_body")
