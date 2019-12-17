@@ -4,7 +4,7 @@ export default class CustomDoc extends Doc {
 
   get schema() {
     return {
-      content: 'title block+',
+      content: 'title intro chapter*',
     }
   }
 
