@@ -109,7 +109,7 @@
   <lesson-chapter><template #title>Rozwiązywanie równań w pamięci</template>
     <p> 
       Jeśli rozwiązaniami równania są liczby wymierne, a jego współczynniki to niewielkie liczby całkowite, warto podjąć się rozwiązania równania 
-      w pamięci, przez zgadnięcie rozwiązań. W przypadku równań bez współczynnika przy $x^2$, tj. $x^2 + bx + c$w, zgadywane rozwiązania muszą spełniać warunek: 
+      w pamięci, przez zgadnięcie rozwiązań. W przypadku równań bez współczynnika przy $x^2$, tj. $x^2 + bx + c$, zgadywane rozwiązania muszą spełniać warunek: 
       ich iloczyn ma wynosić $c$, zaś suma $-b$.
     </p>
     <div class="example">
@@ -123,7 +123,7 @@
     </div>
     <div class="example">
         $$x^2 + x - 12 = 0$$
-        Suma ma wynosić $-1$, a iloczyn $-12$, czyli rozwiązania muszą być przeciwnych znaków. Odgadujemy $x = -4$ i $x = 3$. Łatwo sprawdzić słuszność tych rozwiązań 
+        Suma ma wynosić $-1$, a iloczyn $-12$, czyli rozwiązania muszą być przeciwnych znaków. Odgadujemy $x = -4$ i $x = 3$. Łatwo sprawdzić słuszność tych rozwiązań, 
         rozpisując postać iloczynową:
         $$(x + 4)(x - 3) = 0$$
     </div>
@@ -151,6 +151,13 @@
         $\frac{7}{3}$, ponieważ w odgadniętej różnicy licznik $7$ jest na minusie).
         $$(2x - 5)(3x + 7) = 0$$
     </div>
+
+    <p> 
+      Możesz przećwiczyć tę metodę poniżej:
+    </p>
+
+    <simple-quadratic-equations-training></simple-quadratic-equations-training>
+
 	</lesson-chapter>
 
   <lesson-chapter><template #title>Nowe pojęcia</template>
@@ -180,6 +187,7 @@ import LessonTitleShort from "../../../lesson/LessonTitleShort";
 import LessonIntro from "../../../lesson/LessonIntro";
 import LessonChapter from "../../../lesson/chapter/LessonChapter";
 import Lesson from "../../../lesson/Lesson";
+import SimpleQuadraticEquationsTraining from './SimpleQuadraticEquationsTraining'
 
 export default {
   name: "RownaniaKwadratoweShort",
@@ -193,6 +201,7 @@ export default {
     LessonTitleShort,
     LessonChapter,
     Lesson,
+    SimpleQuadraticEquationsTraining
   }
 };
 </script>

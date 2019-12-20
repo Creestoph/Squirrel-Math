@@ -143,5 +143,12 @@
         "field": "Algebra",
         "level": "Liceum",
         "url": "/rownania-kwadratowe"
+    },
+    {
+        "title": "Wielomiany",
+        "requires": ["Równania kwadratowe"],
+        "field": "Algebra",
+        "level": "Liceum",
+        "url": "/wielomiany"
     }
 ]

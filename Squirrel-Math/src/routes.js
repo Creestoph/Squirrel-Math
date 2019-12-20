@@ -45,6 +45,8 @@ import RownaniaINierownosciLiniowe from './components/content/lessons/RownaniaIN
 import RownaniaINierownosciLinioweShort from './components/content/lessons/RownaniaINierownosciLiniowe/RownaniaINierownosciLinioweShort'
 import RownaniaKwadratowe from './components/content/lessons/RownaniaKwadratowe/RownaniaKwadratowe'
 import RownaniaKwadratoweShort from './components/content/lessons/RownaniaKwadratowe/RownaniaKwadratoweShort'
+import Wielomiany from './components/content/lessons/Wielomiany/Wielomiany'
+import WielomianyShort from './components/content/lessons/Wielomiany/WielomianyShort'
 
 export const routes = [
   { path: '', component: Home }, 
@@ -74,4 +76,5 @@ export const routes = [
   { path: '/zbiory-liczbowe', component: ZbioryLiczbowe }, { path: '/zbiory-liczbowe-short', component: ZbioryLiczboweShort },
   { path: '/rownania-i-nierownosci-liniowe', component: RownaniaINierownosciLiniowe }, { path: '/rownania-i-nierownosci-liniowe-short', component: RownaniaINierownosciLinioweShort },
   { path: '/rownania-kwadratowe', component: RownaniaKwadratowe }, { path: '/rownania-kwadratowe-short', component: RownaniaKwadratoweShort },
+  { path: '/wielomiany', component: Wielomiany }, { path: '/wielomiany-short', component: WielomianyShort },
 ];

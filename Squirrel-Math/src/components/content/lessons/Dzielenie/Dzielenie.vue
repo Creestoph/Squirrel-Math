@@ -532,7 +532,7 @@
     </p>
     </lesson-chapter>
 
-    <lesson-chapter><template #title>Dzielenie w słupku</template>
+    <lesson-chapter id="columnar-division"><template #title>Dzielenie w słupku</template>
     <p class = "type">
         Warsztat
     </p>
