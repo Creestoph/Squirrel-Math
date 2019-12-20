@@ -26,7 +26,8 @@ export default {
 };
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+@import "@/style/global";
 
 .bookmark
 {
@@ -38,7 +39,7 @@ export default {
 	background: black;
 	color: white;
 	font-weight: bold;
-	font-family: "Segoe UI";
+	font-family: $secondary-font;
 	transition: padding-right 0.4s;
 }
 
@@ -81,7 +82,7 @@ export default {
 	{
 		float: right;
 		overflow: auto;
-    margin: 35px -5px 30px 0;
+    margin: 65px -5px 30px 0;
 		padding-left: 30px;
 	}
 }
@@ -115,7 +116,7 @@ export default {
     height: 60px;
     line-height: 60px;
     font-weight: bold;
-    font-family: "Segoe UI";
+    font-family: $secondary-font;
     text-align: center;
   }
 

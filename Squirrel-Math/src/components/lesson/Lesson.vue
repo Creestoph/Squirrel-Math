@@ -77,6 +77,11 @@ export default {
 </script>
 
 <style scoped lang="scss">
+// @font-face {
+//   font-family: 'Feathergraphy Clean';
+//   src: url('~@/assets/Feathergraphy Clean.ttf') format('truetype');
+// }
+
 @import "@/style/global";
 
 #whole {
@@ -97,14 +102,16 @@ export default {
   font-size: 3em;
   line-height: 0.5em;
   text-align: center;
-  font-family: Consolas;
+  font-family: $geometric-font;
   padding: 0;
   box-shadow: none;
 }
 
+
+
 .lesson {
   position: relative;
-  font-family: "Segoe UI";
+  font-family: $main-font;//"Segoe UI";
   color: black;
   background: white;
   clear: both;
@@ -122,7 +129,7 @@ export default {
 
 @media screen and (max-width: 1200px) {
   .lesson-content {
-      padding: 35px calc(6% + 25px) 35px calc(6% + 25px);
+      padding: 100px calc(6% + 25px) 35px calc(6% + 25px);
   }
 }
 

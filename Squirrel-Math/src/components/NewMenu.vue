@@ -160,7 +160,7 @@
   .menu .logo-text-1
   {
     font-weight: bold;
-    font-family: "Segoe UI";
+    font-family: $main-font;
     font-size: 1.5em;
     padding: -50px 0 0 400px;
     display: inline-block;
@@ -170,7 +170,7 @@
   .menu .logo-text-2
   {
     font-weight: bold;
-    font-family: "Segoe UI";
+    font-family: $main-font;
     font-size: 1.5em;
     color: black;
   }

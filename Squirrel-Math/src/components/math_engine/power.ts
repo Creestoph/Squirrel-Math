@@ -40,6 +40,9 @@ export class Power implements Expression {
                 result.factors.push(this.base);
             return result.simplify();
         }
+        if (this.base instanceof Power) {
+            return new Power(this.base.base, Product.of(this.base.exponent, this.exponent).simplify());
+        }
         return this;
     }
 

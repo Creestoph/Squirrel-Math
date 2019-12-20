@@ -13,7 +13,9 @@
     }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+  @import "@/style/global";
+
   .chapter_name
   {
     margin-bottom:-11px; /*3px*/
@@ -24,7 +26,7 @@
   {
     position: relative;
     cursor: pointer;
-    font-family: corbel;
+    font-family: $secondary-font;
     font-size: 1.9em;
     font-weight: bold;
     margin-top: 9px; /*50px*/
