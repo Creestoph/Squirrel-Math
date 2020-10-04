@@ -53,26 +53,23 @@
   </lesson>
 </template>
 
-<script>
-import LessonTitle from "../lesson/LessonTitle";
-import LessonIntro from "../lesson/LessonIntro";
-import LessonChapter from "../lesson/chapter/LessonChapter";
-import Lesson from "../lesson/Lesson";
+<script lang="ts">
+import LessonTitle from "../lesson/LessonTitle.vue";
+import LessonIntro from "../lesson/LessonIntro.vue";
+import LessonChapter from "../lesson/chapter/LessonChapter.vue";
+import Lesson from "../lesson/Lesson.vue";
+import { Component } from 'vue-property-decorator';
+import Vue from 'vue';
 
-export default {
-  name: "Wprowadzenie",
-  data() {
-    return {
-      chapters: []
-    };
-  },
+@Component({
   components: {
     LessonIntro,
     LessonTitle,
     LessonChapter,
     Lesson
   }
-};
+})
+export default class Introduction extends Vue { }
 </script>
 
 <style scoped>
