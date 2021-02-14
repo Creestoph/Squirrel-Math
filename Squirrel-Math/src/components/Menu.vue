@@ -1,67 +1,53 @@
 <template>
-  <div class="menu">
-    <router-link
-      tag="a"
-      to="/"
-    >
-      <div class="logo">
-        <div>
-          <div
-            class="logo-black-cell"
-            style="float: left"
-          />
-          <div
-            class="logo-container-cell"
-            style="float: left"
-          >
+  <div class="menu-trapeze" ref="logo">
+    <div class="menu">
+      <router-link
+        tag="a"
+        to="/"
+      >
+        <div class="logo">
+          <div>
             <div
-              class="logo-red-cell"
+              class="logo-black-cell"
               style="float: left"
             />
             <div
-              class="logo-red-cell"
+              class="logo-container-cell"
               style="float: left"
+            >
+              <div
+                class="logo-red-cell"
+                style="float: left"
+              />
+              <div
+                class="logo-red-cell"
+                style="float: left"
+              />
+              <div
+                class="logo-red-cell"
+                style="float: left"
+              />
+              <div
+                class="logo-red-cell"
+                style="float: left"
+              />
+            </div>
+            <div
+              class="logo-black-cell"
+              style="float: left; clear: left"
             />
             <div
-              class="logo-red-cell"
-              style="float: left"
-            />
-            <div
-              class="logo-red-cell"
+              class="logo-black-cell"
               style="float: left"
             />
           </div>
-          <div
-            class="logo-black-cell"
-            style="float: left; clear: left"
-          />
-          <div
-            class="logo-black-cell"
-            style="float: left"
-          />
         </div>
-      </div>
-      <div class="logo-text">
-        <span class="logo-text-1">squirrel</span>
-        <span class="logo-text-2">math</span>
-      </div>
-    </router-link>
-    <router-link
-      tag="a"
-      to="/tree"
-    >
-      <button class="button_convey">
-        <span>DRZEWO</span>
-      </button>
-    </router-link>
-    <router-link
-      tag="a"
-      to="/editor"
-    >
-      <button class="button_convey">
-        <span>EDYTOR</span>
-      </button>
-    </router-link>
+        <div class="logo-text" ref="logoText">
+          <span class="logo-text-1">squirrel</span>
+          <span class="logo-text-2">math</span>
+        </div>
+      </router-link>
+    </div>
   </div>
 </template>
 
@@ -69,21 +55,86 @@
 
   export default {
     name: "Menu",
+    mounted() {
+      addEventListener("scroll", this.resizeLogo)
+      this.resizeLogo();
+    },
+    destroyed() {
+      removeEventListener("scroll", this.resizeLogo)
+    },
+    methods: {
+      resizeLogo() {
+        var logo = this.$refs.logo
+        if (document.body.scrollTop > 5 || document.documentElement.scrollTop > 5 || window.innerWidth < 700) {
+          if (!logo.classList.contains('small')) {
+            logo.classList.toggle('small');
+            this.$refs.logoText.style.display = 'none';
+          }
+        } 
+        else {
+          if (logo.classList.contains('small')) {
+            logo.classList.toggle('small');
+            setTimeout(_ => { 
+              if (!logo.classList.contains('small')) 
+                this.$refs.logoText.style.display = 'block'
+            }, 500);
+          }
+        }
+      }
+    }
   }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+  @import "@/style/global";
+  $transition-length: 0.7s;
+
+  .menu-trapeze 
+  {
+    position: fixed;
+    top: 0px;
+    left: -130px;
+    border-bottom: 7px solid black; 
+    border-right: 9.9px solid black; 
+    background: white; 
+    transform: skew(-45deg);
+    width: 450px;
+    height: 120px;
+    transition: all  $transition-length;
+  }
+
+ .menu-trapeze.small
+  {
+    width: 230px;
+    height: 90px;
+    border-bottom: 4px solid black;
+    border-right: 5.65px solid black;
+    transition: all $transition-length;
+
+    .menu
+    {
+      padding: 0 0 0 90px;
+      transition: padding $transition-length;
+    }
+
+    .menu .logo-black-cell, .menu .logo-container-cell
+    {
+      height: 20px;
+      width: 20px;
+      padding: 3px 3px 0 0;
+      margin: 2px;
+      transition: all $transition-length;
+    }
+  }
+
   .menu
   {
-    color: #000000; 
-    background: #FEFEFE;  
-    top: 0px;
-    border-bottom: 15px solid black; 
-    width: 100%;
+    color: black; 
     margin: 0; 
-    padding-top: 10px;
-    padding-bottom: 10px;
-    height: 100px;
+    padding: 10px 0 10px 100px;
+    position: fixed;
+    transform: skew(45deg);
+    transition: padding $transition-length;
   }
 
   .menu button
@@ -110,17 +161,17 @@
   .menu .logo-text-1
   {
     font-weight: bold;
-    font-family: "Segoe UI";
+    font-family: $main-font;
     font-size: 1.5em;
     padding: -50px 0 0 400px;
     display: inline-block;
-    color: #cc0000;
+    color: $logo-red;
   }
 
   .menu .logo-text-2
   {
     font-weight: bold;
-    font-family: "Segoe UI";
+    font-family: $main-font;
     font-size: 1.5em;
     color: black;
   }
@@ -133,6 +184,7 @@
     border: 0px solid white;
     padding: 4px 4px 0 0;
     margin: 2px;
+    transition: all $transition-length;
   }
 
   .menu .logo-container-cell
@@ -143,121 +195,15 @@
     margin: 2px;
     background: none;
     border: none;
+    transition: all $transition-length;
   }
 
   .menu .logo-red-cell
   {
     height: 40%;
     width: 40%;
-    background: #cc0000;
+    background: $logo-red;
     border: none;
     margin: 10% 10% 0 0;
-  }
-
-  button.button_convey
-  {
-    background-color: rgba(0, 0, 0, 0);
-    border: none;
-    color: black;
-    text-align: center;
-    text-decoration: none;
-    font-size: 1.3em;
-    font-family: "Segoe UI";
-    font-weight: bold;
-    cursor: pointer;
-    display: inline-block;
-    padding: 0 20px;
-    line-height: 100px;
-    transition: all 0.5s;
-    cursor: pointer;
-    margin: 0 5px;
-  }
-
-  button.button_convey:hover
-  {
-    box-shadow: none;
-  }
-
-  button.button_convey span 
-  {
-    display: inline-block;
-    position: relative;
-    transition: 0.5s;
-  }
-
-  @media screen and (min-width: 500px)
-  {
-    button.button_convey span:after 
-    {
-      content: '»';
-      position: absolute;
-      opacity: 0;
-      top: 0;
-      right: -20px;
-      transition: 0.5s;
-    }
-
-    button.button_convey:hover span 
-    {
-      padding-right: 25px;
-      text-shadow: 2px 2px #CCCCCC;
-    }
-
-    button.button_convey:hover span:after 
-    {
-      opacity: 1;
-      right: 0;
-    }
-  }
-
-  @media screen and (max-width: 500px)
-  {
-      button.button_convey
-      {
-        padding: 0 5px;
-      }
-
-      button.button_convey:hover span 
-      {
-        text-shadow: 2px 2px #CCCCCC;
-      }
-  }
-
-  button.button_convey span a
-  {
-    color: black;
-  }
-
-  @media screen and (max-width: 700px)
-  {
-    .menu
-    {
-      height: 80px;
-      border-bottom: 10px solid black; 
-    }
-
-    .menu .logo 
-    {
-      margin-right: 50px;
-    }
-
-    .menu .logo-text
-    {
-      display: none;
-    }
-
-    .menu .logo-black-cell, .menu .logo-container-cell
-    {
-      height: 20px;
-      width: 20px;
-      padding: 3px 3px 0 0;
-      margin: 2px;
-    }
-
-    button.button_convey
-    {
-      line-height: 80px;
-      font-size: 1.2em;
-    }
   }
 </style>

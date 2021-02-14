@@ -63,6 +63,7 @@ export default {
   },
   mounted() {
     this.expandLesson();
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
     window.addEventListener("scroll", this.moveExpandButton);
   },
   destroyed() {
@@ -105,9 +106,8 @@ export default {
   font-family: $geometric-font;
   padding: 0;
   box-shadow: none;
+  transition: margin-top 0.5s;
 }
-
-
 
 .lesson {
   position: relative;
@@ -130,6 +130,9 @@ export default {
 @media screen and (max-width: 1200px) {
   .lesson-content {
       padding: 100px calc(6% + 25px) 35px calc(6% + 25px);
+  }
+  #expand-button {
+    display: none;
   }
 }
 

@@ -8,7 +8,7 @@
 
 <script lang="ts">
 import Vue from 'vue';
-import { Expression, parseExpression } from '../../../math_engine/expression';
+import { Expression, parseExpression } from '../../../../math_engine/expression';
 import { Component } from 'vue-property-decorator'
 declare var MathJax:any
 

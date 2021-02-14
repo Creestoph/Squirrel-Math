@@ -16,13 +16,13 @@
 <script lang="ts">
 import Vue from 'vue';
 import { Component } from 'vue-property-decorator'
-import { Polynomial } from '@/components/math_engine/polynomial'
-import { Variable } from '../../../math_engine/variable';
-import { Integer, Fraction } from '@/components/math_engine/numbers';
-import { gcd } from '../../../math_engine/algebraic_algorithms';
-import { Product } from '../../../math_engine/product';
-import { Sum } from '../../../math_engine/sum';
-import { Power } from '../../../math_engine/power';
+import { Polynomial } from '../../../../math_engine/polynomial'
+import { Variable } from '../../../../math_engine/variable';
+import { Integer, Fraction } from '../../../../math_engine/numbers';
+import { gcd } from '../../../../math_engine/algebraic_algorithms';
+import { Product } from '../../../../math_engine/product';
+import { Sum } from '../../../../math_engine/sum';
+import { Power } from '../../../../math_engine/power';
 declare var MathJax:any
 
 @Component

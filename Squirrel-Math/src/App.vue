@@ -7,7 +7,7 @@
 </template>
 
 <script>
-  import Menu from './components/NewMenu'
+  import Menu from './components/Menu'
   import InteractiveTree from './components/content/InteractiveTree'
 
   export default {
