@@ -13,8 +13,8 @@
 		Intuicje
 	</p>
     <p> 
-        Z najprostszymi równaniami liniowymi zetknęliśmy się już w temacie wprowadzającym do równań. Są to takie równania, które po obydwu stronach 
-        znaku $=$ mają jakieś zmienne $x$ przeplatane dodawaniem i mnożeniem przez liczby, na przykład
+        Z najprostszymi równaniami liniowymi zetknęliśmy się już w temacie wprowadzającym do równań: <router-link tag="a" :to="'/rownania-i-nierownosci'" class="link">Równania i nierówności</router-link>. Po obydwu stronach 
+        znaku $=$ mają one jakieś zmienne $x$ przeplatane dodawaniem i mnożeniem przez liczby, na przykład
     </p>
 
     $$
@@ -195,7 +195,7 @@
 
     <ul> 
         <li>
-            Czas potrzebny na wykonanie jakiegoś zadania jest odwrotnie proporcjonalny do liczby osób, która się nim zajmuje. Spodziewamy się, że 
+            Czas potrzebny na wykonanie jakiegoś zadania jest odwrotnie proporcjonalny do liczby osób, które się nim zajmują. Spodziewamy się, że 
             gdy zatrudnimy trzy razy więcej pracowników, ukończą to zadanie trzykrotnie szybciej. <comment text="Na przykład w informatyce czas wykonywania 
             zadania jest WPROST proporcjonalny do liczby zajmujących się nim osób">Chociaż z drugiej strony, gdzie kucharek sześć, tam nie 
             ma co jeść.</comment>
@@ -267,8 +267,11 @@
     </div>
 
     <p>
-         Ciasto na pizzę można uzyskać mieszając mąkę i wodę w stosunku $2 : 1$, to znaczy, że należy zużyć dwa 
-        razy więcej mąki niż wody. Od tego, jak dużo mąki i wody zużyjemy, zależy wielkość uzyskanej pizzy. Karty kredytowe i dowody tożsamości produkuje się 
+        Ciasto na pizzę można uzyskać, mieszając mąkę i wodę w stosunku $2 : 1$, to znaczy, że należy zużyć dwa 
+        razy więcej mąki niż wody. Od tego, jak dużo mąki i wody zużyjemy, zależy wielkość uzyskanej pizzy. Szkoły i uczelnie wyższe często chwalą się 
+        wysokim stosunkiem liczby nauczycieli do liczby uczniów, podając do wiadomości, że na jednego nauczyciela przypada średnio $20$ uczniów (lub równoważnie: że 
+        proporcja liczba nauczycieli do liczby uczniów wynosi $1 : 20$) - informacja ta jest miarodajna niezależnie od tego, jak duża jest szkoła. 
+        Karty kredytowe i dowody tożsamości produkuje się 
         w ustalonej proporcji szerokości do wysokości, wynosi ona około $1,618$ i stanowi przybliżenie tzw. <i>złotej liczby</i>, która według matematyków 
         i znawców sztuki określa proporcje doskonałe. Gdy mówimy, że czyjaś twarz jest "proporcjonalna" lub "ma ładne proporcje", podświadomie mamy na myśli, że 
         stosunek odległości wybranych elementów twarzy przybliża złotą proporcję. Więcej o złotej proporcji w temacie "Ciąg Fibonacciego".

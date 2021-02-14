@@ -524,8 +524,8 @@
         Chcemy przedstawić je w postaci iloczynowej - spróbujemy odgadnąć, jakie liczby należy wstawić w miejsce kropek:
         $$(x - \ldots)(x - \ldots) = 0$$
         Ze wzorów Viète'a wiemy, że liczba $20$ stanowi iloczyn poszukiwanych liczb, zaś $-9$ to ich suma na minusie (czyli $9$ to ich suma po prostu).
-        Problem sprowadza się do odgadnięcia takich dwóch liczb, by ich iloczyn wynosił $20$, a suma $9$. Próbujemy rozłożyć $20$ na czynniki: $2$ i $10$ dają za dużą sumę, 
-        ale $4$ i $5$ sumują się właśnie do $9$. A więc po prostu:
+        Problem sprowadza się do odgadnięcia takich dwóch liczb, by ich iloczyn wynosił $20$, a suma $9$. Próbujemy rozłożyć $20$ na czynniki: $1$ i $20$ dają za 
+        dużą sumę, podobnie jak $2$ i $10$, ale $4$ i $5$ sumują się właśnie do $9$. A więc po prostu:
         $$(x - 4)(x - 5) = 0$$
         Rozwiązaniami są $x = 4$ i $x = 5$.
     </div>
