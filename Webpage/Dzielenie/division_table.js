@@ -21,12 +21,12 @@ $(document).ready(function(){
 					{
 						 for (r = 0; r < table.rows.length; r++)
 							  table.rows[r].cells[j].style.background = "#F0E0E0";
-						 table.rows[i].cells[j].style.background = "#CA7777";
+						 table.rows[i].cells[j].style.background = "#CC4444";
 
 						 if (j!=1)
 							field.innerHTML = ((i-1)*(j-1)) + " : " + (j - 1) + " = " + (i - 1);
 						else
-							field.innerHTML = (i-1) + " : 0 nie ma wartości"
+							field.innerHTML = "0 : 0 nie ma wartości"
 						 field.style.visibility = "visible";
 					}
 	}
@@ -39,7 +39,7 @@ $(document).ready(function(){
 
 		 for (r = 0; r < this.rows.length; r++)
 			  this.rows[r].cells[9].style.background = "#F0E0E0";
-		 this.rows[10].cells[9].style.background = "#CA7777";
+		 this.rows[10].cells[9].style.background = "#CC4444";
 
 		 field.innerHTML = "a";
 		 field.style.visibility = "hidden";

@@ -4,6 +4,7 @@
 <head>
 	<title>Podzielność liczb</title>
 	<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 	<link rel="stylesheet" href="../lesson_style.css">
 	<link rel="stylesheet" href="style.css">
 
@@ -72,9 +73,8 @@
 	<p>
 		W temacie o dzieleniu napotkaliśmy na problem, próbując rozłożyć $7$ kamieni na $3$
 		równe grupy. Z drugiej strony podzielenie 
-		$15$ ziemniaków pomiędzy $3$ gości nie sprawiło większych trudności. 
-		<span class="comment" id="Zapewne na tym, że ziemniaki to nie kamienie, 
-		chociaż to kwestia długości gotowania.">Na czym polega różnica?</span> 
+		$75$ pierogów pomiędzy $15$ gości nie sprawiło większych trudności. 
+		Na czym polega różnica?
 	</p>
 
 	<div class="chapter">
@@ -90,16 +90,16 @@
 	</p>
 
 	<p>
-		Istotna różnica jest taka, że $7 : 3$ to przykład dzielenia z resztą, a $15 : 3$ 
+		Istotna różnica jest taka, że $7 : 3$ to przykład dzielenia z resztą, a $75 : 15$ 
 		to dzielenie bez reszty. Mówimy, że $7$ 
 		daje resztę $1$ przy dzieleniu przez $3$ lub inaczej, że nie <i>dzieli się</i> przez 
-		$3$. Z kolei $15$ dzieli się przez $3$, 
-		ponieważ dzielenie $15 : 3$ nie daje reszty. Mówimy, że liczba jest <i>podzielna</i> przez drugą liczbę, jeśli nie 
+		$3$. Z kolei $75$ dzieli się przez $15$, 
+		ponieważ dzielenie $75 : 15$ nie daje reszty. Mówimy, że liczba jest <i>podzielna</i> przez drugą liczbę, jeśli nie 
 		daje reszty przy dzieleniu.
 	</p>
 
 	<ul>
-		<li>$15$ jest podzielne przez $3$, ponieważ $15 : 3 = 5$</li>
+		<li>$75$ jest podzielne przez $15$, ponieważ $75 : 15 = 5$</li>
 		<li>$7$ nie jest podzielne przez $3$, ponieważ $7 : 3 = 2 \ r. 1$</li>
 		<li>$20$ jest podzielne przez $10$, ponieważ $20 : 10 = 2$</li>
 		<li>$20$ nie jest podzielne przez $9$, ponieważ $20 : 9 = 2 \ r. 2$</li>
@@ -110,7 +110,7 @@
 	</p>
 
 	<ul>
-		<li>$3$ dzieli $15$</li>
+		<li>$15$ dzieli $75$</li>
 		<li>$10$ dzieli $20$</li>
 		<li>$3$ nie dzieli $7$</li>
 		<li>$9$ nie dzieli $20$</li>
@@ -123,7 +123,7 @@
 	</p>
 
 	<ul>
-		<li>$3 \mid 15$</li>
+		<li>$15 \mid 75$</li>
 		<li>$10 \mid 20$</li>
 		<li><span class="comment" id='czyt. „trzy nie dzieli siedmiu” - nie zaś „trzyłsiedem”'>$3 ∤ 7$</span></li>
 		<li><span class="comment" id='czyt. „dziewięć nie dzieli dwudziestu” - nie zaś „dziewięćłdwadzieścia'>$9 ∤ 20$</span></li>
@@ -546,415 +546,518 @@
 		Niestety… nie powiedzieliśmy, jaka jest cecha podzielności przez $7$. To trochę trudniejszy temat.
 	</p>
 
-	<p class = "type">
+	<p class = "type optional-hide">
 		Rozszerzenie
 	</p>
-	<p class="warning">
-		wymagana znajomość tematu: Potęgowanie
-	</p>
-
-	<p>
-		Mając nieco większy zasób wiedzy, możemy wprowadzić więcej cech podzielności.
-	</p>
-
-	<div class="example">
+	<p class="warning">wymagana znajomość tematu: Potęgowanie</p>
+	<div>
 		<p>
-			Cecha podzielności przez $7$:
+			Mając nieco większy zasób wiedzy, możemy wprowadzić więcej cech podzielności.
 		</p>
-		<p class="formula">
-			Oznaczmy pozycję cyfry jedności jako $0$, pozycję cyfry dziesiątek jako $1$ itd. Liczba 
-			jest podzielna przez $7$ wtedy i 
-			tylko wtedy, gdy podzielna przez $7$ jest suma cyfr mnożonych przez 
-			$3^n$, gdzie $n$ jest pozycją danej cyfry. 
-		</p>
-		<ul>
-			<li>
-				Weźmy liczbę $91$.
-				<ul>
-					<li>
-						Cyfra $1$ ma pozycję $0$, więc mnożymy ją przez 
-						$3^0:\ \ \ \ 1 \cdot 3^0=1$
-					</li>
-					<li>
-						Cyfra $9$ ma pozycję $1$, więc mnożymy ją przez 
-						$3^1:\ \ \ \ 9 \cdot 3^1=27$
-					</li>
-				</ul>
-				Dodajemy otrzymane wyniki: $1+27=28$. Liczba $28$ jest podzielna przez 
-				$7$, więc również $91$ jest podzielne przez $7$.
-			</li>
 
-			<li>
-				Weźmy liczbę $1547$.
-				<ul>
-					<li>
-						Cyfra $7$ ma pozycję $0$, więc mnożymy ją przez 
-						$3^0:\ \ \ \ 7 \cdot 3^0=7$
-					</li>
-					<li>
-						Cyfra $4$ ma pozycję $1$, więc mnożymy ją przez 
-						$3^1:\ \ \ \ 4 \cdot 3^1=12$
-					</li>
-					<li>
-						Cyfra $5$ ma pozycję $2$, więc mnożymy ją przez 
-						$3^2:\ \ \ \ 5 \cdot 3^2=45$
-					</li>
-					<li>
-						Cyfra $1$ ma pozycję $3$, więc mnożymy ją przez 
-						$3^3:\ \ \ \ 1 \cdot 3^3=27$
-					</li>
-				</ul>
-				Dodajemy otrzymane wyniki: $7+12+45+27=91$. Liczba $91$ jest podzielna przez 
-				$7$, więc $1547$ jest podzielne przez $7$.
-				$7000$ jest podzielne przez $7$, ponieważ 
-				$7 \cdot 3^3+0 \cdot 3^2+0\cdot3^1+0\cdot3^0=7$ jest podzielne przez $7$.
-			</li>
-		</ul>
-	</div>
-	
-	<div class="example">
-		<p>	
-			Cecha podzielności przez $11$:
-		</p>
-		<p class ="formula">
-			Oznaczmy pozycję cyfry jedności jako $0$, pozycję cyfry dziesiątek jako $1$ 
-			itd. Liczba jest podzielna przez $11$ wtedy i tylko 
-			wtedy, gdy suma cyfr o pozycjach parzystych pomniejszona o sumę cyfr o pozycjach nieparzystych jest podzielna przez $11$. 
-		</p>
-		<ul>
-			<li>
-				Weźmy liczbę $649$. Cyfry o pozycjach parzystych to $9$ i $6$. 
-				Ich suma wynosi $9$ + $6$ = $15$. 
-				Cyfra o pozycji nieparzystej to $4$. 
-				Odejmujemy: $15 - 4 = 11$. Wynik jest podzielny przez $11$, więc $649$
-				jest podzielne przez $11$.
-			</li>
-			<li>
-				Weźmy liczbę $24 574$. Cyfry o pozycjach parzystych to $4$, 
-				$5$ i $2$. Ich suma wynosi $11$. Cyfry o pozycjach nieparzystych to 
-				$7$ i $4$. Ich suma wynosi $11$. 
-				Odejmujemy: $11 - 11 = 0$. Wynik jest podzielny przez $11$, więc 
-				$24 574$  jest podzielne przez $11$.
-			</li>
-			<li>
-				$5093$ jest podzielne przez $11$, ponieważ $3 + 0 - (9 + 5) = -11$
-				jest podzielne przez $11$.
-			</li>
-		</ul>
-	</div>
+		<div class="example">
+			<p>
+				Cecha podzielności przez $7$:
+			</p>
+			<p class="formula">
+				Oznaczmy pozycję cyfry jedności jako $0$, pozycję cyfry dziesiątek jako $1$ itd. Liczba 
+				jest podzielna przez $7$ wtedy i 
+				tylko wtedy, gdy podzielna przez $7$ jest suma cyfr mnożonych przez 
+				$3^n$, gdzie $n$ jest pozycją danej cyfry. 
+			</p>
+			<ul>
+				<li>
+					Weźmy liczbę $91$.
+					<ul>
+						<li>
+							Cyfra $1$ ma pozycję $0$, więc mnożymy ją przez 
+							$3^0:\ \ \ \ 1 \cdot 3^0=1$
+						</li>
+						<li>
+							Cyfra $9$ ma pozycję $1$, więc mnożymy ją przez 
+							$3^1:\ \ \ \ 9 \cdot 3^1=27$
+						</li>
+					</ul>
+					Dodajemy otrzymane wyniki: $1+27=28$. Liczba $28$ jest podzielna przez 
+					$7$, więc również $91$ jest podzielne przez $7$.
+				</li>
+
+				<li>
+					Weźmy liczbę $1547$.
+					<ul>
+						<li>
+							Cyfra $7$ ma pozycję $0$, więc mnożymy ją przez 
+							$3^0:\ \ \ \ 7 \cdot 3^0=7$
+						</li>
+						<li>
+							Cyfra $4$ ma pozycję $1$, więc mnożymy ją przez 
+							$3^1:\ \ \ \ 4 \cdot 3^1=12$
+						</li>
+						<li>
+							Cyfra $5$ ma pozycję $2$, więc mnożymy ją przez 
+							$3^2:\ \ \ \ 5 \cdot 3^2=45$
+						</li>
+						<li>
+							Cyfra $1$ ma pozycję $3$, więc mnożymy ją przez 
+							$3^3:\ \ \ \ 1 \cdot 3^3=27$
+						</li>
+					</ul>
+					Dodajemy otrzymane wyniki: $7+12+45+27=91$. Liczba $91$ jest podzielna przez 
+					$7$, więc $1547$ jest podzielne przez $7$.
+					$7000$ jest podzielne przez $7$, ponieważ 
+					$7 \cdot 3^3+0 \cdot 3^2+0\cdot3^1+0\cdot3^0=7$ jest podzielne przez $7$.
+				</li>
+			</ul>
+		</div>
 		
-	<p>
-		Cechy podzielności przez $7$, $11$ i $9$ to szczególne przypadki 
-		ogólniejszego twierdzenia:
-	</p>
-
-	<p class="formula">
-		Oznaczmy pozycję cyfry jedności jako $0$, pozycję cyfry dziesiątek jako $1$ itd. 
-		Liczba daje resztę  z dzielenia przez 
-		$p$ taką 
-		samą, jak reszta z dzielenia przez $p$ sumy cyfr mnożonych przez $(10-p)^n$, gdzie 
-		$n$ jest pozycją danej cyfry.
-	</p>
-
-	<p>
-		Dowód tego twierdzenia jest dość skomplikowany.
-	</p>
-
-	<div class ="proof">
-		<div class = "proof-sticker">Uzasadnienie</div>
-		<p class="warning">
-			wymagana znajomość tematu: Dwumian Newtona
-		</p>
-		<p>
-			Co tak naprawdę mówi twierdzenie? Weźmy dla przykładu $p=8$ i rozważmy liczbę $158$. 
-			Reszta z dzielenia $158$ przez $p$ wynosi $6$, 
-			ponieważ $158 : 8 = 19 \ r. 6$. „Suma cyfr mnożonych przez $(10-p)^n$ ” oznacza tyle, że 
-			$158$ rozbijamy na cyfry, każdą mnożymy 
-			przez odpowiednią potęgę liczby $(10-p)$, a potem dodajemy wyniki.
-		</p>
-
-		<ul>
-			<li>Cyfra $8$ ma pozycję $0$, więc mnożymy ją przez $2^0$. 
-			Dostajemy $8 \cdot 2^0=8$.</li>
-			<li>Cyfra $5$ ma pozycję $1$, więc mnożymy ją przez $2^1$. 
-			Dostajemy $5 \cdot 2^1=10$.</li>
-			<li>Cyfra $1$ ma pozycję $2$, więc mnożymy ją przez $2^2$. 
-			Dostajemy $1 \cdot 2^2=4$.</li>	
-		</ul>
-
-		<p>
-			Razem: $8 + 10 + 4 = 22$. Reszta z dzielenia $22$ przez $8$ 
-			wynosi $6$, bo $22 : 8 = 2 \ r. 6$. Obydwie reszty są równe - za sprawą 
-			magii twierdzenia. Tak samo będzie dla dowolnego innego $p$ i dowolnej innej liczby.
-		</p>
-	</div>
-
-	<div class ="proof">
-		<div class = "proof-sticker">Dowód</div>
-		<p>
-			Weźmy dowolne $p$ oraz dowolną liczbę $a$ postaci 
-		</p>
-		
-		$$
-			10^k a_k+10^{k-1} a_{k-1}+⋯+10^1 a_1+10^0 a_0
-		$$
-		
-		<p>
-			Przypuśćmy, że daje ona resztę $r$ z dzielenia przez $p$.
-		</p>
-		
-		<p>
-			Rozważmy liczbę
-		</p>
-		
-		$$
-			m=(10-p)^k a_k+(10-p)^{k-1} a_{k-1}+⋯+(10-p)^1 a_1+(10-p)^0 a_0
-		$$
-		
-		<p>
-			Z dwumianu Newtona możemy rozpisać:
-		</p>
-		
-		<p>
-			$m=\left( {k \choose 0}10^k (-p)^0+{k \choose 1}10^{k-1}(-p)^1+{k \choose 2}10^{k-2}(-p)^2+⋯+{k \choose k}10^0(-p)^k \right)a_k+\\
-			\ \ \ +\left( {k-1 \choose 0}10^{k-1}(-p)^0+{k-1 \choose 1}10^{k-2}(-p)^1+{k-1 \choose 2}10^{k-2}(-p)^2+⋯+{k-1 \choose k-1}10^0 (-p)^{k-1} \right)a_{k-1}+\\
-			\ \ \ +⋯+\\
-			\ \ \ +\left( {1 \choose 0} 10^1 (-p)^0+{1 \choose 1} 10^0 (-p)^1 \right) a_1+\\
-			\ \ \ +a_0=\\
-			=\left( 10^k+{k \choose 1}10^{k-1}(-p)^1+{k \choose 2}10^{k-2}(-p)^2+⋯+{k \choose k}10^0 (-p)^k \right)a_k+\\
-			\ \ \ +\left( 10^{k-1} + {k-1 \choose 1}10^{k-2}(-p)^1 + {k-1 \choose 2}10^{k-2}(-p)^2 + ⋯ + {k-1 \choose k-1}10^0 (-p)^{k-1}\right) a_{k-1}+\\
-			\ \ \ +⋯+\\
-			\ \ \ +\left(10^1+{1 \choose 1} 10^0 (-p)^1\right) a_1+\\
-			\ \ \ +a_0=\\
-			=10^k a_k+ (-p)\left({k \choose 1}10^{k-1}(-p)^0+{k \choose 2}10^{k-2}(-p)^1+⋯+{k \choose k}10^0 (-p)^{k-1}\right)a_k+\\
-			\ \ \ +10^{k-1} a_{k-1}+(-p)\left({k-1 \choose 1}10^{k-2}(-p)^0+{k-1 \choose 2}10^{k-2}(-p)^1+⋯+{k-1 \choose k-1}10^0 (-p)^{k-2}\right)a_{k-1}+\\
-			\ \ \ +⋯+\\
-			\ \ \ +10^1 a_1+(-p)\left({1 \choose 1} 10^0 (-p)^0 \right) a_1+\\
-			\ \ \ +a_0=\\
-			=10^k a_k+10^{k-1} a_{k-1}+⋯+10^1 a_1+a_0+\\
-			\ \ \ (-p)\left(\left({k \choose 1} 10^{k-1} (-p)^0+{k \choose 2} 10^{k-2} (-p)^1+⋯+{k \choose k} 10^0 (-p)^{k-1} \right)a_k+\\
-			\ \ \ +\left({k-1 \choose 1} 10^{k-2} (-p)^0+{k-1 \choose 2} 10^{k-2} (-p)^1+⋯+{k-1 \choose k-1} 10^0 (-p)^{k-2} \right) a_{k-1}+\\
-			\ \ \ ⋯\\
-			\ \ \ +\left({1 \choose 1} 10^0 (-p)^0 \right) a_1 \right)=\\
-			=a-pm'$
-		</p>
-
-		<p>
-			Gdzie $m'$ jest liczbą całkowitą równą
-		</p>
-		
-		<p>
-			$\left({k \choose 1} 10^{k-1} (-p)^0+{k \choose 2} 10^{k-2} (-p)^1+⋯+{k \choose k} 10^0 (-p)^{k-1} \right)a_k+\\
-			+\left({k-1 \choose 1} 10^{k-2} (-p)^0+{k-1 \choose 2} 10^{k-2} (-p)^1+⋯+{k-1 \choose k-1} 10^0 (-p)^{k-2} \right) a_{k-1}+\\
-			+⋯+{1 \choose 1} 10^0 (-p)^0 a_1$
-		</p>
-		
-		<p>
-			Liczba $m=a-pm'$ jest więc sumą liczby $a$ oraz liczby podzielnej przez 
-			$p$, zatem jej reszta z dzielenia przez $p$ wynosi $r$. □
-		</p>
+		<div class="example">
+			<p>	
+				Cecha podzielności przez $11$:
+			</p>
+			<p class ="formula">
+				Oznaczmy pozycję cyfry jedności jako $0$, pozycję cyfry dziesiątek jako $1$ 
+				itd. Liczba jest podzielna przez $11$ wtedy i tylko 
+				wtedy, gdy suma cyfr o pozycjach parzystych pomniejszona o sumę cyfr o pozycjach nieparzystych jest podzielna przez $11$. 
+			</p>
+			<ul>
+				<li>
+					Weźmy liczbę $649$. Cyfry o pozycjach parzystych to $9$ i $6$. 
+					Ich suma wynosi $9$ + $6$ = $15$. 
+					Cyfra o pozycji nieparzystej to $4$. 
+					Odejmujemy: $15 - 4 = 11$. Wynik jest podzielny przez $11$, więc $649$
+					jest podzielne przez $11$.
+				</li>
+				<li>
+					Weźmy liczbę $24 574$. Cyfry o pozycjach parzystych to $4$, 
+					$5$ i $2$. Ich suma wynosi $11$. Cyfry o pozycjach nieparzystych to 
+					$7$ i $4$. Ich suma wynosi $11$. 
+					Odejmujemy: $11 - 11 = 0$. Wynik jest podzielny przez $11$, więc 
+					$24 574$  jest podzielne przez $11$.
+				</li>
+				<li>
+					$5093$ jest podzielne przez $11$, ponieważ $3 + 0 - (9 + 5) = -11$
+					jest podzielne przez $11$.
+				</li>
+			</ul>
+		</div>
 			
-	</div>
+		<p>
+			Cechy podzielności przez $7$, $11$ i $9$ to szczególne przypadki 
+			ogólniejszego twierdzenia:
+		</p>
 
-	<p>
-		Mając to twierdzenie, możemy udowodnić cechy podzielności przez $7$, $9$, 
-		$11$ i $3$. 
-	</p>
-
-	<div class="example">
-		Z cechą podzielności przez $7$ jest łatwo: w formule twierdzenia wystarczy wstawić w miejsce 
-		$p$ liczbę $7$ i otrzymamy żądaną cechę. 
-	</div>
-	<div class="example">
-		<p>Jeśli w miejsce $p$ wstawimy liczbę $9$, twierdzenie będzie brzmiało:</p>
-		<p class ="formula">
+		<p class="formula">
 			Oznaczmy pozycję cyfry jedności jako $0$, pozycję cyfry dziesiątek jako $1$ itd. 
-			Liczba daje resztę  z dzielenia przez $p$ 
-			taką samą, jak reszta z dzielenia przez $p$ sumy cyfr mnożonych przez $1^n$, gdzie 
+			Liczba daje resztę  z dzielenia przez 
+			$p$ taką 
+			samą, jak reszta z dzielenia przez $p$ sumy cyfr mnożonych przez $(10-p)^n$, gdzie 
 			$n$ jest pozycją danej cyfry.
 		</p>
-		<p>Ponieważ mnożenie przez $1$ nic nie zmienia, wystarczy nam sumować cyfry danej liczby.</p>
-	</div>
-	<div class="example">
-		<p>Jeśli wstawimy w miejsce $p$ liczbę $11$, twierdzenie będzie brzmiało:</p>
-		<p class="formula">
-			Oznaczmy pozycję cyfry jedności jako $0$, pozycję cyfry dziesiątek jako $1$ itd. 
-			Liczba daje resztę z dzielenia przez $p$ 
-			taką samą, jak reszta z dzielenia przez $p$ sumy cyfr mnożonych przez $(-1)^n$, 
-			gdzie $n$ jest pozycją danej cyfry.
+
+		<p>
+			Dowód tego twierdzenia jest dość skomplikowany.
 		</p>
-		<p>Jest to równoważne z tym, że liczby o pozycjach parzystych bierzemy ze znakiem $+$, 
-		a liczby o pozycjach nieparzystych bierzemy ze znakiem $-$.</p>
-	</div>
-	<div class="example">
-		<p>Z podzielnością przez $3$ jest trochę ciekawiej. Wynika ona z przypadku dla $p=9$:</p>
+
+		<div class ="proof">
+			<div class = "proof-sticker">Uzasadnienie</div>
+			<p class="warning">
+				wymagana znajomość tematu: Działania na wyrażeniach algebraicznych
+			</p>
+			<p>
+				Najpierw przeczytajmy na spokojnie, co tak naprawdę mówi twierdzenie. Weźmy dla przykładu $p=8$ i rozważmy liczbę $3158$. 
+				Reszta z dzielenia $3157$ przez $p$ wynosi $5$, 
+				ponieważ $3157 : 8 = 19 \ r. 5$. „Suma cyfr mnożonych przez $(10-p)^n$ ” oznacza tyle, że 
+				$3157$ rozbijamy na cyfry, każdą mnożymy 
+				przez odpowiednią potęgę liczby $(10-p)$, a potem dodajemy wyniki.
+			</p>
+
+			<ul>
+				<li>Cyfra $7$ ma pozycję $0$, więc mnożymy ją przez $2^0$. 
+				Dostajemy $7 \cdot 2^0=7$.</li>
+				<li>Cyfra $5$ ma pozycję $1$, więc mnożymy ją przez $2^1$. 
+				Dostajemy $5 \cdot 2^1=10$.</li>
+				<li>Cyfra $1$ ma pozycję $2$, więc mnożymy ją przez $2^2$. 
+				Dostajemy $1 \cdot 2^2=4$.</li>	
+				<li>Cyfra $3$ ma pozycję $3$, więc mnożymy ją przez $2^3$. 
+					Dostajemy $3 \cdot 2^3=24$.</li>	
+			</ul>
+
+			<p>
+				Razem: $7 + 10 + 4 + 24 = 45$. Reszta z dzielenia $45$ przez $8$ 
+				wynosi $5$, bo $45 : 8 = 5 \ r. 5$. Obydwie reszty są równe - za sprawą 
+				magii twierdzenia. Skąd się ta magia bierze? Spójrzmy na "sumę cyfr mnożonych przez $(10 - 8)^n$". Nazwiemy ją w skrócie $m$.
+			</p>
+
+			$$m = 3 \cdot (10 - 8)^3 + 1 \cdot (10 - 8)^2 + 5 \cdot (10 - 8) ^ 1 + 7 \cdot (10 - 1) ^ 0$$
+
+			<p>
+				Z dobrze nam znanych wzorów skróconego mnożenia rozpisujemy $(10 - 2)$ podniesione do drugiej i trzeciej potęgi:
+			</p>
+
+			$$m = 3 \cdot (10^3 - 3 \cdot 10^2 \cdot 8 + 3 \cdot 10 \cdot 8^2 - 8^3) + 1 \cdot (10^2 - 2 \cdot 10 \cdot 8 + 8^2) + 5 \cdot (10 - 8) + 7$$
+
+			<p>
+				Zauważmy, że wśród składników powyższej sumy spora ilość jest podzielna przez $8$, ponieważ posiada ósemkę jako jeden z czynników:
+			</p>
+
+			$$m = (3 \cdot 10^3 - 3 \cdot 3 \cdot 10^2 \cdot \color{#dd3333}{8} + 3 \cdot 3 \cdot 10 \cdot \color{#dd3333}{8^2} - 3 \cdot \color{#dd3333}{8^3}) + 
+			(1 \cdot 10^2 - 1 \cdot 2 \cdot 10 \cdot \color{#dd3333}{8} + 1 \cdot \color{#dd3333}{8^2}) + (5 \cdot 10 - 5 \cdot \color{#dd3333}{8}) + 7$$
+
+			<p>
+				Dokonamy teraz drobnych zabiegów żeby wyłączyć wyróżnioną ósemkę przed wspólny nawias.
+			</p>
+
+			$$m = 3 \cdot 10^3 + 1 \cdot 10^2 + 5 \cdot 10 + 7 + 
+			\color{#dd3333}{8} \cdot \left( (- 3 \cdot 3 \cdot 10^2 + 3 \cdot 3 \cdot 10 \cdot \color{#dd3333}{8} - 3 \cdot \color{#dd3333}{8^2}) + 
+			(- 1 \cdot 2 \cdot 10 + 1 \cdot \color{#dd3333}{8}) + (- 5) \right) $$
+
+			$$m = 3157 + 
+			\color{#dd3333}{8} \cdot \left( (- 3 \cdot 3 \cdot 10^2 + 3 \cdot 3 \cdot 10 \cdot \color{#dd3333}{8} - 3 \cdot \color{#dd3333}{8^2}) + 
+			(- 1 \cdot 2 \cdot 10 + 1 \cdot \color{#dd3333}{8}) + (- 5) \right) $$
+
+			<p>
+				W ten oto magiczny sposób wyraziliśmy liczbę $m$ w postaci wyjściowej $3157$ zsumowanej z pewną liczbą podzielną przez 8. W takim razie jeśli
+				$3157$ daje pewną resztę z dzielenia przez 8, to $m$ da dokładnie tą samą resztę z dzielenia. 
+			</p>
+
+		</div>
+
+		<div class ="proof">
+			<div class = "proof-sticker">Dowód</div>
+			<p class="warning">
+				wymagana znajomość tematu: Dwumian Newtona
+			</p>
+
+			<p>
+				Weźmy dowolne $p$ oraz dowolną liczbę $a$ postaci 
+			</p>
+			
+			$$
+				10^k a_k+10^{k-1} a_{k-1}+⋯+10^1 a_1+10^0 a_0
+			$$
+			
+			<p>
+				Przypuśćmy, że daje ona resztę $r$ z dzielenia przez $p$.
+			</p>
+			
+			<p>
+				Rozważmy liczbę
+			</p>
+			
+			$$
+				m=(10-p)^k a_k+(10-p)^{k-1} a_{k-1}+⋯+(10-p)^1 a_1+(10-p)^0 a_0
+			$$
+			
+			<p>
+				Z dwumianu Newtona możemy rozpisać:
+			</p>
+			
+			<p>
+				$m=\left( {k \choose 0}10^k (-p)^0+{k \choose 1}10^{k-1}(-p)^1+{k \choose 2}10^{k-2}(-p)^2+⋯+{k \choose k}10^0(-p)^k \right)a_k+\\
+				\ \ \ +\left( {k-1 \choose 0}10^{k-1}(-p)^0+{k-1 \choose 1}10^{k-2}(-p)^1+{k-1 \choose 2}10^{k-2}(-p)^2+⋯+{k-1 \choose k-1}10^0 (-p)^{k-1} \right)a_{k-1}+\\
+				\ \ \ +⋯+\\
+				\ \ \ +\left( {1 \choose 0} 10^1 (-p)^0+{1 \choose 1} 10^0 (-p)^1 \right) a_1+\\
+				\ \ \ +a_0=\\
+				=\left( 10^k+{k \choose 1}10^{k-1}(-p)^1+{k \choose 2}10^{k-2}(-p)^2+⋯+{k \choose k}10^0 (-p)^k \right)a_k+\\
+				\ \ \ +\left( 10^{k-1} + {k-1 \choose 1}10^{k-2}(-p)^1 + {k-1 \choose 2}10^{k-2}(-p)^2 + ⋯ + {k-1 \choose k-1}10^0 (-p)^{k-1}\right) a_{k-1}+\\
+				\ \ \ +⋯+\\
+				\ \ \ +\left(10^1+{1 \choose 1} 10^0 (-p)^1\right) a_1+\\
+				\ \ \ +a_0=\\
+				=10^k a_k+ (-p)\left({k \choose 1}10^{k-1}(-p)^0+{k \choose 2}10^{k-2}(-p)^1+⋯+{k \choose k}10^0 (-p)^{k-1}\right)a_k+\\
+				\ \ \ +10^{k-1} a_{k-1}+(-p)\left({k-1 \choose 1}10^{k-2}(-p)^0+{k-1 \choose 2}10^{k-2}(-p)^1+⋯+{k-1 \choose k-1}10^0 (-p)^{k-2}\right)a_{k-1}+\\
+				\ \ \ +⋯+\\
+				\ \ \ +10^1 a_1+(-p)\left({1 \choose 1} 10^0 (-p)^0 \right) a_1+\\
+				\ \ \ +a_0=\\
+				=10^k a_k+10^{k-1} a_{k-1}+⋯+10^1 a_1+a_0+\\
+				\ \ \ (-p)\left(\left({k \choose 1} 10^{k-1} (-p)^0+{k \choose 2} 10^{k-2} (-p)^1+⋯+{k \choose k} 10^0 (-p)^{k-1} \right)a_k+\\
+				\ \ \ +\left({k-1 \choose 1} 10^{k-2} (-p)^0+{k-1 \choose 2} 10^{k-2} (-p)^1+⋯+{k-1 \choose k-1} 10^0 (-p)^{k-2} \right) a_{k-1}+\\
+				\ \ \ ⋯\\
+				\ \ \ +\left({1 \choose 1} 10^0 (-p)^0 \right) a_1 \right)=\\
+				=a-pm'$
+			</p>
+
+			<p>
+				Gdzie $m'$ jest liczbą całkowitą równą
+			</p>
+			
+			<p>
+				$\left({k \choose 1} 10^{k-1} (-p)^0+{k \choose 2} 10^{k-2} (-p)^1+⋯+{k \choose k} 10^0 (-p)^{k-1} \right)a_k+\\
+				+\left({k-1 \choose 1} 10^{k-2} (-p)^0+{k-1 \choose 2} 10^{k-2} (-p)^1+⋯+{k-1 \choose k-1} 10^0 (-p)^{k-2} \right) a_{k-1}+\\
+				+⋯+{1 \choose 1} 10^0 (-p)^0 a_1$
+			</p>
+			
+			<p>
+				Liczba $m=a-pm'$ jest więc sumą liczby $a$ oraz liczby podzielnej przez 
+				$p$, zatem jej reszta z dzielenia przez $p$ wynosi $r$. □
+			</p>
+				
+		</div>
+
+		<p>
+			Mając to twierdzenie, możemy udowodnić cechy podzielności przez $7$, $9$, 
+			$11$ i $3$. 
+		</p>
+
+		<div class="example">
+			Z cechą podzielności przez $7$ jest łatwo: w formule twierdzenia wystarczy wstawić w miejsce 
+			$p$ liczbę $7$ i otrzymamy żądaną cechę. 
+		</div>
+		<div class="example">
+			<p>Jeśli w miejsce $p$ wstawimy liczbę $9$, twierdzenie będzie brzmiało:</p>
+			<p class ="formula">
+				Oznaczmy pozycję cyfry jedności jako $0$, pozycję cyfry dziesiątek jako $1$ itd. 
+				Liczba daje resztę  z dzielenia przez $p$ 
+				taką samą, jak reszta z dzielenia przez $p$ sumy cyfr mnożonych przez $1^n$, gdzie 
+				$n$ jest pozycją danej cyfry.
+			</p>
+			<p>Ponieważ mnożenie przez $1$ można pominąć, wystarczy nam sumować cyfry danej liczby.</p>
+		</div>
+		<div class="example">
+			<p>Jeśli wstawimy w miejsce $p$ liczbę $11$, twierdzenie będzie brzmiało:</p>
+			<p class="formula">
+				Oznaczmy pozycję cyfry jedności jako $0$, pozycję cyfry dziesiątek jako $1$ itd. 
+				Liczba daje resztę z dzielenia przez $p$ 
+				taką samą, jak reszta z dzielenia przez $p$ sumy cyfr mnożonych przez $(-1)^n$, 
+				gdzie $n$ jest pozycją danej cyfry.
+			</p>
+			<p>Jest to równoważne z tym, że liczby o pozycjach parzystych bierzemy ze znakiem $+$, 
+			a liczby o pozycjach nieparzystych bierzemy ze znakiem $-$.</p>
+		</div>
+		<div class="example">
+			<p>Z podzielnością przez $3$ jest trochę ciekawiej. Wynika ona z przypadku dla $p=9$:</p>
+			<p class ="formula">
+				Liczba daje resztę  z dzielenia przez $9$ taką samą, jak suma cyfr tej liczby.
+			</p>
+			<p>
+				Zauważmy, że gdy weźmiemy liczbę podzielną przez $3$ i dokonamy jej dzielenia przez $9$, otrzymamy resztę $0$, $3$ lub $6$.
+				Wtedy suma cyfr daje taką samą resztę z dzielenia przez $9$, suma cyfr także jest podzielna przez $3$.
+			</p>
+
+			<table style="color: #AAAAAA; width: 100%">
+					<tr>
+						<td>1</td>
+						<td>2</td>
+						<td style="color: 994444; font-weight: bold">3</td>
+						<td>4</td>
+						<td>5</td>
+						<td style="color: 994444; font-weight: bold">6</td>
+						<td>7</td>
+						<td>8</td>
+						<td style="color: 994444; font-weight: bold">9</td>
+						<td>10</td>
+						<td>11</td>
+						<td style="color: 994444; font-weight: bold">12</td>
+						<td>13</td>
+						<td>14</td>
+						<td style="color: 994444; font-weight: bold">15</td>
+						<td>16</td>
+						<td>17</td>
+						<td style="color: 994444; font-weight: bold">18</td>
+						<td>19</td>
+						<td>20</td>
+						<td style="color: 994444; font-weight: bold">21</td>
+						<td>22</td>
+						<td>23</td>
+						<td style="color: 994444; font-weight: bold">24</td>
+						<td>25</td>
+						<td>26</td>
+						<td style="color: 994444; font-weight: bold">27</td>
+						<td>28</td>
+						<td>29</td>
+						<td style="color: 994444; font-weight: bold">30</td>
+					</tr>
+					<tr>
+						<td>1</td>
+						<td>2</td>
+						<td>3</td>
+						<td>4</td>
+						<td>5</td>
+						<td>6</td>
+						<td>7</td>
+						<td>8</td>
+						<td style="color: 994444; font-weight: bold">9</td>
+						<td>10</td>
+						<td>11</td>
+						<td>12</td>
+						<td>13</td>
+						<td>14</td>
+						<td>15</td>
+						<td>16</td>
+						<td>17</td>
+						<td style="color: 994444; font-weight: bold">18</td>
+						<td>19</td>
+						<td>20</td>
+						<td>21</td>
+						<td>22</td>
+						<td>23</td>
+						<td>24</td>
+						<td>25</td>
+						<td>26</td>
+						<td style="color: 994444; font-weight: bold">27</td>
+						<td>28</td>
+						<td>29</td>
+						<td>30</td>
+					</tr>
+				</table>
+		</div>
+
+		<p>
+			Twierdzenie to pozwala stworzyć cechę podzielności przez $p$ dla dowolnego $p$. 
+			Nie zawsze jednak tak sformułowana cecha 
+			podzielności ma praktyczną użyteczność, zwłaszcza gdy $p$ jest duże. Czasem bardziej praktyczne jest inne ujęcie 
+			cechy podzielności. Na przykład:
+		</p>
+
 		<p class ="formula">
-			Liczba daje resztę  z dzielenia przez $9$ taką samą, jak suma cyfr tej liczby.
+			Liczba jest podzielna przez $2^n$ wtedy i tylko wtedy, gdy jej $n$ ostatnich cyfr tworzy 
+			liczbę podzielną przez $2^n$.
 		</p>
-		<p>Gdy liczba jest podzielna przez $3$, daje resztę $0$, $3$ 
-		lub $6$ z dzielenia przez $9$. Wtedy suma cyfr daje taką samą resztę z 
-		dzielenia przez $9$, czyli także jest podzielna przez $3$. To samo w drugą stronę: 
-		jeśli suma cyfr liczby jest podzielna przez $3$, to liczba też jest podzielna przez $3$.</p>
-	</div>
 
-	<p>
-		Twierdzenie to pozwala stworzyć cechę podzielności przez $p$ dla dowolnego $p$. 
-		Nie zawsze jednak tak sformułowana cecha 
-		podzielności ma praktyczną użyteczność, zwłaszcza gdy $p$ jest duże. Czasem bardziej praktyczne jest inne ujęcie 
-		cechy podzielności. Na przykład:
-	</p>
+		<div class ="proof">
+			<div class = "proof-sticker">Uzasadnienie</div>
+			<p>
+				Spójrzmy, czemu tak się dzieje. Weźmy dla przykładu $n=2$, czyli cechę podzielności przez 
+				$4$. Gdy chcemy stwierdzić, że 
+				liczba $324$ jest podzielna przez $4$, wystarczy spojrzeć na $2$ 
+				ostatnie cyfry, ponieważ 
+				$324 = 300 + 24 = 3 \cdot 100 + 24 = 3 \cdot 4 \cdot 25 + 24$. Składnik "$300$" jest podzielny przez $4$, czyli podzielność liczby przez $4$ 
+				zależy tylko od dwóch ostatnich cyfr. 
+				Podobnie $2566340 = 2566300 + 40 = 25663 \cdot 100 + 40 = 25663 \cdot 4 \cdot 25 + 40$, a więc cząstka 
+				$2566300$ jest 
+				podzielna przez $4$. Podobnie będzie dla innych $n$, przykładowo dla 
+				$n=3$ mamy $746320 = 746000 + 320 = 746 \cdot 1000 + 320 = 
+				746 \cdot 8 \cdot 125 + 320$, czyli cząstka $746000$ jest podzielna przez $8$, a o podzielności całej liczby decyduje trzycyfrowa końcówka $320$.
+			</p>
+		</div>
 
-	<p class ="formula">
-		Liczba jest podzielna przez $2^n$ wtedy i tylko wtedy, gdy jej $n$ ostatnich cyfr tworzy 
-		liczbę podzielną przez $2^n$.
-	</p>
+		<div class="proof">
+			<div class = "proof-sticker">Dowód</div>
+			<p>
+				Weźmy dowolną liczbę $a$. Można ją zapisać w postaci 
+			</p>
 
-	<div class ="proof">
-		<div class = "proof-sticker">Uzasadnienie</div>
+			$$
+				10^k a_k+10^{k-1} a_{k-1}+⋯+10^1 a_1+10^0 a_0
+			$$
+
+			<p>
+				gdzie <span class="comment_visibleLOL" id="Przykładowo liczbę 158 możemy zapisać jako 10^2\cdot1+10^1\cdot5+10^0\cdot8.   k wynosi tu 2.">$a_0,a_1,…,a_k∈\{0,1,2,3,4,5,6,7,8,9\}$
+				są cyframi tej liczby.</span> <span class="comment_visibleLOL" id="Jeśli liczba ma n cyfr lub mniej,  to liczba utworzona przez n ostatnich cyfr to ta sama liczba. Wtedy twierdzenie jest mało pomocne.">
+				Jeśli $k \lt n$, to
+				liczba utworzona przez $n$ ostatnich 
+				cyfr tej liczby jest równa $a$ i twierdzenie jest prawdziwe.</span> Gdy $k≥n$,
+				liczba utworzona przez 
+				$n$ ostatnich cyfr ma postać
+			</p>
+
+			$$
+				q=10^{n-1} a_{n-1}+⋯+10^1 a_1+10^0 a_0
+			$$
+
+			<p>
+				Wtedy:
+			</p>
+
+			$$
+				a=10^k a_k+⋯+10^n a_n+10^{n-1} a_{n-1}+⋯+10^1 a_1+10^0 a_0=\\
+				=2^k 5^k a_k+⋯+2^n 5^n a_n+q=2^n (2^{k-n} 5^k a_k+⋯+2^0 5^n a_n )+q
+			$$
+
+			<p>
+				Mamy więc 
+			</p>
+
+			$$
+				a=2^n (2^{k-n} 5^k a_k+⋯+2^0 5^n a_n )+q
+			$$
+
+			<p>
+				gdzie $2^n (2^{k-n} 5^k a_k+⋯+2^0 5^n a_n )$ jest liczbą podzielną przez $2^n$.
+			</p>
+
+			<p>
+				Jeśli $2^n |q$, to prawa strona równości jest podzielna przez $2^n$, więc lewa strona 
+				też jest podzielna przez $2^n$, 
+				mamy więc $2^n |q \Rightarrow 2^n |a$. Jeśli $2^n |a$, to w równości 
+				$a-2^n (2^{k-n} 5^k a_k+⋯+2^0 5^n a_n )=q$, lewa strona 
+				jest podzielna przez $2^n$, więc prawa strona też jest podzielna przez $2^n$, mamy 
+				więc $2^n |a \Rightarrow 2^n |q$. A zatem
+			</p>
+
+			$$
+				2^n |a \Leftrightarrow 2^n |q □
+			$$
+		</div>
+
 		<p>
-			Spójrzmy, czemu tak się dzieje. Weźmy dla przykładu $n=2$, czyli cechę podzielności przez 
-			$4$. Gdy chcemy stwierdzić, że 
-			liczba $324$ jest podzielna przez $4$, wystarczy spojrzeć na $2$ 
-			ostatnie cyfry, ponieważ 
-			$324 = 300 + 24 = 3 \cdot 100 + 24 = 3 \cdot 4 \cdot 25 + 24$. Widzimy, że wszystko oprócz 
-			$24$, czyli cząstka $300$, 
-			jest podzielne przez $4$. W takim razie podzielność liczby przez $4$ zależy tylko od dwóch 
-			ostatnich cyfr. 
-			Podobnie $2566340 = 2566300 + 40 = 25663 \cdot 100 + 40 = 25663 \cdot 4 \cdot 25 + 40$, a więc cząstka 
-			$2566300$ jest 
-			podzielna przez $4$. Podobnie będzie dla innych $n$, przykładowo dla 
-			$n=3$ mamy $746320 = 746000 + 320 = 746 \cdot 1000 + 320 = 
-			746 \cdot 8 \cdot 125 + 320$, a więc cząstka $746000$ jest podzielna przez $8$.
-		</p>
-	</div>
-
-	<div class="proof">
-		<div class = "proof-sticker">Dowód</div>
-		<p>
-			Weźmy dowolną liczbę $a$. Można ją zapisać w postaci 
+			Z tego twierdzenia wynikają cechy podzielności przez $2$, $4$, $8$ 
+			itd. Podobnie cecha podzielności przez $5$ wynika z ogólniejszego 
+			twierdzenia:
 		</p>
 
-		$$
-			10^k a_k+10^{k-1} a_{k-1}+⋯+10^1 a_1+10^0 a_0
-		$$
-
-		<p>
-			gdzie <span class="comment_visibleLOL" id="Przykładowo liczbę 158 możemy zapisać jako 10^2\cdot1+10^1\cdot5+10^0\cdot8.   k wynosi tu 2.">$a_0,a_1,…,a_k∈\{0,1,2,3,4,5,6,7,8,9\}$
-			są cyframi tej liczby.</span> <span class="comment_visibleLOL" id="Jeśli liczba ma n cyfr lub mniej,  to liczba utworzona przez n ostatnich cyfr to ta sama liczba. Wtedy twierdzenie jest mało pomocne.">
-			Jeśli $k \lt n$, to
-			liczba utworzona przez $n$ ostatnich 
-			cyfr tej liczby jest równa $a$ i twierdzenie jest prawdziwe.</span> Gdy $k≥n$,
-			liczba utworzona przez 
-			$n$ ostatnich cyfr ma postać
+		<p class ="formula">
+			Liczba jest podzielna przez $5^n$ wtedy i tylko wtedy, gdy jej $n$ ostatnich cyfr tworzy 
+			liczbę podzielną przez $5^n$.
 		</p>
 
-		$$
-			q=10^{n-1} a_{n-1}+⋯+10^1 a_1+10^0 a_0
-		$$
+		<div class = "proof">
+			<div class = "proof-sticker">Uzasadnienie</div>
+			Dowód przebiega analogicznie jak w przypadku poprzedniego twierdzenia.
+		</div>
 
-		<p>
-			Wtedy:
-		</p>
+		<div class ="proof">
+			<div class = "proof-sticker">Dowód</div>
+			<p>
+				Weźmy dowolną liczbę $a$. Można ją zapisać w postaci 
+			</p>
+			$$
+				10^k a_k+10^{k-1} a_{k-1}+⋯+10^1 a_1+10^0 a_0
+			$$
 
-		$$
+			<p>
+				gdzie $a_0,a_1,…,a_k \in \{0,1,2,3,4,5,6,7,8,9\}$ są cyframi tej liczby. Jeśli $k \lt n$, to liczba utworzona przez 
+				$n$ ostatnich cyfr 
+				tej liczby jest równa $a$ i twierdzenie jest prawdziwe. Gdy $k≥n$, 
+				liczba utworzona przez $n$ ostatnich cyfr ma postać
+			</p>
+
+			$$
+				q=10^{n-1} a_{n-1}+⋯+10^1 a_1+10^0 a_0
+			$$
+
+			<p>
+				Wtedy:
+			</p>
+
+			$$
 			a=10^k a_k+⋯+10^n a_n+10^{n-1} a_{n-1}+⋯+10^1 a_1+10^0 a_0=\\
-			=2^k 5^k a_k+⋯+2^n 5^n a_n+q=2^n (2^{k-n} 5^k a_k+⋯+2^0 5^n a_n )+q
-		$$
+			=2^k 5^k a_k+⋯+2^n 5^n a_n+q=5^n (2^k 5^{k-n} a_k+⋯+2^n 5^0 a_n )+q
+			$$
 
-		<p>
-			Mamy więc 
-		</p>
+			<p>
+				Mamy więc 
+			</p>
 
-		$$
-			a=2^n (2^{k-n} 5^k a_k+⋯+2^0 5^n a_n )+q
-		$$
+			$$
+				a=5^n (2^k 5^{k-n} a_k+⋯+2^n 5^0 a_n )+q
+			$$
 
-		<p>
-			gdzie $2^n (2^{k-n} 5^k a_k+⋯+2^0 5^n a_n )$ jest liczbą podzielną przez $2^n$.
-		</p>
+			<p>
+				gdzie $5^n (2^k 5^{k-n} a_k+⋯+2^n 5^0 a_n )$ jest liczbą podzielną przez $5^n$.
+			</p>
 
-		<p>
-			Jeśli $2^n |q$, to prawa strona równości jest podzielna przez $2^n$, więc lewa strona 
-			też jest podzielna przez $2^n$, 
-			mamy więc $2^n |q \Rightarrow 2^n |a$. Jeśli $2^n |a$, to w równości 
-			$a-2^n (2^{k-n} 5^k a_k+⋯+2^0 5^n a_n )=q$, lewa strona 
-			jest podzielna przez $2^n$, więc prawa strona też jest podzielna przez $2^n$, mamy 
-			więc $2^n |a \Rightarrow 2^n |q$. A zatem
-		</p>
-
-		$$
-			2^n |a \Leftrightarrow 2^n |q □
-		$$
-	</div>
-
-	<p>
-		Z tego twierdzenia wynikają cechy podzielności przez $2$, $4$, $8$ 
-		itd. Podobnie cecha podzielności przez $5$ wynika z ogólniejszego 
-		twierdzenia:
-	</p>
-
-	<p class ="formula">
-		Liczba jest podzielna przez $5^n$ wtedy i tylko wtedy, gdy jej $n$ ostatnich cyfr tworzy 
-		liczbę podzielną przez $5^n$.
-	</p>
-
-	<div class = "proof">
-		<div class = "proof-sticker">Uzasadnienie</div>
-		Dowód przebiega analogicznie jak w przypadku poprzedniego twierdzenia.
-	</div>
-
-	<div class ="proof">
-		<div class = "proof-sticker">Dowód</div>
-		<p>
-			Weźmy dowolną liczbę $a$. Można ją zapisać w postaci 
-		</p>
-		$$
-			10^k a_k+10^{k-1} a_{k-1}+⋯+10^1 a_1+10^0 a_0
-		$$
-
-		<p>
-			gdzie $a_0,a_1,…,a_k \in \{0,1,2,3,4,5,6,7,8,9\}$ są cyframi tej liczby. Jeśli $k \lt n$, to liczba utworzona przez 
-			$n$ ostatnich cyfr 
-			tej liczby jest równa $a$ i twierdzenie jest prawdziwe. Gdy $k≥n$, 
-			liczba utworzona przez $n$ ostatnich cyfr ma postać
-		</p>
-
-		$$
-			q=10^{n-1} a_{n-1}+⋯+10^1 a_1+10^0 a_0
-		$$
-
-		<p>
-			Wtedy:
-		</p>
-
-		$$
-		a=10^k a_k+⋯+10^n a_n+10^{n-1} a_{n-1}+⋯+10^1 a_1+10^0 a_0=\\
-		=2^k 5^k a_k+⋯+2^n 5^n a_n+q=5^n (2^k 5^{k-n} a_k+⋯+2^n 5^0 a_n )+q
-		$$
-
-		<p>
-			Mamy więc 
-		</p>
-
-		$$
-			a=5^n (2^k 5^{k-n} a_k+⋯+2^n 5^0 a_n )+q
-		$$
-
-		<p>
-			gdzie $5^n (2^k 5^{k-n} a_k+⋯+2^n 5^0 a_n )$ jest liczbą podzielną przez $5^n$.
-		</p>
-
-		<p>
-			Jeśli $5^n |q$, to prawa strona równości jest podzielna przez $5^n$, więc lewa strona też 
-			jest podzielna przez $5^n$, mamy 
-			więc $5^n |q \Rightarrow 5^n |a$. Jeśli $5^n |a$, to w równości 
-			$a-5^n (2^k 5^{k-n} a_k+⋯+2^n 5^0 a_n )=q$, lewa strona jest podzielna 
-			przez $5^n$, więc prawa strona też jest podzielna przez $2^n$, mamy więc 
-			$5^n |a \Rightarrow 5^n |q$. A zatem
-		</p>
-		$$
-			5^n |a \Leftrightarrow 5^n |q □
-		$$
+			<p>
+				Jeśli $5^n |q$, to prawa strona równości jest podzielna przez $5^n$, więc lewa strona też 
+				jest podzielna przez $5^n$, mamy 
+				więc $5^n |q \Rightarrow 5^n |a$. Jeśli $5^n |a$, to w równości 
+				$a-5^n (2^k 5^{k-n} a_k+⋯+2^n 5^0 a_n )=q$, lewa strona jest podzielna 
+				przez $5^n$, więc prawa strona też jest podzielna przez $2^n$, mamy więc 
+				$5^n |a \Rightarrow 5^n |q$. A zatem
+			</p>
+			$$
+				5^n |a \Leftrightarrow 5^n |q □
+			$$
+		</div>
 	</div>
 
 	</div>
@@ -974,7 +1077,7 @@
 	</p>
 
 	<p>
-		Nazewnictwa ciąg dalszy. Filozofia jest taka: Jeśli jedna liczba dzieli drugą, to mówimy, że jest jej dzielnikiem.
+		Nazewnictwa ciąg dalszy. Filozofia jest taka: Jeśli jedna liczba dzieli drugą, to mówimy, że jest jej <i>dzielnikiem</i>.
 	</p>
 
 	<ul>
@@ -994,7 +1097,8 @@
 		grupek możemy podzielić stertę kamieni. 
 		Gdy weźmiemy kupkę $60$ kamieni, możemy to zrobić na całkiem sporo sposobów - możemy dzielić kamienie na 
 		$1$ grupkę 
-		(nie dzielić wcale), dzielić na $2$ grupki, $3$ grupki itd. aż w końcu położymy każdy 
+		(nie dzielić wcale), dzielić na $2$ grupki, $3$ grupki, $4$ grupki, $5$ grupek, $6$ grupek, $10$ grupek, $12$ grupek, $15$ grupek, $20$ grupek, $30$
+		grupek, aż w końcu położymy każdy 
 		kamień osobno, czyli rozłożymy stertę na $60$ grupek.
 	</p>
 
@@ -1040,22 +1144,19 @@
 	</ul>
 
 	<p>
-		Fascynujące to to nie jest, ale daje podstawę do ciekawszego zagadnienia. 
+		Fascynujące to to nie jest, ale daje podstawę do ciekawszego zagadnienia. <i>Liczba doskonała</i> to liczba będąca sumą swoich dzielników właściwych.
 	</p>
 
-	<p>
-		<i>Liczba doskonała</i> to liczba będąca sumą swoich dzielników właściwych.
-	</p>
 	<ul>
 		<li>$6$ jest liczbą doskonałą. Dzielniki właściwe szóstki to $1$, 
 		$2$ i $3$, a $1 + 2 + 3 = 6$.</li>
 		<li>$28$ jest liczbą doskonałą. Dzielniki właściwe $28$ to $1$, 
-		$2$, $4$, $7$ i $14$, a 
+		$2$, $4$, $7$ oraz $14$ i tak się składa, że
 		$1 + 2 + 4 + 7 + 14 = 28$.</li>
 		<li>$496$ jest liczbą doskonałą, ponieważ dzielniki właściwe $496$ to 
 		$1$, $2$, $4$, $8$, 
 		$16$, $31$, $62$, $124$ i 
-		$248$, a 
+		$248$, a ich suma wynosi
 		$1 + 2 + 4 + 8 + 16 + 31 + 62 + 124 + 248 = 496$.</li>
 	</ul>
 
@@ -1093,11 +1194,11 @@
 			<li>$1184$ i $1210$ to liczby zaprzyjaźnione. Dzielniki właściwe $1184$ to 
 			$1$, $2$, $4$, $8$, 
 			$16$, $32$, $37$, $74$, 
-			$148$, $296$, $592$, a 
+			$148$, $296$, $592$, a ich suma
 			$1 + 2 + 4 + 8 + 16 + 32 + 37 + 74 + 148 + 296 + 592 = 1210$. Dzielniki właściwe $1210$ to 
 			$1$, $2$, $5$, $10$, 
 			$11$, $22$, $55$, $110$, 
-			$121$, $242$, $605$, a 
+			$121$, $242$, $605$ i niespodzianka:
 			$1 + 2 + 5 + 10 + 11 + 22 + 55 + 110 + 121 + 242 + 605 = 1184$.</li>
 		</ul>
 	</p>
@@ -1145,7 +1246,7 @@
 		w stanie nic z nią zrobić. Podobnie byłoby, gdyby wziąć stertę $3$ kamieni, $5$ kamieni, 
 		albo $11$ kamieni… Za każdym razem 
 		jedyne co możemy, to zostawić stertę taką, jak ją Pan Bóg stworzył, albo rozrzucić wszystkie kamienie w cały świat. Gdy 
-		liczba ma tylko dwa dzielniki: $1$ oraz samą siebie, mówimy, że jest liczbą pierwszą. 
+		liczba ma tylko dwa dzielniki: <span class="math">1</span> oraz samą siebie, mówimy, że jest <i>liczbą pierwszą</i>. 
 		<span class="comment" id="Czyli kilka pierwszych liczb pierwszych">Kilka początkowych liczb pierwszych</span> to:
 	</p>
 
@@ -1214,7 +1315,7 @@
 
 	<p>
 		Ogłosiliśmy dumnie, że każda liczba złożona jest iloczynem jakichś liczb pierwszych. Pytanie tylko, jakich? Gdy uda nam 
-		się wyłuskać z liczby informację o tym, z jakich liczb pierwszych się składa, dokonamy jej rozkładu na czynniki pierwsze, 
+		się wyłuskać z liczby informację o tym, z jakich liczb pierwszych się składa, dokonamy jej <i>rozkładu na czynniki pierwsze</i>, 
 		zwanego tez <i>faktoryzacją</i>. Jak to robimy? Dość żmudnie. Weźmy pod lupę liczbę $120$. 
 		Zastanówmy się najpierw, czy liczba ta 
 		będzie miała w rozkładzie $2$, czyli czy można zapisać $120$ 
@@ -1223,9 +1324,8 @@
 		czyli inaczej mówiąc $120 = 2 \cdot 60$. Tak oto dwójka pojawiła się w 
 		rozkładzie. Niestety to nie koniec. Chcemy rozbić $120$ na taki iloczyn, w którym pojawiają się tyko 
 		liczby pierwsze, a 
-		$60$ taką nie jest. W takim razie jeśli uda nam się rozbić liczbę $60$, 
-		to poznamy też pełen rozkład $120$. W takim razie 
-		bierzemy $60$ i pytamy, czy w jej rozkładzie występuje $2$. Stwierdzamy, że 
+		$60$ taką nie jest. W takim razie musimy jeszcze dokonać rozkładu liczby $60$.
+		Bierzemy ją i pytamy, czy w jej rozkładzie występuje $2$. Stwierdzamy, że 
 		$60 : 2 = 30$, czyli $60 = 2 \cdot 30$. Mamy więc 
 		$120 = 2 \cdot 60 = 2 \cdot 2 \cdot 30$. Teraz bierzemy $30$ i pytamy, 
 		czy dzieli się przez $2$. Ponieważ $30 : 2 = 15$, 
@@ -1250,12 +1350,12 @@
 	</p>
 
 	<p>
-		Gdy przeprowadzamy rozkład na czynniki, formalnie stosujemy taki zapis: rysujemy pionową kreskę, po lewej na górze piszemy 
+		Gdy przeprowadzamy rozkład na czynniki, umownie stosujemy taki zapis: rysujemy pionową kreskę, po lewej na górze piszemy 
 		liczbę do rozkładu.
 	</p>
 
 	<table class="factorisation center">
-		<tr><td>120</td><td></td></tr>
+		<tr><td>$120$</td><td></td></tr>
 		<tr><td></td><td></td></tr>
 		<tr><td></td><td></td></tr>
 		<tr><td></td><td></td></tr>
@@ -1269,8 +1369,8 @@
 	</p>
 
 	<table class="factorisation center">
-		<tr><td>120</td><td>2</td></tr>
-		<tr><td>60</td><td></td></tr>
+		<tr><td>$120$</td><td>$2$</td></tr>
+		<tr><td>$60$</td><td></td></tr>
 		<tr><td></td><td></td></tr>
 		<tr><td></td><td></td></tr>
 		<tr><td></td><td></td></tr>
@@ -1282,9 +1382,9 @@
 	</p>
 
 	<table class="factorisation center">
-		<tr><td>120</td><td>2</td></tr>
-		<tr><td>60</td><td>2</td></tr>
-		<tr><td>30</td><td></td></tr>
+		<tr><td>$120$</td><td>$2$</td></tr>
+		<tr><td>$60$</td><td>$2$</td></tr>
+		<tr><td>$30$</td><td></td></tr>
 		<tr><td></td><td></td></tr>
 		<tr><td></td><td></td></tr>
 		<tr><td></td><td></td></tr>
@@ -1295,12 +1395,12 @@
 	</p>
 
 	<table class="factorisation center">
-		<tr><td>120</td><td>2</td></tr>
-		<tr><td>60</td><td>2</td></tr>
-		<tr><td>30</td><td>2</td></tr>
-		<tr><td>15</td><td>3</td></tr>
-		<tr><td>5</td><td>5</td></tr>
-		<tr><td>1</td><td></td></tr>
+		<tr><td>$120$</td><td>$2$</td></tr>
+		<tr><td>$60$</td><td>$2$</td></tr>
+		<tr><td>$30$</td><td>$2$</td></tr>
+		<tr><td>$15$</td><td>$3$</td></tr>
+		<tr><td>$5$</td><td>$5$</td></tr>
+		<tr><td>$1$</td><td></td></tr>
 	</table>
 
 	<p>
@@ -1313,41 +1413,41 @@
 		<tr>
 			<td>
 				<table class="factorisation center">
-					<tr><td>630</td><td>2</td></tr>
-					<tr><td>315</td><td>3</td></tr>
-					<tr><td>105</td><td>3</td></tr>
-					<tr><td>35</td><td>5</td></tr>
-					<tr><td>7</td><td>7</td></tr>
-					<tr><td>1</td><td></td></tr>
+					<tr><td>$630$</td><td>$2$</td></tr>
+					<tr><td>$315$</td><td>$3$</td></tr>
+					<tr><td>$105$</td><td>$3$</td></tr>
+					<tr><td>$35$</td><td>$5$</td></tr>
+					<tr><td>$7$</td><td>$7$</td></tr>
+					<tr><td>$1$</td><td></td></tr>
 				</table>
 				<p>
-					$630 = 2 \cdot 3 \cdot 3 \cdot 5 \cdot 7$
+					$$630 = 2 \cdot 3 \cdot 3 \cdot 5 \cdot 7$$
 				</p>
 			</td>
 			<td>
 				<table class="factorisation center">
-					<tr><td>440</td><td>2</td></tr>
-					<tr><td>220</td><td>2</td></tr>
-					<tr><td>110</td><td>2</td></tr>
-					<tr><td>55</td><td>5</td></tr>
-					<tr><td>11</td><td>11</td></tr>
-					<tr><td>1</td><td></td></tr>
+					<tr><td>$440$</td><td>$2$</td></tr>
+					<tr><td>$220$</td><td>$2$</td></tr>
+					<tr><td>$110$</td><td>$42$</td></tr>
+					<tr><td>$55$</td><td>$5$</td></tr>
+					<tr><td>$11$</td><td>$11$</td></tr>
+					<tr><td>$1$</td><td></td></tr>
 				</table>
 				<p>
-					$440 = 2 \cdot 2 \cdot 2 \cdot 5 \cdot 11$
+					$$440 = 2 \cdot 2 \cdot 2 \cdot 5 \cdot 11$$
 				</p>
 			</td>
 			<td>
 				<table class="factorisation center">
-					<tr><td>24310</td><td>2</td></tr>
-					<tr><td>12155</td><td>5</td></tr>
-					<tr><td>2431</td><td>11</td></tr>
-					<tr><td>221</td><td>13</td></tr>
-					<tr><td>17</td><td>17</td></tr>
-					<tr><td>1</td><td></td></tr>
+					<tr><td>$24310$</td><td>$2$</td></tr>
+					<tr><td>$12155$</td><td>$5$</td></tr>
+					<tr><td>$2431$</td><td>$11$</td></tr>
+					<tr><td>$221$</td><td>$13$</td></tr>
+					<tr><td>$17$</td><td>$17$</td></tr>
+					<tr><td>$1$</td><td></td></tr>
 				</table>
 				<p>
-					$24310 = 2 \cdot 5 \cdot 11 \cdot 13 \cdot 17$
+					$$24310 = 2 \cdot 5 \cdot 11 \cdot 13 \cdot 17$$
 				</p>
 			</td>
 		</tr>
@@ -1355,7 +1455,8 @@
 
 	<p>
 		Mówimy, że rozkład na czynniki pierwsze jest <i>jednoznaczny</i>, to znaczy, że jedna liczba nie może zostać rozłożona na 
-		czynniki pierwsze w różny sposób.
+		czynniki pierwsze w różny sposób. Niemożliwe jest, by dokonać rozkładu jakiejś liczby dwa razy, by otrzymać w wynikowych iloczynach różne
+		liczby pierwsze albo odmienną ich ilość.
 	</p>
 
 	</div>
@@ -1376,9 +1477,6 @@
 
 	<p>
 		Temat rozdziału brzmi jak nazwa partii politycznej Polski Ludowej, ale nie jest to nic równie strasznego.
-	</p>
-
-	<p>
 		$NWD$ to skrót od „największy wspólny dzielnik”. Gdy rozważamy dwie liczby, powiedzmy $30$
 		i $75$, możemy wypisać wszystkie 
 		dzielniki jednej liczby i wszystkie dzielniki drugiej liczby. 
@@ -1410,12 +1508,6 @@
 		$6$, $7$, $14$, $21$, 
 		$42$. 
 		W takim razie $NWD (30, 42) = 6$.</li>
-		<li>Szukamy $NWD (28, 70)$. Dzielniki $28$ to $1$, 
-		$2$, $4$, $7$, $14$, 
-		$28$. Dzielniki $70$ to $1$, $2$, 
-		$5$, $7$, $10$, $14$, 
-		$35$, $70$. 
-		W takim razie $NWD (30, 42) = 14$.</li>
 		<li>Szukamy $NWD (60, 105)$. Dzielniki $60$ to $1$, 
 		$2$, $3$, $4$, $6$, 
 		$10$, $12$, $15$, $20$, 
@@ -1423,6 +1515,11 @@
 		Dzielniki $105$ to $1$, $3$, 
 		$5$, $7$, $15$, $21$, 
 		$35$, $105$. W takim razie $NWD (60, 105)$ to $15$.</li>
+		<li>Szukamy $NWD (28, 65)$. Dzielniki $28$ to $1$, 
+			$2$, $4$, $7$, $14$, 
+			$28$. Dzielniki $65$ to $1$, $5$, 
+			$13$, $65$.
+			W takim razie $NWD (28, 65) = 1$.</li>
 	</ul>
 
 	<p>
@@ -1459,7 +1556,7 @@
 		Możemy wziąć dwie liczby, np. $12$ i $21$ i wypisać dla każdej z nich kilka początkowych 
 		wielokrotności. W końcu musi się 
 		zdarzyć, że wielokrotność jednej i drugiej będzie taka sama. Taka wielokrotność to <i>wspólna wielokrotność</i> tych liczb. 
-		Dla $12$ i $21$ mamy na przykład wspólne wielokrotności $84$ i 
+		Dla $12$ i $21$ widzimy powyżej wspólne wielokrotności $84$ i 
 		$168$. Gdybyśmy szukali dalej, znaleźlibyśmy ich dużo więcej, a 
 		nawet dowolnie dużo więcej. Najmniejsza spośród wspólnych wielokrotności dwóch liczb to ich $NWW$. Możemy zapisać 
 		symbolicznie $NWW (12, 21) = 84$.
@@ -1500,55 +1597,55 @@
 		pierwsze. Bierzemy dwoje delikwentów i rozbijamy ich na iloczyny liczb pierwszych
 	</p>
 		 
-	<table  width="70%">
+	<table style="width: 100%">
 		<tr>
 			<td>
 				<table class="factorisation center">
-					<tr><td>120</td><td>2</td></tr>
-					<tr><td>60</td><td>2</td></tr>
-					<tr><td>30</td><td>2</td></tr>
-					<tr><td>15</td><td>3</td></tr>
-					<tr><td>5</td><td>5</td></tr>
-					<tr><td>1</td><td></td></tr>
+					<tr><td>$120$</td><td>$2$</td></tr>
+					<tr><td>$60$</td><td>$2$</td></tr>
+					<tr><td>$30$</td><td>$2$</td></tr>
+					<tr><td>$15$</td><td>$3$</td></tr>
+					<tr><td>$5$</td><td>$5$</td></tr>
+					<tr><td>$1$</td><td></td></tr>
 				</table>
 			</td>
 			<td>
 				<table class="factorisation center">
-					<tr><td>300</td><td>2</td></tr>
-					<tr><td>150</td><td>2</td></tr>
-					<tr><td>75</td><td>3</td></tr>
-					<tr><td>25</td><td>5</td></tr>
-					<tr><td>5</td><td>5</td></tr>
-					<tr><td>1</td><td></td></tr>
+					<tr><td>$300$</td><td>$2$</td></tr>
+					<tr><td>$150$</td><td>$2$</td></tr>
+					<tr><td>$75$</td><td>$3$</td></tr>
+					<tr><td>$25$</td><td>$5$</td></tr>
+					<tr><td>$5$</td><td>$5$</td></tr>
+					<tr><td>$1$</td><td></td></tr>
 				</table>
 			</td>
 		</tr>
 	</table>
 		 
 	<p>
-		i zaznaczamy te czynniki, które powtarzają się w obydwu rozkładach.
+		Zaznaczamy te czynniki, które powtarzają się w obydwu rozkładach.
 	</p>
 
-	<table width="70%">
+	<table width="100%">
 		<tr>
 			<td>
 				<table class="factorisation center">
-					<tr><td>120</td><td style="color: #cc2222; font-weight: bold">2</td></tr>
-					<tr><td>60</td><td style="color: #cc2222; font-weight: bold">2</td></tr>
-					<tr><td>30</td><td>2</td></tr>
-					<tr><td>15</td><td style="color: #cc2222; font-weight: bold">3</td></tr>
-					<tr><td>5</td><td style="color: #cc2222; font-weight: bold">5</td></tr>
-					<tr><td>1</td><td></td></tr>
+					<tr><td>$120$</td><td style="color: #cc2222; font-weight: bold">$2$</td></tr>
+					<tr><td>$60$</td><td style="color: #cc2222; font-weight: bold">$2$</td></tr>
+					<tr><td>$30$</td><td>$2$</td></tr>
+					<tr><td>$15$</td><td style="color: #cc2222; font-weight: bold">$3$</td></tr>
+					<tr><td>$5$</td><td style="color: #cc2222; font-weight: bold">$5$</td></tr>
+					<tr><td>$1$</td><td></td></tr>
 				</table>
 			</td>
 			<td>
 				<table class="factorisation center">
-					<tr><td>300</td><td style="color: #cc2222; font-weight: bold">2</td></tr>
-					<tr><td>150</td><td style="color: #cc2222; font-weight: bold">2</td></tr>
-					<tr><td>75</td><td style="color: #cc2222; font-weight: bold">3</td></tr>
-					<tr><td>25</td><td style="color: #cc2222; font-weight: bold">5</td></tr>
-					<tr><td>5</td><td>5</td></tr>
-					<tr><td>1</td><td></td></tr>
+					<tr><td>$300$</td><td style="color: #cc2222; font-weight: bold">$2$</td></tr>
+					<tr><td>$150$</td><td style="color: #cc2222; font-weight: bold">$2$</td></tr>
+					<tr><td>$75$</td><td style="color: #cc2222; font-weight: bold">$3$</td></tr>
+					<tr><td>$25$</td><td style="color: #cc2222; font-weight: bold">$5$</td></tr>
+					<tr><td>$5$</td><td>$5$</td></tr>
+					<tr><td>$1$</td><td></td></tr>
 				</table>
 			</td>
 		</tr>
@@ -1558,17 +1655,22 @@
 		Iloczyn zaznaczonych czynników tworzy największy wspólny dzielnik liczb:
 	</p>
 	
-	<img src=".images/Screenshot_1.png" class="center"></img>
+	$$
+		NWD(120, 300) = {\bf \color{#dd3333}{2}} \cdot {\bf \color{#dd3333}{2}} \cdot {\bf \color{#dd3333}{3}} \cdot {\bf \color{#dd3333}{5}} = 60
+	$$
 	
 	<p>
 		Z kolei iloczyn zaznaczonych czynników wraz ze wszystkimi niezaznaczonymi czynnikami tworzy najmniejszą wspólną wielokrotność:
 	</p>
 	
-	<img src=".images/Screenshot_2.png" class="center"></img>
+	$$
+		NWW(120, 300) = {\bf \color{#dd3333}{2}} \cdot {\bf \color{#dd3333}{2}} \cdot {\bf \color{#dd3333}{3}} \cdot {\bf \color{#dd3333}{5}} \cdot 2 \cdot 5
+		 = 600
+	$$
 
 	<p>
 		Dlaczego tak jest? Nie jest tajemnicą, że każdy czynnik występujący w rozkładzie $300$ jest dzielnikiem 
-		$300$. Podobnie, iloczyn dowolnych czynników z rozkładu także tworzy dzielnik $300$:
+		$300$. Ponadto iloczyn dowolnych liczb z rozkładu także tworzy dzielnik $300$:
 	</p>
 	
 	$$
@@ -1577,7 +1679,7 @@
 	
 	<p>
 		$300$ jest podzielne przez $60$, czyli liczba $2\cdot2\cdot3\cdot5$ jest 
-		dzielnikiem $300$. Tak więc, kiedy wybieramy czynniki występujące w obydwu rozkładach, dostajemy wspólny dzielnik 
+		dzielnikiem $300$. Kiedy wybieramy czynniki występujące w obydwu rozkładach, dostajemy wspólny dzielnik 
 		$120$ i $300$. Ponieważ wybieramy <b>wszystkie</b> czynniki z obydwu rozkładów, dostajemy 
 		największy wspólny dzielnik $120$ i $300$.
 	</p>
@@ -1592,7 +1694,7 @@
 	$$
 	
 	<p>
-		Podobnie
+		oraz wszystkie czynniki $120$
 	</p>
 	
 	$$
@@ -1613,58 +1715,59 @@
 	<p class = "type">
 		Rozszerzenie
 	</p>
+	<div class = "optional-show">
+		<p>
+			Mówimy, że dwie liczby są <i>względnie pierwsze</i>, jeśli ich $NWD$ wynosi $1$. Nie możemy wtedy znaleźć 
+			żadnej <span class="comment" 
+			id="z całym szacunkiem dla jedynki">sensownej</span> liczby, 
+			przez którą można podzielić i jedną, i drugą.
+		</p>
+		<ul>
+			<li>Liczby $5$ i $6$ są względnie pierwsze, ponieważ nie mają wspólnego dzielnika 
+			innego niż $1$.</li>
+			<li>Liczby $12$ i $35$ są względnie pierwsze, ponieważ nie mają wspólnego dzielnika 
+			innego niż $1$.</li>
+			<li>$42$ i $77$ nie są względnie pierwsze, ponieważ $7$ dzieli 
+			obydwie liczby.</li>
+		</ul>
 
-	<p>
-		Mówimy, że dwie liczby są <i>względnie pierwsze</i>, jeśli ich $NWD$ wynosi $1$. Nie możemy wtedy znaleźć 
-		żadnej <span class="comment" 
-		id="z całym szacunkiem dla jedynki">sensownej$ liczby, 
-		przez którą można podzielić i jedną, i drugą.
-	</p>
-	<ul>
-		<li>Liczby $5$ i $6$ są względnie pierwsze, ponieważ nie mają wspólnego dzielnika 
-		innego niż $1$.</li>
-		<li>Liczby $12$ i $35$ są względnie pierwsze, ponieważ nie mają wspólnego dzielnika 
-		innego niż $1$.</li>
-		<li>$42$ i $77$ nie są względnie pierwsze, ponieważ $7$ dzieli 
-		obydwie liczby.</li>
-	</ul>
-
-	<p>
-		Gdy rozważamy więcej niż dwie liczby, mówimy że są względnie pierwsze, gdy największy wspólny dzielnik wszystkich tych 
-		liczb wynosi $1$.
-	</p>
-	<ul>
-		<li>Liczby $3$, $5$ i $7$ są względnie pierwsze.</li>
-		<li>Liczby $22$, $23$, $39$ i $85$ 
-		są względnie pierwsze.</li>
-		<li>Liczby $24$, $12$ i $7$ są względnie pierwsze, mimo że 
-		$24$ i $12$ nie są względnie pierwsze.</li>
-	</ul>
-	
-	<p>
-		Jeśli chcemy podkreślić, że wśród wielu liczb dowolne dwie są ze sobą względnie pierwsze, mówimy, że są <i>parami względnie 
-		pierwsze</i>. 
-	</p>
-
-	<ul>
-		<li>$24$, $12$ i $7$ są względnie pierwsze, ale nie są parami 
-		względnie pierwsze.</li>
-	</ul>
-
-	<p>
-		Najmniejsza wspólna wielokrotność dwóch liczb względnie pierwszych jest ich iloczynem. Wynika to z bardziej ogólnego 
-		twierdzenia:
-	</p>
-
-	<p class ="formula">
-		Iloczyn $NWW$ i $NWD$ dwóch liczb jest równy iloczynowi tych liczb.
-	</p>
-
-	<div class="proof">
-		<div class = "proof-sticker">Dowód</div>
-		Eh…
-	</div>
+		<p>
+			Gdy rozważamy więcej niż dwie liczby, mówimy że są względnie pierwsze, gdy największy wspólny dzielnik wszystkich tych 
+			liczb wynosi $1$.
+		</p>
+		<ul>
+			<li>Liczby $3$, $5$ i $7$ są względnie pierwsze.</li>
+			<li>Liczby $22$, $23$, $39$ i $85$ 
+			są względnie pierwsze.</li>
+			<li>Liczby $24$, $12$ i $7$ są względnie pierwsze, mimo że 
+			$24$ i $12$ nie są względnie pierwsze.</li>
+		</ul>
 		
+		<p>
+			Jeśli chcemy podkreślić, że wśród wielu liczb dowolne dwie są ze sobą względnie pierwsze, mówimy, że są <i>parami względnie 
+			pierwsze</i>. 
+		</p>
+
+		<ul>
+			<li>$24$, $12$ i $7$ są względnie pierwsze, ale nie są parami 
+			względnie pierwsze.</li>
+		</ul>
+
+		<p>
+			Najmniejsza wspólna wielokrotność dwóch liczb względnie pierwszych jest ich iloczynem. Wynika to z bardziej ogólnego 
+			twierdzenia:
+		</p>
+
+		<p class ="formula">
+			Iloczyn $NWW$ i $NWD$ dwóch liczb jest równy iloczynowi tych liczb.
+		</p>
+
+		<div class="proof">
+			<div class = "proof-sticker">Dowód</div>
+			Eh…
+		</div>
+	</div>	
+
 	</div>
 	</div>
 	</div>

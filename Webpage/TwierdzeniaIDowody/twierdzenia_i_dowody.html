@@ -4,6 +4,7 @@
 <head>
 	<title>Twierdzenia i dowody</title>
 	<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 	<link rel="stylesheet" href="../lesson_style.css">
 	<link rel="stylesheet" href="./style.css">
 
@@ -26,23 +27,23 @@
 <body class="lesson">
   
 <div class = "menu">
-		<div class="logo">
-				<div>
-					<div class="logo-black-cell" style="float: left"></div>
-					<div class="logo-container-cell" style="float: left">
-						<div class="logo-red-cell" style="float: left"></div>
-						<div class="logo-red-cell" style="float: left"></div>
-						<div class="logo-red-cell" style="float: left"></div>
-						<div class="logo-red-cell" style="float: left"></div>
-					</div>
-					<div class="logo-black-cell" style="float: left; clear: left"></div>
-					<div class="logo-black-cell" style="float: left"></div>
-				</div>
+	<div class="logo">
+		<div>
+			<div class="logo-black-cell" style="float: left"></div>
+			<div class="logo-container-cell" style="float: left">
+				<div class="logo-red-cell" style="float: left"></div>
+				<div class="logo-red-cell" style="float: left"></div>
+				<div class="logo-red-cell" style="float: left"></div>
+				<div class="logo-red-cell" style="float: left"></div>
+			</div>
+			<div class="logo-black-cell" style="float: left; clear: left"></div>
+			<div class="logo-black-cell" style="float: left"></div>
 		</div>
-		<div class="logo-text">
-			<span class="logo-text-1">squirrel</span>
-			<span class="logo-text-2">math</span>
-		</div>
+	</div>
+	<div class="logo-text">
+		<span class="logo-text-1">squirrel</span>
+		<span class="logo-text-2">math</span>
+	</div>
 
 	<a href="../index.html"><button class = "button_convey"><span>STRONA GŁÓWNA</span></button></a>
 	<a href="../drzewo.html"><button class = "button_convey"><span>DRZEWO</span></button></a>
@@ -117,8 +118,8 @@
 	
 	<p>
 		Użyliśmy zmiennych oznaczonych literami  $a$ i  $b$, aby wyrazić następującą myśl:<br>
-		Przypisz literze  $a$ dowolną wartość liczbową, przypisz literze  $b$ dowolną (niekoniecznie 
-		inną) wartość liczbową, wstaw w miejsce wystąpień  $a$ i  $b$ przypisane wartości, a 
+		Przypisz literze  $a$ dowolną wartość liczbową, przypisz literze  $b$ dowolną wartość liczbową (niekoniecznie 
+		inną, byle nie $0$), wstaw w miejsce wystąpień $a$ i $b$ przypisane wartości, a 
 		otrzymasz poprawną równość.
 	</p>
 
@@ -141,9 +142,9 @@
 		</li>
 		<li>
 			Mnożenie to wielokrotne dodanie do siebie tej samej liczby: 
-			<p class="math" align="center">
-				<center><img src=".images/Screenshot_1.png" align="middle"></img></center>
-			</p>
+			$$
+				a \cdot b = \underbrace{a + a + a + \dotsb + a}_b
+			$$
 		</li>
 		<li>
 			Odejmowanie to odwrotność dodawania: 
@@ -186,7 +187,8 @@
 	<p>
 		Trzykropek wykorzystany w zapisie  $a \cdot b=a+a+a+⋯+a$ jest często używany, by przedstawić sumę lub iloczyn 
 		składników/czynników, których ilość nie jest bliżej znana lub zależy od pewnej zmiennej. Formuła  $a-b=c \Leftrightarrow a+c=b$
-		wykorzystuje symbol równoważności  $ \Leftrightarrow $, który informuje, że to, co po lewej, jest równoważne z tym, co po prawej.
+		wykorzystuje <span class="comment_visible" id="Warto zaznaczyć różnicę między znakiem równości $=$ a znakiem równoważności $ \Leftrightarrow $. Znak równości stawiamy pomiędzy dwoma liczbami/wyrażeniami
+		algebraicznymi/obiektami matematycznymi, które są takie same (mają tą samą wartość). Równoważność dotyczy dwóch stwierdzeń (zdań), które wyrażają dokładnie taką samą myśl.">symbol równoważności $ \Leftrightarrow $, który informuje, że to, co po lewej, jest równoważne z tym, co po prawej.</span>
 	</p>
 
 	</div>
@@ -195,7 +197,7 @@
 	
 	<div class="chapter">
 	<div class="chapter_name">
-		Od pomysłu do twierdzenia
+		Od obserwacji do twierdzenia
 	</div>
 	<hr>
 
@@ -245,11 +247,8 @@
 		przypadków.
 	</p>
 	
-	<p class="type">
-		 Pseudo-dowód
-	</p>
-	
 	<div class="proof">
+		<p class="type proof-sticker">Pseudo-dowód</p>
 		<p>
 			Przypomnijmy sobie, w jaki sposób wyznaczaliśmy  $NWW$ i  $NWD$ liczb. Dokonywaliśmy 
 			rozkładu na czynniki pierwsze obydwu liczb:
@@ -264,37 +263,46 @@
 			A następnie wybieraliśmy te czynniki, które pojawiają się w obydwu rozkładach:
 		</p>
 
-		<center><img src=".images/Screenshot_2.png" align="middle"></img></center>
-
+		$$
+			120 = \color{#dd3333}{\bf 2} \cdot \color{#dd3333}{\bf 2} \cdot 2 \cdot \color{#dd3333}{\bf 3} \cdot \color{#dd3333}{\bf 5}\\
+			300 = \color{#dd3333}{\bf 2} \cdot \color{#dd3333}{\bf 2} \cdot \color{#dd3333}{\bf 3} \cdot \color{#dd3333}{\bf 5} \cdot 5
+		$$
 		<p>
 			Czynniki, które pojawiają się w obydwu rozkładach, tworzą  $NWD$ tych liczb:
 		</p>
 
-		<center><img src=".images/Screenshot_3.png" align="middle"></img></center>
+		$$
+			NWD(120, 300) = \color{#dd3333}{\bf 2} \cdot \color{#dd3333}{\bf 2} \cdot \color{#dd3333}{\bf 3} \cdot \color{#dd3333}{\bf 5} = 60
+		$$
 
 		<p>
 			A razem z czynnikami pojawiającymi się tylko raz tworzą  $NWW$ tych liczb:
 		</p>
 
-		<center><img src=".images/Screenshot_4.png" align="middle"></img></center>
+		$$
+			NWW(120, 300) = \color{#dd3333}{\bf 2} \cdot \color{#dd3333}{\bf 2} \cdot \color{#dd3333}{\bf 3} \cdot \color{#dd3333}{\bf 5} \cdot 2 \cdot 5 = 600
+		$$
 
 		<p>
 			Dzięki takiemu zapisowi łatwiej zauważyć słuszność naszej hipotezy:
 		</p>
 		
-		<center><img src=".images/Screenshot_5.png" align="middle"></img></center>
+		$$
+			120 \cdot 300 = \color{#dd3333}{\bf 2} \cdot \color{#dd3333}{\bf 2} \cdot 2 \cdot \color{#dd3333}{\bf 3} \cdot \color{#dd3333}{\bf 5} \ \ \ \cdot \ \ \ 
+			\color{#dd3333}{\bf 2} \cdot \color{#dd3333}{\bf 2} \cdot \color{#dd3333}{\bf 3} \cdot \color{#dd3333}{\bf 5} \cdot 5 = \\
+			= \color{#dd3333}{\bf 2} \cdot \color{#dd3333}{\bf 2} \cdot \color{#dd3333}{\bf 3} \cdot \color{#dd3333}{\bf 5} \ \ \ \cdot \ \ \ 
+			\color{#dd3333}{\bf 2} \cdot \color{#dd3333}{\bf 2} \cdot \color{#dd3333}{\bf 3} \cdot \color{#dd3333}{\bf 5} \cdot 2 \cdot 5 =
+			NWD(120, 300) \cdot NWW(120, 300)
+		$$
 	</div>
 		
 	<p>
 		Teraz jedynie musimy sformalizować nasze rozumowanie i nie opierać się na konkretnych liczbach  $120$ i 
 		 $300$, a na dowolnych dwóch  $a$ i  $b$.
 	</p>
-
-	<p class="type">
-		Dowód
-	</p>
 	
 	<div class="proof">
+		<p class="type proof-sticker">Dowód</p>
 		<p>
 			Weźmy dowolne liczby  $a$ i  $b$ i dokonajmy ich rozkładu na czynniki pierwsze. 
 			Wybierzmy czynniki pojawiające się w obydwu rozkładach i oznaczmy je jako  $r_1,r_2,r_3,r_4,…,r_k$.
@@ -305,8 +313,8 @@
 		</p>
 		
 		$$
-			a=r_1 \cdot r_2 \cdot r_3 \cdot … \cdot r_k \cdot p_1 \cdot p_2 \cdot p_3 \cdot … \cdot p_n\\
-			b=r_1 \cdot r_2 \cdot r_3 \cdot … \cdot r_k \cdot q_1 \cdot q_2 \cdot q_3 \cdot … \cdot q_m
+			a = \color{#dd3333}{\bf r_1} \cdot  \color{#dd3333}{\bf r_2} \cdot  \color{#dd3333}{\bf r_3} \cdot … \cdot  \color{#dd3333}{\bf r_k} \cdot p_1 \cdot p_2 \cdot p_3 \cdot … \cdot p_n\\
+			b = \color{#dd3333}{\bf r_1} \cdot  \color{#dd3333}{\bf r_2} \cdot  \color{#dd3333}{\bf r_3} \cdot … \cdot  \color{#dd3333}{\bf r_k} \cdot q_1 \cdot q_2 \cdot q_3 \cdot … \cdot q_m
 		$$
 		
 		<p>
@@ -319,8 +327,8 @@
 		</p>
 		
 		$$
-			NWD (a,b)=r_1 \cdot r_2 \cdot r_3 \cdot … \cdot r_k\\
-			NWW (a,b)=r_1 \cdot r_2 \cdot r_3 \cdot … \cdot r_k \cdot p_1 \cdot p_2 \cdot p_3 \cdot … \cdot p_n \cdot q_1 \cdot q_2 \cdot q_3 \cdot … \cdot q_m
+			NWD (a,b) = \color{#dd3333}{\bf r_1} \cdot  \color{#dd3333}{\bf r_2} \cdot  \color{#dd3333}{\bf r_3} \cdot … \cdot  \color{#dd3333}{\bf r_k}\\
+			NWW (a,b) = \color{#dd3333}{\bf r_1} \cdot  \color{#dd3333}{\bf r_2} \cdot  \color{#dd3333}{\bf r_3} \cdot …  \color{#dd3333}{\bf \cdot r_k} \cdot p_1 \cdot p_2 \cdot p_3 \cdot … \cdot p_n \cdot q_1 \cdot q_2 \cdot q_3 \cdot … \cdot q_m
 		$$
 		
 		<p>
@@ -328,9 +336,11 @@
 		</p>
 		
 		$$
-			a \cdot b=(r_1 \cdot r_2 \cdot r_3 \cdot … \cdot r_k \cdot p_1 \cdot p_2 \cdot p_3 \cdot … \cdot p_n ) \cdot (r_1 \cdot r_2 \cdot r_3 \cdot … \cdot r_k \cdot q_1 \cdot q_2 \cdot q_3 \cdot … \cdot q_m )=\\
-			=(r_1 \cdot r_2 \cdot r_3 \cdot … \cdot r_k ) \cdot (r_1 \cdot r_2 \cdot r_3 \cdot … \cdot r_k \cdot p_1 \cdot p_2 \cdot p_3 \cdot … \cdot p_n \cdot q_1 \cdot q_2 \cdot q_3 \cdot … \cdot q_m )=\\
-			=NWD (a,b) \cdot NWW (a,b)   □
+			a \cdot b=( \color{#dd3333}{\bf r_1} \cdot  \color{#dd3333}{\bf r_2} \cdot  \color{#dd3333}{\bf r_3} \cdot … \cdot  \color{#dd3333}{\bf r_k} \cdot p_1 \cdot p_2 \cdot p_3 \cdot … \cdot p_n ) \cdot 
+			( \color{#dd3333}{\bf r_1} \cdot  \color{#dd3333}{\bf r_2} \cdot  \color{#dd3333}{\bf r_3} \cdot … \cdot  \color{#dd3333}{\bf r_k} \cdot q_1 \cdot q_2 \cdot q_3 \cdot … \cdot q_m )=\\
+			=( \color{#dd3333}{\bf r_1} \cdot  \color{#dd3333}{\bf r_2} \cdot  \color{#dd3333}{\bf r_3} \cdot … \cdot  \color{#dd3333}{\bf r_k} ) \cdot 
+			( \color{#dd3333}{\bf r_1} \cdot  \color{#dd3333}{\bf r_2} \cdot  \color{#dd3333}{\bf r_3} \cdot … \cdot  \color{#dd3333}{\bf r_k} \cdot p_1 \cdot p_2 \cdot p_3 \cdot … \cdot p_n \cdot q_1 \cdot q_2 \cdot q_3 \cdot … \cdot q_m )=\\
+			=NWD (a,b) \cdot NWW (a,b) \ □
 		$$
 	</div>
 		
@@ -350,7 +360,7 @@
 	</p>
 
 	<p>
-		Dowód przeprowadzony w sposób ogólny, z użyciem algebraicznego zapisu na zmiennych literowych, jest jedynym sposobem na uzasadnianie 
+		Dowód przeprowadzony w sposób ogólny, z użyciem algebraicznego zapisu opartego na zmiennych literowych, jest jedynym sposobem na uzasadnianie 
 		własności w matematyce. Nie można przyjmować na wiarę tendencji, które wynikają z kilku zaobserwowanych przykładów. Ktoś mógłby 
 		stwierdzić, że:
 	</p>
@@ -379,7 +389,7 @@
 	
 	<div class="chapter">
 	<div class="chapter_name">
-		Definicje a twierdzenia
+		Definicje i twierdzenia
 	</div>
 	<hr>
 
@@ -402,28 +412,30 @@
 	<ul>
 		<li>
 			Zapis
-			<center><img src=".images/Screenshot_1.png" align="middle"></img></center>
+			$$
+				a \cdot b = \underbrace{a + a + a + \dotsb + a}_b
+			$$
 			stanowi definicję mnożenia. Dzięki niemu dowiadujemy się, w jaki sposób rozumieć symbol  $ \cdot $ postawiony 
 			pomiędzy dwiema liczbami: wyrażenie  $a \cdot b$ rozumiemy jako  $b$ razy dodaną do siebie 
 			liczbę  $a$.
 		</li>
 		<li>
-			Mówimy, że  $a$ jest podzielne przez  $b$, jeśli  $a/b$ jest 
-			liczbą całkowitą. W ten sposób definiujemy zwrot „jest podzielne przez” jak również tłumaczymy zapis  $a | b$. 
-			Matematycy zazwyczaj używają innej, prawie równoważnej definicji:  $a | b$ jeśli istnieje liczba całkowita 
+			Mówimy, że  $a$ jest podzielne przez  $b$, jeśli  $\frac{a}{b}$ jest 
+			liczbą całkowitą. W ten sposób definiujemy zwrot „jest podzielne przez” jak również tłumaczymy zapis  $a \mid b$. 
+			Matematycy zazwyczaj używają innej, prawie równoważnej definicji:  $a \mid b$ jeśli istnieje liczba całkowita 
 			 $c$, dla której  $a=b \cdot c$.
 		</li>
 		<li>
-			Liczby wymierne definiujemy jako ułamki  $a/b$ gdzie  $a$ oraz  $b$ to 
+			Liczby wymierne definiujemy jako ułamki  $\frac{a}{b}$ gdzie  $a$ oraz  $b$ to 
 			liczby całkowite.
 		</li>
 		<li>
-			 $NWD(a,b)$ definiujemy jako największą liczbę naturalną  $c$, taką że  $c | a$
-			oraz  $c | b$.
+			 $NWD(a,b)$ definiujemy jako największą liczbę naturalną  $c$, taką że  $c \mid a$
+			oraz  $c \mid b$.
 		</li>
 		<li>
-			 $NWW(a,b)$ definiujemy jako najmniejszą liczbę naturalną  $c$, taką że  $a | c$ 
-			oraz  $b | c$.
+			 $NWW(a,b)$ definiujemy jako najmniejszą liczbę naturalną  $c$, taką że  $a \mid c$ 
+			oraz  $b \mid c$.
 		</li>
 	</ul>
 		
@@ -439,13 +451,10 @@
 		wartościach” i udowodnić je wykorzystując definicję ułamków ładnych:
 	</p>
 	
-	<p class="type">
-		Dowód
-	</p>
-	
 	<div class="proof">
+		<p class="proof-sticker type">Dowód</p>
 		<p>
-			Jeśli ułamek  $a/b$ jest ładny, liczby  $a$ oraz  $b$
+			Jeśli ułamek  $\frac{a}{b}$ jest ładny, liczby  $a$ oraz  $b$
 			wykorzystują łącznie dwie cyfry, a więc liczba  $a$ musi być jednocyfrowa oraz  $b$ 
 			musi być jednocyfrowa. Rozważamy więc ułamki, których liczniki mają jedną z wartości  $0,1,2,3,4,5,6,7,8,9$, 
 			a mianowniki jedną z wartości  $1,2,3,4,5,6,7,8,9$ ( $b$ nie może mieć wartości  $0$)
@@ -497,23 +506,71 @@
 		</p>
 		
 		<p>
-			Łącznie mamy  $10+5+6+5+8+3+8+5+6=56$ ułamków o różnych wartościach
+			Łącznie mamy  $10+5+6+5+8+3+8+5+6=56$ ułamków o różnych wartościach $□$
 		</p>
 	</div>
 
 	<p>
 		Wprawdzie ani definicja, ani twierdzenie dotyczące ładnych ułamków nie ma dużej przydatności matematycznej, to idea postępowania 
 		matematycznego jest zachowana. Ścisłość i formalizm matematyczny wymagają pewnego rygoru: najpierw definiujemy pojęcia, którymi 
-		będziemy się posługiwać; definicje mogą opierać się tylko na pojęciach, które zostały zdefiniowane wcześniej. Zdefiniowane pojęcia 
+		będziemy się posługiwać; <span class="comment_visible" id="A gdzie to wszystko się zaczyna? Istnieje coś takiego jak 'pojęcia pierwotne', których się nie definiuje,
+		a jedynie mówi, że istnieją. Spójne i ścisłe konstruowanie całej matematyki od zera jest trudnym zagadnieniem, które wymaga sporej wiedzy w dziedzinie logiki
+		matematycznej i teorii mnogości. W naszej ścieżce dydaktycznej podchodzimy do formalizmu bardziej pobłażliwie i opieramy się po części na intuicjach.">definicje mogą opierać się tylko na pojęciach, które zostały zdefiniowane wcześniej</span>. Zdefiniowane pojęcia 
 		wykazują cechy i zależności, które formułujemy w postaci twierdzeń. Słuszność twierdzenia wykazujemy za pomocą dowodu.
 	</p>
 
 	<p>
-		Zdarza się, że granica między definicją a twierdzeniem staje się rozmyta. Możemy zdefiniować liczby wymierne jako ułamki o całkowitym 
-		liczniku i mianowniku i sformułować twierdzenie „każda liczba wymierna ma rozwinięcie dziesiętne skończone lub nieskończone okresowe”, 
-		które udowodnilibyśmy wykorzystując wspomnianą definicję. Równie dobrze moglibyśmy zdefiniować liczby wymierne jako liczby, których 
+		Zdarza się, że matematycy pochodzący z różnych środowisk nie dogadają się, co jest definicją a co twierdzeniem. Możemy zdefiniować liczby wymierne jako ułamki o całkowitym 
+		liczniku i mianowniku i sformułować twierdzenie „każda liczba wymierna ma rozwinięcie dziesiętne skończone lub nieskończone okresowe”.
+		Udowodnilibyśmy je pokazując, że każdy ułamek zwykły można przedstawić jako ułamek dziesiętny, tak jak w lekcji 
+		<a href="../UlamkiDziesietne/ulamki_dziesietne.html" class="link">Ułamki dziesiętne</a>
+		(w sekcji "Działania na ułamkach dziesiętnych"). Równie dobrze moglibyśmy zdefiniować liczby wymierne jako liczby, których 
 		rozwinięcie dziesiętne jest skończone lub nieskończone okresowe, a następnie stworzyć twierdzenie „każdą liczbę wymierną można 
-		przedstawić w postaci ułamka zwykłego o całkowitym liczniku i mianowniku”. Kwestia wygody.
+		przedstawić w postaci ułamka zwykłego o całkowitym liczniku i mianowniku”. Udowodnilibyśmy je pokazując, jak dowolny ułamek dziesiętny zamienić 
+		na ułamek zwykły (tak jak w sekcji "Zamiana ułamków dziesiętnych na zwykłe"). Obydwie te definicje są równoważne i właściwie kwestią wygody jest, 
+		z której mamy ochotę korzystać.
+	</p>
+
+	<p class="type">
+		Rozszerzenie
+	</p>
+
+	<p>
+		Chcielibyśmy dokonać pewnej uwagi na temat formalizmu treści przedstawianych na stronach Squirrel-Math. Wygłosiliśmy powyżej dumne przemówienie na temat 
+		tego, jak powinno się pielęgnować matematyczną czystość poprzez skrupulatne definiowanie pojęć i dowodzenie twierdzeń, a jednocześnie sami niejednokrotnie 
+		pozwalamy sobie na bardzo poważne odstępstwa od tych ideałów. Wykpiliśmy się z definiowania liczb naturalnych na zasadzie "liczby, jakie są, każdy widzi". 
+		Dodawanie wyjaśniliśmy na kulkach, owcach i jabłkach. Własności ułamków zwykłych czy dziesiętnych (które w gruncie rzeczy da się opisać formalnie 
+		w postaci twierdzeń) opchnęliśmy poprzez kilka przykładów i analogii. 
+	</p>
+
+	<p>
+		Kierujemy się (względnie) prostą zasadą. Chcemy wprowadzić nowe pojęcia tak, żeby zostały zrozumiane. Stawiamy przejrzystość na pierwszym miejscu. 
+		Im głębiej zanurkujemy w matematyczną otchłań, tym bardziej formalizmy będą wypierać podejścia intuicyjne, aż w pewnym momencie dotrzemy do tematów,
+		które funkcjonują jedynie jako abstrakcyjne twory matematycznego języka. Będziemy starać się, na tyle, na na ile to możliwe, nie pozostawiać niedopowiedzeń 
+		oraz dowodzić wszelkich stwierdzeń, które matematyk może uznać za zbyt śmiałe. W minionych lekcjach nie posiadaliśmy potrzebnych do tego narzędzi.
+		Właściwie nie posiadaliśmy nic. Oprócz jabłek. I owiec. 
+	</p>
+
+	<p>
+		Wielu owiec.
+	</p>
+
+	<p>
+		Co ciekawe, pojęcia tak podstawowe, jak liczba, dodawanie, dzielenie (a nawet pojęcia takie jak "zdanie" lub "dowód"!) posiadają swoje bardzo formalne, 
+		bardzo ścisłe, bardzo matematyczne definicje. Jednak żeby dobrze je zrozumieć, potrzebne jest całkiem spore wykształcenie (jakkolwiek dziwne by to nie było).
+		Gdy dotrzemy do tematów takich, jak "Teoria mnogości", wprowadzimy zaległe definicje pojęć z zakresu podstaw matematyki. Póki co jest, jak jest, balansujemy 
+		na granicy między intuicjami a formalizmem, przechylając się raczej w stronę intuicji. 
+	</p>
+
+	<p>
+		Bardziej radykalne osobistości mogą dokonać zarzutu, że gdzieś po drodze popadniemy w błędne koło: bo najpierw przyjmujemy pewne definicje na wiarę, 
+		potem na ich podstawie wyprowadzamy bardziej skomplikowane pojęcia i własności, a dopiero później, mając te bardziej skomplikowane twory, zdefiniujemy 
+		rzeczy, od których zaczęliśmy cały proces. No więc: niestety, tak będzie. Staramy się unikać zapętleń, jeśli tylko nie odbywa się to kosztem przejrzystości.
+		Gdy osiągniesz status weterana matematycznego, możesz spojrzeć na Ścieżkę prawdy, która realizowana jest równolegle do drzewa dydaktycznego, 
+		po którym obecnie się poruszasz. Ścieżka prawdy zaczyna tam, gdzie zaczyna się matematyka i prowadzi się według ścisłego rygoru matematycznego. 
+		Nie ma tam miejsca na błędne koła, jak również na intuicje. Z tego powodu zalecamy kierować się Ścieżką dydaktyczną, a ewentualnie kiedyś spojrzeć 
+		na Ścieżkę prawdy. Trochę jak ze Star Warsami. Najpierw dobrze jest zobaczyć Lorda Vadera w akcji, a dopiero potem dowiedzieć się, skąd Vader się wziął
+		i dlaczego jest jaki jest.
 	</p>
 
 	</div>

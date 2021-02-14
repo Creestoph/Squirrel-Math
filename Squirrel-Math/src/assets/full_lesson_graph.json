@@ -1,0 +1,424 @@
+[
+    {
+        "title": "Liczba",
+        "requires": [],
+        "field": "Arytmetyka",
+        "level": "Przedszkole"
+    },
+    {
+        "title": "Dodawanie",
+        "requires": ["Liczba"],
+        "field": "Arytmetyka",
+        "level": "Szkoła podstawowa"
+    },
+    {
+        "title": "Odejmowanie",
+        "requires": ["Dodawanie"],
+        "field": "Arytmetyka",
+        "level": "Szkoła podstawowa"
+    },
+    {
+        "title": "Mnożenie",
+        "requires": ["Dodawanie"],
+        "field": "Arytmetyka",
+        "level": "Szkoła podstawowa"
+    },
+    {
+        "title": "Dzielenie",
+        "requires": ["Odejmowanie", "Mnożenie"],
+        "field": "Arytmetyka",
+        "level": "Szkoła podstawowa"
+    },
+    {
+        "title": "Podzielność",
+        "requires": ["Dzielenie"],
+        "field": "Teoria liczb",
+        "level": "Szkoła podstawowa"
+    },
+    {
+        "title": "Kolejność wykonywania działań",
+        "requires": ["Dzielenie"],
+        "field": "Arytmetyka",
+        "level": "Szkoła podstawowa"
+    },
+    {
+        "title": "Figury geometryczne",
+        "requires": ["Dzielenie"],
+        "field": "Geometria płaska",
+        "level": "Szkoła podstawowa"
+    },
+    {
+        "title": "Ułamki zwykłe",
+        "requires": ["Kolejność wykonywania działań", "Podzielność"],
+        "field": "Arytmetyka",
+        "level": "Szkoła podstawowa"
+    },
+    {
+        "title": "Liczby ujemne",
+        "requires": ["Kolejność wykonywania działań"],
+        "field": "Arytmetyka",
+        "level": "Szkoła podstawowa"
+    },
+    {
+        "title": "Ułamki dziesiętne",
+        "requires": ["Ułamki zwykłe"],
+        "field": "Arytmetyka",
+        "level": "Szkoła podstawowa"
+    },
+    {
+        "title": "Procenty",
+        "requires": ["Ułamki dziesiętne"],
+        "field": "Matematyka stosowana",
+        "level": "Szkoła podstawowa"
+    },
+    {
+        "title": "Wyrażenia algebraiczne",
+        "requires": ["Liczby ujemne", "Ułamki dziesiętne"],
+        "field": "Algebra",
+        "level": "Szkoła podstawowa"
+    },
+    {
+        "title": "Pola i obwody",
+        "requires": ["Ułamki dziesiętne", "Figury geometryczne"],
+        "field": "Geometria płaska",
+        "level": "Szkoła podstawowa"
+    },
+    {
+        "title": "Twierdzenia i dowody",
+        "requires": ["Wyrażenia algebraiczne"],
+        "field": "Logika matematyczna",
+        "level": "Liceum"
+    },
+    {
+        "title": "Równania i nierówności",
+        "requires": ["Wyrażenia algebraiczne"],
+        "field": "Algebra",
+        "level": "Szkoła podstawowa"
+    },
+    {
+        "title": "Potęgowanie",
+        "requires": ["Twierdzenia i dowody"],
+        "field": "Algebra",
+        "level": "Szkoła podstawowa"
+    },
+    {
+        "title": "Pierwiastkowanie",
+        "requires": ["Potęgowanie"],
+        "field": "Algebra",
+        "level": "Szkoła podstawowa"
+    },
+    {
+        "title": "Działania na wyrażeniach algebraicznych",
+        "requires": ["Potęgowanie"],
+        "field": "Algebra",
+        "level": "Szkoła podstawowa"
+    },
+    {
+        "title": "A1",
+        "requires": ["Wyrażenia algebraiczne", "Pola i obwody"]
+    },
+    {
+        "title": "Układ współrzędnych",
+        "requires": ["A1"],
+        "field": "Geometria analityczna",
+        "level": "Szkoła podstawowa"
+    },
+    {
+        "title": "Trójkąty",
+        "requires": ["A1"],
+        "field": "Geometria płaska",
+        "level": "Szkoła podstawowa"
+    },
+    {
+        "title": "Czworokąty",
+        "requires": ["Trójkąty"],
+        "field": "Geometria płaska",
+        "level": "Szkoła podstawowa"
+    },
+    {
+        "title": "Figury podobne",
+        "requires": ["Czworokąty"],
+        "field": "Geometria płaska",
+        "level": "Szkoła podstawowa"
+    },
+    {
+        "title": "Koła i okręgi",
+        "requires": ["Czworokąty"],
+        "field": "Geometria płaska",
+        "level": "Szkoła podstawowa"
+    },
+    {
+        "title": "Graniastosłupy i ostrosłupy",
+        "requires": ["Czworokąty"],
+        "field": "Geometria przestrzenna",
+        "level": "Liceum"
+    },
+    {
+        "title": "Bryły obrotowe",
+        "requires": ["Koła i okręgi", "Graniastosłupy i ostrosłupy"],
+        "field": "Geometria przestrzenna",
+        "level": "Liceum"
+    },
+    {
+        "title": "Logarytmy",
+        "requires": ["Pierwiastkowanie"],
+        "field": "Algebra",
+        "level": "Liceum"
+    },
+    {
+        "title": "Zbiory liczbowe",
+        "requires": ["Pierwiastkowanie"],
+        "field": "Teoria mnogości",
+        "level": "Szkoła podstawowa"
+    },
+    {
+        "title": "Kombinatoryka",
+        "requires": ["Działania na wyrażeniach algebraicznych"],
+        "field": "Kombinatoryka",
+        "level": "Liceum"
+    },
+    {
+        "title": "Twierdzenie Pitagorasa",
+        "requires": ["Pierwiastkowanie", "Działania na wyrażeniach algebraicznych", "Trójkąty"],
+        "field": "Geometria płaska",
+        "level": "Szkoła podstawowa"
+    },
+    {
+        "title": "Równania i nierówności liniowe",
+        "requires": ["Równania i nierówności", "Zbiory liczbowe", "Działania na wyrażeniach algebraicznych"],
+        "field": "Algebra",
+        "level": "Szkoła podstawowa"
+    },
+    {
+        "title": "Zdania logiczne",
+        "requires": ["Zbiory liczbowe"],
+        "field": "Logika matematyczna",
+        "level": "Liceum"
+    },
+    {
+        "title": "Funkcje",
+        "requires": ["Zbiory liczbowe"],
+        "field": "Algebra",
+        "level": "Szkoła podstawowa"
+    },
+    {
+        "title": "Teoria grafów",
+        "requires": ["Kombinatoryka"],
+        "field": "Teoria grafów",
+        "level": "Studia inżynierskie"
+    },
+    {
+        "title": "Trygonometria",
+        "requires": ["Twierdzenie Pitagorasa", "Figury podobne"],
+        "field": "Trygonometria",
+        "level": "Liceum"
+    },
+    {
+        "title": "Podstawy matematyki",
+        "requires": ["Zdania logiczne"],
+        "field": "Teoria mnogości",
+        "level": "Studia inżynierskie"
+    },
+    {
+        "title": "Prawdopodobieństwo klasyczne",
+        "requires": ["Zdania logiczne", "Kombinatoryka"],
+        "field": "Probabilistyka",
+        "level": "Liceum"
+    },
+    {
+        "title": "Prawdopodobieństwo warunkowe",
+        "requires": ["Prawdopodobieństwo klasyczne"],
+        "field": "Probabilistyka",
+        "level": "Liceum"
+    },
+    {
+        "title": "Wykres funkcji",
+        "requires": ["Funkcje", "Układ współrzędnych"],
+        "field": "Analiza matematyczna",
+        "level": "Liceum"
+    },
+    {
+        "title": "Rozwiązywanie trójkąta",
+        "requires": ["Trygonometria"],
+        "field": "Trygonomegtria",
+        "level": "Liceum"
+    },
+    {
+        "title": "Arytmetyka modularna",
+        "requires": ["Równania i nierówności liniowe"],
+        "field": "Teoria liczb",
+        "level": "Studia inżynierskie"
+    },
+    {
+        "title": "Teoria grup",
+        "requires": ["Arytmetyka modularna"],
+        "field": "Teoria grup",
+        "level": "Studia inżynierskie"
+    },
+    {
+        "title": "Układ równań",
+        "requires": ["Równania i nierówności liniowe"],
+        "field": "Algebra",
+        "level": "Szkoła podstawowa"
+    },
+    {
+        "title": "Równania kwadratowe",
+        "requires": ["Równania i nierówności liniowe"],
+        "field": "Algebra",
+        "level": "Liceum"
+    },
+    {
+        "title": "Macierze",
+        "requires": ["Układ równań"],
+        "field": "Algebra liniowa",
+        "level": "Studia inżynierskie"
+    },
+    {
+        "title": "Wielomiany",
+        "requires": ["Równania kwadratowe"],
+        "field": "Algebra",
+        "level": "Liceum"
+    },
+    {
+        "title": "Zmienne losowe",
+        "requires": ["Funkcje", "Prawdopodobieństwo warunkowe"],
+        "field": "Probabilistyka",
+        "level": "Studia inżynierskie"
+    },
+    {
+        "title": "Przekształcenia funkcji",
+        "requires": ["Wykres funkcji"],
+        "field": "Analiza matematyczna",
+        "level": "Liceum"
+    },
+    {
+        "title": "Funkcja liniowa",
+        "requires": ["Wykres funkcji"],
+        "field": "Algebra",
+        "level": "Szkoła podstawowa"
+    },
+    {
+        "title": "Funkcje trygonometryczne",
+        "requires": ["Wykres funkcji", "Trygonometria", "Koła i okręgi"],
+        "field": "Trygonometria",
+        "level": "Liceum"
+    },
+    {
+        "title": "Funkcja kwadratowa",
+        "requires": ["Równania kwadratowe", "Przekształcenia funkcji"],
+        "field": "Algebra",
+        "level": "Liceum"
+    },
+    {
+        "title": "Funkcja wykładnicza",
+        "requires": ["Logarytmy", "Przekształcenia funkcji"],
+        "field": "Algebra",
+        "level": "Liceum"
+    },
+    {
+        "title": "Ciąg arytmetyczny i geometryczny",
+        "requires": ["Funkcja liniowa"],
+        "field": "Kombinatoryka",
+        "level": "Liceum"
+    },
+    {
+        "title": "Geometria analityczna",
+        "requires": ["Funkcja liniowa", "Twierdzenie Pitagorasa"],
+        "field": "Geometria analityczna",
+        "level": "Liceum"
+    },
+    {
+        "title": "Granica ciągu",
+        "requires": ["Wielomiany", "Zdania logiczne", "Ciąg arytmetyczny i geometryczny"],
+        "field": "Analiza matematyczna",
+        "level": "Liceum"
+    },
+    {
+        "title": "Granica funkcji",
+        "requires": ["Granica ciągu"],
+        "field": "Analiza matematyczna",
+        "level": "Liceum"
+    },
+    {
+        "title": "Szeregi liczbowe",
+        "requires": ["Granica ciągu"],
+        "field": "Kombinatoryka",
+        "level": "Studia inżynierskie"
+    },
+    {
+        "title": "Geometria analityczna wielu wymiarów",
+        "requires": ["Geometria analityczna", "Bryły obrotowe"],
+        "field": "Geometria analityczna",
+        "level": "Studia inżynierskie"
+    },
+    {
+        "title": "Krzywe stożkowe",
+        "requires": ["Bryły obrotowe", "Geometria analityczna"],
+        "field": "Geometria analityczna",
+        "level": "Studia inżynierskie"
+    },
+    {
+        "title": "Pochodna funkcji",
+        "requires": ["Granica funkcji", "Funkcje trygonometryczne", "Funkcja wykładnicza"],
+        "field": "Analiza matematyczna",
+        "level": "Liceum"
+    },
+    {
+        "title": "Algebra liniowa",
+        "requires": ["Geometria analityczna wielu wymiarów", "Macierze"],
+        "field": "Algebra liniowa",
+        "level": "Studia inżynierskie"
+    },
+    {
+        "title": "Analiza funkcji",
+        "requires": ["Funkcja kwadratowa", "Pochodna funkcji"],
+        "field": "Analiza matematyczna",
+        "level": "Liceum"
+    },
+    {
+        "title": "A2",
+        "requires": ["Pochodna funkcji", "Szeregi liczbowe"]
+    },
+    {
+        "title": "Całkowanie",
+        "requires": ["A2"],
+        "field": "Analiza matematyczna",
+        "level": "Studia inżynierskie"
+    },
+    {
+        "title": "Rozwinięcia funkcji w szereg",
+        "requires": ["A2"],
+        "field": "Analiza matematyczna",
+        "level": "Studia inżynierskie"
+    },
+    {
+        "title": "Topologia",
+        "requires": ["Pochodna funkcji", "Geometria analityczna"],
+        "field": "Topologia",
+        "level": "Studia inżynierskie"
+    },
+    {
+        "title": "Liczby zespolone",
+        "requires": ["Rozwinięcia funkcji w szereg", "Funkcje trygonometryczne"],
+        "field": "Analiza zespolona",
+        "level": "Studia inżynierskie"
+    },
+    {
+        "title": "Całkowanie funkcji wielowymiarowych",
+        "requires": ["Całkowanie", "Geometria analityczna wielu wymiarów"],
+        "field": "Analiza matematyczna",
+        "level": "Studia inżynierskie"
+    },
+    {
+        "title": "Nieskończone przestrzenie probabilityczne",
+        "requires": ["Całkowanie", "Zmienne losowe", "Topologia"],
+        "field": "Probabilistyka",
+        "level": "Studia inżynierskie"
+    },
+    {
+        "title": "Analiza zespolona",
+        "requires": ["Całkowanie funkcji wielowymiarowych", "Liczby zespolone"],
+        "field": "Analiza zespolona",
+        "level": "Studia inżynieskie"
+    }
+]

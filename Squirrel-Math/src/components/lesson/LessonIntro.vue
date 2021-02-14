@@ -1,8 +1,6 @@
 <template>
-  <div class="row">
-    <dic class="col">
-      <slot></slot>
-    </dic>
+  <div>
+    <slot />
   </div>
 </template>
 
@@ -13,5 +11,8 @@
 </script>
 
 <style scoped>
-
+  div
+  {
+    margin-bottom: 55px;
+  }
 </style>

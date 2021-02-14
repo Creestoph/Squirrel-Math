@@ -7,7 +7,7 @@ function Columnar_multiplication_step(table, highlight_fields, comment, carry, m
     for (var i = 0; i < table.length; i++) {
         tab[i] = [];
         if (i == mul_underline) {
-            tab[i].push("/u:·");
+            tab[i].push("/u:\\cdot");
             tab[i].push("/u:");
         }
         else if (i == sum_underline) {

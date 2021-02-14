@@ -4,6 +4,7 @@
 <head>
 	<title>Potęgowanie</title>
 	<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 	<link rel="stylesheet" href="../lesson_style.css">
 	<link rel="stylesheet" href="./style.css">
 
@@ -125,7 +126,9 @@
 		Formalna definicja potęgi o wykładniku naturalnym przedstawia się następująco:
 	</p>
 
-	<center><img src=".images/Screenshot_1.png" align="middle"></img></center>
+	$$
+		a^n = \underbrace{a \cdot a \cdot a \cdot a \cdot \dotsb \cdot a}_n
+	$$
 	
 	<p>
 		Definicja ta mówi, że pod $a$ oraz $n$ możemy podstawić dowolne 
@@ -223,7 +226,7 @@
 		lub że „$5$ do sześcianu wynosi $125$”.
 		Niestety tu nasza wizualizacja się kończy, jak również kończy się specjalne nazewnictwo kolejnych potęg. 
 		$5^4$ będziemy czytać po prostu jako „pięć do potęgi czwartej”. Graficzna reprezentacja czwartej potęgi 
-		wymagałaby właściwie czegoś w rodzaju czwartego wymiaru przestrzennego, a my jeszcze nie jesteśmy gotowi na SF.
+		wymagałaby właściwie czegoś w rodzaju czwartego wymiaru przestrzennego, a my jeszcze nie jesteśmy gotowi na Sci-Fi.
 	</p>
 	
 	<p class="type">
@@ -260,7 +263,8 @@
 	</table>
 	
 	<p>
-		Aby uchodzić za człowieka wykształconego, powinieneś dobrze znać kwadraty i sześciany pierwszych dziesięciu liczb naturalnych.
+		Aby uchodzić za człowieka wykształconego, <span class="comment" id="No przynajmniej kwadraty">powinieneś dobrze znać kwadraty i sześciany pierwszych 
+		dziesięciu liczb naturalnych.</span>
 	</p>
 	
 	</div>
@@ -422,6 +426,11 @@
 	</ul>
 	
 	<p>
+		Podkreślamy, że powyższe wzory stanowią <b>definicję</b> potęg o wykładnikach całkowitych, a nie twierdzenia o potęgowaniu - teraz powiedzieliśmy po raz pierwszy, w jaki sposób rozumieć
+		potęgę z niedodatnim wykładnikiem.
+	</p>
+	
+	<p>
 		Zauważmy, że przy badaniu potęg o ujemnych wykładnikach dokonywaliśmy dzielenia przez podstawę, a nie zapominajmy, 
 		że nie wolno dzielić przez $0$. Co za tym idzie, nie wolno podnosić zera do potęg ujemnych. 
 		Kontrowersyjne pozostaje podnoszenie zera do potęgi zerowej. Technicznie rzecz biorąc przejście z $0^1$ do 
@@ -453,190 +462,362 @@
 
 	<p>
 		Dokonajmy jeszcze kilku przydatnych spostrzeżeń na temat potęgowania. Ponieważ zależy nam na osiągnięciu dojrzałości matematycznej, 
-		będziemy pracować na ogólnym przypadku, czyli na zmiennych literowych. W każdej chwili możesz podstawić sobie pod 
-		$a$, $b$ lub $c$ jakąś konkretną liczbę naturalną i zobaczyć, jak poniższe 
+		wprowadzimy ogólne przypadki, czyli będziemy pracować na zmiennych literowych. W każdej chwili możemy podstawić pod 
+		$a$, $b$ lub $n$ jakieś konkretne liczby i zobaczyć, jak poniższe 
 		twierdzenia działają na żywo.
 	</p>
 
-	<ul>
-		<li>
-			$a^n \cdot a^m=a^{n+m}$<br>
-			Jeśli liczbę $a$ mnożymy przez siebie $n$ razy, a następnie $m$ razy,
-			to łącznie występuje jako czynnik $n+m$ razy.
-			
-			<p class="type">
-				Dowód
-			</p>
-			<div class="proof">
-				<center><img src=".images/Screenshot_8.png" align="middle"></img></center>
-			</div>
-		</li>
-
-		<li>
-			$\frac{a^n}{a^m} =a^{n-m}$<br>
-			Jeśli liczbę $a$ mnożymy przez siebie $n$ razy w liczniku ułamka i 
-			$m$ razy w mianowniku ułamka, to po skróceniu pozostanie $n-m$ czynników.
-
-			<p class="type">
-				Dowód
-			</p>
-			<div class="proof">
-				Jeśli $n≥m$:
-				<center><img src=".images/Screenshot_9.png" align="middle"></img></center>
-				Jeśli $n \lt m$:
-				<center><img src=".images/Screenshot_10.png" align="middle"></img></center>
-			</div>
-		</li>
-		
-		<li>$(a^n)^m=a^{n \cdot m}$<br>
-			Gdy liczbę $a$ mnożymy przez siebie $n$ razy, a następnie takie grupy 
-			$a^n$ mnożymy przez siebie $m$ razy, to w całym iloczynie $a$
-			wystąpi $n \cdot m$ razy.
-			
-			<p class="type">
-				Dowód
-			</p>
-			<div class="proof">
-				<center><img src=".images/Screenshot_11.png" align="middle"></img></center>
-			</div>
-		</li>
-		<li>
-			$a^n \cdot b^n=(a \cdot b)^n$<br>
-			Jeśli liczbę $a$ mnożymy przez siebie $n$ razy, a do tego domnażamy liczbę 
-			$b$ również $n$ razy, to tak, jakbyśmy iloczyn $a \cdot b$ mnożyli 
-			$n$ razy.
-			
-			<p class="type">
-				Dowód
-			</p>
-			<div class="proof">
-				<center><img src=".images/Screenshot_12.png" align="middle"></img></center>
-			</div>
-		</li>
-
-		<li>
-			$(\frac{a}{b})^n=\frac{a^n}{b^n} $<br>
-			Gdy podnosimy do potęgi pewien ułamek, możemy osobno zająć się potęgowaniem licznika oraz mianownika.
-			
-			<p class="type">
-				Dowód
-			</p>
-			<div class="proof">
-				<center><img src=".images/Screenshot_13.png" align="middle"></img></center>
-			</div>
-		</li>
-	</ul>
 	
-	<p class="type">
+	<p class="formula">
+		Jeśli liczbę $n$-tą potęgę pewnej liczby pomnożymy przez $m$-tą potęgę tej liczby, to otrzymamy potęgę o wykładniku $n+m$
+		$$a^n \cdot a^m=a^{n+m}$$
+	</p>
+	<div class="proof">
+		<div class = "proof-sticker">Uzasadnienie</div>
+		$$2 ^3 \cdot 2^5 = 2 \cdot 2 \cdot 2 \ \ \ \cdot \ \ \ 2 \cdot 2 \cdot 2 \cdot 2 \cdot 2 = 2^8$$
+		$$3 ^2 \cdot 3^4 = 3 \cdot 3 \ \ \ \cdot \ \ \ 3 \cdot 3 \cdot 3 \cdot 3 = 3^6$$
+	</div>
+	<div class="proof">
+		<div class = "proof-sticker">Dowód</div>
+		$$
+			a^n \cdot a^m = \underbrace{a \cdot a \cdot a \cdot a \cdot \dotsb \cdot a}_{n} \ \cdot \ \underbrace{a \cdot a \dotsb \cdot a}_{m} = 
+			\underbrace{a \cdot a \cdot a \cdot a \cdot a \cdot a \cdot a \cdot \dotsb \cdot a}_{n + m} = a^{n + m}
+		$$
+	</div>
+	<br><br>
+
+	<p class="formula">
+		Jeśli liczbę $n$-tą potęgę pewnej liczby podzielimy przez $m$-tą potęgę tej liczby, to otrzymamy potęgę o wykładniku $n-m$
+		$$\frac{a^n}{a^m} =a^{n-m}$$
+	</p>
+	<div class="proof">
+		<div class = "proof-sticker">Uzasadnienie</div>
+		$$\frac{2^6}{2^4} = \frac{2 \cdot 2 \cdot 2 \cdot 2 \cdot 2 \cdot 2}{2 \cdot 2 \cdot 2 \cdot 2} =
+		\require{cancel} \frac{\cancel{2 \cdot 2 \cdot 2 \cdot 2} \ \ \ \cdot \ \ \  2 \cdot 2}{\cancel{2 \cdot 2 \cdot 2 \cdot 2}} = 
+		2 \cdot 2 = 2^2$$
+		$$\frac{5^3}{5^7} = \frac{5 \cdot 5 \cdot 5}{5 \cdot 5 \cdot 5 \cdot 5 \cdot 5 \cdot 5 \cdot 5} =
+		\frac{\cancel{5 \cdot 5 \cdot 5}}{\cancel{5 \cdot 5 \cdot 5} \ \ \ \cdot \ \ \ 5 \cdot 5 \cdot 5 \cdot 5} = 
+		\frac{1}{5 \cdot 5 \cdot 5 \cdot 5} = \frac{1}{5^4} = 5^{-4}
+		$$
+	</div>
+	<div class="proof">
+		<div class = "proof-sticker">Dowód</div>
+		Jeśli $n≥m$:
+		$$ \frac{a^n}{a^m} = 
+		\frac{\overbrace{a \cdot a \cdot a \cdot a \cdot a \cdot \cancel{a \cdot a \cdot \dotsb \cdot a}}^{n} }{\underbrace {\cancel{a \cdot a \cdot \dotsb \cdot a}}_m } =
+		\underbrace{a \cdot a \cdot a \cdot \dotsb \cdot a}_{n-m} = a^{n - m}$$
+		Jeśli $n \lt m$:
+		$$ \frac{a^n}{a^m} = 
+		\frac{\overbrace{\cancel{a \cdot a \cdot \dotsb \cdot a}}^{n} }{\underbrace {a \cdot a \cdot a \cdot a \cdot a \cdot \cancel{a \cdot a \cdot \dotsb \cdot a}}_m } =
+		\frac{1}{\underbrace{a \cdot a \cdot a \cdot \dotsb \cdot a}_{m-n}} = \frac{1}{a^{m - n}} = a^{n - m}$$
+	</div>
+	<br><br>
+
+	<p class="formula">
+		Jeśli liczbę $n$-tą potęgę pewnej liczby podniesiemy do potęgi $m$, to otrzymamy w wykładniku $n \cdot m$
+		$$(a^n)^m=a^{n \cdot m}$$
+	</p>
+	<div class="proof">
+		<div class = "proof-sticker">Uzasadnienie</div>
+		$$
+			(2^3)^4 = 2^3 \cdot 2^3 \cdot 2^3 \cdot 2^3 = (2 \cdot 2 \cdot 2) \cdot (2 \cdot 2 \cdot 2) \cdot (2 \cdot 2 \cdot 2) \cdot (2 \cdot 2 \cdot 2) =
+			2 \cdot 2 \cdot 2 \cdot 2 \cdot 2 \cdot 2 \cdot 2 \cdot 2 \cdot 2 \cdot 2 \cdot 2 \cdot 2 = 2^{12}
+		$$
+		$$
+			(3^2)^3 = 3^2 \cdot 3^2 \cdot 3^2 = (3 \cdot 3) \cdot (3 \cdot 3) \cdot (3 \cdot 3) =
+			3 \cdot 3 \cdot 3 \cdot 3 \cdot 3 \cdot 3 = 3^6
+		$$
+	</div>
+	<div class="proof">
+		<div class = "proof-sticker">Dowód</div>
+		$$
+			(a^n)^m = \underbrace {a^n \cdot a^n \cdot a^n \cdot \dotsb \cdot a^n}_m = 
+			\underbrace{\underbrace {a \cdot a \cdot \dotsb \cdot a}_n \cdot \underbrace {a \cdot a \cdot \dotsb \cdot a}_n \cdot 
+			\underbrace {a \cdot a \cdot \dotsb \cdot a}_n \cdot \dotsb \cdot \underbrace {a \cdot a \cdot \dotsb \cdot a}_n}_m = a^{n \cdot m}
+		$$
+	</div>
+	<br><br>
+
+	<p class="formula">
+		$n$-te potęga liczby $a \cdot b$ jest równa iloczynowi $n$-tej potęgi liczby $a$ i $n$-tej potęgi liczby $b$
+		$$(a \cdot b)^n = a^n \cdot b^n$$
+	</p>
+	<div class="proof">
+		<div class = "proof-sticker">Uzasadnienie</div>
+		$$
+			(5 \cdot 2)^3 = (5 \cdot 2) \cdot (5 \cdot 2) \cdot (5 \cdot 2) = 5 \cdot 2 \cdot 5 \cdot 2 \cdot 5 \cdot 2 =
+			5 \cdot 5 \cdot 5 \ \ \ \cdot \ \ \ 2 \cdot 2 \cdot 2 = 5^3 \cdot 2^3
+		$$
+		$$
+			\left( 3 \cdot \frac{1}{2} \right)^4 = \left(3 \cdot \frac{1}{2}\right) \cdot \left(3 \cdot \frac{1}{2}\right) \cdot \left(3 \cdot \frac{1}{2}\right) \cdot \left(3 \cdot \frac{1}{2}\right) =
+			3 \cdot 3 \cdot 3 \cdot 3 \cdot \frac{1}{2} \cdot \frac{1}{2} \cdot \frac{1}{2} \cdot \frac{1}{2} = 3^4 \cdot \left(\frac{1}{2}\right)^4
+		$$
+		
+	</div>
+	<div class="proof">
+		<div class = "proof-sticker">Dowód</div>
+		$$
+			(a \cdot b)^n = \underbrace{a \cdot b \ \ \cdot \ \ a \cdot b \ \ \cdot \ \ a \cdot b \ \ \cdot \ \ \dotsb \ \ \cdot \ \ a \cdot b}_n = 
+			\underbrace{a \cdot a \cdot a \cdot \dotsb \cdot a}_n \ \ \cdot \ \ \underbrace{b \cdot b \cdot b \cdot \dotsb \cdot b}_n = a^n \cdot b^n
+		$$
+	</div>
+	<br><br>
+
+	<p class="formula">
+		Iloraz $n$-tej potęgi liczby $a$ przez $n$-tą potęgę liczby $b$ jest równy $n$-tej potędze liczby $\frac{a}{b}$
+		$$\left(\frac{a}{b} \right)^n=\frac{a^n}{b^n} $$
+	</p>
+	<div class="proof">
+		<div class = "proof-sticker">Uzasadnienie</div>
+		$$
+			\left(\frac{2}{3} \right)^5 = \frac{2}{3} \cdot \frac{2}{3} \cdot \frac{2}{3} \cdot \frac{2}{3} \cdot \frac{2}{3} = 
+			\frac{2 \cdot 2 \cdot 2 \cdot 2 \cdot 2}{3 \cdot 3 \cdot 3 \cdot 3 \cdot 3} = \frac{2^5}{3^5}
+		$$
+		$$
+			\left(\frac{5}{7} \right)^2 = \frac{5}{7} \cdot \frac{5}{7} = 
+			\frac{5 \cdot 5}{7 \cdot 7} = \frac{5^2}{7^2}
+		$$
+	</div>
+	<div class="proof">
+		<div class = "proof-sticker">Dowód</div>
+		$$
+			\left(\frac{a}{b} \right)^n = \underbrace{\frac{a}{b} \cdot \frac{a}{b} \cdot \frac{a}{b} \cdot \dotsb \cdot \frac{a}{b}}_n = 
+			\frac{\overbrace{a \cdot a \cdot a \cdot \dotsb \cdot a}^n}{\underbrace{b \cdot b \cdot b \cdot \dotsb \cdot b}_n} = \frac{a^n}{b^n}
+		$$
+		</div>
+	<br><br>
+
+	<p class="type optional-hide">
 		Formalnie | Rozszerzenie
 	</p>
-	
-	<p class="warning">
-		wymagana znajomość tematu: Działania na wyrażeniach algebraicznych
+	<p class="warning">wymagana znajomość tematu: Działania na wyrażeniach algebraicznych</p>
+	<div>
+		<p>
+			Powyższe wzory działają także dla wykładników ujemnych. Aby tego dowieść, wykorzystamy własności dla wykładników dodatnich, które 
+			udowodniliśmy powyżej.
+		</p>
+
+		<p class="formula">
+			$a^k \cdot a^l=a^{k+l}$ dla $k$ i $l$ całkowitych
+		</p>
+		<div class="proof">
+			<div class = "proof-sticker">Dowód</div>
+			<ul>
+				<li>
+					Rozważmy przypadek, gdy tylko jeden z wykładników jest ujemny (ze względu na przemienność mnożenia i dodawania, nie ma 
+					znaczenia, który). Mamy uzasadnić równość
+					$$a^k \cdot a^{-l}=a^{k-l}$$
+					przy czym same zmienne $k$ oraz $l$ mają wartości naturalne. Wykorzystując 
+					definicję potęgi o ujemnym wykładniku:<br>
+					$$a^k \cdot a^{-l}=a^k \cdot \frac{1}{a^l} = \frac{a^k}{a^l} =a^{k-l}$$
+				</li>
+				<li>
+					W przypadku obydwu wykładników ujemnych mamy:<br>
+					$$a^{-k} \cdot a^{-l}=\frac{1}{a^k}  \cdot \frac{1}{a^l} =\frac{1}{a^k \cdot a^l}=\frac{1}{a^{k+l}}=a^{-(k+l) }=a^{-k-l}$$
+				</li>
+			</ul>
+		</div>
+		<br><br>
+
+		<p class="formula">
+			$\frac{a^k}{a^l} =a^{k-l}$ dla $k$ i $l$ całkowitych
+		</p>
+		<div class="proof">
+			<div class = "proof-sticker">Dowód</div>
+			<ul>
+				<li>
+					Przypadek, gdy wykładnik potęgi w liczniku jest ujemny:
+					$$\frac{a^{-k}}{a^l} =\frac{\frac{1}{a^k}}{a^l} =\frac{1}{a^k \cdot a^l}=\frac{1}{a^{k+l}} =a^{-(k+l) }=a^{-k-l}$$
+				</li>
+				<li>
+					Przypadek, gdy wykładnik potęgi w mianowniku jest ujemny:
+					$$\frac{a^k}{a^{-l}} =\frac{a^k}{\frac{1}{a^l}}=a^k \cdot a^l=a^{k+l}=a^{k-(-l)}$$
+				</li>
+				<li>
+					Przypadek, gdy obydwa wykładniki są ujemne:
+					$$\frac{a^{-k}}{a^{-l}}=\frac{\frac{1}{a^k}}{\frac{1}{a^l}}=\frac{1}{a^k}  \cdot a^l=\frac{a^l}{a^k} =a^{l-k}=a^{-k+l}=a^{-k-(-l)}$$
+				</li>
+			</ul>
+		</div>
+		<br><br>
+
+		<p class="formula">
+			$(a^k)^l=a^{k \cdot l}$ dla $k$ i $l$ całkowitych
+		</p>
+		<div class="proof">
+			<div class = "proof-sticker">Dowód</div>
+			<ul>
+				<li>
+					Przypadek, gdy wykładnik wewnętrznej potęgi jest ujemny:
+					$$(a^{-k} )^l=\left(\frac{1}{a^k} \right)^l=\frac{1^l}{(a^k)^l} =\frac{1}{a^{k \cdot l}} =a^{-(k \cdot l)}=a^{(-k) \cdot l}$$
+				</li>
+				<li>
+					Przypadek, gdy wykładnik zewnętrznej potęgi jest ujemny:
+					$$(a^k )^{-l}=\frac{1}{(a^k )^l}=\frac{1}{a^{k \cdot l}} =a^{-(k \cdot l)}=a^{k \cdot (-l)}$$
+				</li>
+				<li>
+					Przypadek, gdy obydwa wykładniki są ujemne:
+					$$(a^{-k} )^{-l}=\frac{1}{(a^{-k} )^l}=\frac{1}{ \left(\frac{1}{a^k} \right)^l} =\frac{1}{ \frac{1^l}{(a^k )^l} }
+					=\frac{1}{\frac{1}{a^{k \cdot l} }}=a^{k \cdot l}=a^{(-k) \cdot (-l)}$$
+				</li>
+			</ul>
+		</div>
+		<br><br>
+
+		<p class="formula">
+			$(a \cdot b)^k = a^k \cdot b^k$ dla $k$ całkowitego
+		</p>
+		<div class="proof">
+			<div class = "proof-sticker">Dowód</div>
+			Gdy wykładnik jest ujemny:
+			$$(a \cdot b)^{-k} = \frac{1}{(a \cdot b)^k} = \frac{1}{a^k \cdot b^k} = \frac{1}{a^k} \cdot \frac{1}{b^k} = a^{-k} \cdot b^{-k}=\frac{1}{a^k}  \cdot \frac{1}{b^k}$$
+		</div>
+		<br><br>
+
+		<p class="formula">
+			$\left(\frac{a}{b}\right)^k=\frac{a^k}{b^k}$ dla $k$ całkowitego
+		</p>
+		<div class="proof">
+			<div class = "proof-sticker">Dowód</div>
+			Gdy wykładnik jest ujemny:
+			$$\left(\frac{a}{b}\right)^{-k}=\frac{1}{\left(\frac{a}{b}\right)^k} =\frac{1}{\frac{a^k}{b^k}}=\frac{b^k}{a^k}=\frac{1}{a^k}  \cdot b^k=\frac{\frac{1}{a^k}}{\frac{1}{b^k}}=
+			\frac{a^{-k}}{b^{-k}}$$
+		</div>
+		<br><br>
+
+	</div>
+
+	</div>
+	</div>
+	</div>
+
+	<div class="chapter">
+	<div class="chapter_name">
+		Notacja wykładnicza
+	</div>
+	<hr>
+
+	<div class="chapter_mask">
+	<div class="chapter_body">
+	<p class="type">
+		Rozszerzenie
 	</p>
 
 	<p>
-		Powyższe wzory działają także dla wykładników ujemnych. Aby tego dowieść, wykorzystamy własności dla wykładników dodatnich, które 
-		udowodniliśmy powyżej.
+		Zapis z użyciem potęgi bywa przydatny do reprezentacji liczb o wartościach bardzo dużych lub bardzo bliskich zera. Przypomnijmy sobie kilka ogromnych liczb 
+		z rozdziału "Liczby giganty" lekcji "Liczby":
 	</p>
-	
+
+	<ul>
+		<li>$1\ 000$ - tysiąc to jedynka i $3$ zera</li>
+		<li>$1\ 000\ 000$ - milion to jedynka i $6$ zer</li>
+		<li>$1\ 000\ 000\ 000$ - miliard to jedynka i $9$ zer</li>
+		<li>$1\ 000\ 000\ 000\ 000$ - bilion to jedynka i $12$ zer</li>
+		<li>$1\ 000\ 000\ 000\ 000\ 000$ - biliard to jedynka i $15$ zer</li>
+		<li>$1\ 000\ 000\ 000\ 000\ 000\ 000$ - trylion to jedynka i $18$ zer</li>
+		<li>$1\ 000\ 000\ 000\ 000\ 000\ 000\ 000$ - tryliard to jedynka i $21$ zer</li>
+		<li>$1\ 000\ 000\ 000\ 000\ 000\ 000\ 000\ 000$ - kwadrylion to jedynka i $24$ zera</li>
+		<li>$1\ 000\ 000\ 000\ 000\ 000\ 000\ 000\ 000\ 000$ - kwadryliard to jedynka i $27$ zer</li>
+	</ul>
+
+	<p>
+		Zapis tak dużych liczb staje się dość uciążliwy ze względu na przytłaczająco dużą ilość cyfr. Właściwie bardziej wymowny jest opis informujący, ile 
+		zer posiada ta liczba z tyłu. A przecież każdego z tych kolosów da się zapisać zwięźle za pomocą potegi dziesiątki:
+	</p>
+
+	<ul>
+		<li>$10^3$ - tysiąc to jedynka i $3$ zera</li>
+		<li>$10^6$ - milion to jedynka i $6$ zer</li>
+		<li>$10^9$ - miliard to jedynka i $9$ zer</li>
+		<li>$10^{12}$ - bilion to jedynka i $12$ zer</li>
+		<li>$10^{15}$ - biliard to jedynka i $15$ zer</li>
+		<li>$10^{18}$ - trylion to jedynka i $18$ zer</li>
+		<li>$10^{21}$ - tryliard to jedynka i $21$ zer</li>
+		<li>$10^{24}$ - kwadrylion to jedynka i $24$ zera</li>
+		<li>$10^{27}$ - kwadryliard to jedynka i $27$ zer</li>
+	</ul>
+
+	<p>
+		Z ciekawszych liczb warty wspomnienia jest googol: $10^{80}$ przekraczający szacowaną liczbę atomów we Wszechświecie oraz googolplex: $10^{10^{80}}$ mający 
+		w swoim zapisie googol zer. Przy okazji chcielibyśmy zwrócić uwagę, że liczby postaci $10^{6n}$ to kolejne "liony". Dla $n = 1$ jest to <b>mi</b>lion, dla
+		$n = 2$ <b>bi</b>lion, dla $n = 3$ <b>try</b>lion itd. Z kolei liczby postaci $10^{6n + 3}$ to kolejne "liardy". Dla $n = 1$ mamy <b>mi</b>liard, dla 
+		$n = 2$ <b>bi</b>liard itd.
+	</p>
+
+	<p>
+		Użycie potęgi pozwala na zwięzły zapis również innych ogromnych liczb, niekoniecznie składających się jedynie z jedynki i zer. 
+		Stała fizyczna $c = 299\ 792\ 458$ opisuje, ile metrów pokonuje światło w ciągu jednej sekundy. Jeśli nie używamy tej stałej do przeprowadzania 
+		bardzo poważnych i dokładnych obliczeń, powinno wystarczyć nam pojęcie, że stała ta ma przybliżoną wartość $c \approx 300\ 000\ 000$, którą z kolei 
+		można zapisać w skrócie jako $c \approx 3 \cdot 10^8$ czyli w istocie jest to "trójka i osiem zer". Odległość od Ziemi do Słońca wynosi 
+		$149\ 600\ 000 \text{ m}$, czyli w skrócie $1,496 \cdot 10^8$ metrów.
+	</p>
+
+	<p>
+		Na podobnej zasadzie zapisuje się liczby o bardzo małej wartości. Wielkość mrówki wynosi około $5 \text{ mm}$. Malutkie pajęczaki zwane roztoczami 
+		osiągają rozmiary rzędu $0,1 \text{ mm}$. Atomy, czyli najmniejsze znane nauce budulce otaczającego nas świata, mają rozmiary skali $0,0000001 \text{ mm}$, czyli inaczej 
+		$\frac{1}{10\ 000\ 000} = \frac{1}{10^7} = 10^{-7}$ milimetra. Wartość $10^{-7}$ możemy interpretować jako 
+		"ułamek dziesiętny, który ma łącznie 7 zer z przodu (jedno przed przecinkiem i 6 po przecinku) i jedynkę na końcu". Na przykład atom wodoru ma rozmiar 
+		$0,000000037 \text{ mm}$, czyli $3,7 \cdot 10^{-8} \text{ mm}$.
+	</p>
+
+	<p>
+		Formalnie rzecz ujmując, liczba jest zapisana w postaci wykładniczej, jeśli ma postać 
+	</p>
+
+	$$
+		c \cdot 10^m
+	$$
+
+	<p>
+		Gdzie $c$ przedstawia ułamek dziesiętny o wartości od $1$ (włącznie) do $10$ (bez dziesięciu): $1 \leq c \lt 10$,
+		zaś $m$ jest dowolną liczbą całkowitą, dodatnią, ujemną lub zerową. Właściwie liczba $c$ może przedstawiać także ujemny ułamek, czyli tak na prawdę 
+		dopuszczamy również $-10 \lt c \leq -1$. Oto kilka liczb zapisanych w postaci notacji wykładniczej:
+	</p>
+
+	<ul>
+		<li>Masa Ziemi wynosi około $5 980\ 000\ 000\ 000\ 000\ 000\ 000\ 000 = 5,98 \cdot 10^{24}$ kilogramów</li>
+		<li>Obwód Ziemi (tzn. długość, jaką pokonamy, odbywając podróż dookoła świata) wynosi: $40\ 075 \approx 4 \cdot 10^4$ kilometrów</li>
+		<li>Masa atomu (dokładniej atomu wodoru) wynosi około: $0,000000000000000000000001673 = 1,673 \cdot 10^{-24}$ grama</li>
+		<li>Temperaturę jądra Słońca szacuję się na $15\ 709\ 999\ 700 \approx 1,57 \cdot 10^{10}$ stopni Celsjusza</li>
+	</ul>
+
+	<p class="type">
+		Warsztat | Rozszerzenie
+	</p>
+
+	<p>
+		Aby zapisać liczbę w postaci notacji wykładniczej, musimy zapisać ją w postaci ułamka dziesiętnego (z użyciem przecinka), odpowiednio przesunąć 
+		przecinek i dopisać dziesiątkę w odpowiedniej potędze.
+	</p>
+
 	<ul>
 		<li>
-			$a^k \cdot a^l=a^{k+l}$
-			<p class="type">
-				Dowód
-			</p>
-			<div class="proof">
-				<ul>
-					<li>
-						Rozważmy przypadek, gdy tylko jeden z wykładników jest ujemny (ze względu na przemienność mnożenia i dodawania, nie ma 
-						znaczenia, który). Mamy uzasadnić równość
-						$$a^k \cdot a^{-l}=a^{k-l}$$
-						przy czym same zmienne $k$ oraz $l$ mają wartości naturalne. Wykorzystując 
-						definicję potęgi o ujemnym wykładniku:<br>
-						$$a^k \cdot a^{-l}=a^k \cdot \frac{1}{a^l} = \frac{a^k}{a^l} =a^{k-l}$$
-					</li>
-					<li>
-						W przypadku obydwu wykładników ujemnych mamy:<br>
-						$$a^{-k} \cdot a^{-l}=\frac{1}{a^k}  \cdot \frac{1}{a^l} =\frac{1}{a^k \cdot a^l}=\frac{1}{a^{k+l}}=a^{-(k+l) }=a^{-k-l}$$
-					</li>
-				</ul>
-			</div>
-		</li>
-
-		<li>
-			$\frac{a^k}{a^l} =a^{k-l}$
-			<p class="type">
-				Dowód
-			</p>
-			<div class="proof">
-				<ul>
-					<li>
-						Przypadek, gdy wykładnik potęgi w liczniku jest ujemny:
-						$$\frac{a^{-k}}{a^l} =\frac{\frac{1}{a^k}}{a^l} =\frac{1}{a^k \cdot a^l}=\frac{1}{a^{k+l}} =a^{-(k+l) }=a^{-k-l}$$
-					</li>
-					<li>
-						Przypadek, gdy wykładnik potęgi w mianowniku jest ujemny:
-						$$\frac{a^k}{a^{-l}} =\frac{a^k}{\frac{1}{a^l}}=a^k \cdot a^l=a^{k+l}=a^{k-(-l)}$$
-					</li>
-					<li>
-						Przypadek, gdy obydwa wykładniki są ujemne:
-						$$\frac{a^{-k}}{a^{-l}}=\frac{\frac{1}{a^k}}{\frac{1}{a^l}}=\frac{1}{a^k}  \cdot a^l=\frac{a^l}{a^k} =a^{l-k}=a^{-k+l}=a^{-k-(-l)}$$
-					</li>
-				</ul>
-			</div>
+			Jeśli mamy do czynienia z liczbą większą niż $1$ (lub mniejszą niż $-1$): lokalizujemy przecinek (jeśli liczba jest całkowita, wstawiamy 
+			przecinek na końcu liczby) i przesuwamy go w lewo aż do pierwszej cyfry (kończymy z przecinkiem na prawo od pierwszej cyfry); zliczamy, ile 
+			razy przesunęliśmy przecinek i wstawiamy tę liczbę w wykładniku dziesiątki
 		</li>
 		<li>
-			$(a^k)^l=a^{k \cdot l}$
-			<p class="type">
-				Dowód
-			</p>
-			<div class="proof">
-				<ul>
-					<li>
-						Przypadek, gdy wykładnik wewnętrznej potęgi jest ujemny:
-						$$(a^{-k} )^l=(\frac{1}{a^k} )^l=\frac{1^l}{(a^k)^l} =\frac{1}{a^{k \cdot l}} =a^{-(k \cdot l)}=a^{(-k) \cdot l}$$
-					</li>
-					<li>
-						Przypadek, gdy wykładnik zewnętrznej potęgi jest ujemny:
-						$$(a^k )^{-l}=\frac{1}{(a^k )^l}=\frac{1}{a^{k \cdot l}} =a^{-(k \cdot l)}=a^{k \cdot (-l)}$$
-					</li>
-					<li>
-						Przypadek, gdy obydwa wykładniki są ujemne:
-						$$(a^{-k} )^{-l}=\frac{1}{(a^{-k} )^l}=\frac{1}{ (\frac{1}{a^k} )^l} =\frac{1}{ \frac{1^l}{(a^k )^l} }
-						=\frac{1}{\frac{1}{a^{k \cdot l} }}=a^{k \cdot l}=a^{(-k) \cdot (-l)}$$
-					</li>
-				</ul>
-			</div>
-		</li>
-		<li>
-			$a^k \cdot b^k=(a \cdot b)^k$<br>
-			<p class="type">
-				Dowód
-			</p>
-			<div class="proof">
-				Gdy wykładnik jest ujemny:
-				$$a^{-k} \cdot b^{-k}=\frac{1}{a^k}  \cdot \frac{1}{b^k} = \frac{1}{a^k \cdot b^k}=\frac{1}{(a \cdot b)^k} =(a \cdot b)^{-k}$$
-			</div>
-		</li>
-		<li>
-			$(\frac{a}{b})^k=\frac{a^k}{b^k} $<br>
-			<p class="type">
-				Dowód
-			</p>
-			<div class="proof">
-				Gdy wykładnik jest ujemny:
-				$$(\frac{a}{b})^{-k}=\frac{1}{\frac{a}{b}^k} =\frac{1}{\frac{a^k}{b^k}}=\frac{b^k}{a^k}=\frac{1}{a^k}  \cdot b^k=\frac{\frac{1}{a^k}}{\frac{1}{b^k}}=
-				\frac{a^{-k}}{b^{-k}}$$
-			</div>
+			Jeśli mamy do czyninia z liczbą od $-1$ do $1$: lokalizujemy przecinek i przesuwamy go w prawo aż do napotkania pierwszej cyfry, 
+			która nie jest zerem (kończymy z przecinkiem na prawo od pierwszej niezerowej cyfry); zliczamy, o ile 
+			cyfr przesunęliśmy przecinek i wstawiamy tę ilość na minusie w wykładniku dziesiątki
 		</li>
 	</ul>
-	
+
+	<p>
+		W praktyce:
+	</p>
+
+	<ul>
+		<li>$15\ 374 = 15\ 374,0 = 1,5374 \cdot 10^4$ (przecinek powędrował 4 miejsca w lewo)</li>
+		<li>$-10\ 004\ 321,364 = -1,0004321364 \cdot 10^7 \approx -10^7$ (przecinek powędrował 7 miejsc w lewo)</li>
+		<li>$0,0423 = 4,23 \cdot 10^{-2}$ (przecinek powędrował 2 miejsa w prawo)</li>
+		<li>$0,0009999 = 9,999 \cdot 10^{-4} \approx 10 \cdot 10^{-4} = 10^{-3}$ (przecinek powędrował 4 miejsa w prawo)</li>
+	</ul>
+
 	</div>
 	</div>
 	</div>
 
-  
 </div>
 
 </body>

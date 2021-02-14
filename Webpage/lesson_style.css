@@ -2,7 +2,7 @@
 
 p
 {
-	margin: 1.08em 0;
+	margin: 1.7em 0;
 }
 
 p:not(.printable)
@@ -67,10 +67,17 @@ ol li:before
 {
 	content: counter(foo) ")";
 	color: #DD3333;
-	margin: 0 1.5em;
 	margin: 0 1em;  
 	display: table-cell;
 	padding-right:  0.5em;
+}
+
+@media screen and (max-width: 700px)
+{
+	ul, ol
+	{
+		padding-left: 0;
+	}
 }
 
 button
@@ -200,7 +207,7 @@ table
 .menu .logo-text
 {
 	float: left;
-	padding: 30px 50px 0 50px;
+	padding: 32px 50px 0 50px;
 }
 
 .menu .logo-text-1
@@ -243,11 +250,11 @@ table
 
 .menu .logo-red-cell
 {
-	height: 12px;
-	width: 12px;
+	height: 40%;
+	width: 40%;
 	background: #cc0000;
 	border: none;
-	margin: 3px 3px 0 0;
+	margin: 10% 10% 0 0;
 }
 
 button.button_convey
@@ -262,10 +269,11 @@ button.button_convey
 	font-weight: bold;
 	cursor: pointer;
 	display: inline-block;
-	padding: 30px 20px 20px 20px;
+	padding: 0 20px;
+	line-height: 100px;
 	transition: all 0.5s;
 	cursor: pointer;
-	margin: 5px;
+	margin: 0 5px;
 }
 
 button.button_convey:hover
@@ -307,29 +315,64 @@ button.button_convey span a
 	color: black;
 }
 
+@media screen and (max-width: 700px)
+{
+	.menu
+	{
+		height: 80px;
+		border-bottom: 10px solid black; 
+	}
+
+	.menu .logo 
+	{
+		margin-right: 50px;
+	}
+
+	.menu .logo-text
+	{
+		display: none;
+	}
+
+	.menu .logo-black-cell, .menu .logo-container-cell
+	{
+		height: 20px;
+		width: 20px;
+		padding: 3px 3px 0 0;
+		margin: 2px;
+	}
+
+	button.button_convey
+	{
+		line-height: 80px;
+		font-size: 1.2em;
+	}
+}
+
 /* ========================================== TREE ========================================== */
 
 body.tree
 {
 	background-color: #FFFFFF;
+	font-family: "Verdana";
+	font-size: 0.95em;
 }
 
-.tree a:link
+a.link:link
 {
 	color: #BA0000;
 }
 
-.tree a:visited
+a.link:visited
 {
-	color: #700000;
+	color: #990000;
 }
 
-.tree a:hover
+a.link:hover
 {
 	color: #FA0000;
 }
 
-.tree a:active
+a.link:active
 {
 	color: #300000;
 }
@@ -339,7 +382,7 @@ body.tree
 body.lesson
 {
 	background-color: #cccccc;
-	/*background-image: url(".images/background.jpg");
+	/*background-image: url(".images/background.png");
 	background-attachment: fixed;
 	background-position: center;
 	background-repeat: no-repeat;
@@ -347,17 +390,40 @@ body.lesson
 	margin: 0;
 }
 
-.main
+@media screen and (max-width: 1200px)
 {
-	color: #000000; 
-	background: #FEFEFE; 
-	position: relative; 
-	border-right: 3px solid black;
-	margin-right: 300px; 
-	padding: 35px 150px 35px 450px;
-	/*box-shadow: inset 0 0 13px 4px rgba(0, 0, 0, 0.3);*/
-	font-family: "Verdana";
-	font-size: 1.08em;
+	.main
+	{
+		position: relative; 
+		padding: 35px 6% 35px 6%;
+		font-family: "Verdana";
+		font-size: 1.08em;
+		color: #000000; 
+		background: #FEFEFE; 
+	}
+}
+
+
+@media screen and (min-width: 1200px)
+{
+	.main
+	{
+		max-width: 1100px;
+		position: relative; 
+		margin-right: 14%; 
+		padding: 35px 6.5% 35px 19.5%;
+		font-family: "Verdana";
+		font-size: 1.08em;
+		line-height: 1.7em;
+		color: #000000; 
+		background: #FEFEFE; 
+		border-right: 3px solid black;
+	}
+}
+
+.main > p
+{
+	padding: 0 25px;
 }
 
 .comment_window
@@ -408,9 +474,9 @@ body.lesson
 	font-family: corbel;
 	font-size: 2em;
 	font-weight: bold;
-	line-height: 0%;
 	margin-top: 9px; /*50px*/
-	margin-bottom: 25px;
+	margin-bottom:-7px;
+	padding: 0 25px;
 }
 
 .chapter_name + hr
@@ -419,8 +485,8 @@ body.lesson
 	border: 2px solid;
 	border-color: white;
 	transition: border-color 0.5s ease-in, width 0.4s;
-	margin-left: 0;
-	margin-right: 0;
+	margin-left: 25px;
+	margin-right: 25px;
 }
 
 .chapter_name:hover + hr
@@ -429,8 +495,8 @@ body.lesson
 	border: 2px solid;
 	border-color: black;
 	transition: border-color 0.1s ease 0.2s, width 1s ease 0.2s;
-	margin-left: 0;
-	margin-right: 0;
+	margin-left: 25px;
+	margin-right: 25px;
 }
 
 .chapter_body
@@ -439,7 +505,7 @@ body.lesson
 	border: 0px solid black;
 	margin-bottom: 90px;
 	margin-top: 0px;
-	padding: 0px;
+	padding: 0 25px;
 	box-shadow: inset 0 0 0 0 rgba(0, 0, 0, 0.3);
 }
 
@@ -463,7 +529,7 @@ body.lesson
 	border-left: 10px solid #dd3333;
 	box-shadow: 2px 2px 3px 0px rgba(0, 0, 0, 0.4);
 	padding: 15px;
-	margin: 20px 30px 20px 30px;
+	margin: 30px 30px;
 	/* border-radius: 15px; */
 }
 
@@ -473,26 +539,28 @@ p.lesson_title
 	font-size: 3.2em;
 	font-weight: bold;
 	font-family: "Corbel";
-	margin: 50px;
+	margin: 50px auto;
 	clear:both;
 }
 
 p.lesson_title_short
 {
 	text-align: center;
-	font-size: 50px;
-	font-family: cambria;
-	margin-top: 50px;
-	margin-bottom: 1px;
+	font-size: 3.2em;
+	font-weight: bold;
+	font-family: "Corbel";
+	margin: 50px auto 5px auto;
+	clear:both;
 }
 
 p.lesson_subtitle
 {
 	text-align: center;
-	font-size: 25px;
-	font-family: cambria;
-	margin-top: 1px;
-	margin-bottom: 50px;
+	font-size: 1.6em;
+	font-weight: bold;
+	font-family: "Corbel";
+	margin: 5px auto 50px auto;
+	clear: both;
 }
 
 p.type
@@ -500,10 +568,12 @@ p.type
 	/* line-height: 0%; */
 	display: inline-block;
 	background-color: #dd3333;
-	padding: 5px;
+	padding: 0 5px;
+	height: 31px;
+	line-height: 31px;
 	color: white;
 	margin-top: 0;
-	margin-bottom: -10px;
+	margin-bottom: -1.6em;
 	transition: background-color 0.1s;
 	box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.4);
 }
@@ -512,6 +582,72 @@ p.type:hover
 {
 	background-color: #cc3333;
 	transition: background-color 0.1s;
+}
+
+p.optional-hide:after
+{
+	content: ">";
+	display: inline-block;
+	background: #aa0000;
+	margin: 0 0 5px 5px;
+    width: 21px;
+    height: 21px;
+    border-radius: 50%;
+    text-align: center;
+	vertical-align: middle;
+	font-family: Consolas;
+	line-height: 21px;
+	font-size: 21px;
+	transition: transform 0.5s;
+}
+
+
+p.optional-hide:hover:after
+{
+	background: #990000;
+	transform: rotate(90deg);
+	transition: transform 0.5s;
+}
+
+p.optional-show:after
+{
+	content: ">";
+	display: inline-block;
+	background: #aa0000;
+	margin: 0 0 5px 5px;
+    width: 21px;
+    height: 21px;
+    border-radius: 50%;
+    text-align: center;
+	vertical-align: middle;
+	font-family: Consolas;
+	line-height: 21px;
+	font-size: 21px;
+	transform: rotate(90deg);
+	transition: transform 0.5s;
+}
+
+p.optional-show:hover:after
+{
+	background: #990000;
+	transform: rotate(0deg);
+	transition: transform 0.5s;
+}
+
+p.optional-show ~ div
+{
+	margin: -5px -25px;
+	padding: 5px 25px;
+}
+
+p.optional-hide:hover ~ div
+{
+	background: #fff0f0;
+}
+
+p.optional-show:hover ~ div
+{
+	background: #fff0f0;
 }
 
 .proof-sticker
@@ -533,7 +669,7 @@ p.warning
 	font-family: arial;
 	color: #888888;
 	font-size: 0.7em;
-	margin-top: 14px;
+	margin-top: 1.8em;
 	margin-bottom: 8px;
 }	
 
@@ -566,6 +702,7 @@ p.problem
 	margin-bottom: 1em;
 	border: 1px solid #aaaaaa;
 	border-top:  1px solid #dddddd;
+	background: #ffffff;
 }
 
 .bookmark
@@ -612,13 +749,29 @@ p.problem
 	transition: padding-right 0.5s;
 }
 
-.bookmark-shadow
+@media screen and (max-width: 1200px)
 {
-	float: right;
-	box-shadow: 3px 3px 5px 0px rgba(0, 0, 0, 0.4);
-	margin-right: -150px;
-	margin-bottom: 30px;
-	padding-left: 20px;
+	.bookmark-shadow
+	{
+		float: right;
+		overflow: auto;
+		margin-right: -7%;
+		margin-bottom: 30px;
+		padding-left: 30px;
+	}
+}
+
+@media screen and (min-width: 1200px)
+{
+	.bookmark-shadow
+	{
+		float: right;
+		overflow: auto;
+		box-shadow: 4px 3px 5px 0px rgba(0, 0, 0, 0.4);
+		margin-right: -13%;
+		margin-bottom: 30px;
+		padding-left: 30px;
+	}
 }
 
 /* ========================================== COMMON ELEMENTS ========================================== */
