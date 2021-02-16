@@ -14,6 +14,7 @@ import { Function } from '../math-engine/analysis-engine/function';
 import { derivative } from '../math-engine/analysis-engine/analysis-algorithms';
 import { engineConfiguration } from '../math-engine/engine-configuration';
 import { Order } from '../math-engine/set-engine/order';
+import { factorizeNumber, numericGCD, numericLCM } from '../math-engine/algebra-engine/algorithms/numeric-algorithms';
 
 function equalTest(a: string, b: string) {
     it(a + " = " + b, () => expect(equals(parseExpression(a), parseExpression(b))).to.be.true);
@@ -53,11 +54,35 @@ function derivate(formula: string, expected: string) {
     });
 }
 
+function numericFactors(number: string, factors: string) {
+    it(number + " factorizes to: " + factors, () => {
+        let expected = factors.split(",").map(s => BigInt(s));
+        let calculated = factorizeNumber(BigInt(number));
+        expect(expected.length == calculated.length && expected.every((e, i) => e === calculated[i])).to.be.true;
+    });
+}
+
 function factors(e: string, f: string) {
     it(e + " factorizes to: " + f, () => {
         let expected = f.split(",").map(s => parseExpression(s)).sort(productOrder);
         let calculated = [...factorize(parseExpression(e)).factors].sort(productOrder);
         expect(expected.length == calculated.length && expected.every((e, i) => equals(e, calculated[i]))).to.be.true;
+    });
+}
+
+function numericLeastCommonMultiple(args: string, expected: string) {
+    it("lcm(" + args + ") = " + expected, () => {
+        let numbers = args.split(",").map(s => BigInt(s));
+        let calculated = numericLCM(...numbers);
+        expect(BigInt(expected) === calculated).to.be.true;
+    });
+}
+
+function numericGreatestCommonDivisor(args: string, expected: string) {
+    it("gcd(" + args + ") = " + expected, () => {
+        let numbers = args.split(",").map(s => BigInt(s));
+        let calculated = numericGCD(...numbers);
+        expect(BigInt(expected) === calculated).to.be.true;
     });
 }
 
@@ -101,6 +126,20 @@ describe('number operations', () => {
     equalTest("2^(-10)", "1/1024");
     equalTest("(-8)^(1/3)", "-2");
     equalTest("4^(2^(-1))", "2");
+});
+
+describe('numeric algorithms', () => {
+    numericLeastCommonMultiple("2,3,5", "30");
+    numericLeastCommonMultiple("6,10,20", "60");
+    numericLeastCommonMultiple("10,1", "10");
+    numericLeastCommonMultiple("0", "0");
+    numericGreatestCommonDivisor("2,3,5", "1");
+    numericGreatestCommonDivisor("6,10,20", "2");
+    numericGreatestCommonDivisor("10,1", "1");
+    numericFactors("60", "2,2,3,5");
+    numericFactors("32", "2,2,2,2,2");
+    numericFactors("1", "1");
+    numericFactors("0", "0");
 });
 
 describe('algebraic equalities', () => {
@@ -166,7 +205,7 @@ describe('derivatives', () => {
     derivate("x^2/(x+1)", "(x^2+2x)/((x+1)^2)");
 });
 
-describe('factorization', () => {
+describe('polynomials factorization', () => {
     factors("60", "2,2,3,5");
     factors("a^2bc^3", "a,a,b,c,c,c");
     factors("2a+2b", "2,a+b");
