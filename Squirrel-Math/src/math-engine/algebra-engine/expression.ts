@@ -1,42 +1,44 @@
-import { Integer, instanceOfNumber, Decimal } from './numbers';
+import { Integer, Decimal, Number, Fraction } from './numbers';
 import { Sum } from './sum';
 import { Variable } from './variable';
 import { Product } from './product';
 import { Power } from './power';
 import { Quotient } from './quotient';
+import { AlgebraicNotion } from './algebraic-notion';
 
-export interface Expression {
-    toMathJax(): string;
+export interface Expression extends AlgebraicNotion {
+    simplified: Expression | null;
     isNegative(): boolean;
-    simplify(): Expression;
-    equals(other: Expression): boolean;
-
+    identical(other: Expression): boolean;
+    substitute(v: Expression, e: Expression): Expression;
     precedence(): number;
-    inSumBefore(other: Expression): boolean;
-    inProductBefore(other: Expression): boolean;
+    copy(): Expression;
+    allVariables(): Variable[];
  }
 
  export function parseExpression(text: string): Expression {
-    let result: Sum = new Sum();
+    let resultAddends: Expression[] = [];
     let addend: Expression | null = null;
     let position = 0;
     let lastToken: Expression | null = null;
     let rememberedMinus: boolean = false;
+    let expectToken: boolean = false;
 
     let nextToken = function(): Expression {
         let char = text[position];
-        if (char == '(') {
+        let bracketPairs: {[open: string]: string} = {'(': ')', '[': ']', '{': '}'};
+        if (Object.keys(bracketPairs).includes(char)) {
             let bracket = "";
             position++;
             let open = 1;
             let openPosition = position;
             while (open > 0) {
                 if (position == text.length) 
-                    throw "Niedomknięty nawias otwarty po " + char + " " + (position == 0 ? "na początku" : "po " + text.substr(0, position));
-
-                if (text[position] == '(')
+                    throw "Unclosed bracket " + char + " open " + (openPosition == 0 ? "at the beginning" : "after " + text.substr(0, openPosition-1)) + 
+                    " in expression " + text;
+                if (text[position] == char)
                     open++;
-                if (text[position] == ')')
+                if (text[position] == bracketPairs[char])
                     open--;
                 if (open > 0)
                     bracket += text[position];
@@ -55,29 +57,29 @@ export interface Expression {
                     number += text[position++];
                 return new Decimal(parseFloat(number));
             }
-            return new Integer(parseInt(number));
+            return new Integer(BigInt(number));
         }
         else if (char >= 'a' && char <= 'z' || char >= 'A' && char <= 'Z') {
             position++;
             return new Variable(char);
         }
         else
-            throw "Niepoprawny symbol " + char + " " + (position == 0 ? "na początku" : "po " + text.substr(0, position));
+            throw "Wrong character " + char + " " + (position == 0 ? "at the beginning" : "after " + text.substr(0, position));
     }
 
     let injectToken = function(){
         if (lastToken) {
             if (rememberedMinus) {
-                if (instanceOfNumber(lastToken))
-                    lastToken = lastToken.multiply(new Integer(-1));
+                if (lastToken instanceof Number)
+                    lastToken = lastToken.multiply(Integer.minusOne);
                 else 
-                    lastToken = Product.of(new Integer(-1), lastToken);
+                    lastToken = Product.of(Integer.minusOne, lastToken);
                 rememberedMinus = false;
             }
             if (!addend)
                 addend = lastToken;
             else if (addend instanceof Product)
-                addend.factors.push(lastToken)
+                addend = Product.of(...addend.factors, lastToken)
             else 
                 addend = Product.of(addend, lastToken);
         }
@@ -86,22 +88,25 @@ export interface Expression {
     while (position < text.length) {
         let char = text[position];
         if (char == '+' || char == '-') {
+            if (char == '+' && (expectToken || !lastToken))
+                throw "Wrong character " + char  + (position == 0 ? " at the beginning" : " after " + text.substr(0, position));
             injectToken();
             if (addend)
-                result.addends.push(addend);
+                resultAddends.push(addend);
             lastToken = null;
             addend = null;
             position++;
             if (char == '-')
-                rememberedMinus = true;
+                rememberedMinus = !rememberedMinus;
         }
         else if (char == '*') {
             if (!lastToken)
-                throw "Niepoprawny symbol * " + (position == 0 ? "na początku" : "po " + text.substr(0, position));
+                throw "Wrong character * " + (position == 0 ? "at the beginning" : "after " + text.substr(0, position));
             position++;
+            expectToken = true;
         }
         else if (char == '=') {
-            throw "Znak równości tu nie pasuje, wpisz jedynie wyrażenie algebraiczne";
+            throw "Equality sign is not part of algebraic expression.";
         }
         else if (char == ' ' || char=='\t' || char=='\n' || char=='\r') {
             position++;
@@ -109,37 +114,41 @@ export interface Expression {
         else if (char == '_') {
             position++;
             let index = nextToken().toMathJax();
-            if (!lastToken || !(lastToken instanceof Variable))
-                throw "Niepoprawny symbol _ " + (position == 0 ? "na początku" : "po " + text.substr(0, position));
+            if (expectToken || !lastToken || !(lastToken instanceof Variable))
+                throw "Wrong character _ " + (position == 0 ? "at the beginning" : "after " + text.substr(0, position));
             else
-                lastToken.index = index;
+                lastToken = new Variable(lastToken.name, index);
         }
         else if (char == '^') {
-            if (!lastToken)
-                throw "Niepoprawny symbol ^ " + (position == 0 ? "na początku" : "po " + text.substr(0, position));
+            if (expectToken || !lastToken)
+                throw "Wrong character ^ " + (position == 0 ? "at the beginning" : "after " + text.substr(0, position));
             position++;
             let exponent = nextToken();
             lastToken = new Power(lastToken, exponent);
         }
         else if (char == '/' || char == ':') {
-            if (!lastToken)
-                throw "Niepoprawny symbol / " + (position == 0 ? "na początku" : "po " + text.substr(0, position));
+            if (expectToken || !lastToken)
+                throw "Wrong character / " + (position == 0 ? "at the beginning" : "after " + text.substr(0, position));
             position++;
             let denominator = nextToken();
-            lastToken = new Quotient(lastToken, denominator);
+            if (lastToken instanceof Integer && denominator instanceof Integer)
+                lastToken = new Fraction(lastToken.int, denominator.int);
+            else
+                lastToken = new Quotient(lastToken, denominator);
         }
         else {
             injectToken();
             lastToken = nextToken();
+            expectToken = false;
         }
 
     }
     injectToken();
     if (addend)
-        result.addends.push(addend);
-    if (result.addends.length == 0)
+        resultAddends.push(addend);
+    if (resultAddends.length == 0)
         return Integer.zero;
-    if (result.addends.length == 1)
-        return result.addends[0];
-    return result;
+    if (resultAddends.length == 1)
+        return resultAddends[0];
+    return Sum.of(...resultAddends);
  }

@@ -16,13 +16,13 @@
 <script lang="ts">
 import Vue from 'vue';
 import { Component } from 'vue-property-decorator'
-import { Polynomial } from '../../../../math_engine/polynomial'
-import { Variable } from '../../../../math_engine/variable';
-import { Integer, Fraction } from '../../../../math_engine/numbers';
-import { gcd } from '../../../../math_engine/algebraic_algorithms';
-import { Product } from '../../../../math_engine/product';
-import { Sum } from '../../../../math_engine/sum';
-import { Power } from '../../../../math_engine/power';
+import { Variable } from '../../../../math-engine/algebra-engine/variable';
+import { Integer, Fraction } from '../../../../math-engine/algebra-engine/numbers';
+import { numericGCD } from '../../../../math-engine/algebra-engine/algorithms/numeric-algorithms';
+import { Product } from '../../../../math-engine/algebra-engine/product';
+import { Power } from '../../../../math-engine/algebra-engine/power';
+import { equals, simplify } from '../../../../math-engine/algebra-engine/algorithms/simplification-algorithm';
+import { UnivariatePolynomial } from '../../../../math-engine/algebra-engine/univariate-polynomial';
 declare var MathJax:any
 
 @Component
@@ -40,21 +40,23 @@ export default class SimpleQuadraticEquationsTraining extends Vue {
     }
 
     updateProduct() {
-        [this.userX1.numerator.int, this.userX1.denominator.int] = this.x1.split("/").map(n => parseInt(n));
-        [this.userX2.numerator.int, this.userX2.denominator.int] = this.x2.split("/").map(n => parseInt(n));
-        this.userX1.denominator.int = this.userX1.denominator.int || 1;
-        this.userX2.denominator.int = this.userX2.denominator.int || 1;
+        let userX1Numerator, userX1Denominator, userX2Numerator, userX2Denominator;
+        [userX1Numerator, userX1Denominator] = this.x1.split("/").map(n => parseInt(n));
+        [userX2Numerator, userX2Denominator] = this.x2.split("/").map(n => parseInt(n));
+        userX1Denominator = userX1Denominator || 1;
+        userX2Denominator = userX2Denominator || 1;
+        this.userX1 = new Fraction(userX1Numerator, userX1Denominator);
+        this.userX2 = new Fraction(userX2Numerator, userX2Denominator);
 
         if (this.x1 == "" || this.x2 == "" || isNaN(parseInt(this.x1)) || isNaN(parseInt(this.x2)))
             return;
 
         let product = "Daje to postać iloczynową $";
-        if (this.userX1.numerator.equals(this.userX2.numerator) && this.userX1.denominator.equals(this.userX2.denominator)) 
-            product += new Power(Polynomial.withCoefficients([this.userX1.numerator.opposite(), this.userX1.denominator], this.varX).simplify(), 
-            new Integer(2)).toMathJax();
+        if (equals(this.userX1.numerator, this.userX2.numerator) && equals(this.userX1.denominator, this.userX2.denominator))
+            product += new Power(simplify(UnivariatePolynomial.withCoefficients([this.userX1.numerator.opposite(), this.userX1.denominator], this.varX)), new Integer(2)).toMathJax();
         else 
-            product += Product.of(Polynomial.withCoefficients([this.userX1.numerator.opposite(), this.userX1.denominator], this.varX).simplify(), 
-            Polynomial.withCoefficients([this.userX2.numerator.opposite(), this.userX2.denominator], this.varX).simplify()).toMathJax();
+            product += Product.of(simplify(UnivariatePolynomial.withCoefficients([this.userX1.numerator.opposite(), this.userX1.denominator], this.varX)), 
+            simplify(UnivariatePolynomial.withCoefficients([this.userX2.numerator.opposite(), this.userX2.denominator], this.varX))).toMathJax();
         product += " = 0$.";
 
         this.setDivContent("productDiv", product);
@@ -64,27 +66,28 @@ export default class SimpleQuadraticEquationsTraining extends Vue {
         let result = "";
         if (this.x1 == "" || this.x2 == "")
             result = "Uzupełnij oba pola liczbami całkowitymi / ułamkami."
-        else if (this.userX1.equals(this.correctX1) && this.userX2.equals(this.correctX2) || this.userX1.equals(this.correctX2) && this.userX2.equals(this.correctX1))
+        else if (equals(this.userX1, this.correctX1) && equals(this.userX2, this.correctX2) || equals(this.userX1, this.correctX2) && equals(this.userX2, this.correctX1))
             result = "Dobrze!";
         else 
-            result = "Niedobrze. Powinno być $x = " + this.correctX1.simplify().toMathJax() + "$ lub $x = " + this.correctX2.simplify().toMathJax() + "$.";
+            result = "Niedobrze. Powinno być $x = " + simplify(this.correctX1).toMathJax() + "$ lub $x = " + simplify(this.correctX2).toMathJax() + "$.";
         
         this.setDivContent("resultDiv", result);
     }
 
     next() {
-        this.correctX1.numerator = Integer.random(0, 9).multiply(new Integer(Math.random() > 0.6 ? 1 : -1)) as Integer;
-        if (this.correctX1.numerator.equals(Integer.zero) || Math.random() < 0.8)
-            this.correctX1.denominator = Integer.one;
+        let x1Numerator = Integer.random(0, 9).multiply(new Integer(Math.random() > 0.6 ? 1 : -1)) as Integer;
+        let x2Denominator;
+        if (equals(x1Numerator, Integer.zero) || Math.random() < 0.8)
+            x2Denominator = Integer.one;
         else
             do {
-                this.correctX1.denominator = Integer.random(1, 4);
-            } while (gcd(this.correctX1.numerator.int, this.correctX1.denominator.int) > 1);
-        this.correctX2.numerator = Integer.random(0, 9).multiply(new Integer(Math.random() > 0.6 ? 1 : -1)) as Integer;
-        this.correctX2.denominator = Integer.one;
+                x2Denominator = Integer.random(1, 4);
+            } while (numericGCD(x1Numerator.int, x2Denominator.int) > BigInt(1));
+        this.correctX1 = new Fraction(x1Numerator.int, x2Denominator.int);
+        this.correctX2 = new Fraction(Integer.random(0, 9).multiply(new Integer(Math.random() > 0.6 ? 1 : -1)).numeric(), 1);
 
-        let equationPolynomial = Product.of(Polynomial.withCoefficients([this.correctX1.numerator.opposite(), this.correctX1.denominator], this.varX), 
-            Polynomial.withCoefficients([this.correctX2.numerator.opposite(), this.correctX2.denominator], this.varX)).simplify();
+        let equationPolynomial = simplify(Product.of(UnivariatePolynomial.withCoefficients([this.correctX1.numerator.opposite(), this.correctX1.denominator], this.varX), 
+            UnivariatePolynomial.withCoefficients([this.correctX2.numerator.opposite(), this.correctX2.denominator], this.varX)));
         let equationString = "$$" + equationPolynomial.toMathJax() + " = 0$$"
 
         this.setDivContent("equationDiv", equationString);

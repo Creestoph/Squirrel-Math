@@ -8,8 +8,9 @@
 
 <script lang="ts">
 import Vue from 'vue';
-import { Expression, parseExpression } from '../../../../math_engine/expression';
+import { Expression, parseExpression } from '../../../../math-engine/algebra-engine/expression';
 import { Component } from 'vue-property-decorator'
+import { simplify } from '../../../../math-engine/algebra-engine/algorithms/simplification-algorithm';
 declare var MathJax:any
 
 @Component
@@ -19,7 +20,7 @@ export default class AlgebraicCalculator extends Vue {
     simplify() {
         try {
             let expression: Expression = parseExpression(this.input);
-            this.setDivContent("resultDiv", "$$" + expression.toMathJax() + " = " + expression.simplify().toMathJax() + "$$");
+            this.setDivContent("resultDiv", "$$" + expression.toMathJax() + " = " + simplify(expression).toMathJax() + "$$");
         } catch(exception) {
             this.setDivContent("resultDiv", exception);
         }
