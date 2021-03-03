@@ -1,39 +1,34 @@
 <template>
-  <div class="container">
-    <div class="row">
-      <div class="col">
-        <h1 class="display-1 text-center">
-          Squirrel-Math
-        </h1>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col">
-        <router-link
-          tag="div"
-          to="/"
-          class="btn btn-light"
-        >
-          Home
-        </router-link>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col">
-        <h1 class="display-3 text-center">
-          editor
-        </h1>
-      </div>
-    </div>
-  </div>
+  <lesson>
+    <lesson-title>Edytor</lesson-title>
+
+    <lesson-intro>
+      Jakoś dużo tu nie ma...
+    </lesson-intro>
+  </lesson>
 </template>
 
 <script>
-    export default {
-        name: "Editor"
-    }
+import LessonTitle from "./lesson/LessonTitle";
+import LessonIntro from "./lesson/LessonIntro";
+import LessonChapter from "./lesson/chapter/LessonChapter";
+import Lesson from "./lesson/Lesson";
+
+export default {
+  name: "Editor",
+  data() {
+    return {
+      chapters: []
+    };
+  },
+  components: {
+    LessonIntro,
+    LessonTitle,
+    LessonChapter,
+    Lesson
+  }
+};
 </script>
 
 <style scoped>
-
 </style>
