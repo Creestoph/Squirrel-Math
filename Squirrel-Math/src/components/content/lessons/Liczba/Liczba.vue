@@ -1524,7 +1524,7 @@ $$18 = 18$$
 import LessonTitle from "../../../lesson/LessonTitle";
 import LessonIntro from "../../../lesson/LessonIntro";
 import LessonChapter from "../../../lesson/chapter/LessonChapter";
-import Lesson from "../../../lesson/Lesson";
+import Lesson from "../../../lesson/Lesson.vue";
 import NumberToString from "../../../utils/number_to_string/NumberToString";
 
 export default {

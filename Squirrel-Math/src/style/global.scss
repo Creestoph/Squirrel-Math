@@ -108,21 +108,24 @@ ol
 	}
 }
 
-button
+button 
 {
-	background-color: $main-red;
 	border: none;
-	color: white;
-	padding: 15px 32px;
 	text-align: center;
 	text-decoration: none;
-	/*display: inline-block;*/
-	font-size: 0.9em;
-	margin: 4px 2px;
 	cursor: pointer;
 }
 
-button:hover
+button.button-red
+{
+	background-color: $main-red;
+	color: white;
+	padding: 15px 32px;
+	font-size: 0.9em;
+	margin: 4px 2px;
+}
+
+button.button-red:hover
 {
 	box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
 	background-color: $darker-red;
@@ -246,6 +249,7 @@ a.link:active
 
 .example
 {
+	display: block;
 	text-align: justify;
 	background-color: $example-background;
 	border-left: 3px solid $main-red;
@@ -399,6 +403,7 @@ p.problem
 
 .formula
 {
+	display: block;
 	text-align: center !important;
 	background-color: $gray;
 	padding: 10px;
@@ -407,6 +412,7 @@ p.problem
 
 .proof
 {
+	display: block;
 	position: relative;
 	padding: 40px 10px 10px 10px;
 	border: 1px solid $darker-gray;

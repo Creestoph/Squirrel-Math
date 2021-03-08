@@ -10,7 +10,7 @@
       />
     </p>
     <p style="text-align: center">
-      <button style="float: center;" @click="ColumnarOperationStartArgs()">
+      <button class="button-red" style="float: center;" @click="ColumnarOperationStartArgs()">
         Start
       </button>
     </p>

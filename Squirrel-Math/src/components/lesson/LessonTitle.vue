@@ -1,19 +1,17 @@
 <template>
-  <div class="lesson_title">
-    <slot />
-  </div>
+  <h1 ref="content"><slot /></h1>
 </template>
 
 <script>
-    export default {
-        name: "LessonTitle"
-    }
+  export default {
+    name: "LessonTitle"
+  }
 </script>
 
 <style scoped lang="scss">
 @import "@/style/global";
 
-  .lesson_title
+  h1
   {
     text-align: center;
     font-size: 3.2em;

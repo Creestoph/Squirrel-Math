@@ -155,7 +155,7 @@
 import LessonTitleShort from "../../../lesson/LessonTitleShort";
 import LessonIntro from "../../../lesson/LessonIntro";
 import LessonChapter from "../../../lesson/chapter/LessonChapter";
-import Lesson from "../../../lesson/Lesson";
+import Lesson from "../../../lesson/Lesson.vue";
 
 export default {
   name: "DzialaniaNaWyrazeniachAlgebraicznychShort",

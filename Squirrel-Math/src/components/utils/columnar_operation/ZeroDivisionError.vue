@@ -16,7 +16,7 @@
         <br>
       </p>
       <button
-        class="modal_close"
+        class="button-red modal_close"
         ref="modal_button"
         style="float: center"
         @click="CloseModal()"

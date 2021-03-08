@@ -71,6 +71,7 @@
     position: fixed;
     top: 0px;
     left: -160px;
+    z-index: 100000;
     transform: skew(-45deg);
     background: white;
     padding-left: 100px;

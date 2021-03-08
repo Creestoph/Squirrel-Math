@@ -10,8 +10,8 @@
 </template>
 
 <script>
-import ChapterTitle from "./ChapterTitle";
-import ChapterBody from "./ChapterBody";
+import ChapterTitle from "./ChapterTitle.vue";
+import ChapterBody from "./ChapterBody.vue";
 
 export default {
   name: "LessonChapter",
@@ -27,8 +27,6 @@ export default {
 };
 </script>
 
-<style scoped>
-.chapter {
-  position: relative;
-}
+<style scoped lang="scss">
+@import "@/style/chapter";
 </style>

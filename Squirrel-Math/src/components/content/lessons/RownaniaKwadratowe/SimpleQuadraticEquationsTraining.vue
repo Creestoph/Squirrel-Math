@@ -6,8 +6,8 @@
         <input v-model="x2" @keyup="updateProduct()" tabindex="2">
         <div ref="productDiv"></div>
         <div id="buttons">
-            <button @click="check()">Sprawdź</button>
-            <button @click="next()">Następne</button>
+            <button class="button-red" @click="check()">Sprawdź</button>
+            <button class="button-red" @click="next()">Następne</button>
         </div>
         <div ref="resultDiv"></div>
     </div>

@@ -63,25 +63,6 @@ export default class ChapterBody extends Vue {
 }
 </script>
 
-<style scoped>
-.chapter-body {
-  position: relative;
-  border: 0px solid black;
-  margin-bottom: 0px;
-  margin-top: 0px;
-  padding-bottom: 70px;
-  box-shadow: inset 0 0 0 0 rgba(0, 0, 0, 0.3);
-}
-
-.chapter-body > *:first-child {
-  margin-top: 0;
-}
-
-.chapter-mask {
-  position: relative;
-  border: 0px solid black;
-  margin: 0;
-  padding: 0;
-  box-shadow: inset 0 0 0 0 rgba(0, 0, 0, 0.3);
-}
+<style scoped lang="scss">
+@import "@/style/chapter";
 </style>
