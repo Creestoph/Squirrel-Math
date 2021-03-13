@@ -130,21 +130,21 @@ import {
   TableRow
 } from 'tiptap-extensions'
 
-import Lesson from "./lesson/Lesson.vue";
-import LessonDoc from "./lesson/Lesson";
-import Title from "./lesson/Title";
-import Intro from "./lesson/Intro";
-import Chapter from "./lesson/chapter/Chapter";
-import ChapterTitle from "./lesson/chapter/ChapterTitle";
-import ChapterBody from "./lesson/chapter/ChapterBody";
-import SemanticTag from "./lesson/SemanticTag";
-import Example from "./lesson/Example";
-import Formula from "./lesson/Formula";
-import Proof from "./lesson/Proof";
-import CustomListItem from "./lesson/ListItem";
-import Placeholder from "./lesson/Placeholder";
-import NumberMark from "./lesson/NumberMark";
-import NumbersMarker from "./lesson/NumbersMarker";
+import Lesson from "../lesson/Lesson.vue";
+import LessonDoc from "./Lesson";
+import Title from "../lesson/Title";
+import Intro from "./Intro";
+import Chapter from "../lesson/chapter/Chapter";
+import ChapterTitle from "../lesson/chapter/ChapterTitle";
+import ChapterBody from "../lesson/chapter/ChapterBody";
+import SemanticTag from "./SemanticTag";
+import Example from "./Example";
+import Formula from "./Formula";
+import Proof from "./Proof";
+import CustomListItem from "./ListItem";
+import Placeholder from "./Placeholder";
+import NumberMark from "./NumberMark";
+import NumbersMarker from "./NumbersMarker";
 
 @Component({
   components: {
@@ -155,8 +155,18 @@ import NumbersMarker from "./lesson/NumbersMarker";
 })
 export default class LessonEditor extends Vue {
   editor: any = null;
+  sourceFile: string = "";
+  sourceContent: any = null;
 
   mounted() {
+    this.sourceFile = this.$route.params.sourceFile;
+    if (this.sourceFile) {
+      import(`@/assets/${this.sourceFile}`).then(file => {
+        console.log(file);
+        this.editor.setContent(file);
+      })
+    }
+
     this.editor = new Editor({
       extensions: [
         new History(),
@@ -208,7 +218,26 @@ export default class LessonEditor extends Vue {
     this.editor.destroy()
   }
   save() {
-    console.log(JSON.stringify(this.editor.getJSON()));
+    let content = JSON.stringify(this.editor.getJSON());
+    console.log(content);
+    let fileName = this.sourceFile || 'lesson.json';
+    this.download(content, fileName, 'application/json');
+  }
+  private download(data: any, filename: string, type: string) {
+    var file = new Blob([data], {type: type});
+    if (window.navigator.msSaveOrOpenBlob) // IE10+
+      window.navigator.msSaveOrOpenBlob(file, filename);
+    else { // Others
+      var a = document.createElement("a"), url = URL.createObjectURL(file);
+      a.href = url;
+      a.download = filename;
+      document.body.appendChild(a);
+      a.click();
+      setTimeout(function() {
+          document.body.removeChild(a);
+          window.URL.revokeObjectURL(url);  
+      }, 0); 
+    }
   }
   clearAll() {
     this.editor.setContent(`
@@ -220,7 +249,6 @@ export default class LessonEditor extends Vue {
       </chapter>
     `);
   }
-
 }
 </script>
 
@@ -281,24 +309,6 @@ export default class LessonEditor extends Vue {
 
 
 /*=== CONTENT - GENERAL===*/
-#editor table {
-  width: 100%;
-  border-collapse: collapse;
-}
-#editor td {
-  border: solid thin $dark-gray;
-  min-width: 50px;
-  padding: 0 10px;
-  max-width: 0;
-  &.selectedCell {
-    background: $light-gray;
-  }
-}
-
-#editor li p {
-  margin: 0;
-}
-
 #editor img 
 {
   display: block;
@@ -316,6 +326,18 @@ number {
 }
 
 /*=== CONTENT - EDITOR SPECIFIC===*/
+#editor table {
+  width: 100%;
+}
+#editor td {
+  min-width: 50px;
+  padding: 0 10px;
+  max-width: 0;
+  &.selectedCell {
+    background: $light-gray;
+  }
+}
+
 #editor .chapter_name > div + hr
 {
   width: 100%;

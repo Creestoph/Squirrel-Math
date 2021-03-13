@@ -1,5 +1,5 @@
 import { Node } from "tiptap";
-import LessonIntro from './LessonIntro.vue'
+import LessonIntro from '../lesson/LessonIntro.vue'
 
 export default class Intro extends Node {
   get name() {

@@ -1,5 +1,5 @@
 <template>
-  <div ref="content">
+  <div class="intro" ref="content">
     <slot />
   </div>
 </template>
@@ -11,7 +11,7 @@
 </script>
 
 <style scoped>
-  div
+  .intro
   {
     margin-bottom: 55px;
   }

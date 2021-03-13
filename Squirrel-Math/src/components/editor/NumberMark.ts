@@ -1,5 +1,4 @@
 import { Mark } from 'tiptap'
-import { toggleMark, markInputRule, markPasteRule } from 'tiptap-commands'
 
 export default class NumberMark extends Mark {
 

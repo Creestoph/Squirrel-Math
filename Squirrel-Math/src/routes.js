@@ -1,7 +1,7 @@
 
 import Home from './components/content/Home'
 import HomeShort from './components/content/HomeShort'
-import Editor from './components/Editor'
+import Editor from './components/editor/Editor'
 import InteractiveTree from './components/content/InteractiveTree'
 import DrzewoHD from './components/content/DrzewoHD'
 import Wprowadzenie from './components/content/Wprowadzenie'
@@ -52,6 +52,7 @@ export const routes = [
   { path: '', component: Home }, 
   { path: '/home-short', component: HomeShort },
   { path: '/editor', component: Editor },
+  { path: '/editor/:sourceFile', name: 'editor', component: Editor },
   { path: '/tree', component: InteractiveTree },
   { path: '/drzewoHD', component: DrzewoHD },
 

@@ -1,5 +1,7 @@
 <template>
-    <div class="type">{{ attrs.tag }}</div>
+    <td :colspan="attrs.colspan" :rowspan="attrs.rowspan" :colwidth="attrs.colwidth" :background="attrs.background">
+      <slot/>
+    </td>
 </template>
 
 <script lang="ts">
@@ -7,7 +9,7 @@ import { Component, Prop } from 'vue-property-decorator';
 import Vue from 'vue';
 
 @Component
-export default class SemanticTag extends Vue { 
+export default class TableCell extends Vue { 
     @Prop() attrs?: any;  
 }
 </script>

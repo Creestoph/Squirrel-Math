@@ -28,13 +28,9 @@ $geometric-font: 'Consolas', 'FreeMono';
 
 p
 {
-	margin: 1.2em 0;
-}
-
-p:not(.printable)
-{
 	text-align: justify;
 	line-height: 26.4px;
+	margin: 1.2em 0;
 }
 
 .no_selection 
@@ -106,6 +102,10 @@ ol
 	{
 		padding-left: 0;
 	}
+}
+
+li p {
+	margin: 0;
 }
 
 button 
@@ -200,10 +200,21 @@ input[type=number]::-webkit-outer-spin-button {
 	margin-right: auto;
 }
 
-table
+table:not([class])
 {
 	font-size: 1em;
+	border-collapse: collapse;
+
+	tr > div {
+		display: table-cell;
+	}
+
+	th, td 
+	{
+		border: solid thin $dark-gray;
+	}
 }
+
 
 a.link:link
 {
@@ -271,7 +282,7 @@ a.link:active
 	}
 }
 
-p.type
+.type
 {
 	/* line-height: 0%; */
 	display: inline-block;
@@ -288,12 +299,12 @@ p.type
 	font-family: $secondary-font;
 }
 
-p.type + *
+.type + *
 {
 	margin-top: 0;
 }
 
-p.type:hover
+.type:hover
 {
 	background-color: $darker-main-red;
 	transition: background-color 0.1s;
@@ -378,7 +389,7 @@ p.optional-show:hover ~ div
 	box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.4);
 }
 
-p.warning
+.warning
 {
 	font-family: $secondary-font;
 	color: $darker-gray;
@@ -395,7 +406,7 @@ p.warning
 	margin-top: 0
 }	
 
-p.problem
+.problem
 {
 	font-weight: bold;
 	text-align: center;
