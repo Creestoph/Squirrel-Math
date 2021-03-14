@@ -1,5 +1,7 @@
 <template>
-    <div class="type">&nbsp;&nbsp;&nbsp;{{ attrs.tags.join("&nbsp;&nbsp;|&nbsp;&nbsp;") }}</div>
+    <table>
+      <slot/>
+    </table>
 </template>
 
 <script lang="ts">
@@ -7,10 +9,13 @@ import { Component, Prop } from 'vue-property-decorator';
 import Vue from 'vue';
 
 @Component
-export default class SemanticTag extends Vue { 
+export default class DefaultTable extends Vue { 
     @Prop() attrs?: any;  
 }
 </script>
 
 <style scoped lang="scss">
+table {
+  width: 100%;
+}
 </style>

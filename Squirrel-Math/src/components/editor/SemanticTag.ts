@@ -10,19 +10,19 @@ export default class SemanticTag extends Node {
   get schema() {
     return {
       attrs: {
-        tag: {
-          default: "Intuicje",
+        tags: {
+          default: ["Intuicje"],
         }
       },
       selectable: false,
       parseDOM: [{
         tag: 'semantic-tag',
         getAttrs: (dom: any) => ({
-          tag: dom.getAttribute('tag'),
+          tags: dom.getAttribute('tags').split(" "),
         }),
       }],
       toDOM: (node: any) => ['semantic-tag', {
-        tag: node.attrs.tag
+        tags: node.attrs.tags.join(" ")
       }],
     }
   }

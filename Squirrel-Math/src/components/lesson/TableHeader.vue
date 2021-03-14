@@ -15,4 +15,11 @@ export default class TableHeader extends Vue {
 </script>
 
 <style scoped lang="scss">
+@import "@/style/global";
+th
+{
+  border: solid thin $dark-gray;
+  min-width: 50px;
+  padding: 0 10px;
+}
 </style>

@@ -15,4 +15,11 @@ export default class TableCell extends Vue {
 </script>
 
 <style scoped lang="scss">
+@import "@/style/global";
+td 
+{
+  border: solid thin $dark-gray;
+  min-width: 50px;
+  padding: 0 10px;
+}
 </style>

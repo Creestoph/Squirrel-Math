@@ -4,19 +4,19 @@
       <div>
         <div id="tools-managing">
           <button @click="commands.undo">
-            undo
+            cofnij akcję
           </button>
 
           <button @click="commands.redo">
-            redo
+            przywróć akcję
           </button>
 
            <button @click="save()">
-            save
+            zapisz
           </button>
 
           <button @click="clearAll()">
-            new
+            wyczyść wszystko
           </button>
         </div>
         <div id="tools-general">
@@ -45,23 +45,23 @@
           </button>
 
           <button @click="commands.createChapter()">
-            chapter
+            rozdział
           </button>
 
           <button @click="commands.semantic_tag()">
-            section
+            sekcja
           </button>
 
           <button :class="{ 'active': isActive.example() }" @click="commands.example">
-            example
+            przykład
           </button>
 
           <button :class="{ 'active': isActive.formula() }" @click="commands.formula">
-            formula
+            twierdzenie
           </button>
 
           <button :class="{ 'active': isActive.proof() }" @click="commands.proof">
-            proof
+            dowód
           </button>
 
           <button :class="{ 'active': isActive.table() }"
@@ -73,33 +73,33 @@
               })
             "
           >
-            table
+            tabela
           </button>
         </div>
         <div class="tools-specific" v-if="isActive.table()">
           <button @click="commands.deleteTable">
-            delete table
+            usuń tabelę
           </button>
           <button @click="commands.addColumnBefore">
-            insert column before
+            wstaw kolumnę przed
           </button>
           <button @click="commands.addColumnAfter">
-            insert column after
+            wstaw kolumnę za
           </button>
           <button @click="commands.deleteColumn">
-            delete column
+            usuń kolumnę
           </button>
           <button @click="commands.addRowBefore">
-            insert row before
+            wstaw wiersz przed
           </button>
           <button @click="commands.addRowAfter">
-            insert row after
+            wstaw wiersz za
           </button>
           <button @click="commands.deleteRow">
-            delete row
+            usuń wiersz
           </button>
           <button @click="commands.toggleCellMerge">
-            merge cells
+            scal komórki
           </button>
         </div>
       </div>
@@ -299,13 +299,18 @@ export default class LessonEditor extends Vue {
   background: $dark-gray;
 }
 .tools-specific button {
+  font-size: 0.9em;
   background: $dark-gray;
   padding: 10px 7.5px;
+}.underline {
+    text-decoration: underline;
 }
 .tools-specific button:hover {
   background: $darker-gray;
 }
-
+::selection {
+  color: inherit;
+}
 
 
 /*=== CONTENT - GENERAL===*/
@@ -329,10 +334,11 @@ number {
 #editor table {
   width: 100%;
 }
-#editor td {
+#editor td, #editor th {
   min-width: 50px;
   padding: 0 10px;
   max-width: 0;
+  border: solid thin $dark-gray;
   &.selectedCell {
     background: $light-gray;
   }
@@ -342,6 +348,7 @@ number {
 {
   width: 100%;
   border-color: black;
+  background-color: black;
 }
 
 #editor .empty:first-child::before {

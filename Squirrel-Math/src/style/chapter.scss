@@ -26,7 +26,7 @@
     width: 0%;
     border: 2px solid;
     border-color: white;
-    transition: border-color 0.5s ease-in, width 0.4s;
+    transition: border-color 0.5s ease-in, background-color 0.5s ease-in, width 0.4s;
     margin-left: 0px;
   }
 
@@ -34,6 +34,7 @@
   {
     width: 100%;
     border: 2px solid;
+    background-color: black;
     border-color: black;
     transition: border-color 0.1s ease 0.2s, width 1s ease 0.2s;
     margin-left: 0px;

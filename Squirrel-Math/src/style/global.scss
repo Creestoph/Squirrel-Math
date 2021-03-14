@@ -200,22 +200,6 @@ input[type=number]::-webkit-outer-spin-button {
 	margin-right: auto;
 }
 
-table:not([class])
-{
-	font-size: 1em;
-	border-collapse: collapse;
-
-	tr > div {
-		display: table-cell;
-	}
-
-	th, td 
-	{
-		border: solid thin $dark-gray;
-	}
-}
-
-
 a.link:link
 {
 	color: $main-red;
@@ -284,7 +268,6 @@ a.link:active
 
 .type
 {
-	/* line-height: 0%; */
 	display: inline-block;
 	background-color: $main-red;
 	padding: 0 5px;
@@ -294,9 +277,9 @@ a.link:active
 	margin-top: 0;
 	margin-bottom: 0.1em;
 	transition: background-color 0.1s;
-	/* box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.4); */
 	font-size: 0.9em;
 	font-family: $secondary-font;
+	white-space: pre;
 }
 
 .type + *

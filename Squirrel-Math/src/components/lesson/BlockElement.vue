@@ -4,6 +4,8 @@
         :class="{ 
             'bold': marks && marks.some(m => m.type == 'bold'), 
             'italic': marks && marks.some(m => m.type == 'italic'),
+            'underline': marks && marks.some(m => m.type == 'underline'),
+            'strike': marks && marks.some(m => m.type == 'strike'),
             'inline': text,
         }"
         :attrs="attrs"
@@ -16,6 +18,7 @@
 <script lang="ts">
 import { Component, Prop } from 'vue-property-decorator';
 import Vue from 'vue';
+import DefaultTable from "./DefaultTable.vue";
 import TableCell from "./TableCell.vue";
 import TableHeader from "./TableHeader.vue";
 import Proof from "./Proof.vue";
@@ -25,6 +28,7 @@ import SemanticTag from './SemanticTag.vue';
 
 @Component({
     components: {
+        DefaultTable,
         TableCell,
         TableHeader,
         Proof,
@@ -58,13 +62,13 @@ export default class BlockElement extends Vue {
         bullet_list: 'ul',
         ordered_list: 'ol',
         list_item: 'li',
-        table: 'table',
+        table: 'default-table',
         table_row: 'tr',
         table_header: 'table-header',
         table_cell: 'table-cell',
         semantic_tag: 'semantic-tag',
         proof: 'proof',
-        exampple: 'example',
+        example: 'example',
         formula: 'formula'
     }
 
@@ -84,5 +88,11 @@ export default class BlockElement extends Vue {
 }
 .italic {
     font-style: italic;
+}
+.underline {
+    text-decoration: underline;
+}
+.strike {
+    text-decoration: line-through;
 }
 </style>
