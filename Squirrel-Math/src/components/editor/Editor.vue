@@ -56,6 +56,10 @@
             przykład
           </button>
 
+          <button :class="{ 'active': isActive.expression() }" @click="commands.expression">
+            wyrażenie
+          </button>
+
           <button :class="{ 'active': isActive.formula() }" @click="commands.formula">
             twierdzenie
           </button>
@@ -138,6 +142,7 @@ import Chapter from "../lesson/chapter/Chapter";
 import ChapterTitle from "../lesson/chapter/ChapterTitle";
 import ChapterBody from "../lesson/chapter/ChapterBody";
 import SemanticTag from "./SemanticTag";
+import Expression from "./Expression";
 import Example from "./Example";
 import Formula from "./Formula";
 import Proof from "./Proof";
@@ -195,6 +200,7 @@ export default class LessonEditor extends Vue {
         new Formula(),
         new Proof(),
         new CustomListItem(),
+        new Expression(),
         new Placeholder({
           emptyNodeClass: 'empty',
           showOnlyCurrent: false,

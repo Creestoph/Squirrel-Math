@@ -15,7 +15,7 @@ export default class Proof extends Node {
           default: "Dowód"
         }
       },
-      content: 'paragraph+',
+      content: '(paragraph | expression)+',
       group: 'block',
       defining: false,
       draggable: true,
