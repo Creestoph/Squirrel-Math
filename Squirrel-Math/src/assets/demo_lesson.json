@@ -243,20 +243,7 @@
                                                     "type": "number"
                                                 }
                                             ],
-                                            "text": "2"
-                                        },
-                                        {
-                                            "type": "text",
-                                            "text": " = "
-                                        },
-                                        {
-                                            "type": "text",
-                                            "marks": [
-                                                {
-                                                    "type": "number"
-                                                }
-                                            ],
-                                            "text": "6"
+                                            "text": "2 = 6"
                                         },
                                         {
                                             "type": "text",
@@ -300,7 +287,20 @@
                                         },
                                         {
                                             "type": "text",
-                                            "text": " = "
+                                            "text": " "
+                                        },
+                                        {
+                                            "type": "text",
+                                            "marks": [
+                                                {
+                                                    "type": "number"
+                                                }
+                                            ],
+                                            "text": "="
+                                        },
+                                        {
+                                            "type": "text",
+                                            "text": " "
                                         },
                                         {
                                             "type": "text",
@@ -454,17 +454,106 @@
                         },
                         {
                             "type": "proof",
+                            "attrs": {
+                                "label": "Szkic dowodu"
+                            },
                             "content": [
                                 {
                                     "type": "paragraph",
                                     "content": [
                                         {
                                             "type": "text",
-                                            "text": "Wynika to z prostej zależności:"
+                                            "marks": [
+                                                {
+                                                    "type": "number"
+                                                }
+                                            ],
+                                            "text": "3"
+                                        },
+                                        {
+                                            "type": "text",
+                                            "text": " "
+                                        },
+                                        {
+                                            "type": "text",
+                                            "marks": [
+                                                {
+                                                    "type": "number"
+                                                }
+                                            ],
+                                            "text": ">"
+                                        },
+                                        {
+                                            "type": "text",
+                                            "text": " "
+                                        },
+                                        {
+                                            "type": "text",
+                                            "marks": [
+                                                {
+                                                    "type": "number"
+                                                }
+                                            ],
+                                            "text": "1"
                                         }
                                     ]
                                 }
                             ]
+                        },
+                        {
+                            "type": "proof",
+                            "attrs": {
+                                "label": "Dowód"
+                            },
+                            "content": [
+                                {
+                                    "type": "paragraph",
+                                    "content": [
+                                        {
+                                            "type": "text",
+                                            "marks": [
+                                                {
+                                                    "type": "number"
+                                                }
+                                            ],
+                                            "text": "3"
+                                        },
+                                        {
+                                            "type": "text",
+                                            "text": " Mojżesze "
+                                        },
+                                        {
+                                            "type": "text",
+                                            "marks": [
+                                                {
+                                                    "type": "number"
+                                                }
+                                            ],
+                                            "text": ">"
+                                        },
+                                        {
+                                            "type": "text",
+                                            "text": " "
+                                        },
+                                        {
+                                            "type": "text",
+                                            "marks": [
+                                                {
+                                                    "type": "number"
+                                                }
+                                            ],
+                                            "text": "1"
+                                        },
+                                        {
+                                            "type": "text",
+                                            "text": " Mojżesz"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "type": "paragraph"
                         },
                         {
                             "type": "table",

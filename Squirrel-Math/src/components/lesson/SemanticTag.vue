@@ -1,5 +1,5 @@
 <template>
-    <div class="type">&nbsp;&nbsp;&nbsp;{{ attrs.tags.join("&nbsp;&nbsp;|&nbsp;&nbsp;") }}</div>
+    <div class="type">{{ attrs.tags.join(" | ") }}</div>
 </template>
 
 <script lang="ts">

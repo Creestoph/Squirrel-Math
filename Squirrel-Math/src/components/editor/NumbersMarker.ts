@@ -18,7 +18,7 @@ export default class NumberMarker extends Extension {
       new Plugin({
         props: {
           handleKeyPress: (view: any, event: KeyboardEvent) => {
-            if (event.key >= '0' && event.key <= '9')
+            if (/[0-9><=%+]/.test(event.key))
             {
               let cursorPosition = view.state.selection.from;
               setTimeout(() => {
