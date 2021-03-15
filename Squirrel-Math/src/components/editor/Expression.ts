@@ -16,8 +16,11 @@ export default class Expression extends Node {
       },
       group: 'block',
       draggable: true,
-      parseDOM: [{ tag: 'expression' }],
-      toDOM: () => ['expression'],
+      parseDOM: [{
+        tag: 'expression',
+        getAttrs: (dom: any) => ({ mathJax: dom.getAttribute('mathJax')})
+      }],
+      toDOM: (node: any) => ['expression', { mathJax: node.attrs.mathJax }],
     }
   }
 

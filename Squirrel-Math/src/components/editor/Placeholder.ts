@@ -31,11 +31,10 @@ export default class Placeholder extends Extension {
     return [
       new Plugin({
         props: {
-          decorations: ({ doc, plugins, selection }: any) => {
+          decorations: ({ doc, plugins }: any) => {
             const editablePlugin = plugins.find((plugin: any) => plugin.key.startsWith('editable$'))
             const editable = editablePlugin.props.editable()
             const active = editable || !this.options.showOnlyWhenEditable
-            const { anchor } = selection
             const decorations: any = []
             const isEditorEmpty = doc.textContent.length === 0
 
@@ -44,10 +43,9 @@ export default class Placeholder extends Extension {
             }
 
             doc.descendants((node: any, pos: any) => {
-              const hasAnchor = anchor >= pos && anchor <= (pos + node.nodeSize)
               const isNodeEmpty = node.content.size === 0
                 
-              if ((hasAnchor || !this.options.showOnlyCurrent) && isNodeEmpty) {
+              if (isNodeEmpty) {
                 const classes = [this.options.emptyNodeClass]
 
                 if (isEditorEmpty) {
@@ -63,6 +61,7 @@ export default class Placeholder extends Extension {
                 decorations.push(decoration)
                 return true
               }
+
               return !node.content.content.find((x: any) => x.type.isText)
 
             })

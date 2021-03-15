@@ -209,7 +209,7 @@ export default class LessonEditor extends Vue {
               return "Tytuł lekcji";
             if (node.type.name == 'chapter_title')
               return "Tytuł rozdziału";
-            if (node.type.name == 'semantic_tag')
+            if (node.type.name == 'semantic_tag' || node.type.name == 'expression')
               return "";
             return "Treść sekcji";
           }

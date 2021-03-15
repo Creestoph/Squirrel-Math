@@ -2,7 +2,7 @@
   <div>
     <div ref="placeholder" class="math-placeholder" @click="edit()">Wprowadź wyrażenie matematyczne</div>
     <div ref="output" class="math-display" @click="edit()"></div>
-    <textarea ref="mathEditor" class="math-editor" v-model="mathJaxDirty" @blur="update()"></textarea>
+    <textarea ref="mathEditor" class="math-editor" placeholder="Wprowadź kod MathJax" v-model="mathJaxDirty" @blur="applyEdit()"></textarea>
   </div>
 </template>
 
@@ -25,21 +25,23 @@ export default {
     }
   },
   mounted() {
-    this.$refs.output.innerHTML = '$$' + this.mathJax + '$$';
-    setTimeout(() => MathJax.Hub.Queue(["Typeset", MathJax.Hub]), 0);
-    this.mathJaxDirty = this.mathJax;
+    this.updateView();
   },
   methods: {
     edit() {
+      this.mathJaxDirty = this.mathJax;
       this.$refs.mathEditor.style.display = "block";
-      setTimeout(() => this.$refs.mathEditor.focus(), 0);
+      this.$nextTick(() => this.$refs.mathEditor.focus());
     },
-    update() {
-      this.$refs.mathEditor.style.display = "none";
+    applyEdit() {
       this.mathJax = this.mathJaxDirty;
+      this.updateView();
+    },
+    updateView() {
+      this.$refs.mathEditor.style.display = "none";
       this.$refs.output.innerHTML = '$$' + this.mathJax + '$$';
-      setTimeout(() => MathJax.Hub.Queue(["Typeset", MathJax.Hub]), 0);
-      if (this.mathJaxDirty) {
+      this.$nextTick(() => MathJax.Hub.Queue(["Typeset", MathJax.Hub]));
+      if (this.mathJax) {
         this.$refs.placeholder.style.display = "none";
         this.$refs.output.style.display = "block";
       }
@@ -56,15 +58,21 @@ export default {
 @import "@/style/global";
 
 .math-placeholder {
-  min-height: 50px;
-  line-height: 50px;
+  min-height: 27px;
+  line-height: 27px;
   text-align: center;
-  color: $gray;
+  color: $dark-gray;
+  cursor: pointer;
 }
 .math-display {
   display: none;
   outline: none;
 }
+.math-placeholder:hover, .math-display:hover {
+  background: $light-gray;
+  cursor: pointer;
+}
+
 .math-editor {
   display: none;
   width: 500px;
@@ -79,6 +87,9 @@ export default {
   padding: 10px;
   font-family: $geometric-font;
   color: $half-gray;
+}
+::placeholder {
+  color: $dark-gray;
 }
 .math-editor:focus {
   display: block;

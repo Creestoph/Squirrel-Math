@@ -459,44 +459,10 @@
                             },
                             "content": [
                                 {
-                                    "type": "paragraph",
-                                    "content": [
-                                        {
-                                            "type": "text",
-                                            "marks": [
-                                                {
-                                                    "type": "number"
-                                                }
-                                            ],
-                                            "text": "3"
-                                        },
-                                        {
-                                            "type": "text",
-                                            "text": " "
-                                        },
-                                        {
-                                            "type": "text",
-                                            "marks": [
-                                                {
-                                                    "type": "number"
-                                                }
-                                            ],
-                                            "text": ">"
-                                        },
-                                        {
-                                            "type": "text",
-                                            "text": " "
-                                        },
-                                        {
-                                            "type": "text",
-                                            "marks": [
-                                                {
-                                                    "type": "number"
-                                                }
-                                            ],
-                                            "text": "1"
-                                        }
-                                    ]
+                                    "type": "expression",
+                                    "attrs": {
+                                        "mathJax": "3 > 1"
+                                    }
                                 }
                             ]
                         },
@@ -507,48 +473,10 @@
                             },
                             "content": [
                                 {
-                                    "type": "paragraph",
-                                    "content": [
-                                        {
-                                            "type": "text",
-                                            "marks": [
-                                                {
-                                                    "type": "number"
-                                                }
-                                            ],
-                                            "text": "3"
-                                        },
-                                        {
-                                            "type": "text",
-                                            "text": " Mojżesze "
-                                        },
-                                        {
-                                            "type": "text",
-                                            "marks": [
-                                                {
-                                                    "type": "number"
-                                                }
-                                            ],
-                                            "text": ">"
-                                        },
-                                        {
-                                            "type": "text",
-                                            "text": " "
-                                        },
-                                        {
-                                            "type": "text",
-                                            "marks": [
-                                                {
-                                                    "type": "number"
-                                                }
-                                            ],
-                                            "text": "1"
-                                        },
-                                        {
-                                            "type": "text",
-                                            "text": " Mojżesz"
-                                        }
-                                    ]
+                                    "type": "expression",
+                                    "attrs": {
+                                        "mathJax": "3 \\text{ Mojżesze} > 1 \\text{ Mojżesz}"
+                                    }
                                 }
                             ]
                         },

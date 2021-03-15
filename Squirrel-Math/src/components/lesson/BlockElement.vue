@@ -21,20 +21,22 @@ import Vue from 'vue';
 import DefaultTable from "./DefaultTable.vue";
 import TableCell from "./TableCell.vue";
 import TableHeader from "./TableHeader.vue";
+import SemanticTag from './SemanticTag.vue';
 import Proof from "./Proof.vue";
 import Example from "./Example.vue";
 import Formula from "./Formula.vue";
-import SemanticTag from './SemanticTag.vue';
+import Expression from "./Expression.vue";
 
 @Component({
     components: {
         DefaultTable,
         TableCell,
         TableHeader,
+        SemanticTag,
         Proof,
         Example,
         Formula,
-        SemanticTag
+        Expression,
     }
 })
 export default class BlockElement extends Vue { 
@@ -69,7 +71,8 @@ export default class BlockElement extends Vue {
         semantic_tag: 'semantic-tag',
         proof: 'proof',
         example: 'example',
-        formula: 'formula'
+        formula: 'formula',
+        expression: 'expression'
     }
 
     get tagName() {
