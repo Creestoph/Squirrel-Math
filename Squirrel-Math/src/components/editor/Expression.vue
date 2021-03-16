@@ -1,8 +1,8 @@
 <template>
   <div>
-    <div ref="placeholder" class="math-placeholder" @click="edit()">Wprowadź wyrażenie matematyczne</div>
-    <div ref="output" class="math-display" @click="edit()"></div>
-    <textarea ref="mathEditor" class="math-editor" placeholder="Wprowadź kod MathJax" v-model="mathJaxDirty" @blur="applyEdit()"></textarea>
+    <div v-show="!mathJax" class="math-placeholder" @click="edit()">Wprowadź wyrażenie matematyczne</div>
+    <div v-show="mathJax" ref="output" class="math-display" @click="edit()"></div>
+    <textarea v-if="displayPopup" v-model="mathJaxDirty" ref="mathEditor" class="math-editor" placeholder="Wprowadź kod MathJax" @blur="applyEdit()"></textarea>
   </div>
 </template>
 
@@ -21,7 +21,8 @@ export default {
   },
   data() {
     return {
-      mathJaxDirty: ""
+      mathJaxDirty: "",
+      displayPopup: false
     }
   },
   mounted() {
@@ -30,7 +31,7 @@ export default {
   methods: {
     edit() {
       this.mathJaxDirty = this.mathJax;
-      this.$refs.mathEditor.style.display = "block";
+      this.displayPopup = true;
       this.$nextTick(() => this.$refs.mathEditor.focus());
     },
     applyEdit() {
@@ -38,17 +39,9 @@ export default {
       this.updateView();
     },
     updateView() {
-      this.$refs.mathEditor.style.display = "none";
+      this.displayPopup = false;
       this.$refs.output.innerHTML = '$$' + this.mathJax + '$$';
       this.$nextTick(() => MathJax.Hub.Queue(["Typeset", MathJax.Hub]));
-      if (this.mathJax) {
-        this.$refs.placeholder.style.display = "none";
-        this.$refs.output.style.display = "block";
-      }
-      else {
-        this.$refs.placeholder.style.display = "block";
-        this.$refs.output.style.display = "none";      
-      }
     }
   }
 };
@@ -65,7 +58,6 @@ export default {
   cursor: pointer;
 }
 .math-display {
-  display: none;
   outline: none;
 }
 .math-placeholder:hover, .math-display:hover {
@@ -74,7 +66,6 @@ export default {
 }
 
 .math-editor {
-  display: none;
   width: 500px;
   height: 300px;
   z-index: 3;

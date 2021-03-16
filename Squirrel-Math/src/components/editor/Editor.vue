@@ -28,12 +28,12 @@
             I
           </button>
 
-          <button :class="{ 'active': isActive.strike() }" style="text-decoration: line-through" @click="commands.strike">
-            S
-          </button>
-
           <button :class="{ 'active': isActive.underline() }" style="text-decoration: underline" @click="commands.underline">
             U
+          </button>
+
+          <button :class="{ 'active': isActive.strike() }" style="text-decoration: line-through" @click="commands.strike">
+            abc
           </button>
 
           <button class="menubar__button" :class="{ 'active': isActive.bullet_list() }" @click="commands.bullet_list">

@@ -3,13 +3,13 @@
     <div class="dropdown" v-for="(tag, j) in tags" :key="j">
       <div class="type">
         {{ tag }}
-        <span v-if="canAddTag()" @click="addTag()">+</span>
-        <span v-if="tags.length > 1" @click="removeTag(j)" class="remove-tag-button">+</span>
+        <span v-if="tags.length > 1" @click="removeTag(j)">+</span>
       </div>
       <div v-if="availableOptions(j).length > 1" class="dropdown-list">
         <div class="dropdown-position" v-for="(option, i) in availableOptions(j)" :key="i" @click="choose(j, option)">{{option}}</div>
       </div>
     </div>
+    <span v-if="canAddTag()" @click="addTag()" class="add-tag-button">+</span>
   </div>
 </template>
 
@@ -58,6 +58,8 @@ export default {
 
 .tags-wrapper {
   height: 35px;
+  padding-right: 100px;
+  width: max-content;
 }
 
 .dropdown {
@@ -78,7 +80,7 @@ export default {
   display: none;
 }
 
-.dropdown:hover .type {
+.tags-wrapper:hover .type {
   width: 110px;
   span {
     display: block;
@@ -87,12 +89,9 @@ export default {
     font-family: $geometric-font;
     font-size: 2em;
     line-height: 25px;
-    transform: translateY(1px);
+    transform: translateY(1px) rotate(45deg);
     margin-right: 3px;
     cursor: pointer;
-  }
-  span.remove-tag-button {
-    transform: translateY(1px) rotate(45deg);
   }
 }
 
@@ -102,7 +101,7 @@ export default {
 
 .dropdown-list {
   position: absolute;
-  z-index: 1;
+  z-index: 2;
   display: none;
   background: $light-gray;
   width: 120px;
@@ -119,6 +118,18 @@ export default {
   &:hover {
     background: $gray;
   }
+}
+
+.add-tag-button {
+  font-family: $geometric-font;
+  font-size: 2em;
+  color: $darker-gray;
+  margin-left: 5px;
+  display: none;
+  cursor: pointer;
+}
+.tags-wrapper:hover .add-tag-button {
+  display: inline-block;
 }
 </style>
 <style lang="scss">
