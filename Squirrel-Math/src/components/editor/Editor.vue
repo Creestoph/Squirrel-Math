@@ -79,7 +79,12 @@
           >
             tabela
           </button>
+
+          <button :class="{ 'active': isActive.geometry() }" @click="commands.geometry">
+            kształt
+          </button>
         </div>
+
         <div class="tools-specific" v-if="isActive.table()">
           <button @click="commands.deleteTable">
             usuń tabelę
@@ -106,6 +111,7 @@
             scal komórki
           </button>
         </div>
+
       </div>
     </editor-menu-bar>
 
@@ -143,6 +149,7 @@ import ChapterTitle from "../lesson/chapter/ChapterTitle";
 import ChapterBody from "../lesson/chapter/ChapterBody";
 import SemanticTag from "./SemanticTag";
 import Expression from "./Expression";
+import Canvas from "./Canvas/Canvas";
 import Example from "./Example";
 import Formula from "./Formula";
 import Proof from "./Proof";
@@ -201,6 +208,7 @@ export default class LessonEditor extends Vue {
         new Proof(),
         new CustomListItem(),
         new Expression(),
+        new Canvas(),
         new Placeholder({
           emptyNodeClass: 'empty',
           showOnlyCurrent: false,

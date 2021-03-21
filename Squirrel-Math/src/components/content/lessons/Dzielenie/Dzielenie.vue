@@ -547,7 +547,7 @@
     <br>
       
 	<operation-table :defaultLoperand="8" :defaultRoperand="9" 
-    :f="(a,b) => a*b" :print="(a,b,c) => a > 0 ? c + ' : ' + a + ' = ' + b : '0 : 0 nie ma wartości'"></operation-table>
+    :f="(a,b) => a*b" :print="(a,b,c) => a > 0 ? `${c} : ${a} = ${b}`: `${c} : ${a} nie ma wartości`"></operation-table>
 
     <p>
         Zapewne zdążyłeś już polubić działania w słupku. Oto ich kwintesencja - <i>dzielenie w słupku</i> (czyli 

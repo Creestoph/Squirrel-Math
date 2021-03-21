@@ -181,7 +181,7 @@
 		</p>
 
 		<operation-table :defaultLoperand="8" :defaultRoperand="9" 
-    :f="function(a,b){return a*b}" :print="function(a,b,c){return a > 0 ? c + ' : ' + a + ' = ' + b : '0 : 0 nie ma wartości'}"></operation-table>
+    :f="function(a,b){return a*b}" :print="(a,b,c) => a > 0 ? `${c} : ${a} = ${b}`: `${c} : ${a} nie ma wartości`"></operation-table>
 
 		<p>
 			Dla większych liczb stosuje się metodę <i>dzielenia w słupku</i>, zwaną też <i>dzieleniem pisemnym</i>. 
