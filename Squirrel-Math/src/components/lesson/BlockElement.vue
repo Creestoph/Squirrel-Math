@@ -26,6 +26,7 @@ import Proof from "./Proof.vue";
 import Example from "./Example.vue";
 import Formula from "./Formula.vue";
 import Expression from "./Expression.vue";
+import Geometry from "./geometry/Geometry.vue";
 
 @Component({
     components: {
@@ -37,6 +38,7 @@ import Expression from "./Expression.vue";
         Example,
         Formula,
         Expression,
+        Geometry
     }
 })
 export default class BlockElement extends Vue { 
@@ -72,7 +74,8 @@ export default class BlockElement extends Vue {
         proof: 'proof',
         example: 'example',
         formula: 'formula',
-        expression: 'expression'
+        expression: 'expression',
+        geometry: 'geometry'
     }
 
     get tagName() {

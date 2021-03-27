@@ -1,13 +1,22 @@
 import paper from "paper";
-import { darkRed, mainRedColor } from "./Colors";
+import { mainRedColor } from "./Colors";
 import { Shape } from "./Shape";
 
-export default class Rectangle implements Shape {
-  triangle;
-  movedShape: paper.Item | null = null;
+export interface TriangleAttributes {
+  type: 'triangle',
+  vertices: {x: number, y: number}[],
+  color: string,
+  hasBorder: boolean
+}
 
-  all;
-  grips;
+export default class Triangle extends Shape {
+  private triangle;
+  private movedShape: paper.Item | null = null;
+  private dragStartPoint: paper.Point | null = null;
+  private triangleDragStartPoint: paper.Point | null = null;
+
+  private all;
+  private grips;
 
   get fillColor() {
     return this.triangle.fillColor!.toCSS(true);
@@ -15,16 +24,30 @@ export default class Rectangle implements Shape {
 
   set fillColor(color) {
     this.triangle.fillColor = new paper.Color(color);
-    this.grips.fillColor = new paper.Color(color).multiply(0.7);
+    this.grips.fillColor = this.triangle.strokeColor = new paper.Color(color).multiply(0.7);
   }
 
-  constructor(paperScope: any) {
+  get hasBorder() {
+    return this.triangle.style!.strokeWidth! > 0;
+  }
+
+  set hasBorder(value) {
+    this.triangle.style!.strokeWidth = value ? 4 : 0;
+  }
+
+  set selected(value: boolean) {
+    this.grips.visible = value;
+  }
+
+  constructor(paperScope: paper.PaperScope, attrs?: TriangleAttributes) {
+    super();
     paperScope.activate();
-    this.triangle = new paper.Path.RegularPolygon(new paper.Point(800 / 2, 500 / 2), 3, 57.74);
-    this.triangle.fillColor = new paper.Color(mainRedColor);
+    if (attrs)
+      this.triangle = new paper.Path(attrs.vertices.map(v => [v.x, v.y]));
+    else
+      this.triangle = new paper.Path.RegularPolygon(new paper.Point(800 / 2, 500 / 2), 3, 57.74);
 
     let grip = new paper.Path.Circle(new paper.Point(0, 0), 6);
-    grip.fillColor = new paper.Color(darkRed); 
     grip.style!.strokeWidth = 0;
     let gripDots: paper.Item[] = [];
     this.triangle.segments!.forEach((segment, i) => {
@@ -36,31 +59,46 @@ export default class Rectangle implements Shape {
     this.grips = new paper.Group(gripDots);
     this.all = new paper.Group([this.triangle, this.grips]);
     this.grips.visible = false;
+
+    this.fillColor = attrs ? attrs.color : mainRedColor;
+    this.hasBorder = attrs ? attrs.hasBorder : false;
   }
 
-  onDelete() {
-    this.all.remove();
+  toJSON(): TriangleAttributes {
+    return {
+      type: 'triangle',
+      vertices: this.triangle.segments!.map(s => ({ x: s.point!.x!, y: s.point!.y! })),
+      color: this.fillColor,
+      hasBorder: this.hasBorder
+    };
   }
 
   move(shift: paper.Point) {
     this.all.position = this.all.position!.add(shift);
   }
 
+  getSnapPoints(): paper.Point[] {
+    return this.grips.children!.map(g => g.position!);
+  }
+
+  onDelete() {
+    this.all.remove();
+  }
+
   onMouseMove(hitResult: paper.HitResult, cursorStyle: CSSStyleDeclaration) {
-    let anyElement = true;
     if (!hitResult)
-      anyElement = false;
+      return;
     else if (this.triangle == hitResult.item)
       cursorStyle.cursor = "move";
     else if (this.grips.children!.some(grip => grip == hitResult.item))
       cursorStyle.cursor = "crosshair";
-    else
-      anyElement = false;
-  
-    this.grips.visible = anyElement;
   }
 
-  onMouseDown(hitResult: paper.HitResult): boolean {
+  onMouseDown(event: paper.MouseEvent, hitResult: paper.HitResult): boolean {
+    this.dragStartPoint = event.point;
+    this.triangleDragStartPoint = this.triangle.position;
+    if (!hitResult)
+      return false;
     if (this.triangle == hitResult.item)
       this.movedShape = this.all;
     let result = this.grips.children!.find(grip => grip == hitResult.item);
@@ -69,19 +107,21 @@ export default class Rectangle implements Shape {
     return !!this.movedShape;
   }
 
-  onMouseDrag(event: paper.MouseEvent) {
-    if (this.movedShape) {
-      this.movedShape.position!.x! += event.delta!.x!;
-      this.movedShape.position!.y! += event.delta!.y!;
-    }
+  onMouseDrag(event: paper.MouseEvent, snapPoints: paper.Point[]) {
+    if (!this.movedShape)
+      return;
+
     let result = this.grips.children!.findIndex(grip => grip == this.movedShape);
     if (result != -1) {
-      console.log(result, this.triangle.segments, this.triangle.segments![result]);
-      this.triangle.segments![result].point!.x! += event.delta!.x!;
-      this.triangle.segments![result].point!.y! += event.delta!.y!;
+      let snapShift = event.modifiers.shift ? Shape.snapShift([event.point!], snapPoints) : new paper.Point(0, 0);
+      this.movedShape!.position = event.point!.add(snapShift);
+      this.triangle.segments![result].point = this.movedShape!.position;
     }
-    // console.log(result);
-    // console.log(this.triangle.segments);
+    else {
+      let futurePositions = this.getSnapPoints().map(p => p.add(event.point!).subtract(this.dragStartPoint!).add(this.triangleDragStartPoint!).subtract(this.triangle.position!));
+      let snapShift = event.modifiers.shift ? Shape.snapShift(futurePositions, snapPoints) : new paper.Point(0, 0);
+      this.movedShape.position = event.point!.subtract(this.dragStartPoint!).add(this.triangleDragStartPoint!).add(snapShift);
+    } 
   }
 
   onMouseUp() {

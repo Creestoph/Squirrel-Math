@@ -2,16 +2,16 @@ import paper from "paper";
 import { mainRedColor } from "./Colors";
 import { Shape } from "./Shape";
 
-export interface RectangleAttributes {
-  type: 'rectangle',
+export interface CircleAttributes {
+  type: 'circle',
   center: { x: number, y: number },
   size: { width: number, height: number},
   color: string,
   hasBorder: boolean
 }
 
-export default class Rectangle extends Shape {
-  private rectangle;
+export default class Circle extends Shape {
+  private circle;
   private upper;
   private bottom;
   private left;
@@ -26,45 +26,45 @@ export default class Rectangle extends Shape {
 
   private movedShape: paper.Item | null = null;
   private dragStartPoint: paper.Point | null = null;
-  private rectangleDragStartPosition: paper.Point | null = null;
+  private circleDragStartPosition: paper.Point | null = null;
 
   get fillColor() {
-    return this.rectangle.fillColor!.toCSS(true);
+    return this.circle.fillColor!.toCSS(true);
   }
 
   set fillColor(color) {
-    this.rectangle.fillColor = new paper.Color(color);
-    this.grips.fillColor = this.rectangle.strokeColor = new paper.Color(color).multiply(0.7);
+    this.circle.fillColor = new paper.Color(color);
+    this.grips.fillColor = this.circle.strokeColor = new paper.Color(color).multiply(0.7);
   }
 
   get hasBorder() {
-    return this.rectangle.style!.strokeWidth! > 0;
+    return this.circle.style!.strokeWidth! > 0;
   }
 
   set hasBorder(value) {
-    this.rectangle.style!.strokeWidth = value ? 4 : 0;
+    this.circle.style!.strokeWidth = value ? 4 : 0;
   }
 
   get width() {
-    return this.rectangle.size!.width!;
+    return this.circle.size!.width!;
   }
 
   set width(value: number | string) {
     let newWidth = typeof value == "number" ? value : parseFloat(value);
     if (newWidth >= 3) {
-      this.rectangle.size!.width = newWidth;
+      this.circle.size!.width = newWidth;
       this.recalculateGripsPositions();
     }
   }
 
   get height() {
-    return this.rectangle.size!.height!;
+    return this.circle.size!.height!;
   }
 
   set height(value: number | string) {
     let newHeight = typeof value == "number" ? value : parseFloat(value);
     if (newHeight >= 3) {
-      this.rectangle.size!.height = newHeight;
+      this.circle.size!.height = newHeight;
       this.recalculateGripsPositions();
     }
   }
@@ -73,14 +73,14 @@ export default class Rectangle extends Shape {
     this.grips.visible = value;
   }
 
-  constructor(paperScope: paper.PaperScope, attrs?: RectangleAttributes) {
+  constructor(paperScope: paper.PaperScope, attrs?: CircleAttributes) {
     super();
     paperScope.activate();
 
     let center = attrs ? new paper.Point(attrs.center.x, attrs.center.y) : new paper.Point(800/2, 500/2);
     let size = attrs ? new paper.Size(attrs.size.width, attrs.size.height) : new paper.Size(100, 100);
- 
-    this.rectangle = new paper.Shape.Rectangle(new paper.Rectangle(center.add(new paper.Point(-size.width! / 2, -size.height! / 2)), size));
+
+    this.circle = new paper.Shape.Ellipse(new paper.Rectangle(center.add(new paper.Point(-size.width! / 2, -size.height! / 2)), size));
 
     let grip = new paper.Path.Circle(new paper.Point(0, 0), 6);
     grip.style!.strokeWidth = 0;
@@ -96,18 +96,18 @@ export default class Rectangle extends Shape {
     grip.remove();
 
     this.grips = new paper.Group([this.upper, this.bottom, this.left, this.right, this.upperLeft, this.upperRight, this.bottomLeft, this.bottomRight]);
-    this.all = new paper.Group([this.rectangle, this.grips]);
+    this.all = new paper.Group([this.circle, this.grips]);
     this.grips.visible = false;
 
     this.fillColor = attrs ? attrs.color : mainRedColor;
     this.hasBorder = attrs ? attrs.hasBorder : false;
   }
 
-  toJSON(): RectangleAttributes {
+  toJSON(): CircleAttributes {
     return {
-      type: 'rectangle',
-      center: { x: this.rectangle.position!.x!, y: this.rectangle.position!.y! },
-      size: { width: this.rectangle.size!.width!, height: this.rectangle.size!.height! },
+      type: 'circle',
+      center: { x: this.circle.position!.x!, y: this.circle.position!.y! },
+      size: { width: this.circle.size!.width!, height: this.circle.size!.height! },
       color: this.fillColor,
       hasBorder: this.hasBorder
     }
@@ -118,7 +118,7 @@ export default class Rectangle extends Shape {
   }
 
   getSnapPoints(): paper.Point[] {
-    return [this.upperLeft.position!, this.bottomRight.position!];
+    return [this.upperLeft.position!, this.circle.position!, this.bottomRight.position!];
   }
 
   onDelete() {
@@ -128,7 +128,7 @@ export default class Rectangle extends Shape {
   onMouseMove(hitResult: paper.HitResult, cursorStyle: CSSStyleDeclaration) {
     if (!hitResult)
       return;
-    else if (this.rectangle == hitResult.item)
+    else if (this.circle == hitResult.item)
       cursorStyle.cursor = "move";
     else if (this.upper == hitResult.item || this.bottom == hitResult.item)
       cursorStyle.cursor = "ns-resize";
@@ -142,10 +142,10 @@ export default class Rectangle extends Shape {
 
   onMouseDown(event: paper.MouseEvent, hitResult: paper.HitResult): boolean {
     this.dragStartPoint = event.point;
-    this.rectangleDragStartPosition = this.rectangle.position;
+    this.circleDragStartPosition = this.circle.position;
     if (!hitResult)
       return false;
-    if (this.rectangle == hitResult.item) {
+    if (this.circle == hitResult.item) {
       this.movedShape = this.all;
       return true;
     }
@@ -157,9 +157,9 @@ export default class Rectangle extends Shape {
 
   onMouseDrag(event: paper.MouseEvent, snapPoints: paper.Point[]) {
     if (this.movedShape == this.all) {
-      let futurePositions = this.getSnapPoints().map(p => p.add(event.point!).subtract(this.dragStartPoint!).add(this.rectangleDragStartPosition!).subtract(this.rectangle.position!));
+      let futurePositions = this.getSnapPoints().map(p => p.add(event.point!).subtract(this.dragStartPoint!).add(this.circleDragStartPosition!).subtract(this.circle.position!));
       let snapShift = event.modifiers.shift ? Shape.snapShift(futurePositions, snapPoints) : new paper.Point(0, 0);
-      this.movedShape.position = event.point!.subtract(this.dragStartPoint!).add(this.rectangleDragStartPosition!).add(snapShift);
+      this.movedShape.position = event.point!.subtract(this.dragStartPoint!).add(this.circleDragStartPosition!).add(snapShift);
     }
 
     let snapShift = event.modifiers.shift ? Shape.snapShift([event.point!], snapPoints) : new paper.Point(0, 0);
@@ -189,10 +189,10 @@ export default class Rectangle extends Shape {
     }
     
     if (this.movedShape && this.grips.children!.includes(this.movedShape)) {
-      this.rectangle.size!.width! = this.right.position!.x! - this.left.position!.x!;
-      this.rectangle.size!.height! = this.bottom.position!.y! - this.upper.position!.y!;
-      this.rectangle.position!.x! = (this.left.position!.x! + this.right.position!.x!) / 2;
-      this.rectangle.position!.y! = (this.bottom.position!.y! + this.upper.position!.y!) / 2;
+      this.circle.size!.width! = this.right.position!.x! - this.left.position!.x!;
+      this.circle.size!.height! = this.bottom.position!.y! - this.upper.position!.y!;
+      this.circle.position!.x! = (this.left.position!.x! + this.right.position!.x!) / 2;
+      this.circle.position!.y! = (this.bottom.position!.y! + this.upper.position!.y!) / 2;
       this.recalculateGripsPositions();
     }
   }
@@ -202,13 +202,13 @@ export default class Rectangle extends Shape {
   }
 
   private recalculateGripsPositions() {
-    this.upper.position = this.rectangle.position!.add(new paper.Point(0, -this.rectangle.size!.height! / 2));
-    this.bottom.position =  this.rectangle.position!.add(new paper.Point(0, this.rectangle.size!.height! / 2));
-    this.left.position =  this.rectangle.position!.add(new paper.Point(-this.rectangle.size!.width! / 2, 0));
-    this.right.position =  this.rectangle.position!.add(new paper.Point(this.rectangle.size!.width! / 2, 0));
-    this.upperLeft.position =  this.rectangle.position!.add(new paper.Point(-this.rectangle.size!.width! / 2, -this.rectangle.size!.height! / 2))
-    this.upperRight.position =  this.rectangle.position!.add(new paper.Point(this.rectangle.size!.width! / 2, -this.rectangle.size!.height! / 2));
-    this.bottomLeft.position =  this.rectangle.position!.add(new paper.Point(-this.rectangle.size!.width! / 2, this.rectangle.size!.height! / 2));
-    this.bottomRight.position =  this.rectangle.position!.add(new paper.Point(this.rectangle.size!.width! / 2, this.rectangle.size!.height! / 2));
+    this.upper.position = this.circle.position!.add(new paper.Point(0, -this.circle.size!.height! / 2));
+    this.bottom.position =  this.circle.position!.add(new paper.Point(0, this.circle.size!.height! / 2));
+    this.left.position =  this.circle.position!.add(new paper.Point(-this.circle.size!.width! / 2, 0));
+    this.right.position =  this.circle.position!.add(new paper.Point(this.circle.size!.width! / 2, 0));
+    this.upperLeft.position =  this.circle.position!.add(new paper.Point(-this.circle.size!.width! / 2, -this.circle.size!.height! / 2))
+    this.upperRight.position =  this.circle.position!.add(new paper.Point(this.circle.size!.width! / 2, -this.circle.size!.height! / 2));
+    this.bottomLeft.position =  this.circle.position!.add(new paper.Point(-this.circle.size!.width! / 2, this.circle.size!.height! / 2));
+    this.bottomRight.position =  this.circle.position!.add(new paper.Point(this.circle.size!.width! / 2, this.circle.size!.height! / 2));
   }
 }

@@ -18,9 +18,9 @@ export default class Canvas extends Node {
       draggable: true,
       parseDOM: [{
         tag: 'geometry',
-        getAttrs: (dom: any) => ({ mathJax: dom.getAttribute('shapes')})
+        getAttrs: (dom: any) => ({ shapes: JSON.parse(dom.getAttribute('shapes')) })
       }],
-      toDOM: (node: any) => ['geometry', { shapes: node.attrs.shapes }]
+      toDOM: (node: any) => ['geometry', { shapes: JSON.stringify(node.attrs.shapes) }]
     }
   }
 
