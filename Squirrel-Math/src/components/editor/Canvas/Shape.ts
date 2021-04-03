@@ -1,21 +1,29 @@
 import paper from "paper";
 
+export interface ShapeAttributes {
+    type: string;
+}
+
 export abstract class Shape {
     abstract selected: boolean;
     abstract fillColor: string;
     abstract hasBorder: boolean;
 
+    clone(): Shape {
+        return new (this.constructor as any)(this.toJSON());
+    }
+    abstract get position(): paper.Point;
     abstract move(shift: paper.Point): void;
     abstract getSnapPoints(): paper.Point[];
-    abstract toJSON(): object;
+    abstract toJSON(): ShapeAttributes;
+    abstract containedInBounds(bounds: paper.Rectangle): boolean;
 
     abstract onDelete(): void;
     abstract onMouseMove(hitResult: paper.HitResult, cursorStyle: CSSStyleDeclaration): void;
-    /**
-     * returns true if shape got selected
-     */
+    /** returns true if shape got selected */
     abstract onMouseDown(event: paper.MouseEvent, hitResult: paper.HitResult): boolean;
-    abstract onMouseDrag(event: paper.MouseEvent, snapPoints: paper.Point[]): void;
+    /**returns true if drag event is consumed for something else than moving whole shape */
+    abstract onMouseDrag(event: paper.MouseEvent, snapPoints: paper.Point[]): boolean;
     abstract onMouseUp(): void;
 
     static snapShift(movedPoints: paper.Point[], snapPoints: paper.Point[]) {
@@ -29,7 +37,6 @@ export abstract class Shape {
             closestSnapX[1] = closestSnapX[0];
         if (closestSnapY[1] == Infinity)
             closestSnapY[1] = closestSnapY[0];
-
         return new paper.Point(closestSnapX[1] - closestSnapX[0], closestSnapY[1] - closestSnapY[0]);
     }
 }

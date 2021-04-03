@@ -11,8 +11,6 @@ export interface LineAttributes {
 export default class Line extends Shape {
   private line;
   private movedShape: paper.Item | null = null;
-  private dragStartPoint: paper.Point | null = null;
-  private lineDragStartPoint: paper.Point | null = null;
 
   private all;
   private grips;
@@ -37,12 +35,13 @@ export default class Line extends Shape {
     this.active = value;
   }
 
-  constructor(paperScope: paper.PaperScope, attrs?: LineAttributes) {
+  get position() {
+    return this.line.position!;
+  }
+
+  constructor(attrs?: LineAttributes) {
     super();
-    paperScope.activate();
     this.line = new paper.Path();
-    if (attrs)
-      attrs.points.forEach(p => this.line.add(new paper.Point(p)));
     this.line.style!.strokeWidth = 3;
 
     this.grips = new paper.Group();
@@ -50,6 +49,9 @@ export default class Line extends Shape {
     this.grips.visible = false;
 
     this.fillColor = attrs ? attrs.color : mainRedColor;
+
+    if (attrs)
+      attrs.points.forEach(p => this.addPoint(new paper.Point(p)));
   }
 
   toJSON(): LineAttributes {
@@ -62,6 +64,10 @@ export default class Line extends Shape {
 
   move(shift: paper.Point) {
     this.all.position = this.all.position!.add(shift);
+  }
+
+  containedInBounds(bounds: paper.Rectangle): boolean {
+    return this.line.intersects(new paper.Path.Rectangle(bounds)) || bounds.contains(this.line.bounds!);
   }
 
   getSnapPoints(): paper.Point[] {
@@ -82,15 +88,9 @@ export default class Line extends Shape {
   }
 
   onMouseDown(event: paper.MouseEvent, hitResult: paper.HitResult): boolean {
-    this.dragStartPoint = event.point;
-    this.lineDragStartPoint = this.line.position;
     if (!hitResult) {
       if (this.active) {
-        this.line.add(event.point!);
-        let grip = new paper.Path.Circle(event.point!, 6);
-        grip.style!.strokeWidth = 0;
-        grip.fillColor = new paper.Color(this.fillColor).multiply(0.7);
-        this.grips.addChild(grip)
+        this.addPoint(event.point!);
         return true;
       }
       return false;
@@ -105,22 +105,28 @@ export default class Line extends Shape {
 
   onMouseDrag(event: paper.MouseEvent, snapPoints: paper.Point[]) {
     if (!this.movedShape)
-      return;
+      return false;
 
     let result = this.grips.children!.findIndex(grip => grip == this.movedShape);
     if (result != -1) {
       let snapShift = event.modifiers.shift ? Shape.snapShift([event.point!], snapPoints) : new paper.Point(0, 0);
       this.movedShape!.position = event.point!.add(snapShift);
       this.line.segments![result].point = this.movedShape!.position;
+      return true;
     }
-    else {
-      let futurePositions = this.getSnapPoints().map(p => p.add(event.point!).subtract(this.dragStartPoint!).add(this.lineDragStartPoint!).subtract(this.line.position!));
-      let snapShift = event.modifiers.shift ? Shape.snapShift(futurePositions, snapPoints) : new paper.Point(0, 0);
-      this.movedShape.position = event.point!.subtract(this.dragStartPoint!).add(this.lineDragStartPoint!).add(snapShift);
-    } 
+    else
+      return false;
   }
 
   onMouseUp() {
     this.movedShape = null;
+  }
+
+  private addPoint(position: paper.Point) {
+    this.line.add(position);
+    let grip = new paper.Path.Circle(position, 6);
+    grip.style!.strokeWidth = 0;
+    grip.fillColor = new paper.Color(this.fillColor).multiply(0.7);
+    this.grips.addChild(grip)
   }
 }

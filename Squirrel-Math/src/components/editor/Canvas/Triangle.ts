@@ -39,9 +39,12 @@ export default class Triangle extends Shape {
     this.grips.visible = value;
   }
 
-  constructor(paperScope: paper.PaperScope, attrs?: TriangleAttributes) {
+  get position() {
+    return this.triangle.position!;
+  }
+
+  constructor(attrs?: TriangleAttributes) {
     super();
-    paperScope.activate();
     if (attrs)
       this.triangle = new paper.Path(attrs.vertices.map(v => [v.x, v.y]));
     else
@@ -77,6 +80,10 @@ export default class Triangle extends Shape {
     this.all.position = this.all.position!.add(shift);
   }
 
+  containedInBounds(bounds: paper.Rectangle): boolean {
+    return this.triangle.intersects(new paper.Path.Rectangle(bounds)) || bounds.contains(this.triangle.bounds!);
+  }
+
   getSnapPoints(): paper.Point[] {
     return this.grips.children!.map(g => g.position!);
   }
@@ -109,19 +116,17 @@ export default class Triangle extends Shape {
 
   onMouseDrag(event: paper.MouseEvent, snapPoints: paper.Point[]) {
     if (!this.movedShape)
-      return;
+      return false;
 
     let result = this.grips.children!.findIndex(grip => grip == this.movedShape);
     if (result != -1) {
       let snapShift = event.modifiers.shift ? Shape.snapShift([event.point!], snapPoints) : new paper.Point(0, 0);
       this.movedShape!.position = event.point!.add(snapShift);
       this.triangle.segments![result].point = this.movedShape!.position;
+      return true;
     }
-    else {
-      let futurePositions = this.getSnapPoints().map(p => p.add(event.point!).subtract(this.dragStartPoint!).add(this.triangleDragStartPoint!).subtract(this.triangle.position!));
-      let snapShift = event.modifiers.shift ? Shape.snapShift(futurePositions, snapPoints) : new paper.Point(0, 0);
-      this.movedShape.position = event.point!.subtract(this.dragStartPoint!).add(this.triangleDragStartPoint!).add(snapShift);
-    } 
+    else 
+      return false;
   }
 
   onMouseUp() {

@@ -25,8 +25,6 @@ export default class Circle extends Shape {
   private grips;
 
   private movedShape: paper.Item | null = null;
-  private dragStartPoint: paper.Point | null = null;
-  private circleDragStartPosition: paper.Point | null = null;
 
   get fillColor() {
     return this.circle.fillColor!.toCSS(true);
@@ -73,9 +71,12 @@ export default class Circle extends Shape {
     this.grips.visible = value;
   }
 
-  constructor(paperScope: paper.PaperScope, attrs?: CircleAttributes) {
+  get position() {
+    return this.circle.position!;
+  }
+
+  constructor(attrs?: CircleAttributes) {
     super();
-    paperScope.activate();
 
     let center = attrs ? new paper.Point(attrs.center.x, attrs.center.y) : new paper.Point(800/2, 500/2);
     let size = attrs ? new paper.Size(attrs.size.width, attrs.size.height) : new paper.Size(100, 100);
@@ -117,6 +118,10 @@ export default class Circle extends Shape {
     this.all.position = this.all.position!.add(shift);
   }
 
+  containedInBounds(bounds: paper.Rectangle): boolean {
+    return this.circle.bounds!.intersects(bounds);
+  }
+
   getSnapPoints(): paper.Point[] {
     return [this.upperLeft.position!, this.circle.position!, this.bottomRight.position!];
   }
@@ -141,8 +146,6 @@ export default class Circle extends Shape {
   }
 
   onMouseDown(event: paper.MouseEvent, hitResult: paper.HitResult): boolean {
-    this.dragStartPoint = event.point;
-    this.circleDragStartPosition = this.circle.position;
     if (!hitResult)
       return false;
     if (this.circle == hitResult.item) {
@@ -156,11 +159,8 @@ export default class Circle extends Shape {
   }
 
   onMouseDrag(event: paper.MouseEvent, snapPoints: paper.Point[]) {
-    if (this.movedShape == this.all) {
-      let futurePositions = this.getSnapPoints().map(p => p.add(event.point!).subtract(this.dragStartPoint!).add(this.circleDragStartPosition!).subtract(this.circle.position!));
-      let snapShift = event.modifiers.shift ? Shape.snapShift(futurePositions, snapPoints) : new paper.Point(0, 0);
-      this.movedShape.position = event.point!.subtract(this.dragStartPoint!).add(this.circleDragStartPosition!).add(snapShift);
-    }
+    if (!this.movedShape || this.movedShape == this.all)
+      return false;
 
     let snapShift = event.modifiers.shift ? Shape.snapShift([event.point!], snapPoints) : new paper.Point(0, 0);
     if (this.movedShape == this.upperLeft || this.movedShape == this.left || this.movedShape == this.bottomLeft) {
@@ -188,13 +188,13 @@ export default class Circle extends Shape {
         this.bottom.position!.y = event.point!.add(snapShift).y!;
     }
     
-    if (this.movedShape && this.grips.children!.includes(this.movedShape)) {
-      this.circle.size!.width! = this.right.position!.x! - this.left.position!.x!;
-      this.circle.size!.height! = this.bottom.position!.y! - this.upper.position!.y!;
-      this.circle.position!.x! = (this.left.position!.x! + this.right.position!.x!) / 2;
-      this.circle.position!.y! = (this.bottom.position!.y! + this.upper.position!.y!) / 2;
-      this.recalculateGripsPositions();
-    }
+    this.circle.size!.width! = this.right.position!.x! - this.left.position!.x!;
+    this.circle.size!.height! = this.bottom.position!.y! - this.upper.position!.y!;
+    this.circle.position!.x! = (this.left.position!.x! + this.right.position!.x!) / 2;
+    this.circle.position!.y! = (this.bottom.position!.y! + this.upper.position!.y!) / 2;
+    this.recalculateGripsPositions();
+
+    return true;
   }
 
   onMouseUp() {
