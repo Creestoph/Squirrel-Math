@@ -1,9 +1,9 @@
 <template>
-  <div>
-    <div v-show="!mathJax" class="math-placeholder" @click="edit()">Wprowadź wyrażenie matematyczne</div>
-    <div v-show="mathJax" ref="output" class="math-display" @click="edit()"></div>
-    <textarea v-if="displayPopup" v-model="mathJaxDirty" ref="mathEditor" class="math-editor" placeholder="Wprowadź kod MathJax" @blur="applyEdit()"></textarea>
-  </div>
+  <span>
+    <span v-show="!mathJax" class="math-placeholder" @click="edit()">Wprowadź wyrażenie matematyczne</span>
+    <span v-show="mathJax" ref="output" class="math-display" @click="edit()"></span>
+    <textarea v-if="displayPopup" v-model="mathJaxDirty" ref="mathEditor" class="math-editor" placeholder="Wprowadź kod MathJax" @blur="applyEdit()" @keydown.enter="applyEdit()"></textarea>
+  </span>
 </template>
 
 <script>
@@ -31,6 +31,7 @@ export default {
   },
   methods: {
     edit() {
+      console.log(document.getSelection());
       this.mathJaxDirty = this.mathJax;
       this.displayPopup = true;
       this.$nextTick(() => this.$refs.mathEditor.focus());
@@ -38,10 +39,14 @@ export default {
     applyEdit() {
       this.mathJax = this.mathJaxDirty;
       this.updateView();
+      this.$nextTick(() => { 
+        this.$refs.output.focus();
+        console.log(this.view);
+      });
     },
     updateView() {
       this.displayPopup = false;
-      this.$refs.output.innerHTML = '$$' + this.mathJax + '$$';
+      this.$refs.output.innerHTML = '$' + this.mathJax + '$';
       this.$nextTick(() => MathJax.Hub.Queue(["Typeset", MathJax.Hub]));
     }
   }
@@ -52,9 +57,6 @@ export default {
 @import "@/style/global";
 
 .math-placeholder {
-  min-height: 27px;
-  line-height: 27px;
-  text-align: center;
   color: $dark-gray;
   cursor: pointer;
 }

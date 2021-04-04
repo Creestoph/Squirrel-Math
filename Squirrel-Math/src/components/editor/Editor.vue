@@ -60,6 +60,10 @@
             wyrażenie
           </button>
 
+          <button :class="{ 'active': isActive.expressionInline() }" @click="commands.expressionInline">
+            wyrażenie inline
+          </button>
+
           <button :class="{ 'active': isActive.formula() }" @click="commands.formula">
             twierdzenie
           </button>
@@ -149,6 +153,7 @@ import ChapterTitle from "../lesson/chapter/ChapterTitle";
 import ChapterBody from "../lesson/chapter/ChapterBody";
 import SemanticTag from "./SemanticTag";
 import Expression from "./Expression";
+import ExpressionInline from "./ExpressionInline";
 import Canvas from "./Canvas/Canvas";
 import Example from "./Example";
 import Formula from "./Formula";
@@ -208,6 +213,7 @@ export default class LessonEditor extends Vue {
         new Proof(),
         new CustomListItem(),
         new Expression(),
+        new ExpressionInline(),
         new Canvas(),
         new Placeholder({
           emptyNodeClass: 'empty',
@@ -223,7 +229,7 @@ export default class LessonEditor extends Vue {
           }
         }),
         new NumberMark(),
-        new NumbersMarker()
+        new NumbersMarker(),
       ]
     });
     this.clearAll();
