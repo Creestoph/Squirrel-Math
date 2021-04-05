@@ -72,15 +72,7 @@
             dowód
           </button>
 
-          <button :class="{ 'active': isActive.table() }"
-            @click="
-              commands.createTable({
-                rowsCount: 3,
-                colsCount: 3,
-                withHeaderRow: true
-              })
-            "
-          >
+          <button :class="{ 'active': isActive.table() }" @click="commands.createTable({ rowsCount: 3, colsCount: 3, withHeaderRow: true })">
             tabela
           </button>
 
@@ -146,11 +138,11 @@ import {
 
 import Lesson from "../lesson/Lesson.vue";
 import LessonDoc from "./Lesson";
-import Title from "../lesson/Title";
+import Title from "./Title";
 import Intro from "./Intro";
-import Chapter from "../lesson/chapter/Chapter";
-import ChapterTitle from "../lesson/chapter/ChapterTitle";
-import ChapterBody from "../lesson/chapter/ChapterBody";
+import Chapter from "./Chapter";
+import ChapterTitle from "./ChapterTitle";
+import ChapterBody from "./ChapterBody";
 import SemanticTag from "./SemanticTag";
 import Expression from "./Expression";
 import ExpressionInline from "./ExpressionInline";
