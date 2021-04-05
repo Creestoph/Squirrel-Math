@@ -62,8 +62,7 @@ export default class Placeholder extends Extension {
                 return true
               }
 
-              return !node.content.content.find((x: any) => x.type.isText)
-
+              return !node.content.content.find((x: any) => x.type.isText) && node.type.name != 'table';
             })
 
             return DecorationSet.create(doc, decorations)

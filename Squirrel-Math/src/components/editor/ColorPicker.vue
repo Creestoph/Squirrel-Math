@@ -1,7 +1,7 @@
 <template>
     <button class="color-picker-wrapper" @click="dropdownVisible = !dropdownVisible">
         <div><slot></slot></div> 
-        <div>
+        <div v-if="color">
             <div ref="fillColorPicker" class="color-picker ml-2" :style="{ background: color }"></div>
         </div>
         <table class="dropdown" v-if="dropdownVisible">
