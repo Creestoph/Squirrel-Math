@@ -72,15 +72,7 @@
             dowód
           </button>
 
-          <button :class="{ 'active': isActive.table() }"
-            @click="
-              commands.createTable({
-                rowsCount: 3,
-                colsCount: 3,
-                withHeaderRow: true
-              })
-            "
-          >
+          <button :class="{ 'active': isActive.table() }" @click="commands.createTable({ rowsCount: 3, colsCount: 3, withHeaderRow: true })">
             tabela
           </button>
 
@@ -90,30 +82,17 @@
         </div>
 
         <div class="tools-specific" v-if="isActive.table()">
-          <button @click="commands.deleteTable">
-            usuń tabelę
-          </button>
-          <button @click="commands.addColumnBefore">
-            wstaw kolumnę przed
-          </button>
-          <button @click="commands.addColumnAfter">
-            wstaw kolumnę za
-          </button>
-          <button @click="commands.deleteColumn">
-            usuń kolumnę
-          </button>
-          <button @click="commands.addRowBefore">
-            wstaw wiersz przed
-          </button>
-          <button @click="commands.addRowAfter">
-            wstaw wiersz za
-          </button>
-          <button @click="commands.deleteRow">
-            usuń wiersz
-          </button>
-          <button @click="commands.toggleCellMerge">
-            scal komórki
-          </button>
+          <button @click="commands.deleteTable">usuń tabelę</button>
+          <button @click="commands.addColumnBefore">wstaw kolumnę przed</button>
+          <button @click="commands.addColumnAfter">wstaw kolumnę za</button>
+          <button @click="commands.deleteColumn">usuń kolumnę</button>
+          <button @click="commands.addRowBefore">wstaw wiersz przed</button>
+          <button @click="commands.addRowAfter">wstaw wiersz za</button>
+          <button @click="commands.deleteRow">usuń wiersz</button>
+          <button @click="commands.toggleCellMerge">scal komórki</button>
+          <color-picker @selected="commands.setCellAttr({name: 'background', value: $event})" :class="{ 'picker': true }">kolor tła</color-picker>
+          <color-picker @selected="commands.setCellAttr({name: 'borderColor', value: $event})" :class="{ 'picker': true }">kolor ramki</color-picker>
+          <button @click="commands.setCellAttr({name: 'borderSize', value: '0'})">grubość ramki</button>
         </div>
 
       </div>
@@ -137,14 +116,12 @@ import {
   Link,
   Strike,
   Underline,
-  Image,
-  Table,
-  TableHeader,
-  TableCell,
-  TableRow
+  Image
 } from 'tiptap-extensions'
 
 import Lesson from "../lesson/Lesson.vue";
+import ColorPicker from "./ColorPicker.vue";
+
 import LessonDoc from "./Lesson";
 import Title from "../lesson/Title";
 import Intro from "./Intro";
@@ -160,6 +137,10 @@ import Formula from "./Formula";
 import Proof from "./Proof";
 import CustomListItem from "./ListItem";
 import Placeholder from "./Placeholder";
+import Table from "./Table/Table";
+import TableHeader from "./Table/TableHeader";
+import TableCell from "./Table/TableCell";
+import TableRow from "./Table/TableRow";
 import NumberMark from "./NumberMark";
 import NumbersMarker from "./NumbersMarker";
 
@@ -167,7 +148,8 @@ import NumbersMarker from "./NumbersMarker";
   components: {
     EditorContent,
     EditorMenuBar,
-    Lesson
+    Lesson,
+    ColorPicker
   }
 })
 export default class LessonEditor extends Vue {
@@ -322,8 +304,13 @@ export default class LessonEditor extends Vue {
   font-size: 0.9em;
   background: $dark-gray;
   padding: 10px 7.5px;
-}.underline {
-    text-decoration: underline;
+}
+.picker {
+  padding: 0 10px !important;
+  float: left;
+}
+.underline {
+  text-decoration: underline;
 }
 .tools-specific button:hover {
   background: $darker-gray;
@@ -352,15 +339,26 @@ number {
 
 /*=== CONTENT - EDITOR SPECIFIC===*/
 #editor table {
-  width: 100%;
+  margin: 0 auto;
 }
 #editor td, #editor th {
-  min-width: 50px;
   padding: 0 10px;
-  max-width: 0;
+  width: 44.4px;
   border: solid thin $dark-gray;
+  position: relative;
   &.selectedCell {
     background: $light-gray;
+  }
+  &::after {
+    content: ' ';
+    position: absolute;
+    right: -5px;
+    top: 0;
+    background: transparent;
+    width: 10px;
+    height: 100%;
+    cursor: ew-resize;
+    z-index: 1;
   }
 }
 

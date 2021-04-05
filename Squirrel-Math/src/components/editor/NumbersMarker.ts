@@ -1,5 +1,4 @@
 import { Extension, Plugin } from 'tiptap'
-import { Decoration, DecorationSet } from 'prosemirror-view'
 
 export default class NumberMarker extends Extension {
 
