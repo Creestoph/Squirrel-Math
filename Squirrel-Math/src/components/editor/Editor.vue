@@ -91,8 +91,15 @@
           <button @click="commands.deleteRow">usuń wiersz</button>
           <button @click="commands.toggleCellMerge">scal komórki</button>
           <color-picker @selected="commands.setCellAttr({name: 'background', value: $event})" :class="{ 'picker': true }">kolor tła</color-picker>
-          <color-picker @selected="commands.setCellAttr({name: 'borderColor', value: $event})" :class="{ 'picker': true }">kolor ramki</color-picker>
-          <button @click="commands.setCellAttr({name: 'borderSize', value: '0'})">grubość ramki</button>
+          <color-picker @selected="commands.setCellAttr({name: 'borderColor', value: $event})" :class="{ 'picker': true }">kolor krawędzi</color-picker>
+          <button class="dropdown">
+            <div class="dropdown-label">krawędź</div>
+            <div class="dropdown-list">
+              <div class="dropdown-position" @click="commands.setCellAttr({name: 'borderSize', value: '0'})">brak</div>
+              <div class="dropdown-position" @click="commands.setCellAttr({name: 'borderSize', value: '1'})">cienka</div>
+              <div class="dropdown-position" @click="commands.setCellAttr({name: 'borderSize', value: '3'})">gruba</div>
+            </div>
+          </button>
         </div>
 
       </div>
@@ -265,7 +272,7 @@ export default class LessonEditor extends Vue {
   top: 0;
   width: 970px;
   padding-top: 150px;
-  z-index: 1;
+  z-index: 3;
   background: white;
 
 }
@@ -299,11 +306,34 @@ export default class LessonEditor extends Vue {
 .tools-specific {
   width: 100%;
   background: $dark-gray;
-}
-.tools-specific button {
-  font-size: 0.9em;
-  background: $dark-gray;
-  padding: 10px 7.5px;
+
+  button {
+    font-size: 0.9em;
+    background: $dark-gray;
+    padding: 10px 7.5px;
+  }
+
+  .dropdown-list {
+    position: absolute;
+    top: 47px;
+    left: 0;
+    z-index: 2;
+    width: 100%;
+    display: none;
+    background: $light-gray;
+  }
+  .dropdown:hover .dropdown-list {
+    display: block;
+  }
+  .dropdown-position {
+    text-align: left;
+    padding: 2px 8px;
+    font-size: 0.9em;
+    cursor: pointer;
+    &:hover {
+      background: $gray;
+    }
+  }
 }
 .picker {
   padding: 0 10px !important;
@@ -315,9 +345,14 @@ export default class LessonEditor extends Vue {
 .tools-specific button:hover {
   background: $darker-gray;
 }
-::selection {
+#editor ::selection {
   color: inherit;
 }
+
+
+
+
+
 
 
 /*=== CONTENT - GENERAL===*/
@@ -342,9 +377,8 @@ number {
   margin: 0 auto;
 }
 #editor td, #editor th {
-  padding: 0 10px;
-  width: 44.4px;
-  border: solid thin $dark-gray;
+  padding: 0 7px;
+  width: 26px;
   position: relative;
   &.selectedCell {
     background: $light-gray;
@@ -359,6 +393,9 @@ number {
     height: 100%;
     cursor: ew-resize;
     z-index: 1;
+  }
+  p {
+    margin: 7px 0;
   }
 }
 
@@ -386,5 +423,10 @@ number {
   font-family: $secondary-font;
   font-size: 1.9em;
   font-weight: bold;
+}
+
+#editor .chapter_name > div
+{
+  cursor: inherit;
 }
 </style>

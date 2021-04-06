@@ -1,7 +1,7 @@
 <template>
-    <button class="color-picker-wrapper" @click="dropdownVisible = !dropdownVisible">
-        <div><slot></slot></div> 
-        <div v-if="color">
+    <button class="color-picker-wrapper" @blur="dropdownVisible = false">
+        <div @click="dropdownVisible = !dropdownVisible"><slot></slot></div> 
+        <div v-if="color" @click="dropdownVisible = !dropdownVisible">
             <div ref="fillColorPicker" class="color-picker ml-2" :style="{ background: color }"></div>
         </div>
         <table class="dropdown" v-if="dropdownVisible">
@@ -32,6 +32,7 @@ export default {
     methods: {
         choose(color) {
             this.$emit('selected', color);
+            this.dropdownVisible = false;
         }
     }
 };
