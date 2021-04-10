@@ -79,6 +79,10 @@
           <button :class="{ 'active': isActive.geometry() }" @click="commands.geometry">
             kształt
           </button>
+
+          <button :class="{ 'active': isActive.customElement() }" @click="commands.customElement">
+            html
+          </button>
         </div>
 
         <div class="tools-specific" v-if="isActive.table()">
@@ -142,6 +146,7 @@ import Canvas from "./Canvas/Canvas";
 import Example from "./Example";
 import Formula from "./Formula";
 import Proof from "./Proof";
+import CustomElement from "./CustomElement";
 import CustomListItem from "./ListItem";
 import Placeholder from "./Placeholder";
 import Table from "./Table/Table";
@@ -200,6 +205,7 @@ export default class LessonEditor extends Vue {
         new Example(),
         new Formula(),
         new Proof(),
+        new CustomElement(),
         new CustomListItem(),
         new Expression(),
         new ExpressionInline(),
@@ -218,7 +224,7 @@ export default class LessonEditor extends Vue {
           }
         }),
         new NumberMark(),
-        new NumbersMarker(),
+        // new NumbersMarker(),
       ]
     });
     this.clearAll();
