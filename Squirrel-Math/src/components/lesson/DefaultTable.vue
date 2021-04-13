@@ -1,5 +1,5 @@
 <template>
-    <table>
+    <table class="default-table">
       <slot/>
     </table>
 </template>
@@ -16,6 +16,6 @@ export default class DefaultTable extends Vue {
 
 <style scoped lang="scss">
 table {
-  width: 100%;
+  margin: 0 auto;
 }
 </style>

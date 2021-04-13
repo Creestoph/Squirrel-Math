@@ -27,7 +27,6 @@ export default {
   },
   mounted() {
     this.updateView();
-    this.edit();
   },
   methods: {
     edit() {

@@ -1,5 +1,6 @@
 <template>
-    <td :colspan="attrs.colspan" :rowspan="attrs.rowspan" :colwidth="attrs.colwidth" :background="attrs.background">
+    <td :colspan="attrs.colspan" :rowspan="attrs.rowspan" :colwidth="attrs.colwidth"
+      :style="`background: ${attrs.background}; border-color: ${attrs.borderColor}; border-width: ${attrs.borderSize}px`">
       <slot/>
     </td>
 </template>
@@ -16,10 +17,10 @@ export default class TableCell extends Vue {
 
 <style scoped lang="scss">
 @import "@/style/global";
-td 
-{
-  border: solid thin $dark-gray;
-  min-width: 50px;
-  padding: 0 10px;
+td {
+  padding: 0 7px;
+  width: 26px;
+  position: relative;
+  border-style: solid;
 }
 </style>

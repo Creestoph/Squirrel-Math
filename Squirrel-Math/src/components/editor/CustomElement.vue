@@ -34,6 +34,7 @@ export default {
           htmlElement.removeChild(child);
           let childCopy = document.createElement('script');
           childCopy.innerHTML = child.innerHTML;
+          childCopy.src = child.src;
           htmlElement.appendChild(childCopy);
         }
         else 

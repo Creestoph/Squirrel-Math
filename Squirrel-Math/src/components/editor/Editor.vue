@@ -80,7 +80,7 @@
             kształt
           </button>
 
-          <button :class="{ 'active': isActive.customElement() }" @click="commands.customElement">
+          <button :class="{ 'active': isActive.custom_element() }" @click="commands.custom_element">
             html
           </button>
 
@@ -165,12 +165,8 @@ export default class LessonEditor extends Vue {
 
   mounted() {
     this.sourceFile = this.$route.params.sourceFile;
-    if (this.sourceFile) {
-      import(`@/assets/${this.sourceFile}`).then(file => {
-        console.log(file);
-        this.editor.setContent(file);
-      })
-    }
+    if (this.sourceFile)
+      import(`@/assets/${this.sourceFile}`).then(file => this.editor.setContent(file));
 
     this.editor = new Editor({
       extensions: [
@@ -228,10 +224,12 @@ export default class LessonEditor extends Vue {
     this.editor.destroy()
   }
   save() {
-    let content = JSON.stringify(this.editor.getJSON());
-    console.log(content);
-    let fileName = this.sourceFile || 'lesson.json';
+    const content = JSON.stringify(this.editor.getJSON());
+    const lessonTitleNode = this.editor.state.doc.content.content[0].content.content[0];
+    const lessonTitle = lessonTitleNode ? lessonTitleNode.text : 'lesson';
+    const fileName = this.sourceFile || `${lessonTitle}.json`;
     this.download(content, fileName, 'application/json');
+    console.log(content);
   }
   private download(data: any, filename: string, type: string) {
     var file = new Blob([data], {type: type});

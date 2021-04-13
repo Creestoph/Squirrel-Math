@@ -33,8 +33,14 @@ p
 	margin: 1.2em 0;
 }
 
+.default-table p {
+    margin: 7px 0;
+	min-height: 26px;
+}
+
 .no_selection 
 {
+    user-select: none;
     -webkit-user-select: none; /* webkit (safari, chrome) browsers */
     -moz-user-select: none; /* mozilla browsers */
     -khtml-user-select: none; /* webkit (konqueror) browsers */

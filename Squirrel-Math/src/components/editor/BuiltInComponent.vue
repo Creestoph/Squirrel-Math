@@ -88,6 +88,8 @@ export default {
     this.labels['operation-table'] = operationTableLabels;
     this.schemas['columnar-operation-table'] = columnarOperationTableSchema;
     this.labels['columnar-operation-table'] = columnarOperationTableLabels;
+    this.formArgs = [...this.args];
+    this.$forceUpdate();
   },
   methods: {
     onComponentSelect() {

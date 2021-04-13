@@ -12,6 +12,7 @@ export default class Title extends Node {
       content: 'inline*',
       defining: true,
       parseDOM: [{ tag: 'h1' }],
+      marks: '',
       toDOM: () => ['h1', 0],
     }
   }

@@ -495,7 +495,9 @@
                                                 "colspan": 1,
                                                 "rowspan": 1,
                                                 "colwidth": null,
-                                                "background": null
+                                                "background": null,
+                                                "borderColor": "#cccccc",
+                                                "borderSize": 1
                                             },
                                             "content": [
                                                 {
@@ -515,7 +517,9 @@
                                                 "colspan": 1,
                                                 "rowspan": 1,
                                                 "colwidth": null,
-                                                "background": null
+                                                "background": null,
+                                                "borderColor": "#cccccc",
+                                                "borderSize": 1
                                             },
                                             "content": [
                                                 {
@@ -535,7 +539,9 @@
                                                 "colspan": 1,
                                                 "rowspan": 1,
                                                 "colwidth": null,
-                                                "background": null
+                                                "background": null,
+                                                "borderColor": "#cccccc",
+                                                "borderSize": 1
                                             },
                                             "content": [
                                                 {
@@ -560,7 +566,9 @@
                                                 "colspan": 1,
                                                 "rowspan": 1,
                                                 "colwidth": null,
-                                                "background": null
+                                                "background": null,
+                                                "borderColor": "#cccccc",
+                                                "borderSize": 1
                                             },
                                             "content": [
                                                 {
@@ -580,7 +588,9 @@
                                                 "colspan": 1,
                                                 "rowspan": 1,
                                                 "colwidth": null,
-                                                "background": null
+                                                "background": null,
+                                                "borderColor": "#cccccc",
+                                                "borderSize": 1
                                             },
                                             "content": [
                                                 {
@@ -600,7 +610,9 @@
                                                 "colspan": 1,
                                                 "rowspan": 1,
                                                 "colwidth": null,
-                                                "background": null
+                                                "background": null,
+                                                "borderColor": "#cccccc",
+                                                "borderSize": 1
                                             },
                                             "content": [
                                                 {
@@ -617,6 +629,182 @@
                                     ]
                                 }
                             ]
+                        },
+                        {
+                            "type": "paragraph",
+                            "content": [
+                                {
+                                    "type": "text",
+                                    "text": "O jaka ładna tabela:"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "table",
+                            "content": [
+                                {
+                                    "type": "table_row",
+                                    "content": [
+                                        {
+                                            "type": "table_header",
+                                            "attrs": {
+                                                "colspan": 1,
+                                                "rowspan": 1,
+                                                "colwidth": null,
+                                                "background": "#cc4444",
+                                                "borderColor": "#990000",
+                                                "borderSize": "0"
+                                            },
+                                            "content": [
+                                                {
+                                                    "type": "paragraph"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "table_header",
+                                            "attrs": {
+                                                "colspan": 1,
+                                                "rowspan": 1,
+                                                "colwidth": null,
+                                                "background": "#cc4444",
+                                                "borderColor": "#990000",
+                                                "borderSize": "3"
+                                            },
+                                            "content": [
+                                                {
+                                                    "type": "paragraph"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "table_header",
+                                            "attrs": {
+                                                "colspan": 1,
+                                                "rowspan": 1,
+                                                "colwidth": null,
+                                                "background": "#cc4444",
+                                                "borderColor": "#990000",
+                                                "borderSize": "0"
+                                            },
+                                            "content": [
+                                                {
+                                                    "type": "paragraph"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "table_row",
+                                    "content": [
+                                        {
+                                            "type": "table_cell",
+                                            "attrs": {
+                                                "colspan": 1,
+                                                "rowspan": 1,
+                                                "colwidth": null,
+                                                "background": "#cc4444",
+                                                "borderColor": "#990000",
+                                                "borderSize": "3"
+                                            },
+                                            "content": [
+                                                {
+                                                    "type": "paragraph"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "table_cell",
+                                            "attrs": {
+                                                "colspan": 1,
+                                                "rowspan": 1,
+                                                "colwidth": null,
+                                                "background": "#990000",
+                                                "borderColor": "#990000",
+                                                "borderSize": "3"
+                                            },
+                                            "content": [
+                                                {
+                                                    "type": "paragraph"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "table_cell",
+                                            "attrs": {
+                                                "colspan": 1,
+                                                "rowspan": 1,
+                                                "colwidth": null,
+                                                "background": "#cc4444",
+                                                "borderColor": "#990000",
+                                                "borderSize": "3"
+                                            },
+                                            "content": [
+                                                {
+                                                    "type": "paragraph"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "table_row",
+                                    "content": [
+                                        {
+                                            "type": "table_cell",
+                                            "attrs": {
+                                                "colspan": 1,
+                                                "rowspan": 1,
+                                                "colwidth": null,
+                                                "background": "#cc4444",
+                                                "borderColor": "#990000",
+                                                "borderSize": "0"
+                                            },
+                                            "content": [
+                                                {
+                                                    "type": "paragraph"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "table_cell",
+                                            "attrs": {
+                                                "colspan": 1,
+                                                "rowspan": 1,
+                                                "colwidth": null,
+                                                "background": "#cc4444",
+                                                "borderColor": "#990000",
+                                                "borderSize": "3"
+                                            },
+                                            "content": [
+                                                {
+                                                    "type": "paragraph"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "table_cell",
+                                            "attrs": {
+                                                "colspan": 1,
+                                                "rowspan": 1,
+                                                "colwidth": null,
+                                                "background": "#cc4444",
+                                                "borderColor": "#990000",
+                                                "borderSize": "0"
+                                            },
+                                            "content": [
+                                                {
+                                                    "type": "paragraph"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "type": "paragraph"
                         },
                         {
                             "type": "geometry",
@@ -742,6 +930,33 @@
                                     }
                                 ]
                             }
+                        },
+                        {
+                            "type": "paragraph"
+                        },
+                        {
+                            "type": "component",
+                            "attrs": {
+                                "componentName": "operation-table",
+                                "args": [
+                                    "3",
+                                    "5",
+                                    "(a, b) => a + b",
+                                    "(a, b, c) => `${a} plus ${b} to daje w sumie takie coś: ${c}`"
+                                ]
+                            }
+                        },
+                        {
+                            "type": "paragraph"
+                        },
+                        {
+                            "type": "custom_element",
+                            "content": [
+                                {
+                                    "type": "text",
+                                    "text": "<div class=\"tenor-gif-embed\" data-postid=\"5034392\" data-share-method=\"host\" data-width=\"100%\" data-aspect-ratio=\"1.345945945945946\"><a href=\"https://tenor.com/view/bravo-applaudissement-applaudir-felicitations-feliciter-gif-5034392\">Bravo GIF</a> from <a href=\"https://tenor.com/search/bravo-gifs\">Bravo GIFs</a></div><script type=\"text/javascript\" src=\"https://tenor.com/embed.js\"></script>"
+                                }
+                            ]
                         },
                         {
                             "type": "paragraph"

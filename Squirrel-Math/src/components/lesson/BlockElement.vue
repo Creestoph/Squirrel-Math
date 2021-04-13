@@ -27,6 +27,8 @@ import Example from "./Example.vue";
 import Formula from "./Formula.vue";
 import Expression from "./Expression.vue";
 import Geometry from "./geometry/Geometry.vue";
+import BuiltInComponent from "./BuiltInComponent.vue";
+import CustomComponent from "./CustomComponent.vue";
 
 @Component({
     components: {
@@ -38,7 +40,9 @@ import Geometry from "./geometry/Geometry.vue";
         Example,
         Formula,
         Expression,
-        Geometry
+        Geometry,
+        BuiltInComponent,
+        CustomComponent
     }
 })
 export default class BlockElement extends Vue { 
@@ -47,17 +51,17 @@ export default class BlockElement extends Vue {
     marks = [];
     text = "";
     children = [];
-    attrs = {};
-
-    constructor() {
-        super();
-    }
+    attrs: any = {};
 
     mounted() {
         this.type = this.content.type;
         this.marks = this.content.marks;
         this.text = this.content.text;
-        this.attrs = this.content.attrs;
+        if (this.type == 'custom_element') {
+            this.attrs = { code: this.content.content[0].text };
+        }
+        else 
+            this.attrs = this.content.attrs;
         this.children = this.content.content;
     }
 
@@ -75,13 +79,14 @@ export default class BlockElement extends Vue {
         example: 'example',
         formula: 'formula',
         expression: 'expression',
-        geometry: 'geometry'
+        geometry: 'geometry',
+        component: 'built-in-component',
+        custom_element: 'custom-component',
     }
 
     get tagName() {
         return this.typeToTag[this.type] || 'div';
-    }
-  
+    }  
 }
 </script>
 

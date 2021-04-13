@@ -16,7 +16,7 @@ export default class CustomElement extends Node {
   }
 
   get name() {
-    return 'customElement'
+    return 'custom_element'
   }
 
   get schema() {
