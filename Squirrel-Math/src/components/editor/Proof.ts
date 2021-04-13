@@ -19,8 +19,11 @@ export default class Proof extends Node {
       group: 'block',
       defining: false,
       draggable: true,
-      parseDOM: [{ tag: 'proof' }],
-      toDOM: () => ['proof', 0],
+      parseDOM: [{ 
+        tag: 'proof',
+        getAttrs: (dom: any) => ({ label: dom.getAttribute('label')})
+      }],
+      toDOM: (node: any) => ['proof', { label: node.attrs.label }, 0],
     }
   }
 

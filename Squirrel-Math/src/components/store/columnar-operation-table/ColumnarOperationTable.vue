@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import {Display_table} from "./display_table.js"
+import {Display_table} from "../../utils/columnar_operation_table/display_table.js"
     export default {
         name: "ColumnarOperationTable",
         props: ['operation', 'numbers'],

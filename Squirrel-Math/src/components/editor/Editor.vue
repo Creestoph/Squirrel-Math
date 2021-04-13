@@ -83,6 +83,10 @@
           <button :class="{ 'active': isActive.customElement() }" @click="commands.customElement">
             html
           </button>
+
+          <button :class="{ 'active': isActive.component() }" @click="commands.component">
+            element dynamiczny
+          </button>
         </div>
 
         <div class="tools-specific" v-if="isActive.table()">
@@ -117,18 +121,7 @@
 import { Component } from 'vue-property-decorator';
 import Vue from 'vue';
 import { Editor, EditorContent, EditorMenuBar } from 'tiptap'
-import {
-  History,
-  HardBreak,
-  OrderedList,
-  BulletList,
-  Bold,
-  Italic,
-  Link,
-  Strike,
-  Underline,
-  Image
-} from 'tiptap-extensions'
+import { History, HardBreak, OrderedList, BulletList, Bold, Italic, Link, Strike, Underline, Image } from 'tiptap-extensions'
 
 import Lesson from "../lesson/Lesson.vue";
 import ColorPicker from "./ColorPicker.vue";
@@ -147,6 +140,7 @@ import Example from "./Example";
 import Formula from "./Formula";
 import Proof from "./Proof";
 import CustomElement from "./CustomElement";
+import BuiltInComponent from "./BuiltInComponent";
 import CustomListItem from "./ListItem";
 import Placeholder from "./Placeholder";
 import Table from "./Table/Table";
@@ -206,6 +200,7 @@ export default class LessonEditor extends Vue {
         new Formula(),
         new Proof(),
         new CustomElement(),
+        new BuiltInComponent(),
         new CustomListItem(),
         new Expression(),
         new ExpressionInline(),
@@ -224,7 +219,7 @@ export default class LessonEditor extends Vue {
           }
         }),
         new NumberMark(),
-        // new NumbersMarker(),
+        new NumbersMarker(),
       ]
     });
     this.clearAll();
@@ -379,29 +374,30 @@ number {
 }
 
 /*=== CONTENT - EDITOR SPECIFIC===*/
-#editor table {
+#editor table[style]:not([class]) {
   margin: 0 auto;
-}
-#editor td, #editor th {
-  padding: 0 7px;
-  width: 26px;
-  position: relative;
-  &.selectedCell {
-    background: $light-gray;
-  }
-  &::after {
-    content: ' ';
-    position: absolute;
-    right: -5px;
-    top: 0;
-    background: transparent;
-    width: 10px;
-    height: 100%;
-    cursor: ew-resize;
-    z-index: 1;
-  }
-  p {
-    margin: 7px 0;
+
+  td, th {
+    padding: 0 7px;
+    width: 26px;
+    position: relative;
+    &.selectedCell {
+      background: $light-gray;
+    }
+    &::after {
+      content: ' ';
+      position: absolute;
+      right: -5px;
+      top: 0;
+      background: transparent;
+      width: 10px;
+      height: 100%;
+      cursor: ew-resize;
+      z-index: 1;
+    }
+    p {
+      margin: 7px 0;
+    }
   }
 }
 

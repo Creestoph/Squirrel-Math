@@ -2,11 +2,11 @@
   <div class="container">
     <div v-show="editMode" class="editor-wrapper">
       <pre class="html-editor" ref="content"></pre>
-      <button @click="run()" class="run-button">Run</button>
+      <button @click="run()">Run</button>
     </div>
     <div v-show="!editMode" class="output-wrapper">
       <div contenteditable="false" v-html="parsed" ref="output" class="output"></div>
-      <button @click="edit()" class="edit-button">Edit</button>
+      <button @click="edit()">Edit</button>
     </div>
   </div>
 </template>

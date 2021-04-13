@@ -104,7 +104,7 @@ export class Display_table {
     }
 
     static create_from_table(operation, numbers) {
-        if (operation == "") {
+        if (operation != "+" && operation != "-") {
             return Display_table.create_custom(numbers)
         }
         var nodes = [];

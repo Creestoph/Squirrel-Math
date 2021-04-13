@@ -593,7 +593,7 @@ import LessonTitle from "../../../lesson/LessonTitle";
 import LessonIntro from "../../../lesson/LessonIntro";
 import LessonChapter from "../../../lesson/chapter/LessonChapter";
 import Lesson from "../../../lesson/Lesson.vue";
-import ColumnarOperationTable from '@/components/utils/columnar_operation_table/ColumnarOperationTable'
+import ColumnarOperationTable from '@/components/store/columnar-operation-table/ColumnarOperationTable'
 
 export default {
   name: "Wielomiany",

@@ -17,12 +17,14 @@ export default class NumberMarker extends Extension {
       new Plugin({
         props: {
           handleKeyPress: (view: any, event: KeyboardEvent) => {
-            if (/[0-9><=%+]/.test(event.key))
-            {
+            if (/[0-9><=%+]/.test(event.key)) {
               let cursorPosition = view.state.selection.from;
-              setTimeout(() => {
-                view.updateState(view.state.apply(view.state.tr.addMark(cursorPosition, cursorPosition + 1, view.state.schema.mark('number'))));
-              }, 0);
+              const context = view.state.doc.resolve(cursorPosition);
+              if (context.parent.type.name != 'customElement') {
+                setTimeout(() => {
+                  view.updateState(view.state.apply(view.state.tr.addMark(cursorPosition, cursorPosition + 1, view.state.schema.mark('number'))));
+                }, 0);
+              }
             }
           }
         },

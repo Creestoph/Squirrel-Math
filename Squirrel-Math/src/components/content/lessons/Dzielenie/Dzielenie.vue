@@ -856,8 +856,8 @@ import LessonTitle from "../../../lesson/LessonTitle";
 import LessonIntro from "../../../lesson/LessonIntro";
 import LessonChapter from "../../../lesson/chapter/LessonChapter";
 import Lesson from "../../../lesson/Lesson.vue";
-import ColumnarOperationTable from "../../../utils/columnar_operation_table/ColumnarOperationTable";
-import OperationTable from "../../../utils/OperationTable";
+import ColumnarOperationTable from "../../../store/columnar-operation-table/ColumnarOperationTable";
+import OperationTable from "../../../store/operation-table/OperationTable";
 import ColumnarOperation from "../../../utils/columnar_operation/ColumnarOperation"
 
 export default {

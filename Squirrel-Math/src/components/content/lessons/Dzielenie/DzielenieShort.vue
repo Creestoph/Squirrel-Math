@@ -217,7 +217,7 @@ import LessonTitleShort from "../../../lesson/LessonTitleShort";
 import LessonIntro from "../../../lesson/LessonIntro";
 import LessonChapter from "../../../lesson/chapter/LessonChapter";
 import Lesson from "../../../lesson/Lesson.vue";
-import OperationTable from "../../../utils/OperationTable";
+import OperationTable from "../../../store/operation-table/OperationTable";
 import ColumnarOperation from "../../../utils/columnar_operation/ColumnarOperation";
 
 export default {
