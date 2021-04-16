@@ -44,6 +44,10 @@
             1)
           </button>
 
+          <button :class="{ 'active': isActive.comment() }" @click="commands.comment">
+            dodaj komentarz
+          </button>
+
           <button @click="commands.createChapter()">
             rozdział
           </button>
@@ -109,7 +113,7 @@
             </div>
           </button>
         </div>
-
+        
       </div>
     </editor-menu-bar>
 
@@ -147,6 +151,7 @@ import Table from "./Table/Table";
 import TableHeader from "./Table/TableHeader";
 import TableCell from "./Table/TableCell";
 import TableRow from "./Table/TableRow";
+import Comment from "./Comment";
 import NumberMark from "./NumberMark";
 import NumbersMarker from "./NumbersMarker";
 
@@ -214,6 +219,7 @@ export default class LessonEditor extends Vue {
             return "Treść sekcji";
           }
         }),
+        new Comment(),
         new NumberMark(),
         new NumbersMarker(),
       ]
@@ -428,5 +434,16 @@ number {
 #editor .chapter_name > div
 {
   cursor: inherit;
+}
+
+#editor .editor-comment {
+  text-decoration: underline $main-red dashed;
+  text-decoration-thickness: 3px;
+  text-decoration-skip-ink: none;
+  background: #ffeeee;
+  &:hover {
+    background: #ffe5e5;
+    cursor: pointer;
+  }
 }
 </style>
