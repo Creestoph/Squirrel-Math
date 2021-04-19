@@ -1,6 +1,6 @@
 <template>
   <span class="comment" @mouseover="popup = true" @mouseout="popup = false">
-    <tooltip class="comment-window" :visible="popup" timeout="0" :offset="{x: 15, y: -55}">{{ text }}</tooltip>
+    <tooltip class="comment-window" :visible="popup" timeout="0" :offset="{x: 15, y: -55}">{{ commentText }}</tooltip>
     <slot />
   </span>
 </template>
@@ -16,8 +16,19 @@ import Vue from "vue";
   }
 })
 export default class Comment extends Vue {
+  static allComments: { [id: string]: { text: string } } = {};
+  
   popup: boolean = false;
-  @Prop() text!: string;
+  @Prop() text?: string;
+  @Prop() attrs?: { id: string };
+
+  commentText? = "";
+  mounted() {
+    if (this.attrs && this.attrs.id)
+      this.commentText = Comment.allComments[this.attrs.id].text;
+    else
+      this.commentText = this.text;
+  }
 }
 </script>
 
@@ -35,6 +46,9 @@ export default class Comment extends Vue {
 	border-bottom: 1px solid black;
 	font-family: $main-font;
 	font-size: 15px;
+  font-weight: normal;
+  font-style: normal;
+  text-decoration: none;
   line-height: 1em;
   box-shadow: inset 0px -15px 15px -5px rgba(0, 0, 0, 0.15);
   z-index: 10000;

@@ -154,6 +154,7 @@ import TableRow from "./Table/TableRow";
 import Comment from "./Comment";
 import NumberMark from "./NumberMark";
 import NumbersMarker from "./NumbersMarker";
+import { allComments } from './Comment.vue';
 
 @Component({
   components: {
@@ -171,7 +172,12 @@ export default class LessonEditor extends Vue {
   mounted() {
     this.sourceFile = this.$route.params.sourceFile;
     if (this.sourceFile)
-      import(`@/assets/${this.sourceFile}`).then(file => this.editor.setContent(file));
+      import(`@/assets/${this.sourceFile}`).then(file => {
+        this.editor.setContent(file);
+        Object.entries(file.comments).forEach(([id, comment]: any) => {
+           (allComments as any)[id] = { text: comment.text, hidden: comment.hidden, displayedInComponent: null }
+        })
+      });
 
     this.editor = new Editor({
       extensions: [
@@ -230,12 +236,15 @@ export default class LessonEditor extends Vue {
     this.editor.destroy()
   }
   save() {
-    const content = JSON.stringify(this.editor.getJSON());
+    const lessonJSON = this.editor.getJSON();
+    lessonJSON.comments = {};
+    Object.entries(allComments).forEach(([id, comment]) => lessonJSON.comments[id] = { text: comment.text, hidden: comment.hidden });
+    const lessonString = JSON.stringify(lessonJSON);
     const lessonTitleNode = this.editor.state.doc.content.content[0].content.content[0];
     const lessonTitle = lessonTitleNode ? lessonTitleNode.text : 'lesson';
     const fileName = this.sourceFile || `${lessonTitle}.json`;
-    this.download(content, fileName, 'application/json');
-    console.log(content);
+    this.download(lessonString, fileName, 'application/json');
+    console.log(lessonString);
   }
   private download(data: any, filename: string, type: string) {
     var file = new Blob([data], {type: type});
@@ -254,6 +263,8 @@ export default class LessonEditor extends Vue {
     }
   }
   clearAll() {
+    for (let commentId in allComments) 
+      delete (allComments as any)[commentId];
     this.editor.setContent(`
       <h1></h1>
       <intro></intro>

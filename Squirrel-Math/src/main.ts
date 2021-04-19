@@ -3,7 +3,7 @@
 import Vue from 'vue'
 import App from '@/App.vue'
 import router from '@/router/index'
-import Comment from "@/components/utils/Comment.vue"
+import Comment from "@/components/lesson/Comment.vue"
 
 Vue.component('Comment', Comment);
 /* eslint-disable no-new */

@@ -30,6 +30,14 @@ import Geometry from "./geometry/Geometry.vue";
 import BuiltInComponent from "./BuiltInComponent.vue";
 import CustomComponent from "./CustomComponent.vue";
 
+interface SerializedNode {
+    type: string;
+    marks: { type: string, attrs: { [name: string]: any }}[];
+    text?: string;
+    content: SerializedNode[];
+    attrs: { [name: string]: any };
+}
+
 @Component({
     components: {
         DefaultTable,
@@ -46,23 +54,25 @@ import CustomComponent from "./CustomComponent.vue";
     }
 })
 export default class BlockElement extends Vue { 
-    @Prop() content?: any;
+    @Prop() content!: SerializedNode;
     type = "";
-    marks = [];
-    text = "";
-    children = [];
-    attrs: any = {};
+    marks?: { type: string, attrs: { [name: string]: any }}[] = [];
+    text? = "";
+    children: SerializedNode[] = [];
+    attrs:  { [name: string]: any } = {};
 
     mounted() {
         this.type = this.content.type;
         this.marks = this.content.marks;
         this.text = this.content.text;
+        this.children = this.content.content;
         if (this.type == 'custom_element') {
             this.attrs = { code: this.content.content[0].text };
         }
         else 
-            this.attrs = this.content.attrs;
-        this.children = this.content.content;
+            this.attrs = this.content.attrs || {};
+        if (this.marks)
+            this.marks.filter(m => m.attrs).forEach(m => Object.assign(this.attrs, m.attrs));
     }
 
     private typeToTag: {[type: string]: string} = {
@@ -85,6 +95,8 @@ export default class BlockElement extends Vue {
     }
 
     get tagName() {
+        if (this.marks && this.marks.some(m => m.type == 'comment'))
+            return 'comment';
         return this.typeToTag[this.type] || 'div';
     }  
 }

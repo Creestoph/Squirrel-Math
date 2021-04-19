@@ -1,21 +1,23 @@
 <template>
   <span>
     <div class="comment-editor" v-if="showEditor">
-      <textarea v-model="node.attrs.text"></textarea>
-      <button @click="hiddenComment = !hiddenComment" class="mode-button" :class="{ 'visible-mode': !hiddenComment }"
+      <textarea v-model="commentText" ref="commentEditor" @keydown.esc="close()"></textarea>
+      <button @click="hidden = !hidden" class="mode-button" :class="{ 'visible-mode': !hidden }"
         :title="`Zmień tryb wyświetlania komentarza. 
         Ukryte komentarze wyświetlają się tylko po najechaniu myszą na odpowiadający fragment tekstu. 
         Komentarze widoczne sygnalizowane są przy pomocy symbolu pytajnika.
-        Obecny tryb: ${ hiddenComment ? 'Ukryty' : 'Widoczny' }`">
-        Tryb: {{ hiddenComment ? 'Ukryty' : 'Widoczny' }}
+        Obecny tryb: ${ hidden ? 'Ukryty' : 'Widoczny' }`">
+        Tryb: {{ hidden ? 'Ukryty' : 'Widoczny' }}
       </button>
-      <button @click="showEditor = false; text = node.attrs.text" class="apply-button">Zatwierdź</button>
+      <button @click="close()" class="apply-button">Zatwierdź</button>
     </div>
-    <span ref="content" class="comment" @click="showEditor = true"></span>
+    <span ref="content" class="comment" @click="openPopup()"></span>
   </span>
 </template>
 
 <script>
+
+export const allComments = { };
 
 export default {
   props: ["node", "updateAttrs", "view"],
@@ -23,28 +25,40 @@ export default {
     id: {
       get() {
         return this.node.attrs.id;
-      },
-      set(id) {
-        this.updateAttrs({ id });
-      }
-    },
-    text: {
-      get() {
-        return this.node.attrs.text;
-      },
-      set(text) {
-        this.updateAttrs({ text });
       }
     }
   },
   data() {
     return {
-      showEditor: true,
-      hiddenComment: false
+      showEditor: false,
+      commentText: "",
+      hidden: false
     }
   },
+  methods: {
+    openPopup() {
+      if (allComments[this.id].displayedInComponent === null || !document.body.contains(allComments[this.id].displayedInComponent.$el)) {
+        allComments[this.id].displayedInComponent = this;
+        this.commentText = allComments[this.id].text;
+        this.hidden = allComments[this.id].hidden;
+        this.showEditor = true;
+        this.$nextTick(() => this.$refs.commentEditor.focus());
+      }
+    },
+    close() {
+      this.showEditor = false; 
+      allComments[this.id].displayedInComponent = null;
+      allComments[this.id].text = this.commentText;
+      allComments[this.id].hidden = this.hidden;
+    }
+  },
+  beforeMount() {
+    if (!allComments[this.id])
+      allComments[this.id] = { text: '', hidden: false, displayedInComponent: null };
+  },
   mounted() {
-
+    if (allComments[this.id].text === '')
+      this.openPopup();
   }
 };
 </script>

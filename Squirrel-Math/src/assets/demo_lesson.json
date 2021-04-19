@@ -62,7 +62,22 @@
                                     "type": "bold"
                                 }
                             ],
-                            "text": "erać bo"
+                            "text": "erać "
+                        },
+                        {
+                            "type": "text",
+                            "marks": [
+                                {
+                                    "type": "bold"
+                                },
+                                {
+                                    "type": "comment",
+                                    "attrs": {
+                                        "id": 1
+                                    }
+                                }
+                            ],
+                            "text": "bo"
                         },
                         {
                             "type": "text",
@@ -72,6 +87,12 @@
                                 },
                                 {
                                     "type": "underline"
+                                },
+                                {
+                                    "type": "comment",
+                                    "attrs": {
+                                        "id": 1
+                                    }
                                 }
                             ],
                             "text": "rówek"
@@ -430,6 +451,14 @@
                                             "content": [
                                                 {
                                                     "type": "text",
+                                                    "marks": [
+                                                        {
+                                                            "type": "comment",
+                                                            "attrs": {
+                                                                "id": 2
+                                                            }
+                                                        }
+                                                    ],
                                                     "text": "Książę"
                                                 }
                                             ]
@@ -444,6 +473,14 @@
                                             "content": [
                                                 {
                                                     "type": "text",
+                                                    "marks": [
+                                                        {
+                                                            "type": "comment",
+                                                            "attrs": {
+                                                                "id": 2
+                                                            }
+                                                        }
+                                                    ],
                                                     "text": "Egiptu"
                                                 }
                                             ]
@@ -965,5 +1002,15 @@
                 }
             ]
         }
-    ]
+    ],
+    "comments": {
+        "1": {
+            "text": "Bo im się zachciało",
+            "hidden": false
+        },
+        "2": {
+            "text": "Mojżesz w świecie faraonów",
+            "hidden": false
+        }
+    }
 }

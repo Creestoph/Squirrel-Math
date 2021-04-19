@@ -15,17 +15,14 @@ export default class Comment extends Mark {
       attrs: {
         id: {
           default: ""
-        },
-        text: {
-          default: ""
         }
       },
       inclusive: false,
       parseDOM: [{
         tag: 'comment',
-        getAttrs: (dom: any) => ({ id: dom.getAttribute('comment-id'), text: dom.getAttribute('comment-text') })
+        getAttrs: (dom: any) => ({ id: 1000 + dom.getAttribute('comment-id') }) //when block of text is copy-pasted, comment gets new id, but same ids get same new ids
       }],
-      toDOM: (mark: any) => ['comment', { 'comment-id': mark.attrs.id, 'comment-text': mark.attrs.text }, 0]
+      toDOM: (mark: any) => ['comment', { 'comment-id': mark.attrs.id }, 0]
     }
   }
 
