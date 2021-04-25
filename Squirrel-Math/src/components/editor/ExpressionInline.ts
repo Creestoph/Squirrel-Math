@@ -26,11 +26,15 @@ export default class ExpressionInline extends Node {
 
   commands({ type }: any) {
     return (attrs: any) => (state: any, dispatch: any) => {
-      const { selection } = state
-      const position = selection.$cursor ? selection.$cursor.pos : selection.$to.pos
-      const node = type.create(attrs)
-      const transaction = state.tr.insert(position, node)
-      dispatch(transaction)
+      const { selection } = state;
+
+      const node = type.create(attrs);
+      const selectionContent = selection.content().content;
+      node.attrs.mathJax = selectionContent.textBetween(0, selectionContent.size);
+
+      const transaction = state.tr.deleteSelection();
+      transaction.insert(transaction.selection.$from.pos, node);
+      dispatch(transaction);
     }
   }
 

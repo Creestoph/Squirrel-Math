@@ -153,7 +153,6 @@ import TableCell from "./Table/TableCell";
 import TableRow from "./Table/TableRow";
 import Comment from "./Comment";
 import NumberMark from "./NumberMark";
-import NumbersMarker from "./NumbersMarker";
 import { allComments } from './Comment.vue';
 
 @Component({
@@ -172,11 +171,11 @@ export default class LessonEditor extends Vue {
   mounted() {
     this.sourceFile = this.$route.params.sourceFile;
     if (this.sourceFile)
-      import(`@/assets/${this.sourceFile}`).then(file => {
-        this.editor.setContent(file);
+      import(`@/assets/lessons/${this.sourceFile}`).then(file => {
         Object.entries(file.comments).forEach(([id, comment]: any) => {
            (allComments as any)[id] = { text: comment.text, hidden: comment.hidden, displayedInComponent: null }
         })
+        this.editor.setContent(file);
       });
 
     this.editor = new Editor({
@@ -226,8 +225,7 @@ export default class LessonEditor extends Vue {
           }
         }),
         new Comment(),
-        new NumberMark(),
-        new NumbersMarker(),
+        new NumberMark()
       ]
     });
     this.clearAll();
@@ -385,7 +383,7 @@ export default class LessonEditor extends Vue {
 
 number {
   font-family: 'STIXMathJax_Main';
-  font-size: 125%;
+  font-size: 120%;
 }
 
 /*=== CONTENT - EDITOR SPECIFIC===*/
@@ -456,5 +454,9 @@ number {
     background: #ffe5e5;
     cursor: pointer;
   }
+}
+
+#editor .example:hover {
+	background-color: $example-background;
 }
 </style>

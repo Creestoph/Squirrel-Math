@@ -49,13 +49,13 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop } from 'vue-property-decorator';
+import { Component } from 'vue-property-decorator';
 import graphLessons from '@/assets/current_lesson_graph.json'
 import graphCoordinates from '@/assets/current_graph_coordinates.json'
 import Tooltip from '@/components/utils/Tooltip.vue'
 import Vue from 'vue';
 import Point from '../utils/point';
-import paper from "paper"
+import paper, { ToolEvent } from "paper"
 
 class Lesson {
   title: string = "";
@@ -104,18 +104,18 @@ export default class InteractiveTree extends Vue {
   download(data: any, filename: string, type: string) {
     var file = new Blob([data], {type: type});
     if (window.navigator.msSaveOrOpenBlob) // IE10+
-        window.navigator.msSaveOrOpenBlob(file, filename);
+      window.navigator.msSaveOrOpenBlob(file, filename);
     else { // Others
-        var a = document.createElement("a"),
-                url = URL.createObjectURL(file);
-        a.href = url;
-        a.download = filename;
-        document.body.appendChild(a);
-        a.click();
-        setTimeout(function() {
-            document.body.removeChild(a);
-            window.URL.revokeObjectURL(url);  
-        }, 0); 
+      var a = document.createElement("a"),
+      url = URL.createObjectURL(file);
+      a.href = url;
+      a.download = filename;
+      document.body.appendChild(a);
+      a.click();
+      setTimeout(function() {
+          document.body.removeChild(a);
+          window.URL.revokeObjectURL(url);  
+      }, 0); 
     }
   }
 
@@ -140,103 +140,98 @@ export default class InteractiveTree extends Vue {
 
   addEventHandlers() {
     var hitOptions = { segments: false, stroke: false, fill: true, tolerance: 5 };
-    const component = this;
-    const canvas: HTMLElement = this.$refs.canvas as HTMLElement
     this.mypaper.tool = new paper.Tool();
-    const redColor = new paper.Color('#dd3333');
 
-    this.mypaper.view.onResize = function(event: any) {
-      component.centerGraph();
-      component.displayLessons();
+    this.mypaper.view.onResize = () => {
+      this.centerGraph();
+      this.displayLessons();
     }
 
-    this.mypaper.tool.onMouseMove = function(event: any) {
-      var hitResult = component.mypaper.project!.hitTest(event.point, hitOptions);
-      if (!hitResult || hitResult.type != 'fill') {
-        canvas.style.cursor = "default";
-        if (component.hoveredObject) {
-          component.hoveredObject.style!.fillColor = new paper.Color('black');
-          var lessonName = (component.hoveredObject as paper.PointText).content!;
-          for (let req of component.lessons[lessonName].requires)
-            component.edges[lessonName][req].style!.strokeColor = new paper.Color('black');
-          component.hoveredObject = null;
-          component.displayLesson = null;
-        }
-      }
+    this.mypaper.tool.onMouseMove = (event: ToolEvent) => {
+      var hitResult = this.mypaper.project!.hitTest(event.point!, hitOptions);
+      if (!hitResult || hitResult.type != 'fill')
+        this.clearHoveredLesson();
       else {
-        canvas.style.cursor = "pointer";
-        if (!component.hoveredObject) {
-          component.hoveredObject = hitResult.item;
-          component.hoveredObject!.style!.fillColor = redColor;
+        (this.$refs.canvas as HTMLElement).style.cursor = "pointer";
+        if (!this.hoveredObject) {
+          const redColor = new paper.Color('#dd3333');
+          this.hoveredObject = hitResult.item;
+          this.hoveredObject!.style!.fillColor = redColor;
           let lessonName = (hitResult.item as paper.PointText).content!;
-          component.displayLesson = component.lessons[lessonName];
-          for (let req of component.lessons[lessonName].requires)
-          {
-            component.edges[lessonName][req].style!.strokeColor = redColor;
-            component.edges[lessonName][req].bringToFront();
+          this.displayLesson = this.lessons[lessonName];
+          for (let req of this.lessons[lessonName].requires) {
+            this.edges[lessonName][req].style!.strokeColor = redColor;
+            this.edges[lessonName][req].bringToFront();
           }
         }
       }
     }
     
-    this.mypaper.tool.onMouseDown = function(event: any) {
-      component.clickedObject = null;
-      var hitResult = component.mypaper.project!.hitTest(event.point, hitOptions);
+    this.mypaper.tool.onMouseDown = (event: ToolEvent) => {
+      this.clickedObject = null;
+      var hitResult = this.mypaper.project!.hitTest(event.point!, hitOptions);
       if (!hitResult || hitResult.type != "fill")
         return;
-      if (component.editMode)
-        component.clickedObject = hitResult.item;
+      if (this.editMode)
+        this.clickedObject = hitResult.item;
       else {
-        if (component.boldLesson)
-          component.nodes[component.boldLesson].style!.fontWeight = 'normal';
-        component.boldLesson = (hitResult.item as paper.PointText).content!;
-        component.nodes[component.boldLesson].style!.fontWeight = 'bold';
-        if (component.lessons[component.boldLesson].url)
-          component.$router.push(component.lessons[component.boldLesson].url!);
+        if (this.boldLesson)
+          this.nodes[this.boldLesson].style!.fontWeight = 'normal';
+        this.boldLesson = (hitResult.item as paper.PointText).content!;
+        this.nodes[this.boldLesson].style!.fontWeight = 'bold';
+        if (this.lessons[this.boldLesson].url) {
+          if ((event as any).event.button === 0)
+            this.$router.push(this.lessons[this.boldLesson].url!);
+          else if ((event as any).event.button === 1) {
+            let url = this.$router.resolve(this.lessons[this.boldLesson].url!);
+            window.open(url.href, '_blank');
+          }
+          this.clearHoveredLesson();
+        }
       }
     }
 
-    this.mypaper.tool.onMouseDrag = function(event: any) {
-      if (component.clickedObject) {
-        let clickedTitle = (component.clickedObject as paper.PointText).content!;
-        let deltaX = event.delta.x;
-        let deltaY = event.delta.y;
-        component.clickedObject.position = new paper.Point(component.clickedObject.position!.x + deltaX, component.clickedObject.position!.y + deltaY);
-        component.positions[clickedTitle].x = component.clickedObject.position.x!;
-        component.positions[clickedTitle].y = component.clickedObject.position.y!;
-        for (let path of Object.values(component.edges[clickedTitle])) {
+    this.mypaper.tool.onMouseDrag = (event: ToolEvent) => {
+      if (this.clickedObject) {
+        let clickedTitle = (this.clickedObject as paper.PointText).content!;
+        let deltaX = event.delta!.x!;
+        let deltaY = event.delta!.y!;
+        this.clickedObject.position = new paper.Point(this.clickedObject.position!.x! + deltaX, this.clickedObject.position!.y! + deltaY);
+        this.positions[clickedTitle].x = this.clickedObject.position.x!;
+        this.positions[clickedTitle].y = this.clickedObject.position.y!;
+        for (let path of Object.values(this.edges[clickedTitle])) {
           let segments = path.segments as paper.Segment[];
           
           if (segments.length == 4) {            
-            segments[0].point!.x += deltaX;
-            segments[0].point!.y += deltaY;
-            segments[1].point!.x += deltaX;
+            segments[0].point!.x! += deltaX;
+            segments[0].point!.y! += deltaY;
+            segments[1].point!.x! += deltaX;
           } 
           else {            
-            segments[0].point!.x += deltaX;
-            segments[0].point!.y += deltaY;
-            segments[1].point!.x += deltaX;
+            segments[0].point!.x! += deltaX;
+            segments[0].point!.y! += deltaY;
+            segments[1].point!.x! += deltaX;
             segments[3].point!.x = (segments[1].point!.x! + segments[4].point!.x!) / 2;
             segments[2].point!.x = (segments[1].point!.x! + segments[4].point!.x!) / 2;
           }
         }
-        for (let upper of component.lessons[clickedTitle].isRequiredBy) {
-          let segments = component.edges[upper][clickedTitle].segments as paper.Segment[];
+        for (let upper of this.lessons[clickedTitle].isRequiredBy) {
+          let segments = this.edges[upper][clickedTitle].segments as paper.Segment[];
           if (segments.length == 4) {
-            segments[3].point!.x += deltaX;
-            segments[3].point!.y += deltaY;
-            segments[2].point!.x += deltaX;
+            segments[3].point!.x! += deltaX;
+            segments[3].point!.y! += deltaY;
+            segments[2].point!.x! += deltaX;
             if (segments[3].point!.y! < segments[2].point!.y! + 5) {
               segments[2].point!.y = segments[3].point!.y! - 5;
               segments[1].point!.y = segments[3].point!.y! - 5;
             }
           }
           else {
-            segments[5].point!.y += deltaY;
-            segments[5].point!.x += deltaX;
-            segments[4].point!.y += deltaY;
-            segments[4].point!.x += deltaX;
-            segments[3].point!.y += deltaY;
+            segments[5].point!.y! += deltaY;
+            segments[5].point!.x! += deltaX;
+            segments[4].point!.y! += deltaY;
+            segments[4].point!.x! += deltaX;
+            segments[3].point!.y! += deltaY;
             segments[3].point!.x = (segments[1].point!.x! + segments[4].point!.x!) / 2;
             segments[2].point!.x = (segments[1].point!.x! + segments[4].point!.x!) / 2;
           }
@@ -244,14 +239,26 @@ export default class InteractiveTree extends Vue {
       }
     }
 
-    this.mypaper.tool.onMouseUp = function(event: any) {
-      if (component.editMode) {
-        for (let pos of Object.values(component.positions)) {
+    this.mypaper.tool.onMouseUp = () => {
+      if (this.editMode) {
+        for (let pos of Object.values(this.positions)) {
           pos.x = Math.floor((pos.x + 5) / 10)*10;
           pos.y = Math.floor((pos.y + 5) / 10)*10;
         }
-        component.displayLessons();
+        this.displayLessons();
       }
+    }
+  }
+
+  private clearHoveredLesson() {
+    (this.$refs.canvas as HTMLElement).style.cursor = "default";
+    if (this.hoveredObject) {
+      this.hoveredObject.style!.fillColor = new paper.Color('black');
+      var lessonName = (this.hoveredObject as paper.PointText).content!;
+      for (let req of this.lessons[lessonName].requires)
+        this.edges[lessonName][req].style!.strokeColor = new paper.Color('black');
+      this.hoveredObject = null;
+      this.displayLesson = null;
     }
   }
 

@@ -80,7 +80,7 @@ export default class Lesson extends Vue {
 
   setContent() {
     if (this.content) {
-      import(`@/assets/${this.content}`).then(json => {
+      import(`@/assets/lessons/${this.content}`).then(json => {
         this.title = json.content[0].content[0].text;
         this.introElements = json.content[1].content;
         this.chapters = json.content.filter((item: any, position: any) => position > 1).map((item: any) => item.content);

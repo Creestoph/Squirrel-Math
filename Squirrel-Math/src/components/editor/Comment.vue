@@ -1,7 +1,7 @@
 <template>
   <span>
     <div class="comment-editor" v-if="showEditor">
-      <textarea v-model="commentText" ref="commentEditor" @keydown.esc="close()"></textarea>
+      <textarea v-model="commentText" @paste.stop ref="commentEditor" @keydown.esc="close()"></textarea>
       <button @click="hidden = !hidden" class="mode-button" :class="{ 'visible-mode': !hidden }"
         :title="`Zmień tryb wyświetlania komentarza. 
         Ukryte komentarze wyświetlają się tylko po najechaniu myszą na odpowiadający fragment tekstu. 

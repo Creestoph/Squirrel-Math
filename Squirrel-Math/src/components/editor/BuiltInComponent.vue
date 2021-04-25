@@ -16,11 +16,11 @@
               {{ labels[componentName][parameterName] }}
             </div>
             <div class="form-col">
-              <input v-if="parameterSchema.type.name == 'TEXT'" :required="parameterSchema.required" v-model="formArgs[i]">
-              <input v-if="parameterSchema.type.name == 'NUMBER'" :required="parameterSchema.required" type="number" v-model="formArgs[i]">
-              <input v-if="parameterSchema.type.name == 'FUNCTION'" :required="parameterSchema.required" type="function" v-model="formArgs[i]">
+              <input v-if="parameterSchema.type.name == 'TEXT'" :required="parameterSchema.required" v-model="formArgs[i]" @paste.stop>
+              <input v-if="parameterSchema.type.name == 'NUMBER'" :required="parameterSchema.required" type="number" v-model="formArgs[i]" @paste.stop>
+              <input v-if="parameterSchema.type.name == 'FUNCTION'" :required="parameterSchema.required" type="function" v-model="formArgs[i]" @paste.stop>
               <div v-if="parameterSchema.type.name == 'ARRAY'">
-                <input v-for="(arg, j) in formArgs[i]" :key="j" :required="parameterSchema.required && j == 0" v-model="formArgs[i][j]">
+                <input v-for="(arg, j) in formArgs[i]" :key="j" :required="parameterSchema.required && j == 0" v-model="formArgs[i][j]" @paste.stop>
                 <button @click="addElementForArrayParameter(i)" class="array-parameter-button">+ element</button>
                 <button @click="removeElementForArrayParameter(i)" class="array-parameter-button">- element</button>
               </div>
@@ -31,12 +31,12 @@
           </div>
         </div>
       </div>
-      <button @click="run(); editMode = false" class="toggle-edit-button">Run</button>
+      <button @click="run()" class="toggle-edit-button">Run</button>
     </div>
     <div v-if="!editMode" class="output-wrapper">
       <div :is="componentName" v-bind="componentConfiguration" :class="{ output: true }">
       </div>
-      <button @click="editMode = true" class="toggle-edit-button">Edit</button>
+      <button @click="edit()" class="toggle-edit-button">Edit</button>
     </div>
   </div>  
 </template>
@@ -89,6 +89,15 @@ export default {
     this.schemas['columnar-operation-table'] = columnarOperationTableSchema;
     this.labels['columnar-operation-table'] = columnarOperationTableLabels;
     this.formArgs = [...this.args];
+    const configNonEmpty = this.formArgs.some((arg, i) => {
+      const argType = Object.values(this.schemas[this.componentName])[i].type.name;
+      return (argType == 'TEXT' || argType == 'ENUM' || argType == 'FUNCTION') && arg ||
+        argType == 'NUMBER' && arg !== undefined || 
+        argType == 'ARRAY' && arg.length > 0 && arg.some(a => !!a);
+    });
+    if (configNonEmpty) {
+      this.run();
+    }
     this.$forceUpdate();
   },
   methods: {
@@ -108,7 +117,11 @@ export default {
         this.formArgs[i].pop();
       }
     },
+    edit() {
+      this.editMode = true;
+    },
     run() {
+      this.editMode = false;
       this.componentConfiguration = {};
       Object.entries(this.schemas[this.componentName]).forEach(([key, schema], i) => {
         if (schema.type.name == 'TEXT' || schema.type.name == 'ENUM')

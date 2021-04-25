@@ -2,7 +2,7 @@
   <div>
     <div v-show="!mathJax" class="math-placeholder" @click="edit()">Wprowadź wyrażenie matematyczne</div>
     <div v-show="mathJax" ref="output" class="math-display" @click="edit()"></div>
-    <textarea v-if="displayPopup" v-model="mathJaxDirty" ref="mathEditor" class="math-editor" placeholder="Wprowadź kod MathJax" @blur="applyEdit()"></textarea>
+    <textarea v-if="displayPopup" v-model="mathJaxDirty" @paste.stop ref="mathEditor" class="math-editor" placeholder="Wprowadź kod MathJax" @blur="applyEdit()"></textarea>
   </div>
 </template>
 
@@ -61,7 +61,7 @@ export default {
   outline: none;
 }
 .math-placeholder:hover, .math-display:hover {
-  background: $light-gray;
+  background: rgba(0, 0, 0, 0.07);
   cursor: pointer;
 }
 

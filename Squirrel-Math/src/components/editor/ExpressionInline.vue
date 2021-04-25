@@ -2,7 +2,7 @@
   <span>
     <span v-show="!mathJax" class="math-placeholder" @click="edit()">Wprowadź wyrażenie matematyczne</span>
     <span v-show="mathJax" ref="output" class="math-display" @click="edit()"></span>
-    <textarea v-if="displayPopup" v-model="mathJaxDirty" ref="mathEditor" class="math-editor" placeholder="Wprowadź kod MathJax" @blur="applyEdit()" @keydown.enter="applyEdit()"></textarea>
+    <textarea v-if="displayPopup" v-model="mathJaxDirty" @paste.stop ref="mathEditor" class="math-editor" placeholder="Wprowadź kod MathJax" @blur="applyEdit()" @keydown.enter="applyEdit()"></textarea>
   </span>
 </template>
 
@@ -27,10 +27,12 @@ export default {
   },
   mounted() {
     this.updateView();
+    if (!this.mathJax) {
+      this.edit();
+    }
   },
   methods: {
     edit() {
-      console.log(document.getSelection());
       this.mathJaxDirty = this.mathJax;
       this.displayPopup = true;
       this.$nextTick(() => this.$refs.mathEditor.focus());
@@ -40,7 +42,6 @@ export default {
       this.updateView();
       this.$nextTick(() => { 
         this.$refs.output.focus();
-        console.log(this.view);
       });
     },
     updateView() {
@@ -63,10 +64,9 @@ export default {
   outline: none;
 }
 .math-placeholder:hover, .math-display:hover {
-  background: $light-gray;
+  background: rgba(0, 0, 0, 0.07);
   cursor: pointer;
 }
-
 .math-editor {
   width: 500px;
   height: 300px;
