@@ -37,8 +37,8 @@
             </svg>
           </td>
           <td>
-            <div ref="columnar_operation_table" class="no_selection" />
-            <p ref="columnar_operation_comment" class="no_selection" />
+            <div ref="columnar_operation_table" class="no-selection" />
+            <p ref="columnar_operation_comment" class="no-selection" />
           </td>
           <td
             ref="columnar_operation_button_right"

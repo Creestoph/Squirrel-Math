@@ -1,6 +1,6 @@
 <template>
   <span class="comment" @mouseover="popup = true" @mouseout="popup = false">
-    <tooltip class="comment-window" :visible="popup" timeout="0" :offset="{x: 15, y: -55}">{{ commentText }}</tooltip>
+    <tooltip class="comment-window no-selection" :visible="popup" timeout="0" :offset="{x: 15, y: -55}">{{ commentText }}</tooltip>
     <slot />
   </span>
 </template>
@@ -38,19 +38,19 @@ export default class Comment extends Vue {
 .comment:hover {
   background: #e9e9e9;
 }
-.comment-window
-{
-  background: #FEFEFE;
+
+.comment-window {
+  background: rgba(0, 0, 0, 0.4);
+  color: $light-gray;
+  backdrop-filter: blur(7px);
+  color: white;
   padding: 6px;
-	border-right: 1px solid black;
-	border-bottom: 1px solid black;
 	font-family: $main-font;
-	font-size: 15px;
+	font-size: 0.9em;
   font-weight: normal;
   font-style: normal;
   text-decoration: none;
   line-height: 1em;
-  box-shadow: inset 0px -15px 15px -5px rgba(0, 0, 0, 0.15);
   z-index: 10000;
   pointer-events: none;
 }

@@ -11,8 +11,12 @@
             przywróć akcję
           </button>
 
-           <button @click="save()">
+          <button @click="commands.saveToFile(); commands.saveToLocalStorage()">
             zapisz
+          </button>
+
+          <button @click="openDraftsDialog()">
+            wczytaj
           </button>
 
           <button @click="clearAll()">
@@ -118,6 +122,30 @@
     </editor-menu-bar>
 
     <editor-content id="editor" :editor="editor" />
+
+    <div v-if="showDraftsDialog" class="drafts-dialog">
+      <div class="drafts-dialog-header">
+        Wczytaj wersję roboczą
+        <button @click="closeDraftsDialog()">x</button>
+      </div>
+      <div class="drafts-dialog-body">
+        <div class="drafts-list-header">
+          <span class="draft-name"><b>Tytuł</b></span>
+          <span class="draft-date"><b>Data utworzenia</b></span>
+          <span class="draft-date"><b>Data modyfikacji</b></span>
+        </div>
+        <div class="drafts-list">
+          <div v-for="(draft, i) in availableDrafts" :key="i">
+            <div class="draft">
+              <span @click="loadDraft(draft)" class="draft-name">{{ draft.name }}</span>
+              <span @click="loadDraft(draft)" class="draft-date">{{ draft.created.toLocaleDateString() }}</span>
+              <span @click="loadDraft(draft)" class="draft-date">{{ draft.lastModified.toLocaleDateString() }}</span>
+            </div>
+            <button @click="deleteDraft(draft)">usuń</button>
+          </div>
+        </div>
+      </div>
+    </div>
   </lesson>
 </template>
 
@@ -153,6 +181,7 @@ import TableCell from "./Table/TableCell";
 import TableRow from "./Table/TableRow";
 import Comment from "./Comment";
 import NumberMark from "./NumberMark";
+import Save, { DraftPreview } from "./DraftsManager/SaveExtension";
 import { allComments } from './Comment.vue';
 
 @Component({
@@ -167,17 +196,22 @@ export default class LessonEditor extends Vue {
   editor: any = null;
   sourceFile: string = "";
   sourceContent: any = null;
+  savePlugin: Save = new Save();
+  showDraftsDialog = false;
+  availableDrafts: DraftPreview[] = [];
 
   mounted() {
-    this.sourceFile = this.$route.params.sourceFile;
-    if (this.sourceFile)
-      import(`@/assets/lessons/${this.sourceFile}`).then(file => {
-        Object.entries(file.comments).forEach(([id, comment]: any) => {
-           (allComments as any)[id] = { text: comment.text, hidden: comment.hidden, displayedInComponent: null }
-        })
-        this.editor.setContent(file);
-      });
+    this.createEditor();
+    this.clearAll();
+    this.loadContent();
+  }
 
+  beforeDestroy() {
+    this.editor.destroy();
+    this.removeAutoSave();
+  }
+
+  private createEditor() {
     this.editor = new Editor({
       extensions: [
         new History(),
@@ -225,41 +259,22 @@ export default class LessonEditor extends Vue {
           }
         }),
         new Comment(),
-        new NumberMark()
+        new NumberMark(),
+        this.savePlugin
       ]
     });
-    this.clearAll();
   }
-  beforeDestroy() {
-    this.editor.destroy()
+
+  private loadContent() {
+    this.sourceFile = this.$route.params.sourceFile;
+    if (this.sourceFile)
+      import(`@/assets/lessons/${this.sourceFile}`).then(file => this.savePlugin.loadFromJSON(file));
   }
-  save() {
-    const lessonJSON = this.editor.getJSON();
-    lessonJSON.comments = {};
-    Object.entries(allComments).forEach(([id, comment]) => lessonJSON.comments[id] = { text: comment.text, hidden: comment.hidden });
-    const lessonString = JSON.stringify(lessonJSON);
-    const lessonTitleNode = this.editor.state.doc.content.content[0].content.content[0];
-    const lessonTitle = lessonTitleNode ? lessonTitleNode.text : 'lesson';
-    const fileName = this.sourceFile || `${lessonTitle}.json`;
-    this.download(lessonString, fileName, 'application/json');
-    console.log(lessonString);
+
+  private removeAutoSave() {
+    this.savePlugin.destroy();
   }
-  private download(data: any, filename: string, type: string) {
-    var file = new Blob([data], {type: type});
-    if (window.navigator.msSaveOrOpenBlob) // IE10+
-      window.navigator.msSaveOrOpenBlob(file, filename);
-    else { // Others
-      var a = document.createElement("a"), url = URL.createObjectURL(file);
-      a.href = url;
-      a.download = filename;
-      document.body.appendChild(a);
-      a.click();
-      setTimeout(function() {
-          document.body.removeChild(a);
-          window.URL.revokeObjectURL(url);  
-      }, 0); 
-    }
-  }
+
   clearAll() {
     for (let commentId in allComments) 
       delete (allComments as any)[commentId];
@@ -271,6 +286,25 @@ export default class LessonEditor extends Vue {
         <chapter-body></chapter-body>
       </chapter>
     `);
+  }
+
+  openDraftsDialog() {
+    this.showDraftsDialog = true;
+    this.availableDrafts = this.savePlugin.draftsList();
+  }
+
+  closeDraftsDialog() {
+    this.showDraftsDialog = false;
+  }
+
+  loadDraft(draft: DraftPreview) {
+    this.showDraftsDialog = false;
+    this.savePlugin.loadDraft(draft);
+  }
+
+  deleteDraft(draft: DraftPreview) {
+    this.savePlugin.deleteDraft(draft);
+    this.availableDrafts = this.savePlugin.draftsList();
   }
 }
 </script>
@@ -363,7 +397,89 @@ export default class LessonEditor extends Vue {
   color: inherit;
 }
 
+.drafts-dialog {
+  position: fixed;
+  width: 800px;
+  height: 500px;
+  z-index: 10000;
+  left: calc(50% - 400px);
+  top: calc(50% - 250px);
+  box-sizing: border-box;
+  background: white;
+  box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.2);
 
+  .drafts-dialog-header {
+    background: black;
+    line-height: 50px;
+    color: white;
+    height: 50px;
+    padding-left: 15px;
+    font-weight: bold;
+
+    button {
+      float: right;
+      width: 50px;
+      height: 50px;
+      padding: 0;
+      background: $main-red;
+      color: white;
+      font-family: $geometric-font;
+      font-size: 1.5em;
+    }
+  }
+
+  .drafts-dialog-body {
+    padding: 10px;
+
+    .drafts-list {
+      clear: both;
+      height: 390px;
+      overflow-y: auto;
+
+      button {
+        float: left;
+        background: $main-red;
+        padding: 5px 10px;
+        margin: 10px 5px;
+        color: white;
+        &:hover {
+          background: $dark-red;
+        }
+      }
+    }
+
+    .draft {
+      float:left;
+      width: 500px;
+      margin: 10px 10px 10px 5px;
+      padding: 5px 10px;
+      background: $light-gray;
+      cursor: pointer;
+      &:hover {
+        background: $gray;
+      }
+    }
+
+    .drafts-list-header {
+      float:left;
+      width: 500px;
+      margin-left: 5px;
+      padding: 5px 10px;
+    }
+
+    .draft-name {
+      display: inline-block;
+      width: 35%;
+    }
+
+    .draft-date {
+      display: inline-block;
+      width: 32%;
+    }
+
+  }
+
+}
 
 
 
