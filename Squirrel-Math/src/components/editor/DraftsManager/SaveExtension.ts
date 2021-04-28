@@ -54,8 +54,8 @@ export default class Save extends Extension {
     }
 
     loadDraft(draft: DraftPreview) {
-        this.currentDraft = LocalStorageSaver.loadDraft(draft).lesson;
-        this.loadFromJSON(this.currentDraft);
+        this.currentDraft = LocalStorageSaver.loadDraft(draft);
+        this.loadFromJSON(this.currentDraft.lesson);
     }
 
     deleteDraft(draft: DraftPreview) {
@@ -88,7 +88,7 @@ export default class Save extends Extension {
     }
 
     private saveToFile() {
-        const lessonString = this.getLessonJSONString();
+        const lessonString = JSON.stringify(this.getLessonJSON());
         const fileName = this.sourceFile || `${this.getLessonTitle()}.json`;
         this.download(lessonString, fileName, 'application/json');
         console.log(lessonString);

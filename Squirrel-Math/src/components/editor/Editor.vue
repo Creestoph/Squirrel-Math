@@ -1,6 +1,6 @@
 <template>
   <lesson>
-    <editor-menu-bar id="toolbar" :editor="editor" v-slot="{ commands, isActive }">
+    <editor-menu-bar id="toolbar" ref="toolbar" :editor="editor" v-slot="{ commands, isActive }">
       <div>
         <div id="tools-managing">
           <button @click="commands.undo">
@@ -48,52 +48,22 @@
             1)
           </button>
 
+          <dropdown @selected="insert($event, commands)" :options="[
+            'rozdział', 
+            'sekcja', 
+            'przykład', 
+            'wyrażenie', 
+            'wyrażenie inline', 
+            'twierdzenie', 
+            'dowód', 
+            'tabela', 
+            'kształt', 
+            'html', 
+            'element dynamiczny'
+          ]">wstaw</dropdown>
+
           <button :class="{ 'active': isActive.comment() }" @click="commands.comment">
             dodaj komentarz
-          </button>
-
-          <button @click="commands.createChapter()">
-            rozdział
-          </button>
-
-          <button @click="commands.semantic_tag()">
-            sekcja
-          </button>
-
-          <button :class="{ 'active': isActive.example() }" @click="commands.example">
-            przykład
-          </button>
-
-          <button :class="{ 'active': isActive.expression() }" @click="commands.expression">
-            wyrażenie
-          </button>
-
-          <button :class="{ 'active': isActive.expressionInline() }" @click="commands.expressionInline">
-            wyrażenie inline
-          </button>
-
-          <button :class="{ 'active': isActive.formula() }" @click="commands.formula">
-            twierdzenie
-          </button>
-
-          <button :class="{ 'active': isActive.proof() }" @click="commands.proof">
-            dowód
-          </button>
-
-          <button :class="{ 'active': isActive.table() }" @click="commands.createTable({ rowsCount: 3, colsCount: 3, withHeaderRow: true })">
-            tabela
-          </button>
-
-          <button :class="{ 'active': isActive.geometry() }" @click="commands.geometry">
-            kształt
-          </button>
-
-          <button :class="{ 'active': isActive.custom_element() }" @click="commands.custom_element">
-            html
-          </button>
-
-          <button :class="{ 'active': isActive.component() }" @click="commands.component">
-            element dynamiczny
           </button>
         </div>
 
@@ -157,6 +127,7 @@ import { History, HardBreak, OrderedList, BulletList, Bold, Italic, Link, Strike
 
 import Lesson from "../lesson/Lesson.vue";
 import ColorPicker from "./ColorPicker.vue";
+import Dropdown from "./Dropdown.vue";
 
 import LessonDoc from "./Lesson";
 import Title from "./Title";
@@ -189,7 +160,8 @@ import { allComments } from './Comment.vue';
     EditorContent,
     EditorMenuBar,
     Lesson,
-    ColorPicker
+    ColorPicker,
+    Dropdown
   }
 })
 export default class LessonEditor extends Vue {
@@ -204,11 +176,16 @@ export default class LessonEditor extends Vue {
     this.createEditor();
     this.clearAll();
     this.loadContent();
+    this.$nextTick(() => {
+      addEventListener("scroll", this.scrollToolbar)
+      this.scrollToolbar();
+    })
   }
 
   beforeDestroy() {
     this.editor.destroy();
     this.removeAutoSave();
+    removeEventListener("scroll", this.scrollToolbar);
   }
 
   private createEditor() {
@@ -265,6 +242,22 @@ export default class LessonEditor extends Vue {
     });
   }
 
+  insert(element: string, commands: any) {
+    switch(element) {
+      case 'rozdział': commands.createChapter(); break;
+      case 'sekcja': commands.semantic_tag(); break;
+      case 'przykład': commands.example(); break;
+      case 'wyrażenie': commands.expression(); break;
+      case 'wyrażenie inline': commands.expressionInline(); break;
+      case 'twierdzenie': commands.formula(); break;
+      case 'dowód': commands.proof(); break;
+      case 'tabela': commands.createTable({ rowsCount: 3, colsCount: 3, withHeaderRow: true }); break;
+      case 'kształt': commands.geometry(); break;
+      case 'html': commands.custom_element(); break;
+      case 'element dynamiczny': commands.component(); break;
+    }
+  }
+
   private loadContent() {
     this.sourceFile = this.$route.params.sourceFile;
     if (this.sourceFile)
@@ -306,6 +299,16 @@ export default class LessonEditor extends Vue {
     this.savePlugin.deleteDraft(draft);
     this.availableDrafts = this.savePlugin.draftsList();
   }
+
+  scrollToolbar() {
+    const toolbar = (this.$refs.toolbar as Vue).$el;
+    if (document.body.scrollTop > 5 || document.documentElement.scrollTop > 5 || window.innerWidth < 700) {
+      (toolbar as HTMLElement).style.paddingTop = "0";
+    } 
+    else {
+      (toolbar as HTMLElement).style.paddingTop = "150px";
+    }
+  }
 }
 </script>
 
@@ -319,7 +322,8 @@ export default class LessonEditor extends Vue {
   position: fixed;
   top: 0;
   width: 970px;
-  padding-top: 150px;
+  padding-top: 0px;
+  transition: padding 1s;
   z-index: 3;
   background: white;
 
@@ -511,7 +515,7 @@ number {
     width: 26px;
     position: relative;
     &.selectedCell {
-      background: $light-gray;
+      background: $light-gray !important;
     }
     &::after {
       content: ' ';
@@ -533,6 +537,7 @@ number {
 #editor .chapter_name > div + hr
 {
   width: 100%;
+  box-sizing: border-box;
   border-color: black;
   background-color: black;
 }
