@@ -510,7 +510,7 @@ number {
 #editor table[style]:not([class]) {
   margin: 0 auto;
 
-  td, th {
+  > tbody > tr > td, > tbody > tr > th {
     padding: 0 7px;
     width: 26px;
     position: relative;
@@ -534,8 +534,7 @@ number {
   }
 }
 
-#editor .chapter_name > div + hr
-{
+#editor .chapter_name > div + hr {
   width: 100%;
   box-sizing: border-box;
   border-color: black;
@@ -561,8 +560,7 @@ number {
   font-weight: bold;
 }
 
-#editor .chapter_name > div
-{
+#editor .chapter_name > div {
   cursor: inherit;
 }
 

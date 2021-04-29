@@ -8,7 +8,7 @@
     <br><br><br>
     <center>
       <img
-        src="./.images/squirrel.png"
+        src="./content/.images/squirrel.png"
         width="60%"
       >
     </center>
@@ -17,10 +17,10 @@
 </template>
 
 <script>
-import LessonTitle from "../lesson/LessonTitle";
-import LessonIntro from "../lesson/LessonIntro";
-import LessonChapter from "../lesson/chapter/LessonChapter";
-import Lesson from "../lesson/Lesson.vue";
+import LessonTitle from "./lesson/LessonTitle";
+import LessonIntro from "./lesson/LessonIntro";
+import LessonChapter from "./lesson/chapter/LessonChapter";
+import Lesson from "./lesson/Lesson.vue";
 
 export default {
   name: "Home",

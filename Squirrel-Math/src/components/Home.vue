@@ -65,7 +65,7 @@
           :to="'/drzewoHD'"
         >
           <img
-            src="./.images/tree.png"
+            src="./content/.images/tree.png"
             width="100%"
           >
         </router-link>
@@ -99,7 +99,7 @@
 	
       <center>
         <img
-          src="./.images/squirrel.png"
+          src="./content/.images/squirrel.png"
           width="60%"
         >
       </center>
@@ -108,10 +108,10 @@
 </template>
 
 <script>
-import LessonTitle from "../lesson/LessonTitle";
-import LessonIntro from "../lesson/LessonIntro";
-import LessonChapter from "../lesson/chapter/LessonChapter";
-import Lesson from "../lesson/Lesson.vue";
+import LessonTitle from "./lesson/LessonTitle";
+import LessonIntro from "./lesson/LessonIntro";
+import LessonChapter from "./lesson/chapter/LessonChapter";
+import Lesson from "./lesson/Lesson.vue";
 
 export default {
   name: "Home",

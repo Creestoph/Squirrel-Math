@@ -8,6 +8,7 @@
             <option value="div" disabled>Wybierz komponent...</option>
             <option value="operation-table">Tabliczka działania</option>
             <option value="columnar-operation-table">Działanie w słupku</option>
+            <option value="columnar-operation-guide">Tutorial działania w słupku</option>
           </select>
         </div>
         <div class="form-body">
@@ -18,6 +19,7 @@
             <div class="form-col">
               <input v-if="parameterSchema.type.name == 'TEXT'" :required="parameterSchema.required" v-model="formArgs[i]" @paste.stop>
               <input v-if="parameterSchema.type.name == 'NUMBER'" :required="parameterSchema.required" type="number" v-model="formArgs[i]" @paste.stop>
+              <input v-if="parameterSchema.type.name == 'BOOLEAN'" :required="parameterSchema.required" type="checkbox" v-model="formArgs[i]">
               <input v-if="parameterSchema.type.name == 'FUNCTION'" :required="parameterSchema.required" type="function" v-model="formArgs[i]" @paste.stop>
               <div v-if="parameterSchema.type.name == 'ARRAY'">
                 <input v-for="(arg, j) in formArgs[i]" :key="j" :required="parameterSchema.required && j == 0" v-model="formArgs[i][j]" @paste.stop>
@@ -48,13 +50,17 @@ import { operationTableLabels } from '@/components/store/operation-table/Operati
 import ColumnarOperationTable from '@/components/store/columnar-operation-table/ColumnarOperationTable'
 import { columnarOperationTableSchema } from '@/components/store/columnar-operation-table/ColumnarOperationTableSchema'
 import { columnarOperationTableLabels } from '@/components/store/columnar-operation-table/ColumnarOperationTableLabels'
+import ColumnarOperationGuide from '@/components/store/columnar-operation-guide/ColumnarOperationGuide'
+import { columnarOperationGuideSchema } from '@/components/store/columnar-operation-guide/ColumnarOperationGuideSchema'
+import { columnarOperationGuideLabels } from '@/components/store/columnar-operation-guide/ColumnarOperationGuideLabels'
 import Vue from 'vue';
 
 export default {
   props: ["node", "updateAttrs", "view"],
   components: {
     OperationTable,
-    ColumnarOperationTable
+    ColumnarOperationTable,
+    ColumnarOperationGuide
   },
   data() {
     return {
@@ -88,6 +94,8 @@ export default {
     this.labels['operation-table'] = operationTableLabels;
     this.schemas['columnar-operation-table'] = columnarOperationTableSchema;
     this.labels['columnar-operation-table'] = columnarOperationTableLabels;
+    this.schemas['columnar-operation-guide'] = columnarOperationGuideSchema;
+    this.labels['columnar-operation-guide'] = columnarOperationGuideLabels;
     this.formArgs = [...this.args];
     const configNonEmpty = this.formArgs.some((arg, i) => {
       const argType = Object.values(this.schemas[this.componentName])[i].type.name;
@@ -124,7 +132,7 @@ export default {
       this.editMode = false;
       this.componentConfiguration = {};
       Object.entries(this.schemas[this.componentName]).forEach(([key, schema], i) => {
-        if (schema.type.name == 'TEXT' || schema.type.name == 'ENUM')
+        if (schema.type.name == 'TEXT' || schema.type.name == 'BOOLEAN' || schema.type.name == 'ENUM')
           this.componentConfiguration[key] = this.formArgs[i];
         else if (schema.type.name == 'NUMBER')
           this.componentConfiguration[key] = parseFloat(this.formArgs[i]);
@@ -201,6 +209,8 @@ label {
   margin-right: 20px;
 }
 .form-col:last-child {
+  display: flex;
+  align-items: center;
   width: 70%;
 }
 input {
@@ -211,6 +221,9 @@ input {
 }
 input[type="number"] {
   width: 40px;
+}
+input[type="checkbox"] {
+  width: 20px;
 }
 input[type="function"], input[type="array"] {
   font-family: $geometric-font;

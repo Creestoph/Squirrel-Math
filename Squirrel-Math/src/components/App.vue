@@ -7,8 +7,8 @@
 </template>
 
 <script>
-  import Menu from './components/Menu'
-  import InteractiveTree from './components/content/InteractiveTree'
+  import Menu from './Menu'
+  import InteractiveTree from './InteractiveTree'
 
   export default {
     name: 'App',

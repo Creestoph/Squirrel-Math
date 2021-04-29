@@ -56,12 +56,12 @@
 </template>
 
 <script>
-import { Columnar_addition } from "./columnar_addition";
-import { Columnar_subtraction } from "./columnar_subtraction";
-import { Columnar_division } from "./columnar_division";
-import { Columnar_multiplication } from "./columnar_multiplication";
-import { Columnar_operation } from "./columnar_operation";
-import ZeroDivisionError from "./ZeroDivisionError";
+import { Columnar_addition } from "../../utils/columnar_operation/columnar_addition";
+import { Columnar_subtraction } from "../../utils/columnar_operation/columnar_subtraction";
+import { Columnar_division } from "../../utils/columnar_operation/columnar_division";
+import { Columnar_multiplication } from "../../utils/columnar_operation/columnar_multiplication";
+import { Columnar_operation } from "../../utils/columnar_operation/columnar_operation";
+import ZeroDivisionError from "../../utils/columnar_operation/ZeroDivisionError";
 
 export default {
   name: "ColumnarOperation",

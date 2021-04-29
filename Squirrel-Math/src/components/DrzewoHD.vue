@@ -1,6 +1,6 @@
 <template>
   <div>
-    <img src="./.images/tree.png">
+    <img src="./content/.images/tree.png">
   </div>
 </template>
 

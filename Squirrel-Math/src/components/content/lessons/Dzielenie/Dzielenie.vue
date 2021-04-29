@@ -858,7 +858,7 @@ import LessonChapter from "../../../lesson/chapter/LessonChapter";
 import Lesson from "../../../lesson/Lesson.vue";
 import ColumnarOperationTable from "../../../store/columnar-operation-table/ColumnarOperationTable";
 import OperationTable from "../../../store/operation-table/OperationTable";
-import ColumnarOperation from "../../../utils/columnar_operation/ColumnarOperation"
+import ColumnarOperation from "../../../store/columnar-operation-guide/ColumnarOperationGuide"
 
 export default {
   name: "Dzielenie",
