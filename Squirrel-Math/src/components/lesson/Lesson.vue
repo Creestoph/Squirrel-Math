@@ -10,7 +10,7 @@
           :route-long-version="routeLongVersion" 
           :route-short-version="routeShortVersion"
         />
-        <button ref="expandButton" id="expand-button" @click="lessonHidden ? expandLesson() : hideLesson()">
+        <button ref="expandButton" id="expand-button" class="no-selection" @click="lessonHidden ? expandLesson() : hideLesson()">
           &lt;
         </button>
         <button v-if="content" id="edit-button" @click="editLesson()">

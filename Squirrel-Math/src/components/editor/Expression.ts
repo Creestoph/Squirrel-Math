@@ -1,5 +1,7 @@
 import { Node } from 'tiptap'
+import { nodeInputRule } from 'tiptap-commands'
 import ExpressionVue from './Expression.vue'
+import { nodePasteRule } from './tiptap-utils'
 
 export default class Expression extends Node {
 
@@ -40,5 +42,17 @@ export default class Expression extends Node {
 
   get view() {
     return ExpressionVue;
+  }
+  
+  inputRules({ type }: any) {
+    return [
+      nodeInputRule(/\$\$([^$]+)\$\$$/, type, (match: any) => ({ mathJax: match[1] }) ),
+    ]
+  }
+
+  pasteRules({ type }: any) {
+    return [
+      nodePasteRule(/\$\$([^$]+)\$\$/g, type, (match: any) => ({ mathJax: match }))
+    ]
   }
 }

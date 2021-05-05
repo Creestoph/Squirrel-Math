@@ -1,5 +1,6 @@
 import { Node } from 'tiptap'
 import ExpressionInlineVue from './ExpressionInline.vue'
+import { nodeInputRule, nodePasteRule } from './tiptap-utils'
 
 export default class ExpressionInline extends Node {
 
@@ -46,5 +47,17 @@ export default class ExpressionInline extends Node {
 
   get view() {
     return ExpressionInlineVue;
+  }
+
+  inputRules({ type }: any) {
+    return [
+      nodeInputRule(/(?:^|[^$])(\$([^$]+)\$)$/, type, (match: any) => ({ mathJax: match }))
+    ]
+  }
+
+  pasteRules({ type }: any) {
+    return [
+      nodePasteRule(/(?:^|[^$])(\$([^$]+)\$)/g, type, (match: any) => ({ mathJax: match }))
+    ]
   }
 }

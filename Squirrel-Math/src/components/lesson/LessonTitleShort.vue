@@ -1,10 +1,10 @@
 <template>
   <div>
-    <p class="lesson_title_short">
+    <h1 class="lesson-title-short" ref="content">
       <slot />
-    </p>
+    </h1>
 
-    <p class="lesson_subtitle">
+    <p class="lesson-subtitle">
       W pigułce
     </p>  
   </div>
@@ -19,7 +19,7 @@
 <style scoped lang="scss">
 @import "@/style/global";
 
-  p.lesson_title_short
+  .lesson-title-short
   {
       text-align: center;
       font-size: 3.2em;
@@ -30,7 +30,7 @@
       line-height: 1em;
   }
 
-  p.lesson_subtitle
+  .lesson-subtitle
   {
       text-align: center;
       font-size: 1.6em;

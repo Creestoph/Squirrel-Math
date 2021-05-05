@@ -22,6 +22,10 @@
           <button @click="clearAll()">
             wyczyść wszystko
           </button>
+
+          <button @click="toggleShortMode()">
+            {{ shortMode ? 'stwórz wersję pełną' : 'stwórz wersję skróconą' }}
+          </button>
         </div>
         <div id="tools-general">
           <button :class="{ 'active': isActive.bold() }" style="font-weight: bold" @click="commands.bold">
@@ -51,11 +55,12 @@
           <dropdown @selected="insert($event, commands)" :options="[
             'rozdział', 
             'sekcja', 
-            'przykład', 
             'wyrażenie', 
             'wyrażenie inline', 
             'twierdzenie', 
             'dowód', 
+            'przykład', 
+            'problem',
             'tabela', 
             'kształt', 
             'html', 
@@ -140,6 +145,7 @@ import Expression from "./Expression";
 import ExpressionInline from "./ExpressionInline";
 import Canvas from "./Canvas/Canvas";
 import Example from "./Example";
+import Problem from "./Problem";
 import Formula from "./Formula";
 import Proof from "./Proof";
 import CustomElement from "./CustomElement";
@@ -171,6 +177,7 @@ export default class LessonEditor extends Vue {
   savePlugin: Save = new Save();
   showDraftsDialog = false;
   availableDrafts: DraftPreview[] = [];
+  shortMode = false;
 
   mounted() {
     this.createEditor();
@@ -207,20 +214,21 @@ export default class LessonEditor extends Vue {
         new TableRow(),
 
         new LessonDoc(),
-        new Title(),
+        new Title(this.shortMode),
         new Intro(),
         new Chapter(),
         new ChapterTitle(),
-        new ChapterBody(),
+        new ChapterBody(this.shortMode),
         new SemanticTag(),
         new Example(),
+        new Problem(),
         new Formula(),
         new Proof(),
         new CustomElement(),
         new BuiltInComponent(),
         new CustomListItem(),
-        new Expression(),
         new ExpressionInline(),
+        new Expression(),
         new Canvas(),
         new Placeholder({
           emptyNodeClass: 'empty',
@@ -247,6 +255,7 @@ export default class LessonEditor extends Vue {
       case 'rozdział': commands.createChapter(); break;
       case 'sekcja': commands.semantic_tag(); break;
       case 'przykład': commands.example(); break;
+      case 'problem': commands.problem(); break;
       case 'wyrażenie': commands.expression(); break;
       case 'wyrażenie inline': commands.expressionInline(); break;
       case 'twierdzenie': commands.formula(); break;
@@ -279,6 +288,13 @@ export default class LessonEditor extends Vue {
         <chapter-body></chapter-body>
       </chapter>
     `);
+  }
+
+  toggleShortMode() {
+    this.shortMode = !this.shortMode;
+    this.editor.destroy();
+    this.createEditor();
+    this.clearAll();
   }
 
   openDraftsDialog() {
@@ -322,11 +338,10 @@ export default class LessonEditor extends Vue {
   position: fixed;
   top: 0;
   width: 970px;
-  padding-top: 0px;
+  padding-top: 150px;
   transition: padding 1s;
   z-index: 3;
   background: white;
-
 }
 #editor {
   margin-top: 300px;
@@ -506,6 +521,10 @@ number {
   font-size: 120%;
 }
 
+problem {
+  display: block;
+}
+
 /*=== CONTENT - EDITOR SPECIFIC===*/
 #editor table[style]:not([class]) {
   margin: 0 auto;
@@ -549,6 +568,15 @@ number {
   float:left;
 }
 #editor h1.empty:first-child::before {
+  float: right;
+  text-align: center;
+  width: 100%;
+}
+#editor div[data-empty-text="Tytuł lekcji"].empty:first-child::before {
+  font-size: 3.2em;
+  font-weight: bold;
+  font-family: $secondary-font;
+  line-height: 1em;
   float: right;
   text-align: center;
   width: 100%;
