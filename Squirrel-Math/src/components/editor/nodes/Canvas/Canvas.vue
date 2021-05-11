@@ -25,7 +25,7 @@ import Rectangle from './Rectangle';
 import Triangle from './Triangle';
 import Circle from './Circle';
 import Line from './Line';
-import ColorPicker from '../ColorPicker.vue';
+import ColorPicker from '../../ColorPicker.vue';
 
 export default {
   components: { ColorPicker },

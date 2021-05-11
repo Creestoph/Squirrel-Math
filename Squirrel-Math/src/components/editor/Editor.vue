@@ -52,20 +52,25 @@
             1)
           </button>
 
-          <dropdown @selected="insert($event, commands)" :options="[
-            'rozdział', 
-            'sekcja', 
-            'wyrażenie', 
-            'wyrażenie inline', 
-            'twierdzenie', 
-            'dowód', 
-            'przykład', 
-            'problem',
-            'tabela', 
-            'kształt', 
-            'html', 
-            'element dynamiczny'
-          ]">wstaw</dropdown>
+          <button :class="{ 'active': isActive.link() }" @click="commands.link">
+            url
+          </button>
+
+          <dropdown @selected="insert($event, commands)">
+            <template v-slot:placeholder>wstaw</template>
+            <dropdown-option>rozdział</dropdown-option> 
+            <dropdown-option>sekcja</dropdown-option> 
+            <dropdown-option>wyrażenie</dropdown-option> 
+            <dropdown-option>wyrażenie inline</dropdown-option> 
+            <dropdown-option>twierdzenie</dropdown-option> 
+            <dropdown-option>dowód</dropdown-option> 
+            <dropdown-option>przykład</dropdown-option> 
+            <dropdown-option>problem</dropdown-option>
+            <dropdown-option>tabela</dropdown-option> 
+            <dropdown-option>kształt</dropdown-option> 
+            <dropdown-option>html</dropdown-option> 
+            <dropdown-option>element dynamiczny</dropdown-option>
+          </dropdown>
 
           <button :class="{ 'active': isActive.comment() }" @click="commands.comment">
             dodaj komentarz
@@ -128,38 +133,40 @@
 import { Component } from 'vue-property-decorator';
 import Vue from 'vue';
 import { Editor, EditorContent, EditorMenuBar } from 'tiptap'
-import { History, HardBreak, OrderedList, BulletList, Bold, Italic, Link, Strike, Underline, Image } from 'tiptap-extensions'
+import { History, HardBreak, OrderedList, BulletList, Bold, Italic, Strike, Underline, Image } from 'tiptap-extensions'
 
 import Lesson from "../lesson/Lesson.vue";
 import ColorPicker from "./ColorPicker.vue";
 import Dropdown from "./Dropdown.vue";
+import DropdownOption from "./DropdownOption.vue";
 
-import LessonDoc from "./Lesson";
-import Title from "./Title";
-import Intro from "./Intro";
-import Chapter from "./Chapter";
-import ChapterTitle from "./ChapterTitle";
-import ChapterBody from "./ChapterBody";
-import SemanticTag from "./SemanticTag";
-import Expression from "./Expression";
-import ExpressionInline from "./ExpressionInline";
-import Canvas from "./Canvas/Canvas";
-import Example from "./Example";
-import Problem from "./Problem";
-import Formula from "./Formula";
-import Proof from "./Proof";
-import CustomElement from "./CustomElement";
-import BuiltInComponent from "./BuiltInComponent";
-import CustomListItem from "./ListItem";
-import Placeholder from "./Placeholder";
-import Table from "./Table/Table";
-import TableHeader from "./Table/TableHeader";
-import TableCell from "./Table/TableCell";
-import TableRow from "./Table/TableRow";
-import Comment from "./Comment";
-import NumberMark from "./NumberMark";
-import Save, { DraftPreview } from "./DraftsManager/SaveExtension";
-import { allComments } from './Comment.vue';
+import LessonDoc from "./nodes/Lesson";
+import Title from "./nodes/Title";
+import Intro from "./nodes/Intro";
+import Chapter from "./nodes/Chapter";
+import ChapterTitle from "./nodes/ChapterTitle";
+import ChapterBody from "./nodes/ChapterBody";
+import SemanticTag from "./nodes/SemanticTag";
+import Expression from "./nodes/Expression";
+import ExpressionInline from "./nodes/ExpressionInline";
+import Canvas from "./nodes/Canvas/Canvas";
+import Example from "./nodes/Example";
+import Problem from "./nodes/Problem";
+import Formula from "./nodes/Formula";
+import Proof from "./nodes/Proof";
+import CustomElement from "./nodes/CustomElement";
+import BuiltInComponent from "./nodes/BuiltInComponent";
+import CustomListItem from "./nodes/ListItem";
+import Placeholder from "./extensions/Placeholder";
+import Table from "./nodes/Table/Table";
+import TableHeader from "./nodes/Table/TableHeader";
+import TableCell from "./nodes/Table/TableCell";
+import TableRow from "./nodes/Table/TableRow";
+import Link from "./marks/Link";
+import Comment from "./marks/Comment";
+import NumberMark from "./marks/NumberMark";
+import Save, { DraftPreview } from "./extensions/DraftsManager/SaveExtension";
+import { allComments } from './marks/Comment.vue';
 
 @Component({
   components: {
@@ -167,7 +174,8 @@ import { allComments } from './Comment.vue';
     EditorMenuBar,
     Lesson,
     ColorPicker,
-    Dropdown
+    Dropdown,
+    DropdownOption
   }
 })
 export default class LessonEditor extends Vue {
@@ -227,8 +235,8 @@ export default class LessonEditor extends Vue {
         new CustomElement(),
         new BuiltInComponent(),
         new CustomListItem(),
-        new ExpressionInline(),
         new Expression(),
+        new ExpressionInline(),
         new Canvas(),
         new Placeholder({
           emptyNodeClass: 'empty',
@@ -243,6 +251,7 @@ export default class LessonEditor extends Vue {
             return "Treść sekcji";
           }
         }),
+        new Link(),
         new Comment(),
         new NumberMark(),
         this.savePlugin
@@ -412,7 +421,7 @@ export default class LessonEditor extends Vue {
 .tools-specific button:hover {
   background: $darker-gray;
 }
-#editor ::selection {
+#editor table ::selection {
   color: inherit;
 }
 

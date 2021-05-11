@@ -1,12 +1,11 @@
 import { Node } from 'tiptap'
-import { nodeInputRule } from 'tiptap-commands'
-import ExpressionVue from './Expression.vue'
-import { nodePasteRule } from './tiptap-utils'
+import ExpressionInlineVue from './ExpressionInline.vue'
+import { nodeInputRule, nodePasteRule } from '../tiptap-utils'
 
-export default class Expression extends Node {
+export default class ExpressionInline extends Node {
 
   get name() {
-    return 'expression'
+    return 'expressionInline'
   }
 
   get schema() {
@@ -16,13 +15,13 @@ export default class Expression extends Node {
           default: ""
         }
       },
-      group: 'block',
-      draggable: true,
+      inline: true,
+      group: 'inline',
       parseDOM: [{
-        tag: 'expression',
+        tag: 'expression-inline',
         getAttrs: (dom: any) => ({ mathJax: dom.getAttribute('mathJax')})
       }],
-      toDOM: (node: any) => ['expression', { mathJax: node.attrs.mathJax }],
+      toDOM: (node: any) => ['expression-inline', { mathJax: node.attrs.mathJax }],
     }
   }
 
@@ -40,19 +39,25 @@ export default class Expression extends Node {
     }
   }
 
-  get view() {
-    return ExpressionVue;
+  keys({ type }: any) {
+    return {
+      'Alt-=': this.commands({ type })({})
+    };
   }
-  
+
+  get view() {
+    return ExpressionInlineVue;
+  }
+
   inputRules({ type }: any) {
     return [
-      nodeInputRule(/\$\$([^$]+)\$\$$/, type, (match: any) => ({ mathJax: match[1] }) ),
+      nodeInputRule(/(?:^|[^$])(\$([^$]+)\$)$/, type, (match: any) => ({ mathJax: match }))
     ]
   }
 
   pasteRules({ type }: any) {
     return [
-      nodePasteRule(/\$\$([^$]+)\$\$/g, type, (match: any) => ({ mathJax: match }))
+      nodePasteRule(/\$([^$]+)\$/g, type, (match: any) => ({ mathJax: match }))
     ]
   }
 }

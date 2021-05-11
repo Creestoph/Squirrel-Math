@@ -1,5 +1,5 @@
 <template>
-  <lesson content="demo_lesson"></lesson>
+  <lesson content="Demo"></lesson>
 </template>
 
 <script>

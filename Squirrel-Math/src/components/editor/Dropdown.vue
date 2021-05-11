@@ -1,21 +1,31 @@
 <template>
-    <button class="wrapper" @click="dropdownVisible = !dropdownVisible" @blur="dropdownVisible = false">
-        <slot></slot> 
-        <table class="dropdown" v-if="dropdownVisible">
-            <tr v-for="(option, i) in options" :key="i" @click="$emit('selected', option); $event.stopPropagation()">
-                <td>{{ option }}</td>
-            </tr>
-        </table>
+    <button class="wrapper" @click="dropdownVisible = !dropdownVisible">
+        <slot name="placeholder">{{selectedOption}}</slot> 
+        <div v-if="array" class="array-down"></div> 
+        <div class="dropdown" ref="dropdown" v-if="dropdownVisible" @click="select($event)">
+            <slot></slot>
+        </div>
     </button>
 </template>
 
 <script>
 export default {
     name: "Dropdown",
-    props: ["options"],
+    props: ["array"],
     data() {
         return {
+            selectedOption: ' ',
             dropdownVisible: false,
+        }
+    },
+    methods: {
+        select(event) {
+            this.dropdownVisible = false;
+            event.stopPropagation();
+            if (event.target != this.$refs.dropdown) {
+                this.selectedOption = event.target.innerHTML;
+                this.$emit('selected', this.selectedOption); 
+            }
         }
     }
 };
@@ -26,21 +36,25 @@ export default {
 
 .wrapper {
     position: relative;
+    text-align: left;
 }
 
 .dropdown {
     position: absolute;
     left: 0;
     top: 100%;
-    background: $gray;
+    z-index: 2;
+    max-height: 500px;
+    overflow-y: auto;
+    border: 1px solid $gray;
+}
 
-    td {
-        padding: 5px 10px;
-        white-space: nowrap;
-        text-align: left;
-        &:hover {     
-            background: $darker-gray;
-        }
-    }
+.array-down {
+    float: right;
+    width: 0; 
+    height: 0; 
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-top: 7px solid white;
 }
 </style>

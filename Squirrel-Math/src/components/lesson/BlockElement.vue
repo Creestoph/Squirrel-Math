@@ -27,6 +27,7 @@ import Example from "./Example.vue";
 import Formula from "./Formula.vue";
 import Expression from "./Expression.vue";
 import Geometry from "./geometry/Geometry.vue";
+import LessonLink from "./Link.vue";
 import BuiltInComponent from "./BuiltInComponent.vue";
 import CustomComponent from "./CustomComponent.vue";
 
@@ -43,6 +44,7 @@ interface SerializedNode {
         DefaultTable,
         TableCell,
         TableHeader,
+        LessonLink,
         SemanticTag,
         Proof,
         Example,
@@ -75,29 +77,30 @@ export default class BlockElement extends Vue {
             this.marks.filter(m => m.attrs).forEach(m => Object.assign(this.attrs, m.attrs));
     }
 
-    private typeToTag: {[type: string]: string} = {
-        paragraph: 'p',
-        bullet_list: 'ul',
-        ordered_list: 'ol',
-        list_item: 'li',
-        table: 'default-table',
-        table_row: 'tr',
-        table_header: 'table-header',
-        table_cell: 'table-cell',
-        semantic_tag: 'semantic-tag',
-        proof: 'proof',
-        example: 'example',
-        formula: 'formula',
-        expression: 'expression',
-        geometry: 'geometry',
-        component: 'built-in-component',
-        custom_element: 'custom-component',
-    }
-
     get tagName() {
         if (this.marks && this.marks.some(m => m.type == 'comment'))
             return 'comment';
-        return this.typeToTag[this.type] || 'div';
+        if (this.marks && this.marks.some(m => m.type == 'link'))
+            return 'lesson-link';
+        const typeToTag: { [type: string]: string } = {
+            paragraph: 'p',
+            bullet_list: 'ul',
+            ordered_list: 'ol',
+            list_item: 'li',
+            table: 'default-table',
+            table_row: 'tr',
+            table_header: 'table-header',
+            table_cell: 'table-cell',
+            semantic_tag: 'semantic-tag',
+            proof: 'proof',
+            example: 'example',
+            formula: 'formula',
+            expression: 'expression',
+            geometry: 'geometry',
+            component: 'built-in-component',
+            custom_element: 'custom-component',
+        };
+        return typeToTag[this.type] || 'div';
     }  
 }
 </script>

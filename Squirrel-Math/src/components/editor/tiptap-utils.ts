@@ -1,5 +1,5 @@
 import { Plugin } from 'prosemirror-state'
-import { Slice, Fragment } from 'prosemirror-model'
+import { Slice, Fragment, Node } from 'prosemirror-model'
 import { InputRule } from 'prosemirror-inputrules'
 
 export function nodeInputRule(regexp: RegExp, type: any, getAttrs: Function) {
@@ -31,22 +31,22 @@ export function nodeInputRule(regexp: RegExp, type: any, getAttrs: Function) {
 }
 
 export function nodePasteRule(regexp: RegExp, type: any, getAttrs: Function) {
-    const handler = (fragment: any, parent?: any) => {
-        const nodes: any = []
+    const handler = (fragment: Fragment, parent?: Node) => {
+        const nodes: Node[] = []
 
-        fragment.forEach((child: any) => {
+        fragment.forEach((child: Node) => {
             if (child.isText) {
                 const { text } = child
                 let pos = 0
                 let match
 
-                while ((match = regexp.exec(text)) !== null) {
-                    if (parent && parent.type.allowsMarkType(type) && match[1]) {
+                while ((match = regexp.exec(text!)) !== null) {
+                    if (match[1]) {
                         const start = match.index
                         const end = start + match[0].length
                         const attrs = getAttrs instanceof Function ? getAttrs(match[match.length - 1]) : getAttrs
 
-                        if (start > 0) {
+                        if (start > 0 && pos != start) {
                             nodes.push(child.cut(pos, start))
                         }
 
@@ -55,11 +55,32 @@ export function nodePasteRule(regexp: RegExp, type: any, getAttrs: Function) {
                     }
                 }
 
-                if (pos < text.length) {
+                if (pos < text!.length) {
                     nodes.push(child.cut(pos))
                 }
             } else {
-                nodes.push(child.copy(handler(child.content, child)))
+                if (child.content && child.content.size) {
+                    const transformedChild = handler(child.content, child);
+                    let inlineNodes: Node[] = [];
+                    transformedChild.forEach(node => {
+                        if (node.type.name !== 'expression') { //it sucks
+                            inlineNodes.push(node);
+                        }
+                        else {
+                            if (inlineNodes.length) {
+                                nodes.push(child.copy(Fragment.fromArray(inlineNodes)));
+                                inlineNodes = [];
+                            }
+                            nodes.push(node);
+                        }
+                    })
+                    if (inlineNodes.length) {
+                        nodes.push(child.copy(Fragment.fromArray(inlineNodes)));
+                    }
+                }
+                else {
+                    nodes.push(child);
+                }
             }
         })
 

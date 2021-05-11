@@ -1,6 +1,6 @@
 import { Node } from 'tiptap'
-import LessonTitle from '../lesson/LessonTitle.vue'
-import LessonTitleShort from '../lesson/LessonTitleShort.vue'
+import LessonTitle from '../../lesson/LessonTitle.vue'
+import LessonTitleShort from '../../lesson/LessonTitleShort.vue'
 
 export default class Title extends Node {
 

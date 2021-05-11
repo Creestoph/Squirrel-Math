@@ -4,7 +4,7 @@ import CommentVue from './Comment.vue'
 
 export default class Comment extends Mark {
 
-  static idCounter = 1;
+  private static idCounter = 1;
 
   get name() {
     return 'comment'

@@ -1,5 +1,5 @@
 import { Extension } from 'tiptap'
-import { allComments } from '../Comment.vue';
+import { allComments } from '../../marks/Comment.vue';
 import { LocalStorageSaver } from './LocalStorageManager';
 
 export interface DraftPreview {
