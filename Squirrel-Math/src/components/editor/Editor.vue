@@ -44,7 +44,11 @@
             abc
           </button>
 
-          <button class="menubar__button" :class="{ 'active': isActive.bullet_list() }" @click="commands.bullet_list">
+          <button :class="{ 'active': centerExtension.isActive }" @click="commands.center">
+            center
+          </button>
+
+          <button :class="{ 'active': isActive.bullet_list() }" @click="commands.bullet_list">
             ◆
           </button>
 
@@ -158,6 +162,8 @@ import CustomElement from "./nodes/CustomElement";
 import BuiltInComponent from "./nodes/BuiltInComponent";
 import CustomListItem from "./nodes/ListItem";
 import Placeholder from "./extensions/Placeholder";
+import Center from "./extensions/Center";
+import Paragraph from "./nodes/Paragraph";
 import Table from "./nodes/Table/Table";
 import TableHeader from "./nodes/Table/TableHeader";
 import TableCell from "./nodes/Table/TableCell";
@@ -183,6 +189,7 @@ export default class LessonEditor extends Vue {
   sourceFile: string = "";
   sourceContent: any = null;
   savePlugin: Save = new Save();
+  centerExtension: Center = new Center();
   showDraftsDialog = false;
   availableDrafts: DraftPreview[] = [];
   shortMode = false;
@@ -208,6 +215,8 @@ export default class LessonEditor extends Vue {
       extensions: [
         new History(),
         new HardBreak(),
+        new Expression(),
+        new ExpressionInline(),
         new BulletList(),
         new OrderedList(),
         new Link(),
@@ -215,12 +224,12 @@ export default class LessonEditor extends Vue {
         new Italic(),
         new Strike(),
         new Underline(),
+        this.centerExtension,
         new Image(),
         new Table({ resizable: true }),
         new TableHeader(),
         new TableCell(),
         new TableRow(),
-
         new LessonDoc(),
         new Title(this.shortMode),
         new Intro(),
@@ -228,6 +237,7 @@ export default class LessonEditor extends Vue {
         new ChapterTitle(),
         new ChapterBody(this.shortMode),
         new SemanticTag(),
+        new Paragraph(),
         new Example(),
         new Problem(),
         new Formula(),
@@ -235,8 +245,6 @@ export default class LessonEditor extends Vue {
         new CustomElement(),
         new BuiltInComponent(),
         new CustomListItem(),
-        new Expression(),
-        new ExpressionInline(),
         new Canvas(),
         new Placeholder({
           emptyNodeClass: 'empty',

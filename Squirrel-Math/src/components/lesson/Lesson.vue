@@ -1,10 +1,7 @@
 <template>
   <div>
     <div id="whole">
-      <div
-        ref="lesson"
-        class="lesson"
-      >
+      <div ref="lesson" class="lesson">
         <lesson-version-button 
           v-if="routeShortVersion && routeLongVersion" 
           :route-long-version="routeLongVersion" 
@@ -72,7 +69,7 @@ export default class Lesson extends Vue {
     this.expandLesson();
     window.addEventListener("scroll", this.moveExpandButton);
     this.setContent();
-    // MathJax.Hub.Queue(["Typeset", MathJax.Hub]);/
+    // MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
   }
   destroyed() {
     window.removeEventListener("scroll", this.moveExpandButton);

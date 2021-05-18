@@ -1,5 +1,5 @@
 <template>
-  <canvas ref="canvas" width="800" height="500" class="geometry"></canvas>
+  <canvas ref="canvas" :width="attrs.canvas.width" :height="attrs.canvas.height" class="geometry"></canvas>
 </template>
 
 <script>

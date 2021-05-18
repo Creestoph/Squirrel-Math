@@ -15,7 +15,7 @@ import {Display_table} from "../../utils/columnar_operation_table/display_table.
         mounted(){
             this.display_table = Display_table.create_from_table(this.operation, this.numbers);
             this.display_table.print(this.$refs.main);
-            MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+            // MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
         }
     }
 </script>

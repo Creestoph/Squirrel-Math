@@ -101,7 +101,7 @@
 	</p>
 
 	<p>
-		Potrzebujemy klocków. Dużo klocków. Potęgowanie może być dobrą zabawą, a żeby tego dowieźć 
+		Potrzebujemy klocków. Dużo klocków. Potęgowanie może być dobrą zabawą, a żeby tego dowieść 
 		ustawimy klocki jeden obok drugiego, wzdłuż linii:
 	</p>
 

@@ -1,6 +1,6 @@
 <template>
-  <button ref="geometryEditor" class="geometry-editor" @blur="onBlur($event)">
-    <div class="geometry-toolbar">
+  <button ref="geometryEditor" class="geometry-editor" @focus="focused = true" @blur="onBlur($event)">
+    <div v-if="focused" class="geometry-toolbar">
       <button @mousedown="addSquare($event)">kwadrat</button>
       <button @mousedown="addTriangle($event)">trójkąt</button>
       <button @mousedown="addCircle($event)">koło</button>
@@ -14,7 +14,9 @@
         <span v-if="selectedRectangle() || selectedCircle()">wysokość <input type="number" v-model="selectedShapes[0].height"></span>
       </template>
     </div>
-    <canvas ref="canvas" width="800" height="500"></canvas>
+    <div class="canvas-wrapper" ref="canvasWrapper">
+      <canvas ref="canvas" width="800" height="500" resize="true"></canvas>
+    </div>
   </button>
 </template>
 
@@ -27,6 +29,8 @@ import Circle from './Circle';
 import Line from './Line';
 import ColorPicker from '../../ColorPicker.vue';
 
+let copiedShapes = null;
+
 export default {
   components: { ColorPicker },
   props: ["node", "updateAttrs", "view"],
@@ -36,12 +40,13 @@ export default {
       selectedShapes: [],
       canvasShapes: [],
       snapPoints: [],
-      copiedShapes: null,
       dragStartPoint: null,
       shapeDragged: null,
       shapeDragStartPosition: null,
       selectionBox: null,
-      selectionBoxAnchor: null
+      selectionBoxAnchor: null,
+      focused: false,
+      resizeObserver: null
     }
   },
   computed: {
@@ -51,6 +56,14 @@ export default {
       },
       set(shapes) {
         this.updateAttrs({ shapes });
+      }
+    },
+    canvas: {
+      get() {
+        return this.node.attrs.canvas;
+      },
+      set(canvas) {
+        this.updateAttrs({ canvas });
       }
     },
     fillColor: {
@@ -73,6 +86,12 @@ export default {
           case 'line': this.canvasShapes.push(new Line(shape)); break;
         }
       })
+    if (this.canvas) {      
+      this.$refs.canvas.width = this.canvas.width;
+      this.$refs.canvas.height = this.canvas.height;
+      this.$refs.canvasWrapper.style.width = this.canvas.width + 'px';
+      this.$refs.canvasWrapper.style.height = this.canvas.height + 'px';
+    }
 
     const hitOptions = {
       segments: true,
@@ -80,6 +99,11 @@ export default {
       fill: true,
       tolerance: 5
     };
+
+    this.resizeObserver = new ResizeObserver(() => {
+      this.paperScope.view.setViewSize(new paper.Size(this.$refs.canvas.offsetWidth, this.$refs.canvas.offsetHeight));
+    });
+    this.resizeObserver.observe(this.$refs.canvas)
 
     this.paperScope.tool.onMouseMove = (event) => {
       this.$refs.canvas.style.cursor = "default";
@@ -186,12 +210,12 @@ export default {
         else if (event.key == 'escape')
           this.onBlur();
         else if (event.key == 'c' && event.modifiers.control)
-          this.copiedShapes = this.selectedShapes;
+          copiedShapes = this.selectedShapes;
         event.preventDefault();
       }
-      if (event.key == 'v' && event.modifiers.control && this.copiedShapes) {
+      if (event.key == 'v' && event.modifiers.control && copiedShapes) {
         this.deselectAll();
-        this.copiedShapes.forEach(copied => {
+        copiedShapes.forEach(copied => {
           let cloned = copied.clone();
           cloned.move(new paper.Point(40, 40));
           this.canvasShapes.push(cloned);
@@ -205,6 +229,9 @@ export default {
         event.preventDefault();
       }
     }
+  },
+  destroyed() {
+    this.resizeObserver.disconnect();
   },
   methods: {
     addShape(createShape, event) {
@@ -266,13 +293,16 @@ export default {
     recalculateSnapPoints() {
       this.snapPoints = this.canvasShapes.filter(s => !this.selectedShapes.includes(s)).flatMap(shape => shape.getSnapPoints());
     },
-    saveShapes() {
+    save() {
       this.shapes = this.canvasShapes.map(shape => shape.toJSON());
+      this.canvas = { width: this.$refs.canvas.offsetWidth, height: this.$refs.canvas.offsetHeight };
     },
     onBlur(event) {
-      if (!event || !this.$refs.geometryEditor.contains(event.relatedTarget)) 
+      if (!event || !this.$refs.geometryEditor.contains(event.relatedTarget)) {
+        this.focused = false;
         this.deselectAll();
-      this.saveShapes();
+      }
+      this.save();
     }
   }
 };
@@ -288,24 +318,29 @@ export default {
   background: none;
   position: relative;
   cursor: initial;
+}
+
+.canvas-wrapper {
+  border: 2px $gray dashed;
+  resize: both;
+  overflow: hidden;
 
   canvas {
-    display: block;
-    border: 2px $gray dashed;
+    width: 100%;
+    height: 100%;
   }
 }
 
-.geometry-editor:hover canvas {
+.canvas-wrapper:hover {
   border: 2px $darker-gray dashed;
 }
 
-.geometry-editor:focus canvas {
+.canvas-wrapper:focus {
   border: 2px black dashed;
 }
 
 .geometry-toolbar {
   width: 100%;
-  display: none;
   position: absolute;
   top: -47px;
   background: $light-gray;
@@ -323,10 +358,6 @@ export default {
   > *:hover {
     background: $gray;
   }
-}
-
-.geometry-editor:focus .geometry-toolbar {
-  display: block;
 }
 
 .color-picker-wrapper {

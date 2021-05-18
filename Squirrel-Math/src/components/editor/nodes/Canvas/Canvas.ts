@@ -12,15 +12,21 @@ export default class Canvas extends Node {
       attrs: {
         shapes: {
           default: undefined
+        },
+        canvas: {
+          default: {
+            width: 800,
+            height: 500
+          }
         }
       },
       group: 'block',
       draggable: true,
       parseDOM: [{
         tag: 'geometry',
-        getAttrs: (dom: any) => ({ shapes: JSON.parse(dom.getAttribute('shapes')) })
+        getAttrs: (dom: any) => ({ shapes: JSON.parse(dom.getAttribute('shapes')), canvas: JSON.parse(dom.getAttribute('canvas')) })
       }],
-      toDOM: (node: any) => ['geometry', { shapes: JSON.stringify(node.attrs.shapes) }]
+      toDOM: (node: any) => ['geometry', { shapes: JSON.stringify(node.attrs.shapes), canvas: JSON.stringify(node.attrs.canvas) }]
     }
   }
 

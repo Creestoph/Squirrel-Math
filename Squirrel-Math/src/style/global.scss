@@ -401,7 +401,7 @@ p.optional-show:hover ~ div
 	text-align: center;
 }
 
-.formula
+.formula, .formula>p:only-child
 {
 	display: block;
 	text-align: center !important;
