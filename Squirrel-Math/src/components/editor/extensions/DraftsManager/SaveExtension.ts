@@ -1,6 +1,7 @@
 import { Extension } from 'tiptap'
 import { allComments } from '../../marks/Comment.vue';
 import { LocalStorageSaver } from './LocalStorageManager';
+import ImagePicker from '../../ImagePicker.vue';
 
 export interface DraftPreview {
     name: string;
@@ -63,9 +64,17 @@ export default class Save extends Extension {
     }
 
     loadFromJSON(json: any) {
-        Object.entries(json.comments).forEach(([id, comment]: any) => {
-          (allComments as any)[id] = { text: comment.text, hidden: comment.hidden, displayedInComponent: null }
-        })
+        if (json.comments)
+            Object.entries(json.comments).forEach(([id, comment]: any) => {
+            (allComments as any)[id] = { text: comment.text, hidden: comment.hidden, displayedInComponent: null }
+            })
+
+        ImagePicker.lessonImages = {};
+        if (json.images)
+            Object.entries(json.images).forEach(([key, image]: any) => {
+                (ImagePicker.lessonImages as any)[key] = { ...image, key, scoped: true };
+            })
+
         this.editor.setContent(json);
     }
 
@@ -76,8 +85,14 @@ export default class Save extends Extension {
 
     private getLessonJSON() {
         const lessonJSON = this.editor.getJSON();
-        lessonJSON.comments = {};
+        
+        if (Object.entries(allComments).length > 0)
+            lessonJSON.comments = {};
         Object.entries(allComments).forEach(([id, comment]: any) => lessonJSON.comments[id] = { text: comment.text, hidden: comment.hidden });
+
+        if (Object.entries(ImagePicker.lessonImages).length > 0)
+            lessonJSON.images = {};
+        Object.entries(ImagePicker.lessonImages).forEach(([key, image]: any) => lessonJSON.images[key] = { src: image.src, name: image.name });
         return lessonJSON;
     }
 

@@ -71,7 +71,8 @@
             <dropdown-option>przykład</dropdown-option> 
             <dropdown-option>problem</dropdown-option>
             <dropdown-option>tabela</dropdown-option> 
-            <dropdown-option>kształt</dropdown-option> 
+            <dropdown-option>obraz</dropdown-option> 
+            <dropdown-option>kształt geomeryczny</dropdown-option> 
             <dropdown-option>html</dropdown-option> 
             <dropdown-option>element dynamiczny</dropdown-option>
           </dropdown>
@@ -130,6 +131,9 @@
         </div>
       </div>
     </div>
+
+    <image-picker ref="imagePicker"></image-picker>
+
   </lesson>
 </template>
 
@@ -137,12 +141,13 @@
 import { Component } from 'vue-property-decorator';
 import Vue from 'vue';
 import { Editor, EditorContent, EditorMenuBar } from 'tiptap'
-import { History, HardBreak, OrderedList, BulletList, Bold, Italic, Strike, Underline, Image } from 'tiptap-extensions'
+import { History, HardBreak, OrderedList, BulletList, Bold, Italic, Strike, Underline } from 'tiptap-extensions'
 
 import Lesson from "../lesson/Lesson.vue";
 import ColorPicker from "./ColorPicker.vue";
 import Dropdown from "./Dropdown.vue";
 import DropdownOption from "./DropdownOption.vue";
+import ImagePicker, { Image } from "./ImagePicker.vue";
 
 import LessonDoc from "./nodes/Lesson";
 import Title from "./nodes/Title";
@@ -164,6 +169,7 @@ import CustomListItem from "./nodes/ListItem";
 import Placeholder from "./extensions/Placeholder";
 import Center from "./extensions/Center";
 import Paragraph from "./nodes/Paragraph";
+import ImageNode from "./nodes/Image";
 import Table from "./nodes/Table/Table";
 import TableHeader from "./nodes/Table/TableHeader";
 import TableCell from "./nodes/Table/TableCell";
@@ -181,18 +187,21 @@ import { allComments } from './marks/Comment.vue';
     Lesson,
     ColorPicker,
     Dropdown,
-    DropdownOption
+    DropdownOption,
+    ImagePicker
   }
 })
 export default class LessonEditor extends Vue {
   editor: any = null;
   sourceFile: string = "";
   sourceContent: any = null;
-  savePlugin: Save = new Save();
+  shortMode = false;
+
   centerExtension: Center = new Center();
+
+  savePlugin: Save = new Save();
   showDraftsDialog = false;
   availableDrafts: DraftPreview[] = [];
-  shortMode = false;
 
   mounted() {
     this.createEditor();
@@ -225,7 +234,7 @@ export default class LessonEditor extends Vue {
         new Strike(),
         new Underline(),
         this.centerExtension,
-        new Image(),
+        new ImageNode(),
         new Table({ resizable: true }),
         new TableHeader(),
         new TableCell(),
@@ -278,6 +287,7 @@ export default class LessonEditor extends Vue {
       case 'twierdzenie': commands.formula(); break;
       case 'dowód': commands.proof(); break;
       case 'tabela': commands.createTable({ rowsCount: 3, colsCount: 3, withHeaderRow: true }); break;
+      case 'obraz': (this.$refs.imagePicker as ImagePicker).open((image: Image) => commands.image(image)); break;
       case 'kształt': commands.geometry(); break;
       case 'html': commands.custom_element(); break;
       case 'element dynamiczny': commands.component(); break;
@@ -522,8 +532,7 @@ export default class LessonEditor extends Vue {
 
 
 /*=== CONTENT - GENERAL===*/
-#editor img 
-{
+#editor img  {
   display: block;
   margin: 20px auto;
   max-width: 100%;
@@ -531,6 +540,10 @@ export default class LessonEditor extends Vue {
   &.ProseMirror-selectednode {
     outline: 2px solid black;
   }
+}
+
+#editor table img {
+  margin: 0;
 }
 
 number {

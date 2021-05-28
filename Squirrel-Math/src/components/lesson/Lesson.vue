@@ -40,6 +40,7 @@ import LessonVersionButton from "./LessonVersionButton.vue";
 import LessonChapter from "./chapter/LessonChapter.vue";
 import BlockElement from "./BlockElement.vue";
 import Comment from './Comment.vue';
+import Graphics from './Graphics.vue';
 declare var MathJax:any
 
 @Component({
@@ -69,7 +70,7 @@ export default class Lesson extends Vue {
     this.expandLesson();
     window.addEventListener("scroll", this.moveExpandButton);
     this.setContent();
-    // MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
   }
   destroyed() {
     window.removeEventListener("scroll", this.moveExpandButton);
@@ -82,6 +83,7 @@ export default class Lesson extends Vue {
         this.introElements = json.content[1].content;
         this.chapters = json.content.filter((item: any, position: any) => position > 1).map((item: any) => item.content);
         Comment.allComments = json.comments;
+        Graphics.lessonImages = json.images;
       })
     }
   }

@@ -18,6 +18,7 @@
 <script lang="ts">
 import { Component, Prop } from 'vue-property-decorator';
 import Vue from 'vue';
+import Graphics from "./Graphics.vue";
 import DefaultTable from "./DefaultTable.vue";
 import TableCell from "./TableCell.vue";
 import TableHeader from "./TableHeader.vue";
@@ -41,6 +42,7 @@ interface SerializedNode {
 
 @Component({
     components: {
+        Graphics,
         DefaultTable,
         TableCell,
         TableHeader,
@@ -87,6 +89,7 @@ export default class BlockElement extends Vue {
             bullet_list: 'ul',
             ordered_list: 'ol',
             list_item: 'li',
+            image: 'graphics',
             table: 'default-table',
             table_row: 'tr',
             table_header: 'table-header',
