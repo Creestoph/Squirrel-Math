@@ -72,7 +72,7 @@
             <dropdown-option>problem</dropdown-option>
             <dropdown-option>tabela</dropdown-option> 
             <dropdown-option>obraz</dropdown-option> 
-            <dropdown-option>kształt geomeryczny</dropdown-option> 
+            <dropdown-option>kształt geometryczny</dropdown-option> 
             <dropdown-option>html</dropdown-option> 
             <dropdown-option>element dynamiczny</dropdown-option>
           </dropdown>
@@ -132,7 +132,7 @@
       </div>
     </div>
 
-    <image-picker ref="imagePicker"></image-picker>
+    <image-picker ref="imagePicker" @deleteImage="deleteImage($event)"></image-picker>
 
   </lesson>
 </template>
@@ -288,7 +288,7 @@ export default class LessonEditor extends Vue {
       case 'dowód': commands.proof(); break;
       case 'tabela': commands.createTable({ rowsCount: 3, colsCount: 3, withHeaderRow: true }); break;
       case 'obraz': (this.$refs.imagePicker as ImagePicker).open((image: Image) => commands.image(image)); break;
-      case 'kształt': commands.geometry(); break;
+      case 'kształt geometryczny': commands.geometry(); break;
       case 'html': commands.custom_element(); break;
       case 'element dynamiczny': commands.component(); break;
     }
@@ -341,6 +341,22 @@ export default class LessonEditor extends Vue {
   deleteDraft(draft: DraftPreview) {
     this.savePlugin.deleteDraft(draft);
     this.availableDrafts = this.savePlugin.draftsList();
+  }
+
+  deleteImage(image: Image) {
+    let imageExistsInContent = false;
+    this.editor.state.doc.content.descendants((child: any) => {
+      if (child.type.name == 'image' && child.attrs.key == image.key) {
+        imageExistsInContent = true;
+        return false;
+      }
+    })
+    if (imageExistsInContent) {
+      alert("Obraz jest używany w zawartości lekcji. Najpierw usuń jego wystąpienia.");
+    }
+    else {
+      (this.$refs.imagePicker as ImagePicker).deleteImage(image);
+    }
   }
 
   scrollToolbar() {

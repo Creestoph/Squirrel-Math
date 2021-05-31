@@ -22,8 +22,6 @@ export default class Image extends Node {
     return {
       attrs: {
         key: {},
-        name: { default: null },
-        scoped: { default: false }
       },
       group: 'block',
       draggable: true,
@@ -33,20 +31,19 @@ export default class Image extends Node {
           getAttrs: (dom: any) => {
             const key = dom.getAttribute('key');
             if (key) 
-              return { key, name: dom.getAttribute('name'), scoped: dom.getAttribute('scoped') }
+              return { key }
             else {
-              const key = prompt('Nazwa obrazu:');
+              const key = prompt('Nazwa obrazu:') || 'unnamed';
               const image = { src: dom.getAttribute('src'), key, name: key, scoped: true };
               ImagePicker.lessonImages[key] = image;
-              console.log('new', image);
-              return image;
+              return { key };
             }
           }
         },
       ],
       toDOM: (node: any) => {
-        const src = ImagePicker.srcOf(node.attrs.key, node.attrs.scoped);
-        return ['img', {...node.attrs, src, alt: node.attrs.name, title: node.attrs.name}]
+        const image = ImagePicker.getImage(node.attrs.key);
+        return ['img', { key: node.key, src: image.src, alt: image.name }];
       },
     }
   }
@@ -64,11 +61,8 @@ export default class Image extends Node {
   inputRules({ type }: any) {
     return [
       nodeInputRule(IMAGE_INPUT_REGEX, type, (match: any) => {
-        const [, key, name] = match
-        return {
-          key,
-          name,
-        }
+        const [, key] = match
+        return { key }
       }),
     ]
   }
@@ -111,9 +105,9 @@ export default class Image extends Node {
                     const image = { src, key: name, name, scoped: true };
                     ImagePicker.lessonImages[name] = image;
   
-                    const node = schema.nodes.image.create(image)
-                    const transaction = view.state.tr.insert(coordinates.pos, node)
-                    view.dispatch(transaction)
+                    const node = schema.nodes.image.create({ key: name });
+                    const transaction = view.state.tr.insert(coordinates.pos, node);
+                    view.dispatch(transaction);
                   }
                 }
                 reader.readAsDataURL(image)

@@ -3,17 +3,15 @@ import { mainRedColor } from "./Colors";
 import { Shape } from "./Shape";
 
 export interface TriangleAttributes {
-  type: 'triangle',
-  vertices: {x: number, y: number}[],
-  color: string,
-  hasBorder: boolean
+  type?: 'triangle',
+  vertices?: {x: number, y: number}[],
+  color?: string,
+  hasBorder?: boolean
 }
 
 export default class Triangle extends Shape {
   private triangle;
   private movedShape: paper.Item | null = null;
-  private dragStartPoint: paper.Point | null = null;
-  private triangleDragStartPoint: paper.Point | null = null;
 
   private all;
   private grips;
@@ -43,12 +41,22 @@ export default class Triangle extends Shape {
     return this.triangle.position!;
   }
 
+  static createEquilateral(center?: { x: number, y: number }, size?: number) {
+    if (!size) 
+      size = 100;
+    const radius = size*Math.sqrt(3) / 3;
+    if (!center) 
+      center = { x: size / 2, y: radius };
+    const vertices = new paper.Path.RegularPolygon(new paper.Point(center.x, center.y), 3, radius).segments!.map(s => ({ x: s.point!.x!, y: s.point!.y! }));
+    return new Triangle({ vertices });
+  }
+
   constructor(attrs?: TriangleAttributes) {
     super();
-    if (attrs)
+    if (attrs && attrs.vertices)
       this.triangle = new paper.Path(attrs.vertices.map(v => [v.x, v.y]));
     else
-      this.triangle = new paper.Path.RegularPolygon(new paper.Point(800 / 2, 500 / 2), 3, 57.74);
+      this.triangle = new paper.Path.RegularPolygon(new paper.Point(50, 57.74), 3, 57.74);
 
     let grip = new paper.Path.Circle(new paper.Point(0, 0), 6);
     grip.style!.strokeWidth = 0;
@@ -63,8 +71,8 @@ export default class Triangle extends Shape {
     this.all = new paper.Group([this.triangle, this.grips]);
     this.grips.visible = false;
 
-    this.fillColor = attrs ? attrs.color : mainRedColor;
-    this.hasBorder = attrs ? attrs.hasBorder : false;
+    this.fillColor = attrs && attrs.color ? attrs.color : mainRedColor;
+    this.hasBorder = attrs && attrs.hasBorder ? attrs.hasBorder : false;
   }
 
   toJSON(): TriangleAttributes {
@@ -102,8 +110,6 @@ export default class Triangle extends Shape {
   }
 
   onMouseDown(event: paper.MouseEvent, hitResult: paper.HitResult): boolean {
-    this.dragStartPoint = event.point;
-    this.triangleDragStartPoint = this.triangle.position;
     if (!hitResult)
       return false;
     if (this.triangle == hitResult.item)

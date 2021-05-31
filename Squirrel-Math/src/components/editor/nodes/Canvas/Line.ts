@@ -48,9 +48,9 @@ export default class Line extends Shape {
     this.all = new paper.Group([this.line, this.grips]);
     this.grips.visible = false;
 
-    this.fillColor = attrs ? attrs.color : mainRedColor;
+    this.fillColor = attrs && attrs.color ? attrs.color : mainRedColor;
 
-    if (attrs)
+    if (attrs && attrs.points)
       attrs.points.forEach(p => this.addPoint(new paper.Point(p)));
   }
 

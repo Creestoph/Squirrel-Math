@@ -1,7 +1,7 @@
 import paper from "paper";
 
 export interface ShapeAttributes {
-    type: string;
+    type?: string;
 }
 
 export abstract class Shape {

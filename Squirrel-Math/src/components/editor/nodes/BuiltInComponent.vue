@@ -22,7 +22,7 @@
               <input v-if="parameterSchema.type.name == 'BOOLEAN'" :required="parameterSchema.required" type="checkbox" v-model="formArgs[i]">
               <input v-if="parameterSchema.type.name == 'FUNCTION'" :required="parameterSchema.required" type="function" v-model="formArgs[i]" @paste.stop>
               <div v-if="parameterSchema.type.name == 'ARRAY'">
-                <input v-for="(arg, j) in formArgs[i]" :key="j" :required="parameterSchema.required && j == 0" v-model="formArgs[i][j]" @paste.stop>
+                <input v-for="(arg, j) in formArgs[i]" :key="j" :required="parameterSchema.required && j == 0" type="array" v-model="formArgs[i][j]" @paste.stop>
                 <button @click="addElementForArrayParameter(i)" class="array-parameter-button">+ element</button>
                 <button @click="removeElementForArrayParameter(i)" class="array-parameter-button">- element</button>
               </div>
@@ -212,12 +212,16 @@ label {
   display: flex;
   align-items: center;
   width: 70%;
+  > div {
+    width: 100%;
+  }
 }
 input {
   border-radius: 0;
   height: 22px;
   color: $half-gray;
-  width: 100%;
+  width: 80%;
+  display: block;
 }
 input[type="number"] {
   width: 40px;

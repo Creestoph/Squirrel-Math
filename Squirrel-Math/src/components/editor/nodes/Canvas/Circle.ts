@@ -78,8 +78,8 @@ export default class Circle extends Shape {
   constructor(attrs?: CircleAttributes) {
     super();
 
-    let center = attrs ? new paper.Point(attrs.center.x, attrs.center.y) : new paper.Point(800/2, 500/2);
-    let size = attrs ? new paper.Size(attrs.size.width, attrs.size.height) : new paper.Size(100, 100);
+    let center = attrs && attrs.center ? new paper.Point(attrs.center.x, attrs.center.y) : new paper.Point(50, 50);
+    let size = attrs && attrs.size ? new paper.Size(attrs.size.width, attrs.size.height) : new paper.Size(100, 100);
 
     this.circle = new paper.Shape.Ellipse(new paper.Rectangle(center.add(new paper.Point(-size.width! / 2, -size.height! / 2)), size));
 
@@ -100,8 +100,8 @@ export default class Circle extends Shape {
     this.all = new paper.Group([this.circle, this.grips]);
     this.grips.visible = false;
 
-    this.fillColor = attrs ? attrs.color : mainRedColor;
-    this.hasBorder = attrs ? attrs.hasBorder : false;
+    this.fillColor = attrs && attrs.color ? attrs.color : mainRedColor;
+    this.hasBorder = attrs && attrs.hasBorder ? attrs.hasBorder : false;
   }
 
   toJSON(): CircleAttributes {

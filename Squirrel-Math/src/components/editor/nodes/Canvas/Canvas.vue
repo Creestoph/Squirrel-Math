@@ -1,18 +1,20 @@
 <template>
   <button ref="geometryEditor" class="geometry-editor" @focus="focused = true" @blur="onBlur($event)">
-    <div v-if="focused" class="geometry-toolbar">
-      <button @mousedown="addSquare($event)">kwadrat</button>
-      <button @mousedown="addTriangle($event)">trójkąt</button>
-      <button @mousedown="addCircle($event)">koło</button>
-      <button @mousedown="addLine($event)">linia</button>
-      <template v-if="selectedShapes.length">
-        <color-picker :color="fillColor" @mousedown.native="$event.preventDefault()" @selected="setFillColor($event)">wypełnienie</color-picker>
-        <button v-if="canAnyHaveBorder(selectedShapes)" @mousedown="toggleBorder($event)">
-          <input type="checkbox" :checked="allSelectedHaveBorder()"> obrys
-        </button>
-        <span v-if="selectedRectangle() || selectedCircle()">szerokość <input type="number" v-model="selectedShapes[0].width"></span>
-        <span v-if="selectedRectangle() || selectedCircle()">wysokość <input type="number" v-model="selectedShapes[0].height"></span>
-      </template>
+    <div v-if="focused" class="geometry-toolbar-wrapper">
+      <div class="geometry-toolbar">
+        <button @mousedown="addSquare($event)">kwadrat</button>
+        <button @mousedown="addTriangle($event)">trójkąt</button>
+        <button @mousedown="addCircle($event)">koło</button>
+        <button @mousedown="addLine($event)">linia</button>
+        <template v-if="selectedShapes.length">
+          <color-picker :color="fillColor" @mousedown.native="$event.preventDefault()" @selected="setFillColor($event)">wypełnienie</color-picker>
+          <button v-if="canAnyHaveBorder(selectedShapes)" @mousedown="toggleBorder($event)">
+            <input type="checkbox" :checked="allSelectedHaveBorder()"> obrys
+          </button>
+          <span v-if="selectedRectangle() || selectedCircle()">szerokość <input type="number" v-model="selectedShapes[0].width"></span>
+          <span v-if="selectedRectangle() || selectedCircle()">wysokość <input type="number" v-model="selectedShapes[0].height"></span>
+        </template>
+      </div>
     </div>
     <div class="canvas-wrapper" ref="canvasWrapper">
       <canvas ref="canvas" width="800" height="500" resize="true"></canvas>
@@ -102,6 +104,7 @@ export default {
 
     this.resizeObserver = new ResizeObserver(() => {
       this.paperScope.view.setViewSize(new paper.Size(this.$refs.canvas.offsetWidth, this.$refs.canvas.offsetHeight));
+      this.canvas = { width: this.$refs.canvas.offsetWidth, height: this.$refs.canvas.offsetHeight };
     });
     this.resizeObserver.observe(this.$refs.canvas)
 
@@ -243,13 +246,13 @@ export default {
       event.preventDefault();
     },
     addSquare(event) {
-      this.addShape(() => new Rectangle(), event);
+      this.addShape(() => new Rectangle({ center: { x: this.canvas.width / 2, y: this.canvas.height / 2 }}), event);
     },
     addTriangle(event) {
-      this.addShape(() => new Triangle(), event);
+      this.addShape(() => Triangle.createEquilateral({ x: this.canvas.width / 2, y: this.canvas.height / 2 }), event);
     },
     addCircle(event) {
-      this.addShape(() => new Circle(), event);
+      this.addShape(() => new Circle({ center: { x: this.canvas.width / 2, y: this.canvas.height / 2 }}), event);
     },
     addLine(event) {
       this.addShape(() => new Line(), event);
@@ -298,9 +301,12 @@ export default {
       this.canvas = { width: this.$refs.canvas.offsetWidth, height: this.$refs.canvas.offsetHeight };
     },
     onBlur(event) {
-      if (!event || !this.$refs.geometryEditor.contains(event.relatedTarget)) {
-        this.focused = false;
+      if (!event) {
         this.deselectAll();
+      }
+      else if (!this.$refs.geometryEditor.contains(event.relatedTarget)) {
+        this.deselectAll();
+        this.focused = false;
       }
       this.save();
     }
@@ -339,12 +345,16 @@ export default {
   border: 2px black dashed;
 }
 
-.geometry-toolbar {
+.geometry-toolbar-wrapper {
   width: 100%;
+  height: 0;
   position: absolute;
-  top: -47px;
-  background: $light-gray;
+}
 
+.geometry-toolbar {
+  background: $light-gray;
+  overflow: auto;
+  transform: translateY(-100%);
   > * {
     padding: 0 10px;
     height: 47px;

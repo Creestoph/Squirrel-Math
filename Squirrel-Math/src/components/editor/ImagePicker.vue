@@ -7,15 +7,28 @@
         <div class="drafts-dialog-body">
             <span class="caption">Baza Squirrel-Math</span>
             <div class="images-gallery">
-                <button v-for="(image, i) in globalImages" :key="i" @click="choose(image)">
-                    <img :title="image.name" :alt="image.name" :src="image.src">
-                </button>
+                <button v-if="globalScrollable" @click="scrollGlobalLeft()">🢐</button>
+                <div class="images-row">
+                    <div ref="globalImagesRow">
+                        <button v-for="(image, i) in globalImages" :key="i" @click="choose(image)">
+                            <img :title="image.name" :alt="image.name" :src="image.src">
+                        </button>
+                    </div>
+                </div>
+                <button v-if="globalScrollable" @click="scrollGlobalLeft()">🢒</button>
             </div>
             <span class="caption">Obrazy w obrębie lekcji</span>
             <div class="images-gallery">
-                <button v-for="(image, i) in lessonImages" :key="i" @click="choose(image)">
-                    <img :title="image.name" :alt="image.name" :src="image.src">
-                </button>
+                <button v-if="localScrollable" @click="scrollLocalLeft()">🢐</button>
+                <div class="images-row">
+                    <div ref="localImagesRow">
+                        <button v-for="(image, i) in lessonImages" :key="i">
+                            <button class="delete-image" @click="onDeleteImage(image); $event.preventDefault()">✖</button>
+                            <img :title="image.name" :alt="image.name" :src="image.src" @click="choose(image)">
+                        </button>
+                    </div>
+                </div>
+                <button v-if="localScrollable" @click="scrollLocalRight()">🢒</button>
             </div>
             <label>
                 Dodaj nowy
@@ -38,22 +51,21 @@ export interface Image {
 
 @Component
 export default class ImagePicker extends Vue {    
-    static globalImages: Image[] = [];
+    static globalImages: { [key: string]: Image } = {};
     static lessonImages: { [key: string]: Image } = {};
 
     visible = false;
-    get globalImages() {
-        return ImagePicker.globalImages;
-    }
-
-    get lessonImages() {
-        return ImagePicker.lessonImages;
-    }
+    globalImages: { [key: string]: Image } = {};
+    lessonImages: { [key: string]: Image } = {};
 
     private onChoose?: (image: Image) => void;
+    private globalImagesScroll = 0;
+    private lessonImagesScroll = 0;
+    globalScrollable = false;
+    localScrollable = false;
 
-    static srcOf(key: string, scoped: boolean): string {
-        return scoped ? ImagePicker.lessonImages[key].src : require(`@/assets/global-images/${key}`);
+    static getImage(key: string): Image {
+        return ImagePicker.lessonImages[key] || ImagePicker.globalImages[key];
     }
 
     constructor() {
@@ -62,12 +74,18 @@ export default class ImagePicker extends Vue {
             { key: 'sheep.png', name: 'Owca' },
             { key: 'squirrel.png', name: 'Wiewiórka' }
         ];
-        ImagePicker.globalImages = global.map(image => ({ ...image, src: ImagePicker.srcOf(image.key, false), scoped: false }));
+        global.forEach(image => ImagePicker.globalImages[image.key] = { ...image, src: require(`@/assets/global-images/${image.key}`), scoped: false });
+        this.globalScrollable = Object.values(ImagePicker.globalImages).length > 5;
     }
 
     open(callback: (image: Image) => void) {
         this.visible = true;
         this.onChoose = callback;
+        this.globalImages = ImagePicker.globalImages;
+        this.lessonImages = ImagePicker.lessonImages;
+        this.localScrollable = Object.values(this.lessonImages).length > 5;
+        this.globalImagesScroll = 0;
+        this.lessonImagesScroll = 0;
     }
 
     close() {
@@ -93,6 +111,37 @@ export default class ImagePicker extends Vue {
         }
         fileReader.readAsDataURL(files[0]);
     }
+
+    onDeleteImage(image: Image) {
+        this.$emit('deleteImage', image);
+    }
+
+    deleteImage(image: Image) {
+        delete ImagePicker.lessonImages[image.key];
+        delete this.lessonImages[image.key];
+        this.lessonImages = Object.assign({}, this.lessonImages);
+        this.localScrollable = Object.values(this.lessonImages).length > 5;
+    }
+
+    scrollLocalLeft() {
+        this.lessonImagesScroll = Math.min(this.lessonImagesScroll + 164, 0);
+        (this.$refs.localImagesRow as HTMLElement).style.transform = `translateX(${this.lessonImagesScroll}px)`;
+    }
+
+    scrollLocalRight() {
+        this.lessonImagesScroll = Math.max(this.lessonImagesScroll - 164, - (Object.values(ImagePicker.lessonImages).length - 5) * 164);
+        (this.$refs.localImagesRow as HTMLElement).style.transform = `translateX(${this.lessonImagesScroll}px)`;
+    }
+
+    scrollGlobalLeft() {
+        this.globalImagesScroll = Math.min(this.globalImagesScroll + 164, 0);
+        (this.$refs.localImagesRow as HTMLElement).style.transform = `translateX(${this.lessonImagesScroll}px)`;
+    }
+
+    scrollGlobalRight() {
+        this.globalImagesScroll = Math.max(this.globalImagesScroll - 164, - (Object.values(ImagePicker.globalImages).length - 5) * 164);
+        (this.$refs.globalImagesRow as HTMLElement).style.transform = `translateX(${this.globalImagesScroll}px)`;
+    }
 }
 </script>
 
@@ -100,17 +149,61 @@ export default class ImagePicker extends Vue {
 @import "@/style/global";
 
 .drafts-dialog {
-    height: 460px;
+    width: 930px;
+    height: 480px;
+    left: calc(50% - 455px);
 }
 
 .images-gallery {
     width: 100%;
     height: 140px;
+    > button {
+        float: left;
+        width: 30px;
+        line-height: 100px;
+        font-size: 6em;
+        text-align: center;
+        transition: transform 0.2s;
+        &:hover {
+            transform: scale(1.25);
+        }
+    }
+    .images-row {
+        float: left;
+        width: 820px;
+        overflow: hidden;
+        > div {
+            transition: transform 0.7s;
+            width: max-content;
+            > button {
+                position: relative;
+                padding: 0;
+                width: 164px;
+                height: 123px;
+                .delete-image {
+                    display: none;
+                    position: absolute;
+                    z-index: 2;
+                    right: 0;
+                    top: 0;
+                    width: 30px;
+                    height: 30px;
+                    padding: 0;
+                    background: rgba(200, 200, 200, 0.5);
+                    color: black;
+                }
+                &:hover .delete-image {
+                    display: block;
+                }
+            }
+        }
+    }
 }
 
 img {
     float: left;
-    margin: 10px;
+    box-sizing: content-box;
+    margin: 9px 12px;
     width: 140px;
     height: 105px;
     object-fit: contain;
@@ -118,13 +211,14 @@ img {
     cursor: pointer;
 
     &:hover {
-        transform: scale(1.1);
+        transform: scale(1.17);
     }
 }
 
 .caption {
+    display: inline-block;
     font-weight: bold;
-    margin: 5px;
+    margin: 10px 5px 0 5px;
 }
 
 label {
