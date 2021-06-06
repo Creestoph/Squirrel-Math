@@ -51,7 +51,7 @@ export default class CustomElement extends Node {
         const { selection, doc } = state
         const position = selection.$cursor ? selection.$cursor.pos : selection.$to.pos;
         const context = doc.resolve(position);
-        if (context.parent.type.name == 'customElement') {
+        if (context.parent.type.name == 'custom_element') {
           const transaction = state.tr.insertText(' '.repeat(4), position);
           dispatch(transaction);
           return true;
@@ -61,7 +61,7 @@ export default class CustomElement extends Node {
         const { selection, doc } = state
         const position = selection.$cursor ? selection.$cursor.pos : selection.$to.pos;
         const context = doc.resolve(position);
-        if (context.parent.type.name == 'customElement') {
+        if (context.parent.type.name == 'custom_element') {
           const editorStart = context.pos - context.parentOffset;
           const editorEnd = editorStart + context.parent.nodeSize - 2;
           const transaction = state.tr.setSelection(TextSelection.create(doc, editorStart, editorEnd));

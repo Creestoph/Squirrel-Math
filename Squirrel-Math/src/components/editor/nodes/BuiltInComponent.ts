@@ -11,7 +11,7 @@ export default class CustomElement extends Node {
     return {
       attrs: {
         componentName: {
-          default: "div"
+          default: ""
         },
         args: {
           default: []

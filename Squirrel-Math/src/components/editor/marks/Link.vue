@@ -83,6 +83,7 @@ export default {
     selectLesson(lesson) {
       this.selectedLesson = lesson;
       this.url = this.lessons.find(l => l.title == lesson).url;
+      this.selectedChapter = '';
     },
     selectChapter(chapter) {
       this.selectedChapter = chapter;
@@ -166,10 +167,9 @@ export default {
 }
 
 .link-dropdown {
-  display: block;
   height: 25px;
-  line-height: 0.5em;
   min-width: 100px;
+  max-width: 310px;
   border-bottom: 1px solid white;
   margin-bottom: 20px;
   background: black;

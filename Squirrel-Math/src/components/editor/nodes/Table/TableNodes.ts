@@ -21,7 +21,10 @@ export default tableNodes({
     },
     borderSize: {
       default: 1,
-      getFromDOM: (dom) => (dom as HTMLElement).style.borderWidth || null,
+      getFromDOM: (dom) => {
+        const borderSize = parseInt((dom as HTMLElement).style.borderWidth);
+        return isNaN(borderSize) ? null : borderSize;
+      },
       setDOMAttr: (value, attrs) => {
         Object.assign(attrs, { style: `${(attrs.style || '')}border-width: ${value}px; border-style: solid;` })
       }

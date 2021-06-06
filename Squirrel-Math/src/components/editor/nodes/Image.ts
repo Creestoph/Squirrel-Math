@@ -43,7 +43,7 @@ export default class Image extends Node {
       ],
       toDOM: (node: any) => {
         const image = ImagePicker.getImage(node.attrs.key);
-        return ['img', { key: node.key, src: image.src, alt: image.name }];
+        return ['img', { key: image.key, src: image.src, alt: image.name }];
       },
     }
   }

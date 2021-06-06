@@ -34,7 +34,8 @@ export default {
           htmlElement.removeChild(child);
           let childCopy = document.createElement('script');
           childCopy.innerHTML = child.innerHTML;
-          childCopy.src = child.src;
+          if (child.src)
+            childCopy.src = child.src;
           htmlElement.appendChild(childCopy);
         }
         else 
@@ -103,6 +104,9 @@ button {
 }
 .output:hover {
   outline: 1px solid $gray;
+}
+.output-wrapper {
+  white-space: normal; //needed to prevent .ProseMirror style - pre-wrap
 }
 .output-wrapper:hover button {
   display: block;

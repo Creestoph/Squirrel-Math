@@ -44,8 +44,18 @@
             abc
           </button>
 
-          <button :class="{ 'active': centerExtension.isActive }" @click="commands.center">
+          <color-picker @selected="commands.text_color({ color: $event })" :class="{ 'picker': true }" style="color: #cc4444">abc</color-picker>
+
+          <button :class="{ 'active': textAlignExtension.isActive('left') }" @click="commands.text_align('left')">
+            left
+          </button>
+
+          <button :class="{ 'active': textAlignExtension.isActive('center') }" @click="commands.text_align('center')">
             center
+          </button>
+
+          <button :class="{ 'active': textAlignExtension.isActive('right') }" @click="commands.text_align('right')">
+            right
           </button>
 
           <button :class="{ 'active': isActive.bullet_list() }" @click="commands.bullet_list">
@@ -167,7 +177,7 @@ import CustomElement from "./nodes/CustomElement";
 import BuiltInComponent from "./nodes/BuiltInComponent";
 import CustomListItem from "./nodes/ListItem";
 import Placeholder from "./extensions/Placeholder";
-import Center from "./extensions/Center";
+import TextAlign from "./extensions/TextAlign";
 import Paragraph from "./nodes/Paragraph";
 import ImageNode from "./nodes/Image";
 import Table from "./nodes/Table/Table";
@@ -177,6 +187,7 @@ import TableRow from "./nodes/Table/TableRow";
 import Link from "./marks/Link";
 import Comment from "./marks/Comment";
 import NumberMark from "./marks/NumberMark";
+import TextColor from "./marks/TextColor";
 import Save, { DraftPreview } from "./extensions/DraftsManager/SaveExtension";
 import { allComments } from './marks/Comment.vue';
 
@@ -197,7 +208,7 @@ export default class LessonEditor extends Vue {
   sourceContent: any = null;
   shortMode = false;
 
-  centerExtension: Center = new Center();
+  textAlignExtension: TextAlign = new TextAlign();
 
   savePlugin: Save = new Save();
   showDraftsDialog = false;
@@ -233,7 +244,7 @@ export default class LessonEditor extends Vue {
         new Italic(),
         new Strike(),
         new Underline(),
-        this.centerExtension,
+        this.textAlignExtension,
         new ImageNode(),
         new Table({ resizable: true }),
         new TableHeader(),
@@ -271,6 +282,7 @@ export default class LessonEditor extends Vue {
         new Link(),
         new Comment(),
         new NumberMark(),
+        new TextColor(),
         this.savePlugin
       ]
     });
@@ -307,6 +319,7 @@ export default class LessonEditor extends Vue {
   clearAll() {
     for (let commentId in allComments) 
       delete (allComments as any)[commentId];
+    ImagePicker.lessonImages = {};
     this.editor.setContent(`
       <h1></h1>
       <intro></intro>
@@ -397,6 +410,9 @@ export default class LessonEditor extends Vue {
 #tools-general {
   width: 100%;
   background: $light-gray;
+  > * {
+    display: inline-block;
+  }
 }
 #tools-general button {
   padding: 10px 15px;
@@ -447,7 +463,6 @@ export default class LessonEditor extends Vue {
 }
 .picker {
   padding: 0 10px !important;
-  float: left;
 }
 .underline {
   text-decoration: underline;
@@ -576,7 +591,7 @@ problem {
   margin: 0 auto;
 
   > tbody > tr > td, > tbody > tr > th {
-    padding: 0 7px;
+    padding: 0 2px;
     width: 26px;
     position: relative;
     &.selectedCell {
@@ -594,7 +609,7 @@ problem {
       z-index: 1;
     }
     p {
-      margin: 7px 0;
+      margin: 2px 0;
     }
   }
 }

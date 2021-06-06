@@ -1,5 +1,5 @@
 <template>
-    <div id="whole">
+    <div>
         <input v-model="input" v-on:keyup.enter="simplify()">
         <button class="button-red" @click="simplify()">Uprość</button>
         <div id="result" ref="resultDiv"></div>
@@ -8,9 +8,9 @@
 
 <script lang="ts">
 import Vue from 'vue';
-import { Expression, parseExpression } from '../../../../math-engine/algebra-engine/expression';
+import { Expression, parseExpression } from '../../../math-engine/algebra-engine/expression';
 import { Component } from 'vue-property-decorator'
-import { simplify } from '../../../../math-engine/algebra-engine/algorithms/simplification-algorithm';
+import { simplify } from '../../../math-engine/algebra-engine/algorithms/simplification-algorithm';
 declare var MathJax:any
 
 @Component
@@ -47,7 +47,7 @@ export default class AlgebraicCalculator extends Vue {
 input {
     width: calc(100% - 125px);
 }
-button {
+button.button-red {
     padding: 10px;
     width: 80px;
     bottom: 20px;

@@ -53,8 +53,11 @@ export default {
   margin: 0;
 }
 
-.dropdown:hover .proof-sticker {
-  width: 100px;
+.dropdown:hover {
+  z-index: 2;
+  .proof-sticker {
+    width: 100px;
+  }
 }
 
 .dropdown-list {

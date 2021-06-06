@@ -19,9 +19,7 @@ export default class Paragraph extends Node {
             draggable: false,
             parseDOM: [{
                 tag: 'p',
-                getAttrs: (dom: any) => ({
-                    textAlign: dom.getAttribute('text-align'),
-                }),
+                getAttrs: (dom: any) => ({ textAlign: dom.style.textAlign }),
             }],
             toDOM: (node: any) => node.attrs.textAlign ? ['p', {style: `text-align: ${node.attrs.textAlign}`}, 0] : ['p', 0],
         }

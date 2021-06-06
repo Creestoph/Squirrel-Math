@@ -629,7 +629,7 @@ import LessonTitle from "../../../lesson/LessonTitle";
 import LessonIntro from "../../../lesson/LessonIntro";
 import LessonChapter from "../../../lesson/chapter/LessonChapter";
 import Lesson from "../../../lesson/Lesson.vue";
-import SimpleQuadraticEquationsTraining from "./SimpleQuadraticEquationsTraining"
+import SimpleQuadraticEquationsTraining from "../../../store/private/SimpleQuadraticEquationsTraining"
 
 export default {
   name: "RownaniaKwadratowe",

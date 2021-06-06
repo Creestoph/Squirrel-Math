@@ -5,16 +5,14 @@
         <div class="form-header">
           <label for="type-select">Komponent</label>
           <select v-model="componentName" id="type-select" @change="onComponentSelect()">
-            <option value="div" disabled>Wybierz komponent...</option>
-            <option value="operation-table">Tabliczka działania</option>
-            <option value="columnar-operation-table">Działanie w słupku</option>
-            <option value="columnar-operation-guide">Tutorial działania w słupku</option>
+            <option value="" disabled>Wybierz komponent...</option>
+            <option v-for="(component, name) in builtInComponents" :key="name" :value="name">{{ component.name }}</option>
           </select>
         </div>
-        <div class="form-body">
-          <div v-for="(parameterSchema, parameterName, i) in schemas[componentName]" :key="i" class="form-row">
+        <div class="form-body" v-if="componentName">
+          <div v-for="(parameterSchema, parameterName, i) in builtInComponents[componentName].schema" :key="i" class="form-row">
             <div class="form-col">
-              {{ labels[componentName][parameterName] }}
+              {{ builtInComponents[componentName].labels[parameterName] }}
             </div>
             <div class="form-col">
               <input v-if="parameterSchema.type.name == 'TEXT'" :required="parameterSchema.required" v-model="formArgs[i]" @paste.stop>
@@ -36,7 +34,7 @@
       <button @click="run()" class="toggle-edit-button">Run</button>
     </div>
     <div v-if="!editMode" class="output-wrapper">
-      <div :is="componentName" v-bind="componentConfiguration" :class="{ output: true }">
+      <div :is="getComponentName()" v-bind="componentConfiguration" :class="{ output: true }">
       </div>
       <button @click="edit()" class="toggle-edit-button">Edit</button>
     </div>
@@ -44,6 +42,8 @@
 </template>
 
 <script>
+import Vue from 'vue';
+
 import OperationTable from '@/components/store/operation-table/OperationTable'
 import { operationTableSchema } from '@/components/store/operation-table/OperationTableSchema'
 import { operationTableLabels } from '@/components/store/operation-table/OperationTableLabels'
@@ -53,20 +53,27 @@ import { columnarOperationTableLabels } from '@/components/store/columnar-operat
 import ColumnarOperationGuide from '@/components/store/columnar-operation-guide/ColumnarOperationGuide'
 import { columnarOperationGuideSchema } from '@/components/store/columnar-operation-guide/ColumnarOperationGuideSchema'
 import { columnarOperationGuideLabels } from '@/components/store/columnar-operation-guide/ColumnarOperationGuideLabels'
-import Vue from 'vue';
+
+// private componets, only managed by developers
+import { otherComponentSchema } from '@/components/store/private/OtherComponentSchema'
+import { otherComponentLabels } from '@/components/store/private/OtherComponentLabels'
+import AlgebraicCalculator from '@/components/store/private/AlgebraicCalculator'
+import SimpleQuadraticEquationsTraining from '@/components/store/private/SimpleQuadraticEquationsTraining'
+
 
 export default {
   props: ["node", "updateAttrs", "view"],
   components: {
     OperationTable,
     ColumnarOperationTable,
-    ColumnarOperationGuide
+    ColumnarOperationGuide,
+    AlgebraicCalculator,
+    SimpleQuadraticEquationsTraining
   },
   data() {
     return {
       editMode: true,
-      schemas: {},
-      labels: {},
+      builtInComponents: {},
       formArgs: [],
       componentConfiguration: {},
     }
@@ -89,16 +96,34 @@ export default {
       }
     }
   },
+  beforeMount() {
+    this.builtInComponents = {
+      'operation-table': {
+        name: 'Tabliczka działania',
+        schema: operationTableSchema,
+        labels: operationTableLabels
+      },
+      'columnar-operation-table': {
+        name: 'Działanie w słupku',
+        schema: columnarOperationTableSchema,
+        labels: columnarOperationTableLabels
+      },
+      'columnar-operation-guide': {
+        name: 'Tutorial działania w słupku',
+        schema: columnarOperationGuideSchema,
+        labels: columnarOperationGuideLabels
+      },
+      'other': {
+        name: 'Inny',
+        schema: otherComponentSchema,
+        labels: otherComponentLabels
+      }
+    };
+  },
   mounted() {
-    this.schemas['operation-table'] = operationTableSchema;
-    this.labels['operation-table'] = operationTableLabels;
-    this.schemas['columnar-operation-table'] = columnarOperationTableSchema;
-    this.labels['columnar-operation-table'] = columnarOperationTableLabels;
-    this.schemas['columnar-operation-guide'] = columnarOperationGuideSchema;
-    this.labels['columnar-operation-guide'] = columnarOperationGuideLabels;
     this.formArgs = [...this.args];
     const configNonEmpty = this.formArgs.some((arg, i) => {
-      const argType = Object.values(this.schemas[this.componentName])[i].type.name;
+      const argType = Object.values(this.builtInComponents[this.componentName].schema)[i].type.name;
       return (argType == 'TEXT' || argType == 'ENUM' || argType == 'FUNCTION') && arg ||
         argType == 'NUMBER' && arg !== undefined || 
         argType == 'ARRAY' && arg.length > 0 && arg.some(a => !!a);
@@ -111,7 +136,7 @@ export default {
   methods: {
     onComponentSelect() {
       this.formArgs = [];
-      Object.entries(this.schemas[this.componentName]).forEach(([key, schema], i) => {
+      Object.entries(this.builtInComponents[this.componentName].schema).forEach(([key, schema], i) => {
         if (schema.type.name == 'ARRAY') {
           this.formArgs[i] = [""];
         }
@@ -131,7 +156,7 @@ export default {
     run() {
       this.editMode = false;
       this.componentConfiguration = {};
-      Object.entries(this.schemas[this.componentName]).forEach(([key, schema], i) => {
+      Object.entries(this.builtInComponents[this.componentName].schema).forEach(([key, schema], i) => {
         if (schema.type.name == 'TEXT' || schema.type.name == 'BOOLEAN' || schema.type.name == 'ENUM')
           this.componentConfiguration[key] = this.formArgs[i];
         else if (schema.type.name == 'NUMBER')
@@ -157,6 +182,9 @@ export default {
         }
       });
       this.args = this.formArgs;
+    },
+    getComponentName() {
+      return this.componentName == 'other' ? this.componentConfiguration.name : this.componentName;
     }
   }
 };

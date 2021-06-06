@@ -1,17 +1,17 @@
-import { Extension, Plugin } from 'tiptap'
-import { Decoration, DecorationSet } from 'prosemirror-view'
+import { Extension } from 'tiptap'
 import { EditorState } from 'prosemirror-state'
 
-export default class Center extends Extension {
+export default class TextAlign extends Extension {
 
   get name() {
-    return 'center'
+    return 'text_align'
   }
 
   get commands() {
-    return (schema: any) => (event: any) => (state: EditorState, dispatch: any) => {
+    return (schema: any) => (newAlign: string) => (state: EditorState, dispatch: any) => {
       if (dispatch) {
-        const newAlign = this.isActive ? '' : 'center';
+        if (newAlign === 'left')
+          newAlign = '';
         const transaction = state.tr;
 
         state.tr.selection.ranges.forEach(range => {
@@ -31,13 +31,13 @@ export default class Center extends Extension {
     }
   }
 
-  get isActive() {
+  isActive(align: string) {
     let found = false;
     this.editor.state.tr.selection.ranges.forEach((range: any) => {
       const from = range.$from.pos
       const to = range.$to.pos
       this.editor.state.doc.nodesBetween(from, to, (node: any, pos: any) => {
-        found = found || (node.type.name === 'paragraph' && node.attrs.textAlign == 'center')
+        found = found || (node.type.name === 'paragraph' && node.attrs.textAlign == align)
       })
     });
     return found;

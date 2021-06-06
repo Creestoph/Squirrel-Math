@@ -89,7 +89,6 @@ export default class Lesson extends Vue {
   }
   hideLesson() {
     if (!this.lessonHidden) {
-      //this.$refs.lesson.style.transform = "translateX(-92%)";
       (this.$refs.lesson as HTMLElement).style.left = '-80%';
       this.lessonHidden = true;
       setTimeout(() => {
@@ -100,7 +99,6 @@ export default class Lesson extends Vue {
   }
   expandLesson() {
     if (this.lessonHidden) {
-      //this.$refs.lesson.style.transform = "translateX(0)";
       (this.$refs.lesson as HTMLElement).style.left = '0';
       this.lessonHidden = false;
       setTimeout(() => {
@@ -172,8 +170,6 @@ export default class Lesson extends Vue {
   clear: both;
   left: -80%;
   transition: left 1s;
-  /* transform: translateX(-92%); */
-  /* transition: transform 1s; */
 }
 
 @media screen and (max-width: 500px) {

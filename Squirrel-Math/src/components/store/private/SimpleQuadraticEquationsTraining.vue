@@ -16,13 +16,13 @@
 <script lang="ts">
 import Vue from 'vue';
 import { Component } from 'vue-property-decorator'
-import { Variable } from '../../../../math-engine/algebra-engine/variable';
-import { Integer, Fraction } from '../../../../math-engine/algebra-engine/numbers';
-import { numericGCD } from '../../../../math-engine/algebra-engine/algorithms/numeric-algorithms';
-import { Product } from '../../../../math-engine/algebra-engine/product';
-import { Power } from '../../../../math-engine/algebra-engine/power';
-import { equals, simplify } from '../../../../math-engine/algebra-engine/algorithms/simplification-algorithm';
-import { UnivariatePolynomial } from '../../../../math-engine/algebra-engine/univariate-polynomial';
+import { Variable } from '../../../math-engine/algebra-engine/variable';
+import { Integer, Fraction } from '../../../math-engine/algebra-engine/numbers';
+import { numericGCD } from '../../../math-engine/algebra-engine/algorithms/numeric-algorithms';
+import { Product } from '../../../math-engine/algebra-engine/product';
+import { Power } from '../../../math-engine/algebra-engine/power';
+import { equals, simplify } from '../../../math-engine/algebra-engine/algorithms/simplification-algorithm';
+import { UnivariatePolynomial } from '../../../math-engine/algebra-engine/univariate-polynomial';
 declare var MathJax:any
 
 @Component
@@ -122,11 +122,13 @@ input {
     position: absolute;
     bottom: 20px;
     width: 100%;
+
+    button {
+        padding: 10px;
+        width: 150px;
+        bottom: 20px;
+        margin: 0 10px 0 10px;
+    }
 }
-button {
-    padding: 10px;
-    width: 150px;
-    bottom: 20px;
-    margin: 0 10px 0 10px;
-}
+
 </style>

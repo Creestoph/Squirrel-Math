@@ -66,7 +66,7 @@ export default class Save extends Extension {
     loadFromJSON(json: any) {
         if (json.comments)
             Object.entries(json.comments).forEach(([id, comment]: any) => {
-            (allComments as any)[id] = { text: comment.text, hidden: comment.hidden, displayedInComponent: null }
+                (allComments as any)[id] = { text: comment.text, hidden: comment.hidden, displayedInComponent: null }
             })
 
         ImagePicker.lessonImages = {};

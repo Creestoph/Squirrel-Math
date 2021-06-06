@@ -1,6 +1,6 @@
 <template>
     <button class="wrapper" @click="dropdownVisible = !dropdownVisible">
-        <slot name="placeholder">{{selectedOption}}</slot> 
+        <div class="value"><slot name="placeholder">{{selectedOption}}</slot></div>
         <div v-if="array" class="array-down"></div> 
         <div class="dropdown" ref="dropdown" v-if="dropdownVisible" @click="select($event)">
             <slot></slot>
@@ -37,6 +37,15 @@ export default {
 .wrapper {
     position: relative;
     text-align: left;
+    display: flex;
+    align-items: center;
+}
+
+.value {
+    overflow-x: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 100%;
 }
 
 .dropdown {
@@ -53,6 +62,7 @@ export default {
     float: right;
     width: 0; 
     height: 0; 
+    margin: 10px 0 10px 10px;
     border-left: 4px solid transparent;
     border-right: 4px solid transparent;
     border-top: 7px solid white;

@@ -45,7 +45,6 @@ export default {
     position: relative;
 
   > div {
-    float: left;
     display: flex;
     align-items: center;
     height: 47px;
