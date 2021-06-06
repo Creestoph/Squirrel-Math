@@ -104,11 +104,43 @@
           <color-picker @selected="commands.setCellAttr({name: 'background', value: $event})" :class="{ 'picker': true }">kolor tła</color-picker>
           <color-picker @selected="commands.setCellAttr({name: 'borderColor', value: $event})" :class="{ 'picker': true }">kolor krawędzi</color-picker>
           <button class="dropdown">
-            <div class="dropdown-label">krawędź</div>
+            <div class="dropdown-label">krawędź lewa</div>
             <div class="dropdown-list">
-              <div class="dropdown-position" @click="commands.setCellAttr({name: 'borderSize', value: '0'})">brak</div>
-              <div class="dropdown-position" @click="commands.setCellAttr({name: 'borderSize', value: '1'})">cienka</div>
-              <div class="dropdown-position" @click="commands.setCellAttr({name: 'borderSize', value: '3'})">gruba</div>
+              <div class="dropdown-position" @click="commands.setCellAttr({name: 'borderLeft', value: '0'})">brak</div>
+              <div class="dropdown-position" @click="commands.setCellAttr({name: 'borderLeft', value: '1'})">cienka</div>
+              <div class="dropdown-position" @click="commands.setCellAttr({name: 'borderLeft', value: '3'})">gruba</div>
+            </div>
+          </button>
+          <button class="dropdown">
+            <div class="dropdown-label">krawędź prawa</div>
+            <div class="dropdown-list">
+              <div class="dropdown-position" @click="commands.setCellAttr({name: 'borderRight', value: '0'})">brak</div>
+              <div class="dropdown-position" @click="commands.setCellAttr({name: 'borderRight', value: '1'})">cienka</div>
+              <div class="dropdown-position" @click="commands.setCellAttr({name: 'borderRight', value: '3'})">gruba</div>
+            </div>
+          </button>
+          <button class="dropdown">
+            <div class="dropdown-label">krawędź górna</div>
+            <div class="dropdown-list">
+              <div class="dropdown-position" @click="commands.setCellAttr({name: 'borderTop', value: '0'})">brak</div>
+              <div class="dropdown-position" @click="commands.setCellAttr({name: 'borderTop', value: '1'})">cienka</div>
+              <div class="dropdown-position" @click="commands.setCellAttr({name: 'borderTop', value: '3'})">gruba</div>
+            </div>
+          </button>
+          <button class="dropdown">
+            <div class="dropdown-label">krawędź dolna</div>
+            <div class="dropdown-list">
+              <div class="dropdown-position" @click="commands.setCellAttr({name: 'borderBottom', value: '0'})">brak</div>
+              <div class="dropdown-position" @click="commands.setCellAttr({name: 'borderBottom', value: '1'})">cienka</div>
+              <div class="dropdown-position" @click="commands.setCellAttr({name: 'borderBottom', value: '3'})">gruba</div>
+            </div>
+          </button>
+          <button class="dropdown">
+            <div class="dropdown-label">wszystkie krawędzie</div>
+            <div class="dropdown-list">
+              <div class="dropdown-position" @click="commands.setCellAttr({name: 'borderLeft', value: '0'}); commands.setCellAttr({name: 'borderRight', value: '0'}); commands.setCellAttr({name: 'borderTop', value: '0'}); commands.setCellAttr({name: 'borderBottom', value: '0'})">brak</div>
+              <div class="dropdown-position" @click="commands.setCellAttr({name: 'borderLeft', value: '1'}); commands.setCellAttr({name: 'borderRight', value: '1'}); commands.setCellAttr({name: 'borderTop', value: '1'}); commands.setCellAttr({name: 'borderBottom', value: '1'})">cienka</div>
+              <div class="dropdown-position" @click="commands.setCellAttr({name: 'borderLeft', value: '3'}); commands.setCellAttr({name: 'borderRight', value: '3'}); commands.setCellAttr({name: 'borderTop', value: '3'}); commands.setCellAttr({name: 'borderBottom', value: '3'})">gruba</div>
             </div>
           </button>
         </div>
@@ -298,7 +330,7 @@ export default class LessonEditor extends Vue {
       case 'wyrażenie inline': commands.expressionInline(); break;
       case 'twierdzenie': commands.formula(); break;
       case 'dowód': commands.proof(); break;
-      case 'tabela': commands.createTable({ rowsCount: 3, colsCount: 3, withHeaderRow: true }); break;
+      case 'tabela': commands.createTable({ rowsCount: 3, colsCount: 3, withHeaderRow: false }); break;
       case 'obraz': (this.$refs.imagePicker as ImagePicker).open((image: Image) => commands.image(image)); break;
       case 'kształt geometryczny': commands.geometry(); break;
       case 'html': commands.custom_element(); break;
@@ -594,6 +626,7 @@ problem {
     padding: 0 2px;
     width: 26px;
     position: relative;
+    border-style: solid;
     &.selectedCell {
       background: $light-gray !important;
     }

@@ -19,14 +19,48 @@ export default tableNodes({
         Object.assign(attrs, { style: `${(attrs.style || '')}border-color: ${value};` })
       }
     },
-    borderSize: {
+    borderLeft: {
       default: 1,
       getFromDOM: (dom) => {
+        const borderLeftSize = parseInt((dom as HTMLElement).style.borderLeftWidth);
         const borderSize = parseInt((dom as HTMLElement).style.borderWidth);
-        return isNaN(borderSize) ? null : borderSize;
+        return !isNaN(borderLeftSize) ? borderLeftSize : !isNaN(borderSize) ? borderSize : null;
       },
       setDOMAttr: (value, attrs) => {
-        Object.assign(attrs, { style: `${(attrs.style || '')}border-width: ${value}px; border-style: solid;` })
+        Object.assign(attrs, { style: `${(attrs.style || '')}border-left-width: ${value}px;` })
+      }
+    },
+    borderRight: {
+      default: 1,
+      getFromDOM: (dom) => {
+        const borderRightSize = parseInt((dom as HTMLElement).style.borderRightWidth);
+        const borderSize = parseInt((dom as HTMLElement).style.borderWidth);
+        return !isNaN(borderRightSize) ? borderRightSize : !isNaN(borderSize) ? borderSize : null;
+      },
+      setDOMAttr: (value, attrs) => {
+        Object.assign(attrs, { style: `${(attrs.style || '')}border-right-width: ${value}px;` })
+      }
+    },
+    borderBottom: {
+      default: 1,
+      getFromDOM: (dom) => {
+        const borderBottomSize = parseInt((dom as HTMLElement).style.borderBottomWidth);
+        const borderSize = parseInt((dom as HTMLElement).style.borderWidth);
+        return !isNaN(borderBottomSize) ? borderBottomSize : !isNaN(borderSize) ? borderSize : null;
+      },
+      setDOMAttr: (value, attrs) => {
+        Object.assign(attrs, { style: `${(attrs.style || '')}border-bottom-width: ${value}px;` })
+      }
+    },
+    borderTop: {
+      default: 1,
+      getFromDOM: (dom) => {
+        const borderTopSize = parseInt((dom as HTMLElement).style.borderTopWidth);
+        const borderSize = parseInt((dom as HTMLElement).style.borderWidth);
+        return !isNaN(borderTopSize) ? borderTopSize : !isNaN(borderSize) ? borderSize : null;
+      },
+      setDOMAttr: (value, attrs) => {
+        Object.assign(attrs, { style: `${(attrs.style || '')}border-top-width: ${value}px;` })
       }
     },
   },
