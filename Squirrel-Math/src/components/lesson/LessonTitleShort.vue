@@ -5,7 +5,7 @@
     </h1>
 
     <p class="lesson-subtitle">
-      W pigułce
+      w pigułce
     </p>  
   </div>
 </template>

@@ -12,6 +12,9 @@ export default class SemanticTag extends Node {
       attrs: {
         tags: {
           default: ["Intuicje"],
+        },
+        required: {
+          default: []
         }
       },
       selectable: false,
@@ -19,10 +22,12 @@ export default class SemanticTag extends Node {
         tag: 'semantic-tag',
         getAttrs: (dom: any) => ({
           tags: dom.getAttribute('tags').split(" "),
+          required: dom.getAttribute('required').split('\n')
         }),
       }],
       toDOM: (node: any) => ['semantic-tag', {
-        tags: node.attrs.tags.join(" ")
+        tags: node.attrs.tags.join(" "),
+        required: node.attrs.tags.join('\n')
       }],
     }
   }

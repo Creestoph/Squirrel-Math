@@ -68,7 +68,7 @@ export default {
       if (this.selectedLesson) {
         import(`@/assets/lessons/${this.selectedLesson}.json`).then(
           file => {
-            const chapters = file.content.filter(c => c.type == 'chapter');
+            const chapters = file.long.content.filter(c => c.type == 'chapter');
             if (chapters.length)
               this.chapters = chapters.map(c => ({name: c.content[0].content[0].text, disabled: false}))
             else

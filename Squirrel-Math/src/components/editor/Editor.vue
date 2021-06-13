@@ -23,7 +23,10 @@
             wyczyść wszystko
           </button>
 
-          <button @click="toggleShortMode()">
+          <button v-if="secondModeExists()" @click="editSecondMode()">
+            {{ shortMode ? 'edytuj wersję pełną' : 'edytuj wersję skróconą' }}
+          </button>
+          <button v-if="!secondModeExists()" @click="createSecondMode()">
             {{ shortMode ? 'stwórz wersję pełną' : 'stwórz wersję skróconą' }}
           </button>
         </div>
@@ -238,7 +241,13 @@ export default class LessonEditor extends Vue {
   editor: any = null;
   sourceFile: string = "";
   sourceContent: any = null;
-  shortMode = false;
+
+  get shortMode() {
+    return this.savePlugin.shortMode;
+  }
+  set shortMode(value) {
+    this.savePlugin.shortMode = value;
+  }
 
   textAlignExtension: TextAlign = new TextAlign();
 
@@ -349,11 +358,23 @@ export default class LessonEditor extends Vue {
   }
 
   clearAll() {
+    this.clearComments();
+    this.clearImages();
+    this.clearContent();
+  }
+
+  private clearComments() {
     for (let commentId in allComments) 
       delete (allComments as any)[commentId];
+  }
+
+  private clearImages() {
     ImagePicker.lessonImages = {};
+  }
+
+  private clearContent(title?: string) {
     this.editor.setContent(`
-      <h1></h1>
+      <h1>${title ? title : ''}</h1>
       <intro></intro>
       <chapter>
         <chapter-title></chapter-title>
@@ -362,11 +383,25 @@ export default class LessonEditor extends Vue {
     `);
   }
 
-  toggleShortMode() {
+  createSecondMode() {
+    this.savePlugin.saveToLocalStorage();
+    const title = this.editor.state.doc.content.content[0].content.content[0];
     this.shortMode = !this.shortMode;
     this.editor.destroy();
     this.createEditor();
-    this.clearAll();
+    this.clearContent(title ? title.text : '');
+  }
+
+  editSecondMode() {
+    this.savePlugin.saveToLocalStorage();
+    this.shortMode = !this.shortMode;
+    this.editor.destroy();
+    this.createEditor();
+    this.editor.setContent(this.shortMode ? this.savePlugin.shortVersionJSON : this.savePlugin.longVersionJSON);
+  }
+
+  secondModeExists() {
+    return this.shortMode ? this.savePlugin.longVersionJSON : this.savePlugin.shortVersionJSON;
   }
 
   openDraftsDialog() {
@@ -380,6 +415,9 @@ export default class LessonEditor extends Vue {
 
   loadDraft(draft: DraftPreview) {
     this.showDraftsDialog = false;
+    this.shortMode = false;
+    this.editor.destroy();
+    this.createEditor();
     this.savePlugin.loadDraft(draft);
   }
 
@@ -389,19 +427,25 @@ export default class LessonEditor extends Vue {
   }
 
   deleteImage(image: Image) {
-    let imageExistsInContent = false;
-    this.editor.state.doc.content.descendants((child: any) => {
-      if (child.type.name == 'image' && child.attrs.key == image.key) {
-        imageExistsInContent = true;
-        return false;
-      }
-    })
-    if (imageExistsInContent) {
-      alert("Obraz jest używany w zawartości lekcji. Najpierw usuń jego wystąpienia.");
+    let short = this.shortMode ? this.editor.getJSON() : this.savePlugin.shortVersionJSON;
+    let long = this.shortMode ? this.savePlugin.longVersionJSON : this.editor.getJSON();
+    const isInShort = this.hasImage(short, image.key);
+    const isInLong = this.hasImage(long, image.key);
+    if (isInLong) {
+      alert("Obraz jest używany w wersji pełnej lekcji. Najpierw usuń jego wystąpienia.");
+    }
+    else if (isInShort) {
+      alert("Obraz jest używany w wersji skróconej lekcji. Najpierw usuń jego wystąpienia.");
     }
     else {
       (this.$refs.imagePicker as ImagePicker).deleteImage(image);
     }
+  }
+
+  hasImage(node: any, imageKey: string): boolean {
+    if (node.type == 'image' && node.attrs.key == imageKey)
+        return true;
+    return node.content ? node.content.some((child: any) => this.hasImage(child, imageKey)) : false;
   }
 
   scrollToolbar() {
@@ -619,7 +663,7 @@ problem {
 }
 
 /*=== CONTENT - EDITOR SPECIFIC===*/
-#editor table[style]:not([class]) {
+#editor table[style^="width:"]:not([class]), #editor table[style^="min-width:"]:not([class]) {
   margin: 0 auto;
 
   > tbody > tr > td, > tbody > tr > th {

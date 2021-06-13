@@ -31,7 +31,7 @@
           </div>
         </div>
       </div>
-      <button @click="run()" class="toggle-edit-button">Run</button>
+      <button @click="saveAndRun()" class="toggle-edit-button">Run</button>
     </div>
     <div v-if="!editMode" class="output-wrapper">
       <div :is="getComponentName()" v-bind="componentConfiguration" :class="{ output: true }">
@@ -153,6 +153,10 @@ export default {
     edit() {
       this.editMode = true;
     },
+    saveAndRun() {
+      this.args = this.formArgs;
+      this.run();
+    },
     run() {
       this.editMode = false;
       this.componentConfiguration = {};
@@ -181,7 +185,6 @@ export default {
           }
         }
       });
-      this.args = this.formArgs;
     },
     getComponentName() {
       return this.componentName == 'other' ? this.componentConfiguration.name : this.componentName;

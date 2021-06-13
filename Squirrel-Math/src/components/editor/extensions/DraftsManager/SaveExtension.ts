@@ -18,12 +18,14 @@ export default class Save extends Extension {
     private autoSaveObserverId: number;
     private currentDraft: Draft = { name: '', created: new Date(), lastModified: new Date(), lesson: null };
 
+    longVersionJSON: string = '';
+    shortVersionJSON: string = '';
+    shortMode: boolean = false;
+
     constructor() {
         super();
         const autoSavePeriod = 60 * 1000;
-        this.autoSaveObserverId = setInterval(() => {
-            this.saveToLocalStorage();
-        }, autoSavePeriod);
+        this.autoSaveObserverId = setInterval(() => this.saveToLocalStorage(), autoSavePeriod);
     }
 
     get name() {
@@ -64,6 +66,8 @@ export default class Save extends Extension {
     }
 
     loadFromJSON(json: any) {
+        for (let commentId in allComments) 
+            delete (allComments as any)[commentId];
         if (json.comments)
             Object.entries(json.comments).forEach(([id, comment]: any) => {
                 (allComments as any)[id] = { text: comment.text, hidden: comment.hidden, displayedInComponent: null }
@@ -75,7 +79,25 @@ export default class Save extends Extension {
                 (ImagePicker.lessonImages as any)[key] = { ...image, key, scoped: true };
             })
 
-        this.editor.setContent(json);
+        this.shortVersionJSON = json.short;
+        this.longVersionJSON = json.long;
+        if (this.shortMode)
+            this.editor.setContent(this.shortVersionJSON);
+        else
+            this.editor.setContent(this.longVersionJSON);
+    }
+
+    saveToLocalStorage() {
+        this.currentDraft.name = this.getLessonTitle();
+        this.currentDraft.lesson = this.getLessonJSON();
+        LocalStorageSaver.saveDraft(this.currentDraft);
+    }
+
+    saveToFile() {
+        const lessonString = JSON.stringify(this.getLessonJSON());
+        const fileName = this.sourceFile || `${this.getLessonTitle()}.json`;
+        this.download(lessonString, fileName, 'application/json');
+        console.debug(lessonString);
     }
 
     private getLessonTitle(): string {
@@ -84,7 +106,14 @@ export default class Save extends Extension {
     }
 
     private getLessonJSON() {
-        const lessonJSON = this.editor.getJSON();
+        if (this.shortMode)
+            this.shortVersionJSON = this.editor.getJSON();
+        else
+            this.longVersionJSON = this.editor.getJSON();
+
+        const lessonJSON: any = {};
+        lessonJSON.long = this.longVersionJSON;
+        lessonJSON.short = this.shortVersionJSON;
         
         if (Object.entries(allComments).length > 0)
             lessonJSON.comments = {};
@@ -94,19 +123,6 @@ export default class Save extends Extension {
             lessonJSON.images = {};
         Object.entries(ImagePicker.lessonImages).forEach(([key, image]: any) => lessonJSON.images[key] = { src: image.src, name: image.name });
         return lessonJSON;
-    }
-
-    private saveToLocalStorage() {
-        this.currentDraft.name = this.getLessonTitle();
-        this.currentDraft.lesson = this.getLessonJSON();
-        LocalStorageSaver.saveDraft(this.currentDraft);
-    }
-
-    private saveToFile() {
-        const lessonString = JSON.stringify(this.getLessonJSON());
-        const fileName = this.sourceFile || `${this.getLessonTitle()}.json`;
-        this.download(lessonString, fileName, 'application/json');
-        console.log(lessonString);
     }
 
     private download(data: any, filename: string, type: string) {

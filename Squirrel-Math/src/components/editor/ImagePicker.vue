@@ -107,7 +107,7 @@ export default class ImagePicker extends Vue {
             }
         }
         fileReader.onerror = () => {
-            console.log(fileReader.error);
+            console.debug(fileReader.error);
         }
         fileReader.readAsDataURL(files[0]);
     }

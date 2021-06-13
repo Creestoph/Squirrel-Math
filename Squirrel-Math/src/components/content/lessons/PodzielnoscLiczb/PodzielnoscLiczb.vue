@@ -1,6 +1,6 @@
 ﻿<template>
   <lesson routeShortVersion="/podzielnosc-liczb-short" routeLongVersion="/podzielnosc-liczb">
-    <lesson-title>Podzielność liczb</lesson-title>
+    <lesson-title>Podzielność</lesson-title>
 
     <lesson-intro>
 	<p>
