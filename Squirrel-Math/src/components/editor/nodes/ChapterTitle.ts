@@ -1,4 +1,5 @@
 import { Node } from 'tiptap'
+import ChapterTitleVue from './ChapterTitle.vue'
 
 export default class ChapterTitle extends Node {
 
@@ -8,10 +9,23 @@ export default class ChapterTitle extends Node {
 
   get schema() {
     return {
+      attrs: {
+        isHidden: {
+          default: false
+        }
+      },
       content: 'inline*',
-      parseDOM: [{ tag: 'chapter-title'}],
       marks: '',
-      toDOM: () => ['chapter-title', ['div', { class: 'chapter_name' }, ['div', 0], ['hr']]],
+      parseDOM: [{
+        tag: 'chapter-title',
+        getAttrs: (dom: any) => ({ isHidden: dom.getAttribute('isHidden')})
+      }],
+      // toDOM: (node: any) => ['chapter-title', { isHidden: node.attrs.isHidden }, 0],
+      toDOM: (node: any) => ['chapter-title', { isHidden: node.attrs.isHidden }, ['div', { class: 'chapter_name' }, ['div', 0], ['hr']]],
     }
+  }
+
+  get view() {
+    return ChapterTitleVue;
   }
 }

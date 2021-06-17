@@ -719,7 +719,7 @@ problem {
   text-align: center;
   width: 100%;
 }
-#editor chapter-title.empty:first-child::before {
+#editor .chapter_name.empty:first-child::before {
   color: $darker-gray;
   font-family: $secondary-font;
   font-size: 1.9em;

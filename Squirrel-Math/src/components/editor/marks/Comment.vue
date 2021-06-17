@@ -78,10 +78,11 @@ export default {
 .comment-editor {
   display: inline-block;
   position: absolute;
-  left: -320px;
+  left: -330px;
   margin-top: 12px;
   width: 250px;
   height: 170px;
+  z-index: 2;
   background: black;
   border-radius: 15px;
   color: white;

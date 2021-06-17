@@ -56,7 +56,7 @@ export default {
     }
   },
   mounted() {
-    import(`@/assets/current_lesson_graph.json`).then(file => this.allLessons = file.default);
+    import(`@/assets/current_lesson_graph.json`).then(file => this.allLessons = file.default.concat({ title: 'Lekcja jeszcze niedostępna' }));
   },
   methods: {
     availableOptions(position) {
@@ -167,6 +167,8 @@ export default {
   margin-left: 5px;
   display: none;
   cursor: pointer;
+  height: 31px;
+  line-height: 27px;
 }
 
 .required {
@@ -209,6 +211,8 @@ export default {
   margin-left: 5px;
   display: none;
   cursor: pointer;
+  height: 31px;
+  line-height: 27px;
 }
 .tags-wrapper:hover {
   .add-tag-button, .required-optional, .add-required-button {

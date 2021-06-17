@@ -28,10 +28,10 @@ export function numberToStr(input) {
             groupString = orders[order];
         else {
             groupString = hundredsNames[hundreds] + ' ' + (tensAndUnits < 20 ? numbersLessThan20Names[tensAndUnits] : tensNames[tens] + ' ' + numbersLessThan20Names[units]);
-            if (units >= 5 || units <= 1 || tens === 1) 
-                groupString += ' ' + ordersPluralGenitive[order];
-            else if (group > 0) 
+            if (units < 5 && units > 1 && tens !== 1) 
                 groupString += ' ' + ordersPlural[order];
+            else if (group > 0) 
+                groupString += ' ' + ordersPluralGenitive[order];
         }
         result = groupString + ' ' + result;
     }
