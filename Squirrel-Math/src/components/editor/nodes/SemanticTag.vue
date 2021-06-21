@@ -1,5 +1,6 @@
 <template>
   <div class="tags-wrapper">
+
     <div class="dropdown" v-for="(tag, j) in tags" :key="'tag' + j">
       <div class="type">
         {{ tag }}
@@ -10,6 +11,7 @@
       </div>
     </div>
     <span v-if="canAddTag()" @click="addTag()" class="add-tag-button">+</span>
+
     <span :class="required.length == 0 ? 'required-optional' : 'required-strong'">Wymagane:</span>
     <div class="required dropdown" v-for="(required, j) in required" :key="'required' + j">
       <div class="required-label">
@@ -21,6 +23,7 @@
       </div>
     </div>
     <span class="add-required-button" v-if="canAddNewRequired()" @click="addRequiredLesson()">+</span>
+    
   </div>
 </template>
 

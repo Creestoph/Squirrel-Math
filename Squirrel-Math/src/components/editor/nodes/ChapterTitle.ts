@@ -20,8 +20,7 @@ export default class ChapterTitle extends Node {
         tag: 'chapter-title',
         getAttrs: (dom: any) => ({ isHidden: dom.getAttribute('isHidden')})
       }],
-      // toDOM: (node: any) => ['chapter-title', { isHidden: node.attrs.isHidden }, 0],
-      toDOM: (node: any) => ['chapter-title', { isHidden: node.attrs.isHidden }, ['div', { class: 'chapter_name' }, ['div', 0], ['hr']]],
+      toDOM: (node: any) => ['chapter-title', { isHidden: node.attrs.isHidden }, 0],
     }
   }
 

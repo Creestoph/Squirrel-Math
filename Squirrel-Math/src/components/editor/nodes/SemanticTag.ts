@@ -22,12 +22,12 @@ export default class SemanticTag extends Node {
         tag: 'semantic-tag',
         getAttrs: (dom: any) => ({
           tags: dom.getAttribute('tags').split(" "),
-          required: dom.getAttribute('required').split('\n')
+          required: dom.getAttribute('requiredLessons') ? dom.getAttribute('requiredLessons').split('\n') : []
         }),
       }],
       toDOM: (node: any) => ['semantic-tag', {
         tags: node.attrs.tags.join(" "),
-        required: node.attrs.tags.join('\n')
+        requiredLessons: node.attrs.required.join('\n')
       }],
     }
   }

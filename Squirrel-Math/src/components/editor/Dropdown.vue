@@ -1,7 +1,7 @@
 <template>
     <button class="wrapper" @click="dropdownVisible = !dropdownVisible">
         <div class="value"><slot name="placeholder">{{selectedOption}}</slot></div>
-        <div v-if="array" class="array-down"></div> 
+        <div v-if="arrow" class="arrow-down"></div> 
         <div class="dropdown" ref="dropdown" v-if="dropdownVisible" @click="select($event)">
             <slot></slot>
         </div>
@@ -11,7 +11,7 @@
 <script>
 export default {
     name: "Dropdown",
-    props: ["array"],
+    props: ["arrow"],
     data() {
         return {
             selectedOption: ' ',
@@ -58,7 +58,7 @@ export default {
     border: 1px solid $gray;
 }
 
-.array-down {
+.arrow-down {
     float: right;
     width: 0; 
     height: 0; 

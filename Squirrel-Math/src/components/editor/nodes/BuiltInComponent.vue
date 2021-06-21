@@ -140,6 +140,9 @@ export default {
         if (schema.type.name == 'ARRAY') {
           this.formArgs[i] = [""];
         }
+        if (schema.type.name == 'BOOLEAN') {
+          this.formArgs[i] = false;
+        }
       });
     },
     addElementForArrayParameter(i) {

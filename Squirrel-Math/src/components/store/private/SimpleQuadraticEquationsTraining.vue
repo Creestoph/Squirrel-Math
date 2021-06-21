@@ -100,7 +100,7 @@ export default class SimpleQuadraticEquationsTraining extends Vue {
         let div: Element = this.$refs[reference] as Element;
         [].slice.call(div.children).forEach(child => div.removeChild(child));
         div.innerHTML = content;
-        //MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+        MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
     }
 }
 </script>

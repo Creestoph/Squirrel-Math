@@ -16,7 +16,13 @@ export default class Chapter extends Node {
   commands({ type }: any) {
     return {
       createChapter() {
-        return (state: any, dispatch: any) => dispatch(state.tr.insert(state.tr.doc.content.size, type.createAndFill()));
+        return (state: any, dispatch: any) => {
+          const { selection } = state;
+          const position = selection.$cursor ? selection.$cursor.pos : selection.$to.pos;
+          const node = type.createAndFill();
+          const transaction = state.tr.insert(position, node);
+          dispatch(transaction);
+        }        
       },
       removeChapter() {
         return (state: any, dispatch: any) => {

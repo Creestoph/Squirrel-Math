@@ -2,12 +2,12 @@
   <span class="link-wrapper">
     <div class="link-editor" v-if="showEditor">
       Link do lekcji
-      <dropdown @keydown.esc="close()" :class="{'link-dropdown': true}" @click.native="getLessons()" @selected="selectLesson($event)" :array="true">
+      <dropdown @keydown.esc="close()" :class="{'link-dropdown': true}" @click.native="getLessons()" @selected="selectLesson($event)" :arrow="true">
         <template v-slot:placeholder>{{ selectedLesson }} </template>
         <dropdown-option v-for="(lesson, i) in lessons" :key="i" :class="{'link-dropdown-option': true}">{{ lesson.title }}</dropdown-option>
       </dropdown>
       Rozdział
-      <dropdown @keydown.esc="close()" :class="{'link-dropdown': true}" @click.native="getChapters()" @selected="selectChapter($event)" :array="true">
+      <dropdown @keydown.esc="close()" :class="{'link-dropdown': true}" @click.native="getChapters()" @selected="selectChapter($event)" :arrow="true">
         <template v-slot:placeholder>{{ selectedChapter }} </template>
         <dropdown-option v-for="(chapter, i) in chapters" :key="i" :disabled="chapter.disabled" :class="{'link-dropdown-option': true}">{{ chapter.name }}</dropdown-option>
       </dropdown>

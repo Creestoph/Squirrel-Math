@@ -13,6 +13,9 @@ export default class Proof extends Node {
       attrs: {
         label: {
           default: "Dowód"
+        },
+        required: {
+          default: []
         }
       },
       content: '(paragraph | expression | ordered_list)+',
@@ -21,9 +24,15 @@ export default class Proof extends Node {
       draggable: true,
       parseDOM: [{ 
         tag: 'proof',
-        getAttrs: (dom: any) => ({ label: dom.getAttribute('label')})
+        getAttrs: (dom: any) => ({ 
+          label: dom.getAttribute('label'),
+          required: dom.getAttribute('requiredLessons') ? dom.getAttribute('requiredLessons').split('\n') : []
+        })
       }],
-      toDOM: (node: any) => ['proof', { label: node.attrs.label }, 0],
+      toDOM: (node: any) => ['proof', { 
+        label: node.attrs.label,
+        requiredLessons: node.attrs.required.join('\n')
+      }, 0],
     }
   }
 

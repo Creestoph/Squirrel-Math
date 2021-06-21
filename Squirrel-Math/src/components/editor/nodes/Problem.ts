@@ -11,7 +11,7 @@ export default class Problem extends Node {
     return {
       content: 'inline*',
       group: 'block',
-      marks: 'underline strike',
+      marks: 'underline strike comment',
       defining: false,
       parseDOM: [{ tag: 'problem' }],
       toDOM: () => ['problem', { class: 'problem' }, 0],
