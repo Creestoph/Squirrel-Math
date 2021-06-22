@@ -863,8 +863,8 @@
 			$$
 
 			<p>
-				gdzie <span class="comment_visibleLOL" id="Przykładowo liczbę 158 możemy zapisać jako 10^2\cdot1+10^1\cdot5+10^0\cdot8.   k wynosi tu 2.">$a_0,a_1,…,a_k∈\{0,1,2,3,4,5,6,7,8,9\}$
-				są cyframi tej liczby.</span> <span class="comment_visibleLOL" id="Jeśli liczba ma n cyfr lub mniej,  to liczba utworzona przez n ostatnich cyfr to ta sama liczba. Wtedy twierdzenie jest mało pomocne.">
+				gdzie <span class="comment_visibleLOL" id="Przykładowo liczbę 158 możemy zapisać jako 10^2\cdot1+10^1\cdot5+10^0\cdot8. k wynosi tu 2.">$a_0,a_1,…,a_k∈\{0,1,2,3,4,5,6,7,8,9\}$
+				są cyframi tej liczby.</span> <span class="comment_visibleLOL" id="Jeśli liczba ma n cyfr lub mniej, to liczba utworzona przez n ostatnich cyfr to ta sama liczba. Wtedy twierdzenie jest mało pomocne.">
 				Jeśli $k \lt n$, to
 				liczba utworzona przez $n$ ostatnich 
 				cyfr tej liczby jest równa $a$ i twierdzenie jest prawdziwe.</span> Gdy $k≥n$,
