@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <div v-if="editMode" class="editor-wrapper">
+    <div v-show="editMode" class="editor-wrapper">
       <div class="form">
         <div class="form-header">
           <label for="type-select">Komponent</label>
@@ -31,12 +31,11 @@
           </div>
         </div>
       </div>
-      <button @click="saveAndRun()" class="toggle-edit-button">Run</button>
+      <button @click="saveAndRun()" class="toggle-edit-button" title="uruchom"><icon>play_arrow</icon></button>
     </div>
-    <div v-if="!editMode" class="output-wrapper">
-      <div :is="getComponentName()" v-bind="componentConfiguration" :class="{ output: true }">
-      </div>
-      <button @click="edit()" class="toggle-edit-button">Edit</button>
+    <div v-show="!editMode" class="output-wrapper">
+      <div :is="getComponentName()" v-bind="componentConfiguration" :class="{ output: true }"></div>
+      <button @click="edit()" class="toggle-edit-button" title="edytuj"><icon>edit</icon></button>
     </div>
   </div>  
 </template>

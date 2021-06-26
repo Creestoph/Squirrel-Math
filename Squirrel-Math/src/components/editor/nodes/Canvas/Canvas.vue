@@ -2,10 +2,10 @@
   <button ref="geometryEditor" class="geometry-editor" @focus="focused = true" @blur="onBlur($event)">
     <div v-if="focused" class="geometry-toolbar-wrapper">
       <div class="geometry-toolbar">
-        <button @mousedown="addSquare($event)">kwadrat</button>
-        <button @mousedown="addTriangle($event)">trójkąt</button>
-        <button @mousedown="addCircle($event)">koło</button>
-        <button @mousedown="addLine($event)">linia</button>
+        <button @mousedown="addSquare($event)"><icon>crop_square</icon></button>
+        <button @mousedown="addTriangle($event)"><icon>change_history</icon></button>
+        <button @mousedown="addCircle($event)"><icon>circle</icon></button>
+        <button @mousedown="addLine($event)"><icon>show_chart</icon></button>
         <template v-if="selectedShapes.length">
           <color-picker :color="fillColor" @mousedown.native="$event.preventDefault()" @selected="setFillColor($event)">wypełnienie</color-picker>
           <button v-if="canAnyHaveBorder(selectedShapes)" @mousedown="toggleBorder($event)">
@@ -353,8 +353,13 @@ export default {
 
 .geometry-toolbar {
   background: $light-gray;
-  overflow: auto;
   transform: translateY(-100%);
+  &::after { //clearfix
+    content: "";
+    clear: both;
+    display: table;
+  }
+  
   > * {
     padding: 0 10px;
     height: 47px;
@@ -371,7 +376,7 @@ export default {
 }
 
 .color-picker-wrapper {
-  >div {
+  > div {
     float: left;
     display: flex;
     align-items: center;

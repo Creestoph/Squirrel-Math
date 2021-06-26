@@ -47,8 +47,7 @@ export default {
   > div {
     display: flex;
     align-items: center;
-    height: 47px;
-    line-height: 47px;
+    height: 24px;
   }
 }
 
@@ -62,11 +61,12 @@ export default {
     position: absolute;
     display: block;
     clear: both;
-    top: 47px;
+    top: 44px;
     left: 0;
     background: $gray;
     width: unset !important;
     padding: 5px;
+    z-index: 1;
 
     td {
         border: none !important;

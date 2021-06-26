@@ -2,7 +2,7 @@
     <div v-if="visible" class="drafts-dialog">
         <div class="drafts-dialog-header">
             Wczytaj obraz
-            <button @click="close()">x</button>
+            <button @click="close()">✖</button>
         </div>
         <div class="drafts-dialog-body">
             <span class="caption">Baza Squirrel-Math</span>

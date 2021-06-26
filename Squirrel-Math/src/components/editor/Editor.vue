@@ -3,143 +3,144 @@
     <editor-menu-bar id="toolbar" ref="toolbar" :editor="editor" v-slot="{ commands, isActive }">
       <div>
         <div id="tools-managing">
-          <button @click="commands.undo">
-            cofnij akcję
+          <button @click="commands.undo" title="cofnij akcję (Ctrl + Z)">
+            <icon>undo</icon>
           </button>
 
-          <button @click="commands.redo">
-            przywróć akcję
+          <button @click="commands.redo" title="przywróć akcję (Ctrl + Y)">
+            <icon>redo</icon>
           </button>
 
-          <button @click="commands.saveToFile(); commands.saveToLocalStorage()">
-            zapisz
+          <button @click="commands.saveToFile(); commands.saveToLocalStorage()" title="zapisz (Ctrl + S)">
+            <icon>logout</icon>
           </button>
 
-          <button @click="openDraftsDialog()">
-            wczytaj
+          <button @click="openDraftsDialog()" title="wczytaj">
+            <icon>login</icon>
           </button>
 
-          <button @click="clearAll()">
-            wyczyść wszystko
+          <button @click="clearAll()" title="edytuj nową lekcję">
+            <icon>control_point</icon>
           </button>
 
-          <button v-if="secondModeExists()" @click="editSecondMode()">
-            {{ shortMode ? 'edytuj wersję pełną' : 'edytuj wersję skróconą' }}
+          <button v-if="secondModeExists()" @click="editSecondMode()" :title="shortMode ? 'edytuj wersję pełną' : 'edytuj wersję skróconą'">
+            <icon>control_point_duplicate</icon>
           </button>
-          <button v-if="!secondModeExists()" @click="createSecondMode()">
-            {{ shortMode ? 'stwórz wersję pełną' : 'stwórz wersję skróconą' }}
+          <button v-if="!secondModeExists()" @click="createSecondMode()" :title="shortMode ? 'stwórz wersję pełną' : 'stwórz wersję skróconą'">
+            <icon>control_point_duplicate</icon>
           </button>
         </div>
         <div id="tools-general">
-          <button :class="{ 'active': isActive.bold() }" style="font-weight: bold" @click="commands.bold">
+          <button :class="{ 'active': isActive.bold() }" style="font-weight: bold" @click="commands.bold" title="pogrubienie tekstu (Ctrl + B)">
             B
           </button>
 
-          <button :class="{ 'active': isActive.italic() }" style="font-style: italic" @click="commands.italic">
+          <button :class="{ 'active': isActive.italic() }" style="font-style: italic" @click="commands.italic" title="italika (Ctrl + I)">
             I
           </button>
 
-          <button :class="{ 'active': isActive.underline() }" style="text-decoration: underline" @click="commands.underline">
+          <button :class="{ 'active': isActive.underline() }" style="text-decoration: underline" @click="commands.underline" title="podkreślenie tekstu (Ctrl + U)">
             U
           </button>
 
-          <button :class="{ 'active': isActive.strike() }" style="text-decoration: line-through" @click="commands.strike">
+          <button :class="{ 'active': isActive.strike() }" style="text-decoration: line-through" @click="commands.strike" title="przekreślenie tekstu (Ctrl + D)">
             abc
           </button>
 
-          <color-picker @selected="commands.text_color({ color: $event })" :class="{ 'picker': true }" style="color: #cc4444">abc</color-picker>
+          <color-picker @selected="commands.text_color({ color: $event })" :class="{ 'picker': true }" style="color: #cc4444" title="kolor tekstu">abc</color-picker>
 
-          <button :class="{ 'active': textAlignExtension.isActive('left') }" @click="commands.text_align('left')">
-            left
+          <button :class="{ 'active': textAlignExtension.isActive('left') }" @click="commands.text_align('left')" title="wyrównanie do lewej">
+            <icon>format_align_left</icon>
           </button>
 
-          <button :class="{ 'active': textAlignExtension.isActive('center') }" @click="commands.text_align('center')">
-            center
+          <button :class="{ 'active': textAlignExtension.isActive('center') }" @click="commands.text_align('center')" title="wyrównanie do środka">
+            <icon>format_align_center</icon>
           </button>
 
-          <button :class="{ 'active': textAlignExtension.isActive('right') }" @click="commands.text_align('right')">
-            right
+          <button :class="{ 'active': textAlignExtension.isActive('right') }" @click="commands.text_align('right')" title="wyrównanie do prawej">
+            <icon>format_align_right</icon>
           </button>
 
-          <button :class="{ 'active': isActive.bullet_list() }" @click="commands.bullet_list">
-            ◆
+          <button :class="{ 'active': isActive.bullet_list() }" @click="commands.bullet_list" title="lista punktowana">
+            <icon>format_list_bulleted</icon>
           </button>
 
-          <button :class="{ 'active': isActive.ordered_list() }" @click="commands.ordered_list">
-            1)
+          <button :class="{ 'active': isActive.ordered_list() }" @click="commands.ordered_list" title="lista numerowana">
+            <icon>format_list_numbered</icon>
           </button>
 
-          <button :class="{ 'active': isActive.link() }" @click="commands.link">
-            url
+          <button :class="{ 'active': isActive.link() }" @click="commands.link" title="link do lekcji">
+            <icon>link</icon>
           </button>
 
-          <dropdown @selected="insert($event, commands)">
-            <template v-slot:placeholder>wstaw</template>
-            <dropdown-option>rozdział</dropdown-option> 
-            <dropdown-option>sekcja</dropdown-option> 
-            <dropdown-option>wyrażenie</dropdown-option> 
-            <dropdown-option>wyrażenie inline</dropdown-option> 
-            <dropdown-option>twierdzenie</dropdown-option> 
-            <dropdown-option>dowód</dropdown-option> 
-            <dropdown-option>przykład</dropdown-option> 
-            <dropdown-option>problem</dropdown-option>
-            <dropdown-option>tabela</dropdown-option> 
-            <dropdown-option>obraz</dropdown-option> 
-            <dropdown-option>kształt geometryczny</dropdown-option> 
-            <dropdown-option>html</dropdown-option> 
-            <dropdown-option>element dynamiczny</dropdown-option>
+          <button :class="{ 'active': isActive.comment() }" @click="commands.comment" title="dodaj komentarz">
+            <icon>add_comment</icon>
+          </button>
+
+          <dropdown @selected="insert($event, commands)" title="wstaw">
+            <template v-slot:placeholder><icon>add</icon></template>
+            <dropdown-option value="chapter"><icon>menu_book</icon> rozdział</dropdown-option> 
+            <dropdown-option value="section"><icon>auto_stories</icon> sekcja</dropdown-option> 
+            <dropdown-option value="expression"><span style="width: 24px"><b>ΣΠ</b></span> wyrażenie</dropdown-option> 
+            <dropdown-option value="expressionInline"><span style="width: 24px"><b>σπ</b></span> wyrażenie inline</dropdown-option> 
+            <dropdown-option value="theorem"><icon>emoji_objects</icon> twierdzenie</dropdown-option> 
+            <dropdown-option value="proof"><icon>engineering</icon> dowód</dropdown-option> 
+            <dropdown-option value="example"><icon>view_agenda</icon> przykład</dropdown-option> 
+            <dropdown-option value="problem"><icon>help</icon> problem</dropdown-option>
+            <dropdown-option value="table"><icon>grid_on</icon> tabela</dropdown-option> 
+            <dropdown-option value="image"><icon>insert_photo</icon> obraz</dropdown-option> 
+            <dropdown-option value="shape"><icon>change_history</icon> kształt geometryczny</dropdown-option> 
+            <dropdown-option value="html"><icon>code</icon> html</dropdown-option> 
+            <dropdown-option value="dynamic"><icon>precision_manufacturing</icon> element dynamiczny</dropdown-option>
           </dropdown>
 
-          <button :class="{ 'active': isActive.comment() }" @click="commands.comment">
-            dodaj komentarz
-          </button>
         </div>
 
         <div class="tools-specific" v-if="isActive.table()">
-          <button @click="commands.deleteTable">usuń tabelę</button>
-          <button @click="commands.addColumnBefore">wstaw kolumnę przed</button>
-          <button @click="commands.addColumnAfter">wstaw kolumnę za</button>
-          <button @click="commands.deleteColumn">usuń kolumnę</button>
-          <button @click="commands.addRowBefore">wstaw wiersz przed</button>
-          <button @click="commands.addRowAfter">wstaw wiersz za</button>
-          <button @click="commands.deleteRow">usuń wiersz</button>
-          <button @click="commands.toggleCellMerge">scal komórki</button>
-          <color-picker @selected="commands.setCellAttr({name: 'background', value: $event})" :class="{ 'picker': true }">kolor tła</color-picker>
-          <color-picker @selected="commands.setCellAttr({name: 'borderColor', value: $event})" :class="{ 'picker': true }">kolor krawędzi</color-picker>
-          <button class="dropdown">
-            <div class="dropdown-label">krawędź lewa</div>
+          <button @click="commands.deleteTable" title="usuń tabelę"><icon>delete</icon></button>
+          <button @click="commands.addColumnBefore" title="wstaw kolumnę przed"><icon>insert_column_left</icon></button>
+          <button @click="commands.addColumnAfter" title="wstaw kolumnę za"><icon>insert_column_right</icon></button>
+          <button @click="commands.deleteColumn" title="usuń kolumnę"><icon>delete_column</icon></button>
+          <button @click="commands.addRowBefore" title="wstaw wiersz przed"><icon>insert_row_top</icon></button>
+          <button @click="commands.addRowAfter" title="wstaw wiersz za"><icon>insert_row_bottom</icon></button>
+          <button @click="commands.deleteRow" title="usuń wiersz"><icon>delete_row</icon></button>
+          <button @click="commands.toggleCellMerge" title="scal komórki"><icon>table_line</icon></button>
+          <color-picker @selected="commands.setCellAttr({name: 'background', value: $event})" :class="{ 'picker': true }" title="kolor tła"><icon style="color: #cc4444">apps</icon></color-picker>
+          <color-picker @selected="commands.setCellAttr({name: 'borderColor', value: $event})" :class="{ 'picker': true }" title="kolor krawędzi"><icon style="color: #cc4444">border_outer</icon></color-picker>
+          <button class="dropdown" title="krawędź lewa">
+            <div class="dropdown-label"><icon>border_left</icon></div>
             <div class="dropdown-list">
               <div class="dropdown-position" @click="commands.setCellAttr({name: 'borderLeft', value: '0'})">brak</div>
               <div class="dropdown-position" @click="commands.setCellAttr({name: 'borderLeft', value: '1'})">cienka</div>
               <div class="dropdown-position" @click="commands.setCellAttr({name: 'borderLeft', value: '3'})">gruba</div>
             </div>
           </button>
-          <button class="dropdown">
-            <div class="dropdown-label">krawędź prawa</div>
+          <button class="dropdown" title="krawędź prawa">
+            <div class="dropdown-label"><icon>border_right</icon></div>
             <div class="dropdown-list">
               <div class="dropdown-position" @click="commands.setCellAttr({name: 'borderRight', value: '0'})">brak</div>
               <div class="dropdown-position" @click="commands.setCellAttr({name: 'borderRight', value: '1'})">cienka</div>
               <div class="dropdown-position" @click="commands.setCellAttr({name: 'borderRight', value: '3'})">gruba</div>
             </div>
           </button>
-          <button class="dropdown">
-            <div class="dropdown-label">krawędź górna</div>
+          <button class="dropdown" title="krawędź górna">
+            <div class="dropdown-label"><icon>border_top</icon></div>
             <div class="dropdown-list">
               <div class="dropdown-position" @click="commands.setCellAttr({name: 'borderTop', value: '0'})">brak</div>
               <div class="dropdown-position" @click="commands.setCellAttr({name: 'borderTop', value: '1'})">cienka</div>
               <div class="dropdown-position" @click="commands.setCellAttr({name: 'borderTop', value: '3'})">gruba</div>
             </div>
           </button>
-          <button class="dropdown">
-            <div class="dropdown-label">krawędź dolna</div>
+          <button class="dropdown" title="krawędź dolna">
+            <div class="dropdown-label"><icon>border_bottom</icon></div>
             <div class="dropdown-list">
               <div class="dropdown-position" @click="commands.setCellAttr({name: 'borderBottom', value: '0'})">brak</div>
               <div class="dropdown-position" @click="commands.setCellAttr({name: 'borderBottom', value: '1'})">cienka</div>
               <div class="dropdown-position" @click="commands.setCellAttr({name: 'borderBottom', value: '3'})">gruba</div>
             </div>
           </button>
-          <button class="dropdown">
-            <div class="dropdown-label">wszystkie krawędzie</div>
+          <button class="dropdown" title="wszystkie krawędzie">
+            <div class="dropdown-label"><icon>border_outer</icon></div>
             <div class="dropdown-list">
               <div class="dropdown-position" @click="commands.setCellAttr({name: 'borderLeft', value: '0'}); commands.setCellAttr({name: 'borderRight', value: '0'}); commands.setCellAttr({name: 'borderTop', value: '0'}); commands.setCellAttr({name: 'borderBottom', value: '0'})">brak</div>
               <div class="dropdown-position" @click="commands.setCellAttr({name: 'borderLeft', value: '1'}); commands.setCellAttr({name: 'borderRight', value: '1'}); commands.setCellAttr({name: 'borderTop', value: '1'}); commands.setCellAttr({name: 'borderBottom', value: '1'})">cienka</div>
@@ -156,7 +157,7 @@
     <div v-if="showDraftsDialog" class="drafts-dialog">
       <div class="drafts-dialog-header">
         Wczytaj wersję roboczą
-        <button @click="closeDraftsDialog()">x</button>
+        <button @click="closeDraftsDialog()">✖</button>
       </div>
       <div class="drafts-dialog-body">
         <div class="drafts-list-header">
@@ -331,19 +332,19 @@ export default class LessonEditor extends Vue {
 
   insert(element: string, commands: any) {
     switch(element) {
-      case 'rozdział': commands.createChapter(); break;
-      case 'sekcja': commands.semantic_tag(); break;
-      case 'przykład': commands.example(); break;
+      case 'chapter': commands.createChapter(); break;
+      case 'section': commands.semantic_tag(); break;
+      case 'example': commands.example(); break;
       case 'problem': commands.problem(); break;
-      case 'wyrażenie': commands.expression(); break;
-      case 'wyrażenie inline': commands.expressionInline(); break;
-      case 'twierdzenie': commands.formula(); break;
-      case 'dowód': commands.proof(); break;
-      case 'tabela': commands.createTable({ rowsCount: 3, colsCount: 3, withHeaderRow: false }); break;
-      case 'obraz': (this.$refs.imagePicker as ImagePicker).open((image: Image) => commands.image(image)); break;
-      case 'kształt geometryczny': commands.geometry(); break;
+      case 'expression': commands.expression(); break;
+      case 'expressionInline': commands.expressionInline(); break;
+      case 'theorem': commands.formula(); break;
+      case 'proof': commands.proof(); break;
+      case 'table': commands.createTable({ rowsCount: 3, colsCount: 3, withHeaderRow: false }); break;
+      case 'image': (this.$refs.imagePicker as ImagePicker).open((image: Image) => commands.image(image)); break;
+      case 'shape': commands.geometry(); break;
       case 'html': commands.custom_element(); break;
-      case 'element dynamiczny': commands.component(); break;
+      case 'dynamic': commands.component(); break;
     }
   }
 
@@ -466,6 +467,9 @@ export default class LessonEditor extends Vue {
 .ProseMirror {
   outline: none !important;
 }
+#editor {
+  margin-top: 300px;
+}
 #toolbar {
   position: fixed;
   top: 0;
@@ -475,49 +479,52 @@ export default class LessonEditor extends Vue {
   z-index: 3;
   background: white;
 }
-#editor {
-  margin-top: 300px;
-}
+
 #tools-managing button {
   font-weight: bold;
   padding: 10px 15px;
   background: none;
 }
-#tools-general {
+
+#tools-general, .tools-specific {
   width: 100%;
   background: $light-gray;
   > * {
     display: inline-block;
   }
-}
-#tools-general button {
-  padding: 10px 15px;
-  min-width: 10px;
-}
-#tools-general button:hover {
-  background: $gray;
-}
-#tools-general button.active {
-  background: $dark-gray;
-}
-#tools-general button.active:hover {
-  background: $dark-gray;
-  outline: 1px solid $darker-gray;
-  outline-offset: -1px;
-}
-.tools-specific {
-  width: 100%;
-  background: $dark-gray;
 
   button {
-    font-size: 0.9em;
-    background: $dark-gray;
-    padding: 10px 7.5px;
+    padding: 10px 13px;
+    min-width: 10px;
+    height: 24px;
+    &:hover {
+      background: $gray;
+    }
+    .active {
+      background: $dark-gray;
+    }
+    .active:hover {
+      background: $dark-gray;
+      outline: 1px solid $darker-gray;
+      outline-offset: -1px;
+    }
   }
+}
+
+#tools-general .dropdown > div {
+  line-height: 24px;
+  span {
+    display: inline-block;
+    margin-right: 20px;
+  }
+}
+
+.tools-specific {
+  background: $dark-gray;
 
   .dropdown-list {
     position: absolute;
-    top: 47px;
+    top: 44px;
     left: 0;
     z-index: 2;
     width: 100%;
@@ -537,11 +544,9 @@ export default class LessonEditor extends Vue {
     }
   }
 }
+
 .picker {
-  padding: 0 10px !important;
-}
-.underline {
-  text-decoration: underline;
+  padding: 0 10px;
 }
 .tools-specific button:hover {
   background: $darker-gray;

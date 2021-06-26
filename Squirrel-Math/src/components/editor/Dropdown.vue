@@ -23,7 +23,7 @@ export default {
             this.dropdownVisible = false;
             event.stopPropagation();
             if (event.target != this.$refs.dropdown) {
-                this.selectedOption = event.target.innerHTML;
+                this.selectedOption = event.target.getAttribute('value');
                 this.$emit('selected', this.selectedOption); 
             }
         }
