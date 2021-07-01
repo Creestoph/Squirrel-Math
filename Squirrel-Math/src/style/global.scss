@@ -33,9 +33,18 @@ p
 	margin: 1.2em 0;
 }
 
-.default-table p {
-    margin: 7px 0;
-	min-height: 26px;
+.default-table {
+	margin: 0 auto;
+
+	> tr > td, > tr > th {
+		padding: 0 2px;
+		width: 26px;
+		position: relative;
+		border-style: solid;
+		p {
+			margin: 2px 0;
+		}
+	}
 }
 
 .no-selection 
@@ -384,7 +393,6 @@ p.optional-show:hover ~ div
 	color: $darker-gray;
 	font-size: 0.8em;
 	margin-top: -0.2em;
-	margin-bottom: -1.5em;
 }	
 
 .proof .warning

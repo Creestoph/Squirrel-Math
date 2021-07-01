@@ -33,9 +33,9 @@
       </div>
       <button @click="saveAndRun()" class="toggle-edit-button" title="uruchom"><icon>play_arrow</icon></button>
     </div>
-    <div v-show="!editMode" class="output-wrapper">
-      <div :is="getComponentName()" v-bind="componentConfiguration" :class="{ output: true }"></div>
-      <button @click="edit()" class="toggle-edit-button" title="edytuj"><icon>edit</icon></button>
+    <div class="output-wrapper">
+      <div v-if="!editMode" :is="getComponentName()" v-bind="componentConfiguration" :class="{ output: true }"></div>
+      <button v-show="!editMode" @click="edit()" class="toggle-edit-button" title="edytuj"><icon>edit</icon></button>
     </div>
   </div>  
 </template>

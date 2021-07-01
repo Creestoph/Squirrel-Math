@@ -21,7 +21,7 @@
         </div>
       </router-link>
       <router-link tag="a" to="/editor" class="menu-segment">
-        <icon style="width: 55px; height: 55px; margin: 0 5px 0 -10px">file_edit_line</icon> 
+        <icon style="width: 55px; height: 55px">file_edit</icon> 
         <span class="menu-text"> edytor</span>
       </router-link>
     </div>

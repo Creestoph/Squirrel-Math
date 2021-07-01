@@ -63,7 +63,6 @@ class Lesson {
   isRequiredBy: string[] = [];
   field?: string; 
   level?: string; 
-  url?: string;
 }
 
 @Component({
@@ -97,7 +96,7 @@ export default class InteractiveTree extends Vue {
 
   setBoldLesson() {
     for (let l of Object.values(this.lessons))
-      if (l.url == this.$router.currentRoute.path)
+      if (l.title == this.$route.params.sourceFile)
         this.boldLesson = l.title;
   }
 
@@ -179,15 +178,13 @@ export default class InteractiveTree extends Vue {
           this.nodes[this.boldLesson].style!.fontWeight = 'normal';
         this.boldLesson = (hitResult.item as paper.PointText).content!;
         this.nodes[this.boldLesson].style!.fontWeight = 'bold';
-        if (this.lessons[this.boldLesson].url) {
-          if ((event as any).event.button === 0)
-            this.$router.push(this.lessons[this.boldLesson].url!);
-          else if ((event as any).event.button === 1) {
-            let url = this.$router.resolve(this.lessons[this.boldLesson].url!);
-            window.open(url.href, '_blank');
-          }
-          this.clearHoveredLesson();
+        if ((event as any).event.button === 0)
+          this.$router.replace({ name: 'lesson', params: { sourceFile: this.lessons[this.boldLesson].title } }).catch(() => {});
+        else if ((event as any).event.button === 1) {
+          let url = this.$router.resolve('/lesson/' + this.lessons[this.boldLesson].title);
+          window.open(url.href, '_blank');
         }
+        this.clearHoveredLesson();
       }
     }
 
@@ -276,7 +273,6 @@ export default class InteractiveTree extends Vue {
         isRequiredBy: [], 
         field: lesson.field, 
         level: lesson.level, 
-        url: lesson.url,
       };
     for (let lesson of graphLessons)
       for (let req of lesson.requires)

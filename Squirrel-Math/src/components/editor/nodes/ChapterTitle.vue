@@ -2,7 +2,7 @@
   <div class="chapter_name">
     <div ref="content"></div>
     <div class="hidden-button" :class="{'hidden': isHidden}" @click="isHidden = !isHidden" :title="isHidden ? 'Rozdział będzie domyślnie zwinięty. Kliknij by był domyślnie rozwinięty.' : 'Rozdział będzie domyślnie rozwinięty. Kliknij by był domyślnie zwinięty.'">
-      <span class="material-icons">visibility_off</span>
+      <icon style="width: 40px; height: 40px">visibility_off</icon>
     </div>
     <hr>
   </div>  
@@ -31,7 +31,7 @@ export default {
   position: absolute;
   left: -50px;
   padding-right: 20px;
-  top: -10px;
+  top: -12px;
   cursor: pointer !important;
 
   color: $gray;

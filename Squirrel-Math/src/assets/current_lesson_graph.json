@@ -1,154 +1,132 @@
 [
     {
         "title": "Wprowadzenie",
-        "requires": [],
-        "url": "/wprowadzenie"
+        "requires": []
     },
     {
         "title": "Liczba",
         "requires": ["Wprowadzenie"],
         "field": "Arytmetyka",
-        "level": "Przedszkole",
-        "url": "/liczba"
+        "level": "Przedszkole"
     },
     {
         "title": "Dodawanie",
         "requires": ["Liczba"],
         "field": "Arytmetyka",
-        "level": "Szkoła podstawowa",
-        "url": "/dodawanie"
+        "level": "Szkoła podstawowa"
     },
     {
         "title": "Odejmowanie",
         "requires": ["Dodawanie"],
         "field": "Arytmetyka",
-        "level": "Szkoła podstawowa",
-        "url": "/odejmowanie"
+        "level": "Szkoła podstawowa"
     },
     {
         "title": "Mnożenie",
         "requires": ["Dodawanie"],
         "field": "Arytmetyka",
-        "level": "Szkoła podstawowa",
-        "url": "/mnozenie"
+        "level": "Szkoła podstawowa"
     },
     {
         "title": "Dzielenie",
         "requires": ["Odejmowanie", "Mnożenie"],
         "field": "Arytmetyka",
-        "level": "Szkoła podstawowa",
-        "url": "/dzielenie"
+        "level": "Szkoła podstawowa"
     },
     {
         "title": "Podzielność",
         "requires": ["Dzielenie"],
         "field": "Teoria liczb",
-        "level": "Szkoła podstawowa",
-        "url": "/podzielnosc-liczb"
+        "level": "Szkoła podstawowa"
     },
     {
         "title": "Kolejność wykonywania działań",
         "requires": ["Dzielenie"],
         "field": "Arytmetyka",
-        "level": "Szkoła podstawowa",
-        "url": "/kolejnosc-wykonywania-dzialan"
+        "level": "Szkoła podstawowa"
     },
     {
         "title": "Ułamki zwykłe",
         "requires": ["Kolejność wykonywania działań", "Podzielność"],
         "field": "Arytmetyka",
-        "level": "Szkoła podstawowa",
-        "url": "/ulamki-zwykle"
+        "level": "Szkoła podstawowa"
     },
     {
         "title": "Liczby ujemne",
         "requires": ["Kolejność wykonywania działań"],
         "field": "Arytmetyka",
-        "level": "Szkoła podstawowa",
-        "url": "/liczby-ujemne"
+        "level": "Szkoła podstawowa"
     },
     {
         "title": "Ułamki dziesiętne",
         "requires": ["Ułamki zwykłe"],
         "field": "Arytmetyka",
-        "level": "Szkoła podstawowa",
-        "url": "/ulamki-dziesietne"
+        "level": "Szkoła podstawowa"
     },
     {
         "title": "Procenty",
         "requires": ["Ułamki dziesiętne"],
         "field": "Matematyka stosowana",
-        "level": "Szkoła podstawowa",
-        "url": "/procenty"
+        "level": "Szkoła podstawowa"
     },
     {
         "title": "Wyrażenia algebraiczne",
         "requires": ["Liczby ujemne", "Ułamki dziesiętne"],
         "field": "Algebra",
-        "level": "Szkoła podstawowa",
-        "url": "/wyrazenia-algebraiczne"
+        "level": "Szkoła podstawowa"
     },
     {
         "title": "Twierdzenia i dowody",
         "requires": ["Wyrażenia algebraiczne"],
         "field": "Logika matematyczna",
-        "level": "Liceum",
-        "url": "/twierdzenia-i-dowody"
+        "level": "Liceum"
     },
     {
         "title": "Równania i nierówności",
         "requires": ["Wyrażenia algebraiczne"],
         "field": "Algebra",
-        "level": "Szkoła podstawowa",
-        "url": "/rownania-i-nierownosci"
+        "level": "Szkoła podstawowa"
     },
     {
         "title": "Potęgowanie",
         "requires": ["Twierdzenia i dowody"],
         "field": "Algebra",
-        "level": "Szkoła podstawowa",
-        "url": "/potegowanie"
+        "level": "Szkoła podstawowa"
     },
     {
         "title": "Pierwiastkowanie",
         "requires": ["Potęgowanie"],
         "field": "Algebra",
-        "level": "Szkoła podstawowa",
-        "url": "/pierwiastkowanie"
+        "level": "Szkoła podstawowa"
     },
     {
         "title": "Działania na wyrażeniach algebraicznych",
         "requires": ["Potęgowanie"],
         "field": "Algebra",
-        "level": "Szkoła podstawowa",
-        "url": "/dzialania-na-wyrazeniach-algebraicznych"
+        "level": "Szkoła podstawowa"
     },
     {
         "title": "Zbiory liczbowe",
         "requires": ["Pierwiastkowanie"],
         "field": "Teoria mnogości",
-        "level": "Szkoła podstawowa",
-        "url": "/zbiory-liczbowe"
+        "level": "Szkoła podstawowa"
     },
     {
         "title": "Równania i nierówności liniowe",
         "requires": ["Równania i nierówności", "Zbiory liczbowe", "Działania na wyrażeniach algebraicznych"],
         "field": "Algebra",
-        "level": "Szkoła podstawowa",
-        "url": "/rownania-i-nierownosci-liniowe"
+        "level": "Szkoła podstawowa"
     },
     {
         "title": "Równania kwadratowe",
         "requires": ["Równania i nierówności liniowe"],
         "field": "Algebra",
-        "level": "Liceum",
-        "url": "/rownania-kwadratowe"
+        "level": "Liceum"
     },
     {
         "title": "Wielomiany",
         "requires": ["Równania kwadratowe"],
         "field": "Algebra",
-        "level": "Liceum",
-        "url": "/wielomiany"
+        "level": "Liceum"
     }
 ]

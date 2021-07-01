@@ -1,5 +1,5 @@
 <template>
-    <div :is="attrs.componentName" v-bind="componentConfiguration" :class="{ output: true }"></div>
+    <div :is="getComponentName()" v-bind="componentConfiguration"></div>
 </template>
 
 <script lang="ts">
@@ -17,30 +17,56 @@ import { columnarOperationGuideSchema } from '@/components/store/columnar-operat
 import { columnarOperationGuideLabels } from '@/components/store/columnar-operation-guide/ColumnarOperationGuideLabels'
 import { ComponentSchema } from '../store/Schema';
 
+// private componets, only managed by developers
+import { otherComponentSchema } from '@/components/store/private/OtherComponentSchema'
+import { otherComponentLabels } from '@/components/store/private/OtherComponentLabels'
+import AlgebraicCalculator from '@/components/store/private/AlgebraicCalculator.vue'
+import SimpleQuadraticEquationsTraining from '@/components/store/private/SimpleQuadraticEquationsTraining.vue'
+
 @Component({
     components: {
         OperationTable,
         ColumnarOperationTable,
-        ColumnarOperationGuide
+        ColumnarOperationGuide,
+        AlgebraicCalculator,
+        SimpleQuadraticEquationsTraining
     }
 })
 export default class BuiltInComponent extends Vue { 
-    @Prop() attrs?: any;
+    @Prop() attrs!: { componentName: string, args: string[] };
     readonly componentConfiguration: { [parameterName: string]: any };
+
+    getComponentName() {
+      return this.attrs.componentName == 'other' ? this.componentConfiguration.name : this.attrs.componentName;
+    }
 
     constructor() {
         super();
-        const schemas: { [componentName: string]: ComponentSchema} = {};
-        const labels: { [componentName: string]: { [parameterName: string]: string }} = {};
-        schemas['operation-table'] = operationTableSchema;
-        labels['operation-table'] = operationTableLabels;
-        schemas['columnar-operation-table'] = columnarOperationTableSchema;
-        labels['columnar-operation-table'] = columnarOperationTableLabels;
-        schemas['columnar-operation-guide'] = columnarOperationGuideSchema;
-        labels['columnar-operation-guide'] = columnarOperationGuideLabels;
+        const builtInComponents = {
+            'operation-table': {
+                name: 'Tabliczka działania',
+                schema: operationTableSchema,
+                labels: operationTableLabels
+            },
+            'columnar-operation-table': {
+                name: 'Działanie w słupku',
+                schema: columnarOperationTableSchema,
+                labels: columnarOperationTableLabels
+            },
+            'columnar-operation-guide': {
+                name: 'Tutorial działania w słupku',
+                schema: columnarOperationGuideSchema,
+                labels: columnarOperationGuideLabels
+            },
+            'other': {
+                name: 'Inny',
+                schema: otherComponentSchema,
+                labels: otherComponentLabels
+            }
+        } as { [key: string]: { name: string, schema: ComponentSchema, labels: { [key: string]: string }}};
 
         this.componentConfiguration = {};
-        Object.entries(schemas[this.attrs.componentName]).forEach(([key, schema], i) => {
+        Object.entries(builtInComponents[this.attrs.componentName].schema).forEach(([key, schema], i) => {
             if (schema.type.name == 'TEXT' || schema.type.name == 'BOOLEAN' || schema.type.name == 'ENUM')
                 this.componentConfiguration[key] = this.attrs.args[i];
             else if (schema.type.name == 'NUMBER')
@@ -54,11 +80,11 @@ export default class BuiltInComponent extends Vue {
                 catch (e) {
                     this.componentConfiguration[key] = () => {};
                 }
-            }
+                }
             else if (schema.type.name == 'ARRAY') {
                 try {
                     this.componentConfiguration[key] = [...this.attrs.args[i]];
-                    (this.componentConfiguration[key] as Array<string>).forEach((element, j) => this.componentConfiguration[key][j] = eval(element));
+                    this.componentConfiguration[key].forEach((element: string, j: number) => this.componentConfiguration[key][j] = eval(element));
                 }
                 catch (e) {
                     this.componentConfiguration[key] = [];

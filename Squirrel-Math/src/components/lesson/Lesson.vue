@@ -2,29 +2,40 @@
   <div>
     <div id="whole">
       <div ref="lesson" class="lesson">
-        <lesson-version-button 
-          v-if="routeShortVersion && routeLongVersion" 
-          :route-long-version="routeLongVersion" 
-          :route-short-version="routeShortVersion"
-        />
+        <lesson-version-button v-if="content" @click.native="shortMode = !shortMode" :shortMode="shortMode"/>
         <button ref="expandButton" id="expand-button" class="no-selection" @click="lessonHidden ? expandLesson() : hideLesson()">
           &lt;
         </button>
-        <button v-if="content" id="edit-button" @click="editLesson()">
+        <router-link v-if="content" id="edit-button" tag="a" :to="'/editor/' + content">
           Edytuj lekcję <icon>edit</icon>
-        </button>
-        <div class="lesson-content">
+        </router-link>
+
+        <div class="lesson-content" v-if="shortMode" :key="short.title">
           <slot>
-            <lesson-title>{{ title }}</lesson-title>
+            <lesson-title>{{ short.title }}</lesson-title>
             <lesson-intro>
-              <block-element v-for="(block, i) in introElements" :key="i" :content="block"></block-element>
+              <block-element v-for="(block, i) in short.introElements" :key="i" :content="block"></block-element>
             </lesson-intro>
-            <lesson-chapter v-for="(chapter, i) in chapters" :key="i">
+            <lesson-chapter v-for="(chapter, i) in short.chapters" :key="i" :optional="chapter[0].attrs && chapter[0].attrs.isHidden">
               <template #title>{{ chapter[0].content[0].text }}</template>  
               <block-element v-for="(block, j) in chapter[1].content" :key="j" :content="block"></block-element>
             </lesson-chapter>
           </slot>
         </div>
+
+        <div class="lesson-content" v-if="!shortMode" :key="long.title">
+          <slot>
+            <lesson-title>{{ long.title }}</lesson-title>
+            <lesson-intro>
+              <block-element v-for="(block, i) in long.introElements" :key="i" :content="block"></block-element>
+            </lesson-intro>
+            <lesson-chapter v-for="(chapter, i) in long.chapters" :key="i" :optional="chapter[0].attrs && chapter[0].attrs.isHidden">
+              <template #title>{{ chapter[0].content[0].text }}</template>  
+              <block-element v-for="(block, j) in chapter[1].content" :key="j" :content="block"></block-element>
+            </lesson-chapter>
+          </slot>
+        </div>
+
       </div>
     </div>
   </div>
@@ -40,6 +51,7 @@ import LessonChapter from "./chapter/LessonChapter.vue";
 import BlockElement from "./BlockElement.vue";
 import Comment from './Comment.vue';
 import Graphics from './Graphics.vue';
+import { Route } from 'vue-router';
 declare var MathJax:any
 
 @Component({
@@ -52,38 +64,63 @@ declare var MathJax:any
   }
 })
 export default class Lesson extends Vue { 
-  @Prop() routeLongVersion!: string;
-  @Prop() routeShortVersion!: string;
-  @Prop() content?: string;
+  @Prop() inputContent?: string;
   lessonHidden = true
   
-  title = "";
-  introElements = [];
-  chapters = [];
+  long = {
+    title: "",
+    introElements: [],
+    chapters: [],
+  }
+  short = {
+    title: "",
+    introElements: [],
+    chapters: [],
+  }
+  shortMode = false;
 
-  constructor() {
-    super();
+  get content() {
+    return this.$route.params.sourceFile || this.inputContent;
+  }
+
+  beforeRouteUpdate(to: Route, from: Route, next: Function) {
+    next();
+    this.loadLesson()
   }
 
   mounted() {
+    this.loadLesson();
+  }
+
+  private loadLesson() {
     this.expandLesson();
     window.addEventListener("scroll", this.moveExpandButton);
     this.setContent();
-    MathJax.Hub.Queue(["Typeset", MathJax.Hub]); 
   }
+
   destroyed() {
     window.removeEventListener("scroll", this.moveExpandButton);
   }
-
   setContent() {
     if (this.content) {
       import(`@/assets/lessons/${this.content}`).then(json => {
-        this.title = json.content[0].content[0].text;
-        this.introElements = json.content[1].content;
-        this.chapters = json.content.filter((item: any, position: any) => position > 1).map((item: any) => item.content);
+        if (json.long) {
+          this.long.title = json.long.content[0].content[0].text;
+          this.long.introElements = json.long.content[1].content;
+          this.long.chapters = json.long.content.filter((item: any, position: any) => position > 1).map((item: any) => item.content);
+        }
+        if (json.short) {
+          this.short.title = json.short.content[0].content[0].text;
+          this.short.introElements = json.short.content[1].content;
+          this.short.chapters = json.short.content.filter((item: any, position: any) => position > 1).map((item: any) => item.content);
+        }
         Comment.allComments = json.comments;
         Graphics.lessonImages = json.images;
-      })
+        this.$nextTick(() => MathJax.Hub.Queue(["Typeset", MathJax.Hub]))
+      });
+    }
+    else {
+      MathJax.Hub.Queue(["Typeset", MathJax.Hub]); 
     }
   }
   hideLesson() {
@@ -104,9 +141,6 @@ export default class Lesson extends Vue {
         if (this.$refs.expandButton)
           (this.$refs.expandButton as HTMLElement).innerHTML = "<";
       }, 1000);    }
-  }
-  editLesson() {
-    this.$router.push({name: 'editor', params: { sourceFile: this.content! }});
   }
   moveExpandButton() {
     (this.$refs.expandButton as HTMLElement).style.marginTop = "" + window.scrollY + "px";
@@ -140,6 +174,7 @@ export default class Lesson extends Vue {
   box-shadow: none;
   transition: margin-top 0.5s;
 }
+
 #edit-button {
   position: absolute;
   top: 110px;
@@ -163,7 +198,7 @@ export default class Lesson extends Vue {
 
 .lesson {
   position: relative;
-  font-family: $main-font;//"Segoe UI";
+  font-family: $main-font;
   color: black;
   background: white;
   clear: both;
@@ -201,7 +236,4 @@ export default class Lesson extends Vue {
     min-height: 899px;
   }
 }
-
-
-
 </style>

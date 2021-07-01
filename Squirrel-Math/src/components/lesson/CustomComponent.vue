@@ -13,10 +13,12 @@ export default class CustomComponent extends Vue {
     private runScripts(htmlElement: Element) {
       Array.from(htmlElement.children).forEach(child => {
         if (child.tagName == 'SCRIPT') {
-          htmlElement.removeChild(child);
-          let childCopy = document.createElement('script');
-          childCopy.innerHTML = child.innerHTML;
-          childCopy.src = (child as HTMLScriptElement).src;
+          const scriptChild = child as HTMLScriptElement;
+          htmlElement.removeChild(scriptChild);
+          const childCopy = document.createElement('script');
+          childCopy.innerHTML = scriptChild.innerHTML;
+          if (scriptChild.src)
+            childCopy.src = scriptChild.src;
           htmlElement.appendChild(childCopy);
         }
         else 

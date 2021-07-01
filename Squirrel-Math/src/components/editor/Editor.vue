@@ -349,7 +349,7 @@ export default class LessonEditor extends Vue {
   }
 
   private loadContent() {
-    this.sourceFile = this.$route.params.sourceFile;
+    this.sourceFile = this.$route.params.editSourceFile;
     if (this.sourceFile)
       import(`@/assets/lessons/${this.sourceFile}`).then(file => this.savePlugin.loadFromJSON(file));
   }
@@ -362,6 +362,8 @@ export default class LessonEditor extends Vue {
     this.clearComments();
     this.clearImages();
     this.clearContent();
+    this.savePlugin.longVersionJSON = '';
+    this.savePlugin.shortVersionJSON = '';
   }
 
   private clearComments() {

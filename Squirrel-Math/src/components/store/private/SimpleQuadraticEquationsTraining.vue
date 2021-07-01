@@ -1,5 +1,5 @@
 <template>
-    <div id="whole">
+    <div class="whole">
         Równanie:
         <div ref="equationDiv"></div>
         Rozwiązują $x = $ <input v-model="x1" @keyup="updateProduct()" tabindex="1"> lub $x = $ 
@@ -106,7 +106,7 @@ export default class SimpleQuadraticEquationsTraining extends Vue {
 </script>
 
 <style scoped lang="scss">
-#whole {
+.whole {
     border: 1px solid black;
     text-align: center;
     padding: 20px 0;

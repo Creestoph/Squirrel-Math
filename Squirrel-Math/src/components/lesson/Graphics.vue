@@ -14,7 +14,8 @@ export default class Graphics extends Vue {
     src: string = '';
 
     mounted() {
-      this.src = this.attrs.scoped ? Graphics.lessonImages[this.attrs.key].src : require(`@/assets/global-images/${this.attrs.key}`)
+      const scopedImage = Graphics.lessonImages[this.attrs.key];
+      this.src = scopedImage ? scopedImage.src : require(`@/assets/global-images/${this.attrs.key}`)
     }
 }
 </script>

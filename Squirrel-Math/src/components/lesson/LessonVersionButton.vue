@@ -1,36 +1,28 @@
 <template>
-  <router-link
-    tag="a"
-    :to="routeLongVersion == $route.path ? routeShortVersion : routeLongVersion"
-  >
+  <div>
     <div class="bookmark-shadow">
       <div class="bookmark">
-        {{ routeLongVersion == $route.path ? "WERSJA SKRÓCONA" : "WERSJA PEŁNA" }}
+        {{ !shortMode ? "WERSJA SKRÓCONA" : "WERSJA PEŁNA" }}
       </div>
     </div>
     <div class="bookmark-min">
-      <div :class="routeLongVersion == $route.path ? 'active' : ''">
-        WERSJA PEŁNA
-      </div>
-      <div :class="routeLongVersion == $route.path ? '' : 'active'">
-        WERSJA SKRÓCONA
-      </div>
+      <div :class="!shortMode ? 'active' : ''">WERSJA PEŁNA</div>
+      <div :class="!shortMode ? '' : 'active'">WERSJA SKRÓCONA</div>
     </div>
-  </router-link>
+  </div>
 </template>
 
 <script>
 export default {
   name: "LessonVersionButton",
-  props: ["routeLongVersion", "routeShortVersion"]
+  props: ["shortMode"]
 };
 </script>
 
 <style scoped lang="scss">
 @import "@/style/global";
 
-.bookmark
-{
+.bookmark {
 	padding-left: 40px;
 	padding-right: 40px;
 	height: 60px;
@@ -43,10 +35,8 @@ export default {
 	transition: padding-right 0.4s;
 }
 
-@media screen and (min-width: 500px)
-{
-  .bookmark:before
-  {
+@media screen and (min-width: 500px) {
+  .bookmark:before {
     content: "";
     position: absolute;
     left: -12px;
@@ -57,8 +47,7 @@ export default {
     transform: skew(-40deg);
   }
 
-  .bookmark:after
-  {
+  .bookmark:after {
     content: "";
     position: absolute;
     left: -12px;
@@ -70,16 +59,13 @@ export default {
   }
 }
 
-.bookmark:hover
-{
+.bookmark:hover {
 	padding-right: 100px;
 	transition: padding-right 0.5s;
 }
 
-@media screen and (max-width: 1200px)
-{
-	.bookmark-shadow
-	{
+@media screen and (max-width: 1200px) {
+	.bookmark-shadow {
 		float: right;
 		overflow: auto;
     margin: 65px -5px 30px 0;
@@ -87,10 +73,8 @@ export default {
 	}
 }
 
-@media screen and (min-width: 1200px)
-{
-	.bookmark-shadow
-	{
+@media screen and (min-width: 1200px) {
+	.bookmark-shadow {
 		float: right;
 		overflow: auto;
 		box-shadow: 6px 3px 5px 0px rgba(0, 0, 0, 0.4);
@@ -100,15 +84,12 @@ export default {
 	}
 }
 
-@media screen and (max-width: 500px)
-{
-  .bookmark-shadow
-  {
+@media screen and (max-width: 500px) {
+  .bookmark-shadow {
     display: none;
   }
 
-  .bookmark-min div
-  {
+  .bookmark-min div {
     background: black;
     color: white;
     width: 50%;
@@ -120,17 +101,14 @@ export default {
     text-align: center;
   }
 
-  .bookmark-min div.active
-  {
+  .bookmark-min div.active {
       background: white;
       color: black;
   }
 }
 
-@media screen and (min-width: 501px)
-{
-  .bookmark-min
-  {
+@media screen and (min-width: 501px) {
+  .bookmark-min {
     display: none;
   }
 }

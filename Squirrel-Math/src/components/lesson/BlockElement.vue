@@ -26,22 +26,26 @@ import SemanticTag from './SemanticTag.vue';
 import Proof from "./Proof.vue";
 import Example from "./Example.vue";
 import Formula from "./Formula.vue";
+import Problem from "./Problem.vue";
 import Expression from "./Expression.vue";
+import ExpressionInline from "./ExpressionInline.vue";
 import Geometry from "./geometry/Geometry.vue";
 import LessonLink from "./Link.vue";
 import BuiltInComponent from "./BuiltInComponent.vue";
 import CustomComponent from "./CustomComponent.vue";
+import Paragraph from "./Paragraph.vue";
 
 interface SerializedNode {
     type: string;
-    marks: { type: string, attrs: { [name: string]: any }}[];
+    marks?: { type: string, attrs: { [name: string]: any }}[];
     text?: string;
-    content: SerializedNode[];
-    attrs: { [name: string]: any };
+    content?: SerializedNode[];
+    attrs?: { [name: string]: any };
 }
 
 @Component({
     components: {
+        Paragraph,
         Graphics,
         DefaultTable,
         TableCell,
@@ -51,7 +55,9 @@ interface SerializedNode {
         Proof,
         Example,
         Formula,
+        Problem,
         Expression,
+        ExpressionInline,
         Geometry,
         BuiltInComponent,
         CustomComponent
@@ -69,12 +75,28 @@ export default class BlockElement extends Vue {
         this.type = this.content.type;
         this.marks = this.content.marks;
         this.text = this.content.text;
-        this.children = this.content.content;
-        if (this.type == 'custom_element') {
-            this.attrs = { code: this.content.content[0].text };
+        this.children = this.content.content || [];
+        if (this.marks && this.marks.some(m => m.type == 'comment')) {
+            this.children = [this.content];
+            this.text = '';
+            if (this.children[0].marks)
+                this.children[0].marks = this.children[0].marks.filter(m => m.type != 'comment');
         }
-        else 
-            this.attrs = this.content.attrs || {};
+        else {
+            if (this.type == 'paragraph') {
+                if (!this.children.length || this.children && this.children[this.children.length - 1].type == 'hard_break')
+                    this.children.push({ type: 'hard_break' });
+            }
+            if (this.type == 'custom_element') {
+                this.attrs = { code: this.content.content![0].text };
+            }
+            else if (this.type == 'table') {
+                this.attrs = { columnWidths: this.children[0].content!.map(c => c.attrs!.colwidth) };
+            }
+            else {
+                this.attrs = this.content.attrs || {};
+            }
+        }
         if (this.marks)
             this.marks.filter(m => m.attrs).forEach(m => Object.assign(this.attrs, m.attrs));
     }
@@ -85,7 +107,8 @@ export default class BlockElement extends Vue {
         if (this.marks && this.marks.some(m => m.type == 'link'))
             return 'lesson-link';
         const typeToTag: { [type: string]: string } = {
-            paragraph: 'p',
+            paragraph: 'paragraph',
+            hard_break: 'br',
             bullet_list: 'ul',
             ordered_list: 'ol',
             list_item: 'li',
@@ -99,9 +122,11 @@ export default class BlockElement extends Vue {
             example: 'example',
             formula: 'formula',
             expression: 'expression',
+            expressionInline: 'expression-inline',
             geometry: 'geometry',
             component: 'built-in-component',
             custom_element: 'custom-component',
+            problem: 'problem'
         };
         return typeToTag[this.type] || 'div';
     }  
@@ -111,6 +136,7 @@ export default class BlockElement extends Vue {
 <style scoped lang="scss">
 .inline {
     display: inline;
+    white-space: pre-wrap;
 }
 .bold {
     font-weight: bold;

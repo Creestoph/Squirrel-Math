@@ -4,12 +4,12 @@
       Link do lekcji
       <dropdown @keydown.esc="close()" :class="{'link-dropdown': true}" @click.native="getLessons()" @selected="selectLesson($event)" :arrow="true">
         <template v-slot:placeholder>{{ selectedLesson }} </template>
-        <dropdown-option v-for="(lesson, i) in lessons" :key="i" :class="{'link-dropdown-option': true}">{{ lesson.title }}</dropdown-option>
+        <dropdown-option v-for="(lesson, i) in lessons" :key="i" :class="{'link-dropdown-option': true}" :value="lesson.title">{{ lesson.title }}</dropdown-option>
       </dropdown>
       Rozdział
       <dropdown @keydown.esc="close()" :class="{'link-dropdown': true}" @click.native="getChapters()" @selected="selectChapter($event)" :arrow="true">
         <template v-slot:placeholder>{{ selectedChapter }} </template>
-        <dropdown-option v-for="(chapter, i) in chapters" :key="i" :disabled="chapter.disabled" :class="{'link-dropdown-option': true}">{{ chapter.name }}</dropdown-option>
+        <dropdown-option v-for="(chapter, i) in chapters" :key="i" :disabled="chapter.disabled" :class="{'link-dropdown-option': true}" :value="chapter.name">{{ chapter.name }}</dropdown-option>
       </dropdown>
       <button class="navigate-button" @click="navigate()">Odwiedź stronę</button>
       <button @click="close()" class="apply-button">+</button>
@@ -52,7 +52,7 @@ export default {
       this.url = this.href;
       let lessonUrl;
       [lessonUrl, this.selectedChapter] = this.url.split('#');
-      this.getLessons().then(lessons => this.selectedLesson = lessons.find(l => l.url == lessonUrl).title);
+      this.getLessons().then(lessons => this.selectedLesson = lessons.find(l => '/lesson/' + l.title == lessonUrl).title);
     }
   },
   methods: {
@@ -82,12 +82,12 @@ export default {
     },
     selectLesson(lesson) {
       this.selectedLesson = lesson;
-      this.url = this.lessons.find(l => l.title == lesson).url;
+      this.url = '/lesson/' + this.lessons.find(l => l.title == lesson).title;
       this.selectedChapter = '';
     },
     selectChapter(chapter) {
       this.selectedChapter = chapter;
-      this.url = this.lessons.find(l => l.title == this.selectedLesson).url + '#' + chapter;
+      this.url = '/lesson/' + this.lessons.find(l => l.title == this.selectedLesson).title + '#' + chapter;
     },
     openPopup() {
         this.showEditor = true;
