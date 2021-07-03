@@ -380,7 +380,7 @@ export default class LessonEditor extends Vue {
       <h1>${title ? title : ''}</h1>
       <intro></intro>
       <chapter>
-        <chapter-title></chapter-title>
+        <chapter-title isHidden="false"></chapter-title>
         <chapter-body></chapter-body>
       </chapter>
     `);
@@ -502,10 +502,10 @@ export default class LessonEditor extends Vue {
     &:hover {
       background: $gray;
     }
-    .active {
+    &.active {
       background: $dark-gray;
     }
-    .active:hover {
+    &.active:hover {
       background: $dark-gray;
       outline: 1px solid $darker-gray;
       outline-offset: -1px;

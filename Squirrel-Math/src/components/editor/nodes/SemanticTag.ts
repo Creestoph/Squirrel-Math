@@ -35,7 +35,7 @@ export default class SemanticTag extends Node {
   commands({ type }: any) {
     return (attrs: any) => (state: any, dispatch: any) => {
       const { selection } = state
-      const position = selection.$cursor ? selection.$cursor.pos - 1 : selection.$to.pos
+      const position = selection.$cursor ? selection.$cursor.pos : selection.$to.pos
       const node = type.create(attrs)
       const transaction = state.tr.insert(position, node)
       dispatch(transaction)

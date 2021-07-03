@@ -24,8 +24,8 @@ export default {
             availableColors: [
                 ['#ef0000', '#dd3333', '#cc4444', '#aa0000', '#990000'],
                 ['#fff0f0', '#f5e0e0', '#eedddd', '#eeaaaa', '#dd8888'],
-                ['white', '#fefefe', '#f6f6f6', '#f2f2f2', '#eeeeee'],
-                ['#e0e0e0', '#cccccc', '#aaaaaa', '#777777', 'black']
+                ['#ffffff', '#fefefe', '#f6f6f6', '#f2f2f2', '#eeeeee'],
+                ['#e0e0e0', '#cccccc', '#aaaaaa', '#777777', '#000000']
             ]
         }
     },

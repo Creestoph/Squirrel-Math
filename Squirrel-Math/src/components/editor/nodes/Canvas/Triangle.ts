@@ -53,8 +53,10 @@ export default class Triangle extends Shape {
 
   constructor(attrs?: TriangleAttributes) {
     super();
-    if (attrs && attrs.vertices)
+    if (attrs && attrs.vertices) {
       this.triangle = new paper.Path(attrs.vertices.map(v => [v.x, v.y]));
+      this.triangle.closed = true;
+    }
     else
       this.triangle = new paper.Path.RegularPolygon(new paper.Point(50, 57.74), 3, 57.74);
 

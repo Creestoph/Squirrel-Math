@@ -3,6 +3,10 @@ import { EditorState } from 'prosemirror-state'
 
 export default class TextAlign extends Extension {
 
+  private static alignToAttribute(align: string) {
+    return align === 'left' ? '' : align;
+  }
+
   get name() {
     return 'text_align'
   }
@@ -10,8 +14,6 @@ export default class TextAlign extends Extension {
   get commands() {
     return (schema: any) => (newAlign: string) => (state: EditorState, dispatch: any) => {
       if (dispatch) {
-        if (newAlign === 'left')
-          newAlign = '';
         const transaction = state.tr;
 
         state.tr.selection.ranges.forEach(range => {
@@ -20,7 +22,7 @@ export default class TextAlign extends Extension {
 
           state.doc.nodesBetween(from, to, (node, pos) => {
             if (node.type.name === 'paragraph')
-              transaction.setNodeMarkup(pos, undefined, { ...node.attrs, textAlign: newAlign })
+              transaction.setNodeMarkup(pos, undefined, { ...node.attrs, textAlign: TextAlign.alignToAttribute(newAlign) })
           })
         });
 
@@ -37,10 +39,12 @@ export default class TextAlign extends Extension {
       const from = range.$from.pos
       const to = range.$to.pos
       this.editor.state.doc.nodesBetween(from, to, (node: any, pos: any) => {
-        found = found || (node.type.name === 'paragraph' && node.attrs.textAlign == align)
+        found = found || (node.type.name === 'paragraph' && node.attrs.textAlign == TextAlign.alignToAttribute(align))
       })
     });
     return found;
   }
+
+
 
 }

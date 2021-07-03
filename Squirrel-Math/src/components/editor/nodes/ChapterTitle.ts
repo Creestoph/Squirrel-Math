@@ -18,7 +18,7 @@ export default class ChapterTitle extends Node {
       marks: '',
       parseDOM: [{
         tag: 'chapter-title',
-        getAttrs: (dom: any) => ({ isHidden: dom.getAttribute('isHidden')})
+        getAttrs: (dom: any) => ({ isHidden: dom.getAttribute('isHidden') === "true" })
       }],
       toDOM: (node: any) => ['chapter-title', { isHidden: node.attrs.isHidden }, 0],
     }

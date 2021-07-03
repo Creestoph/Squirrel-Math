@@ -70,7 +70,15 @@ export default {
           file => {
             const chapters = file.long.content.filter(c => c.type == 'chapter');
             if (chapters.length)
-              this.chapters = chapters.map(c => ({name: c.content[0].content[0].text, disabled: false}))
+              this.chapters = chapters.map(c => {
+                const chapterName = c.content[0].content.map(node => {
+                  if (node.text)
+                    return node.text;
+                  if (node.type === 'expressionInline')
+                    return '$' + node.attrs.mathJax + '$';
+                }).join('');
+                return {name: chapterName, disabled: false};
+              })
             else
               this.chapters = [{ name: 'Lekcja nie posiada rozdziałów', disabled: true }];
           },
@@ -97,7 +105,8 @@ export default {
       this.href = this.url;
     },
     navigate() {
-      window.open(this.url, '_blank');
+      if (this.url)
+        window.open(this.url, '_blank');
     }
   }
 };

@@ -84,7 +84,7 @@ export default {
   height: 170px;
   z-index: 2;
   background: black;
-  border-radius: 15px;
+  border-radius: 15px 0 15px 15px;
   color: white;
   padding: 10px;
 
@@ -122,7 +122,6 @@ export default {
     top: 0;
     width: 0; 
     height: 0; 
-    border-left: 30px solid transparent;
     border-right: 30px solid transparent;
     border-top: 30px solid black;
   }

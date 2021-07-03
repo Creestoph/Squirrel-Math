@@ -17,10 +17,10 @@ export default class Link extends Mark {
       },
       inclusive: false,
       parseDOM: [{
-        tag: 'a',
-        getAttrs: (dom: any) => ({ href: dom.getAttribute('href') })
+        tag: 'a[lessonUrl]',
+        getAttrs: (dom: any) => ({ href: dom.getAttribute('lessonUrl') })
       }],
-      toDOM: (mark: any) => ['a', { href: mark.attrs.href }, 0]
+      toDOM: (mark: any) => ['a', { lessonUrl: mark.attrs.href }, 0]
     }
   }
 

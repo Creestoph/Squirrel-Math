@@ -9,7 +9,7 @@ export default class Formula extends Node {
 
   get schema() {
     return {
-      content: 'block+',
+      content: '(paragraph | expression | ordered_list | bullet_list)+',
       group: 'block',
       defining: true,
       draggable: true,

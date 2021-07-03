@@ -12,12 +12,16 @@
 
         <div class="lesson-content" v-if="shortMode" :key="short.title">
           <slot>
-            <lesson-title>{{ short.title }}</lesson-title>
+            <lesson-title>
+              <block-element v-for="(block, i) in short.title" :key="i" :content="block"></block-element>
+            </lesson-title>
             <lesson-intro>
               <block-element v-for="(block, i) in short.introElements" :key="i" :content="block"></block-element>
             </lesson-intro>
             <lesson-chapter v-for="(chapter, i) in short.chapters" :key="i" :optional="chapter[0].attrs && chapter[0].attrs.isHidden">
-              <template #title>{{ chapter[0].content[0].text }}</template>  
+              <template #title>
+                <block-element v-for="(block, i) in chapter[0].content" :key="i" :content="block"></block-element>
+              </template>  
               <block-element v-for="(block, j) in chapter[1].content" :key="j" :content="block"></block-element>
             </lesson-chapter>
           </slot>
@@ -25,12 +29,16 @@
 
         <div class="lesson-content" v-if="!shortMode" :key="long.title">
           <slot>
-            <lesson-title>{{ long.title }}</lesson-title>
+            <lesson-title>
+              <block-element v-for="(block, i) in long.title" :key="i" :content="block"></block-element>
+            </lesson-title>
             <lesson-intro>
               <block-element v-for="(block, i) in long.introElements" :key="i" :content="block"></block-element>
             </lesson-intro>
             <lesson-chapter v-for="(chapter, i) in long.chapters" :key="i" :optional="chapter[0].attrs && chapter[0].attrs.isHidden">
-              <template #title>{{ chapter[0].content[0].text }}</template>  
+              <template #title>
+                <block-element v-for="(block, i) in chapter[0].content" :key="i" :content="block"></block-element>
+              </template>  
               <block-element v-for="(block, j) in chapter[1].content" :key="j" :content="block"></block-element>
             </lesson-chapter>
           </slot>
@@ -105,12 +113,12 @@ export default class Lesson extends Vue {
     if (this.content) {
       import(`@/assets/lessons/${this.content}`).then(json => {
         if (json.long) {
-          this.long.title = json.long.content[0].content[0].text;
+          this.long.title = json.long.content[0].content;
           this.long.introElements = json.long.content[1].content;
           this.long.chapters = json.long.content.filter((item: any, position: any) => position > 1).map((item: any) => item.content);
         }
         if (json.short) {
-          this.short.title = json.short.content[0].content[0].text;
+          this.short.title = json.short.content[0].content;
           this.short.introElements = json.short.content[1].content;
           this.short.chapters = json.short.content.filter((item: any, position: any) => position > 1).map((item: any) => item.content);
         }
