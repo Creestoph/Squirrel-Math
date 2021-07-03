@@ -8,7 +8,7 @@
     <br><br><br>
     <center>
       <img
-        src="./content/.images/squirrel.png"
+        src="@/assets/global-images/squirrel.png"
         width="60%"
       >
     </center>

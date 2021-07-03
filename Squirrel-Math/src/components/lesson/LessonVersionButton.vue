@@ -33,6 +33,7 @@ export default {
 	font-weight: bold;
 	font-family: $secondary-font;
 	transition: padding-right 0.4s;
+  cursor: pointer;
 }
 
 @media screen and (min-width: 500px) {

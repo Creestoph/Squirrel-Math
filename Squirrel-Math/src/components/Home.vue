@@ -1,8 +1,5 @@
 <template>
-  <lesson
-    route-short-version="/home-short"
-    route-long-version="/"
-  >
+  <lesson>
     <lesson-title>Witajcie!</lesson-title>
 
     <lesson-intro>
@@ -65,7 +62,7 @@
           :to="'/drzewoHD'"
         >
           <img
-            src="./content/.images/tree.png"
+            src="./.images/tree.png"
             width="100%"
           >
         </router-link>
@@ -87,10 +84,8 @@
       <p>
         Większość lekcji zaopatrzona jest w dodatkowe komentarze. Częśc z nich to swego rodzaju „easter eggi” - cyniczne żarty, które można odkryć jedynie najeżdżając
         na powiązane słowo lub zdanie (jak <comment text="To miejsce czeka na Twój cyniczny żart">TUTAJ</comment>). Komentarze, które pomagają w zrozumieniu
-        trudnych pojęć / przekształceń matematycznych / dowodów będą zaznaczone na marginesie za pomocą <span
-          class="comment_visible"
-          id="Mniej więcej takiego"
-        >czerwonego pytajnika</span>.
+        trudnych pojęć / przekształceń matematycznych / dowodów będą zaznaczone na marginesie za pomocą <comment text="Mniej więcej takiego" :hidden="false">
+        czerwonego pytajnika</comment>.
       </p>
 	
       <p>
@@ -99,7 +94,7 @@
 	
       <center>
         <img
-          src="./content/.images/squirrel.png"
+          src="@/assets/global-images/squirrel.png"
           width="60%"
         >
       </center>

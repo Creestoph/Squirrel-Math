@@ -21,6 +21,7 @@ export default class Comment extends Vue {
   
   popup: boolean = false;
   @Prop() text?: string;
+  @Prop({ default: true }) hidden?: string;
   @Prop() attrs?: { id: string };
 
   commentText? = "";
@@ -31,8 +32,10 @@ export default class Comment extends Vue {
       this.commentText = Comment.allComments[this.attrs.id].text;
       this.visible = !Comment.allComments[this.attrs.id].hidden;
     }
-    else
+    else {
       this.commentText = this.text;
+      this.visible = !this.hidden;
+    }
   }
 }
 </script>

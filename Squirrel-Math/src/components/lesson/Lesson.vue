@@ -2,7 +2,7 @@
   <div>
     <div id="whole">
       <div ref="lesson" class="lesson">
-        <lesson-version-button v-if="content" @click.native="shortMode = !shortMode" :shortMode="shortMode"/>
+        <lesson-version-button v-if="showVersionButton" @click.native="toggleMode()" :shortMode="shortMode"/>
         <button ref="expandButton" id="expand-button" class="no-selection" @click="lessonHidden ? expandLesson() : hideLesson()">
           &lt;
         </button>
@@ -10,12 +10,12 @@
           Edytuj lekcję <icon>edit</icon>
         </router-link>
 
-        <div class="lesson-content" v-if="shortMode" :key="short.title">
+        <div class="lesson-content" v-if="shortMode" :key="short.title[0].text + 'short'">
           <slot>
-            <lesson-title>
+            <lesson-title-short>
               <block-element v-for="(block, i) in short.title" :key="i" :content="block"></block-element>
-            </lesson-title>
-            <lesson-intro>
+            </lesson-title-short>
+            <lesson-intro v-if="short.introElements.length">
               <block-element v-for="(block, i) in short.introElements" :key="i" :content="block"></block-element>
             </lesson-intro>
             <lesson-chapter v-for="(chapter, i) in short.chapters" :key="i" :optional="chapter[0].attrs && chapter[0].attrs.isHidden">
@@ -27,12 +27,12 @@
           </slot>
         </div>
 
-        <div class="lesson-content" v-if="!shortMode" :key="long.title">
+        <div class="lesson-content" v-if="!shortMode" :key="long.title[0].text + 'long'">
           <slot>
             <lesson-title>
               <block-element v-for="(block, i) in long.title" :key="i" :content="block"></block-element>
             </lesson-title>
-            <lesson-intro>
+            <lesson-intro v-if="long.introElements.length">
               <block-element v-for="(block, i) in long.introElements" :key="i" :content="block"></block-element>
             </lesson-intro>
             <lesson-chapter v-for="(chapter, i) in long.chapters" :key="i" :optional="chapter[0].attrs && chapter[0].attrs.isHidden">
@@ -53,6 +53,7 @@
 import { Component, Prop } from 'vue-property-decorator';
 import Vue from 'vue';
 import LessonTitle from "./LessonTitle.vue";
+import LessonTitleShort from "./LessonTitleShort.vue";
 import LessonIntro from "./LessonIntro.vue";
 import LessonVersionButton from "./LessonVersionButton.vue";
 import LessonChapter from "./chapter/LessonChapter.vue";
@@ -66,6 +67,7 @@ declare var MathJax:any
   components: {
     LessonVersionButton,
     LessonTitle,
+    LessonTitleShort,
     LessonIntro,
     LessonChapter,
     BlockElement
@@ -75,20 +77,27 @@ export default class Lesson extends Vue {
   @Prop() inputContent?: string;
   lessonHidden = true
   
+  constructor() {
+    super();
+    this.clearElements();
+  }
   long = {
-    title: "",
-    introElements: [],
-    chapters: [],
-  }
+      title: [{ text: '' }],
+      introElements: [],
+      chapters: [],
+    };
   short = {
-    title: "",
+    title: [{ text: ''}],
     introElements: [],
     chapters: [],
-  }
+  };
   shortMode = false;
 
   get content() {
     return this.$route.params.sourceFile || this.inputContent;
+  }
+  get showVersionButton() {
+    return this.content && (this.shortMode ? this.long.title[0].text : this.short.title[0].text);
   }
 
   beforeRouteUpdate(to: Route, from: Route, next: Function) {
@@ -110,6 +119,7 @@ export default class Lesson extends Vue {
     window.removeEventListener("scroll", this.moveExpandButton);
   }
   setContent() {
+    this.clearElements();
     if (this.content) {
       import(`@/assets/lessons/${this.content}`).then(json => {
         if (json.long) {
@@ -152,6 +162,22 @@ export default class Lesson extends Vue {
   }
   moveExpandButton() {
     (this.$refs.expandButton as HTMLElement).style.marginTop = "" + window.scrollY + "px";
+  }
+  toggleMode() {
+    this.shortMode = !this.shortMode;
+    this.$nextTick(() => MathJax.Hub.Queue(["Typeset", MathJax.Hub]))
+  }
+  private clearElements() {
+    this.long = {
+      title: [{ text: '' }],
+      introElements: [],
+      chapters: [],
+    };
+    this.short = {
+      title: [{ text: ''}],
+      introElements: [],
+      chapters: [],
+    };
   }
 }
 </script>

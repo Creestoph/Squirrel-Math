@@ -9,6 +9,7 @@
             'inline': text,
         }"
         :attrs="attrs"
+        :style="{ color: attrs.color }"
     >
         <template v-if="text">{{(marks && marks.some(m => m.type == 'number')) ? '$' + text + '$' : text}}</template>
         <block-element v-for="(block, i) in children" :key="i" :content="block"></block-element>
