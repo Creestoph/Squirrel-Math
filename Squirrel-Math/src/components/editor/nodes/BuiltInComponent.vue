@@ -6,28 +6,38 @@
           <label for="type-select">Komponent</label>
           <select v-model="componentName" id="type-select" @change="onComponentSelect()">
             <option value="" disabled>Wybierz komponent...</option>
-            <option v-for="(component, name) in builtInComponents" :key="name" :value="name">{{ component.name }}</option>
+            <template v-if="componentName == 'other'">
+              <option v-for="(component, name) in builtInComponents" :key="name" :value="name">{{ component.name }}</option>
+            </template>
+            <template v-if="componentName != 'other'">
+              <option v-for="(component, name) in availableComponents" :key="name" :value="name">{{ component.name }}</option>
+            </template>
           </select>
         </div>
         <div class="form-body" v-if="componentName">
-          <div v-for="(parameterSchema, parameterName, i) in builtInComponents[componentName].schema" :key="i" class="form-row">
-            <div class="form-col">
-              {{ builtInComponents[componentName].labels[parameterName] }}
-            </div>
-            <div class="form-col">
-              <input v-if="parameterSchema.type.name == 'TEXT'" :required="parameterSchema.required" v-model="formArgs[i]" @paste.stop>
-              <input v-if="parameterSchema.type.name == 'NUMBER'" :required="parameterSchema.required" type="number" v-model="formArgs[i]" @paste.stop>
-              <input v-if="parameterSchema.type.name == 'BOOLEAN'" :required="parameterSchema.required" type="checkbox" v-model="formArgs[i]">
-              <input v-if="parameterSchema.type.name == 'FUNCTION'" :required="parameterSchema.required" type="function" v-model="formArgs[i]" @paste.stop>
-              <div v-if="parameterSchema.type.name == 'ARRAY'">
-                <input v-for="(arg, j) in formArgs[i]" :key="j" :required="parameterSchema.required && j == 0" type="array" v-model="formArgs[i][j]" @paste.stop>
-                <button @click="addElementForArrayParameter(i)" class="array-parameter-button">+ element</button>
-                <button @click="removeElementForArrayParameter(i)" class="array-parameter-button">- element</button>
+          <div v-if="!productionMode || componentName != 'other'">
+            <div v-for="(parameterSchema, parameterName, i) in builtInComponents[componentName].schema" :key="i" class="form-row">
+              <div class="form-col">
+                {{ builtInComponents[componentName].labels[parameterName] }}
               </div>
-              <select v-if="parameterSchema.type.name == 'ENUM'" :required="parameterSchema.required" v-model="formArgs[i]">
-                <option v-for="(value, j) in parameterSchema.type.values" :key="j" :value="value">{{ value }}</option>
-              </select>
+              <div class="form-col">
+                <input v-if="parameterSchema.type.name == 'TEXT'" :required="parameterSchema.required" v-model="formArgs[i]" @paste.stop>
+                <input v-if="parameterSchema.type.name == 'NUMBER'" :required="parameterSchema.required" type="number" v-model="formArgs[i]" @paste.stop>
+                <input v-if="parameterSchema.type.name == 'BOOLEAN'" :required="parameterSchema.required" type="checkbox" v-model="formArgs[i]">
+                <input v-if="parameterSchema.type.name == 'FUNCTION'" :required="parameterSchema.required" type="function" v-model="formArgs[i]" @paste.stop>
+                <div v-if="parameterSchema.type.name == 'ARRAY'">
+                  <input v-for="(arg, j) in formArgs[i]" :key="j" :required="parameterSchema.required && j == 0" type="array" v-model="formArgs[i][j]" @paste.stop>
+                  <button @click="addElementForArrayParameter(i)" class="array-parameter-button">+ element</button>
+                  <button @click="removeElementForArrayParameter(i)" class="array-parameter-button">- element</button>
+                </div>
+                <select v-if="parameterSchema.type.name == 'ENUM'" :required="parameterSchema.required" v-model="formArgs[i]">
+                  <option v-for="(value, j) in parameterSchema.type.values" :key="j" :value="value">{{ value }}</option>
+                </select>
+              </div>
             </div>
+          </div>
+          <div v-if="productionMode && componentName == 'other'">
+            <comment text="Leniwi programiści.">Ten komponent podlega edycji tylko przez administrację Squirrel-Math.</comment>
           </div>
         </div>
       </div>
@@ -73,6 +83,7 @@ export default {
     return {
       editMode: true,
       builtInComponents: {},
+      availableComponents: {},
       formArgs: [],
       componentConfiguration: {},
     }
@@ -92,6 +103,11 @@ export default {
       },
       set(args) {
         this.updateAttrs({ args });
+      }
+    },
+    productionMode: {
+      get() {
+        return false; // TODO automate this
       }
     }
   },
@@ -118,6 +134,9 @@ export default {
         labels: otherComponentLabels
       }
     };
+    for (let key in this.builtInComponents)
+      if (!this.productionMode || key != 'other')
+        this.availableComponents[key] = this.builtInComponents[key];
   },
   mounted() {
     this.formArgs = [...this.args];
@@ -290,7 +309,7 @@ input[type="function"], input[type="array"] {
 .output {
   min-height: 42px;;
 }
-.output:hover {
+.output-wrapper:hover {
   outline: 1px solid $gray;
 }
 .output-wrapper:hover .toggle-edit-button {

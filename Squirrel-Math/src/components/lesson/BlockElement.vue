@@ -62,7 +62,8 @@ interface SerializedNode {
         Geometry,
         BuiltInComponent,
         CustomComponent
-    }
+    },
+    name: 'block-element'
 })
 export default class BlockElement extends Vue { 
     @Prop() content!: SerializedNode;
