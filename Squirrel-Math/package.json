@@ -59,6 +59,7 @@
     },
     "rules": {
       "no-console": "off",
+      "no-debugger": "off",
       "vue/no-unused-components": "warning"
     }
   },

@@ -68,7 +68,10 @@ export default class SimpleQuadraticEquationsTraining extends Vue {
             result = "Uzupełnij oba pola liczbami całkowitymi / ułamkami."
         else if (equals(this.userX1, this.correctX1) && equals(this.userX2, this.correctX2) || equals(this.userX1, this.correctX2) && equals(this.userX2, this.correctX1))
             result = "Dobrze!";
-        else 
+        else if (equals(this.userX1.absolute(), this.correctX1.absolute()) && equals(this.userX2.absolute(), this.correctX2.absolute()) || 
+            equals(this.userX1.absolute(), this.correctX2.absolute()) && equals(this.userX2.absolute(), this.correctX1.absolute()))
+            result = "Prawie dobrze, tylko złe znaki: $x = " + simplify(this.correctX1).toMathJax() + "$ lub $x = " + simplify(this.correctX2).toMathJax() + "$.";
+        else
             result = "Niedobrze. Powinno być $x = " + simplify(this.correctX1).toMathJax() + "$ lub $x = " + simplify(this.correctX2).toMathJax() + "$.";
         
         this.setDivContent("resultDiv", result);

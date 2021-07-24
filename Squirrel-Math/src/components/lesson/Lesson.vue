@@ -121,7 +121,8 @@ export default class Lesson extends Vue {
   setContent() {
     this.clearElements();
     if (this.content) {
-      import(`@/assets/lessons/${this.content}`).then(json => {
+      import(`@/assets/lessons/${this.content}`).then(loadedJson => {
+        const json = JSON.parse(JSON.stringify(loadedJson)); // deep clone
         if (json.long) {
           this.long.title = json.long.content[0].content;
           this.long.introElements = json.long.content[1].content;

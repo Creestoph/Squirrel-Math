@@ -1,5 +1,5 @@
 <template>
-  <span class="comment" @mouseover="popup = true" @mouseout="popup = false" :style="{ background: popup ? '#e9e9e9' : ''}">
+  <span class="comment" @mouseover="popup = true" @mouseout="popup = false" :style="{ background: popup ? 'rgba(0, 0, 0, 0.09)' : ''}">
     <icon @mouseover="popup = true" @mouseout="popup = false" v-if="visible" class='question-mark' :style="{ color: popup ? '#aa0000' : ''}">help</icon>
     <tooltip class="comment-window no-selection" :visible="popup" timeout="0" :offset="{x: 15, y: -55}">{{ commentText }}</tooltip>
     <slot />
