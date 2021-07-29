@@ -118,6 +118,7 @@ export default class Lesson extends Vue {
   destroyed() {
     window.removeEventListener("scroll", this.moveExpandButton);
   }
+
   setContent() {
     this.clearElements();
     if (this.content) {
@@ -142,6 +143,7 @@ export default class Lesson extends Vue {
       MathJax.Hub.Queue(["Typeset", MathJax.Hub]); 
     }
   }
+
   hideLesson() {
     if (!this.lessonHidden) {
       (this.$refs.lesson as HTMLElement).style.left = '-80%';
@@ -152,6 +154,7 @@ export default class Lesson extends Vue {
       }, 1000);
     }
   }
+
   expandLesson() {
     if (this.lessonHidden) {
       (this.$refs.lesson as HTMLElement).style.left = '0';
@@ -161,13 +164,16 @@ export default class Lesson extends Vue {
           (this.$refs.expandButton as HTMLElement).innerHTML = "<";
       }, 1000);    }
   }
+
   moveExpandButton() {
     (this.$refs.expandButton as HTMLElement).style.marginTop = "" + window.scrollY + "px";
   }
+  
   toggleMode() {
     this.shortMode = !this.shortMode;
     this.$nextTick(() => MathJax.Hub.Queue(["Typeset", MathJax.Hub]))
   }
+  
   private clearElements() {
     this.long = {
       title: [{ text: '' }],

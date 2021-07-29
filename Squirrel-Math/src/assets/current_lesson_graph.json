@@ -100,6 +100,12 @@
         "level": "Szkoła podstawowa"
     },
     {
+        "title": "Logarytmy",
+        "requires": ["Pierwiastkowanie"],
+        "field": "Algebra",
+        "level": "Liceum"
+    },
+    {
         "title": "Działania na wyrażeniach algebraicznych",
         "requires": ["Potęgowanie"],
         "field": "Algebra",
