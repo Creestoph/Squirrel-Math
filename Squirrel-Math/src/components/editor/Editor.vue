@@ -260,6 +260,7 @@ export default class LessonEditor extends Vue {
     this.createEditor();
     this.clearAll();
     this.loadContent();
+    addEventListener('beforeunload', this.exitListener);
     this.$nextTick(() => {
       addEventListener("scroll", this.scrollToolbar)
       this.scrollToolbar();
@@ -269,7 +270,13 @@ export default class LessonEditor extends Vue {
   beforeDestroy() {
     this.editor.destroy();
     this.removeAutoSave();
+    removeEventListener('beforeunload', this.exitListener)
     removeEventListener("scroll", this.scrollToolbar);
+  }
+
+  beforeRouteLeave (to: any, from: any, next: any) {
+    if (window.confirm('Opuścić stronę? Wprowadzone zmiany mogą nie zostać zapisane.'))
+      next();
   }
 
   private createEditor() {
@@ -384,6 +391,11 @@ export default class LessonEditor extends Vue {
         <chapter-body></chapter-body>
       </chapter>
     `);
+  }
+
+  private exitListener(event: any) {
+      event.preventDefault();
+      event.returnValue = '';
   }
 
   createSecondMode() {

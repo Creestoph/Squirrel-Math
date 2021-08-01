@@ -19,8 +19,13 @@ export default class AlgebraicCalculator extends Vue {
 
     simplify() {
         try {
-            let expression: Expression = parseExpression(this.input);
-            this.setDivContent("resultDiv", "$$" + expression.toMathJax() + " = " + simplify(expression).toMathJax() + "$$");
+            const expression: Expression = parseExpression(this.input);
+            const simplified = simplify(expression).toMathJax();
+            if (simplified.length > 10000) {
+                this.setDivContent("resultDiv", "To wyrażenie jest okropnie długie po uproszczeniu. Chyba nie potrzebujesz aż tak potężnych obliczeń.")
+            } else {
+                this.setDivContent("resultDiv", "$$" + expression.toMathJax() + " = " + simplified + "$$");
+            }
         } catch(exception) {
             this.setDivContent("resultDiv", exception);
         }
@@ -40,7 +45,7 @@ export default class AlgebraicCalculator extends Vue {
     border: 1px solid black;
     text-align: center;
     padding: 20px 0;
-    height: 200px;
+    min-height: 200px;
     margin: 10px 0;
     position: relative;
 }
