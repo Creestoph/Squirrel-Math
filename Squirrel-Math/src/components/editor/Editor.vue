@@ -168,9 +168,9 @@
         <div class="drafts-list">
           <div v-for="(draft, i) in availableDrafts" :key="i">
             <div class="draft">
-              <span @click="loadDraft(draft)" class="draft-name">{{ draft.name }}</span>
+              <span @click="loadDraft(draft)" class="draft-name">{{ draft.name + (draft.fromAutosave ? ' (autosave)' : '') }}</span>
               <span @click="loadDraft(draft)" class="draft-date">{{ draft.created.toLocaleDateString() }}</span>
-              <span @click="loadDraft(draft)" class="draft-date">{{ draft.lastModified.toLocaleDateString() }}</span>
+              <span @click="loadDraft(draft)" class="draft-date">{{ draft.lastModified.toLocaleDateString() + ' ' + draft.lastModified.toLocaleTimeString() }}</span>
             </div>
             <button @click="deleteDraft(draft)">usuń</button>
           </div>
@@ -224,8 +224,9 @@ import Link from "./marks/Link";
 import Comment from "./marks/Comment";
 import NumberMark from "./marks/NumberMark";
 import TextColor from "./marks/TextColor";
-import Save, { DraftPreview } from "./extensions/DraftsManager/SaveExtension";
+import Save from "./extensions/DraftsManager/SaveExtension";
 import { allComments } from './marks/Comment.vue';
+import { DraftPreview } from './extensions/DraftsManager/LocalStorageManager';
 
 @Component({
   components: {
@@ -399,7 +400,7 @@ export default class LessonEditor extends Vue {
   }
 
   createSecondMode() {
-    this.savePlugin.saveToLocalStorage();
+    this.savePlugin.saveToLocalStorage(true);
     const title = this.editor.state.doc.content.content[0].content.content[0];
     this.shortMode = !this.shortMode;
     this.editor.destroy();
@@ -408,7 +409,7 @@ export default class LessonEditor extends Vue {
   }
 
   editSecondMode() {
-    this.savePlugin.saveToLocalStorage();
+    this.savePlugin.saveToLocalStorage(true);
     this.shortMode = !this.shortMode;
     this.editor.destroy();
     this.createEditor();

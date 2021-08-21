@@ -118,6 +118,12 @@
         "level": "Szkoła podstawowa"
     },
     {
+        "title": "Funkcje",
+        "requires": ["Zbiory liczbowe"],
+        "field": "Teoria mnogości",
+        "level": "Szkoła podstawowa"
+    },
+    {
         "title": "Równania i nierówności liniowe",
         "requires": ["Równania i nierówności", "Zbiory liczbowe", "Działania na wyrażeniach algebraicznych"],
         "field": "Algebra",

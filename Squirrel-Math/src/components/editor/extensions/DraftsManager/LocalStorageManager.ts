@@ -2,6 +2,7 @@ export interface DraftPreview {
     name: string;
     created: Date;
     lastModified: Date;
+    fromAutosave: boolean
 }
 
 export interface Draft extends DraftPreview {
@@ -17,13 +18,14 @@ export class LocalStorageSaver {
             return {
                 name: parsed.name,
                 created: new Date(parsed.created),
-                lastModified: new Date(parsed.lastModified)
+                lastModified: new Date(parsed.lastModified),
+                fromAutosave: parsed.fromAutosave
             }
         });
     }
 
     static loadDraft(draft: DraftPreview): Draft {
-        return Object.assign(draft, { lesson: JSON.parse(localStorage.getItem(LocalStorageSaver.prefix + draft.name)!) });
+        return Object.assign(draft, { lesson: JSON.parse(localStorage.getItem(LocalStorageSaver.prefix + (draft.fromAutosave ? 'autosave-' : '') + draft.name)!) });
     }
 
     static deleteDraft(draft: DraftPreview): void {
@@ -31,13 +33,14 @@ export class LocalStorageSaver {
         localStorage.removeItem(LocalStorageSaver.prefix + 'metadata-' + draft.name);
     }
 
-    static saveDraft(draft: Draft) {
+    static saveDraft(draft: Draft, fromAutosave: boolean) {
         const metadata: DraftPreview = {
             name: draft.name,
             created: draft.created,
-            lastModified: new Date()
+            lastModified: new Date(),
+            fromAutosave
         };
-        localStorage.setItem(LocalStorageSaver.prefix + draft.name, JSON.stringify(draft.lesson));
-        localStorage.setItem(LocalStorageSaver.prefix + 'metadata-' + draft.name, JSON.stringify(metadata));
+        localStorage.setItem(LocalStorageSaver.prefix + (fromAutosave ? 'autosave-' : '') + draft.name, JSON.stringify(draft.lesson));
+        localStorage.setItem(LocalStorageSaver.prefix + 'metadata-' + (fromAutosave ? 'autosave-' : '') + draft.name, JSON.stringify(metadata));
     }
 }

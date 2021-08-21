@@ -1,22 +1,12 @@
 import { Extension } from 'tiptap'
 import { allComments } from '../../marks/Comment.vue';
-import { LocalStorageSaver } from './LocalStorageManager';
+import { Draft, DraftPreview, LocalStorageSaver } from './LocalStorageManager';
 import ImagePicker from '../../ImagePicker.vue';
-
-export interface DraftPreview {
-    name: string;
-    created: Date;
-    lastModified: Date;
-}
-
-export interface Draft extends DraftPreview {
-    lesson: any;
-}
 
 export default class Save extends Extension {
 
     private autoSaveObserverId: number;
-    private currentDraft: Draft = { name: '', created: new Date(), lastModified: new Date(), lesson: null };
+    private currentDraft: Draft = { name: '', created: new Date(), lastModified: new Date(), lesson: null, fromAutosave: false };
 
     longVersionJSON: string = '';
     shortVersionJSON: string = '';
@@ -25,7 +15,7 @@ export default class Save extends Extension {
     constructor() {
         super();
         const autoSavePeriod = 60 * 1000;
-        this.autoSaveObserverId = setInterval(() => this.saveToLocalStorage(), autoSavePeriod);
+        this.autoSaveObserverId = setInterval(() => this.saveToLocalStorage(true), autoSavePeriod);
     }
 
     get name() {
@@ -35,7 +25,7 @@ export default class Save extends Extension {
     keys() {
         return {
             'Ctrl-s': () => {
-                this.saveToLocalStorage();
+                this.saveToLocalStorage(false);
                 return true;
             }
         }
@@ -43,7 +33,7 @@ export default class Save extends Extension {
 
     commands() {
         return {
-            saveToLocalStorage: () => () => this.saveToLocalStorage(),
+            saveToLocalStorage: () => () => this.saveToLocalStorage(false),
             saveToFile: () => () => this.saveToFile()
         }
     }
@@ -53,7 +43,11 @@ export default class Save extends Extension {
     }
 
     draftsList(): DraftPreview[] {
-        return LocalStorageSaver.draftsList();
+        return LocalStorageSaver.draftsList().sort((d1, d2) => {
+            const d1AutoSave = d1.fromAutosave ? 1 : 0;
+            const d2AutoSave = d2.fromAutosave ? 1 : 0;
+            return d1.name == d2.name ? d1AutoSave - d2AutoSave : d2.lastModified.getTime() - d1.lastModified.getTime();
+        });
     }
 
     loadDraft(draft: DraftPreview) {
@@ -87,10 +81,10 @@ export default class Save extends Extension {
             this.editor.setContent(this.longVersionJSON);
     }
 
-    saveToLocalStorage() {
+    saveToLocalStorage(fromAutosave: boolean) {
         this.currentDraft.name = this.getLessonTitle();
         this.currentDraft.lesson = this.getLessonJSON();
-        LocalStorageSaver.saveDraft(this.currentDraft);
+        LocalStorageSaver.saveDraft(this.currentDraft, fromAutosave);
     }
 
     saveToFile() {
