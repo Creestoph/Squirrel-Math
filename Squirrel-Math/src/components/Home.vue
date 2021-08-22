@@ -8,8 +8,8 @@
       </p>
 	
       <p>
-        Squirrel-Math z założenia ma być podręcznikiem idealnym. Naszym celem jest skompletować całą wiedzę matematyczną od zera do poziomu uniwersyteckiego (włącznie?) i 
-        przedstawić ją w 
+        Squirrel-Math z założenia ma być podręcznikiem idealnym. Naszym celem jest skompletować całą wiedzę matematyczną od zera do poziomu uniwersyteckiego 
+        (włącznie? a może nawet dalej?) i przedstawić ją w 
         sposób oczywisty, intuicyjny i uporządkowany. Nie ważne, jakie masz wymagania i czego oczekujesz od matematyki – powinieneś znaleźć to w naszym podręczniku.
       </p>
 	
@@ -35,8 +35,10 @@
       </p>
 
       <p>
-        Dzięki wszystkim tu obecnym za wkład w projekt. Podręcznik jest dla Was – stwórzmy go razem.
+        W dowolnej sprawie możecie skontaktować się z nami na adres mailowy <a class="link" href="mailto: oblicze.calki@gmail.com">oblicze.calki@gmail.com</a>.
+        Dzięki wszystkim tu obecnym za wkład w projekt. Podręcznik jest dla Was – stwórzmy go razem. 
       </p>
+
     </lesson-intro>
 
     <lesson-chapter>

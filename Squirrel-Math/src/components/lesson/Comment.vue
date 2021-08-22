@@ -1,5 +1,5 @@
 <template>
-  <span class="comment" @mouseover="popup = true" @mouseout="popup = false" :style="{ background: popup ? 'rgba(0, 0, 0, 0.09)' : ''}">
+  <span class="comment" :class="{visible}" @mouseover="popup = true" @mouseout="popup = false" :style="{ background: popup ? 'rgba(0, 0, 0, 0.09)' : ''}">
     <icon @mouseover="popup = true" @mouseout="popup = false" v-if="visible" class='question-mark' :style="{ color: popup ? '#aa0000' : ''}">help</icon>
     <tooltip class="comment-window no-selection" :visible="popup" timeout="0" :offset="{x: 15, y: -55}">{{ commentText }}</tooltip>
     <slot />
@@ -43,9 +43,9 @@ export default class Comment extends Vue {
 <style scoped lang="scss">
 @import "@/style/global";
 
-// .comment:hover {
-//   background: #e9e9e9;
-// }
+.comment.visible {
+  cursor: help;
+}
 
 .comment-window {
   background: rgba(0, 0, 0, 0.4);
@@ -70,5 +70,6 @@ export default class Comment extends Vue {
   color: $darker-main-red;
   font-family: $geometric-font;
   font-size: 1.3em;
+  cursor: help;
 }
 </style>

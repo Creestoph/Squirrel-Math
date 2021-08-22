@@ -46,6 +46,15 @@
 
       </div>
     </div>
+    <div class="footer-container">
+      <div class="footer">
+        <h1><a href="mailto: oblicze.calki@gmail.com">Skontaktuj się z nami!<br>
+        oblicze.calki@gmail.com</a></h1>
+        Strona jest nadal w trakcie rozwoju. <br>
+        Jeśli podoba Ci się inicjatywa i chciałbyś wesprzeć proces tworzenia Squirrel-Math, masz jakiekolwiek pytania lub sugestie - ślij do nas maila. <br>
+        Jesteśmy otwarci na każdą pomoc.
+      </div>
+    </div>
   </div>
 </template>
 
@@ -276,5 +285,34 @@ export default class Lesson extends Vue {
     max-width: 970px;
     min-height: 899px;
   }
+
+  .footer-container {
+    border-right: 14vw solid transparent;
+  }
+}
+
+.footer-container {
+  position: absolute;
+  box-sizing: border-box;
+  width: 100%;
+  height: 0;
+  border-bottom: 170px solid $dark-red;
+  filter: drop-shadow(3px -3px 10px rgba(0, 0, 0, 0.5))
+}
+.footer {
+  padding: 20px;
+  font-family: $secondary-font;
+  color: rgba(255, 255, 255, 0.8);
+  background: $dark-red;
+
+  h1 {
+    font-size: 1.2em;
+    color: white;
+    &:hover {
+      text-decoration: underline;
+      cursor: pointer;
+    }
+  }
+
 }
 </style>
