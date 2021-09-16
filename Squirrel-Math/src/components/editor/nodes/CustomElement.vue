@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="component-container">
     <div v-show="editMode" class="editor-wrapper">
       <pre class="html-editor" ref="content"></pre>
       <button @click="run()" title="uruchom"><icon>play_arrow</icon></button>
@@ -80,7 +80,7 @@ export default {
 </style>
 <style scoped lang="scss">
 @import "@/style/global";
-.container {
+.component-container {
   position: relative;
   padding: 0;
 }

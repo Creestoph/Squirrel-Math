@@ -6,10 +6,14 @@ export interface TriangleAttributes {
   type?: 'triangle',
   vertices?: {x: number, y: number}[],
   color?: string,
-  hasBorder?: boolean
+  borderColor?: string
 }
 
 export default class Triangle extends Shape {
+  canHaveBorder = true;
+  private fillColorHex = '';
+  private borderColorHex = '';
+
   private triangle;
   private movedShape: paper.Item | null = null;
 
@@ -17,20 +21,26 @@ export default class Triangle extends Shape {
   private grips;
 
   get fillColor() {
-    return this.triangle.fillColor!.toCSS(true);
+    return this.fillColorHex;
   }
 
   set fillColor(color) {
+    this.fillColorHex = color;
+    if (color == '#00000000')
+      color = '#00000001';
     this.triangle.fillColor = new paper.Color(color);
-    this.grips.fillColor = this.triangle.strokeColor = new paper.Color(color).multiply(0.7);
+    this.grips.fillColor = new paper.Color(color).multiply(0.7);
+    this.grips.fillColor.alpha = 1;
   }
 
-  get hasBorder() {
-    return this.triangle.style!.strokeWidth! > 0;
+  get borderColor() {
+    return this.borderColorHex;
   }
 
-  set hasBorder(value) {
-    this.triangle.style!.strokeWidth = value ? 4 : 0;
+  set borderColor(color) {
+    this.borderColorHex = color;
+    this.triangle.strokeColor = new paper.Color(color);
+    this.triangle.style!.strokeWidth = this.triangle.strokeColor.alpha! > 0 ? 4 : 0;
   }
 
   set selected(value: boolean) {
@@ -74,7 +84,7 @@ export default class Triangle extends Shape {
     this.grips.visible = false;
 
     this.fillColor = attrs && attrs.color ? attrs.color : mainRedColor;
-    this.hasBorder = attrs && attrs.hasBorder ? attrs.hasBorder : false;
+    this.borderColor = attrs && attrs.borderColor ? attrs.borderColor : '#00000000';
   }
 
   toJSON(): TriangleAttributes {
@@ -82,7 +92,7 @@ export default class Triangle extends Shape {
       type: 'triangle',
       vertices: this.triangle.segments!.map(s => ({ x: s.point!.x!, y: s.point!.y! })),
       color: this.fillColor,
-      hasBorder: this.hasBorder
+      borderColor: this.borderColor
     };
   }
 
@@ -102,7 +112,7 @@ export default class Triangle extends Shape {
     this.all.remove();
   }
 
-  onMouseMove(hitResult: paper.HitResult, cursorStyle: CSSStyleDeclaration) {
+  onMouseMove(event: paper.ToolEvent, hitResult: paper.HitResult, cursorStyle: CSSStyleDeclaration) {
     if (!hitResult)
       return;
     else if (this.triangle == hitResult.item)
@@ -111,7 +121,7 @@ export default class Triangle extends Shape {
       cursorStyle.cursor = "crosshair";
   }
 
-  onMouseDown(event: paper.MouseEvent, hitResult: paper.HitResult): boolean {
+  onMouseDown(event: paper.ToolEvent, hitResult: paper.HitResult): boolean {
     if (!hitResult)
       return false;
     if (this.triangle == hitResult.item)
@@ -122,7 +132,7 @@ export default class Triangle extends Shape {
     return !!this.movedShape;
   }
 
-  onMouseDrag(event: paper.MouseEvent, snapPoints: paper.Point[]) {
+  onMouseDrag(event: paper.ToolEvent, snapPoints: paper.Point[]) {
     if (!this.movedShape)
       return false;
 

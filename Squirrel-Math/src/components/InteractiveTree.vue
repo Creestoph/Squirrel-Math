@@ -307,6 +307,7 @@ export default class InteractiveTree extends Vue {
   }
 
   displayLessons() {
+    this.mypaper.activate();
     this.mypaper.project!.clear();
 
     //add text edges

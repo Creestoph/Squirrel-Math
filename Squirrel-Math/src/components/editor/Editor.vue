@@ -205,6 +205,7 @@ import SemanticTag from "./nodes/SemanticTag";
 import Expression from "./nodes/Expression";
 import ExpressionInline from "./nodes/ExpressionInline";
 import Canvas from "./nodes/Canvas/Canvas";
+import TextArea from "./nodes/Canvas/TextArea";
 import Example from "./nodes/Example";
 import Problem from "./nodes/Problem";
 import Formula from "./nodes/Formula";
@@ -316,6 +317,7 @@ export default class LessonEditor extends Vue {
         new BuiltInComponent(),
         new CustomListItem(),
         new Canvas(),
+        new TextArea(),
         new Placeholder({
           emptyNodeClass: 'empty',
           showOnlyCurrent: false,
@@ -324,7 +326,7 @@ export default class LessonEditor extends Vue {
               return "Tytuł lekcji";
             if (node.type.name == 'chapter_title')
               return "Tytuł rozdziału";
-            if (node.type.name == 'semantic_tag' || node.type.name == 'expression')
+            if (['semantic_tag', 'expression', 'expressionInline', 'custom_element', 'geometry'].includes(node.type.name))
               return "";
             return "Treść sekcji";
           }
@@ -566,7 +568,7 @@ export default class LessonEditor extends Vue {
 .tools-specific button:hover {
   background: $darker-gray;
 }
-#editor table ::selection {
+#editor table ::selection, #editor .math-display ::selection {
   color: inherit;
 }
 
@@ -718,7 +720,7 @@ problem {
   background-color: black;
 }
 
-#editor .empty:first-child::before {
+#editor .empty:first-child::before, #editor .tags-wrapper + .empty::before {
   content: attr(data-empty-text);
   color: $dark-gray;
   pointer-events: none;

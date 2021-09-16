@@ -5,7 +5,7 @@ export interface CircleAttributes {
   center: { x: number, y: number },
   size: { width: number, height: number},
   color: string,
-  hasBorder: boolean
+  borderColor: boolean
 }
 
 export default class Circle {
@@ -16,6 +16,6 @@ export default class Circle {
     let circle = new paper.Shape.Ellipse(new paper.Rectangle(center.add(new paper.Point(-size.width! / 2, -size.height! / 2)), size));
     circle.fillColor = new paper.Color(attrs.color);
     circle.strokeColor = new paper.Color(attrs.color).multiply(0.7);
-    circle.style!.strokeWidth = attrs.hasBorder ? 4 : 0;
+    circle.style!.strokeWidth = attrs.borderColor ? 4 : 0;
   }
 }

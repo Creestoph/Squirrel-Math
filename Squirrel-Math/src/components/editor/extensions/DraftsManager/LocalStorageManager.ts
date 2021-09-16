@@ -29,8 +29,8 @@ export class LocalStorageSaver {
     }
 
     static deleteDraft(draft: DraftPreview): void {
-        localStorage.removeItem(LocalStorageSaver.prefix + draft.name);
-        localStorage.removeItem(LocalStorageSaver.prefix + 'metadata-' + draft.name);
+        localStorage.removeItem(LocalStorageSaver.prefix + (draft.fromAutosave ? 'autosave-' : '') + draft.name);
+        localStorage.removeItem(LocalStorageSaver.prefix + 'metadata-' + (draft.fromAutosave ? 'autosave-' : '') + draft.name);
     }
 
     static saveDraft(draft: Draft, fromAutosave: boolean) {

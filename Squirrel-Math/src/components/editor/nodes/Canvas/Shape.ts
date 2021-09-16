@@ -7,7 +7,8 @@ export interface ShapeAttributes {
 export abstract class Shape {
     abstract selected: boolean;
     abstract fillColor: string;
-    abstract hasBorder: boolean;
+    canHaveBorder = false;
+    abstract borderColor: string;
 
     clone(): Shape {
         return new (this.constructor as any)(this.toJSON());
@@ -15,15 +16,15 @@ export abstract class Shape {
     abstract get position(): paper.Point;
     abstract move(shift: paper.Point): void;
     abstract getSnapPoints(): paper.Point[];
-    abstract toJSON(): ShapeAttributes;
+    abstract toJSON(): ShapeAttributes | null;
     abstract containedInBounds(bounds: paper.Rectangle): boolean;
 
     abstract onDelete(): void;
-    abstract onMouseMove(hitResult: paper.HitResult, cursorStyle: CSSStyleDeclaration): void;
+    abstract onMouseMove(event: paper.ToolEvent, hitResult: paper.HitResult, cursorStyle: CSSStyleDeclaration): void;
     /** returns true if shape got selected */
-    abstract onMouseDown(event: paper.MouseEvent, hitResult: paper.HitResult): boolean;
+    abstract onMouseDown(event: paper.ToolEvent, hitResult: paper.HitResult): boolean;
     /**returns true if drag event is consumed for something else than moving whole shape */
-    abstract onMouseDrag(event: paper.MouseEvent, snapPoints: paper.Point[]): boolean;
+    abstract onMouseDrag(event: paper.ToolEvent, snapPoints: paper.Point[]): boolean;
     abstract onMouseUp(): void;
 
     static snapShift(movedPoints: paper.Point[], snapPoints: paper.Point[]) {

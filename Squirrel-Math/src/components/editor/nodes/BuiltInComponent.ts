@@ -2,7 +2,7 @@ import { Node } from 'tiptap'
 import BuiltInComponentVue from './BuiltInComponent.vue'
 
 export default class CustomElement extends Node {
-
+  
   get name() {
     return 'component'
   }

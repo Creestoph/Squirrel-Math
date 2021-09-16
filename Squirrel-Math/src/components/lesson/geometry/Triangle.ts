@@ -4,7 +4,7 @@ export interface TriangleAttributes {
   type: 'triangle',
   vertices: {x: number, y: number}[],
   color: string,
-  hasBorder: boolean
+  borderColor: boolean
 }
 
 export default class Triangle {
@@ -13,6 +13,6 @@ export default class Triangle {
     let triangle = new paper.Path(attrs.vertices.map(v => [v.x, v.y]));
     triangle.fillColor = new paper.Color(attrs.color);
     triangle.strokeColor = new paper.Color(attrs.color).multiply(0.7);
-    triangle.style!.strokeWidth = attrs.hasBorder ? 4 : 0;
+    triangle.style!.strokeWidth = attrs.borderColor ? 4 : 0;
   }
 }

@@ -20,6 +20,7 @@ export default class Canvas extends Node {
           }
         }
       },
+      content: 'text_area*',
       group: 'block',
       draggable: true,
       parseDOM: [{

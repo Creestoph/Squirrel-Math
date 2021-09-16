@@ -7,10 +7,14 @@ export interface CircleAttributes {
   center: { x: number, y: number },
   size: { width: number, height: number},
   color: string,
-  hasBorder: boolean
+  borderColor: string
 }
 
 export default class Circle extends Shape {
+  canHaveBorder = true;
+  private fillColorHex = '';
+  private borderColorHex = '';
+
   private circle;
   private upper;
   private bottom;
@@ -27,20 +31,26 @@ export default class Circle extends Shape {
   private movedShape: paper.Item | null = null;
 
   get fillColor() {
-    return this.circle.fillColor!.toCSS(true);
+    return this.fillColorHex;
   }
 
   set fillColor(color) {
+    this.fillColorHex = color;
+    if (color == '#00000000')
+      color = '#00000001';
     this.circle.fillColor = new paper.Color(color);
-    this.grips.fillColor = this.circle.strokeColor = new paper.Color(color).multiply(0.7);
+    this.grips.fillColor = new paper.Color(color).multiply(0.7);
+    this.grips.fillColor.alpha = 1;
   }
 
-  get hasBorder() {
-    return this.circle.style!.strokeWidth! > 0;
+  get borderColor() {
+    return this.borderColorHex;
   }
 
-  set hasBorder(value) {
-    this.circle.style!.strokeWidth = value ? 4 : 0;
+  set borderColor(color) {
+    this.borderColorHex = color;
+    this.circle.strokeColor = new paper.Color(color);
+    this.circle.style!.strokeWidth = this.circle.strokeColor.alpha! > 0 ? 4 : 0;
   }
 
   get width() {
@@ -101,7 +111,7 @@ export default class Circle extends Shape {
     this.grips.visible = false;
 
     this.fillColor = attrs && attrs.color ? attrs.color : mainRedColor;
-    this.hasBorder = attrs && attrs.hasBorder ? attrs.hasBorder : false;
+    this.borderColor = attrs && attrs.borderColor ? attrs.borderColor : '#00000000';
   }
 
   toJSON(): CircleAttributes {
@@ -110,7 +120,7 @@ export default class Circle extends Shape {
       center: { x: this.circle.position!.x!, y: this.circle.position!.y! },
       size: { width: this.circle.size!.width!, height: this.circle.size!.height! },
       color: this.fillColor,
-      hasBorder: this.hasBorder
+      borderColor: this.borderColor
     }
   }
 
@@ -130,7 +140,7 @@ export default class Circle extends Shape {
     this.all.remove();
   }
 
-  onMouseMove(hitResult: paper.HitResult, cursorStyle: CSSStyleDeclaration) {
+  onMouseMove(event: paper.ToolEvent, hitResult: paper.HitResult, cursorStyle: CSSStyleDeclaration) {
     if (!hitResult)
       return;
     else if (this.circle == hitResult.item)
@@ -145,7 +155,7 @@ export default class Circle extends Shape {
       cursorStyle.cursor = "nesw-resize";
   }
 
-  onMouseDown(event: paper.MouseEvent, hitResult: paper.HitResult): boolean {
+  onMouseDown(event: paper.ToolEvent, hitResult: paper.HitResult): boolean {
     if (!hitResult)
       return false;
     if (this.circle == hitResult.item) {
@@ -158,7 +168,7 @@ export default class Circle extends Shape {
     return !!result;
   }
 
-  onMouseDrag(event: paper.MouseEvent, snapPoints: paper.Point[]) {
+  onMouseDrag(event: paper.ToolEvent, snapPoints: paper.Point[]) {
     if (!this.movedShape || this.movedShape == this.all)
       return false;
 

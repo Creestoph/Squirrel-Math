@@ -17,3 +17,7 @@ export function colorsDifference(hex1: string, hex2: string): number {
     const array2 = hexToArray(hex2);
     return Math.abs(array1[0] - array2[0]) + Math.abs(array1[1] - array2[1]) + Math.abs(array1[2] - array2[2]);
 }
+
+export function colorLightness(hex: string): number {
+    return Math.max(...hexToArray(hex)) / 255;
+}

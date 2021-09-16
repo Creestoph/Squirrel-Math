@@ -15,7 +15,7 @@ export default class Line extends Shape {
   private all;
   private grips;
 
-  private active = false;
+  editing = false;
 
   get fillColor() {
     return this.line.strokeColor!.toCSS(true);
@@ -26,13 +26,15 @@ export default class Line extends Shape {
     this.grips.fillColor = new paper.Color(color).multiply(0.7);
   }
 
-  get hasBorder() {
-    return false;
+  get borderColor() {
+    return '';
   }
 
   set selected(value: boolean) {
     this.grips.visible = value;
-    this.active = value;
+    if (!value) {
+      this.editing = false;
+    }
   }
 
   get position() {
@@ -78,8 +80,8 @@ export default class Line extends Shape {
     this.all.remove();
   }
 
-  onMouseMove(hitResult: paper.HitResult, cursorStyle: CSSStyleDeclaration) {
-    if (!hitResult && this.active)
+  onMouseMove(event: paper.ToolEvent, hitResult: paper.HitResult, cursorStyle: CSSStyleDeclaration) {
+    if (!hitResult && this.editing)
       cursorStyle.cursor = "cell";
     else if (hitResult && this.grips.children!.some(item => item == hitResult.item))
       cursorStyle.cursor = "crosshair";
@@ -87,9 +89,9 @@ export default class Line extends Shape {
       cursorStyle.cursor = "move";
   }
 
-  onMouseDown(event: paper.MouseEvent, hitResult: paper.HitResult): boolean {
+  onMouseDown(event: paper.ToolEvent, hitResult: paper.HitResult): boolean {
     if (!hitResult) {
-      if (this.active) {
+      if (this.editing) {
         this.addPoint(event.point!);
         return true;
       }
@@ -103,7 +105,7 @@ export default class Line extends Shape {
     return !!this.movedShape;
   }
 
-  onMouseDrag(event: paper.MouseEvent, snapPoints: paper.Point[]) {
+  onMouseDrag(event: paper.ToolEvent, snapPoints: paper.Point[]) {
     if (!this.movedShape)
       return false;
 
