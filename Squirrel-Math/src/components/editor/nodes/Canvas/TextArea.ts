@@ -1,8 +1,9 @@
 import { Node as tiptapNode, Plugin } from 'tiptap'
 import { EditorState, Transaction } from 'prosemirror-state'
-import { Node as prosemirrorNode } from 'prosemirror-model'
+import { Node as prosemirrorNode, Slice } from 'prosemirror-model'
 import { ReplaceStep, ReplaceAroundStep } from 'prosemirror-transform'
 import TextAreaVue from './TextArea.vue'
+import CustomElement from '../BuiltInComponent'
 
 export default class TextArea extends tiptapNode {
 
@@ -41,23 +42,30 @@ export default class TextArea extends tiptapNode {
           const step = tr.steps[0];
           const s = step as any;
           const isReplaceAround = step instanceof ReplaceAroundStep;
-          const isReplace = step instanceof ReplaceStep && s.slice.size == 0;
+          const isReplace = step instanceof ReplaceStep;
+          // console.log(tr, state);
           if (isReplaceAround || isReplace) {
-            const isInsideCanvas = this.isPositionInsideCanvas(state, s.from) && this.isPositionInsideCanvas(state, tr.selection.from);
-            if (isInsideCanvas) {
+            if (this.isPositionInsideCanvas(state, s.from)) {
               if (isReplaceAround) {
                 const replacingWholeCanvas = s.slice.content.content[0].type.name === 'geometry';
                 if (replacingWholeCanvas) {
-                  console.log('blocked replacearound')
+                  // console.log('blocked replacearound')
                   // return false;
                 }
               }
               else if (isReplace) {
-                const allowed = tr.getMeta('allowDelete');
-                const deletingTextArea = (state.doc.slice(s.from, s.to).content as any).content.some((c: prosemirrorNode) => c.type.name === 'text_area');
-                if (deletingTextArea && !allowed) {
-                  console.log('blocked replace')
+                const allowDelete = tr.getMeta('allowDelete');
+                const creatingHandled = tr.getMeta('creatingHandled');
+                const deletingTextArea = this.isTextArea(state.doc.slice(s.from, s.to)) && s.slice.size == 0;
+                const creatingTextArea = this.isTextArea(s.slice);
+                if (deletingTextArea && !allowDelete) {
+                  // console.log('blocked replace')
                   return false;
+                }
+                else if (creatingTextArea && !creatingHandled) {
+                  const targetCanvas = this.editor.view.domAtPos(s.from).node.parentElement.parentElement.__vue__ as CustomElement;
+                  setTimeout(() => targetCanvas.addExistingTextArea(s.slice.content.content[0]));
+                  // console.log('creating!');
                 }
               }
             }
@@ -66,6 +74,10 @@ export default class TextArea extends tiptapNode {
         }
       }),
     ]
+  }
+
+  private isTextArea(slice: Slice) {
+    return (slice.content as any).content.some((c: prosemirrorNode) => c.type.name === 'text_area');
   }
 
   private isPositionInsideCanvas(state: EditorState, pos: number) {

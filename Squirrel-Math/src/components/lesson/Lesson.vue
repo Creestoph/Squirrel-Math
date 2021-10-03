@@ -91,10 +91,10 @@ export default class Lesson extends Vue {
     this.clearElements();
   }
   long = {
-      title: [{ text: '' }],
-      introElements: [],
-      chapters: [],
-    };
+    title: [{ text: '' }],
+    introElements: [],
+    chapters: [],
+  };
   short = {
     title: [{ text: ''}],
     introElements: [],

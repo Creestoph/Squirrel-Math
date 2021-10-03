@@ -132,7 +132,7 @@ export default {
             }
           })
           this.node.content.content.forEach((_, i) => {
-            this.canvasShapes.push(TextArea.fromExisting(this.$refs.content.children[i].__vue__ , this.view, () => this.getPos() + 1));
+            this.canvasShapes.push(TextArea.fromExisting(this.$refs.content.children[i].__vue__.node, this.view, () => this.getPos() + 1))
           });
         });
       if (this.canvas) {      
@@ -298,7 +298,8 @@ export default {
       let shape = createShape();
       this.canvasShapes.push(shape);
       this.select(shape);
-      event.preventDefault();
+      if (event) 
+        event.preventDefault();
     },
 
     addSquare(event) {
@@ -322,7 +323,7 @@ export default {
     },
 
     addTextArea(event) {
-      this.addShape(() => new TextArea({ 
+      this.addShape(() => TextArea.createWithNode({ 
         view: this.view, 
         canvasEditorPos: () => this.getPos() + 1,
         width: 160, 
@@ -330,6 +331,10 @@ export default {
         x: this.canvas.width / 2 - 80, 
         y: this.canvas.height / 2 - 20,
       }), event);
+    },
+
+    addExistingTextArea(node) {
+      this.addShape(() => TextArea.fromExisting(node, this.view, () => this.getPos() + 1));
     },
 
     setFillColor(color) {

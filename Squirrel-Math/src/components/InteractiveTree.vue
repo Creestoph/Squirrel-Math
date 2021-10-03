@@ -285,7 +285,7 @@ export default class InteractiveTree extends Vue {
     const centerX = (minX + maxX) / 2;
 
     for (let lesson of graphLessons)
-      this.positions[lesson.title] = {x: 100, y: 100};
+      this.positions[lesson.title] = {x: 300, y: 300};
     for (let lesson of graphCoordinates.nodes) {
       this.positions[lesson[0]] = { x: this.mypaper.view.center!.x! + (lesson[1] as number) - centerX, y: 130 + (lesson[2] as number) - minY };
     }

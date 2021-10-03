@@ -1,5 +1,6 @@
 import paper from "paper";
 import { EditorView } from "prosemirror-view";
+import { Node as ProsemirrorNode } from 'prosemirror-model'
 import { Shape } from "./Shape";
 
 export interface TextAreaAttributes {
@@ -18,7 +19,7 @@ export interface TextAreaAttributes {
 }
 
 export default class TextArea extends Shape {
-  static maxId = 0;
+  private static maxId = 0;
 
   canHaveBorder = true;
 
@@ -93,23 +94,33 @@ export default class TextArea extends Shape {
     return new paper.Point(this.component);
   }
 
-  static fromExisting(view: EditorView, canvasEditorPos: () => number): TextArea {
+  // static fromExisting(view: EditorView, canvasEditorPos: () => number): TextArea {
+  //   const result = new TextArea();
+  //   result.view = view;
+  //   result.canvasEditorPos = canvasEditorPos;
+  //   result.id = this.maxId++;
+  //   return result;
+  // }
+
+  static fromExisting(node: ProsemirrorNode, view: EditorView, canvasEditorPos: () => number): TextArea {
     const result = new TextArea();
+    result.id = node.attrs.id;
+    TextArea.maxId = Math.min(this.maxId, result.id)
     result.view = view;
     result.canvasEditorPos = canvasEditorPos;
-    result.id = this.maxId++;
+    result.textAreasContainer = view.domAtPos(canvasEditorPos()).node;
     return result;
   }
 
-  constructor(attrs?: TextAreaAttributes) {
-    super();
+  static createWithNode(attrs?: TextAreaAttributes): TextArea {
+    const result = new TextArea();
     if (!attrs)
-      return;
+      return result;
 
-    this.id = TextArea.maxId++;
-    this.view = attrs.view;
-    this.canvasEditorPos = attrs.canvasEditorPos;
-    const node = this.view.state.schema.nodes.text_area.createAndFill({ 
+    result.id = TextArea.maxId++;
+    result.view = attrs.view;
+    result.canvasEditorPos = attrs.canvasEditorPos;
+    const node = result.view.state.schema.nodes.text_area.createAndFill({ 
       width: attrs.width,
       height: attrs.height,
       x: attrs.x,
@@ -118,15 +129,21 @@ export default class TextArea extends Shape {
       textColor: attrs.textColor,
       fillColor: attrs.fillColor,
       align: attrs.align,
-      id: this.id
+      id: result.id
     }, attrs.content);
-    const transaction = this.view.state.tr.insert(attrs.canvasEditorPos(), node);
+    const transaction = result.view.state.tr.insert(attrs.canvasEditorPos(), node);
+    transaction.setMeta('creatingHandled', true);
     attrs.view.dispatch(transaction);
-    this.textAreasContainer = attrs.view.domAtPos(attrs.canvasEditorPos()).node;
+    result.textAreasContainer = attrs.view.domAtPos(attrs.canvasEditorPos()).node;
+    return result;
+  }
+
+  private constructor() {
+    super();
   }
 
   clone(): Shape {
-    return new TextArea({
+    return TextArea.createWithNode({
       type: 'text_area',
       view: this.view!,
       canvasEditorPos: this.canvasEditorPos!,

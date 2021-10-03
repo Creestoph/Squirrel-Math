@@ -36,6 +36,8 @@ export default {
           childCopy.innerHTML = child.innerHTML;
           if (child.src)
             childCopy.src = child.src;
+          if (child.type)
+            childCopy.type = child.type;
           htmlElement.appendChild(childCopy);
         }
         else 

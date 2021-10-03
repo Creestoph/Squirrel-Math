@@ -10,6 +10,12 @@
         "level": "Przedszkole"
     },
     {
+        "title": "Figury geometryczne",
+        "requires": ["Liczba"],
+        "field": "Geometria",
+        "level": "Szkoła podstawowa"
+    },
+    {
         "title": "Dodawanie",
         "requires": ["Liczba"],
         "field": "Arytmetyka",
@@ -31,6 +37,12 @@
         "title": "Dzielenie",
         "requires": ["Odejmowanie", "Mnożenie"],
         "field": "Arytmetyka",
+        "level": "Szkoła podstawowa"
+    },
+    {
+        "title": "Kąty",
+        "requires": ["Dzielenie", "Figury geometryczne"],
+        "field": "Geometria",
         "level": "Szkoła podstawowa"
     },
     {

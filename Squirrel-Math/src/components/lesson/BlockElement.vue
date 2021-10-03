@@ -31,6 +31,7 @@ import Problem from "./Problem.vue";
 import Expression from "./Expression.vue";
 import ExpressionInline from "./ExpressionInline.vue";
 import Geometry from "./geometry/Geometry.vue";
+import TextArea from "./geometry/TextArea.vue";
 import LessonLink from "./Link.vue";
 import BuiltInComponent from "./BuiltInComponent.vue";
 import CustomComponent from "./CustomComponent.vue";
@@ -60,6 +61,7 @@ interface SerializedNode {
         Expression,
         ExpressionInline,
         Geometry,
+        TextArea,
         BuiltInComponent,
         CustomComponent
     },
@@ -126,6 +128,7 @@ export default class BlockElement extends Vue {
             expression: 'expression',
             expressionInline: 'expression-inline',
             geometry: 'geometry',
+            text_area: 'text-area',
             component: 'built-in-component',
             custom_element: 'custom-component',
             problem: 'problem'

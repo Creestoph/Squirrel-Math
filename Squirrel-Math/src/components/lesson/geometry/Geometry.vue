@@ -1,5 +1,8 @@
 <template>
-  <canvas ref="canvas" :width="attrs.canvas.width" :height="attrs.canvas.height" class="geometry"></canvas>
+  <button class="geometry-editor">
+    <canvas ref="canvas" :width="attrs.canvas.width" :height="attrs.canvas.height"></canvas>
+    <div class="text-area-wrapper"><slot/></div>
+  </button>
 </template>
 
 <script>
@@ -29,8 +32,17 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.geometry {
-  margin: 0 auto;
+.geometry-editor {
   display: block;
+  margin: 0 auto;
+  padding: 0;
+  background: none;
+  position: relative;
+  cursor: initial;
+}
+
+.text-area-wrapper {
+  position: absolute;
+  top: 0;
 }
 </style>

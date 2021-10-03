@@ -43,11 +43,11 @@ export default class Circle extends Shape {
     this.grips.fillColor.alpha = 1;
   }
 
-  get borderColor() {
+  get borderColor(): string {
     return this.borderColorHex;
   }
 
-  set borderColor(color) {
+  set borderColor(color: string) {
     this.borderColorHex = color;
     this.circle.strokeColor = new paper.Color(color);
     this.circle.style!.strokeWidth = this.circle.strokeColor.alpha! > 0 ? 4 : 0;

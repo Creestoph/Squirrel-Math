@@ -5,7 +5,7 @@ export interface RectangleAttributes {
   center: { x: number, y: number },
   size: { width: number, height: number},
   color: string,
-  borderColor: boolean
+  borderColor: string
 }
 
 export default class Rectangle {
@@ -15,7 +15,7 @@ export default class Rectangle {
     let size = new paper.Size(attrs.size.width, attrs.size.height);
     let rectangle = new paper.Shape.Rectangle(new paper.Rectangle(center.add(new paper.Point(-size.width! / 2, -size.height! / 2)), size));
     rectangle.fillColor = new paper.Color(attrs.color);
-    rectangle.strokeColor = new paper.Color(attrs.color).multiply(0.7);
-    rectangle.style!.strokeWidth = attrs.borderColor ? 4 : 0;
+    rectangle.strokeColor = new paper.Color(attrs.borderColor);
+    rectangle.style!.strokeWidth = rectangle.strokeColor.alpha! > 0 ? 4 : 0;    
   }
 }

@@ -22,8 +22,6 @@
 </template>
 
 <script>
-import { colorLightness } from '@/components/utils/colors'
-
 export default {
   props: ["node", "updateAttrs", "view", "getPos"],
   data() {
@@ -66,7 +64,6 @@ export default {
     },
   },
   methods: {
-    colorLightness,
     setFocus(value) {
       this.focused = value;
     },
