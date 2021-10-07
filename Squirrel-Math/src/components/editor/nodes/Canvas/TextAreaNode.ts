@@ -2,10 +2,30 @@ import { Node as tiptapNode, Plugin } from 'tiptap'
 import { EditorState, Transaction } from 'prosemirror-state'
 import { Node as prosemirrorNode, Slice } from 'prosemirror-model'
 import { ReplaceStep, ReplaceAroundStep } from 'prosemirror-transform'
-import TextAreaVue from './TextArea.vue'
+import TextAreaVue from './TextAreaView.vue'
 import CustomElement from '../BuiltInComponent'
+import { EditorView } from 'prosemirror-view'
 
-export default class TextArea extends tiptapNode {
+export interface TextAreaAttributes {
+  type: 'text_area';
+  width: number,
+  height: number,
+  x: number,
+  y: number,
+  borderColor?: string;
+  textColor?: string;
+  fillColor?: string;
+  align?: string;
+}
+
+export default class TextAreaNode extends tiptapNode {
+
+  static create(attrs: TextAreaAttributes, position: number, view: EditorView): void {
+    const node = view.state.schema.nodes.text_area.createAndFill(attrs);
+    const transaction = view.state.tr.insert(position, node);
+    transaction.setMeta('creatingHandled', true);
+    view.dispatch(transaction);
+  }
 
   get name() {
     return 'text_area'
@@ -22,7 +42,6 @@ export default class TextArea extends tiptapNode {
         borderColor: { default: '#00000000' },
         textColor: { default: 'black' },
         align: { default: 'top' },
-        id: { default: 0 }
       },
       content: 'block+',
       group: 'block',
@@ -55,17 +74,10 @@ export default class TextArea extends tiptapNode {
               }
               else if (isReplace) {
                 const allowDelete = tr.getMeta('allowDelete');
-                const creatingHandled = tr.getMeta('creatingHandled');
                 const deletingTextArea = this.isTextArea(state.doc.slice(s.from, s.to)) && s.slice.size == 0;
-                const creatingTextArea = this.isTextArea(s.slice);
                 if (deletingTextArea && !allowDelete) {
                   // console.log('blocked replace')
-                  return false;
-                }
-                else if (creatingTextArea && !creatingHandled) {
-                  const targetCanvas = this.editor.view.domAtPos(s.from).node.parentElement.parentElement.__vue__ as CustomElement;
-                  setTimeout(() => targetCanvas.addExistingTextArea(s.slice.content.content[0]));
-                  // console.log('creating!');
+                  // return false;
                 }
               }
             }

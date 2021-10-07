@@ -10,9 +10,6 @@ export default class Canvas extends Node {
   get schema() {
     return {
       attrs: {
-        shapes: {
-          default: undefined
-        },
         canvas: {
           default: {
             width: 800,
@@ -20,14 +17,14 @@ export default class Canvas extends Node {
           }
         }
       },
-      content: 'text_area*',
+      content: '(text_area | triangle | rectangle | line | circle)*',
       group: 'block',
       draggable: true,
       parseDOM: [{
         tag: 'geometry',
-        getAttrs: (dom: any) => ({ shapes: JSON.parse(dom.getAttribute('shapes')), canvas: JSON.parse(dom.getAttribute('canvas')) })
+        getAttrs: (dom: any) => ({ canvas: JSON.parse(dom.getAttribute('canvas')) })
       }],
-      toDOM: (node: any) => ['geometry', { shapes: JSON.stringify(node.attrs.shapes), canvas: JSON.stringify(node.attrs.canvas) }]
+      toDOM: (node: any) => ['geometry', { canvas: JSON.stringify(node.attrs.canvas) }]
     }
   }
 

@@ -21,8 +21,8 @@
       </div>
     </div>
     <div class="canvas-wrapper" ref="canvasWrapper">
-      <canvas ref="canvas" width="800" height="500" resize="true"></canvas>
       <div ref="content" @mousedown="forwardClickEventToCanvas($event)"></div>
+      <canvas ref="canvas" width="800" height="500" resize="true"></canvas>
     </div>
   </button>
 </template>
@@ -30,12 +30,13 @@
 <script>
 import paper from "paper";
 import { Shape } from './Shape';
-import Rectangle from './Rectangle';
-import Triangle from './Triangle';
-import Circle from './Circle';
-import Line from './Line';
-import TextArea from './TextAreaShape';
+import RectangleNode from './RectangleNode';
+import TriangleNode from './TriangleNode';
+import CircleNode from './CircleNode';
+import LineNode from './LineNode';
+import TextAreaNode from './TextAreaNode';
 import ColorPicker from '../../ColorPicker.vue';
+import { createEquilateral } from './TriangleView.vue';
 
 let copiedShapes = null;
 
@@ -47,7 +48,6 @@ export default {
     return {
       paperScope: null,
       selectedShapes: [],
-      canvasShapes: [],
       snapPoints: [],
       dragStartPoint: null,
       shapeDragged: null,
@@ -67,10 +67,6 @@ export default {
   },
 
   computed: {
-    shapes: {
-      get() { return this.node.attrs.shapes; },
-      set(shapes) { this.updateAttrs({ shapes }); }
-    },
     canvas: {
       get() { return this.node.attrs.canvas; },
       set(canvas) { this.updateAttrs({ canvas }); }
@@ -87,12 +83,12 @@ export default {
     },
     textColor: {
       get() {
-        return this.selectedShapes.filter(shape => shape instanceof TextArea).every(shape => shape.textColor == this.selectedShapes[0].textColor) ? this.selectedShapes[0].textColor : false;
+        return this.selectedShapes.filter(shape => shape.node.type.name === 'text_area').every(shape => shape.textColor == this.selectedShapes[0].textColor) ? this.selectedShapes[0].textColor : false;
       }
     },
     align: {
       get() {
-        return this.selectedShapes.filter(shape => shape instanceof TextArea).every(shape => shape.align == this.selectedShapes[0].align) ? this.selectedShapes[0].align : false;
+        return this.selectedShapes.filter(shape => this.isTextArea(shape)).every(shape => shape.align == this.selectedShapes[0].align) ? this.selectedShapes[0].align : false;
       }
     }
   },
@@ -119,22 +115,15 @@ export default {
   },
 
   methods: {
+    canvasShapes() {
+      return Array.from(this.$refs.content.children).map(child => child.__vue__);
+    },
+
+    lastShape() {
+      return this.$refs.content.children[this.$refs.content.children.length - 1].__vue__;
+    },
+
     initializeFromAttributes() {
-      if (this.shapes) 
-        this.$nextTick(() => {
-          this.paperScope.activate();
-          this.shapes.forEach(shape => {
-            switch (shape.type) {
-              case 'rectangle': this.canvasShapes.push(new Rectangle(shape)); break;
-              case 'triangle': this.canvasShapes.push(new Triangle(shape)); break;
-              case 'circle': this.canvasShapes.push(new Circle(shape)); break;
-              case 'line': this.canvasShapes.push(new Line(shape)); break;
-            }
-          })
-          this.node.content.content.forEach((_, i) => {
-            this.canvasShapes.push(TextArea.fromExisting(this.$refs.content.children[i].__vue__.node, this.view, () => this.getPos() + 1))
-          });
-        });
       if (this.canvas) {      
         this.$refs.canvas.width = this.canvas.width;
         this.$refs.canvas.height = this.canvas.height;
@@ -144,23 +133,32 @@ export default {
     },
 
     handleResize() {
-      this.paperScope.view.setViewSize(new paper.Size(this.$refs.canvas.offsetWidth, this.$refs.canvas.offsetHeight));
-      this.canvas = { width: this.$refs.canvas.offsetWidth, height: this.$refs.canvas.offsetHeight };
+      const width = this.$refs.canvas.offsetWidth;
+      const height = this.$refs.canvas.offsetHeight
+      this.paperScope.view.setViewSize(new paper.Size(width, height));
+      this.canvas = { width, height };
+      this.canvasShapes().forEach(shape => {
+        if (shape.handleResize)
+          shape.handleResize(width, height)
+      });
     },
 
     handleMouseMove(event) {
       this.$refs.canvas.style.cursor = "default";
-      let hitResult = this.paperScope.project.hitTest(event.point, this.hitOptions);
-      this.canvasShapes.forEach(shape => shape.onMouseMove(event, hitResult, this.$refs.canvas.style));
+      this.canvasShapes().forEach(shape => {
+        const hitResult = shape.paperScope ? shape.paperScope.project.hitTest(event.point, this.hitOptions) : null;
+        shape.onMouseMove(event, hitResult, this.$refs.canvas.style)
+      });
     },
 
     handleMouseDown(event) {
       this.$refs.geometryEditor.focus();
-      let hitResult = this.paperScope.project.hitTest(event.point, this.hitOptions);
 
       let clickedShape = null;
       if (event.modifiers.control || event.modifiers.shift) {
-        this.canvasShapes.forEach(shape => {
+        this.canvasShapes().forEach(shape => {
+          const hitResult = shape.paperScope ? shape.paperScope.project.hitTest(event.point, this.hitOptions) : null;
+
           if (shape.onMouseDown(event, hitResult)) {
             clickedShape = shape;
             if (!this.selectedShapes.includes(shape))
@@ -169,7 +167,8 @@ export default {
         });
       }
       else {
-        this.canvasShapes.forEach(shape => {
+        this.canvasShapes().forEach(shape => {
+          const hitResult = shape.paperScope ? shape.paperScope.project.hitTest(event.point, this.hitOptions) : null;
           if (shape.onMouseDown(event, hitResult))
             clickedShape = shape;
         });
@@ -184,7 +183,7 @@ export default {
 
       if (clickedShape) {
         this.dragStartPoint = event.point;
-        this.shapeDragStartPosition = clickedShape.position.clone();
+        this.shapeDragStartPosition = clickedShape.getPosition().clone();
         this.shapeDragged = clickedShape;
         this.selectionBox = null;
       }
@@ -200,13 +199,13 @@ export default {
 
     handleMouseDrag(event) {
       let moveObjects = true;
-      this.canvasShapes.forEach(shape => {
+      this.canvasShapes().forEach(shape => {
         if (shape.onMouseDrag(event, this.snapPoints)) {
           moveObjects = false;
         }
       });
       if (moveObjects && this.shapeDragged) {
-        let deltaToCurrentPosition = event.point.subtract(this.dragStartPoint).add(this.shapeDragStartPosition).subtract(this.shapeDragged.position);
+        let deltaToCurrentPosition = event.point.subtract(this.dragStartPoint).add(this.shapeDragStartPosition).subtract(this.shapeDragged.getPosition());
         if (event.modifiers.shift) {
           let futurePositions = this.selectedShapes.flatMap(shape => shape.getSnapPoints().map(p => p.add(deltaToCurrentPosition)));
           let snapShift = Shape.snapShift(futurePositions, this.snapPoints);
@@ -221,9 +220,9 @@ export default {
     },
 
     handleMouseUp() {
-      this.canvasShapes.forEach(shape => shape.onMouseUp());
+      this.canvasShapes().forEach(shape => shape.onMouseUp());
       if (this.selectionBox) {
-        this.canvasShapes.forEach(shape => {
+        this.canvasShapes().forEach(shape => {
           if (shape.containedInBounds(this.selectionBox.bounds)) {
             this.select(shape);
           }
@@ -234,22 +233,21 @@ export default {
     },
 
     handleKeyDown(event) {
-      const anyTextAreaSelected = this.selectedShapes.some(shape => shape instanceof TextArea);
-
+      if (event.key == 'z' && event.modifiers.control)
+        return;
+  
       if (this.selectedShapes.length > 0) {
+        const anyTextAreaSelected = this.selectedShapes.some(shape => this.isTextArea(shape));
         let catchedEvent = true;
         if (event.key == 'delete') {
           this.selectedShapes.forEach(shape => {
-            shape.onDelete();
-            this.canvasShapes.splice(this.canvasShapes.findIndex(canvasShape => canvasShape == shape), 1);
+            const elementBegin = shape.getPos();
+            const transaction = this.view.state.tr.delete(elementBegin, elementBegin + shape.node.nodeSize);
+            transaction.setMeta('allowDelete', true); //see TextArea.ts for usage 
+            this.view.dispatch(transaction);
           });
           this.selectedShapes = [];
           this.recalculateSnapPoints();
-          this.$nextTick(() => {
-            for (const shape of this.canvasShapes)
-              if (shape instanceof TextArea && !shape.component)
-                this.canvasShapes.splice(this.canvasShapes.findIndex(canvasShape => canvasShape == shape), 1);
-          })
         }
         else if (event.key == 'up' && !anyTextAreaSelected)
           this.selectedShapes.forEach(shape => shape.move(new paper.Point(0, -1)));
@@ -271,70 +269,73 @@ export default {
       if (event.key == 'v' && event.modifiers.control && copiedShapes) {
         this.deselectAll();
         copiedShapes.forEach(copied => {
-          let cloned = copied.clone();
+          const node = copied.node.type.createAndFill(copied.node.attrs, copied.node.content);
+          const transaction = this.view.state.tr.insert(this.insertPosition(), node);
+          this.view.dispatch(transaction);
+
+          const cloned = this.lastShape()
           cloned.move(new paper.Point(40, 40));
-          this.canvasShapes.push(cloned);
           this.select(cloned);
         });
+        this.handleResize();
         event.preventDefault();
       }
       else if (event.key == 'a' && event.modifiers.control) {
         this.deselectAll();
-        this.canvasShapes.forEach(shape => this.select(shape));
+        this.canvasShapes().forEach(shape => this.select(shape));
         event.preventDefault();
-      }
-      else if (event.key == 'backspace') {
-        this.$nextTick(() => {
-          for (const shape of this.canvasShapes)
-            if (shape instanceof TextArea && !shape.component)
-              this.canvasShapes.splice(this.canvasShapes.findIndex(canvasShape => canvasShape == shape), 1);
-        })
       }
     },
 
-    addShape(createShape, event) {
-      this.deselectAll();
-      this.paperScope.activate();
-      let shape = createShape();
-      this.canvasShapes.push(shape);
-      this.select(shape);
+    insertPosition() {
+      return this.getPos() + this.node.nodeSize - 1;
+    },
+
+    addSquare(event) {
+      RectangleNode.create({ center: { x: this.canvas.width / 2, y: this.canvas.height / 2 }}, this.insertPosition(), this.view);
+      const added = this.lastShape();
+      this.select(added);
+      added.handleResize(this.canvas.width, this.canvas.height);
       if (event) 
         event.preventDefault();
     },
 
-    addSquare(event) {
-      this.addShape(() => new Rectangle({ center: { x: this.canvas.width / 2, y: this.canvas.height / 2 }}), event);
-    },
-
     addTriangle(event) {
-      this.addShape(() => Triangle.createEquilateral({ x: this.canvas.width / 2, y: this.canvas.height / 2 }), event);
+      TriangleNode.create({ vertices: createEquilateral({ x: this.canvas.width / 2, y: this.canvas.height / 2 }) }, this.insertPosition(), this.view);
+      const added = this.lastShape();
+      this.select(added);
+      added.handleResize(this.canvas.width, this.canvas.height);
+      if (event) 
+        event.preventDefault();
     },
 
     addCircle(event) {
-      this.addShape(() => new Circle({ center: { x: this.canvas.width / 2, y: this.canvas.height / 2 }}), event);
+      CircleNode.create({ center: { x: this.canvas.width / 2, y: this.canvas.height / 2 }}, this.insertPosition(), this.view);
+      const added = this.lastShape();
+      this.select(added);
+      added.handleResize(this.canvas.width, this.canvas.height);
+      if (event) 
+        event.preventDefault();
     },
 
     addLine(event) {
-      this.addShape(() => {
-        const line = new Line();
-        line.editing = true;
-        return line;
-      }, event);
+      LineNode.create({ }, this.insertPosition(), this.view);
+      const added = this.lastShape();
+      this.select(added);
+      added.handleResize(this.canvas.width, this.canvas.height);
+      added.editing = true;
+
+      this.handleResize();
+      if (event) 
+        event.preventDefault();
     },
 
     addTextArea(event) {
-      this.addShape(() => TextArea.createWithNode({ 
-        view: this.view, 
-        canvasEditorPos: () => this.getPos() + 1,
-        width: 160, 
-        height: 44, 
-        x: this.canvas.width / 2 - 80, 
-        y: this.canvas.height / 2 - 20,
-      }), event);
-    },
-
-    addExistingTextArea(node) {
-      this.addShape(() => TextArea.fromExisting(node, this.view, () => this.getPos() + 1));
+      TextAreaNode.create({ width: 160, height: 44, x: this.canvas.width / 2 - 80, y: this.canvas.height / 2 - 20 }, this.insertPosition(), this.view);
+      const added = this.lastShape();
+      this.select(added);
+      if (event) 
+        event.preventDefault();
     },
 
     setFillColor(color) {
@@ -346,7 +347,7 @@ export default {
     },
 
     canAnyHaveText(shapes) {
-      return shapes.some(shape => shape instanceof TextArea);
+      return shapes.some(shape => this.isTextArea(shape));
     },
 
     setBorderColor(color) {
@@ -354,11 +355,11 @@ export default {
     },
 
     setTextColor(color) {
-      this.selectedShapes.filter(shape => shape instanceof TextArea).forEach(shape => shape.textColor = color);
+      this.selectedShapes.filter(shape => this.isTextArea(shape)).forEach(shape => shape.textColor = color);
     },
 
     setAlign(align) {
-      this.selectedShapes.filter(shape => shape instanceof TextArea).forEach(shape => shape.align = align);
+      this.selectedShapes.filter(shape => this.isTextArea(shape)).forEach(shape => shape.align = align);
     },
 
     toggleLineEdit() {
@@ -366,15 +367,19 @@ export default {
     },
 
     selectedRectangle() {
-      return this.selectedShapes.length == 1 && this.selectedShapes[0] instanceof Rectangle;
+      return this.selectedShapes.length == 1 && this.selectedShapes[0].node.type.name === 'rectangle';
     },
 
     selectedLine() {
-      return this.selectedShapes.length == 1 && this.selectedShapes[0] instanceof Line;
+      return this.selectedShapes.length == 1 && this.selectedShapes[0].node.type.name === 'line';
     },
 
     selectedCircle() {
-      return this.selectedShapes.length == 1 && this.selectedShapes[0] instanceof Circle;
+      return this.selectedShapes.length == 1 && this.selectedShapes[0].node.type.name === 'circle';
+    },
+
+    isTextArea(shape) {
+      return shape.node.type.name === 'text_area';
     },
 
     select(shape) {
@@ -384,17 +389,16 @@ export default {
     },
 
     deselectAll() {
-      this.canvasShapes.forEach(shape => shape.selected = false);
+      this.canvasShapes().forEach(shape => shape.selected = false);
       this.selectedShapes = [];
       this.snapPoints = [];
     },
 
     recalculateSnapPoints() {
-      this.snapPoints = this.canvasShapes.filter(s => !this.selectedShapes.includes(s)).flatMap(shape => shape.getSnapPoints());
+      this.snapPoints = this.canvasShapes().filter(s => !this.selectedShapes.includes(s)).flatMap(shape => shape.getSnapPoints());
     },
 
     save() {
-      this.shapes = this.canvasShapes.map(shape => shape.toJSON()).filter(json => !!json);
       this.canvas = { width: this.$refs.canvas.offsetWidth, height: this.$refs.canvas.offsetHeight };
     },
 
@@ -438,9 +442,12 @@ export default {
   resize: both;
   overflow: hidden;
 
-  canvas {
+  > canvas {
     width: 100%;
     height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
   }
 
   > div {
