@@ -25,37 +25,12 @@ export default {
             movedShape: null,
             all: null,
             grips: null,
+            isSelected: false
         }
     },
 
     mounted() {
-        this.paperScope = new paper.PaperScope();
-        this.paperScope.setup(this.$refs.canvas);
-        this.paperScope.activate();
-        const attrs = this.node.attrs;
-
-        if (attrs.vertices) {
-            this.triangle = new paper.Path(attrs.vertices.map(v => [v.x, v.y]));
-            this.triangle.closed = true;
-        }
-        else
-            this.triangle = new paper.Path.RegularPolygon(new paper.Point(50, 57.74), 3, 57.74);
-
-        let grip = new paper.Path.Circle(new paper.Point(0, 0), 6);
-        grip.style.strokeWidth = 0;
-        let gripDots = [];
-        this.triangle.segments.forEach((segment, i) => {
-            gripDots[i] = grip.clone();
-            gripDots[i].position = segment.point;
-        });
-        grip.remove();
-
-        this.grips = new paper.Group(gripDots);
-        this.all = new paper.Group([this.triangle, this.grips]);
-        this.grips.visible = false;
-
-        this.fillColor = attrs.color;
-        this.borderColor = attrs.borderColor;
+        this.render();
     },
 
     computed: {
@@ -94,12 +69,47 @@ export default {
             },
 
             set(value) {
+                this.isSelected = value;
                 this.grips.visible = value;
             },
         },
     },
 
+    watch: {
+        node: function() { this.render() }
+    },
+
     methods: {
+        render() {
+            this.paperScope = new paper.PaperScope();
+            this.paperScope.setup(this.$refs.canvas);
+            this.paperScope.activate();
+            const attrs = this.node.attrs;
+
+            if (attrs.vertices) {
+                this.triangle = new paper.Path(attrs.vertices.map(v => [v.x, v.y]));
+                this.triangle.closed = true;
+            }
+            else
+                this.triangle = new paper.Path.RegularPolygon(new paper.Point(50, 57.74), 3, 57.74);
+
+            let grip = new paper.Path.Circle(new paper.Point(0, 0), 6);
+            grip.style.strokeWidth = 0;
+            let gripDots = [];
+            this.triangle.segments.forEach((segment, i) => {
+                gripDots[i] = grip.clone();
+                gripDots[i].position = segment.point;
+            });
+            grip.remove();
+
+            this.grips = new paper.Group(gripDots);
+            this.all = new paper.Group([this.triangle, this.grips]);
+            this.grips.visible = this.isSelected;
+
+            this.fillColor = attrs.color;
+            this.borderColor = attrs.borderColor;
+        },
+
         handleResize(width, height) {
             this.paperScope.view.setViewSize(new paper.Size(width, height));
         },
@@ -109,8 +119,7 @@ export default {
         },
 
         move(shift) {
-            this.all.position = this.all.position.add(shift);
-            this.saveVertices();
+            this.all.translate(shift);
         },
 
         containedInBounds(bounds) {
@@ -154,7 +163,6 @@ export default {
                 let snapShift = event.modifiers.shift ? Shape.snapShift([event.point], snapPoints) : new paper.Point(0, 0);
                 this.movedShape.position = event.point.add(snapShift);
                 this.triangle.segments[result].point = this.movedShape.position;
-                this.saveVertices();
                 return true;
             }
             else 
@@ -165,7 +173,7 @@ export default {
             this.movedShape = null;
         },
 
-        saveVertices() {
+        save() {
             this.updateAttrs({ vertices: this.triangle.segments.map(s => ({ x: s.point.x, y: s.point.y })) });
         }
     }

@@ -73,6 +73,14 @@ export default {
     }
   },
   methods: {   
+    save() {
+
+    },
+    
+    handleResize(width, height) {
+    
+    },
+
     getPosition() {
       return new paper.Point(this.x, this.y);
     },

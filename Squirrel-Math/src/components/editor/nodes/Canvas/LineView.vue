@@ -19,27 +19,13 @@ export default {
             all: null,
             grips: null,
 
-            editing: false
+            editing: false,
+            isSelected: false
         }
     },
 
     mounted() {
-        this.paperScope = new paper.PaperScope();
-        this.paperScope.setup(this.$refs.canvas);
-        this.paperScope.activate();
-        
-        const attrs = this.node.attrs;
-        this.line = new paper.Path();
-        this.line.style.strokeWidth = 3;
-
-        this.grips = new paper.Group();
-        this.all = new paper.Group([this.line, this.grips]);
-        this.grips.visible = false;
-
-        this.fillColor = attrs.color;
-
-        if (attrs.points)
-            attrs.points.forEach(p => this.addPoint(new paper.Point(p)));
+        this.render();
     },
 
     computed: {
@@ -69,14 +55,38 @@ export default {
 
             set(value) {
                 this.grips.visible = value;
+                this.isSelected = value;
                 if (!value) {
-                this.editing = false;
+                    this.editing = false;
                 }
             },
         },
     },
 
+    watch: {
+        node: function() { this.render() }
+    },
+
     methods: {
+        render() {
+            this.paperScope = new paper.PaperScope();
+            this.paperScope.setup(this.$refs.canvas);
+            this.paperScope.activate();
+            
+            const attrs = this.node.attrs;
+            this.line = new paper.Path();
+            this.line.style.strokeWidth = 3;
+
+            this.grips = new paper.Group();
+            this.all = new paper.Group([this.line, this.grips]);
+            this.grips.visible = this.isSelected;
+
+            this.fillColor = attrs.color;
+
+            if (attrs.points)
+                attrs.points.forEach(p => this.addPoint(new paper.Point(p)));
+        },
+
         handleResize(width, height) {
             this.paperScope.view.setViewSize(new paper.Size(width, height));
         },
@@ -86,8 +96,7 @@ export default {
         },
 
         move(shift) {
-            this.all.position = this.all.position.add(shift);
-            this.saveVertices();
+            this.all.translate(shift);
         },
 
         containedInBounds(bounds) {
@@ -136,7 +145,6 @@ export default {
                 let snapShift = event.modifiers.shift ? Shape.snapShift([event.point], snapPoints) : new paper.Point(0, 0);
                 this.movedShape.position = event.point.add(snapShift);
                 this.line.segments[result].point = this.movedShape.position;
-                this.savePoints();
                 return true;
             }
             else
@@ -153,10 +161,9 @@ export default {
             grip.style.strokeWidth = 0;
             grip.fillColor = new paper.Color(this.fillColor).multiply(0.7);
             this.grips.addChild(grip);
-            this.savePoints();
         },
 
-        savePoints() {
+        save() {
             this.updateAttrs({ points: this.line.segments.map(s => ({ x: s.point.x, y: s.point.y })) });
         }
     }

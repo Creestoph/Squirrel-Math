@@ -28,41 +28,13 @@ export default {
             all: null,
             grips: null,
 
-            movedShape: null
+            movedShape: null,
+            isSelected: false
         }
     },
 
     mounted() {
-        this.paperScope = new paper.PaperScope();
-        this.paperScope.setup(this.$refs.canvas);
-        this.paperScope.activate();
-        
-        const attrs = this.node.attrs;
-
-        let center = new paper.Point(attrs.center.x, attrs.center.y);
-        let size = new paper.Size(attrs.size.width, attrs.size.height);
-
-        this.circle = new paper.Shape.Ellipse(new paper.Rectangle(center.add(new paper.Point(-size.width / 2, -size.height / 2)), size));
-
-        let grip = new paper.Path.Circle(new paper.Point(0, 0), 6);
-        grip.style.strokeWidth = 0;
-        this.upper = grip.clone();
-        this.bottom = grip.clone();
-        this.left = grip.clone();
-        this.right = grip.clone();
-        this.upperLeft = grip.clone();
-        this.upperRight = grip.clone();
-        this.bottomLeft = grip.clone();
-        this.bottomRight = grip.clone();
-        this.setGrips();
-        grip.remove();
-
-        this.grips = new paper.Group([this.upper, this.bottom, this.left, this.right, this.upperLeft, this.upperRight, this.bottomLeft, this.bottomRight]);
-        this.all = new paper.Group([this.circle, this.grips]);
-        this.grips.visible = false;
-
-        this.fillColor = attrs.color;
-        this.borderColor = attrs.borderColor;
+        this.render();
     },
 
     computed: {
@@ -106,6 +78,7 @@ export default {
                 if (newWidth >= 3) {
                     this.circle.size.width = newWidth;
                     this.recalculateGripsPositions();
+                    this.save();
                 }
             },
         },
@@ -120,6 +93,7 @@ export default {
                 if (newHeight >= 3) {
                     this.circle.size.height = newHeight;
                     this.recalculateGripsPositions();
+                    this.save();
                 }
             },
         },
@@ -130,12 +104,57 @@ export default {
             },
 
             set(value) {
+                this.isSelected = value;
                 this.grips.visible = value;
             },
         },
     },
 
+    watch: {
+        node: function() { this.render() }
+    },
+
     methods: {
+        render() {
+            this.paperScope = new paper.PaperScope();
+            this.paperScope.setup(this.$refs.canvas);
+            this.paperScope.activate();
+            
+            const attrs = this.node.attrs;
+
+            let center = new paper.Point(attrs.center.x, attrs.center.y);
+            let size = new paper.Size(attrs.size.width, attrs.size.height);
+
+            this.circle = new paper.Shape.Ellipse(new paper.Rectangle(center.add(new paper.Point(-size.width / 2, -size.height / 2)), size));
+
+            let grip = new paper.Path.Circle(new paper.Point(0, 0), 6);
+            grip.style.strokeWidth = 0;
+            this.upper = grip.clone();
+            this.bottom = grip.clone();
+            this.left = grip.clone();
+            this.right = grip.clone();
+            this.upperLeft = grip.clone();
+            this.upperRight = grip.clone();
+            this.bottomLeft = grip.clone();
+            this.bottomRight = grip.clone();
+            this.recalculateGripsPositions();
+            grip.remove();
+
+            this.grips = new paper.Group([this.upper, this.bottom, this.left, this.right, this.upperLeft, this.upperRight, this.bottomLeft, this.bottomRight]);
+            this.all = new paper.Group([this.circle, this.grips]);
+            this.grips.visible = this.isSelected;
+
+            this.fillColor = attrs.color;
+            this.borderColor = attrs.borderColor;
+        },
+
+        save() {
+            this.updateAttrs({ 
+                size: { width: this.circle.size.width, height: this.circle.size.height },
+                center: { x: this.circle.position.x, y: this.circle.position.y } 
+            });
+        },
+
         handleResize(width, height) {
             this.paperScope.view.setViewSize(new paper.Size(width, height));
         },
@@ -145,8 +164,7 @@ export default {
         },
 
         move(shift) {
-            this.all.position = this.all.position.add(shift);
-            this.updateAttrs({ center: { x: this.circle.position.x, y: this.circle.position.y } });
+            this.all.translate(shift);
         },
 
         containedInBounds(bounds) {
@@ -232,7 +250,7 @@ export default {
             this.movedShape = null;
         },
 
-        setGrips() {
+        recalculateGripsPositions() {
             this.upper.position = this.circle.position.add(new paper.Point(0, -this.circle.size.height / 2));
             this.bottom.position = this.circle.position.add(new paper.Point(0, this.circle.size.height / 2));
             this.left.position = this.circle.position.add(new paper.Point(-this.circle.size.width / 2, 0));
@@ -242,14 +260,6 @@ export default {
             this.bottomLeft.position = this.circle.position.add(new paper.Point(-this.circle.size.width / 2, this.circle.size.height / 2));
             this.bottomRight.position = this.circle.position.add(new paper.Point(this.circle.size.width / 2, this.circle.size.height / 2));
         },
-
-        recalculateGripsPositions() {
-            this.setGrips();
-            this.updateAttrs({ 
-                size: { width: this.circle.size.width, height: this.circle.size.height },
-                center: { x: this.circle.position.x, y: this.circle.position.y } 
-            });
-        }
     }
 
 };
