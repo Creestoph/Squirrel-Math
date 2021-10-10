@@ -31,19 +31,16 @@ import Problem from "./Problem.vue";
 import Expression from "./Expression.vue";
 import ExpressionInline from "./ExpressionInline.vue";
 import Geometry from "./geometry/Geometry.vue";
-import TextArea from "./geometry/TextArea.vue";
+import GeometryRectangle from "./geometry/Rectangle.vue";
+import GeometryTriangle from "./geometry/Triangle.vue";
+import GeometryCircle from "./geometry/Circle.vue";
+import GeometryLine from "./geometry/Line.vue";
+import GeometryTextArea from "./geometry/TextArea.vue";
 import LessonLink from "./Link.vue";
 import BuiltInComponent from "./BuiltInComponent.vue";
 import CustomComponent from "./CustomComponent.vue";
 import Paragraph from "./Paragraph.vue";
-
-interface SerializedNode {
-    type: string;
-    marks?: { type: string, attrs: { [name: string]: any }}[];
-    text?: string;
-    content?: SerializedNode[];
-    attrs?: { [name: string]: any };
-}
+import { MarkData, NodeData, NodeType } from '../editor/lessons-transform';
 
 @Component({
     components: {
@@ -61,18 +58,22 @@ interface SerializedNode {
         Expression,
         ExpressionInline,
         Geometry,
-        TextArea,
+        GeometryRectangle,
+        GeometryTriangle,
+        GeometryCircle,
+        GeometryLine,
+        GeometryTextArea,
         BuiltInComponent,
         CustomComponent
     },
     name: 'block-element'
 })
 export default class BlockElement extends Vue { 
-    @Prop() content!: SerializedNode;
-    type = "";
-    marks?: { type: string, attrs: { [name: string]: any }}[] = [];
+    @Prop() content!: NodeData;
+    type!: NodeType;
+    marks?: MarkData[] = [];
     text? = "";
-    children: SerializedNode[] = [];
+    children: NodeData[] = [];
     attrs:  { [name: string]: any } = {};
 
     mounted() {
@@ -110,7 +111,7 @@ export default class BlockElement extends Vue {
             return 'comment';
         if (this.marks && this.marks.some(m => m.type == 'link'))
             return 'lesson-link';
-        const typeToTag: { [type: string]: string } = {
+        const typeToTag: { [type in NodeType]?: string } = {
             paragraph: 'paragraph',
             hard_break: 'br',
             bullet_list: 'ul',
@@ -128,10 +129,14 @@ export default class BlockElement extends Vue {
             expression: 'expression',
             expressionInline: 'expression-inline',
             geometry: 'geometry',
-            text_area: 'text-area',
+            rectangle: 'geometry-rectangle',
+            triangle: 'geometry-triangle',
+            circle: 'geometry-circle',
+            line: 'geometry-line',
+            text_area: 'geometry-text-area',
             component: 'built-in-component',
             custom_element: 'custom-component',
-            problem: 'problem'
+            problem: 'problem',
         };
         return typeToTag[this.type] || 'div';
     }  

@@ -4,7 +4,6 @@
 
 <script>
 import paper from "paper";
-import { mainRedColor } from './Colors';
 import { Shape } from './Shape';
 
 export function createEquilateral(center, size = 100) {
@@ -40,13 +39,13 @@ export default {
             },
 
             set(color) {
+                if (color !== this.fillColor)
+                    this.updateAttrs({ color });
                 if (color == '#00000000')
                     color = '#00000001';
                 this.triangle.fillColor = new paper.Color(color);
                 this.grips.fillColor = new paper.Color(color).multiply(0.7);
                 this.grips.fillColor.alpha = 1;
-                if (color !== this.fillColor)
-                    this.updateAttrs({ color });
             },
         },
 

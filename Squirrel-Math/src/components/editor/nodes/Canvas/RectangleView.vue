@@ -45,13 +45,13 @@ export default {
             },
 
             set(color) {
+                if (this.fillColor != color)
+                    this.updateAttrs({ color });
                 if (color == '#00000000')
                     color = '#00000001';
                 this.rectangle.fillColor = new paper.Color(color);
                 this.grips.fillColor = new paper.Color(color).multiply(0.7);
                 this.grips.fillColor.alpha = 1;
-                if (this.fillColor != color)
-                    this.updateAttrs({ color });
             },
         },
 

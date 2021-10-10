@@ -23,7 +23,7 @@
         <div class="canvas-wrapper" ref="canvasWrapper">
             <canvas ref="eventsCatcher" width="800" height="500" resize="true"></canvas>
             <div ref="content" @mousedown="forwardClickEventToCanvas($event)"></div>
-            <canvas ref="overlayCanvas" width="800" height="500" style="pointer-events: none"></canvas>
+            <canvas ref="overlayCanvas" width="800" height="500" class="overlay-canvas"></canvas>
         </div>
     </button>
 </template>
@@ -464,9 +464,13 @@ export default {
     > canvas {
         width: 100%;
         height: 100%;
-        position: absolute;
-        left: 0;
-        top: 0;
+
+        &.overlay-canvas {
+            pointer-events: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
     }
 
     > div {

@@ -4,7 +4,6 @@ import CircleView from './CircleView.vue'
 import { mainRedColor } from './Colors';
 
 export interface CircleAttributes {
-  type: 'circle',
   center: { x: number, y: number },
   size: { width: number, height: number},
   color: string,

@@ -2,6 +2,7 @@ import { Extension } from 'tiptap'
 import { allComments } from '../../marks/Comment.vue';
 import { Draft, DraftPreview, LocalStorageSaver } from './LocalStorageManager';
 import ImagePicker from '../../ImagePicker.vue';
+import { downloadFile } from '@/components/utils/files';
 
 export default class Save extends Extension {
 
@@ -90,7 +91,7 @@ export default class Save extends Extension {
     saveToFile() {
         const lessonString = JSON.stringify(this.getLessonJSON());
         const fileName = this.sourceFile || `${this.getLessonTitle()}.json`;
-        this.download(lessonString, fileName, 'application/json');
+        downloadFile(lessonString, fileName, 'application/json');
         console.debug(lessonString);
     }
 
@@ -117,22 +118,5 @@ export default class Save extends Extension {
             lessonJSON.images = {};
         Object.entries(ImagePicker.lessonImages).forEach(([key, image]: any) => lessonJSON.images[key] = { src: image.src, name: image.name });
         return lessonJSON;
-    }
-
-    private download(data: any, filename: string, type: string) {
-        var file = new Blob([data], {type: type});
-        if (window.navigator.msSaveOrOpenBlob) // IE10+
-            window.navigator.msSaveOrOpenBlob(file, filename);
-        else { // Others
-            var a = document.createElement("a"), url = URL.createObjectURL(file);
-            a.href = url;
-            a.download = filename;
-            document.body.appendChild(a);
-            a.click();
-            setTimeout(function() {
-                document.body.removeChild(a);
-                window.URL.revokeObjectURL(url);  
-            }, 0); 
-        }
     }
 }

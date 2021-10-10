@@ -44,14 +44,13 @@ export default {
             },
 
             set(color) {
-                this.fillColorHex = color;
+                if (color != this.fillColor) 
+                    this.updateAttrs({ color });
                 if (color == '#00000000')
                     color = '#00000001';
                 this.circle.fillColor = new paper.Color(color);
                 this.grips.fillColor = new paper.Color(color).multiply(0.7);
                 this.grips.fillColor.alpha = 1;
-                if (color != this.fillColor)
-                    this.updateAttrs({ color });
             },
         },
 
@@ -121,6 +120,8 @@ export default {
             this.paperScope.activate();
             
             const attrs = this.node.attrs;
+
+            console.log('kurna', attrs.color, attrs.borderColor);
 
             let center = new paper.Point(attrs.center.x, attrs.center.y);
             let size = new paper.Size(attrs.size.width, attrs.size.height);

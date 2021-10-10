@@ -9,7 +9,7 @@
     height: attrs.height + 'px',
    }">
     <div class="align-wrapper" :style="{ 'vertical-align': attrs.align }">
-      <slot/>
+      <div class="content"><slot/></div>
     </div>
   </div>
 </template>
@@ -19,7 +19,7 @@ import { Component, Prop } from 'vue-property-decorator';
 import Vue from 'vue';
 
 @Component
-export default class TextArea extends Vue {
+export default class GeometryTextArea extends Vue {
   @Prop() attrs?: any;
 }
 </script>

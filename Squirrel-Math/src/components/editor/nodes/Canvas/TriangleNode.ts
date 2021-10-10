@@ -4,10 +4,9 @@ import { mainRedColor } from './Colors';
 import TriangleView from './TriangleView.vue'
 
 export interface TriangleAttributes {
-  type?: 'triangle',
-  vertices?: {x: number, y: number}[],
-  color?: string,
-  borderColor?: string
+  vertices: {x: number, y: number}[],
+  color: string,
+  borderColor: string
 }
 
 export default class TriangleNode extends Node {
