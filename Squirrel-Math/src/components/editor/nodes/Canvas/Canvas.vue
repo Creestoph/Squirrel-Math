@@ -54,6 +54,7 @@ export default {
             dragStartPoint: null,
             shapeDragged: -1,
             shapeDragStartPosition: null,
+            shapeEdited: -1,
             selectionBox: null,
             selectionBoxAnchor: null,
             focused: false,
@@ -64,7 +65,7 @@ export default {
                 stroke: true,
                 fill: true,
                 tolerance: 5
-            }
+            },
         }
     },
 
@@ -159,33 +160,39 @@ export default {
         handleMouseMove(event) {
             this.$refs.eventsCatcher.style.cursor = "default";
             for (let i = 0; i < this.totalShapes(); i++) {
-                const shape = this.shapeAtIndex(i);
-                const hitResult = shape.paperScope ? shape.paperScope.project.hitTest(event.point, this.hitOptions) : null;
-                shape.onMouseMove(event, hitResult, this.$refs.eventsCatcher.style)
+                if (this.shapeEdited == -1 || this.shapeEdited == i) {
+                    const shape = this.shapeAtIndex(i);
+                    const hitResult = shape.paperScope ? shape.paperScope.project.hitTest(event.point, this.hitOptions) : null;
+                    shape.onMouseMove(event, hitResult, this.$refs.eventsCatcher.style)
+                }
             }
         },
 
         handleMouseDown(event) {
             this.$refs.geometryEditor.focus();
-
             let clickedShape = -1;
             if (event.modifiers.control || event.modifiers.shift) {
                 for (let i = 0; i < this.totalShapes(); i++) {
-                    const shape = this.shapeAtIndex(i);
-                    const hitResult = shape.paperScope ? shape.paperScope.project.hitTest(event.point, this.hitOptions) : null;
-                    if (shape.onMouseDown(event, hitResult)) {
-                        clickedShape = i;
-                        if (!this.selection.includes(i))
-                            this.select(i, shape);
-                    } 
+                    if (this.shapeEdited == -1 || this.shapeEdited == i) {
+                        const shape = this.shapeAtIndex(i);
+                        const hitResult = shape.paperScope ? shape.paperScope.project.hitTest(event.point, this.hitOptions) : null;
+                        if (shape.onMouseDown(event, hitResult)) {
+                            clickedShape = i;
+                            if (!this.selection.includes(i))
+                                this.select(i, shape);
+                        } 
+                    }
                 }
-            }
-            else {
-                for (let i = 0; i < this.totalShapes(); i++) {
-                    const shape = this.shapeAtIndex(i);
-                    const hitResult = shape.paperScope ? shape.paperScope.project.hitTest(event.point, this.hitOptions) : null;
-                    if (shape.onMouseDown(event, hitResult))
-                        clickedShape = i;
+            } else {
+                for (let i = this.totalShapes() - 1; i >= 0 ; i--) {
+                    if (this.shapeEdited == -1 || this.shapeEdited == i) {
+                        const shape = this.shapeAtIndex(i);
+                        const hitResult = shape.paperScope ? shape.paperScope.project.hitTest(event.point, this.hitOptions) : null;
+                        if (shape.onMouseDown(event, hitResult)) {
+                            clickedShape = i;
+                            break;
+                        }
+                    }
                 }
                 if (clickedShape === -1) {
                     this.deselectAll();
@@ -216,9 +223,11 @@ export default {
         handleMouseDrag(event) {
             let moveObjects = true;
             for (let i = 0; i < this.totalShapes(); i++) {
-                const shape = this.shapeAtIndex(i);
-                if (shape.onMouseDrag(event, this.snapPoints)) {
-                    moveObjects = false;
+                if (this.shapeEdited == -1 || this.shapeEdited == i) {
+                    const shape = this.shapeAtIndex(i);
+                    if (shape.onMouseDrag(event, this.snapPoints)) {
+                        moveObjects = false;
+                    }
                 }
             }
             if (moveObjects && this.shapeDragged != -1) {
@@ -238,7 +247,9 @@ export default {
 
         handleMouseUp() {
             for (let i = 0; i < this.totalShapes(); i++) {
-                this.shapeAtIndex(i).onMouseUp();
+                    if (this.shapeEdited == -1 || this.shapeEdited == i) {
+                        this.shapeAtIndex(i).onMouseUp();
+                    }
             }
             if (this.selectionBox) {
                 for (let i = 0; i < this.totalShapes(); i++) {
@@ -264,14 +275,15 @@ export default {
                     for (let i = this.totalShapes() - 1; i >= 0; i--) {
                         if (this.selection.includes(i)) {
                             const shape = this.shapeAtIndex(i);
-                            const elementBegin = shape.getPos();
-                            const transaction = this.view.state.tr.delete(elementBegin, elementBegin + shape.node.nodeSize);
-                            transaction.setMeta('allowDelete', true); //see TextAreaNode.ts for usage 
-                            this.view.dispatch(transaction);
+                            if (!shape.onDelete()) {
+                                this.deselect(i);
+                                const elementBegin = shape.getPos();
+                                const transaction = this.view.state.tr.delete(elementBegin, elementBegin + shape.node.nodeSize);
+                                transaction.setMeta('allowDelete', true); //see TextAreaNode.ts for usage 
+                                this.view.dispatch(transaction);
+                            }
                         }
                     }
-                    this.deselectAll();
-                    this.recalculateSnapPoints();
                     this.handleResize(); // some components might be re-rendered and need to have canvas size reassigned
                 }
                 else if (event.key == 'up' && !anyTextAreaSelected)
@@ -345,6 +357,7 @@ export default {
         addLine(event) {
             const added = this.addShape(LineNode, { }, event);
             added.editing = true;
+            this.shapeEdited = this.totalShapes() - 1;
         },
 
         addTextArea(event) {
@@ -378,6 +391,7 @@ export default {
         toggleLineEdit() {
             const line = this.shapeAtIndex(this.selection[0]);
             line.editing = !line.editing;
+            this.shapeEdited = line.editing ? this.selection[0] : -1;
         },
 
         selectedRectangle() {
@@ -402,10 +416,19 @@ export default {
             this.recalculateSnapPoints();
         },
 
+        deselect(index, shape = this.shapeAtIndex(index)) {
+            shape.selected = false;
+            this.selection.splice(this.selection.findIndex(s => s == index), 1);
+            this.recalculateSnapPoints();
+            if (this.shapeEdited == index);
+                this.shapeEdited = -1;
+        },
+
         deselectAll() {
             for (let i = 0; i < this.totalShapes(); i++) {
                 this.shapeAtIndex(i).selected = false;
             }
+            this.shapeEdited = -1;
             this.selection = [];
             this.snapPoints = [];
         },

@@ -120,9 +120,7 @@ export default {
             this.paperScope.activate();
             
             const attrs = this.node.attrs;
-
-            console.log('kurna', attrs.color, attrs.borderColor);
-
+            
             let center = new paper.Point(attrs.center.x, attrs.center.y);
             let size = new paper.Size(attrs.size.width, attrs.size.height);
 
