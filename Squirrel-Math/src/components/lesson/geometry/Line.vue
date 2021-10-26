@@ -18,6 +18,9 @@ export default class GeometryLine extends Vue {
         paperScope.activate();
         let line = new paper.Path();
         this.attrs.points.forEach(p => line.add(new paper.Point(p)));
+        if (this.attrs.smooth) {
+            line.smooth({ type: 'continuous' });
+        }
         line.style!.strokeWidth = 3;
         line.strokeColor = new paper.Color(this.attrs.color);
     }

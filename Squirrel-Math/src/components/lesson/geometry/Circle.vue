@@ -21,7 +21,7 @@ export default class GeometryCircle extends Vue {
         let circle = new paper.Shape.Ellipse(new paper.Rectangle(center.add(new paper.Point(-size.width! / 2, -size.height! / 2)), size));
         circle.fillColor = new paper.Color(this.attrs.color);
         circle.strokeColor = new paper.Color(this.attrs.borderColor);
-        circle.style!.strokeWidth = circle.strokeColor.alpha! > 0 ? 4 : 0;
+        circle.style!.strokeWidth = circle.strokeColor.alpha! > 0 ? 3 : 0;
     }
 }
 </script>

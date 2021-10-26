@@ -206,10 +206,11 @@ import Expression from "./nodes/Expression";
 import ExpressionInline from "./nodes/ExpressionInline";
 import Canvas from "./nodes/Canvas/Canvas";
 import TextArea from "./nodes/Canvas/TextAreaNode";
-import TriangleNode from "./nodes/Canvas/TriangleNode";
 import RectangleNode from "./nodes/Canvas/RectangleNode";
 import CircleNode from "./nodes/Canvas/CircleNode";
 import LineNode from "./nodes/Canvas/LineNode";
+import PolygonNode from "./nodes/Canvas/PolygonNode";
+import ArcNode from "./nodes/Canvas/ArcNode";
 import Example from "./nodes/Example";
 import Problem from "./nodes/Problem";
 import Formula from "./nodes/Formula";
@@ -324,10 +325,11 @@ export default class LessonEditor extends Vue {
                 new CustomListItem(),
                 new Canvas(),
                 new TextArea(),
-                new TriangleNode(),
                 new RectangleNode(),
                 new CircleNode(),
                 new LineNode(),
+                new PolygonNode(),
+                new ArcNode(),
                 new Placeholder({
                     emptyNodeClass: 'empty',
                     showOnlyCurrent: false,

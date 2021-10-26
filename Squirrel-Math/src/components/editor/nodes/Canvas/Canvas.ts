@@ -12,12 +12,12 @@ export default class Canvas extends Node {
       attrs: {
         canvas: {
           default: {
-            width: 800,
-            height: 500
+            width: 500,
+            height: 300
           }
         }
       },
-      content: '(text_area | triangle | rectangle | line | circle)*',
+      content: '(text_area | rectangle | line | circle | polygon | arc)*',
       group: 'block',
       draggable: true,
       parseDOM: [{

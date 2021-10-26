@@ -6,11 +6,11 @@
 import paper from "paper";
 import { Component, Prop } from 'vue-property-decorator';
 import Vue from 'vue';
-import { TriangleAttributes } from "@/components/editor/nodes/Canvas/TriangleNode";
+import { PolygonAttributes } from "@/components/editor/nodes/Canvas/PolygonNode";
 
 @Component
-export default class GeometryTriangle extends Vue {
-    @Prop() attrs!: TriangleAttributes;
+export default class GeometryPolygon extends Vue {
+    @Prop() attrs!: PolygonAttributes;
 
     mounted() {
         const paperScope = new paper.PaperScope();
@@ -19,7 +19,7 @@ export default class GeometryTriangle extends Vue {
         let triangle = new paper.Path(this.attrs.vertices.map(v => [v.x, v.y]));
         triangle.fillColor = new paper.Color(this.attrs.color);
         triangle.strokeColor = new paper.Color(this.attrs.borderColor);
-        triangle.style!.strokeWidth = triangle.strokeColor.alpha! > 0 ? 4 : 0;    
+        triangle.style!.strokeWidth = triangle.strokeColor.alpha! > 0 ? 3 : 0;    
   }
 }
 </script>

@@ -62,7 +62,7 @@ export default {
 
             set(borderColor) {
                 this.rectangle.strokeColor = new paper.Color(borderColor);
-                this.rectangle.style.strokeWidth = this.rectangle.strokeColor.alpha > 0 ? 4 : 0;
+                this.rectangle.style.strokeWidth = this.rectangle.strokeColor.alpha > 0 ? 3 : 0;
                 if (this.borderColor != borderColor)
                     this.updateAttrs({ borderColor });
             },
@@ -70,13 +70,13 @@ export default {
 
         width: {
             get() {
-                return this.rectangle.size.width;
+                return this.rectangle.bounds.width;
             },
 
             set(value) {
                 let newWidth = typeof value == "number" ? value : parseFloat(value);
                 if (newWidth >= 3) {
-                    this.rectangle.size.width = newWidth;
+                    this.rectangle.bounds.width = newWidth;
                     this.recalculateGripsPositions();
                     this.save();
                 }
@@ -85,13 +85,13 @@ export default {
 
         height: {
             get() {
-                return this.rectangle.size.height;
+                return this.rectangle.bounds.height;
             },
 
             set(value) {
                 let newHeight = typeof value == "number" ? value : parseFloat(value);
                 if (newHeight >= 3) {
-                    this.rectangle.size.height = newHeight;
+                    this.rectangle.bounds.height = newHeight;
                     this.recalculateGripsPositions();
                     this.save();
                 }
@@ -150,7 +150,7 @@ export default {
 
         save() {
             this.updateAttrs({ 
-                size: { width: this.rectangle.size.width, height: this.rectangle.size.height },
+                size: { width: this.rectangle.bounds.width, height: this.rectangle.bounds.height },
                 center: { x: this.rectangle.position.x, y: this.rectangle.position.y } 
             });
         },
@@ -171,6 +171,12 @@ export default {
                 child.position.y += shift.y;
             })
             // this.all.translate(shift);
+        },
+
+        scale(factor, center) {
+            this.rectangle.scale(factor, new paper.Point(center));
+            this.recalculateGripsPositions();
+            this.save();
         },
 
         containedInBounds(bounds) {
@@ -243,8 +249,8 @@ export default {
                     this.bottom.position.y = event.point.add(snapShift).y;
             }
             
-            this.rectangle.size.width = this.right.position.x - this.left.position.x;
-            this.rectangle.size.height = this.bottom.position.y - this.upper.position.y;
+            this.rectangle.bounds.width = this.right.position.x - this.left.position.x;
+            this.rectangle.bounds.height = this.bottom.position.y - this.upper.position.y;
             this.rectangle.position.x = (this.left.position.x + this.right.position.x) / 2;
             this.rectangle.position.y = (this.bottom.position.y + this.upper.position.y) / 2;
             this.recalculateGripsPositions();
@@ -257,14 +263,14 @@ export default {
         },
 
         recalculateGripsPositions() {
-            this.upper.position = this.rectangle.position.add(new paper.Point(0, -this.rectangle.size.height / 2));
-            this.bottom.position =  this.rectangle.position.add(new paper.Point(0, this.rectangle.size.height / 2));
-            this.left.position =  this.rectangle.position.add(new paper.Point(-this.rectangle.size.width / 2, 0));
-            this.right.position =  this.rectangle.position.add(new paper.Point(this.rectangle.size.width / 2, 0));
-            this.upperLeft.position =  this.rectangle.position.add(new paper.Point(-this.rectangle.size.width / 2, -this.rectangle.size.height / 2))
-            this.upperRight.position =  this.rectangle.position.add(new paper.Point(this.rectangle.size.width / 2, -this.rectangle.size.height / 2));
-            this.bottomLeft.position =  this.rectangle.position.add(new paper.Point(-this.rectangle.size.width / 2, this.rectangle.size.height / 2));
-            this.bottomRight.position =  this.rectangle.position.add(new paper.Point(this.rectangle.size.width / 2, this.rectangle.size.height / 2));
+            this.upper.position = this.rectangle.position.add(new paper.Point(0, -this.rectangle.bounds.height / 2));
+            this.bottom.position =  this.rectangle.position.add(new paper.Point(0, this.rectangle.bounds.height / 2));
+            this.left.position =  this.rectangle.position.add(new paper.Point(-this.rectangle.bounds.width / 2, 0));
+            this.right.position =  this.rectangle.position.add(new paper.Point(this.rectangle.bounds.width / 2, 0));
+            this.upperLeft.position =  this.rectangle.position.add(new paper.Point(-this.rectangle.bounds.width / 2, -this.rectangle.bounds.height / 2))
+            this.upperRight.position =  this.rectangle.position.add(new paper.Point(this.rectangle.bounds.width / 2, -this.rectangle.bounds.height / 2));
+            this.bottomLeft.position =  this.rectangle.position.add(new paper.Point(-this.rectangle.bounds.width / 2, this.rectangle.bounds.height / 2));
+            this.bottomRight.position =  this.rectangle.position.add(new paper.Point(this.rectangle.bounds.width / 2, this.rectangle.bounds.height / 2));
         },
     }
 

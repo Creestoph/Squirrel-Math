@@ -21,7 +21,7 @@ export default class GeometryRectangle extends Vue {
         let rectangle = new paper.Shape.Rectangle(new paper.Rectangle(center.add(new paper.Point(-size.width! / 2, -size.height! / 2)), size));
         rectangle.fillColor = new paper.Color(this.attrs.color);
         rectangle.strokeColor = new paper.Color(this.attrs.borderColor);
-        rectangle.style!.strokeWidth = rectangle.strokeColor.alpha! > 0 ? 4 : 0;    
+        rectangle.style!.strokeWidth = rectangle.strokeColor.alpha! > 0 ? 3 : 0;    
   }
 }
 </script>

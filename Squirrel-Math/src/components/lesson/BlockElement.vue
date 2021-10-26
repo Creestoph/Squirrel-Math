@@ -32,9 +32,10 @@ import Expression from "./Expression.vue";
 import ExpressionInline from "./ExpressionInline.vue";
 import Geometry from "./geometry/Geometry.vue";
 import GeometryRectangle from "./geometry/Rectangle.vue";
-import GeometryTriangle from "./geometry/Triangle.vue";
+import GeometryPolygon from "./geometry/Polygon.vue";
 import GeometryCircle from "./geometry/Circle.vue";
 import GeometryLine from "./geometry/Line.vue";
+import GeometryArc from "./geometry/Arc.vue";
 import GeometryTextArea from "./geometry/TextArea.vue";
 import LessonLink from "./Link.vue";
 import BuiltInComponent from "./BuiltInComponent.vue";
@@ -59,9 +60,10 @@ import { MarkData, NodeData, NodeType } from '../editor/lessons-transform';
         ExpressionInline,
         Geometry,
         GeometryRectangle,
-        GeometryTriangle,
+        GeometryPolygon,
         GeometryCircle,
         GeometryLine,
+        GeometryArc,
         GeometryTextArea,
         BuiltInComponent,
         CustomComponent
@@ -130,9 +132,10 @@ export default class BlockElement extends Vue {
             expressionInline: 'expression-inline',
             geometry: 'geometry',
             rectangle: 'geometry-rectangle',
-            triangle: 'geometry-triangle',
+            polygon: 'geometry-polygon',
             circle: 'geometry-circle',
             line: 'geometry-line',
+            arc: 'geometry-arc',
             text_area: 'geometry-text-area',
             component: 'built-in-component',
             custom_element: 'custom-component',

@@ -5,7 +5,7 @@
     background: fillColor,
     color: textColor,
     outline: focused ? '3px dotted #cccccc' : 'none',
-    border: `4px solid ${borderColor}`,
+    border: `3px solid ${borderColor}`,
     width: width + 'px', 
     height: height + 'px',
    }">
@@ -88,6 +88,11 @@ export default {
     move(shift) {
       this.x += shift.x;
       this.y += shift.y;
+    },
+
+    scale(factor, center) {
+        this.x = center.x + (this.x - center.x) * factor;
+        this.y = center.y + (this.y - center.y) * factor;
     },
 
     containedInBounds(bounds) {

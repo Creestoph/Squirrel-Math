@@ -11,11 +11,12 @@ export default {
 
     data() {
         return {
+            canHaveBorder: true,
             editable: true,
 
             paperScope: null,
 
-            line: null,
+            polygon: null,
             movedShape: null,
 
             all: null,
@@ -35,21 +36,32 @@ export default {
 
     computed: {
         fillColor: {
-            get() {
-                return this.node.attrs.color;
+            get() { 
+                return this.node.attrs.color; 
             },
 
             set(color) {
-                this.line.strokeColor = new paper.Color(color);
-                this.grips.fillColor = new paper.Color(color).multiply(0.7);
-                if (this.fillColor != color)
+                if (color != this.fillColor) 
                     this.updateAttrs({ color });
+                if (color == '#00000000')
+                    color = '#00000001';
+                this.polygon.fillColor = new paper.Color(color);
+                this.grips.fillColor = new paper.Color(color).multiply(0.7);
+                this.grips.fillColor.alpha = 1;
             },
         },
 
         borderColor: {
             get() {
-                return '';
+                return this.node.attrs.borderColor;
+            },
+
+            set(borderColor) {
+                if (borderColor != this.borderColor) 
+                    this.updateAttrs({ borderColor });
+                if (borderColor == '#00000000')
+                    borderColor = '#00000001';
+                this.polygon.strokeColor = new paper.Color(borderColor);
             },
         },
 
@@ -67,6 +79,12 @@ export default {
                 }
             },
         },
+
+        sides: {
+            get() {
+                return this.polygon.segments.length;
+            }
+        }
     },
 
     watch: {
@@ -80,28 +98,26 @@ export default {
             this.paperScope.activate();
             
             const attrs = this.node.attrs;
-            this.line = new paper.Path();
-            this.line.style.strokeWidth = 3;
+            this.polygon = new paper.Path();
+            this.polygon.closed = true;
+            this.polygon.style.strokeWidth = 3;
 
             this.grips = new paper.Group();
             this.grips.visible = this.isSelected;
 
-            this.fillColor = attrs.color;
+            if (attrs.vertices)
+                attrs.vertices.forEach(v => this.addPoint(new paper.Point(v)));
 
-            if (attrs.points)
-                attrs.points.forEach(p => this.addPoint(new paper.Point(p)));
-
-            if (attrs.smooth) {
-                this.line.smooth({ type: 'continuous' });
-            }
-            
             this.selectedGripOutline = new paper.Path.Circle(new paper.Point(0, 0), 8);
             this.selectedGripOutline.strokeColor = new paper.Color('#ffbb33');
             this.selectedGripOutline.style.strokeWidth = 4;
             this.selectedGripOutline.locked = true; // non-hittable
             this.selectGrip(this.selectedGripIndex);
 
-            this.all = new paper.Group([this.line, this.grips, this.selectedGripOutline]);
+            this.all = new paper.Group([this.polygon, this.grips, this.selectedGripOutline]);
+
+            this.fillColor = attrs.color;
+            this.borderColor = attrs.borderColor;
         },
 
         handleResize(width, height) {
@@ -109,7 +125,7 @@ export default {
         },
 
         getPosition() {
-            return this.line.position;
+            return this.polygon.position;
         },
 
         move(shift) {
@@ -117,12 +133,12 @@ export default {
         },
 
         scale(factor, center) {
-            this.line.scale(factor, new paper.Point(center));
+            this.polygon.scale(factor, new paper.Point(center));
             this.save();
         },
 
         containedInBounds(bounds) {
-            return this.line.intersects(new paper.Path.Rectangle(bounds)) || bounds.contains(this.line.bounds);
+            return this.polygon.intersects(new paper.Path.Rectangle(bounds)) || bounds.contains(this.polygon.bounds);
         },
 
         getSnapPoints() {
@@ -130,8 +146,8 @@ export default {
         },
 
         onDelete() {
-            if (this.selectedGripIndex != -1) {
-                this.line.removeSegment(this.selectedGripIndex);
+            if (this.selectedGripIndex != -1 && this.sides > 3) {
+                this.polygon.removeSegment(this.selectedGripIndex);
                 this.grips.children[this.selectedGripIndex].remove();
                 this.selectGrip(-1);
                 return true;
@@ -144,33 +160,34 @@ export default {
                 cursorStyle.cursor = "cell";
             else if (hitResult && this.grips.children.some(item => item == hitResult.item))
                 cursorStyle.cursor = "crosshair";
-            else if (hitResult && this.line == hitResult.item && this.editing)
+            else if (hitResult && this.polygon == hitResult.item && this.editing)
                 cursorStyle.cursor = "cell";
-            else if (hitResult && this.line == hitResult.item && !this.editing)
+            else if (hitResult && this.polygon == hitResult.item && !this.editing)
                 cursorStyle.cursor = "move";
         },
 
         onMouseDown(event, hitResult) {
+            if (this.editing && (!hitResult || this.polygon == hitResult.item && hitResult.type == 'fill')) {
+                const newIndex = this.selectedGripIndex != -1 ? this.selectedGripIndex + 1 : this.grips.children.length;
+                this.addPoint(event.point, newIndex);
+                this.selectGrip(newIndex);
+                this.movedShape = this.grips.children[newIndex];
+                return true;
+            }
+
+            if (this.editing && this.polygon == hitResult.item && hitResult.type == 'stroke') {
+                const indexBetween = hitResult.location.index + 1
+                this.addPoint(event.point, indexBetween);
+                this.selectGrip(indexBetween);
+                this.movedShape = this.grips.children[indexBetween];
+                return true;
+            }
+
             if (!hitResult) {
-                if (this.editing) {
-                    const newIndex = this.selectedGripIndex != -1 ? this.selectedGripIndex + 1 : this.grips.children.length;
-                    this.addPoint(event.point, newIndex);
-                    this.selectGrip(newIndex);
-                    this.movedShape = this.grips.children[newIndex];
-                    return true;
-                }
                 return false;
             }
-            if (this.line == hitResult.item) {
-                if (this.editing) {
-                    const indexBetween = hitResult.location.index + 1
-                    this.addPoint(event.point, indexBetween);
-                    this.selectGrip(indexBetween);
-                    this.movedShape = this.grips.children[indexBetween];
-                    return true;
-                } else {
-                    this.movedShape = this.all;
-                }
+            if (this.polygon == hitResult.item) {
+                this.movedShape = this.all;
             }
             let result = this.grips.children.findIndex(grip => grip == hitResult.item);
             if (result != -1) {
@@ -188,7 +205,7 @@ export default {
             if (result != -1) {
                 let snapShift = event.modifiers.shift ? Shape.snapShift([event.point], snapPoints) : new paper.Point(0, 0);
                 this.movedShape.position = event.point.add(snapShift);
-                this.line.segments[result].point = this.movedShape.position;
+                this.polygon.segments[result].point = this.movedShape.position;
                 this.selectedGripOutline.position = this.movedShape.position;
                 return true;
             }
@@ -200,8 +217,8 @@ export default {
             this.movedShape = null;
         },
 
-        addPoint(position, index = this.line.segments.length) {
-            this.line.insert(index, position);
+        addPoint(position, index = this.polygon.segments.length) {
+            this.polygon.insert(index, position);
             let grip = new paper.Path.Circle(position, 6);
             grip.style.strokeWidth = 0;
             grip.fillColor = new paper.Color(this.fillColor).multiply(0.7);
@@ -209,7 +226,7 @@ export default {
         },
 
         save() {
-            this.updateAttrs({ points: this.line.segments.map(s => ({ x: s.point.x, y: s.point.y })) });
+            this.updateAttrs({ vertices: this.polygon.segments.map(s => ({ x: s.point.x, y: s.point.y })) });
         },
 
         selectGrip(index) {
@@ -218,6 +235,12 @@ export default {
             if (index != -1) {
                 this.selectedGripOutline.position = this.grips.children[index].position;
             }
+        },
+
+        makeRegular(sides, center) {
+            this.selectGrip(-1);
+            this.updateAttrs({ vertices: new paper.Path.RegularPolygon(center || this.getPosition(), sides, 70).segments.map(s => ({ x: s.point.x, y: s.point.y })) });
+            this.editing = false;
         }
     }
 

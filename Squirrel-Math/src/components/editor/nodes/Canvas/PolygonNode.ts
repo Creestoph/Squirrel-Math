@@ -1,18 +1,18 @@
 import { EditorView } from 'prosemirror-view';
 import { Node } from 'tiptap'
 import { mainRedColor } from './Colors';
-import TriangleView from './TriangleView.vue'
+import PolygonView from './PolygonView.vue'
 
-export interface TriangleAttributes {
-  vertices: {x: number, y: number}[],
+export interface PolygonAttributes {
+  vertices: { x: number, y: number }[],
   color: string,
   borderColor: string
 }
 
-export default class TriangleNode extends Node {
+export default class PolygonNode extends Node {
 
   get name() {
-    return 'triangle'
+    return 'polygon'
   }
 
   get schema() {
@@ -22,17 +22,17 @@ export default class TriangleNode extends Node {
         color: { default: mainRedColor },
         borderColor: { default: '#00000000' }
       },
-      parseDOM: [{ tag: "triangle" }],
-      toDOM: () => ["triangle"]
+      parseDOM: [{ tag: "polygon" }],
+      toDOM: () => ["polygon"]
     }
   }
 
   get view() {
-      return TriangleView;
+      return PolygonView;
   }
 
-  static create(attrs: TriangleAttributes, position: number, view: EditorView): void {
-    const node = view.state.schema.nodes.triangle.createAndFill(attrs);
+  static create(attrs: PolygonAttributes, position: number, view: EditorView): void {
+    const node = view.state.schema.nodes.polygon.createAndFill(attrs);
     const transaction = view.state.tr.insert(position, node);
     view.dispatch(transaction);
   }

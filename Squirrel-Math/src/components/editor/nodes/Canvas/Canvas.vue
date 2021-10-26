@@ -3,9 +3,11 @@
         <div v-if="focused" class="geometry-toolbar-wrapper">
             <div class="geometry-toolbar">
                 <button @mousedown="addSquare($event)"><icon>crop_square</icon></button>
-                <button @mousedown="addTriangle($event)"><icon>change_history</icon></button>
+                <button @mousedown="addPolygon($event)"><icon>pentagon</icon></button>
                 <button @mousedown="addCircle($event)"><icon>circle</icon></button>
                 <button @mousedown="addLine($event)"><icon>show_chart</icon></button>
+                <button @mousedown="addCurve($event)"><icon>gesture</icon></button>
+                <button @mousedown="addArc($event)"><icon>compass</icon></button>
                 <button @mousedown="addTextArea($event)"><span class="T-icon">T</span></button>
                 <template v-if="selection.length">
                     <color-picker :color="fillColor" @mousedown.native="$event.preventDefault()" @selected="setFillColor($event)">wypełnienie</color-picker>
@@ -16,7 +18,10 @@
                     <button v-if="canAnyHaveText(selection)" @mousedown="setAlign('bottom')" :class="{ active: align == 'bottom' }"><icon>align_bottom</icon></button>
                     <span v-if="selectedRectangle() || selectedCircle()">szerokość <input type="number" v-model="shapeAtIndex(selection[0]).width"></span>
                     <span v-if="selectedRectangle() || selectedCircle()">wysokość <input type="number" v-model="shapeAtIndex(selection[0]).height"></span>
-                    <button v-if="selectedLine()" @mousedown="toggleLineEdit()">{{ shapeAtIndex(selection[0]).editing ? 'zatwierdź' : 'edytuj' }}</button>
+                    <button v-if="canBeEdited()" @mousedown="toggleEdit()">{{ shapeAtIndex(selection[0]).editing ? 'zatwierdź' : 'edytuj' }}</button>
+                    <span v-if="selectedPolygon()">wierzchołki <input type="number" :value="shapeAtIndex(selection[0]).sides" @keyup="createRegular($event)"></span>
+                    <span v-if="selectedArc()">promień <input type="number" v-model="shapeAtIndex(selection[0]).radius"></span>
+                    <span v-if="selectedArc()">kąt <input type="number" v-model="shapeAtIndex(selection[0]).angle"></span>
                 </template>
             </div>
         </div>
@@ -32,12 +37,12 @@
 import paper from "paper";
 import { Shape } from './Shape';
 import RectangleNode from './RectangleNode';
-import TriangleNode from './TriangleNode';
 import CircleNode from './CircleNode';
 import LineNode from './LineNode';
+import PolygonNode from './PolygonNode';
+import ArcNode from './ArcNode';
 import TextAreaNode from './TextAreaNode';
 import ColorPicker from '../../ColorPicker.vue';
-import { createEquilateral } from './TriangleView.vue';
 
 let copiedNodes = null;
 
@@ -109,6 +114,7 @@ export default {
         this.eventsCatcherPaperScope.tool.onMouseDrag = this.handleMouseDrag;
         this.eventsCatcherPaperScope.tool.onMouseUp = this.handleMouseUp;
         this.eventsCatcherPaperScope.tool.onKeyDown = this.handleKeyDown;
+        this.$refs.eventsCatcher.addEventListener('wheel', this.handleScroll);
 
         this.overlayPaperScope = new paper.PaperScope();
         this.overlayPaperScope.setup(this.$refs.overlayCanvas);
@@ -247,9 +253,9 @@ export default {
 
         handleMouseUp() {
             for (let i = 0; i < this.totalShapes(); i++) {
-                    if (this.shapeEdited == -1 || this.shapeEdited == i) {
-                        this.shapeAtIndex(i).onMouseUp();
-                    }
+                if (this.shapeEdited == -1 || this.shapeEdited == i) {
+                    this.shapeAtIndex(i).onMouseUp();
+                }
             }
             if (this.selectionBox) {
                 for (let i = 0; i < this.totalShapes(); i++) {
@@ -327,6 +333,28 @@ export default {
             }
         },
 
+        handleScroll(event) {
+            if (!event.ctrlKey)
+                return;
+                
+            const zoomFactor = Math.pow(1.1, -Math.sign(event.deltaY));
+
+            if (this.selection.length > 0) {
+                for (let i = this.totalShapes() - 1; i >= 0; i--) {
+                    if (this.selection.includes(i)) {
+                        this.shapeAtIndex(i).scale(zoomFactor, { x: event.offsetX, y: event.offsetY });
+                        event.preventDefault();
+                    }
+                }
+            }
+            else if (this.shapeEdited == -1) {
+                for (let i = 0; i < this.totalShapes(); i++) {
+                    this.shapeAtIndex(i).scale(zoomFactor, { x: event.offsetX, y: event.offsetY });
+                    event.preventDefault();
+                }
+            }
+        },
+
         insertPosition() {
             return this.getPos() + this.node.nodeSize - 1;
         },
@@ -346,8 +374,9 @@ export default {
             this.addShape(RectangleNode, { center: { x: this.canvas.width / 2, y: this.canvas.height / 2 }}, event);
         },
 
-        addTriangle(event) {
-            this.addShape(TriangleNode, { vertices: createEquilateral({ x: this.canvas.width / 2, y: this.canvas.height / 2 }) }, event);
+        addPolygon(event) {
+            const added = this.addShape(PolygonNode, { }, event);
+            added.makeRegular(3, { x: this.canvas.width / 2, y: this.canvas.height / 2 });
         },
 
         addCircle(event) {
@@ -358,6 +387,19 @@ export default {
             const added = this.addShape(LineNode, { }, event);
             added.editing = true;
             this.shapeEdited = this.totalShapes() - 1;
+        },
+
+        addCurve(event) {
+            const added = this.addShape(LineNode, { smooth: true }, event);
+            added.editing = true;
+            this.shapeEdited = this.totalShapes() - 1;
+        },
+
+        addArc(event) {
+            this.addShape(ArcNode, { 
+                center: { x: this.canvas.width / 2 - 50, y: this.canvas.height / 2 }, 
+                arms: [{ x: this.canvas.width / 2 + 50, y: this.canvas.height / 2 - 50}, { x: this.canvas.width / 2 + 50, y: this.canvas.height / 2 + 50 }]
+            }, event);
         },
 
         addTextArea(event) {
@@ -388,22 +430,36 @@ export default {
             this.selection.map(i => this.shapeAtIndex(i)).filter(shape => this.isTextArea(shape)).forEach(shape => shape.align = align);
         },
 
-        toggleLineEdit() {
-            const line = this.shapeAtIndex(this.selection[0]);
-            line.editing = !line.editing;
-            this.shapeEdited = line.editing ? this.selection[0] : -1;
+        toggleEdit() {
+            const shape = this.shapeAtIndex(this.selection[0]);
+            shape.editing = !shape.editing;
+            this.shapeEdited = shape.editing ? this.selection[0] : -1;
+        },
+
+        canBeEdited() {
+            return this.selection.length == 1 && this.shapeAtIndex(this.selection[0]).editable;
         },
 
         selectedRectangle() {
             return this.selection.length == 1 && this.shapeAtIndex(this.selection[0]).node.type.name === 'rectangle';
         },
 
-        selectedLine() {
-            return this.selection.length == 1 && this.shapeAtIndex(this.selection[0]).node.type.name === 'line';
-        },
-
         selectedCircle() {
             return this.selection.length == 1 && this.shapeAtIndex(this.selection[0]).node.type.name === 'circle';
+        },
+
+        selectedPolygon() {
+            return this.selection.length == 1 && this.shapeAtIndex(this.selection[0]).node.type.name === 'polygon';
+        },
+
+        selectedArc() {
+            return this.selection.length == 1 && this.shapeAtIndex(this.selection[0]).node.type.name === 'arc';
+        },
+
+        createRegular(event) {
+            const sides = Math.min(event.srcElement.value, 100);
+            if (sides >= 3)
+                this.shapeAtIndex(this.selection[0]).makeRegular(sides);
         },
 
         isTextArea(shape) {

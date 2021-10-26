@@ -3,7 +3,7 @@ import { downloadFile } from "../utils/files";
 export type NodeType = 'title' | 'intro' | 'chapter' | 'semantic_tag' | 'paragraph' | 'text' | 'bullet_list' | 'ordered_list' | 'list_item' | 'hard_break' |
     'example' | 'proof' | 'problem' | 'formula' | 'expression' | 'expressionInline' | 'image' | 'component' | 'custom_element' |
     'table' | 'table_row' | 'table_header' | 'table_cell' | 
-    'geometry' | 'line' | 'circle' | 'rectangle' | 'triangle' | 'text_area';
+    'geometry' | 'line' | 'circle' | 'rectangle' | 'polygon' | 'arc' | 'text_area';
 
 export type MarkType = 'bold' | 'italic' | 'strike' | 'underline' | 'link' | 'textAlign' | 'comment';
 

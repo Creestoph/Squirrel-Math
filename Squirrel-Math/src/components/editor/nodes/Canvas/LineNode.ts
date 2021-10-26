@@ -4,9 +4,9 @@ import { mainRedColor } from './Colors';
 import LineView from './LineView.vue'
 
 export interface LineAttributes {
-  type: 'line',
-  points: { x: number, y: number }[],
-  color: string
+  points: { x: number, y: number }[];
+  color: string;
+  smooth: boolean;
 }
 
 export default class LineNode extends Node {
@@ -20,6 +20,7 @@ export default class LineNode extends Node {
       attrs: {
         points: { default: [] },
         color: { default: mainRedColor },
+        smooth: { default: false }
       },
       parseDOM: [{ tag: "line" }],
       toDOM: () => ["line"]

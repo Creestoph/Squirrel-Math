@@ -4,7 +4,7 @@
     top: (attrs.y + 2) + 'px', 
     background: attrs.fillColor,
     color: attrs.textColor,
-    border: `4px solid ${attrs.borderColor}`,
+    border: `3px solid ${attrs.borderColor}`,
     width: attrs.width + 'px', 
     height: attrs.height + 'px',
    }">

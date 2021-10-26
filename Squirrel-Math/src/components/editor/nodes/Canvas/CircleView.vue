@@ -61,7 +61,7 @@ export default {
 
             set(borderColor) {
                 this.circle.strokeColor = new paper.Color(borderColor);
-                this.circle.style.strokeWidth = this.circle.strokeColor.alpha > 0 ? 4 : 0;
+                this.circle.style.strokeWidth = this.circle.strokeColor.alpha > 0 ? 3 : 0;
                 if (borderColor != this.borderColor)
                     this.updateAttrs({ borderColor });
             },
@@ -69,13 +69,13 @@ export default {
 
         width: {
             get() {
-                return this.circle.size.width;
+                return this.circle.bounds.width;
             },
 
             set(value) {
                 let newWidth = typeof value == "number" ? value : parseFloat(value);
                 if (newWidth >= 3) {
-                    this.circle.size.width = newWidth;
+                    this.circle.bounds.width = newWidth;
                     this.recalculateGripsPositions();
                     this.save();
                 }
@@ -84,13 +84,13 @@ export default {
 
         height: {
             get() {
-                return this.circle.size.height;
+                return this.circle.bounds.height;
             },
 
             set(value) {
                 let newHeight = typeof value == "number" ? value : parseFloat(value);
                 if (newHeight >= 3) {
-                    this.circle.size.height = newHeight;
+                    this.circle.bounds.height = newHeight;
                     this.recalculateGripsPositions();
                     this.save();
                 }
@@ -149,7 +149,7 @@ export default {
 
         save() {
             this.updateAttrs({ 
-                size: { width: this.circle.size.width, height: this.circle.size.height },
+                size: { width: this.circle.bounds.width, height: this.circle.bounds.height },
                 center: { x: this.circle.position.x, y: this.circle.position.y } 
             });
         },
@@ -164,6 +164,12 @@ export default {
 
         move(shift) {
             this.all.translate(shift);
+        },
+
+        scale(factor, center) {
+            this.circle.scale(factor, new paper.Point(center));
+            this.recalculateGripsPositions();
+            this.save();
         },
 
         containedInBounds(bounds) {
@@ -236,8 +242,8 @@ export default {
                     this.bottom.position.y = event.point.add(snapShift).y;
             }
             
-            this.circle.size.width = this.right.position.x - this.left.position.x;
-            this.circle.size.height = this.bottom.position.y - this.upper.position.y;
+            this.circle.bounds.width = this.right.position.x - this.left.position.x;
+            this.circle.bounds.height = this.bottom.position.y - this.upper.position.y;
             this.circle.position.x = (this.left.position.x + this.right.position.x) / 2;
             this.circle.position.y = (this.bottom.position.y + this.upper.position.y) / 2;
             this.recalculateGripsPositions();
@@ -250,14 +256,14 @@ export default {
         },
 
         recalculateGripsPositions() {
-            this.upper.position = this.circle.position.add(new paper.Point(0, -this.circle.size.height / 2));
-            this.bottom.position = this.circle.position.add(new paper.Point(0, this.circle.size.height / 2));
-            this.left.position = this.circle.position.add(new paper.Point(-this.circle.size.width / 2, 0));
-            this.right.position = this.circle.position.add(new paper.Point(this.circle.size.width / 2, 0));
-            this.upperLeft.position = this.circle.position.add(new paper.Point(-this.circle.size.width / 2, -this.circle.size.height / 2))
-            this.upperRight.position = this.circle.position.add(new paper.Point(this.circle.size.width / 2, -this.circle.size.height / 2));
-            this.bottomLeft.position = this.circle.position.add(new paper.Point(-this.circle.size.width / 2, this.circle.size.height / 2));
-            this.bottomRight.position = this.circle.position.add(new paper.Point(this.circle.size.width / 2, this.circle.size.height / 2));
+            this.upper.position = this.circle.position.add(new paper.Point(0, -this.circle.bounds.height / 2));
+            this.bottom.position = this.circle.position.add(new paper.Point(0, this.circle.bounds.height / 2));
+            this.left.position = this.circle.position.add(new paper.Point(-this.circle.bounds.width / 2, 0));
+            this.right.position = this.circle.position.add(new paper.Point(this.circle.bounds.width / 2, 0));
+            this.upperLeft.position = this.circle.position.add(new paper.Point(-this.circle.bounds.width / 2, -this.circle.bounds.height / 2))
+            this.upperRight.position = this.circle.position.add(new paper.Point(this.circle.bounds.width / 2, -this.circle.bounds.height / 2));
+            this.bottomLeft.position = this.circle.position.add(new paper.Point(-this.circle.bounds.width / 2, this.circle.bounds.height / 2));
+            this.bottomRight.position = this.circle.position.add(new paper.Point(this.circle.bounds.width / 2, this.circle.bounds.height / 2));
         },
     }
 
