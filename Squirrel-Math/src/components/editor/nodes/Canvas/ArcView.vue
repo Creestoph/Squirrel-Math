@@ -11,11 +11,14 @@ export default {
 
     data() {
         return {
+            canHaveBorder: true,
+
             paperScope: null,
 
             line1: null,
             line2: null,
-            arc: null,
+            arcStroke: null,
+            arcFill: null,
             r: 0,
             movedShape: null,
 
@@ -37,7 +40,7 @@ export default {
             },
 
             set(color) {
-                this.arc.strokeColor = new paper.Color(color);
+                this.arcFill.fillColor = new paper.Color(color);
                 if (this.fillColor != color)
                     this.updateAttrs({ color });
             },
@@ -45,7 +48,13 @@ export default {
 
         borderColor: {
             get() {
-                return '';
+                return this.node.attrs.borderColor;
+            },
+
+            set(borderColor) {
+                this.arcStroke.strokeColor = new paper.Color(borderColor);
+                if (this.borderColor != borderColor)
+                    this.updateAttrs({ borderColor });
             },
         },
 
@@ -120,7 +129,6 @@ export default {
             [this.center, this.arm1End, this.arm2End].forEach(point => {
                 const grip = new paper.Path.Circle(point, 6);
                 grip.style.strokeWidth = 0;
-                grip.fillColor = new paper.Color(this.fillColor).multiply(0.7);
                 this.grips.addChild(grip);
             })
             this.grips.fillColor = this.line1.strokeColor.multiply(0.7);
@@ -128,7 +136,7 @@ export default {
             this.fillColor = attrs.color;
             this.selected = this.isSelected;
 
-            this.all = new paper.Group([this.line1, this.line2, this.arc, this.grips]);
+            this.all = new paper.Group([this.line1, this.line2, this.arcFill, this.arcStroke, this.grips]);
         },
 
         handleResize(width, height) {
@@ -151,7 +159,7 @@ export default {
         },
 
         containedInBounds(bounds) {
-            return this.arc.intersects(new paper.Path.Rectangle(bounds)) || bounds.contains(this.arc.bounds);
+            return this.arcFill.intersects(new paper.Path.Rectangle(bounds)) || bounds.contains(this.arcFill.bounds);
         },
 
         getSnapPoints() {
@@ -163,9 +171,9 @@ export default {
         },
 
         onMouseMove(event, hitResult, cursorStyle) {
-            if (hitResult && (this.arc == hitResult.item || this.grips.children.some(item => item == hitResult.item)))
+            if (hitResult && (this.arcStroke == hitResult.item || this.grips.children.some(item => item == hitResult.item)))
                 cursorStyle.cursor = "crosshair";
-            else if (hitResult && (this.line1 == hitResult.item || this.line2 == hitResult.item))
+            else if (hitResult && (this.line1 == hitResult.item || this.line2 == hitResult.item || this.arcFill == hitResult.item))
                 cursorStyle.cursor = "move";
         },
 
@@ -173,10 +181,10 @@ export default {
             if (!hitResult) {
                 return false;
             }
-            if (this.line1 == hitResult.item || this.line2 == hitResult.item) {
+            if (this.line1 == hitResult.item || this.line2 == hitResult.item || this.arcFill == hitResult.item) {
                 this.movedShape = this.all;
             }
-            if (this.arc == hitResult.item) {
+            if (this.arcStroke == hitResult.item) {
                 this.movedShape = 'arc';
             }
             let result = this.grips.children.findIndex(grip => grip == hitResult.item);
@@ -195,7 +203,6 @@ export default {
                 this.r = mouseArm.getDistance();
                 if ((this.arm1.angle < this.arm2.angle && (mouseArm.angle < this.arm1.angle || mouseArm.angle > this.arm2.angle))
                  || this.arm1.angle > this.arm2.angle && (mouseArm.angle > this.arm2.angle && mouseArm.angle < this.arm1.angle)) {
-                    console.log(this.arm1.angle, this.arm2.angle, mouseArm.angle);
                     const swapTemp = this.line1.segments[1].point.clone();
                     this.line1.segments[1].point = this.line2.segments[1].point.clone();
                     this.line2.segments[1].point = swapTemp;
@@ -242,21 +249,27 @@ export default {
         recalculateArc() {
             this.paperScope.activate();
 
-            if (this.arc)
-                this.arc.remove();
+            if (this.arcStroke) {
+                this.arcStroke.remove();
+                this.arcFill.remove();
+            }
 
             let mid = this.arm1End.add(this.arm2End).multiply(0.5).subtract(this.center);
             if (this.angle > 180)
                 mid = mid.multiply(-1);
+            mid = mid.add(this.arm1End.subtract(this.arm2End).rotate(90).normalize(1));
 
-            this.arc = new paper.Path.Arc(
-                this.center.add(this.arm1.normalize(this.radius)), 
-                this.center.add(mid.normalize(this.radius)), 
-                this.center.add(this.arm2.normalize(this.radius))
-            );
+            const arcStart = this.center.add(this.arm1.normalize(this.radius));
+            const arcMiddle = this.center.add(mid.normalize(this.radius));
+            const arcEnd = this.center.add(this.arm2.normalize(this.radius));
 
-            this.arc.strokeColor = this.node.attrs.color;
-            this.arc.style.strokeWidth = 3;
+            this.arcFill = new paper.Path.Arc(arcStart, arcMiddle, arcEnd);
+            this.arcFill.add(this.center);
+            this.arcFill.fillColor = this.node.attrs.color;
+
+            this.arcStroke = new paper.Path.Arc(arcStart, arcMiddle, arcEnd);
+            this.arcStroke.strokeColor = this.node.attrs.borderColor;
+            this.arcStroke.style.strokeWidth = 3;
         }
     }
 

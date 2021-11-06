@@ -1,5 +1,5 @@
 <template>
-    <div v-html="attrs.code" ref="output"></div>
+    <div v-html="attrs.code" ref="output" style="position: relative"></div>
 </template>
 
 <script lang="ts">

@@ -24,8 +24,8 @@ export default class CircleNode extends Node {
         color: { default: mainRedColor },
         borderColor: { default: '#00000000' }
       },
-      parseDOM: [{ tag: "circle" }],
-      toDOM: () => ["circle"]
+      parseDOM: [{ tag: 'circle', getAttrs: (dom: any) => JSON.parse(dom.getAttribute('attrs')) }],
+      toDOM: (node: any) => ['circle', { attrs: JSON.stringify(node.attrs) }]
     }
   }
 

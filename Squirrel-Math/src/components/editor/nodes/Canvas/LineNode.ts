@@ -22,8 +22,8 @@ export default class LineNode extends Node {
         color: { default: mainRedColor },
         smooth: { default: false }
       },
-      parseDOM: [{ tag: "line" }],
-      toDOM: () => ["line"]
+      parseDOM: [{ tag: 'line', getAttrs: (dom: any) => JSON.parse(dom.getAttribute('attrs')) }],
+      toDOM: (node: any) => ['line', { attrs: JSON.stringify(node.attrs) }]
     }
   }
 

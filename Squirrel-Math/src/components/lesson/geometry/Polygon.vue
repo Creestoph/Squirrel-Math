@@ -16,10 +16,11 @@ export default class GeometryPolygon extends Vue {
         const paperScope = new paper.PaperScope();
         paperScope.setup(this.$refs.canvas as HTMLCanvasElement);
         paperScope.activate();
-        let triangle = new paper.Path(this.attrs.vertices.map(v => [v.x, v.y]));
-        triangle.fillColor = new paper.Color(this.attrs.color);
-        triangle.strokeColor = new paper.Color(this.attrs.borderColor);
-        triangle.style!.strokeWidth = triangle.strokeColor.alpha! > 0 ? 3 : 0;    
+        let polygon = new paper.Path(this.attrs.vertices.map(v => [v.x, v.y]));
+        polygon.closed = true;
+        polygon.fillColor = new paper.Color(this.attrs.color);
+        polygon.strokeColor = new paper.Color(this.attrs.borderColor);
+        polygon.style!.strokeWidth = polygon.strokeColor.alpha! > 0 ? 3 : 0;    
   }
 }
 </script>

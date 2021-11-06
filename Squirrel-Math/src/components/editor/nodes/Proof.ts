@@ -18,7 +18,7 @@ export default class Proof extends Node {
           default: []
         }
       },
-      content: '(paragraph | expression | ordered_list)+',
+      content: '(paragraph | expression | ordered_list | geometry)+',
       group: 'block',
       defining: false,
       draggable: true,

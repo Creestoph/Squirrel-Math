@@ -26,13 +26,17 @@ export default class GeometryArc extends Vue {
         if (Math.round((arm2.angle! - arm1.angle! + 360) % 360 * 100) / 100 > 180)
             mid = mid.multiply(-1);
 
-        const arc = new paper.Path.Arc(
-            center.add(arm1.normalize(this.attrs.radius)), 
-            center.add(mid.normalize(this.attrs.radius)), 
-            center.add(arm2.normalize(this.attrs.radius))
-        );
-        arc.strokeColor = new paper.Color(this.attrs.color);
-        arc.style!.strokeWidth = 3;
+        const arcStart = center.add(arm1.normalize(this.attrs.radius));
+        const arcMiddle = center.add(mid.normalize(this.attrs.radius));
+        const arcEnd = center.add(arm2.normalize(this.attrs.radius));
+
+        const arcFill = new paper.Path.Arc(arcStart, arcMiddle, arcEnd);
+        arcFill.add(center);
+        arcFill.fillColor = new paper.Color(this.attrs.color);
+
+        const arcStroke = new paper.Path.Arc(arcStart, arcMiddle, arcEnd);
+        arcStroke.strokeColor = new paper.Color(this.attrs.borderColor);
+        arcStroke.style!.strokeWidth = 3;
   }
 }
 </script>

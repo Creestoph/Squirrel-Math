@@ -24,7 +24,7 @@ export default class Canvas extends Node {
         tag: 'geometry',
         getAttrs: (dom: any) => ({ canvas: JSON.parse(dom.getAttribute('canvas')) })
       }],
-      toDOM: (node: any) => ['geometry', { canvas: JSON.stringify(node.attrs.canvas) }]
+      toDOM: (node: any) => ['geometry', { canvas: JSON.stringify(node.attrs.canvas) }, 0]
     }
   }
 

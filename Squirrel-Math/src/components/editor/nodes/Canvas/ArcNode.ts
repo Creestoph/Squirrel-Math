@@ -7,6 +7,7 @@ export interface ArcAttributes {
   center: { x: number, y: number };
   arms: { x: number, y: number }[];
   color: string;
+  borderColor: string;
   radius: number;
 }
 
@@ -22,10 +23,11 @@ export default class ArcNode extends Node {
         center: { default: { x: 0, y: 0 } },
         arms: { default: [{ x: 0, y: 0 }, { x: 0, y: 0 }] },
         radius: { default: 50 },
-        color: { default: mainRedColor },
+        color: { default: '#00000000' },
+        borderColor: { default: mainRedColor },
       },
-      parseDOM: [{ tag: "arc" }],
-      toDOM: () => ["arc"]
+      parseDOM: [{ tag: 'arc', getAttrs: (dom: any) => JSON.parse(dom.getAttribute('attrs')) }],
+      toDOM: (node: any) => ['arc', { attrs: JSON.stringify(node.attrs) }]
     }
   }
 

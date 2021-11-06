@@ -22,8 +22,8 @@ export default class PolygonNode extends Node {
         color: { default: mainRedColor },
         borderColor: { default: '#00000000' }
       },
-      parseDOM: [{ tag: "polygon" }],
-      toDOM: () => ["polygon"]
+      parseDOM: [{ tag: 'polygon', getAttrs: (dom: any) => JSON.parse(dom.getAttribute('attrs')) }],
+      toDOM: (node: any) => ['polygon', { attrs: JSON.stringify(node.attrs) }]
     }
   }
 

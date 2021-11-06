@@ -53,7 +53,6 @@ export function transformAll() {
     import(`@/assets/current_lesson_graph.json`).then(file => {
         const lessons = file.default;
         lessons.forEach(async (lessonSpecification, i) => {
-            console.log(lessonSpecification.title);
             const lesson = await import(`@/assets/lessons/${lessonSpecification.title}.json`) as LessonData;
             if (lesson.short)
                 lesson.short.content.forEach(node => transformNodeAndChildren(node));

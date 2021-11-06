@@ -45,8 +45,8 @@ export default class TextAreaNode extends tiptapNode {
       },
       content: 'block+',
       group: 'block',
-      parseDOM: [{ tag: "text-area" }],
-      toDOM: () => ["text-area", 0]
+      parseDOM: [{ tag: 'text-area', getAttrs: (dom: any) => JSON.parse(dom.getAttribute('attrs')) }],
+      toDOM: (node: any) => ['text-area', { attrs: JSON.stringify(node.attrs) }, 0]
     }
   }
 

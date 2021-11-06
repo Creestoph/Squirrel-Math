@@ -25,8 +25,8 @@ export default class RectangleNode extends Node {
         color: { default: mainRedColor },
         borderColor: { default: '#00000000' }
       },
-      parseDOM: [{ tag: "rectangle" }],
-      toDOM: () => ["rectangle"]
+      parseDOM: [{ tag: 'rectangle', getAttrs: (dom: any) => JSON.parse(dom.getAttribute('attrs')) }],
+      toDOM: (node: any) => ['rectangle', { attrs: JSON.stringify(node.attrs) }]
     }
   }
 
