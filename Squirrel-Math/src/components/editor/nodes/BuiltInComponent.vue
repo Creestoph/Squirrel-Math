@@ -107,7 +107,7 @@ export default {
     },
     productionMode: {
       get() {
-        return false; // TODO automate this
+        return true; // TODO automate this
       }
     }
   },

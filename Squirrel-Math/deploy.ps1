@@ -1,5 +1,8 @@
+Write-Host "Remember to set productionMode for editor/nodes/BuiltInComponent.vue first" -ForegroundColor Red
+Write-Host "Press any key to continue..."
+$null = $Host.UI.RawUI.ReadKey('NoEcho,IncludeKeyDown');
+
 # firebase tools need to be installed first via: npm install -g firebase-tools
-# remember to set production mode for editor/nodes/BuiltInComponent first
-firebase login # the project is assigned to oblicze.calki@gmail.com / Bozapomne
-npm run-script build
+firebase login --reauth # the project is assigned to oblicze.calki@gmail.com / Bozapomne
+npm run build
 firebase deploy

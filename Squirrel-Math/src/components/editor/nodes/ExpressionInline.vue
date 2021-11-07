@@ -2,7 +2,7 @@
   <span>
     <span v-show="!mathJax" class="math-placeholder" @click="edit()">Wprowadź wyrażenie matematyczne</span>
     <span v-show="mathJax" ref="output" class="math-display" @click="edit()"></span>
-    <textarea v-if="displayPopup" v-model="mathJaxDirty" @paste.stop ref="mathEditor" class="math-editor" placeholder="Wprowadź kod MathJax" @blur="applyEdit()" @keydown.enter="applyEdit()"></textarea>
+    <textarea v-if="displayPopup" v-model="mathJaxDirty" @paste.stop ref="mathEditor" class="math-editor" placeholder="Wprowadź kod MathJax" @blur="applyEdit()"></textarea>
   </span>
 </template>
 

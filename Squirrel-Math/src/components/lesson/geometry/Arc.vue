@@ -25,6 +25,7 @@ export default class GeometryArc extends Vue {
         let mid = arm1End.add(arm2End).multiply(0.5).subtract(center);
         if (Math.round((arm2.angle! - arm1.angle! + 360) % 360 * 100) / 100 > 180)
             mid = mid.multiply(-1);
+        mid = mid.add(arm1End.subtract(arm2End).rotate(90, new paper.Point(0, 0)).normalize(1));
 
         const arcStart = center.add(arm1.normalize(this.attrs.radius));
         const arcMiddle = center.add(mid.normalize(this.attrs.radius));

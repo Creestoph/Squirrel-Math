@@ -98,7 +98,7 @@ export default class BlockElement extends Vue {
                 this.attrs = { code: this.content.content![0].text };
             }
             else if (this.type == 'table') {
-                this.attrs = { columnWidths: this.children[0].content!.map(c => c.attrs!.colwidth) };
+                this.attrs = { columnWidths: this.children[0].content!.map(c => c.attrs!.colwidth && c.attrs!.colwidth[0] ) };
             }
             else {
                 this.attrs = this.content.attrs || {};

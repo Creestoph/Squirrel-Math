@@ -52,9 +52,12 @@ export default {
             },
 
             set(borderColor) {
-                this.arcStroke.strokeColor = new paper.Color(borderColor);
                 if (this.borderColor != borderColor)
                     this.updateAttrs({ borderColor });
+                if (borderColor == '#00000000')
+                    borderColor = '#00000001';
+                this.arcStroke.strokeColor = new paper.Color(borderColor);
+                
             },
         },
 
@@ -268,7 +271,7 @@ export default {
             this.arcFill.fillColor = this.node.attrs.color;
 
             this.arcStroke = new paper.Path.Arc(arcStart, arcMiddle, arcEnd);
-            this.arcStroke.strokeColor = this.node.attrs.borderColor;
+            this.borderColor = this.borderColor;
             this.arcStroke.style.strokeWidth = 3;
         }
     }
