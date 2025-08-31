@@ -1,0 +1,26 @@
+export function validate_float(x: string) {
+    let was_comma = false;
+    let ok = true;
+    for (let i = 0; i < x.length; i++) {
+        if (x[i] == '.' || x[i] == ',') {
+            if (was_comma) {
+                ok = false;
+                break;
+            } else {
+                was_comma = true;
+            }
+        } else if (isNaN(parseInt(x[i]))) {
+            ok = false;
+            break;
+        }
+    }
+    return ok;
+}
+export function validate_int(x: string) {
+    for (let i = 0; i < x.length; i++) {
+        if (isNaN(parseInt(x[i]))) {
+            return false;
+        }
+    }
+    return true;
+}
