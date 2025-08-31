@@ -27,7 +27,8 @@ export default class GeometryTextArea extends Vue {
 </script>
 
 <style scoped lang="scss">
-@import '@/style/global';
+@use '@/style/global';
+
 .area {
     position: absolute;
     cursor: move;

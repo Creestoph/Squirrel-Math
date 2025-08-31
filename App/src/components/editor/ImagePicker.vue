@@ -172,7 +172,8 @@ export default class ImagePicker extends Vue {
 </script>
 
 <style scoped lang="scss">
-@import '@/style/global';
+@use '@/style/global';
+@use '@/style/colors';
 
 .drafts-dialog {
     width: 930px;
@@ -248,14 +249,14 @@ img {
 }
 
 label {
-    background: $main-red;
+    background: colors.$main-red;
     padding: 5px 10px;
     margin: 10px 5px;
     color: white;
     cursor: pointer;
 
     &:hover {
-        background: $dark-red;
+        background: colors.$dark-red;
     }
 
     input {

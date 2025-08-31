@@ -388,13 +388,15 @@ export default class InteractiveTree extends Vue {
 </script>
 
 <style scoped lang="scss">
-@import '@/style/global';
+@use '@/style/global';
+@use '@/style/colors';
+@use '@/style/fonts';
 
 canvas[resize] {
     width: 100%;
     height: 100%;
     position: fixed;
-    background: $light-gray;
+    background: colors.$light-gray;
 }
 
 #tree-container {
@@ -413,7 +415,7 @@ canvas[resize] {
     padding-bottom: 0px;
     background: none;
     font-size: 0.8em;
-    color: $half-gray;
+    color: colors.$half-gray;
 }
 
 #tree-tools button:hover {
@@ -426,13 +428,13 @@ canvas[resize] {
     background: white;
     padding: 10px;
     font-size: 0.8em;
-    font-family: $main-font;
+    font-family: fonts.$main-font;
 }
 
 #displaylessonTitle {
     font-weight: bold;
     font-size: 1.7em;
-    font-family: $secondary-font;
+    font-family: fonts.$secondary-font;
     margin-bottom: 10px;
 }
 </style>

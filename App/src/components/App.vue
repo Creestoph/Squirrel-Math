@@ -7,20 +7,20 @@
 </template>
 
 <script>
-import Menu from './Menu';
+import AppMenu from './AppMenu';
 import InteractiveTree from './InteractiveTree';
 
 export default {
     name: 'App',
     components: {
-        AppMenu: Menu,
+        AppMenu,
         InteractiveTree,
     },
 };
 </script>
 
 <style lang="scss">
-@import '@/style/global';
+@use '@/style/global';
 
 /* https://stackoverflow.com/questions/34550467/why-is-there-a-default-margin-on-the-body-element/34550634 */
 body {

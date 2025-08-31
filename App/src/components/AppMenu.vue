@@ -30,7 +30,7 @@
 
 <script>
 export default {
-    name: 'Menu',
+    name: 'AppMenu',
     mounted() {
         addEventListener('scroll', this.resizeLogo);
         this.resizeLogo();
@@ -66,7 +66,10 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import '@/style/global';
+@use '@/style/global';
+@use '@/style/colors';
+@use '@/style/fonts';
+
 $transition-length: 0.7s;
 
 .menu-trapeze {
@@ -101,8 +104,8 @@ $transition-length: 0.7s;
 
 .menu-segment:nth-child(2) {
     width: 145px;
-    background: $gray;
-    color: $half-gray;
+    background: colors.$gray;
+    color: colors.$half-gray;
     display: flex;
     align-items: center;
 }
@@ -138,21 +141,21 @@ $transition-length: 0.7s;
     .logo-red-cell {
         height: 40%;
         width: 40%;
-        background: $logo-red;
+        background: colors.$logo-red;
         border: none;
         margin: 10% 10% 0 0;
     }
 }
 
 .menu-text {
-    font-family: $main-font;
+    font-family: fonts.$main-font;
     font-weight: bold;
     font-size: 1.5em;
     transition: all $transition-length;
 }
 
 .logo-text-1 {
-    color: $logo-red;
+    color: colors.$logo-red;
 }
 
 .logo-text-2 {

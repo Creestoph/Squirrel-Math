@@ -15,13 +15,14 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import '@/style/global';
+@use '@/style/global';
+@use '@/style/fonts';
 
 .lesson-title-short {
     text-align: center;
     font-size: 3.2em;
     font-weight: bold;
-    font-family: $secondary-font;
+    font-family: fonts.$secondary-font;
     margin: 50px auto 0 auto;
     clear: both;
     line-height: 1em;
@@ -31,7 +32,7 @@ export default {
     text-align: center;
     font-size: 1.6em;
     font-weight: bold;
-    font-family: $secondary-font;
+    font-family: fonts.$secondary-font;
     margin: 0 auto 50px auto;
     clear: both;
 }

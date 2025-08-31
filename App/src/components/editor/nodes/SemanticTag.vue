@@ -123,7 +123,9 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import '@/style/global';
+@use '@/style/global';
+@use '@/style/colors';
+@use '@/style/fonts';
 
 .tags-wrapper {
     padding-right: 100px;
@@ -158,14 +160,14 @@ export default {
 }
 
 .type:hover {
-    background: $main-red;
+    background: colors.$main-red;
 }
 
 .dropdown-list {
     position: absolute;
     z-index: 2;
     display: none;
-    background: $light-gray;
+    background: colors.$light-gray;
     width: 100%;
     max-height: 300px;
     overflow-y: auto;
@@ -180,14 +182,14 @@ export default {
     font-size: 0.9em;
     cursor: pointer;
     &:hover {
-        background: $gray;
+        background: colors.$gray;
     }
 }
 
 .add-tag-button {
-    font-family: $geometric-font;
+    font-family: fonts.$geometric-font;
     font-size: 2em;
-    color: $main-red;
+    color: colors.$main-red;
     margin-left: 5px;
     display: none;
     cursor: pointer;
@@ -205,14 +207,14 @@ export default {
 }
 
 .required-label {
-    background: $light-gray;
-    color: $darker-gray;
+    background: colors.$light-gray;
+    color: colors.$darker-gray;
     font-size: 0.9em;
     font-weight: bold;
     height: 31px;
     line-height: 31px;
     padding: 0 10px;
-    font-family: $secondary-font;
+    font-family: fonts.$secondary-font;
 }
 .required-optional {
     @extend .required-label;
@@ -229,9 +231,9 @@ export default {
     }
 }
 .add-required-button {
-    font-family: $geometric-font;
+    font-family: fonts.$geometric-font;
     font-size: 2em;
-    color: $darker-gray;
+    color: colors.$darker-gray;
     margin-left: 5px;
     display: none;
     cursor: pointer;

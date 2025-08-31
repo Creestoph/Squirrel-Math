@@ -61,14 +61,15 @@ export default class OperationTable extends Vue {
 </script>
 
 <style scoped lang="scss">
-@import '@/style/global';
+@use '@/style/global';
+@use '@/style/colors';
 
 .selected {
-    background: $creamy;
+    background: colors.$creamy;
 }
 
 .selected-strong {
-    background: $darker-main-red;
+    background: colors.$darker-main-red;
 }
 
 table.operation-table {
@@ -86,7 +87,7 @@ table.operation-table {
         height: 34px;
         width: 32px;
         border: 2px solid black;
-        color: $darker-red;
+        color: colors.$darker-red;
     }
 }
 </style>

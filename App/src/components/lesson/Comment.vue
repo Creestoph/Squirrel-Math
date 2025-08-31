@@ -55,7 +55,9 @@ export default class Comment extends Vue {
 </script>
 
 <style scoped lang="scss">
-@import '@/style/global';
+@use '@/style/global';
+@use '@/style/colors';
+@use '@/style/fonts';
 
 .comment.visible {
     cursor: help;
@@ -63,11 +65,11 @@ export default class Comment extends Vue {
 
 .comment-window {
     background: rgba(0, 0, 0, 0.4);
-    color: $light-gray;
+    color: colors.$light-gray;
     backdrop-filter: blur(7px);
     color: white;
     padding: 6px;
-    font-family: $main-font;
+    font-family: fonts.$main-font;
     font-size: 0.9em;
     font-weight: normal;
     font-style: normal;
@@ -81,8 +83,8 @@ export default class Comment extends Vue {
     display: inline-block;
     position: absolute;
     left: -50px;
-    color: $darker-main-red;
-    font-family: $geometric-font;
+    color: colors.$darker-main-red;
+    font-family: fonts.$geometric-font;
     font-size: 1.3em;
     cursor: help;
 }

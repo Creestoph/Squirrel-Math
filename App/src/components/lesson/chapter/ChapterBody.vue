@@ -59,5 +59,5 @@ export default class ChapterBody extends Vue {
 </script>
 
 <style scoped lang="scss">
-@import '@/style/chapter';
+@use '@/style/chapter';
 </style>

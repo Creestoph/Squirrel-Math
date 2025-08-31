@@ -10,18 +10,20 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import '@/style/global';
+@use '@/style/global';
+@use '@/style/colors';
+
 div {
     padding: 5px 10px;
     white-space: nowrap;
     text-align: left;
-    background: $gray;
+    background: colors.$gray;
     &:hover {
-        background: $darker-gray;
+        background: colors.$darker-gray;
     }
 }
 .disabled {
     pointer-events: none;
-    color: $half-gray !important;
+    color: colors.$half-gray !important;
 }
 </style>

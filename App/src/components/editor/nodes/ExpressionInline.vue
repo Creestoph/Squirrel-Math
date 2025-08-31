@@ -62,10 +62,12 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import '@/style/global';
+@use '@/style/global';
+@use '@/style/colors';
+@use '@/style/fonts';
 
 .math-placeholder {
-    color: $dark-gray;
+    color: colors.$dark-gray;
     cursor: pointer;
 }
 .math-display {
@@ -87,11 +89,11 @@ export default {
     outline: none;
     box-shadow: 0 0 15px 15px rgba(0.4, 0.4, 0.4, 0.4);
     padding: 10px;
-    font-family: $geometric-font;
-    color: $half-gray;
+    font-family: fonts.$geometric-font;
+    color: colors.$half-gray;
 }
 ::placeholder {
-    color: $dark-gray;
+    color: colors.$dark-gray;
 }
 .math-editor:focus {
     display: block;

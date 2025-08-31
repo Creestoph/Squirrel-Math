@@ -238,7 +238,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import '@/style/global';
+@use '@/style/global';
 canvas {
     position: absolute;
     pointer-events: none;

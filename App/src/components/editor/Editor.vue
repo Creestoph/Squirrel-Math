@@ -835,7 +835,10 @@ export default class LessonEditor extends Vue {
 </script>
 
 <style lang="scss">
-@import '@/style/chapter';
+@use '@/style/chapter';
+@use '@/style/colors';
+@use '@/style/fonts';
+
 /*=== TOOLS ===*/
 .ProseMirror {
     outline: none !important;
@@ -862,7 +865,7 @@ export default class LessonEditor extends Vue {
 #tools-general,
 .tools-specific {
     width: 100%;
-    background: $light-gray;
+    background: colors.$light-gray;
     > * {
         display: inline-block;
     }
@@ -872,14 +875,14 @@ export default class LessonEditor extends Vue {
         min-width: 10px;
         height: 24px;
         &:hover {
-            background: $gray;
+            background: colors.$gray;
         }
         &.active {
-            background: $dark-gray;
+            background: colors.$dark-gray;
         }
         &.active:hover {
-            background: $dark-gray;
-            outline: 1px solid $darker-gray;
+            background: colors.$dark-gray;
+            outline: 1px solid colors.$darker-gray;
             outline-offset: -1px;
         }
     }
@@ -894,7 +897,7 @@ export default class LessonEditor extends Vue {
 }
 
 .tools-specific {
-    background: $dark-gray;
+    background: colors.$dark-gray;
 
     .dropdown-list {
         position: absolute;
@@ -903,7 +906,7 @@ export default class LessonEditor extends Vue {
         z-index: 2;
         width: 100%;
         display: none;
-        background: $light-gray;
+        background: colors.$light-gray;
     }
     .dropdown:hover .dropdown-list {
         display: block;
@@ -914,7 +917,7 @@ export default class LessonEditor extends Vue {
         font-size: 0.9em;
         cursor: pointer;
         &:hover {
-            background: $gray;
+            background: colors.$gray;
         }
     }
 }
@@ -923,7 +926,7 @@ export default class LessonEditor extends Vue {
     padding: 0 10px;
 }
 .tools-specific button:hover {
-    background: $darker-gray;
+    background: colors.$darker-gray;
 }
 #editor table ::selection,
 #editor .math-display ::selection {
@@ -954,9 +957,9 @@ export default class LessonEditor extends Vue {
             width: 50px;
             height: 50px;
             padding: 0;
-            background: $main-red;
+            background: colors.$main-red;
             color: white;
-            font-family: $geometric-font;
+            font-family: fonts.$geometric-font;
             font-size: 1.5em;
         }
     }
@@ -971,12 +974,12 @@ export default class LessonEditor extends Vue {
 
             button {
                 float: left;
-                background: $main-red;
+                background: colors.$main-red;
                 padding: 5px 10px;
                 margin: 10px 5px;
                 color: white;
                 &:hover {
-                    background: $dark-red;
+                    background: colors.$dark-red;
                 }
             }
         }
@@ -986,10 +989,10 @@ export default class LessonEditor extends Vue {
             width: 500px;
             margin: 10px 10px 10px 5px;
             padding: 5px 10px;
-            background: $light-gray;
+            background: colors.$light-gray;
             cursor: pointer;
             &:hover {
-                background: $gray;
+                background: colors.$gray;
             }
         }
 
@@ -1048,7 +1051,7 @@ problem {
         position: relative;
         border-style: solid;
         &.selectedCell {
-            background: $light-gray !important;
+            background: colors.$light-gray !important;
         }
         &::after {
             content: ' ';
@@ -1077,7 +1080,7 @@ problem {
 #editor .empty:first-child::before,
 #editor .tags-wrapper + .empty::before {
     content: attr(data-empty-text);
-    color: $dark-gray;
+    color: colors.$dark-gray;
     pointer-events: none;
     height: 0;
     float: left;
@@ -1090,15 +1093,15 @@ problem {
 #editor div[data-empty-text='Tytuł lekcji'].empty:first-child::before {
     font-size: 3.2em;
     font-weight: bold;
-    font-family: $secondary-font;
+    font-family: fonts.$secondary-font;
     line-height: 1em;
     float: right;
     text-align: center;
     width: 100%;
 }
 #editor .chapter_name.empty:first-child::before {
-    color: $darker-gray;
-    font-family: $secondary-font;
+    color: colors.$darker-gray;
+    font-family: fonts.$secondary-font;
     font-size: 1.9em;
     font-weight: bold;
 }
@@ -1108,7 +1111,7 @@ problem {
 }
 
 #editor .editor-comment {
-    text-decoration: underline $main-red dashed;
+    text-decoration: underline colors.$main-red dashed;
     text-decoration-thickness: 3px;
     text-decoration-skip-ink: none;
     background: #ffeeee;
@@ -1119,6 +1122,6 @@ problem {
 }
 
 #editor .example:hover {
-    background-color: $example-background;
+    background-color: colors.$example-background;
 }
 </style>

@@ -43,7 +43,8 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import '@/style/global';
+@use '@/style/global';
+@use '@/style/colors';
 
 .color-picker-wrapper {
     position: relative;
@@ -67,7 +68,7 @@ export default {
     clear: both;
     top: 44px;
     left: 0;
-    background: $gray;
+    background: colors.$gray;
     width: unset !important;
     padding: 5px;
     z-index: 1;
@@ -82,7 +83,7 @@ export default {
         max-width: 100px !important;
 
         &.active {
-            background: $darker-gray;
+            background: colors.$darker-gray;
         }
 
         &:hover {

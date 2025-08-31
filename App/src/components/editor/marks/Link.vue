@@ -156,7 +156,9 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import '@/style/global';
+@use '@/style/global';
+@use '@/style/fonts';
+
 .link-wrapper {
     position: relative;
 }
@@ -183,7 +185,7 @@ export default {
         top: 5px;
         height: 30px;
         padding: 0;
-        font-family: $geometric-font;
+        font-family: fonts.$geometric-font;
         font-size: 3em;
         transform: rotate(45deg) translateY(-3px);
         background: transparent;

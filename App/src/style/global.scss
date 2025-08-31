@@ -1,29 +1,5 @@
-$main-red: #dd3333;
-$darker-main-red: #cc4444;
-$intense-red: #ef0000;
-$dark-red: #aa0000;
-$darker-red: #990000;
-$light-gray: #eeeeee;
-$gray: #e0e0e0;
-$dark-gray: #cccccc;
-$darker-gray: #aaaaaa;
-$half-gray: #777777;
-$light-creamy: #fff0f0;
-$creamy: #f5e0e0;
-$darker-creamy: #eeaaaa;
-$darker-white: #fefefe;
-
-$example-background: #f6f6f6;
-$example-background-darker: #f2f2f2;
-
-$tile-fill: #eedddd;
-$tile-fill-hover: #dd8888;
-
-$logo-red: #cc0000;
-
-$main-font: 'Segoe UI', 'sans';
-$secondary-font: 'Corbel', 'sans';
-$geometric-font: 'Consolas', 'FreeMono';
+@use '@/style/colors';
+@use '@/style/fonts';
 
 p {
     text-align: justify;
@@ -65,7 +41,7 @@ li {
 }
 
 li:before {
-    color: $main-red;
+    color: colors.$main-red;
 }
 
 ul {
@@ -120,7 +96,7 @@ button {
 }
 
 button.button-red {
-    background-color: $main-red;
+    background-color: colors.$main-red;
     color: white;
     padding: 15px 32px;
     font-size: 0.9em;
@@ -131,7 +107,7 @@ button.button-red:hover {
     box-shadow:
         0 12px 16px 0 rgba(0, 0, 0, 0.24),
         0 17px 50px 0 rgba(0, 0, 0, 0.19);
-    background-color: $darker-red;
+    background-color: colors.$darker-red;
 }
 
 button:focus {
@@ -140,16 +116,16 @@ button:focus {
 
 input {
     border-radius: 7px;
-    border: 1px solid $darker-gray;
+    border: 1px solid colors.$darker-gray;
     padding-left: 6px;
     padding-right: 6px;
     height: 25px;
 }
 
 input:focus {
-    border-color: $darker-creamy;
+    border-color: colors.$darker-creamy;
     outline: none;
-    box-shadow: 0 0 15px 0 $creamy;
+    box-shadow: 0 0 15px 0 colors.$creamy;
 }
 
 input[type='number']::-webkit-inner-spin-button,
@@ -183,7 +159,7 @@ input[type='number']::-webkit-outer-spin-button {
 }
 
 .modal_content {
-    background: $light-gray;
+    background: colors.$light-gray;
     top: 40%;
     width: 50%;
     padding: 30px;
@@ -197,15 +173,15 @@ input[type='number']::-webkit-outer-spin-button {
 
 .link,
 .link:link {
-    color: $main-red;
+    color: colors.$main-red;
 }
 
 .link:visited {
-    color: $darker-red;
+    color: colors.$darker-red;
 }
 
 .link:hover {
-    color: $intense-red;
+    color: colors.$intense-red;
 }
 
 .link:active {
@@ -226,23 +202,23 @@ input[type='number']::-webkit-outer-spin-button {
 }
 
 .comment_visible_question_mark {
-    color: $main-red;
-    font-family: $geometric-font;
+    color: colors.$main-red;
+    font-family: fonts.$geometric-font;
     font-size: 28px;
 }
 
 .example {
     display: block;
     text-align: justify;
-    background-color: $example-background;
-    border-left: 3px solid $main-red;
+    background-color: colors.$example-background;
+    border-left: 3px solid colors.$main-red;
     box-shadow: 2px 2px 3px 0px rgba(0, 0, 0, 0.4);
     padding: 15px;
     margin: 30px 30px;
 }
 
 .example:hover {
-    background-color: $example-background-darker;
+    background-color: colors.$example-background-darker;
 }
 
 @media screen and (max-width: 700px) {
@@ -253,7 +229,7 @@ input[type='number']::-webkit-outer-spin-button {
 
 .type {
     display: inline-block;
-    background-color: $main-red;
+    background-color: colors.$main-red;
     padding: 0 5px;
     height: 31px;
     line-height: 31px;
@@ -261,7 +237,7 @@ input[type='number']::-webkit-outer-spin-button {
     margin-top: 0;
     transition: background-color 0.1s;
     font-size: 0.9em;
-    font-family: $secondary-font;
+    font-family: fonts.$secondary-font;
     white-space: pre;
 }
 
@@ -270,28 +246,28 @@ input[type='number']::-webkit-outer-spin-button {
 }
 
 .type:hover {
-    background-color: $darker-main-red;
+    background-color: colors.$darker-main-red;
     transition: background-color 0.1s;
 }
 
 p.optional-hide:after {
     content: '>';
     display: inline-block;
-    background: $dark-red;
+    background: colors.$dark-red;
     margin: 0 0 5px 5px;
     width: 21px;
     height: 21px;
     border-radius: 50%;
     text-align: center;
     vertical-align: middle;
-    font-family: $geometric-font;
+    font-family: fonts.$geometric-font;
     line-height: 21px;
     font-size: 21px;
     transition: transform 0.5s;
 }
 
 p.optional-hide:hover:after {
-    background: $darker-red;
+    background: colors.$darker-red;
     transform: rotate(90deg);
     transition: transform 0.5s;
 }
@@ -299,14 +275,14 @@ p.optional-hide:hover:after {
 p.optional-show:after {
     content: '>';
     display: inline-block;
-    background: $dark-red;
+    background: colors.$dark-red;
     margin: 0 0 5px 5px;
     width: 21px;
     height: 21px;
     border-radius: 50%;
     text-align: center;
     vertical-align: middle;
-    font-family: $geometric-font;
+    font-family: fonts.$geometric-font;
     line-height: 21px;
     font-size: 21px;
     transform: rotate(90deg);
@@ -314,7 +290,7 @@ p.optional-show:after {
 }
 
 p.optional-show:hover:after {
-    background: $darker-red;
+    background: colors.$darker-red;
     transform: rotate(0deg);
     transition: transform 0.5s;
 }
@@ -325,11 +301,11 @@ p.optional-show ~ div {
 }
 
 p.optional-hide:hover ~ div {
-    background: $light-creamy;
+    background: colors.$light-creamy;
 }
 
 p.optional-show:hover ~ div {
-    background: $light-creamy;
+    background: colors.$light-creamy;
 }
 
 .proof-sticker {
@@ -340,21 +316,21 @@ p.optional-show:hover ~ div {
     top: 0;
     left: -1px;
     color: white;
-    background-color: $darker-gray;
+    background-color: colors.$darker-gray;
     transition: background-color 0.1s;
     box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.4);
 }
 
 .warning {
-    font-family: $secondary-font;
-    color: $darker-gray;
+    font-family: fonts.$secondary-font;
+    color: colors.$darker-gray;
     font-size: 0.8em;
     margin-top: -0.2em;
 }
 
 .proof .warning {
     font-family: arial;
-    color: $darker-gray;
+    color: colors.$darker-gray;
     font-size: 0.7em;
     margin-top: 0;
 }
@@ -368,7 +344,7 @@ p.optional-show:hover ~ div {
 .formula > p:only-child {
     display: block;
     text-align: center !important;
-    background-color: $gray;
+    background-color: colors.$gray;
     padding: 10px;
     margin: 0px;
 }
@@ -377,14 +353,14 @@ p.optional-show:hover ~ div {
     display: block;
     position: relative;
     padding: 40px 10px 10px 10px;
-    border: 1px solid $darker-gray;
-    border-top: 1px solid $gray;
-    border-bottom: 1px solid $gray;
+    border: 1px solid colors.$darker-gray;
+    border-top: 1px solid colors.$gray;
+    border-bottom: 1px solid colors.$gray;
     background: white;
 }
 
 .proof + .proof {
-    border-top: 1em solid $gray;
+    border-top: 1em solid colors.$gray;
 }
 
 /* ========================================== COMMON ELEMENTS ========================================== */
@@ -394,12 +370,12 @@ table.tiles {
     td {
         height: 45px;
         width: 41px;
-        background-color: $tile-fill;
-        border: 3px groove $dark-red;
+        background-color: colors.$tile-fill;
+        border: 3px groove colors.$dark-red;
     }
 
     td:hover {
-        background-color: $tile-fill-hover;
+        background-color: colors.$tile-fill-hover;
         border-style: ridge;
     }
 }

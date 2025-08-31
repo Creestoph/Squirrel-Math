@@ -246,10 +246,12 @@ export default class Lesson extends Vue {
 </script>
 
 <style scoped lang="scss">
-@import '@/style/global';
+@use '@/style/global';
+@use '@/style/colors';
+@use '@/style/fonts';
 
 #whole {
-    background-color: $dark-gray;
+    background-color: colors.$dark-gray;
     margin: 0;
 }
 
@@ -257,16 +259,16 @@ export default class Lesson extends Vue {
     position: absolute;
     width: 70px;
     height: 70px;
-    background: $main-red;
+    background: colors.$main-red;
     right: -40px;
     top: 300px;
-    border: 5px solid $dark-red;
+    border: 5px solid colors.$dark-red;
     border-radius: 40px;
     color: white;
     font-size: 3em;
     line-height: 0.5em;
     text-align: center;
-    font-family: $geometric-font;
+    font-family: fonts.$geometric-font;
     padding: 0;
     box-shadow: none;
     transition: margin-top 0.5s;
@@ -277,25 +279,25 @@ export default class Lesson extends Vue {
     top: 110px;
     right: 30px;
     background: none;
-    color: $dark-gray;
+    color: colors.$dark-gray;
     &:hover {
-        color: $darker-gray;
+        color: colors.$darker-gray;
         svg {
-            fill: $darker-gray;
+            fill: colors.$darker-gray;
         }
     }
 
     svg {
         width: 24px;
         height: 24px;
-        fill: $dark-gray;
+        fill: colors.$dark-gray;
         transform: scale(0.7);
     }
 }
 
 .lesson {
     position: relative;
-    font-family: $main-font;
+    font-family: fonts.$main-font;
     color: black;
     background: white;
     clear: both;
@@ -343,14 +345,14 @@ export default class Lesson extends Vue {
     box-sizing: border-box;
     width: 100%;
     height: 0;
-    border-bottom: 170px solid $dark-red;
+    border-bottom: 170px solid colors.$dark-red;
     filter: drop-shadow(3px -3px 10px rgba(0, 0, 0, 0.5));
 }
 .footer {
     padding: 20px;
-    font-family: $secondary-font;
+    font-family: fonts.$secondary-font;
     color: rgba(255, 255, 255, 0.8);
-    background: $dark-red;
+    background: colors.$dark-red;
 
     h1 {
         font-size: 1.2em;

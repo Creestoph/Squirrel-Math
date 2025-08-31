@@ -76,9 +76,11 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import '@/style/global';
+@use '@/style/global';
+@use '@/style/colors';
+
 .comment {
-    text-decoration: underline $main-red dashed;
+    text-decoration: underline colors.$main-red dashed;
     text-decoration-thickness: 3px;
     text-decoration-skip-ink: none;
     background: #ffeeee;
@@ -104,7 +106,7 @@ export default {
         display: block;
         outline: none;
         background: black;
-        color: $gray;
+        color: colors.$gray;
         border: none;
         width: 250px;
         height: 120px;

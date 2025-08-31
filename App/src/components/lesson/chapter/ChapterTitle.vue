@@ -14,5 +14,5 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import '@/style/chapter';
+@use '@/style/chapter';
 </style>

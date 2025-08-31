@@ -45,14 +45,16 @@ export default class LessonChapter extends Vue {
 </script>
 
 <style scoped lang="scss">
-@import '@/style/chapter';
+@use '@/style/chapter';
+@use '@/style/colors';
+
 .block {
     width: 30px;
     height: 30px;
     margin-right: 10px;
 }
 .grayed {
-    color: $dark-gray;
+    color: colors.$dark-gray;
 
     &:hover {
         color: black;

@@ -276,25 +276,28 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import '@/style/global';
+@use '@/style/global';
+@use '@/style/colors';
+@use '@/style/fonts';
+
 .container {
     position: relative;
     padding: 0;
 }
 .form {
-    outline: 1px solid $gray;
-    background: $light-gray;
+    outline: 1px solid colors.$gray;
+    background: colors.$light-gray;
 }
 label {
     margin: 0 10px 0 0;
     padding: 7px;
 }
 .form-header {
-    background: $gray;
-    border: 1px solid $dark-gray;
+    background: colors.$gray;
+    border: 1px solid colors.$dark-gray;
 
     select {
-        background: $gray;
+        background: colors.$gray;
         border: none;
         text-decoration: underline;
         outline: none;
@@ -302,7 +305,7 @@ label {
         padding: 0 10px;
         cursor: pointer;
         &:hover {
-            background: $dark-gray;
+            background: colors.$dark-gray;
         }
         option {
             background: white;
@@ -332,7 +335,7 @@ label {
 input {
     border-radius: 0;
     height: 22px;
-    color: $half-gray;
+    color: colors.$half-gray;
     width: 80%;
     display: block;
 }
@@ -344,10 +347,10 @@ input[type='checkbox'] {
 }
 input[type='function'],
 input[type='array'] {
-    font-family: $geometric-font;
+    font-family: fonts.$geometric-font;
 }
 .array-parameter-button {
-    background: $main-red;
+    background: colors.$main-red;
     color: white;
     padding: 0 5px;
     font-size: 0.8em;
@@ -360,7 +363,7 @@ input[type='array'] {
     right: -1px;
     top: -1px;
     background: white;
-    border: 1px solid $gray;
+    border: 1px solid colors.$gray;
     display: none;
     margin: 0;
     padding: 0;
@@ -372,7 +375,7 @@ input[type='array'] {
     min-height: 42px;
 }
 .output-wrapper:hover {
-    outline: 1px solid $gray;
+    outline: 1px solid colors.$gray;
 }
 .output-wrapper:hover .toggle-edit-button {
     display: block;

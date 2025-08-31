@@ -1,4 +1,5 @@
-@import '@/style/global';
+@use '@/style/global';
+@use '@/style/fonts';
 
 .chapter {
     position: relative;
@@ -12,7 +13,7 @@
 .chapter_name > div {
     position: relative;
     cursor: pointer;
-    font-family: $secondary-font;
+    font-family: fonts.$secondary-font;
     font-size: 1.9em;
     font-weight: bold;
     margin-top: 9px; /*50px*/

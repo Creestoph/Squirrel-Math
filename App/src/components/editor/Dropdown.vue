@@ -34,7 +34,8 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import '@/style/global';
+@use '@/style/global';
+@use '@/style/colors';
 
 .wrapper {
     position: relative;
@@ -57,7 +58,7 @@ export default {
     z-index: 2;
     max-height: 500px;
     overflow-y: auto;
-    border: 1px solid $gray;
+    border: 1px solid colors.$gray;
 }
 
 .arrow-down {

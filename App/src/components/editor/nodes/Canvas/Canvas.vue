@@ -702,7 +702,8 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import '@/style/global';
+@use '@/style/global';
+@use '@/style/colors';
 
 .geometry-editor {
     display: block;
@@ -714,7 +715,7 @@ export default {
 }
 
 .canvas-wrapper {
-    border: 2px $gray dashed;
+    border: 2px colors.$gray dashed;
     resize: both;
     overflow: hidden;
 
@@ -740,7 +741,7 @@ export default {
 }
 
 .canvas-wrapper:hover {
-    border: 2px $darker-gray dashed;
+    border: 2px colors.$darker-gray dashed;
 }
 
 .canvas-wrapper:focus {
@@ -755,7 +756,7 @@ export default {
 }
 
 .geometry-toolbar {
-    background: $light-gray;
+    background: colors.$light-gray;
     transform: translateY(-100%);
     &::after {
         //clearfix
@@ -774,16 +775,16 @@ export default {
         align-items: center;
 
         &:hover {
-            background: $gray;
+            background: colors.$gray;
         }
 
         &.active {
-            background: $dark-gray;
+            background: colors.$dark-gray;
         }
 
         &.active:hover {
-            background: $dark-gray;
-            outline: 1px solid $darker-gray;
+            background: colors.$dark-gray;
+            outline: 1px solid colors.$darker-gray;
             outline-offset: -1px;
         }
     }

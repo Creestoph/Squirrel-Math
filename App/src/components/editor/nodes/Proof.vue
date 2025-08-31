@@ -103,7 +103,9 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import '@/style/global';
+@use '@/style/global';
+@use '@/style/colors';
+@use '@/style/fonts';
 
 .wrapper {
     padding-right: 100px;
@@ -160,7 +162,7 @@ export default {
     position: absolute;
     display: none;
     z-index: 2;
-    background: $light-gray;
+    background: colors.$light-gray;
     max-height: 300px;
     width: 100%;
     overflow-y: auto;
@@ -175,7 +177,7 @@ export default {
     font-size: 0.9em;
     cursor: pointer;
     &:hover {
-        background: $gray;
+        background: colors.$gray;
     }
 }
 
@@ -188,8 +190,8 @@ export default {
     }
 }
 .required-label {
-    background: $light-gray;
-    color: $darker-gray;
+    background: colors.$light-gray;
+    color: colors.$darker-gray;
     font-size: 0.9em;
     font-weight: bold;
     height: 40px;
@@ -207,9 +209,9 @@ export default {
     margin-right: 5px;
 }
 .add-required-button {
-    font-family: $geometric-font;
+    font-family: fonts.$geometric-font;
     font-size: 2em;
-    color: $darker-gray;
+    color: colors.$darker-gray;
     margin-left: 5px;
     display: none;
     cursor: pointer;

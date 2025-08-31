@@ -56,12 +56,15 @@ export default {
 </script>
 
 <style lang="scss">
-@import '@/style/global';
+@use '@/style/global';
+@use '@/style/colors';
+@use '@/style/fonts';
+
 .html-editor {
-    outline: 1px solid $gray;
+    outline: 1px solid colors.$gray;
     padding: 10px;
-    font-family: $geometric-font;
-    color: $half-gray;
+    font-family: fonts.$geometric-font;
+    color: colors.$half-gray;
     line-height: 1.61em;
 
     .hljs-comment {
@@ -85,7 +88,9 @@ export default {
 }
 </style>
 <style scoped lang="scss">
-@import '@/style/global';
+@use '@/style/global';
+@use '@/style/colors';
+
 .component-container {
     position: relative;
     padding: 0;
@@ -97,7 +102,7 @@ button {
     right: -1px;
     top: -1px;
     background: white;
-    border: 1px solid $gray;
+    border: 1px solid colors.$gray;
     display: none;
     margin: 0;
     padding: 0;
@@ -109,7 +114,7 @@ button {
     min-height: 42px;
 }
 .output:hover {
-    outline: 1px solid $gray;
+    outline: 1px solid colors.$gray;
 }
 .output-wrapper {
     white-space: normal; //needed to prevent .ProseMirror style - pre-wrap

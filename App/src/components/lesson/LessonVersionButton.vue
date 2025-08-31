@@ -20,7 +20,8 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import '@/style/global';
+@use '@/style/global';
+@use '@/style/fonts';
 
 .bookmark {
     padding-left: 40px;
@@ -31,7 +32,7 @@ export default {
     background: black;
     color: white;
     font-weight: bold;
-    font-family: $secondary-font;
+    font-family: fonts.$secondary-font;
     transition: padding-right 0.4s;
     cursor: pointer;
 }
@@ -98,7 +99,7 @@ export default {
         height: 60px;
         line-height: 60px;
         font-weight: bold;
-        font-family: $secondary-font;
+        font-family: fonts.$secondary-font;
         text-align: center;
     }
 

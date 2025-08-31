@@ -34,7 +34,9 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import '@/style/global';
+@use '@/style/global';
+@use '@/style/colors';
+
 .hidden-button {
     display: none;
     position: absolute;
@@ -43,7 +45,7 @@ export default {
     top: -12px;
     cursor: pointer !important;
 
-    color: $gray;
+    color: colors.$gray;
     &.hidden {
         color: black;
         display: inline-block;
