@@ -13,9 +13,13 @@ export class Fraction extends N {
     constructor(numerator: bigint | number, denominator: bigint | number) {
         super();
         if (denominator == 0)
-            throw "Division by 0 in fraction " + numerator + "/" + denominator;
-        this.numerator = new Integer(Number(denominator) > 0 ? numerator : -numerator);
-        this.denominator = new Integer(Number(denominator) > 0 ? denominator : -denominator);
+            throw 'Division by 0 in fraction ' + numerator + '/' + denominator;
+        this.numerator = new Integer(
+            Number(denominator) > 0 ? numerator : -numerator,
+        );
+        this.denominator = new Integer(
+            Number(denominator) > 0 ? denominator : -denominator,
+        );
     }
 
     copy(): Fraction {
@@ -23,10 +27,18 @@ export class Fraction extends N {
     }
 
     toMathJax(): string {
-        return (this.numerator.isNegative() ? "-" : "") + 
-        (engineConfiguration.mathJax.displayFractionsHorizontal ? 
-            this.numerator.absolute().toMathJax() + "/" + this.denominator.toMathJax() :
-            "\\frac{" + this.numerator.absolute().toMathJax() + "}{" + this.denominator.toMathJax() + "}");
+        return (
+            (this.numerator.isNegative() ? '-' : '') +
+            (engineConfiguration.mathJax.displayFractionsHorizontal
+                ? this.numerator.absolute().toMathJax() +
+                  '/' +
+                  this.denominator.toMathJax()
+                : '\\frac{' +
+                  this.numerator.absolute().toMathJax() +
+                  '}{' +
+                  this.denominator.toMathJax() +
+                  '}')
+        );
     }
 
     isNegative(): boolean {
@@ -38,12 +50,15 @@ export class Fraction extends N {
     }
 
     identical(other: Expression): boolean {
-        return (other instanceof Fraction) && this.numerator.identical(other.numerator) && this.denominator.identical(other.denominator);
+        return (
+            other instanceof Fraction &&
+            this.numerator.identical(other.numerator) &&
+            this.denominator.identical(other.denominator)
+        );
     }
 
     lessThan(other: N): boolean {
-        if (other instanceof Integer)
-            return this.asDecimal().float < other.int;
+        if (other instanceof Integer) return this.asDecimal().float < other.int;
         else if (other instanceof Decimal)
             return this.asDecimal().float < other.float;
         else if (other instanceof Fraction)
@@ -53,38 +68,63 @@ export class Fraction extends N {
 
     multiply(number: N): N {
         if (number instanceof Integer)
-            return new Fraction(this.numerator.int*number.int, this.denominator.int).reduced();
+            return new Fraction(
+                this.numerator.int * number.int,
+                this.denominator.int,
+            ).reduced();
         if (number instanceof Decimal)
-            return new Decimal(this.asDecimal().float*number.float);
+            return new Decimal(this.asDecimal().float * number.float);
         if (number instanceof Fraction)
-            return new Fraction(this.numerator.int*number.numerator.int, this.denominator.int*number.denominator.int).reduced();
+            return new Fraction(
+                this.numerator.int * number.numerator.int,
+                this.denominator.int * number.denominator.int,
+            ).reduced();
         return this;
     }
 
     divide(number: N): N {
         if (number instanceof Integer)
-            return new Fraction(this.numerator.int, this.denominator.int*number.int);
+            return new Fraction(
+                this.numerator.int,
+                this.denominator.int * number.int,
+            );
         if (number instanceof Decimal)
-            return new Decimal(this.asDecimal().float/number.float);
+            return new Decimal(this.asDecimal().float / number.float);
         if (number instanceof Fraction)
-            return new Fraction(this.numerator.int*number.denominator.int, this.denominator.int*number.numerator.int).reduced();
+            return new Fraction(
+                this.numerator.int * number.denominator.int,
+                this.denominator.int * number.numerator.int,
+            ).reduced();
         return this;
     }
 
     add(number: N): N {
         if (number instanceof Integer)
-            return new Fraction(this.numerator.int + number.int*this.denominator.int, this.denominator.int).reduced();
+            return new Fraction(
+                this.numerator.int + number.int * this.denominator.int,
+                this.denominator.int,
+            ).reduced();
         if (number instanceof Decimal)
             return new Decimal(this.asDecimal().float + number.float);
         if (number instanceof Fraction)
-            return new Fraction(this.numerator.int*number.denominator.int + this.denominator.int*number.numerator.int, this.denominator.int*number.denominator.int).reduced();
+            return new Fraction(
+                this.numerator.int * number.denominator.int +
+                    this.denominator.int * number.numerator.int,
+                this.denominator.int * number.denominator.int,
+            ).reduced();
         return this;
     }
 
     powerInteger(number: Integer): N {
         if (number.isNegative())
-            return new Fraction(this.denominator.int**(-number.int), this.numerator.int**(-number.int));
-        return new Fraction(this.numerator.int**number.int, this.denominator.int**number.int);
+            return new Fraction(
+                this.denominator.int ** -number.int,
+                this.numerator.int ** -number.int,
+            );
+        return new Fraction(
+            this.numerator.int ** number.int,
+            this.denominator.int ** number.int,
+        );
     }
 
     powerDecimal(number: Decimal): Decimal {
@@ -110,14 +150,19 @@ export class Fraction extends N {
     }
 
     asDecimal(): Decimal {
-        return new Decimal(this.numerator.numeric()/this.denominator.numeric());
+        return new Decimal(
+            this.numerator.numeric() / this.denominator.numeric(),
+        );
     }
 
     reduced(): N {
-        let gcd = numericGCD(this.numerator.int, this.denominator.int) as bigint;
-        let n = this.numerator.int / gcd, d = this.denominator.int / gcd;
-        if (d == BigInt(1))
-            return new Integer(n);
+        const gcd = numericGCD(
+            this.numerator.int,
+            this.denominator.int,
+        ) as bigint;
+        const n = this.numerator.int / gcd,
+            d = this.denominator.int / gcd;
+        if (d == BigInt(1)) return new Integer(n);
         return new Fraction(n, d);
     }
 }

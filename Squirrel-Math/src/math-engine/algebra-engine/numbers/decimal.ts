@@ -12,17 +12,16 @@ export class Decimal extends Number {
      * @param b  exclusive upper bound
      */
     static random(a: number, b: number): Decimal {
-        return new Decimal(Math.random()*(b - a) + a);
+        return new Decimal(Math.random() * (b - a) + a);
     }
 
     constructor(float: number) {
         super();
-        if (isNaN(float))
-            throw new Error("Constructing decimal from NaN");
+        if (isNaN(float)) throw new Error('Constructing decimal from NaN');
         this.float = float;
         let exponent = 1;
-        while (Math.floor(this.float*exponent) != this.float*exponent) {
-            exponent*=10;
+        while (Math.floor(this.float * exponent) != this.float * exponent) {
+            exponent *= 10;
             this.mantissaLength++;
         }
     }
@@ -32,7 +31,7 @@ export class Decimal extends Number {
     }
 
     toMathJax(): string {
-        return "" + this.float;
+        return '' + this.float;
     }
 
     isNegative(): boolean {
@@ -44,14 +43,12 @@ export class Decimal extends Number {
     }
 
     identical(other: Expression): boolean {
-        return (other instanceof Decimal) && this.float == other.float;
+        return other instanceof Decimal && this.float == other.float;
     }
 
     lessThan(other: Number): boolean {
-        if (other instanceof Integer)
-            return this.float < other.int;
-        else if (other instanceof Decimal)
-            return this.float < other.float;
+        if (other instanceof Integer) return this.float < other.int;
+        else if (other instanceof Decimal) return this.float < other.float;
         else if (other instanceof Fraction)
             return this.float < other.asDecimal().float;
         return false;
@@ -59,21 +56,21 @@ export class Decimal extends Number {
 
     multiply(number: Number): Number {
         if (number instanceof Integer)
-            return new Decimal(this.float*number.numeric());
+            return new Decimal(this.float * number.numeric());
         if (number instanceof Decimal)
-            return new Decimal(this.float*number.float);
+            return new Decimal(this.float * number.float);
         if (number instanceof Fraction)
-            return new Decimal(this.float*number.asDecimal().float);
+            return new Decimal(this.float * number.asDecimal().float);
         return this;
     }
 
     divide(number: Number): Number {
         if (number instanceof Integer)
-            return new Decimal(this.float/number.numeric());
+            return new Decimal(this.float / number.numeric());
         if (number instanceof Decimal)
-            return new Decimal(this.float/number.float);
+            return new Decimal(this.float / number.float);
         if (number instanceof Fraction)
-            return new Decimal(this.float/number.asDecimal().float);
+            return new Decimal(this.float / number.asDecimal().float);
         return this;
     }
 
@@ -100,7 +97,7 @@ export class Decimal extends Number {
     }
 
     inverse(): Decimal {
-        return new Decimal(1/this.float);
+        return new Decimal(1 / this.float);
     }
 
     signum(): -1 | 0 | 1 {
@@ -108,12 +105,14 @@ export class Decimal extends Number {
     }
 
     absolute(): Decimal {
-        if (this.float < 0)
-            return new Decimal(Math.abs(this.float));
+        if (this.float < 0) return new Decimal(Math.abs(this.float));
         return this;
     }
 
     asFraction(): Fraction {
-        return new Fraction(this.float*(10**this.mantissaLength), 10**this.mantissaLength);
+        return new Fraction(
+            this.float * 10 ** this.mantissaLength,
+            10 ** this.mantissaLength,
+        );
     }
 }

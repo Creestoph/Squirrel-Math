@@ -5,7 +5,6 @@ import { Point } from './point';
 import { Integer } from '../algebra-engine/numbers';
 
 export class Group implements Figure {
-    
     figures: Figure[];
 
     constructor(...figures: Figure[]) {
@@ -13,13 +12,16 @@ export class Group implements Figure {
     }
 
     draw() {
-        this.figures.forEach(f => f.draw());
+        this.figures.forEach((f) => f.draw());
     }
 
     translated(v: Vector): Group {
-        return new Group(...this.figures.map(f => f.translated(v)));
+        return new Group(...this.figures.map((f) => f.translated(v)));
     }
-    scaled(scale: Expression, p: Point = new Point(Integer.zero, Integer.zero)): Group {
-        return new Group(...this.figures.map(f => f.scaled(scale, p)));
+    scaled(
+        scale: Expression,
+        p: Point = new Point(Integer.zero, Integer.zero),
+    ): Group {
+        return new Group(...this.figures.map((f) => f.scaled(scale, p)));
     }
 }

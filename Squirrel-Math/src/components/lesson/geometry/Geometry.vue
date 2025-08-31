@@ -1,7 +1,13 @@
 <template>
-  <button class="geometry" :style="{ width: attrs.canvas.width + 'px', height: attrs.canvas.height + 'px' }">
-    <slot/>
-  </button>
+    <button
+        class="geometry"
+        :style="{
+            width: attrs.canvas.width + 'px',
+            height: attrs.canvas.height + 'px',
+        }"
+    >
+        <slot />
+    </button>
 </template>
 
 <script lang="ts">
@@ -10,17 +16,17 @@ import Vue from 'vue';
 
 @Component
 export default class Geometry extends Vue {
-    @Prop() attrs!: { canvas: { width: number, height: number } };
+    @Prop() attrs!: { canvas: { width: number; height: number } };
 }
 </script>
 
 <style scoped lang="scss">
 .geometry {
-  display: block;
-  margin: 0 auto;
-  padding: 0;
-  background: none;
-  position: relative;
-  cursor: initial;
+    display: block;
+    margin: 0 auto;
+    padding: 0;
+    background: none;
+    position: relative;
+    cursor: initial;
 }
 </style>

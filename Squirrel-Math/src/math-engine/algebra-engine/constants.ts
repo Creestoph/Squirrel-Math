@@ -12,10 +12,9 @@ abstract class Constant implements Expression {
     }
     identical(other: Expression): boolean {
         return other == this;
-    };
+    }
     substitute(v: Expression, e: Expression): Expression {
-        if (v.identical(this))
-            return e;
+        if (v.identical(this)) return e;
         return this;
     }
     precedence(): number {
@@ -30,11 +29,19 @@ abstract class Constant implements Expression {
 }
 
 export const constantE = new (class extends Constant {
-    toMathJax(): string { return "e" };
-    numeric(): number { return Math.E };
-})()
+    toMathJax(): string {
+        return 'e';
+    }
+    numeric(): number {
+        return Math.E;
+    }
+})();
 
 export const constantPI = new (class extends Constant {
-    toMathJax(): string { return "\\pi" };
-    numeric(): number { return Math.PI };
-})()
+    toMathJax(): string {
+        return '\\pi';
+    }
+    numeric(): number {
+        return Math.PI;
+    }
+})();

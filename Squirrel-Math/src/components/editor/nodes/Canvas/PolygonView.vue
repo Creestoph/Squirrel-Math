@@ -3,11 +3,11 @@
 </template>
 
 <script>
-import paper from "paper";
+import paper from 'paper';
 import { Shape } from './Shape';
 
 export default {
-    props: ["node", "updateAttrs", "view", "getPos"],
+    props: ['node', 'updateAttrs', 'view', 'getPos'],
 
     data() {
         return {
@@ -26,8 +26,8 @@ export default {
             selectedGripOutline: null,
 
             editing: false,
-            isSelected: false
-        }
+            isSelected: false,
+        };
     },
 
     mounted() {
@@ -36,15 +36,13 @@ export default {
 
     computed: {
         fillColor: {
-            get() { 
-                return this.node.attrs.color; 
+            get() {
+                return this.node.attrs.color;
             },
 
             set(color) {
-                if (color != this.fillColor) 
-                    this.updateAttrs({ color });
-                if (color == '#00000000')
-                    color = '#00000001';
+                if (color != this.fillColor) this.updateAttrs({ color });
+                if (color == '#00000000') color = '#00000001';
                 this.polygon.fillColor = new paper.Color(color);
                 this.grips.fillColor = new paper.Color(color).multiply(0.7);
                 this.grips.fillColor.alpha = 1;
@@ -57,10 +55,9 @@ export default {
             },
 
             set(borderColor) {
-                if (borderColor != this.borderColor) 
+                if (borderColor != this.borderColor)
                     this.updateAttrs({ borderColor });
-                if (borderColor == '#00000000')
-                    borderColor = '#00000001';
+                if (borderColor == '#00000000') borderColor = '#00000001';
                 this.polygon.strokeColor = new paper.Color(borderColor);
             },
         },
@@ -83,12 +80,14 @@ export default {
         sides: {
             get() {
                 return this.polygon.segments.length;
-            }
-        }
+            },
+        },
     },
 
     watch: {
-        node: function() { this.render() }
+        node: function () {
+            this.render();
+        },
     },
 
     methods: {
@@ -96,7 +95,7 @@ export default {
             this.paperScope = new paper.PaperScope();
             this.paperScope.setup(this.$refs.canvas);
             this.paperScope.activate();
-            
+
             const attrs = this.node.attrs;
             this.polygon = new paper.Path();
             this.polygon.closed = true;
@@ -106,15 +105,24 @@ export default {
             this.grips.visible = this.isSelected;
 
             if (attrs.vertices)
-                attrs.vertices.forEach(v => this.addPoint(new paper.Point(v)));
+                attrs.vertices.forEach((v) =>
+                    this.addPoint(new paper.Point(v)),
+                );
 
-            this.selectedGripOutline = new paper.Path.Circle(new paper.Point(0, 0), 8);
+            this.selectedGripOutline = new paper.Path.Circle(
+                new paper.Point(0, 0),
+                8,
+            );
             this.selectedGripOutline.strokeColor = new paper.Color('#ffbb33');
             this.selectedGripOutline.style.strokeWidth = 4;
             this.selectedGripOutline.locked = true; // non-hittable
             this.selectGrip(this.selectedGripIndex);
 
-            this.all = new paper.Group([this.polygon, this.grips, this.selectedGripOutline]);
+            this.all = new paper.Group([
+                this.polygon,
+                this.grips,
+                this.selectedGripOutline,
+            ]);
 
             this.fillColor = attrs.color;
             this.borderColor = attrs.borderColor;
@@ -138,11 +146,14 @@ export default {
         },
 
         containedInBounds(bounds) {
-            return this.polygon.intersects(new paper.Path.Rectangle(bounds)) || bounds.contains(this.polygon.bounds);
+            return (
+                this.polygon.intersects(new paper.Path.Rectangle(bounds)) ||
+                bounds.contains(this.polygon.bounds)
+            );
         },
 
         getSnapPoints() {
-            return this.grips.children.map(g => g.position);
+            return this.grips.children.map((g) => g.position);
         },
 
         onDelete() {
@@ -156,27 +167,49 @@ export default {
         },
 
         onMouseMove(event, hitResult, cursorStyle) {
-            if (!hitResult && this.editing)
-                cursorStyle.cursor = "cell";
-            else if (hitResult && this.grips.children.some(item => item == hitResult.item))
-                cursorStyle.cursor = "crosshair";
-            else if (hitResult && this.polygon == hitResult.item && this.editing)
-                cursorStyle.cursor = "cell";
-            else if (hitResult && this.polygon == hitResult.item && !this.editing)
-                cursorStyle.cursor = "move";
+            if (!hitResult && this.editing) cursorStyle.cursor = 'cell';
+            else if (
+                hitResult &&
+                this.grips.children.some((item) => item == hitResult.item)
+            )
+                cursorStyle.cursor = 'crosshair';
+            else if (
+                hitResult &&
+                this.polygon == hitResult.item &&
+                this.editing
+            )
+                cursorStyle.cursor = 'cell';
+            else if (
+                hitResult &&
+                this.polygon == hitResult.item &&
+                !this.editing
+            )
+                cursorStyle.cursor = 'move';
         },
 
         onMouseDown(event, hitResult) {
-            if (this.editing && (!hitResult || this.polygon == hitResult.item && hitResult.type == 'fill')) {
-                const newIndex = this.selectedGripIndex != -1 ? this.selectedGripIndex + 1 : this.grips.children.length;
+            if (
+                this.editing &&
+                (!hitResult ||
+                    (this.polygon == hitResult.item &&
+                        hitResult.type == 'fill'))
+            ) {
+                const newIndex =
+                    this.selectedGripIndex != -1
+                        ? this.selectedGripIndex + 1
+                        : this.grips.children.length;
                 this.addPoint(event.point, newIndex);
                 this.selectGrip(newIndex);
                 this.movedShape = this.grips.children[newIndex];
                 return true;
             }
 
-            if (this.editing && this.polygon == hitResult.item && hitResult.type == 'stroke') {
-                const indexBetween = hitResult.location.index + 1
+            if (
+                this.editing &&
+                this.polygon == hitResult.item &&
+                hitResult.type == 'stroke'
+            ) {
+                const indexBetween = hitResult.location.index + 1;
                 this.addPoint(event.point, indexBetween);
                 this.selectGrip(indexBetween);
                 this.movedShape = this.grips.children[indexBetween];
@@ -189,7 +222,9 @@ export default {
             if (this.polygon == hitResult.item) {
                 this.movedShape = this.all;
             }
-            let result = this.grips.children.findIndex(grip => grip == hitResult.item);
+            let result = this.grips.children.findIndex(
+                (grip) => grip == hitResult.item,
+            );
             if (result != -1) {
                 this.movedShape = this.grips.children[result];
                 this.selectGrip(result);
@@ -198,19 +233,20 @@ export default {
         },
 
         onMouseDrag(event, snapPoints) {
-            if (!this.movedShape)
-                return false;
+            if (!this.movedShape) return false;
 
-            let result = this.grips.children.findIndex(grip => grip == this.movedShape);
+            let result = this.grips.children.findIndex(
+                (grip) => grip == this.movedShape,
+            );
             if (result != -1) {
-                let snapShift = event.modifiers.shift ? Shape.snapShift([event.point], snapPoints) : new paper.Point(0, 0);
+                let snapShift = event.modifiers.shift
+                    ? Shape.snapShift([event.point], snapPoints)
+                    : new paper.Point(0, 0);
                 this.movedShape.position = event.point.add(snapShift);
                 this.polygon.segments[result].point = this.movedShape.position;
                 this.selectedGripOutline.position = this.movedShape.position;
                 return true;
-            }
-            else
-                return false;
+            } else return false;
         },
 
         onMouseUp() {
@@ -226,29 +262,40 @@ export default {
         },
 
         save() {
-            this.updateAttrs({ vertices: this.polygon.segments.map(s => ({ x: s.point.x, y: s.point.y })) });
+            this.updateAttrs({
+                vertices: this.polygon.segments.map((s) => ({
+                    x: s.point.x,
+                    y: s.point.y,
+                })),
+            });
         },
 
         selectGrip(index) {
             this.selectedGripIndex = index;
             this.selectedGripOutline.visible = index != -1;
             if (index != -1) {
-                this.selectedGripOutline.position = this.grips.children[index].position;
+                this.selectedGripOutline.position =
+                    this.grips.children[index].position;
             }
         },
 
         makeRegular(sides, center) {
             this.selectGrip(-1);
-            this.updateAttrs({ vertices: new paper.Path.RegularPolygon(center || this.getPosition(), sides, 70).segments.map(s => ({ x: s.point.x, y: s.point.y })) });
+            this.updateAttrs({
+                vertices: new paper.Path.RegularPolygon(
+                    center || this.getPosition(),
+                    sides,
+                    70,
+                ).segments.map((s) => ({ x: s.point.x, y: s.point.y })),
+            });
             this.editing = false;
-        }
-    }
-
+        },
+    },
 };
 </script>
 
 <style scoped lang="scss">
-@import "@/style/global";
+@import '@/style/global';
 canvas {
     position: absolute;
     pointer-events: none;

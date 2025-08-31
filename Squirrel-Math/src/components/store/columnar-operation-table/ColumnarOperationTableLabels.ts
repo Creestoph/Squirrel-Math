@@ -1,4 +1,4 @@
 export const columnarOperationTableLabels = {
-    operation: "Działanie",
-    numbers: "Wiersze"
-}
+    operation: 'Działanie',
+    numbers: 'Wiersze',
+};

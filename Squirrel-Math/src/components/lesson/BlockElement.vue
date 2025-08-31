@@ -1,46 +1,54 @@
 <template>
-    <div 
+    <div
         :is="tagName"
-        :class="{ 
-            'bold': marks && marks.some(m => m.type == 'bold'), 
-            'italic': marks && marks.some(m => m.type == 'italic'),
-            'underline': marks && marks.some(m => m.type == 'underline'),
-            'strike': marks && marks.some(m => m.type == 'strike'),
-            'inline': text,
+        :class="{
+            bold: marks && marks.some((m) => m.type == 'bold'),
+            italic: marks && marks.some((m) => m.type == 'italic'),
+            underline: marks && marks.some((m) => m.type == 'underline'),
+            strike: marks && marks.some((m) => m.type == 'strike'),
+            inline: text,
         }"
         :attrs="attrs"
         :style="{ color: attrs.color }"
     >
-        <template v-if="text">{{(marks && marks.some(m => m.type == 'number')) ? '$' + text + '$' : text}}</template>
-        <block-element v-for="(block, i) in children" :key="i" :content="block"></block-element>
+        <template v-if="text">{{
+            marks && marks.some((m) => m.type == 'number')
+                ? '$' + text + '$'
+                : text
+        }}</template>
+        <block-element
+            v-for="(block, i) in children"
+            :key="i"
+            :content="block"
+        ></block-element>
     </div>
 </template>
 
 <script lang="ts">
 import { Component, Prop } from 'vue-property-decorator';
 import Vue from 'vue';
-import Graphics from "./Graphics.vue";
-import DefaultTable from "./DefaultTable.vue";
-import TableCell from "./TableCell.vue";
-import TableHeader from "./TableHeader.vue";
+import Graphics from './Graphics.vue';
+import DefaultTable from './DefaultTable.vue';
+import TableCell from './TableCell.vue';
+import TableHeader from './TableHeader.vue';
 import SemanticTag from './SemanticTag.vue';
-import Proof from "./Proof.vue";
-import Example from "./Example.vue";
-import Formula from "./Formula.vue";
-import Problem from "./Problem.vue";
-import Expression from "./Expression.vue";
-import ExpressionInline from "./ExpressionInline.vue";
-import Geometry from "./geometry/Geometry.vue";
-import GeometryRectangle from "./geometry/Rectangle.vue";
-import GeometryPolygon from "./geometry/Polygon.vue";
-import GeometryCircle from "./geometry/Circle.vue";
-import GeometryLine from "./geometry/Line.vue";
-import GeometryArc from "./geometry/Arc.vue";
-import GeometryTextArea from "./geometry/TextArea.vue";
-import LessonLink from "./Link.vue";
-import BuiltInComponent from "./BuiltInComponent.vue";
-import CustomComponent from "./CustomComponent.vue";
-import Paragraph from "./Paragraph.vue";
+import Proof from './Proof.vue';
+import Example from './Example.vue';
+import Formula from './Formula.vue';
+import Problem from './Problem.vue';
+import Expression from './Expression.vue';
+import ExpressionInline from './ExpressionInline.vue';
+import Geometry from './geometry/Geometry.vue';
+import GeometryRectangle from './geometry/Rectangle.vue';
+import GeometryPolygon from './geometry/Polygon.vue';
+import GeometryCircle from './geometry/Circle.vue';
+import GeometryLine from './geometry/Line.vue';
+import GeometryArc from './geometry/Arc.vue';
+import GeometryTextArea from './geometry/TextArea.vue';
+import LessonLink from './Link.vue';
+import BuiltInComponent from './BuiltInComponent.vue';
+import CustomComponent from './CustomComponent.vue';
+import Paragraph from './Paragraph.vue';
 import { MarkData, NodeData, NodeType } from '../editor/lessons-transform';
 
 @Component({
@@ -66,52 +74,62 @@ import { MarkData, NodeData, NodeType } from '../editor/lessons-transform';
         GeometryArc,
         GeometryTextArea,
         BuiltInComponent,
-        CustomComponent
+        CustomComponent,
     },
-    name: 'block-element'
+    name: 'block-element',
 })
-export default class BlockElement extends Vue { 
+export default class BlockElement extends Vue {
     @Prop() content!: NodeData;
     type!: NodeType;
     marks?: MarkData[] = [];
-    text? = "";
+    text? = '';
     children: NodeData[] = [];
-    attrs:  { [name: string]: any } = {};
+    attrs: { [name: string]: any } = {};
 
     mounted() {
         this.type = this.content.type;
         this.marks = this.content.marks;
         this.text = this.content.text;
         this.children = this.content.content || [];
-        if (this.marks && this.marks.some(m => m.type == 'comment')) {
+        if (this.marks && this.marks.some((m) => m.type == 'comment')) {
             this.children = [this.content];
             this.text = '';
             if (this.children[0].marks)
-                this.children[0].marks = this.children[0].marks.filter(m => m.type != 'comment');
-        }
-        else {
+                this.children[0].marks = this.children[0].marks.filter(
+                    (m) => m.type != 'comment',
+                );
+        } else {
             if (this.type == 'paragraph') {
-                if (!this.children.length || this.children && this.children[this.children.length - 1].type == 'hard_break')
+                if (
+                    !this.children.length ||
+                    (this.children &&
+                        this.children[this.children.length - 1].type ==
+                            'hard_break')
+                )
                     this.children.push({ type: 'hard_break' });
             }
             if (this.type == 'custom_element') {
                 this.attrs = { code: this.content.content![0].text };
-            }
-            else if (this.type == 'table') {
-                this.attrs = { columnWidths: this.children[0].content!.map(c => c.attrs!.colwidth && c.attrs!.colwidth[0] ) };
-            }
-            else {
+            } else if (this.type == 'table') {
+                this.attrs = {
+                    columnWidths: this.children[0].content!.map(
+                        (c) => c.attrs!.colwidth && c.attrs!.colwidth[0],
+                    ),
+                };
+            } else {
                 this.attrs = this.content.attrs || {};
             }
         }
         if (this.marks)
-            this.marks.filter(m => m.attrs).forEach(m => Object.assign(this.attrs, m.attrs));
+            this.marks
+                .filter((m) => m.attrs)
+                .forEach((m) => Object.assign(this.attrs, m.attrs));
     }
 
     get tagName() {
-        if (this.marks && this.marks.some(m => m.type == 'comment'))
+        if (this.marks && this.marks.some((m) => m.type == 'comment'))
             return 'comment';
-        if (this.marks && this.marks.some(m => m.type == 'link'))
+        if (this.marks && this.marks.some((m) => m.type == 'link'))
             return 'lesson-link';
         const typeToTag: { [type in NodeType]?: string } = {
             paragraph: 'paragraph',
@@ -142,7 +160,7 @@ export default class BlockElement extends Vue {
             problem: 'problem',
         };
         return typeToTag[this.type] || 'div';
-    }  
+    }
 }
 </script>
 

@@ -22,27 +22,28 @@ export class Equation implements AlgebraicNotion {
     }
 
     toMathJax(): string {
-        return this.left.toMathJax() + " = " + this.right.toMathJax();
+        return this.left.toMathJax() + ' = ' + this.right.toMathJax();
     }
 
     simplified(): Equation {
         let left = simplify(Sum.difference(this.left, this.right));
-        if (left instanceof Quotient)
-            left = left.numerator;
+        if (left instanceof Quotient) left = left.numerator;
         left = extractConstantFactor(left).factors[1];
-        if (left instanceof Power)
-            left = left.base;
+        if (left instanceof Power) left = left.base;
         return new Equation(left, Integer.zero);
     }
 
     substitute(old: Expression, e: Expression): Equation {
-        return new Equation(this.left.substitute(old, e), this.right.substitute(old, e));
+        return new Equation(
+            this.left.substitute(old, e),
+            this.right.substitute(old, e),
+        );
     }
 }
 
 export function parseEquation(text: string): Equation {
-    let sides = text.split("=");
+    let sides = text.split('=');
     if (sides.length != 2)
-        throw new Error("Equation should contain exactly one equality sign");
+        throw new Error('Equation should contain exactly one equality sign');
     return new Equation(parseExpression(sides[0]), parseExpression(sides[1]));
 }

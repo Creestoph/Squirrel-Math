@@ -1,6 +1,4 @@
 import { Expression } from './expression';
-import { Sum } from './sum';
-import { Product } from './product';
 import { engineConfiguration } from '../engine-configuration';
 import { Variable } from './variable';
 
@@ -19,10 +17,19 @@ export class Quotient implements Expression {
     }
 
     toMathJax(): string {
-        return engineConfiguration.mathJax.displayFractionsHorizontal ? 
-        ((this.numerator.precedence() <= this.precedence() ? "\\left(" + this.numerator.toMathJax() + "\\right)" : this.numerator.toMathJax())
-        + "/" + (this.denominator.precedence() <= this.precedence() ? "\\left(" + this.denominator.toMathJax() + "\\right)" : this.denominator.toMathJax()))
-        : "\\frac{" + this.numerator.toMathJax() + "}{" + this.denominator.toMathJax() + "}";
+        return engineConfiguration.mathJax.displayFractionsHorizontal
+            ? (this.numerator.precedence() <= this.precedence()
+                  ? '\\left(' + this.numerator.toMathJax() + '\\right)'
+                  : this.numerator.toMathJax()) +
+                  '/' +
+                  (this.denominator.precedence() <= this.precedence()
+                      ? '\\left(' + this.denominator.toMathJax() + '\\right)'
+                      : this.denominator.toMathJax())
+            : '\\frac{' +
+                  this.numerator.toMathJax() +
+                  '}{' +
+                  this.denominator.toMathJax() +
+                  '}';
     }
 
     isNegative(): boolean {
@@ -30,14 +37,19 @@ export class Quotient implements Expression {
     }
 
     substitute(old: Expression, e: Expression): Expression {
-        if (old.identical(this))
-            return e;
-        return new Quotient(this.numerator.substitute(old, e), this.denominator.substitute(old, e))
+        if (old.identical(this)) return e;
+        return new Quotient(
+            this.numerator.substitute(old, e),
+            this.denominator.substitute(old, e),
+        );
     }
 
     identical(other: Expression): boolean {
-        return (other instanceof Quotient) && this.numerator.identical(other.numerator) && 
-        this.denominator.identical(other.denominator);
+        return (
+            other instanceof Quotient &&
+            this.numerator.identical(other.numerator) &&
+            this.denominator.identical(other.denominator)
+        );
     }
 
     precedence(): number {
@@ -45,11 +57,13 @@ export class Quotient implements Expression {
     }
 
     allVariables(): Variable[] {
-        let result = [...this.numerator.allVariables(), ...this.denominator.allVariables()];
+        const result = [
+            ...this.numerator.allVariables(),
+            ...this.denominator.allVariables(),
+        ];
         for (let i = 0; i < result.length; i++)
-            for (let j = i+1; j < result.length; j++)
-                if (result[j].identical(result[i]))
-                    result.splice(j--, 1);
+            for (let j = i + 1; j < result.length; j++)
+                if (result[j].identical(result[i])) result.splice(j--, 1);
         return result;
     }
 }

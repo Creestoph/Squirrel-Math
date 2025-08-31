@@ -1,6 +1,6 @@
 <template>
     <div class="formula">
-        <slot/>
+        <slot />
     </div>
 </template>
 
@@ -9,9 +9,7 @@ import { Component } from 'vue-property-decorator';
 import Vue from 'vue';
 
 @Component
-export default class Formula extends Vue { }
+export default class Formula extends Vue {}
 </script>
 
-<style scoped lang="scss">
-</style>
-
+<style scoped lang="scss"></style>

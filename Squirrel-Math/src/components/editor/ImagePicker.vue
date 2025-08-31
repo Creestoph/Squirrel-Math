@@ -7,32 +7,61 @@
         <div class="drafts-dialog-body">
             <span class="caption">Baza Squirrel-Math</span>
             <div class="images-gallery">
-                <button v-if="globalScrollable" @click="scrollGlobalLeft()">🢐</button>
+                <button v-if="globalScrollable" @click="scrollGlobalLeft()">
+                    🢐
+                </button>
                 <div class="images-row">
                     <div ref="globalImagesRow">
-                        <button v-for="(image, i) in globalImages" :key="i" @click="choose(image)">
-                            <img :title="image.name" :alt="image.name" :src="image.src">
+                        <button
+                            v-for="(image, i) in globalImages"
+                            :key="i"
+                            @click="choose(image)"
+                        >
+                            <img
+                                :title="image.name"
+                                :alt="image.name"
+                                :src="image.src"
+                            />
                         </button>
                     </div>
                 </div>
-                <button v-if="globalScrollable" @click="scrollGlobalLeft()">🢒</button>
+                <button v-if="globalScrollable" @click="scrollGlobalLeft()">
+                    🢒
+                </button>
             </div>
             <span class="caption">Obrazy w obrębie lekcji</span>
             <div class="images-gallery">
-                <button v-if="localScrollable" @click="scrollLocalLeft()">🢐</button>
+                <button v-if="localScrollable" @click="scrollLocalLeft()">
+                    🢐
+                </button>
                 <div class="images-row">
                     <div ref="localImagesRow">
                         <button v-for="(image, i) in lessonImages" :key="i">
-                            <button class="delete-image" @click="onDeleteImage(image); $event.preventDefault()">✖</button>
-                            <img :title="image.name" :alt="image.name" :src="image.src" @click="choose(image)">
+                            <button
+                                class="delete-image"
+                                @click="
+                                    onDeleteImage(image);
+                                    $event.preventDefault();
+                                "
+                            >
+                                ✖
+                            </button>
+                            <img
+                                :title="image.name"
+                                :alt="image.name"
+                                :src="image.src"
+                                @click="choose(image)"
+                            />
                         </button>
                     </div>
                 </div>
-                <button v-if="localScrollable" @click="scrollLocalRight()">🢒</button>
+                <button v-if="localScrollable" @click="scrollLocalRight()">
+                    🢒
+                </button>
             </div>
             <label>
                 Dodaj nowy
-                <input type="file" @change="uploadImage($event.target.files)">
+                <input type="file" @change="uploadImage($event.target.files)" />
             </label>
         </div>
     </div>
@@ -43,14 +72,14 @@ import { Component } from 'vue-property-decorator';
 import Vue from 'vue';
 
 export interface Image {
-    key: string,
+    key: string;
     name: string;
     scoped: boolean;
     src?: string;
 }
 
 @Component
-export default class ImagePicker extends Vue {    
+export default class ImagePicker extends Vue {
     static globalImages: { [key: string]: Image } = {};
     static lessonImages: { [key: string]: Image } = {};
 
@@ -69,13 +98,21 @@ export default class ImagePicker extends Vue {
     }
 
     constructor() {
-        super()
-        const global =  [
+        super();
+        const global = [
             { key: 'sheep.png', name: 'Owca' },
-            { key: 'squirrel.png', name: 'Wiewiórka' }
+            { key: 'squirrel.png', name: 'Wiewiórka' },
         ];
-        global.forEach(image => ImagePicker.globalImages[image.key] = { ...image, src: require(`@/assets/global-images/${image.key}`), scoped: false });
-        this.globalScrollable = Object.values(ImagePicker.globalImages).length > 5;
+        global.forEach(
+            (image) =>
+                (ImagePicker.globalImages[image.key] = {
+                    ...image,
+                    src: require(`@/assets/global-images/${image.key}`),
+                    scoped: false,
+                }),
+        );
+        this.globalScrollable =
+            Object.values(ImagePicker.globalImages).length > 5;
     }
 
     open(callback: (image: Image) => void) {
@@ -101,14 +138,19 @@ export default class ImagePicker extends Vue {
         const fileReader = new FileReader();
         fileReader.onload = () => {
             if (typeof fileReader.result === 'string') {
-                const newImage = { src: fileReader.result, name: files[0].name, key: files[0].name, scoped: true };
+                const newImage = {
+                    src: fileReader.result,
+                    name: files[0].name,
+                    key: files[0].name,
+                    scoped: true,
+                };
                 ImagePicker.lessonImages[newImage.key] = newImage;
                 this.choose(newImage);
             }
-        }
+        };
         fileReader.onerror = () => {
             console.debug(fileReader.error);
-        }
+        };
         fileReader.readAsDataURL(files[0]);
     }
 
@@ -125,28 +167,38 @@ export default class ImagePicker extends Vue {
 
     scrollLocalLeft() {
         this.lessonImagesScroll = Math.min(this.lessonImagesScroll + 164, 0);
-        (this.$refs.localImagesRow as HTMLElement).style.transform = `translateX(${this.lessonImagesScroll}px)`;
+        (this.$refs.localImagesRow as HTMLElement).style.transform =
+            `translateX(${this.lessonImagesScroll}px)`;
     }
 
     scrollLocalRight() {
-        this.lessonImagesScroll = Math.max(this.lessonImagesScroll - 164, - (Object.values(ImagePicker.lessonImages).length - 5) * 164);
-        (this.$refs.localImagesRow as HTMLElement).style.transform = `translateX(${this.lessonImagesScroll}px)`;
+        this.lessonImagesScroll = Math.max(
+            this.lessonImagesScroll - 164,
+            -(Object.values(ImagePicker.lessonImages).length - 5) * 164,
+        );
+        (this.$refs.localImagesRow as HTMLElement).style.transform =
+            `translateX(${this.lessonImagesScroll}px)`;
     }
 
     scrollGlobalLeft() {
         this.globalImagesScroll = Math.min(this.globalImagesScroll + 164, 0);
-        (this.$refs.localImagesRow as HTMLElement).style.transform = `translateX(${this.lessonImagesScroll}px)`;
+        (this.$refs.localImagesRow as HTMLElement).style.transform =
+            `translateX(${this.lessonImagesScroll}px)`;
     }
 
     scrollGlobalRight() {
-        this.globalImagesScroll = Math.max(this.globalImagesScroll - 164, - (Object.values(ImagePicker.globalImages).length - 5) * 164);
-        (this.$refs.globalImagesRow as HTMLElement).style.transform = `translateX(${this.globalImagesScroll}px)`;
+        this.globalImagesScroll = Math.max(
+            this.globalImagesScroll - 164,
+            -(Object.values(ImagePicker.globalImages).length - 5) * 164,
+        );
+        (this.$refs.globalImagesRow as HTMLElement).style.transform =
+            `translateX(${this.globalImagesScroll}px)`;
     }
 }
 </script>
 
 <style scoped lang="scss">
-@import "@/style/global";
+@import '@/style/global';
 
 .drafts-dialog {
     width: 930px;

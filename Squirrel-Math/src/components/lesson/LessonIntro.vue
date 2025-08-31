@@ -1,18 +1,17 @@
 <template>
-  <div class="intro" ref="content">
-    <slot />
-  </div>
+    <div class="intro" ref="content">
+        <slot />
+    </div>
 </template>
 
 <script>
-    export default {
-        name: "LessonIntro"
-    }
+export default {
+    name: 'LessonIntro',
+};
 </script>
 
 <style scoped>
-  .intro
-  {
+.intro {
     margin-bottom: 55px;
-  }
+}
 </style>

@@ -1,13 +1,26 @@
 <template>
     <button class="color-picker-wrapper" @blur="dropdownVisible = false">
-        <div @click="dropdownVisible = !dropdownVisible"><slot></slot></div> 
+        <div @click="dropdownVisible = !dropdownVisible"><slot></slot></div>
         <div v-if="color" @click="dropdownVisible = !dropdownVisible">
-            <div ref="fillColorPicker" class="color-picker ml-2" :style="{ background: color }"></div>
+            <div
+                ref="fillColorPicker"
+                class="color-picker ml-2"
+                :style="{ background: color }"
+            ></div>
         </div>
         <table class="dropdown" v-if="dropdownVisible">
             <tr v-for="(row, i) in availableColors" :key="i">
-                <td v-for="(cell, j) in row" :key="j" :class="{ active: cell == color }" @click="choose(cell)">
-                    <div class="color-picker" :class="{ 'no-color': cell == '#00000000' }" :style="{ background: cell }"></div>
+                <td
+                    v-for="(cell, j) in row"
+                    :key="j"
+                    :class="{ active: cell == color }"
+                    @click="choose(cell)"
+                >
+                    <div
+                        class="color-picker"
+                        :class="{ 'no-color': cell == '#00000000' }"
+                        :style="{ background: cell }"
+                    ></div>
                 </td>
             </tr>
         </table>
@@ -16,8 +29,8 @@
 
 <script>
 export default {
-    name: "ColorPicker",
-    props: ["color"],
+    name: 'ColorPicker',
+    props: ['color'],
     data() {
         return {
             dropdownVisible: false,
@@ -25,36 +38,36 @@ export default {
                 ['#00000000', '#ffffff', '#f6f6f6', '#f2f2f2', '#eeeeee'],
                 ['#fff0f0', '#f5e0e0', '#eedddd', '#eeaaaa', '#dd8888'],
                 ['#ef0000', '#dd3333', '#cc4444', '#aa0000', '#990000'],
-                ['#e0e0e0', '#cccccc', '#aaaaaa', '#777777', '#000000']
-            ]
-        }
+                ['#e0e0e0', '#cccccc', '#aaaaaa', '#777777', '#000000'],
+            ],
+        };
     },
     methods: {
         choose(color) {
             this.$emit('selected', color);
             this.dropdownVisible = false;
-        }
-    }
+        },
+    },
 };
 </script>
 
 <style scoped lang="scss">
-@import "@/style/global";
+@import '@/style/global';
 
 .color-picker-wrapper {
     position: relative;
 
-  > div {
-    display: flex;
-    align-items: center;
-    height: 24px;
-  }
+    > div {
+        display: flex;
+        align-items: center;
+        height: 24px;
+    }
 }
 
 .color-picker {
-  width: 20px;
-  height: 20px;
-  border: 2px solid black;
+    width: 20px;
+    height: 20px;
+    border: 2px solid black;
 }
 
 .dropdown {
@@ -93,7 +106,7 @@ export default {
             }
         }
 
-        > div.no-color{
+        > div.no-color {
             position: relative;
             &::before {
                 content: '✖';
@@ -102,11 +115,8 @@ export default {
                 left: 0;
                 line-height: 20px;
                 width: 20px;
-
             }
         }
     }
-
-
 }
 </style>

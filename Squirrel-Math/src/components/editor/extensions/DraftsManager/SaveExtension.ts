@@ -1,13 +1,18 @@
-import { Extension } from 'tiptap'
+import { Extension } from 'tiptap';
 import { allComments } from '../../marks/Comment.vue';
 import { Draft, DraftPreview, LocalStorageSaver } from './LocalStorageManager';
 import ImagePicker from '../../ImagePicker.vue';
 import { downloadFile } from '@/components/utils/files';
 
 export default class Save extends Extension {
-
     private autoSaveObserverId: number;
-    private currentDraft: Draft = { name: '', created: new Date(), lastModified: new Date(), lesson: null, fromAutosave: false };
+    private currentDraft: Draft = {
+        name: '',
+        created: new Date(),
+        lastModified: new Date(),
+        lesson: null,
+        fromAutosave: false,
+    };
 
     longVersionJSON: string = '';
     shortVersionJSON: string = '';
@@ -16,11 +21,14 @@ export default class Save extends Extension {
     constructor() {
         super();
         const autoSavePeriod = 60 * 1000;
-        this.autoSaveObserverId = setInterval(() => this.saveToLocalStorage(true), autoSavePeriod);
+        this.autoSaveObserverId = setInterval(
+            () => this.saveToLocalStorage(true),
+            autoSavePeriod,
+        );
     }
 
     get name() {
-        return 'save'
+        return 'save';
     }
 
     keys() {
@@ -28,15 +36,15 @@ export default class Save extends Extension {
             'Ctrl-s': () => {
                 this.saveToLocalStorage(false);
                 return true;
-            }
-        }
+            },
+        };
     }
 
     commands() {
         return {
             saveToLocalStorage: () => () => this.saveToLocalStorage(false),
-            saveToFile: () => () => this.saveToFile()
-        }
+            saveToFile: () => () => this.saveToFile(),
+        };
     }
 
     destroy() {
@@ -47,7 +55,9 @@ export default class Save extends Extension {
         return LocalStorageSaver.draftsList().sort((d1, d2) => {
             const d1AutoSave = d1.fromAutosave ? 1 : 0;
             const d2AutoSave = d2.fromAutosave ? 1 : 0;
-            return d1.name == d2.name ? d1AutoSave - d2AutoSave : d2.lastModified.getTime() - d1.lastModified.getTime();
+            return d1.name == d2.name
+                ? d1AutoSave - d2AutoSave
+                : d2.lastModified.getTime() - d1.lastModified.getTime();
         });
     }
 
@@ -61,25 +71,31 @@ export default class Save extends Extension {
     }
 
     loadFromJSON(json: any) {
-        for (let commentId in allComments) 
+        for (const commentId in allComments)
             delete (allComments as any)[commentId];
         if (json.comments)
             Object.entries(json.comments).forEach(([id, comment]: any) => {
-                (allComments as any)[id] = { text: comment.text, hidden: comment.hidden, displayedInComponent: null }
-            })
+                (allComments as any)[id] = {
+                    text: comment.text,
+                    hidden: comment.hidden,
+                    displayedInComponent: null,
+                };
+            });
 
         ImagePicker.lessonImages = {};
         if (json.images)
             Object.entries(json.images).forEach(([key, image]: any) => {
-                (ImagePicker.lessonImages as any)[key] = { ...image, key, scoped: true };
-            })
+                (ImagePicker.lessonImages as any)[key] = {
+                    ...image,
+                    key,
+                    scoped: true,
+                };
+            });
 
         this.shortVersionJSON = json.short;
         this.longVersionJSON = json.long;
-        if (this.shortMode)
-            this.editor.setContent(this.shortVersionJSON);
-        else
-            this.editor.setContent(this.longVersionJSON);
+        if (this.shortMode) this.editor.setContent(this.shortVersionJSON);
+        else this.editor.setContent(this.longVersionJSON);
     }
 
     saveToLocalStorage(fromAutosave: boolean) {
@@ -96,27 +112,34 @@ export default class Save extends Extension {
     }
 
     private getLessonTitle(): string {
-        const lessonTitleNode = this.editor.state.doc.content.content[0].content.content[0];
+        const lessonTitleNode =
+            this.editor.state.doc.content.content[0].content.content[0];
         return lessonTitleNode ? lessonTitleNode.text : 'lesson';
     }
 
     private getLessonJSON() {
-        if (this.shortMode)
-            this.shortVersionJSON = this.editor.getJSON();
-        else
-            this.longVersionJSON = this.editor.getJSON();
+        if (this.shortMode) this.shortVersionJSON = this.editor.getJSON();
+        else this.longVersionJSON = this.editor.getJSON();
 
         const lessonJSON: any = {};
         lessonJSON.long = this.longVersionJSON;
         lessonJSON.short = this.shortVersionJSON;
-        
-        if (Object.entries(allComments).length > 0)
-            lessonJSON.comments = {};
-        Object.entries(allComments).forEach(([id, comment]: any) => lessonJSON.comments[id] = { text: comment.text, hidden: comment.hidden });
+
+        if (Object.entries(allComments).length > 0) lessonJSON.comments = {};
+        Object.entries(allComments).forEach(
+            ([id, comment]: any) =>
+                (lessonJSON.comments[id] = {
+                    text: comment.text,
+                    hidden: comment.hidden,
+                }),
+        );
 
         if (Object.entries(ImagePicker.lessonImages).length > 0)
             lessonJSON.images = {};
-        Object.entries(ImagePicker.lessonImages).forEach(([key, image]: any) => lessonJSON.images[key] = { src: image.src, name: image.name });
+        Object.entries(ImagePicker.lessonImages).forEach(
+            ([key, image]: any) =>
+                (lessonJSON.images[key] = { src: image.src, name: image.name }),
+        );
         return lessonJSON;
     }
 }

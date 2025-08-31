@@ -29,16 +29,14 @@ export abstract class Number implements Expression {
         return Infinity;
     }
     substitute(old: Expression, e: Expression): Expression {
-        if (old.identical(this))
-            return e;
+        if (old.identical(this)) return e;
         return this;
     }
     allVariables(): Variable[] {
         return [];
     }
- }
+}
 
 //  export function instanceOfNumber(expression: Expression): expression is Number {
 //     return expression instanceof Integer || expression instanceof Decimal || expression instanceof Fraction
 // }
-

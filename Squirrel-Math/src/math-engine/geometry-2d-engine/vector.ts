@@ -7,6 +7,9 @@ export class Vector extends Point {
         return new Vector(p.x, p.y);
     }
     opposite(): Vector {
-        return new Vector(Product.of(Integer.minusOne, this.x), Product.of(Integer.minusOne, this.y));
+        return new Vector(
+            Product.of(Integer.minusOne, this.x),
+            Product.of(Integer.minusOne, this.y),
+        );
     }
 }

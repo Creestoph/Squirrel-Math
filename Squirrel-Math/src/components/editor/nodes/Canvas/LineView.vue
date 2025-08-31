@@ -3,11 +3,11 @@
 </template>
 
 <script>
-import paper from "paper";
+import paper from 'paper';
 import { Shape } from './Shape';
 
 export default {
-    props: ["node", "updateAttrs", "view", "getPos"],
+    props: ['node', 'updateAttrs', 'view', 'getPos'],
 
     data() {
         return {
@@ -25,8 +25,8 @@ export default {
             selectedGripOutline: null,
 
             editing: false,
-            isSelected: false
-        }
+            isSelected: false,
+        };
     },
 
     mounted() {
@@ -42,8 +42,7 @@ export default {
             set(color) {
                 this.line.strokeColor = new paper.Color(color);
                 this.grips.fillColor = new paper.Color(color).multiply(0.7);
-                if (this.fillColor != color)
-                    this.updateAttrs({ color });
+                if (this.fillColor != color) this.updateAttrs({ color });
             },
         },
 
@@ -70,7 +69,9 @@ export default {
     },
 
     watch: {
-        node: function() { this.render() }
+        node: function () {
+            this.render();
+        },
     },
 
     methods: {
@@ -78,7 +79,7 @@ export default {
             this.paperScope = new paper.PaperScope();
             this.paperScope.setup(this.$refs.canvas);
             this.paperScope.activate();
-            
+
             const attrs = this.node.attrs;
             this.line = new paper.Path();
             this.line.style.strokeWidth = 3;
@@ -89,19 +90,26 @@ export default {
             this.fillColor = attrs.color;
 
             if (attrs.points)
-                attrs.points.forEach(p => this.addPoint(new paper.Point(p)));
+                attrs.points.forEach((p) => this.addPoint(new paper.Point(p)));
 
             if (attrs.smooth) {
                 this.line.smooth({ type: 'continuous' });
             }
-            
-            this.selectedGripOutline = new paper.Path.Circle(new paper.Point(0, 0), 8);
+
+            this.selectedGripOutline = new paper.Path.Circle(
+                new paper.Point(0, 0),
+                8,
+            );
             this.selectedGripOutline.strokeColor = new paper.Color('#ffbb33');
             this.selectedGripOutline.style.strokeWidth = 4;
             this.selectedGripOutline.locked = true; // non-hittable
             this.selectGrip(this.selectedGripIndex);
 
-            this.all = new paper.Group([this.line, this.grips, this.selectedGripOutline]);
+            this.all = new paper.Group([
+                this.line,
+                this.grips,
+                this.selectedGripOutline,
+            ]);
         },
 
         handleResize(width, height) {
@@ -122,11 +130,14 @@ export default {
         },
 
         containedInBounds(bounds) {
-            return this.line.intersects(new paper.Path.Rectangle(bounds)) || bounds.contains(this.line.bounds);
+            return (
+                this.line.intersects(new paper.Path.Rectangle(bounds)) ||
+                bounds.contains(this.line.bounds)
+            );
         },
 
         getSnapPoints() {
-            return this.grips.children.map(g => g.position);
+            return this.grips.children.map((g) => g.position);
         },
 
         onDelete() {
@@ -140,20 +151,25 @@ export default {
         },
 
         onMouseMove(event, hitResult, cursorStyle) {
-            if (!hitResult && this.editing)
-                cursorStyle.cursor = "cell";
-            else if (hitResult && this.grips.children.some(item => item == hitResult.item))
-                cursorStyle.cursor = "crosshair";
+            if (!hitResult && this.editing) cursorStyle.cursor = 'cell';
+            else if (
+                hitResult &&
+                this.grips.children.some((item) => item == hitResult.item)
+            )
+                cursorStyle.cursor = 'crosshair';
             else if (hitResult && this.line == hitResult.item && this.editing)
-                cursorStyle.cursor = "cell";
+                cursorStyle.cursor = 'cell';
             else if (hitResult && this.line == hitResult.item && !this.editing)
-                cursorStyle.cursor = "move";
+                cursorStyle.cursor = 'move';
         },
 
         onMouseDown(event, hitResult) {
             if (!hitResult) {
                 if (this.editing) {
-                    const newIndex = this.selectedGripIndex != -1 ? this.selectedGripIndex + 1 : this.grips.children.length;
+                    const newIndex =
+                        this.selectedGripIndex != -1
+                            ? this.selectedGripIndex + 1
+                            : this.grips.children.length;
                     this.addPoint(event.point, newIndex);
                     this.selectGrip(newIndex);
                     this.movedShape = this.grips.children[newIndex];
@@ -163,7 +179,7 @@ export default {
             }
             if (this.line == hitResult.item) {
                 if (this.editing) {
-                    const indexBetween = hitResult.location.index + 1
+                    const indexBetween = hitResult.location.index + 1;
                     this.addPoint(event.point, indexBetween);
                     this.selectGrip(indexBetween);
                     this.movedShape = this.grips.children[indexBetween];
@@ -172,7 +188,9 @@ export default {
                     this.movedShape = this.all;
                 }
             }
-            let result = this.grips.children.findIndex(grip => grip == hitResult.item);
+            let result = this.grips.children.findIndex(
+                (grip) => grip == hitResult.item,
+            );
             if (result != -1) {
                 this.movedShape = this.grips.children[result];
                 this.selectGrip(result);
@@ -181,19 +199,20 @@ export default {
         },
 
         onMouseDrag(event, snapPoints) {
-            if (!this.movedShape)
-                return false;
+            if (!this.movedShape) return false;
 
-            let result = this.grips.children.findIndex(grip => grip == this.movedShape);
+            let result = this.grips.children.findIndex(
+                (grip) => grip == this.movedShape,
+            );
             if (result != -1) {
-                let snapShift = event.modifiers.shift ? Shape.snapShift([event.point], snapPoints) : new paper.Point(0, 0);
+                let snapShift = event.modifiers.shift
+                    ? Shape.snapShift([event.point], snapPoints)
+                    : new paper.Point(0, 0);
                 this.movedShape.position = event.point.add(snapShift);
                 this.line.segments[result].point = this.movedShape.position;
                 this.selectedGripOutline.position = this.movedShape.position;
                 return true;
-            }
-            else
-                return false;
+            } else return false;
         },
 
         onMouseUp() {
@@ -209,23 +228,28 @@ export default {
         },
 
         save() {
-            this.updateAttrs({ points: this.line.segments.map(s => ({ x: s.point.x, y: s.point.y })) });
+            this.updateAttrs({
+                points: this.line.segments.map((s) => ({
+                    x: s.point.x,
+                    y: s.point.y,
+                })),
+            });
         },
 
         selectGrip(index) {
             this.selectedGripIndex = index;
             this.selectedGripOutline.visible = index != -1;
             if (index != -1) {
-                this.selectedGripOutline.position = this.grips.children[index].position;
+                this.selectedGripOutline.position =
+                    this.grips.children[index].position;
             }
-        }
-    }
-
+        },
+    },
 };
 </script>
 
 <style scoped lang="scss">
-@import "@/style/global";
+@import '@/style/global';
 canvas {
     position: absolute;
     pointer-events: none;

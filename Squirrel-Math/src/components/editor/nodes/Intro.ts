@@ -1,20 +1,20 @@
-import { Node } from "tiptap";
-import LessonIntro from '../../lesson/LessonIntro.vue'
+import { Node } from 'tiptap';
+import LessonIntro from '../../lesson/LessonIntro.vue';
 
 export default class Intro extends Node {
-  get name() {
-    return "intro";
-  }
+    get name() {
+        return 'intro';
+    }
 
-  get schema() {
-    return {
-      content: "block+",
-      parseDOM: [{ tag: "intro" }],
-      toDOM: () => ["intro", 0]
-    };
-  }
+    get schema() {
+        return {
+            content: 'block+',
+            parseDOM: [{ tag: 'intro' }],
+            toDOM: () => ['intro', 0],
+        };
+    }
 
-  get view() {
-    return LessonIntro;
-  }
+    get view() {
+        return LessonIntro;
+    }
 }

@@ -1,7 +1,7 @@
-export var engineConfiguration = {
+export const engineConfiguration = {
     mathJax: {
         alwaysDisplayMultiplicationSign: false,
-        displayFractionsHorizontal: false
+        displayFractionsHorizontal: false,
     },
-    factorizeQuotients: true
-}
+    factorizeQuotients: true,
+};

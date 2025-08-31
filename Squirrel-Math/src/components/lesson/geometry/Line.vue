@@ -3,10 +3,10 @@
 </template>
 
 <script lang="ts">
-import paper from "paper";
+import paper from 'paper';
 import { Component, Prop } from 'vue-property-decorator';
 import Vue from 'vue';
-import { LineAttributes } from "@/components/editor/nodes/Canvas/LineNode";
+import { LineAttributes } from '@/components/editor/nodes/Canvas/LineNode';
 
 @Component
 export default class GeometryLine extends Vue {
@@ -17,7 +17,7 @@ export default class GeometryLine extends Vue {
         paperScope.setup(this.$refs.canvas as HTMLCanvasElement);
         paperScope.activate();
         let line = new paper.Path();
-        this.attrs.points.forEach(p => line.add(new paper.Point(p)));
+        this.attrs.points.forEach((p) => line.add(new paper.Point(p)));
         if (this.attrs.smooth) {
             line.smooth({ type: 'continuous' });
         }

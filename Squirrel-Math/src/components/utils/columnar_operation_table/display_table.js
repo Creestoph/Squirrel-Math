@@ -17,18 +17,15 @@
  * @constructor
  */
 function Columnar_operation_node(str) {
-    if (str.indexOf("/") != 0) {
+    if (str.indexOf('/') != 0) {
         this.value = str;
-        this.update_styles("");
-    }
-    else {
-        var s = str.indexOf(":");
-        if (s == -1)
-            throw "Invalid node pattern: " + str;
+        this.update_styles('');
+    } else {
+        var s = str.indexOf(':');
+        if (s == -1) throw 'Invalid node pattern: ' + str;
         this.value = str.substring(s + 1);
         this.update_styles(str.substring(0, s));
     }
-
 }
 
 /**
@@ -36,31 +33,36 @@ function Columnar_operation_node(str) {
  * @param str pattern: /styleid/styleid.../styleid
  */
 Columnar_operation_node.prototype.update_styles = function (str) {
-    this.style_ids = str.split("/");
+    this.style_ids = str.split('/');
     this.style_ids.splice(0, 1);
-}
+};
 
 Columnar_operation_node.prototype.print = function () {
-    if (this.style_ids.indexOf("c") == -1)
-        this.style_ids.push("n")
-    var class_str = " class = \"" + this.style_ids.map(Columnar_operation_node.style_id_to_style_name).join(" ") + "\"";
-    return this.value ? "<td" + class_str + ">$" + this.value + "$</td>" : "<td" + class_str + "></td>";
-}
+    if (this.style_ids.indexOf('c') == -1) this.style_ids.push('n');
+    var class_str =
+        ' class = "' +
+        this.style_ids
+            .map(Columnar_operation_node.style_id_to_style_name)
+            .join(' ') +
+        '"';
+    return this.value
+        ? '<td' + class_str + '>$' + this.value + '$</td>'
+        : '<td' + class_str + '></td>';
+};
 
 Columnar_operation_node.style_dictionary = {};
-Columnar_operation_node.style_dictionary["n"] = "columnar_operation_not_carry";
-Columnar_operation_node.style_dictionary["c"] = "columnar_operation_carry";
-Columnar_operation_node.style_dictionary["u"] = "columnar_operation_underlined";
-Columnar_operation_node.style_dictionary["h"] = "columnar_operation_highlight";
-Columnar_operation_node.style_dictionary["s"] = "strikethrough";
+Columnar_operation_node.style_dictionary['n'] = 'columnar_operation_not_carry';
+Columnar_operation_node.style_dictionary['c'] = 'columnar_operation_carry';
+Columnar_operation_node.style_dictionary['u'] = 'columnar_operation_underlined';
+Columnar_operation_node.style_dictionary['h'] = 'columnar_operation_highlight';
+Columnar_operation_node.style_dictionary['s'] = 'strikethrough';
 
 Columnar_operation_node.style_id_to_style_name = function (style_id) {
     if (!(style_id in Columnar_operation_node.style_dictionary)) {
-        throw "Ivalid style id: " + style_id;
+        throw 'Ivalid style id: ' + style_id;
     }
     return Columnar_operation_node.style_dictionary[style_id];
-}
-
+};
 
 /**
  * class Display_table
@@ -79,16 +81,15 @@ export class Display_table {
     }
 
     print(target) {
-
-        var table = "<table align = \"center\" class=\"columnar_operation\">";
+        var table = '<table align = "center" class="columnar_operation">';
         for (let i = 0; i < this.nodes.length; i++) {
-            table += "<tr>";
+            table += '<tr>';
             for (let j = 0; j < this.nodes[i].length; j++) {
                 table += this.nodes[i][j].print();
             }
-            table += "</tr>";
+            table += '</tr>';
         }
-        table += "</table>";
+        table += '</table>';
         target.innerHTML = table;
     }
 
@@ -104,55 +105,83 @@ export class Display_table {
     }
 
     static create_from_table(operation, numbers) {
-        if (operation != "+" && operation != "-") {
-            return Display_table.create_custom(numbers)
+        if (operation != '+' && operation != '-') {
+            return Display_table.create_custom(numbers);
         }
         var nodes = [];
         var t;
         for (var i = 0; i < numbers.length; i++) {
             nodes[i] = [];
-            var style = "";
+            var style = '';
             switch (operation) {
-                case "+":
+                case '+':
                     if (i == 0) {
-                        style += "/c";
+                        style += '/c';
                     }
                     if (i == numbers.length - 2) {
-                        style += "/u";
-                        t = style + ":+";
-                        nodes[i][0] = new Columnar_operation_node(t[0] == ':' ? t.substring(1) : t);
-                        t = style + ":";
-                        nodes[i][1] = new Columnar_operation_node(t[0] == ':' ? t.substring(1) : t);
-                    }
-                    else {
-                        t = style + ":";
-                        nodes[i][0] = new Columnar_operation_node(t[0] == ':' ? t.substring(1) : t);
-                        nodes[i][1] = new Columnar_operation_node(t[0] == ':' ? t.substring(1) : t);
+                        style += '/u';
+                        t = style + ':+';
+                        nodes[i][0] = new Columnar_operation_node(
+                            t[0] == ':' ? t.substring(1) : t,
+                        );
+                        t = style + ':';
+                        nodes[i][1] = new Columnar_operation_node(
+                            t[0] == ':' ? t.substring(1) : t,
+                        );
+                    } else {
+                        t = style + ':';
+                        nodes[i][0] = new Columnar_operation_node(
+                            t[0] == ':' ? t.substring(1) : t,
+                        );
+                        nodes[i][1] = new Columnar_operation_node(
+                            t[0] == ':' ? t.substring(1) : t,
+                        );
                     }
                     for (let j = 0; j < numbers[i].length; j++) {
-                        t = style + (numbers[i][j].length > 0 && numbers[i][j][0] == "/" ? "" : ":") + numbers[i][j]
-                        nodes[i][j + 2] = new Columnar_operation_node(t[0] == ':' ? t.substring(1) : t);
+                        t =
+                            style +
+                            (numbers[i][j].length > 0 && numbers[i][j][0] == '/'
+                                ? ''
+                                : ':') +
+                            numbers[i][j];
+                        nodes[i][j + 2] = new Columnar_operation_node(
+                            t[0] == ':' ? t.substring(1) : t,
+                        );
                     }
                     break;
-                case "-":
+                case '-':
                     if (i == 0 || i == 1) {
-                        style += "/c";
+                        style += '/c';
                     }
                     if (i == numbers.length - 2) {
-                        style += "/u";
-                        t = style + ":-";
-                        nodes[i][0] = new Columnar_operation_node(t[0] == ':' ? t.substring(1) : t);
-                        t = style + ":";
-                        nodes[i][1] = new Columnar_operation_node(t[0] == ':' ? t.substring(1) : t);
-                    }
-                    else {
-                        t = style + ":";
-                        nodes[i][0] = new Columnar_operation_node(t[0] == ':' ? t.substring(1) : t);
-                        nodes[i][1] = new Columnar_operation_node(t[0] == ':' ? t.substring(1) : t);
+                        style += '/u';
+                        t = style + ':-';
+                        nodes[i][0] = new Columnar_operation_node(
+                            t[0] == ':' ? t.substring(1) : t,
+                        );
+                        t = style + ':';
+                        nodes[i][1] = new Columnar_operation_node(
+                            t[0] == ':' ? t.substring(1) : t,
+                        );
+                    } else {
+                        t = style + ':';
+                        nodes[i][0] = new Columnar_operation_node(
+                            t[0] == ':' ? t.substring(1) : t,
+                        );
+                        nodes[i][1] = new Columnar_operation_node(
+                            t[0] == ':' ? t.substring(1) : t,
+                        );
                     }
                     for (let j = 0; j < numbers[i].length; j++) {
-                        t = style + (numbers[i][j].length > 0 && numbers[i][j][0] == "/" ? "" : ":") + numbers[i][j];
-                        nodes[i][j + 2] = new Columnar_operation_node(t[0] == ':' ? t.substring(1) : t);
+                        t =
+                            style +
+                            (numbers[i][j].length > 0 && numbers[i][j][0] == '/'
+                                ? ''
+                                : ':') +
+                            numbers[i][j];
+                        nodes[i][j + 2] = new Columnar_operation_node(
+                            t[0] == ':' ? t.substring(1) : t,
+                        );
                     }
                     break;
             }
@@ -160,4 +189,3 @@ export class Display_table {
         return new Display_table(nodes);
     }
 }
-

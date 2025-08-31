@@ -14,7 +14,12 @@ export class Interval implements Set {
     leftOpen: boolean;
     rightOpen: boolean;
 
-    constructor(leftBound: Expression, rightBound: Expression, leftOpen: boolean, rightOpen: boolean) {
+    constructor(
+        leftBound: Expression,
+        rightBound: Expression,
+        leftOpen: boolean,
+        rightOpen: boolean,
+    ) {
         this.leftBound = leftBound;
         this.rightBound = rightBound;
         this.leftOpen = leftOpen;
@@ -26,32 +31,82 @@ export class Interval implements Set {
     }
 
     copy(): Interval {
-        return new Interval(this.leftBound.copy(), this.rightBound.copy(), this.leftOpen, this.rightOpen);
+        return new Interval(
+            this.leftBound.copy(),
+            this.rightBound.copy(),
+            this.leftOpen,
+            this.rightOpen,
+        );
     }
 
     toMathJax(): string {
-        return (this.leftOpen ? "(" : "[") + this.leftBound.toMathJax() + ", " + 
-        this.rightBound.toMathJax() + (this.rightOpen ? ")" : "]");
+        return (
+            (this.leftOpen ? '(' : '[') +
+            this.leftBound.toMathJax() +
+            ', ' +
+            this.rightBound.toMathJax() +
+            (this.rightOpen ? ')' : ']')
+        );
     }
 
     includes(e: Expression): boolean {
-        return isInequalityIdentity(new Inequality(e, this.leftOpen ? InequalitySign.GREATER : InequalitySign.GREATER_EQUAL, this.leftBound)) &&
-        isInequalityIdentity(new Inequality(e, this.rightOpen ? InequalitySign.LESS : InequalitySign.LESS_EQUAL, this.rightBound));
+        return (
+            isInequalityIdentity(
+                new Inequality(
+                    e,
+                    this.leftOpen
+                        ? InequalitySign.GREATER
+                        : InequalitySign.GREATER_EQUAL,
+                    this.leftBound,
+                ),
+            ) &&
+            isInequalityIdentity(
+                new Inequality(
+                    e,
+                    this.rightOpen
+                        ? InequalitySign.LESS
+                        : InequalitySign.LESS_EQUAL,
+                    this.rightBound,
+                ),
+            )
+        );
     }
 
     randomElement(): Expression {
-        if (equals(this.leftBound, Infty.negative) && equals(this.rightBound, Infty.positive))
-            return new Decimal((Math.random() > 0.5 ? -1 : 1)*Math.tan(Math.random()*Math.PI/2));
+        if (
+            equals(this.leftBound, Infty.negative) &&
+            equals(this.rightBound, Infty.positive)
+        )
+            return new Decimal(
+                (Math.random() > 0.5 ? -1 : 1) *
+                    Math.tan((Math.random() * Math.PI) / 2),
+            );
         else if (equals(this.leftBound, Infty.negative))
-            return Sum.difference(this.rightBound, new Decimal((Math.random() > 0.5 ? -1 : 1)*Math.tan(Math.random()*Math.PI/2)));
+            return Sum.difference(
+                this.rightBound,
+                new Decimal(
+                    (Math.random() > 0.5 ? -1 : 1) *
+                        Math.tan((Math.random() * Math.PI) / 2),
+                ),
+            );
         else if (equals(this.rightBound, Infty.positive))
-            return Sum.of(this.leftBound, new Decimal((Math.random() > 0.5 ? -1 : 1)*Math.tan(Math.random()*Math.PI/2)));
+            return Sum.of(
+                this.leftBound,
+                new Decimal(
+                    (Math.random() > 0.5 ? -1 : 1) *
+                        Math.tan((Math.random() * Math.PI) / 2),
+                ),
+            );
         else {
             let random01 = Math.random();
-            if (this.leftOpen)
-                while (random01 == 0)
-                    random01 = Math.random();
-            return Sum.of(this.leftBound, Product.of(Sum.difference(this.rightBound, this.leftBound), new Decimal(random01)));
+            if (this.leftOpen) while (random01 == 0) random01 = Math.random();
+            return Sum.of(
+                this.leftBound,
+                Product.of(
+                    Sum.difference(this.rightBound, this.leftBound),
+                    new Decimal(random01),
+                ),
+            );
         }
     }
 
@@ -64,8 +119,12 @@ export class Interval implements Set {
     }
 
     equals(other: Set) {
-        return other instanceof Interval && 
-            equals(other.leftBound, this.leftBound) && equals(other.rightBound, this.rightBound) && 
-            other.leftOpen == this.leftOpen && other.rightOpen == this.rightOpen;
+        return (
+            other instanceof Interval &&
+            equals(other.leftBound, this.leftBound) &&
+            equals(other.rightBound, this.rightBound) &&
+            other.leftOpen == this.leftOpen &&
+            other.rightOpen == this.rightOpen
+        );
     }
 }

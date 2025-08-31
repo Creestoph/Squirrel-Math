@@ -3,10 +3,10 @@
 </template>
 
 <script lang="ts">
-import paper from "paper";
+import paper from 'paper';
 import { Component, Prop } from 'vue-property-decorator';
 import Vue from 'vue';
-import { RectangleAttributes } from "@/components/editor/nodes/Canvas/RectangleNode";
+import { RectangleAttributes } from '@/components/editor/nodes/Canvas/RectangleNode';
 
 @Component
 export default class GeometryRectangle extends Vue {
@@ -17,12 +17,22 @@ export default class GeometryRectangle extends Vue {
         paperScope.setup(this.$refs.canvas as HTMLCanvasElement);
         paperScope.activate();
         let center = new paper.Point(this.attrs.center.x, this.attrs.center.y);
-        let size = new paper.Size(this.attrs.size.width, this.attrs.size.height);
-        let rectangle = new paper.Shape.Rectangle(new paper.Rectangle(center.add(new paper.Point(-size.width! / 2, -size.height! / 2)), size));
+        let size = new paper.Size(
+            this.attrs.size.width,
+            this.attrs.size.height,
+        );
+        let rectangle = new paper.Shape.Rectangle(
+            new paper.Rectangle(
+                center.add(
+                    new paper.Point(-size.width! / 2, -size.height! / 2),
+                ),
+                size,
+            ),
+        );
         rectangle.fillColor = new paper.Color(this.attrs.color);
         rectangle.strokeColor = new paper.Color(this.attrs.borderColor);
-        rectangle.style!.strokeWidth = rectangle.strokeColor.alpha! > 0 ? 3 : 0;    
-  }
+        rectangle.style!.strokeWidth = rectangle.strokeColor.alpha! > 0 ? 3 : 0;
+    }
 }
 </script>
 

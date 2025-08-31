@@ -17,8 +17,14 @@ export class Logarithm implements Expression {
     }
 
     toMathJax(): string {
-        return (this.base == constantE ? "\\log" : "\\log_{" + this.base.toMathJax() + "}") + (this.antilogarithm.precedence() <= this.precedence() ? 
-        "\\left(" + this.antilogarithm.toMathJax() + "\\right)" :  "{" + this.antilogarithm.toMathJax() + "}");
+        return (
+            (this.base == constantE
+                ? '\\log'
+                : '\\log_{' + this.base.toMathJax() + '}') +
+            (this.antilogarithm.precedence() <= this.precedence()
+                ? '\\left(' + this.antilogarithm.toMathJax() + '\\right)'
+                : '{' + this.antilogarithm.toMathJax() + '}')
+        );
     }
 
     isNegative(): boolean {
@@ -26,13 +32,19 @@ export class Logarithm implements Expression {
     }
 
     substitute(old: Expression, e: Expression): Expression {
-        if (old.identical(this))
-            return e;
-        return new Logarithm(this.base.substitute(old, e), this.antilogarithm.substitute(old, e));
+        if (old.identical(this)) return e;
+        return new Logarithm(
+            this.base.substitute(old, e),
+            this.antilogarithm.substitute(old, e),
+        );
     }
 
     identical(other: Expression): boolean {
-        return (other instanceof Logarithm) && this.base.identical(other.base) && this.antilogarithm.identical(other.antilogarithm);
+        return (
+            other instanceof Logarithm &&
+            this.base.identical(other.base) &&
+            this.antilogarithm.identical(other.antilogarithm)
+        );
     }
 
     precedence(): number {
@@ -40,11 +52,13 @@ export class Logarithm implements Expression {
     }
 
     allVariables(): Variable[] {
-        let result = [...this.base.allVariables(), ...this.antilogarithm.allVariables()];
+        let result = [
+            ...this.base.allVariables(),
+            ...this.antilogarithm.allVariables(),
+        ];
         for (let i = 0; i < result.length; i++)
-            for (let j = i+1; j < result.length; j++)
-                if (result[j].identical(result[i]))
-                    result.splice(j--, 1);
+            for (let j = i + 1; j < result.length; j++)
+                if (result[j].identical(result[i])) result.splice(j--, 1);
         return result;
     }
 }

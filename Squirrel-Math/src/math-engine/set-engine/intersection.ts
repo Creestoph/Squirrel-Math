@@ -10,41 +10,45 @@ export class Intersection implements Set {
     }
 
     copy(): Intersection {
-        return new Intersection(...this.sets.map(a => a.copy()));
+        return new Intersection(...this.sets.map((a) => a.copy()));
     }
 
     toMathJax(): string {
-        return this.sets.map(s => s.toMathJax()).join("\\cap");
+        return this.sets.map((s) => s.toMathJax()).join('\\cap');
     }
 
     includes(e: Expression): boolean {
-        return this.sets.every(a => a.includes(e));
+        return this.sets.every((a) => a.includes(e));
     }
 
     randomElement(): Expression | undefined {
-        if (this.sets.length == 0)
-            return undefined;
+        if (this.sets.length == 0) return undefined;
         let result = this.sets[0].randomElement();
         if (result != undefined) {
             let trials = 0;
-            do 
-                result = this.sets[0].randomElement();
-            while (trials++ < 100000 && (result == undefined || this.sets.some(s => !s.includes(result as Expression))))
+            do result = this.sets[0].randomElement();
+            while (
+                trials++ < 100000 &&
+                (result == undefined ||
+                    this.sets.some((s) => !s.includes(result as Expression)))
+            );
         }
-        return result
+        return result;
     }
 
     isFinite(): boolean {
-        return this.sets.some(a => a.isFinite());
+        return this.sets.some((a) => a.isFinite());
     }
 
     size(): Expression {
-        return Sum.of(...this.sets.map(a => a.size()));
+        return Sum.of(...this.sets.map((a) => a.size()));
     }
 
     equals(other: Set) {
-        return other instanceof Intersection && 
-        this.sets.every(a => other.sets.some(o => a.equals(o))) &&
-        other.sets.every(a => this.sets.some(o => a.equals(o)));
+        return (
+            other instanceof Intersection &&
+            this.sets.every((a) => other.sets.some((o) => a.equals(o))) &&
+            other.sets.every((a) => this.sets.some((o) => a.equals(o)))
+        );
     }
 }

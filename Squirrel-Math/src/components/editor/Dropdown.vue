@@ -1,8 +1,15 @@
 <template>
     <button class="wrapper" @click="dropdownVisible = !dropdownVisible">
-        <div class="value"><slot name="placeholder">{{selectedOption}}</slot></div>
-        <div v-if="arrow" class="arrow-down"></div> 
-        <div class="dropdown" ref="dropdown" v-if="dropdownVisible" @click="select($event)">
+        <div class="value">
+            <slot name="placeholder">{{ selectedOption }}</slot>
+        </div>
+        <div v-if="arrow" class="arrow-down"></div>
+        <div
+            class="dropdown"
+            ref="dropdown"
+            v-if="dropdownVisible"
+            @click="select($event)"
+        >
             <slot></slot>
         </div>
     </button>
@@ -10,13 +17,13 @@
 
 <script>
 export default {
-    name: "Dropdown",
-    props: ["arrow"],
+    name: 'Dropdown',
+    props: ['arrow'],
     data() {
         return {
             selectedOption: ' ',
             dropdownVisible: false,
-        }
+        };
     },
     methods: {
         select(event) {
@@ -24,15 +31,15 @@ export default {
             event.stopPropagation();
             if (event.target != this.$refs.dropdown) {
                 this.selectedOption = event.target.getAttribute('value');
-                this.$emit('selected', this.selectedOption); 
+                this.$emit('selected', this.selectedOption);
             }
-        }
-    }
+        },
+    },
 };
 </script>
 
 <style scoped lang="scss">
-@import "@/style/global";
+@import '@/style/global';
 
 .wrapper {
     position: relative;
@@ -60,8 +67,8 @@ export default {
 
 .arrow-down {
     float: right;
-    width: 0; 
-    height: 0; 
+    width: 0;
+    height: 0;
     margin: 10px 0 10px 10px;
     border-left: 4px solid transparent;
     border-right: 4px solid transparent;

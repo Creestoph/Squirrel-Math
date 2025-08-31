@@ -14,8 +14,8 @@ export enum InequalitySign {
     LESS,
     LESS_EQUAL,
     GREATER,
-    GREATER_EQUAL
-};
+    GREATER_EQUAL,
+}
 
 export class Inequality implements AlgebraicNotion {
     left: Expression;
@@ -29,11 +29,15 @@ export class Inequality implements AlgebraicNotion {
     }
 
     static oppositeSign(sign: InequalitySign): InequalitySign {
-        switch(sign) {
-            case InequalitySign.LESS: return InequalitySign.GREATER;
-            case InequalitySign.LESS_EQUAL: return InequalitySign.GREATER_EQUAL;
-            case InequalitySign.GREATER: return InequalitySign.LESS;
-            case InequalitySign.GREATER_EQUAL: return InequalitySign.LESS_EQUAL;
+        switch (sign) {
+            case InequalitySign.LESS:
+                return InequalitySign.GREATER;
+            case InequalitySign.LESS_EQUAL:
+                return InequalitySign.GREATER_EQUAL;
+            case InequalitySign.GREATER:
+                return InequalitySign.LESS;
+            case InequalitySign.GREATER_EQUAL:
+                return InequalitySign.LESS_EQUAL;
         }
     }
 
@@ -42,11 +46,19 @@ export class Inequality implements AlgebraicNotion {
     }
 
     toMathJax(): string {
-        switch(this.sign) {
-            case InequalitySign.LESS: return this.left.toMathJax() + " < " + this.right.toMathJax();
-            case InequalitySign.LESS_EQUAL: return this.left.toMathJax() + " \\leq " + this.right.toMathJax();
-            case InequalitySign.GREATER: return this.left.toMathJax() + " > " + this.right.toMathJax();
-            case InequalitySign.GREATER_EQUAL: return this.left.toMathJax() + " \\geq " + this.right.toMathJax();
+        switch (this.sign) {
+            case InequalitySign.LESS:
+                return this.left.toMathJax() + ' < ' + this.right.toMathJax();
+            case InequalitySign.LESS_EQUAL:
+                return (
+                    this.left.toMathJax() + ' \\leq ' + this.right.toMathJax()
+                );
+            case InequalitySign.GREATER:
+                return this.left.toMathJax() + ' > ' + this.right.toMathJax();
+            case InequalitySign.GREATER_EQUAL:
+                return (
+                    this.left.toMathJax() + ' \\geq ' + this.right.toMathJax()
+                );
         }
     }
 

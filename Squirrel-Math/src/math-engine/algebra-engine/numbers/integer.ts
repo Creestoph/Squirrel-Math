@@ -16,15 +16,13 @@ export class Integer extends N {
     static random(a: number, b: number): Integer {
         a = Math.ceil(a);
         b = Math.floor(b);
-        return new Integer(Math.random()*(b - a + 1) + a);
+        return new Integer(Math.random() * (b - a + 1) + a);
     }
 
     constructor(int: bigint | number) {
         super();
-        if (typeof int == "bigint")
-            this.int = int;
-        else
-            this.int = BigInt(Math.floor(int + 0.5));
+        if (typeof int == 'bigint') this.int = int;
+        else this.int = BigInt(Math.floor(int + 0.5));
     }
 
     copy(): Integer {
@@ -32,7 +30,7 @@ export class Integer extends N {
     }
 
     toMathJax(): string {
-        return "" + this.int;
+        return '' + this.int;
     }
 
     isNegative(): boolean {
@@ -44,14 +42,12 @@ export class Integer extends N {
     }
 
     identical(other: Expression): boolean {
-        return (other instanceof Integer) && this.int == other.int;
+        return other instanceof Integer && this.int == other.int;
     }
 
     lessThan(other: N): boolean {
-        if (other instanceof Integer)
-            return this.int < other.int;
-        else if (other instanceof Decimal)
-            return this.numeric() < other.float;
+        if (other instanceof Integer) return this.int < other.int;
+        else if (other instanceof Decimal) return this.numeric() < other.float;
         else if (other instanceof Fraction)
             return this.numeric() < other.asDecimal().float;
         return false;
@@ -59,11 +55,14 @@ export class Integer extends N {
 
     multiply(number: N): N {
         if (number instanceof Integer)
-            return new Integer(this.int*number.int);
+            return new Integer(this.int * number.int);
         if (number instanceof Decimal)
-            return new Decimal(this.numeric()*number.float);
+            return new Decimal(this.numeric() * number.float);
         if (number instanceof Fraction)
-            return new Fraction(this.int*number.numerator.int, number.denominator.int).reduced();
+            return new Fraction(
+                this.int * number.numerator.int,
+                number.denominator.int,
+            ).reduced();
         return this;
     }
 
@@ -71,9 +70,12 @@ export class Integer extends N {
         if (number instanceof Integer)
             return new Fraction(this.int, number.int).reduced();
         if (number instanceof Decimal)
-            return new Decimal(this.numeric()/number.float);
+            return new Decimal(this.numeric() / number.float);
         if (number instanceof Fraction)
-            return new Fraction(this.int*number.denominator.int, number.numerator.int).reduced();
+            return new Fraction(
+                this.int * number.denominator.int,
+                number.numerator.int,
+            ).reduced();
         return this;
     }
 
@@ -83,14 +85,17 @@ export class Integer extends N {
         if (number instanceof Decimal)
             return new Decimal(this.numeric() + number.float);
         if (number instanceof Fraction)
-            return new Fraction(this.int*number.denominator.int + number.numerator.int, number.denominator.int);
+            return new Fraction(
+                this.int * number.denominator.int + number.numerator.int,
+                number.denominator.int,
+            );
         return this;
     }
 
     powerInteger(number: Integer): N {
         if (number.isNegative())
-            return new Fraction(1, this.int**(-number.int));
-        return new Integer(this.int**number.int);
+            return new Fraction(1, this.int ** -number.int);
+        return new Integer(this.int ** number.int);
     }
 
     powerDecimal(number: Decimal): Decimal {
@@ -110,8 +115,7 @@ export class Integer extends N {
     }
 
     absolute(): Integer {
-        if (this.int < 0)
-            return this.opposite();
+        if (this.int < 0) return this.opposite();
         return this;
     }
 }
