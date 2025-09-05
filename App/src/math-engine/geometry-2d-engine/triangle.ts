@@ -19,8 +19,11 @@ export class Triangle implements Figure {
         this.p1 = p1;
         this.p2 = p2;
         this.p3 = p3;
-        if (name) this.name = name;
-        else if (p1.name && p2.name && p3.name) this.name = p1.name + p2.name + p3.name;
+        if (name) {
+            this.name = name;
+        } else if (p1.name && p2.name && p3.name) {
+            this.name = p1.name + p2.name + p3.name;
+        }
         this.segment12 = new Segment(p1, p2);
         this.segment13 = new Segment(p1, p3);
         this.segment23 = new Segment(p2, p3);
@@ -34,10 +37,10 @@ export class Triangle implements Figure {
             this.p3.x instanceof Number &&
             this.p3.y instanceof Number
         ) {
-            let v1 = new paper.Point(this.p1.x.numeric(), this.p1.y.numeric());
-            let v2 = new paper.Point(this.p2.x.numeric(), this.p2.y.numeric());
-            let v3 = new paper.Point(this.p3.x.numeric(), this.p3.y.numeric());
-            let border = new paper.Path([v1, v2, v3, v1]);
+            const v1 = new paper.Point(this.p1.x.numeric(), this.p1.y.numeric());
+            const v2 = new paper.Point(this.p2.x.numeric(), this.p2.y.numeric());
+            const v3 = new paper.Point(this.p3.x.numeric(), this.p3.y.numeric());
+            const border = new paper.Path([v1, v2, v3, v1]);
             border.strokeColor = new paper.Color(0.7, 0.7, 0.7);
             border.strokeWidth = 4;
         }

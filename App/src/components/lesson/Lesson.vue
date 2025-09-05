@@ -189,7 +189,7 @@ export default class Lesson extends Vue {
                         .map((item: any) => item.content);
                 }
                 Comment.allComments = json.comments;
-                Graphics.lessonImages = json.images;
+                Graphics.lessonImages = json.images || {};
                 this.$nextTick(() => MathJax.Hub.Queue(['Typeset', MathJax.Hub]));
             });
         } else {

@@ -26,7 +26,9 @@ export function numericValue(e: Expression): Decimal | Expression {
     return e;
 }
 
-//returns product: (number)*(extracted expression)
+/*
+ * @returns product: (number)*(extracted expression)
+ */
 export function extractConstantFactor(e: Expression): Product {
     let coefficients = standardForm(e).addends.map((a) => (a as Product).factors[0] as Number);
     const denominators = coefficients.filter((c) => c instanceof Fraction).map((c) => (c as Fraction).denominator.int);
@@ -43,7 +45,9 @@ export function extractConstantFactor(e: Expression): Product {
     return Product.of(constantFactor, simplify(Product.of(constantFactor.inverse(), e)));
 }
 
-//returns product: (number)*(extracted expression)
+/*
+ * @returns product: (number)*(extracted expression)
+ */
 export function extractMonomialFactor(e: Expression): Product {
     const numberExtraction = extractConstantFactor(e);
     const extractFactors: Expression[] = [numberExtraction.factors[0]];

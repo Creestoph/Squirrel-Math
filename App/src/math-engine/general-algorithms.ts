@@ -1,8 +1,10 @@
-//returns index in array where element should be inserted to preserve order
-export function findByBisection(
-    array: any[],
-    element: any,
-    order: (a: any, b: any) => number,
+/*
+ * @returns index in array where element should be inserted to preserve order
+ */
+export function findByBisection<T>(
+    array: T[],
+    element: T,
+    order: (a: T, b: T) => number,
     from: number = 0,
     to: number = array.length - 1,
 ): number {
@@ -32,8 +34,10 @@ export function findByBisection(
     return middle + 1;
 }
 
-//returns array with element inserted and preserved order
-export function insertByBisection(array: any[], element: any, order: (a: any, b: any) => number): any[] {
+/**
+ * @returns array with element inserted and preserved order
+ */
+export function insertByBisection<T>(array: T[], element: T, order: (a: T, b: T) => number): T[] {
     array.splice(findByBisection(array, element, order), 0, element);
     return array;
 }

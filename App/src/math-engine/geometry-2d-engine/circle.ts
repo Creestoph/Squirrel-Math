@@ -22,21 +22,30 @@ export class Circle implements Figure {
     }
 
     static *nameGenerator(): Generator<string, string, string> {
-        for (let i = 1; ; i++)
-            for (let j = 14; j < 27; j++) yield String.fromCharCode('a'.charCodeAt(0) + j) + (i == 1 ? '' : '_' + i);
+        for (let i = 1; ; i++) {
+            for (let j = 14; j < 27; j++) {
+                yield String.fromCharCode('a'.charCodeAt(0) + j) + (i == 1 ? '' : '_' + i);
+            }
+        }
     }
     static *Xgenerator(min: number, max: number): Generator<number, void, number> {
-        while (true) yield min + Math.random() * (max - min);
+        while (true) {
+            yield min + Math.random() * (max - min);
+        }
     }
     static *Ygenerator(min: number, max: number): Generator<number, void, number> {
-        while (true) yield min + Math.random() * (max - min);
+        while (true) {
+            yield min + Math.random() * (max - min);
+        }
     }
     static *Rgenerator(size: number): Generator<number, void, number> {
-        for (let i = 0; ; i++) yield size + size * 0.2 * Math.random();
+        for (let i = 0; ; i++) {
+            yield size + size * 0.2 * Math.random();
+        }
     }
     draw() {
         if (this.center.x instanceof Number && this.center.y instanceof Number && this.r instanceof Number) {
-            let circle = new paper.Path.Circle(
+            const circle = new paper.Path.Circle(
                 new paper.Point(this.center.x.numeric(), this.center.y.numeric()),
                 this.r.numeric(),
             );

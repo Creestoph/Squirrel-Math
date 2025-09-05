@@ -7,8 +7,13 @@ export class FiniteSet implements Set {
     elements: Expression[];
 
     constructor(...elements: Expression[]) {
-        for (let i = 0; i < elements.length; i++)
-            for (let j = i + 1; j < elements.length; j++) if (equals(elements[j], elements[i])) elements.splice(j--, 1);
+        for (let i = 0; i < elements.length; i++) {
+            for (let j = i + 1; j < elements.length; j++) {
+                if (equals(elements[j], elements[i])) {
+                    elements.splice(j--, 1);
+                }
+            }
+        }
         this.elements = elements;
     }
 
@@ -25,8 +30,11 @@ export class FiniteSet implements Set {
     }
 
     randomElement(): Expression | undefined {
-        if (this.elements.length == 0) return undefined;
-        else return this.elements[Math.floor(Math.random() * this.elements.length)];
+        if (this.elements.length == 0) {
+            return undefined;
+        } else {
+            return this.elements[Math.floor(Math.random() * this.elements.length)];
+        }
     }
 
     isFinite(): boolean {

@@ -9,14 +9,14 @@
 <script lang="ts">
 import Vue from 'vue';
 import { Component, Prop, Watch } from 'vue-property-decorator';
-import Point from '@/components/utils/point';
+import { Point } from '@/components/utils/point';
 
 @Component
 export default class Tooltip extends Vue {
-    mousePos: Point = new Point(0, 0);
+    mousePos: Point = { x: 0, y: 0 };
     privVisible: boolean = false;
     currentTimeout: number = 0;
-    @Prop({ default: new Point(0, 0) }) offset!: Point;
+    @Prop({ default: { x: 0, y: 0 } }) offset!: Point;
     @Prop({ default: 0 }) timeout!: number;
     @Prop({ default: false }) visible!: boolean;
 
@@ -39,7 +39,7 @@ export default class Tooltip extends Vue {
     }
 
     onMouseOver(event: MouseEvent) {
-        this.mousePos = new Point(Math.floor(event.clientX + this.offset.x), Math.floor(event.clientY + this.offset.y));
+        this.mousePos = { x: Math.floor(event.clientX + this.offset.x), y: Math.floor(event.clientY + this.offset.y) };
     }
 }
 </script>

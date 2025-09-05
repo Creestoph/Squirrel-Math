@@ -4,6 +4,7 @@
   "editor.detectIndentation": false,
   "editor.formatOnSave": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "prettier.ignorePath": ".prettierignore",
   "eslint.validate": ["javascript", "typescript", "vue"],
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": "explicit"

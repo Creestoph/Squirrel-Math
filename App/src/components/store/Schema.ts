@@ -7,8 +7,8 @@ export class ParameterType {
     static readonly ENUM = (...values: string[]) => new ParameterType('ENUM', values);
 
     constructor(
-        public readonly name: string,
-        public readonly values?: string[],
+        readonly name: string,
+        readonly values?: string[],
     ) {}
 }
 

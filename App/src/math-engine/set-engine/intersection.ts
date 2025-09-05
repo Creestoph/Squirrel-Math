@@ -22,12 +22,15 @@ export class Intersection implements Set {
     }
 
     randomElement(): Expression | undefined {
-        if (this.sets.length == 0) return undefined;
+        if (this.sets.length == 0) {
+            return undefined;
+        }
         let result = this.sets[0].randomElement();
         if (result != undefined) {
             let trials = 0;
-            do result = this.sets[0].randomElement();
-            while (
+            do {
+                result = this.sets[0].randomElement();
+            } while (
                 trials++ < 100000 &&
                 (result == undefined || this.sets.some((s) => !s.includes(result as Expression)))
             );

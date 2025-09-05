@@ -1,8 +1,8 @@
-import Home from './components/Home.vue';
-import Editor from './components/editor/Editor.vue';
-import InteractiveTree from './components/InteractiveTree.vue';
-import DrzewoHD from './components/DrzewoHD.vue';
-import Lesson from './components/lesson/Lesson.vue';
+import Home from './../components/Home.vue';
+import Editor from './../components/editor/Editor.vue';
+import InteractiveTree from './../components/InteractiveTree.vue';
+import DrzewoHD from './../components/DrzewoHD.vue';
+import Lesson from './../components/lesson/Lesson.vue';
 
 export const routes = [
     { path: '', component: Home },

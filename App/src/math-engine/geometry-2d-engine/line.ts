@@ -50,14 +50,21 @@ export class Line implements Figure {
     }
 
     static *nameGenerator(): Generator<string, string, string> {
-        for (let i = 1; ; i++)
-            for (let j = 0; j < 14; j++) yield String.fromCharCode('a'.charCodeAt(0) + j) + (i == 1 ? '' : '_' + i);
+        for (let i = 1; ; i++) {
+            for (let j = 0; j < 14; j++) {
+                yield String.fromCharCode('a'.charCodeAt(0) + j) + (i == 1 ? '' : '_' + i);
+            }
+        }
     }
     static *Agenerator(): Generator<number, void, number> {
-        for (let i = 0; ; i++) yield Math.tan(10 + i * 10 * Math.sqrt(10));
+        for (let i = 0; ; i++) {
+            yield Math.tan(10 + i * 10 * Math.sqrt(10));
+        }
     }
     static *Bgenerator(min: number, max: number): Generator<number, void, number> {
-        while (true) yield min + Math.random() * (max - min);
+        while (true) {
+            yield min + Math.random() * (max - min);
+        }
     }
     isVertical() {
         return equals(this.b, Integer.zero);
@@ -66,13 +73,13 @@ export class Line implements Figure {
         if (this.a instanceof Number && this.b instanceof Number && this.c instanceof Number) {
             let line;
             if (!this.isVertical()) {
-                let x1 = -1000;
-                let y1 = (simplify(this.directionalEquation(new Integer(-1000)).right) as Number).numeric();
-                let x2 = 1000;
-                let y2 = (simplify(this.directionalEquation(new Integer(1000)).right) as Number).numeric();
+                const x1 = -1000;
+                const y1 = (simplify(this.directionalEquation(new Integer(-1000)).right) as Number).numeric();
+                const x2 = 1000;
+                const y2 = (simplify(this.directionalEquation(new Integer(1000)).right) as Number).numeric();
                 line = new paper.Path([new paper.Point(x1, y1), new paper.Point(x2, y2)]);
             } else {
-                let x = this.c.opposite().divide(this.a).numeric();
+                const x = this.c.opposite().divide(this.a).numeric();
                 line = new paper.Path([new paper.Point(x, -1000), new paper.Point(x, 1000)]);
             }
             line.strokeColor = new paper.Color(0.3, 0.3, 0.3);
@@ -97,9 +104,11 @@ export class Line implements Figure {
     }
 
     directionalEquation(paramX: Expression = new Variable('x'), paramY: Expression = new Variable('y')): Equation {
-        if (this.isVertical()) throw 'Line ' + this.name + ' has no directional equation as it is vertical';
-        let aDirectional = Product.of(Integer.minusOne, new Quotient(this.a, this.b));
-        let bDirectional = Product.of(Integer.minusOne, new Quotient(this.c, this.b));
+        if (this.isVertical()) {
+            throw 'Line ' + this.name + ' has no directional equation as it is vertical';
+        }
+        const aDirectional = Product.of(Integer.minusOne, new Quotient(this.a, this.b));
+        const bDirectional = Product.of(Integer.minusOne, new Quotient(this.c, this.b));
         return new Equation(paramY, Sum.of(Product.of(aDirectional, paramX), bDirectional));
     }
 

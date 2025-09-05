@@ -3,7 +3,7 @@ import { Integer } from '../algebra-engine/numbers';
 
 export abstract class Set {
     static empty: Set = {
-        includes(x: Expression) {
+        includes(_x: Expression) {
             return false;
         },
         randomElement(): Expression | undefined {

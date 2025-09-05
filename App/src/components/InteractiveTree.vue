@@ -26,7 +26,7 @@ import graphLessons from '@/assets/current_lesson_graph.json';
 import graphCoordinates from '@/assets/current_graph_coordinates.json';
 import Tooltip from '@/components/utils/Tooltip.vue';
 import Vue from 'vue';
-import Point from './utils/point';
+import { Point } from './utils/point';
 import paper from 'paper';
 
 class Lesson {

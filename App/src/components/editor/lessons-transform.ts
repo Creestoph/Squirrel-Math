@@ -59,7 +59,9 @@ export interface LessonData {
 function transformNode(node: NodeData) {
     if (node.type == 'geometry' && node.attrs!.shapes) {
         const shapes = node.attrs!.shapes;
-        if (shapes.length > 0 && !node.content) node.content = [];
+        if (shapes.length > 0 && !node.content) {
+            node.content = [];
+        }
         shapes.forEach((shape: any) => {
             const figureType = shape.type;
             delete shape.type;
@@ -71,7 +73,9 @@ function transformNode(node: NodeData) {
 
 function transformNodeAndChildren(node: NodeData) {
     transformNode(node);
-    if (node.content) node.content.forEach((child) => transformNodeAndChildren(child));
+    if (node.content) {
+        node.content.forEach((child) => transformNodeAndChildren(child));
+    }
 }
 
 export function transformAll() {
@@ -79,8 +83,12 @@ export function transformAll() {
         const lessons = file.default;
         lessons.forEach(async (lessonSpecification, i) => {
             const lesson = (await import(`@/assets/lessons/${lessonSpecification.title}.json`)) as LessonData;
-            if (lesson.short) lesson.short.content.forEach((node) => transformNodeAndChildren(node));
-            if (lesson.long) lesson.long.content.forEach((node) => transformNodeAndChildren(node));
+            if (lesson.short) {
+                lesson.short.content.forEach((node) => transformNodeAndChildren(node));
+            }
+            if (lesson.long) {
+                lesson.long.content.forEach((node) => transformNodeAndChildren(node));
+            }
             setTimeout(() => {
                 downloadFile(JSON.stringify(lesson), lessonSpecification.title, 'application/json');
             }, i * 500);

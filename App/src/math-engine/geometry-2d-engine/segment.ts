@@ -21,7 +21,7 @@ export class Segment implements Figure {
             this.p2.x instanceof Number &&
             this.p2.y instanceof Number
         ) {
-            let segment = new paper.Path([
+            const segment = new paper.Path([
                 new paper.Point(this.p1.x.numeric(), this.p1.y.numeric()),
                 new paper.Point(this.p2.x.numeric(), this.p2.y.numeric()),
             ]);

@@ -36,7 +36,9 @@ export function numericLCM(...values: bigint[]): bigint {
     return values.reduce((gcd, v) => lcmFor2Args(gcd, v), BigInt(1));
 }
 
-//returns integer close to nth root
+/*
+ * @returns integer close to nth root
+ */
 export function integerRoot(value: bigint, n: bigint = BigInt(2)) {
     let lowerBound = BigInt(0);
     let upperBound = value;

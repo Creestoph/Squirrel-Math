@@ -18,19 +18,26 @@ export class Point implements Figure {
         this.name = name;
     }
     static *nameGenerator(): Generator<string, string, string> {
-        for (let i = 1; ; i++)
-            for (let j = 0; j < 27; j++) yield String.fromCharCode('A'.charCodeAt(0) + j) + (i == 1 ? '' : '_' + i);
+        for (let i = 1; ; i++) {
+            for (let j = 0; j < 27; j++) {
+                yield String.fromCharCode('A'.charCodeAt(0) + j) + (i == 1 ? '' : '_' + i);
+            }
+        }
     }
     static *Xgenerator(min: number, max: number): Generator<number, void, number> {
-        while (true) yield min + Math.random() * (max - min);
+        while (true) {
+            yield min + Math.random() * (max - min);
+        }
     }
     static *Ygenerator(min: number, max: number): Generator<number, void, number> {
-        while (true) yield min + Math.random() * (max - min);
+        while (true) {
+            yield min + Math.random() * (max - min);
+        }
     }
 
     draw() {
         if (this.x instanceof Number && this.y instanceof Number) {
-            let point = new paper.Path.Circle(new paper.Point(this.x.numeric(), this.y.numeric()), 8);
+            const point = new paper.Path.Circle(new paper.Point(this.x.numeric(), this.y.numeric()), 8);
             point.fillColor = new paper.Color(0.95, 0.3, 0.3);
         }
     }

@@ -33,16 +33,16 @@ function equalTest(a: string, b: string) {
 
 function solutions(equation: string, s: string) {
     it(equation + ' solutions: ' + s, () => {
-        let expected = new FiniteSet(...s.split(',').map((s) => parseExpression(s)));
-        let calculated = solveEquation(new Equation(parseExpression(equation), Integer.zero), new Variable('x'));
+        const expected = new FiniteSet(...s.split(',').map((s) => parseExpression(s)));
+        const calculated = solveEquation(new Equation(parseExpression(equation), Integer.zero), new Variable('x'));
         expect(calculated instanceof FiniteSet && calculated.equals(expected)).to.be.true;
     });
 }
 
 function systemSolution(equations: string[], variables: string[], s: string[][]) {
     it(equations.join(' and ') + ' in variables ' + variables.join(', ') + ' give solution: ' + s, () => {
-        let expected = s.map((s) => s.map((s) => parseExpression(s)));
-        let calculated = solvePolynomialSystem(
+        const expected = s.map((s) => s.map((s) => parseExpression(s)));
+        const calculated = solvePolynomialSystem(
             equations.map((e) => Polynomial.asPolynomial(parseEquation(e).simplified().left)),
             variables.map((v) => parseExpression(v) as Variable),
         );
@@ -62,8 +62,8 @@ function numericSolutions(
     precision: number,
 ) {
     it(equation + ' solutions: ' + s, () => {
-        let expected = new FiniteSet(...s.split(',').map((s) => parseExpression(s)));
-        let calculated = solveNumeric(
+        const expected = new FiniteSet(...s.split(',').map((s) => parseExpression(s)));
+        const calculated = solveNumeric(
             new Equation(parseExpression(equation), Integer.zero),
             new Variable('x'),
             lowerBoud,
@@ -90,7 +90,7 @@ function numericSolutions(
 
 function derivate(formula: string, expected: string) {
     it(formula + ' has derivative ' + expected, () => {
-        let v = new Variable('x');
+        const v = new Variable('x');
         expect(equals(derivative(new Function(parseExpression(formula), [v]), v).formula, parseExpression(expected))).to
             .be.true;
     });
@@ -98,50 +98,50 @@ function derivate(formula: string, expected: string) {
 
 function numericFactors(number: string, factors: string) {
     it(number + ' factorizes to: ' + factors, () => {
-        let expected = factors.split(',').map((s) => BigInt(s));
-        let calculated = factorizeNumber(BigInt(number));
+        const expected = factors.split(',').map((s) => BigInt(s));
+        const calculated = factorizeNumber(BigInt(number));
         expect(expected.length == calculated.length && expected.every((e, i) => e === calculated[i])).to.be.true;
     });
 }
 
 function factors(e: string, f: string) {
     it(e + ' factorizes to: ' + f, () => {
-        let expected = f
+        const expected = f
             .split(',')
             .map((s) => parseExpression(s))
             .sort(productOrder);
-        let calculated = [...factorize(parseExpression(e)).factors].sort(productOrder);
+        const calculated = [...factorize(parseExpression(e)).factors].sort(productOrder);
         expect(expected.length == calculated.length && expected.every((e, i) => equals(e, calculated[i]))).to.be.true;
     });
 }
 
 function numericLeastCommonMultiple(args: string, expected: string) {
     it('lcm(' + args + ') = ' + expected, () => {
-        let numbers = args.split(',').map((s) => BigInt(s));
-        let calculated = numericLCM(...numbers);
+        const numbers = args.split(',').map((s) => BigInt(s));
+        const calculated = numericLCM(...numbers);
         expect(BigInt(expected) === calculated).to.be.true;
     });
 }
 
 function numericGreatestCommonDivisor(args: string, expected: string) {
     it('gcd(' + args + ') = ' + expected, () => {
-        let numbers = args.split(',').map((s) => BigInt(s));
-        let calculated = numericGCD(...numbers);
+        const numbers = args.split(',').map((s) => BigInt(s));
+        const calculated = numericGCD(...numbers);
         expect(BigInt(expected) === calculated).to.be.true;
     });
 }
 
 function orderedPolynomial(p: string, order: Order, expected: string) {
     it(p + ' in order ' + order.descending.name + ' is ' + expected, () => {
-        let input = Polynomial.asPolynomial(parseExpression(p), undefined, order);
-        let output = parseExpression(expected) as Sum;
+        const input = Polynomial.asPolynomial(parseExpression(p), undefined, order);
+        const output = parseExpression(expected) as Sum;
         expect(input.monomials.every((m, i) => equals(m, output.addends[i]))).to.be.true;
     });
 }
 
 function divisionRemainder(p: string, base: string[], expected: string, variables?: string[]) {
     it(p + ' in base ' + base + (variables ? ' with variables ' + variables : '') + ' is ' + expected, () => {
-        let vars = variables ? variables.map((v) => parseExpression(v) as Variable) : undefined;
+        const vars = variables ? variables.map((v) => parseExpression(v) as Variable) : undefined;
         expect(
             equals(
                 multivariateDivision(
@@ -160,10 +160,10 @@ function grobner(p: string[], order: string, expected: string[], variables?: str
     it(
         p + ' generates basis ' + expected + ' (with ' + order + (variables ? ' and variables ' + variables : '') + ')',
         () => {
-            let poly = p.map((s) => Polynomial.asPolynomial(parseExpression(s)) as Polynomial);
+            const poly = p.map((s) => Polynomial.asPolynomial(parseExpression(s)) as Polynomial);
             let o;
-            let ex = expected.map((e) => parseExpression(e));
-            let vars = variables ? variables.map((v) => parseExpression(v) as Variable) : undefined;
+            const ex = expected.map((e) => parseExpression(e));
+            const vars = variables ? variables.map((v) => parseExpression(v) as Variable) : undefined;
             switch (order) {
                 case 'lex':
                     o = monomialLexOrder;

@@ -20,7 +20,7 @@ function derivativeSum(e: Sum, v: Variable) {
 function derivativeProduct(e: Product, v: Variable) {
     return Sum.of(
         ...e.factors.map((f, i) => {
-            let factors = [derivativeExpression(f, v), ...e.factors.filter((ef, j) => j != i)];
+            const factors = [derivativeExpression(f, v), ...e.factors.filter((ef, j) => j != i)];
             return Product.of(...factors);
         }),
     );
@@ -48,11 +48,21 @@ function derivativePower(e: Power, v: Variable) {
 }
 
 function derivativeExpression(e: Expression, v: Variable): Expression {
-    if (e instanceof Variable) return derivativeVariable(e, v);
-    if (e instanceof Sum) return derivativeSum(e, v);
-    if (e instanceof Product) return derivativeProduct(e, v);
-    if (e instanceof Quotient) return derivativeQuotient(e, v);
-    if (e instanceof Power) return derivativePower(e, v);
+    if (e instanceof Variable) {
+        return derivativeVariable(e, v);
+    }
+    if (e instanceof Sum) {
+        return derivativeSum(e, v);
+    }
+    if (e instanceof Product) {
+        return derivativeProduct(e, v);
+    }
+    if (e instanceof Quotient) {
+        return derivativeQuotient(e, v);
+    }
+    if (e instanceof Power) {
+        return derivativePower(e, v);
+    }
     return Integer.zero;
 }
 

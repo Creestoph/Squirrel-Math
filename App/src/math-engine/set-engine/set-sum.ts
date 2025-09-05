@@ -24,23 +24,34 @@ export class SetSum implements Set {
     }
 
     randomElement(): Expression | undefined {
-        let own = this.copy();
-        if (own.addends.some((a) => !a.isFinite()))
-            for (let i = 0; i < own.addends.length; i++) if (own.addends[i].isFinite()) own.addends.splice(i--, 1);
-        if (own.addends.some((a) => equals(a.size(), Infty.positive)))
-            for (let i = 0; i < own.addends.length; i++)
-                if (!equals(own.addends[i].size(), Infty.positive)) own.addends.splice(i--, 1);
+        const own = this.copy();
+        if (own.addends.some((a) => !a.isFinite())) {
+            for (let i = 0; i < own.addends.length; i++) {
+                if (own.addends[i].isFinite()) {
+                    own.addends.splice(i--, 1);
+                }
+            }
+        }
+        if (own.addends.some((a) => equals(a.size(), Infty.positive))) {
+            for (let i = 0; i < own.addends.length; i++) {
+                if (!equals(own.addends[i].size(), Infty.positive)) {
+                    own.addends.splice(i--, 1);
+                }
+            }
+        }
         let totalSize = 0;
         own.addends.forEach((a) => {
-            let aSize = a.size();
+            const aSize = a.size();
             totalSize += aSize instanceof Number ? (equals(aSize, Infty.positive) ? 1 : aSize.numeric()) : 1;
         });
-        let which = Math.random() * totalSize;
+        const which = Math.random() * totalSize;
         let partialSize = 0;
         own.addends.forEach((a) => {
-            let aSize = a.size();
+            const aSize = a.size();
             partialSize += aSize instanceof Number ? aSize.numeric() : 1;
-            if (partialSize >= which) return a.randomElement();
+            if (partialSize >= which) {
+                return a.randomElement();
+            }
         });
         return own.addends[own.addends.length - 1].randomElement();
     }
