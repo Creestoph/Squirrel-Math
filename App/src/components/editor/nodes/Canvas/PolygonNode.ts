@@ -1,43 +1,53 @@
-import { EditorView } from 'prosemirror-view';
-import { Node } from 'tiptap';
+import { Node } from '@tiptap/vue-2';
+import { VueNodeViewRenderer } from '@tiptap/vue-2';
 import { mainRedColor } from './Colors';
 import PolygonView from './PolygonView.vue';
+import { idGenerator } from './Shape';
+
+declare module '@tiptap/core' {
+    interface Commands<ReturnType> {
+        polygon: {
+            createPolygon: (attrs: PolygonAttributes, pos: number) => ReturnType;
+        };
+    }
+}
 
 export interface PolygonAttributes {
+    id: string;
     vertices: { x: number; y: number }[];
     color: string;
     borderColor: string;
 }
 
-export default class PolygonNode extends Node {
-    get name() {
-        return 'polygon';
-    }
+export default Node.create({
+    name: 'polygon',
 
-    get schema() {
+    parseHTML: () => [
+        {
+            tag: 'polygon',
+            getAttrs: (element) => JSON.parse(element.getAttribute('attrs')!),
+        },
+    ],
+
+    renderHTML: ({ HTMLAttributes }) => ['polygon', { attrs: JSON.stringify(HTMLAttributes) }],
+
+    addAttributes() {
         return {
-            attrs: {
-                vertices: { default: [] },
-                color: { default: mainRedColor },
-                borderColor: { default: '#00000000' },
-            },
-            parseDOM: [
-                {
-                    tag: 'polygon',
-                    getAttrs: (dom: any) => JSON.parse(dom.getAttribute('attrs')),
-                },
-            ],
-            toDOM: (node: any) => ['polygon', { attrs: JSON.stringify(node.attrs) }],
+            id: { default: '' },
+            vertices: { default: [] },
+            color: { default: mainRedColor },
+            borderColor: { default: '#00000000' },
         };
-    }
+    },
 
-    get view() {
-        return PolygonView;
-    }
+    addNodeView: () => VueNodeViewRenderer(PolygonView),
 
-    static create(attrs: PolygonAttributes, position: number, view: EditorView): void {
-        const node = view.state.schema.nodes.polygon.createAndFill(attrs);
-        const transaction = view.state.tr.insert(position, node!);
-        view.dispatch(transaction);
-    }
-}
+    addCommands() {
+        return {
+            createPolygon:
+                (attrs: PolygonAttributes, pos: number) =>
+                ({ commands }) =>
+                    commands.insertContentAt(pos, this.type.createAndFill({ ...attrs, id: idGenerator.next().value })),
+        };
+    },
+});

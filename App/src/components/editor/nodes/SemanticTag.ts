@@ -1,54 +1,68 @@
-import { Node } from 'tiptap';
+import { Node } from '@tiptap/vue-2';
+import { VueNodeViewRenderer } from '@tiptap/vue-2';
 import SemanticTagVue from './SemanticTag.vue';
 
-export default class SemanticTag extends Node {
-    get name() {
-        return 'semantic_tag';
-    }
-
-    get schema() {
-        return {
-            attrs: {
-                tags: {
-                    default: ['Intuicje'],
-                },
-                required: {
-                    default: [],
-                },
-            },
-            selectable: false,
-            parseDOM: [
-                {
-                    tag: 'semantic-tag',
-                    getAttrs: (dom: any) => ({
-                        tags: dom.getAttribute('tags').split(' '),
-                        required: dom.getAttribute('requiredLessons')
-                            ? dom.getAttribute('requiredLessons').split('\n')
-                            : [],
-                    }),
-                },
-            ],
-            toDOM: (node: any) => [
-                'semantic-tag',
-                {
-                    tags: node.attrs.tags.join(' '),
-                    requiredLessons: node.attrs.required.join('\n'),
-                },
-            ],
+declare module '@tiptap/core' {
+    interface Commands<ReturnType> {
+        semanticTag: {
+            createSemanticTag: (attrs?: { tags?: string[]; required?: string[] }) => ReturnType;
         };
-    }
-
-    commands({ type }: any) {
-        return (attrs: any) => (state: any, dispatch: any) => {
-            const { selection } = state;
-            const position = selection.$cursor ? selection.$cursor.pos : selection.$to.pos;
-            const node = type.create(attrs);
-            const transaction = state.tr.insert(position, node);
-            dispatch(transaction);
-        };
-    }
-
-    get view() {
-        return SemanticTagVue;
     }
 }
+
+export default Node.create({
+    name: 'semanticTag',
+    group: 'block',
+    selectable: false,
+
+    parseHTML: () => [{ tag: 'semantic-tag' }],
+
+    renderHTML: ({ HTMLAttributes }) => ['semantic-tag', HTMLAttributes, 0],
+
+    addNodeView: () => VueNodeViewRenderer(SemanticTagVue),
+
+    addAttributes: () => ({
+        tags: {
+            default: ['Intuicje'],
+            parseHTML: (element) => element.getAttribute('tags')?.split(' ') || ['Intuicje'],
+            renderHTML: (attributes) => ({ tags: attributes.tags.join(' ') }),
+        },
+        required: {
+            default: [],
+            parseHTML: (element) => element.getAttribute('requiredLessons')?.split('\n') || [],
+            renderHTML: (attributes) => ({ requiredLessons: attributes.required.join('\n') }),
+        },
+    }),
+
+    addCommands() {
+        return {
+            createSemanticTag:
+                (attrs = {}) =>
+                ({ state, commands }) => {
+                    const $head = state.selection.$head || state.selection.$to;
+
+                    // Insert between blocks at the current depth
+                    const pos = $head.after($head.depth);
+
+                    // Inspect the next sibling at this insertion boundary
+                    const $pos = state.doc.resolve(pos);
+                    const parent = $pos.parent;
+                    const index = $pos.index();
+                    const next = index < parent.childCount ? parent.child(index) : null;
+
+                    // Need a filler block when:
+                    //  - there's no next sibling, OR
+                    //  - the next sibling is *another* semanticTag, OR
+                    //  - the next sibling is not in the 'block' group
+                    const needsFiller =
+                        !next || next.type.name === this.name || !next.type?.spec.group?.split(/\s+/).includes('block');
+
+                    const content = needsFiller
+                        ? [{ type: this.name, attrs }, { type: 'paragraph' }]
+                        : [{ type: this.name, attrs }];
+
+                    return commands.insertContentAt(pos, content);
+                },
+        };
+    },
+});

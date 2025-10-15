@@ -1,43 +1,52 @@
-import { EditorView } from 'prosemirror-view';
-import { Node } from 'tiptap';
+import { Node } from '@tiptap/vue-2';
+import { VueNodeViewRenderer } from '@tiptap/vue-2';
 import { mainRedColor } from './Colors';
 import LineView from './LineView.vue';
+import { idGenerator } from './Shape';
+
+declare module '@tiptap/core' {
+    interface Commands<ReturnType> {
+        line: {
+            createLine: (attrs: LineAttributes, pos: number) => ReturnType;
+        };
+    }
+}
 
 export interface LineAttributes {
+    id: string;
     points: { x: number; y: number }[];
     color: string;
     smooth: boolean;
 }
 
-export default class LineNode extends Node {
-    get name() {
-        return 'line';
-    }
+export default Node.create({
+    name: 'line',
 
-    get schema() {
+    parseHTML: () => [
+        {
+            tag: 'line',
+            getAttrs: (element) => JSON.parse(element.getAttribute('attrs')!),
+        },
+    ],
+    renderHTML: ({ HTMLAttributes }) => ['line', { attrs: JSON.stringify(HTMLAttributes) }],
+
+    addAttributes() {
         return {
-            attrs: {
-                points: { default: [] },
-                color: { default: mainRedColor },
-                smooth: { default: false },
-            },
-            parseDOM: [
-                {
-                    tag: 'line',
-                    getAttrs: (dom: any) => JSON.parse(dom.getAttribute('attrs')),
-                },
-            ],
-            toDOM: (node: any) => ['line', { attrs: JSON.stringify(node.attrs) }],
+            id: { default: '' },
+            points: { default: [] },
+            color: { default: mainRedColor },
+            smooth: { default: false },
         };
-    }
+    },
 
-    get view() {
-        return LineView;
-    }
+    addNodeView: () => VueNodeViewRenderer(LineView),
 
-    static create(attrs: LineAttributes, position: number, view: EditorView): void {
-        const node = view.state.schema.nodes.line.createAndFill(attrs);
-        const transaction = view.state.tr.insert(position, node!);
-        view.dispatch(transaction);
-    }
-}
+    addCommands() {
+        return {
+            createLine:
+                (attrs: LineAttributes, pos: number) =>
+                ({ commands }) =>
+                    commands.insertContentAt(pos, this.type.createAndFill({ ...attrs, id: idGenerator.next().value })),
+        };
+    },
+});

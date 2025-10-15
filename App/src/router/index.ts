@@ -12,7 +12,7 @@ const router = new VueRouter({
         if (to.hash) {
             return new Promise((resolve) => {
                 setTimeout(() => {
-                    resolve({ selector: to.hash });
+                    resolve({ selector: decodeURIComponent(to.hash) });
                 }, 1000);
             });
         } else {

@@ -4,6 +4,13 @@ export interface ShapeAttributes {
     type?: string;
 }
 
+export const idGenerator = (function* () {
+    let id = 0;
+    while (true) {
+        yield (id++).toString();
+    }
+})();
+
 export abstract class Shape {
     abstract selected: boolean;
     abstract fillColor: string;

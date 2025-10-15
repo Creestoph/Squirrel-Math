@@ -1,37 +1,32 @@
-import { Mark } from 'tiptap';
-import { markPasteRule } from 'tiptap-commands';
-import { InputRule } from 'prosemirror-inputrules';
-import { EditorState } from 'prosemirror-state';
+import { InputRule, Mark, markPasteRule } from '@tiptap/core';
 
-export default class NumberMark extends Mark {
-    static readonly singleCharacterRegex = '0-9><=%+⋅';
+const CHAR_CLASS = '[0-9><=%+⋅]';
 
-    get name() {
-        return 'number';
-    }
+export default Mark.create({
+    name: 'number',
+    inclusive: false,
 
-    get schema() {
-        return {
-            parseDOM: [{ tag: 'number' }],
-            toDOM: () => ['number', 0],
-            inclusive: false,
-        };
-    }
+    parseHTML: () => [{ tag: 'number' }],
 
-    inputRules({ type }: any) {
+    renderHTML: () => ['number', 0],
+
+    addInputRules() {
         return [
-            new InputRule(/([0-9><=%+⋅])$/, (state: EditorState, match: string[], start: number, end: number) => {
-                setTimeout(() => {
-                    this.editor.view.updateState(
-                        this.editor.state.apply(this.editor.state.tr.addMark(start, end + 1, type.create())),
-                    );
-                }, 0);
-                return null;
+            new InputRule({
+                find: new RegExp(`(${CHAR_CLASS})$`),
+                handler: ({ range }) => {
+                    queueMicrotask(() => {
+                        const { state, view } = this.editor;
+                        const tr = state.tr.addMark(range.from, range.to + 1, this.type.create());
+                        view.dispatch(tr);
+                    });
+                    return;
+                },
             }),
         ];
-    }
+    },
 
-    pasteRules({ type }: any) {
-        return [markPasteRule(/([0-9><=%+⋅]+)/g, type)];
-    }
-}
+    addPasteRules() {
+        return [markPasteRule({ find: new RegExp(`(${CHAR_CLASS}+)`, 'g'), type: this.type })];
+    },
+});

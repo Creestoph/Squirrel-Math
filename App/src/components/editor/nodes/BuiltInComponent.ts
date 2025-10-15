@@ -1,54 +1,48 @@
-import { Node } from 'tiptap';
+import { Node } from '@tiptap/vue-2';
+import { VueNodeViewRenderer } from '@tiptap/vue-2';
 import BuiltInComponentVue from './BuiltInComponent.vue';
 
-export default class CustomElement extends Node {
-    get name() {
-        return 'component';
-    }
-
-    get schema() {
-        return {
-            attrs: {
-                componentName: {
-                    default: '',
-                },
-                args: {
-                    default: [],
-                },
-            },
-            group: 'block',
-            defining: false,
-            draggable: true,
-            parseDOM: [
-                {
-                    tag: 'component',
-                    getAttrs: (dom: any) => ({
-                        componentName: dom.getAttribute('componentName'),
-                        args: JSON.parse(dom.getAttribute('args')),
-                    }),
-                },
-            ],
-            toDOM: (node: any) => [
-                'component',
-                {
-                    componentName: node.attrs.componentName,
-                    args: JSON.stringify(node.attrs.args),
-                },
-            ],
+declare module '@tiptap/core' {
+    interface Commands<ReturnType> {
+        component: {
+            createComponent: () => ReturnType;
         };
-    }
-
-    commands({ type }: any) {
-        return (attrs: any) => (state: any, dispatch: any) => {
-            const { selection } = state;
-            const position = selection.$cursor ? selection.$cursor.pos : selection.$to.pos;
-            const node = type.create(attrs);
-            const transaction = state.tr.insert(position, node);
-            dispatch(transaction);
-        };
-    }
-
-    get view() {
-        return BuiltInComponentVue;
     }
 }
+
+export default Node.create({
+    name: 'component',
+    group: 'block',
+    defining: false,
+    draggable: true,
+
+    parseHTML: () => [{ tag: 'component' }],
+
+    renderHTML: ({ HTMLAttributes }) => ['component', HTMLAttributes],
+
+    addAttributes() {
+        return {
+            componentName: {
+                default: '',
+                parseHTML: (element) => element.getAttribute('componentName'),
+                renderHTML: (attributes) => ({ componentName: attributes.componentName }),
+            },
+            args: {
+                default: [],
+                parseHTML: (element) => JSON.parse(element.getAttribute('args')!),
+                renderHTML: (attributes) => ({ args: JSON.stringify(attributes.args) }),
+            },
+        };
+    },
+
+    addNodeView: () => VueNodeViewRenderer(BuiltInComponentVue),
+
+    addCommands() {
+        return {
+            createComponent:
+                () =>
+                ({ state, commands }) =>
+                    commands.insertContentAt(state.selection.$head.pos, this.type.create({})),
+        };
+    },
+});

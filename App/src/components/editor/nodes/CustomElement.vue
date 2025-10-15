@@ -1,7 +1,7 @@
 <template>
-    <div class="component-container">
+    <node-view-wrapper class="component-container">
         <div v-show="editMode" class="editor-wrapper">
-            <pre class="html-editor" ref="content"></pre>
+            <node-view-content class="html-editor" ref="content" />
             <button @click="run()" title="uruchom">
                 <icon>play_arrow</icon>
             </button>
@@ -10,12 +10,19 @@
             <div contenteditable="false" v-html="parsed" ref="output" class="output"></div>
             <button @click="edit()" title="edytuj"><icon>edit</icon></button>
         </div>
-    </div>
+    </node-view-wrapper>
 </template>
 
 <script>
-export default {
-    props: ['node', 'updateAttrs', 'view'],
+import { NodeViewContent, NodeViewWrapper } from '@tiptap/vue-2';
+import Vue from 'vue';
+
+export default Vue.extend({
+    components: {
+        NodeViewWrapper,
+        NodeViewContent,
+    },
+    props: ['node', 'updateAttributes', 'view'],
     data() {
         return {
             editMode: true,
@@ -52,7 +59,7 @@ export default {
             this.editMode = true;
         },
     },
-};
+});
 </script>
 
 <style lang="scss">

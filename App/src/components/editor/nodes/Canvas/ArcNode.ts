@@ -1,9 +1,19 @@
-import { EditorView } from 'prosemirror-view';
-import { Node } from 'tiptap';
+import { Node } from '@tiptap/vue-2';
+import { VueNodeViewRenderer } from '@tiptap/vue-2';
 import { mainRedColor } from './Colors';
 import ArcView from './ArcView.vue';
+import { idGenerator } from './Shape';
+
+declare module '@tiptap/core' {
+    interface Commands<ReturnType> {
+        arc: {
+            createArc: (attrs: ArcAttributes, pos: number) => ReturnType;
+        };
+    }
+}
 
 export interface ArcAttributes {
+    id: string; // TODO maybe id should be assigned in runtime, not stored in document?
     center: { x: number; y: number };
     arms: { x: number; y: number }[];
     color: string;
@@ -11,42 +21,41 @@ export interface ArcAttributes {
     radius: number;
 }
 
-export default class ArcNode extends Node {
-    get name() {
-        return 'arc';
-    }
+export default Node.create({
+    name: 'arc',
 
-    get schema() {
+    parseHTML: () => [
+        {
+            tag: 'arc',
+            getAttrs: (dom) => JSON.parse(dom.getAttribute('attrs')!),
+        },
+    ],
+    renderHTML: ({ HTMLAttributes }) => ['arc', { attrs: JSON.stringify(HTMLAttributes) }],
+
+    addAttributes() {
         return {
-            attrs: {
-                center: { default: { x: 0, y: 0 } },
-                arms: {
-                    default: [
-                        { x: 0, y: 0 },
-                        { x: 0, y: 0 },
-                    ],
-                },
-                radius: { default: 50 },
-                color: { default: '#00000000' },
-                borderColor: { default: mainRedColor },
+            id: { default: '' },
+            center: { default: { x: 0, y: 0 } },
+            arms: {
+                default: [
+                    { x: 0, y: 0 },
+                    { x: 0, y: 0 },
+                ],
             },
-            parseDOM: [
-                {
-                    tag: 'arc',
-                    getAttrs: (dom: any) => JSON.parse(dom.getAttribute('attrs')),
-                },
-            ],
-            toDOM: (node: any) => ['arc', { attrs: JSON.stringify(node.attrs) }],
+            radius: { default: 50 },
+            color: { default: '#00000000' },
+            borderColor: { default: mainRedColor },
         };
-    }
+    },
 
-    get view() {
-        return ArcView;
-    }
+    addNodeView: () => VueNodeViewRenderer(ArcView),
 
-    static create(attrs: ArcAttributes, position: number, view: EditorView): void {
-        const node = view.state.schema.nodes.arc.createAndFill(attrs);
-        const transaction = view.state.tr.insert(position, node!);
-        view.dispatch(transaction);
-    }
-}
+    addCommands() {
+        return {
+            createArc:
+                (attrs: ArcAttributes, pos: number) =>
+                ({ commands }) =>
+                    commands.insertContentAt(pos, this.type.createAndFill({ ...attrs, id: idGenerator.next().value })),
+        };
+    },
+});

@@ -1,16 +1,17 @@
 import { downloadFile } from '../utils/files';
+import { idGenerator } from './nodes/Canvas/Shape';
 
 export type NodeType =
     | 'title'
     | 'intro'
     | 'chapter'
-    | 'semantic_tag'
+    | 'semanticTag'
     | 'paragraph'
     | 'text'
-    | 'bullet_list'
-    | 'ordered_list'
-    | 'list_item'
-    | 'hard_break'
+    | 'bulletList'
+    | 'orderedList'
+    | 'listItem'
+    | 'hardBreak'
     | 'example'
     | 'proof'
     | 'problem'
@@ -19,20 +20,19 @@ export type NodeType =
     | 'expressionInline'
     | 'image'
     | 'component'
-    | 'custom_element'
+    | 'customElement'
     | 'table'
-    | 'table_row'
-    | 'table_header'
-    | 'table_cell'
+    | 'tableRow'
+    | 'tableCell'
     | 'geometry'
     | 'line'
     | 'circle'
     | 'rectangle'
     | 'polygon'
     | 'arc'
-    | 'text_area';
+    | 'textArea';
 
-export type MarkType = 'bold' | 'italic' | 'strike' | 'underline' | 'link' | 'textAlign' | 'comment';
+export type MarkType = 'bold' | 'italic' | 'strike' | 'underline' | 'link' | 'textAlign' | 'comment' | 'number';
 
 export interface MarkData {
     type: MarkType;
@@ -57,17 +57,11 @@ export interface LessonData {
 }
 
 function transformNode(node: NodeData) {
-    if (node.type == 'geometry' && node.attrs!.shapes) {
-        const shapes = node.attrs!.shapes;
-        if (shapes.length > 0 && !node.content) {
-            node.content = [];
-        }
-        shapes.forEach((shape: any) => {
-            const figureType = shape.type;
-            delete shape.type;
-            node.content!.push({ type: figureType, attrs: shape });
-        });
-        delete node.attrs!.shapes;
+    if (
+        ['line', 'circle', 'rectangle', 'polygon', 'arc', 'textArea'].includes(node.type) &&
+        node.attrs!.id === undefined
+    ) {
+        node.attrs!.id = idGenerator.next().value;
     }
 }
 
@@ -80,18 +74,12 @@ function transformNodeAndChildren(node: NodeData) {
 
 export function transformAll() {
     import(`@/assets/current_lesson_graph.json`).then((file) => {
-        const lessons = file.default;
-        lessons.forEach(async (lessonSpecification, i) => {
-            const lesson = (await import(`@/assets/lessons/${lessonSpecification.title}.json`)) as LessonData;
-            if (lesson.short) {
-                lesson.short.content.forEach((node) => transformNodeAndChildren(node));
-            }
-            if (lesson.long) {
-                lesson.long.content.forEach((node) => transformNodeAndChildren(node));
-            }
-            setTimeout(() => {
-                downloadFile(JSON.stringify(lesson), lessonSpecification.title, 'application/json');
-            }, i * 500);
+        const titles = [...file.default.map((lesson) => lesson.title), 'Demo'];
+        titles.forEach(async (title, i) => {
+            const lesson = (await import(`@/assets/lessons/${title}.json`)).default as LessonData;
+            lesson.short?.content?.forEach((node) => transformNodeAndChildren(node));
+            lesson.long?.content?.forEach((node) => transformNodeAndChildren(node));
+            setTimeout(() => downloadFile(JSON.stringify(lesson), title, 'application/json'), i * 500);
         });
     });
 }

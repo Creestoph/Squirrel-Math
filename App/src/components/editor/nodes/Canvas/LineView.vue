@@ -1,13 +1,18 @@
 <template>
-    <canvas ref="canvas"></canvas>
+    <node-view-wrapper as="canvas" ref="canvas"></node-view-wrapper>
 </template>
 
 <script>
 import paper from 'paper';
 import { Shape } from './Shape';
+import { NodeViewWrapper } from '@tiptap/vue-2';
+import Vue from 'vue';
 
-export default {
-    props: ['node', 'updateAttrs', 'view', 'getPos'],
+export default Vue.extend({
+    components: {
+        NodeViewWrapper,
+    },
+    props: ['node', 'view', 'getPos'],
 
     data() {
         return {
@@ -30,7 +35,10 @@ export default {
     },
 
     mounted() {
+        this.paperScope = new paper.PaperScope();
+        this.paperScope.setup(this.$refs.canvas.$el);
         this.render();
+        this.editor.storage.geometry.controllers.set(this.node.attrs.id, this);
     },
 
     computed: {
@@ -43,7 +51,7 @@ export default {
                 this.line.strokeColor = new paper.Color(color);
                 this.grips.fillColor = new paper.Color(color).multiply(0.7);
                 if (this.fillColor != color) {
-                    this.updateAttrs({ color });
+                    this.updateAttributes({ color });
                 }
             },
         },
@@ -51,21 +59,6 @@ export default {
         borderColor: {
             get() {
                 return '';
-            },
-        },
-
-        selected: {
-            get() {
-                return null;
-            },
-
-            set(value) {
-                this.grips.visible = value;
-                this.isSelected = value;
-                if (!value) {
-                    this.editing = false;
-                    this.selectGrip(-1);
-                }
             },
         },
     },
@@ -78,9 +71,8 @@ export default {
 
     methods: {
         render() {
-            this.paperScope = new paper.PaperScope();
-            this.paperScope.setup(this.$refs.canvas);
             this.paperScope.activate();
+            this.paperScope.project.clear();
 
             const attrs = this.node.attrs;
             this.line = new paper.Path();
@@ -123,6 +115,15 @@ export default {
         scale(factor, center) {
             this.line.scale(factor, new paper.Point(center));
             this.save();
+        },
+
+        setSelected(value) {
+            this.grips.visible = value;
+            this.isSelected = value;
+            if (!value) {
+                this.editing = false;
+                this.selectGrip(-1);
+            }
         },
 
         containedInBounds(bounds) {
@@ -218,7 +219,7 @@ export default {
         },
 
         save() {
-            this.updateAttrs({
+            this.updateAttributes({
                 points: this.line.segments.map((s) => ({
                     x: s.point.x,
                     y: s.point.y,
@@ -234,7 +235,7 @@ export default {
             }
         },
     },
-};
+});
 </script>
 
 <style scoped lang="scss">

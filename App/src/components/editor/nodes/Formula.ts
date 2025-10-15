@@ -1,23 +1,27 @@
-import { Node } from 'tiptap';
-import { toggleWrap } from 'tiptap-commands';
+import { Node } from '@tiptap/vue-2';
 
-export default class Formula extends Node {
-    get name() {
-        return 'formula';
-    }
-
-    get schema() {
-        return {
-            content: '(paragraph | expression | ordered_list | bullet_list)+',
-            group: 'block',
-            defining: true,
-            draggable: true,
-            parseDOM: [{ tag: 'formula' }],
-            toDOM: () => ['formula', { class: 'formula' }, 0],
+declare module '@tiptap/core' {
+    interface Commands<ReturnType> {
+        formula: {
+            toggleFormula: () => ReturnType;
         };
     }
-
-    commands({ type }: any) {
-        return () => toggleWrap(type);
-    }
 }
+
+export default Node.create({
+    name: 'formula',
+    content: '(paragraph | expression | orderedList | bulletList)+',
+    group: 'block',
+    defining: true,
+    draggable: true,
+    parseHTML: () => [{ tag: 'formula' }],
+    renderHTML: () => ['formula', { class: 'formula' }, 0],
+    addCommands() {
+        return {
+            toggleFormula:
+                () =>
+                ({ commands }) =>
+                    commands.toggleWrap(this.type),
+        };
+    },
+});

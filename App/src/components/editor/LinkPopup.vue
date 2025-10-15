@@ -1,68 +1,55 @@
 <template>
-    <span class="link-wrapper">
-        <div class="link-editor" v-if="showEditor">
-            Link do lekcji
-            <dropdown
-                @keydown.esc="close()"
-                :class="{ 'link-dropdown': true }"
-                @click.native="getLessons()"
-                @selected="selectLesson($event)"
-                :arrow="true"
+    <div class="link-editor">
+        Link do lekcji
+        <dropdown
+            @keydown.esc="close()"
+            :class="{ 'link-dropdown': true }"
+            @click.native="getLessons()"
+            @selected="selectLesson($event)"
+            :arrow="true"
+        >
+            <template v-slot:placeholder>{{ selectedLesson }}</template>
+            <dropdown-option
+                v-for="(lesson, i) in lessons"
+                :key="i"
+                :class="{ 'link-dropdown-option': true }"
+                :value="lesson.title"
             >
-                <template v-slot:placeholder>{{ selectedLesson }} </template>
-                <dropdown-option
-                    v-for="(lesson, i) in lessons"
-                    :key="i"
-                    :class="{ 'link-dropdown-option': true }"
-                    :value="lesson.title"
-                    >{{ lesson.title }}</dropdown-option
-                >
-            </dropdown>
-            Rozdział
-            <dropdown
-                @keydown.esc="close()"
-                :class="{ 'link-dropdown': true }"
-                @click.native="getChapters()"
-                @selected="selectChapter($event)"
-                :arrow="true"
+                {{ lesson.title }}
+            </dropdown-option>
+        </dropdown>
+        Rozdział
+        <dropdown
+            @keydown.esc="close()"
+            :class="{ 'link-dropdown': true }"
+            @click.native="getChapters()"
+            @selected="selectChapter($event)"
+            :arrow="true"
+        >
+            <template v-slot:placeholder>{{ selectedChapter }} </template>
+            <dropdown-option
+                v-for="(chapter, i) in chapters"
+                :key="i"
+                :disabled="chapter.disabled"
+                :class="{ 'link-dropdown-option': true }"
+                :value="chapter.name"
             >
-                <template v-slot:placeholder>{{ selectedChapter }} </template>
-                <dropdown-option
-                    v-for="(chapter, i) in chapters"
-                    :key="i"
-                    :disabled="chapter.disabled"
-                    :class="{ 'link-dropdown-option': true }"
-                    :value="chapter.name"
-                    >{{ chapter.name }}</dropdown-option
-                >
-            </dropdown>
-            <button class="navigate-button" @click="navigate()">Odwiedź stronę</button>
-            <button @click="close()" class="apply-button">+</button>
-        </div>
-        <span ref="content" class="link" :href="href" @click="openPopup()"></span>
-    </span>
+                {{ chapter.name }}
+            </dropdown-option>
+        </dropdown>
+        <button class="navigate-button" @click="navigate()">Odwiedź stronę</button>
+    </div>
 </template>
 
 <script>
-import Dropdown from '../Dropdown.vue';
-import DropdownOption from '../DropdownOption.vue';
+import Dropdown from './Dropdown.vue';
+import DropdownOption from './DropdownOption.vue';
 
 export default {
     components: { Dropdown, DropdownOption },
-    props: ['node', 'updateAttrs', 'view'],
-    computed: {
-        href: {
-            get() {
-                return this.node.attrs.href;
-            },
-            set(href) {
-                this.updateAttrs({ href });
-            },
-        },
-    },
+    props: ['href'],
     data() {
         return {
-            showEditor: false,
             url: '',
             selectedLesson: '',
             selectedChapter: '',
@@ -70,17 +57,19 @@ export default {
             chapters: [{ name: 'Nie wybrano', disabled: true }],
         };
     },
-    mounted() {
-        if (this.href === '') {
-            this.openPopup();
-        } else {
-            this.url = this.href;
+    watch: {
+        href: function () {
+            this.url = this.href || '';
             let lessonUrl;
             [lessonUrl, this.selectedChapter] = this.url.split('#');
-            this.getLessons().then(
-                (lessons) => (this.selectedLesson = lessons.find((l) => '/lesson/' + l.title == lessonUrl).title),
-            );
-        }
+            if (lessonUrl) {
+                this.getLessons().then(
+                    (lessons) => (this.selectedLesson = lessons.find((l) => '/lesson/' + l.title == lessonUrl).title),
+                );
+            } else {
+                this.selectedLesson = '';
+            }
+        },
     },
     methods: {
         getLessons() {
@@ -89,6 +78,8 @@ export default {
                     this.lessons = file.default;
                     return Promise.resolve(this.lessons);
                 });
+            } else {
+                return Promise.resolve(this.lessons);
             }
         },
         getChapters() {
@@ -134,17 +125,12 @@ export default {
             this.selectedLesson = lesson;
             this.url = '/lesson/' + this.lessons.find((l) => l.title == lesson).title;
             this.selectedChapter = '';
+            this.$emit('updated', this.url);
         },
         selectChapter(chapter) {
             this.selectedChapter = chapter;
             this.url = '/lesson/' + this.lessons.find((l) => l.title == this.selectedLesson).title + '#' + chapter;
-        },
-        openPopup() {
-            this.showEditor = true;
-        },
-        close() {
-            this.showEditor = false;
-            this.href = this.url;
+            this.$emit('updated', this.url);
         },
         navigate() {
             if (this.url) {
@@ -159,39 +145,17 @@ export default {
 @use '@/style/global';
 @use '@/style/fonts';
 
-.link-wrapper {
-    position: relative;
-}
-
-.link {
-    text-decoration: underline;
-}
-
 .link-editor {
     display: inline-block;
     position: absolute;
-    right: -145px;
-    top: -230px;
+    margin-left: -145px;
+    margin-top: -230px;
     width: 322px;
     height: 185px;
     background: black;
     border-radius: 15px;
     color: white;
     padding: 10px;
-
-    .apply-button {
-        position: absolute;
-        right: 5px;
-        top: 5px;
-        height: 30px;
-        padding: 0;
-        font-family: fonts.$geometric-font;
-        font-size: 3em;
-        transform: rotate(45deg) translateY(-3px);
-        background: transparent;
-        color: white;
-        float: left;
-    }
 
     .navigate-button {
         border-radius: 6px;

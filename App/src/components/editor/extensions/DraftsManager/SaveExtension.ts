@@ -1,150 +1,180 @@
-import { Extension } from 'tiptap';
-import { allComments } from '../../marks/Comment.vue';
+import { Extension, SingleCommands } from '@tiptap/vue-2';
+import { allComments } from '../../CommentPopup.vue';
 import { Draft, DraftPreview, LocalStorageSaver } from './LocalStorageManager';
 import ImagePicker from '../../ImagePicker.vue';
 import { downloadFile } from '@/components/utils/files';
 
-export default class Save extends Extension {
-    private autoSaveObserverId: number;
-    private currentDraft: Draft = {
-        name: '',
-        created: new Date(),
-        lastModified: new Date(),
-        lesson: null,
-        fromAutosave: false,
-    };
+interface SaveStorage {
+    autoSaveObserverId: number | null;
+    currentDraft: Draft;
+    longVersionJSON: any;
+    shortVersionJSON: any;
+    shortMode: boolean;
+}
 
-    longVersionJSON: string = '';
-    shortVersionJSON: string = '';
-    shortMode: boolean = false;
-
-    constructor() {
-        super();
-        const autoSavePeriod = 60 * 1000;
-        this.autoSaveObserverId = setInterval(() => this.saveToLocalStorage(true), autoSavePeriod);
+declare module '@tiptap/core' {
+    interface Commands<ReturnType> {
+        save: {
+            saveToLocalStorage: (fromAutosave?: boolean) => ReturnType;
+            saveToFile: (fileName?: string) => ReturnType;
+            loadDraft: (draft: DraftPreview) => ReturnType;
+            deleteDraft: (draft: DraftPreview) => ReturnType;
+            loadFromJSON: (json: any) => ReturnType;
+        };
     }
-
-    get name() {
-        return 'save';
+    interface Storage {
+        save: SaveStorage;
     }
+}
 
-    keys() {
+export default Extension.create<{}, SaveStorage>({
+    name: 'save',
+
+    addStorage(): SaveStorage {
         return {
-            'Ctrl-s': () => {
-                this.saveToLocalStorage(false);
+            autoSaveObserverId: null,
+            currentDraft: {
+                name: '',
+                created: new Date(),
+                lastModified: new Date(),
+                lesson: null,
+                fromAutosave: false,
+            },
+            longVersionJSON: '',
+            shortVersionJSON: '',
+            shortMode: false,
+        };
+    },
+
+    onCreate() {
+        // autosave every 60s
+        const autoSavePeriod = 60 * 1000;
+        this.storage.autoSaveObserverId = setInterval(
+            () => this.editor.commands.saveToLocalStorage(true),
+            autoSavePeriod,
+        );
+    },
+
+    onDestroy() {
+        if (this.storage.autoSaveObserverId != null) {
+            clearInterval(this.storage.autoSaveObserverId);
+            this.storage.autoSaveObserverId = null;
+        }
+    },
+
+    addKeyboardShortcuts() {
+        return {
+            'Mod-s': () => {
+                this.editor.commands.saveToLocalStorage(false);
                 return true;
             },
         };
-    }
+    },
 
-    commands() {
-        return {
-            saveToLocalStorage: () => () => this.saveToLocalStorage(false),
-            saveToFile: () => () => this.saveToFile(),
+    addCommands() {
+        const getLessonTitle = (): string => {
+            const node: any = this.editor.state.doc?.content?.content?.[0]?.content?.content?.[0];
+            return node?.text ?? 'lesson';
         };
-    }
 
-    destroy() {
-        clearInterval(this.autoSaveObserverId);
-    }
+        const getLessonJSON = () => {
+            if (this.storage.shortMode) {
+                this.storage.shortVersionJSON = this.editor.getJSON();
+            } else {
+                this.storage.longVersionJSON = this.editor.getJSON();
+            }
 
-    draftsList(): DraftPreview[] {
-        return LocalStorageSaver.draftsList().sort((d1, d2) => {
-            const d1AutoSave = d1.fromAutosave ? 1 : 0;
-            const d2AutoSave = d2.fromAutosave ? 1 : 0;
-            return d1.name == d2.name ? d1AutoSave - d2AutoSave : d2.lastModified.getTime() - d1.lastModified.getTime();
-        });
-    }
+            const lessonJSON: any = {
+                long: this.storage.longVersionJSON,
+                short: this.storage.shortVersionJSON,
+            };
 
-    loadDraft(draft: DraftPreview) {
-        this.currentDraft = LocalStorageSaver.loadDraft(draft);
-        this.loadFromJSON(this.currentDraft.lesson);
-    }
-
-    deleteDraft(draft: DraftPreview) {
-        return LocalStorageSaver.deleteDraft(draft);
-    }
-
-    loadFromJSON(json: any) {
-        for (const commentId in allComments) {
-            delete (allComments as any)[commentId];
-        }
-        if (json.comments) {
-            Object.entries(json.comments).forEach(([id, comment]: any) => {
-                (allComments as any)[id] = {
+            if (Object.entries(allComments).length > 0) {
+                lessonJSON.comments = {};
+            }
+            Object.entries(allComments).forEach(([id, comment]: any) => {
+                lessonJSON.comments[id] = {
                     text: comment.text,
                     hidden: comment.hidden,
-                    displayedInComponent: null,
                 };
             });
-        }
 
-        ImagePicker.lessonImages = {};
-        if (json.images) {
-            Object.entries(json.images).forEach(([key, image]: any) => {
-                (ImagePicker.lessonImages as any)[key] = {
-                    ...image,
-                    key,
-                    scoped: true,
-                };
+            if (Object.entries(ImagePicker.lessonImages).length > 0) {
+                lessonJSON.images = {};
+            }
+            Object.entries(ImagePicker.lessonImages).forEach(([key, image]: any) => {
+                lessonJSON.images[key] = { src: image.src, name: image.name };
             });
-        }
 
-        this.shortVersionJSON = json.short;
-        this.longVersionJSON = json.long;
-        if (this.shortMode) {
-            this.editor.setContent(this.shortVersionJSON);
-        } else {
-            this.editor.setContent(this.longVersionJSON);
-        }
-    }
+            return lessonJSON;
+        };
 
-    saveToLocalStorage(fromAutosave: boolean) {
-        this.currentDraft.name = this.getLessonTitle();
-        this.currentDraft.lesson = this.getLessonJSON();
-        LocalStorageSaver.saveDraft(this.currentDraft, fromAutosave);
-    }
+        const loadFromJSON =
+            (json: any) =>
+            ({ commands }: { commands: SingleCommands }) => {
+                // reset comments
+                for (const commentId in allComments) {
+                    delete (allComments as any)[commentId];
+                }
+                if (json?.comments) {
+                    Object.entries(json.comments).forEach(([id, comment]: any) => {
+                        (allComments as any)[id] = {
+                            text: comment.text,
+                            hidden: comment.hidden,
+                            displayedInComponent: null,
+                        };
+                    });
+                }
 
-    saveToFile() {
-        const lessonString = JSON.stringify(this.getLessonJSON());
-        const fileName = this.sourceFile || `${this.getLessonTitle()}.json`;
-        downloadFile(lessonString, fileName, 'application/json');
-        console.debug(lessonString);
-    }
+                // reset scoped images
+                ImagePicker.lessonImages = {};
+                if (json?.images) {
+                    Object.entries(json.images).forEach(([key, image]: any) => {
+                        (ImagePicker.lessonImages as any)[key] = {
+                            ...image,
+                            key,
+                            scoped: true,
+                        };
+                    });
+                }
 
-    private getLessonTitle(): string {
-        const lessonTitleNode = this.editor.state.doc.content.content[0].content.content[0];
-        return lessonTitleNode ? lessonTitleNode.text : 'lesson';
-    }
+                this.storage.shortVersionJSON = json?.short;
+                this.storage.longVersionJSON = json?.long;
 
-    private getLessonJSON() {
-        if (this.shortMode) {
-            this.shortVersionJSON = this.editor.getJSON();
-        } else {
-            this.longVersionJSON = this.editor.getJSON();
-        }
+                return commands.setContent(
+                    this.storage.shortMode ? this.storage.shortVersionJSON : this.storage.longVersionJSON,
+                );
+            };
 
-        const lessonJSON: any = {};
-        lessonJSON.long = this.longVersionJSON;
-        lessonJSON.short = this.shortVersionJSON;
+        return {
+            saveToLocalStorage:
+                (fromAutosave = false) =>
+                () => {
+                    this.storage.currentDraft.name = getLessonTitle();
+                    this.storage.currentDraft.lesson = getLessonJSON();
+                    LocalStorageSaver.saveDraft(this.storage.currentDraft, fromAutosave);
+                    return true;
+                },
 
-        if (Object.entries(allComments).length > 0) {
-            lessonJSON.comments = {};
-        }
-        Object.entries(allComments).forEach(
-            ([id, comment]: any) =>
-                (lessonJSON.comments[id] = {
-                    text: comment.text,
-                    hidden: comment.hidden,
-                }),
-        );
+            saveToFile: (fileName?: string) => () => {
+                const lessonString = JSON.stringify(getLessonJSON());
+                const finalName = fileName || `${getLessonTitle()}.json`;
+                downloadFile(lessonString, finalName, 'application/json');
+                console.debug(lessonString);
+                return true;
+            },
 
-        if (Object.entries(ImagePicker.lessonImages).length > 0) {
-            lessonJSON.images = {};
-        }
-        Object.entries(ImagePicker.lessonImages).forEach(
-            ([key, image]: any) => (lessonJSON.images[key] = { src: image.src, name: image.name }),
-        );
-        return lessonJSON;
-    }
-}
+            loadDraft: (draft: DraftPreview) => {
+                this.storage.currentDraft = LocalStorageSaver.loadDraft(draft);
+                return loadFromJSON(this.storage.currentDraft.lesson);
+            },
+
+            deleteDraft: (draft: DraftPreview) => () => {
+                LocalStorageSaver.deleteDraft(draft);
+                return true;
+            },
+
+            loadFromJSON,
+        };
+    },
+});

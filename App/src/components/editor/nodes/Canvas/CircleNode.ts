@@ -1,45 +1,54 @@
-import { EditorView } from 'prosemirror-view';
-import { Node } from 'tiptap';
+import { Node } from '@tiptap/vue-2';
+import { VueNodeViewRenderer } from '@tiptap/vue-2';
 import CircleView from './CircleView.vue';
 import { mainRedColor } from './Colors';
+import { idGenerator } from './Shape';
+
+declare module '@tiptap/core' {
+    interface Commands<ReturnType> {
+        circle: {
+            createCircle: (attrs: CircleAttributes, pos: number) => ReturnType;
+        };
+    }
+}
 
 export interface CircleAttributes {
+    id: string;
     center: { x: number; y: number };
     size: { width: number; height: number };
     color: string;
     borderColor: string;
 }
 
-export default class CircleNode extends Node {
-    get name() {
-        return 'circle';
-    }
+export default Node.create({
+    name: 'circle',
 
-    get schema() {
+    parseHTML: () => [
+        {
+            tag: 'circle',
+            getAttrs: (dom) => JSON.parse(dom.getAttribute('attrs')!),
+        },
+    ],
+    renderHTML: ({ HTMLAttributes }) => ['circle', { attrs: JSON.stringify(HTMLAttributes) }],
+
+    addAttributes() {
         return {
-            attrs: {
-                center: { defualt: { x: 50, y: 50 } },
-                size: { default: { width: 100, height: 100 } },
-                color: { default: mainRedColor },
-                borderColor: { default: '#00000000' },
-            },
-            parseDOM: [
-                {
-                    tag: 'circle',
-                    getAttrs: (dom: any) => JSON.parse(dom.getAttribute('attrs')),
-                },
-            ],
-            toDOM: (node: any) => ['circle', { attrs: JSON.stringify(node.attrs) }],
+            id: { default: '' },
+            center: { default: { x: 50, y: 50 } },
+            size: { default: { width: 100, height: 100 } },
+            color: { default: mainRedColor },
+            borderColor: { default: '#00000000' },
         };
-    }
+    },
 
-    get view() {
-        return CircleView;
-    }
+    addNodeView: () => VueNodeViewRenderer(CircleView),
 
-    static create(attrs: CircleAttributes, position: number, view: EditorView): void {
-        const node = view.state.schema.nodes.circle.createAndFill(attrs);
-        const transaction = view.state.tr.insert(position, node!);
-        view.dispatch(transaction);
-    }
-}
+    addCommands() {
+        return {
+            createCircle:
+                (attrs: CircleAttributes, pos: number) =>
+                ({ commands }) =>
+                    commands.insertContentAt(pos, this.type.createAndFill({ ...attrs, id: idGenerator.next().value })),
+        };
+    },
+});

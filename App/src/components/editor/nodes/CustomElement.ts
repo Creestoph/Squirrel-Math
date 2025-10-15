@@ -1,71 +1,66 @@
-import { Node } from 'tiptap';
-import { toggleBlockType } from 'tiptap-commands';
-import { Highlight } from 'tiptap-extensions';
+import { SingleCommands, VueNodeViewRenderer } from '@tiptap/vue-2';
+import { CodeBlockLowlight } from '@tiptap/extension-code-block-lowlight';
+import { createLowlight } from 'lowlight';
+import xml from 'highlight.js/lib/languages/xml';
 import CustomElementVue from './CustomElement.vue';
-// @ts-ignore
-import low from 'lowlight/lib/core';
-// @ts-ignore
-import html from 'highlight.js/lib/languages/xml';
-import { TextSelection } from 'prosemirror-state';
+import { TextSelection } from '@tiptap/pm/state';
 
-export default class CustomElement extends Node {
-    constructor() {
-        super();
-        low.registerLanguage('html', html);
-    }
+const lowlight = createLowlight();
+lowlight.register('html', xml);
 
-    get name() {
-        return 'custom_element';
-    }
-
-    get schema() {
-        return {
-            group: 'block',
-            content: 'text*',
-            marks: '',
-            code: true,
-            draggable: true,
-            parseDOM: [{ tag: 'custom' }],
-            toDOM: () => ['custom', 0],
-        };
-    }
-
-    commands({ type, schema }: any) {
-        return () => toggleBlockType(type, schema.nodes.paragraph);
-    }
-
-    get view() {
-        return CustomElementVue;
-    }
-
-    get plugins() {
-        return [Highlight({ name: this.name })];
-    }
-
-    keys() {
-        return {
-            Tab: (state: any, dispatch: any) => {
-                const { selection, doc } = state;
-                const position = selection.$cursor ? selection.$cursor.pos : selection.$to.pos;
-                const context = doc.resolve(position);
-                if (context.parent.type.name == 'custom_element') {
-                    const transaction = state.tr.insertText(' '.repeat(4), position);
-                    dispatch(transaction);
-                    return true;
-                }
-            },
-            'Ctrl-a': (state: any, dispatch: any) => {
-                const { selection, doc } = state;
-                const position = selection.$cursor ? selection.$cursor.pos : selection.$to.pos;
-                const context = doc.resolve(position);
-                if (context.parent.type.name == 'custom_element') {
-                    const editorStart = context.pos - context.parentOffset;
-                    const editorEnd = editorStart + context.parent.nodeSize - 2;
-                    const transaction = state.tr.setSelection(TextSelection.create(doc, editorStart, editorEnd));
-                    dispatch(transaction);
-                    return true;
-                }
-            },
+declare module '@tiptap/core' {
+    interface Commands<ReturnType> {
+        customElement: {
+            toggleCustomElement: () => ReturnType;
         };
     }
 }
+
+export default CodeBlockLowlight.extend({
+    name: 'customElement',
+    draggable: true,
+
+    parseHTML: () => [{ tag: 'custom' }],
+
+    renderHTML: () => ['custom', 0],
+
+    addNodeView: () => VueNodeViewRenderer(CustomElementVue),
+
+    addCommands() {
+        return {
+            toggleCustomElement:
+                () =>
+                ({ commands }: { commands: SingleCommands }) =>
+                    commands.toggleNode(this.name, 'paragraph'),
+        };
+    },
+
+    addKeyboardShortcuts() {
+        return {
+            Tab: () => {
+                const { state, dispatch } = this.editor.view;
+                if (state.selection.$from.parent.type !== this.type) {
+                    return false;
+                }
+
+                dispatch?.(state.tr.insertText(' '.repeat(4)));
+                return true;
+            },
+
+            'Mod-a': () => {
+                const { state, dispatch } = this.editor.view;
+                const { $from } = state.selection;
+                if ($from.parent.type !== this.type) {
+                    return false;
+                }
+
+                const start = $from.start();
+                const end = start + $from.parent.content.size;
+                dispatch?.(state.tr.setSelection(TextSelection.create(state.doc, start, end)));
+                return true;
+            },
+        };
+    },
+}).configure({
+    lowlight,
+});

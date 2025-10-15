@@ -1,6 +1,6 @@
 <template>
-    <div class="chapter_name">
-        <div ref="content"></div>
+    <node-view-wrapper class="chapter_name">
+        <node-view-content />
         <div
             class="hidden-button"
             :class="{ hidden: isHidden }"
@@ -14,23 +14,30 @@
             <icon style="width: 40px; height: 40px">visibility_off</icon>
         </div>
         <hr />
-    </div>
+    </node-view-wrapper>
 </template>
 
 <script>
-export default {
-    props: ['node', 'updateAttrs', 'view'],
+import { NodeViewContent, nodeViewProps, NodeViewWrapper } from '@tiptap/vue-2';
+import Vue from 'vue';
+
+export default Vue.extend({
+    components: {
+        NodeViewWrapper,
+        NodeViewContent,
+    },
+    props: nodeViewProps,
     computed: {
         isHidden: {
             get() {
                 return this.node.attrs.isHidden;
             },
             set(isHidden) {
-                this.updateAttrs({ isHidden });
+                this.updateAttributes({ isHidden });
             },
         },
     },
-};
+});
 </script>
 
 <style scoped lang="scss">

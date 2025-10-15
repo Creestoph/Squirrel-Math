@@ -1,9 +1,5 @@
-import { Doc } from 'tiptap';
+import Document from '@tiptap/extension-document';
 
-export default class LessonDoc extends Doc {
-    get schema() {
-        return {
-            content: 'title intro chapter*',
-        };
-    }
-}
+export default Document.extend({
+    content: 'title intro chapter*',
+});

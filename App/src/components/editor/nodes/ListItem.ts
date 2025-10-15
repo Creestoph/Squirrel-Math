@@ -1,13 +1,9 @@
-import { ListItem } from 'tiptap-extensions';
+import ListItem from '@tiptap/extension-list-item';
 
-export default class CustomListItem extends ListItem {
-    get schema() {
-        return {
-            content: 'paragraph (paragraph | bullet_list | ordered_list | expression)*',
-            defining: true,
-            draggable: false,
-            parseDOM: [{ tag: 'li' }],
-            toDOM: () => ['li', 0],
-        };
-    }
-}
+export default ListItem.extend({
+    content: 'paragraph (paragraph | bulletList | orderedList | expression)*',
+    defining: true,
+    draggable: false,
+    parseHTML: () => [{ tag: 'li' }],
+    renderHTML: () => ['li', 0],
+});

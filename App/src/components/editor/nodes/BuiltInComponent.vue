@@ -1,5 +1,5 @@
 <template>
-    <div class="container">
+    <node-view-wrapper class="container">
         <div v-show="editMode" class="editor-wrapper">
             <div class="form">
                 <div class="form-header">
@@ -105,7 +105,7 @@
                 <icon>edit</icon>
             </button>
         </div>
-    </div>
+    </node-view-wrapper>
 </template>
 
 <script>
@@ -126,10 +126,12 @@ import { otherComponentSchema } from '@/components/store/private/OtherComponentS
 import { otherComponentLabels } from '@/components/store/private/OtherComponentLabels';
 import AlgebraicCalculator from '@/components/store/private/AlgebraicCalculator';
 import SimpleQuadraticEquationsTraining from '@/components/store/private/SimpleQuadraticEquationsTraining';
+import { NodeViewWrapper } from '@tiptap/vue-2';
 
-export default {
-    props: ['node', 'updateAttrs', 'view'],
+export default Vue.extend({
+    props: ['node', 'updateAttributes', 'view'],
     components: {
+        NodeViewWrapper,
         OperationTable,
         ColumnarOperationTable,
         ColumnarOperationGuide,
@@ -151,7 +153,7 @@ export default {
                 return this.node.attrs.componentName;
             },
             set(componentName) {
-                this.updateAttrs({ componentName });
+                this.updateAttributes({ componentName });
             },
         },
         args: {
@@ -159,7 +161,7 @@ export default {
                 return this.node.attrs.args;
             },
             set(args) {
-                this.updateAttrs({ args });
+                this.updateAttributes({ args });
             },
         },
         productionMode: {
@@ -215,7 +217,7 @@ export default {
     methods: {
         onComponentSelect() {
             this.formArgs = [];
-            Object.entries(this.builtInComponents[this.componentName].schema).forEach(([schema], i) => {
+            Object.values(this.builtInComponents[this.componentName].schema).forEach((schema, i) => {
                 if (schema.type.name == 'ARRAY') {
                     this.formArgs[i] = [''];
                 }
@@ -272,7 +274,7 @@ export default {
             return this.componentName == 'other' ? this.componentConfiguration.name : this.componentName;
         },
     },
-};
+});
 </script>
 
 <style scoped lang="scss">

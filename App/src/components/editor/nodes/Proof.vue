@@ -1,5 +1,5 @@
 <template>
-    <div class="proof">
+    <node-view-wrapper class="proof">
         <div class="wrapper">
             <div class="dropdown">
                 <div class="proof-sticker">{{ label }}</div>
@@ -34,13 +34,19 @@
             </div>
             <span class="add-required-button" v-if="canAddNewRequired()" @click="addRequiredLesson()">+</span>
         </div>
-        <div ref="content"></div>
-    </div>
+        <node-view-content />
+    </node-view-wrapper>
 </template>
 
 <script>
-export default {
-    props: ['node', 'updateAttrs', 'view'],
+import { NodeViewContent, NodeViewWrapper } from '@tiptap/vue-2';
+import Vue from 'vue';
+
+export default Vue.extend({
+    components: {
+        NodeViewWrapper,
+        NodeViewContent,
+    },
     data() {
         return {
             availableOptions: ['Dowód', 'Uzasadnienie', 'Szkic dowodu'],
@@ -53,7 +59,7 @@ export default {
                 return this.node.attrs.label;
             },
             set(label) {
-                this.updateAttrs({ label });
+                this.updateAttributes({ label });
             },
         },
         required: {
@@ -61,7 +67,7 @@ export default {
                 return this.node.attrs.required;
             },
             set(required) {
-                this.updateAttrs({ required });
+                this.updateAttributes({ required });
             },
         },
         availableLessons: {
@@ -99,7 +105,7 @@ export default {
             );
         },
     },
-};
+});
 </script>
 
 <style scoped lang="scss">

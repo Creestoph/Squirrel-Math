@@ -1,19 +1,23 @@
-import { Node } from 'tiptap';
+import { Node } from '@tiptap/vue-2';
 
-export default class ChapterBody extends Node {
-    constructor(private shortVersion: boolean) {
-        super();
-    }
+export default Node.create<{ shortVersion: boolean }>({
+    name: 'chapterBody',
 
-    get name() {
-        return 'chapter_body';
-    }
-
-    get schema() {
+    addOptions() {
         return {
-            content: this.shortVersion ? 'block+' : '(semantic_tag block+)+',
-            parseDOM: [{ tag: 'chapter-body' }],
-            toDOM: () => ['chapter-body', { class: 'chapter_mask' }, ['div', { class: 'chapter-body' }, 0]],
+            shortVersion: false,
         };
-    }
-}
+    },
+
+    content() {
+        return this.options.shortVersion ? 'block+' : '(semanticTag block+)+';
+    },
+
+    parseHTML() {
+        return [{ tag: 'chapter-body' }];
+    },
+
+    renderHTML() {
+        return ['chapter-body', { class: 'chapter_mask' }, ['div', { class: 'chapter-body' }, 0]];
+    },
+});

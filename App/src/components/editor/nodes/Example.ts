@@ -1,23 +1,28 @@
-import { Node } from 'tiptap';
-import { toggleWrap } from 'tiptap-commands';
+import { Node } from '@tiptap/vue-2';
 
-export default class Example extends Node {
-    get name() {
-        return 'example';
-    }
-
-    get schema() {
-        return {
-            content: 'block+',
-            group: 'block',
-            defining: false,
-            draggable: true,
-            parseDOM: [{ tag: 'example' }],
-            toDOM: () => ['example', { class: 'example' }, 0],
+declare module '@tiptap/core' {
+    interface Commands<ReturnType> {
+        example: {
+            toggleExample: () => ReturnType;
         };
     }
-
-    commands({ type }: any) {
-        return () => toggleWrap(type);
-    }
 }
+
+export default Node.create({
+    name: 'example',
+    content: 'block+',
+    group: 'block',
+    defining: false,
+    draggable: true,
+    parseHTML: () => [{ tag: 'example' }],
+    renderHTML: () => ['example', { class: 'example' }, 0],
+
+    addCommands() {
+        return {
+            toggleExample:
+                () =>
+                ({ commands }) =>
+                    commands.toggleWrap(this.type),
+        };
+    },
+});

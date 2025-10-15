@@ -19,18 +19,17 @@
 </template>
 
 <script>
+import { colors } from '@/style/palette';
+
 export default {
     name: 'ColorPicker',
     props: ['color'],
     data() {
         return {
             dropdownVisible: false,
-            availableColors: [
-                ['#00000000', '#ffffff', '#f6f6f6', '#f2f2f2', '#eeeeee'],
-                ['#fff0f0', '#f5e0e0', '#eedddd', '#eeaaaa', '#dd8888'],
-                ['#ef0000', '#dd3333', '#cc4444', '#aa0000', '#990000'],
-                ['#e0e0e0', '#cccccc', '#aaaaaa', '#777777', '#000000'],
-            ],
+            availableColors: Array.from({ length: Math.ceil(colors.length / 5) }, (_, i) =>
+                colors.slice(i * 5, (i + 1) * 5),
+            ),
         };
     },
     methods: {

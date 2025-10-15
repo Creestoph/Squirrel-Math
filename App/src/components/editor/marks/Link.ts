@@ -1,37 +1,38 @@
-import { Mark } from 'tiptap';
-import { updateMark } from 'tiptap-commands';
-import LinkVue from './Link.vue';
+import { Mark } from '@tiptap/vue-2';
 
-export default class Link extends Mark {
-    get name() {
-        return 'link';
-    }
-
-    get schema() {
-        return {
-            attrs: {
-                href: {
-                    default: '',
-                },
-            },
-            inclusive: false,
-            parseDOM: [
-                {
-                    tag: 'a[lessonUrl]',
-                    getAttrs: (dom: any) => ({
-                        href: dom.getAttribute('lessonUrl'),
-                    }),
-                },
-            ],
-            toDOM: (mark: any) => ['a', { lessonUrl: mark.attrs.href }, 0],
+declare module '@tiptap/core' {
+    interface Commands<ReturnType> {
+        link: {
+            setLink: (href?: string) => ReturnType;
         };
     }
-
-    commands({ type }: any) {
-        return (attrs: any) => updateMark(type, { href: attrs.href });
-    }
-
-    get view() {
-        return LinkVue;
-    }
 }
+
+export default Mark.create({
+    name: 'link',
+    inclusive: false,
+
+    addAttributes() {
+        return {
+            href: { default: '' },
+        };
+    },
+
+    parseHTML: () => [
+        {
+            tag: 'a[lesson-url]',
+            getAttrs: (dom) => ({ href: dom.getAttribute('lesson-url')! }),
+        },
+    ],
+
+    renderHTML: ({ HTMLAttributes }) => ['a', { class: 'link', 'lesson-url': HTMLAttributes.href }, 0],
+
+    addCommands() {
+        return {
+            setLink:
+                (href = '') =>
+                ({ commands }) =>
+                    commands.setMark(this.type, { href }),
+        };
+    },
+});

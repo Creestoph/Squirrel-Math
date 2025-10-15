@@ -1,78 +1,54 @@
-import { Extension, Plugin } from 'tiptap';
+import { Extension } from '@tiptap/core';
+import { Plugin, PluginKey, EditorState } from 'prosemirror-state';
 import { Decoration, DecorationSet } from 'prosemirror-view';
-import { EditorState } from 'prosemirror-state';
+import { Node as PMNode } from 'prosemirror-model';
 
-export default class Placeholder extends Extension {
-    constructor(args: any) {
-        super(args);
-    }
+export interface PlaceholderOptions {
+    emptyNodeClass: string;
+    emptyNodeText: (node: PMNode) => string;
+}
 
-    get name() {
-        return 'placeholder';
-    }
+export default Extension.create<PlaceholderOptions>({
+    name: 'placeholder',
 
-    get defaultOptions() {
+    addOptions() {
         return {
-            emptyEditorClass: 'is-editor-empty',
-            emptyNodeClass: 'is-empty',
-            emptyNodeText: 'Write something …',
-            showOnlyWhenEditable: true,
-            showOnlyCurrent: true,
+            emptyNodeClass: 'empty',
+            emptyNodeText: () => 'Write something …',
         };
-    }
+    },
 
-    get update() {
-        return (view: any) => {
-            view.updateState(view.state);
-        };
-    }
+    addProseMirrorPlugins() {
+        const options = this.options;
 
-    get plugins() {
         return [
             new Plugin({
+                key: new PluginKey('placeholder'),
                 props: {
-                    decorations: ({ doc, plugins }: EditorState) => {
-                        const editablePlugin = plugins.find((plugin: any) => plugin.key.startsWith('editable$')) as any;
-                        const editable = editablePlugin.props.editable();
-                        const active = editable || !this.options.showOnlyWhenEditable;
-                        const decorations: Decoration[] = [];
-                        const isEditorEmpty = doc.textContent.length === 0;
+                    decorations(state: EditorState) {
+                        const decos: Decoration[] = [];
 
-                        if (!active) {
-                            return false;
-                        }
-
-                        doc.descendants((node, pos) => {
-                            const isNodeEmpty = node.content.size === 0;
-
-                            if (isNodeEmpty) {
-                                const classes = [this.options.emptyNodeClass];
-
-                                if (isEditorEmpty) {
-                                    classes.push(this.options.emptyEditorClass);
-                                }
-
-                                const decoration = Decoration.node(pos, pos + node.nodeSize, {
-                                    class: classes.join(' '),
-                                    'data-empty-text':
-                                        typeof this.options.emptyNodeText === 'function'
-                                            ? this.options.emptyNodeText(node)
-                                            : this.options.emptyNodeText,
-                                });
-                                decorations.push(decoration);
-                                return true;
+                        state.doc.descendants((node: PMNode, pos: number) => {
+                            if (node.content.size === 0) {
+                                decos.push(
+                                    Decoration.node(pos, pos + node.nodeSize, {
+                                        class: options.emptyNodeClass,
+                                        'data-empty-text': options.emptyNodeText(node),
+                                    }),
+                                );
                             }
 
+                            // stop descending into tables or elements having text
                             return (
-                                !(node.content as any).content.find((x: any) => x.type.isText) &&
-                                node.type.name != 'table'
+                                node.type.name !== 'table' &&
+                                node.children.every((n) => !n.isText || !n.text || n.text.length === 0)
                             );
                         });
 
-                        return DecorationSet.create(doc, decorations);
+                        return DecorationSet.create(state.doc, decos);
                     },
                 },
             }),
         ];
-    }
-}
+    },
+});

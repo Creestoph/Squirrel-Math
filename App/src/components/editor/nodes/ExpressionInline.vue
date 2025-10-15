@@ -1,5 +1,5 @@
 <template>
-    <span>
+    <node-view-wrapper as="span" class="inline-kurwa">
         <span v-show="!mathJax" class="math-placeholder" @click="edit()">Wprowadź wyrażenie matematyczne</span>
         <span v-show="mathJax" ref="output" class="math-display" @click="edit()"></span>
         <textarea
@@ -10,20 +10,26 @@
             class="math-editor"
             placeholder="Wprowadź kod MathJax"
             @blur="applyEdit()"
+            @keydown.esc="applyEdit()"
         ></textarea>
-    </span>
+    </node-view-wrapper>
 </template>
 
 <script>
-export default {
-    props: ['node', 'updateAttrs', 'view'],
+import Vue from 'vue';
+import { NodeViewWrapper } from '@tiptap/vue-2';
+
+export default Vue.extend({
+    components: {
+        NodeViewWrapper,
+    },
     computed: {
         mathJax: {
             get() {
                 return this.node.attrs.mathJax;
             },
             set(mathJax) {
-                this.updateAttrs({ mathJax });
+                this.updateAttributes({ mathJax });
             },
         },
     },
@@ -58,7 +64,7 @@ export default {
             this.$nextTick(() => MathJax.Hub.Queue(['Typeset', MathJax.Hub]));
         },
     },
-};
+});
 </script>
 
 <style scoped lang="scss">

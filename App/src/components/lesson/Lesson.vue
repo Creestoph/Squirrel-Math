@@ -131,12 +131,13 @@ export default class Lesson extends Vue {
         super();
         this.clearElements();
     }
-    long = {
+    // TODO type
+    long: any = {
         title: [{ text: '' }],
         introElements: [],
         chapters: [],
     };
-    short = {
+    short: any = {
         title: [{ text: '' }],
         introElements: [],
         chapters: [],

@@ -1,70 +1,71 @@
-import { Node } from 'tiptap';
 import ExpressionInlineVue from './ExpressionInline.vue';
-import { nodeInputRule, nodePasteRule } from '../tiptap-utils';
+import { Node, nodeInputRule, nodePasteRule } from '@tiptap/vue-2';
+import { VueNodeViewRenderer } from '@tiptap/vue-2';
 
-export default class ExpressionInline extends Node {
-    get name() {
-        return 'expressionInline';
-    }
-
-    get schema() {
-        return {
-            attrs: {
-                mathJax: {
-                    default: '',
-                },
-            },
-            inline: true,
-            group: 'inline',
-            parseDOM: [
-                {
-                    tag: 'expression-inline',
-                    getAttrs: (dom: any) => ({
-                        mathJax: dom.getAttribute('mathJax'),
-                    }),
-                },
-            ],
-            toDOM: (node: any) => ['expression-inline', { mathJax: node.attrs.mathJax }],
+declare module '@tiptap/core' {
+    interface Commands<ReturnType> {
+        expressionInline: {
+            createExpressionInline: () => ReturnType;
         };
-    }
-
-    commands({ type }: any) {
-        return (attrs: any) => (state: any, dispatch: any) => {
-            const { selection } = state;
-
-            const node = type.create(attrs);
-            const selectionContent = selection.content().content;
-            node.attrs.mathJax = selectionContent.textBetween(0, selectionContent.size);
-
-            const transaction = state.tr.deleteSelection();
-            transaction.insert(transaction.selection.$from.pos, node);
-            dispatch(transaction);
-        };
-    }
-
-    keys({ type }: any) {
-        return {
-            'Alt-=': this.commands({ type })({}),
-        };
-    }
-
-    get view() {
-        return ExpressionInlineVue;
-    }
-
-    inputRules({ type }: any) {
-        return [
-            nodeInputRule(/(?:^|[^$])(\$([^$]+)\$)$/, type, (match: any) => ({
-                mathJax: match,
-            })),
-        ];
-    }
-
-    pasteRules({ type }: any) {
-        return [
-            nodePasteRule(/\$([^$]+)\$/g, type, (match: any) => ({
-                mathJax: match,
-            })),
-        ];
     }
 }
+
+export default Node.create({
+    name: 'expressionInline',
+    inline: true,
+    group: 'inline',
+
+    parseHTML: () => [{ tag: 'expression-inline' }],
+
+    renderHTML: ({ HTMLAttributes }) => ['expression-inline', HTMLAttributes],
+
+    addAttributes() {
+        return {
+            mathJax: {
+                default: '',
+                parseHTML: (element) => element.getAttribute('mathJax'),
+                renderHTML: (attributes) => ({ mathJax: attributes.mathJax }),
+            },
+        };
+    },
+
+    addNodeView: () => VueNodeViewRenderer(ExpressionInlineVue),
+
+    addCommands() {
+        return {
+            createExpressionInline:
+                () =>
+                ({ state, chain }) => {
+                    const selectionContent = state.selection.content().content;
+                    const node = this.type.create({ mathJax: selectionContent.textBetween(0, selectionContent.size) });
+                    return chain().deleteSelection().insertContentAt(state.selection.$from.pos, node).run();
+                },
+        };
+    },
+
+    addKeyboardShortcuts() {
+        return {
+            'Alt-=': ({ editor }) => editor.commands.createExpressionInline(),
+        };
+    },
+
+    addInputRules() {
+        return [
+            nodeInputRule({
+                find: /(?:^|[^$])(\$([^$]+)\$)$/,
+                type: this.type,
+                getAttributes: (match) => ({ mathJax: match[2] }),
+            }),
+        ];
+    },
+
+    addPasteRules() {
+        return [
+            nodePasteRule({
+                find: /(?:^|[^$])(\$([^$]+)\$)/g,
+                type: this.type,
+                getAttributes: (match) => ({ mathJax: match[2] }),
+            }),
+        ];
+    },
+});

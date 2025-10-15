@@ -129,7 +129,7 @@ export default class SimpleQuadraticEquationsTraining extends Vue {
         } else {
             do {
                 x2Denominator = Integer.random(1, 4);
-            } while (numericGCD(x1Numerator.int, x2Denominator.int) > BigInt(1));
+            } while ((numericGCD(x1Numerator.int, x2Denominator.int) as bigint) > BigInt(1));
         }
         this.correctX1 = new Fraction(x1Numerator.int, x2Denominator.int);
         this.correctX2 = new Fraction(

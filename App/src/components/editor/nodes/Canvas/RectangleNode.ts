@@ -1,46 +1,55 @@
-import { EditorView } from 'prosemirror-view';
-import { Node } from 'tiptap';
+import { Node } from '@tiptap/vue-2';
+import { VueNodeViewRenderer } from '@tiptap/vue-2';
 import { mainRedColor } from './Colors';
 import RectangleView from './RectangleView.vue';
+import { idGenerator } from './Shape';
+
+declare module '@tiptap/core' {
+    interface Commands<ReturnType> {
+        rectangle: {
+            createRectangle: (attrs: RectangleAttributes, pos: number) => ReturnType;
+        };
+    }
+}
 
 export interface RectangleAttributes {
-    type: 'rectangle';
+    id: string;
     center: { x: number; y: number };
     size: { width: number; height: number };
     color: string;
     borderColor: string;
 }
 
-export default class RectangleNode extends Node {
-    get name() {
-        return 'rectangle';
-    }
+export default Node.create({
+    name: 'rectangle',
 
-    get schema() {
+    parseHTML: () => [
+        {
+            tag: 'rectangle',
+            getAttrs: (element) => JSON.parse(element.getAttribute('attrs')!),
+        },
+    ],
+
+    renderHTML: ({ HTMLAttributes }) => ['rectangle', { attrs: JSON.stringify(HTMLAttributes) }],
+
+    addAttributes() {
         return {
-            attrs: {
-                center: { defualt: { x: 50, y: 50 } },
-                size: { default: { width: 100, height: 100 } },
-                color: { default: mainRedColor },
-                borderColor: { default: '#00000000' },
-            },
-            parseDOM: [
-                {
-                    tag: 'rectangle',
-                    getAttrs: (dom: any) => JSON.parse(dom.getAttribute('attrs')),
-                },
-            ],
-            toDOM: (node: any) => ['rectangle', { attrs: JSON.stringify(node.attrs) }],
+            id: { default: '' },
+            center: { default: { x: 50, y: 50 } },
+            size: { default: { width: 100, height: 100 } },
+            color: { default: mainRedColor },
+            borderColor: { default: '#00000000' },
         };
-    }
+    },
 
-    get view() {
-        return RectangleView;
-    }
+    addNodeView: () => VueNodeViewRenderer(RectangleView),
 
-    static create(attrs: RectangleAttributes, position: number, view: EditorView): void {
-        const node = view.state.schema.nodes.rectangle.createAndFill(attrs);
-        const transaction = view.state.tr.insert(position, node!);
-        view.dispatch(transaction);
-    }
-}
+    addCommands() {
+        return {
+            createRectangle:
+                (attrs: RectangleAttributes, pos: number) =>
+                ({ commands }) =>
+                    commands.insertContentAt(pos, this.type.createAndFill({ ...attrs, id: idGenerator.next().value })),
+        };
+    },
+});

@@ -1,112 +1,126 @@
-import { Node, Plugin } from 'tiptap';
-import { nodeInputRule } from 'tiptap-commands';
+import { Node, nodeInputRule } from '@tiptap/core';
+import { Plugin } from '@tiptap/pm/state';
 import ImagePicker from '../ImagePicker.vue';
 
+declare module '@tiptap/core' {
+    interface Commands<ReturnType> {
+        image: {
+            createImage: (attrs: Partial<ImageAttrs>) => ReturnType;
+        };
+    }
+}
+
 /**
- * Matches following attributes in Markdown-typed image: [, alt, src, title]
- *
- * Example:
- * ![Lorem](image.jpg) -> [, "Lorem", "image.jpg"]
- * ![](image.jpg "Ipsum") -> [, "", "image.jpg", "Ipsum"]
- * ![Lorem](image.jpg "Ipsum") -> [, "Lorem", "image.jpg", "Ipsum"]
+ * Matches: ![alt](src "title")
+ * Captures: [, alt, src, title?]
  */
 const IMAGE_INPUT_REGEX = /!\[(.+|:?)]\((\S+)(?:(?:\s+)["'](\S+)["'])?\)/;
 
-export default class Image extends Node {
-    get name() {
-        return 'image';
-    }
+export interface ImageAttrs {
+    key: string | null;
+}
 
-    get schema() {
+export default Node.create({
+    name: 'image',
+
+    group: 'block',
+    draggable: true,
+    inline: false,
+    selectable: true,
+
+    addAttributes() {
         return {
-            attrs: {
-                key: {},
-            },
-            group: 'block',
-            draggable: true,
-            parseDOM: [
-                {
-                    tag: 'img[src]',
-                    getAttrs: (dom: any) => {
-                        const key = dom.getAttribute('key');
-                        if (key) {
-                            return { key };
-                        } else {
-                            const key = prompt('Nazwa obrazu:') || 'unnamed';
-                            const image = {
-                                src: dom.getAttribute('src'),
-                                key,
-                                name: key,
-                                scoped: true,
-                            };
-                            ImagePicker.lessonImages[key] = image;
-                            return { key };
-                        }
-                    },
-                },
-            ],
-            toDOM: (node: any) => {
-                const image = ImagePicker.getImage(node.attrs.key);
-                return ['img', { key: image.key, src: image.src, alt: image.name }];
+            key: {
+                default: null,
+                parseHTML: (element) => element.getAttribute('key'),
+                renderHTML: (attrs: ImageAttrs) => (attrs.key ? { key: attrs.key } : {}),
             },
         };
-    }
+    },
 
-    commands({ type }: any) {
-        return (attrs: any) => (state: any, dispatch: any) => {
-            const { selection } = state;
-            const position = selection.$cursor ? selection.$cursor.pos : selection.$to.pos;
-            const node = type.create(attrs);
-            const transaction = state.tr.insert(position, node);
-            dispatch(transaction);
-        };
-    }
-
-    inputRules({ type }: any) {
+    parseHTML() {
         return [
-            nodeInputRule(IMAGE_INPUT_REGEX, type, (match: any) => {
-                const [, key] = match;
-                return { key };
+            {
+                tag: 'img[src]',
+                getAttrs: (dom) => {
+                    const key = dom.getAttribute('key');
+                    if (key) {
+                        return { key };
+                    }
+
+                    // No `key` on the <img> — prompt and register in ImagePicker
+                    const proposed = prompt('Nazwa obrazu:') || 'unnamed';
+                    const img = {
+                        src: dom.getAttribute('src')!,
+                        key: proposed,
+                        name: proposed,
+                        scoped: true,
+                    };
+                    ImagePicker.lessonImages[proposed] = img;
+                    return { key: proposed };
+                },
+            },
+        ];
+    },
+
+    renderHTML({ HTMLAttributes }) {
+        const image = ImagePicker.getImage(HTMLAttributes.key);
+        return ['img', { key: image.key, src: image.src, alt: image.name }];
+    },
+
+    addCommands() {
+        return {
+            createImage:
+                (attrs: Partial<ImageAttrs>) =>
+                ({ state, chain }) => {
+                    const position = state.selection.$head.pos;
+                    const node = this.type.create(attrs);
+                    return chain().insertContentAt(position, node).scrollIntoView().run();
+                },
+        };
+    },
+
+    addInputRules() {
+        return [
+            nodeInputRule({
+                find: IMAGE_INPUT_REGEX,
+                type: this.type,
+                getAttributes: (match) => ({ key: match[1] }),
             }),
         ];
-    }
+    },
 
-    get plugins() {
+    addProseMirrorPlugins() {
         return [
             new Plugin({
                 props: {
                     handleDOMEvents: {
-                        drop(view: any, event: any) {
-                            const hasFiles =
-                                event.dataTransfer && event.dataTransfer.files && event.dataTransfer.files.length;
+                        drop: (view, event) => {
+                            const files = event.dataTransfer?.files;
+                            const hasFiles = files?.length;
 
                             if (!hasFiles) {
-                                return;
+                                return false;
                             }
 
-                            const images = Array.from(event.dataTransfer.files).filter((file: any) =>
-                                /image/i.test(file.type),
-                            );
-
+                            const images = Array.from(files!).filter((f) => /image/i.test(f.type));
                             if (images.length === 0) {
-                                return;
+                                return false;
                             }
 
                             event.preventDefault();
 
-                            const { schema } = view.state;
-                            const coordinates = view.posAtCoords({
+                            const coords = view.posAtCoords({
                                 left: event.clientX,
                                 top: event.clientY,
-                            });
+                            })!;
 
-                            images.forEach((image: any) => {
+                            images.forEach((file) => {
                                 const reader = new FileReader();
-
-                                reader.onload = (readerEvent: any) => {
+                                reader.onload = (readerEvent) => {
                                     const name = prompt('Nazwa obrazu:');
                                     if (name != null) {
-                                        const src = readerEvent.target.result;
+                                        const src = '' + readerEvent.target!.result;
                                         const image = {
                                             src,
                                             key: name,
@@ -115,19 +129,19 @@ export default class Image extends Node {
                                         };
                                         ImagePicker.lessonImages[name] = image;
 
-                                        const node = schema.nodes.image.create({
-                                            key: name,
-                                        });
-                                        const transaction = view.state.tr.insert(coordinates.pos, node);
-                                        view.dispatch(transaction);
+                                        const node = view.state.schema.nodes.image.create({ key: name });
+                                        const tr = view.state.tr.insert(coords.pos, node);
+                                        view.dispatch(tr.scrollIntoView());
                                     }
                                 };
-                                reader.readAsDataURL(image);
+                                reader.readAsDataURL(file);
                             });
+
+                            return true;
                         },
                     },
                 },
             }),
         ];
-    }
-}
+    },
+});

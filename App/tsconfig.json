@@ -6,7 +6,7 @@
         "jsx": "preserve",
         "resolveJsonModule": true,
         "importHelpers": true,
-        "moduleResolution": "node",
+        "moduleResolution": "bundler",
         "experimentalDecorators": true,
         "allowJs": true,
         "noEmit": true,

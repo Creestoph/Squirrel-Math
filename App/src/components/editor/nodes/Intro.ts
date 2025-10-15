@@ -1,20 +1,10 @@
-import { Node } from 'tiptap';
-import LessonIntro from '../../lesson/LessonIntro.vue';
+import { Node, VueNodeViewRenderer } from '@tiptap/vue-2';
+import LessonIntro from './Intro.vue';
 
-export default class Intro extends Node {
-    get name() {
-        return 'intro';
-    }
-
-    get schema() {
-        return {
-            content: 'block+',
-            parseDOM: [{ tag: 'intro' }],
-            toDOM: () => ['intro', 0],
-        };
-    }
-
-    get view() {
-        return LessonIntro;
-    }
-}
+export default Node.create({
+    name: 'intro',
+    content: 'block+',
+    parseHTML: () => [{ tag: 'intro' }],
+    renderHTML: () => ['intro', 0],
+    addNodeView: () => VueNodeViewRenderer(LessonIntro),
+});

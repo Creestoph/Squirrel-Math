@@ -1,5 +1,5 @@
 <template>
-    <div class="tags-wrapper">
+    <node-view-wrapper class="tags-wrapper">
         <div class="dropdown" v-for="(tag, j) in tags" :key="'tag' + j">
             <div class="type">
                 {{ tag }}
@@ -36,12 +36,18 @@
             </div>
         </div>
         <span class="add-required-button" v-if="canAddNewRequired()" @click="addRequiredLesson()">+</span>
-    </div>
+    </node-view-wrapper>
 </template>
 
 <script>
-export default {
-    props: ['node', 'updateAttrs', 'view'],
+import { NodeViewWrapper } from '@tiptap/vue-2';
+import Vue from 'vue';
+
+export default Vue.extend({
+    components: {
+        NodeViewWrapper,
+    },
+    props: ['node', 'updateAttributes', 'view'],
     data() {
         return {
             allLessons: [],
@@ -53,7 +59,7 @@ export default {
                 return this.node.attrs.tags;
             },
             set(tags) {
-                this.updateAttrs({ tags });
+                this.updateAttributes({ tags });
             },
         },
         required: {
@@ -61,7 +67,7 @@ export default {
                 return this.node.attrs.required;
             },
             set(required) {
-                this.updateAttrs({ required });
+                this.updateAttributes({ required });
             },
         },
         availableLessons: {
@@ -119,7 +125,7 @@ export default {
             );
         },
     },
-};
+});
 </script>
 
 <style scoped lang="scss">

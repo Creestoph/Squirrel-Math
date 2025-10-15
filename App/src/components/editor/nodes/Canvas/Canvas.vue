@@ -1,116 +1,128 @@
 <template>
-    <button ref="geometryEditor" class="geometry-editor" @focus="focused = true" @blur="onBlur($event)">
-        <div v-if="focused" class="geometry-toolbar-wrapper">
-            <div class="geometry-toolbar">
-                <button @mousedown="addSquare($event)">
-                    <icon>crop_square</icon>
-                </button>
-                <button @mousedown="addPolygon($event)">
-                    <icon>pentagon</icon>
-                </button>
-                <button @mousedown="addCircle($event)">
-                    <icon>circle</icon>
-                </button>
-                <button @mousedown="addLine($event)">
-                    <icon>show_chart</icon>
-                </button>
-                <button @mousedown="addCurve($event)">
-                    <icon>gesture</icon>
-                </button>
-                <button @mousedown="addArc($event)">
-                    <icon>compass</icon>
-                </button>
-                <button @mousedown="addTextArea($event)">
-                    <span class="T-icon">T</span>
-                </button>
-                <template v-if="selection.length">
-                    <color-picker
-                        :color="fillColor"
-                        @mousedown.native="$event.preventDefault()"
-                        @selected="setFillColor($event)"
-                        >wypełnienie</color-picker
-                    >
-                    <color-picker
-                        v-if="canAnyHaveBorder(selection)"
-                        :color="borderColor"
-                        @mousedown.native="$event.preventDefault()"
-                        @selected="setBorderColor($event)"
-                        >krawędź</color-picker
-                    >
-                    <color-picker
-                        v-if="canAnyHaveText(selection)"
-                        :color="textColor"
-                        @mousedown.native="$event.preventDefault()"
-                        @selected="setTextColor($event)"
-                        >tekst</color-picker
-                    >
-                    <button
-                        v-if="canAnyHaveText(selection)"
-                        @mousedown="setAlign('top')"
-                        :class="{ active: align == 'top' }"
-                    >
-                        <icon>align_top</icon>
+    <node-view-wrapper>
+        <button ref="geometryEditor" class="geometry-editor" @focus="focused = true" @blur="onBlur($event)">
+            <div v-if="focused" class="geometry-toolbar-wrapper">
+                <div class="geometry-toolbar">
+                    <button @mousedown="addSquare($event)">
+                        <icon>crop_square</icon>
                     </button>
-                    <button
-                        v-if="canAnyHaveText(selection)"
-                        @mousedown="setAlign('middle')"
-                        :class="{ active: align == 'middle' }"
-                    >
-                        <icon>align_vertically</icon>
+                    <button @mousedown="addPolygon($event)">
+                        <icon>pentagon</icon>
                     </button>
-                    <button
-                        v-if="canAnyHaveText(selection)"
-                        @mousedown="setAlign('bottom')"
-                        :class="{ active: align == 'bottom' }"
-                    >
-                        <icon>align_bottom</icon>
+                    <button @mousedown="addCircle($event)">
+                        <icon>circle</icon>
                     </button>
-                    <span v-if="selectedRectangle() || selectedCircle()"
-                        >szerokość <input type="number" v-model="shapeAtIndex(selection[0]).width"
-                    /></span>
-                    <span v-if="selectedRectangle() || selectedCircle()"
-                        >wysokość <input type="number" v-model="shapeAtIndex(selection[0]).height"
-                    /></span>
-                    <button v-if="canBeEdited()" @mousedown="toggleEdit()">
-                        {{ shapeAtIndex(selection[0]).editing ? 'zatwierdź' : 'edytuj' }}
+                    <button @mousedown="addLine($event)">
+                        <icon>show_chart</icon>
                     </button>
-                    <span v-if="selectedPolygon()"
-                        >wierzchołki
-                        <input type="number" :value="shapeAtIndex(selection[0]).sides" @keyup="createRegular($event)"
-                    /></span>
-                    <span v-if="selectedArc()"
-                        >promień <input type="number" v-model="shapeAtIndex(selection[0]).radius"
-                    /></span>
-                    <span v-if="selectedArc()"
-                        >kąt <input type="number" v-model="shapeAtIndex(selection[0]).angle"
-                    /></span>
-                </template>
+                    <button @mousedown="addCurve($event)">
+                        <icon>gesture</icon>
+                    </button>
+                    <button @mousedown="addArc($event)">
+                        <icon>compass</icon>
+                    </button>
+                    <button @mousedown="addTextArea($event)">
+                        <span class="T-icon">T</span>
+                    </button>
+                    <template v-if="selection.length">
+                        <color-picker
+                            :color="fillColor"
+                            @mousedown.native="$event.preventDefault()"
+                            @selected="setFillColor($event)"
+                        >
+                            wypełnienie
+                        </color-picker>
+                        <color-picker
+                            v-if="canAnyHaveBorder(selection)"
+                            :color="borderColor"
+                            @mousedown.native="$event.preventDefault()"
+                            @selected="setBorderColor($event)"
+                        >
+                            krawędź
+                        </color-picker>
+                        <color-picker
+                            v-if="canAnyHaveText(selection)"
+                            :color="textColor"
+                            @mousedown.native="$event.preventDefault()"
+                            @selected="setTextColor($event)"
+                        >
+                            tekst
+                        </color-picker>
+                        <button
+                            v-if="canAnyHaveText(selection)"
+                            @mousedown="setAlign('top')"
+                            :class="{ active: align == 'top' }"
+                        >
+                            <icon>align_top</icon>
+                        </button>
+                        <button
+                            v-if="canAnyHaveText(selection)"
+                            @mousedown="setAlign('middle')"
+                            :class="{ active: align == 'middle' }"
+                        >
+                            <icon>align_vertically</icon>
+                        </button>
+                        <button
+                            v-if="canAnyHaveText(selection)"
+                            @mousedown="setAlign('bottom')"
+                            :class="{ active: align == 'bottom' }"
+                        >
+                            <icon>align_bottom</icon>
+                        </button>
+                        <span v-if="selectedRectangle() || selectedCircle()">
+                            szerokość <input type="number" v-model="shapeAtIndex(selection[0]).width" />
+                        </span>
+                        <span v-if="selectedRectangle() || selectedCircle()">
+                            wysokość <input type="number" v-model="shapeAtIndex(selection[0]).height" />
+                        </span>
+                        <button v-if="canBeEdited()" @mousedown="toggleEdit()">
+                            {{ shapeAtIndex(selection[0]).editing ? 'zatwierdź' : 'edytuj' }}
+                        </button>
+                        <span v-if="selectedPolygon()">
+                            wierzchołki
+                            <input
+                                type="number"
+                                :value="shapeAtIndex(selection[0]).sides"
+                                @keyup="createRegular($event)"
+                            />
+                        </span>
+                        <span v-if="selectedArc()">
+                            promień <input type="number" v-model="shapeAtIndex(selection[0]).radius" />
+                        </span>
+                        <span v-if="selectedArc()">
+                            kąt <input type="number" v-model="shapeAtIndex(selection[0]).angle" />
+                        </span>
+                    </template>
+                </div>
             </div>
-        </div>
-        <div class="canvas-wrapper" ref="canvasWrapper">
-            <canvas ref="eventsCatcher" width="800" height="500" resize="true"></canvas>
-            <div ref="content" @mousedown="forwardClickEventToCanvas($event)"></div>
-            <canvas ref="overlayCanvas" width="800" height="500" class="overlay-canvas"></canvas>
-        </div>
-    </button>
+            <div class="canvas-wrapper" ref="canvasWrapper">
+                <canvas ref="eventsCatcher" resize="true"></canvas>
+                <div @mousedown="forwardClickEventToCanvas($event)">
+                    <node-view-content />
+                </div>
+                <canvas ref="overlayCanvas" class="overlay-canvas"></canvas>
+            </div>
+        </button>
+    </node-view-wrapper>
 </template>
 
 <script>
 import paper from 'paper';
-import { Shape } from './Shape';
-import RectangleNode from './RectangleNode';
-import CircleNode from './CircleNode';
-import LineNode from './LineNode';
-import PolygonNode from './PolygonNode';
-import ArcNode from './ArcNode';
-import TextAreaNode from './TextAreaNode';
+import { idGenerator, Shape } from './Shape';
 import ColorPicker from '../../ColorPicker.vue';
 
 let copiedNodes = null;
 
-export default {
-    components: { ColorPicker },
-    props: ['node', 'updateAttrs', 'view', 'getPos'],
+import Vue from 'vue';
+import { NodeViewContent, NodeViewWrapper } from '@tiptap/vue-2';
+
+export default Vue.extend({
+    components: {
+        NodeViewWrapper,
+        NodeViewContent,
+        ColorPicker,
+    },
+    props: ['node', 'view', 'getPos'],
 
     data() {
         return {
@@ -142,7 +154,8 @@ export default {
                 return this.node.attrs.canvas;
             },
             set(canvas) {
-                this.updateAttrs({ canvas });
+                console.log('setting canvas', canvas);
+                this.updateAttributes({ canvas });
             },
         },
         fillColor: {
@@ -171,7 +184,7 @@ export default {
                 const firstSelected = this.shapeAtIndex(this.selection[0]);
                 return this.selection
                     .map((i) => this.shapeAtIndex(i))
-                    .filter((shape) => shape.node.type.name === 'text_area')
+                    .filter((shape) => shape.node.type.name === 'textArea')
                     .every((shape) => shape.textColor == firstSelected.textColor)
                     ? firstSelected.textColor
                     : false;
@@ -215,15 +228,16 @@ export default {
 
     methods: {
         lastShape() {
-            return this.$refs.content.children[this.totalShapes() - 1].__vue__;
+            return this.shapeAtIndex(this.totalShapes() - 1);
         },
 
         totalShapes() {
-            return this.$refs.content.children.length;
+            return this.node.childCount;
         },
 
         shapeAtIndex(i) {
-            return this.$refs.content.children[i].__vue__;
+            const id = this.node.child(i).attrs.id;
+            return this.editor.storage.geometry.controllers.get(id);
         },
 
         initializeFromAttributes() {
@@ -238,13 +252,16 @@ export default {
         },
 
         handleResize() {
+            console.log('handling resize');
             const width = this.$refs.eventsCatcher.offsetWidth;
             const height = this.$refs.eventsCatcher.offsetHeight;
             this.eventsCatcherPaperScope.view.setViewSize(new paper.Size(width, height));
             this.overlayPaperScope.view.setViewSize(new paper.Size(width, height));
-            this.canvas = { width, height };
             for (let i = 0; i < this.totalShapes(); i++) {
                 this.shapeAtIndex(i).handleResize(width, height);
+            }
+            if (this.canvas.width !== width || this.canvas.height !== height) {
+                this.canvas = { width, height };
             }
         },
 
@@ -367,7 +384,8 @@ export default {
                 this.selectionBox.remove();
                 this.selectionBox = null;
             }
-            this.save();
+            // delay attrs update to avoid collisions with prosemirror selection update, which also happens on mouseup
+            requestAnimationFrame(() => this.save());
         },
 
         handleKeyDown(event) {
@@ -417,7 +435,10 @@ export default {
             if (event.key == 'v' && event.modifiers.control && copiedNodes) {
                 this.deselectAll();
                 copiedNodes.forEach((shapeNode) => {
-                    const node = shapeNode.type.createAndFill(shapeNode.attrs, shapeNode.content);
+                    const node = shapeNode.type.createAndFill(
+                        { ...shapeNode.attrs, id: idGenerator.next().value },
+                        shapeNode.content,
+                    );
                     const transaction = this.view.state.tr.insert(this.insertPosition(), node);
                     this.view.dispatch(transaction);
 
@@ -469,8 +490,8 @@ export default {
             return this.getPos() + this.node.nodeSize - 1;
         },
 
-        addShape(creator, attrs, event) {
-            creator.create(attrs, this.insertPosition(), this.view);
+        addShape(command, attrs, event) {
+            this.editor.commands[command](attrs, this.insertPosition());
             const added = this.lastShape();
             this.deselectAll();
             this.select(this.totalShapes() - 1, added);
@@ -483,7 +504,7 @@ export default {
 
         addSquare(event) {
             this.addShape(
-                RectangleNode,
+                'createRectangle',
                 {
                     center: {
                         x: this.canvas.width / 2,
@@ -495,7 +516,7 @@ export default {
         },
 
         addPolygon(event) {
-            const added = this.addShape(PolygonNode, {}, event);
+            const added = this.addShape('createPolygon', {}, event);
             added.makeRegular(3, {
                 x: this.canvas.width / 2,
                 y: this.canvas.height / 2,
@@ -504,7 +525,7 @@ export default {
 
         addCircle(event) {
             this.addShape(
-                CircleNode,
+                'createCircle',
                 {
                     center: {
                         x: this.canvas.width / 2,
@@ -516,20 +537,20 @@ export default {
         },
 
         addLine(event) {
-            const added = this.addShape(LineNode, {}, event);
+            const added = this.addShape('createLine', {}, event);
             added.editing = true;
             this.shapeEdited = this.totalShapes() - 1;
         },
 
         addCurve(event) {
-            const added = this.addShape(LineNode, { smooth: true }, event);
+            const added = this.addShape('createLine', { smooth: true }, event);
             added.editing = true;
             this.shapeEdited = this.totalShapes() - 1;
         },
 
         addArc(event) {
             this.addShape(
-                ArcNode,
+                'createArc',
                 {
                     center: {
                         x: this.canvas.width / 2 - 50,
@@ -552,7 +573,7 @@ export default {
 
         addTextArea(event) {
             this.addShape(
-                TextAreaNode,
+                'createTextArea',
                 {
                     width: 160,
                     height: 44,
@@ -630,17 +651,17 @@ export default {
         },
 
         isTextArea(shape) {
-            return shape.node.type.name === 'text_area';
+            return shape.node.type.name === 'textArea';
         },
 
         select(index, shape = this.shapeAtIndex(index)) {
-            shape.selected = true;
+            shape.setSelected(true);
             this.selection.push(index);
             this.recalculateSnapPoints();
         },
 
         deselect(index, shape = this.shapeAtIndex(index)) {
-            shape.selected = false;
+            shape.setSelected(false);
             this.selection.splice(
                 this.selection.findIndex((s) => s == index),
                 1,
@@ -651,7 +672,7 @@ export default {
 
         deselectAll() {
             for (let i = 0; i < this.totalShapes(); i++) {
-                this.shapeAtIndex(i).selected = false;
+                this.shapeAtIndex(i).setSelected(false);
             }
             this.shapeEdited = -1;
             this.selection = [];
@@ -667,13 +688,14 @@ export default {
         },
 
         save() {
-            this.canvas = {
-                width: this.$refs.eventsCatcher.offsetWidth,
-                height: this.$refs.eventsCatcher.offsetHeight,
-            };
+            // this.canvas = {
+            //     width: this.$refs.eventsCatcher.offsetWidth,
+            //     height: this.$refs.eventsCatcher.offsetHeight,
+            // };
             for (let i = 0; i < this.totalShapes(); i++) {
                 this.shapeAtIndex(i).save();
             }
+            this.handleResize();
         },
 
         onBlur(event) {
@@ -687,7 +709,8 @@ export default {
                 this.deselectAll();
                 this.focused = false;
             }
-            this.save();
+            // delay attrs update to avoid collisions with prosemirror selection update
+            requestAnimationFrame(() => this.save());
         },
 
         forwardClickEventToCanvas(event) {
@@ -698,7 +721,7 @@ export default {
             this.lastTextAreaClickEvent = event;
         },
     },
-};
+});
 </script>
 
 <style scoped lang="scss">

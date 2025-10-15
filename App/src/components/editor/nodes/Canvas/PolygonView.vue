@@ -1,13 +1,18 @@
 <template>
-    <canvas ref="canvas"></canvas>
+    <node-view-wrapper as="canvas" ref="canvas"></node-view-wrapper>
 </template>
 
 <script>
 import paper from 'paper';
-import { Shape } from './Shape';
+import { idGenerator, Shape } from './Shape';
+import { NodeViewWrapper } from '@tiptap/vue-2';
+import Vue from 'vue';
 
-export default {
-    props: ['node', 'updateAttrs', 'view', 'getPos'],
+export default Vue.extend({
+    components: {
+        NodeViewWrapper,
+    },
+    props: ['node', 'view', 'getPos'],
 
     data() {
         return {
@@ -31,7 +36,10 @@ export default {
     },
 
     mounted() {
+        this.paperScope = new paper.PaperScope();
+        this.paperScope.setup(this.$refs.canvas.$el);
         this.render();
+        this.editor.storage.geometry.controllers.set(this.node.attrs.id, this);
     },
 
     computed: {
@@ -42,7 +50,7 @@ export default {
 
             set(color) {
                 if (color != this.fillColor) {
-                    this.updateAttrs({ color });
+                    this.updateAttributes({ color });
                 }
                 if (color == '#00000000') {
                     color = '#00000001';
@@ -60,27 +68,12 @@ export default {
 
             set(borderColor) {
                 if (borderColor != this.borderColor) {
-                    this.updateAttrs({ borderColor });
+                    this.updateAttributes({ borderColor });
                 }
                 if (borderColor == '#00000000') {
                     borderColor = '#00000001';
                 }
                 this.polygon.strokeColor = new paper.Color(borderColor);
-            },
-        },
-
-        selected: {
-            get() {
-                return null;
-            },
-
-            set(value) {
-                this.grips.visible = value;
-                this.isSelected = value;
-                if (!value) {
-                    this.editing = false;
-                    this.selectGrip(-1);
-                }
             },
         },
 
@@ -99,9 +92,8 @@ export default {
 
     methods: {
         render() {
-            this.paperScope = new paper.PaperScope();
-            this.paperScope.setup(this.$refs.canvas);
             this.paperScope.activate();
+            this.paperScope.project.clear();
 
             const attrs = this.node.attrs;
             this.polygon = new paper.Path();
@@ -142,6 +134,15 @@ export default {
         scale(factor, center) {
             this.polygon.scale(factor, new paper.Point(center));
             this.save();
+        },
+
+        setSelected(value) {
+            this.grips.visible = value;
+            this.isSelected = value;
+            if (!value) {
+                this.editing = false;
+                this.selectGrip(-1);
+            }
         },
 
         containedInBounds(bounds) {
@@ -237,7 +238,7 @@ export default {
         },
 
         save() {
-            this.updateAttrs({
+            this.updateAttributes({
                 vertices: this.polygon.segments.map((s) => ({
                     x: s.point.x,
                     y: s.point.y,
@@ -255,7 +256,7 @@ export default {
 
         makeRegular(sides, center) {
             this.selectGrip(-1);
-            this.updateAttrs({
+            this.updateAttributes({
                 vertices: new paper.Path.RegularPolygon(center || this.getPosition(), sides, 70).segments.map((s) => ({
                     x: s.point.x,
                     y: s.point.y,
@@ -264,7 +265,7 @@ export default {
             this.editing = false;
         },
     },
-};
+});
 </script>
 
 <style scoped lang="scss">

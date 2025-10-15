@@ -1,27 +1,23 @@
-import { Node } from 'tiptap';
-import LessonTitle from '../../lesson/LessonTitle.vue';
-import LessonTitleShort from '../../lesson/LessonTitleShort.vue';
+import { Node, VueNodeViewRenderer } from '@tiptap/vue-2';
+import TitleShort from './TitleShort.vue';
+import Title from './Title.vue';
 
-export default class Title extends Node {
-    constructor(private shortVersion: boolean) {
-        super();
-    }
+export default Node.create<{ shortVersion: boolean }>({
+    name: 'title',
+    content: 'text*',
+    // defining: true,
+    marks: '',
 
-    get name() {
-        return 'title';
-    }
-
-    get schema() {
+    addOptions() {
         return {
-            content: 'inline*',
-            defining: true,
-            parseDOM: [{ tag: 'h1' }],
-            marks: '',
-            toDOM: () => ['h1', 0],
+            shortVersion: false,
         };
-    }
+    },
 
-    get view() {
-        return this.shortVersion ? LessonTitleShort : LessonTitle;
-    }
-}
+    parseHTML: () => [{ tag: 'h1' }],
+    renderHTML: () => ['h1', 0],
+
+    addNodeView() {
+        return VueNodeViewRenderer(this.options.shortVersion ? TitleShort : Title);
+    },
+});

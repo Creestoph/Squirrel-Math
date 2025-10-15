@@ -1,20 +1,20 @@
 <template>
     <lesson>
-        <editor-menu-bar id="toolbar" ref="toolbar" :editor="editor" v-slot="{ commands, isActive }">
-            <div>
+        <div id="toolbar" ref="toolbar">
+            <div v-if="editor">
                 <div id="tools-managing">
-                    <button @click="commands.undo" title="cofnij akcję (Ctrl + Z)">
+                    <button @click="editor.commands.undo" title="cofnij akcję (Ctrl + Z)">
                         <icon>undo</icon>
                     </button>
 
-                    <button @click="commands.redo" title="przywróć akcję (Ctrl + Y)">
+                    <button @click="editor.commands.redo" title="przywróć akcję (Ctrl + Y)">
                         <icon>redo</icon>
                     </button>
 
                     <button
                         @click="
-                            commands.saveToFile();
-                            commands.saveToLocalStorage();
+                            editor.commands.saveToFile();
+                            editor.commands.saveToLocalStorage();
                         "
                         title="zapisz (Ctrl + S)"
                     >
@@ -46,174 +46,171 @@
                 </div>
                 <div id="tools-general">
                     <button
-                        :class="{ active: isActive.bold() }"
+                        :class="{ active: editor.isActive('bold') }"
                         style="font-weight: bold"
-                        @click="commands.bold"
+                        @click="editor.chain().focus().toggleBold().run()"
                         title="pogrubienie tekstu (Ctrl + B)"
                     >
                         B
                     </button>
 
                     <button
-                        :class="{ active: isActive.italic() }"
+                        :class="{ active: editor.isActive('italic') }"
                         style="font-style: italic"
-                        @click="commands.italic"
+                        @click="editor.chain().focus().toggleItalic().run()"
                         title="italika (Ctrl + I)"
                     >
                         I
                     </button>
 
                     <button
-                        :class="{ active: isActive.underline() }"
+                        :class="{ active: editor.isActive('underline') }"
                         style="text-decoration: underline"
-                        @click="commands.underline"
+                        @click="editor.chain().focus().toggleUnderline().run()"
                         title="podkreślenie tekstu (Ctrl + U)"
                     >
                         U
                     </button>
 
                     <button
-                        :class="{ active: isActive.strike() }"
+                        :class="{ active: editor.isActive('strike') }"
                         style="text-decoration: line-through"
-                        @click="commands.strike"
+                        @click="editor.chain().focus().toggleStrike().run()"
                         title="przekreślenie tekstu (Ctrl + D)"
                     >
                         abc
                     </button>
 
                     <color-picker
-                        @selected="commands.text_color({ color: $event })"
+                        @selected="editor.chain().focus().setColor({ color: $event }).run()"
                         :class="{ picker: true }"
                         style="color: #cc4444"
                         title="kolor tekstu"
-                        >abc</color-picker
                     >
+                        abc
+                    </color-picker>
 
                     <button
-                        :class="{ active: textAlignExtension.isActive('left') }"
-                        @click="commands.text_align('left')"
+                        :class="{ active: editor.isActive({ textAlign: 'left' }) }"
+                        @click="editor.chain().focus().setTextAlign('left').run()"
                         title="wyrównanie do lewej"
                     >
                         <icon>format_align_left</icon>
                     </button>
 
                     <button
-                        :class="{
-                            active: textAlignExtension.isActive('center'),
-                        }"
-                        @click="commands.text_align('center')"
+                        :class="{ active: editor.isActive({ textAlign: 'center' }) }"
+                        @click="editor.chain().focus().setTextAlign('center').run()"
                         title="wyrównanie do środka"
                     >
                         <icon>format_align_center</icon>
                     </button>
 
                     <button
-                        :class="{
-                            active: textAlignExtension.isActive('right'),
-                        }"
-                        @click="commands.text_align('right')"
+                        :class="{ active: editor.isActive({ textAlign: 'right' }) }"
+                        @click="editor.chain().focus().setTextAlign('right').run()"
                         title="wyrównanie do prawej"
                     >
                         <icon>format_align_right</icon>
                     </button>
 
                     <button
-                        :class="{ active: isActive.bullet_list() }"
-                        @click="commands.bullet_list"
+                        :class="{ active: editor.isActive('bulletList') }"
+                        @click="editor.chain().focus().toggleBulletList().run()"
                         title="lista punktowana"
                     >
                         <icon>format_list_bulleted</icon>
                     </button>
 
                     <button
-                        :class="{ active: isActive.ordered_list() }"
-                        @click="commands.ordered_list"
+                        :class="{ active: editor.isActive('orderedList') }"
+                        @click="editor.chain().focus().toggleOrderedList().run()"
                         title="lista numerowana"
                     >
                         <icon>format_list_numbered</icon>
                     </button>
 
-                    <button :class="{ active: isActive.link() }" @click="commands.link" title="link do lekcji">
+                    <button
+                        :class="{ active: editor.isActive('link') }"
+                        @click="editor.chain().focus().setLink().run()"
+                        title="link do lekcji"
+                    >
                         <icon>link</icon>
                     </button>
 
-                    <button :class="{ active: isActive.comment() }" @click="commands.comment" title="dodaj komentarz">
+                    <button
+                        :class="{ active: editor.isActive('comment') }"
+                        @click="addComment()"
+                        title="dodaj komentarz"
+                    >
                         <icon>add_comment</icon>
                     </button>
 
-                    <dropdown @selected="insert($event, commands)" title="wstaw">
+                    <dropdown @selected="insert($event, editor.commands)" title="wstaw">
                         <template v-slot:placeholder><icon>add</icon></template>
                         <dropdown-option value="chapter"><icon>menu_book</icon> rozdział</dropdown-option>
                         <dropdown-option value="section"><icon>auto_stories</icon> sekcja</dropdown-option>
-                        <dropdown-option value="expression"
-                            ><span style="width: 24px"><b>ΣΠ</b></span> wyrażenie</dropdown-option
-                        >
-                        <dropdown-option value="expressionInline"
-                            ><span style="width: 24px"><b>σπ</b></span> wyrażenie inline</dropdown-option
-                        >
+                        <dropdown-option value="expression">
+                            <span style="width: 24px"><b>ΣΠ</b></span> wyrażenie
+                        </dropdown-option>
+                        <dropdown-option value="expressionInline">
+                            <span style="width: 24px"><b>σπ</b></span> wyrażenie inline
+                        </dropdown-option>
                         <dropdown-option value="theorem"><icon>emoji_objects</icon> twierdzenie</dropdown-option>
                         <dropdown-option value="proof"><icon>engineering</icon> dowód</dropdown-option>
                         <dropdown-option value="example"><icon>view_agenda</icon> przykład</dropdown-option>
                         <dropdown-option value="problem"><icon>help</icon> problem</dropdown-option>
                         <dropdown-option value="table"><icon>grid_on</icon> tabela</dropdown-option>
                         <dropdown-option value="image"><icon>insert_photo</icon> obraz</dropdown-option>
-                        <dropdown-option value="shape"
-                            ><icon>change_history</icon> kształt geometryczny</dropdown-option
-                        >
+                        <dropdown-option value="shape">
+                            <icon>change_history</icon> kształt geometryczny
+                        </dropdown-option>
                         <dropdown-option value="html"><icon>code</icon> html</dropdown-option>
-                        <dropdown-option value="dynamic"
-                            ><icon>precision_manufacturing</icon> element dynamiczny</dropdown-option
-                        >
+                        <dropdown-option value="dynamic">
+                            <icon>precision_manufacturing</icon> element dynamiczny
+                        </dropdown-option>
                     </dropdown>
                 </div>
 
-                <div class="tools-specific" v-if="isActive.table()">
-                    <button @click="commands.deleteTable" title="usuń tabelę">
+                <div class="tools-specific" v-if="editor.isActive('table')">
+                    <button @click="editor.chain().focus().deleteTable().run()" title="usuń tabelę">
                         <icon>delete</icon>
                     </button>
-                    <button @click="commands.addColumnBefore" title="wstaw kolumnę przed">
+                    <button @click="editor.chain().focus().addColumnBefore().run()" title="wstaw kolumnę przed">
                         <icon>insert_column_left</icon>
                     </button>
-                    <button @click="commands.addColumnAfter" title="wstaw kolumnę za">
+                    <button @click="editor.chain().focus().addColumnAfter().run()" title="wstaw kolumnę za">
                         <icon>insert_column_right</icon>
                     </button>
-                    <button @click="commands.deleteColumn" title="usuń kolumnę">
+                    <button @click="editor.chain().focus().deleteColumn().run()" title="usuń kolumnę">
                         <icon>delete_column</icon>
                     </button>
-                    <button @click="commands.addRowBefore" title="wstaw wiersz przed">
+                    <button @click="editor.chain().focus().addRowBefore().run()" title="wstaw wiersz przed">
                         <icon>insert_row_top</icon>
                     </button>
-                    <button @click="commands.addRowAfter" title="wstaw wiersz za">
+                    <button @click="editor.chain().focus().addRowAfter().run()" title="wstaw wiersz za">
                         <icon>insert_row_bottom</icon>
                     </button>
-                    <button @click="commands.deleteRow" title="usuń wiersz">
+                    <button @click="editor.chain().focus().deleteRow().run()" title="usuń wiersz">
                         <icon>delete_row</icon>
                     </button>
-                    <button @click="commands.toggleCellMerge" title="scal komórki">
+                    <button @click="editor.chain().focus().mergeOrSplit().run()" title="scal komórki">
                         <icon>table_line</icon>
                     </button>
                     <color-picker
-                        @selected="
-                            commands.setCellAttr({
-                                name: 'background',
-                                value: $event,
-                            })
-                        "
+                        @selected="editor.chain().focus().setCellAttribute('background', $event).run()"
                         :class="{ picker: true }"
                         title="kolor tła"
-                        ><icon style="color: #cc4444">apps</icon></color-picker
                     >
+                        <icon style="color: #cc4444">apps</icon>
+                    </color-picker>
                     <color-picker
-                        @selected="
-                            commands.setCellAttr({
-                                name: 'borderColor',
-                                value: $event,
-                            })
-                        "
+                        @selected="editor.chain().focus().setCellAttribute('borderColor', $event).run()"
                         :class="{ picker: true }"
                         title="kolor krawędzi"
-                        ><icon style="color: #cc4444">border_outer</icon></color-picker
                     >
+                        <icon style="color: #cc4444">border_outer</icon>
+                    </color-picker>
                     <button class="dropdown" title="krawędź lewa">
                         <div class="dropdown-label">
                             <icon>border_left</icon>
@@ -221,34 +218,19 @@
                         <div class="dropdown-list">
                             <div
                                 class="dropdown-position"
-                                @click="
-                                    commands.setCellAttr({
-                                        name: 'borderLeft',
-                                        value: '0',
-                                    })
-                                "
+                                @click="editor.chain().focus().setCellAttribute('borderLeft', '0').run()"
                             >
                                 brak
                             </div>
                             <div
                                 class="dropdown-position"
-                                @click="
-                                    commands.setCellAttr({
-                                        name: 'borderLeft',
-                                        value: '1',
-                                    })
-                                "
+                                @click="editor.chain().focus().setCellAttribute('borderLeft', '1').run()"
                             >
                                 cienka
                             </div>
                             <div
                                 class="dropdown-position"
-                                @click="
-                                    commands.setCellAttr({
-                                        name: 'borderLeft',
-                                        value: '3',
-                                    })
-                                "
+                                @click="editor.chain().focus().setCellAttribute('borderLeft', '3').run()"
                             >
                                 gruba
                             </div>
@@ -261,34 +243,19 @@
                         <div class="dropdown-list">
                             <div
                                 class="dropdown-position"
-                                @click="
-                                    commands.setCellAttr({
-                                        name: 'borderRight',
-                                        value: '0',
-                                    })
-                                "
+                                @click="editor.chain().focus().setCellAttribute('borderRight', '0').run()"
                             >
                                 brak
                             </div>
                             <div
                                 class="dropdown-position"
-                                @click="
-                                    commands.setCellAttr({
-                                        name: 'borderRight',
-                                        value: '1',
-                                    })
-                                "
+                                @click="editor.chain().focus().setCellAttribute('borderRight', '1').run()"
                             >
                                 cienka
                             </div>
                             <div
                                 class="dropdown-position"
-                                @click="
-                                    commands.setCellAttr({
-                                        name: 'borderRight',
-                                        value: '3',
-                                    })
-                                "
+                                @click="editor.chain().focus().setCellAttribute('borderRight', '3').run()"
                             >
                                 gruba
                             </div>
@@ -301,34 +268,19 @@
                         <div class="dropdown-list">
                             <div
                                 class="dropdown-position"
-                                @click="
-                                    commands.setCellAttr({
-                                        name: 'borderTop',
-                                        value: '0',
-                                    })
-                                "
+                                @click="editor.chain().focus().setCellAttribute('borderTop', '0').run()"
                             >
                                 brak
                             </div>
                             <div
                                 class="dropdown-position"
-                                @click="
-                                    commands.setCellAttr({
-                                        name: 'borderTop',
-                                        value: '1',
-                                    })
-                                "
+                                @click="editor.chain().focus().setCellAttribute('borderTop', '1').run()"
                             >
                                 cienka
                             </div>
                             <div
                                 class="dropdown-position"
-                                @click="
-                                    commands.setCellAttr({
-                                        name: 'borderTop',
-                                        value: '3',
-                                    })
-                                "
+                                @click="editor.chain().focus().setCellAttribute('borderTop', '3').run()"
                             >
                                 gruba
                             </div>
@@ -341,34 +293,19 @@
                         <div class="dropdown-list">
                             <div
                                 class="dropdown-position"
-                                @click="
-                                    commands.setCellAttr({
-                                        name: 'borderBottom',
-                                        value: '0',
-                                    })
-                                "
+                                @click="editor.chain().focus().setCellAttribute('borderBottom', '0').run()"
                             >
                                 brak
                             </div>
                             <div
                                 class="dropdown-position"
-                                @click="
-                                    commands.setCellAttr({
-                                        name: 'borderBottom',
-                                        value: '1',
-                                    })
-                                "
+                                @click="editor.chain().focus().setCellAttribute('borderBottom', '1').run()"
                             >
                                 cienka
                             </div>
                             <div
                                 class="dropdown-position"
-                                @click="
-                                    commands.setCellAttr({
-                                        name: 'borderBottom',
-                                        value: '3',
-                                    })
-                                "
+                                @click="editor.chain().focus().setCellAttribute('borderBottom', '3').run()"
                             >
                                 gruba
                             </div>
@@ -382,22 +319,14 @@
                             <div
                                 class="dropdown-position"
                                 @click="
-                                    commands.setCellAttr({
-                                        name: 'borderLeft',
-                                        value: '0',
-                                    });
-                                    commands.setCellAttr({
-                                        name: 'borderRight',
-                                        value: '0',
-                                    });
-                                    commands.setCellAttr({
-                                        name: 'borderTop',
-                                        value: '0',
-                                    });
-                                    commands.setCellAttr({
-                                        name: 'borderBottom',
-                                        value: '0',
-                                    });
+                                    editor
+                                        .chain()
+                                        .focus()
+                                        .setCellAttribute('borderLeft', '0')
+                                        .setCellAttribute('borderRight', '0')
+                                        .setCellAttribute('borderTop', '0')
+                                        .setCellAttribute('borderBottom', '0')
+                                        .run()
                                 "
                             >
                                 brak
@@ -405,22 +334,14 @@
                             <div
                                 class="dropdown-position"
                                 @click="
-                                    commands.setCellAttr({
-                                        name: 'borderLeft',
-                                        value: '1',
-                                    });
-                                    commands.setCellAttr({
-                                        name: 'borderRight',
-                                        value: '1',
-                                    });
-                                    commands.setCellAttr({
-                                        name: 'borderTop',
-                                        value: '1',
-                                    });
-                                    commands.setCellAttr({
-                                        name: 'borderBottom',
-                                        value: '1',
-                                    });
+                                    editor
+                                        .chain()
+                                        .focus()
+                                        .setCellAttribute('borderLeft', '1')
+                                        .setCellAttribute('borderRight', '1')
+                                        .setCellAttribute('borderTop', '1')
+                                        .setCellAttribute('borderBottom', '1')
+                                        .run()
                                 "
                             >
                                 cienka
@@ -428,22 +349,14 @@
                             <div
                                 class="dropdown-position"
                                 @click="
-                                    commands.setCellAttr({
-                                        name: 'borderLeft',
-                                        value: '3',
-                                    });
-                                    commands.setCellAttr({
-                                        name: 'borderRight',
-                                        value: '3',
-                                    });
-                                    commands.setCellAttr({
-                                        name: 'borderTop',
-                                        value: '3',
-                                    });
-                                    commands.setCellAttr({
-                                        name: 'borderBottom',
-                                        value: '3',
-                                    });
+                                    editor
+                                        .chain()
+                                        .focus()
+                                        .setCellAttribute('borderLeft', '3')
+                                        .setCellAttribute('borderRight', '3')
+                                        .setCellAttribute('borderTop', '3')
+                                        .setCellAttribute('borderBottom', '3')
+                                        .run()
                                 "
                             >
                                 gruba
@@ -452,7 +365,7 @@
                     </button>
                 </div>
             </div>
-        </editor-menu-bar>
+        </div>
 
         <editor-content id="editor" :editor="editor" />
 
@@ -469,16 +382,20 @@
                 </div>
                 <div class="drafts-list">
                     <div v-for="(draft, i) in availableDrafts" :key="i">
-                        <div class="draft">
-                            <span @click="loadDraft(draft)" class="draft-name">{{
-                                draft.name + (draft.fromAutosave ? ' (autosave)' : '')
-                            }}</span>
-                            <span @click="loadDraft(draft)" class="draft-date">{{
-                                draft.created.toLocaleDateString()
-                            }}</span>
-                            <span @click="loadDraft(draft)" class="draft-date">{{
-                                draft.lastModified.toLocaleDateString() + ' ' + draft.lastModified.toLocaleTimeString()
-                            }}</span>
+                        <div class="draft" @click="loadDraft(draft)">
+                            <span class="draft-name">
+                                {{ draft.name + (draft.fromAutosave ? ' (autosave)' : '') }}
+                            </span>
+                            <span class="draft-date">
+                                {{ draft.created.toLocaleDateString() }}
+                            </span>
+                            <span class="draft-date">
+                                {{
+                                    draft.lastModified.toLocaleDateString() +
+                                    ' ' +
+                                    draft.lastModified.toLocaleTimeString()
+                                }}
+                            </span>
                         </div>
                         <button @click="deleteDraft(draft)">usuń</button>
                     </div>
@@ -487,14 +404,32 @@
         </div>
 
         <image-picker ref="imagePicker" @deleteImage="deleteImage($event)"></image-picker>
+
+        <comment-popup
+            v-if="editedCommentData"
+            :id="editedCommentData.id"
+            :pos="editedCommentData.pos"
+            @closed="editedCommentData = null"
+        />
+
+        <bubble-menu
+            :editor="editor"
+            :options="{ placement: 'top', offset: 8 }"
+            :should-show="() => editor.isActive('link')"
+        >
+            <link-popup
+                v-if="editor"
+                :href="editor.getAttributes('link').href"
+                @updated="editor.chain().focus().extendMarkRange('link').setLink($event).run()"
+            />
+        </bubble-menu>
     </lesson>
 </template>
 
 <script lang="ts">
 import { Component } from 'vue-property-decorator';
 import Vue from 'vue';
-import { Editor, EditorContent, EditorMenuBar } from 'tiptap';
-import { History, HardBreak, OrderedList, BulletList, Bold, Italic, Strike, Underline } from 'tiptap-extensions';
+import { Editor, EditorContent, SingleCommands } from '@tiptap/vue-2';
 
 import Lesson from '../lesson/Lesson.vue';
 import ColorPicker from './ColorPicker.vue';
@@ -511,6 +446,10 @@ import ChapterBody from './nodes/ChapterBody';
 import SemanticTag from './nodes/SemanticTag';
 import Expression from './nodes/Expression';
 import ExpressionInline from './nodes/ExpressionInline';
+import Example from './nodes/Example';
+import Problem from './nodes/Problem';
+import Formula from './nodes/Formula';
+import Proof from './nodes/Proof';
 import Canvas from './nodes/Canvas/Canvas';
 import TextArea from './nodes/Canvas/TextAreaNode';
 import RectangleNode from './nodes/Canvas/RectangleNode';
@@ -518,56 +457,63 @@ import CircleNode from './nodes/Canvas/CircleNode';
 import LineNode from './nodes/Canvas/LineNode';
 import PolygonNode from './nodes/Canvas/PolygonNode';
 import ArcNode from './nodes/Canvas/ArcNode';
-import Example from './nodes/Example';
-import Problem from './nodes/Problem';
-import Formula from './nodes/Formula';
-import Proof from './nodes/Proof';
 import CustomElement from './nodes/CustomElement';
 import BuiltInComponent from './nodes/BuiltInComponent';
 import CustomListItem from './nodes/ListItem';
+import CustomTableCell from './nodes/TableCell';
 import Placeholder from './extensions/Placeholder';
-import TextAlign from './extensions/TextAlign';
-import Paragraph from './nodes/Paragraph';
 import ImageNode from './nodes/Image';
-import Table from './nodes/Table/Table';
-import TableHeader from './nodes/Table/TableHeader';
-import TableCell from './nodes/Table/TableCell';
-import TableRow from './nodes/Table/TableRow';
 import Link from './marks/Link';
-import Comment from './marks/Comment';
 import NumberMark from './marks/NumberMark';
 import TextColor from './marks/TextColor';
 import Save from './extensions/DraftsManager/SaveExtension';
-import { allComments } from './marks/Comment.vue';
-import { DraftPreview } from './extensions/DraftsManager/LocalStorageManager';
+import Comment from './marks/Comment';
+import MarkClick from './marks/MarkClick';
+import CommentPopup, { allComments } from './CommentPopup.vue';
+import { DraftPreview, LocalStorageSaver } from './extensions/DraftsManager/LocalStorageManager';
+import BulletList from '@tiptap/extension-bullet-list';
+import OrderedList from '@tiptap/extension-ordered-list';
+import Bold from '@tiptap/extension-bold';
+import Italic from '@tiptap/extension-italic';
+import Strike from '@tiptap/extension-strike';
+import Underline from '@tiptap/extension-underline';
+import HardBreak from '@tiptap/extension-hard-break';
+import Paragraph from '@tiptap/extension-paragraph';
+import Text from '@tiptap/extension-text';
+import TextAlign from '@tiptap/extension-text-align';
+import { TableKit } from '@tiptap/extension-table';
+import { Gapcursor, UndoRedo } from '@tiptap/extensions';
+import LinkPopup from './LinkPopup.vue';
+import { BubbleMenu } from '@tiptap/vue-2/menus';
 
 @Component({
     components: {
         EditorContent,
-        EditorMenuBar,
+        BubbleMenu,
         Lesson,
         ColorPicker,
         Dropdown,
         DropdownOption,
         ImagePicker,
+        CommentPopup,
+        LinkPopup,
     },
 })
 export default class LessonEditor extends Vue {
-    editor: any = null;
+    editor: Editor = null as unknown as Editor;
     sourceFile: string = '';
     sourceContent: any = null;
 
     get shortMode() {
-        return this.savePlugin.shortMode;
+        return this.editor?.storage.save.shortMode;
     }
     set shortMode(value) {
-        this.savePlugin.shortMode = value;
+        this.editor.storage.save.shortMode = value;
     }
 
-    textAlignExtension: TextAlign = new TextAlign();
-
-    savePlugin: Save = new Save();
     showDraftsDialog = false;
+    editedCommentData: { id: string; pos: { x: number; y: number } } | null = null;
+    editedLinkData: { href: string; pos: { x: number; y: number } } | null = null;
     availableDrafts: DraftPreview[] = [];
 
     mounted() {
@@ -582,9 +528,8 @@ export default class LessonEditor extends Vue {
         // transformAll();
     }
 
-    beforeDestroy() {
+    destroyed() {
         this.editor.destroy();
-        this.removeAutoSave();
         removeEventListener('beforeunload', this.exitListener);
         removeEventListener('scroll', this.scrollToolbar);
     }
@@ -598,169 +543,170 @@ export default class LessonEditor extends Vue {
     private createEditor() {
         this.editor = new Editor({
             extensions: [
-                new History(),
-                new HardBreak(),
-                new Expression(),
-                new ExpressionInline(),
-                new BulletList(),
-                new OrderedList(),
-                new Link(),
-                new Bold(),
-                new Italic(),
-                new Strike(),
-                new Underline(),
-                this.textAlignExtension,
-                new ImageNode(),
-                new Table({ resizable: true }),
-                new TableHeader(),
-                new TableCell(),
-                new TableRow(),
-                new LessonDoc(),
-                new Title(this.shortMode),
-                new Intro(),
-                new Chapter(),
-                new ChapterTitle(),
-                new ChapterBody(this.shortMode),
-                new SemanticTag(),
-                new Paragraph(),
-                new Example(),
-                new Problem(),
-                new Formula(),
-                new Proof(),
-                new CustomElement(),
-                new BuiltInComponent(),
-                new CustomListItem(),
-                new Canvas(),
-                new TextArea(),
-                new RectangleNode(),
-                new CircleNode(),
-                new LineNode(),
-                new PolygonNode(),
-                new ArcNode(),
-                new Placeholder({
-                    emptyNodeClass: 'empty',
-                    showOnlyCurrent: false,
-                    emptyNodeText: (node: any) => {
+                // tiptap extensions
+                Paragraph,
+                Text,
+                Bold,
+                Italic,
+                Strike,
+                Underline,
+                HardBreak,
+                BulletList,
+                OrderedList,
+                TableKit.configure({
+                    table: { resizable: true },
+                    tableCell: false,
+                }),
+                TextAlign.configure({
+                    types: ['paragraph'],
+                }),
+                Gapcursor,
+                UndoRedo,
+
+                // customized tiptap extensions
+                CustomListItem,
+                CustomTableCell,
+
+                // custom extensions
+                LessonDoc,
+                Title.configure({ shortVersion: this.shortMode }),
+                Intro,
+                Chapter,
+                ChapterTitle,
+                ChapterBody.configure({ shortVersion: this.shortMode }),
+                SemanticTag,
+                Expression,
+                ExpressionInline,
+                Example,
+                Problem,
+                Formula,
+                Proof,
+                ImageNode,
+                CustomElement,
+                BuiltInComponent,
+
+                Canvas,
+                TextArea,
+                RectangleNode,
+                CircleNode,
+                LineNode,
+                PolygonNode,
+                ArcNode,
+
+                TextColor,
+                NumberMark,
+                Link,
+                Comment,
+
+                Placeholder.configure({
+                    emptyNodeText: (node) => {
                         if (node.type.name === 'title') {
                             return 'Tytuł lekcji';
-                        }
-                        if (node.type.name == 'chapter_title') {
+                        } else if (node.type.name == 'chapterTitle') {
                             return 'Tytuł rozdziału';
-                        }
-                        if (
-                            ['semantic_tag', 'expression', 'expressionInline', 'custom_element', 'geometry'].includes(
-                                node.type.name,
-                            )
+                        } else if (
+                            [
+                                'semanticTag',
+                                'expression',
+                                'expressionInline',
+                                'customElement',
+                                'component',
+                                'geometry',
+                            ].includes(node.type.name)
                         ) {
                             return '';
                         }
                         return 'Treść sekcji';
                     },
                 }),
-                new Link(),
-                new Comment(),
-                new NumberMark(),
-                new TextColor(),
-                this.savePlugin,
+                MarkClick.configure({
+                    targets: [
+                        {
+                            selector: 'comment[comment-id]',
+                            idAttr: 'comment-id',
+                            onClick: ({ id, rect }) => (this.editedCommentData = { id, pos: rect }),
+                        },
+                    ],
+                }),
+                Save,
             ],
         });
     }
 
-    insert(element: string, commands: any) {
+    insert(element: string, commands: SingleCommands) {
         switch (element) {
             case 'chapter':
                 commands.createChapter();
                 break;
             case 'section':
-                commands.semantic_tag();
+                commands.createSemanticTag();
                 break;
             case 'example':
-                commands.example();
+                commands.toggleExample();
                 break;
             case 'problem':
-                commands.problem();
+                commands.createProblem();
                 break;
             case 'expression':
-                commands.expression();
+                commands.createExpression();
                 break;
             case 'expressionInline':
-                commands.expressionInline();
+                commands.createExpressionInline();
                 break;
             case 'theorem':
-                commands.formula();
+                commands.toggleFormula();
                 break;
             case 'proof':
-                commands.proof();
+                commands.toggleProof();
+                break;
+            case 'image':
+                (this.$refs.imagePicker as ImagePicker).open((image: Image) => commands.createImage(image));
                 break;
             case 'table':
-                commands.createTable({
-                    rowsCount: 3,
-                    colsCount: 3,
+                commands.insertTable({
+                    rows: 3,
+                    cols: 3,
                     withHeaderRow: false,
                 });
                 break;
-            case 'image':
-                (this.$refs.imagePicker as ImagePicker).open((image: Image) => commands.image(image));
-                break;
             case 'shape':
-                commands.geometry();
+                commands.createGeometry();
                 break;
             case 'html':
-                commands.custom_element();
+                commands.toggleCustomElement();
                 break;
             case 'dynamic':
-                commands.component();
+                commands.createComponent();
                 break;
         }
     }
 
-    private loadContent() {
-        this.sourceFile = this.$route.params.editSourceFile;
-        if (this.sourceFile) {
-            import(`@/assets/lessons/${this.sourceFile}`).then((file) => this.savePlugin.loadFromJSON(file));
-        }
-    }
+    addComment() {
+        this.editor.commands.addComment();
+        const { from } = this.editor.state.selection;
+        const dom = this.editor.view.domAtPos(from + 1);
+        let el: HTMLElement | null = dom.node.nodeType === 1 ? (dom.node as HTMLElement) : dom.node.parentElement;
 
-    private removeAutoSave() {
-        this.savePlugin.destroy();
+        while (el) {
+            if (el.matches?.('comment[comment-id]')) {
+                const id = el.getAttribute('comment-id')!;
+                this.editedCommentData = { id, pos: el.getBoundingClientRect() };
+                break;
+            }
+            el = el.parentElement;
+        }
     }
 
     clearAll() {
         this.clearComments();
         this.clearImages();
         this.clearContent();
-        this.savePlugin.longVersionJSON = '';
-        this.savePlugin.shortVersionJSON = '';
-    }
-
-    private clearComments() {
-        for (let commentId in allComments) {
-            delete (allComments as any)[commentId];
-        }
-    }
-
-    private clearImages() {
-        ImagePicker.lessonImages = {};
-    }
-
-    private clearContent(title?: string) {
-        this.editor.setContent(`
-            <h1>${title ? title : ''}</h1>
-            <intro></intro>
-            <chapter>
-                <chapter-title isHidden="false"></chapter-title>
-                <chapter-body></chapter-body>
-            </chapter>
-        `);
-    }
-
-    private exitListener(event: any) {
-        event.preventDefault();
-        event.returnValue = '';
+        this.editor.storage.save.longVersionJSON = '';
+        this.editor.storage.save.shortVersionJSON = '';
     }
 
     createSecondMode() {
-        this.savePlugin.saveToLocalStorage(true);
+        this.editor.commands.saveToLocalStorage(true);
         const title = this.editor.state.doc.content.content[0].content.content[0];
         this.shortMode = !this.shortMode;
         this.editor.destroy();
@@ -769,20 +715,22 @@ export default class LessonEditor extends Vue {
     }
 
     editSecondMode() {
-        this.savePlugin.saveToLocalStorage(true);
+        this.editor.commands.saveToLocalStorage(true);
         this.shortMode = !this.shortMode;
         this.editor.destroy();
         this.createEditor();
-        this.editor.setContent(this.shortMode ? this.savePlugin.shortVersionJSON : this.savePlugin.longVersionJSON);
+        this.editor.commands.setContent(
+            this.shortMode ? this.editor.storage.save.shortVersionJSON : this.editor.storage.save.longVersionJSON,
+        );
     }
 
     secondModeExists() {
-        return this.shortMode ? this.savePlugin.longVersionJSON : this.savePlugin.shortVersionJSON;
+        return this.shortMode ? this.editor?.storage.save.longVersionJSON : this.editor?.storage.save.shortVersionJSON;
     }
 
     openDraftsDialog() {
         this.showDraftsDialog = true;
-        this.availableDrafts = this.savePlugin.draftsList();
+        this.availableDrafts = this.draftsList();
     }
 
     closeDraftsDialog() {
@@ -792,19 +740,17 @@ export default class LessonEditor extends Vue {
     loadDraft(draft: DraftPreview) {
         this.showDraftsDialog = false;
         this.shortMode = false;
-        this.editor.destroy();
-        this.createEditor();
-        this.savePlugin.loadDraft(draft);
+        this.editor.commands.loadDraft(draft);
     }
 
     deleteDraft(draft: DraftPreview) {
-        this.savePlugin.deleteDraft(draft);
-        this.availableDrafts = this.savePlugin.draftsList();
+        this.editor.commands.deleteDraft(draft);
+        this.availableDrafts = this.draftsList();
     }
 
     deleteImage(image: Image) {
-        let short = this.shortMode ? this.editor.getJSON() : this.savePlugin.shortVersionJSON;
-        let long = this.shortMode ? this.savePlugin.longVersionJSON : this.editor.getJSON();
+        let short = this.shortMode ? this.editor.getJSON() : this.editor.storage.save.shortVersionJSON;
+        let long = this.shortMode ? this.editor.storage.save.longVersionJSON : this.editor.getJSON();
         const isInShort = this.hasImage(short, image.key);
         const isInLong = this.hasImage(long, image.key);
         if (isInLong) {
@@ -824,18 +770,60 @@ export default class LessonEditor extends Vue {
     }
 
     scrollToolbar() {
-        const toolbar = (this.$refs.toolbar as Vue).$el;
+        const toolbar = this.$refs.toolbar as HTMLElement;
         if (document.body.scrollTop > 5 || document.documentElement.scrollTop > 5 || window.innerWidth < 700) {
-            (toolbar as HTMLElement).style.paddingTop = '0';
+            toolbar.style.paddingTop = '0';
         } else {
-            (toolbar as HTMLElement).style.paddingTop = '150px';
+            toolbar.style.paddingTop = '150px';
         }
+    }
+
+    private loadContent() {
+        this.sourceFile = this.$route.params.editSourceFile;
+        if (this.sourceFile) {
+            import(`@/assets/lessons/${this.sourceFile}`).then((file) => this.editor.commands.loadFromJSON(file));
+        }
+    }
+
+    private clearComments() {
+        for (let commentId in allComments) {
+            delete (allComments as any)[commentId];
+        }
+    }
+
+    private clearImages() {
+        ImagePicker.lessonImages = {};
+    }
+
+    private clearContent(title?: string) {
+        this.editor.commands.setContent(`
+            <h1>${title ? title : ''}</h1>
+            <intro></intro>
+            <chapter>
+                <chapter-title isHidden="false"></chapter-title>
+                <chapter-body></chapter-body>
+            </chapter>
+        `);
+    }
+
+    private exitListener(event: any) {
+        event.preventDefault();
+        event.returnValue = '';
+    }
+
+    private draftsList(): DraftPreview[] {
+        return LocalStorageSaver.draftsList().sort((d1, d2) => {
+            const d1AutoSave = d1.fromAutosave ? 1 : 0;
+            const d2AutoSave = d2.fromAutosave ? 1 : 0;
+            return d1.name == d2.name ? d1AutoSave - d2AutoSave : d2.lastModified.getTime() - d1.lastModified.getTime();
+        });
     }
 }
 </script>
 
 <style lang="scss">
 @use '@/style/chapter';
+@use '@/style/global';
 @use '@/style/colors';
 @use '@/style/fonts';
 
@@ -865,6 +853,7 @@ export default class LessonEditor extends Vue {
 #tools-general,
 .tools-specific {
     width: 100%;
+    display: flex;
     background: colors.$light-gray;
     > * {
         display: inline-block;
@@ -1037,6 +1026,21 @@ number {
 
 problem {
     display: block;
+}
+
+comment {
+    text-decoration: underline colors.$main-red dashed;
+    text-decoration-thickness: 3px;
+    text-decoration-skip-ink: none;
+    background: #ffeeee;
+    &:hover {
+        background: #ffe5e5;
+        cursor: pointer;
+    }
+}
+
+a[lesson-url] {
+    text-decoration: underline;
 }
 
 /*=== CONTENT - EDITOR SPECIFIC===*/

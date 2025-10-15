@@ -1,5 +1,5 @@
 <template>
-    <div
+    <node-view-wrapper
         class="area"
         :style="{
             left: x + 0.5 + 'px',
@@ -18,21 +18,26 @@
                 'vertical-align': align,
             }"
         >
-            <div ref="content" class="content"></div>
+            <node-view-content class="content" />
         </div>
         <div class="top border-overlay"></div>
         <div class="bottom border-overlay"></div>
         <div class="left border-overlay"></div>
         <div class="right border-overlay"></div>
-    </div>
+    </node-view-wrapper>
 </template>
 
 <script>
 import paper from 'paper';
 import { Shape } from './Shape';
+import { NodeViewContent, NodeViewWrapper } from '@tiptap/vue-2';
+import Vue from 'vue';
 
-export default {
-    props: ['node', 'updateAttrs', 'view', 'getPos'],
+export default Vue.extend({
+    components: {
+        NodeViewWrapper,
+        NodeViewContent,
+    },
     data() {
         return {
             focused: false,
@@ -40,13 +45,16 @@ export default {
             resizing: '',
         };
     },
+    mounted() {
+        this.editor.storage.geometry.controllers.set(this.node.attrs.id, this);
+    },
     computed: {
         x: {
             get() {
                 return this.node.attrs.x;
             },
             set(x) {
-                this.updateAttrs({ x });
+                this.updateAttributes({ x });
             },
         },
         y: {
@@ -54,7 +62,7 @@ export default {
                 return this.node.attrs.y;
             },
             set(y) {
-                this.updateAttrs({ y });
+                this.updateAttributes({ y });
             },
         },
         width: {
@@ -62,7 +70,7 @@ export default {
                 return this.node.attrs.width;
             },
             set(width) {
-                this.updateAttrs({ width });
+                this.updateAttributes({ width });
             },
         },
         height: {
@@ -70,7 +78,7 @@ export default {
                 return this.node.attrs.height;
             },
             set(height) {
-                this.updateAttrs({ height });
+                this.updateAttributes({ height });
             },
         },
         borderColor: {
@@ -78,7 +86,7 @@ export default {
                 return this.node.attrs.borderColor;
             },
             set(borderColor) {
-                this.updateAttrs({ borderColor });
+                this.updateAttributes({ borderColor });
             },
         },
         textColor: {
@@ -86,7 +94,7 @@ export default {
                 return this.node.attrs.textColor;
             },
             set(textColor) {
-                this.updateAttrs({ textColor });
+                this.updateAttributes({ textColor });
             },
         },
         fillColor: {
@@ -94,7 +102,7 @@ export default {
                 return this.node.attrs.fillColor;
             },
             set(fillColor) {
-                this.updateAttrs({ fillColor });
+                this.updateAttributes({ fillColor });
             },
         },
         align: {
@@ -102,15 +110,7 @@ export default {
                 return this.node.attrs.align;
             },
             set(align) {
-                this.updateAttrs({ align });
-            },
-        },
-        selected: {
-            get() {
-                return null;
-            },
-            set(value) {
-                this.focused = value;
+                this.updateAttributes({ align });
             },
         },
     },
@@ -131,6 +131,10 @@ export default {
         scale(factor, center) {
             this.x = center.x + (this.x - center.x) * factor;
             this.y = center.y + (this.y - center.y) * factor;
+        },
+
+        setSelected(value) {
+            this.focused = value;
         },
 
         containedInBounds(bounds) {
@@ -226,7 +230,7 @@ export default {
 
         onMouseUp() {},
     },
-};
+});
 </script>
 
 <style scoped lang="scss">

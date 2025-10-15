@@ -1,43 +1,47 @@
 import { colorsDifference, rgbToHex } from '@/components/utils/colors';
-import { Mark } from 'tiptap';
-import { updateMark } from 'tiptap-commands';
-import ColorPicker from '../ColorPicker.vue';
+import { Mark } from '@tiptap/vue-2';
+import { colors } from '@/style/palette';
 
-export default class TextColor extends Mark {
-    get name() {
-        return 'text_color';
-    }
-
-    get schema() {
-        return {
-            attrs: {
-                color: {
-                    default: 'black',
-                },
-            },
-            parseDOM: [
-                {
-                    tag: 'span[style^="color"]',
-                    getAttrs: (dom: any) => {
-                        const color = dom.style.color;
-                        const colorHex = color.substr(0, 3) == 'rgb' ? rgbToHex(color) : color;
-                        const candidates = ColorPicker.data()
-                            .availableColors.flat()
-                            .map((hex: string) => [hex, colorsDifference(hex, colorHex)]);
-                        candidates.sort((candidate1: any, candidate2: any) => candidate1[1] - candidate2[1]);
-                        if (candidates[0][1] < 50) {
-                            return { color: candidates[0][0] };
-                        } else {
-                            return { color: 'black' };
-                        }
-                    },
-                },
-            ],
-            toDOM: (mark: any) => ['span', { style: 'color: ' + mark.attrs.color }, 0],
+declare module '@tiptap/core' {
+    interface Commands<ReturnType> {
+        textColor: {
+            setColor: (attrs: { color: string }) => ReturnType;
         };
     }
-
-    commands({ type }: any) {
-        return (attrs: any) => updateMark(type, attrs);
-    }
 }
+
+export default Mark.create({
+    name: 'textColor',
+
+    addAttributes() {
+        return {
+            color: {
+                default: 'black',
+            },
+        };
+    },
+
+    parseHTML: () => [
+        {
+            tag: 'span[style^="color"]',
+            getAttrs: (dom: any) => {
+                const color = dom.style.color;
+                const colorHex = color.substr(0, 3) == 'rgb' ? rgbToHex(color) : color;
+                const candidates = colors.map((hex) => [hex, colorsDifference(hex, colorHex)]) as [string, number][];
+                candidates.sort(([_1, d1], [_2, d2]) => d1 - d2);
+                return { color: candidates[0][1] < 50 ? candidates[0][0] : 'black' };
+            },
+        },
+    ],
+
+    renderHTML: ({ HTMLAttributes }) => ['span', { style: 'color: ' + HTMLAttributes.color }, 0],
+
+    addCommands() {
+        return {
+            setColor:
+                (attrs) =>
+                ({ commands }) =>
+                    commands.setMark(this.type, attrs),
+        };
+    },
+});

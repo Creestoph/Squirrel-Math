@@ -1,13 +1,18 @@
 <template>
-    <canvas ref="canvas"></canvas>
+    <node-view-wrapper as="canvas" ref="canvas"></node-view-wrapper>
 </template>
 
 <script>
 import paper from 'paper';
 import { Shape } from './Shape';
+import { NodeViewWrapper } from '@tiptap/vue-2';
+import Vue from 'vue';
 
-export default {
-    props: ['node', 'updateAttrs', 'view', 'getPos'],
+export default Vue.extend({
+    components: {
+        NodeViewWrapper,
+    },
+    props: ['node', 'view', 'getPos'],
 
     data() {
         return {
@@ -34,7 +39,10 @@ export default {
     },
 
     mounted() {
+        this.paperScope = new paper.PaperScope();
+        this.paperScope.setup(this.$refs.canvas.$el);
         this.render();
+        this.editor.storage.geometry.controllers.set(this.node.attrs.id, this);
     },
 
     computed: {
@@ -45,7 +53,7 @@ export default {
 
             set(color) {
                 if (color != this.fillColor) {
-                    this.updateAttrs({ color });
+                    this.updateAttributes({ color });
                 }
                 if (color == '#00000000') {
                     color = '#00000001';
@@ -65,7 +73,7 @@ export default {
                 this.circle.strokeColor = new paper.Color(borderColor);
                 this.circle.style.strokeWidth = this.circle.strokeColor.alpha > 0 ? 3 : 0;
                 if (borderColor != this.borderColor) {
-                    this.updateAttrs({ borderColor });
+                    this.updateAttributes({ borderColor });
                 }
             },
         },
@@ -99,17 +107,6 @@ export default {
                 }
             },
         },
-
-        selected: {
-            get() {
-                return null;
-            },
-
-            set(value) {
-                this.isSelected = value;
-                this.grips.visible = value;
-            },
-        },
     },
 
     watch: {
@@ -120,9 +117,8 @@ export default {
 
     methods: {
         render() {
-            this.paperScope = new paper.PaperScope();
-            this.paperScope.setup(this.$refs.canvas);
             this.paperScope.activate();
+            this.paperScope.project.clear();
 
             const attrs = this.node.attrs;
 
@@ -164,7 +160,8 @@ export default {
         },
 
         save() {
-            this.updateAttrs({
+            console.log('saving circle');
+            this.updateAttributes({
                 size: {
                     width: this.circle.bounds.width,
                     height: this.circle.bounds.height,
@@ -192,6 +189,11 @@ export default {
             this.circle.scale(factor, new paper.Point(center));
             this.recalculateGripsPositions();
             this.save();
+        },
+
+        setSelected(value) {
+            this.isSelected = value;
+            this.grips.visible = value;
         },
 
         containedInBounds(bounds) {
@@ -320,7 +322,7 @@ export default {
             );
         },
     },
-};
+});
 </script>
 
 <style scoped lang="scss">

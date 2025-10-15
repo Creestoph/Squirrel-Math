@@ -1,13 +1,18 @@
 <template>
-    <canvas ref="canvas"></canvas>
+    <node-view-wrapper as="canvas" ref="canvas"></node-view-wrapper>
 </template>
 
 <script>
 import paper from 'paper';
 import { Shape } from './Shape';
+import { NodeViewWrapper } from '@tiptap/vue-2';
+import Vue from 'vue';
 
-export default {
-    props: ['node', 'updateAttrs', 'view', 'getPos'],
+export default Vue.extend({
+    components: {
+        NodeViewWrapper,
+    },
+    props: ['node', 'view', 'getPos'],
 
     data() {
         return {
@@ -30,7 +35,10 @@ export default {
     },
 
     mounted() {
+        this.paperScope = new paper.PaperScope();
+        this.paperScope.setup(this.$refs.canvas.$el);
         this.render();
+        this.editor.storage.geometry.controllers.set(this.node.attrs.id, this);
     },
 
     computed: {
@@ -42,7 +50,7 @@ export default {
             set(color) {
                 this.arcFill.fillColor = new paper.Color(color);
                 if (this.fillColor != color) {
-                    this.updateAttrs({ color });
+                    this.updateAttributes({ color });
                 }
             },
         },
@@ -54,24 +62,12 @@ export default {
 
             set(borderColor) {
                 if (this.borderColor != borderColor) {
-                    this.updateAttrs({ borderColor });
+                    this.updateAttributes({ borderColor });
                 }
                 if (borderColor == '#00000000') {
                     borderColor = '#00000001';
                 }
                 this.arcStroke.strokeColor = new paper.Color(borderColor);
-            },
-        },
-
-        selected: {
-            get() {
-                return null;
-            },
-
-            set(value) {
-                this.grips.visible = value;
-                this.line1.visible = this.line2.visible = value;
-                this.isSelected = value;
             },
         },
 
@@ -135,12 +131,8 @@ export default {
 
     methods: {
         render() {
-            if (this.paperScope) {
-                this.paperScope.project.clear();
-            }
-            this.paperScope = new paper.PaperScope();
-            this.paperScope.setup(this.$refs.canvas);
             this.paperScope.activate();
+            this.paperScope.project.clear();
 
             const attrs = this.node.attrs;
 
@@ -162,7 +154,7 @@ export default {
             this.grips.fillColor = this.line1.strokeColor.multiply(0.7);
 
             this.fillColor = attrs.color;
-            this.selected = this.isSelected;
+            this.setSelected(this.isSelected);
 
             this.all = new paper.Group([this.line1, this.line2, this.arcFill, this.arcStroke, this.grips]);
         },
@@ -177,6 +169,12 @@ export default {
 
         move(shift) {
             this.all.translate(shift);
+        },
+
+        setSelected(value) {
+            this.grips.visible = value;
+            this.line1.visible = this.line2.visible = value;
+            this.isSelected = value;
         },
 
         scale(factor, center) {
@@ -280,7 +278,7 @@ export default {
         },
 
         save() {
-            this.updateAttrs({
+            this.updateAttributes({
                 center: { x: this.center.x, y: this.center.y },
                 arms: [
                     { x: this.arm1End.x, y: this.arm1End.y },
@@ -317,7 +315,7 @@ export default {
             this.arcStroke.style.strokeWidth = 3;
         },
     },
-};
+});
 </script>
 
 <style scoped lang="scss">

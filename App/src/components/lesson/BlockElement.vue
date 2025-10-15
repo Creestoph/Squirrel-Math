@@ -22,7 +22,6 @@ import Vue from 'vue';
 import Graphics from './Graphics.vue';
 import DefaultTable from './DefaultTable.vue';
 import TableCell from './TableCell.vue';
-import TableHeader from './TableHeader.vue';
 import SemanticTag from './SemanticTag.vue';
 import Proof from './Proof.vue';
 import Example from './Example.vue';
@@ -49,7 +48,6 @@ import { MarkData, NodeData, NodeType } from '../editor/lessons-transform';
         Graphics,
         DefaultTable,
         TableCell,
-        TableHeader,
         LessonLink,
         SemanticTag,
         Proof,
@@ -93,12 +91,12 @@ export default class BlockElement extends Vue {
             if (this.type == 'paragraph') {
                 if (
                     !this.children.length ||
-                    (this.children && this.children[this.children.length - 1].type == 'hard_break')
+                    (this.children && this.children[this.children.length - 1].type == 'hardBreak')
                 ) {
-                    this.children.push({ type: 'hard_break' });
+                    this.children.push({ type: 'hardBreak' });
                 }
             }
-            if (this.type == 'custom_element') {
+            if (this.type == 'customElement') {
                 this.attrs = { code: this.content.content![0].text };
             } else if (this.type == 'table') {
                 this.attrs = {
@@ -122,16 +120,15 @@ export default class BlockElement extends Vue {
         }
         const typeToTag: { [type in NodeType]?: string } = {
             paragraph: 'paragraph',
-            hard_break: 'br',
-            bullet_list: 'ul',
-            ordered_list: 'ol',
-            list_item: 'li',
+            hardBreak: 'br',
+            bulletList: 'ul',
+            orderedList: 'ol',
+            listItem: 'li',
             image: 'graphics',
             table: 'default-table',
-            table_row: 'tr',
-            table_header: 'table-header',
-            table_cell: 'table-cell',
-            semantic_tag: 'semantic-tag',
+            tableRow: 'tr',
+            tableCell: 'table-cell',
+            semanticTag: 'semantic-tag',
             proof: 'proof',
             example: 'example',
             formula: 'formula',
@@ -143,9 +140,9 @@ export default class BlockElement extends Vue {
             circle: 'geometry-circle',
             line: 'geometry-line',
             arc: 'geometry-arc',
-            text_area: 'geometry-text-area',
+            textArea: 'geometry-text-area',
             component: 'built-in-component',
-            custom_element: 'custom-component',
+            customElement: 'custom-component',
             problem: 'problem',
         };
         return typeToTag[this.type] || 'div';
