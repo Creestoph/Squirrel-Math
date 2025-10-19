@@ -1,14 +1,8 @@
 <template>
-    <div class="intro" ref="content">
+    <div class="intro">
         <slot />
     </div>
 </template>
-
-<script>
-export default {
-    name: 'LessonIntro',
-};
-</script>
 
 <style scoped>
 .intro {

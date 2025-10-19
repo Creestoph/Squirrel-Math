@@ -16,14 +16,19 @@
     </div>
 </template>
 
-<script lang="ts">
-import { Component, Prop } from 'vue-property-decorator';
-import Vue from 'vue';
-
-@Component
-export default class GeometryTextArea extends Vue {
-    @Prop() attrs?: any;
-}
+<script setup lang="ts">
+defineProps<{
+    attrs: {
+        x: number;
+        y: number;
+        width: number;
+        height: number;
+        fillColor: string;
+        borderColor: string;
+        textColor: string;
+        align: 'top' | 'middle' | 'bottom';
+    };
+}>();
 </script>
 
 <style scoped lang="scss">

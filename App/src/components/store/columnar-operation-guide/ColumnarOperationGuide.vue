@@ -50,7 +50,7 @@ import { ref } from 'vue';
 import { ColumnarOperation } from '@/components/utils/columnar-operation/columnar-operation';
 declare var MathJax: any;
 
-const props = defineProps(['operation', 'floats']);
+const props = defineProps<{ operation: string; floats: boolean }>();
 
 const showZeroDivisionError = ref(false);
 const table = ref<HTMLElement | null>(null);

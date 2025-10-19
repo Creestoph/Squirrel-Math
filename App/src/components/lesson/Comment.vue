@@ -14,7 +14,7 @@
             :style="{ color: popup ? '#aa0000' : '' }"
             >help</icon
         >
-        <tooltip class="comment-window no-selection" :visible="popup" timeout="0" :offset="{ x: 15, y: -55 }">{{
+        <tooltip class="comment-window no-selection" :visible="popup" :timeout="0" :offset="{ x: 15, y: -55 }">{{
             commentText
         }}</tooltip>
         <slot />

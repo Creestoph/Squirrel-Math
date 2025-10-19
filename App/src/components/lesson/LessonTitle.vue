@@ -1,12 +1,6 @@
 <template>
-    <h1 ref="content"><slot /></h1>
+    <h1><slot /></h1>
 </template>
-
-<script>
-export default {
-    name: 'LessonTitle',
-};
-</script>
 
 <style scoped lang="scss">
 @use '@/style/global';

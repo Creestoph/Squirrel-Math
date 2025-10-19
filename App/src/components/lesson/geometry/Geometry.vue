@@ -10,14 +10,8 @@
     </button>
 </template>
 
-<script lang="ts">
-import { Component, Prop } from 'vue-property-decorator';
-import Vue from 'vue';
-
-@Component
-export default class Geometry extends Vue {
-    @Prop() attrs!: { canvas: { width: number; height: number } };
-}
+<script setup lang="ts">
+defineProps<{ attrs: { canvas: { width: number; height: number } } }>();
 </script>
 
 <style scoped lang="scss">

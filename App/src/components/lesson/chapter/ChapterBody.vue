@@ -6,56 +6,49 @@
     </div>
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
 import $ from 'jquery';
-import { Component, Prop } from 'vue-property-decorator';
-import Vue from 'vue';
+import { nextTick, onMounted, ref, watch } from 'vue';
 
-@Component
-export default class ChapterBody extends Vue {
-    @Prop({ default: false }) initiallyZipped!: boolean;
-    animate: boolean = true;
-    maskHeight: number = 0;
-    zipped: boolean = false;
+const props = defineProps<{ zipped: boolean }>();
+const emits = defineEmits<{ (e: 'animation', value: boolean): void }>();
+const chapterMask = ref<HTMLElement | null>();
+const chapterBody = ref<HTMLElement | null>();
 
-    private mask!: JQuery<Element>;
-    private body!: JQuery<Element>;
-    mounted() {
-        this.mask = $(this.$refs.chapterMask as Element);
-        this.body = $(this.$refs.chapterBody as Element);
-        this.$nextTick(() => {
-            this.zipped = this.initiallyZipped;
-            this.$emit('zipped', this.zipped);
-            if (this.initiallyZipped) {
-                this.maskHeight = this.mask.height()!;
-                this.body.css('top', -this.maskHeight);
-                this.mask.css('height', -this.maskHeight);
-                this.mask.css('overflow', 'hidden');
-            }
-        });
-    }
+let maskHeight = 0;
+let mask!: JQuery<Element>;
+let body!: JQuery<Element>;
 
-    toggleZip() {
-        if (this.animate) {
-            this.animate = false;
-            if (this.zipped) {
-                this.body.animate({ top: 0 }, 1100, 'swing', () => (this.animate = true));
-                this.mask.animate({ height: '+=' + this.maskHeight }, 1100, 'swing', () => {
-                    this.mask.css('overflow', 'visible');
-                    this.mask.css('height', '');
-                });
-            } else {
-                this.maskHeight = this.mask.height()!;
-                this.body.animate({ top: '+=' + -this.maskHeight }, 1100, 'swing', () => (this.animate = true));
-                this.mask.animate({ height: '+=' + -this.maskHeight }, 1100, 'swing', () =>
-                    this.mask.css('overflow', 'hidden'),
-                );
-            }
-            this.zipped = !this.zipped;
-            this.$emit('zipped', this.zipped);
+onMounted(() => {
+    mask = $(chapterMask.value!);
+    body = $(chapterBody.value!);
+    nextTick(() => {
+        if (props.zipped) {
+            maskHeight = mask.height()!;
+            body.css('top', -maskHeight);
+            mask.css('height', -maskHeight);
+            mask.css('overflow', 'hidden');
         }
-    }
-}
+    });
+});
+
+watch(
+    () => props.zipped,
+    () => {
+        emits('animation', true);
+        if (props.zipped) {
+            maskHeight = mask.height()!;
+            body.animate({ top: '+=' + -maskHeight }, 1100, 'swing', () => emits('animation', false));
+            mask.animate({ height: '+=' + -maskHeight }, 1100, 'swing', () => mask.css('overflow', 'hidden'));
+        } else {
+            body.animate({ top: 0 }, 1100, 'swing', () => emits('animation', false));
+            mask.animate({ height: '+=' + maskHeight }, 1100, 'swing', () => {
+                mask.css('overflow', 'visible');
+                mask.css('height', '');
+            });
+        }
+    },
+);
 </script>
 
 <style scoped lang="scss">

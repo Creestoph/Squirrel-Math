@@ -2,16 +2,14 @@
     <span ref="container"><slot></slot></span>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue';
+<script setup lang="ts">
+import { onMounted, ref } from 'vue';
 
-export default defineComponent({
-    name: 'Icon',
-    mounted() {
-        const container = this.$refs.container as HTMLElement;
-        container.style.webkitMask = `url(${require('@/assets/icons/' + container.innerHTML + '.svg')})`;
-        container.innerHTML = '.';
-    },
+const container = ref<HTMLElement | null>(null);
+
+onMounted(() => {
+    container.value!.style.webkitMask = `url(${require('@/assets/icons/' + container.value!.innerHTML + '.svg')})`;
+    container.value!.innerHTML = '.';
 });
 </script>
 

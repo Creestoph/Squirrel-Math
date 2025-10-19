@@ -97,26 +97,9 @@
     </lesson>
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
 import LessonTitle from './lesson/LessonTitle.vue';
 import LessonIntro from './lesson/LessonIntro.vue';
 import LessonChapter from './lesson/chapter/LessonChapter.vue';
 import Lesson from './lesson/Lesson.vue';
-
-export default {
-    name: 'Home',
-    data() {
-        return {
-            chapters: [],
-        };
-    },
-    components: {
-        LessonIntro,
-        LessonTitle,
-        LessonChapter,
-        Lesson,
-    },
-};
 </script>
-
-<style scoped></style>

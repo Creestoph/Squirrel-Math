@@ -28,40 +28,30 @@
     </div>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue';
+<script setup lang="ts">
+import { onMounted, onUnmounted, ref } from 'vue';
 
-export default defineComponent({
-    name: 'AppMenu',
-    data() {
-        return {
-            isSmall: false,
-            showText: true,
-            restoreTimeout: null as number | null,
-        };
-    },
-    mounted() {
-        addEventListener('scroll', this.resizeLogo);
-        this.resizeLogo();
-    },
-    destroyed() {
-        removeEventListener('scroll', this.resizeLogo);
-    },
-    methods: {
-        resizeLogo() {
-            if (document.body.scrollTop > 5 || document.documentElement.scrollTop > 5 || window.innerWidth < 700) {
-                this.isSmall = true;
-                this.showText = false;
-                if (this.restoreTimeout) {
-                    clearTimeout(this.restoreTimeout);
-                }
-            } else if (this.isSmall) {
-                this.isSmall = false;
-                this.restoreTimeout = setTimeout(() => (this.showText = true), 500);
-            }
-        },
-    },
+const isSmall = ref(false);
+const showText = ref(true);
+const restoreTimeout = ref<number | null>(null);
+
+onMounted(() => {
+    addEventListener('scroll', resizeLogo);
+    resizeLogo();
 });
+onUnmounted(() => removeEventListener('scroll', resizeLogo));
+function resizeLogo() {
+    if (document.body.scrollTop > 5 || document.documentElement.scrollTop > 5 || window.innerWidth < 700) {
+        isSmall.value = true;
+        showText.value = false;
+        if (restoreTimeout.value) {
+            clearTimeout(restoreTimeout.value);
+        }
+    } else if (isSmall.value) {
+        isSmall.value = false;
+        restoreTimeout.value = setTimeout(() => (showText.value = true), 500);
+    }
+}
 </script>
 
 <style scoped lang="scss">

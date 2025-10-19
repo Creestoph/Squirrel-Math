@@ -7,15 +7,11 @@
     </table>
 </template>
 
-<script lang="ts">
-import { Component, Prop } from 'vue-property-decorator';
-import Vue from 'vue';
+<script setup lang="ts">
+import { computed } from 'vue';
+const props = defineProps<{ attrs: { columnWidths: number[] } }>();
 
-@Component
-export default class DefaultTable extends Vue {
-    @Prop() attrs?: { columnWidths: number[] };
-    get totalWidth() {
-        return this.attrs!.columnWidths ? this.attrs!.columnWidths.reduce((total, current) => total + current) : '';
-    }
-}
+const totalWidth = computed<number | ''>(() =>
+    props.attrs.columnWidths ? props.attrs.columnWidths.reduce((total, current) => total + current) : '',
+);
 </script>

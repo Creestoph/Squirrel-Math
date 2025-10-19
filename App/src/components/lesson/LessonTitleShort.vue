@@ -8,12 +8,6 @@
     </div>
 </template>
 
-<script>
-export default {
-    name: 'LessonTitleShort',
-};
-</script>
-
 <style scoped lang="scss">
 @use '@/style/global';
 @use '@/style/fonts';

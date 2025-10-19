@@ -4,12 +4,6 @@
     </div>
 </template>
 
-<script lang="ts">
-export default {
-    name: 'DrzewoHD',
-};
-</script>
-
 <style scoped>
 img {
     border-top: 15px solid black;

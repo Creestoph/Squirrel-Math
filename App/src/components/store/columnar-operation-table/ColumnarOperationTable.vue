@@ -7,7 +7,7 @@ import { DisplayTable } from '@/components/utils/columnar-operation/display-tabl
 import { onMounted, ref } from 'vue';
 declare var MathJax: any;
 
-const props = defineProps(['operation', 'numbers']);
+const props = defineProps<{ operation: '+' | '-'; numbers: string[][] }>();
 const main = ref<HTMLElement | null>(null);
 
 onMounted(() => {

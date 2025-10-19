@@ -12,11 +12,8 @@
     </div>
 </template>
 
-<script>
-export default {
-    name: 'LessonVersionButton',
-    props: ['shortMode'],
-};
+<script setup lang="ts">
+defineProps<{ shortMode: boolean }>();
 </script>
 
 <style scoped lang="scss">

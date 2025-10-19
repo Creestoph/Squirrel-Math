@@ -1,45 +1,34 @@
 <template>
     <div class="chapter">
         <chapter-title
-            @click.native="bodyZip()"
+            @click.native="onZip()"
             :class="{ grayed: optional && bodyZipped }"
             :title="optional ? 'Opcjonalny temat rozszerzony' : ''"
             ref="title"
         >
             <icon v-if="optional && bodyZipped" class="block">block</icon><slot name="title" />
         </chapter-title>
-        <chapter-body ref="body" :initiallyZipped="optional" @zipped="bodyZipped = $event">
+        <chapter-body ref="body" :zipped="bodyZipped" @animation="isBodyAnimating = $event">
             <slot />
         </chapter-body>
     </div>
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
 import ChapterTitle from './ChapterTitle.vue';
 import ChapterBody from './ChapterBody.vue';
+import { nextTick, onMounted, ref } from 'vue';
 
-import { Component, Prop } from 'vue-property-decorator';
-import Vue from 'vue';
+const props = withDefaults(defineProps<{ optional?: boolean }>(), { optional: false });
+const bodyZipped = ref(props.optional);
+const isBodyAnimating = ref(false);
+const title = ref<Vue>();
 
-@Component({
-    components: {
-        ChapterTitle,
-        ChapterBody,
-    },
-})
-export default class LessonChapter extends Vue {
-    @Prop({ default: false }) optional!: boolean;
-    bodyZipped = false;
+onMounted(() => nextTick(() => (title.value!.$el.id = (title.value!.$el as HTMLDivElement).innerText)));
 
-    mounted() {
-        this.$nextTick(() => {
-            const titleElement = this.$refs.title as Vue;
-            titleElement.$el.id = (titleElement.$el as HTMLDivElement).innerText;
-        });
-    }
-
-    bodyZip() {
-        (this.$refs.body as ChapterBody).toggleZip();
+function onZip() {
+    if (!isBodyAnimating.value) {
+        bodyZipped.value = !bodyZipped.value;
     }
 }
 </script>

@@ -6,7 +6,7 @@
             <button v-if="editMode" @click="save()">Save</button>
             <button v-if="editMode" @click="discard()">Discard</button>
         </div>
-        <tooltip id="lessonSummary" :visible="displayLesson" timeout="750" :offset="{ x: 50, y: -50 }">
+        <tooltip id="lessonSummary" :visible="!!displayLesson" :timeout="750" :offset="{ x: 50, y: -50 }">
             <div v-if="displayLesson">
                 <div id="displaylessonTitle">
                     {{ displayLesson.title }}

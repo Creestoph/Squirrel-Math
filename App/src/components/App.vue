@@ -6,17 +6,9 @@
     </div>
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
 import AppMenu from './AppMenu.vue';
 import InteractiveTree from './InteractiveTree.vue';
-
-export default {
-    name: 'App',
-    components: {
-        AppMenu,
-        InteractiveTree,
-    },
-};
 </script>
 
 <style lang="scss">

@@ -6,41 +6,49 @@
     </transition>
 </template>
 
-<script lang="ts">
-import Vue from 'vue';
-import { Component, Prop, Watch } from 'vue-property-decorator';
-import { Point } from '@/components/utils/point';
+<script setup lang="ts">
+import { ref, watch, onMounted, onUnmounted } from 'vue';
+import type { Point } from '@/components/utils/point';
 
-@Component
-export default class Tooltip extends Vue {
-    mousePos: Point = { x: 0, y: 0 };
-    privVisible: boolean = false;
-    currentTimeout: number = 0;
-    @Prop({ default: { x: 0, y: 0 } }) offset!: Point;
-    @Prop({ default: 0 }) timeout!: number;
-    @Prop({ default: false }) visible!: boolean;
+const props = withDefaults(
+    defineProps<{
+        offset: Point;
+        timeout: number;
+        visible: boolean;
+    }>(),
+    {
+        offset: () => ({ x: 0, y: 0 }),
+        timeout: 0,
+        visible: false,
+    },
+);
 
-    @Watch('visible')
-    visibleChanged(val: boolean) {
+const mousePos = ref<Point>({ x: 0, y: 0 });
+const privVisible = ref(false);
+let currentTimeout: number | null = null;
+
+watch(
+    () => props.visible,
+    (val) => {
         if (val) {
-            this.currentTimeout = setTimeout(() => (this.privVisible = this.visible), this.timeout);
+            currentTimeout = window.setTimeout(() => (privVisible.value = props.visible), props.timeout);
         } else {
-            clearTimeout(this.currentTimeout);
-            this.privVisible = false;
+            if (currentTimeout !== null) {
+                clearTimeout(currentTimeout);
+            }
+            privVisible.value = false;
         }
-    }
+    },
+);
 
-    mounted() {
-        window.addEventListener('mousemove', this.onMouseOver);
-    }
+onMounted(() => window.addEventListener('mousemove', onMouseOver));
+onUnmounted(() => window.removeEventListener('mousemove', onMouseOver));
 
-    destroyed() {
-        window.removeEventListener('mousemove', this.onMouseOver);
-    }
-
-    onMouseOver(event: MouseEvent) {
-        this.mousePos = { x: Math.floor(event.clientX + this.offset.x), y: Math.floor(event.clientY + this.offset.y) };
-    }
+function onMouseOver(event: MouseEvent) {
+    mousePos.value = {
+        x: Math.floor(event.clientX + props.offset.x),
+        y: Math.floor(event.clientY + props.offset.y),
+    };
 }
 </script>
 

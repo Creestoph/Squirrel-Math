@@ -7,14 +7,8 @@
     </div>
 </template>
 
-<script lang="ts">
-import { Component, Prop } from 'vue-property-decorator';
-import Vue from 'vue';
-
-@Component
-export default class SemanticTag extends Vue {
-    @Prop() attrs?: any;
-}
+<script setup lang="ts">
+defineProps<{ attrs: { tags: string[]; required: string[] } }>();
 </script>
 
 <style lang="scss">

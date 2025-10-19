@@ -4,12 +4,6 @@
     </router-link>
 </template>
 
-<script lang="ts">
-import { Prop, Component } from 'vue-property-decorator';
-import Vue from 'vue';
-
-@Component
-export default class LessonLink extends Vue {
-    @Prop() attrs?: { href: string };
-}
+<script setup lang="ts">
+defineProps<{ attrs: { href: string } }>();
 </script>

@@ -9,12 +9,17 @@
     </td>
 </template>
 
-<script lang="ts">
-import { Component, Prop } from 'vue-property-decorator';
-import Vue from 'vue';
-
-@Component
-export default class TableCell extends Vue {
-    @Prop() attrs?: any;
-}
+<script setup lang="ts">
+defineProps<{
+    attrs: {
+        colspan: number;
+        rowspan: number;
+        background: string;
+        borderColor: string;
+        borderLeft: number;
+        borderRight: number;
+        borderTop: number;
+        borderBottom: number;
+    };
+}>();
 </script>
