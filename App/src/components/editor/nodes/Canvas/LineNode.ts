@@ -3,6 +3,7 @@ import { VueNodeViewRenderer } from '@tiptap/vue-2';
 import { mainRedColor } from './Colors';
 import LineView from './LineView.vue';
 import { idGenerator } from './Shape';
+import { Point } from '@/components/utils/point';
 
 declare module '@tiptap/core' {
     interface Commands<ReturnType> {
@@ -14,7 +15,7 @@ declare module '@tiptap/core' {
 
 export interface LineAttributes {
     id: string;
-    points: { x: number; y: number }[];
+    points: Point[];
     color: string;
     smooth: boolean;
 }

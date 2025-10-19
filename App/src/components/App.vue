@@ -6,9 +6,9 @@
     </div>
 </template>
 
-<script>
-import AppMenu from './AppMenu';
-import InteractiveTree from './InteractiveTree';
+<script lang="ts">
+import AppMenu from './AppMenu.vue';
+import InteractiveTree from './InteractiveTree.vue';
 
 export default {
     name: 'App',

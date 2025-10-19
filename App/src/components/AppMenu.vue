@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="menu-trapeze" ref="logo">
+        <div class="menu-trapeze" :class="{ 'menu-small': isSmall }">
             <router-link tag="a" to="/" class="menu-segment">
                 <div class="logo">
                     <div>
@@ -15,22 +15,31 @@
                         <div class="logo-black-cell" style="float: left" />
                     </div>
                 </div>
-                <div class="menu-text">
+                <div class="menu-text" v-if="showText">
                     <span class="logo-text-1">squirrel</span>
                     <span class="logo-text-2">math</span>
                 </div>
             </router-link>
             <router-link tag="a" to="/editor" class="menu-segment">
                 <icon style="width: 55px; height: 55px">file_edit</icon>
-                <span class="menu-text"> edytor</span>
+                <span class="menu-text" v-if="showText"> edytor</span>
             </router-link>
         </div>
     </div>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import { defineComponent } from 'vue';
+
+export default defineComponent({
     name: 'AppMenu',
+    data() {
+        return {
+            isSmall: false,
+            showText: true,
+            restoreTimeout: null as number | null,
+        };
+    },
     mounted() {
         addEventListener('scroll', this.resizeLogo);
         this.resizeLogo();
@@ -40,29 +49,19 @@ export default {
     },
     methods: {
         resizeLogo() {
-            var logo = this.$refs.logo;
             if (document.body.scrollTop > 5 || document.documentElement.scrollTop > 5 || window.innerWidth < 700) {
-                if (!logo.classList.contains('menu-small')) {
-                    logo.classList.toggle('menu-small');
-                    Array.from(document.getElementsByClassName('menu-text')).forEach(
-                        (label) => (label.style.display = 'none'),
-                    );
+                this.isSmall = true;
+                this.showText = false;
+                if (this.restoreTimeout) {
+                    clearTimeout(this.restoreTimeout);
                 }
-            } else {
-                if (logo.classList.contains('menu-small')) {
-                    logo.classList.toggle('menu-small');
-                    setTimeout(() => {
-                        if (!logo.classList.contains('menu-small')) {
-                            Array.from(document.getElementsByClassName('menu-text')).forEach(
-                                (label) => (label.style.display = 'inline-block'),
-                            );
-                        }
-                    }, 500);
-                }
+            } else if (this.isSmall) {
+                this.isSmall = false;
+                this.restoreTimeout = setTimeout(() => (this.showText = true), 500);
             }
         },
     },
-};
+});
 </script>
 
 <style scoped lang="scss">

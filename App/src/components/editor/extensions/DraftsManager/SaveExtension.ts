@@ -1,8 +1,8 @@
 import { Extension, SingleCommands } from '@tiptap/vue-2';
-import { allComments } from '../../CommentPopup.vue';
 import { Draft, DraftPreview, LocalStorageSaver } from './LocalStorageManager';
 import ImagePicker from '../../ImagePicker.vue';
 import { downloadFile } from '@/components/utils/files';
+import { allComments } from '../../shared-state';
 
 interface SaveStorage {
     autoSaveObserverId: number | null;

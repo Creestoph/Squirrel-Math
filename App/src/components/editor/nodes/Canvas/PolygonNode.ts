@@ -3,6 +3,7 @@ import { VueNodeViewRenderer } from '@tiptap/vue-2';
 import { mainRedColor } from './Colors';
 import PolygonView from './PolygonView.vue';
 import { idGenerator } from './Shape';
+import { Point } from '@/components/utils/point';
 
 declare module '@tiptap/core' {
     interface Commands<ReturnType> {
@@ -14,7 +15,7 @@ declare module '@tiptap/core' {
 
 export interface PolygonAttributes {
     id: string;
-    vertices: { x: number; y: number }[];
+    vertices: Point[];
     color: string;
     borderColor: string;
 }

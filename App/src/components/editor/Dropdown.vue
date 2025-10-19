@@ -10,27 +10,27 @@
     </button>
 </template>
 
-<script>
-export default {
-    name: 'Dropdown',
-    props: ['arrow'],
-    data() {
-        return {
-            selectedOption: ' ',
-            dropdownVisible: false,
-        };
-    },
-    methods: {
-        select(event) {
-            this.dropdownVisible = false;
-            event.stopPropagation();
-            if (event.target != this.$refs.dropdown) {
-                this.selectedOption = event.target.getAttribute('value');
-                this.$emit('selected', this.selectedOption);
-            }
-        },
-    },
-};
+<script setup lang="ts">
+import { ref } from 'vue';
+
+defineProps<{ arrow?: boolean }>();
+const emit = defineEmits<{ (e: 'selected', value: string): void }>();
+
+const selectedOption = ref(' ');
+const dropdownVisible = ref(false);
+const dropdown = ref<HTMLElement | null>(null);
+
+function select(event: MouseEvent) {
+    dropdownVisible.value = false;
+    event.stopPropagation();
+
+    const target = event.target as HTMLElement;
+    if (target !== dropdown.value) {
+        const value = target.getAttribute('value') ?? '';
+        selectedOption.value = value;
+        emit('selected', value);
+    }
+}
 </script>
 
 <style scoped lang="scss">

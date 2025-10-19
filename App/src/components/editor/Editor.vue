@@ -469,7 +469,7 @@ import TextColor from './marks/TextColor';
 import Save from './extensions/DraftsManager/SaveExtension';
 import Comment from './marks/Comment';
 import MarkClick from './marks/MarkClick';
-import CommentPopup, { allComments } from './CommentPopup.vue';
+import CommentPopup from './CommentPopup.vue';
 import { DraftPreview, LocalStorageSaver } from './extensions/DraftsManager/LocalStorageManager';
 import BulletList from '@tiptap/extension-bullet-list';
 import OrderedList from '@tiptap/extension-ordered-list';
@@ -485,6 +485,8 @@ import { TableKit } from '@tiptap/extension-table';
 import { Gapcursor, UndoRedo } from '@tiptap/extensions';
 import LinkPopup from './LinkPopup.vue';
 import { BubbleMenu } from '@tiptap/vue-2/menus';
+import { allComments } from './shared-state';
+import { Point } from '../utils/point';
 
 @Component({
     components: {
@@ -512,8 +514,8 @@ export default class LessonEditor extends Vue {
     }
 
     showDraftsDialog = false;
-    editedCommentData: { id: string; pos: { x: number; y: number } } | null = null;
-    editedLinkData: { href: string; pos: { x: number; y: number } } | null = null;
+    editedCommentData: { id: string; pos: Point } | null = null;
+    editedLinkData: { href: string; pos: Point } | null = null;
     availableDrafts: DraftPreview[] = [];
 
     mounted() {
@@ -1074,7 +1076,7 @@ a[lesson-url] {
     }
 }
 
-#editor .chapter_name > div + hr {
+#editor .chapter-name > div + hr {
     width: 100%;
     box-sizing: border-box;
     border-color: black;
@@ -1103,14 +1105,14 @@ a[lesson-url] {
     text-align: center;
     width: 100%;
 }
-#editor .chapter_name.empty:first-child::before {
+#editor .chapter-name.empty:first-child::before {
     color: colors.$darker-gray;
     font-family: fonts.$secondary-font;
     font-size: 1.9em;
     font-weight: bold;
 }
 
-#editor .chapter_name > div {
+#editor .chapter-name > div {
     cursor: inherit;
 }
 

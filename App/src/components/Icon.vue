@@ -2,14 +2,17 @@
     <span ref="container"><slot></slot></span>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import { defineComponent } from 'vue';
+
+export default defineComponent({
     name: 'Icon',
     mounted() {
-        this.$refs.container.style.webkitMask = `url(${require('@/assets/icons/' + this.$refs.container.innerHTML + '.svg')})`;
-        this.$refs.container.innerHTML = '.';
+        const container = this.$refs.container as HTMLElement;
+        container.style.webkitMask = `url(${require('@/assets/icons/' + container.innerHTML + '.svg')})`;
+        container.innerHTML = '.';
     },
-};
+});
 </script>
 
 <style scoped lang="scss">

@@ -22,8 +22,8 @@
 
 <script lang="ts">
 import { Component } from 'vue-property-decorator';
-import graphLessons from '@/assets/current_lesson_graph.json';
-import graphCoordinates from '@/assets/current_graph_coordinates.json';
+import graphLessons from '@/assets/current-lesson-graph.json';
+import graphCoordinates from '@/assets/current-graph-coordinates.json';
 import Tooltip from '@/components/utils/Tooltip.vue';
 import Vue from 'vue';
 import { Point } from './utils/point';
@@ -106,7 +106,7 @@ export default class InteractiveTree extends Vue {
                 json.edgeJumps.push([lesson, req, this.stairsX[lesson][req]]);
             }
         }
-        this.download(JSON.stringify(json), 'current_graph_coordinates.json', 'application/json');
+        this.download(JSON.stringify(json), 'current-graph-coordinates.json', 'application/json');
     }
 
     discard() {

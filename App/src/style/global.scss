@@ -145,27 +145,6 @@ input[type='number']::-webkit-outer-spin-button {
     color: white;
 }
 
-.modal {
-    display: none;
-    position: fixed;
-    z-index: 1;
-    padding-top: 100px;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.7);
-}
-
-.modal_content {
-    background: colors.$light-gray;
-    top: 40%;
-    width: 50%;
-    padding: 30px;
-    margin: auto;
-}
-
 .center {
     margin-left: auto;
     margin-right: auto;
@@ -189,24 +168,6 @@ a.link:active {
 }
 
 /* ========================================== LESSON ========================================== */
-
-.comment_visible_window {
-    position: absolute;
-    background: white;
-    padding: 6px;
-    border-right: 1px solid black;
-    border-bottom: 1px solid black;
-    font-family: calibri light;
-    font-size: 15px;
-    box-shadow: inset 0px -15px 15px -5px rgba(0, 0, 0, 0.15);
-}
-
-.comment_visible_question_mark {
-    color: colors.$main-red;
-    font-family: fonts.$geometric-font;
-    font-size: 28px;
-}
-
 .example {
     display: block;
     text-align: justify;

@@ -1,5 +1,5 @@
 <template>
-    <div class="comment-editor" :style="positionStyle">
+    <div class="comment-editor" :style="positionStyle || undefined">
         <textarea v-model="commentText" @paste.stop ref="commentEditor" @keydown.esc="close()"></textarea>
         <button
             @click="hidden = !hidden"
@@ -16,60 +16,68 @@
     </div>
 </template>
 
-<script>
-export const allComments = {};
+<script setup lang="ts">
+import { ref, watch, onMounted, nextTick } from 'vue';
+import { allComments } from './shared-state';
+import { Point } from '../utils/point';
 
-export default {
-    props: ['id', 'pos'],
-    data() {
-        return {
-            commentText: '',
-            hidden: false,
-            positionStyle: null,
-        };
-    },
-    methods: {
-        close() {
-            this.save(this.id);
-            this.$emit('closed');
-        },
-        save(id) {
-            allComments[id].text = this.commentText;
-            allComments[id].hidden = this.hidden;
-        },
-        setId() {
-            if (!allComments[this.id]) {
-                allComments[this.id] = {
-                    text: '',
-                    hidden: false,
-                };
-            }
+const props = defineProps<{
+    id: string;
+    pos: Point;
+}>();
 
-            this.commentText = allComments[this.id].text;
-            this.hidden = allComments[this.id].hidden;
-            this.$nextTick(() => this.$refs.commentEditor.focus());
-        },
-        setPosition() {
-            this.positionStyle = {
-                left: this.pos.x + window.pageXOffset + 'px',
-                top: this.pos.y + window.pageYOffset + 'px',
-            };
-        },
+const emit = defineEmits<{ (e: 'closed'): void }>();
+
+const commentText = ref<string>('');
+const hidden = ref<boolean>(false);
+const positionStyle = ref<Record<string, string> | null>(null);
+const commentEditor = ref<HTMLElement | null>(null);
+
+function save(id: string | null) {
+    if (id == null) {
+        return;
+    }
+    allComments[id] ??= { text: '', hidden: false };
+    allComments[id].text = commentText.value;
+    allComments[id].hidden = hidden.value;
+}
+
+function setId() {
+    allComments[props.id] ??= { text: '', hidden: false };
+    commentText.value = allComments[props.id].text;
+    hidden.value = allComments[props.id].hidden;
+    nextTick(() => commentEditor.value?.focus());
+}
+
+function setPosition() {
+    positionStyle.value = {
+        left: `${props.pos.x + window.pageXOffset}px`,
+        top: `${props.pos.y + window.pageYOffset}px`,
+    };
+}
+
+function close() {
+    save(props.id);
+    emit('closed');
+}
+
+onMounted(() => {
+    setId();
+    setPosition();
+});
+
+watch(
+    () => props.id,
+    (_curr, prev) => {
+        save(prev);
+        setId();
     },
-    mounted() {
-        this.setId();
-        this.setPosition();
-    },
-    watch: {
-        id: function (_curr, prev) {
-            this.save(prev);
-            this.setId();
-        },
-        pos: function () {
-            this.setPosition();
-        },
-    },
-};
+);
+
+watch(
+    () => props.pos,
+    () => setPosition(),
+);
 </script>
 
 <style scoped lang="scss">

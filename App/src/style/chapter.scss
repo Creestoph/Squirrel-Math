@@ -5,12 +5,12 @@
     position: relative;
 }
 
-.chapter_name {
+.chapter-name {
     margin-bottom: -11px; /*3px*/
     line-height: 1.8em;
 }
 
-.chapter_name > div {
+.chapter-name > div {
     position: relative;
     cursor: pointer;
     font-family: fonts.$secondary-font;
@@ -20,7 +20,7 @@
     margin-bottom: -11px; /*-3px*/
 }
 
-.chapter_name > div + hr {
+.chapter-name > div + hr {
     width: 0%;
     border: 2px solid;
     box-sizing: border-box;
@@ -32,7 +32,7 @@
     margin-left: 0px;
 }
 
-.chapter_name > div:hover + hr {
+.chapter-name > div:hover + hr {
     width: 100%;
     border: 2px solid;
     background-color: black;

@@ -1,12 +1,9 @@
 <template>
-    <div :class="{ disabled: disabled }"><slot></slot></div>
+    <div :class="{ disabled }"><slot></slot></div>
 </template>
 
-<script>
-export default {
-    name: 'DropdownOption',
-    props: ['disabled'],
-};
+<script setup lang="ts">
+defineProps<{ disabled: boolean }>();
 </script>
 
 <style scoped lang="scss">

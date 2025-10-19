@@ -5,6 +5,7 @@ import { ReplaceStep } from 'prosemirror-transform';
 import { VueNodeViewRenderer } from '@tiptap/vue-2';
 import TextAreaVue from './TextAreaView.vue';
 import { idGenerator } from './Shape';
+import { Point } from '@/components/utils/point';
 
 declare module '@tiptap/core' {
     interface Commands<ReturnType> {
@@ -14,13 +15,11 @@ declare module '@tiptap/core' {
     }
 }
 
-export interface TextAreaAttributes {
+export interface TextAreaAttributes extends Point {
     id: string;
     type: 'textArea';
     width: number;
     height: number;
-    x: number;
-    y: number;
     borderColor?: string;
     textColor?: string;
     fillColor?: string;

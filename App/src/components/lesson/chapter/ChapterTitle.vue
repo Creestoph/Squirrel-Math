@@ -1,5 +1,5 @@
 <template>
-    <div class="chapter_name">
+    <div class="chapter-name">
         <div>
             <slot />
         </div>

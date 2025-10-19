@@ -97,10 +97,10 @@
     </lesson>
 </template>
 
-<script>
-import LessonTitle from './lesson/LessonTitle';
-import LessonIntro from './lesson/LessonIntro';
-import LessonChapter from './lesson/chapter/LessonChapter';
+<script lang="ts">
+import LessonTitle from './lesson/LessonTitle.vue';
+import LessonIntro from './lesson/LessonIntro.vue';
+import LessonChapter from './lesson/chapter/LessonChapter.vue';
 import Lesson from './lesson/Lesson.vue';
 
 export default {

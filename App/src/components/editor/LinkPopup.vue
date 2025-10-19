@@ -74,7 +74,7 @@ export default {
     methods: {
         getLessons() {
             if (this.lessons.length == 1) {
-                return import(`@/assets/current_lesson_graph.json`).then((file) => {
+                return import(`@/assets/current-lesson-graph.json`).then((file) => {
                     this.lessons = file.default;
                     return Promise.resolve(this.lessons);
                 });

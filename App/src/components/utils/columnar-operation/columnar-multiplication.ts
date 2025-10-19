@@ -1,24 +1,24 @@
-import { validate_float, validate_int } from '../number_validation';
-import { Display_table } from './display_table';
+import { DisplayTable } from './display-table';
+import { ColumnarOperation, ColumnarOperationStep } from './columnar-operation';
 
-class Columnar_multiplication_step {
-    private table: Display_table;
+class ColumnarMultiplicationStep implements ColumnarOperationStep {
+    private table: DisplayTable;
 
     constructor(
         table: string[][],
-        highlight_fields: boolean[][],
+        highlightFields: boolean[][],
         private readonly comment: string,
         private readonly carry: number,
-        mul_underline: number,
-        sum_underline: number,
+        mulUnderline: number,
+        sumUnderline: number,
     ) {
         const tab: string[][] = [];
         for (let i = 0; i < table.length; i++) {
             tab[i] = [];
-            if (i == mul_underline) {
+            if (i == mulUnderline) {
                 tab[i].push('/u:\\cdot');
                 tab[i].push('/u:');
-            } else if (i == sum_underline) {
+            } else if (i == sumUnderline) {
                 tab[i].push('/u:+');
                 tab[i].push('/u:');
             } else {
@@ -27,116 +27,46 @@ class Columnar_multiplication_step {
             }
             for (let j = 0; j < table[i].length; j++) {
                 let t = ':' + table[i][j];
-                if (highlight_fields[i][j]) {
+                if (highlightFields[i][j]) {
                     t = '/h' + t;
                 }
-                if (i == mul_underline || i == sum_underline) {
+                if (i == mulUnderline || i == sumUnderline) {
                     t = '/u' + t;
                 }
                 tab[i].push(t[0] == ':' ? t.replace(/:/g, '') : t);
             }
         }
-        this.table = Display_table.create_custom(tab);
+        this.table = DisplayTable.createCustom(tab);
     }
 
-    print(coment_target_id: HTMLElement, table_target_id: HTMLElement) {
-        coment_target_id.innerHTML = this.comment;
-        //document.getElementById(carry_target_id).innerHTML = this.carry;
-        this.table.print(table_target_id);
+    print(commentElement: HTMLElement, table: HTMLElement) {
+        commentElement.innerHTML = this.comment;
+        this.table.print(table);
     }
 }
 
-export class Columnar_multiplication {
-    private steps: Columnar_multiplication_step[] = [];
-    private step = 0;
+export class ColumnarMultiplication extends ColumnarOperation {
+    protected steps: ColumnarMultiplicationStep[] = [];
+    protected signs = ['*'];
 
-    constructor(
-        private readonly table_id: HTMLElement,
-        private readonly comment_id: HTMLElement,
-        private readonly button_right_id: HTMLElement,
-        private readonly button_left_id: HTMLElement,
-    ) {}
-
-    generate_from_input(input_id: HTMLInputElement, columnar_multiplication_area: HTMLElement, is_float = true) {
-        columnar_multiplication_area.style.visibility = 'visible';
-        columnar_multiplication_area.style.marginBottom = '60px';
-        columnar_multiplication_area.style.height = 'auto';
-        (columnar_multiplication_area.childNodes[0] as HTMLElement).style.minHeight = '400px';
-        this.table_id.style.marginTop = '60px';
-        (this.button_left_id.childNodes[0] as HTMLElement).setAttribute('height', '60px');
-        (this.button_right_id.childNodes[0] as HTMLElement).setAttribute('height', '60px');
-        let input = input_id.value;
-        input = input.replace(/ /g, '');
-        input = input.replace(/,/g, '.');
-        try {
-            this.generate_steps(input.split('*'), is_float);
-            this.comment_id.style.marginTop = '60px';
-            return true;
-        } catch (err: any) {
-            this.comment_id.style.marginTop = '120px';
-            this.print_error(err);
-            return false;
-        }
-    }
-
-    next() {
-        this.step += 1;
-        this.print_step(this.step);
-    }
-    prev() {
-        this.step -= 1;
-        this.print_step(this.step);
-    }
-
-    private print_step(i: number) {
-        this.button_right_id.style.visibility = 'visible';
-        this.button_left_id.style.visibility = 'visible';
-        if (this.step == 0) {
-            this.button_left_id.style.visibility = 'hidden';
-        } else if (this.step == this.steps.length - 1) {
-            this.button_right_id.style.visibility = 'hidden';
-        }
-        this.steps[i].print(this.comment_id, this.table_id);
-    }
-
-    private print_error(msg: string) {
-        this.button_left_id.style.visibility = 'hidden';
-        this.button_right_id.style.visibility = 'hidden';
-        this.comment_id.innerHTML = msg;
-        this.table_id.innerHTML = '';
-    }
-
-    private generate_steps(numbers: string[], is_float = true) {
-        let standard_err = 'Wpisz dwie liczby do pomnożenia <br>np. 1234*73';
-        if (!is_float) {
-            standard_err = 'Wpisz dwie liczby naturalne do pomnożenia <br>np. 1234*73';
-        }
-        let validate = validate_float;
-        if (!is_float) {
-            validate = validate_int;
-        }
+    protected generateSteps(numbers: string[], isFloat = true) {
         this.steps = [];
-        if (numbers.length != 2) {
-            throw standard_err;
-        }
-        for (let i = 0; i < numbers.length; i++) {
-            if (!validate(numbers[i])) {
-                throw standard_err;
-            }
+
+        if (numbers.length != 2 || numbers.some((n) => !this.validateNumber(n, isFloat))) {
+            const standardErr = isFloat
+                ? 'Wpisz dwie liczby do pomnożenia <br>np. 1234*73'
+                : 'Wpisz dwie liczby naturalne do pomnożenia <br>np. 1234*73';
+            throw standardErr;
         }
         if (numbers[0].length + numbers[1].length > 39 || numbers[1].length > 10) {
             throw "<b>ERROR</b><br>Wprowadzone liczby są zbyt długie.<br>Ich wyświetlenie przeczy design'owi strony.<br>Szanujmy się.";
         }
         let longest = 0;
         const commas: number[] = [];
-        const numbers_orig: string[] = [];
+        numbers = numbers.map((n) => this.removeLeadingZeros(n));
+        const numbersOrig = [...numbers];
+
         for (let i = 0; i < numbers.length; i++) {
-            while (numbers[i][0] == '0') {
-                numbers[i] = numbers[i].replace('0', '');
-            }
-            if (numbers[i] == '') {
-                numbers[i] = '0';
-            }
             let l = numbers[i].length;
             commas[i] = 0;
             for (let j = 0; j < l; j++) {
@@ -149,7 +79,6 @@ export class Columnar_multiplication {
             if (l > longest) {
                 longest = l;
             }
-            numbers_orig[i] = numbers[i];
             numbers[i] = numbers[i].replace('.', '');
         }
 
@@ -166,11 +95,11 @@ export class Columnar_multiplication {
             }
         }
 
-        let highlight_fields: boolean[][] = [];
+        let highlightFields: boolean[][] = [];
         for (let i = 0; i < table.length; i++) {
-            highlight_fields[i] = [];
+            highlightFields[i] = [];
             for (let j = 0; j < table[0].length; j++) {
-                highlight_fields[i][j] = false;
+                highlightFields[i][j] = false;
             }
         }
 
@@ -182,18 +111,18 @@ export class Columnar_multiplication {
         if (commas[0] + commas[1] > 0) {
             comment += ' Chwilowo zaniedbujemy przecinki.';
         }
-        this.steps.push(new Columnar_multiplication_step(table, highlight_fields, comment, carry, 1, -1));
+        this.steps.push(new ColumnarMultiplicationStep(table, highlightFields, comment, carry, 1, -1));
 
         for (let i = numbers[1].length - 1; i >= 0; i--) {
             let t = 0;
             const ci = numbers[1].length - 1 - i;
             comment = 'Przystępujemy do mnożenia liczby ' + numbers[0] + ' przez ' + numbers[1][i] + '.';
-            highlight_fields = Columnar_multiplication.empty_highlight(table);
+            highlightFields = ColumnarMultiplication.emptyHighlight(table);
             for (let k = 0; k < numbers[0].length; k++) {
-                highlight_fields[0][table[0].length - 1 - k] = true;
+                highlightFields[0][table[0].length - 1 - k] = true;
             }
-            highlight_fields[1][table[1].length - 1 - ci] = true;
-            this.steps.push(new Columnar_multiplication_step(table, highlight_fields, comment, carry, 1, -1));
+            highlightFields[1][table[1].length - 1 - ci] = true;
+            this.steps.push(new ColumnarMultiplicationStep(table, highlightFields, comment, carry, 1, -1));
             for (let j = numbers[0].length - 1; j >= 0; j--) {
                 const cj = numbers[0].length - 1 - j;
                 mul = parseInt(numbers[1][i]) * parseInt(numbers[0][j]) + carry;
@@ -205,7 +134,7 @@ export class Columnar_multiplication {
                 carry = Math.floor(mul / 10);
                 t = table[0].length - 1 - (ci + cj);
                 while (t < 0) {
-                    table = Columnar_multiplication.add_first_column(table);
+                    table = ColumnarMultiplication.addFirstColumn(table);
                     t = table[0].length - 1 - (ci + cj);
                 }
                 if (typeof table[2 + ci] == 'undefined') {
@@ -246,15 +175,15 @@ export class Columnar_multiplication {
                 } else {
                     comment += '.';
                 }
-                highlight_fields = Columnar_multiplication.empty_highlight(table);
-                highlight_fields[0][table[0].length - 1 - cj] = true;
-                highlight_fields[1][table[1].length - 1 - ci] = true;
-                highlight_fields[2 + ci][t] = true;
-                this.steps.push(new Columnar_multiplication_step(table, highlight_fields, comment, carry, 1, -1));
+                highlightFields = ColumnarMultiplication.emptyHighlight(table);
+                highlightFields[0][table[0].length - 1 - cj] = true;
+                highlightFields[1][table[1].length - 1 - ci] = true;
+                highlightFields[2 + ci][t] = true;
+                this.steps.push(new ColumnarMultiplicationStep(table, highlightFields, comment, carry, 1, -1));
             }
             if (carry != 0) {
                 if (t - 1 == -1) {
-                    table = Columnar_multiplication.add_first_column(table);
+                    table = ColumnarMultiplication.addFirstColumn(table);
                     t = 0;
                     table[2 + (numbers[1].length - 1 - i)][t] = '' + carry;
                 } else {
@@ -263,18 +192,18 @@ export class Columnar_multiplication {
 
                 comment = 'Dopisujemy zapamiętane ' + carry + '.';
                 carry = 0;
-                highlight_fields = Columnar_multiplication.empty_highlight(table);
-                this.steps.push(new Columnar_multiplication_step(table, highlight_fields, comment, carry, 1, -1));
+                highlightFields = ColumnarMultiplication.emptyHighlight(table);
+                this.steps.push(new ColumnarMultiplicationStep(table, highlightFields, comment, carry, 1, -1));
             }
         }
 
         let w = '';
-        let sum_underline: number = -1;
+        let sumUnderline: number = -1;
         if (numbers[1].length == 1) {
             w = table[table.length - 1].toString();
             w = w.split(',').join('');
         } else {
-            sum_underline = table.length - 1;
+            sumUnderline = table.length - 1;
 
             let carry = 0;
             for (let i = table[0].length - 1; i >= 0; i--) {
@@ -287,14 +216,12 @@ export class Columnar_multiplication {
             }
             if (carry > 0) {
                 w = w + carry.toString();
-                table = Columnar_multiplication.add_first_column(table);
+                table = ColumnarMultiplication.addFirstColumn(table);
             }
 
             comment = 'Otrzymane liczby podkreślamy i wykonujemy ich dodawanie pisemne.';
-            highlight_fields = Columnar_multiplication.empty_highlight(table);
-            this.steps.push(
-                new Columnar_multiplication_step(table, highlight_fields, comment, carry, 1, sum_underline),
-            );
+            highlightFields = ColumnarMultiplication.emptyHighlight(table);
+            this.steps.push(new ColumnarMultiplicationStep(table, highlightFields, comment, carry, 1, sumUnderline));
 
             table[table.length] = [];
             for (let k = 0; k < table[0].length; k++) {
@@ -311,13 +238,7 @@ export class Columnar_multiplication {
         } else {
             const c = commas[0] + commas[1];
             comment =
-                'Odczytujemy liczbę ' +
-                w +
-                '. Ponieważ ' +
-                numbers_orig[0].replace('.', ',') +
-                ' ma ' +
-                commas[0] +
-                ' ';
+                'Odczytujemy liczbę ' + w + '. Ponieważ ' + numbersOrig[0].replace('.', ',') + ' ma ' + commas[0] + ' ';
             if (commas[0] == 1) {
                 comment += 'cyfrę';
             } else if (commas[0] / 10 != 1 && (commas[0] % 10 == 2 || commas[0] % 10 == 3 || commas[0] % 10 == 4)) {
@@ -325,7 +246,7 @@ export class Columnar_multiplication {
             } else {
                 comment += 'cyfr';
             }
-            comment += ' po przecinku, a ' + numbers_orig[1].replace('.', ',') + ' ma ' + commas[1] + ' ';
+            comment += ' po przecinku, a ' + numbersOrig[1].replace('.', ',') + ' ma ' + commas[1] + ' ';
             if (commas[1] == 1) {
                 comment += 'cyfrę';
             } else if (commas[1] / 10 != 1 && (commas[1] % 10 == 2 || commas[1] % 10 == 3 || commas[1] % 10 == 4)) {
@@ -346,11 +267,11 @@ export class Columnar_multiplication {
             comment += ' Ostatecznie otrzymujemy ' + w + '.';
         }
 
-        highlight_fields = Columnar_multiplication.empty_highlight(table);
-        this.steps.push(new Columnar_multiplication_step(table, highlight_fields, comment, carry, 1, sum_underline));
+        highlightFields = ColumnarMultiplication.emptyHighlight(table);
+        this.steps.push(new ColumnarMultiplicationStep(table, highlightFields, comment, carry, 1, sumUnderline));
     }
 
-    private static add_first_column(tab: string[][]) {
+    private static addFirstColumn(tab: string[][]) {
         const tab1: string[][] = [];
         for (let i = 0; i < tab.length; i++) {
             tab1[i] = [];
@@ -362,7 +283,7 @@ export class Columnar_multiplication {
         return tab1;
     }
 
-    private static empty_highlight(tab: string[][]) {
+    private static emptyHighlight(tab: string[][]) {
         const tab1: boolean[][] = [];
         for (let i = 0; i < tab.length; i++) {
             tab1[i] = [];

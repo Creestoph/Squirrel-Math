@@ -4,7 +4,7 @@
 
 <script>
 import paper from 'paper';
-import { idGenerator, Shape } from './Shape';
+import { Shape } from './Shape';
 import { NodeViewWrapper } from '@tiptap/vue-2';
 import Vue from 'vue';
 

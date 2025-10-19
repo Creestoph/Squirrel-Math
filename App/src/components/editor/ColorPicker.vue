@@ -18,27 +18,22 @@
     </button>
 </template>
 
-<script>
+<script setup lang="ts">
 import { colors } from '@/style/palette';
+import { ref } from 'vue';
 
-export default {
-    name: 'ColorPicker',
-    props: ['color'],
-    data() {
-        return {
-            dropdownVisible: false,
-            availableColors: Array.from({ length: Math.ceil(colors.length / 5) }, (_, i) =>
-                colors.slice(i * 5, (i + 1) * 5),
-            ),
-        };
-    },
-    methods: {
-        choose(color) {
-            this.$emit('selected', color);
-            this.dropdownVisible = false;
-        },
-    },
-};
+defineProps<{ color?: string }>();
+const emit = defineEmits<{ (e: 'selected', v: string): void }>();
+
+const dropdownVisible = ref(false);
+const availableColors = Array.from({ length: Math.ceil(colors.length / 5) }, (_, i) =>
+    colors.slice(i * 5, (i + 1) * 5),
+) as string[][];
+
+function choose(color: string) {
+    emit('selected', color);
+    dropdownVisible.value = false;
+}
 </script>
 
 <style scoped lang="scss">

@@ -77,7 +77,7 @@ export default Vue.extend({
         },
     },
     mounted() {
-        import(`@/assets/current_lesson_graph.json`).then(
+        import(`@/assets/current-lesson-graph.json`).then(
             (file) =>
                 (this.allLessons = file.default.concat({
                     title: 'Lekcja jeszcze niedostępna',

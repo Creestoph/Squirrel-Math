@@ -18,6 +18,6 @@ export default Node.create<{ shortVersion: boolean }>({
     },
 
     renderHTML() {
-        return ['chapter-body', { class: 'chapter_mask' }, ['div', { class: 'chapter-body' }, 0]];
+        return ['chapter-body', { class: 'chapter-mask' }, ['div', { class: 'chapter-body' }, 0]];
     },
 });

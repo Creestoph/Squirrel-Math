@@ -73,7 +73,7 @@ function transformNodeAndChildren(node: NodeData) {
 }
 
 export function transformAll() {
-    import(`@/assets/current_lesson_graph.json`).then((file) => {
+    import(`@/assets/current-lesson-graph.json`).then((file) => {
         const titles = [...file.default.map((lesson) => lesson.title), 'Demo'];
         titles.forEach(async (title, i) => {
             const lesson = (await import(`@/assets/lessons/${title}.json`)).default as LessonData;

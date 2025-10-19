@@ -3,6 +3,7 @@ import { VueNodeViewRenderer } from '@tiptap/vue-2';
 import { mainRedColor } from './Colors';
 import ArcView from './ArcView.vue';
 import { idGenerator } from './Shape';
+import { Point } from '@/components/utils/point';
 
 declare module '@tiptap/core' {
     interface Commands<ReturnType> {
@@ -14,8 +15,8 @@ declare module '@tiptap/core' {
 
 export interface ArcAttributes {
     id: string; // TODO maybe id should be assigned in runtime, not stored in document?
-    center: { x: number; y: number };
-    arms: { x: number; y: number }[];
+    center: Point;
+    arms: Point[];
     color: string;
     borderColor: string;
     radius: number;

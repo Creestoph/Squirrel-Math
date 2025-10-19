@@ -3,6 +3,7 @@ import { VueNodeViewRenderer } from '@tiptap/vue-2';
 import { mainRedColor } from './Colors';
 import RectangleView from './RectangleView.vue';
 import { idGenerator } from './Shape';
+import { Point } from '@/components/utils/point';
 
 declare module '@tiptap/core' {
     interface Commands<ReturnType> {
@@ -14,7 +15,7 @@ declare module '@tiptap/core' {
 
 export interface RectangleAttributes {
     id: string;
-    center: { x: number; y: number };
+    center: Point;
     size: { width: number; height: number };
     color: string;
     borderColor: string;

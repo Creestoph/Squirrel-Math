@@ -1,5 +1,5 @@
 <template>
-    <node-view-wrapper class="chapter_name">
+    <node-view-wrapper class="chapter-name">
         <node-view-content />
         <div
             class="hidden-button"
@@ -62,7 +62,7 @@ export default Vue.extend({
         font-size: 1.2em;
     }
 
-    .chapter_name:hover &,
+    .chapter-name:hover &,
     &:hover {
         display: inline-block;
     }
