@@ -160,7 +160,6 @@ export default Vue.extend({
         },
 
         save() {
-            console.log('saving circle');
             this.updateAttributes({
                 size: {
                     width: this.circle.bounds.width,

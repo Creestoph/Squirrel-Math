@@ -28,7 +28,7 @@
                         <color-picker
                             :color="fillColor"
                             @mousedown.native="$event.preventDefault()"
-                            @selected="setFillColor($event)"
+                            @selected="fillColor = $event"
                         >
                             wypełnienie
                         </color-picker>
@@ -36,7 +36,7 @@
                             v-if="canAnyHaveBorder(selection)"
                             :color="borderColor"
                             @mousedown.native="$event.preventDefault()"
-                            @selected="setBorderColor($event)"
+                            @selected="borderColor = $event"
                         >
                             krawędź
                         </color-picker>
@@ -44,27 +44,27 @@
                             v-if="canAnyHaveText(selection)"
                             :color="textColor"
                             @mousedown.native="$event.preventDefault()"
-                            @selected="setTextColor($event)"
+                            @selected="textColor = $event"
                         >
                             tekst
                         </color-picker>
                         <button
                             v-if="canAnyHaveText(selection)"
-                            @mousedown="setAlign('top')"
+                            @mousedown="align = 'top'"
                             :class="{ active: align == 'top' }"
                         >
                             <icon>align_top</icon>
                         </button>
                         <button
                             v-if="canAnyHaveText(selection)"
-                            @mousedown="setAlign('middle')"
+                            @mousedown="align = 'middle'"
                             :class="{ active: align == 'middle' }"
                         >
                             <icon>align_vertically</icon>
                         </button>
                         <button
                             v-if="canAnyHaveText(selection)"
-                            @mousedown="setAlign('bottom')"
+                            @mousedown="align = 'bottom'"
                             :class="{ active: align == 'bottom' }"
                         >
                             <icon>align_bottom</icon>
@@ -87,10 +87,10 @@
                             />
                         </span>
                         <span v-if="selectedArc()">
-                            promień <input type="number" v-model="shapeAtIndex(selection[0]).radius" />
+                            promień <input type="number" v-model.number="shapeAtIndex(selection[0]).radius.value" />
                         </span>
                         <span v-if="selectedArc()">
-                            kąt <input type="number" v-model="shapeAtIndex(selection[0]).angle" />
+                            kąt <input type="number" v-model.number="shapeAtIndex(selection[0]).angle.value" />
                         </span>
                     </template>
                 </div>
@@ -154,7 +154,6 @@ export default Vue.extend({
                 return this.node.attrs.canvas;
             },
             set(canvas) {
-                console.log('setting canvas', canvas);
                 this.updateAttributes({ canvas });
             },
         },
@@ -163,9 +162,12 @@ export default Vue.extend({
                 const firstSelected = this.shapeAtIndex(this.selection[0]);
                 return this.selection
                     .map((i) => this.shapeAtIndex(i))
-                    .every((shape) => shape.fillColor == firstSelected.fillColor)
-                    ? firstSelected.fillColor
+                    .every((shape) => shape.fillColor.value == firstSelected.fillColor.value)
+                    ? firstSelected.fillColor.value
                     : false;
+            },
+            set(color) {
+                this.selection.forEach((i) => (this.shapeAtIndex(i).fillColor.value = color));
             },
         },
         borderColor: {
@@ -174,9 +176,15 @@ export default Vue.extend({
                 return this.selection
                     .map((i) => this.shapeAtIndex(i))
                     .filter((shape) => shape.canHaveBorder)
-                    .every((shape) => shape.borderColor == firstSelected.borderColor)
-                    ? firstSelected.borderColor
+                    .every((shape) => shape.borderColor.value == firstSelected.borderColor.value)
+                    ? firstSelected.borderColor.value
                     : false;
+            },
+            set(color) {
+                this.selection
+                    .map((i) => this.shapeAtIndex(i))
+                    .filter((shape) => shape.canHaveBorder)
+                    .forEach((shape) => (shape.borderColor.value = color));
             },
         },
         textColor: {
@@ -189,6 +197,12 @@ export default Vue.extend({
                     ? firstSelected.textColor
                     : false;
             },
+            set(color) {
+                this.selection
+                    .map((i) => this.shapeAtIndex(i))
+                    .filter((shape) => this.isTextArea(shape))
+                    .forEach((shape) => (shape.textColor = color));
+            },
         },
         align: {
             get() {
@@ -199,6 +213,12 @@ export default Vue.extend({
                     .every((shape) => shape.align == firstSelected.align)
                     ? firstSelected.align
                     : false;
+            },
+            set(align) {
+                this.selection
+                    .map((i) => this.shapeAtIndex(i))
+                    .filter((shape) => this.isTextArea(shape))
+                    .forEach((shape) => (shape.align = align));
             },
         },
     },
@@ -252,7 +272,6 @@ export default Vue.extend({
         },
 
         handleResize() {
-            console.log('handling resize');
             const width = this.$refs.eventsCatcher.offsetWidth;
             const height = this.$refs.eventsCatcher.offsetHeight;
             this.eventsCatcherPaperScope.view.setViewSize(new paper.Size(width, height));
@@ -584,37 +603,12 @@ export default Vue.extend({
             );
         },
 
-        setFillColor(color) {
-            this.selection.forEach((i) => (this.shapeAtIndex(i).fillColor = color));
-        },
-
         canAnyHaveBorder(selection) {
             return selection.some((i) => this.shapeAtIndex(i).canHaveBorder);
         },
 
         canAnyHaveText(selection) {
             return selection.some((i) => this.isTextArea(this.shapeAtIndex(i)));
-        },
-
-        setBorderColor(color) {
-            this.selection
-                .map((i) => this.shapeAtIndex(i))
-                .filter((shape) => shape.canHaveBorder)
-                .forEach((shape) => (shape.borderColor = color));
-        },
-
-        setTextColor(color) {
-            this.selection
-                .map((i) => this.shapeAtIndex(i))
-                .filter((shape) => this.isTextArea(shape))
-                .forEach((shape) => (shape.textColor = color));
-        },
-
-        setAlign(align) {
-            this.selection
-                .map((i) => this.shapeAtIndex(i))
-                .filter((shape) => this.isTextArea(shape))
-                .forEach((shape) => (shape.align = align));
         },
 
         toggleEdit() {

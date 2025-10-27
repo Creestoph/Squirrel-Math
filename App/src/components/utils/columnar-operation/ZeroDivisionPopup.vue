@@ -15,7 +15,7 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 
-const emit = defineEmits(['close']);
+const emit = defineEmits<{ (event: 'close'): void }>();
 
 const modalDisplayCount = ref(0);
 const text = ref('');

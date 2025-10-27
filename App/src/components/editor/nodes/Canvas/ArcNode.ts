@@ -4,6 +4,7 @@ import { mainRedColor } from './Colors';
 import ArcView from './ArcView.vue';
 import { idGenerator } from './Shape';
 import { Point } from '@/components/utils/point';
+import { VueConstructor } from 'vue';
 
 declare module '@tiptap/core' {
     interface Commands<ReturnType> {
@@ -49,7 +50,7 @@ export default Node.create({
         };
     },
 
-    addNodeView: () => VueNodeViewRenderer(ArcView),
+    addNodeView: () => VueNodeViewRenderer(ArcView as unknown as VueConstructor<Vue>),
 
     addCommands() {
         return {

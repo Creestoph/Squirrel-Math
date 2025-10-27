@@ -1,6 +1,7 @@
 import { Node } from '@tiptap/vue-2';
 import { VueNodeViewRenderer } from '@tiptap/vue-2';
 import BuiltInComponentVue from './BuiltInComponent.vue';
+import { VueConstructor } from 'vue';
 
 declare module '@tiptap/core' {
     interface Commands<ReturnType> {
@@ -35,7 +36,7 @@ export default Node.create({
         };
     },
 
-    addNodeView: () => VueNodeViewRenderer(BuiltInComponentVue),
+    addNodeView: () => VueNodeViewRenderer(BuiltInComponentVue as unknown as VueConstructor<Vue>),
 
     addCommands() {
         return {

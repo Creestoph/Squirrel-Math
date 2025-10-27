@@ -1,6 +1,7 @@
 import ExpressionVue from './Expression.vue';
 import { Node, nodeInputRule, nodePasteRule } from '@tiptap/vue-2';
 import { VueNodeViewRenderer } from '@tiptap/vue-2';
+import { VueConstructor } from 'vue';
 
 declare module '@tiptap/core' {
     interface Commands<ReturnType> {
@@ -29,7 +30,7 @@ export default Node.create({
         };
     },
 
-    addNodeView: () => VueNodeViewRenderer(ExpressionVue),
+    addNodeView: () => VueNodeViewRenderer(ExpressionVue as unknown as VueConstructor<Vue>),
 
     addCommands() {
         return {

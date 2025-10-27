@@ -4,6 +4,7 @@ import { createLowlight } from 'lowlight';
 import xml from 'highlight.js/lib/languages/xml';
 import CustomElementVue from './CustomElement.vue';
 import { TextSelection } from '@tiptap/pm/state';
+import { VueConstructor } from 'vue';
 
 const lowlight = createLowlight();
 lowlight.register('html', xml);
@@ -24,7 +25,7 @@ export default CodeBlockLowlight.extend({
 
     renderHTML: () => ['custom', 0],
 
-    addNodeView: () => VueNodeViewRenderer(CustomElementVue),
+    addNodeView: () => VueNodeViewRenderer(CustomElementVue as unknown as VueConstructor<Vue>),
 
     addCommands() {
         return {

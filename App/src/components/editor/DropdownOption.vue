@@ -3,7 +3,7 @@
 </template>
 
 <script setup lang="ts">
-defineProps<{ disabled: boolean }>();
+defineProps<{ disabled?: boolean }>();
 </script>
 
 <style scoped lang="scss">

@@ -13,53 +13,48 @@
     </node-view-wrapper>
 </template>
 
-<script>
-import { NodeViewContent, NodeViewWrapper } from '@tiptap/vue-2';
-import Vue from 'vue';
+<script setup lang="ts">
+import { NodeViewContent, nodeViewProps, NodeViewWrapper } from '@tiptap/vue-2';
+import { nextTick, ref } from 'vue';
 
-export default Vue.extend({
-    components: {
-        NodeViewWrapper,
-        NodeViewContent,
-    },
-    props: ['node', 'updateAttributes', 'view'],
-    data() {
-        return {
-            editMode: true,
-            parsed: '',
-        };
-    },
-    methods: {
-        run() {
-            if (this.node.content && this.node.content.content[0] && this.node.content.content[0].text) {
-                this.parsed = this.node.content.content[0].text;
-                this.$nextTick(() => this.runScripts(this.$refs.output));
-                this.editMode = false;
+const props = defineProps(nodeViewProps);
+
+const editMode = ref(true);
+const parsed = ref('');
+const content = ref<Vue | null>(null);
+const output = ref<HTMLElement | null>(null);
+
+function run() {
+    if (props.node.content && props.node.content.content[0] && props.node.content.content[0].text) {
+        parsed.value = props.node.content.content[0].text;
+        nextTick(() => runScripts(output.value!));
+        editMode.value = false;
+    }
+}
+
+function runScripts(htmlElement: Element) {
+    Array.from(htmlElement.children).forEach((child) => {
+        if (child.tagName == 'SCRIPT') {
+            const script = child as HTMLScriptElement;
+            htmlElement.removeChild(script);
+            const childCopy = document.createElement('script');
+            childCopy.innerHTML = script.innerHTML;
+            if (script.src) {
+                childCopy.src = script.src;
             }
-        },
-        runScripts(htmlElement) {
-            Array.from(htmlElement.children).forEach((child) => {
-                if (child.tagName == 'SCRIPT') {
-                    htmlElement.removeChild(child);
-                    let childCopy = document.createElement('script');
-                    childCopy.innerHTML = child.innerHTML;
-                    if (child.src) {
-                        childCopy.src = child.src;
-                    }
-                    if (child.type) {
-                        childCopy.type = child.type;
-                    }
-                    htmlElement.appendChild(childCopy);
-                } else {
-                    this.runScripts(child);
-                }
-            });
-        },
-        edit() {
-            this.editMode = true;
-        },
-    },
-});
+            if (script.type) {
+                childCopy.type = script.type;
+            }
+            htmlElement.appendChild(childCopy);
+        } else {
+            runScripts(child);
+        }
+    });
+}
+
+function edit() {
+    editMode.value = true;
+}
 </script>
 
 <style lang="scss">

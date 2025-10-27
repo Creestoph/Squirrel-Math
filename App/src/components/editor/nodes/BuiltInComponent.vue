@@ -108,173 +108,182 @@
     </node-view-wrapper>
 </template>
 
-<script>
-import Vue from 'vue';
+<script setup lang="ts">
+import Vue, { computed, onBeforeMount, onMounted, ref } from 'vue';
 
-import OperationTable from '@/components/store/operation-table/OperationTable';
+import OperationTable from '@/components/store/operation-table/OperationTable.vue';
 import { operationTableSchema } from '@/components/store/operation-table/OperationTableSchema';
 import { operationTableLabels } from '@/components/store/operation-table/OperationTableLabels';
-import ColumnarOperationTable from '@/components/store/columnar-operation-table/ColumnarOperationTable';
+import ColumnarOperationTable from '@/components/store/columnar-operation-table/ColumnarOperationTable.vue';
 import { columnarOperationTableSchema } from '@/components/store/columnar-operation-table/ColumnarOperationTableSchema';
 import { columnarOperationTableLabels } from '@/components/store/columnar-operation-table/ColumnarOperationTableLabels';
-import ColumnarOperationGuide from '@/components/store/columnar-operation-guide/ColumnarOperationGuide';
+import ColumnarOperationGuide from '@/components/store/columnar-operation-guide/ColumnarOperationGuide.vue';
 import { columnarOperationGuideSchema } from '@/components/store/columnar-operation-guide/ColumnarOperationGuideSchema';
 import { columnarOperationGuideLabels } from '@/components/store/columnar-operation-guide/ColumnarOperationGuideLabels';
 
 // private componets, only managed by developers
 import { otherComponentSchema } from '@/components/store/private/OtherComponentSchema';
 import { otherComponentLabels } from '@/components/store/private/OtherComponentLabels';
-import AlgebraicCalculator from '@/components/store/private/AlgebraicCalculator';
-import SimpleQuadraticEquationsTraining from '@/components/store/private/SimpleQuadraticEquationsTraining';
+import AlgebraicCalculator from '@/components/store/private/AlgebraicCalculator.vue';
+import SimpleQuadraticEquationsTraining from '@/components/store/private/SimpleQuadraticEquationsTraining.vue';
 import { NodeViewWrapper } from '@tiptap/vue-2';
+import { ComponentSchema } from '@/components/store/Schema';
 
-export default Vue.extend({
-    props: ['node', 'updateAttributes', 'view'],
-    components: {
-        NodeViewWrapper,
-        OperationTable,
-        ColumnarOperationTable,
-        ColumnarOperationGuide,
-        AlgebraicCalculator,
-        SimpleQuadraticEquationsTraining,
+interface BuiltInComponent {
+    name: string;
+    component: any;
+    schema: ComponentSchema;
+    labels: Record<string, string>;
+}
+
+const props = defineProps(['node', 'updateAttributes', 'view']);
+
+const editMode = ref(true);
+const builtInComponents = ref<Record<string, BuiltInComponent>>({});
+const availableComponents = ref<Record<string, BuiltInComponent>>({});
+const formArgs = ref<(boolean | string | string[])[]>([]);
+const componentConfiguration = ref<Record<string, Function | boolean | number | string | string[]>>({});
+
+const componentName = computed({
+    get() {
+        return props.node.attrs.componentName;
     },
-    data() {
-        return {
-            editMode: true,
-            builtInComponents: {},
-            availableComponents: {},
-            formArgs: [],
-            componentConfiguration: {},
-        };
-    },
-    computed: {
-        componentName: {
-            get() {
-                return this.node.attrs.componentName;
-            },
-            set(componentName) {
-                this.updateAttributes({ componentName });
-            },
-        },
-        args: {
-            get() {
-                return this.node.attrs.args;
-            },
-            set(args) {
-                this.updateAttributes({ args });
-            },
-        },
-        productionMode: {
-            get() {
-                return true; // TODO automate this
-            },
-        },
-    },
-    beforeMount() {
-        this.builtInComponents = {
-            'operation-table': {
-                name: 'Tabliczka działania',
-                schema: operationTableSchema,
-                labels: operationTableLabels,
-            },
-            'columnar-operation-table': {
-                name: 'Działanie w słupku',
-                schema: columnarOperationTableSchema,
-                labels: columnarOperationTableLabels,
-            },
-            'columnar-operation-guide': {
-                name: 'Tutorial działania w słupku',
-                schema: columnarOperationGuideSchema,
-                labels: columnarOperationGuideLabels,
-            },
-            other: {
-                name: 'Inny',
-                schema: otherComponentSchema,
-                labels: otherComponentLabels,
-            },
-        };
-        for (let key in this.builtInComponents) {
-            if (!this.productionMode || key != 'other') {
-                this.availableComponents[key] = this.builtInComponents[key];
-            }
-        }
-    },
-    mounted() {
-        this.formArgs = [...this.args];
-        const configNonEmpty = this.formArgs.some((arg, i) => {
-            const argType = Object.values(this.builtInComponents[this.componentName].schema)[i].type.name;
-            return (
-                ((argType == 'TEXT' || argType == 'ENUM' || argType == 'FUNCTION') && arg) ||
-                (argType == 'NUMBER' && arg !== undefined) ||
-                (argType == 'ARRAY' && arg.length > 0 && arg.some((a) => !!a))
-            );
-        });
-        if (configNonEmpty) {
-            this.run();
-        }
-        this.$forceUpdate();
-    },
-    methods: {
-        onComponentSelect() {
-            this.formArgs = [];
-            Object.values(this.builtInComponents[this.componentName].schema).forEach((schema, i) => {
-                if (schema.type.name == 'ARRAY') {
-                    this.formArgs[i] = [''];
-                }
-                if (schema.type.name == 'BOOLEAN') {
-                    this.formArgs[i] = false;
-                }
-            });
-        },
-        addElementForArrayParameter(i) {
-            Vue.set(this.formArgs, i, [...this.formArgs[i], '']);
-        },
-        removeElementForArrayParameter(i) {
-            if (this.formArgs[i].length > 1) {
-                this.formArgs[i].pop();
-            }
-        },
-        edit() {
-            this.editMode = true;
-        },
-        saveAndRun() {
-            this.args = this.formArgs;
-            this.run();
-        },
-        run() {
-            this.editMode = false;
-            this.componentConfiguration = {};
-            Object.entries(this.builtInComponents[this.componentName].schema).forEach(([key, schema], i) => {
-                if (schema.type.name == 'TEXT' || schema.type.name == 'BOOLEAN' || schema.type.name == 'ENUM') {
-                    this.componentConfiguration[key] = this.formArgs[i];
-                } else if (schema.type.name == 'NUMBER') {
-                    this.componentConfiguration[key] = parseFloat(this.formArgs[i]);
-                } else if (schema.type.name == 'FUNCTION') {
-                    try {
-                        this.componentConfiguration[key] = eval(this.formArgs[i]);
-                        if (typeof this.componentConfiguration[key] != 'function') {
-                            throw '';
-                        }
-                    } catch (e) {
-                        this.componentConfiguration[key] = () => {};
-                    }
-                } else if (schema.type.name == 'ARRAY') {
-                    try {
-                        this.componentConfiguration[key] = [...this.formArgs[i]];
-                        this.componentConfiguration[key].forEach(
-                            (element, j) => (this.componentConfiguration[key][j] = eval(element)),
-                        );
-                    } catch (e) {
-                        this.componentConfiguration[key] = [];
-                    }
-                }
-            });
-        },
-        getComponentName() {
-            return this.componentName == 'other' ? this.componentConfiguration.name : this.componentName;
-        },
+    set(componentName) {
+        props.updateAttributes({ componentName });
     },
 });
+
+const args = computed({
+    get() {
+        return props.node.attrs.args;
+    },
+    set(args) {
+        props.updateAttributes({ args });
+    },
+});
+
+const productionMode = computed(() => false); // TODO automate this
+
+onBeforeMount(() => {
+    builtInComponents.value = {
+        'operation-table': {
+            name: 'Tabliczka działania',
+            component: OperationTable,
+            schema: operationTableSchema,
+            labels: operationTableLabels,
+        },
+        'columnar-operation-table': {
+            name: 'Działanie w słupku',
+            component: ColumnarOperationTable,
+            schema: columnarOperationTableSchema,
+            labels: columnarOperationTableLabels,
+        },
+        'columnar-operation-guide': {
+            name: 'Tutorial działania w słupku',
+            component: ColumnarOperationGuide,
+            schema: columnarOperationGuideSchema,
+            labels: columnarOperationGuideLabels,
+        },
+        other: {
+            name: 'Inny',
+            component: null,
+            schema: otherComponentSchema,
+            labels: otherComponentLabels,
+        },
+    };
+    for (let key in builtInComponents.value) {
+        if (!productionMode.value || key != 'other') {
+            availableComponents.value[key] = builtInComponents.value[key];
+        }
+    }
+});
+
+onMounted(() => {
+    formArgs.value = [...args.value];
+    const configNonEmpty = formArgs.value.some((arg, i) => {
+        const argType = Object.values(builtInComponents.value[componentName.value].schema)[i].type.name;
+        return (
+            ((argType == 'TEXT' || argType == 'ENUM' || argType == 'FUNCTION') && arg) ||
+            (argType == 'NUMBER' && arg !== undefined) ||
+            (argType == 'ARRAY' && (arg as string[]).length > 0 && (arg as string[]).some((a) => !!a))
+        );
+    });
+    if (configNonEmpty) {
+        run();
+    }
+    // $forceUpdate();
+});
+
+function onComponentSelect() {
+    formArgs.value = [];
+    Object.values(builtInComponents.value[componentName.value].schema).forEach((schema, i) => {
+        if (schema.type.name == 'ARRAY') {
+            formArgs.value[i] = [''];
+        }
+        if (schema.type.name == 'BOOLEAN') {
+            formArgs.value[i] = false;
+        }
+    });
+}
+
+function addElementForArrayParameter(i: number) {
+    Vue.set(formArgs.value, i, [...(formArgs.value[i] as string[]), '']);
+}
+
+function removeElementForArrayParameter(i: number) {
+    const arrayArg = formArgs.value[i] as string[];
+    if (arrayArg.length > 1) {
+        arrayArg.pop();
+    }
+}
+
+function edit() {
+    editMode.value = true;
+}
+
+function saveAndRun() {
+    args.value = formArgs.value;
+    run();
+}
+
+function run() {
+    editMode.value = false;
+    componentConfiguration.value = {};
+    Object.entries(builtInComponents.value[componentName.value].schema).forEach(([key, schema], i) => {
+        if (schema.type.name == 'TEXT' || schema.type.name == 'BOOLEAN' || schema.type.name == 'ENUM') {
+            componentConfiguration.value[key] = formArgs.value[i];
+        } else if (schema.type.name == 'NUMBER') {
+            componentConfiguration.value[key] = parseFloat(formArgs.value[i] as string);
+        } else if (schema.type.name == 'FUNCTION') {
+            try {
+                componentConfiguration.value[key] = eval(formArgs.value[i] as string);
+                if (typeof componentConfiguration.value[key] != 'function') {
+                    throw '';
+                }
+            } catch (e) {
+                componentConfiguration.value[key] = () => {};
+            }
+        } else if (schema.type.name == 'ARRAY') {
+            try {
+                const arrayArgs = [...(formArgs.value[i] as string[])];
+                componentConfiguration.value[key] = arrayArgs;
+                arrayArgs.forEach((element, j) => (arrayArgs[j] = eval(element)));
+            } catch (e) {
+                componentConfiguration.value[key] = [];
+            }
+        }
+    });
+}
+
+function getComponentName() {
+    const devComponents = {
+        'algebraic-calculator': AlgebraicCalculator,
+        'simple-quadratic-equations-training': SimpleQuadraticEquationsTraining,
+    };
+    return componentName.value == 'other'
+        ? devComponents[componentConfiguration.value.name as keyof typeof devComponents]
+        : builtInComponents.value[componentName.value].component;
+}
 </script>
 
 <style scoped lang="scss">

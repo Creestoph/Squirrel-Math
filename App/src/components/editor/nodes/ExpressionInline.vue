@@ -15,56 +15,51 @@
     </node-view-wrapper>
 </template>
 
-<script>
-import Vue from 'vue';
-import { NodeViewWrapper } from '@tiptap/vue-2';
+<script setup lang="ts">
+import { nodeViewProps, NodeViewWrapper } from '@tiptap/vue-2';
+import { computed, nextTick, onMounted, ref } from 'vue';
+declare var MathJax: any;
 
-export default Vue.extend({
-    components: {
-        NodeViewWrapper,
+const props = defineProps(nodeViewProps);
+
+const mathJaxDirty = ref('');
+const displayPopup = ref(false);
+const output = ref<HTMLElement>();
+const mathEditor = ref<HTMLTextAreaElement>();
+
+const mathJax = computed({
+    get() {
+        return props.node.attrs.mathJax;
     },
-    computed: {
-        mathJax: {
-            get() {
-                return this.node.attrs.mathJax;
-            },
-            set(mathJax) {
-                this.updateAttributes({ mathJax });
-            },
-        },
-    },
-    data() {
-        return {
-            mathJaxDirty: '',
-            displayPopup: false,
-        };
-    },
-    mounted() {
-        this.updateView();
-        if (!this.mathJax) {
-            this.edit();
-        }
-    },
-    methods: {
-        edit() {
-            this.mathJaxDirty = this.mathJax;
-            this.displayPopup = true;
-            this.$nextTick(() => this.$refs.mathEditor.focus());
-        },
-        applyEdit() {
-            this.mathJax = this.mathJaxDirty;
-            this.updateView();
-            this.$nextTick(() => {
-                this.$refs.output.focus();
-            });
-        },
-        updateView() {
-            this.displayPopup = false;
-            this.$refs.output.innerHTML = '$' + this.mathJax + '$';
-            this.$nextTick(() => MathJax.Hub.Queue(['Typeset', MathJax.Hub]));
-        },
+    set(mathJax) {
+        props.updateAttributes({ mathJax });
     },
 });
+
+onMounted(() => {
+    updateView();
+    if (!mathJax.value) {
+        edit();
+    }
+});
+
+function edit() {
+    mathJaxDirty.value = mathJax.value;
+    displayPopup.value = true;
+    nextTick(() => mathEditor.value!.focus());
+}
+
+function applyEdit() {
+    mathJax.value = mathJaxDirty.value;
+    updateView();
+    nextTick(() => output.value!.focus());
+}
+
+function updateView() {
+    displayPopup.value = false;
+    output.value!.innerHTML = '$' + mathJax.value + '$';
+    nextTick(() => MathJax.Hub.Queue(['Typeset', MathJax.Hub]));
+}
 </script>
 
 <style scoped lang="scss">

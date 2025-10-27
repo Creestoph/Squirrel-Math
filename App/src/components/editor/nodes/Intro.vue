@@ -6,16 +6,8 @@
     </node-view-wrapper>
 </template>
 
-<script>
+<script setup lang="ts">
 import { NodeViewContent, NodeViewWrapper } from '@tiptap/vue-2';
-import Vue from 'vue';
-
-export default Vue.extend({
-    components: {
-        NodeViewWrapper,
-        NodeViewContent,
-    },
-});
 </script>
 
 <style scoped>

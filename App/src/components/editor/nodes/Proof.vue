@@ -38,74 +38,65 @@
     </node-view-wrapper>
 </template>
 
-<script>
-import { NodeViewContent, NodeViewWrapper } from '@tiptap/vue-2';
-import Vue from 'vue';
+<script setup lang="ts">
+import { NodeViewContent, nodeViewProps, NodeViewWrapper } from '@tiptap/vue-2';
+import { computed, onMounted, ref } from 'vue';
 
-export default Vue.extend({
-    components: {
-        NodeViewWrapper,
-        NodeViewContent,
+const props = defineProps(nodeViewProps);
+
+const availableOptions = ref(['Dowód', 'Uzasadnienie', 'Szkic dowodu']);
+const allLessons = ref<{ title: string }[]>([]);
+
+const label = computed({
+    get() {
+        return props.node.attrs.label;
     },
-    data() {
-        return {
-            availableOptions: ['Dowód', 'Uzasadnienie', 'Szkic dowodu'],
-            allLessons: [],
-        };
-    },
-    computed: {
-        label: {
-            get() {
-                return this.node.attrs.label;
-            },
-            set(label) {
-                this.updateAttributes({ label });
-            },
-        },
-        required: {
-            get() {
-                return this.node.attrs.required;
-            },
-            set(required) {
-                this.updateAttributes({ required });
-            },
-        },
-        availableLessons: {
-            get() {
-                return this.allLessons.filter((lesson) => !this.required.includes(lesson.title));
-            },
-        },
-    },
-    mounted() {
-        import(`@/assets/current-lesson-graph.json`).then(
-            (file) =>
-                (this.allLessons = file.default.concat({
-                    title: 'Lekcja jeszcze niedostępna',
-                })),
-        );
-    },
-    methods: {
-        chooseLabel(option) {
-            this.label = option;
-        },
-        addRequiredLesson() {
-            this.required = [...this.required, ''];
-        },
-        chooseLesson(position, lesson) {
-            let newRequired = [...this.required];
-            newRequired[position] = lesson;
-            this.required = newRequired;
-        },
-        removeRequired(position) {
-            this.required.splice(position, 1);
-        },
-        canAddNewRequired() {
-            return (
-                (!this.required.length || this.required[this.required.length - 1]) && this.availableLessons.length > 0
-            );
-        },
+    set(label) {
+        props.updateAttributes({ label });
     },
 });
+
+const required = computed({
+    get() {
+        return props.node.attrs.required;
+    },
+    set(required) {
+        props.updateAttributes({ required });
+    },
+});
+
+const availableLessons = computed(() => allLessons.value.filter((lesson) => !required.value.includes(lesson.title)));
+
+onMounted(() => {
+    import(`@/assets/current-lesson-graph.json`).then(
+        (file) =>
+            (allLessons.value = (file.default as { title: string }[]).concat({
+                title: 'Lekcja jeszcze niedostępna',
+            })),
+    );
+});
+
+function chooseLabel(option: string) {
+    label.value = option;
+}
+
+function addRequiredLesson() {
+    required.value = [...required.value, ''];
+}
+
+function chooseLesson(position: number, lesson: string) {
+    let newRequired = [...required.value];
+    newRequired[position] = lesson;
+    required.value = newRequired;
+}
+
+function removeRequired(position: number) {
+    required.value.splice(position, 1);
+}
+
+function canAddNewRequired() {
+    return (!required.value.length || required.value.at(-1)) && availableLessons.value.length > 0;
+}
 </script>
 
 <style scoped lang="scss">

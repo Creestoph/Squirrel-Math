@@ -2,7 +2,6 @@
     <div class="link-editor">
         Link do lekcji
         <dropdown
-            @keydown.esc="close()"
             :class="{ 'link-dropdown': true }"
             @click.native="getLessons()"
             @selected="selectLesson($event)"
@@ -13,14 +12,13 @@
                 v-for="(lesson, i) in lessons"
                 :key="i"
                 :class="{ 'link-dropdown-option': true }"
-                :value="lesson.title"
+                v-bind:value.attr="lesson.title"
             >
                 {{ lesson.title }}
             </dropdown-option>
         </dropdown>
         Rozdział
         <dropdown
-            @keydown.esc="close()"
             :class="{ 'link-dropdown': true }"
             @click.native="getChapters()"
             @selected="selectChapter($event)"
@@ -32,7 +30,7 @@
                 :key="i"
                 :disabled="chapter.disabled"
                 :class="{ 'link-dropdown-option': true }"
-                :value="chapter.name"
+                v-bind:value.attr="chapter.name"
             >
                 {{ chapter.name }}
             </dropdown-option>
@@ -41,104 +39,107 @@
     </div>
 </template>
 
-<script>
+<script setup lang="ts">
+import { ref, watch } from 'vue';
 import Dropdown from './Dropdown.vue';
 import DropdownOption from './DropdownOption.vue';
+import { LessonData } from './lessons-transform';
 
-export default {
-    components: { Dropdown, DropdownOption },
-    props: ['href'],
-    data() {
-        return {
-            url: '',
-            selectedLesson: '',
-            selectedChapter: '',
-            lessons: ['Ładowanie...'],
-            chapters: [{ name: 'Nie wybrano', disabled: true }],
-        };
+const props = defineProps<{ href?: string }>();
+const emit = defineEmits<{ (event: 'updated', url: string): void }>();
+
+const selectedLesson = ref('');
+const selectedChapter = ref('');
+const lessons = ref([{ title: 'Ładowanie...' }]);
+const chapters = ref([{ name: 'Nie wybrano', disabled: true }]);
+
+let url = '';
+
+watch(
+    () => props.href,
+    () => {
+        url = props.href || '';
+        let lessonUrl;
+        [lessonUrl, selectedChapter.value] = url.split('#');
+        if (lessonUrl) {
+            getLessons().then(
+                (lessons) => (selectedLesson.value = lessons.find((l) => '/lesson/' + l.title == lessonUrl)!.title),
+            );
+        } else {
+            selectedLesson.value = '';
+        }
     },
-    watch: {
-        href: function () {
-            this.url = this.href || '';
-            let lessonUrl;
-            [lessonUrl, this.selectedChapter] = this.url.split('#');
-            if (lessonUrl) {
-                this.getLessons().then(
-                    (lessons) => (this.selectedLesson = lessons.find((l) => '/lesson/' + l.title == lessonUrl).title),
-                );
-            } else {
-                this.selectedLesson = '';
-            }
-        },
-    },
-    methods: {
-        getLessons() {
-            if (this.lessons.length == 1) {
-                return import(`@/assets/current-lesson-graph.json`).then((file) => {
-                    this.lessons = file.default;
-                    return Promise.resolve(this.lessons);
-                });
-            } else {
-                return Promise.resolve(this.lessons);
-            }
-        },
-        getChapters() {
-            if (this.selectedLesson) {
-                import(`@/assets/lessons/${this.selectedLesson}.json`).then(
-                    (file) => {
-                        const chapters = file.long.content.filter((c) => c.type == 'chapter');
-                        if (chapters.length) {
-                            this.chapters = chapters.map((c) => {
-                                const chapterName = c.content[0].content
-                                    .map((node) => {
-                                        if (node.text) {
-                                            return node.text;
-                                        }
-                                        if (node.type === 'expressionInline') {
-                                            return '$' + node.attrs.mathJax + '$';
-                                        }
-                                    })
-                                    .join('');
-                                return { name: chapterName, disabled: false };
-                            });
-                        } else {
-                            this.chapters = [
-                                {
-                                    name: 'Lekcja nie posiada rozdziałów',
-                                    disabled: true,
-                                },
-                            ];
-                        }
+);
+
+function getLessons() {
+    if (lessons.value.length == 1) {
+        return import(`@/assets/current-lesson-graph.json`).then((file) => {
+            lessons.value = file.default;
+            return Promise.resolve(lessons.value);
+        });
+    } else {
+        return Promise.resolve(lessons.value);
+    }
+}
+
+function getChapters() {
+    if (selectedLesson.value) {
+        import(`@/assets/lessons/${selectedLesson.value}.json`).then(
+            (file: LessonData) => {
+                const fileChapters = file.long!.content.filter((c) => c.type == 'chapter');
+                if (fileChapters.length) {
+                    chapters.value = fileChapters.map((c) => {
+                        const chapterName = c
+                            .content![0].content!.map((node) => {
+                                if (node.text) {
+                                    return node.text;
+                                }
+                                if (node.type === 'expressionInline') {
+                                    return '$' + node.attrs!.mathJax + '$';
+                                }
+                            })
+                            .join('');
+                        return { name: chapterName, disabled: false };
+                    });
+                } else {
+                    chapters.value = [
+                        {
+                            name: 'Lekcja nie posiada rozdziałów',
+                            disabled: true,
+                        },
+                    ];
+                }
+            },
+            () => {
+                chapters.value = [
+                    {
+                        name: 'Lekcja nie posiada rozdziałów',
+                        disabled: true,
                     },
-                    () => {
-                        this.chapters = [
-                            {
-                                name: 'Lekcja nie posiada rozdziałów',
-                                disabled: true,
-                            },
-                        ];
-                    },
-                );
-            }
-        },
-        selectLesson(lesson) {
-            this.selectedLesson = lesson;
-            this.url = '/lesson/' + this.lessons.find((l) => l.title == lesson).title;
-            this.selectedChapter = '';
-            this.$emit('updated', this.url);
-        },
-        selectChapter(chapter) {
-            this.selectedChapter = chapter;
-            this.url = '/lesson/' + this.lessons.find((l) => l.title == this.selectedLesson).title + '#' + chapter;
-            this.$emit('updated', this.url);
-        },
-        navigate() {
-            if (this.url) {
-                window.open(this.url, '_blank');
-            }
-        },
-    },
-};
+                ];
+            },
+        );
+    }
+}
+
+function selectLesson(lesson: string) {
+    selectedLesson.value = lesson;
+    url = '/lesson/' + lessons.value.find((l) => l.title == lesson)!.title;
+    selectedChapter.value = '';
+    emit('updated', url);
+}
+
+function selectChapter(chapter: string) {
+    selectedChapter.value = chapter;
+    url = '/lesson/' + lessons.value.find((l) => l.title == selectedLesson.value)!.title + '#' + chapter;
+    emit('updated', url);
+}
+
+function navigate() {
+    if (url) {
+        window.open(url, '_blank');
+    }
+}
 </script>
 
 <style scoped lang="scss">

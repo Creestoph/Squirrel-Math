@@ -2,320 +2,318 @@
     <node-view-wrapper as="canvas" ref="canvas"></node-view-wrapper>
 </template>
 
-<script>
+<script setup lang="ts">
 import paper from 'paper';
 import { Shape } from './Shape';
-import { NodeViewWrapper } from '@tiptap/vue-2';
-import Vue from 'vue';
+import { nodeViewProps, NodeViewWrapper } from '@tiptap/vue-2';
+import { computed, onMounted, ref, watch } from 'vue';
+import { ShapeController } from './Canvas';
 
-export default Vue.extend({
-    components: {
-        NodeViewWrapper,
-    },
-    props: ['node', 'view', 'getPos'],
+interface ArcShapeController extends ShapeController {
+    radius: { value: number };
+    angle: { value: number };
+    fillColor: { value: string };
+    borderColor: { value: string };
+}
 
-    data() {
-        return {
-            canHaveBorder: true,
+const props = defineProps(nodeViewProps);
 
-            paperScope: null,
+let paperScope: paper.PaperScope = null!;
 
-            line1: null,
-            line2: null,
-            arcStroke: null,
-            arcFill: null,
-            r: 0,
-            movedShape: null,
+const line1 = ref<paper.Path>(null!);
+const line2 = ref<paper.Path>(null!);
+const arcStroke = ref<paper.Path.Arc>(null!);
+const arcFill = ref<paper.Path.Arc>(null!);
+const r = ref(0);
+const movedShape = ref<paper.Item | 'arc' | null>(null);
 
-            all: null,
-            grips: null,
+const all = ref<paper.Group>(null!);
+const grips = ref<paper.Group>(null!);
 
-            isSelected: false,
-        };
-    },
+const isSelected = ref(false);
 
-    mounted() {
-        this.paperScope = new paper.PaperScope();
-        this.paperScope.setup(this.$refs.canvas.$el);
-        this.render();
-        this.editor.storage.geometry.controllers.set(this.node.attrs.id, this);
+const canvas = ref<Vue>();
+
+const fillColor = {
+    get value() {
+        return props.node.attrs.color;
     },
 
-    computed: {
-        fillColor: {
-            get() {
-                return this.node.attrs.color;
-            },
+    set value(color) {
+        arcFill.value.fillColor = new paper.Color(color);
+        if (fillColor.value != color) {
+            props.updateAttributes({ color });
+        }
+    },
+};
 
-            set(color) {
-                this.arcFill.fillColor = new paper.Color(color);
-                if (this.fillColor != color) {
-                    this.updateAttributes({ color });
-                }
-            },
-        },
-
-        borderColor: {
-            get() {
-                return this.node.attrs.borderColor;
-            },
-
-            set(borderColor) {
-                if (this.borderColor != borderColor) {
-                    this.updateAttributes({ borderColor });
-                }
-                if (borderColor == '#00000000') {
-                    borderColor = '#00000001';
-                }
-                this.arcStroke.strokeColor = new paper.Color(borderColor);
-            },
-        },
-
-        radius: {
-            get() {
-                return this.r;
-            },
-
-            set(value) {
-                if (value > 0) {
-                    this.r = value;
-                    this.save();
-                }
-            },
-        },
-
-        angle: {
-            get() {
-                return Math.round(((this.arm2.angle - this.arm1.angle + 360) % 360) * 100) / 100;
-            },
-
-            set(value) {
-                this.arm2.angle = Math.round(((parseFloat(value) || 0) + this.arm1.angle) * 100) / 100;
-                this.line2.segments[1].point = this.grips.children[2].position = this.arm2.add(this.center);
-                this.save();
-            },
-        },
-
-        center: {
-            get() {
-                return this.line1.segments[0].point;
-            },
-        },
-        arm1End: {
-            get() {
-                return this.line1.segments[1].point;
-            },
-        },
-        arm2End: {
-            get() {
-                return this.line2.segments[1].point;
-            },
-        },
-        arm1: {
-            get() {
-                return this.arm1End.subtract(this.center);
-            },
-        },
-        arm2: {
-            get() {
-                return this.arm2End.subtract(this.center);
-            },
-        },
+const borderColor = {
+    get value() {
+        return props.node.attrs.borderColor;
     },
 
-    watch: {
-        node: function () {
-            this.render();
-        },
+    set value(borderColor) {
+        if (borderColor.value != borderColor) {
+            props.updateAttributes({ borderColor });
+        }
+        if (borderColor == '#00000000') {
+            borderColor = '#00000001';
+        }
+        arcStroke.value.strokeColor = new paper.Color(borderColor);
+    },
+};
+
+const radius = {
+    get value() {
+        return r.value;
     },
 
-    methods: {
-        render() {
-            this.paperScope.activate();
-            this.paperScope.project.clear();
-
-            const attrs = this.node.attrs;
-
-            this.line1 = new paper.Path([new paper.Point(attrs.center), new paper.Point(attrs.arms[0])]);
-            this.line2 = new paper.Path([new paper.Point(attrs.center), new paper.Point(attrs.arms[1])]);
-            this.line1.style.strokeWidth = this.line2.style.strokeWidth = 3;
-            this.line1.strokeColor = this.line2.strokeColor = new paper.Color(0.8, 0.8, 0.8);
-            this.line1.dashArray = this.line2.dashArray = [8, 10];
-
-            this.r = attrs.radius;
-            this.recalculateArc();
-
-            this.grips = new paper.Group();
-            [this.center, this.arm1End, this.arm2End].forEach((point) => {
-                const grip = new paper.Path.Circle(point, 6);
-                grip.style.strokeWidth = 0;
-                this.grips.addChild(grip);
-            });
-            this.grips.fillColor = this.line1.strokeColor.multiply(0.7);
-
-            this.fillColor = attrs.color;
-            this.setSelected(this.isSelected);
-
-            this.all = new paper.Group([this.line1, this.line2, this.arcFill, this.arcStroke, this.grips]);
-        },
-
-        handleResize(width, height) {
-            this.paperScope.view.setViewSize(new paper.Size(width, height));
-        },
-
-        getPosition() {
-            return this.center;
-        },
-
-        move(shift) {
-            this.all.translate(shift);
-        },
-
-        setSelected(value) {
-            this.grips.visible = value;
-            this.line1.visible = this.line2.visible = value;
-            this.isSelected = value;
-        },
-
-        scale(factor, center) {
-            this.line1.scale(factor, new paper.Point(center));
-            this.line2.scale(factor, new paper.Point(center));
-            this.radius *= factor;
-            this.save();
-        },
-
-        containedInBounds(bounds) {
-            return this.arcFill.intersects(new paper.Path.Rectangle(bounds)) || bounds.contains(this.arcFill.bounds);
-        },
-
-        getSnapPoints() {
-            return this.grips.children.map((g) => g.position);
-        },
-
-        onDelete() {
-            this.all.remove();
-        },
-
-        onMouseMove(event, hitResult, cursorStyle) {
-            if (
-                hitResult &&
-                (this.arcStroke == hitResult.item || this.grips.children.some((item) => item == hitResult.item))
-            ) {
-                cursorStyle.cursor = 'crosshair';
-            } else if (
-                hitResult &&
-                (this.line1 == hitResult.item || this.line2 == hitResult.item || this.arcFill == hitResult.item)
-            ) {
-                cursorStyle.cursor = 'move';
-            }
-        },
-
-        onMouseDown(event, hitResult) {
-            if (!hitResult) {
-                return false;
-            }
-            if (this.line1 == hitResult.item || this.line2 == hitResult.item || this.arcFill == hitResult.item) {
-                this.movedShape = this.all;
-            }
-            if (this.arcStroke == hitResult.item) {
-                this.movedShape = 'arc';
-            }
-            let result = this.grips.children.findIndex((grip) => grip == hitResult.item);
-            if (result != -1) {
-                this.movedShape = this.grips.children[result];
-            }
-            return !!this.movedShape;
-        },
-
-        onMouseDrag(event, snapPoints) {
-            if (!this.movedShape) {
-                return false;
-            }
-
-            if (this.movedShape == 'arc') {
-                const mouseArm = event.point.subtract(this.center);
-                this.r = mouseArm.getDistance();
-                if (
-                    (this.arm1.angle < this.arm2.angle &&
-                        (mouseArm.angle < this.arm1.angle || mouseArm.angle > this.arm2.angle)) ||
-                    (this.arm1.angle > this.arm2.angle &&
-                        mouseArm.angle > this.arm2.angle &&
-                        mouseArm.angle < this.arm1.angle)
-                ) {
-                    const swapTemp = this.line1.segments[1].point.clone();
-                    this.line1.segments[1].point = this.line2.segments[1].point.clone();
-                    this.line2.segments[1].point = swapTemp;
-                    this.save();
-                } else {
-                    this.recalculateArc();
-                }
-                return true;
-            }
-
-            let result = this.grips.children.findIndex((grip) => grip == this.movedShape);
-            if (result != -1) {
-                let snapShift = event.modifiers.shift
-                    ? Shape.snapShift([event.point], snapPoints)
-                    : new paper.Point(0, 0);
-                this.movedShape.position = event.point.add(snapShift);
-                if (result == 0) {
-                    this.line1.segments[0].point = this.movedShape.position;
-                    this.line2.segments[0].point = this.movedShape.position;
-                } else if (result == 1) {
-                    this.line1.segments[1].point = this.movedShape.position;
-                } else if (result == 2) {
-                    this.line2.segments[1].point = this.movedShape.position;
-                }
-                this.recalculateArc();
-                return true;
-            }
-
-            return false;
-        },
-
-        onMouseUp() {
-            this.movedShape = null;
-        },
-
-        save() {
-            this.updateAttributes({
-                center: { x: this.center.x, y: this.center.y },
-                arms: [
-                    { x: this.arm1End.x, y: this.arm1End.y },
-                    { x: this.arm2End.x, y: this.arm2End.y },
-                ],
-                radius: this.radius,
-            });
-        },
-
-        recalculateArc() {
-            this.paperScope.activate();
-
-            if (this.arcStroke) {
-                this.arcStroke.remove();
-                this.arcFill.remove();
-            }
-
-            let mid = this.arm1End.add(this.arm2End).multiply(0.5).subtract(this.center);
-            if (this.angle > 180) {
-                mid = mid.multiply(-1);
-            }
-            mid = mid.add(this.arm1End.subtract(this.arm2End).rotate(90).normalize(1));
-
-            const arcStart = this.center.add(this.arm1.normalize(this.radius));
-            const arcMiddle = this.center.add(mid.normalize(this.radius));
-            const arcEnd = this.center.add(this.arm2.normalize(this.radius));
-
-            this.arcFill = new paper.Path.Arc(arcStart, arcMiddle, arcEnd);
-            this.arcFill.add(this.center);
-            this.arcFill.fillColor = this.node.attrs.color;
-
-            this.arcStroke = new paper.Path.Arc(arcStart, arcMiddle, arcEnd);
-            this.borderColor = this.borderColor;
-            this.arcStroke.style.strokeWidth = 3;
-        },
+    set value(v) {
+        if (v > 0) {
+            r.value = v;
+            save();
+        }
     },
+};
+
+const angle = {
+    get value() {
+        return Math.round(((arm2.value.angle - arm1.value.angle + 360) % 360) * 100) / 100;
+    },
+
+    set value(v) {
+        arm2.value.angle = Math.round((v + arm1.value.angle) * 100) / 100;
+        line2.value.segments[1].point = grips.value.children[2].position = arm2.value.add(center.value);
+        save();
+    },
+};
+
+const center = computed(() => line1.value.segments[0].point);
+
+const arm1End = computed(() => line1.value.segments[1].point);
+
+const arm2End = computed(() => line2.value.segments[1].point);
+
+const arm1 = computed(() => arm1End.value.subtract(center.value));
+
+const arm2 = computed(() => arm2End.value.subtract(center.value));
+
+watch(
+    () => props.node,
+    () => render(),
+);
+
+onMounted(() => {
+    paperScope = new paper.PaperScope();
+    paperScope.setup(canvas.value!.$el as HTMLCanvasElement);
+    render();
+    const controller: ArcShapeController = {
+        canHaveBorder: true,
+        node: props.node,
+        paperScope,
+        angle,
+        radius,
+        fillColor,
+        borderColor,
+        handleResize,
+        getPosition,
+        move,
+        scale,
+        containedInBounds,
+        getSnapPoints,
+        onDelete,
+        onMouseMove,
+        onMouseDown,
+        onMouseDrag,
+        onMouseUp,
+        setSelected,
+        save,
+    };
+    props.editor.storage.geometry.controllers.set(props.node.attrs.id, controller);
 });
+
+function render() {
+    paperScope.activate();
+    paperScope.project.clear();
+
+    const attrs = props.node.attrs;
+
+    line1.value = new paper.Path([new paper.Point(attrs.center), new paper.Point(attrs.arms[0])]);
+    line2.value = new paper.Path([new paper.Point(attrs.center), new paper.Point(attrs.arms[1])]);
+    line1.value.style.strokeWidth = line2.value.style.strokeWidth = 3;
+    line1.value.strokeColor = line2.value.strokeColor = new paper.Color(0.8, 0.8, 0.8);
+    line1.value.dashArray = line2.value.dashArray = [8, 10];
+
+    r.value = attrs.radius;
+    recalculateArc();
+
+    grips.value = new paper.Group();
+    [center.value, arm1End.value, arm2End.value].forEach((point) => {
+        const grip = new paper.Path.Circle(point, 6);
+        grip.style.strokeWidth = 0;
+        grips.value.addChild(grip);
+    });
+    grips.value.fillColor = line1.value.strokeColor.multiply(0.7);
+
+    fillColor.value = attrs.color;
+    setSelected(isSelected.value);
+
+    all.value = new paper.Group([line1.value, line2.value, arcFill.value, arcStroke.value, grips.value]);
+}
+
+function handleResize(width: number, height: number) {
+    paperScope.view.viewSize = new paper.Size(width, height);
+}
+
+function getPosition() {
+    return center.value;
+}
+
+function move(shift: paper.Point) {
+    all.value.translate(shift);
+}
+
+function setSelected(value: boolean) {
+    grips.value.visible = value;
+    line1.value.visible = line2.value.visible = value;
+    isSelected.value = value;
+}
+
+function scale(factor: number, center: paper.Point) {
+    line1.value.scale(factor, new paper.Point(center));
+    line2.value.scale(factor, new paper.Point(center));
+    radius.value *= factor;
+    save();
+}
+
+function containedInBounds(bounds: paper.Rectangle) {
+    return arcFill.value.intersects(new paper.Path.Rectangle(bounds)) || bounds.contains(arcFill.value.bounds);
+}
+
+function getSnapPoints() {
+    return grips.value.children.map((g) => g.position);
+}
+
+function onDelete() {
+    all.value.remove();
+}
+
+function onMouseMove(event: paper.ToolEvent, hitResult: paper.HitResult, cursorStyle: CSSStyleDeclaration) {
+    if (
+        hitResult &&
+        (arcStroke.value == hitResult.item || grips.value.children.some((item) => item == hitResult.item))
+    ) {
+        cursorStyle.cursor = 'crosshair';
+    } else if (
+        hitResult &&
+        (line1.value == hitResult.item || line2.value == hitResult.item || arcFill.value == hitResult.item)
+    ) {
+        cursorStyle.cursor = 'move';
+    }
+}
+
+function onMouseDown(event: paper.ToolEvent, hitResult: paper.HitResult) {
+    if (!hitResult) {
+        return false;
+    }
+    if (line1.value == hitResult.item || line2.value == hitResult.item || arcFill.value == hitResult.item) {
+        movedShape.value = all.value;
+    }
+    if (arcStroke.value == hitResult.item) {
+        movedShape.value = 'arc';
+    }
+    let result = grips.value.children.findIndex((grip) => grip == hitResult.item);
+    if (result != -1) {
+        movedShape.value = grips.value.children[result];
+    }
+    return !!movedShape.value;
+}
+
+function onMouseDrag(event: paper.ToolEvent, snapPoints: paper.Point[]) {
+    if (!movedShape.value) {
+        return false;
+    }
+
+    if (movedShape.value == 'arc') {
+        const mouseArm = event.point.subtract(center.value);
+        r.value = mouseArm.length;
+        if (
+            (arm1.value.angle < arm2.value.angle &&
+                (mouseArm.angle < arm1.value.angle || mouseArm.angle > arm2.value.angle)) ||
+            (arm1.value.angle > arm2.value.angle &&
+                mouseArm.angle > arm2.value.angle &&
+                mouseArm.angle < arm1.value.angle)
+        ) {
+            const swapTemp = line1.value.segments[1].point.clone();
+            line1.value.segments[1].point = line2.value.segments[1].point.clone();
+            line2.value.segments[1].point = swapTemp;
+            save();
+        } else {
+            recalculateArc();
+        }
+        return true;
+    }
+
+    let result = grips.value.children.findIndex((grip) => grip == movedShape.value);
+    if (result != -1) {
+        let snapShift = event.modifiers.shift ? Shape.snapShift([event.point], snapPoints) : new paper.Point(0, 0);
+        movedShape.value.position = event.point.add(snapShift);
+        if (result == 0) {
+            line1.value.segments[0].point = movedShape.value.position;
+            line2.value.segments[0].point = movedShape.value.position;
+        } else if (result == 1) {
+            line1.value.segments[1].point = movedShape.value.position;
+        } else if (result == 2) {
+            line2.value.segments[1].point = movedShape.value.position;
+        }
+        recalculateArc();
+        return true;
+    }
+
+    return false;
+}
+
+function onMouseUp() {
+    movedShape.value = null;
+}
+
+function save() {
+    props.updateAttributes({
+        center: { x: center.value.x, y: center.value.y },
+        arms: [
+            { x: arm1End.value.x, y: arm1End.value.y },
+            { x: arm2End.value.x, y: arm2End.value.y },
+        ],
+        radius: radius.value,
+    });
+}
+
+function recalculateArc() {
+    paperScope.activate();
+
+    if (arcStroke.value) {
+        arcStroke.value.remove();
+        arcFill.value.remove();
+    }
+
+    let mid = arm1End.value.add(arm2End.value).multiply(0.5).subtract(center.value);
+    if ((angle.value as number) > 180) {
+        mid = mid.multiply(-1);
+    }
+    mid = mid.add(arm1End.value.subtract(arm2End.value).rotate(90, new paper.Point(0, 0)).normalize(1));
+
+    const arcStart = center.value.add(arm1.value.normalize(radius.value));
+    const arcMiddle = center.value.add(mid.normalize(radius.value));
+    const arcEnd = center.value.add(arm2.value.normalize(radius.value));
+
+    arcFill.value = new paper.Path.Arc(arcStart, arcMiddle, arcEnd);
+    arcFill.value.add(center.value);
+    arcFill.value.fillColor = props.node.attrs.color;
+
+    arcStroke.value = new paper.Path.Arc(arcStart, arcMiddle, arcEnd);
+    borderColor.value = borderColor.value;
+    arcStroke.value.style.strokeWidth = 3;
+}
 </script>
 
 <style scoped lang="scss">

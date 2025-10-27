@@ -2,6 +2,7 @@ import { Node } from '@tiptap/vue-2';
 import { Editor } from '@tiptap/core';
 import { VueNodeViewRenderer } from '@tiptap/vue-2';
 import ChapterTitleVue from './ChapterTitle.vue';
+import { VueConstructor } from 'vue';
 
 export default Node.create({
     name: 'chapterTitle',
@@ -9,7 +10,7 @@ export default Node.create({
     marks: '',
     parseHTML: () => [{ tag: 'chapter-title' }],
     renderHTML: ({ HTMLAttributes }) => ['chapter-title', HTMLAttributes, 0],
-    addNodeView: () => VueNodeViewRenderer(ChapterTitleVue),
+    addNodeView: () => VueNodeViewRenderer(ChapterTitleVue as unknown as VueConstructor<Vue>), // TODO fix types after Vue 3 migration
     addAttributes: () => ({
         isHidden: {
             default: false,

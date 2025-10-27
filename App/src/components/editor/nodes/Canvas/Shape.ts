@@ -12,9 +12,10 @@ export const idGenerator = (function* () {
 })();
 
 export abstract class Shape {
+    canHaveBorder = false;
+
     abstract selected: boolean;
     abstract fillColor: string;
-    canHaveBorder = false;
     abstract borderColor: string;
 
     clone(): Shape {

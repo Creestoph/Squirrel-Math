@@ -17,25 +17,18 @@
     </node-view-wrapper>
 </template>
 
-<script>
+<script setup lang="ts">
 import { NodeViewContent, nodeViewProps, NodeViewWrapper } from '@tiptap/vue-2';
-import Vue from 'vue';
+import { computed } from 'vue';
 
-export default Vue.extend({
-    components: {
-        NodeViewWrapper,
-        NodeViewContent,
+const props = defineProps(nodeViewProps);
+
+const isHidden = computed({
+    get() {
+        return props.node.attrs.isHidden;
     },
-    props: nodeViewProps,
-    computed: {
-        isHidden: {
-            get() {
-                return this.node.attrs.isHidden;
-            },
-            set(isHidden) {
-                this.updateAttributes({ isHidden });
-            },
-        },
+    set(isHidden) {
+        props.updateAttributes({ isHidden });
     },
 });
 </script>

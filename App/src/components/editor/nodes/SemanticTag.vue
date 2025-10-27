@@ -39,93 +39,88 @@
     </node-view-wrapper>
 </template>
 
-<script>
-import { NodeViewWrapper } from '@tiptap/vue-2';
-import Vue from 'vue';
+<script setup lang="ts">
+import { nodeViewProps, NodeViewWrapper } from '@tiptap/vue-2';
+import { computed, onMounted, ref } from 'vue';
 
-export default Vue.extend({
-    components: {
-        NodeViewWrapper,
+const props = defineProps(nodeViewProps);
+
+const allLessons = ref<{ title: string }[]>([]);
+
+const tags = computed({
+    get() {
+        return props.node.attrs.tags;
     },
-    props: ['node', 'updateAttributes', 'view'],
-    data() {
-        return {
-            allLessons: [],
-        };
-    },
-    computed: {
-        tags: {
-            get() {
-                return this.node.attrs.tags;
-            },
-            set(tags) {
-                this.updateAttributes({ tags });
-            },
-        },
-        required: {
-            get() {
-                return this.node.attrs.required;
-            },
-            set(required) {
-                this.updateAttributes({ required });
-            },
-        },
-        availableLessons: {
-            get() {
-                return this.allLessons.filter((lesson) => !this.required.includes(lesson.title));
-            },
-        },
-    },
-    mounted() {
-        import(`@/assets/current-lesson-graph.json`).then(
-            (file) =>
-                (this.allLessons = file.default.concat({
-                    title: 'Lekcja jeszcze niedostępna',
-                })),
-        );
-    },
-    methods: {
-        availableOptions(position) {
-            if (position == 0 && this.tags.length == 1) {
-                return ['Intuicje', 'Formalnie', 'Rozszerzenie', 'Warsztat'];
-            } else if (position == 0 && this.tags.length == 2) {
-                return ['Intuicje', 'Formalnie', 'Warsztat'];
-            } else {
-                return ['Rozszerzenie'];
-            }
-        },
-        choose(position, option) {
-            let newTags = [...this.tags];
-            newTags[position] = option;
-            this.tags = newTags;
-        },
-        canAddTag() {
-            return this.tags.length == 1 && this.tags[0] != 'Rozszerzenie';
-        },
-        removeTag(position) {
-            this.tags.splice(position, 1);
-        },
-        addTag() {
-            this.tags = [...this.tags, 'Rozszerzenie'];
-        },
-        addRequiredLesson() {
-            this.required = [...this.required, ''];
-        },
-        chooseLesson(position, lesson) {
-            let newRequired = [...this.required];
-            newRequired[position] = lesson;
-            this.required = newRequired;
-        },
-        removeRequired(position) {
-            this.required.splice(position, 1);
-        },
-        canAddNewRequired() {
-            return (
-                (!this.required.length || this.required[this.required.length - 1]) && this.availableLessons.length > 0
-            );
-        },
+    set(tags) {
+        props.updateAttributes({ tags });
     },
 });
+
+const required = computed({
+    get() {
+        return props.node.attrs.required;
+    },
+    set(required) {
+        props.updateAttributes({ required });
+    },
+});
+
+const availableLessons = computed(() => allLessons.value.filter((lesson) => !required.value.includes(lesson.title)));
+
+onMounted(() => {
+    import(`@/assets/current-lesson-graph.json`).then(
+        (file) =>
+            (allLessons.value = (file.default as { title: string }[]).concat({
+                title: 'Lekcja jeszcze niedostępna',
+            })),
+    );
+});
+
+function availableOptions(position: number) {
+    if (position == 0 && tags.value.length == 1) {
+        return ['Intuicje', 'Formalnie', 'Rozszerzenie', 'Warsztat'];
+    } else if (position == 0 && tags.value.length == 2) {
+        return ['Intuicje', 'Formalnie', 'Warsztat'];
+    } else {
+        return ['Rozszerzenie'];
+    }
+}
+
+function choose(position: number, option: string) {
+    const newTags = [...tags.value];
+    newTags[position] = option;
+    tags.value = newTags;
+}
+
+function canAddTag() {
+    return tags.value.length == 1 && tags.value[0] != 'Rozszerzenie';
+}
+
+function removeTag(position: number) {
+    tags.value.splice(position, 1);
+}
+
+function addTag() {
+    tags.value = [...tags.value, 'Rozszerzenie'];
+}
+
+function addRequiredLesson() {
+    required.value = [...required.value, ''];
+}
+
+function chooseLesson(position: number, lesson: string) {
+    const newRequired = [...required.value];
+    newRequired[position] = lesson;
+    required.value = newRequired;
+}
+
+function removeRequired(position: number) {
+    required.value.splice(position, 1);
+}
+
+function canAddNewRequired() {
+    return (!required.value.length || required.value.at(-1)) && availableLessons.value.length > 0;
+}
 </script>
 
 <style scoped lang="scss">

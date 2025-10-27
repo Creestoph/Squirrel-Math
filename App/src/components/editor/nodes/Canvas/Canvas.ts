@@ -15,10 +15,14 @@ declare module '@tiptap/core' {
     }
 }
 
-interface ShapeController {
+export interface ShapeController {
+    readonly canHaveBorder: boolean;
+    readonly node: any;
+    readonly paperScope: paper.PaperScope;
+
     onMouseMove(event: paper.ToolEvent, hitResult: paper.HitResult, cursorStyle: CSSStyleDeclaration): void;
     onMouseDown(event: paper.ToolEvent, hitResult: paper.HitResult): boolean;
-    onMouseDrag(event: paper.ToolEvent): boolean;
+    onMouseDrag(event: paper.ToolEvent, snapPoints: paper.Point[]): boolean;
     onMouseUp(): void;
     onDelete(): void;
     handleResize(width: number, height: number): void;
