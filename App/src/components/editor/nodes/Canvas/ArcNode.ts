@@ -5,11 +5,12 @@ import ArcView from './ArcView.vue';
 import { idGenerator } from './Shape';
 import { Point } from '@/components/utils/point';
 import { VueConstructor } from 'vue';
+import { ShapeController } from './Canvas';
 
 declare module '@tiptap/core' {
     interface Commands<ReturnType> {
         arc: {
-            createArc: (attrs: ArcAttributes, pos: number) => ReturnType;
+            createArc: (attrs: Partial<ArcAttributes>, pos: number) => ReturnType;
         };
     }
 }
@@ -21,6 +22,12 @@ export interface ArcAttributes {
     color: string;
     borderColor: string;
     radius: number;
+}
+
+export interface ArcShapeController extends ShapeController {
+    radius: { value: number };
+    angle: { value: number };
+    borderColor: { value: string };
 }
 
 export default Node.create({
@@ -55,7 +62,7 @@ export default Node.create({
     addCommands() {
         return {
             createArc:
-                (attrs: ArcAttributes, pos: number) =>
+                (attrs: Partial<ArcAttributes>, pos: number) =>
                 ({ commands }) =>
                     commands.insertContentAt(pos, this.type.createAndFill({ ...attrs, id: idGenerator.next().value })),
         };

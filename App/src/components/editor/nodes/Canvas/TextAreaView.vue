@@ -4,10 +4,10 @@
         :style="{
             left: x + 0.5 + 'px',
             top: y + 2 + 'px',
-            background: fillColor,
-            color: textColor,
+            background: fillColor.value,
+            color: textColor.value,
             outline: focused ? '3px dotted #cccccc' : 'none',
-            border: `3px solid ${borderColor}`,
+            border: `3px solid ${borderColor.value}`,
             width: width + 'px',
             height: height + 'px',
         }"
@@ -15,7 +15,7 @@
         <div
             class="align-wrapper"
             :style="{
-                'vertical-align': align,
+                'vertical-align': align.value,
             }"
         >
             <node-view-content class="content" />
@@ -27,210 +27,207 @@
     </node-view-wrapper>
 </template>
 
-<script>
+<script setup lang="ts">
 import paper from 'paper';
-import { Shape } from './Shape';
-import { NodeViewContent, NodeViewWrapper } from '@tiptap/vue-2';
-import Vue from 'vue';
+import { snapShift } from './Shape';
+import { NodeViewContent, nodeViewProps, NodeViewWrapper } from '@tiptap/vue-2';
+import { computed, onMounted, ref } from 'vue';
+import { TextAreaShapeController } from './TextAreaNode';
 
-export default Vue.extend({
-    components: {
-        NodeViewWrapper,
-        NodeViewContent,
+const props = defineProps(nodeViewProps);
+
+const focused = ref(false);
+let resizing = '';
+
+onMounted(() => {
+    const controller: TextAreaShapeController = {
+        node: props.node,
+        getPos: props.getPos,
+        fillColor,
+        borderColor,
+        textColor,
+        align,
+        handleResize: () => {},
+        getPosition,
+        move,
+        scale,
+        containedInBounds,
+        getSnapPoints,
+        onDelete: () => {},
+        onMouseMove: () => {},
+        onMouseDown,
+        onMouseDrag,
+        onMouseUp: () => {},
+        setSelected,
+        save: () => {},
+    };
+    props.editor.storage.geometry.controllers.set(props.node.attrs.id, controller);
+});
+
+const x = computed({
+    get() {
+        return props.node.attrs.x;
     },
-    data() {
-        return {
-            focused: false,
-            canHaveBorder: true,
-            resizing: '',
-        };
-    },
-    mounted() {
-        this.editor.storage.geometry.controllers.set(this.node.attrs.id, this);
-    },
-    computed: {
-        x: {
-            get() {
-                return this.node.attrs.x;
-            },
-            set(x) {
-                this.updateAttributes({ x });
-            },
-        },
-        y: {
-            get() {
-                return this.node.attrs.y;
-            },
-            set(y) {
-                this.updateAttributes({ y });
-            },
-        },
-        width: {
-            get() {
-                return this.node.attrs.width;
-            },
-            set(width) {
-                this.updateAttributes({ width });
-            },
-        },
-        height: {
-            get() {
-                return this.node.attrs.height;
-            },
-            set(height) {
-                this.updateAttributes({ height });
-            },
-        },
-        borderColor: {
-            get() {
-                return this.node.attrs.borderColor;
-            },
-            set(borderColor) {
-                this.updateAttributes({ borderColor });
-            },
-        },
-        textColor: {
-            get() {
-                return this.node.attrs.textColor;
-            },
-            set(textColor) {
-                this.updateAttributes({ textColor });
-            },
-        },
-        fillColor: {
-            get() {
-                return this.node.attrs.fillColor;
-            },
-            set(fillColor) {
-                this.updateAttributes({ fillColor });
-            },
-        },
-        align: {
-            get() {
-                return this.node.attrs.align;
-            },
-            set(align) {
-                this.updateAttributes({ align });
-            },
-        },
-    },
-    methods: {
-        save() {},
-
-        handleResize() {},
-
-        getPosition() {
-            return new paper.Point(this.x, this.y);
-        },
-
-        move(shift) {
-            this.x += shift.x;
-            this.y += shift.y;
-        },
-
-        scale(factor, center) {
-            this.x = center.x + (this.x - center.x) * factor;
-            this.y = center.y + (this.y - center.y) * factor;
-        },
-
-        setSelected(value) {
-            this.focused = value;
-        },
-
-        containedInBounds(bounds) {
-            return new paper.Rectangle(
-                new paper.Point(this.x, this.y),
-                new paper.Size(this.width, this.height),
-            ).intersects(bounds);
-        },
-
-        getSnapPoints() {
-            return [new paper.Point(this.x, this.y), new paper.Point(this.x + this.width, this.y + this.height)];
-        },
-
-        onDelete() {},
-
-        onMouseMove() {},
-
-        onMouseDown(event) {
-            const mousePosition = event.point;
-            const boundingBox = new paper.Rectangle(
-                new paper.Point(this.x, this.y),
-                new paper.Size(this.width, this.height),
-            );
-            const inbounds =
-                mousePosition.x > boundingBox.left - 3 &&
-                mousePosition.x < boundingBox.right + 3 &&
-                mousePosition.y > boundingBox.top - 3 &&
-                mousePosition.y < boundingBox.bottom + 3;
-            this.resizing = '';
-            if (!inbounds) {
-                return false;
-            }
-            if (Math.abs(boundingBox.left - mousePosition.x) < 3) {
-                this.resizing = 'left';
-            } else if (Math.abs(boundingBox.right - mousePosition.x) < 3) {
-                this.resizing = 'right';
-            } else if (Math.abs(boundingBox.top - mousePosition.y) < 3) {
-                this.resizing = 'top';
-            } else if (Math.abs(boundingBox.bottom - mousePosition.y) < 3) {
-                this.resizing = 'bottom';
-            }
-            return true;
-        },
-
-        onMouseDrag(event, snapPoints) {
-            if (!this.resizing) {
-                return false;
-            }
-
-            const mousePosition = event.point;
-            const boundingBox = new paper.Rectangle(
-                new paper.Point(this.x, this.y),
-                new paper.Size(this.width, this.height),
-            );
-
-            let snapShift = event.modifiers.shift
-                ? Shape.snapShift([mousePosition], snapPoints)
-                : new paper.Point(0, 0);
-
-            const minHeight = 44;
-            const minWidth = 44;
-            if (this.resizing == 'left') {
-                const width =
-                    mousePosition.x > boundingBox.right - minWidth
-                        ? minWidth
-                        : boundingBox.right - mousePosition.add(snapShift).x;
-                this.width = width;
-                this.x = boundingBox.right - width;
-            }
-            if (this.resizing == 'right') {
-                this.width =
-                    mousePosition.x < boundingBox.left + minWidth
-                        ? minWidth
-                        : mousePosition.add(snapShift).x - boundingBox.left;
-            }
-            if (this.resizing == 'top') {
-                const height =
-                    mousePosition.y > boundingBox.bottom - minHeight
-                        ? minHeight
-                        : boundingBox.bottom - mousePosition.add(snapShift).y;
-                this.height = height;
-                this.y = boundingBox.bottom - height;
-            }
-            if (this.resizing == 'bottom') {
-                this.height =
-                    mousePosition.y < boundingBox.top + minHeight
-                        ? minHeight
-                        : mousePosition.add(snapShift).y - boundingBox.top;
-            }
-
-            return true;
-        },
-
-        onMouseUp() {},
+    set(x) {
+        props.updateAttributes({ x });
     },
 });
+
+const y = computed({
+    get() {
+        return props.node.attrs.y;
+    },
+    set(y) {
+        props.updateAttributes({ y });
+    },
+});
+
+const width = computed({
+    get() {
+        return props.node.attrs.width;
+    },
+    set(width) {
+        props.updateAttributes({ width });
+    },
+});
+
+const height = computed({
+    get() {
+        return props.node.attrs.height;
+    },
+    set(height) {
+        props.updateAttributes({ height });
+    },
+});
+
+const borderColor = {
+    get value() {
+        return props.node.attrs.borderColor;
+    },
+    set value(borderColor) {
+        props.updateAttributes({ borderColor });
+    },
+};
+
+const textColor = {
+    get value() {
+        return props.node.attrs.textColor;
+    },
+    set value(textColor) {
+        props.updateAttributes({ textColor });
+    },
+};
+
+const fillColor = {
+    get value() {
+        return props.node.attrs.fillColor;
+    },
+    set value(fillColor) {
+        props.updateAttributes({ fillColor });
+    },
+};
+
+const align = {
+    get value(): string {
+        return props.node.attrs.align;
+    },
+    set value(align) {
+        props.updateAttributes({ align });
+    },
+};
+
+function getPosition() {
+    return new paper.Point(x.value, y.value);
+}
+
+function move(shift: paper.Point) {
+    x.value += shift.x;
+    y.value += shift.y;
+}
+
+function scale(factor: number, center: paper.Point) {
+    x.value = center.x + (x.value - center.x) * factor;
+    y.value = center.y + (y.value - center.y) * factor;
+}
+
+function setSelected(value: boolean) {
+    focused.value = value;
+}
+
+function containedInBounds(bounds: paper.Rectangle) {
+    return new paper.Rectangle(new paper.Point(x.value, y.value), new paper.Size(width.value, height.value)).intersects(
+        bounds,
+    );
+}
+
+function getSnapPoints() {
+    return [new paper.Point(x.value, y.value), new paper.Point(x.value + width.value, y.value + height.value)];
+}
+
+function onMouseDown(event: paper.ToolEvent) {
+    const mousePosition = event.point;
+    const boundingBox = new paper.Rectangle(
+        new paper.Point(x.value, y.value),
+        new paper.Size(width.value, height.value),
+    );
+    const inbounds =
+        mousePosition.x > boundingBox.left - 3 &&
+        mousePosition.x < boundingBox.right + 3 &&
+        mousePosition.y > boundingBox.top - 3 &&
+        mousePosition.y < boundingBox.bottom + 3;
+    resizing = '';
+    if (!inbounds) {
+        return false;
+    }
+    if (Math.abs(boundingBox.left - mousePosition.x) < 3) {
+        resizing = 'left';
+    } else if (Math.abs(boundingBox.right - mousePosition.x) < 3) {
+        resizing = 'right';
+    } else if (Math.abs(boundingBox.top - mousePosition.y) < 3) {
+        resizing = 'top';
+    } else if (Math.abs(boundingBox.bottom - mousePosition.y) < 3) {
+        resizing = 'bottom';
+    }
+    return true;
+}
+
+function onMouseDrag(event: paper.ToolEvent, snapPoints: paper.Point[]) {
+    if (!resizing) {
+        return false;
+    }
+
+    const mousePosition = event.point;
+    const boundingBox = new paper.Rectangle(
+        new paper.Point(x.value, y.value),
+        new paper.Size(width.value, height.value),
+    );
+
+    let shift = event.modifiers.shift ? snapShift([mousePosition], snapPoints) : new paper.Point(0, 0);
+
+    const minHeight = 44;
+    const minWidth = 44;
+    if (resizing == 'left') {
+        const w =
+            mousePosition.x > boundingBox.right - minWidth ? minWidth : boundingBox.right - mousePosition.add(shift).x;
+        width.value = w;
+        x.value = boundingBox.right - w;
+    } else if (resizing == 'right') {
+        width.value =
+            mousePosition.x < boundingBox.left + minWidth ? minWidth : mousePosition.add(shift).x - boundingBox.left;
+    } else if (resizing == 'top') {
+        const h =
+            mousePosition.y > boundingBox.bottom - minHeight
+                ? minHeight
+                : boundingBox.bottom - mousePosition.add(shift).y;
+        height.value = h;
+        y.value = boundingBox.bottom - h;
+    } else if (resizing == 'bottom') {
+        height.value =
+            mousePosition.y < boundingBox.top + minHeight ? minHeight : mousePosition.add(shift).y - boundingBox.top;
+    }
+
+    return true;
+}
 </script>
 
 <style scoped lang="scss">

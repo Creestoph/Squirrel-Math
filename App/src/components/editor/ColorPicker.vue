@@ -22,7 +22,7 @@
 import { colors } from '@/style/palette';
 import { ref } from 'vue';
 
-defineProps<{ color?: string }>();
+defineProps<{ color?: string | null }>();
 const emit = defineEmits<{ (e: 'selected', v: string): void }>();
 
 const dropdownVisible = ref(false);

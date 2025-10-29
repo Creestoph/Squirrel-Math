@@ -2,270 +2,278 @@
     <node-view-wrapper as="canvas" ref="canvas"></node-view-wrapper>
 </template>
 
-<script>
+<script setup lang="ts">
 import paper from 'paper';
-import { Shape } from './Shape';
-import { NodeViewWrapper } from '@tiptap/vue-2';
-import Vue from 'vue';
+import { nodeViewProps, NodeViewWrapper } from '@tiptap/vue-2';
+import { onMounted, ref, watch } from 'vue';
+import { Point } from '@/components/utils/point';
+import { snapShift } from './Shape';
+import { PolygonShapeController } from './PolygonNode';
 
-export default Vue.extend({
-    components: {
-        NodeViewWrapper,
-    },
-    props: ['node', 'view', 'getPos'],
+const props = defineProps(nodeViewProps);
 
-    data() {
-        return {
-            canHaveBorder: true,
-            editable: true,
+let paperScope: paper.PaperScope = null!;
 
-            paperScope: null,
+const polygon = ref<paper.Path>(null!);
+const movedShape = ref<paper.Item | null>(null);
 
-            polygon: null,
-            movedShape: null,
+const all = ref<paper.Group>(null!);
+const grips = ref<paper.Group>(null!);
 
-            all: null,
-            grips: null,
+const selectedGripIndex = ref(-1);
+const selectedGripOutline = ref<paper.Path.Circle>(null!);
 
-            selectedGripIndex: -1,
-            selectedGripOutline: null,
+const editing = ref(false);
+const isSelected = ref(false);
 
-            editing: false,
-            isSelected: false,
-        };
+const canvas = ref<Vue>();
+
+const fillColor = {
+    get value() {
+        return props.node.attrs.color;
     },
 
-    mounted() {
-        this.paperScope = new paper.PaperScope();
-        this.paperScope.setup(this.$refs.canvas.$el);
-        this.render();
-        this.editor.storage.geometry.controllers.set(this.node.attrs.id, this);
+    set value(color) {
+        if (color != fillColor.value) {
+            props.updateAttributes({ color });
+        }
+        if (color == '#00000000') {
+            color = '#00000001';
+        }
+        polygon.value.fillColor = new paper.Color(color);
+        grips.value.fillColor = new paper.Color(color).multiply(0.7);
+        grips.value.fillColor.alpha = 1;
+    },
+};
+
+const borderColor = {
+    get value() {
+        return props.node.attrs.borderColor;
     },
 
-    computed: {
-        fillColor: {
-            get() {
-                return this.node.attrs.color;
-            },
-
-            set(color) {
-                if (color != this.fillColor) {
-                    this.updateAttributes({ color });
-                }
-                if (color == '#00000000') {
-                    color = '#00000001';
-                }
-                this.polygon.fillColor = new paper.Color(color);
-                this.grips.fillColor = new paper.Color(color).multiply(0.7);
-                this.grips.fillColor.alpha = 1;
-            },
-        },
-
-        borderColor: {
-            get() {
-                return this.node.attrs.borderColor;
-            },
-
-            set(borderColor) {
-                if (borderColor != this.borderColor) {
-                    this.updateAttributes({ borderColor });
-                }
-                if (borderColor == '#00000000') {
-                    borderColor = '#00000001';
-                }
-                this.polygon.strokeColor = new paper.Color(borderColor);
-            },
-        },
-
-        sides: {
-            get() {
-                return this.polygon.segments.length;
-            },
-        },
+    set value(borderColor) {
+        if (borderColor != borderColor.value) {
+            props.updateAttributes({ borderColor });
+        }
+        if (borderColor == '#00000000') {
+            borderColor = '#00000001';
+        }
+        polygon.value.strokeColor = new paper.Color(borderColor);
     },
+};
 
-    watch: {
-        node: function () {
-            this.render();
-        },
+const sides = {
+    get value() {
+        return polygon.value.segments.length;
     },
+};
 
-    methods: {
-        render() {
-            this.paperScope.activate();
-            this.paperScope.project.clear();
+watch(
+    () => props.node,
+    () => render(),
+);
 
-            const attrs = this.node.attrs;
-            this.polygon = new paper.Path();
-            this.polygon.closed = true;
-            this.polygon.style.strokeWidth = 3;
-
-            this.grips = new paper.Group();
-            this.grips.visible = this.isSelected;
-
-            if (attrs.vertices) {
-                attrs.vertices.forEach((v) => this.addPoint(new paper.Point(v)));
-            }
-
-            this.selectedGripOutline = new paper.Path.Circle(new paper.Point(0, 0), 8);
-            this.selectedGripOutline.strokeColor = new paper.Color('#ffbb33');
-            this.selectedGripOutline.style.strokeWidth = 4;
-            this.selectedGripOutline.locked = true; // non-hittable
-            this.selectGrip(this.selectedGripIndex);
-
-            this.all = new paper.Group([this.polygon, this.grips, this.selectedGripOutline]);
-
-            this.fillColor = attrs.color;
-            this.borderColor = attrs.borderColor;
-        },
-
-        handleResize(width, height) {
-            this.paperScope.view.setViewSize(new paper.Size(width, height));
-        },
-
-        getPosition() {
-            return this.polygon.position;
-        },
-
-        move(shift) {
-            this.all.translate(shift);
-        },
-
-        scale(factor, center) {
-            this.polygon.scale(factor, new paper.Point(center));
-            this.save();
-        },
-
-        setSelected(value) {
-            this.grips.visible = value;
-            this.isSelected = value;
-            if (!value) {
-                this.editing = false;
-                this.selectGrip(-1);
-            }
-        },
-
-        containedInBounds(bounds) {
-            return this.polygon.intersects(new paper.Path.Rectangle(bounds)) || bounds.contains(this.polygon.bounds);
-        },
-
-        getSnapPoints() {
-            return this.grips.children.map((g) => g.position);
-        },
-
-        onDelete() {
-            if (this.selectedGripIndex != -1 && this.sides > 3) {
-                this.polygon.removeSegment(this.selectedGripIndex);
-                this.grips.children[this.selectedGripIndex].remove();
-                this.selectGrip(-1);
-                return true;
-            }
-            this.all.remove();
-        },
-
-        onMouseMove(event, hitResult, cursorStyle) {
-            if (!hitResult && this.editing) {
-                cursorStyle.cursor = 'cell';
-            } else if (hitResult && this.grips.children.some((item) => item == hitResult.item)) {
-                cursorStyle.cursor = 'crosshair';
-            } else if (hitResult && this.polygon == hitResult.item && this.editing) {
-                cursorStyle.cursor = 'cell';
-            } else if (hitResult && this.polygon == hitResult.item && !this.editing) {
-                cursorStyle.cursor = 'move';
-            }
-        },
-
-        onMouseDown(event, hitResult) {
-            if (this.editing && (!hitResult || (this.polygon == hitResult.item && hitResult.type == 'fill'))) {
-                const newIndex = this.selectedGripIndex != -1 ? this.selectedGripIndex + 1 : this.grips.children.length;
-                this.addPoint(event.point, newIndex);
-                this.selectGrip(newIndex);
-                this.movedShape = this.grips.children[newIndex];
-                return true;
-            }
-
-            if (this.editing && this.polygon == hitResult.item && hitResult.type == 'stroke') {
-                const indexBetween = hitResult.location.index + 1;
-                this.addPoint(event.point, indexBetween);
-                this.selectGrip(indexBetween);
-                this.movedShape = this.grips.children[indexBetween];
-                return true;
-            }
-
-            if (!hitResult) {
-                return false;
-            }
-            if (this.polygon == hitResult.item) {
-                this.movedShape = this.all;
-            }
-            let result = this.grips.children.findIndex((grip) => grip == hitResult.item);
-            if (result != -1) {
-                this.movedShape = this.grips.children[result];
-                this.selectGrip(result);
-            }
-            return !!this.movedShape;
-        },
-
-        onMouseDrag(event, snapPoints) {
-            if (!this.movedShape) {
-                return false;
-            }
-
-            let result = this.grips.children.findIndex((grip) => grip == this.movedShape);
-            if (result != -1) {
-                let snapShift = event.modifiers.shift
-                    ? Shape.snapShift([event.point], snapPoints)
-                    : new paper.Point(0, 0);
-                this.movedShape.position = event.point.add(snapShift);
-                this.polygon.segments[result].point = this.movedShape.position;
-                this.selectedGripOutline.position = this.movedShape.position;
-                return true;
-            } else {
-                return false;
-            }
-        },
-
-        onMouseUp() {
-            this.movedShape = null;
-        },
-
-        addPoint(position, index = this.polygon.segments.length) {
-            this.polygon.insert(index, position);
-            let grip = new paper.Path.Circle(position, 6);
-            grip.style.strokeWidth = 0;
-            grip.fillColor = new paper.Color(this.fillColor).multiply(0.7);
-            this.grips.insertChild(index, grip);
-        },
-
-        save() {
-            this.updateAttributes({
-                vertices: this.polygon.segments.map((s) => ({
-                    x: s.point.x,
-                    y: s.point.y,
-                })),
-            });
-        },
-
-        selectGrip(index) {
-            this.selectedGripIndex = index;
-            this.selectedGripOutline.visible = index != -1;
-            if (index != -1) {
-                this.selectedGripOutline.position = this.grips.children[index].position;
-            }
-        },
-
-        makeRegular(sides, center) {
-            this.selectGrip(-1);
-            this.updateAttributes({
-                vertices: new paper.Path.RegularPolygon(center || this.getPosition(), sides, 70).segments.map((s) => ({
-                    x: s.point.x,
-                    y: s.point.y,
-                })),
-            });
-            this.editing = false;
-        },
-    },
+onMounted(() => {
+    paperScope = new paper.PaperScope();
+    paperScope.setup(canvas.value!.$el as HTMLCanvasElement);
+    render();
+    const controller: PolygonShapeController = {
+        node: props.node,
+        getPos: props.getPos,
+        paperScope,
+        fillColor,
+        editing,
+        sides,
+        borderColor,
+        makeRegular,
+        handleResize,
+        getPosition,
+        move,
+        scale,
+        containedInBounds,
+        getSnapPoints,
+        onDelete,
+        onMouseMove,
+        onMouseDown,
+        onMouseDrag,
+        onMouseUp,
+        setSelected,
+        save,
+    };
+    props.editor.storage.geometry.controllers.set(props.node.attrs.id, controller);
 });
+
+function render() {
+    paperScope.activate();
+    paperScope.project.clear();
+
+    const attrs = props.node.attrs;
+    polygon.value = new paper.Path();
+    polygon.value.closed = true;
+    polygon.value.style.strokeWidth = 3;
+
+    grips.value = new paper.Group();
+    grips.value.visible = isSelected.value;
+
+    if (attrs.vertices) {
+        attrs.vertices.forEach((v: Point) => addPoint(new paper.Point(v)));
+    }
+
+    selectedGripOutline.value = new paper.Path.Circle(new paper.Point(0, 0), 8);
+    selectedGripOutline.value.strokeColor = new paper.Color('#ffbb33');
+    selectedGripOutline.value.style.strokeWidth = 4;
+    selectedGripOutline.value.locked = true; // non-hittable
+    selectGrip(selectedGripIndex.value);
+
+    all.value = new paper.Group([polygon.value, grips.value, selectedGripOutline.value]);
+
+    fillColor.value = attrs.color;
+    borderColor.value = attrs.borderColor;
+}
+
+function handleResize(width: number, height: number) {
+    paperScope.view.viewSize = new paper.Size(width, height);
+}
+
+function getPosition() {
+    return polygon.value.position;
+}
+
+function move(shift: paper.Point) {
+    all.value.translate(shift);
+}
+
+function scale(factor: number, center: paper.Point) {
+    polygon.value.scale(factor, new paper.Point(center));
+    save();
+}
+
+function setSelected(value: boolean) {
+    grips.value.visible = value;
+    isSelected.value = value;
+    if (!value) {
+        editing.value = false;
+        selectGrip(-1);
+    }
+}
+
+function containedInBounds(bounds: paper.Rectangle) {
+    return polygon.value.intersects(new paper.Path.Rectangle(bounds)) || bounds.contains(polygon.value.bounds);
+}
+
+function getSnapPoints() {
+    return grips.value.children.map((g) => g.position);
+}
+
+function onDelete() {
+    if (selectedGripIndex.value != -1 && sides.value > 3) {
+        polygon.value.removeSegment(selectedGripIndex.value);
+        grips.value.children[selectedGripIndex.value].remove();
+        selectGrip(-1);
+        return true;
+    }
+    all.value.remove();
+}
+
+function onMouseMove(_event: paper.ToolEvent, hitResult: paper.HitResult, cursorStyle: CSSStyleDeclaration) {
+    if (!hitResult && editing.value) {
+        cursorStyle.cursor = 'cell';
+    } else if (hitResult && grips.value.children.some((item) => item == hitResult.item)) {
+        cursorStyle.cursor = 'crosshair';
+    } else if (hitResult && polygon.value == hitResult.item && editing.value) {
+        cursorStyle.cursor = 'cell';
+    } else if (hitResult && polygon.value == hitResult.item && !editing.value) {
+        cursorStyle.cursor = 'move';
+    }
+}
+
+function onMouseDown(event: paper.ToolEvent, hitResult: paper.HitResult) {
+    if (editing.value && (!hitResult || (polygon.value == hitResult.item && hitResult.type == 'fill'))) {
+        const newIndex = selectedGripIndex.value != -1 ? selectedGripIndex.value + 1 : grips.value.children.length;
+        addPoint(event.point, newIndex);
+        selectGrip(newIndex);
+        movedShape.value = grips.value.children[newIndex];
+        return true;
+    }
+
+    if (editing.value && polygon.value == hitResult.item && hitResult.type == 'stroke') {
+        const indexBetween = hitResult.location.index + 1;
+        addPoint(event.point, indexBetween);
+        selectGrip(indexBetween);
+        movedShape.value = grips.value.children[indexBetween];
+        return true;
+    }
+
+    if (!hitResult) {
+        return false;
+    }
+    if (polygon.value == hitResult.item) {
+        movedShape.value = all.value;
+    }
+    let result = grips.value.children.findIndex((grip) => grip == hitResult.item);
+    if (result != -1) {
+        movedShape.value = grips.value.children[result];
+        selectGrip(result);
+    }
+    return !!movedShape.value;
+}
+
+function onMouseDrag(event: paper.ToolEvent, snapPoints: paper.Point[]) {
+    if (!movedShape.value) {
+        return false;
+    }
+
+    let result = grips.value.children.findIndex((grip) => grip == movedShape.value);
+    if (result != -1) {
+        let shift = event.modifiers.shift ? snapShift([event.point], snapPoints) : new paper.Point(0, 0);
+        movedShape.value.position = event.point.add(shift);
+        polygon.value.segments[result].point = movedShape.value.position;
+        selectedGripOutline.value.position = movedShape.value.position;
+        return true;
+    } else {
+        return false;
+    }
+}
+
+function onMouseUp() {
+    movedShape.value = null;
+}
+
+function addPoint(position: paper.Point, index = polygon.value.segments.length) {
+    polygon.value.insert(index, position);
+    let grip = new paper.Path.Circle(position, 6);
+    grip.style.strokeWidth = 0;
+    grip.fillColor = new paper.Color(fillColor.value).multiply(0.7);
+    grips.value.insertChild(index, grip);
+}
+
+function save() {
+    props.updateAttributes({
+        vertices: polygon.value.segments.map((s) => ({
+            x: s.point.x,
+            y: s.point.y,
+        })),
+    });
+}
+
+function selectGrip(index: number) {
+    selectedGripIndex.value = index;
+    selectedGripOutline.value.visible = index != -1;
+    if (index != -1) {
+        selectedGripOutline.value.position = grips.value.children[index].position;
+    }
+}
+
+function makeRegular(sides: number, center?: Point) {
+    selectGrip(-1);
+    props.updateAttributes({
+        vertices: new paper.Path.RegularPolygon(center || getPosition(), sides, 70).segments.map((s) => ({
+            x: s.point.x,
+            y: s.point.y,
+        })),
+    });
+    editing.value = false;
+}
 </script>
 
 <style scoped lang="scss">

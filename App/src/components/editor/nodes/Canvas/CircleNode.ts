@@ -4,11 +4,13 @@ import CircleView from './CircleView.vue';
 import { mainRedColor } from './Colors';
 import { idGenerator } from './Shape';
 import { Point } from '@/components/utils/point';
+import { VueConstructor } from 'vue';
+import { ShapeController } from './Canvas';
 
 declare module '@tiptap/core' {
     interface Commands<ReturnType> {
         circle: {
-            createCircle: (attrs: CircleAttributes, pos: number) => ReturnType;
+            createCircle: (attrs: Partial<CircleAttributes>, pos: number) => ReturnType;
         };
     }
 }
@@ -19,6 +21,12 @@ export interface CircleAttributes {
     size: { width: number; height: number };
     color: string;
     borderColor: string;
+}
+
+export interface CircleShapeController extends ShapeController {
+    borderColor: { value: string };
+    width: { value: number };
+    height: { value: number };
 }
 
 export default Node.create({
@@ -42,12 +50,12 @@ export default Node.create({
         };
     },
 
-    addNodeView: () => VueNodeViewRenderer(CircleView),
+    addNodeView: () => VueNodeViewRenderer(CircleView as unknown as VueConstructor<Vue>),
 
     addCommands() {
         return {
             createCircle:
-                (attrs: CircleAttributes, pos: number) =>
+                (attrs: Partial<CircleAttributes>, pos: number) =>
                 ({ commands }) =>
                     commands.insertContentAt(pos, this.type.createAndFill({ ...attrs, id: idGenerator.next().value })),
         };

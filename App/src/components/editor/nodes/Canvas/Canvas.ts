@@ -1,5 +1,8 @@
 import { Node, VueNodeViewRenderer } from '@tiptap/vue-2';
 import CanvasVue from './Canvas.vue';
+import { Node as PMNode } from '@tiptap/pm/model';
+import { Point } from '@/components/utils/point';
+import { VueConstructor } from 'vue';
 
 declare module '@tiptap/core' {
     interface Commands<ReturnType> {
@@ -16,18 +19,19 @@ declare module '@tiptap/core' {
 }
 
 export interface ShapeController {
-    readonly canHaveBorder: boolean;
-    readonly node: any;
-    readonly paperScope: paper.PaperScope;
+    readonly node: PMNode;
+    readonly fillColor: { value: string };
+    readonly paperScope?: paper.PaperScope;
 
-    onMouseMove(event: paper.ToolEvent, hitResult: paper.HitResult, cursorStyle: CSSStyleDeclaration): void;
-    onMouseDown(event: paper.ToolEvent, hitResult: paper.HitResult): boolean;
+    getPos(): number | undefined;
+    onMouseMove(event: paper.ToolEvent, hitResult: paper.HitResult | null, cursorStyle: CSSStyleDeclaration): void;
+    onMouseDown(event: paper.ToolEvent, hitResult: paper.HitResult | null): boolean;
     onMouseDrag(event: paper.ToolEvent, snapPoints: paper.Point[]): boolean;
     onMouseUp(): void;
     onDelete(): void;
     handleResize(width: number, height: number): void;
     move(shift: paper.Point): void;
-    scale(factor: number, center: paper.Point): void;
+    scale(factor: number, center: Point): void;
     setSelected(value: boolean): void;
     save(): void;
     getPosition(): paper.Point;
@@ -74,5 +78,5 @@ export default Node.create({
         };
     },
 
-    addNodeView: () => VueNodeViewRenderer(CanvasVue),
+    addNodeView: () => VueNodeViewRenderer(CanvasVue as unknown as VueConstructor<Vue>),
 });

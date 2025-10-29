@@ -6,13 +6,21 @@ import { VueNodeViewRenderer } from '@tiptap/vue-2';
 import TextAreaVue from './TextAreaView.vue';
 import { idGenerator } from './Shape';
 import { Point } from '@/components/utils/point';
+import { VueConstructor } from 'vue';
+import { ShapeController } from './Canvas';
 
 declare module '@tiptap/core' {
     interface Commands<ReturnType> {
         textArea: {
-            createTextArea: (attrs: TextAreaAttributes, pos: number) => ReturnType;
+            createTextArea: (attrs: Partial<TextAreaAttributes>, pos: number) => ReturnType;
         };
     }
+}
+
+export interface TextAreaShapeController extends ShapeController {
+    borderColor: { value: string };
+    textColor: { value: string | null };
+    align: { value: string | null };
 }
 
 export interface TextAreaAttributes extends Point {
@@ -56,12 +64,12 @@ export default Node.create({
 
     renderHTML: ({ HTMLAttributes }) => ['text-area', { attrs: JSON.stringify(HTMLAttributes) }, 0],
 
-    addNodeView: () => VueNodeViewRenderer(TextAreaVue),
+    addNodeView: () => VueNodeViewRenderer(TextAreaVue as unknown as VueConstructor<Vue>),
 
     addCommands() {
         return {
             createTextArea:
-                (attrs: TextAreaAttributes, pos: number) =>
+                (attrs: Partial<TextAreaAttributes>, pos: number) =>
                 ({ commands }) =>
                     commands.insertContentAt(pos, this.type.createAndFill({ ...attrs, id: idGenerator.next().value })),
         };

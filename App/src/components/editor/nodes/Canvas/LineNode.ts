@@ -4,13 +4,19 @@ import { mainRedColor } from './Colors';
 import LineView from './LineView.vue';
 import { idGenerator } from './Shape';
 import { Point } from '@/components/utils/point';
+import { VueConstructor } from 'vue';
+import { ShapeController } from './Canvas';
 
 declare module '@tiptap/core' {
     interface Commands<ReturnType> {
         line: {
-            createLine: (attrs: LineAttributes, pos: number) => ReturnType;
+            createLine: (attrs: Partial<LineAttributes>, pos: number) => ReturnType;
         };
     }
+}
+
+export interface LineShapeController extends ShapeController {
+    editing: { value: boolean };
 }
 
 export interface LineAttributes {
@@ -40,12 +46,12 @@ export default Node.create({
         };
     },
 
-    addNodeView: () => VueNodeViewRenderer(LineView),
+    addNodeView: () => VueNodeViewRenderer(LineView as unknown as VueConstructor<Vue>),
 
     addCommands() {
         return {
             createLine:
-                (attrs: LineAttributes, pos: number) =>
+                (attrs: Partial<LineAttributes>, pos: number) =>
                 ({ commands }) =>
                     commands.insertContentAt(pos, this.type.createAndFill({ ...attrs, id: idGenerator.next().value })),
         };

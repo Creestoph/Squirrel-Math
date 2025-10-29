@@ -4,13 +4,22 @@ import { mainRedColor } from './Colors';
 import PolygonView from './PolygonView.vue';
 import { idGenerator } from './Shape';
 import { Point } from '@/components/utils/point';
+import { VueConstructor } from 'vue';
+import { ShapeController } from './Canvas';
 
 declare module '@tiptap/core' {
     interface Commands<ReturnType> {
         polygon: {
-            createPolygon: (attrs: PolygonAttributes, pos: number) => ReturnType;
+            createPolygon: (attrs: Partial<PolygonAttributes>, pos: number) => ReturnType;
         };
     }
+}
+
+export interface PolygonShapeController extends ShapeController {
+    editing: { value: boolean };
+    sides: { value: number };
+    borderColor: { value: string };
+    makeRegular(sides: number, center?: Point): void;
 }
 
 export interface PolygonAttributes {
@@ -41,12 +50,12 @@ export default Node.create({
         };
     },
 
-    addNodeView: () => VueNodeViewRenderer(PolygonView),
+    addNodeView: () => VueNodeViewRenderer(PolygonView as unknown as VueConstructor<Vue>),
 
     addCommands() {
         return {
             createPolygon:
-                (attrs: PolygonAttributes, pos: number) =>
+                (attrs: Partial<PolygonAttributes>, pos: number) =>
                 ({ commands }) =>
                     commands.insertContentAt(pos, this.type.createAndFill({ ...attrs, id: idGenerator.next().value })),
         };

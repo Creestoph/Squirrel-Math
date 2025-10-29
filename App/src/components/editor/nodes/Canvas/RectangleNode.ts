@@ -4,11 +4,13 @@ import { mainRedColor } from './Colors';
 import RectangleView from './RectangleView.vue';
 import { idGenerator } from './Shape';
 import { Point } from '@/components/utils/point';
+import { VueConstructor } from 'vue';
+import { ShapeController } from './Canvas';
 
 declare module '@tiptap/core' {
     interface Commands<ReturnType> {
         rectangle: {
-            createRectangle: (attrs: RectangleAttributes, pos: number) => ReturnType;
+            createRectangle: (attrs: Partial<RectangleAttributes>, pos: number) => ReturnType;
         };
     }
 }
@@ -19,6 +21,12 @@ export interface RectangleAttributes {
     size: { width: number; height: number };
     color: string;
     borderColor: string;
+}
+
+export interface RectangleShapeController extends ShapeController {
+    borderColor: { value: string };
+    width: { value: number };
+    height: { value: number };
 }
 
 export default Node.create({
@@ -43,12 +51,12 @@ export default Node.create({
         };
     },
 
-    addNodeView: () => VueNodeViewRenderer(RectangleView),
+    addNodeView: () => VueNodeViewRenderer(RectangleView as unknown as VueConstructor<Vue>),
 
     addCommands() {
         return {
             createRectangle:
-                (attrs: RectangleAttributes, pos: number) =>
+                (attrs: Partial<RectangleAttributes>, pos: number) =>
                 ({ commands }) =>
                     commands.insertContentAt(pos, this.type.createAndFill({ ...attrs, id: idGenerator.next().value })),
         };

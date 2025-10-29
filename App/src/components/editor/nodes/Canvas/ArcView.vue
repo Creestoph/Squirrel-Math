@@ -4,17 +4,10 @@
 
 <script setup lang="ts">
 import paper from 'paper';
-import { Shape } from './Shape';
 import { nodeViewProps, NodeViewWrapper } from '@tiptap/vue-2';
 import { computed, onMounted, ref, watch } from 'vue';
-import { ShapeController } from './Canvas';
-
-interface ArcShapeController extends ShapeController {
-    radius: { value: number };
-    angle: { value: number };
-    fillColor: { value: string };
-    borderColor: { value: string };
-}
+import { snapShift } from './Shape';
+import { ArcShapeController } from './ArcNode';
 
 const props = defineProps(nodeViewProps);
 
@@ -108,8 +101,8 @@ onMounted(() => {
     paperScope.setup(canvas.value!.$el as HTMLCanvasElement);
     render();
     const controller: ArcShapeController = {
-        canHaveBorder: true,
         node: props.node,
+        getPos: props.getPos,
         paperScope,
         angle,
         radius,
@@ -198,7 +191,7 @@ function onDelete() {
     all.value.remove();
 }
 
-function onMouseMove(event: paper.ToolEvent, hitResult: paper.HitResult, cursorStyle: CSSStyleDeclaration) {
+function onMouseMove(_event: paper.ToolEvent, hitResult: paper.HitResult, cursorStyle: CSSStyleDeclaration) {
     if (
         hitResult &&
         (arcStroke.value == hitResult.item || grips.value.children.some((item) => item == hitResult.item))
@@ -212,7 +205,7 @@ function onMouseMove(event: paper.ToolEvent, hitResult: paper.HitResult, cursorS
     }
 }
 
-function onMouseDown(event: paper.ToolEvent, hitResult: paper.HitResult) {
+function onMouseDown(_event: paper.ToolEvent, hitResult: paper.HitResult) {
     if (!hitResult) {
         return false;
     }
@@ -256,8 +249,8 @@ function onMouseDrag(event: paper.ToolEvent, snapPoints: paper.Point[]) {
 
     let result = grips.value.children.findIndex((grip) => grip == movedShape.value);
     if (result != -1) {
-        let snapShift = event.modifiers.shift ? Shape.snapShift([event.point], snapPoints) : new paper.Point(0, 0);
-        movedShape.value.position = event.point.add(snapShift);
+        let shift = event.modifiers.shift ? snapShift([event.point], snapPoints) : new paper.Point(0, 0);
+        movedShape.value.position = event.point.add(shift);
         if (result == 0) {
             line1.value.segments[0].point = movedShape.value.position;
             line2.value.segments[0].point = movedShape.value.position;
