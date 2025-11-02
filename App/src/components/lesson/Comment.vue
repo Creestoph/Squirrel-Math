@@ -12,46 +12,43 @@
             v-if="visible"
             class="question-mark"
             :style="{ color: popup ? '#aa0000' : '' }"
-            >help</icon
         >
-        <tooltip class="comment-window no-selection" :visible="popup" :timeout="0" :offset="{ x: 15, y: -55 }">{{
-            commentText
-        }}</tooltip>
+            help
+        </icon>
+        <tooltip class="comment-window no-selection" :visible="popup" :timeout="0" :offset="{ x: 15, y: -55 }">
+            {{ commentText }}
+        </tooltip>
         <slot />
     </span>
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
 import Tooltip from '@/components/utils/Tooltip.vue';
-import { Prop, Component } from 'vue-property-decorator';
-import Vue from 'vue';
+import { onMounted, ref } from 'vue';
+import { allComments } from '../editor/shared-state';
 
-@Component({
-    components: {
-        Tooltip,
-    },
-})
-export default class Comment extends Vue {
-    static allComments: { [id: string]: { text: string; hidden: boolean } } = {};
+const props = withDefaults(
+    defineProps<{
+        text?: string;
+        hidden?: boolean;
+        attrs?: { id: string };
+    }>(),
+    { hidden: true },
+);
 
-    popup: boolean = false;
-    @Prop() text?: string;
-    @Prop({ default: true }) hidden?: string;
-    @Prop() attrs?: { id: string };
+const commentText = ref<string | undefined>('');
+const visible = ref(false);
+const popup = ref(false);
 
-    commentText? = '';
-    visible? = false;
-
-    mounted() {
-        if (this.attrs && this.attrs.id) {
-            this.commentText = Comment.allComments[this.attrs.id].text;
-            this.visible = !Comment.allComments[this.attrs.id].hidden;
-        } else {
-            this.commentText = this.text;
-            this.visible = !this.hidden;
-        }
+onMounted(() => {
+    if (props.attrs?.id) {
+        commentText.value = allComments.value[props.attrs.id].text;
+        visible.value = !allComments.value[props.attrs.id].hidden;
+    } else {
+        commentText.value = props.text;
+        visible.value = !props.hidden;
     }
-}
+});
 </script>
 
 <style scoped lang="scss">

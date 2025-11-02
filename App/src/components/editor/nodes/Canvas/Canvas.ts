@@ -3,6 +3,7 @@ import CanvasVue from './Canvas.vue';
 import { Node as PMNode } from '@tiptap/pm/model';
 import { Point } from '@/components/utils/point';
 import { VueConstructor } from 'vue';
+import { ValueObject } from '@/models/common';
 
 declare module '@tiptap/core' {
     interface Commands<ReturnType> {
@@ -20,7 +21,7 @@ declare module '@tiptap/core' {
 
 export interface ShapeController {
     readonly node: PMNode;
-    readonly fillColor: { value: string };
+    readonly fillColor: ValueObject<string>;
     readonly paperScope?: paper.PaperScope;
 
     getPos(): number | undefined;

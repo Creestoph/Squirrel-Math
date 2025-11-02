@@ -11,7 +11,7 @@ import $ from 'jquery';
 import { nextTick, onMounted, ref, watch } from 'vue';
 
 const props = defineProps<{ zipped: boolean }>();
-const emits = defineEmits<{ (e: 'animation', value: boolean): void }>();
+const emits = defineEmits<{ (event: 'animation', value: boolean): void }>();
 const chapterMask = ref<HTMLElement | null>();
 const chapterBody = ref<HTMLElement | null>();
 

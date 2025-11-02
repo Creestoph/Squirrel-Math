@@ -1,24 +1,24 @@
 <template>
     <div>
         <div id="whole">
-            <div ref="lesson" class="lesson">
+            <div class="lesson" :style="{ left: lessonLeftPos }">
                 <lesson-version-button v-if="showVersionButton" @click.native="toggleMode()" :shortMode="shortMode" />
                 <button
-                    ref="expandButton"
                     id="expand-button"
                     class="no-selection"
+                    :style="{ marginTop: expandButtonPosition + 'px' }"
                     @click="lessonHidden ? expandLesson() : hideLesson()"
                 >
-                    &lt;
+                    {{ expandButtonContent }}
                 </button>
                 <router-link v-if="content" id="edit-button" tag="a" :to="'/editor/' + content">
                     Edytuj lekcję <icon>edit</icon>
                 </router-link>
 
-                <div class="lesson-content" v-if="shortMode" :key="short.title[0].text + 'short'">
+                <div class="lesson-content" v-if="shortMode" :key="short.title.text + 'short'">
                     <slot>
                         <lesson-title-short>
-                            <block-element v-for="(block, i) in short.title" :key="i" :content="block"></block-element>
+                            <block-element :content="short.title"></block-element>
                         </lesson-title-short>
                         <lesson-intro v-if="short.introElements.length">
                             <block-element
@@ -48,10 +48,10 @@
                     </slot>
                 </div>
 
-                <div class="lesson-content" v-if="!shortMode" :key="long.title[0].text + 'long'">
+                <div class="lesson-content" v-if="!shortMode" :key="long.title.text + 'long'">
                     <slot>
                         <lesson-title>
-                            <block-element v-for="(block, i) in long.title" :key="i" :content="block"></block-element>
+                            <block-element :content="long.title"></block-element>
                         </lesson-title>
                         <lesson-intro v-if="long.introElements.length">
                             <block-element
@@ -85,10 +85,10 @@
         <div class="footer-container">
             <div class="footer">
                 <h1>
-                    <a href="mailto: oblicze.calki@gmail.com"
-                        >Skontaktuj się z nami!<br />
-                        oblicze.calki@gmail.com</a
-                    >
+                    <a href="mailto: oblicze.calki@gmail.com">
+                        Skontaktuj się z nami!<br />
+                        oblicze.calki@gmail.com
+                    </a>
                 </h1>
                 Strona jest nadal w trakcie rozwoju. <br />
                 Jeśli podoba Ci się inicjatywa i chciałbyś wesprzeć proces tworzenia Squirrel-Math, masz jakiekolwiek
@@ -99,150 +99,119 @@
     </div>
 </template>
 
-<script lang="ts">
-import { Component, Prop } from 'vue-property-decorator';
-import Vue from 'vue';
+<script setup lang="ts">
+import { computed, getCurrentInstance, nextTick, onMounted, onUnmounted, Ref, ref, watch } from 'vue';
 import LessonTitle from './LessonTitle.vue';
 import LessonTitleShort from './LessonTitleShort.vue';
 import LessonIntro from './LessonIntro.vue';
 import LessonVersionButton from './LessonVersionButton.vue';
 import LessonChapter from './chapter/LessonChapter.vue';
 import BlockElement from './BlockElement.vue';
-import Comment from './Comment.vue';
-import Graphics from './Graphics.vue';
-import { Route } from 'vue-router';
+import { LessonData, NodeData, NodeType } from '@/models/lesson';
+import { allComments, lessonImages } from '../editor/shared-state';
 declare var MathJax: any;
 
-@Component({
-    components: {
-        LessonVersionButton,
-        LessonTitle,
-        LessonTitleShort,
-        LessonIntro,
-        LessonChapter,
-        BlockElement,
-    },
-})
-export default class Lesson extends Vue {
-    @Prop() inputContent?: string;
-    lessonHidden = true;
+const props = defineProps<{ inputContent?: string }>();
+const proxy = getCurrentInstance()!.proxy;
 
-    constructor() {
-        super();
-        this.clearElements();
+const lessonHidden = ref(true);
+const shortMode = ref(false);
+const expandButtonContent = ref('<');
+const expandButtonPosition = ref<number>(undefined!);
+const lessonLeftPos = ref<string>(undefined!);
+
+interface LessonElements {
+    title: { type: NodeType; text: string };
+    introElements: NodeData[];
+    chapters: NodeData[][];
+}
+
+const long = ref<LessonElements>() as Ref<LessonElements>;
+const short = ref<LessonElements>() as Ref<LessonElements>;
+
+const content = computed(() => proxy.$route.params.sourceFile || props.inputContent);
+
+const showVersionButton = computed(
+    () => content.value && (shortMode.value ? long.value.title.text : short.value.title.text),
+);
+
+watch(
+    () => proxy.$route,
+    () => loadLesson(),
+);
+
+clearElements();
+
+onMounted(() => loadLesson());
+
+onUnmounted(() => window.removeEventListener('scroll', moveExpandButton));
+
+function loadLesson() {
+    expandLesson();
+    window.addEventListener('scroll', moveExpandButton);
+    setContent();
+}
+
+function setContent() {
+    clearElements();
+    if (content.value) {
+        import(`@/assets/lessons/${content.value}`).then((loadedJson) => {
+            const json = JSON.parse(JSON.stringify(loadedJson)) as LessonData; // deep clone
+            if (json.long) {
+                long.value.title = json.long.content[0].content![0] as { type: NodeType; text: string };
+                long.value.introElements = json.long.content[1].content!;
+                long.value.chapters = json.long.content.filter((_item, i) => i > 1).map((item) => item.content!);
+            }
+            if (json.short) {
+                short.value.title = json.short.content[0].content![0] as { type: NodeType; text: string };
+                short.value.introElements = json.short.content[1].content!;
+                short.value.chapters = json.short.content.filter((_item, i) => i > 1).map((item) => item.content!);
+            }
+            allComments.value = json.comments;
+            lessonImages.value = json.images || {};
+            nextTick(() => MathJax.Hub.Queue(['Typeset', MathJax.Hub]));
+        });
+    } else {
+        MathJax.Hub.Queue(['Typeset', MathJax.Hub]);
     }
-    // TODO type
-    long: any = {
-        title: [{ text: '' }],
+}
+
+function hideLesson() {
+    if (!lessonHidden.value) {
+        lessonLeftPos.value = '-80%';
+        lessonHidden.value = true;
+        setTimeout(() => (expandButtonContent.value = '>'), 1000);
+    }
+}
+
+function expandLesson() {
+    if (lessonHidden.value) {
+        lessonLeftPos.value = '0';
+        lessonHidden.value = false;
+        setTimeout(() => (expandButtonContent.value = '<'), 1000);
+    }
+}
+
+function moveExpandButton() {
+    expandButtonPosition.value = window.scrollY;
+}
+
+function toggleMode() {
+    shortMode.value = !shortMode.value;
+    nextTick(() => MathJax.Hub.Queue(['Typeset', MathJax.Hub]));
+}
+
+function clearElements() {
+    long.value = {
+        title: { type: 'text', text: '' },
         introElements: [],
         chapters: [],
     };
-    short: any = {
-        title: [{ text: '' }],
+    short.value = {
+        title: { type: 'text', text: '' },
         introElements: [],
         chapters: [],
     };
-    shortMode = false;
-
-    get content() {
-        return this.$route.params.sourceFile || this.inputContent;
-    }
-    get showVersionButton() {
-        return this.content && (this.shortMode ? this.long.title[0].text : this.short.title[0].text);
-    }
-
-    beforeRouteUpdate(to: Route, from: Route, next: Function) {
-        next();
-        this.loadLesson();
-    }
-
-    mounted() {
-        this.loadLesson();
-    }
-
-    private loadLesson() {
-        this.expandLesson();
-        window.addEventListener('scroll', this.moveExpandButton);
-        this.setContent();
-    }
-
-    destroyed() {
-        window.removeEventListener('scroll', this.moveExpandButton);
-    }
-
-    setContent() {
-        this.clearElements();
-        if (this.content) {
-            import(`@/assets/lessons/${this.content}`).then((loadedJson) => {
-                const json = JSON.parse(JSON.stringify(loadedJson)); // deep clone
-                if (json.long) {
-                    this.long.title = json.long.content[0].content;
-                    this.long.introElements = json.long.content[1].content;
-                    this.long.chapters = json.long.content
-                        .filter((item: any, position: any) => position > 1)
-                        .map((item: any) => item.content);
-                }
-                if (json.short) {
-                    this.short.title = json.short.content[0].content;
-                    this.short.introElements = json.short.content[1].content;
-                    this.short.chapters = json.short.content
-                        .filter((item: any, position: any) => position > 1)
-                        .map((item: any) => item.content);
-                }
-                Comment.allComments = json.comments;
-                Graphics.lessonImages = json.images || {};
-                this.$nextTick(() => MathJax.Hub.Queue(['Typeset', MathJax.Hub]));
-            });
-        } else {
-            MathJax.Hub.Queue(['Typeset', MathJax.Hub]);
-        }
-    }
-
-    hideLesson() {
-        if (!this.lessonHidden) {
-            (this.$refs.lesson as HTMLElement).style.left = '-80%';
-            this.lessonHidden = true;
-            setTimeout(() => {
-                if (this.$refs.expandButton) {
-                    (this.$refs.expandButton as HTMLElement).innerHTML = '>';
-                }
-            }, 1000);
-        }
-    }
-
-    expandLesson() {
-        if (this.lessonHidden) {
-            (this.$refs.lesson as HTMLElement).style.left = '0';
-            this.lessonHidden = false;
-            setTimeout(() => {
-                if (this.$refs.expandButton) {
-                    (this.$refs.expandButton as HTMLElement).innerHTML = '<';
-                }
-            }, 1000);
-        }
-    }
-
-    moveExpandButton() {
-        (this.$refs.expandButton as HTMLElement).style.marginTop = '' + window.scrollY + 'px';
-    }
-
-    toggleMode() {
-        this.shortMode = !this.shortMode;
-        this.$nextTick(() => MathJax.Hub.Queue(['Typeset', MathJax.Hub]));
-    }
-
-    private clearElements() {
-        this.long = {
-            title: [{ text: '' }],
-            introElements: [],
-            chapters: [],
-        };
-        this.short = {
-            title: [{ text: '' }],
-            introElements: [],
-            chapters: [],
-        };
-    }
 }
 </script>
 

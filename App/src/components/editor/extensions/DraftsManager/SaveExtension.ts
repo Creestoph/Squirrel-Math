@@ -1,14 +1,14 @@
 import { Extension, SingleCommands } from '@tiptap/vue-2';
 import { Draft, DraftPreview, LocalStorageSaver } from './LocalStorageManager';
-import ImagePicker from '../../ImagePicker.vue';
 import { downloadFile } from '@/components/utils/files';
-import { allComments } from '../../shared-state';
+import { allComments, lessonImages } from '../../shared-state';
+import { LessonData, LessonVersionData } from '@/models/lesson';
 
 interface SaveStorage {
     autoSaveObserverId: number | null;
     currentDraft: Draft;
-    longVersionJSON: any;
-    shortVersionJSON: any;
+    longVersionJSON: LessonVersionData | null;
+    shortVersionJSON: LessonVersionData | null;
     shortMode: boolean;
 }
 
@@ -19,7 +19,7 @@ declare module '@tiptap/core' {
             saveToFile: (fileName?: string) => ReturnType;
             loadDraft: (draft: DraftPreview) => ReturnType;
             deleteDraft: (draft: DraftPreview) => ReturnType;
-            loadFromJSON: (json: any) => ReturnType;
+            loadFromJSON: (json: LessonData) => ReturnType;
         };
     }
     interface Storage {
@@ -40,8 +40,8 @@ export default Extension.create<{}, SaveStorage>({
                 lesson: null,
                 fromAutosave: false,
             },
-            longVersionJSON: '',
-            shortVersionJSON: '',
+            longVersionJSON: null,
+            shortVersionJSON: null,
             shortMode: false,
         };
     },
@@ -79,70 +79,61 @@ export default Extension.create<{}, SaveStorage>({
 
         const getLessonJSON = () => {
             if (this.storage.shortMode) {
-                this.storage.shortVersionJSON = this.editor.getJSON();
+                this.storage.shortVersionJSON = this.editor.getJSON() as LessonVersionData;
             } else {
-                this.storage.longVersionJSON = this.editor.getJSON();
+                this.storage.longVersionJSON = this.editor.getJSON() as LessonVersionData;
             }
 
-            const lessonJSON: any = {
-                long: this.storage.longVersionJSON,
-                short: this.storage.shortVersionJSON,
+            const lessonJSON: LessonData = {
+                long: this.storage.longVersionJSON || undefined,
+                short: this.storage.shortVersionJSON || undefined,
             };
 
-            if (Object.entries(allComments).length > 0) {
+            if (Object.entries(allComments.value).length > 0) {
                 lessonJSON.comments = {};
             }
-            Object.entries(allComments).forEach(([id, comment]: any) => {
-                lessonJSON.comments[id] = {
+            Object.entries(allComments.value).forEach(([id, comment]) => {
+                lessonJSON.comments![id] = {
                     text: comment.text,
                     hidden: comment.hidden,
                 };
             });
 
-            if (Object.entries(ImagePicker.lessonImages).length > 0) {
+            if (Object.entries(lessonImages.value).length > 0) {
                 lessonJSON.images = {};
             }
-            Object.entries(ImagePicker.lessonImages).forEach(([key, image]: any) => {
-                lessonJSON.images[key] = { src: image.src, name: image.name };
+            Object.entries(lessonImages.value).forEach(([key, image]) => {
+                lessonJSON.images![key] = { src: image.src, name: image.name };
             });
 
             return lessonJSON;
         };
 
         const loadFromJSON =
-            (json: any) =>
+            (json: LessonData) =>
             ({ commands }: { commands: SingleCommands }) => {
                 // reset comments
-                for (const commentId in allComments) {
-                    delete (allComments as any)[commentId];
-                }
+                allComments.value = {};
                 if (json?.comments) {
-                    Object.entries(json.comments).forEach(([id, comment]: any) => {
-                        (allComments as any)[id] = {
+                    Object.entries(json.comments).forEach(([id, comment]) => {
+                        allComments.value[id] = {
                             text: comment.text,
                             hidden: comment.hidden,
-                            displayedInComponent: null,
                         };
                     });
                 }
 
                 // reset scoped images
-                ImagePicker.lessonImages = {};
+                lessonImages.value = {};
                 if (json?.images) {
-                    Object.entries(json.images).forEach(([key, image]: any) => {
-                        (ImagePicker.lessonImages as any)[key] = {
-                            ...image,
-                            key,
-                            scoped: true,
-                        };
-                    });
+                    Object.entries(json.images).forEach(([key, image]) => (lessonImages.value[key] = { ...image }));
                 }
 
-                this.storage.shortVersionJSON = json?.short;
-                this.storage.longVersionJSON = json?.long;
+                this.storage.shortVersionJSON = json?.short || null;
+                this.storage.longVersionJSON = json?.long || null;
 
                 return commands.setContent(
-                    this.storage.shortMode ? this.storage.shortVersionJSON : this.storage.longVersionJSON,
+                    this.storage.shortMode ? this.storage.shortVersionJSON! : this.storage.longVersionJSON!,
                 );
             };
 

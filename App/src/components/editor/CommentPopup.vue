@@ -26,7 +26,7 @@ const props = defineProps<{
     pos: Point;
 }>();
 
-const emit = defineEmits<{ (e: 'closed'): void }>();
+const emit = defineEmits<{ (event: 'closed'): void }>();
 
 const commentText = ref<string>('');
 const hidden = ref<boolean>(false);
@@ -37,15 +37,15 @@ function save(id: string | null) {
     if (id == null) {
         return;
     }
-    allComments[id] ??= { text: '', hidden: false };
-    allComments[id].text = commentText.value;
-    allComments[id].hidden = hidden.value;
+    allComments.value[id] ??= { text: '', hidden: false };
+    allComments.value[id].text = commentText.value;
+    allComments.value[id].hidden = hidden.value;
 }
 
 function setId() {
-    allComments[props.id] ??= { text: '', hidden: false };
-    commentText.value = allComments[props.id].text;
-    hidden.value = allComments[props.id].hidden;
+    allComments.value[props.id] ??= { text: '', hidden: false };
+    commentText.value = allComments.value[props.id].text;
+    hidden.value = allComments.value[props.id].hidden;
     nextTick(() => commentEditor.value?.focus());
 }
 

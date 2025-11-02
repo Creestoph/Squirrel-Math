@@ -14,7 +14,7 @@
 import { ref } from 'vue';
 
 defineProps<{ arrow?: boolean }>();
-const emit = defineEmits<{ (e: 'selected', value: string): void }>();
+const emit = defineEmits<{ (event: 'selected', value: string): void }>();
 
 const selectedOption = ref(' ');
 const dropdownVisible = ref(false);

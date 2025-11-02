@@ -403,7 +403,12 @@
             </div>
         </div>
 
-        <image-picker ref="imagePicker" @deleteImage="deleteImage($event)"></image-picker>
+        <image-picker
+            :visible="showImagesDialog"
+            @select="editor.commands.createImage($event)"
+            @delete="deleteImage"
+            @close="showImagesDialog = false"
+        ></image-picker>
 
         <comment-popup
             v-if="editedCommentData"
@@ -435,7 +440,7 @@ import Lesson from '../lesson/Lesson.vue';
 import ColorPicker from './ColorPicker.vue';
 import Dropdown from './Dropdown.vue';
 import DropdownOption from './DropdownOption.vue';
-import ImagePicker, { Image } from './ImagePicker.vue';
+import ImagePicker from './ImagePicker.vue';
 
 import LessonDoc from './nodes/Lesson';
 import Title from './nodes/Title';
@@ -485,8 +490,9 @@ import { TableKit } from '@tiptap/extension-table';
 import { Gapcursor, UndoRedo } from '@tiptap/extensions';
 import LinkPopup from './LinkPopup.vue';
 import { BubbleMenu } from '@tiptap/vue-2/menus';
-import { allComments } from './shared-state';
+import { allComments, lessonImages } from './shared-state';
 import { Point } from '../utils/point';
+import { ImageData } from '@/models/lesson';
 
 @Component({
     components: {
@@ -514,6 +520,7 @@ export default class LessonEditor extends Vue {
     }
 
     showDraftsDialog = false;
+    showImagesDialog = false;
     editedCommentData: { id: string; pos: Point } | null = null;
     editedLinkData: { href: string; pos: Point } | null = null;
     availableDrafts: DraftPreview[] = [];
@@ -662,7 +669,7 @@ export default class LessonEditor extends Vue {
                 commands.toggleProof();
                 break;
             case 'image':
-                (this.$refs.imagePicker as ImagePicker).open((image: Image) => commands.createImage(image));
+                this.showImagesDialog = true;
                 break;
             case 'table':
                 commands.insertTable({
@@ -700,11 +707,11 @@ export default class LessonEditor extends Vue {
     }
 
     clearAll() {
-        this.clearComments();
-        this.clearImages();
+        allComments.value = {};
+        lessonImages.value = {};
         this.clearContent();
-        this.editor.storage.save.longVersionJSON = '';
-        this.editor.storage.save.shortVersionJSON = '';
+        this.editor.storage.save.longVersionJSON = null;
+        this.editor.storage.save.shortVersionJSON = null;
     }
 
     createSecondMode() {
@@ -719,11 +726,12 @@ export default class LessonEditor extends Vue {
     editSecondMode() {
         this.editor.commands.saveToLocalStorage(true);
         this.shortMode = !this.shortMode;
+        const content = this.shortMode
+            ? this.editor.storage.save.shortVersionJSON
+            : this.editor.storage.save.longVersionJSON;
         this.editor.destroy();
         this.createEditor();
-        this.editor.commands.setContent(
-            this.shortMode ? this.editor.storage.save.shortVersionJSON : this.editor.storage.save.longVersionJSON,
-        );
+        this.editor.commands.setContent(content);
     }
 
     secondModeExists() {
@@ -750,25 +758,25 @@ export default class LessonEditor extends Vue {
         this.availableDrafts = this.draftsList();
     }
 
-    deleteImage(image: Image) {
+    deleteImage(image: ImageData, confirmedDelete: () => void) {
         let short = this.shortMode ? this.editor.getJSON() : this.editor.storage.save.shortVersionJSON;
         let long = this.shortMode ? this.editor.storage.save.longVersionJSON : this.editor.getJSON();
-        const isInShort = this.hasImage(short, image.key);
-        const isInLong = this.hasImage(long, image.key);
+        const isInShort = short && this.hasImage(short, image.name);
+        const isInLong = long && this.hasImage(long, image.name);
         if (isInLong) {
             alert('Obraz jest używany w wersji pełnej lekcji. Najpierw usuń jego wystąpienia.');
         } else if (isInShort) {
             alert('Obraz jest używany w wersji skróconej lekcji. Najpierw usuń jego wystąpienia.');
         } else {
-            (this.$refs.imagePicker as ImagePicker).deleteImage(image);
+            confirmedDelete();
         }
     }
 
-    hasImage(node: any, imageKey: string): boolean {
-        if (node.type == 'image' && node.attrs.key == imageKey) {
+    hasImage(node: any, key: string): boolean {
+        if (node.type == 'image' && node.attrs.key == key) {
             return true;
         }
-        return node.content ? node.content.some((child: any) => this.hasImage(child, imageKey)) : false;
+        return node.content ? node.content.some((child: any) => this.hasImage(child, key)) : false;
     }
 
     scrollToolbar() {
@@ -785,16 +793,6 @@ export default class LessonEditor extends Vue {
         if (this.sourceFile) {
             import(`@/assets/lessons/${this.sourceFile}`).then((file) => this.editor.commands.loadFromJSON(file));
         }
-    }
-
-    private clearComments() {
-        for (let commentId in allComments) {
-            delete (allComments as any)[commentId];
-        }
-    }
-
-    private clearImages() {
-        ImagePicker.lessonImages = {};
     }
 
     private clearContent(title?: string) {

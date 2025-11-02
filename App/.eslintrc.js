@@ -13,6 +13,7 @@ module.exports = {
         'vue/multi-word-component-names': 'off',
         'brace-style': ['error', '1tbs', { allowSingleLine: false }],
         'nonblock-statement-body-position': ['error', 'below'],
+        'no-debugger': 'off',
         curly: ['error', 'all'],
     },
 };

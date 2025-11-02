@@ -1,44 +1,33 @@
 <template>
     <div>
-        <input v-model="input" v-on:keyup.enter="simplify()" />
-        <button class="button-red" @click="simplify()">Uprość</button>
+        <input v-model="input" v-on:keyup.enter="onSimplify()" />
+        <button class="button-red" @click="onSimplify()">Uprość</button>
         <div id="result" ref="resultDiv"></div>
     </div>
 </template>
 
-<script lang="ts">
-import Vue from 'vue';
+<script setup lang="ts">
 import { Expression, parseExpression } from '../../../math-engine/algebra-engine/expression';
-import { Component } from 'vue-property-decorator';
 import { simplify } from '../../../math-engine/algebra-engine/algorithms/simplification-algorithm';
+import { nextTick, ref } from 'vue';
 declare var MathJax: any;
 
-@Component
-export default class AlgebraicCalculator extends Vue {
-    input: string = '';
+const input = ref('');
+const resultDiv = ref<HTMLDivElement>(null!);
 
-    simplify() {
-        try {
-            const expression: Expression = parseExpression(this.input);
-            const simplified = simplify(expression).toMathJax();
-            if (simplified.length > 10000) {
-                this.setDivContent(
-                    'resultDiv',
-                    'To wyrażenie jest okropnie długie po uproszczeniu. Chyba nie potrzebujesz aż tak potężnych obliczeń.',
-                );
-            } else {
-                this.setDivContent('resultDiv', '$$' + expression.toMathJax() + ' = ' + simplified + '$$');
-            }
-        } catch (exception: any) {
-            this.setDivContent('resultDiv', exception);
+function onSimplify() {
+    try {
+        const expression: Expression = parseExpression(input.value);
+        const simplified = simplify(expression).toMathJax();
+        if (simplified.length > 10000) {
+            resultDiv.value.innerHTML =
+                'To wyrażenie jest okropnie długie po uproszczeniu. Chyba nie potrzebujesz aż tak potężnych obliczeń.';
+        } else {
+            resultDiv.value.innerHTML = `$$${expression.toMathJax()} = ${simplified}$$`;
+            nextTick(() => MathJax.Hub.Queue(['Typeset', MathJax.Hub]));
         }
-    }
-
-    private setDivContent(reference: string, content: string) {
-        let div: Element = this.$refs[reference] as Element;
-        [].slice.call(div.children).forEach((child) => div.removeChild(child));
-        div.innerHTML = content;
-        MathJax.Hub.Queue(['Typeset', MathJax.Hub]);
+    } catch (exception: any) {
+        resultDiv.value.innerHTML = exception;
     }
 }
 </script>

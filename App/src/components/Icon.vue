@@ -8,7 +8,7 @@ import { onMounted, ref } from 'vue';
 const container = ref<HTMLElement | null>(null);
 
 onMounted(() => {
-    container.value!.style.webkitMask = `url(${require('@/assets/icons/' + container.value!.innerHTML + '.svg')})`;
+    container.value!.style.webkitMask = `url(${require('@/assets/icons/' + container.value!.innerHTML.trim() + '.svg')})`;
     container.value!.innerHTML = '.';
 });
 </script>

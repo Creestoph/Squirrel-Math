@@ -6,6 +6,7 @@ import { idGenerator } from './Shape';
 import { Point } from '@/components/utils/point';
 import { VueConstructor } from 'vue';
 import { ShapeController } from './Canvas';
+import { ValueObject } from '@/models/common';
 
 declare module '@tiptap/core' {
     interface Commands<ReturnType> {
@@ -25,9 +26,9 @@ export interface ArcAttributes {
 }
 
 export interface ArcShapeController extends ShapeController {
-    radius: { value: number };
-    angle: { value: number };
-    borderColor: { value: string };
+    radius: ValueObject<number>;
+    angle: ValueObject<number>;
+    borderColor: ValueObject<string>;
 }
 
 export default Node.create({

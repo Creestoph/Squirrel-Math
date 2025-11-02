@@ -8,6 +8,7 @@ import { idGenerator } from './Shape';
 import { Point } from '@/components/utils/point';
 import { VueConstructor } from 'vue';
 import { ShapeController } from './Canvas';
+import { ValueObject } from '@/models/common';
 
 declare module '@tiptap/core' {
     interface Commands<ReturnType> {
@@ -18,9 +19,9 @@ declare module '@tiptap/core' {
 }
 
 export interface TextAreaShapeController extends ShapeController {
-    borderColor: { value: string };
-    textColor: { value: string | null };
-    align: { value: string | null };
+    borderColor: ValueObject<string>;
+    textColor: ValueObject<string | null>;
+    align: ValueObject<string | null>;
 }
 
 export interface TextAreaAttributes extends Point {

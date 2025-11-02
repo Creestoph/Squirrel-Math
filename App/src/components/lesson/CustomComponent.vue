@@ -2,33 +2,28 @@
     <div v-html="attrs.code" ref="output" style="position: relative"></div>
 </template>
 
-<script lang="ts">
-import { Component, Prop } from 'vue-property-decorator';
-import Vue from 'vue';
+<script setup lang="ts">
+import { nextTick, onMounted, ref } from 'vue';
 
-@Component
-export default class CustomComponent extends Vue {
-    @Prop() attrs?: any;
+defineProps<{ attrs: { code: string } }>();
+const output = ref<HTMLDivElement>(null!);
 
-    private runScripts(htmlElement: Element) {
-        Array.from(htmlElement.children).forEach((child) => {
-            if (child.tagName == 'SCRIPT') {
-                const scriptChild = child as HTMLScriptElement;
-                htmlElement.removeChild(scriptChild);
-                const childCopy = document.createElement('script');
-                childCopy.innerHTML = scriptChild.innerHTML;
-                if (scriptChild.src) {
-                    childCopy.src = scriptChild.src;
-                }
-                htmlElement.appendChild(childCopy);
-            } else {
-                this.runScripts(child);
+onMounted(() => nextTick(() => runScripts(output.value)));
+
+function runScripts(htmlElement: Element) {
+    Array.from(htmlElement.children).forEach((child) => {
+        if (child.tagName == 'SCRIPT') {
+            const scriptChild = child as HTMLScriptElement;
+            htmlElement.removeChild(scriptChild);
+            const childCopy = document.createElement('script');
+            childCopy.innerHTML = scriptChild.innerHTML;
+            if (scriptChild.src) {
+                childCopy.src = scriptChild.src;
             }
-        });
-    }
-
-    mounted() {
-        this.$nextTick(() => this.runScripts(this.$refs.output as Element));
-    }
+            htmlElement.appendChild(childCopy);
+        } else {
+            runScripts(child);
+        }
+    });
 }
 </script>

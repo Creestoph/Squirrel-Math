@@ -14,9 +14,8 @@
     </div>
 </template>
 
-<script lang="ts">
-import Vue from 'vue';
-import { Component } from 'vue-property-decorator';
+<script setup lang="ts">
+import { onMounted, Ref, ref } from 'vue';
 import { Variable } from '../../../math-engine/algebra-engine/variable';
 import { Integer, Fraction } from '../../../math-engine/algebra-engine/numbers';
 import { numericGCD } from '../../../math-engine/algebra-engine/algorithms/numeric-algorithms';
@@ -26,145 +25,115 @@ import { equals, simplify } from '../../../math-engine/algebra-engine/algorithms
 import { UnivariatePolynomial } from '../../../math-engine/algebra-engine/univariate-polynomial';
 declare var MathJax: any;
 
-@Component
-export default class SimpleQuadraticEquationsTraining extends Vue {
-    correctX1: Fraction = new Fraction(0, 1);
-    correctX2: Fraction = new Fraction(0, 1);
-    userX1: Fraction = new Fraction(0, 1);
-    userX2: Fraction = new Fraction(0, 1);
-    x1: string = '';
-    x2: string = '';
-    private varX: Variable = new Variable('x');
+let correctX1: Fraction = new Fraction(0, 1);
+let correctX2: Fraction = new Fraction(0, 1);
+let userX1: Fraction = new Fraction(0, 1);
+let userX2: Fraction = new Fraction(0, 1);
+const x1 = ref('');
+const x2 = ref('');
+const varX: Variable = new Variable('x');
+const equationDiv = ref<HTMLDivElement>(null!);
+const productDiv = ref<HTMLDivElement>(null!);
+const resultDiv = ref<HTMLDivElement>(null!);
 
-    mounted() {
-        this.next();
+onMounted(() => next());
+
+function updateProduct() {
+    if (x1.value == '' || x2.value == '' || isNaN(parseInt(x1.value)) || isNaN(parseInt(x2.value))) {
+        return;
     }
 
-    updateProduct() {
-        let userX1Numerator, userX1Denominator, userX2Numerator, userX2Denominator;
-        [userX1Numerator, userX1Denominator] = this.x1.split('/').map((n) => parseInt(n));
-        [userX2Numerator, userX2Denominator] = this.x2.split('/').map((n) => parseInt(n));
-        userX1Denominator = userX1Denominator || 1;
-        userX2Denominator = userX2Denominator || 1;
-        this.userX1 = new Fraction(userX1Numerator, userX1Denominator);
-        this.userX2 = new Fraction(userX2Numerator, userX2Denominator);
+    let userX1Numerator, userX1Denominator, userX2Numerator, userX2Denominator;
+    [userX1Numerator, userX1Denominator] = x1.value.split('/').map((n) => parseInt(n));
+    [userX2Numerator, userX2Denominator] = x2.value.split('/').map((n) => parseInt(n));
+    userX1Denominator = userX1Denominator || 1;
+    userX2Denominator = userX2Denominator || 1;
+    userX1 = new Fraction(userX1Numerator, userX1Denominator);
+    userX2 = new Fraction(userX2Numerator, userX2Denominator);
 
-        if (this.x1 == '' || this.x2 == '' || isNaN(parseInt(this.x1)) || isNaN(parseInt(this.x2))) {
-            return;
-        }
+    let product = 'Daje to postać iloczynową $';
+    if (equals(userX1.numerator, userX2.numerator) && equals(userX1.denominator, userX2.denominator)) {
+        product += new Power(
+            simplify(UnivariatePolynomial.withCoefficients([userX1.numerator.opposite(), userX1.denominator], varX)),
+            new Integer(2),
+        ).toMathJax();
+    } else {
+        product += Product.of(
+            simplify(UnivariatePolynomial.withCoefficients([userX1.numerator.opposite(), userX1.denominator], varX)),
+            simplify(UnivariatePolynomial.withCoefficients([userX2.numerator.opposite(), userX2.denominator], varX)),
+        ).toMathJax();
+    }
+    product += ' = 0$.';
 
-        let product = 'Daje to postać iloczynową $';
-        if (
-            equals(this.userX1.numerator, this.userX2.numerator) &&
-            equals(this.userX1.denominator, this.userX2.denominator)
-        ) {
-            product += new Power(
-                simplify(
-                    UnivariatePolynomial.withCoefficients(
-                        [this.userX1.numerator.opposite(), this.userX1.denominator],
-                        this.varX,
-                    ),
-                ),
-                new Integer(2),
-            ).toMathJax();
-        } else {
-            product += Product.of(
-                simplify(
-                    UnivariatePolynomial.withCoefficients(
-                        [this.userX1.numerator.opposite(), this.userX1.denominator],
-                        this.varX,
-                    ),
-                ),
-                simplify(
-                    UnivariatePolynomial.withCoefficients(
-                        [this.userX2.numerator.opposite(), this.userX2.denominator],
-                        this.varX,
-                    ),
-                ),
-            ).toMathJax();
-        }
-        product += ' = 0$.';
+    setDivContent(productDiv, product);
+}
 
-        this.setDivContent('productDiv', product);
+function check() {
+    let result = '';
+    if (x1.value == '' || x2.value == '') {
+        result = 'Uzupełnij oba pola liczbami całkowitymi / ułamkami.';
+    } else if (
+        (equals(userX1, correctX1) && equals(userX2, correctX2)) ||
+        (equals(userX1, correctX2) && equals(userX2, correctX1))
+    ) {
+        result = 'Dobrze!';
+    } else if (
+        (equals(userX1.absolute(), correctX1.absolute()) && equals(userX2.absolute(), correctX2.absolute())) ||
+        (equals(userX1.absolute(), correctX2.absolute()) && equals(userX2.absolute(), correctX1.absolute()))
+    ) {
+        result =
+            'Prawie dobrze, tylko złe znaki: $x = ' +
+            simplify(correctX1).toMathJax() +
+            '$ lub $x = ' +
+            simplify(correctX2).toMathJax() +
+            '$.';
+    } else {
+        result =
+            'Niedobrze. Powinno być $x = ' +
+            simplify(correctX1).toMathJax() +
+            '$ lub $x = ' +
+            simplify(correctX2).toMathJax() +
+            '$.';
     }
 
-    check() {
-        let result = '';
-        if (this.x1 == '' || this.x2 == '') {
-            result = 'Uzupełnij oba pola liczbami całkowitymi / ułamkami.';
-        } else if (
-            (equals(this.userX1, this.correctX1) && equals(this.userX2, this.correctX2)) ||
-            (equals(this.userX1, this.correctX2) && equals(this.userX2, this.correctX1))
-        ) {
-            result = 'Dobrze!';
-        } else if (
-            (equals(this.userX1.absolute(), this.correctX1.absolute()) &&
-                equals(this.userX2.absolute(), this.correctX2.absolute())) ||
-            (equals(this.userX1.absolute(), this.correctX2.absolute()) &&
-                equals(this.userX2.absolute(), this.correctX1.absolute()))
-        ) {
-            result =
-                'Prawie dobrze, tylko złe znaki: $x = ' +
-                simplify(this.correctX1).toMathJax() +
-                '$ lub $x = ' +
-                simplify(this.correctX2).toMathJax() +
-                '$.';
-        } else {
-            result =
-                'Niedobrze. Powinno być $x = ' +
-                simplify(this.correctX1).toMathJax() +
-                '$ lub $x = ' +
-                simplify(this.correctX2).toMathJax() +
-                '$.';
-        }
+    setDivContent(resultDiv, result);
+}
 
-        this.setDivContent('resultDiv', result);
+function next() {
+    let x1Numerator = Integer.random(0, 9).multiply(new Integer(Math.random() > 0.6 ? 1 : -1)) as Integer;
+    let x2Denominator;
+    if (equals(x1Numerator, Integer.zero) || Math.random() < 0.8) {
+        x2Denominator = Integer.one;
+    } else {
+        do {
+            x2Denominator = Integer.random(1, 4);
+        } while ((numericGCD(x1Numerator.int, x2Denominator.int) as bigint) > BigInt(1));
     }
+    correctX1 = new Fraction(x1Numerator.int, x2Denominator.int);
+    correctX2 = new Fraction(
+        Integer.random(0, 9)
+            .multiply(new Integer(Math.random() > 0.6 ? 1 : -1))
+            .numeric(),
+        1,
+    );
 
-    next() {
-        let x1Numerator = Integer.random(0, 9).multiply(new Integer(Math.random() > 0.6 ? 1 : -1)) as Integer;
-        let x2Denominator;
-        if (equals(x1Numerator, Integer.zero) || Math.random() < 0.8) {
-            x2Denominator = Integer.one;
-        } else {
-            do {
-                x2Denominator = Integer.random(1, 4);
-            } while ((numericGCD(x1Numerator.int, x2Denominator.int) as bigint) > BigInt(1));
-        }
-        this.correctX1 = new Fraction(x1Numerator.int, x2Denominator.int);
-        this.correctX2 = new Fraction(
-            Integer.random(0, 9)
-                .multiply(new Integer(Math.random() > 0.6 ? 1 : -1))
-                .numeric(),
-            1,
-        );
+    let equationPolynomial = simplify(
+        Product.of(
+            UnivariatePolynomial.withCoefficients([correctX1.numerator.opposite(), correctX1.denominator], varX),
+            UnivariatePolynomial.withCoefficients([correctX2.numerator.opposite(), correctX2.denominator], varX),
+        ),
+    );
+    let equationString = '$$' + equationPolynomial.toMathJax() + ' = 0$$';
 
-        let equationPolynomial = simplify(
-            Product.of(
-                UnivariatePolynomial.withCoefficients(
-                    [this.correctX1.numerator.opposite(), this.correctX1.denominator],
-                    this.varX,
-                ),
-                UnivariatePolynomial.withCoefficients(
-                    [this.correctX2.numerator.opposite(), this.correctX2.denominator],
-                    this.varX,
-                ),
-            ),
-        );
-        let equationString = '$$' + equationPolynomial.toMathJax() + ' = 0$$';
+    setDivContent(equationDiv, equationString);
+    setDivContent(resultDiv, '');
+    setDivContent(productDiv, '');
+    x1.value = x2.value = '';
+}
 
-        this.setDivContent('equationDiv', equationString);
-        this.setDivContent('resultDiv', '');
-        this.setDivContent('productDiv', '');
-        this.x1 = this.x2 = '';
-    }
-
-    private setDivContent(reference: string, content: string) {
-        let div: Element = this.$refs[reference] as Element;
-        [].slice.call(div.children).forEach((child) => div.removeChild(child));
-        div.innerHTML = content;
-        MathJax.Hub.Queue(['Typeset', MathJax.Hub]);
-    }
+function setDivContent(div: Ref<HTMLDivElement>, content: string) {
+    div.value.innerHTML = content;
+    MathJax.Hub.Queue(['Typeset', MathJax.Hub]);
 }
 </script>
 

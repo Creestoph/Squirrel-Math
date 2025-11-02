@@ -23,7 +23,7 @@ import { colors } from '@/style/palette';
 import { ref } from 'vue';
 
 defineProps<{ color?: string | null }>();
-const emit = defineEmits<{ (e: 'selected', v: string): void }>();
+const emit = defineEmits<{ (event: 'selected', value: string): void }>();
 
 const dropdownVisible = ref(false);
 const availableColors = Array.from({ length: Math.ceil(colors.length / 5) }, (_, i) =>

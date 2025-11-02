@@ -1,23 +1,20 @@
 <template>
-    <img :src="src" :alt="attrs.name" :title="attrs.name" />
+    <img :src="src" :alt="title" :title="title" />
 </template>
 
-<script lang="ts">
-import { Component, Prop } from 'vue-property-decorator';
-import Vue from 'vue';
+<script setup lang="ts">
+import { onMounted, ref } from 'vue';
+import { lessonImages } from '../editor/shared-state';
 
-@Component
-export default class Graphics extends Vue {
-    static lessonImages: { [key: string]: { src: string } } = {};
+const props = defineProps<{ attrs: { key: string } }>();
+const src = ref('');
+const title = ref('');
 
-    @Prop() attrs?: any;
-    src: string = '';
-
-    mounted() {
-        const scopedImage = Graphics.lessonImages[this.attrs.key];
-        this.src = scopedImage ? scopedImage.src : require(`@/assets/global-images/${this.attrs.key}`);
-    }
-}
+onMounted(() => {
+    const scopedImage = lessonImages.value[props.attrs.key];
+    src.value = scopedImage?.src || require(`@/assets/global-images/${props.attrs.key}`);
+    title.value = scopedImage?.name || props.attrs.key;
+});
 </script>
 
 <style scoped lang="scss">

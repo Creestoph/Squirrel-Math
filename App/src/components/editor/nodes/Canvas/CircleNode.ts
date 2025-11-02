@@ -6,6 +6,7 @@ import { idGenerator } from './Shape';
 import { Point } from '@/components/utils/point';
 import { VueConstructor } from 'vue';
 import { ShapeController } from './Canvas';
+import { ValueObject } from '@/models/common';
 
 declare module '@tiptap/core' {
     interface Commands<ReturnType> {
@@ -24,9 +25,9 @@ export interface CircleAttributes {
 }
 
 export interface CircleShapeController extends ShapeController {
-    borderColor: { value: string };
-    width: { value: number };
-    height: { value: number };
+    borderColor: ValueObject<string>;
+    width: ValueObject<number>;
+    height: ValueObject<number>;
 }
 
 export default Node.create({

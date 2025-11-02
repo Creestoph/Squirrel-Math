@@ -29,34 +29,38 @@
     </div>
 </template>
 
-<script lang="ts">
-import Vue from 'vue';
-import { Prop, Component } from 'vue-property-decorator';
+<script setup lang="ts">
+import { ref } from 'vue';
 
-@Component
-export default class OperationTable extends Vue {
-    loperand: number = 0;
-    roperand: number = 0;
-    @Prop({ default: -1 }) defaultLoperand!: number;
-    @Prop({ default: -1 }) defaultRoperand!: number;
-    @Prop() f!: (l: number, r: number) => number;
-    @Prop({
-        default: () => '',
-    })
-    print!: (l: string, r: string, f: string) => string;
-    @Prop({ default: true }) active!: boolean;
+const loperand = ref(0);
+const roperand = ref(0);
+const props = withDefaults(
+    defineProps<{
+        defaultLoperand: number;
+        defaultRoperand: number;
+        f: (l: number, r: number) => number;
+        print: (l: string, r: string, f: string) => string;
+        active?: boolean;
+    }>(),
+    {
+        defaultLoperand: -1,
+        defaultRoperand: -1,
+        f: () => 0,
+        print: () => '',
+        active: true,
+    },
+);
 
-    created() {
-        this.reset();
-    }
-    set(lop: number, rop: number) {
-        this.loperand = lop;
-        this.roperand = rop;
-    }
-    reset() {
-        this.loperand = this.defaultLoperand;
-        this.roperand = this.defaultRoperand;
-    }
+reset();
+
+function set(lop: number, rop: number) {
+    loperand.value = lop;
+    roperand.value = rop;
+}
+
+function reset() {
+    loperand.value = props.defaultLoperand;
+    roperand.value = props.defaultRoperand;
 }
 </script>
 

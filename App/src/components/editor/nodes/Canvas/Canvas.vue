@@ -113,8 +113,9 @@ import { TextAreaShapeController } from './TextAreaNode';
 import { ArcShapeController } from './ArcNode';
 import { CircleShapeController } from './CircleNode';
 import { RectangleShapeController } from './RectangleNode';
+import { ValueObject } from '@/models/common';
 
-type ShapeWithBorder = ShapeController & { borderColor: { value: string | null } };
+type ShapeWithBorder = ShapeController & { borderColor: ValueObject<string | null> };
 
 const props = defineProps(nodeViewProps);
 

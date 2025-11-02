@@ -1,60 +1,6 @@
+import { LessonData, NodeData } from '@/models/lesson';
 import { downloadFile } from '../utils/files';
 import { idGenerator } from './nodes/Canvas/Shape';
-
-export type NodeType =
-    | 'title'
-    | 'intro'
-    | 'chapter'
-    | 'semanticTag'
-    | 'paragraph'
-    | 'text'
-    | 'bulletList'
-    | 'orderedList'
-    | 'listItem'
-    | 'hardBreak'
-    | 'example'
-    | 'proof'
-    | 'problem'
-    | 'formula'
-    | 'expression'
-    | 'expressionInline'
-    | 'image'
-    | 'component'
-    | 'customElement'
-    | 'table'
-    | 'tableRow'
-    | 'tableCell'
-    | 'geometry'
-    | 'line'
-    | 'circle'
-    | 'rectangle'
-    | 'polygon'
-    | 'arc'
-    | 'textArea';
-
-export type MarkType = 'bold' | 'italic' | 'strike' | 'underline' | 'link' | 'textAlign' | 'comment' | 'number';
-
-export interface MarkData {
-    type: MarkType;
-    attrs?: { [key: string]: any };
-}
-
-export interface NodeData {
-    type: NodeType;
-    attrs?: { [key: string]: any };
-    content?: NodeData[];
-    marks?: MarkData[];
-    text?: string;
-}
-
-interface LessonVersionData {
-    content: NodeData[];
-}
-
-export interface LessonData {
-    long?: LessonVersionData;
-    short?: LessonVersionData;
-}
 
 function transformNode(node: NodeData) {
     if (

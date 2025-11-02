@@ -1,5 +1,5 @@
 <template>
-    <div
+    <component
         :is="tagName"
         :class="{
             bold: marks && marks.some((m) => m.type == 'bold'),
@@ -13,12 +13,11 @@
     >
         <template v-if="text">{{ marks && marks.some((m) => m.type == 'number') ? '$' + text + '$' : text }}</template>
         <block-element v-for="(block, i) in children" :key="i" :content="block"></block-element>
-    </div>
+    </component>
 </template>
 
-<script lang="ts">
-import { Component, Prop } from 'vue-property-decorator';
-import Vue from 'vue';
+<script setup lang="ts">
+import { Component, computed, onMounted, ref } from 'vue';
 import Graphics from './Graphics.vue';
 import DefaultTable from './DefaultTable.vue';
 import TableCell from './TableCell.vue';
@@ -40,114 +39,79 @@ import LessonLink from './Link.vue';
 import BuiltInComponent from './BuiltInComponent.vue';
 import CustomComponent from './CustomComponent.vue';
 import Paragraph from './Paragraph.vue';
-import { MarkData, NodeData, NodeType } from '../editor/lessons-transform';
+import { MarkData, NodeData, NodeType } from '../../models/lesson';
 
-@Component({
-    components: {
-        Paragraph,
-        Graphics,
-        DefaultTable,
-        TableCell,
-        LessonLink,
-        SemanticTag,
-        Proof,
-        Example,
-        Formula,
-        Problem,
-        Expression,
-        ExpressionInline,
-        Geometry,
-        GeometryRectangle,
-        GeometryPolygon,
-        GeometryCircle,
-        GeometryLine,
-        GeometryArc,
-        GeometryTextArea,
-        BuiltInComponent,
-        CustomComponent,
-    },
-    name: 'block-element',
-})
-export default class BlockElement extends Vue {
-    @Prop() content!: NodeData;
-    type!: NodeType;
-    marks?: MarkData[] = [];
-    text? = '';
-    children: NodeData[] = [];
-    attrs: { [name: string]: any } = {};
+const props = defineProps<{ content: NodeData }>();
+let type: NodeType;
+const marks = ref<MarkData[] | undefined>([]);
+const text = ref<string | undefined>('');
+const children = ref<NodeData[]>([]);
+const attrs = ref<{ [name: string]: any }>({});
 
-    mounted() {
-        this.type = this.content.type;
-        this.marks = this.content.marks;
-        this.text = this.content.text;
-        this.children = this.content.content || [];
-        if (this.marks && this.marks.some((m) => m.type == 'comment')) {
-            this.children = [this.content];
-            this.text = '';
-            if (this.children[0].marks) {
-                this.children[0].marks = this.children[0].marks.filter((m) => m.type != 'comment');
-            }
-        } else {
-            if (this.type == 'paragraph') {
-                if (
-                    !this.children.length ||
-                    (this.children && this.children[this.children.length - 1].type == 'hardBreak')
-                ) {
-                    this.children.push({ type: 'hardBreak' });
-                }
-            }
-            if (this.type == 'customElement') {
-                this.attrs = { code: this.content.content![0].text };
-            } else if (this.type == 'table') {
-                this.attrs = {
-                    columnWidths: this.children[0].content!.map((c) => c.attrs!.colwidth && c.attrs!.colwidth[0]),
-                };
-            } else {
-                this.attrs = this.content.attrs || {};
-            }
-        }
-        if (this.marks) {
-            this.marks.filter((m) => m.attrs).forEach((m) => Object.assign(this.attrs, m.attrs));
-        }
+const tagName = computed<string | Component>(() => {
+    if (marks.value && marks.value.some((m) => m.type == 'comment')) {
+        return 'comment';
     }
+    if (marks.value && marks.value.some((m) => m.type == 'link')) {
+        return LessonLink;
+    }
+    const typeToTag: Partial<{ [type in NodeType]: string | Component }> = {
+        hardBreak: 'br',
+        bulletList: 'ul',
+        orderedList: 'ol',
+        listItem: 'li',
+        tableRow: 'tr',
+        paragraph: Paragraph,
+        image: Graphics,
+        table: DefaultTable,
+        tableCell: TableCell,
+        semanticTag: SemanticTag,
+        proof: Proof,
+        example: Example,
+        formula: Formula,
+        expression: Expression,
+        expressionInline: ExpressionInline,
+        geometry: Geometry,
+        rectangle: GeometryRectangle,
+        polygon: GeometryPolygon,
+        circle: GeometryCircle,
+        line: GeometryLine,
+        arc: GeometryArc,
+        textArea: GeometryTextArea,
+        component: BuiltInComponent,
+        customElement: CustomComponent,
+        problem: Problem,
+    };
+    return typeToTag[type] || 'div';
+});
 
-    get tagName() {
-        if (this.marks && this.marks.some((m) => m.type == 'comment')) {
-            return 'comment';
+onMounted(() => {
+    type = props.content.type;
+    marks.value = props.content.marks;
+    text.value = props.content.text;
+    children.value = props.content.content || [];
+    if (marks.value && marks.value.some((m) => m.type == 'comment')) {
+        children.value = [props.content];
+        text.value = '';
+        if (children.value[0].marks) {
+            children.value[0].marks = children.value[0].marks.filter((m) => m.type != 'comment');
         }
-        if (this.marks && this.marks.some((m) => m.type == 'link')) {
-            return 'lesson-link';
-        }
-        const typeToTag: { [type in NodeType]?: string } = {
-            paragraph: 'paragraph',
-            hardBreak: 'br',
-            bulletList: 'ul',
-            orderedList: 'ol',
-            listItem: 'li',
-            image: 'graphics',
-            table: 'default-table',
-            tableRow: 'tr',
-            tableCell: 'table-cell',
-            semanticTag: 'semantic-tag',
-            proof: 'proof',
-            example: 'example',
-            formula: 'formula',
-            expression: 'expression',
-            expressionInline: 'expression-inline',
-            geometry: 'geometry',
-            rectangle: 'geometry-rectangle',
-            polygon: 'geometry-polygon',
-            circle: 'geometry-circle',
-            line: 'geometry-line',
-            arc: 'geometry-arc',
-            textArea: 'geometry-text-area',
-            component: 'built-in-component',
-            customElement: 'custom-component',
-            problem: 'problem',
+    } else if (type == 'customElement') {
+        attrs.value = { code: props.content.content![0].text };
+    } else if (type == 'table') {
+        attrs.value = {
+            columnWidths: children.value[0].content!.map((c) => c.attrs!.colwidth && c.attrs!.colwidth[0]),
         };
-        return typeToTag[this.type] || 'div';
+    } else {
+        if (type == 'paragraph' && (!children.value.length || children.value.at(-1)?.type == 'hardBreak')) {
+            children.value.push({ type: 'hardBreak' });
+        }
+        attrs.value = props.content.attrs || {};
     }
-}
+    if (marks.value) {
+        marks.value.filter((m) => m.attrs).forEach((m) => Object.assign(attrs.value, m.attrs));
+    }
+});
 </script>
 
 <style scoped lang="scss">

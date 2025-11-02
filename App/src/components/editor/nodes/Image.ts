@@ -1,11 +1,11 @@
 import { Node, nodeInputRule } from '@tiptap/core';
 import { Plugin } from '@tiptap/pm/state';
-import ImagePicker from '../ImagePicker.vue';
+import { globalImages, lessonImages } from '../shared-state';
 
 declare module '@tiptap/core' {
     interface Commands<ReturnType> {
         image: {
-            createImage: (attrs: Partial<ImageAttrs>) => ReturnType;
+            createImage: (key: string) => ReturnType;
         };
     }
 }
@@ -48,7 +48,6 @@ export default Node.create({
                         return { key };
                     }
 
-                    // No `key` on the <img> — prompt and register in ImagePicker
                     const proposed = prompt('Nazwa obrazu:') || 'unnamed';
                     const img = {
                         src: dom.getAttribute('src')!,
@@ -56,7 +55,7 @@ export default Node.create({
                         name: proposed,
                         scoped: true,
                     };
-                    ImagePicker.lessonImages[proposed] = img;
+                    lessonImages.value[proposed] = img;
                     return { key: proposed };
                 },
             },
@@ -64,17 +63,18 @@ export default Node.create({
     },
 
     renderHTML({ HTMLAttributes }) {
-        const image = ImagePicker.getImage(HTMLAttributes.key);
-        return ['img', { key: image.key, src: image.src, alt: image.name }];
+        const key = HTMLAttributes.key;
+        const image = lessonImages.value[key] || globalImages.value[key];
+        return ['img', { key, src: image.src, alt: image.name }];
     },
 
     addCommands() {
         return {
             createImage:
-                (attrs: Partial<ImageAttrs>) =>
+                (key: string) =>
                 ({ state, chain }) => {
                     const position = state.selection.$head.pos;
-                    const node = this.type.create(attrs);
+                    const node = this.type.create({ key });
                     return chain().insertContentAt(position, node).scrollIntoView().run();
                 },
         };
@@ -127,7 +127,7 @@ export default Node.create({
                                             name,
                                             scoped: true,
                                         };
-                                        ImagePicker.lessonImages[name] = image;
+                                        lessonImages.value[name] = image;
 
                                         const node = view.state.schema.nodes.image.create({ key: name });
                                         const tr = view.state.tr.insert(coords.pos, node);

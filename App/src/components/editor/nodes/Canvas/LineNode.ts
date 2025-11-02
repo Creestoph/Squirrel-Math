@@ -6,6 +6,7 @@ import { idGenerator } from './Shape';
 import { Point } from '@/components/utils/point';
 import { VueConstructor } from 'vue';
 import { ShapeController } from './Canvas';
+import { ValueObject } from '@/models/common';
 
 declare module '@tiptap/core' {
     interface Commands<ReturnType> {
@@ -16,7 +17,7 @@ declare module '@tiptap/core' {
 }
 
 export interface LineShapeController extends ShapeController {
-    editing: { value: boolean };
+    editing: ValueObject<boolean>;
 }
 
 export interface LineAttributes {
