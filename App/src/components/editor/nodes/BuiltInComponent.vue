@@ -7,7 +7,7 @@
                     <select v-model="componentName" id="type-select" @change="onComponentSelect()">
                         <option value="" disabled>Wybierz komponent...</option>
                         <template v-if="componentName == 'other'">
-                            <option v-for="(component, name) in builtInComponents" :key="name" :value="name">
+                            <option v-for="(component, name) in allComponents" :key="name" :value="name">
                                 {{ component.name }}
                             </option>
                         </template>
@@ -21,12 +21,12 @@
                 <div class="form-body" v-if="componentName">
                     <div v-if="!productionMode || componentName != 'other'">
                         <div
-                            v-for="(parameterSchema, parameterName, i) in builtInComponents[componentName].schema"
+                            v-for="(parameterSchema, parameterName, i) in allComponents[componentName].schema"
                             :key="i"
                             class="form-row"
                         >
                             <div class="form-col">
-                                {{ builtInComponents[componentName].labels[parameterName] }}
+                                {{ allComponents[componentName].labels[parameterName] }}
                             </div>
                             <div class="form-col">
                                 <input
@@ -95,12 +95,7 @@
             </button>
         </div>
         <div class="output-wrapper">
-            <div
-                v-if="!editMode"
-                :is="getComponentName()"
-                v-bind="componentConfiguration"
-                :class="{ output: true }"
-            ></div>
+            <div v-if="!editMode" :is="getComponent()" v-bind="componentConfiguration" :class="{ output: true }"></div>
             <button v-show="!editMode" @click="edit()" class="toggle-edit-button" title="edytuj">
                 <icon>edit</icon>
             </button>
@@ -110,36 +105,13 @@
 
 <script setup lang="ts">
 import Vue, { computed, onBeforeMount, onMounted, ref } from 'vue';
-
-import OperationTable from '@/components/store/operation-table/OperationTable.vue';
-import { operationTableSchema } from '@/components/store/operation-table/OperationTableSchema';
-import { operationTableLabels } from '@/components/store/operation-table/OperationTableLabels';
-import ColumnarOperationTable from '@/components/store/columnar-operation-table/ColumnarOperationTable.vue';
-import { columnarOperationTableSchema } from '@/components/store/columnar-operation-table/ColumnarOperationTableSchema';
-import { columnarOperationTableLabels } from '@/components/store/columnar-operation-table/ColumnarOperationTableLabels';
-import ColumnarOperationGuide from '@/components/store/columnar-operation-guide/ColumnarOperationGuide.vue';
-import { columnarOperationGuideSchema } from '@/components/store/columnar-operation-guide/ColumnarOperationGuideSchema';
-import { columnarOperationGuideLabels } from '@/components/store/columnar-operation-guide/ColumnarOperationGuideLabels';
-
-// private componets, only managed by developers
-import { otherComponentSchema } from '@/components/store/private/OtherComponentSchema';
-import { otherComponentLabels } from '@/components/store/private/OtherComponentLabels';
-import AlgebraicCalculator from '@/components/store/private/AlgebraicCalculator.vue';
-import SimpleQuadraticEquationsTraining from '@/components/store/private/SimpleQuadraticEquationsTraining.vue';
 import { NodeViewWrapper } from '@tiptap/vue-2';
-import { ComponentSchema } from '@/components/store/Schema';
-
-interface BuiltInComponent {
-    name: string;
-    component: any;
-    schema: ComponentSchema;
-    labels: Record<string, string>;
-}
+import { BuiltInComponent, builtInComponents, getBuiltInComponentByName } from '@/components/utils/build-in-components';
 
 const props = defineProps(['node', 'updateAttributes', 'view']);
 
 const editMode = ref(true);
-const builtInComponents = ref<Record<string, BuiltInComponent>>({});
+const allComponents = ref<Record<string, BuiltInComponent>>({});
 const availableComponents = ref<Record<string, BuiltInComponent>>({});
 const formArgs = ref<(boolean | string | string[])[]>([]);
 const componentConfiguration = ref<Record<string, Function | boolean | number | string | string[]>>({});
@@ -165,35 +137,10 @@ const args = computed({
 const productionMode = computed(() => false); // TODO automate this
 
 onBeforeMount(() => {
-    builtInComponents.value = {
-        'operation-table': {
-            name: 'Tabliczka działania',
-            component: OperationTable,
-            schema: operationTableSchema,
-            labels: operationTableLabels,
-        },
-        'columnar-operation-table': {
-            name: 'Działanie w słupku',
-            component: ColumnarOperationTable,
-            schema: columnarOperationTableSchema,
-            labels: columnarOperationTableLabels,
-        },
-        'columnar-operation-guide': {
-            name: 'Tutorial działania w słupku',
-            component: ColumnarOperationGuide,
-            schema: columnarOperationGuideSchema,
-            labels: columnarOperationGuideLabels,
-        },
-        other: {
-            name: 'Inny',
-            component: null,
-            schema: otherComponentSchema,
-            labels: otherComponentLabels,
-        },
-    };
-    for (let key in builtInComponents.value) {
+    allComponents.value = builtInComponents;
+    for (let key in allComponents.value) {
         if (!productionMode.value || key != 'other') {
-            availableComponents.value[key] = builtInComponents.value[key];
+            availableComponents.value[key] = allComponents.value[key];
         }
     }
 });
@@ -201,7 +148,7 @@ onBeforeMount(() => {
 onMounted(() => {
     formArgs.value = [...args.value];
     const configNonEmpty = formArgs.value.some((arg, i) => {
-        const argType = Object.values(builtInComponents.value[componentName.value].schema)[i].type.name;
+        const argType = Object.values(allComponents.value[componentName.value].schema)[i].type.name;
         return (
             ((argType == 'TEXT' || argType == 'ENUM' || argType == 'FUNCTION') && arg) ||
             (argType == 'NUMBER' && arg !== undefined) ||
@@ -211,12 +158,11 @@ onMounted(() => {
     if (configNonEmpty) {
         run();
     }
-    // $forceUpdate();
 });
 
 function onComponentSelect() {
     formArgs.value = [];
-    Object.values(builtInComponents.value[componentName.value].schema).forEach((schema, i) => {
+    Object.values(allComponents.value[componentName.value].schema).forEach((schema, i) => {
         if (schema.type.name == 'ARRAY') {
             formArgs.value[i] = [''];
         }
@@ -249,7 +195,7 @@ function saveAndRun() {
 function run() {
     editMode.value = false;
     componentConfiguration.value = {};
-    Object.entries(builtInComponents.value[componentName.value].schema).forEach(([key, schema], i) => {
+    Object.entries(allComponents.value[componentName.value].schema).forEach(([key, schema], i) => {
         if (schema.type.name == 'TEXT' || schema.type.name == 'BOOLEAN' || schema.type.name == 'ENUM') {
             componentConfiguration.value[key] = formArgs.value[i];
         } else if (schema.type.name == 'NUMBER') {
@@ -275,14 +221,9 @@ function run() {
     });
 }
 
-function getComponentName() {
-    const devComponents = {
-        'algebraic-calculator': AlgebraicCalculator,
-        'simple-quadratic-equations-training': SimpleQuadraticEquationsTraining,
-    };
-    return componentName.value == 'other'
-        ? devComponents[componentConfiguration.value.name as keyof typeof devComponents]
-        : builtInComponents.value[componentName.value].component;
+function getComponent() {
+    const isDev = componentName.value == 'other';
+    return getBuiltInComponentByName(isDev ? componentConfiguration.value.name : componentName.value, isDev);
 }
 </script>
 

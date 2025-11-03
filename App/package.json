@@ -35,8 +35,6 @@
         "lowlight": "^3.3.0",
         "paper": "^0.12.17",
         "vue": "^2.7.14",
-        "vue-class-component": "^7.0.2",
-        "vue-property-decorator": "^8.3.0",
         "vue-router": "^3.6.5"
     },
     "devDependencies": {

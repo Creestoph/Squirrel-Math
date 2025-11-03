@@ -1,6 +1,6 @@
 <template>
     <lesson>
-        <div id="toolbar" ref="toolbar">
+        <div id="toolbar" :style="{ paddingTop: toolbarPaddingTop + 'px' }">
             <div v-if="editor">
                 <div id="tools-managing">
                     <button @click="editor.commands.undo" title="cofnij akcję (Ctrl + Z)">
@@ -431,9 +431,8 @@
     </lesson>
 </template>
 
-<script lang="ts">
-import { Component } from 'vue-property-decorator';
-import Vue from 'vue';
+<script setup lang="ts">
+import { computed, getCurrentInstance, nextTick, onMounted, onUnmounted, ref } from 'vue';
 import { Editor, EditorContent, SingleCommands } from '@tiptap/vue-2';
 
 import Lesson from '../lesson/Lesson.vue';
@@ -494,330 +493,319 @@ import { allComments, lessonImages } from './shared-state';
 import { Point } from '../utils/point';
 import { ImageData } from '@/models/lesson';
 
-@Component({
-    components: {
-        EditorContent,
-        BubbleMenu,
-        Lesson,
-        ColorPicker,
-        Dropdown,
-        DropdownOption,
-        ImagePicker,
-        CommentPopup,
-        LinkPopup,
+const proxy = getCurrentInstance()!.proxy;
+
+const editor = ref<Editor>(null!);
+const showDraftsDialog = ref(false);
+const showImagesDialog = ref(false);
+const editedCommentData = ref<{ id: string; pos: Point } | null>(null);
+const availableDrafts = ref<DraftPreview[]>([]);
+const toolbarPaddingTop = ref(0);
+
+const shortMode = computed({
+    get() {
+        return editor.value?.storage.save.shortMode;
     },
-})
-export default class LessonEditor extends Vue {
-    editor: Editor = null as unknown as Editor;
-    sourceFile: string = '';
-    sourceContent: any = null;
+    set(value: boolean) {
+        editor.value.storage.save.shortMode = value;
+    },
+});
 
-    get shortMode() {
-        return this.editor?.storage.save.shortMode;
-    }
-    set shortMode(value) {
-        this.editor.storage.save.shortMode = value;
-    }
+onMounted(() => {
+    createEditor();
+    clearAll();
+    loadContent();
+    addEventListener('beforeunload', exitListener);
+    nextTick(() => {
+        addEventListener('scroll', scrollToolbar);
+        scrollToolbar();
+    });
+    // transformAll();
+});
 
-    showDraftsDialog = false;
-    showImagesDialog = false;
-    editedCommentData: { id: string; pos: Point } | null = null;
-    editedLinkData: { href: string; pos: Point } | null = null;
-    availableDrafts: DraftPreview[] = [];
+onUnmounted(() => {
+    editor.value.destroy();
+    removeEventListener('beforeunload', exitListener);
+    removeEventListener('scroll', scrollToolbar);
+});
 
-    mounted() {
-        this.createEditor();
-        this.clearAll();
-        this.loadContent();
-        addEventListener('beforeunload', this.exitListener);
-        this.$nextTick(() => {
-            addEventListener('scroll', this.scrollToolbar);
-            this.scrollToolbar();
-        });
-        // transformAll();
-    }
+// TODO restore in vue 3
+// beforeRouteLeave(to: any, from: any, next: any) {
+//     if (window.confirm('Opuścić stronę? Wprowadzone zmiany mogą nie zostać zapisane.')) {
+//         next();
+//     }
+// }
 
-    destroyed() {
-        this.editor.destroy();
-        removeEventListener('beforeunload', this.exitListener);
-        removeEventListener('scroll', this.scrollToolbar);
-    }
+function createEditor() {
+    const x = new Editor({
+        extensions: [
+            // tiptap extensions
+            Paragraph,
+            Text,
+            Bold,
+            Italic,
+            Strike,
+            Underline,
+            HardBreak,
+            BulletList,
+            OrderedList,
+            TableKit.configure({
+                table: { resizable: true },
+                tableCell: false,
+            }),
+            TextAlign.configure({
+                types: ['paragraph'],
+            }),
+            Gapcursor,
+            UndoRedo,
 
-    beforeRouteLeave(to: any, from: any, next: any) {
-        if (window.confirm('Opuścić stronę? Wprowadzone zmiany mogą nie zostać zapisane.')) {
-            next();
-        }
-    }
+            // customized tiptap extensions
+            CustomListItem,
+            CustomTableCell,
 
-    private createEditor() {
-        this.editor = new Editor({
-            extensions: [
-                // tiptap extensions
-                Paragraph,
-                Text,
-                Bold,
-                Italic,
-                Strike,
-                Underline,
-                HardBreak,
-                BulletList,
-                OrderedList,
-                TableKit.configure({
-                    table: { resizable: true },
-                    tableCell: false,
-                }),
-                TextAlign.configure({
-                    types: ['paragraph'],
-                }),
-                Gapcursor,
-                UndoRedo,
+            // custom extensions
+            LessonDoc,
+            Title.configure({ shortVersion: shortMode.value }),
+            Intro,
+            Chapter,
+            ChapterTitle,
+            ChapterBody.configure({ shortVersion: shortMode.value }),
+            SemanticTag,
+            Expression,
+            ExpressionInline,
+            Example,
+            Problem,
+            Formula,
+            Proof,
+            ImageNode,
+            CustomElement,
+            BuiltInComponent,
 
-                // customized tiptap extensions
-                CustomListItem,
-                CustomTableCell,
+            Canvas,
+            TextArea,
+            RectangleNode,
+            CircleNode,
+            LineNode,
+            PolygonNode,
+            ArcNode,
 
-                // custom extensions
-                LessonDoc,
-                Title.configure({ shortVersion: this.shortMode }),
-                Intro,
-                Chapter,
-                ChapterTitle,
-                ChapterBody.configure({ shortVersion: this.shortMode }),
-                SemanticTag,
-                Expression,
-                ExpressionInline,
-                Example,
-                Problem,
-                Formula,
-                Proof,
-                ImageNode,
-                CustomElement,
-                BuiltInComponent,
+            TextColor,
+            NumberMark,
+            Link,
+            Comment,
 
-                Canvas,
-                TextArea,
-                RectangleNode,
-                CircleNode,
-                LineNode,
-                PolygonNode,
-                ArcNode,
-
-                TextColor,
-                NumberMark,
-                Link,
-                Comment,
-
-                Placeholder.configure({
-                    emptyNodeText: (node) => {
-                        if (node.type.name === 'title') {
-                            return 'Tytuł lekcji';
-                        } else if (node.type.name == 'chapterTitle') {
-                            return 'Tytuł rozdziału';
-                        } else if (
-                            [
-                                'semanticTag',
-                                'expression',
-                                'expressionInline',
-                                'customElement',
-                                'component',
-                                'geometry',
-                            ].includes(node.type.name)
-                        ) {
-                            return '';
-                        }
-                        return 'Treść sekcji';
+            Placeholder.configure({
+                emptyNodeText: (node) => {
+                    if (node.type.name === 'title') {
+                        return 'Tytuł lekcji';
+                    } else if (node.type.name == 'chapterTitle') {
+                        return 'Tytuł rozdziału';
+                    } else if (
+                        [
+                            'semanticTag',
+                            'expression',
+                            'expressionInline',
+                            'customElement',
+                            'component',
+                            'geometry',
+                        ].includes(node.type.name)
+                    ) {
+                        return '';
+                    }
+                    return 'Treść sekcji';
+                },
+            }),
+            MarkClick.configure({
+                targets: [
+                    {
+                        selector: 'comment[comment-id]',
+                        idAttr: 'comment-id',
+                        onClick: ({ id, rect }) => (editedCommentData.value = { id, pos: rect }),
                     },
-                }),
-                MarkClick.configure({
-                    targets: [
-                        {
-                            selector: 'comment[comment-id]',
-                            idAttr: 'comment-id',
-                            onClick: ({ id, rect }) => (this.editedCommentData = { id, pos: rect }),
-                        },
-                    ],
-                }),
-                Save,
-            ],
-        });
-    }
+                ],
+            }),
+            Save,
+        ],
+    });
+    // TODO
+    // @ts-ignore
+    editor.value = x;
+}
 
-    insert(element: string, commands: SingleCommands) {
-        switch (element) {
-            case 'chapter':
-                commands.createChapter();
-                break;
-            case 'section':
-                commands.createSemanticTag();
-                break;
-            case 'example':
-                commands.toggleExample();
-                break;
-            case 'problem':
-                commands.createProblem();
-                break;
-            case 'expression':
-                commands.createExpression();
-                break;
-            case 'expressionInline':
-                commands.createExpressionInline();
-                break;
-            case 'theorem':
-                commands.toggleFormula();
-                break;
-            case 'proof':
-                commands.toggleProof();
-                break;
-            case 'image':
-                this.showImagesDialog = true;
-                break;
-            case 'table':
-                commands.insertTable({
-                    rows: 3,
-                    cols: 3,
-                    withHeaderRow: false,
-                });
-                break;
-            case 'shape':
-                commands.createGeometry();
-                break;
-            case 'html':
-                commands.toggleCustomElement();
-                break;
-            case 'dynamic':
-                commands.createComponent();
-                break;
+function insert(element: string, commands: SingleCommands) {
+    switch (element) {
+        case 'chapter':
+            commands.createChapter();
+            break;
+        case 'section':
+            commands.createSemanticTag();
+            break;
+        case 'example':
+            commands.toggleExample();
+            break;
+        case 'problem':
+            commands.createProblem();
+            break;
+        case 'expression':
+            commands.createExpression();
+            break;
+        case 'expressionInline':
+            commands.createExpressionInline();
+            break;
+        case 'theorem':
+            commands.toggleFormula();
+            break;
+        case 'proof':
+            commands.toggleProof();
+            break;
+        case 'image':
+            showImagesDialog.value = true;
+            break;
+        case 'table':
+            commands.insertTable({
+                rows: 3,
+                cols: 3,
+                withHeaderRow: false,
+            });
+            break;
+        case 'shape':
+            commands.createGeometry();
+            break;
+        case 'html':
+            commands.toggleCustomElement();
+            break;
+        case 'dynamic':
+            commands.createComponent();
+            break;
+    }
+}
+
+function addComment() {
+    editor.value.commands.addComment();
+    const { from } = editor.value.state.selection;
+    const dom = editor.value.view.domAtPos(from + 1);
+    let el: HTMLElement | null = dom.node.nodeType === 1 ? (dom.node as HTMLElement) : dom.node.parentElement;
+
+    while (el) {
+        if (el.matches?.('comment[comment-id]')) {
+            const id = el.getAttribute('comment-id')!;
+            editedCommentData.value = { id, pos: el.getBoundingClientRect() };
+            break;
         }
+        el = el.parentElement;
     }
+}
 
-    addComment() {
-        this.editor.commands.addComment();
-        const { from } = this.editor.state.selection;
-        const dom = this.editor.view.domAtPos(from + 1);
-        let el: HTMLElement | null = dom.node.nodeType === 1 ? (dom.node as HTMLElement) : dom.node.parentElement;
+function clearAll() {
+    allComments.value = {};
+    lessonImages.value = {};
+    clearContent();
+    editor.value.storage.save.longVersionJSON = null;
+    editor.value.storage.save.shortVersionJSON = null;
+}
 
-        while (el) {
-            if (el.matches?.('comment[comment-id]')) {
-                const id = el.getAttribute('comment-id')!;
-                this.editedCommentData = { id, pos: el.getBoundingClientRect() };
-                break;
-            }
-            el = el.parentElement;
-        }
+function createSecondMode() {
+    editor.value.commands.saveToLocalStorage(true);
+    const title = editor.value.state.doc.content.content[0].content.content[0];
+    shortMode.value = !shortMode.value;
+    editor.value.destroy();
+    createEditor();
+    clearContent(title ? title.text : '');
+}
+
+function editSecondMode() {
+    editor.value.commands.saveToLocalStorage(true);
+    shortMode.value = !shortMode.value;
+    const content = shortMode.value
+        ? editor.value.storage.save.shortVersionJSON
+        : editor.value.storage.save.longVersionJSON;
+    editor.value.destroy();
+    createEditor();
+    editor.value.commands.setContent(content);
+}
+
+function secondModeExists() {
+    return shortMode.value ? editor.value?.storage.save.longVersionJSON : editor.value?.storage.save.shortVersionJSON;
+}
+
+function openDraftsDialog() {
+    showDraftsDialog.value = true;
+    availableDrafts.value = draftsList();
+}
+
+function closeDraftsDialog() {
+    showDraftsDialog.value = false;
+}
+
+function loadDraft(draft: DraftPreview) {
+    showDraftsDialog.value = false;
+    shortMode.value = false;
+    editor.value.commands.loadDraft(draft);
+}
+
+function deleteDraft(draft: DraftPreview) {
+    editor.value.commands.deleteDraft(draft);
+    availableDrafts.value = draftsList();
+}
+
+function deleteImage(image: ImageData, confirmedDelete: () => void) {
+    let short = shortMode.value ? editor.value.getJSON() : editor.value.storage.save.shortVersionJSON;
+    let long = shortMode.value ? editor.value.storage.save.longVersionJSON : editor.value.getJSON();
+    const isInShort = short && hasImage(short, image.name);
+    const isInLong = long && hasImage(long, image.name);
+    if (isInLong) {
+        alert('Obraz jest używany w wersji pełnej lekcji. Najpierw usuń jego wystąpienia.');
+    } else if (isInShort) {
+        alert('Obraz jest używany w wersji skróconej lekcji. Najpierw usuń jego wystąpienia.');
+    } else {
+        confirmedDelete();
     }
+}
 
-    clearAll() {
-        allComments.value = {};
-        lessonImages.value = {};
-        this.clearContent();
-        this.editor.storage.save.longVersionJSON = null;
-        this.editor.storage.save.shortVersionJSON = null;
+function hasImage(node: any, key: string): boolean {
+    if (node.type == 'image' && node.attrs.key == key) {
+        return true;
     }
+    return node.content ? node.content.some((child: any) => hasImage(child, key)) : false;
+}
 
-    createSecondMode() {
-        this.editor.commands.saveToLocalStorage(true);
-        const title = this.editor.state.doc.content.content[0].content.content[0];
-        this.shortMode = !this.shortMode;
-        this.editor.destroy();
-        this.createEditor();
-        this.clearContent(title ? title.text : '');
+function scrollToolbar() {
+    if (document.body.scrollTop > 5 || document.documentElement.scrollTop > 5 || window.innerWidth < 700) {
+        toolbarPaddingTop.value = 0;
+    } else {
+        toolbarPaddingTop.value = 150;
     }
+}
 
-    editSecondMode() {
-        this.editor.commands.saveToLocalStorage(true);
-        this.shortMode = !this.shortMode;
-        const content = this.shortMode
-            ? this.editor.storage.save.shortVersionJSON
-            : this.editor.storage.save.longVersionJSON;
-        this.editor.destroy();
-        this.createEditor();
-        this.editor.commands.setContent(content);
+function loadContent() {
+    const sourceFile = proxy.$route.params.editSourceFile;
+    if (sourceFile) {
+        import(`@/assets/lessons/${sourceFile}`).then((file) => editor.value.commands.loadFromJSON(file));
     }
+}
 
-    secondModeExists() {
-        return this.shortMode ? this.editor?.storage.save.longVersionJSON : this.editor?.storage.save.shortVersionJSON;
-    }
+function clearContent(title?: string) {
+    editor.value.commands.setContent(`
+        <h1>${title ? title : ''}</h1>
+        <intro></intro>
+        <chapter>
+            <chapter-title isHidden="false"></chapter-title>
+            <chapter-body></chapter-body>
+        </chapter>
+    `);
+}
 
-    openDraftsDialog() {
-        this.showDraftsDialog = true;
-        this.availableDrafts = this.draftsList();
-    }
+function exitListener(event: any) {
+    event.preventDefault();
+    event.returnValue = '';
+}
 
-    closeDraftsDialog() {
-        this.showDraftsDialog = false;
-    }
-
-    loadDraft(draft: DraftPreview) {
-        this.showDraftsDialog = false;
-        this.shortMode = false;
-        this.editor.commands.loadDraft(draft);
-    }
-
-    deleteDraft(draft: DraftPreview) {
-        this.editor.commands.deleteDraft(draft);
-        this.availableDrafts = this.draftsList();
-    }
-
-    deleteImage(image: ImageData, confirmedDelete: () => void) {
-        let short = this.shortMode ? this.editor.getJSON() : this.editor.storage.save.shortVersionJSON;
-        let long = this.shortMode ? this.editor.storage.save.longVersionJSON : this.editor.getJSON();
-        const isInShort = short && this.hasImage(short, image.name);
-        const isInLong = long && this.hasImage(long, image.name);
-        if (isInLong) {
-            alert('Obraz jest używany w wersji pełnej lekcji. Najpierw usuń jego wystąpienia.');
-        } else if (isInShort) {
-            alert('Obraz jest używany w wersji skróconej lekcji. Najpierw usuń jego wystąpienia.');
-        } else {
-            confirmedDelete();
-        }
-    }
-
-    hasImage(node: any, key: string): boolean {
-        if (node.type == 'image' && node.attrs.key == key) {
-            return true;
-        }
-        return node.content ? node.content.some((child: any) => this.hasImage(child, key)) : false;
-    }
-
-    scrollToolbar() {
-        const toolbar = this.$refs.toolbar as HTMLElement;
-        if (document.body.scrollTop > 5 || document.documentElement.scrollTop > 5 || window.innerWidth < 700) {
-            toolbar.style.paddingTop = '0';
-        } else {
-            toolbar.style.paddingTop = '150px';
-        }
-    }
-
-    private loadContent() {
-        this.sourceFile = this.$route.params.editSourceFile;
-        if (this.sourceFile) {
-            import(`@/assets/lessons/${this.sourceFile}`).then((file) => this.editor.commands.loadFromJSON(file));
-        }
-    }
-
-    private clearContent(title?: string) {
-        this.editor.commands.setContent(`
-            <h1>${title ? title : ''}</h1>
-            <intro></intro>
-            <chapter>
-                <chapter-title isHidden="false"></chapter-title>
-                <chapter-body></chapter-body>
-            </chapter>
-        `);
-    }
-
-    private exitListener(event: any) {
-        event.preventDefault();
-        event.returnValue = '';
-    }
-
-    private draftsList(): DraftPreview[] {
-        return LocalStorageSaver.draftsList().sort((d1, d2) => {
-            const d1AutoSave = d1.fromAutosave ? 1 : 0;
-            const d2AutoSave = d2.fromAutosave ? 1 : 0;
-            return d1.name == d2.name ? d1AutoSave - d2AutoSave : d2.lastModified.getTime() - d1.lastModified.getTime();
-        });
-    }
+function draftsList(): DraftPreview[] {
+    return LocalStorageSaver.draftsList().sort((d1, d2) => {
+        const d1AutoSave = d1.fromAutosave ? 1 : 0;
+        const d2AutoSave = d2.fromAutosave ? 1 : 0;
+        return d1.name == d2.name ? d1AutoSave - d2AutoSave : d2.lastModified.getTime() - d1.lastModified.getTime();
+    });
 }
 </script>
 
