@@ -1,7 +1,6 @@
-import { Node } from '@tiptap/vue-2';
-import { VueNodeViewRenderer } from '@tiptap/vue-2';
+import { Node } from '@tiptap/vue-3';
+import { VueNodeViewRenderer } from '@tiptap/vue-3';
 import SemanticTagVue from './SemanticTag.vue';
-import { VueConstructor } from 'vue';
 
 declare module '@tiptap/core' {
     interface Commands<ReturnType> {
@@ -20,7 +19,7 @@ export default Node.create({
 
     renderHTML: ({ HTMLAttributes }) => ['semantic-tag', HTMLAttributes, 0],
 
-    addNodeView: () => VueNodeViewRenderer(SemanticTagVue as unknown as VueConstructor<Vue>),
+    addNodeView: () => VueNodeViewRenderer(SemanticTagVue),
 
     addAttributes: () => ({
         tags: {

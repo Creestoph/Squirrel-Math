@@ -1,4 +1,4 @@
-import { Node } from '@tiptap/vue-2';
+import { Node } from '@tiptap/vue-3';
 
 export default Node.create<{ shortVersion: boolean }>({
     name: 'chapterBody',

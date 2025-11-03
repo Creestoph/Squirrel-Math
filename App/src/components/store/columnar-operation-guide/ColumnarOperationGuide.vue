@@ -8,34 +8,30 @@
             <button class="button-red" style="float: center" @click="columnarOperationStart()">Start</button>
         </p>
         <div class="columnar-operation-script center" ref="columnarOperationArea">
-            <table>
-                <tr>
-                    <td ref="buttonLeft" id="button-left" @click="prev()">
-                        <svg height="0" width="30">
-                            <defs>
-                                <linearGradient id="gradient">
-                                    <stop offset="20%" stop-color="#C33" />
-                                    <stop offset="90%" stop-color="#833" />
-                                </linearGradient>
-                                <linearGradient id="hover-gradient">
-                                    <stop offset="20%" stop-color="#A33" />
-                                    <stop offset="90%" stop-color="#433" />
-                                </linearGradient>
-                            </defs>
-                            <polygon points="20,0 0,30 20,60" />
-                        </svg>
-                    </td>
-                    <td>
-                        <div ref="table" class="no-selection" />
-                        <p ref="commentElement" class="no-selection" />
-                    </td>
-                    <td ref="buttonRight" id="button-right" @click="next()">
-                        <svg height="0" width="30">
-                            <polygon points="0,0 20,30 0,60" />
-                        </svg>
-                    </td>
-                </tr>
-            </table>
+            <div ref="buttonLeft" id="button-left" @click="prev()">
+                <svg height="0" width="30">
+                    <defs>
+                        <linearGradient id="gradient">
+                            <stop offset="20%" stop-color="#C33" />
+                            <stop offset="90%" stop-color="#833" />
+                        </linearGradient>
+                        <linearGradient id="hover-gradient">
+                            <stop offset="20%" stop-color="#A33" />
+                            <stop offset="90%" stop-color="#433" />
+                        </linearGradient>
+                    </defs>
+                    <polygon points="20,0 0,30 20,60" />
+                </svg>
+            </div>
+            <div class="main-content">
+                <div ref="table" class="no-selection" />
+                <p ref="commentElement" class="no-selection" />
+            </div>
+            <div ref="buttonRight" id="button-right" @click="next()">
+                <svg height="0" width="30">
+                    <polygon points="0,0 20,30 0,60" />
+                </svg>
+            </div>
         </div>
     </div>
 </template>
@@ -140,28 +136,25 @@ function prev() {
     padding: 0; /*20px*/
     visibility: hidden;
     box-shadow: 0px 0px 13px 0px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    min-height: 400px;
 
-    table {
-        width: 100%;
-        height: 100%;
+    #button-left,
+    #button-right {
+        flex: 70px 0 0;
+
+        &:hover {
+            transform: scale(1.2);
+
+            polygon {
+                fill: url(#hover-gradient);
+            }
+        }
     }
 
-    td {
-        vertical-align: center;
+    .main-content {
+        flex: 1;
     }
-}
-
-#button-left:hover,
-#button-right:hover {
-    transform: scale(1.2);
-
-    polygon {
-        fill: url(#hover-gradient);
-    }
-}
-
-#buttonLeft + td {
-    width: 75%;
-    vertical-align: top;
 }
 </style>

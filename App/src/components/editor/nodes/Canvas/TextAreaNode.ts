@@ -2,11 +2,10 @@ import { Node } from '@tiptap/core';
 import { Plugin, Transaction, EditorState } from 'prosemirror-state';
 import { Slice, Node as PMNode } from 'prosemirror-model';
 import { ReplaceStep } from 'prosemirror-transform';
-import { VueNodeViewRenderer } from '@tiptap/vue-2';
+import { VueNodeViewRenderer } from '@tiptap/vue-3';
 import TextAreaVue from './TextAreaView.vue';
 import { idGenerator } from './Shape';
 import { Point } from '@/components/utils/point';
-import { VueConstructor } from 'vue';
 import { ShapeController } from './Canvas';
 import { ValueObject } from '@/models/common';
 
@@ -65,7 +64,7 @@ export default Node.create({
 
     renderHTML: ({ HTMLAttributes }) => ['text-area', { attrs: JSON.stringify(HTMLAttributes) }, 0],
 
-    addNodeView: () => VueNodeViewRenderer(TextAreaVue as unknown as VueConstructor<Vue>),
+    addNodeView: () => VueNodeViewRenderer(TextAreaVue),
 
     addCommands() {
         return {

@@ -7,7 +7,8 @@
 </template>
 
 <script setup lang="ts">
-import { NodeViewContent, NodeViewWrapper } from '@tiptap/vue-2';
+import { NodeViewContent, nodeViewProps, NodeViewWrapper } from '@tiptap/vue-3';
+defineProps(nodeViewProps);
 </script>
 
 <style scoped>

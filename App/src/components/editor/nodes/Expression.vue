@@ -18,7 +18,7 @@
 </template>
 
 <script setup lang="ts">
-import { nodeViewProps, NodeViewWrapper } from '@tiptap/vue-2';
+import { nodeViewProps, NodeViewWrapper } from '@tiptap/vue-3';
 import { computed, nextTick, onMounted, ref } from 'vue';
 declare var MathJax: any;
 

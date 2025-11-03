@@ -1,7 +1,7 @@
 <template>
     <node-view-wrapper class="component-container">
         <div v-show="editMode" class="editor-wrapper">
-            <node-view-content class="html-editor" ref="content" />
+            <node-view-content class="html-editor" />
             <button @click="run()" title="uruchom">
                 <icon>play_arrow</icon>
             </button>
@@ -14,14 +14,13 @@
 </template>
 
 <script setup lang="ts">
-import { NodeViewContent, nodeViewProps, NodeViewWrapper } from '@tiptap/vue-2';
+import { NodeViewContent, nodeViewProps, NodeViewWrapper } from '@tiptap/vue-3';
 import { nextTick, ref } from 'vue';
 
 const props = defineProps(nodeViewProps);
 
 const editMode = ref(true);
 const parsed = ref('');
-const content = ref<Vue | null>(null);
 const output = ref<HTMLElement | null>(null);
 
 function run() {

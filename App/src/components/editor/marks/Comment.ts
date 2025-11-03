@@ -1,4 +1,4 @@
-import { Mark } from '@tiptap/vue-2';
+import { Mark } from '@tiptap/vue-3';
 
 declare module '@tiptap/core' {
     interface Commands<ReturnType> {

@@ -1,5 +1,5 @@
 import { colorsDifference, rgbToHex } from '@/components/utils/colors';
-import { Mark } from '@tiptap/vue-2';
+import { Mark } from '@tiptap/vue-3';
 import { colors } from '@/style/palette';
 
 declare module '@tiptap/core' {

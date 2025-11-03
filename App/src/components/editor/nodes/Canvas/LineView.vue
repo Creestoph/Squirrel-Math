@@ -4,8 +4,8 @@
 
 <script setup lang="ts">
 import paper from 'paper';
-import { nodeViewProps, NodeViewWrapper } from '@tiptap/vue-2';
-import { onMounted, ref, watch } from 'vue';
+import { nodeViewProps, NodeViewWrapper } from '@tiptap/vue-3';
+import { ComponentPublicInstance, onMounted, ref, watch } from 'vue';
 import { Point } from '@/components/utils/point';
 import { snapShift } from './Shape';
 import { LineShapeController } from './LineNode';
@@ -26,7 +26,7 @@ const selectedGripOutline = ref<paper.Path.Circle>(null!);
 const editing = { value: false };
 const isSelected = ref(false);
 
-const canvas = ref<Vue>();
+const canvas = ref<ComponentPublicInstance>(null!);
 
 const fillColor = {
     get value() {
@@ -49,7 +49,7 @@ watch(
 
 onMounted(() => {
     paperScope = new paper.PaperScope();
-    paperScope.setup(canvas.value!.$el as HTMLCanvasElement);
+    paperScope.setup(canvas.value.$el as HTMLCanvasElement);
     render();
     const controller: LineShapeController = {
         node: props.node,

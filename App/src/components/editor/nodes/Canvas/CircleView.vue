@@ -4,8 +4,8 @@
 
 <script setup lang="ts">
 import paper from 'paper';
-import { nodeViewProps, NodeViewWrapper } from '@tiptap/vue-2';
-import { onMounted, ref, watch } from 'vue';
+import { nodeViewProps, NodeViewWrapper } from '@tiptap/vue-3';
+import { ComponentPublicInstance, onMounted, ref, watch } from 'vue';
 import { snapShift } from './Shape';
 import { CircleShapeController } from './CircleNode';
 
@@ -26,7 +26,7 @@ const all = ref<paper.Group>(null!);
 const grips = ref<paper.Group>(null!);
 const movedShape = ref<paper.Item | null>(null);
 const isSelected = ref(false);
-const canvas = ref<Vue>();
+const canvas = ref<ComponentPublicInstance>(null!);
 
 const fillColor = {
     get value() {
@@ -97,7 +97,7 @@ watch(
 
 onMounted(() => {
     paperScope = new paper.PaperScope();
-    paperScope.setup(canvas.value!.$el as HTMLCanvasElement);
+    paperScope.setup(canvas.value.$el as HTMLCanvasElement);
     render();
     const controller: CircleShapeController = {
         node: props.node,

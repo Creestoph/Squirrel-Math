@@ -1,4 +1,4 @@
-import { Node } from '@tiptap/vue-2';
+import { Node } from '@tiptap/vue-3';
 
 declare module '@tiptap/core' {
     interface Commands<ReturnType> {

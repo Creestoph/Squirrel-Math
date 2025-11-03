@@ -84,9 +84,9 @@
                         </div>
                     </div>
                     <div v-if="productionMode && componentName == 'other'">
-                        <comment text="Leniwi programiści."
-                            >Ten komponent podlega edycji tylko przez administrację Squirrel-Math.</comment
-                        >
+                        <comment text="Leniwi programiści.">
+                            Ten komponent podlega edycji tylko przez administrację Squirrel-Math.
+                        </comment>
                     </div>
                 </div>
             </div>
@@ -95,7 +95,12 @@
             </button>
         </div>
         <div class="output-wrapper">
-            <div v-if="!editMode" :is="getComponent()" v-bind="componentConfiguration" :class="{ output: true }"></div>
+            <component
+                v-if="!editMode"
+                :is="getComponent()"
+                v-bind="componentConfiguration"
+                :class="{ output: true }"
+            ></component>
             <button v-show="!editMode" @click="edit()" class="toggle-edit-button" title="edytuj">
                 <icon>edit</icon>
             </button>
@@ -104,11 +109,11 @@
 </template>
 
 <script setup lang="ts">
-import Vue, { computed, onBeforeMount, onMounted, ref } from 'vue';
-import { NodeViewWrapper } from '@tiptap/vue-2';
+import { computed, onBeforeMount, onMounted, ref } from 'vue';
+import { nodeViewProps, NodeViewWrapper } from '@tiptap/vue-3';
 import { BuiltInComponent, builtInComponents, getBuiltInComponentByName } from '@/components/utils/build-in-components';
 
-const props = defineProps(['node', 'updateAttributes', 'view']);
+const props = defineProps(nodeViewProps);
 
 const editMode = ref(true);
 const allComponents = ref<Record<string, BuiltInComponent>>({});
@@ -173,7 +178,7 @@ function onComponentSelect() {
 }
 
 function addElementForArrayParameter(i: number) {
-    Vue.set(formArgs.value, i, [...(formArgs.value[i] as string[]), '']);
+    formArgs.value[i] = [...(formArgs.value[i] as string[]), ''];
 }
 
 function removeElementForArrayParameter(i: number) {

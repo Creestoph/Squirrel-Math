@@ -17,7 +17,8 @@
 </template>
 
 <script setup lang="ts">
-import { Component, computed, onMounted, ref } from 'vue';
+import { computed, onMounted, ref } from 'vue';
+import type { Component } from 'vue';
 import Graphics from './Graphics.vue';
 import DefaultTable from './DefaultTable.vue';
 import TableCell from './TableCell.vue';

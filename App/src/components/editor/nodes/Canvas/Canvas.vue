@@ -104,7 +104,7 @@ import { idGenerator, snapShift } from './Shape';
 import ColorPicker from '../../ColorPicker.vue';
 
 import { computed, onMounted, onUnmounted, ref } from 'vue';
-import { NodeViewContent, nodeViewProps, NodeViewWrapper } from '@tiptap/vue-2';
+import { NodeViewContent, nodeViewProps, NodeViewWrapper } from '@tiptap/vue-3';
 import { ShapeController } from './Canvas';
 import { Node as PMNode } from '@tiptap/pm/model';
 import { LineShapeController } from './LineNode';

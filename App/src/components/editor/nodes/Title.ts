@@ -1,7 +1,6 @@
-import { Node, VueNodeViewRenderer } from '@tiptap/vue-2';
+import { Node, VueNodeViewRenderer } from '@tiptap/vue-3';
 import TitleShort from './TitleShort.vue';
 import Title from './Title.vue';
-import { VueConstructor } from 'vue';
 
 export default Node.create<{ shortVersion: boolean }>({
     name: 'title',
@@ -19,6 +18,6 @@ export default Node.create<{ shortVersion: boolean }>({
     renderHTML: () => ['h1', 0],
 
     addNodeView() {
-        return VueNodeViewRenderer((this.options.shortVersion ? TitleShort : Title) as unknown as VueConstructor<Vue>);
+        return VueNodeViewRenderer(this.options.shortVersion ? TitleShort : Title);
     },
 });

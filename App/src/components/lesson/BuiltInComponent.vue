@@ -1,5 +1,5 @@
 <template>
-    <div :is="getComponentName()" v-bind="componentConfiguration"></div>
+    <component :is="getComponentName()" v-bind="componentConfiguration"></component>
 </template>
 
 <script setup lang="ts">

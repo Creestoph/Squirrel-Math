@@ -22,7 +22,7 @@
                 <button v-if="localScrollable" @click="scrollLocalLeft()">🢐</button>
                 <div class="images-row">
                     <div :style="{ transform: `translateX(${lessonImagesScroll}px)` }">
-                        <button v-for="(image, key) in lessonImgs" :key="key">
+                        <div v-for="(image, key) in lessonImgs" :key="key">
                             <button
                                 class="delete-image"
                                 @click="
@@ -33,7 +33,7 @@
                                 ✖
                             </button>
                             <img :title="image.name" :alt="image.name" :src="image.src" @click="choose(key)" />
-                        </button>
+                        </div>
                     </div>
                 </div>
                 <button v-if="localScrollable" @click="scrollLocalRight()">🢒</button>

@@ -1,16 +1,12 @@
-import Vue from 'vue';
+import { createApp } from 'vue';
 import App from '@/components/App.vue';
-import router from '@/router/index';
+import router from '@/router';
 import Comment from '@/components/lesson/Comment.vue';
 import Icon from '@/components/Icon.vue';
 
-Vue.component('Comment', Comment);
-Vue.component('Icon', Icon);
+const app = createApp(App);
 
-/* eslint-disable no-new */
-new Vue({
-    el: '#app',
-    router,
-    components: { App },
-    template: '<App/>',
-});
+app.component('Comment', Comment);
+app.component('Icon', Icon);
+
+app.use(router).mount('#app');

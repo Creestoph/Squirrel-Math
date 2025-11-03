@@ -1,10 +1,9 @@
-import { Node } from '@tiptap/vue-2';
-import { VueNodeViewRenderer } from '@tiptap/vue-2';
+import { Node } from '@tiptap/vue-3';
+import { VueNodeViewRenderer } from '@tiptap/vue-3';
 import { mainRedColor } from './Colors';
 import PolygonView from './PolygonView.vue';
 import { idGenerator } from './Shape';
 import { Point } from '@/components/utils/point';
-import { VueConstructor } from 'vue';
 import { ShapeController } from './Canvas';
 import { ValueObject } from '@/models/common';
 
@@ -51,7 +50,7 @@ export default Node.create({
         };
     },
 
-    addNodeView: () => VueNodeViewRenderer(PolygonView as unknown as VueConstructor<Vue>),
+    addNodeView: () => VueNodeViewRenderer(PolygonView),
 
     addCommands() {
         return {

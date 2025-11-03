@@ -1,10 +1,9 @@
-import { Node } from '@tiptap/vue-2';
-import { VueNodeViewRenderer } from '@tiptap/vue-2';
+import { Node } from '@tiptap/vue-3';
+import { VueNodeViewRenderer } from '@tiptap/vue-3';
 import { mainRedColor } from './Colors';
 import ArcView from './ArcView.vue';
 import { idGenerator } from './Shape';
 import { Point } from '@/components/utils/point';
-import { VueConstructor } from 'vue';
 import { ShapeController } from './Canvas';
 import { ValueObject } from '@/models/common';
 
@@ -58,7 +57,7 @@ export default Node.create({
         };
     },
 
-    addNodeView: () => VueNodeViewRenderer(ArcView as unknown as VueConstructor<Vue>),
+    addNodeView: () => VueNodeViewRenderer(ArcView),
 
     addCommands() {
         return {

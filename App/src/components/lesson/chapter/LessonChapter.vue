@@ -17,14 +17,14 @@
 <script setup lang="ts">
 import ChapterTitle from './ChapterTitle.vue';
 import ChapterBody from './ChapterBody.vue';
-import { nextTick, onMounted, ref } from 'vue';
+import { ComponentPublicInstance, nextTick, onMounted, ref } from 'vue';
 
 const props = withDefaults(defineProps<{ optional?: boolean }>(), { optional: false });
 const bodyZipped = ref(props.optional);
 const isBodyAnimating = ref(false);
-const title = ref<Vue>();
+const title = ref<ComponentPublicInstance>(null!);
 
-onMounted(() => nextTick(() => (title.value!.$el.id = (title.value!.$el as HTMLDivElement).innerText)));
+onMounted(() => nextTick(() => (title.value.$el.id = (title.value.$el as HTMLDivElement).innerText)));
 
 function onZip() {
     if (!isBodyAnimating.value) {

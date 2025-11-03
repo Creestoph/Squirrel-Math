@@ -1,26 +1,28 @@
 <template>
     <div>
         <table class="operation-table center" @mouseout="reset()">
-            <tr>
-                <th />
-                <th v-for="(i, n) in 10" :key="n" :class="{ selected: loperand == n && active }">
-                    {{ n }}
-                </th>
-            </tr>
-            <tr v-for="(i, n) in 10" :key="n">
-                <th :class="{ selected: roperand == n && active }">{{ n }}</th>
-                <td
-                    v-for="(j, m) in 10"
-                    :key="m"
-                    :class="{
-                        selected: (loperand == m || roperand == n) && active,
-                        'selected-strong': loperand == m && roperand == n && active,
-                    }"
-                    @mouseover="set(m, n)"
-                >
-                    {{ f(m, n) }}
-                </td>
-            </tr>
+            <table-body>
+                <tr>
+                    <th />
+                    <th v-for="(i, n) in 10" :key="n" :class="{ selected: loperand == n && active }">
+                        {{ n }}
+                    </th>
+                </tr>
+                <tr v-for="(i, n) in 10" :key="n">
+                    <th :class="{ selected: roperand == n && active }">{{ n }}</th>
+                    <td
+                        v-for="(j, m) in 10"
+                        :key="m"
+                        :class="{
+                            selected: (loperand == m || roperand == n) && active,
+                            'selected-strong': loperand == m && roperand == n && active,
+                        }"
+                        @mouseover="set(m, n)"
+                    >
+                        {{ f(m, n) }}
+                    </td>
+                </tr>
+            </table-body>
         </table>
 
         <p style="text-align: center" class="math">
@@ -81,17 +83,39 @@ table.operation-table {
     border-collapse: collapse;
     border-style: hidden;
 
-    td {
-        height: 34px;
+    td,
+    th {
+        height: 32px;
         width: 32px;
+    }
+
+    td {
         border: 1px solid black;
     }
 
     th {
-        height: 34px;
-        width: 32px;
         border: 2px solid black;
         color: colors.$darker-red;
+    }
+
+    tr:first-child th,
+    tr:first-child td {
+        border-top: none;
+    }
+
+    tr:last-child th,
+    tr:last-child td {
+        border-bottom: none;
+    }
+
+    th:first-child,
+    td:first-child {
+        border-left: none;
+    }
+
+    th:last-child,
+    td:last-child {
+        border-right: none;
     }
 }
 </style>

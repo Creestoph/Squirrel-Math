@@ -1,7 +1,6 @@
 import ExpressionInlineVue from './ExpressionInline.vue';
-import { Node, nodeInputRule, nodePasteRule } from '@tiptap/vue-2';
-import { VueNodeViewRenderer } from '@tiptap/vue-2';
-import { VueConstructor } from 'vue';
+import { Node, nodeInputRule, nodePasteRule } from '@tiptap/vue-3';
+import { VueNodeViewRenderer } from '@tiptap/vue-3';
 
 declare module '@tiptap/core' {
     interface Commands<ReturnType> {
@@ -30,7 +29,7 @@ export default Node.create({
         };
     },
 
-    addNodeView: () => VueNodeViewRenderer(ExpressionInlineVue as unknown as VueConstructor<Vue>),
+    addNodeView: () => VueNodeViewRenderer(ExpressionInlineVue),
 
     addCommands() {
         return {

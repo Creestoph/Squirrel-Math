@@ -5,7 +5,7 @@
 </template>
 
 <script setup lang="ts">
-import { NodeViewContent, NodeViewWrapper } from '@tiptap/vue-2';
+import { NodeViewContent, NodeViewWrapper } from '@tiptap/vue-3';
 </script>
 
 <style scoped lang="scss">

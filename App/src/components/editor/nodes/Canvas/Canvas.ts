@@ -1,8 +1,7 @@
-import { Node, VueNodeViewRenderer } from '@tiptap/vue-2';
+import { Node, VueNodeViewRenderer } from '@tiptap/vue-3';
 import CanvasVue from './Canvas.vue';
 import { Node as PMNode } from '@tiptap/pm/model';
 import { Point } from '@/components/utils/point';
-import { VueConstructor } from 'vue';
 import { ValueObject } from '@/models/common';
 
 declare module '@tiptap/core' {
@@ -79,5 +78,5 @@ export default Node.create({
         };
     },
 
-    addNodeView: () => VueNodeViewRenderer(CanvasVue as unknown as VueConstructor<Vue>),
+    addNodeView: () => VueNodeViewRenderer(CanvasVue),
 });

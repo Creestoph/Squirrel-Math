@@ -433,7 +433,7 @@
 
 <script setup lang="ts">
 import { computed, getCurrentInstance, nextTick, onMounted, onUnmounted, ref } from 'vue';
-import { Editor, EditorContent, SingleCommands } from '@tiptap/vue-2';
+import { Editor, EditorContent, SingleCommands } from '@tiptap/vue-3';
 
 import Lesson from '../lesson/Lesson.vue';
 import ColorPicker from './ColorPicker.vue';
@@ -488,10 +488,11 @@ import TextAlign from '@tiptap/extension-text-align';
 import { TableKit } from '@tiptap/extension-table';
 import { Gapcursor, UndoRedo } from '@tiptap/extensions';
 import LinkPopup from './LinkPopup.vue';
-import { BubbleMenu } from '@tiptap/vue-2/menus';
+import { BubbleMenu } from '@tiptap/vue-3/menus';
 import { allComments, lessonImages } from './shared-state';
 import { Point } from '../utils/point';
 import { ImageData } from '@/models/lesson';
+import { onBeforeRouteLeave } from 'vue-router';
 
 const proxy = getCurrentInstance()!.proxy;
 
@@ -511,8 +512,9 @@ const shortMode = computed({
     },
 });
 
+createEditor(false);
+
 onMounted(() => {
-    createEditor();
     clearAll();
     loadContent();
     addEventListener('beforeunload', exitListener);
@@ -529,15 +531,14 @@ onUnmounted(() => {
     removeEventListener('scroll', scrollToolbar);
 });
 
-// TODO restore in vue 3
-// beforeRouteLeave(to: any, from: any, next: any) {
-//     if (window.confirm('Opuścić stronę? Wprowadzone zmiany mogą nie zostać zapisane.')) {
-//         next();
-//     }
-// }
+onBeforeRouteLeave((to: any, from: any, next: any) => {
+    if (window.confirm('Opuścić stronę? Wprowadzone zmiany mogą nie zostać zapisane.')) {
+        next();
+    }
+});
 
-function createEditor() {
-    const x = new Editor({
+function createEditor(shortVersion: boolean) {
+    editor.value = new Editor({
         extensions: [
             // tiptap extensions
             Paragraph,
@@ -565,11 +566,11 @@ function createEditor() {
 
             // custom extensions
             LessonDoc,
-            Title.configure({ shortVersion: shortMode.value }),
+            Title.configure({ shortVersion }),
             Intro,
             Chapter,
             ChapterTitle,
-            ChapterBody.configure({ shortVersion: shortMode.value }),
+            ChapterBody.configure({ shortVersion }),
             SemanticTag,
             Expression,
             ExpressionInline,
@@ -627,9 +628,6 @@ function createEditor() {
             Save,
         ],
     });
-    // TODO
-    // @ts-ignore
-    editor.value = x;
 }
 
 function insert(element: string, commands: SingleCommands) {
@@ -707,21 +705,23 @@ function clearAll() {
 function createSecondMode() {
     editor.value.commands.saveToLocalStorage(true);
     const title = editor.value.state.doc.content.content[0].content.content[0];
-    shortMode.value = !shortMode.value;
+    const wasShortMode = shortMode.value;
     editor.value.destroy();
-    createEditor();
+    createEditor(!wasShortMode);
+    shortMode.value = !wasShortMode;
     clearContent(title ? title.text : '');
 }
 
 function editSecondMode() {
     editor.value.commands.saveToLocalStorage(true);
-    shortMode.value = !shortMode.value;
-    const content = shortMode.value
-        ? editor.value.storage.save.shortVersionJSON
-        : editor.value.storage.save.longVersionJSON;
+    const wasShortMode = shortMode.value;
+    const newContent = wasShortMode
+        ? editor.value.storage.save.longVersionJSON
+        : editor.value.storage.save.shortVersionJSON;
     editor.value.destroy();
-    createEditor();
-    editor.value.commands.setContent(content);
+    createEditor(!wasShortMode);
+    shortMode.value = !wasShortMode;
+    editor.value.commands.setContent(newContent);
 }
 
 function secondModeExists() {

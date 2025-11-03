@@ -34,7 +34,6 @@ export abstract class ColumnarOperation {
         mainArea.style.marginBottom = '60px';
         mainArea.style.height = 'auto';
         this.table.style.marginTop = '60px';
-        (mainArea.childNodes[0] as HTMLElement).style.minHeight = '400px';
         (this.buttonLeft.childNodes[0] as HTMLElement).setAttribute('height', '60px');
         (this.buttonRight.childNodes[0] as HTMLElement).setAttribute('height', '60px');
         let inputValue = input.value;

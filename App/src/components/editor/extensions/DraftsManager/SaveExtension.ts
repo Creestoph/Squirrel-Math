@@ -1,4 +1,4 @@
-import { Extension, SingleCommands } from '@tiptap/vue-2';
+import { Extension, SingleCommands } from '@tiptap/vue-3';
 import { Draft, DraftPreview, LocalStorageSaver } from './LocalStorageManager';
 import { downloadFile } from '@/components/utils/files';
 import { allComments, lessonImages } from '../../shared-state';

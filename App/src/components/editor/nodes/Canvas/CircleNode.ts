@@ -1,10 +1,9 @@
-import { Node } from '@tiptap/vue-2';
-import { VueNodeViewRenderer } from '@tiptap/vue-2';
+import { Node } from '@tiptap/vue-3';
+import { VueNodeViewRenderer } from '@tiptap/vue-3';
 import CircleView from './CircleView.vue';
 import { mainRedColor } from './Colors';
 import { idGenerator } from './Shape';
 import { Point } from '@/components/utils/point';
-import { VueConstructor } from 'vue';
 import { ShapeController } from './Canvas';
 import { ValueObject } from '@/models/common';
 
@@ -51,7 +50,7 @@ export default Node.create({
         };
     },
 
-    addNodeView: () => VueNodeViewRenderer(CircleView as unknown as VueConstructor<Vue>),
+    addNodeView: () => VueNodeViewRenderer(CircleView),
 
     addCommands() {
         return {

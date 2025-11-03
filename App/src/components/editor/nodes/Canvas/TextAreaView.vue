@@ -30,7 +30,7 @@
 <script setup lang="ts">
 import paper from 'paper';
 import { snapShift } from './Shape';
-import { NodeViewContent, nodeViewProps, NodeViewWrapper } from '@tiptap/vue-2';
+import { NodeViewContent, nodeViewProps, NodeViewWrapper } from '@tiptap/vue-3';
 import { computed, onMounted, ref } from 'vue';
 import { TextAreaShapeController } from './TextAreaNode';
 

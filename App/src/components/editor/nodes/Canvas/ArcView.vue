@@ -4,8 +4,8 @@
 
 <script setup lang="ts">
 import paper from 'paper';
-import { nodeViewProps, NodeViewWrapper } from '@tiptap/vue-2';
-import { computed, onMounted, ref, watch } from 'vue';
+import { nodeViewProps, NodeViewWrapper } from '@tiptap/vue-3';
+import { ComponentPublicInstance, computed, onMounted, ref, watch } from 'vue';
 import { snapShift } from './Shape';
 import { ArcShapeController } from './ArcNode';
 
@@ -25,7 +25,7 @@ const grips = ref<paper.Group>(null!);
 
 const isSelected = ref(false);
 
-const canvas = ref<Vue>();
+const canvas = ref<ComponentPublicInstance>(null!);
 
 const fillColor = {
     get value() {
@@ -45,14 +45,11 @@ const borderColor = {
         return props.node.attrs.borderColor;
     },
 
-    set value(borderColor) {
-        if (borderColor.value != borderColor) {
-            props.updateAttributes({ borderColor });
+    set value(color) {
+        if (borderColor.value != color) {
+            props.updateAttributes({ borderColor: color });
         }
-        if (borderColor == '#00000000') {
-            borderColor = '#00000001';
-        }
-        arcStroke.value.strokeColor = new paper.Color(borderColor);
+        assignStrokeColor(color);
     },
 };
 
@@ -98,7 +95,7 @@ watch(
 
 onMounted(() => {
     paperScope = new paper.PaperScope();
-    paperScope.setup(canvas.value!.$el as HTMLCanvasElement);
+    paperScope.setup(canvas.value.$el as HTMLCanvasElement);
     render();
     const controller: ArcShapeController = {
         node: props.node,
@@ -304,8 +301,15 @@ function recalculateArc() {
     arcFill.value.fillColor = props.node.attrs.color;
 
     arcStroke.value = new paper.Path.Arc(arcStart, arcMiddle, arcEnd);
-    borderColor.value = borderColor.value;
+    assignStrokeColor(borderColor.value);
     arcStroke.value.style.strokeWidth = 3;
+}
+
+function assignStrokeColor(color: string) {
+    if (color == '#00000000') {
+        color = '#00000001';
+    }
+    arcStroke.value.strokeColor = new paper.Color(borderColor);
 }
 </script>
 

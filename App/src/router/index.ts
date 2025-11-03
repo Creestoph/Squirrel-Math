@@ -1,24 +1,22 @@
-import Vue from 'vue';
-import VueRouter from 'vue-router';
+import { createRouter, createWebHistory } from 'vue-router';
 import { routes } from '@/router/routes';
 
-Vue.use(VueRouter);
-
-const router = new VueRouter({
+export default createRouter({
+    history: createWebHistory(),
     routes,
-    mode: 'history',
-    scrollBehavior(to) {
+    scrollBehavior: (to, _from, savedPosition) => {
+        if (savedPosition) {
+            return savedPosition;
+        }
+
         // TODO workaround for MathJax recalc
         if (to.hash) {
             return new Promise((resolve) => {
                 setTimeout(() => {
-                    resolve({ selector: decodeURIComponent(to.hash) });
+                    resolve({ el: decodeURIComponent(to.hash) });
                 }, 1000);
             });
-        } else {
-            return { x: 0, y: 0 };
         }
+        return { left: 0, top: 0 };
     },
 });
-
-export default router;
