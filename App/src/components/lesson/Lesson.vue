@@ -1,85 +1,83 @@
 <template>
-    <div>
-        <div id="whole">
-            <div class="lesson" :style="{ left: lessonLeftPos }">
-                <lesson-version-button v-if="showVersionButton" @click.native="toggleMode()" :shortMode="shortMode" />
-                <button
-                    id="expand-button"
-                    class="no-selection"
-                    :style="{ marginTop: expandButtonPosition + 'px' }"
-                    @click="lessonHidden ? expandLesson() : hideLesson()"
-                >
-                    {{ expandButtonContent }}
-                </button>
-                <router-link v-if="content" id="edit-button" tag="a" :to="'/editor/' + content">
-                    Edytuj lekcję <icon>edit</icon>
-                </router-link>
+    <div class="whole" :style="{ left: lessonLeftPos }">
+        <div class="lesson">
+            <lesson-version-button v-if="showVersionButton" @click.native="toggleMode()" :shortMode="shortMode" />
+            <button
+                id="expand-button"
+                class="no-selection"
+                :style="{ marginTop: expandButtonPosition + 'px' }"
+                @click="lessonHidden ? expandLesson() : hideLesson()"
+            >
+                {{ expandButtonContent }}
+            </button>
+            <router-link v-if="content" id="edit-button" tag="a" :to="'/editor/' + content">
+                Edytuj lekcję <icon>edit</icon>
+            </router-link>
 
-                <div class="lesson-content" v-if="shortMode" :key="short.title.text + 'short'">
-                    <slot>
-                        <lesson-title-short>
-                            <block-element :content="short.title"></block-element>
-                        </lesson-title-short>
-                        <lesson-intro v-if="short.introElements.length">
+            <div class="lesson-content" v-if="shortMode" :key="short.title.text + 'short'">
+                <slot>
+                    <lesson-title-short>
+                        <block-element :content="short.title"></block-element>
+                    </lesson-title-short>
+                    <lesson-intro v-if="short.introElements.length">
+                        <block-element
+                            v-for="(block, i) in short.introElements"
+                            :key="i"
+                            :content="block"
+                        ></block-element>
+                    </lesson-intro>
+                    <lesson-chapter
+                        v-for="(chapter, i) in short.chapters"
+                        :key="i"
+                        :optional="chapter[0].attrs && chapter[0].attrs.isHidden"
+                    >
+                        <template #title>
                             <block-element
-                                v-for="(block, i) in short.introElements"
+                                v-for="(block, i) in chapter[0].content"
                                 :key="i"
                                 :content="block"
                             ></block-element>
-                        </lesson-intro>
-                        <lesson-chapter
-                            v-for="(chapter, i) in short.chapters"
-                            :key="i"
-                            :optional="chapter[0].attrs && chapter[0].attrs.isHidden"
-                        >
-                            <template #title>
-                                <block-element
-                                    v-for="(block, i) in chapter[0].content"
-                                    :key="i"
-                                    :content="block"
-                                ></block-element>
-                            </template>
-                            <block-element
-                                v-for="(block, j) in chapter[1].content"
-                                :key="j"
-                                :content="block"
-                            ></block-element>
-                        </lesson-chapter>
-                    </slot>
-                </div>
+                        </template>
+                        <block-element
+                            v-for="(block, j) in chapter[1].content"
+                            :key="j"
+                            :content="block"
+                        ></block-element>
+                    </lesson-chapter>
+                </slot>
+            </div>
 
-                <div class="lesson-content" v-if="!shortMode" :key="long.title.text + 'long'">
-                    <slot>
-                        <lesson-title>
-                            <block-element :content="long.title"></block-element>
-                        </lesson-title>
-                        <lesson-intro v-if="long.introElements.length">
+            <div class="lesson-content" v-if="!shortMode" :key="long.title.text + 'long'">
+                <slot>
+                    <lesson-title>
+                        <block-element :content="long.title"></block-element>
+                    </lesson-title>
+                    <lesson-intro v-if="long.introElements.length">
+                        <block-element
+                            v-for="(block, i) in long.introElements"
+                            :key="i"
+                            :content="block"
+                        ></block-element>
+                    </lesson-intro>
+                    <lesson-chapter
+                        v-for="(chapter, i) in long.chapters"
+                        :key="i"
+                        :optional="chapter[0].attrs && chapter[0].attrs.isHidden"
+                    >
+                        <template #title>
                             <block-element
-                                v-for="(block, i) in long.introElements"
+                                v-for="(block, i) in chapter[0].content"
                                 :key="i"
                                 :content="block"
                             ></block-element>
-                        </lesson-intro>
-                        <lesson-chapter
-                            v-for="(chapter, i) in long.chapters"
-                            :key="i"
-                            :optional="chapter[0].attrs && chapter[0].attrs.isHidden"
-                        >
-                            <template #title>
-                                <block-element
-                                    v-for="(block, i) in chapter[0].content"
-                                    :key="i"
-                                    :content="block"
-                                ></block-element>
-                            </template>
-                            <block-element
-                                v-for="(block, j) in chapter[1].content"
-                                :key="j"
-                                :content="block"
-                            ></block-element>
-                        </lesson-chapter>
-                    </slot>
-                </div>
+                        </template>
+                        <block-element
+                            v-for="(block, j) in chapter[1].content"
+                            :key="j"
+                            :content="block"
+                        ></block-element>
+                    </lesson-chapter>
+                </slot>
             </div>
         </div>
         <div class="footer-container">
@@ -112,7 +110,7 @@ import { allComments, lessonImages } from '../editor/shared-state';
 declare var MathJax: any;
 
 const props = defineProps<{ inputContent?: string }>();
-const proxy = getCurrentInstance()!.proxy;
+const proxy = getCurrentInstance()!.proxy!;
 
 const lessonHidden = ref(true);
 const shortMode = ref(false);
@@ -167,7 +165,7 @@ function setContent() {
                 short.value.introElements = json.short.content[1].content!;
                 short.value.chapters = json.short.content.filter((_item, i) => i > 1).map((item) => item.content!);
             }
-            allComments.value = json.comments;
+            allComments.value = json.comments || {};
             lessonImages.value = json.images || {};
             nextTick(() => MathJax.Hub.Queue(['Typeset', MathJax.Hub]));
         });
@@ -220,9 +218,9 @@ function clearElements() {
 @use '@/style/colors';
 @use '@/style/fonts';
 
-#whole {
-    background-color: colors.$dark-gray;
-    margin: 0;
+.whole {
+    position: relative;
+    transition: left 1s;
 }
 
 #expand-button {
@@ -271,8 +269,6 @@ function clearElements() {
     color: black;
     background: white;
     clear: both;
-    left: -80%;
-    transition: left 1s;
 }
 
 @media screen and (max-width: 500px) {
@@ -311,12 +307,11 @@ function clearElements() {
 }
 
 .footer-container {
-    position: absolute;
     box-sizing: border-box;
     width: 100%;
     height: 0;
     border-bottom: 170px solid colors.$dark-red;
-    filter: drop-shadow(3px -3px 10px rgba(0, 0, 0, 0.5));
+    filter: drop-shadow(20px 5px 20px rgba(0, 0, 0, 0.5));
 }
 .footer {
     padding: 20px;

@@ -89,9 +89,11 @@
             </div>
             <div class="canvas-wrapper" ref="canvasWrapper">
                 <canvas ref="eventsCatcher" resize="true"></canvas>
-                <div @mousedown="forwardClickEventToCanvas($event)">
-                    <node-view-content />
-                </div>
+                <node-view-content
+                    @mousedown="forwardClickEventToCanvas($event)"
+                    class="shapes-container"
+                    :style="{ width: canvas.width + 'px', height: canvas.height + 'px' }"
+                />
                 <canvas ref="overlayCanvas" class="overlay-canvas"></canvas>
             </div>
         </button>
@@ -792,12 +794,12 @@ function forwardClickEventToCanvas(event: MouseEvent) {
         }
     }
 
-    > div {
+    .shapes-container {
         position: absolute;
         top: 0;
-        // width: 100%;
-        // height: 100%;
-        // overflow: hidden;
+        left: 0;
+        overflow: hidden;
+        pointer-events: none;
     }
 }
 
@@ -814,6 +816,7 @@ function forwardClickEventToCanvas(event: MouseEvent) {
     height: 0;
     position: absolute;
     z-index: 1;
+    user-select: none;
 }
 
 .geometry-toolbar {

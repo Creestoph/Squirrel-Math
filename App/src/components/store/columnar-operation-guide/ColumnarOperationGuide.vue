@@ -5,9 +5,13 @@
             <input style="width: 85%" name="numberInput" type="text" ref="columnarOperationInput" />
         </p>
         <p style="text-align: center">
-            <button class="button-red" style="float: center" @click="columnarOperationStart()">Start</button>
+            <button class="button-red" style="float: center" @click="onStart()">Start</button>
         </p>
-        <div class="columnar-operation-script center" ref="columnarOperationArea">
+        <div
+            class="columnar-operation-script center"
+            ref="columnarOperationArea"
+            :style="{ display: started ? 'flex' : 'none' }"
+        >
             <div ref="buttonLeft" id="button-left" @click="prev()">
                 <svg height="0" width="30">
                     <defs>
@@ -55,10 +59,12 @@ const buttonRight = ref<HTMLElement | null>(null);
 const buttonLeft = ref<HTMLElement | null>(null);
 const columnarOperationInput = ref<HTMLInputElement | null>(null);
 const columnarOperationArea = ref<HTMLDivElement | null>(null);
+const started = ref(false);
 
 let columnarOperation: ColumnarOperation | null = null;
 
-function columnarOperationStart() {
+function onStart() {
+    started.value = true;
     let wrongInput = false;
     let operationType!:
         | typeof ColumnarAddition
@@ -133,10 +139,8 @@ function prev() {
     width: 80%;
     height: 0px;
     text-align: center;
-    padding: 0; /*20px*/
-    visibility: hidden;
+    padding: 0;
     box-shadow: 0px 0px 13px 0px rgba(0, 0, 0, 0.2);
-    display: flex;
     align-items: center;
     min-height: 400px;
 

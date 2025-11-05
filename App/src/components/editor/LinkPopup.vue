@@ -43,7 +43,7 @@
 import { ref, watch } from 'vue';
 import Dropdown from './Dropdown.vue';
 import DropdownOption from './DropdownOption.vue';
-import { LessonData } from './lessons-transform';
+import { LessonData } from '@/models/lesson';
 
 const props = defineProps<{ href?: string }>();
 const emit = defineEmits<{ (event: 'updated', url: string): void }>();
@@ -149,6 +149,7 @@ function navigate() {
 .link-editor {
     display: inline-block;
     position: absolute;
+    z-index: 3;
     margin-left: -145px;
     margin-top: -230px;
     width: 322px;

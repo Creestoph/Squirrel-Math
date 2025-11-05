@@ -30,7 +30,6 @@ export abstract class ColumnarOperation {
     }
 
     generateFromInput(input: HTMLInputElement, mainArea: HTMLDivElement, isFloat = true): void {
-        mainArea.style.visibility = 'visible';
         mainArea.style.marginBottom = '60px';
         mainArea.style.height = 'auto';
         this.table.style.marginTop = '60px';

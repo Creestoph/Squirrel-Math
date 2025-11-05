@@ -436,7 +436,7 @@ export class ColumnarDivision extends ColumnarOperation {
                             zeros = 0;
                         }
                     }
-                    comment += '$' + (result[0] == '.' ? '0' : '') + result + '$.';
+                    comment += '$' + (result[0] == '.' ? '0' : '') + result.replace('.', ',') + '$.';
                     highlightFields = ColumnarDivision.emptyHighlight(table);
                     this.steps.push(new ColumnarDivisionStep(table, highlightFields, comment));
                     return;

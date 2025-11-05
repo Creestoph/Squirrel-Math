@@ -71,6 +71,13 @@ export default Node.create({
             createGeometry:
                 (attrs = {}) =>
                 ({ state, commands }) => {
+                    const $from = state.selection.$from;
+                    for (let d = $from.depth; d >= 0; d--) {
+                        if ($from.node(d).type === this.type) {
+                            return false;
+                        }
+                    }
+
                     const position = state.selection.head;
                     const node = this.type.create(attrs);
                     return commands.insertContentAt(position, node);

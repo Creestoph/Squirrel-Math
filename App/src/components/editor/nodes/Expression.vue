@@ -72,6 +72,7 @@ function updateView() {
 }
 .math-display {
     outline: none;
+    user-select: text;
 }
 .math-placeholder:hover,
 .math-display:hover {

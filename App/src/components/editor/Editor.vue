@@ -485,7 +485,7 @@ import HardBreak from '@tiptap/extension-hard-break';
 import Paragraph from '@tiptap/extension-paragraph';
 import Text from '@tiptap/extension-text';
 import TextAlign from '@tiptap/extension-text-align';
-import { TableKit } from '@tiptap/extension-table';
+import { TableKit, TableRow } from '@tiptap/extension-table';
 import { Gapcursor, UndoRedo } from '@tiptap/extensions';
 import LinkPopup from './LinkPopup.vue';
 import { BubbleMenu } from '@tiptap/vue-3/menus';
@@ -494,7 +494,7 @@ import { Point } from '../utils/point';
 import { ImageData } from '@/models/lesson';
 import { onBeforeRouteLeave } from 'vue-router';
 
-const proxy = getCurrentInstance()!.proxy;
+const proxy = getCurrentInstance()!.proxy!;
 
 const editor = ref<Editor>(null!);
 const showDraftsDialog = ref(false);
@@ -553,12 +553,17 @@ function createEditor(shortVersion: boolean) {
             TableKit.configure({
                 table: { resizable: true },
                 tableCell: false,
+                tableHeader: false,
+                tableRow: false,
             }),
             TextAlign.configure({
                 types: ['paragraph'],
             }),
             Gapcursor,
             UndoRedo,
+            TableRow.extend({
+                content: 'tableCell*',
+            }),
 
             // customized tiptap extensions
             CustomListItem,
@@ -1115,5 +1120,14 @@ a[lesson-url] {
 
 #editor .example:hover {
     background-color: colors.$example-background;
+}
+
+/*
+ * somethimes prosemirror adds "ProseMirror-hideselection" class which makes selection background transparent,
+ * but leaves text color unchanged (white), making text invisible...
+ */
+.ProseMirror-hideselection *::selection {
+    background: #ff6666;
+    color: white;
 }
 </style>

@@ -36,8 +36,7 @@ export interface TextAreaAttributes extends Point {
 
 export default Node.create({
     name: 'textArea',
-    group: 'block',
-    content: 'block+',
+    content: '(paragraph | orderedList | bulletList | expression | image | table)+',
     defining: true, // TODO verify ??? useful for selection behavior
     isolating: true, // TODO verify ??? keeps edits inside from merging across boundaries (often desirable for widget-like blocks)
 

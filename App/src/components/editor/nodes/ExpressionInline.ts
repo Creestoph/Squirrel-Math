@@ -48,24 +48,4 @@ export default Node.create({
             'Alt-=': ({ editor }) => editor.commands.createExpressionInline(),
         };
     },
-
-    addInputRules() {
-        return [
-            nodeInputRule({
-                find: /(?:^|[^$])(\$([^$]+)\$)$/,
-                type: this.type,
-                getAttributes: (match) => ({ mathJax: match[2] }),
-            }),
-        ];
-    },
-
-    addPasteRules() {
-        return [
-            nodePasteRule({
-                find: /(?:^|[^$])(\$([^$]+)\$)/g,
-                type: this.type,
-                getAttributes: (match) => ({ mathJax: match[2] }),
-            }),
-        ];
-    },
 });

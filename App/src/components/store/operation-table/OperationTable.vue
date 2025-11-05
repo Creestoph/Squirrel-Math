@@ -1,7 +1,7 @@
 <template>
     <div>
         <table class="operation-table center" @mouseout="reset()">
-            <table-body>
+            <tbody>
                 <tr>
                     <th />
                     <th v-for="(i, n) in 10" :key="n" :class="{ selected: loperand == n && active }">
@@ -22,7 +22,7 @@
                         {{ f(m, n) }}
                     </td>
                 </tr>
-            </table-body>
+            </tbody>
         </table>
 
         <p style="text-align: center" class="math">

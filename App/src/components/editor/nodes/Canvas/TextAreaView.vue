@@ -237,6 +237,7 @@ function onMouseDrag(event: paper.ToolEvent, snapPoints: paper.Point[]) {
     cursor: move;
     box-sizing: border-box;
     display: table;
+    pointer-events: all;
 
     .content {
         box-sizing: border-box;

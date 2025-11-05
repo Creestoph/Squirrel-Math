@@ -330,6 +330,8 @@ function recalculateGripsPositions() {
 @use '@/style/global';
 canvas {
     position: absolute;
+    left: 0;
+    top: 0;
     pointer-events: none;
 }
 </style>
