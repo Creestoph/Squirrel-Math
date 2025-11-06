@@ -1,5 +1,5 @@
 import ExpressionVue from './Expression.vue';
-import { Node, nodeInputRule, nodePasteRule } from '@tiptap/vue-3';
+import { Node } from '@tiptap/vue-3';
 import { VueNodeViewRenderer } from '@tiptap/vue-3';
 
 declare module '@tiptap/core' {

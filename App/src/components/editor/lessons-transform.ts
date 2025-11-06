@@ -1,13 +1,13 @@
 import { LessonData, NodeData } from '@/models/lesson';
 import { downloadFile } from '../utils/files';
-import { idGenerator } from './nodes/Canvas/Shape';
 
 function transformNode(node: NodeData) {
-    if (
-        ['line', 'circle', 'rectangle', 'polygon', 'arc', 'textArea'].includes(node.type) &&
-        node.attrs!.id === undefined
-    ) {
-        node.attrs!.id = idGenerator.next().value;
+    if (['tableCell'].includes(node.type)) {
+        node.attrs!.borderColorLeft =
+            node.attrs!.borderColorRight =
+            node.attrs!.borderColorTop =
+            node.attrs!.borderColorBottom =
+                node.attrs!.borderColor;
     }
 }
 

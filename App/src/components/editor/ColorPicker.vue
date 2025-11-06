@@ -1,6 +1,6 @@
 <template>
-    <button class="color-picker-wrapper" @blur="dropdownVisible = false">
-        <div @click="dropdownVisible = !dropdownVisible"><slot></slot></div>
+    <button @click="dropdownVisible = !dropdownVisible" class="color-picker-wrapper" @blur="dropdownVisible = false">
+        <div><slot></slot></div>
         <div v-if="color" @click="dropdownVisible = !dropdownVisible">
             <div ref="fillColorPicker" class="color-picker ml-2" :style="{ background: color }"></div>
         </div>

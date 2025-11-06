@@ -205,7 +205,16 @@
                         <icon style="color: #cc4444">apps</icon>
                     </color-picker>
                     <color-picker
-                        @selected="editor.chain().focus().setCellAttribute('borderColor', $event).run()"
+                        @selected="
+                            editor
+                                .chain()
+                                .focus()
+                                .setTableBorderAttribute('borderColor', 'Left', $event)
+                                .setTableBorderAttribute('borderColor', 'Right', $event)
+                                .setTableBorderAttribute('borderColor', 'Top', $event)
+                                .setTableBorderAttribute('borderColor', 'Bottom', $event)
+                                .run()
+                        "
                         :class="{ picker: true }"
                         title="kolor krawędzi"
                     >
@@ -218,19 +227,19 @@
                         <div class="dropdown-list">
                             <div
                                 class="dropdown-position"
-                                @click="editor.chain().focus().setCellAttribute('borderLeft', '0').run()"
+                                @click="editor.chain().focus().setTableBorderAttribute('border', 'Left', '0').run()"
                             >
                                 brak
                             </div>
                             <div
                                 class="dropdown-position"
-                                @click="editor.chain().focus().setCellAttribute('borderLeft', '1').run()"
+                                @click="editor.chain().focus().setTableBorderAttribute('border', 'Left', '1').run()"
                             >
                                 cienka
                             </div>
                             <div
                                 class="dropdown-position"
-                                @click="editor.chain().focus().setCellAttribute('borderLeft', '3').run()"
+                                @click="editor.chain().focus().setTableBorderAttribute('border', 'Left', '3').run()"
                             >
                                 gruba
                             </div>
@@ -243,19 +252,19 @@
                         <div class="dropdown-list">
                             <div
                                 class="dropdown-position"
-                                @click="editor.chain().focus().setCellAttribute('borderRight', '0').run()"
+                                @click="editor.chain().focus().setTableBorderAttribute('border', 'Right', '0').run()"
                             >
                                 brak
                             </div>
                             <div
                                 class="dropdown-position"
-                                @click="editor.chain().focus().setCellAttribute('borderRight', '1').run()"
+                                @click="editor.chain().focus().setTableBorderAttribute('border', 'Right', '1').run()"
                             >
                                 cienka
                             </div>
                             <div
                                 class="dropdown-position"
-                                @click="editor.chain().focus().setCellAttribute('borderRight', '3').run()"
+                                @click="editor.chain().focus().setTableBorderAttribute('border', 'Right', '3').run()"
                             >
                                 gruba
                             </div>
@@ -268,19 +277,19 @@
                         <div class="dropdown-list">
                             <div
                                 class="dropdown-position"
-                                @click="editor.chain().focus().setCellAttribute('borderTop', '0').run()"
+                                @click="editor.chain().focus().setTableBorderAttribute('border', 'Top', '0').run()"
                             >
                                 brak
                             </div>
                             <div
                                 class="dropdown-position"
-                                @click="editor.chain().focus().setCellAttribute('borderTop', '1').run()"
+                                @click="editor.chain().focus().setTableBorderAttribute('border', 'Top', '1').run()"
                             >
                                 cienka
                             </div>
                             <div
                                 class="dropdown-position"
-                                @click="editor.chain().focus().setCellAttribute('borderTop', '3').run()"
+                                @click="editor.chain().focus().setTableBorderAttribute('border', 'Top', '3').run()"
                             >
                                 gruba
                             </div>
@@ -293,19 +302,19 @@
                         <div class="dropdown-list">
                             <div
                                 class="dropdown-position"
-                                @click="editor.chain().focus().setCellAttribute('borderBottom', '0').run()"
+                                @click="editor.chain().focus().setTableBorderAttribute('border', 'Bottom', '0').run()"
                             >
                                 brak
                             </div>
                             <div
                                 class="dropdown-position"
-                                @click="editor.chain().focus().setCellAttribute('borderBottom', '1').run()"
+                                @click="editor.chain().focus().setTableBorderAttribute('border', 'Bottom', '1').run()"
                             >
                                 cienka
                             </div>
                             <div
                                 class="dropdown-position"
-                                @click="editor.chain().focus().setCellAttribute('borderBottom', '3').run()"
+                                @click="editor.chain().focus().setTableBorderAttribute('border', 'Bottom', '3').run()"
                             >
                                 gruba
                             </div>
@@ -322,10 +331,10 @@
                                     editor
                                         .chain()
                                         .focus()
-                                        .setCellAttribute('borderLeft', '0')
-                                        .setCellAttribute('borderRight', '0')
-                                        .setCellAttribute('borderTop', '0')
-                                        .setCellAttribute('borderBottom', '0')
+                                        .setTableBorderAttribute('border', 'Left', '0')
+                                        .setTableBorderAttribute('border', 'Right', '0')
+                                        .setTableBorderAttribute('border', 'Top', '0')
+                                        .setTableBorderAttribute('border', 'Bottom', '0')
                                         .run()
                                 "
                             >
@@ -337,10 +346,10 @@
                                     editor
                                         .chain()
                                         .focus()
-                                        .setCellAttribute('borderLeft', '1')
-                                        .setCellAttribute('borderRight', '1')
-                                        .setCellAttribute('borderTop', '1')
-                                        .setCellAttribute('borderBottom', '1')
+                                        .setTableBorderAttribute('border', 'Left', '1')
+                                        .setTableBorderAttribute('border', 'Right', '1')
+                                        .setTableBorderAttribute('border', 'Top', '1')
+                                        .setTableBorderAttribute('border', 'Bottom', '1')
                                         .run()
                                 "
                             >
@@ -352,10 +361,10 @@
                                     editor
                                         .chain()
                                         .focus()
-                                        .setCellAttribute('borderLeft', '3')
-                                        .setCellAttribute('borderRight', '3')
-                                        .setCellAttribute('borderTop', '3')
-                                        .setCellAttribute('borderBottom', '3')
+                                        .setTableBorderAttribute('border', 'Left', '3')
+                                        .setTableBorderAttribute('border', 'Right', '3')
+                                        .setTableBorderAttribute('border', 'Top', '3')
+                                        .setTableBorderAttribute('border', 'Bottom', '3')
                                         .run()
                                 "
                             >
@@ -493,6 +502,8 @@ import { allComments, lessonImages } from './shared-state';
 import { Point } from '../utils/point';
 import { ImageData } from '@/models/lesson';
 import { onBeforeRouteLeave } from 'vue-router';
+import TableBorders from './extensions/TableBorders';
+// import { transformAll } from './lessons-transform';
 
 const proxy = getCurrentInstance()!.proxy!;
 
@@ -568,6 +579,7 @@ function createEditor(shortVersion: boolean) {
             // customized tiptap extensions
             CustomListItem,
             CustomTableCell,
+            TableBorders,
 
             // custom extensions
             LessonDoc,

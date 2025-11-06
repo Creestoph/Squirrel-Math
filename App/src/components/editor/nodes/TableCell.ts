@@ -3,7 +3,10 @@ import { TableCell } from '@tiptap/extension-table';
 interface TableCellAttributes {
     style: string;
     background: string | null;
-    borderColor: string;
+    borderColorLeft: string;
+    borderColorRight: string;
+    borderColorTop: string;
+    borderColorBottom: string;
     borderLeft: number;
     borderRight: number;
     borderTop: number;
@@ -22,10 +25,29 @@ export default TableCell.extend({
                 parseHTML: (dom: HTMLElement) => dom.style.backgroundColor || null,
                 renderHTML: (attrs: TableCellAttributes) => ({ style: `background-color: ${attrs.background}` }),
             },
-            borderColor: {
+            borderColorLeft: {
                 default: '#cccccc',
-                parseHTML: (dom: HTMLElement) => dom.style.borderColor || null,
-                renderHTML: (attrs: TableCellAttributes) => ({ style: `border-color: ${attrs.borderColor}` }),
+                parseHTML: (dom: HTMLElement) => dom.style.borderLeftColor,
+                renderHTML: (attrs: TableCellAttributes) => ({ style: `border-left-color: ${attrs.borderColorLeft}` }),
+            },
+            borderColorRight: {
+                default: '#cccccc',
+                parseHTML: (dom: HTMLElement) => dom.style.borderRightColor,
+                renderHTML: (attrs: TableCellAttributes) => ({
+                    style: `border-right-color: ${attrs.borderColorRight}`,
+                }),
+            },
+            borderColorBottom: {
+                default: '#cccccc',
+                parseHTML: (dom: HTMLElement) => dom.style.borderBottomColor,
+                renderHTML: (attrs: TableCellAttributes) => ({
+                    style: `border-bottom-color: ${attrs.borderColorBottom}`,
+                }),
+            },
+            borderColorTop: {
+                default: '#cccccc',
+                parseHTML: (dom: HTMLElement) => dom.style.borderTopColor,
+                renderHTML: (attrs: TableCellAttributes) => ({ style: `border-top-color: ${attrs.borderColorTop}` }),
             },
             borderLeft: {
                 default: 1,

@@ -6,15 +6,15 @@
             <button v-if="editMode" @click="save()">Save</button>
             <button v-if="editMode" @click="discard()">Discard</button>
         </div>
-        <tooltip id="lessonSummary" :visible="!!displayLesson" :timeout="750" :offset="{ x: 50, y: -50 }">
-            <div v-if="displayLesson">
+        <tooltip id="lessonSummary" :visible="showTooltip" :timeout="750" :offset="{ x: 50, y: -50 }">
+            <div v-if="lessonTooltipData">
                 <div id="displaylessonTitle">
-                    {{ displayLesson.title }}
+                    {{ lessonTooltipData.title }}
                 </div>
-                <b>Dział:</b> {{ displayLesson.field }}<br />
-                <b>Poziom:</b> {{ displayLesson.level }}<br />
+                <b>Dział:</b> {{ lessonTooltipData.field }}<br />
+                <b>Poziom:</b> {{ lessonTooltipData.level }}<br />
                 <b>Wymagane:</b>
-                <div v-for="(item, i) in displayLesson.requires" :key="i">{{ item }}<br /></div>
+                <div v-for="(item, i) in lessonTooltipData.requires" :key="i">{{ item }}<br /></div>
             </div>
         </tooltip>
     </div>
@@ -37,9 +37,10 @@ class Lesson {
 }
 
 const editMode = ref(false);
-const displayLesson = ref<Lesson | null>(null);
+const showTooltip = ref(false);
+const lessonTooltipData = ref<Lesson | null>(null);
 const canvas = ref<HTMLCanvasElement>(null!);
-const proxy = getCurrentInstance()!.proxy;
+const proxy = getCurrentInstance()!.proxy!;
 
 let lessons: { [name: string]: Lesson } = {};
 let positions: { [lesson: string]: Point } = {};
@@ -146,7 +147,8 @@ function addEventHandlers() {
                 hoveredLesson = hitResult.item as paper.PointText;
                 hoveredLesson.style!.fillColor = redColor;
                 let lessonName = hoveredLesson.content!;
-                displayLesson.value = lessons[lessonName];
+                lessonTooltipData.value = lessons[lessonName];
+                showTooltip.value = true;
                 for (let req of lessons[lessonName].requires) {
                     edges[lessonName][req].style!.strokeColor = redColor;
                     edges[lessonName][req].bringToFront();
@@ -259,7 +261,7 @@ function clearHoveredLesson() {
             edges[lessonName][req].style!.strokeColor = new paper.Color('black');
         }
         hoveredLesson = null;
-        displayLesson.value = null;
+        showTooltip.value = false;
     }
 }
 
