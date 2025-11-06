@@ -7,57 +7,33 @@ p {
     margin: 1.2em 0;
 }
 
-.default-table {
-    margin: 0 auto;
-
-    > tr > td,
-    > tr > th {
-        padding: 0 2px;
-        width: 26px;
-        position: relative;
-        border-style: solid;
-        p {
-            margin: 2px 0;
-        }
-    }
-}
-
-.no-selection {
-    user-select: none;
-    -webkit-user-select: none; /* webkit (safari, chrome) browsers */
-    -moz-user-select: none; /* mozilla browsers */
-    -khtml-user-select: none; /* webkit (konqueror) browsers */
-    -ms-user-select: none; /* IE10+ */
-}
-
-a {
-    text-decoration: none;
-    color: inherit;
-}
-
 li {
     display: table-row;
     margin: 50px 0;
-}
 
-li:before {
-    color: colors.$main-red;
-}
-
-ul {
-    list-style: none;
-    display: table;
-
-    li:before {
-        content: '◆';
-        margin: 0 1em;
-        display: table-cell;
-        padding-right: 0.5em;
+    &:before {
+        color: colors.$main-red;
     }
 
-    ul li:before {
-        content: '◈';
-        margin: 0 1.5em;
+    p {
+        margin: 0;
+    }
+
+    ul {
+        list-style: none;
+        display: table;
+
+        li:before {
+            content: '◆';
+            margin: 0 1em;
+            display: table-cell;
+            padding-right: 0.5em;
+        }
+
+        ul li:before {
+            content: '◈';
+            margin: 0 1.5em;
+        }
     }
 }
 
@@ -66,13 +42,13 @@ ol {
 
     li {
         counter-increment: foo;
-    }
 
-    li:before {
-        content: counter(foo) ')';
-        margin: 0 1em;
-        display: table-cell;
-        padding-right: 0.5em;
+        &:before {
+            content: counter(foo) ')';
+            margin: 0 1em;
+            display: table-cell;
+            padding-right: 0.5em;
+        }
     }
 }
 
@@ -83,35 +59,8 @@ ol {
     }
 }
 
-li p {
-    margin: 0;
-}
-
 button {
-    border: none;
-    text-align: center;
-    text-decoration: none;
-    cursor: pointer;
-    background: none;
-}
-
-button.button-red {
-    background-color: colors.$main-red;
-    color: white;
-    padding: 15px 32px;
-    font-size: 0.9em;
-    margin: 4px 2px;
-}
-
-button.button-red:hover {
-    box-shadow:
-        0 12px 16px 0 rgba(0, 0, 0, 0.24),
-        0 17px 50px 0 rgba(0, 0, 0, 0.19);
-    background-color: colors.$darker-red;
-}
-
-button:focus {
-    outline: none;
+    text-align: center; // ? not sure about this one
 }
 
 input {
@@ -120,29 +69,27 @@ input {
     padding-left: 6px;
     padding-right: 6px;
     height: 25px;
+
+    &:focus {
+        border-color: colors.$darker-creamy;
+        outline: none;
+        box-shadow: 0 0 15px 0 colors.$creamy;
+    }
 }
 
-input:focus {
-    border-color: colors.$darker-creamy;
-    outline: none;
-    box-shadow: 0 0 15px 0 colors.$creamy;
-}
-
-input[type='number']::-webkit-inner-spin-button,
-input[type='number']::-webkit-outer-spin-button {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-}
-
-::selection {
-    background: #ff6666;
-    color: white;
-}
-
+::selection,
 ::moz-selection {
     background: #ff6666;
     color: white;
+}
+
+// useful reusable classes
+.no-selection {
+    user-select: none;
+    -webkit-user-select: none; /* webkit (safari, chrome) browsers */
+    -moz-user-select: none; /* mozilla browsers */
+    -khtml-user-select: none; /* webkit (konqueror) browsers */
+    -ms-user-select: none; /* IE10+ */
 }
 
 .center {
@@ -150,259 +97,36 @@ input[type='number']::-webkit-outer-spin-button {
     margin-right: auto;
 }
 
-a.link,
-.link:link {
-    color: colors.$main-red;
-}
-
-a.link:visited {
-    color: colors.$darker-red;
-}
-
-a.link:hover {
-    color: colors.$intense-red;
-}
-
-a.link:active {
-    color: black;
-}
-
-/* ========================================== LESSON ========================================== */
-.example {
-    display: block;
-    text-align: justify;
-    background-color: colors.$example-background;
-    border-left: 3px solid colors.$main-red;
-    box-shadow: 2px 2px 3px 0px rgba(0, 0, 0, 0.4);
-    padding: 15px;
-    margin: 30px 30px;
-}
-
-.example:hover {
-    background-color: colors.$example-background-darker;
-}
-
-@media screen and (max-width: 700px) {
-    .example {
-        margin: 30px 0;
-    }
-}
-
-.type {
-    display: inline-block;
+button.button-red {
     background-color: colors.$main-red;
-    padding: 0 5px;
-    height: 31px;
-    line-height: 31px;
     color: white;
-    margin-top: 0;
-    transition: background-color 0.1s;
+    padding: 15px 32px;
     font-size: 0.9em;
-    font-family: fonts.$secondary-font;
-    white-space: pre;
-}
+    margin: 4px 2px;
 
-.type + * {
-    margin-top: 0;
-}
-
-.type:hover {
-    background-color: colors.$darker-main-red;
-    transition: background-color 0.1s;
-}
-
-p.optional-hide:after {
-    content: '>';
-    display: inline-block;
-    background: colors.$dark-red;
-    margin: 0 0 5px 5px;
-    width: 21px;
-    height: 21px;
-    border-radius: 50%;
-    text-align: center;
-    vertical-align: middle;
-    font-family: fonts.$geometric-font;
-    line-height: 21px;
-    font-size: 21px;
-    transition: transform 0.5s;
-}
-
-p.optional-hide:hover:after {
-    background: colors.$darker-red;
-    transform: rotate(90deg);
-    transition: transform 0.5s;
-}
-
-p.optional-show:after {
-    content: '>';
-    display: inline-block;
-    background: colors.$dark-red;
-    margin: 0 0 5px 5px;
-    width: 21px;
-    height: 21px;
-    border-radius: 50%;
-    text-align: center;
-    vertical-align: middle;
-    font-family: fonts.$geometric-font;
-    line-height: 21px;
-    font-size: 21px;
-    transform: rotate(90deg);
-    transition: transform 0.5s;
-}
-
-p.optional-show:hover:after {
-    background: colors.$darker-red;
-    transform: rotate(0deg);
-    transition: transform 0.5s;
-}
-
-p.optional-show ~ div {
-    margin: -5px -25px;
-    padding: 5px 25px;
-}
-
-p.optional-hide:hover ~ div {
-    background: colors.$light-creamy;
-}
-
-p.optional-show:hover ~ div {
-    background: colors.$light-creamy;
-}
-
-.proof-sticker {
-    position: absolute;
-    display: inline-block;
-    padding: 5px;
-    margin: 0px;
-    top: 0;
-    left: -1px;
-    color: white;
-    background-color: colors.$darker-gray;
-    transition: background-color 0.1s;
-    box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.4);
-}
-
-.warning {
-    font-family: fonts.$secondary-font;
-    color: colors.$darker-gray;
-    font-size: 0.8em;
-    margin-top: -0.2em;
-}
-
-.proof .warning {
-    font-family: arial;
-    color: colors.$darker-gray;
-    font-size: 0.7em;
-    margin-top: 0;
-}
-
-.problem {
-    font-weight: bold;
-    text-align: center;
-}
-
-.formula,
-.formula > p:only-child {
-    display: block;
-    text-align: center !important;
-    background-color: colors.$gray;
-    padding: 10px;
-    margin: 0px;
-}
-
-.proof {
-    display: block;
-    position: relative;
-    padding: 40px 10px 10px 10px;
-    border: 1px solid colors.$darker-gray;
-    border-top: 1px solid colors.$gray;
-    border-bottom: 1px solid colors.$gray;
-    background: white;
-}
-
-.proof + .proof {
-    border-top: 1em solid colors.$gray;
-}
-
-/* ========================================== COMMON ELEMENTS ========================================== */
-table.tiles {
-    border-collapse: collapse;
-
-    td {
-        height: 45px;
-        width: 41px;
-        background-color: colors.$tile-fill;
-        border: 3px groove colors.$dark-red;
-    }
-
-    td:hover {
-        background-color: colors.$tile-fill-hover;
-        border-style: ridge;
+    &:hover {
+        box-shadow:
+            0 12px 16px 0 rgba(0, 0, 0, 0.24),
+            0 17px 50px 0 rgba(0, 0, 0, 0.19);
+        background-color: colors.$darker-red;
     }
 }
 
-polygon {
-    /*fill: $main-red; */
-    fill: url(#gradient);
-    stroke-width: 0;
-    box-shadow: 0 0px 100px 0 rgba(0, 0, 0, 0.24);
-}
+a.link {
+    &,
+    &:link {
+        color: colors.$main-red;
+    }
 
-circle {
-    /*fill: $main-red; */
-    fill: url(#gradient);
-    stroke-width: 0;
-    box-shadow: 0 0px 100px 0 rgba(0, 0, 0, 0.24);
-}
+    &:visited {
+        color: colors.$darker-red;
+    }
 
-.draggable {
-    cursor: move;
-}
+    &:hover {
+        color: colors.$intense-red;
+    }
 
-/* ========================================== COLUMNAR OPERATION ========================================== */
-.strikethrough {
-    position: relative;
-}
-
-.strikethrough:before {
-    position: absolute;
-    content: '';
-    left: -1px;
-    top: 50%;
-    right: 0;
-    border-top: 2px solid;
-    border-color: inherit;
-
-    -webkit-transform: rotate(-60deg);
-    -moz-transform: rotate(-60deg);
-    -ms-transform: rotate(-60deg);
-    -o-transform: rotate(-60deg);
-    transform: rotate(-60deg);
-}
-
-table.columnar_operation {
-    border-collapse: collapse;
-}
-
-td.columnar_operation_not_carry {
-    padding-top: 0px;
-    padding-bottom: 0px;
-    padding-left: 2px;
-    padding-right: 2px;
-    height: 27px;
-}
-
-td.columnar_operation_underlined {
-    border-bottom: 1pt solid black;
-}
-
-td.columnar_operation_carry {
-    font-size: 0.7em;
-    vertical-align: center;
-    text-align: center;
-    height: 19px;
-}
-
-td.columnar_operation_highlight {
-    background: #ffcccc;
+    &:active {
+        color: black;
+    }
 }

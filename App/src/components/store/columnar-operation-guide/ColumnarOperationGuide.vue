@@ -133,6 +133,10 @@ function prev() {
 }
 </script>
 
+<style lang="scss">
+@use '@/style/columnar-operation';
+</style>
+
 <style scoped lang="scss">
 .columnar-operation-script {
     border: 1px solid #888888;
@@ -160,5 +164,11 @@ function prev() {
     .main-content {
         flex: 1;
     }
+}
+
+polygon {
+    fill: url(#gradient);
+    stroke-width: 0;
+    box-shadow: 0 0px 100px 0 rgba(0, 0, 0, 0.24);
 }
 </style>

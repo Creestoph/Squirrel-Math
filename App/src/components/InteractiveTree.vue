@@ -1,16 +1,17 @@
 <template>
-    <div id="tree-container">
+    <div class="tree-container">
         <canvas ref="canvas" resize="true" />
-        <div id="tree-tools">
-            <button v-if="!editMode" @click="enableEdit()">Edit</button>
-            <button v-if="editMode" @click="save()">Save</button>
-            <button v-if="editMode" @click="discard()">Discard</button>
+        <div class="tree-tools">
+            <router-link v-if="!editMode" custom v-slot="{ navigate }" to="/editor">
+                <button @click="navigate">+ Stwórz nową lekcję</button>
+            </router-link>
+            <button v-if="!editMode" @click="enableEdit()">Edytuj drzewo</button>
+            <button v-if="editMode" @click="save()">Zapisz</button>
+            <button v-if="editMode" @click="discard()">Anuluj</button>
         </div>
-        <tooltip id="lessonSummary" :visible="showTooltip" :timeout="750" :offset="{ x: 50, y: -50 }">
+        <tooltip class="lesson-summary" :visible="showTooltip" :timeout="750" :offset="{ x: 50, y: -50 }">
             <div v-if="lessonTooltipData">
-                <div id="displaylessonTitle">
-                    {{ lessonTooltipData.title }}
-                </div>
+                <div class="display-lesson-title">{{ lessonTooltipData.title }}</div>
                 <b>Dział:</b> {{ lessonTooltipData.field }}<br />
                 <b>Poziom:</b> {{ lessonTooltipData.level }}<br />
                 <b>Wymagane:</b>
@@ -393,31 +394,33 @@ canvas[resize] {
     background: colors.$light-gray;
 }
 
-#tree-container {
+.tree-container {
     position: relative;
 }
 
-#tree-tools {
+.tree-tools {
     position: fixed;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 7px;
     right: 0px;
+    padding: 7px;
+
+    button {
+        display: block;
+        background: none;
+        font-size: 0.8em;
+        color: colors.$half-gray;
+
+        &:hover {
+            box-shadow: none;
+            text-decoration: underline;
+        }
+    }
 }
 
-#tree-tools button {
-    display: block;
-    width: 80px;
-    padding-top: 7px;
-    padding-bottom: 0px;
-    background: none;
-    font-size: 0.8em;
-    color: colors.$half-gray;
-}
-
-#tree-tools button:hover {
-    box-shadow: none;
-    text-decoration: underline;
-}
-
-#lessonSummary {
+.lesson-summary {
     border: 2px solid black;
     background: white;
     padding: 10px;
@@ -425,7 +428,7 @@ canvas[resize] {
     font-family: fonts.$main-font;
 }
 
-#displaylessonTitle {
+.display-lesson-title {
     font-weight: bold;
     font-size: 1.7em;
     font-family: fonts.$secondary-font;

@@ -1,5 +1,5 @@
 <template>
-    <router-link tag="a" :to="attrs.href" class="link">
+    <router-link :to="attrs.href" class="link">
         <slot />
     </router-link>
 </template>

@@ -16,4 +16,6 @@ onMounted(() => {
 });
 </script>
 
-<style scoped lang="scss"></style>
+<style lang="scss">
+@use '@/style/columnar-operation';
+</style>

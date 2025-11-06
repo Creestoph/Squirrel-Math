@@ -10,7 +10,7 @@
             >
                 {{ expandButtonContent }}
             </button>
-            <router-link v-if="content" id="edit-button" tag="a" :to="'/editor/' + content">
+            <router-link v-if="content" id="edit-button" :to="'/editor/' + content">
                 Edytuj lekcję <icon>edit</icon>
             </router-link>
 

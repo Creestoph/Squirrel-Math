@@ -1,0 +1,10 @@
+@use '@/style/colors';
+
+.formula,
+.formula > p:only-child {
+    display: block;
+    text-align: center !important;
+    background-color: colors.$gray;
+    padding: 10px;
+    margin: 0px;
+}

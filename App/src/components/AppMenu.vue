@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="menu-trapeze" :class="{ 'menu-small': isSmall }">
-            <router-link tag="a" to="/" class="menu-segment">
+            <router-link to="/" class="menu-segment">
                 <div class="logo">
                     <div>
                         <div class="logo-black-cell" style="float: left" />
@@ -19,10 +19,6 @@
                     <span class="logo-text-1">squirrel</span>
                     <span class="logo-text-2">math</span>
                 </div>
-            </router-link>
-            <router-link tag="a" to="/editor" class="menu-segment">
-                <icon style="width: 55px; height: 55px">file_edit</icon>
-                <span class="menu-text" v-if="showText"> edytor</span>
             </router-link>
         </div>
     </div>
@@ -86,17 +82,9 @@ $transition-length: 0.7s;
     }
 }
 
-.menu-segment:nth-child(1) {
+.menu-segment {
     width: 300px;
     background: white;
-}
-
-.menu-segment:nth-child(2) {
-    width: 145px;
-    background: colors.$gray;
-    color: colors.$half-gray;
-    display: flex;
-    align-items: center;
 }
 
 .logo {

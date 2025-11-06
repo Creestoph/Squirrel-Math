@@ -127,6 +127,7 @@ function canAddNewRequired() {
 @use '@/style/global';
 @use '@/style/colors';
 @use '@/style/fonts';
+@use '@/style/semantic-tag';
 
 .tags-wrapper {
     padding-right: 100px;

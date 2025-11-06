@@ -61,7 +61,7 @@
             </p>
 
             <center>
-                <router-link tag="a" target="_blank" :to="'/drzewoHD'">
+                <router-link target="_blank" :to="'/drzewoHD'">
                     <img src="./.images/tree.png" width="100%" />
                 </router-link>
             </center>

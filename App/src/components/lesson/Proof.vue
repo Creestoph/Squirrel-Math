@@ -11,3 +11,7 @@
 <script setup lang="ts">
 defineProps<{ attrs: { label: string; required: string[] } }>();
 </script>
+
+<style scoped lang="scss">
+@use '@/style/proof';
+</style>

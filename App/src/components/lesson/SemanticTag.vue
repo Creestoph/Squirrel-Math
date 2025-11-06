@@ -11,7 +11,8 @@
 defineProps<{ attrs: { tags: string[]; required: string[] } }>();
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
+@use '@/style/semantic-tag';
 .section + * {
     margin-top: 0 !important;
 }

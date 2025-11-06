@@ -827,10 +827,13 @@ function draftsList(): DraftPreview[] {
 </script>
 
 <style lang="scss">
-@use '@/style/chapter';
 @use '@/style/global';
 @use '@/style/colors';
 @use '@/style/fonts';
+@use '@/style/chapter';
+@use '@/style/example';
+@use '@/style/problem';
+@use '@/style/formula';
 
 /*=== TOOLS ===*/
 .ProseMirror {
@@ -1139,7 +1142,7 @@ a[lesson-url] {
  * but leaves text color unchanged (white), making text invisible...
  */
 .ProseMirror-hideselection *::selection {
-    background: #ff6666;
-    color: white;
+    background: #ff6666 !important;
+    color: white !important;
 }
 </style>

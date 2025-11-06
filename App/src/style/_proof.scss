@@ -1,0 +1,35 @@
+@use '@/style/colors';
+
+.proof-sticker {
+    position: absolute;
+    display: inline-block;
+    padding: 5px;
+    margin: 0px;
+    top: 0;
+    left: -1px;
+    color: white;
+    background-color: colors.$darker-gray;
+    transition: background-color 0.1s;
+    box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.4);
+}
+
+.proof {
+    display: block;
+    position: relative;
+    padding: 40px 10px 10px 10px;
+    border: 1px solid colors.$darker-gray;
+    border-top: 1px solid colors.$gray;
+    border-bottom: 1px solid colors.$gray;
+    background: white;
+
+    .warning {
+        font-family: arial;
+        color: colors.$darker-gray;
+        font-size: 0.7em;
+        margin-top: 0;
+    }
+
+    + .proof {
+        border-top: 1em solid colors.$gray;
+    }
+}

@@ -103,6 +103,7 @@ function canAddNewRequired() {
 @use '@/style/global';
 @use '@/style/colors';
 @use '@/style/fonts';
+@use '@/style/proof';
 
 .wrapper {
     padding-right: 100px;
