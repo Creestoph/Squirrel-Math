@@ -1,8 +1,8 @@
 <template>
     <lesson>
-        <div id="toolbar" :style="{ paddingTop: toolbarPaddingTop + 'px' }">
+        <div class="toolbar" :style="{ left: lessonLeftPos }">
             <div v-if="editor">
-                <div id="tools-managing">
+                <div class="tools-managing">
                     <button @click="editor.commands.undo" title="cofnij akcję (Ctrl + Z)">
                         <icon>undo</icon>
                     </button>
@@ -44,7 +44,7 @@
                         <icon>control_point_duplicate</icon>
                     </button>
                 </div>
-                <div id="tools-general">
+                <div class="tools-general">
                     <button
                         :class="{ active: editor.isActive('bold') }"
                         style="font-weight: bold"
@@ -83,7 +83,7 @@
 
                     <color-picker
                         @selected="editor.chain().focus().setColor({ color: $event }).run()"
-                        :class="{ picker: true }"
+                        class="picker"
                         style="color: #cc4444"
                         title="kolor tekstu"
                     >
@@ -146,7 +146,7 @@
                         <icon>add_comment</icon>
                     </button>
 
-                    <dropdown @selected="insert($event, editor.commands)" title="wstaw">
+                    <dropdown class="insert-dropdown" :opensToRight="false" @selected="insert($event, editor.commands)" title="wstaw">
                         <template v-slot:placeholder><icon>add</icon></template>
                         <dropdown-option value="chapter"><icon>menu_book</icon> rozdział</dropdown-option>
                         <dropdown-option value="section"><icon>auto_stories</icon> sekcja</dropdown-option>
@@ -199,7 +199,7 @@
                     </button>
                     <color-picker
                         @selected="editor.chain().focus().setCellAttribute('background', $event).run()"
-                        :class="{ picker: true }"
+                        class="picker"
                         title="kolor tła"
                     >
                         <icon style="color: #cc4444">apps</icon>
@@ -215,7 +215,7 @@
                                 .setTableBorderAttribute('borderColor', 'Bottom', $event)
                                 .run()
                         "
-                        :class="{ picker: true }"
+                        class="picker"
                         title="kolor krawędzi"
                     >
                         <icon style="color: #cc4444">border_outer</icon>
@@ -376,7 +376,7 @@
             </div>
         </div>
 
-        <editor-content id="editor" :editor="editor" />
+        <editor-content class="editor" :editor="editor" />
 
         <div v-if="showDraftsDialog" class="drafts-dialog">
             <div class="drafts-dialog-header">
@@ -441,8 +441,9 @@
 </template>
 
 <script setup lang="ts">
-import { computed, getCurrentInstance, nextTick, onMounted, onUnmounted, ref } from 'vue';
+import { computed, getCurrentInstance, onMounted, onUnmounted, ref } from 'vue';
 import { Editor, EditorContent, SingleCommands } from '@tiptap/vue-3';
+import Icon from '../Icon.vue';
 
 import Lesson from '../lesson/Lesson.vue';
 import ColorPicker from './ColorPicker.vue';
@@ -499,20 +500,21 @@ import { Gapcursor, UndoRedo } from '@tiptap/extensions';
 import LinkPopup from './LinkPopup.vue';
 import { BubbleMenu } from '@tiptap/vue-3/menus';
 import { allComments, lessonImages } from './shared-state';
-import { Point } from '../utils/point';
+import { Point } from '../../models/point';
 import { ImageData } from '@/models/lesson';
 import { onBeforeRouteLeave } from 'vue-router';
 import TableBorders from './extensions/TableBorders';
+import { useLessonExpandedInfo } from '../utils/menu-bus';
 // import { transformAll } from './lessons-transform';
 
 const proxy = getCurrentInstance()!.proxy!;
+const { lessonLeftPos } = useLessonExpandedInfo();
 
 const editor = ref<Editor>(null!);
 const showDraftsDialog = ref(false);
 const showImagesDialog = ref(false);
 const editedCommentData = ref<{ id: string; pos: Point } | null>(null);
 const availableDrafts = ref<DraftPreview[]>([]);
-const toolbarPaddingTop = ref(0);
 
 const shortMode = computed({
     get() {
@@ -529,17 +531,12 @@ onMounted(() => {
     clearAll();
     loadContent();
     addEventListener('beforeunload', exitListener);
-    nextTick(() => {
-        addEventListener('scroll', scrollToolbar);
-        scrollToolbar();
-    });
     // transformAll();
 });
 
 onUnmounted(() => {
     editor.value.destroy();
     removeEventListener('beforeunload', exitListener);
-    removeEventListener('scroll', scrollToolbar);
 });
 
 onBeforeRouteLeave((to: any, from: any, next: any) => {
@@ -786,14 +783,6 @@ function hasImage(node: any, key: string): boolean {
     return node.content ? node.content.some((child: any) => hasImage(child, key)) : false;
 }
 
-function scrollToolbar() {
-    if (document.body.scrollTop > 5 || document.documentElement.scrollTop > 5 || window.innerWidth < 700) {
-        toolbarPaddingTop.value = 0;
-    } else {
-        toolbarPaddingTop.value = 150;
-    }
-}
-
 function loadContent() {
     const sourceFile = proxy.$route.params.editSourceFile;
     if (sourceFile) {
@@ -839,38 +828,54 @@ function draftsList(): DraftPreview[] {
 .ProseMirror {
     outline: none !important;
 }
-#editor {
-    margin-top: 300px;
+.editor {
+    margin-top: 100px;
 }
-#toolbar {
+.toolbar {
     position: fixed;
     top: 0;
-    width: 970px;
-    padding-top: 150px;
+    width: 100%;
     transition: padding 1s;
     z-index: 3;
     background: white;
+    transition: left 1s;
 }
 
-#tools-managing button {
-    font-weight: bold;
-    padding: 10px 15px;
-    background: none;
+@media screen and (min-width: 1200px) {
+    .toolbar {
+        width: 86%;
+    }
 }
 
-#tools-general,
-.tools-specific {
-    width: 100%;
+.tools-managing, .tools-general, .tools-specific {
     display: flex;
-    background: colors.$light-gray;
+    justify-content: flex-end;
+    align-items: center;
+    
     > * {
         display: inline-block;
     }
 
     button {
-        padding: 10px 13px;
+        flex: 1;
         min-width: 10px;
-        height: 24px;
+        max-width: 44px;
+        height: 47px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &::before,
+        &::after{
+            content:"";
+            flex: 1 1 20px;
+            max-width: 10px;
+        }
+        > * {
+            flex: 0 0 24px;
+        }
+        
+
         &:hover {
             background: colors.$gray;
         }
@@ -885,23 +890,46 @@ function draftsList(): DraftPreview[] {
     }
 }
 
-#tools-general .dropdown > div {
-    line-height: 24px;
-    span {
-        display: inline-block;
-        margin-right: 20px;
+.tools-managing button {
+    font-weight: bold;
+}
+
+@media screen and (max-width: 650px) {
+    .tools-managing {
+        height: 94px;
+        padding-left: 240px;
+    }
+}
+
+.tools-general {
+    background: colors.$light-gray;
+
+    .dropdown > div {
+        line-height: 24px;
+        span {
+            display: inline-block;
+            margin-right: 20px;
+        }
+    }
+}
+
+@media screen and (min-width: 650px) {
+    .tools-general {
+        padding-left: 220px;
     }
 }
 
 .tools-specific {
     background: colors.$dark-gray;
 
+    .dropdown-label {
+        display: flex;
+    }
     .dropdown-list {
         position: absolute;
-        top: 44px;
-        left: 0;
+        top: 47px;
+        right: 0;
         z-index: 2;
-        width: 100%;
         display: none;
         background: colors.$light-gray;
     }
@@ -918,16 +946,16 @@ function draftsList(): DraftPreview[] {
         }
     }
 }
-
-.picker {
-    padding: 0 10px;
-}
 .tools-specific button:hover {
     background: colors.$darker-gray;
 }
-#editor table ::selection,
-#editor .math-display ::selection {
+.editor table ::selection,
+.editor .math-display ::selection {
     color: inherit;
+}
+
+.insert-dropdown div[value] {
+    display: flex;
 }
 
 .drafts-dialog {
@@ -939,7 +967,7 @@ function draftsList(): DraftPreview[] {
     top: calc(50% - 250px);
     box-sizing: border-box;
     background: white;
-    box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 15px 5px rgba(0, 0, 0, 0.2);
 
     .drafts-dialog-header {
         background: black;
@@ -1013,7 +1041,7 @@ function draftsList(): DraftPreview[] {
 }
 
 /*=== CONTENT - GENERAL===*/
-#editor img {
+.editor img {
     display: block;
     margin: 20px auto;
     max-width: 100%;
@@ -1023,7 +1051,7 @@ function draftsList(): DraftPreview[] {
     }
 }
 
-#editor table img {
+.editor table img {
     margin: 0;
 }
 
@@ -1052,8 +1080,8 @@ a[lesson-url] {
 }
 
 /*=== CONTENT - EDITOR SPECIFIC===*/
-#editor table[style^='width:']:not([class]),
-#editor table[style^='min-width:']:not([class]) {
+.editor table[style^='width:']:not([class]),
+.editor table[style^='min-width:']:not([class]) {
     margin: 0 auto;
 
     > tbody > tr > td,
@@ -1082,27 +1110,27 @@ a[lesson-url] {
     }
 }
 
-#editor .chapter-name > div + hr {
+.editor .chapter-name > div + hr {
     width: 100%;
     box-sizing: border-box;
     border-color: black;
     background-color: black;
 }
 
-#editor .empty:first-child::before,
-#editor .tags-wrapper + .empty::before {
+.editor .empty:first-child::before,
+.editor .tags-wrapper + .empty::before {
     content: attr(data-empty-text);
     color: colors.$dark-gray;
     pointer-events: none;
     height: 0;
     float: left;
 }
-#editor h1.empty:first-child::before {
+.editor h1.empty:first-child::before {
     float: right;
     text-align: center;
     width: 100%;
 }
-#editor div[data-empty-text='Tytuł lekcji'].empty:first-child::before {
+.editor div[data-empty-text='Tytuł lekcji'].empty:first-child::before {
     font-size: 3.2em;
     font-weight: bold;
     font-family: fonts.$secondary-font;
@@ -1111,18 +1139,18 @@ a[lesson-url] {
     text-align: center;
     width: 100%;
 }
-#editor .chapter-name.empty:first-child::before {
+.editor .chapter-name.empty:first-child::before {
     color: colors.$darker-gray;
     font-family: fonts.$secondary-font;
     font-size: 1.9em;
     font-weight: bold;
 }
 
-#editor .chapter-name > div {
+.editor .chapter-name > div {
     cursor: inherit;
 }
 
-#editor .editor-comment {
+.editor .editor-comment {
     text-decoration: underline colors.$main-red dashed;
     text-decoration-thickness: 3px;
     text-decoration-skip-ink: none;
@@ -1133,7 +1161,7 @@ a[lesson-url] {
     }
 }
 
-#editor .example:hover {
+.editor .example:hover {
     background-color: colors.$example-background;
 }
 

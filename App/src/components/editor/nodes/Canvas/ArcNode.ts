@@ -3,7 +3,7 @@ import { VueNodeViewRenderer } from '@tiptap/vue-3';
 import { mainRedColor } from './Colors';
 import ArcView from './ArcView.vue';
 import { idGenerator } from './Shape';
-import { Point } from '@/components/utils/point';
+import { Point } from '@/models/point';
 import { ShapeController } from './Canvas';
 import { ValueObject } from '@/models/common';
 

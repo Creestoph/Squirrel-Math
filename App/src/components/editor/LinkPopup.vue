@@ -7,7 +7,6 @@
             @selected="selectLesson($event)"
             :arrow="true"
         >
-            <template v-slot:placeholder>{{ selectedLesson }}</template>
             <dropdown-option
                 v-for="(lesson, i) in lessons"
                 :key="i"
@@ -24,7 +23,6 @@
             @selected="selectChapter($event)"
             :arrow="true"
         >
-            <template v-slot:placeholder>{{ selectedChapter }} </template>
             <dropdown-option
                 v-for="(chapter, i) in chapters"
                 :key="i"

@@ -8,7 +8,7 @@
 
 <script setup lang="ts">
 import { ref, watch, onMounted, onUnmounted } from 'vue';
-import type { Point } from '@/components/utils/point';
+import type { Point } from '@/models/point';
 
 const props = withDefaults(
     defineProps<{

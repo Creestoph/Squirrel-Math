@@ -6,8 +6,7 @@
             </div>
         </div>
         <div class="bookmark-min">
-            <div :class="!shortMode ? 'active' : ''">WERSJA PEŁNA</div>
-            <div :class="!shortMode ? '' : 'active'">WERSJA SKRÓCONA</div>
+            {{ !shortMode ? 'WERSJA SKRÓCONA' : 'WERSJA PEŁNA' }}
         </div>
     </div>
 </template>
@@ -67,7 +66,7 @@ defineProps<{ shortMode: boolean }>();
     .bookmark-shadow {
         float: right;
         overflow: auto;
-        margin: 65px -5px 30px 0;
+        margin: 40px -5px 30px 0;
         padding-left: 30px;
     }
 }
@@ -88,21 +87,16 @@ defineProps<{ shortMode: boolean }>();
         display: none;
     }
 
-    .bookmark-min div {
+    .bookmark-min {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
         background: black;
         color: white;
-        width: 50%;
-        float: left;
         height: 60px;
-        line-height: 60px;
         font-weight: bold;
         font-family: fonts.$secondary-font;
-        text-align: center;
-    }
-
-    .bookmark-min div.active {
-        background: white;
-        color: black;
+        padding: 0 10px 0 300px;
     }
 }
 

@@ -7,33 +7,20 @@ p {
     margin: 1.2em 0;
 }
 
-li {
-    display: table-row;
-    margin: 50px 0;
+ul {
+    list-style: none;
+    display: table;
 
-    &:before {
-        color: colors.$main-red;
+    li:before {
+        content: '◆';
+        margin: 0 1em;
+        display: table-cell;
+        padding-right: 0.5em;
     }
 
-    p {
-        margin: 0;
-    }
-
-    ul {
-        list-style: none;
-        display: table;
-
-        li:before {
-            content: '◆';
-            margin: 0 1em;
-            display: table-cell;
-            padding-right: 0.5em;
-        }
-
-        ul li:before {
-            content: '◈';
-            margin: 0 1.5em;
-        }
+    ul li:before {
+        content: '◈';
+        margin: 0 1.5em;
     }
 }
 
@@ -59,8 +46,24 @@ ol {
     }
 }
 
+li {
+    display: table-row;
+    margin: 50px 0;
+
+    &:before {
+        color: colors.$main-red;
+    }
+
+    p {
+        margin: 0;
+    }
+}
+
 button {
     text-align: center; // ? not sure about this one
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
 }
 
 input {
@@ -75,6 +78,11 @@ input {
         outline: none;
         box-shadow: 0 0 15px 0 colors.$creamy;
     }
+}
+
+hr {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
 }
 
 ::selection,

@@ -145,25 +145,29 @@ function scrollGlobalRight() {
 .images-gallery {
     width: 100%;
     height: 140px;
+    display: flex;
+    align-items: center;
+
     > button {
-        float: left;
         width: 30px;
-        line-height: 100px;
         font-size: 6em;
-        text-align: center;
+        margin-top: -20px;
         transition: transform 0.2s;
+
         &:hover {
             transform: scale(1.25);
         }
     }
     .images-row {
-        float: left;
         width: 820px;
         overflow: hidden;
+
         > div {
             transition: transform 0.7s;
             width: max-content;
-            > button {
+            display: flex;
+
+            > div {
                 position: relative;
                 padding: 0;
                 width: 164px;
@@ -179,6 +183,11 @@ function scrollGlobalRight() {
                     padding: 0;
                     background: rgba(200, 200, 200, 0.5);
                     color: black;
+
+                    &:hover {
+                        background: black;
+                        color: white;
+                    }
                 }
                 &:hover .delete-image {
                     display: block;
@@ -189,7 +198,6 @@ function scrollGlobalRight() {
 }
 
 img {
-    float: left;
     box-sizing: content-box;
     margin: 9px 12px;
     width: 140px;

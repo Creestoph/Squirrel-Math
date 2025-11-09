@@ -15,4 +15,10 @@ h1 {
     clear: both;
     line-height: 1em;
 }
+
+@media screen and (max-width: 500px) {
+    h1 {
+        font-size: 2.7em;
+    }
+}
 </style>

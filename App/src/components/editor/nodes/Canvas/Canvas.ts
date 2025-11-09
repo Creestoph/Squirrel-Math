@@ -1,7 +1,7 @@
 import { Node, VueNodeViewRenderer } from '@tiptap/vue-3';
 import CanvasVue from './Canvas.vue';
 import { Node as PMNode } from '@tiptap/pm/model';
-import { Point } from '@/components/utils/point';
+import { Point } from '@/models/point';
 import { ValueObject } from '@/models/common';
 
 declare module '@tiptap/core' {

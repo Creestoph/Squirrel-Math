@@ -60,11 +60,9 @@
                 się tak:
             </p>
 
-            <center>
                 <router-link target="_blank" :to="'/drzewoHD'">
                     <img src="./.images/tree.png" width="100%" />
                 </router-link>
-            </center>
 
             <p>
                 Według naszej idei, lekcje znajdujące się wyżej w drzewie wymagają znajomości lekcji im podległych. Aby
@@ -90,9 +88,7 @@
 
             <p>To chyba tyle. Teraz wyruszajmy na podbój świata.</p>
 
-            <center>
-                <img src="@/assets/global-images/squirrel.png" width="60%" />
-            </center>
+            <img style="display: block; margin: auto" src="@/assets/global-images/squirrel.png" width="60%" />
         </lesson-chapter>
     </lesson>
 </template>

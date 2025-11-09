@@ -19,7 +19,7 @@
 <script setup lang="ts">
 import { ref, watch, onMounted, nextTick } from 'vue';
 import { allComments } from './shared-state';
-import { Point } from '../utils/point';
+import { Point } from '../../models/point';
 
 const props = defineProps<{
     id: string;

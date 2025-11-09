@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="menu-trapeze" :class="{ 'menu-small': isSmall }">
-            <router-link to="/" class="menu-segment">
+            <router-link to="/" class="menu-segment" :class="{ 'menu-small': isSmall }">
                 <div class="logo">
                     <div>
                         <div class="logo-black-cell" style="float: left" />
@@ -20,33 +20,50 @@
                     <span class="logo-text-2">math</span>
                 </div>
             </router-link>
+            <div v-if="isMobileLayout" class="menu-segment show-tree menu-small" @click="isLessonPanelExpanded = !isLessonPanelExpanded">
+                <icon v-if="isLessonPanelExpanded" class="icon">lan</icon>
+                <icon v-if="!isLessonPanelExpanded" class="icon">document_with_image</icon>
+            </div>
         </div>
     </div>
 </template>
 
 <script setup lang="ts">
-import { onMounted, onUnmounted, ref } from 'vue';
+import { computed, onMounted, onUnmounted, ref, watch } from 'vue';
+import { useWindowSize } from './utils/rwd';
+import { useRoute } from 'vue-router';
+import { useLessonExpandedInfo } from './utils/menu-bus';
 
-const isSmall = ref(false);
+const scrolled = ref(false);
 const showText = ref(true);
 const restoreTimeout = ref<number | null>(null);
+const { windowWidth, isMobileLayout } = useWindowSize();
+const route = useRoute()
+const { isLessonPanelExpanded } = useLessonExpandedInfo();
+
+const isEditor = computed(() => route.path.startsWith('/editor'));
+const isSmall = computed(() => scrolled.value || windowWidth.value < 700 || (isEditor.value && windowWidth.value < 1100));
+
+watch(() => isSmall.value, (value) => {
+    if (value) {
+        showText.value = false;
+        if (restoreTimeout.value) {
+            clearTimeout(restoreTimeout.value);
+        }
+    } else {
+        restoreTimeout.value = setTimeout(() => (showText.value = !isSmall.value), 500);
+    }
+}, { immediate: true });
 
 onMounted(() => {
     addEventListener('scroll', resizeLogo);
     resizeLogo();
 });
-onUnmounted(() => removeEventListener('scroll', resizeLogo));
+onUnmounted(() => {
+    removeEventListener('scroll', resizeLogo);
+});
 function resizeLogo() {
-    if (document.body.scrollTop > 5 || document.documentElement.scrollTop > 5 || window.innerWidth < 700) {
-        isSmall.value = true;
-        showText.value = false;
-        if (restoreTimeout.value) {
-            clearTimeout(restoreTimeout.value);
-        }
-    } else if (isSmall.value) {
-        isSmall.value = false;
-        restoreTimeout.value = setTimeout(() => (showText.value = true), 500);
-    }
+    scrolled.value = (document.body.scrollTop > 5 || document.documentElement.scrollTop > 5);
 }
 </script>
 
@@ -63,12 +80,13 @@ $transition-length: 0.7s;
     left: -160px;
     z-index: 100000;
     transform: skew(-45deg);
-    background: white;
     padding-left: 100px;
     transition: left $transition-length;
 }
 
 .menu-segment {
+    width: 300px;
+    background: white;
     border-bottom: 7px solid black;
     border-right: 9.9px solid black;
     float: left;
@@ -82,9 +100,24 @@ $transition-length: 0.7s;
     }
 }
 
-.menu-segment {
-    width: 300px;
-    background: white;
+.menu-segment.show-tree {
+    background: colors.$main-red;
+    border-color: colors.$darker-creamy;
+    color: white;
+    display: flex;
+    align-items: center;
+    width: 90px;
+    cursor: pointer;
+
+    &:hover {
+        background: colors.$intense-red;
+        border-color: colors.$creamy;
+    }
+
+    .icon {
+        width: 50px;
+        height: 50px;
+    }
 }
 
 .logo {
@@ -141,20 +174,20 @@ $transition-length: 0.7s;
 
 .menu-trapeze.menu-small {
     left: -160px;
+}
 
-    .menu-segment {
-        border-bottom: 4px solid black;
-        border-right: 5.65px solid black;
-        height: 90px;
-        padding: 0 20px 0 30px;
+.menu-segment.menu-small {
+    border-bottom-width: 4px;
+    border-right-width: 5.65px;
+    height: 90px;
+    padding: 0 20px 0 30px;
 
-        &:first-child {
-            width: 120px;
-        }
+    &:first-child {
+        width: 120px;
+    }
 
-        &:nth-child(2) {
-            width: 60px;
-        }
+    &:nth-child(2) {
+        width: 60px;
     }
 
     .logo-black-cell,

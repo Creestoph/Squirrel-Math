@@ -1,10 +1,8 @@
 <template>
     <button class="wrapper" @click="dropdownVisible = !dropdownVisible">
-        <div class="value">
-            <slot name="placeholder">{{ selectedOption }}</slot>
-        </div>
+        <slot name="placeholder"><div class="value">{{ selectedOption }}</div></slot>
         <div v-if="arrow" class="arrow-down"></div>
-        <div class="dropdown" ref="dropdown" v-if="dropdownVisible" @click="select($event)">
+        <div class="dropdown" ref="dropdown" v-if="dropdownVisible" @click="select($event)" :style="opensToRight ? { left: '0' } : { right: '0' }">
             <slot></slot>
         </div>
     </button>
@@ -13,7 +11,10 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 
-defineProps<{ arrow?: boolean }>();
+withDefaults(defineProps<{ arrow?: boolean, opensToRight?: boolean }>(), {
+    arrow: false,
+    opensToRight: true,
+});
 const emit = defineEmits<{ (event: 'selected', value: string): void }>();
 
 const selectedOption = ref(' ');
@@ -53,7 +54,6 @@ function select(event: MouseEvent) {
 
 .dropdown {
     position: absolute;
-    left: 0;
     top: 100%;
     z-index: 2;
     max-height: 500px;

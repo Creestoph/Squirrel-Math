@@ -6,7 +6,7 @@
 import paper from 'paper';
 import { nodeViewProps, NodeViewWrapper } from '@tiptap/vue-3';
 import { ComponentPublicInstance, onMounted, ref, watch } from 'vue';
-import { Point } from '@/components/utils/point';
+import { Point } from '@/models/point';
 import { snapShift } from './Shape';
 import { LineShapeController } from './LineNode';
 
