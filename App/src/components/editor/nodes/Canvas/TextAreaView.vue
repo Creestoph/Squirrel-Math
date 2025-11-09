@@ -5,7 +5,6 @@
             left: x + 0.5 + 'px',
             top: y + 2 + 'px',
             background: fillColor.value,
-            color: textColor.value,
             outline: focused ? '3px dotted #cccccc' : 'none',
             border: `3px solid ${borderColor.value}`,
             width: width + 'px',
@@ -45,7 +44,6 @@ onMounted(() => {
         getPos: props.getPos,
         fillColor,
         borderColor,
-        textColor,
         align,
         handleResize: () => {},
         getPosition,
@@ -106,15 +104,6 @@ const borderColor = {
     },
     set value(borderColor) {
         props.updateAttributes({ borderColor });
-    },
-};
-
-const textColor = {
-    get value() {
-        return props.node.attrs.textColor;
-    },
-    set value(textColor) {
-        props.updateAttributes({ textColor });
     },
 };
 

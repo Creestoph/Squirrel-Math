@@ -3,8 +3,8 @@
         Równanie:
         <div ref="equationDiv"></div>
         Rozwiązują $x = $
-        <input v-model="x1" @keyup="updateProduct()" tabindex="1" /> lub $x = $
-        <input v-model="x2" @keyup="updateProduct()" tabindex="2" />
+        <input class="with-highlight" v-model="x1" @keyup="updateProduct()" tabindex="1" /> lub $x = $
+        <input class="with-highlight" v-model="x2" @keyup="updateProduct()" tabindex="2" />
         <div ref="productDiv"></div>
         <div id="buttons">
             <button class="button-red" @click="check()">Sprawdź</button>

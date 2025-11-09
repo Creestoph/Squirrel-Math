@@ -24,7 +24,7 @@ class ColumnarOperationNode {
             this.value = str.substring(s + 1);
             this.updateStyles(str.substring(0, s));
         }
-        this.value = this.value.replace('.', ',');
+        this.value = this.value === 'r.' ? this.value : this.value.replace('.', ',');
     }
 
     print() {
@@ -68,7 +68,7 @@ export class DisplayTable {
         return new DisplayTable(strs.map((s) => s.map((t) => new ColumnarOperationNode(t))));
     }
 
-    static createFromTable(operation: '+' | '-', numbers: string[][]) {
+    static createFromTable(operation: '+' | '-' | null, numbers: string[][]) {
         if (operation != '+' && operation != '-') {
             return DisplayTable.createCustom(numbers);
         }

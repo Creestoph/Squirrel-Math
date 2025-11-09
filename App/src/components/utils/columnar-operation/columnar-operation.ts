@@ -11,8 +11,6 @@ export abstract class ColumnarOperation {
     constructor(
         protected readonly table: HTMLElement,
         protected readonly commentElement: HTMLElement,
-        protected readonly buttonLeft: HTMLElement,
-        protected readonly buttonRight: HTMLElement,
     ) {}
 
     next() {
@@ -29,13 +27,15 @@ export abstract class ColumnarOperation {
         this.printStep(this.step);
     }
 
-    generateFromInput(input: HTMLInputElement, mainArea: HTMLDivElement, isFloat = true): void {
-        mainArea.style.marginBottom = '60px';
-        mainArea.style.height = 'auto';
-        this.table.style.marginTop = '60px';
-        (this.buttonLeft.childNodes[0] as HTMLElement).setAttribute('height', '60px');
-        (this.buttonRight.childNodes[0] as HTMLElement).setAttribute('height', '60px');
-        let inputValue = input.value;
+    hasNext(): boolean {
+        return this.step < this.steps.length - 1;
+    }
+
+    hasPrev(): boolean {
+        return this.step > 0;
+    }
+
+    generateFromInput(inputValue: string, isFloat = true): void {
         inputValue = inputValue.replace(/ /g, '');
         inputValue = inputValue.replace(/,/g, '.');
         try {
@@ -43,23 +43,17 @@ export abstract class ColumnarOperation {
                 this.signs.reduce((acc, separator) => acc.flatMap((s) => s.split(separator)), [inputValue]),
                 isFloat,
             );
-            this.commentElement.style.marginTop = '60px';
         } catch (err: any) {
-            this.commentElement.style.marginTop = '120px';
             this.printError(err);
             throw err;
         }
     }
 
     protected printStep(i: number) {
-        this.buttonRight.style.visibility = this.step == this.steps.length - 1 ? 'hidden' : 'visible';
-        this.buttonLeft.style.visibility = this.step == 0 ? 'hidden' : 'visible';
         this.steps[i].print(this.commentElement, this.table);
     }
 
     protected printError(msg: string | { message: string }) {
-        this.buttonLeft.style.visibility = 'hidden';
-        this.buttonRight.style.visibility = 'hidden';
         this.commentElement.innerHTML = typeof msg === 'string' ? msg : msg.message;
         this.table.innerHTML = '';
     }

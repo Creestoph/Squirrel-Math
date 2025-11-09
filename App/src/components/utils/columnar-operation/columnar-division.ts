@@ -298,10 +298,6 @@ export class ColumnarDivision extends ColumnarOperation {
             this.steps.push(new ColumnarDivisionStep(table, highlightFields, comment));
             return;
         } else if (!isFloat) {
-            comment =
-                'Ponieważ w dzielnej nie ma już cyfr do spisania, traktujemy pozostałe ' +
-                parseInt(z) +
-                ' jako resztę z dzielenia. Odcztujemy wynik ';
             let zeros = 1;
             let result = '';
             for (let j = 0; j < table[0].length; j++) {
@@ -312,23 +308,20 @@ export class ColumnarDivision extends ColumnarOperation {
                     zeros = 0;
                 }
             }
-            comment += (result[0] == '.' || result == '' ? '0' : '') + result;
-            comment += ' r. ' + z + '.';
+
+            comment =
+                `Ponieważ w dzielnej nie ma już cyfr do spisania, traktujemy pozostałe ${parseInt(z)} jako resztę z dzielenia. Odcztujemy wynik ${
+                    (result[0] == '.' || result == '' ? '0' : '') + result
+                } r. ${z}.`;
+
             let j = 0;
-            while (table[0][j].toString() != '' && j < table[0].length) {
+            while (table[0][j].toString() != '') {
                 j++;
             }
-            if (table[0][j].toString() == '') {
-                table[0][j] = 'r.';
-            } else {
-                table = ColumnarDivision.addEmptyColumn(table);
-                j = table[0].length - 1;
-                table[0][j] = 'r.';
+            table[0][j++] = 'r.';
+            for (let k = 0; k < z.length; k++) {
+                table[0][j++] = z[k];
             }
-            if (j + 1 > table[0].length - 1) {
-                table = ColumnarDivision.addEmptyColumn(table);
-            }
-            table[0][j + 1] = z;
             highlightFields = ColumnarDivision.emptyHighlight(table);
             this.steps.push(new ColumnarDivisionStep(table, highlightFields, comment));
             return;

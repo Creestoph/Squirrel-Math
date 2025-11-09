@@ -66,27 +66,21 @@ button {
     line-height: inherit;
 }
 
-input {
-    border-radius: 7px;
-    border: 1px solid colors.$darker-gray;
-    padding-left: 6px;
-    padding-right: 6px;
-    height: 25px;
-
-    &:focus {
-        border-color: colors.$darker-creamy;
-        outline: none;
-        box-shadow: 0 0 15px 0 colors.$creamy;
-    }
-}
-
 hr {
     margin-top: 1rem;
     margin-bottom: 1rem;
 }
 
-::selection,
-::moz-selection {
+input {
+    outline: none;
+}
+
+::selection { 
+    background: #ff6666;
+    color: white;
+}
+ 
+::-moz-selection {
     background: #ff6666;
     color: white;
 }
@@ -136,5 +130,19 @@ a.link {
 
     &:active {
         color: black;
+    }
+}
+
+input.with-highlight {
+    border-radius: 7px;
+    border: 1px solid colors.$darker-gray;
+    padding-left: 6px;
+    padding-right: 6px;
+    height: 25px;
+
+    &:focus {
+        border-color: colors.$darker-creamy;
+        outline: none;
+        box-shadow: 0 0 15px 0 colors.$creamy;
     }
 }

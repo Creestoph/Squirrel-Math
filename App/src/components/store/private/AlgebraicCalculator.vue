@@ -1,6 +1,6 @@
 <template>
     <div>
-        <input v-model="input" v-on:keyup.enter="onSimplify()" />
+        <input class="with-highlight" v-model="input" v-on:keyup.enter="onSimplify()" />
         <button class="button-red" @click="onSimplify()">Uprość</button>
         <div id="result" ref="resultDiv"></div>
     </div>

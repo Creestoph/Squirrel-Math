@@ -5,7 +5,7 @@
                 {{ tag }}
                 <span v-if="tags.length > 1" @click="removeTag(j)" class="cross">⨯</span>
             </div>
-            <div v-if="availableOptions(j).length > 1" class="dropdown-list">
+            <div v-if="availableOptions(j).length > 1" class="dropdown-list no-selection">
                 <div
                     class="dropdown-position"
                     v-for="(option, i) in availableOptions(j)"
@@ -16,15 +16,15 @@
                 </div>
             </div>
         </div>
-        <span v-if="canAddTag()" @click="addTag()" class="add-tag-button">+</span>
+        <span v-if="canAddTag()" @click="addTag()" class="add-tag-button no-selection">+</span>
 
-        <span :class="required.length == 0 ? 'required-optional' : 'required-strong'">Wymagane:</span>
+        <span :class="required.length == 0 ? 'required-optional' : 'required-strong'" class="no-selection">Wymagane:</span>
         <div class="required dropdown" v-for="(required, j) in required" :key="'required' + j">
             <div class="required-label">
                 {{ required }}
-                <span @click="removeRequired(j)" class="cross">⨯</span>
+                <span @click="removeRequired(j)" class="cross no-selection">⨯</span>
             </div>
-            <div class="dropdown-list">
+            <div class="dropdown-list no-selection">
                 <div
                     class="dropdown-position"
                     v-for="(lesson, i) in availableLessons"
@@ -35,7 +35,7 @@
                 </div>
             </div>
         </div>
-        <span class="add-required-button" v-if="canAddNewRequired()" @click="addRequiredLesson()">+</span>
+        <span class="add-required-button no-selection" v-if="canAddNewRequired()" @click="addRequiredLesson()">+</span>
     </node-view-wrapper>
 </template>
 

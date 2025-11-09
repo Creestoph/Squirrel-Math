@@ -34,6 +34,7 @@
                                     :required="parameterSchema.required"
                                     v-model="formArgs[i]"
                                     @paste.stop
+                                    class="with-highlight"
                                 />
                                 <input
                                     v-if="parameterSchema.type.name == 'NUMBER'"
@@ -41,12 +42,14 @@
                                     type="number"
                                     v-model="formArgs[i]"
                                     @paste.stop
+                                    class="with-highlight"
                                 />
                                 <input
                                     v-if="parameterSchema.type.name == 'BOOLEAN'"
                                     :required="parameterSchema.required"
                                     type="checkbox"
                                     v-model="formArgs[i]"
+                                    class="with-highlight"
                                 />
                                 <input
                                     v-if="parameterSchema.type.name == 'FUNCTION'"
@@ -54,6 +57,7 @@
                                     type="function"
                                     v-model="formArgs[i]"
                                     @paste.stop
+                                    class="with-highlight"
                                 />
                                 <div v-if="parameterSchema.type.name == 'ARRAY'">
                                     <input
@@ -63,6 +67,7 @@
                                         type="array"
                                         v-model="formArgs[i][j]"
                                         @paste.stop
+                                        class="with-highlight"
                                     />
                                     <button @click="addElementForArrayParameter(i)" class="array-parameter-button">
                                         + element

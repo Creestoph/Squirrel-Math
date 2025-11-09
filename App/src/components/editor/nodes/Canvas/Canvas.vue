@@ -40,14 +40,6 @@
                         >
                             krawędź
                         </color-picker>
-                        <color-picker
-                            v-if="canAnyHaveText(selection)"
-                            :color="textColor"
-                            @mousedown.native="$event.preventDefault()"
-                            @selected="textColor = $event"
-                        >
-                            tekst
-                        </color-picker>
                         <button
                             v-if="canAnyHaveText(selection)"
                             @mousedown="align = 'top'"
@@ -70,20 +62,20 @@
                             <icon>align_bottom</icon>
                         </button>
                         <span v-if="selectedRectangle() || selectedCircle()">
-                            szerokość <input type="number" v-model="width" />
+                            szerokość <input class="with-highlight" type="number" v-model="width" />
                         </span>
                         <span v-if="selectedRectangle() || selectedCircle()">
-                            wysokość <input type="number" v-model="height" />
+                            wysokość <input class="with-highlight" type="number" v-model="height" />
                         </span>
                         <button v-if="selectedLine() || selectedPolygon()" @mousedown="toggleEdit()">
                             {{ shapeEdited === -1 ? 'edytuj' : 'zatwierdź' }}
                         </button>
                         <span v-if="selectedPolygon()">
                             wierzchołki
-                            <input type="number" v-model="sides" />
+                            <input class="with-highlight" type="number" v-model="sides" />
                         </span>
-                        <span v-if="selectedArc()"> promień <input type="number" v-model.number="radius" /> </span>
-                        <span v-if="selectedArc()"> kąt <input type="number" v-model.number="angle" /> </span>
+                        <span v-if="selectedArc()"> promień <input class="with-highlight" type="number" v-model.number="radius" /> </span>
+                        <span v-if="selectedArc()"> kąt <input class="with-highlight" type="number" v-model.number="angle" /> </span>
                     </template>
                 </div>
             </div>
@@ -183,23 +175,6 @@ const borderColor = computed({
             .map((i) => shapeAtIndex(i)!)
             .filter((shape) => canHaveBorder(shape))
             .forEach((shape) => (shape.borderColor.value = color));
-    },
-});
-const textColor = computed({
-    get() {
-        const firstSelected = shapeAtIndex(selection.value[0])! as TextAreaShapeController;
-        return selection.value
-            .map((i) => shapeAtIndex(i)!)
-            .filter((shape) => isTextArea(shape))
-            .every((shape) => shape.textColor.value == firstSelected.textColor.value)
-            ? firstSelected.textColor.value
-            : null;
-    },
-    set(color) {
-        selection.value
-            .map((i) => shapeAtIndex(i)!)
-            .filter((shape) => isTextArea(shape))
-            .forEach((shape) => (shape.textColor.value = color));
     },
 });
 const align = computed({

@@ -1,12 +1,12 @@
 <template>
     <button @click="dropdownVisible = !dropdownVisible" class="color-picker-wrapper" @blur="dropdownVisible = false">
         <div><slot></slot></div>
-        <div v-if="color" @click="dropdownVisible = !dropdownVisible">
+        <div v-if="color">
             <div ref="fillColorPicker" class="color-picker ml-2" :style="{ background: color }"></div>
         </div>
         <table class="dropdown" v-if="dropdownVisible">
             <tr v-for="(row, i) in availableColors" :key="i">
-                <td v-for="(cell, j) in row" :key="j" :class="{ active: cell == color }" @click="choose(cell)">
+                <td v-for="(cell, j) in row" :key="j" :class="{ active: cell == color }" @click="choose(cell); $event.stopPropagation()">
                     <div
                         class="color-picker"
                         :class="{ 'no-color': cell == '#00000000' }"

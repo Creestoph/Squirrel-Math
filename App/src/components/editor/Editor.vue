@@ -1,6 +1,6 @@
 <template>
     <lesson>
-        <div class="toolbar" :style="{ left: lessonLeftPos }">
+        <div class="toolbar no-selection" :style="{ left: lessonLeftPos }">
             <div v-if="editor">
                 <div class="tools-managing">
                     <button @click="editor.commands.undo" title="cofnij akcję (Ctrl + Z)">

@@ -19,7 +19,6 @@ declare module '@tiptap/core' {
 
 export interface TextAreaShapeController extends ShapeController {
     borderColor: ValueObject<string>;
-    textColor: ValueObject<string | null>;
     align: ValueObject<string | null>;
 }
 
@@ -29,7 +28,6 @@ export interface TextAreaAttributes extends Point {
     width: number;
     height: number;
     borderColor?: string;
-    textColor?: string;
     fillColor?: string;
     align?: 'top' | 'middle' | 'bottom';
 }
@@ -49,7 +47,6 @@ export default Node.create({
             y: { default: 0 },
             fillColor: { default: 'none' },
             borderColor: { default: '#00000000' },
-            textColor: { default: 'black' },
             align: { default: 'top' },
         };
     },
