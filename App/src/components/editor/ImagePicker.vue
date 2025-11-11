@@ -137,9 +137,9 @@ function scrollGlobalRight() {
 @use '@/style/colors';
 
 .drafts-dialog {
-    width: 930px;
+    width: 80%;
     height: 480px;
-    left: calc(50% - 455px);
+    left: 10%;
 }
 
 .images-gallery {

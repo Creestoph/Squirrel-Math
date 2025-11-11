@@ -67,15 +67,22 @@
                         <span v-if="selectedRectangle() || selectedCircle()">
                             wysokość <input class="with-highlight" type="number" v-model="height" />
                         </span>
-                        <button v-if="selectedLine() || selectedPolygon()" @mousedown="toggleEdit()">
+                        <button
+                            v-if="selectedLine() || selectedPolygon() || selectedTextArea()"
+                            @mousedown="toggleEdit()"
+                        >
                             {{ shapeEdited === -1 ? 'edytuj' : 'zatwierdź' }}
                         </button>
                         <span v-if="selectedPolygon()">
                             wierzchołki
                             <input class="with-highlight" type="number" v-model="sides" />
                         </span>
-                        <span v-if="selectedArc()"> promień <input class="with-highlight" type="number" v-model.number="radius" /> </span>
-                        <span v-if="selectedArc()"> kąt <input class="with-highlight" type="number" v-model.number="angle" /> </span>
+                        <span v-if="selectedArc()">
+                            promień <input class="with-highlight" type="number" v-model.number="radius" />
+                        </span>
+                        <span v-if="selectedArc()">
+                            kąt <input class="with-highlight" type="number" v-model.number="angle" />
+                        </span>
                     </template>
                 </div>
             </div>
@@ -621,7 +628,10 @@ function canAnyHaveText(selection: number[]) {
 }
 
 function toggleEdit() {
-    const shape = shapeAtIndex(selection.value[0])! as PolygonShapeController | LineShapeController;
+    const shape = shapeAtIndex(selection.value[0])! as
+        | PolygonShapeController
+        | LineShapeController
+        | TextAreaShapeController;
     shape.editing.value = !shape.editing.value;
     shapeEdited.value = shape.editing.value ? selection.value[0] : -1;
 }
@@ -644,6 +654,10 @@ function selectedLine() {
 
 function selectedArc() {
     return selection.value.length == 1 && isArc(shapeAtIndex(selection.value[0])!);
+}
+
+function selectedTextArea() {
+    return selection.value.length == 1 && isTextArea(shapeAtIndex(selection.value[0])!);
 }
 
 function canHaveBorder(shape: ShapeController): shape is ShapeWithBorder {
@@ -706,10 +720,6 @@ function recalculateSnapPoints() {
 }
 
 function save() {
-    // canvas.value = {
-    //     width: eventsCatcher.value.offsetWidth,
-    //     height: eventsCatcher.value.offsetHeight,
-    // };
     allShapes().forEach((shape) => shape.save());
     handleResize();
 }
@@ -718,6 +728,7 @@ function onBlur(event?: FocusEvent) {
     if (!event) {
         deselectAll();
     } else if (
+        shapeEdited.value == -1 &&
         event.relatedTarget instanceof Node &&
         !geometryEditor.value.contains(event.relatedTarget) &&
         (!lastTextAreaClickEvent || event.timeStamp > lastTextAreaClickEvent.timeStamp + 10)

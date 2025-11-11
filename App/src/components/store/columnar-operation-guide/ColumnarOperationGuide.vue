@@ -6,18 +6,15 @@
             <button @click="onStart" :disabled="!enteredValue"><icon>play</icon></button>
         </div>
         <div class="mask" ref="mask">
-            <div
-                class="columnar-operation-script center"
-                ref="columnarOperationArea"
-            >
-                <button :style="{ visibility: hasPrev ? 'visible' : 'hidden'}" @click="prev()">
+            <div class="columnar-operation-script center" ref="columnarOperationArea">
+                <button :style="{ visibility: hasPrev ? 'visible' : 'hidden' }" @click="prev()">
                     <icon class="icon">arrow_left</icon>
                 </button>
                 <div class="main-content" ref="mainContent">
                     <div ref="table" class="no-selection" />
                     <p ref="commentElement" class="no-selection" />
                 </div>
-                <button :style="{ visibility: hasNext ? 'visible' : 'hidden'}" @click="next()">
+                <button :style="{ visibility: hasNext ? 'visible' : 'hidden' }" @click="next()">
                     <icon class="icon">arrow_right</icon>
                 </button>
             </div>
@@ -31,7 +28,7 @@ import { ColumnarSubtraction } from '../../utils/columnar-operation/columnar-sub
 import { ColumnarDivision, ZeroDivisionError } from '../../utils/columnar-operation/columnar-division';
 import { ColumnarMultiplication } from '../../utils/columnar-operation/columnar-multiplication';
 import ZeroDivisionPopup from '../../utils/columnar-operation/ZeroDivisionPopup.vue';
-import { nextTick, ref } from 'vue';
+import { ref } from 'vue';
 import { ColumnarOperation } from '@/components/utils/columnar-operation/columnar-operation';
 declare var MathJax: any;
 
@@ -63,15 +60,9 @@ function onStart() {
         ['+', '-', '*', ':', '/'].filter((op) => enteredValue.value.includes(op)).length > 1
     ) {
         wrongInput = true;
-    } else if (
-        props.operation === 'addition' ||
-        (props.operation === 'all' && enteredValue.value.includes('+'))
-    ) {
+    } else if (props.operation === 'addition' || (props.operation === 'all' && enteredValue.value.includes('+'))) {
         operationType = ColumnarAddition;
-    } else if (
-        props.operation === 'subtraction' ||
-        (props.operation === 'all' && enteredValue.value.includes('-'))
-    ) {
+    } else if (props.operation === 'subtraction' || (props.operation === 'all' && enteredValue.value.includes('-'))) {
         operationType = ColumnarSubtraction;
     } else if (
         props.operation === 'multiplication' ||
@@ -80,8 +71,7 @@ function onStart() {
         operationType = ColumnarMultiplication;
     } else if (
         props.operation === 'division' ||
-        (props.operation === 'all' &&
-            (enteredValue.value.includes(':') || enteredValue.value.includes('/')))
+        (props.operation === 'all' && (enteredValue.value.includes(':') || enteredValue.value.includes('/')))
     ) {
         operationType = ColumnarDivision;
     } else {
@@ -119,7 +109,7 @@ function prev() {
 function update() {
     hasNext.value = columnarOperation!.hasNext();
     hasPrev.value = columnarOperation!.hasPrev();
-    mask.value.style.height = columnarOperationArea.value.style.height = (mainContent.value.clientHeight + 10) + 'px';
+    mask.value.style.height = columnarOperationArea.value.style.height = mainContent.value.clientHeight + 10 + 'px';
     MathJax.Hub.Queue(['Typeset', MathJax.Hub]);
 }
 </script>

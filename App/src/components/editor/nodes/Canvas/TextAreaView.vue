@@ -1,6 +1,6 @@
 <template>
     <node-view-wrapper
-        class="area"
+        class="area no-selection"
         :style="{
             left: x + 0.5 + 'px',
             top: y + 2 + 'px',
@@ -9,20 +9,19 @@
             border: `3px solid ${borderColor.value}`,
             width: width + 'px',
             height: height + 'px',
+            'pointer-events': editing ? 'all' : 'none',
         }"
+        :contenteditable="editing"
+        ref="wrapper"
     >
         <div
-            class="align-wrapper"
+            class="align-wrapper no-selection"
             :style="{
                 'vertical-align': align.value,
             }"
         >
-            <node-view-content class="content" />
+            <node-view-content class="content no-selection" />
         </div>
-        <div class="top border-overlay"></div>
-        <div class="bottom border-overlay"></div>
-        <div class="left border-overlay"></div>
-        <div class="right border-overlay"></div>
     </node-view-wrapper>
 </template>
 
@@ -30,13 +29,18 @@
 import paper from 'paper';
 import { snapShift } from './Shape';
 import { NodeViewContent, nodeViewProps, NodeViewWrapper } from '@tiptap/vue-3';
-import { computed, onMounted, ref } from 'vue';
+import { ComponentPublicInstance, computed, onMounted, onUnmounted, ref } from 'vue';
 import { TextAreaShapeController } from './TextAreaNode';
 
 const props = defineProps(nodeViewProps);
 
 const focused = ref(false);
-let resizing = '';
+const wrapper = ref<ComponentPublicInstance>(null!);
+const resizing = ref('');
+const editing = ref(false);
+let resizeObserver: ResizeObserver;
+let minWidth = 44;
+let minHeight = 44;
 
 onMounted(() => {
     const controller: TextAreaShapeController = {
@@ -45,6 +49,7 @@ onMounted(() => {
         fillColor,
         borderColor,
         align,
+        editing,
         handleResize: () => {},
         getPosition,
         move,
@@ -52,15 +57,35 @@ onMounted(() => {
         containedInBounds,
         getSnapPoints,
         onDelete: () => {},
-        onMouseMove: () => {},
+        onMouseMove,
         onMouseDown,
         onMouseDrag,
-        onMouseUp: () => {},
+        onMouseUp,
         setSelected,
         save: () => {},
     };
     props.editor.storage.geometry.controllers.set(props.node.attrs.id, controller);
+
+    (resizeObserver = new ResizeObserver(([wrapper]) => {
+        const newWidth = wrapper.borderBoxSize[0].inlineSize;
+        const newHeight = wrapper.borderBoxSize[0].blockSize;
+        if (newWidth === width.value && newHeight === height.value) {
+            return;
+        }
+        if (newWidth > width.value) {
+            minWidth = Math.max(newWidth, 44);
+        }
+        if (newHeight > height.value) {
+            minHeight = Math.max(newHeight, 44);
+        }
+        requestAnimationFrame(() => {
+            width.value = newWidth;
+            height.value = newHeight;
+        });
+    })).observe(wrapper.value.$el as HTMLElement);
 });
+
+onUnmounted(() => resizeObserver.disconnect());
 
 const x = computed({
     get() {
@@ -153,35 +178,62 @@ function getSnapPoints() {
     return [new paper.Point(x.value, y.value), new paper.Point(x.value + width.value, y.value + height.value)];
 }
 
+function onMouseMove(event: paper.ToolEvent, hitResult: paper.HitResult | null, cursorStyle: CSSStyleDeclaration) {
+    if (editing.value) {
+        return;
+    }
+    const resizeArea = getHoveredResizeArea(event);
+    if (resizeArea == 'left' || resizeArea == 'right') {
+        cursorStyle.cursor = 'ew-resize';
+    } else if (resizeArea == 'top' || resizeArea == 'bottom') {
+        cursorStyle.cursor = 'ns-resize';
+    } else if (resizeArea == 'inside') {
+        cursorStyle.cursor = 'move';
+    }
+}
+
 function onMouseDown(event: paper.ToolEvent) {
+    if (editing.value) {
+        return true;
+    }
+
+    const area = getHoveredResizeArea(event);
+    resizing.value = area === 'inside' ? '' : area;
+    return !!area;
+}
+
+function getHoveredResizeArea(event: paper.ToolEvent): string {
     const mousePosition = event.point;
     const boundingBox = new paper.Rectangle(
         new paper.Point(x.value, y.value),
         new paper.Size(width.value, height.value),
     );
-    const inbounds =
-        mousePosition.x > boundingBox.left - 3 &&
-        mousePosition.x < boundingBox.right + 3 &&
-        mousePosition.y > boundingBox.top - 3 &&
-        mousePosition.y < boundingBox.bottom + 3;
-    resizing = '';
-    if (!inbounds) {
-        return false;
+    const margin = 4;
+    if (Math.abs(boundingBox.left - mousePosition.x) < margin) {
+        return 'left';
+    } else if (Math.abs(boundingBox.right - mousePosition.x) < margin) {
+        return 'right';
+    } else if (Math.abs(boundingBox.top - mousePosition.y) < margin) {
+        return 'top';
+    } else if (Math.abs(boundingBox.bottom - mousePosition.y) < margin) {
+        return 'bottom';
+    } else if (
+        mousePosition.x > boundingBox.left - margin &&
+        mousePosition.x < boundingBox.right + margin &&
+        mousePosition.y > boundingBox.top - margin &&
+        mousePosition.y < boundingBox.bottom + margin
+    ) {
+        return 'inside';
     }
-    if (Math.abs(boundingBox.left - mousePosition.x) < 3) {
-        resizing = 'left';
-    } else if (Math.abs(boundingBox.right - mousePosition.x) < 3) {
-        resizing = 'right';
-    } else if (Math.abs(boundingBox.top - mousePosition.y) < 3) {
-        resizing = 'top';
-    } else if (Math.abs(boundingBox.bottom - mousePosition.y) < 3) {
-        resizing = 'bottom';
-    }
-    return true;
+    return '';
 }
 
 function onMouseDrag(event: paper.ToolEvent, snapPoints: paper.Point[]) {
-    if (!resizing) {
+    if (editing.value) {
+        return true;
+    }
+
+    if (!resizing.value) {
         return false;
     }
 
@@ -193,29 +245,31 @@ function onMouseDrag(event: paper.ToolEvent, snapPoints: paper.Point[]) {
 
     let shift = event.modifiers.shift ? snapShift([mousePosition], snapPoints) : new paper.Point(0, 0);
 
-    const minHeight = 44;
-    const minWidth = 44;
-    if (resizing == 'left') {
+    if (resizing.value == 'left') {
         const w =
             mousePosition.x > boundingBox.right - minWidth ? minWidth : boundingBox.right - mousePosition.add(shift).x;
         width.value = w;
         x.value = boundingBox.right - w;
-    } else if (resizing == 'right') {
+    } else if (resizing.value == 'right') {
         width.value =
             mousePosition.x < boundingBox.left + minWidth ? minWidth : mousePosition.add(shift).x - boundingBox.left;
-    } else if (resizing == 'top') {
+    } else if (resizing.value == 'top') {
         const h =
             mousePosition.y > boundingBox.bottom - minHeight
                 ? minHeight
                 : boundingBox.bottom - mousePosition.add(shift).y;
         height.value = h;
         y.value = boundingBox.bottom - h;
-    } else if (resizing == 'bottom') {
+    } else if (resizing.value == 'bottom') {
         height.value =
             mousePosition.y < boundingBox.top + minHeight ? minHeight : mousePosition.add(shift).y - boundingBox.top;
     }
 
     return true;
+}
+
+function onMouseUp() {
+    resizing.value = '';
 }
 </script>
 
@@ -223,10 +277,8 @@ function onMouseDrag(event: paper.ToolEvent, snapPoints: paper.Point[]) {
 @use '@/style/global';
 .area {
     position: absolute;
-    cursor: move;
     box-sizing: border-box;
     display: table;
-    pointer-events: all;
 
     .content {
         box-sizing: border-box;
@@ -236,38 +288,6 @@ function onMouseDrag(event: paper.ToolEvent, snapPoints: paper.Point[]) {
 
     .align-wrapper {
         display: table-cell;
-    }
-
-    .border-overlay {
-        position: absolute;
-    }
-    .top {
-        left: 0;
-        top: -6px;
-        width: 100%;
-        height: 4px;
-        cursor: ns-resize;
-    }
-    .bottom {
-        left: 0;
-        bottom: -6px;
-        width: 100%;
-        height: 4px;
-        cursor: ns-resize;
-    }
-    .left {
-        top: 0;
-        left: -6px;
-        height: 100%;
-        width: 4px;
-        cursor: ew-resize;
-    }
-    .right {
-        top: 0;
-        right: -6px;
-        height: 100%;
-        width: 4px;
-        cursor: ew-resize;
     }
 }
 </style>

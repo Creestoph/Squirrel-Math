@@ -20,6 +20,7 @@ declare module '@tiptap/core' {
 export interface TextAreaShapeController extends ShapeController {
     borderColor: ValueObject<string>;
     align: ValueObject<string | null>;
+    editing: ValueObject<boolean>;
 }
 
 export interface TextAreaAttributes extends Point {

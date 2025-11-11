@@ -146,7 +146,12 @@
                         <icon>add_comment</icon>
                     </button>
 
-                    <dropdown class="insert-dropdown" :opensToRight="false" @selected="insert($event, editor.commands)" title="wstaw">
+                    <dropdown
+                        class="insert-dropdown"
+                        :opensToRight="false"
+                        @selected="insert($event, editor.commands)"
+                        title="wstaw"
+                    >
                         <template v-slot:placeholder><icon>add</icon></template>
                         <dropdown-option value="chapter"><icon>menu_book</icon> rozdział</dropdown-option>
                         <dropdown-option value="section"><icon>auto_stories</icon> sekcja</dropdown-option>
@@ -847,11 +852,13 @@ function draftsList(): DraftPreview[] {
     }
 }
 
-.tools-managing, .tools-general, .tools-specific {
+.tools-managing,
+.tools-general,
+.tools-specific {
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    
+
     > * {
         display: inline-block;
     }
@@ -866,15 +873,14 @@ function draftsList(): DraftPreview[] {
         justify-content: center;
 
         &::before,
-        &::after{
-            content:"";
+        &::after {
+            content: '';
             flex: 1 1 20px;
             max-width: 10px;
         }
         > * {
             flex: 0 0 24px;
         }
-        
 
         &:hover {
             background: colors.$gray;
@@ -1124,6 +1130,7 @@ a[lesson-url] {
     pointer-events: none;
     height: 0;
     float: left;
+    white-space: nowrap;
 }
 .editor h1.empty:first-child::before {
     float: right;

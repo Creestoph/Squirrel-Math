@@ -25,7 +25,9 @@ export interface ShapeController {
 
     getPos(): number | undefined;
     onMouseMove(event: paper.ToolEvent, hitResult: paper.HitResult | null, cursorStyle: CSSStyleDeclaration): void;
+    /** returns true if the shape captured mouse down */
     onMouseDown(event: paper.ToolEvent, hitResult: paper.HitResult | null): boolean;
+    /** returns true if the shape captured mouse drag */
     onMouseDrag(event: paper.ToolEvent, snapPoints: paper.Point[]): boolean;
     onMouseUp(): void;
     onDelete(): void;
