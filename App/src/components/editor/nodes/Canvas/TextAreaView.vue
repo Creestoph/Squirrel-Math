@@ -29,7 +29,7 @@
 import paper from 'paper';
 import { snapShift } from './Shape';
 import { NodeViewContent, nodeViewProps, NodeViewWrapper } from '@tiptap/vue-3';
-import { ComponentPublicInstance, computed, onMounted, onUnmounted, ref } from 'vue';
+import { ComponentPublicInstance, computed, onMounted, onUnmounted, ref, watch } from 'vue';
 import { TextAreaShapeController } from './TextAreaNode';
 
 const props = defineProps(nodeViewProps);
@@ -41,51 +41,6 @@ const editing = ref(false);
 let resizeObserver: ResizeObserver;
 let minWidth = 44;
 let minHeight = 44;
-
-onMounted(() => {
-    const controller: TextAreaShapeController = {
-        node: props.node,
-        getPos: props.getPos,
-        fillColor,
-        borderColor,
-        align,
-        editing,
-        handleResize: () => {},
-        getPosition,
-        move,
-        scale,
-        containedInBounds,
-        getSnapPoints,
-        onDelete: () => {},
-        onMouseMove,
-        onMouseDown,
-        onMouseDrag,
-        onMouseUp,
-        setSelected,
-        save: () => {},
-    };
-    props.editor.storage.geometry.controllers.set(props.node.attrs.id, controller);
-
-    (resizeObserver = new ResizeObserver(([wrapper]) => {
-        const newWidth = wrapper.borderBoxSize[0].inlineSize;
-        const newHeight = wrapper.borderBoxSize[0].blockSize;
-        if (newWidth === width.value && newHeight === height.value) {
-            return;
-        }
-        if (newWidth > width.value) {
-            minWidth = Math.max(newWidth, 44);
-        }
-        if (newHeight > height.value) {
-            minHeight = Math.max(newHeight, 44);
-        }
-        requestAnimationFrame(() => {
-            width.value = newWidth;
-            height.value = newHeight;
-        });
-    })).observe(wrapper.value.$el as HTMLElement);
-});
-
-onUnmounted(() => resizeObserver.disconnect());
 
 const x = computed({
     get() {
@@ -149,6 +104,58 @@ const align = {
         props.updateAttributes({ align });
     },
 };
+
+const controller: TextAreaShapeController = {
+    node: props.node,
+    getPos: props.getPos,
+    fillColor,
+    borderColor,
+    align,
+    editing,
+    handleResize: () => {},
+    getPosition,
+    move,
+    scale,
+    containedInBounds,
+    getSnapPoints,
+    onDelete: () => {},
+    onMouseMove,
+    onMouseDown,
+    onMouseDrag,
+    onMouseUp,
+    setSelected,
+    save: () => {},
+};
+
+watch(() => props.node, afterNodeChanged);
+
+onMounted(() => {
+    afterNodeChanged();
+
+    (resizeObserver = new ResizeObserver(([wrapper]) => {
+        const newWidth = wrapper.borderBoxSize[0].inlineSize;
+        const newHeight = wrapper.borderBoxSize[0].blockSize;
+        if (newWidth === width.value && newHeight === height.value) {
+            return;
+        }
+        if (newWidth > width.value) {
+            minWidth = Math.max(newWidth, 44);
+        }
+        if (newHeight > height.value) {
+            minHeight = Math.max(newHeight, 44);
+        }
+        requestAnimationFrame(() => {
+            width.value = newWidth;
+            height.value = newHeight;
+        });
+    })).observe(wrapper.value.$el as HTMLElement);
+});
+
+onUnmounted(() => resizeObserver.disconnect());
+
+function afterNodeChanged() {
+    props.editor.storage.geometry.controllers.set(props.node.attrs.id, controller);
+}
 
 function getPosition() {
     return new paper.Point(x.value, y.value);

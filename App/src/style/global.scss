@@ -75,11 +75,11 @@ input {
     outline: none;
 }
 
-::selection { 
+::selection {
     background: #ff6666;
     color: white;
 }
- 
+
 ::-moz-selection {
     background: #ff6666;
     color: white;
@@ -92,6 +92,14 @@ input {
     -moz-user-select: none; /* mozilla browsers */
     -khtml-user-select: none; /* webkit (konqueror) browsers */
     -ms-user-select: none; /* IE10+ */
+}
+
+.allow-selection {
+    user-select: all;
+    -webkit-user-select: all; /* webkit (safari, chrome) browsers */
+    -moz-user-select: all; /* mozilla browsers */
+    -khtml-user-select: all; /* webkit (konqueror) browsers */
+    -ms-user-select: all; /* IE10+ */
 }
 
 .center {

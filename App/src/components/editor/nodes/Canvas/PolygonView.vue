@@ -12,8 +12,6 @@ import { PolygonShapeController } from './PolygonNode';
 
 const props = defineProps(nodeViewProps);
 
-let paperScope: paper.PaperScope = null!;
-
 const polygon = ref<paper.Path>(null!);
 const movedShape = ref<paper.Item | null>(null);
 
@@ -68,44 +66,45 @@ const sides = {
     },
 };
 
-watch(
-    () => props.node,
-    () => render(),
-);
+const controller: PolygonShapeController = {
+    node: props.node,
+    getPos: props.getPos,
+    paperScope: new paper.PaperScope(),
+    fillColor,
+    editing,
+    sides,
+    borderColor,
+    makeRegular,
+    handleResize,
+    getPosition,
+    move,
+    scale,
+    containedInBounds,
+    getSnapPoints,
+    onDelete,
+    onMouseMove,
+    onMouseDown,
+    onMouseDrag,
+    onMouseUp,
+    setSelected,
+    save,
+};
+
+watch(() => props.node, afterNodeChanged);
 
 onMounted(() => {
-    paperScope = new paper.PaperScope();
-    paperScope.setup(canvas.value.$el as HTMLCanvasElement);
-    render();
-    const controller: PolygonShapeController = {
-        node: props.node,
-        getPos: props.getPos,
-        paperScope,
-        fillColor,
-        editing,
-        sides,
-        borderColor,
-        makeRegular,
-        handleResize,
-        getPosition,
-        move,
-        scale,
-        containedInBounds,
-        getSnapPoints,
-        onDelete,
-        onMouseMove,
-        onMouseDown,
-        onMouseDrag,
-        onMouseUp,
-        setSelected,
-        save,
-    };
-    props.editor.storage.geometry.controllers.set(props.node.attrs.id, controller);
+    controller.paperScope!.setup(canvas.value.$el as HTMLCanvasElement);
+    afterNodeChanged();
 });
 
+function afterNodeChanged() {
+    render();
+    props.editor.storage.geometry.controllers.set(props.node.attrs.id, controller);
+}
+
 function render() {
-    paperScope.activate();
-    paperScope.project.clear();
+    controller.paperScope!.activate();
+    controller.paperScope!.project.clear();
 
     const attrs = props.node.attrs;
     polygon.value = new paper.Path();
@@ -132,7 +131,7 @@ function render() {
 }
 
 function handleResize(width: number, height: number) {
-    paperScope.view.viewSize = new paper.Size(width, height);
+    controller.paperScope!.view.viewSize = new paper.Size(width, height);
 }
 
 function getPosition() {
@@ -277,11 +276,5 @@ function makeRegular(sides: number, center?: Point) {
 </script>
 
 <style scoped lang="scss">
-@use '@/style/global';
-canvas {
-    position: absolute;
-    left: 0;
-    top: 0;
-    pointer-events: none;
-}
+@use '@/style/canvas-node';
 </style>

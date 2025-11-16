@@ -1,5 +1,5 @@
 <template>
-    <div :class="{ disabled }"><slot></slot></div>
+    <div :class="{ disabled }" dropdown-option><slot></slot></div>
 </template>
 
 <script setup lang="ts">
@@ -14,9 +14,9 @@ div {
     padding: 5px 10px;
     white-space: nowrap;
     text-align: left;
-    background: colors.$gray;
+    background: #e8d9d9;
     &:hover {
-        background: colors.$darker-gray;
+        background: #d1baba;
     }
 }
 .disabled {

@@ -882,22 +882,25 @@ function draftsList(): DraftPreview[] {
             flex: 0 0 24px;
         }
 
-        &:hover {
-            background: colors.$gray;
-        }
-        &.active {
-            background: colors.$dark-gray;
-        }
         &.active:hover {
-            background: colors.$dark-gray;
-            outline: 1px solid colors.$darker-gray;
             outline-offset: -1px;
         }
     }
 }
 
 .tools-managing button {
-    font-weight: bold;
+    &:hover {
+        background: colors.$gray;
+    }
+
+    &.active {
+        background: colors.$dark-gray;
+    }
+
+    &.active:hover {
+        background: colors.$dark-gray;
+        outline: 1px solid colors.$darker-gray;
+    }
 }
 
 @media screen and (max-width: 650px) {
@@ -908,13 +911,28 @@ function draftsList(): DraftPreview[] {
 }
 
 .tools-general {
-    background: colors.$light-gray;
+    background: #ffeeee;
 
     .dropdown > div {
         line-height: 24px;
         span {
             display: inline-block;
             margin-right: 20px;
+        }
+    }
+
+    button {
+        &.active {
+            background: #ffaaaa;
+        }
+
+        &:hover {
+            background: #ffcccc;
+        }
+
+        &.active:hover {
+            background: #ffaaaa;
+            outline: 1px solid #ff7777;
         }
     }
 }
@@ -926,7 +944,7 @@ function draftsList(): DraftPreview[] {
 }
 
 .tools-specific {
-    background: colors.$dark-gray;
+    background: #ffdddd;
 
     .dropdown-label {
         display: flex;
@@ -951,9 +969,10 @@ function draftsList(): DraftPreview[] {
             background: colors.$gray;
         }
     }
-}
-.tools-specific button:hover {
-    background: colors.$darker-gray;
+
+    button:hover {
+        background: #ffaaaa;
+    }
 }
 .editor table ::selection,
 .editor .math-display ::selection {

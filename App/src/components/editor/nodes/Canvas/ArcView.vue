@@ -11,8 +11,6 @@ import { ArcShapeController } from './ArcNode';
 
 const props = defineProps(nodeViewProps);
 
-let paperScope: paper.PaperScope = null!;
-
 const line1 = ref<paper.Path>(null!);
 const line2 = ref<paper.Path>(null!);
 const arcStroke = ref<paper.Path.Arc>(null!);
@@ -88,43 +86,44 @@ const arm1 = computed(() => arm1End.value.subtract(center.value));
 
 const arm2 = computed(() => arm2End.value.subtract(center.value));
 
-watch(
-    () => props.node,
-    () => render(),
-);
+const controller: ArcShapeController = {
+    node: props.node,
+    getPos: props.getPos,
+    paperScope: new paper.PaperScope(),
+    angle,
+    radius,
+    fillColor,
+    borderColor,
+    handleResize,
+    getPosition,
+    move,
+    scale,
+    containedInBounds,
+    getSnapPoints,
+    onDelete,
+    onMouseMove,
+    onMouseDown,
+    onMouseDrag,
+    onMouseUp,
+    setSelected,
+    save,
+};
+
+watch(() => props.node, afterNodeChanged);
 
 onMounted(() => {
-    paperScope = new paper.PaperScope();
-    paperScope.setup(canvas.value.$el as HTMLCanvasElement);
-    render();
-    const controller: ArcShapeController = {
-        node: props.node,
-        getPos: props.getPos,
-        paperScope,
-        angle,
-        radius,
-        fillColor,
-        borderColor,
-        handleResize,
-        getPosition,
-        move,
-        scale,
-        containedInBounds,
-        getSnapPoints,
-        onDelete,
-        onMouseMove,
-        onMouseDown,
-        onMouseDrag,
-        onMouseUp,
-        setSelected,
-        save,
-    };
-    props.editor.storage.geometry.controllers.set(props.node.attrs.id, controller);
+    controller.paperScope!.setup(canvas.value.$el as HTMLCanvasElement);
+    afterNodeChanged();
 });
 
+function afterNodeChanged() {
+    render();
+    props.editor.storage.geometry.controllers.set(props.node.attrs.id, controller);
+}
+
 function render() {
-    paperScope.activate();
-    paperScope.project.clear();
+    controller.paperScope!.activate();
+    controller.paperScope!.project.clear();
 
     const attrs = props.node.attrs;
 
@@ -152,7 +151,7 @@ function render() {
 }
 
 function handleResize(width: number, height: number) {
-    paperScope.view.viewSize = new paper.Size(width, height);
+    controller.paperScope!.view.viewSize = new paper.Size(width, height);
 }
 
 function getPosition() {
@@ -279,7 +278,7 @@ function save() {
 }
 
 function recalculateArc() {
-    paperScope.activate();
+    controller.paperScope!.activate();
 
     if (arcStroke.value) {
         arcStroke.value.remove();
@@ -309,16 +308,10 @@ function assignStrokeColor(color: string) {
     if (color == '#00000000') {
         color = '#00000001';
     }
-    arcStroke.value.strokeColor = new paper.Color(borderColor);
+    arcStroke.value.strokeColor = new paper.Color(color);
 }
 </script>
 
 <style scoped lang="scss">
-@use '@/style/global';
-canvas {
-    position: absolute;
-    left: 0;
-    top: 0;
-    pointer-events: none;
-}
+@use '@/style/canvas-node';
 </style>

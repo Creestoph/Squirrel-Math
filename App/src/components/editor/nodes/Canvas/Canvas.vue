@@ -25,6 +25,13 @@
                         <span class="T-icon">T</span>
                     </button>
                     <template v-if="selection.length">
+                        <dropdown title="kolejność rysowania" class="layers-dropdown">
+                            <template v-slot:placeholder><icon>layers</icon></template>
+                            <dropdown-option @click="onMoveToBottom">przenieś na spód</dropdown-option>
+                            <dropdown-option @click="onMoveDown">przenieś w dół</dropdown-option>
+                            <dropdown-option @click="onMoveUp">przenieś w górę</dropdown-option>
+                            <dropdown-option @click="onMoveToTop">przenieś na wierzch</dropdown-option>
+                        </dropdown>
                         <color-picker
                             :color="fillColor"
                             @mousedown.native="$event.preventDefault()"
@@ -61,11 +68,13 @@
                         >
                             <icon>align_bottom</icon>
                         </button>
-                        <span v-if="selectedRectangle() || selectedCircle()">
-                            szerokość <input class="with-highlight" type="number" v-model="width" />
+                        <span class="input-button" v-if="selectedRectangle() || selectedCircle()">
+                            <span @mousedown="(widthInput.focus(), $event.preventDefault())">szerokość</span>
+                            <input type="number" ref="widthInput" v-model="width" />
                         </span>
-                        <span v-if="selectedRectangle() || selectedCircle()">
-                            wysokość <input class="with-highlight" type="number" v-model="height" />
+                        <span class="input-button" v-if="selectedRectangle() || selectedCircle()">
+                            <span @mousedown="(heightInput.focus(), $event.preventDefault())">wysokość</span>
+                            <input type="number" ref="heightInput" v-model="height" />
                         </span>
                         <button
                             v-if="selectedLine() || selectedPolygon() || selectedTextArea()"
@@ -73,15 +82,17 @@
                         >
                             {{ shapeEdited === -1 ? 'edytuj' : 'zatwierdź' }}
                         </button>
-                        <span v-if="selectedPolygon()">
-                            wierzchołki
-                            <input class="with-highlight" type="number" v-model="sides" />
+                        <span class="input-button" v-if="selectedPolygon()">
+                            <span @mousedown="(sidesInput.focus(), $event.preventDefault())">wierzchołki</span>
+                            <input type="number" ref="sidesInput" v-model="sides" />
                         </span>
-                        <span v-if="selectedArc()">
-                            promień <input class="with-highlight" type="number" v-model.number="radius" />
+                        <span class="input-button" v-if="selectedArc()">
+                            <span @mousedown="(radiusInput.focus(), $event.preventDefault())">promień</span>
+                            <input type="number" ref="radiusInput" v-model.number="radius" />
                         </span>
-                        <span v-if="selectedArc()">
-                            kąt <input class="with-highlight" type="number" v-model.number="angle" />
+                        <span class="input-button" v-if="selectedArc()">
+                            <span @mousedown="(arcInput.focus(), $event.preventDefault())">kąt</span>
+                            <input type="number" ref="arcInput" v-model.number="angle" />
                         </span>
                     </template>
                 </div>
@@ -103,6 +114,8 @@
 import paper from 'paper';
 import { idGenerator, snapShift } from './Shape';
 import ColorPicker from '../../ColorPicker.vue';
+import Dropdown from '../../Dropdown.vue';
+import DropdownOption from '../../DropdownOption.vue';
 
 import { computed, onMounted, onUnmounted, ref } from 'vue';
 import { NodeViewContent, nodeViewProps, NodeViewWrapper } from '@tiptap/vue-3';
@@ -120,16 +133,12 @@ type ShapeWithBorder = ShapeController & { borderColor: ValueObject<string | nul
 
 const props = defineProps(nodeViewProps);
 
-const selection = ref<number[]>([]);
-const focused = ref(false);
-
 let eventsCatcherPaperScope: paper.PaperScope = null!;
 let overlayPaperScope: paper.PaperScope = null!;
 let snapPoints: paper.Point[] = [];
 let dragStartPoint: paper.Point | null = null;
 let shapeDragged = -1;
 let shapeDragStartPosition: paper.Point | null = null;
-let shapeEdited = ref(-1);
 let copiedNodes: PMNode[] | null = null;
 let selectionBox: paper.Shape.Rectangle | null = null;
 let selectionBoxAnchor: paper.Point | null = null;
@@ -141,10 +150,18 @@ const hitOptions = {
     fill: true,
     tolerance: 5,
 };
+const selection = ref<number[]>([]);
+const focused = ref(false);
+const shapeEdited = ref(-1);
 const eventsCatcher = ref<HTMLCanvasElement>(null!);
 const overlayCanvas = ref<HTMLCanvasElement>(null!);
 const canvasWrapper = ref<HTMLDivElement>(null!);
 const geometryEditor = ref<HTMLElement>(null!);
+const widthInput = ref<HTMLInputElement>(null!);
+const heightInput = ref<HTMLInputElement>(null!);
+const sidesInput = ref<HTMLInputElement>(null!);
+const arcInput = ref<HTMLInputElement>(null!);
+const radiusInput = ref<HTMLInputElement>(null!);
 
 const canvas = computed({
     get() {
@@ -203,7 +220,9 @@ const align = computed({
 });
 const width = computed({
     get() {
-        return (shapeAtIndex(selection.value[0]) as CircleShapeController | RectangleShapeController).width.value;
+        return Math.round(
+            (shapeAtIndex(selection.value[0]) as CircleShapeController | RectangleShapeController).width.value,
+        );
     },
     set(value) {
         (shapeAtIndex(selection.value[0]) as CircleShapeController | RectangleShapeController).width.value = value;
@@ -211,7 +230,9 @@ const width = computed({
 });
 const height = computed({
     get() {
-        return (shapeAtIndex(selection.value[0]) as CircleShapeController | RectangleShapeController).height.value;
+        return Math.round(
+            (shapeAtIndex(selection.value[0]) as CircleShapeController | RectangleShapeController).height.value,
+        );
     },
     set(value) {
         (shapeAtIndex(selection.value[0]) as CircleShapeController | RectangleShapeController).height.value = value;
@@ -219,7 +240,7 @@ const height = computed({
 });
 const radius = computed({
     get() {
-        return (shapeAtIndex(selection.value[0]) as ArcShapeController).radius.value;
+        return Math.round((shapeAtIndex(selection.value[0]) as ArcShapeController).radius.value);
     },
     set(value) {
         (shapeAtIndex(selection.value[0]) as ArcShapeController).radius.value = value;
@@ -227,7 +248,7 @@ const radius = computed({
 });
 const angle = computed({
     get() {
-        return (shapeAtIndex(selection.value[0]) as ArcShapeController).angle.value;
+        return Math.round((shapeAtIndex(selection.value[0]) as ArcShapeController).angle.value);
     },
     set(value) {
         (shapeAtIndex(selection.value[0]) as ArcShapeController).angle.value = value;
@@ -317,58 +338,58 @@ function handleMouseMove(event: paper.ToolEvent) {
 }
 
 function handleMouseDown(event: paper.ToolEvent) {
+    const isLeftButtonPressed = (event as any).event.buttons & 1;
+    if (!isLeftButtonPressed) {
+        return;
+    }
+
     geometryEditor.value.focus();
     let clickedShape = -1;
-    if (event.modifiers.control || event.modifiers.shift) {
-        for (let i = 0; i < totalShapes(); i++) {
-            if (shapeEdited.value == -1 || shapeEdited.value == i) {
-                const shape = shapeAtIndex(i)!;
-                const hitResult = shape.paperScope ? shape.paperScope.project.hitTest(event.point, hitOptions) : null;
-                if (shape.onMouseDown(event, hitResult)) {
-                    clickedShape = i;
-                    if (!selection.value.includes(i)) {
-                        select(i, shape);
-                    }
-                }
-            }
-        }
-    } else {
-        for (let i = totalShapes() - 1; i >= 0; i--) {
-            if (shapeEdited.value == -1 || shapeEdited.value == i) {
-                const shape = shapeAtIndex(i)!;
-                const hitResult = shape.paperScope ? shape.paperScope.project.hitTest(event.point, hitOptions) : null;
-                if (shape.onMouseDown(event, hitResult)) {
-                    clickedShape = i;
+    for (let i = totalShapes() - 1; i >= 0; i--) {
+        if (shapeEdited.value == -1 || shapeEdited.value == i) {
+            const shape = shapeAtIndex(i)!;
+            const hitResult = shape.paperScope ? shape.paperScope.project.hitTest(event.point, hitOptions) : null;
+            if (shape.onMouseDown(event, hitResult)) {
+                clickedShape = i;
+                if (event.modifiers.shift) {
+                    select(i, shape);
+                } else if (event.modifiers.control) {
+                    select(i, shape);
+                    break;
+                } else {
+                    selectOnly(i);
                     break;
                 }
             }
         }
-        if (clickedShape === -1) {
-            deselectAll();
-        }
-        if (clickedShape != -1 && !selection.value.some((shapeIndex) => shapeIndex == clickedShape)) {
-            deselectAll();
-            select(clickedShape);
-        }
     }
 
-    if (clickedShape != -1) {
-        dragStartPoint = event.point;
-        shapeDragStartPosition = shapeAtIndex(clickedShape)!.getPosition().clone();
-        shapeDragged = clickedShape;
-        selectionBox = null;
-    } else {
-        overlayPaperScope.activate();
+    if (clickedShape === -1) {
+        if (!event.modifiers.control && !event.modifiers.shift) {
+            deselectAll();
+        }
         shapeDragged = -1;
+        overlayPaperScope.activate();
         selectionBox = new paper.Shape.Rectangle(new paper.Rectangle(event.point, event.point));
         selectionBox.fillColor = new paper.Color(0, 0, 0, 0.4);
         selectionBox.strokeColor = new paper.Color(0, 0, 0, 0.6);
         selectionBox.style.strokeWidth = 1;
         selectionBoxAnchor = event.point;
+    } else {
+        dragStartPoint = event.point;
+        shapeDragStartPosition = shapeAtIndex(clickedShape)!.getPosition().clone();
+        shapeDragged = clickedShape;
+        selectionBox = null;
     }
 }
 
 function handleMouseDrag(event: paper.ToolEvent) {
+    const isMiddleButtonPressed = (event as any).event.buttons & 4;
+    if (isMiddleButtonPressed) {
+        allShapes().forEach((s) => s.move(event.delta));
+        return;
+    }
+
     let moveObjects = true;
     for (let i = 0; i < totalShapes(); i++) {
         if (shapeEdited.value == -1 || shapeEdited.value == i) {
@@ -619,6 +640,38 @@ function addTextArea(event: MouseEvent) {
     addShape(event);
 }
 
+function onMoveToBottom() {
+    const selectedShapeIds = selection.value.map((i) => props.node.children[i].attrs.id);
+    props.editor.commands.moveShapesToBottom(props.getPos()!, selection.value);
+    deselectAll();
+    selectedShapeIds.forEach((s) => select(props.node.children.findIndex((c) => c.attrs.id === s)));
+    save();
+}
+
+function onMoveDown() {
+    const selectedShapeIds = selection.value.map((i) => props.node.children[i].attrs.id);
+    props.editor.commands.moveShapesDown(props.getPos()!, selection.value);
+    deselectAll();
+    selectedShapeIds.forEach((s) => select(props.node.children.findIndex((c) => c.attrs.id === s)));
+    save();
+}
+
+function onMoveUp() {
+    const selectedShapeIds = selection.value.map((i) => props.node.children[i].attrs.id);
+    props.editor.commands.moveShapesUp(props.getPos()!, selection.value);
+    deselectAll();
+    selectedShapeIds.forEach((s) => select(props.node.children.findIndex((c) => c.attrs.id === s)));
+    save();
+}
+
+function onMoveToTop() {
+    const selectedShapeIds = selection.value.map((i) => props.node.children[i].attrs.id);
+    props.editor.commands.moveShapesToTop(props.getPos()!, selection.value);
+    deselectAll();
+    selectedShapeIds.forEach((s) => select(props.node.children.findIndex((c) => c.attrs.id === s)));
+    save();
+}
+
 function canAnyHaveBorder(selection: number[]) {
     return selection.some((i) => canHaveBorder(shapeAtIndex(i)!));
 }
@@ -689,9 +742,11 @@ function isTextArea(shape: ShapeController): shape is TextAreaShapeController {
 }
 
 function select(index: number, shape = shapeAtIndex(index)!) {
-    shape.setSelected(true);
-    selection.value.push(index);
-    recalculateSnapPoints();
+    if (!selection.value.includes(index)) {
+        shape.setSelected(true);
+        selection.value.push(index);
+        recalculateSnapPoints();
+    }
 }
 
 function deselect(index: number, shape = shapeAtIndex(index)!) {
@@ -709,6 +764,19 @@ function deselectAll() {
     shapeEdited.value = -1;
     selection.value = [];
     snapPoints = [];
+}
+
+function selectOnly(index: number) {
+    allShapes().forEach((shape, i) => {
+        if (i !== index) {
+            shape.setSelected(false);
+        } else if (!selection.value.includes(index)) {
+            shape.setSelected(true);
+        }
+    });
+    shapeEdited.value = shapeEdited.value === index ? shapeEdited.value : -1;
+    selection.value = [index];
+    recalculateSnapPoints();
 }
 
 function recalculateSnapPoints() {
@@ -802,7 +870,7 @@ function forwardClickEventToCanvas(event: MouseEvent) {
     height: 0;
     position: absolute;
     z-index: 1;
-    user-select: none;
+    // user-select: none;
 }
 
 .geometry-toolbar {
@@ -823,6 +891,7 @@ function forwardClickEventToCanvas(event: MouseEvent) {
         float: left;
         display: flex;
         align-items: center;
+        cursor: pointer;
 
         &:hover {
             background: colors.$gray;
@@ -856,15 +925,37 @@ function forwardClickEventToCanvas(event: MouseEvent) {
     background: yellow;
     margin-left: 5px;
 }
-input[type='checkbox'] {
-    width: 15px;
-}
-input[type='number'] {
-    width: 50px;
+.input-button {
+    padding: 0;
+
+    span {
+        padding: 0 5px 0 10px;
+    }
+
+    input[type='number'] {
+        width: 30px;
+        background: transparent;
+        padding: 0 5px;
+        text-overflow: ellipsis;
+
+        &:focus {
+            background: colors.$dark-gray;
+            width: 40px;
+            @extend .allow-selection;
+        }
+    }
 }
 .T-icon {
     font-style: italic;
     font-weight: bold;
     font-family: 'Times New Roman', Times, serif;
+}
+[dropdown-option] {
+    background: colors.$gray;
+    padding: 0 10px;
+
+    &:hover {
+        background: colors.$dark-gray;
+    }
 }
 </style>
