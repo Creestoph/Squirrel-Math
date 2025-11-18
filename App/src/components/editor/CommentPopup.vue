@@ -1,5 +1,5 @@
 <template>
-    <div class="comment-editor" :style="positionStyle || undefined">
+    <div class="comment-editor" :style="positionStyle || undefined" :class="toLeft ? 'left' : 'right'">
         <textarea v-model="commentText" @paste.stop ref="commentEditor" @keydown.esc="close()"></textarea>
         <button
             @click="hidden = !hidden"
@@ -31,6 +31,7 @@ const emit = defineEmits<{ (event: 'closed'): void }>();
 const commentText = ref<string>('');
 const hidden = ref<boolean>(false);
 const positionStyle = ref<Record<string, string> | null>(null);
+const toLeft = ref<boolean>(true);
 const commentEditor = ref<HTMLElement | null>(null);
 
 function save(id: string | null) {
@@ -50,10 +51,13 @@ function setId() {
 }
 
 function setPosition() {
+    const left = props.pos.x + window.pageXOffset;
+    const top = props.pos.y + window.pageYOffset;
     positionStyle.value = {
-        left: `${props.pos.x + window.pageXOffset}px`,
-        top: `${props.pos.y + window.pageYOffset}px`,
+        left: `${left}px`,
+        top: `${top}px`,
     };
+    toLeft.value = left > window.innerWidth / 2;
 }
 
 function close() {
@@ -87,15 +91,42 @@ watch(
 .comment-editor {
     display: inline-block;
     position: absolute;
-    margin-left: -330px;
     margin-top: 12px;
     width: 250px;
     height: 170px;
     z-index: 2;
     background: black;
-    border-radius: 15px 0 15px 15px;
     color: white;
     padding: 10px;
+
+    &.left {
+        margin-left: -330px;
+        border-radius: 15px 0 15px 15px;
+    }
+
+    &.right {
+        margin-left: 100px;
+        border-radius: 0 15px 15px 15px;
+    }
+
+    &:after {
+        content: '';
+        position: absolute;
+        top: 0;
+        width: 0;
+        height: 0;
+        border-top: 30px solid black;
+    }
+
+    &.left:after {
+        right: -29px;
+        border-right: 30px solid transparent;
+    }
+
+    &.right:after {
+        left: -29px;
+        border-left: 30px solid transparent;
+    }
 
     textarea {
         display: block;
@@ -122,17 +153,6 @@ watch(
         background: white;
         color: black;
         float: right;
-    }
-
-    &:after {
-        content: '';
-        position: absolute;
-        right: -29px;
-        top: 0;
-        width: 0;
-        height: 0;
-        border-right: 30px solid transparent;
-        border-top: 30px solid black;
     }
 }
 </style>

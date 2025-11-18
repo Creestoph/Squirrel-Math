@@ -76,7 +76,7 @@
                         :class="{ active: editor.isActive('strike') }"
                         style="text-decoration: line-through"
                         @click="editor.chain().focus().toggleStrike().run()"
-                        title="przekreślenie tekstu (Ctrl + D)"
+                        title="przekreślenie tekstu (Ctrl + Shift + S)"
                     >
                         abc
                     </button>
@@ -146,12 +146,7 @@
                         <icon>add_comment</icon>
                     </button>
 
-                    <dropdown
-                        class="insert-dropdown"
-                        :opensToRight="false"
-                        @selected="insert($event, editor.commands)"
-                        title="wstaw"
-                    >
+                    <dropdown class="insert-dropdown" :opensToRight="false" @selected="insert($event)" title="wstaw">
                         <template v-slot:placeholder><icon>add</icon></template>
                         <dropdown-option value="chapter"><icon>menu_book</icon> rozdział</dropdown-option>
                         <dropdown-option value="section"><icon>auto_stories</icon> sekcja</dropdown-option>
@@ -447,7 +442,7 @@
 
 <script setup lang="ts">
 import { computed, getCurrentInstance, onMounted, onUnmounted, ref } from 'vue';
-import { Editor, EditorContent, SingleCommands } from '@tiptap/vue-3';
+import { Editor, EditorContent } from '@tiptap/vue-3';
 import Icon from '../Icon.vue';
 
 import Lesson from '../lesson/Lesson.vue';
@@ -492,10 +487,6 @@ import CommentPopup from './CommentPopup.vue';
 import { DraftPreview, LocalStorageSaver } from './extensions/DraftsManager/LocalStorageManager';
 import BulletList from '@tiptap/extension-bullet-list';
 import OrderedList from '@tiptap/extension-ordered-list';
-import Bold from '@tiptap/extension-bold';
-import Italic from '@tiptap/extension-italic';
-import Strike from '@tiptap/extension-strike';
-import Underline from '@tiptap/extension-underline';
 import HardBreak from '@tiptap/extension-hard-break';
 import Paragraph from '@tiptap/extension-paragraph';
 import Text from '@tiptap/extension-text';
@@ -510,6 +501,10 @@ import { ImageData } from '@/models/lesson';
 import { onBeforeRouteLeave } from 'vue-router';
 import TableBorders from './extensions/TableBorders';
 import { useLessonExpandedInfo } from '../utils/menu-bus';
+import CustomBold from './marks/Bold';
+import CustomItalic from './marks/Italic';
+import CustomStrike from './marks/Strike';
+import CustomUnderline from './marks/Underline';
 // import { transformAll } from './lessons-transform';
 
 const proxy = getCurrentInstance()!.proxy!;
@@ -556,10 +551,6 @@ function createEditor(shortVersion: boolean) {
             // tiptap extensions
             Paragraph,
             Text,
-            Bold,
-            Italic,
-            Strike,
-            Underline,
             HardBreak,
             BulletList,
             OrderedList,
@@ -579,6 +570,10 @@ function createEditor(shortVersion: boolean) {
             }),
 
             // customized tiptap extensions
+            CustomBold,
+            CustomItalic,
+            CustomStrike,
+            CustomUnderline,
             CustomListItem,
             CustomTableCell,
             TableBorders,
@@ -649,50 +644,50 @@ function createEditor(shortVersion: boolean) {
     });
 }
 
-function insert(element: string, commands: SingleCommands) {
+function insert(element: string) {
     switch (element) {
         case 'chapter':
-            commands.createChapter();
+            editor.value.commands.createChapter();
             break;
         case 'section':
-            commands.createSemanticTag();
+            editor.value.commands.createSemanticTag();
             break;
         case 'example':
-            commands.toggleExample();
+            editor.value.commands.toggleExample();
             break;
         case 'problem':
-            commands.createProblem();
+            editor.value.commands.createProblem();
             break;
         case 'expression':
-            commands.createExpression();
+            editor.value.commands.createExpression();
             break;
         case 'expressionInline':
-            commands.createExpressionInline();
+            editor.value.commands.createExpressionInline();
             break;
         case 'theorem':
-            commands.toggleFormula();
+            editor.value.commands.toggleFormula();
             break;
         case 'proof':
-            commands.toggleProof();
+            editor.value.commands.toggleProof();
             break;
         case 'image':
             showImagesDialog.value = true;
             break;
         case 'table':
-            commands.insertTable({
+            editor.value.commands.insertTable({
                 rows: 3,
                 cols: 3,
                 withHeaderRow: false,
             });
             break;
         case 'shape':
-            commands.createGeometry();
+            editor.value.chain().focus().createGeometry().run();
             break;
         case 'html':
-            commands.toggleCustomElement();
+            editor.value.commands.toggleCustomElement();
             break;
         case 'dynamic':
-            commands.createComponent();
+            editor.value.commands.createComponent();
             break;
     }
 }
@@ -913,8 +908,9 @@ function draftsList(): DraftPreview[] {
 .tools-general {
     background: #ffeeee;
 
-    .dropdown > div {
+    [dropdown-option] {
         line-height: 24px;
+        background: #ffeeee;
         span {
             display: inline-block;
             margin-right: 20px;

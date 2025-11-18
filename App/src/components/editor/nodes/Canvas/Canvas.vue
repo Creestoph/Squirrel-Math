@@ -2,7 +2,7 @@
     <node-view-wrapper>
         <button ref="geometryEditor" class="geometry-editor" @focus="focused = true" @blur="onBlur($event)">
             <div v-if="focused" class="geometry-toolbar-wrapper">
-                <div class="geometry-toolbar">
+                <div class="geometry-toolbar" contenteditable="false">
                     <button @mousedown="addSquare($event)">
                         <icon>crop_square</icon>
                     </button>
@@ -387,6 +387,10 @@ function handleMouseDrag(event: paper.ToolEvent) {
     const isMiddleButtonPressed = (event as any).event.buttons & 4;
     if (isMiddleButtonPressed) {
         allShapes().forEach((s) => s.move(event.delta));
+        return;
+    }
+    const isLeftButtonPressed = (event as any).event.buttons & 1;
+    if (!isLeftButtonPressed) {
         return;
     }
 

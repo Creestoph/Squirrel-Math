@@ -3,7 +3,7 @@ import CanvasVue from './Canvas.vue';
 import { Node as PMNode } from '@tiptap/pm/model';
 import { Point } from '@/models/point';
 import { ValueObject } from '@/models/common';
-import { EditorState, Transaction } from '@tiptap/pm/state';
+import { EditorState, NodeSelection, TextSelection, Transaction } from '@tiptap/pm/state';
 
 declare module '@tiptap/core' {
     interface Commands<ReturnType> {
@@ -93,17 +93,23 @@ export default Node.create({
         return {
             createGeometry:
                 (attrs = {}) =>
-                ({ state, commands }) => {
+                ({ state, tr, dispatch }) => {
                     const $from = state.selection.$from;
+
+                    // don’t allow nesting inside existing geometry
                     for (let d = $from.depth; d >= 0; d--) {
                         if ($from.node(d).type === this.type) {
                             return false;
                         }
                     }
-
-                    const position = state.selection.head;
+                    const { from, to } = state.selection;
                     const node = this.type.create(attrs);
-                    return commands.insertContentAt(position, node);
+                    tr.replaceRangeWith(from, to, node);
+                    tr.setSelection(TextSelection.near(tr.doc.resolve(from + node.nodeSize), 1));
+                    if (dispatch) {
+                        dispatch(tr.scrollIntoView());
+                    }
+                    return true;
                 },
             moveShapesToBottom:
                 (canvasPosition: number, childIndexes: number[]) =>

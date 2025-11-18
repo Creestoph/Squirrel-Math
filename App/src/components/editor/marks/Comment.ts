@@ -1,4 +1,5 @@
 import { Mark } from '@tiptap/vue-3';
+import { getSurroundingWord } from '../tiptap-utils';
 
 declare module '@tiptap/core' {
     interface Commands<ReturnType> {
@@ -34,8 +35,26 @@ export default Mark.create({
         return {
             addComment:
                 (attrs = {}) =>
-                ({ commands }) =>
-                    commands.setMark(this.type, { id: attrs.id || idCounter++ }),
+                ({ commands, state, chain }) => {
+                    const id = attrs.id || idCounter++;
+                    const { selection } = state;
+
+                    if (!selection.empty) {
+                        return commands.setMark(this.type, { id });
+                    }
+
+                    const word = getSurroundingWord(selection.$from);
+
+                    if (!word) {
+                        return false;
+                    }
+
+                    return chain()
+                        .setTextSelection(word)
+                        .setMark(this.type, { id })
+                        .setTextSelection(selection.from)
+                        .run();
+                },
         };
     },
 });

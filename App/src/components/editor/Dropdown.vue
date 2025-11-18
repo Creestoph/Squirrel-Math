@@ -1,8 +1,8 @@
 <template>
     <button class="wrapper" @click="dropdownVisible = !dropdownVisible">
-        <slot name="placeholder"
-            ><div class="value">{{ selectedOption }}</div></slot
-        >
+        <slot name="placeholder">
+            <div class="value">{{ selectedOption }}</div>
+        </slot>
         <div v-if="arrow" class="arrow-down"></div>
         <div
             class="dropdown"
@@ -19,13 +19,13 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 
-withDefaults(defineProps<{ arrow?: boolean; opensToRight?: boolean }>(), {
+withDefaults(defineProps<{ arrow?: boolean; opensToRight?: boolean; selectedOption?: string }>(), {
     arrow: false,
     opensToRight: true,
+    selectedOption: '',
 });
 const emit = defineEmits<{ (event: 'selected', value: string): void }>();
 
-const selectedOption = ref(' ');
 const dropdownVisible = ref(false);
 const dropdown = ref<HTMLElement | null>(null);
 
@@ -36,7 +36,6 @@ function select(event: MouseEvent) {
     const target = event.target as HTMLElement;
     if (target !== dropdown.value) {
         const value = target.getAttribute('value') ?? '';
-        selectedOption.value = value;
         emit('selected', value);
     }
 }

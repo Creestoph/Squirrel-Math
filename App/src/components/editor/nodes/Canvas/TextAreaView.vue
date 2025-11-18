@@ -12,7 +12,6 @@
             'pointer-events': editing ? 'all' : 'none',
         }"
         :contenteditable="editing"
-        ref="wrapper"
     >
         <div
             class="align-wrapper no-selection"
@@ -20,7 +19,7 @@
                 'vertical-align': align.value,
             }"
         >
-            <node-view-content class="content no-selection" />
+            <node-view-content ref="content" class="content no-selection" />
         </div>
     </node-view-wrapper>
 </template>
@@ -35,7 +34,7 @@ import { TextAreaShapeController } from './TextAreaNode';
 const props = defineProps(nodeViewProps);
 
 const focused = ref(false);
-const wrapper = ref<ComponentPublicInstance>(null!);
+const content = ref<ComponentPublicInstance>(null!);
 const resizing = ref('');
 const editing = ref(false);
 let resizeObserver: ResizeObserver;
@@ -132,23 +131,21 @@ watch(() => props.node, afterNodeChanged);
 onMounted(() => {
     afterNodeChanged();
 
-    (resizeObserver = new ResizeObserver(([wrapper]) => {
-        const newWidth = wrapper.borderBoxSize[0].inlineSize;
-        const newHeight = wrapper.borderBoxSize[0].blockSize;
+    (resizeObserver = new ResizeObserver(([content]) => {
+        const newWidth = content.borderBoxSize[0].inlineSize;
+        const newHeight = content.borderBoxSize[0].blockSize;
         if (newWidth === width.value && newHeight === height.value) {
             return;
         }
-        if (newWidth > width.value) {
-            minWidth = Math.max(newWidth, 44);
-        }
-        if (newHeight > height.value) {
-            minHeight = Math.max(newHeight, 44);
-        }
+        minWidth = Math.max(newWidth, 44);
+        minHeight = Math.max(newHeight, 44);
         requestAnimationFrame(() => {
-            width.value = newWidth;
+            if (newWidth > width.value) {
+                width.value = newWidth;
+            }
             height.value = newHeight;
         });
-    })).observe(wrapper.value.$el as HTMLElement);
+    })).observe(content.value.$el as HTMLElement);
 });
 
 onUnmounted(() => resizeObserver.disconnect());
@@ -216,7 +213,14 @@ function getHoveredResizeArea(event: paper.ToolEvent): string {
         new paper.Size(width.value, height.value),
     );
     const margin = 4;
-    if (Math.abs(boundingBox.left - mousePosition.x) < margin) {
+    const isNearBoundingBox =
+        mousePosition.x > boundingBox.left - margin &&
+        mousePosition.x < boundingBox.right + margin &&
+        mousePosition.y > boundingBox.top - margin &&
+        mousePosition.y < boundingBox.bottom + margin;
+    if (!isNearBoundingBox) {
+        return '';
+    } else if (Math.abs(boundingBox.left - mousePosition.x) < margin) {
         return 'left';
     } else if (Math.abs(boundingBox.right - mousePosition.x) < margin) {
         return 'right';
@@ -224,15 +228,8 @@ function getHoveredResizeArea(event: paper.ToolEvent): string {
         return 'top';
     } else if (Math.abs(boundingBox.bottom - mousePosition.y) < margin) {
         return 'bottom';
-    } else if (
-        mousePosition.x > boundingBox.left - margin &&
-        mousePosition.x < boundingBox.right + margin &&
-        mousePosition.y > boundingBox.top - margin &&
-        mousePosition.y < boundingBox.bottom + margin
-    ) {
-        return 'inside';
     }
-    return '';
+    return 'inside';
 }
 
 function onMouseDrag(event: paper.ToolEvent, snapPoints: paper.Point[]) {
@@ -301,5 +298,6 @@ function onMouseUp() {
 <style lang="scss">
 .area p {
     margin: 0;
+    text-align: left;
 }
 </style>

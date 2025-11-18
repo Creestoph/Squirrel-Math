@@ -14,7 +14,6 @@ div {
     padding: 5px 10px;
     white-space: nowrap;
     text-align: left;
-    background: #e8d9d9;
     &:hover {
         background: #d1baba;
     }

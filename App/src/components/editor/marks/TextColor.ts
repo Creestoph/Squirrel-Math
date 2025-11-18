@@ -1,6 +1,7 @@
 import { colorsDifference, rgbToHex } from '@/components/utils/colors';
 import { Mark } from '@tiptap/vue-3';
 import { colors } from '@/style/palette';
+import { getSurroundingWord } from '../tiptap-utils';
 
 declare module '@tiptap/core' {
     interface Commands<ReturnType> {
@@ -40,8 +41,25 @@ export default Mark.create({
         return {
             setColor:
                 (attrs) =>
-                ({ commands }) =>
-                    commands.setMark(this.type, attrs),
+                ({ commands, state, chain }) => {
+                    const { selection } = state;
+
+                    if (!selection.empty) {
+                        return commands.setMark(this.type, attrs);
+                    }
+
+                    const word = getSurroundingWord(selection.$from);
+
+                    if (!word) {
+                        return false;
+                    }
+
+                    return chain()
+                        .setTextSelection(word)
+                        .setMark(this.type, attrs)
+                        .setTextSelection(selection.from)
+                        .run();
+                },
         };
     },
 });

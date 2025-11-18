@@ -3,9 +3,10 @@
         Link do lekcji
         <dropdown
             :class="{ 'link-dropdown': true }"
+            :arrow="true"
+            :selectedOption="selectedLesson"
             @click.native="getLessons()"
             @selected="selectLesson($event)"
-            :arrow="true"
         >
             <dropdown-option
                 v-for="(lesson, i) in lessons"
@@ -19,9 +20,10 @@
         Rozdział
         <dropdown
             :class="{ 'link-dropdown': true }"
+            :arrow="true"
+            :selectedOption="selectedChapter"
             @click.native="getChapters()"
             @selected="selectChapter($event)"
-            :arrow="true"
         >
             <dropdown-option
                 v-for="(chapter, i) in chapters"
@@ -49,7 +51,7 @@ const emit = defineEmits<{ (event: 'updated', url: string): void }>();
 const selectedLesson = ref('');
 const selectedChapter = ref('');
 const lessons = ref([{ title: 'Ładowanie...' }]);
-const chapters = ref([{ name: 'Nie wybrano', disabled: true }]);
+const chapters = ref<{ name: string; disabled: boolean }[]>([]);
 
 let url = '';
 
@@ -82,6 +84,7 @@ function getLessons() {
 
 function getChapters() {
     if (selectedLesson.value) {
+        chapters.value = [{ name: 'Ładowanie...', disabled: true }];
         import(`@/assets/lessons/${selectedLesson.value}.json`).then(
             (file: LessonData) => {
                 const fileChapters = file.long!.content.filter((c) => c.type == 'chapter');
@@ -117,6 +120,8 @@ function getChapters() {
                 ];
             },
         );
+    } else {
+        chapters.value = [{ name: 'Nie wybrano lekcji', disabled: true }];
     }
 }
 
