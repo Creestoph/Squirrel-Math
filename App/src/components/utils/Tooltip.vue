@@ -55,6 +55,7 @@ function onMouseOver(event: MouseEvent) {
 <style scoped lang="scss">
 .sm-tooltip {
     position: fixed;
+    max-width: 400px;
 }
 .fade-enter-active,
 .fade-leave-active {

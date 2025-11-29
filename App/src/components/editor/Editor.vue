@@ -505,7 +505,7 @@ import CustomBold from './marks/Bold';
 import CustomItalic from './marks/Italic';
 import CustomStrike from './marks/Strike';
 import CustomUnderline from './marks/Underline';
-// import { transformAll } from './lessons-transform';
+import { transformAll } from './lessons-transform';
 
 const proxy = getCurrentInstance()!.proxy!;
 const { lessonLeftPos } = useLessonExpandedInfo();
@@ -914,6 +914,9 @@ function draftsList(): DraftPreview[] {
         span {
             display: inline-block;
             margin-right: 20px;
+        }
+        &:hover {
+            background: #d1baba;
         }
     }
 

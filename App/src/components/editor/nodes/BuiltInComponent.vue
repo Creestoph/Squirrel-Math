@@ -1,37 +1,38 @@
 <template>
-    <node-view-wrapper class="container">
+    <node-view-wrapper class="whole">
         <div v-show="editMode" class="editor-wrapper">
             <div class="form">
                 <div class="form-header">
-                    <label for="type-select">Komponent</label>
-                    <select v-model="componentName" id="type-select" @change="onComponentSelect()">
-                        <option value="" disabled>Wybierz komponent...</option>
-                        <template v-if="componentName == 'other'">
-                            <option v-for="(component, name) in allComponents" :key="name" :value="name">
-                                {{ component.name }}
-                            </option>
-                        </template>
-                        <template v-if="componentName != 'other'">
-                            <option v-for="(component, name) in availableComponents" :key="name" :value="name">
-                                {{ component.name }}
-                            </option>
-                        </template>
-                    </select>
+                    <dropdown
+                        class="component-dropdown"
+                        :arrow="true"
+                        :selectedOption="currentComponentSchema?.name || 'Wybierz komponent...'"
+                        @selected="onComponentSelect($event)"
+                    >
+                        <dropdown-option v-for="component of allComponents" :key="component.id" :value="component.id">
+                            {{ component.name }}
+                        </dropdown-option>
+                    </dropdown>
                 </div>
-                <div class="form-body" v-if="componentName">
-                    <div v-if="!productionMode || componentName != 'other'">
+                <div class="form-body" v-if="currentComponentSchema">
+                    <div class="description" v-html="currentComponentSchema.description"></div>
+                    <template v-if="currentComponentSchema.parameters">
                         <div
-                            v-for="(parameterSchema, parameterName, i) in allComponents[componentName].schema"
-                            :key="i"
-                            class="form-row"
+                            v-for="(parameterSchema, key, i) in currentComponentSchema.parameters"
+                            :key="key"
+                            class="parameter-row"
                         >
-                            <div class="form-col">
-                                {{ allComponents[componentName].labels[parameterName] }}
+                            <div class="parameter-label">
+                                <comment :text="parameterSchema.hint" :hidden="false">
+                                    {{ parameterSchema.label }}
+                                    <span class="error" v-if="parameterSchema.required">*</span>
+                                </comment>
                             </div>
-                            <div class="form-col">
+                            <div class="parameter-value" ref="parameter">
                                 <input
                                     v-if="parameterSchema.type.name == 'TEXT'"
                                     :required="parameterSchema.required"
+                                    :placeholder="parameterSchema.placeholder"
                                     v-model="formArgs[i]"
                                     @paste.stop
                                     class="with-highlight"
@@ -39,6 +40,7 @@
                                 <input
                                     v-if="parameterSchema.type.name == 'NUMBER'"
                                     :required="parameterSchema.required"
+                                    :placeholder="parameterSchema.placeholder"
                                     type="number"
                                     v-model="formArgs[i]"
                                     @paste.stop
@@ -54,55 +56,71 @@
                                 <input
                                     v-if="parameterSchema.type.name == 'FUNCTION'"
                                     :required="parameterSchema.required"
+                                    :placeholder="parameterSchema.placeholder"
                                     type="function"
                                     v-model="formArgs[i]"
                                     @paste.stop
                                     class="with-highlight"
                                 />
                                 <div v-if="parameterSchema.type.name == 'ARRAY'">
-                                    <input
-                                        v-for="(arg, j) in formArgs[i]"
-                                        :key="j"
-                                        :required="parameterSchema.required && j == 0"
-                                        type="array"
-                                        v-model="formArgs[i][j]"
-                                        @paste.stop
-                                        class="with-highlight"
-                                    />
-                                    <button @click="addElementForArrayParameter(i)" class="array-parameter-button">
-                                        + element
-                                    </button>
-                                    <button @click="removeElementForArrayParameter(i)" class="array-parameter-button">
-                                        - element
-                                    </button>
+                                    <div v-for="(_, j) in formArgs[i]" :key="j" class="array-row">
+                                        <div
+                                            v-if="j === 0"
+                                            class="add-row-button"
+                                            @click="addElementForArrayParameter(i, -1)"
+                                        >
+                                            <button tabindex="-1">+</button>
+                                        </div>
+                                        <input
+                                            :required="parameterSchema.required && j == 0"
+                                            :placeholder="(j == 0 && parameterSchema.placeholder) || ''"
+                                            type="array"
+                                            v-model="formArgs[i]![j]"
+                                            @paste.stop
+                                            @keydown.enter="addElementForArrayParameter(i, j)"
+                                            @keydown.backspace="onBackspace(i, j, $event)"
+                                            class="with-highlight"
+                                        />
+                                        <button
+                                            @click="removeElementForArrayParameter(i, j)"
+                                            class="remove-row-button"
+                                            tabindex="-1"
+                                        >
+                                            ✖
+                                        </button>
+                                        <div class="add-row-button" @click="addElementForArrayParameter(i, j)">
+                                            <button tabindex="-1">+</button>
+                                        </div>
+                                    </div>
                                 </div>
-                                <select
+                                <dropdown
                                     v-if="parameterSchema.type.name == 'ENUM'"
-                                    :required="parameterSchema.required"
-                                    v-model="formArgs[i]"
+                                    :arrow="true"
+                                    :selectedOption="(formArgs[i] as string) || 'wybierz...'"
+                                    @selected="formArgs[i] = $event"
                                 >
-                                    <option v-for="(value, j) in parameterSchema.type.values" :key="j" :value="value">
+                                    <dropdown-option
+                                        v-for="(value, j) in parameterSchema.type.values"
+                                        :key="j"
+                                        :value="value"
+                                    >
                                         {{ value }}
-                                    </option>
-                                </select>
+                                    </dropdown-option>
+                                </dropdown>
                             </div>
+                            <div v-if="errors[i]" class="error">{{ errors[i] }}</div>
                         </div>
-                    </div>
-                    <div v-if="productionMode && componentName == 'other'">
-                        <comment text="Leniwi programiści.">
-                            Ten komponent podlega edycji tylko przez administrację Squirrel-Math.
-                        </comment>
-                    </div>
+                    </template>
                 </div>
             </div>
-            <button @click="saveAndRun()" class="toggle-edit-button" title="uruchom">
+            <button @click="saveAndRun()" class="toggle-edit-button" title="uruchom" v-if="currentComponentSchema">
                 <icon>play_arrow</icon>
             </button>
         </div>
         <div class="output-wrapper">
             <component
                 v-if="!editMode"
-                :is="getComponent()"
+                :is="currentComponentSchema?.component"
                 v-bind="componentConfiguration"
                 :class="{ output: true }"
             ></component>
@@ -114,19 +132,29 @@
 </template>
 
 <script setup lang="ts">
-import { computed, onBeforeMount, onMounted, ref } from 'vue';
+import { computed, nextTick, onMounted, ref, shallowRef } from 'vue';
 import { nodeViewProps, NodeViewWrapper } from '@tiptap/vue-3';
-import { BuiltInComponent, builtInComponents, getBuiltInComponentByName } from '@/components/utils/build-in-components';
+import {
+    BuiltInComponentFormArg,
+    builtInComponentFormToInput,
+    BuiltInComponentInput,
+    ComponentSchema,
+} from '@/components/builtin-components/component-api';
+import { builtInComponents } from '@/components/builtin-components/components-list';
+import Dropdown from '../Dropdown.vue';
+import DropdownOption from '../DropdownOption.vue';
 
 const props = defineProps(nodeViewProps);
 
 const editMode = ref(true);
-const allComponents = ref<Record<string, BuiltInComponent>>({});
-const availableComponents = ref<Record<string, BuiltInComponent>>({});
-const formArgs = ref<(boolean | string | string[])[]>([]);
-const componentConfiguration = ref<Record<string, Function | boolean | number | string | string[]>>({});
+const allComponents = shallowRef<ComponentSchema[]>(builtInComponents);
+const currentComponentSchema = shallowRef<ComponentSchema | null>(null);
+const formArgs = ref<BuiltInComponentFormArg[]>([]);
+const errors = ref<(string | null)[]>([]);
+const componentConfiguration = ref<Record<string, BuiltInComponentInput>>({});
+const parameter = ref<HTMLDivElement[]>(null!);
 
-const componentName = computed({
+const componentId = computed({
     get() {
         return props.node.attrs.componentName;
     },
@@ -144,53 +172,57 @@ const args = computed({
     },
 });
 
-const productionMode = computed(() => false); // TODO automate this
-
-onBeforeMount(() => {
-    allComponents.value = builtInComponents;
-    for (let key in allComponents.value) {
-        if (!productionMode.value || key != 'other') {
-            availableComponents.value[key] = allComponents.value[key];
-        }
-    }
-});
-
 onMounted(() => {
     formArgs.value = [...args.value];
-    const configNonEmpty = formArgs.value.some((arg, i) => {
-        const argType = Object.values(allComponents.value[componentName.value].schema)[i].type.name;
-        return (
-            ((argType == 'TEXT' || argType == 'ENUM' || argType == 'FUNCTION') && arg) ||
-            (argType == 'NUMBER' && arg !== undefined) ||
-            (argType == 'ARRAY' && (arg as string[]).length > 0 && (arg as string[]).some((a) => !!a))
-        );
-    });
-    if (configNonEmpty) {
-        run();
+    if (componentId.value) {
+        onComponentSelect(componentId.value);
+        if (validate()) {
+            run();
+        }
     }
 });
 
-function onComponentSelect() {
+function onComponentSelect(id: string) {
+    componentId.value = id;
     formArgs.value = [];
-    Object.values(allComponents.value[componentName.value].schema).forEach((schema, i) => {
-        if (schema.type.name == 'ARRAY') {
+    errors.value = [];
+    currentComponentSchema.value = allComponents.value.find((c) => c.id === componentId.value)!;
+    Object.values(currentComponentSchema.value.parameters || {}).forEach((parameter, i) => {
+        if (parameter.type.name == 'ARRAY') {
             formArgs.value[i] = [''];
-        }
-        if (schema.type.name == 'BOOLEAN') {
+        } else if (parameter.type.name == 'BOOLEAN') {
             formArgs.value[i] = false;
+        } else {
+            formArgs.value[i] = '';
         }
     });
 }
 
-function addElementForArrayParameter(i: number) {
-    formArgs.value[i] = [...(formArgs.value[i] as string[]), ''];
+function addElementForArrayParameter(formArgIndex: number, arrayIndex: number) {
+    const targetIndex = arrayIndex + 1;
+    (formArgs.value[formArgIndex] as string[]).splice(targetIndex, 0, '');
+    nextTick(() => (parameter.value[formArgIndex].querySelectorAll('input')[targetIndex] as HTMLInputElement).focus());
 }
 
-function removeElementForArrayParameter(i: number) {
-    const arrayArg = formArgs.value[i] as string[];
-    if (arrayArg.length > 1) {
-        arrayArg.pop();
+function onBackspace(formArgIndex: number, arrayIndex: number, event: KeyboardEvent): void {
+    const formArray = formArgs.value[formArgIndex] as string[];
+    if (formArray.length > 1 && formArray[arrayIndex].length === 0) {
+        event.preventDefault();
+        removeElementForArrayParameter(formArgIndex, arrayIndex);
+        if (arrayIndex > 0) {
+            nextTick(() =>
+                (
+                    parameter.value[formArgIndex].querySelectorAll('input')[
+                        Math.max(arrayIndex - 1, 0)
+                    ] as HTMLInputElement
+                ).focus(),
+            );
+        }
     }
+}
+
+function removeElementForArrayParameter(formArgIndex: number, arrayIndex: number) {
+    (formArgs.value[formArgIndex] as string[]).splice(arrayIndex, 1);
 }
 
 function edit() {
@@ -203,37 +235,48 @@ function saveAndRun() {
 }
 
 function run() {
+    if (!validate()) {
+        return;
+    }
     editMode.value = false;
     componentConfiguration.value = {};
-    Object.entries(allComponents.value[componentName.value].schema).forEach(([key, schema], i) => {
-        if (schema.type.name == 'TEXT' || schema.type.name == 'BOOLEAN' || schema.type.name == 'ENUM') {
-            componentConfiguration.value[key] = formArgs.value[i];
-        } else if (schema.type.name == 'NUMBER') {
-            componentConfiguration.value[key] = parseFloat(formArgs.value[i] as string);
-        } else if (schema.type.name == 'FUNCTION') {
+    Object.entries(currentComponentSchema.value?.parameters || {}).forEach(
+        ([key, parameter], i) =>
+            (componentConfiguration.value[key] = builtInComponentFormToInput(formArgs.value[i], parameter.type.name)),
+    );
+}
+
+/**
+ * @returns true when form is valid
+ */
+function validate(): boolean {
+    errors.value = Object.values(currentComponentSchema.value?.parameters || {}).map((parameter, i) => {
+        if (
+            parameter.required &&
+            (!formArgs.value[i] || (parameter.type.name == 'ARRAY' && (formArgs.value[i] as string[]).every((x) => !x)))
+        ) {
+            return 'Pole jest wymagane';
+        }
+        if (parameter.type.name == 'FUNCTION') {
             try {
-                componentConfiguration.value[key] = eval(formArgs.value[i] as string);
-                if (typeof componentConfiguration.value[key] != 'function') {
+                const func = eval(formArgs.value[i] as string);
+                if (typeof func != 'function') {
                     throw '';
                 }
             } catch (e) {
-                componentConfiguration.value[key] = () => {};
-            }
-        } else if (schema.type.name == 'ARRAY') {
-            try {
-                const arrayArgs = [...(formArgs.value[i] as string[])];
-                componentConfiguration.value[key] = arrayArgs;
-                arrayArgs.forEach((element, j) => (arrayArgs[j] = eval(element)));
-            } catch (e) {
-                componentConfiguration.value[key] = [];
+                return 'Nie jest to poprawna funkcja. Przykład poprawnej funkcji: (a, b) => a + b';
             }
         }
+        const input = builtInComponentFormToInput(formArgs.value[i], parameter.type.name);
+        if (input !== undefined && parameter.validation) {
+            const result = parameter.validation(input);
+            if (result) {
+                return result;
+            }
+        }
+        return null;
     });
-}
-
-function getComponent() {
-    const isDev = componentName.value == 'other';
-    return getBuiltInComponentByName(isDev ? componentConfiguration.value.name : componentName.value, isDev);
+    return errors.value.filter((e) => e).length === 0;
 }
 </script>
 
@@ -242,7 +285,7 @@ function getComponent() {
 @use '@/style/colors';
 @use '@/style/fonts';
 
-.container {
+.whole {
     position: relative;
     padding: 0;
 }
@@ -250,22 +293,14 @@ function getComponent() {
     outline: 1px solid colors.$gray;
     background: colors.$light-gray;
 }
-label {
-    margin: 0 10px 0 0;
-    padding: 7px;
-}
+
 .form-header {
     background: colors.$gray;
-    border: 1px solid colors.$dark-gray;
+    display: flex;
 
-    select {
-        background: colors.$gray;
-        border: none;
-        text-decoration: underline;
-        outline: none;
+    .component-dropdown {
         height: 41px;
         padding: 0 10px;
-        cursor: pointer;
         &:hover {
             background: colors.$dark-gray;
         }
@@ -276,53 +311,120 @@ label {
 }
 .form-body {
     padding: 10px;
-}
-.form-row {
-    padding: 5px;
-}
-.form-col:first-child {
-    width: 20%;
-    font-weight: bold;
-    text-align: right;
-    margin-right: 20px;
-}
-.form-col:last-child {
-    display: flex;
-    align-items: center;
-    width: 70%;
-    > div {
-        width: 100%;
+    border-top: 1px solid colors.$dark-gray;
+
+    .description {
+        white-space: pre-wrap;
+        &:not(:last-child) {
+            margin-bottom: 15px;
+        }
     }
 }
-input {
-    border-radius: 0;
-    height: 22px;
-    color: colors.$half-gray;
-    width: 80%;
-    display: block;
+.parameter-row {
+    padding: 5px;
+    display: flex;
+    flex-flow: row wrap;
+    gap: 20px;
+    row-gap: 4px;
+    align-items: center;
+
+    .parameter-label {
+        width: 20%;
+        font-weight: bold;
+        text-align: right;
+    }
+
+    .parameter-value {
+        flex: 1;
+        > div {
+            width: 100%;
+        }
+
+        input {
+            width: 100%;
+            box-sizing: border-box;
+            border-radius: 0;
+            color: colors.$half-gray;
+            display: block;
+        }
+        input[type='number'] {
+            width: 40px;
+        }
+        input[type='checkbox'] {
+            width: 20px;
+        }
+        input[type='function'],
+        input[type='array'] {
+            font-family: fonts.$geometric-font;
+        }
+
+        .array-row {
+            display: flex;
+            position: relative;
+
+            .remove-row-button {
+                width: 25px;
+                box-sizing: border-box;
+                margin: 0;
+                border: 1px solid colors.$dark-red;
+                background: colors.$main-red;
+                color: white;
+                padding: 0 5px;
+                font-size: 0.8em;
+            }
+
+            .add-row-button {
+                position: absolute;
+                z-index: 2;
+                width: calc(100% - 25px);
+                height: 10px;
+                bottom: -5px;
+                display: flex;
+                justify-content: center;
+                cursor: pointer;
+                opacity: 0;
+
+                &:first-child {
+                    top: -5px;
+                }
+
+                &:hover {
+                    opacity: 1;
+                }
+
+                &::before {
+                    content: '';
+                    position: absolute;
+                    width: 100%;
+                    bottom: 4px;
+                    border-bottom: 3px solid colors.$main-red;
+                }
+
+                button {
+                    position: absolute;
+                    color: white;
+                    background: colors.$main-red;
+                    padding: 1px 3px 5px 3px;
+                    border-radius: 50%;
+                    z-index: 2;
+                    line-height: 10px;
+                    bottom: -4px;
+                }
+            }
+        }
+    }
+
+    .error {
+        color: colors.$main-red;
+    }
 }
-input[type='number'] {
-    width: 40px;
-}
-input[type='checkbox'] {
-    width: 20px;
-}
-input[type='function'],
-input[type='array'] {
-    font-family: fonts.$geometric-font;
-}
-.array-parameter-button {
-    background: colors.$main-red;
-    color: white;
-    padding: 0 5px;
-    font-size: 0.8em;
-    margin: 3px;
-}
+
 .toggle-edit-button {
     position: absolute;
-    width: 42px;
-    height: 42px;
-    right: -1px;
+    justify-content: center;
+    align-items: center;
+    width: 41px;
+    height: 41px;
     top: -1px;
     background: white;
     border: 1px solid colors.$gray;
@@ -331,7 +433,8 @@ input[type='array'] {
     padding: 0;
 }
 .editor-wrapper:hover .toggle-edit-button {
-    display: block;
+    display: flex;
+    right: -1px;
 }
 .output {
     min-height: 42px;
@@ -340,6 +443,7 @@ input[type='array'] {
     outline: 1px solid colors.$gray;
 }
 .output-wrapper:hover .toggle-edit-button {
-    display: block;
+    display: flex;
+    right: -43px;
 }
 </style>

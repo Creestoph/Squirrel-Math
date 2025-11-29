@@ -152,5 +152,17 @@ input.with-highlight {
         border-color: colors.$darker-creamy;
         outline: none;
         box-shadow: 0 0 15px 0 colors.$creamy;
+        z-index: 1;
     }
+
+    &::placeholder {
+        color: colors.$dark-gray;
+    }
+}
+
+code {
+    background: colors.$gray;
+    color: black;
+    border: 1px solid black;
+    padding: 2px;
 }

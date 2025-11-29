@@ -15,14 +15,14 @@ class ColumnarSubtractionStep implements ColumnarOperationStep {
         for (let i = 0; i < table.length; i++) {
             tab[i] = [];
             for (let j = 0; j < table[i].length; j++) {
-                let t = ':' + table[i][j];
+                let t = '/' + table[i][j];
                 if (j == highlightColumn) {
-                    t = '/h' + t;
+                    t = 'h' + t;
                 }
                 if (crossedFields[i][j]) {
-                    t = '/s' + t;
+                    t = 's' + t;
                 }
-                tab[i].push(t[0] == ':' ? t.replace(/:/g, '') : t);
+                tab[i].push(t[0] == '/' ? t.replace(/\//g, '') : t);
                 if (comma != 0 && j == table[i].length - comma - 1) {
                     if (i == table.length - 1 || (i != 0 && i != 1 && table[i][j + 1] != '')) {
                         tab[i].push(',');
@@ -32,7 +32,18 @@ class ColumnarSubtractionStep implements ColumnarOperationStep {
                 }
             }
         }
-        this.table = DisplayTable.createFromTable('-', tab);
+
+        for (let i = 0; i < tab.length; i++) {
+            if (i === 0 || i === 1) {
+                tab[i] = ['c/', 'c/', ...tab[i].map((n) => (n.includes('/') ? `c${n}` : `c/${n}`))];
+            } else if (i == tab.length - 2) {
+                tab[i] = ['u/-', 'u/', ...tab[i].map((n) => (n.includes('/') ? `u${n}` : `u/${n}`))];
+            } else {
+                tab[i] = ['', '', ...tab[i]];
+            }
+        }
+
+        this.table = new DisplayTable(tab);
     }
 
     print(commentElement: HTMLElement, table: HTMLElement) {

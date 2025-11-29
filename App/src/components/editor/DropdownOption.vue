@@ -15,7 +15,7 @@ div {
     white-space: nowrap;
     text-align: left;
     &:hover {
-        background: #d1baba;
+        backdrop-filter: brightness(90%);
     }
 }
 .disabled {

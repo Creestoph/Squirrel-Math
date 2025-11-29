@@ -3,7 +3,7 @@ import CanvasVue from './Canvas.vue';
 import { Node as PMNode } from '@tiptap/pm/model';
 import { Point } from '@/models/point';
 import { ValueObject } from '@/models/common';
-import { EditorState, NodeSelection, TextSelection, Transaction } from '@tiptap/pm/state';
+import { EditorState, TextSelection, Transaction } from '@tiptap/pm/state';
 
 declare module '@tiptap/core' {
     interface Commands<ReturnType> {

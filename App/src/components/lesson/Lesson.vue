@@ -1,5 +1,5 @@
 <template>
-    <div :class="{ 'hidden': !isLessonPanelExpanded }">
+    <div :class="{ hidden: !isLessonPanelExpanded }">
         <div class="backdrop" @click="isLessonPanelExpanded = false"></div>
         <div class="lesson-with-footer" :style="{ left: lessonLeftPos }">
             <div class="lesson" @click="isLessonPanelExpanded = true">
@@ -12,7 +12,10 @@
                     class="expand-button no-selection"
                     :title="isLessonPanelExpanded ? 'Pokaż drzewo lekcji' : 'Pokaż treść lekcji'"
                     :style="{ left: lessonLeftPos }"
-                    @click="isLessonPanelExpanded = !isLessonPanelExpanded; $event.stopPropagation()"
+                    @click="
+                        isLessonPanelExpanded = !isLessonPanelExpanded;
+                        $event.stopPropagation();
+                    "
                 >
                     {{ expandButtonContent }}
                 </button>
@@ -92,8 +95,8 @@
                         </a>
                     </h1>
                     Strona jest nadal w trakcie rozwoju. <br />
-                    Jeśli podoba Ci się inicjatywa i chciałbyś wesprzeć proces tworzenia Squirrel-Math, masz jakiekolwiek
-                    pytania lub sugestie - ślij do nas maila. <br />
+                    Jeśli podoba Ci się inicjatywa i chciałbyś wesprzeć proces tworzenia Squirrel-Math, masz
+                    jakiekolwiek pytania lub sugestie - ślij do nas maila. <br />
                     Jesteśmy otwarci na każdą pomoc.
                 </div>
             </div>
@@ -120,7 +123,6 @@ interface LessonElements {
     chapters: NodeData[][];
 }
 
-
 const props = defineProps<{ inputContent?: string }>();
 const proxy = getCurrentInstance()!.proxy!;
 const { isLessonPanelExpanded, lessonLeftPos } = useLessonExpandedInfo();
@@ -143,7 +145,10 @@ watch(
     () => loadLesson(),
 );
 
-watch(() => isLessonPanelExpanded.value, () => setTimeout(() => (expandButtonContent.value = isLessonPanelExpanded.value ? '<' : '>'), 1000));
+watch(
+    () => isLessonPanelExpanded.value,
+    () => setTimeout(() => (expandButtonContent.value = isLessonPanelExpanded.value ? '<' : '>'), 1000),
+);
 
 clearElements();
 
@@ -300,6 +305,7 @@ function clearElements() {
 
     .footer-container {
         border-right: 14vw solid transparent;
+        filter: drop-shadow(20px 5px 20px rgba(0, 0, 0, 0.5));
     }
 }
 
@@ -308,7 +314,7 @@ function clearElements() {
     width: 100%;
     height: 0;
     border-bottom: 170px solid colors.$dark-red;
-    filter: drop-shadow(20px 5px 20px rgba(0, 0, 0, 0.5));
+    filter: drop-shadow(-20px 5px 20px rgba(0, 0, 0, 0.5));
 
     .hidden & {
         cursor: pointer;

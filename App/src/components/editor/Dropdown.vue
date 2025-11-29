@@ -76,6 +76,6 @@ function select(event: MouseEvent) {
     margin: 10px 0 10px 10px;
     border-left: 4px solid transparent;
     border-right: 4px solid transparent;
-    border-top: 7px solid white;
+    border-top: 7px solid currentColor;
 }
 </style>

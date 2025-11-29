@@ -12,34 +12,25 @@ class ColumnarDivisionStep implements ColumnarOperationStep {
         const tab: string[][] = [];
         const underline = true;
         for (let i = 0; i < table.length; i++) {
-            tab[i] = [];
-            if (i % 2 == 0 && i > 0) {
-                tab[i].push('/u:-');
-            } else {
-                tab[i].push('');
-            }
+            tab[i] = [i % 2 == 0 && i > 0 ? 'u/-' : ''];
             for (let j = 0; j < table[i].length; j++) {
-                let t = ':' + table[i][j];
+                let t = '/' + table[i][j];
                 if (highlightFields[i][j]) {
-                    t = '/h' + t;
+                    t = 'h' + t;
                 }
                 if (i % 2 == 0) {
                     if (i == 0) {
                         if (table[i][j].toString() != '' || underline) {
-                            t = '/u' + t;
+                            t = 'u' + t;
                         }
                     } else {
-                        t = '/u' + t;
+                        t = 'u' + t;
                     }
                 }
-                if (t == '::') {
-                    tab[i].push(':');
-                } else {
-                    tab[i].push(t[0] == ':' ? t.replace(/:/g, '') : t);
-                }
+                tab[i].push(t[0] == '/' ? t.replace(/\//g, '') : t);
             }
         }
-        this.table = DisplayTable.createCustom(tab);
+        this.table = new DisplayTable(tab);
     }
 
     print(comentElement: HTMLElement, table: HTMLElement) {
@@ -309,10 +300,9 @@ export class ColumnarDivision extends ColumnarOperation {
                 }
             }
 
-            comment =
-                `Ponieważ w dzielnej nie ma już cyfr do spisania, traktujemy pozostałe ${parseInt(z)} jako resztę z dzielenia. Odcztujemy wynik ${
-                    (result[0] == '.' || result == '' ? '0' : '') + result
-                } r. ${z}.`;
+            comment = `Ponieważ w dzielnej nie ma już cyfr do spisania, traktujemy pozostałe ${parseInt(z)} jako resztę z dzielenia. Odcztujemy wynik ${
+                (result[0] == '.' || result == '' ? '0' : '') + result
+            } r. ${z}.`;
 
             let j = 0;
             while (table[0][j].toString() != '') {

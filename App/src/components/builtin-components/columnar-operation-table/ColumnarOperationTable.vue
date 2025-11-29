@@ -7,11 +7,11 @@ import { DisplayTable } from '@/components/utils/columnar-operation/display-tabl
 import { onMounted, ref } from 'vue';
 declare var MathJax: any;
 
-const props = defineProps<{ operation: '+' | '-' | null; numbers: string[][] }>();
+const props = defineProps<{ numbers: string[] }>();
 const main = ref<HTMLElement | null>(null);
 
 onMounted(() => {
-    DisplayTable.createFromTable(props.operation, props.numbers).print(main.value!);
+    new DisplayTable(props.numbers.map((n) => n.split(';'))).print(main.value!);
     MathJax.Hub.Queue(['Typeset', MathJax.Hub]);
 });
 </script>

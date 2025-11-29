@@ -11,7 +11,7 @@
                     <icon class="icon">arrow_left</icon>
                 </button>
                 <div class="main-content" ref="mainContent">
-                    <div ref="table" class="no-selection" />
+                    <div v-if="!error" ref="table" class="no-selection" />
                     <p ref="commentElement" class="no-selection" />
                 </div>
                 <button :style="{ visibility: hasNext ? 'visible' : 'hidden' }" @click="next()">
@@ -28,7 +28,7 @@ import { ColumnarSubtraction } from '../../utils/columnar-operation/columnar-sub
 import { ColumnarDivision, ZeroDivisionError } from '../../utils/columnar-operation/columnar-division';
 import { ColumnarMultiplication } from '../../utils/columnar-operation/columnar-multiplication';
 import ZeroDivisionPopup from '../../utils/columnar-operation/ZeroDivisionPopup.vue';
-import { ref } from 'vue';
+import { nextTick, ref } from 'vue';
 import { ColumnarOperation } from '@/components/utils/columnar-operation/columnar-operation';
 declare var MathJax: any;
 
@@ -44,11 +44,12 @@ const commentElement = ref<HTMLElement>(null!);
 const columnarOperationArea = ref<HTMLDivElement>(null!);
 const mask = ref<HTMLDivElement>(null!);
 const mainContent = ref<HTMLDivElement>(null!);
+const error = ref<boolean>(false);
 
 let columnarOperation: ColumnarOperation | null = null;
 
 function onStart() {
-    let wrongInput = false;
+    error.value = false;
     let operationType!:
         | typeof ColumnarAddition
         | typeof ColumnarSubtraction
@@ -59,7 +60,7 @@ function onStart() {
         props.operation === 'all' &&
         ['+', '-', '*', ':', '/'].filter((op) => enteredValue.value.includes(op)).length > 1
     ) {
-        wrongInput = true;
+        error.value = true;
     } else if (props.operation === 'addition' || (props.operation === 'all' && enteredValue.value.includes('+'))) {
         operationType = ColumnarAddition;
     } else if (props.operation === 'subtraction' || (props.operation === 'all' && enteredValue.value.includes('-'))) {
@@ -75,25 +76,28 @@ function onStart() {
     ) {
         operationType = ColumnarDivision;
     } else {
-        wrongInput = true;
+        error.value = true;
     }
 
-    if (wrongInput) {
-        commentElement.value.style.marginTop = '120px';
+    if (error.value) {
         commentElement.value.innerHTML = 'Wpisz jedno działanie do wykonania';
-        table.value.innerHTML = '';
+        update();
         return;
     }
-    columnarOperation = new operationType(table.value, commentElement.value);
-    try {
-        columnarOperation.generateFromInput(enteredValue.value, props.floats);
-        columnarOperation.start();
-        update();
-    } catch (err) {
-        if (err instanceof ZeroDivisionError) {
-            showZeroDivisionError.value = true;
+    nextTick(() => {
+        columnarOperation = new operationType(table.value, commentElement.value);
+        try {
+            columnarOperation.generateFromInput(enteredValue.value, props.floats);
+            columnarOperation.start();
+            update();
+        } catch (err) {
+            if (err instanceof ZeroDivisionError) {
+                showZeroDivisionError.value = true;
+            }
+            error.value = true;
+            update();
         }
-    }
+    });
 }
 
 function next() {
@@ -107,8 +111,8 @@ function prev() {
 }
 
 function update() {
-    hasNext.value = columnarOperation!.hasNext();
-    hasPrev.value = columnarOperation!.hasPrev();
+    hasNext.value = columnarOperation?.hasNext() || false;
+    hasPrev.value = columnarOperation?.hasPrev() || false;
     mask.value.style.height = columnarOperationArea.value.style.height = mainContent.value.clientHeight + 10 + 'px';
     MathJax.Hub.Queue(['Typeset', MathJax.Hub]);
 }
@@ -148,7 +152,7 @@ function update() {
         padding: 5px 10px;
         border-radius: 10px;
         right: -1px;
-        top: -2px;
+        top: -4px;
         background-color: colors.$main-red;
         color: white;
 
@@ -199,6 +203,7 @@ function update() {
         flex: 1;
         display: flex;
         flex-direction: column;
+        justify-content: center;
         min-height: 400px;
 
         div {

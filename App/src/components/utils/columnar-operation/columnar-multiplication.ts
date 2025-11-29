@@ -16,27 +16,24 @@ class ColumnarMultiplicationStep implements ColumnarOperationStep {
         for (let i = 0; i < table.length; i++) {
             tab[i] = [];
             if (i == mulUnderline) {
-                tab[i].push('/u:\\cdot');
-                tab[i].push('/u:');
+                tab[i] = ['u/\\cdot', 'u/'];
             } else if (i == sumUnderline) {
-                tab[i].push('/u:+');
-                tab[i].push('/u:');
+                tab[i] = ['u/+', 'u/'];
             } else {
-                tab[i].push('');
-                tab[i].push('');
+                tab[i] = ['', ''];
             }
             for (let j = 0; j < table[i].length; j++) {
-                let t = ':' + table[i][j];
+                let t = '/' + table[i][j];
                 if (highlightFields[i][j]) {
-                    t = '/h' + t;
+                    t = 'h' + t;
                 }
                 if (i == mulUnderline || i == sumUnderline) {
-                    t = '/u' + t;
+                    t = 'u' + t;
                 }
-                tab[i].push(t[0] == ':' ? t.replace(/:/g, '') : t);
+                tab[i].push(t[0] == '/' ? t.replace(/\//g, '') : t);
             }
         }
-        this.table = DisplayTable.createCustom(tab);
+        this.table = new DisplayTable(tab);
     }
 
     print(commentElement: HTMLElement, table: HTMLElement) {

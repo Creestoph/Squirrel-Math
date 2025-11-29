@@ -25,8 +25,8 @@
             </tbody>
         </table>
 
-        <p style="text-align: center" class="math">
-            {{ print(loperand.toString(), roperand.toString(), f(loperand, roperand).toString()) }}
+        <p style="text-align: center" class="math" v-if="loperand !== -1 && roperand !== -1">
+            {{ print(loperand, roperand, f(loperand, roperand)) }}
         </p>
     </div>
 </template>
@@ -41,7 +41,7 @@ const props = withDefaults(
         defaultLoperand: number;
         defaultRoperand: number;
         f: (l: number, r: number) => number;
-        print: (l: string, r: string, f: string) => string;
+        print: (l: number, r: number, f: number) => string;
         active?: boolean;
     }>(),
     {
