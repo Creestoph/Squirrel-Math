@@ -30,7 +30,6 @@
         "@tiptap/vue-3": "^3.10.1",
         "core-js": "^3.46.0",
         "highlight.js": "^11.11.1",
-        "jquery": "^3.7.1",
         "lowlight": "^3.3.0",
         "paper": "^0.12.18",
         "vue": "^3.5.22",
@@ -38,7 +37,6 @@
     },
     "devDependencies": {
         "@types/chai": "^5.2.3",
-        "@types/jquery": "^3.5.33",
         "@types/mocha": "^10.0.10",
         "@vue/cli-plugin-eslint": "^5.0.9",
         "@vue/cli-plugin-router": "^5.0.9",
