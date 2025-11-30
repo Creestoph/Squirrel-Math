@@ -304,7 +304,7 @@ function clearElements() {
     }
 
     .footer-container {
-        border-right: 14vw solid transparent;
+        border-right: 13.75vw solid transparent;
         filter: drop-shadow(20px 5px 20px rgba(0, 0, 0, 0.5));
     }
 }
@@ -328,6 +328,10 @@ function clearElements() {
 
         h1 {
             font-size: 1.2em;
+            font-weight: 500;
+            line-height: 1.2;
+            margin-top: 0;
+            margin-bottom: 0.5rem;
             color: white;
             &:hover {
                 text-decoration: underline;

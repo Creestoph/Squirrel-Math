@@ -20,7 +20,11 @@
                     <span class="logo-text-2">math</span>
                 </div>
             </router-link>
-            <div v-if="isMobileLayout" class="menu-segment show-tree menu-small" @click="isLessonPanelExpanded = !isLessonPanelExpanded">
+            <div
+                v-if="isMobileLayout"
+                class="menu-segment show-tree menu-small"
+                @click="isLessonPanelExpanded = !isLessonPanelExpanded"
+            >
                 <icon v-if="isLessonPanelExpanded" class="icon">lan</icon>
                 <icon v-if="!isLessonPanelExpanded" class="icon">document_with_image</icon>
             </div>
@@ -38,22 +42,28 @@ const scrolled = ref(false);
 const showText = ref(true);
 const restoreTimeout = ref<number | null>(null);
 const { windowWidth, isMobileLayout } = useWindowSize();
-const route = useRoute()
+const route = useRoute();
 const { isLessonPanelExpanded } = useLessonExpandedInfo();
 
 const isEditor = computed(() => route.path.startsWith('/editor'));
-const isSmall = computed(() => scrolled.value || windowWidth.value < 700 || (isEditor.value && windowWidth.value < 1100));
+const isSmall = computed(
+    () => scrolled.value || windowWidth.value < 700 || (isEditor.value && windowWidth.value < 1100),
+);
 
-watch(() => isSmall.value, (value) => {
-    if (value) {
-        showText.value = false;
-        if (restoreTimeout.value) {
-            clearTimeout(restoreTimeout.value);
+watch(
+    () => isSmall.value,
+    (value) => {
+        if (value) {
+            showText.value = false;
+            if (restoreTimeout.value) {
+                clearTimeout(restoreTimeout.value);
+            }
+        } else {
+            restoreTimeout.value = setTimeout(() => (showText.value = !isSmall.value), 500);
         }
-    } else {
-        restoreTimeout.value = setTimeout(() => (showText.value = !isSmall.value), 500);
-    }
-}, { immediate: true });
+    },
+    { immediate: true },
+);
 
 onMounted(() => {
     addEventListener('scroll', resizeLogo);
@@ -63,7 +73,7 @@ onUnmounted(() => {
     removeEventListener('scroll', resizeLogo);
 });
 function resizeLogo() {
-    scrolled.value = (document.body.scrollTop > 5 || document.documentElement.scrollTop > 5);
+    scrolled.value = document.body.scrollTop > 5 || document.documentElement.scrollTop > 5;
 }
 </script>
 
@@ -173,7 +183,7 @@ $transition-length: 0.7s;
 }
 
 .menu-trapeze.menu-small {
-    left: -160px;
+    left: -155px;
 }
 
 .menu-segment.menu-small {
