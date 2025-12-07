@@ -1,5 +1,5 @@
 export interface ColumnarOperationStep {
-    print(comment: HTMLElement, table: HTMLElement): void;
+    print(table: HTMLElement): string;
 }
 
 export abstract class ColumnarOperation {
@@ -8,23 +8,20 @@ export abstract class ColumnarOperation {
     protected abstract signs: string[];
     protected abstract generateSteps(numbers: string[], isFloat: boolean): void;
 
-    constructor(
-        protected readonly table: HTMLElement,
-        protected readonly commentElement: HTMLElement,
-    ) {}
+    constructor(protected readonly table: HTMLElement) {}
 
-    next() {
+    next(): string {
         this.step += 1;
-        this.printStep(this.step);
+        return this.printStep(this.step);
     }
-    prev() {
+    prev(): string {
         this.step -= 1;
-        this.printStep(this.step);
+        return this.printStep(this.step);
     }
 
-    start() {
+    start(): string {
         this.step = 0;
-        this.printStep(this.step);
+        return this.printStep(this.step);
     }
 
     hasNext(): boolean {
@@ -38,24 +35,14 @@ export abstract class ColumnarOperation {
     generateFromInput(inputValue: string, isFloat = true): void {
         inputValue = inputValue.replace(/ /g, '');
         inputValue = inputValue.replace(/,/g, '.');
-        try {
-            this.generateSteps(
-                this.signs.reduce((acc, separator) => acc.flatMap((s) => s.split(separator)), [inputValue]),
-                isFloat,
-            );
-        } catch (err: any) {
-            this.printError(err);
-            throw err;
-        }
+        this.generateSteps(
+            this.signs.reduce((acc, separator) => acc.flatMap((s) => s.split(separator)), [inputValue]),
+            isFloat,
+        );
     }
 
-    protected printStep(i: number) {
-        this.steps[i].print(this.commentElement, this.table);
-    }
-
-    protected printError(msg: string | { message: string }) {
-        this.commentElement.innerHTML = typeof msg === 'string' ? msg : msg.message;
-        this.table.innerHTML = '';
+    protected printStep(i: number): string {
+        return this.steps[i].print(this.table);
     }
 
     protected validateNumber(x: string, isFloat: boolean) {

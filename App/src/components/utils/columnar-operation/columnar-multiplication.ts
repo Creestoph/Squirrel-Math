@@ -36,9 +36,9 @@ class ColumnarMultiplicationStep implements ColumnarOperationStep {
         this.table = new DisplayTable(tab);
     }
 
-    print(commentElement: HTMLElement, table: HTMLElement) {
-        commentElement.innerHTML = this.comment;
+    print(table: HTMLElement): string {
         this.table.print(table);
+        return this.comment;
     }
 }
 

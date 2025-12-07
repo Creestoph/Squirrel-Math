@@ -14,7 +14,7 @@ interface TableCellAttributes {
 }
 
 export default TableCell.extend({
-    content: '(paragraph | expression | image | component | geometry)+',
+    content: '(paragraph | expression | image | component | geometry | table)+',
 
     addAttributes() {
         return {

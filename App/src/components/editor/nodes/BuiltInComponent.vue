@@ -35,6 +35,7 @@
                                     :placeholder="parameterSchema.placeholder"
                                     v-model="formArgs[i]"
                                     @paste.stop
+                                    @blur="save()"
                                     class="with-highlight"
                                 />
                                 <input
@@ -44,6 +45,7 @@
                                     type="number"
                                     v-model="formArgs[i]"
                                     @paste.stop
+                                    @blur="save()"
                                     class="with-highlight"
                                 />
                                 <input
@@ -51,6 +53,7 @@
                                     :required="parameterSchema.required"
                                     type="checkbox"
                                     v-model="formArgs[i]"
+                                    @blur="save()"
                                     class="with-highlight"
                                 />
                                 <input
@@ -60,6 +63,7 @@
                                     type="function"
                                     v-model="formArgs[i]"
                                     @paste.stop
+                                    @blur="save()"
                                     class="with-highlight"
                                 />
                                 <div v-if="parameterSchema.type.name == 'ARRAY'">
@@ -79,6 +83,7 @@
                                             @paste.stop
                                             @keydown.enter="addElementForArrayParameter(i, j)"
                                             @keydown.backspace="onBackspace(i, j, $event)"
+                                            @blur="save()"
                                             class="with-highlight"
                                         />
                                         <button
@@ -96,15 +101,22 @@
                                 <dropdown
                                     v-if="parameterSchema.type.name == 'ENUM'"
                                     :arrow="true"
-                                    :selectedOption="(formArgs[i] as string) || 'wybierz...'"
-                                    @selected="formArgs[i] = $event"
+                                    :selectedOption="
+                                        parameterSchema.type.translations?.[formArgs[i] as string] ||
+                                        (formArgs[i] as string) ||
+                                        'wybierz...'
+                                    "
+                                    @selected="
+                                        formArgs[i] = $event;
+                                        save();
+                                    "
                                 >
                                     <dropdown-option
                                         v-for="(value, j) in parameterSchema.type.values"
                                         :key="j"
                                         :value="value"
                                     >
-                                        {{ value }}
+                                        {{ parameterSchema.type.translations?.[value] || value }}
                                     </dropdown-option>
                                 </dropdown>
                             </div>
@@ -176,6 +188,7 @@ onMounted(() => {
     formArgs.value = [...args.value];
     if (componentId.value) {
         onComponentSelect(componentId.value);
+        formArgs.value = [...args.value];
         if (validate()) {
             run();
         }
@@ -229,8 +242,12 @@ function edit() {
     editMode.value = true;
 }
 
-function saveAndRun() {
+function save() {
     args.value = formArgs.value;
+}
+
+function saveAndRun() {
+    save();
     run();
 }
 
@@ -432,18 +449,25 @@ function validate(): boolean {
     margin: 0;
     padding: 0;
 }
-.editor-wrapper:hover .toggle-edit-button {
-    display: flex;
-    right: -1px;
+.editor-wrapper:hover,
+.ProseMirror-selectednode .editor-wrapper {
+    .toggle-edit-button {
+        display: flex;
+        right: -1px;
+        z-index: 1;
+    }
 }
 .output {
     min-height: 42px;
 }
-.output-wrapper:hover {
+.output-wrapper:hover,
+.ProseMirror-selectednode .output-wrapper {
     outline: 1px solid colors.$gray;
-}
-.output-wrapper:hover .toggle-edit-button {
-    display: flex;
-    right: -43px;
+
+    .toggle-edit-button {
+        display: flex;
+        right: -43px;
+        z-index: 1;
+    }
 }
 </style>

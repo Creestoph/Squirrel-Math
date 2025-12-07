@@ -12,7 +12,7 @@
                 </button>
                 <div class="main-content" ref="mainContent">
                     <div v-if="!error" ref="table" class="no-selection" />
-                    <p ref="commentElement" class="no-selection" />
+                    <p class="no-selection" v-html="commentText"></p>
                 </div>
                 <button :style="{ visibility: hasNext ? 'visible' : 'hidden' }" @click="next()">
                     <icon class="icon">arrow_right</icon>
@@ -30,6 +30,7 @@ import { ColumnarMultiplication } from '../../utils/columnar-operation/columnar-
 import ZeroDivisionPopup from '../../utils/columnar-operation/ZeroDivisionPopup.vue';
 import { nextTick, ref } from 'vue';
 import { ColumnarOperation } from '@/components/utils/columnar-operation/columnar-operation';
+import { ColumnarFactorization } from '@/components/utils/columnar-operation/columnar-factorization';
 declare var MathJax: any;
 
 const props = defineProps<{ operation: string; floats: boolean }>();
@@ -39,12 +40,12 @@ const hasNext = ref(false);
 const hasPrev = ref(false);
 
 const showZeroDivisionError = ref(false);
+const commentText = ref('');
+const error = ref<boolean>(false);
 const table = ref<HTMLElement>(null!);
-const commentElement = ref<HTMLElement>(null!);
 const columnarOperationArea = ref<HTMLDivElement>(null!);
 const mask = ref<HTMLDivElement>(null!);
 const mainContent = ref<HTMLDivElement>(null!);
-const error = ref<boolean>(false);
 
 let columnarOperation: ColumnarOperation | null = null;
 
@@ -54,13 +55,24 @@ function onStart() {
         | typeof ColumnarAddition
         | typeof ColumnarSubtraction
         | typeof ColumnarMultiplication
-        | typeof ColumnarDivision;
+        | typeof ColumnarDivision
+        | typeof ColumnarFactorization;
 
-    if (
-        props.operation === 'all' &&
-        ['+', '-', '*', ':', '/'].filter((op) => enteredValue.value.includes(op)).length > 1
-    ) {
+    const operatorsCount = ['+', '-', '*', ':', '/'].filter((op) => enteredValue.value.includes(op)).length;
+
+    if (props.operation === 'factorization') {
+        if (operatorsCount > 0) {
+            error.value = true;
+            commentText.value = 'Wpisz jedną liczbę naturalną do rozłożenia na czynniki pierwsze, np. 120.';
+            update();
+            return;
+        }
+        operationType = ColumnarFactorization;
+    } else if (props.operation === 'all' && operatorsCount !== 1) {
         error.value = true;
+        commentText.value = 'Wpisz jedno działanie do wykonania';
+        update();
+        return;
     } else if (props.operation === 'addition' || (props.operation === 'all' && enteredValue.value.includes('+'))) {
         operationType = ColumnarAddition;
     } else if (props.operation === 'subtraction' || (props.operation === 'all' && enteredValue.value.includes('-'))) {
@@ -75,25 +87,19 @@ function onStart() {
         (props.operation === 'all' && (enteredValue.value.includes(':') || enteredValue.value.includes('/')))
     ) {
         operationType = ColumnarDivision;
-    } else {
-        error.value = true;
     }
 
-    if (error.value) {
-        commentElement.value.innerHTML = 'Wpisz jedno działanie do wykonania';
-        update();
-        return;
-    }
     nextTick(() => {
-        columnarOperation = new operationType(table.value, commentElement.value);
+        columnarOperation = new operationType(table.value);
         try {
             columnarOperation.generateFromInput(enteredValue.value, props.floats);
-            columnarOperation.start();
+            commentText.value = columnarOperation.start();
             update();
-        } catch (err) {
+        } catch (err: any) {
             if (err instanceof ZeroDivisionError) {
                 showZeroDivisionError.value = true;
             }
+            commentText.value = typeof err === 'string' ? err : err.message;
             error.value = true;
             update();
         }
@@ -101,12 +107,12 @@ function onStart() {
 }
 
 function next() {
-    columnarOperation!.next();
+    commentText.value = columnarOperation!.next();
     update();
 }
 
 function prev() {
-    columnarOperation!.prev();
+    commentText.value = columnarOperation!.prev();
     update();
 }
 

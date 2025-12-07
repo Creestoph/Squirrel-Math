@@ -8,10 +8,17 @@ export class ParameterType {
     static readonly ARRAY = new ParameterType('ARRAY');
     static readonly ENUM = (...values: string[]) => new ParameterType('ENUM', values);
 
+    translations?: Record<string, string>;
+
     constructor(
         readonly name: string,
         readonly values?: string[],
     ) {}
+
+    withTranslations(translations: Record<string, string>): this {
+        this.translations = translations;
+        return this;
+    }
 }
 
 export interface ComponentSchema {

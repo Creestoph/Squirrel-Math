@@ -13,6 +13,7 @@ export const columnarOperationTableSchema: ComponentSchema = {
         '<li><b>c</b> (carry) - komórka przedstawia wartość "w pamięci" wykonywanego działania w słupku, a więc jest zapisana mniejszą czcionką.</li>' +
         '<li><b>s</b> (strikethrough) - wartość w komórce jest przekreślona.</li>' +
         '<li><b>h</b> (highlight) - wartość w komórce jest podświetlona.</li>' +
+        '<li><b>r</b> (right border) - komórka będzie oddzielona od komórki z prawej linią pionową.</li>' +
         '</ul>Modyfikatory można dowolnie łączyć. Przykład: <code>1 ; x ; uh/5</code> oznacza, że w danym wierszu mają się wyświetlać kolejno: cyfra 1, znak x oraz<br>' +
         'podkreślona i podświetlona cyfra 5.',
     component: ColumnarOperationTable,
@@ -23,7 +24,7 @@ export const columnarOperationTableSchema: ComponentSchema = {
             label: 'Wiersze',
             hint:
                 'W każdym wierszu wpisz listę liczb/znaków do wyświetlenia, oddzielonych średnikiem. W każdej komórce możesz dodać ' +
-                'modyfikatory u, c, s, h i oddzielić je ukośnikiem od tego co ma wyświetlić się w komórce.',
+                'modyfikatory u, c, s, h, r i oddzielić je ukośnikiem od tego co ma wyświetlić się w komórce.',
             placeholder: '1 ; x ; uh / 5',
             validation: (array: string[]) => {
                 const table = array.map((a) => a.split(';'));
@@ -42,7 +43,10 @@ export const columnarOperationTableSchema: ComponentSchema = {
                 }
                 const wrongModifiers = table
                     .map((row) => row.filter((r) => r.includes('/')).flatMap((r) => r.split('/')[0].split('')))
-                    .map((row, i) => ({ chars: row.filter((r) => !['u', 'c', 's', 'h', ' '].includes(r)), row: i }))
+                    .map((row, i) => ({
+                        chars: row.filter((r) => !['u', 'c', 's', 'h', 'r', ' '].includes(r)),
+                        row: i,
+                    }))
                     .filter((m) => m.chars.length > 0);
                 if (wrongModifiers.length > 0) {
                     return (

@@ -33,9 +33,9 @@ class ColumnarDivisionStep implements ColumnarOperationStep {
         this.table = new DisplayTable(tab);
     }
 
-    print(comentElement: HTMLElement, table: HTMLElement) {
-        comentElement.innerHTML = this.comment;
+    print(table: HTMLElement): string {
         this.table.print(table);
+        return this.comment;
     }
 }
 

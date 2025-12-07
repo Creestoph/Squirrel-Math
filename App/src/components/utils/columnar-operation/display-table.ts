@@ -1,12 +1,12 @@
-type StyleCode = 'n' | 'c' | 'u' | 'h' | 's';
+type StyleCode = 'c' | 'u' | 'h' | 's' | 'r';
 
 class ColumnarOperationNode {
     private styleDictionary: Record<StyleCode, string> = {
-        n: 'columnar_operation_not_carry',
-        c: 'columnar_operation_carry',
-        u: 'columnar_operation_underlined',
-        h: 'columnar_operation_highlight',
+        c: 'carry',
+        u: 'underlined',
+        h: 'highlight',
         s: 'strikethrough',
+        r: 'border-right',
     };
 
     private value: string;
@@ -25,9 +25,6 @@ class ColumnarOperationNode {
     }
 
     print() {
-        if (!this.styleIds.includes('c')) {
-            this.styleIds.push('n');
-        }
         const classStr = `class = "${this.styleIds.map((id) => this.styleDictionary[id]).join(' ')}"`;
         return this.value ? `<td ${classStr}>$${this.value}$</td>` : `<td ${classStr}></td>`;
     }

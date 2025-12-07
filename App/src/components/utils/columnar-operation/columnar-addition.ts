@@ -42,9 +42,9 @@ class ColumnarAdditionStep implements ColumnarOperationStep {
         this.table = new DisplayTable(tab);
     }
 
-    print(comentTargetId: HTMLElement, tableTargetId: HTMLElement) {
-        comentTargetId.innerHTML = this.comment;
+    print(tableTargetId: HTMLElement): string {
         this.table.print(tableTargetId);
+        return this.comment;
     }
 }
 
@@ -120,7 +120,6 @@ export class ColumnarAddition extends ColumnarOperation {
                     ' i podkreślamy.',
             ),
         );
-        this.step = 0;
         let currentColumn = table[0].length - 1;
         let digits = [];
         let comment = '';
