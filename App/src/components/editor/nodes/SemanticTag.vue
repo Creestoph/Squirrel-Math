@@ -18,7 +18,9 @@
         </div>
         <span v-if="canAddTag()" @click="addTag()" class="add-tag-button no-selection">+</span>
 
-        <span :class="required.length == 0 ? 'required-optional' : 'required-strong'" class="no-selection">Wymagane:</span>
+        <span :class="required.length == 0 ? 'required-optional' : 'required-strong'" class="no-selection"
+            >Wymagane:</span
+        >
         <div class="required dropdown" v-for="(required, j) in required" :key="'required' + j">
             <div class="required-label">
                 {{ required }}
@@ -146,6 +148,7 @@ function canAddNewRequired() {
 .dropdown {
     max-width: 120px;
     margin-right: 5px;
+    position: relative;
 }
 
 .tags-wrapper:hover .type {

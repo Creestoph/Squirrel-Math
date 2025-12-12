@@ -11,37 +11,27 @@
                         <icon>redo</icon>
                     </button>
 
-                    <button
-                        @click="
-                            editor.commands.saveToFile();
-                            editor.commands.saveToLocalStorage();
-                        "
-                        title="zapisz (Ctrl + S)"
-                    >
-                        <icon>logout</icon>
+                    <button @click="onSave()" title="zapisz (Ctrl + S)">
+                        <icon>save</icon>
                     </button>
 
-                    <button @click="openDraftsDialog()" title="wczytaj">
+                    <button @click="onSaveAsNew()" title="zapisz jako...">
+                        <icon>save_as</icon>
+                    </button>
+
+                    <button @click="showDraftsDialog = true" title="wczytaj">
                         <icon>login</icon>
                     </button>
 
-                    <button @click="clearAll()" title="edytuj nową lekcję">
+                    <button @click="onCreateNewLesson()" title="edytuj nową lekcję">
                         <icon>control_point</icon>
                     </button>
 
                     <button
-                        v-if="secondModeExists()"
-                        @click="editSecondMode()"
-                        :title="shortMode ? 'edytuj wersję pełną' : 'edytuj wersję skróconą'"
+                        @click="onEditSecondMode()"
+                        :title="`${secondModeData() ? 'edytuj' : 'stwórz'} wersję ${shortMode ? 'pełną' : 'skróconą'}`"
                     >
-                        <icon>control_point_duplicate</icon>
-                    </button>
-                    <button
-                        v-if="!secondModeExists()"
-                        @click="createSecondMode()"
-                        :title="shortMode ? 'stwórz wersję pełną' : 'stwórz wersję skróconą'"
-                    >
-                        <icon>control_point_duplicate</icon>
+                        <icon>pill</icon>
                     </button>
                 </div>
                 <div class="tools-general">
@@ -376,48 +366,26 @@
             </div>
         </div>
 
-        <editor-content class="editor" :editor="editor" />
-
-        <div v-if="showDraftsDialog" class="drafts-dialog">
-            <div class="drafts-dialog-header">
-                Wczytaj wersję roboczą
-                <button @click="closeDraftsDialog()">✖</button>
-            </div>
-            <div class="drafts-dialog-body">
-                <div class="drafts-list-header">
-                    <span class="draft-name"><b>Tytuł</b></span>
-                    <span class="draft-date"><b>Data utworzenia</b></span>
-                    <span class="draft-date"><b>Data modyfikacji</b></span>
-                </div>
-                <div class="drafts-list">
-                    <div v-for="(draft, i) in availableDrafts" :key="i">
-                        <div class="draft" @click="loadDraft(draft)">
-                            <span class="draft-name">
-                                {{ draft.name + (draft.fromAutosave ? ' (autosave)' : '') }}
-                            </span>
-                            <span class="draft-date">
-                                {{ draft.created.toLocaleDateString() }}
-                            </span>
-                            <span class="draft-date">
-                                {{
-                                    draft.lastModified.toLocaleDateString() +
-                                    ' ' +
-                                    draft.lastModified.toLocaleTimeString()
-                                }}
-                            </span>
-                        </div>
-                        <button @click="deleteDraft(draft)">usuń</button>
-                    </div>
-                </div>
+        <!-- TODO make component -->
+        <div class="popup-backdrop" v-if="exitPending">
+            <div class="popup">
+                Zapisać zmiany przed opuszczeniem strony?
+                <button @click="onSaveAndExit()">Tak</button>
+                <button @click="onDiscardAndExit()">Nie</button>
+                <button @click="exitPending = null">Anuluj</button>
             </div>
         </div>
+
+        <editor-content class="editor" :editor="editor" />
+
+        <drafts-load-popup v-if="showDraftsDialog" @load="loadDraft" @close="showDraftsDialog = false" />
 
         <image-picker
             :visible="showImagesDialog"
             @select="editor.commands.createImage($event)"
             @delete="deleteImage"
             @close="showImagesDialog = false"
-        ></image-picker>
+        />
 
         <comment-popup
             v-if="editedCommentData"
@@ -441,8 +409,8 @@
 </template>
 
 <script setup lang="ts">
-import { computed, getCurrentInstance, onMounted, onUnmounted, ref } from 'vue';
-import { Editor, EditorContent } from '@tiptap/vue-3';
+import { getCurrentInstance, onMounted, onUnmounted, ref } from 'vue';
+import { EditorContent, Editor } from '@tiptap/vue-3';
 import Icon from '../Icon.vue';
 
 import Lesson from '../lesson/Lesson.vue';
@@ -450,6 +418,7 @@ import ColorPicker from './ColorPicker.vue';
 import Dropdown from './Dropdown.vue';
 import DropdownOption from './DropdownOption.vue';
 import ImagePicker from './ImagePicker.vue';
+import DraftsLoadPopup from './DraftsLoadPopup.vue';
 
 import LessonDoc from './nodes/Lesson';
 import Title from './nodes/Title';
@@ -480,11 +449,10 @@ import ImageNode from './nodes/Image';
 import Link from './marks/Link';
 import NumberMark from './marks/NumberMark';
 import TextColor from './marks/TextColor';
-import Save from './extensions/DraftsManager/SaveExtension';
 import Comment from './marks/Comment';
 import MarkClick from './marks/MarkClick';
 import CommentPopup from './CommentPopup.vue';
-import { DraftPreview, LocalStorageSaver } from './extensions/DraftsManager/LocalStorageManager';
+import { DraftPreview, LocalStorageSaver } from './LocalStorageManager';
 import BulletList from '@tiptap/extension-bullet-list';
 import OrderedList from '@tiptap/extension-ordered-list';
 import HardBreak from '@tiptap/extension-hard-break';
@@ -497,8 +465,8 @@ import LinkPopup from './LinkPopup.vue';
 import { BubbleMenu } from '@tiptap/vue-3/menus';
 import { allComments, lessonImages } from './shared-state';
 import { Point } from '../../models/point';
-import { ImageData } from '@/models/lesson';
-import { onBeforeRouteLeave } from 'vue-router';
+import { ImageData, LessonData, LessonVersionData } from '@/models/lesson';
+import { NavigationGuardNext, onBeforeRouteLeave, useRoute, useRouter } from 'vue-router';
 import TableBorders from './extensions/TableBorders';
 import { useLessonExpandedInfo } from '../utils/menu-bus';
 import CustomBold from './marks/Bold';
@@ -506,44 +474,59 @@ import CustomItalic from './marks/Italic';
 import CustomStrike from './marks/Strike';
 import CustomUnderline from './marks/Underline';
 import { transformAll } from './lessons-transform';
+import { getLessonTitle } from './tiptap-utils';
+import { SaveManager } from './SaveManager';
 
-const proxy = getCurrentInstance()!.proxy!;
+const router = useRouter();
+const route = useRoute();
 const { lessonLeftPos } = useLessonExpandedInfo();
+const saveManager = new SaveManager();
 
 const editor = ref<Editor>(null!);
 const showDraftsDialog = ref(false);
 const showImagesDialog = ref(false);
+const exitPending = ref<(() => void) | null>(null);
 const editedCommentData = ref<{ id: string; pos: Point } | null>(null);
-const availableDrafts = ref<DraftPreview[]>([]);
-
-const shortMode = computed({
-    get() {
-        return editor.value?.storage.save.shortMode;
-    },
-    set(value: boolean) {
-        editor.value.storage.save.shortMode = value;
-    },
-});
+const shortMode = ref(false);
+const lessonData = {
+    short: null as LessonVersionData | null,
+    long: null as LessonVersionData | null,
+};
+let autoSaveObserverId: number;
 
 createEditor(false);
 
 onMounted(() => {
     clearAll();
     loadContent();
+    createAutoSave();
     addEventListener('beforeunload', exitListener);
+    addEventListener('keydown', onQuickSave);
     // transformAll();
 });
 
 onUnmounted(() => {
     editor.value.destroy();
+    clearInterval(autoSaveObserverId);
     removeEventListener('beforeunload', exitListener);
+    removeEventListener('keydown', onQuickSave);
 });
 
-onBeforeRouteLeave((to: any, from: any, next: any) => {
-    if (window.confirm('Opuścić stronę? Wprowadzone zmiany mogą nie zostać zapisane.')) {
+onBeforeRouteLeave((to: any, from: any, next: NavigationGuardNext) => {
+    if (saveManager.getIsDirty()) {
+        exitPending.value = next;
+    } else {
         next();
     }
 });
+
+function createAutoSave() {
+    autoSaveObserverId = setInterval(() => {
+        if (saveManager.getIsDirty()) {
+            saveManager.saveToLocalStorage(saveManager.getCurrentDraftName(), currentLessonData(), true);
+        }
+    }, 60 * 1000);
+}
 
 function createEditor(shortVersion: boolean) {
     editor.value = new Editor({
@@ -639,9 +622,24 @@ function createEditor(shortVersion: boolean) {
                     },
                 ],
             }),
-            Save,
         ],
     });
+
+    editor.value.on('update', () => saveManager.setIsDirty(true));
+}
+
+function loadContent() {
+    const sourceFile = route.params.editSourceFile;
+    if (sourceFile) {
+        import(`@/assets/lessons/${sourceFile}`).then((file: LessonData) => {
+            lessonData.short = file.short || null;
+            lessonData.long = file.long || null;
+            saveManager.loadFromJSON(file);
+            saveManager.makeNewFile(getLessonTitle(editor.value));
+            editor.value.commands.setContent(currentModeData());
+            saveManager.setIsDirty(false);
+        });
+    }
 }
 
 function insert(element: string) {
@@ -708,63 +706,79 @@ function addComment() {
     }
 }
 
-function clearAll() {
-    allComments.value = {};
-    lessonImages.value = {};
-    clearContent();
-    editor.value.storage.save.longVersionJSON = null;
-    editor.value.storage.save.shortVersionJSON = null;
-}
-
-function createSecondMode() {
-    editor.value.commands.saveToLocalStorage(true);
-    const title = editor.value.state.doc.content.content[0].content.content[0];
-    const wasShortMode = shortMode.value;
-    editor.value.destroy();
-    createEditor(!wasShortMode);
-    shortMode.value = !wasShortMode;
-    clearContent(title ? title.text : '');
-}
-
-function editSecondMode() {
-    editor.value.commands.saveToLocalStorage(true);
-    const wasShortMode = shortMode.value;
-    const newContent = wasShortMode
-        ? editor.value.storage.save.longVersionJSON
-        : editor.value.storage.save.shortVersionJSON;
-    editor.value.destroy();
-    createEditor(!wasShortMode);
-    shortMode.value = !wasShortMode;
-    editor.value.commands.setContent(newContent);
-}
-
-function secondModeExists() {
-    return shortMode.value ? editor.value?.storage.save.longVersionJSON : editor.value?.storage.save.shortVersionJSON;
-}
-
-function openDraftsDialog() {
-    showDraftsDialog.value = true;
-    availableDrafts.value = draftsList();
-}
-
-function closeDraftsDialog() {
-    showDraftsDialog.value = false;
+function onCreateNewLesson() {
+    if (saveManager.getIsDirty()) {
+        exitPending.value = onCreateNewLesson;
+    } else {
+        router.replace('/editor');
+        saveManager.makeNewFile(null);
+        clearAll();
+    }
 }
 
 function loadDraft(draft: DraftPreview) {
     showDraftsDialog.value = false;
-    shortMode.value = false;
-    editor.value.commands.loadDraft(draft);
+    if (saveManager.getIsDirty()) {
+        exitPending.value = () => loadDraft(draft);
+        return;
+    }
+    router.replace('/editor');
+    if (shortMode.value) {
+        onEditSecondMode();
+    }
+    const lesson = saveManager.loadDraft(draft);
+    lessonData.short = lesson.short;
+    lessonData.long = lesson.long;
+    editor.value.commands.setContent(currentModeData());
+    saveManager.setIsDirty(!saveManager.getCurrentDraftName());
 }
 
-function deleteDraft(draft: DraftPreview) {
-    editor.value.commands.deleteDraft(draft);
-    availableDrafts.value = draftsList();
+function clearAll() {
+    allComments.value = {};
+    lessonImages.value = {};
+    clearContent();
+    lessonData.long = lessonData.short = null;
+}
+
+function onEditSecondMode() {
+    const wasDirty = saveManager.getIsDirty();
+    if (wasDirty) {
+        saveManager.saveToLocalStorage(saveManager.getCurrentDraftName(), currentLessonData(), true);
+    }
+    const newContent = secondModeData();
+    shortMode.value = !shortMode.value;
+    const title = getLessonTitle(editor.value);
+    editor.value.destroy();
+    createEditor(shortMode.value);
+    if (newContent) {
+        editor.value.commands.setContent(newContent);
+    } else {
+        clearContent(title || undefined);
+    }
+    saveManager.setIsDirty(wasDirty);
+}
+
+function currentLessonData(): { short: LessonVersionData | null; long: LessonVersionData | null } {
+    const data = editor.value.getJSON() as LessonVersionData;
+    if (shortMode.value) {
+        lessonData.short = data;
+    } else {
+        lessonData.long = data;
+    }
+    return lessonData;
+}
+
+function currentModeData() {
+    return shortMode.value ? lessonData.short : lessonData.long;
+}
+
+function secondModeData() {
+    return shortMode.value ? lessonData.long : lessonData.short;
 }
 
 function deleteImage(image: ImageData, confirmedDelete: () => void) {
-    let short = shortMode.value ? editor.value.getJSON() : editor.value.storage.save.shortVersionJSON;
-    let long = shortMode.value ? editor.value.storage.save.longVersionJSON : editor.value.getJSON();
+    let short = shortMode.value ? editor.value.getJSON() : lessonData.short;
+    let long = shortMode.value ? lessonData.long : editor.value.getJSON();
     const isInShort = short && hasImage(short, image.name);
     const isInLong = long && hasImage(long, image.name);
     if (isInLong) {
@@ -783,35 +797,74 @@ function hasImage(node: any, key: string): boolean {
     return node.content ? node.content.some((child: any) => hasImage(child, key)) : false;
 }
 
-function loadContent() {
-    const sourceFile = proxy.$route.params.editSourceFile;
-    if (sourceFile) {
-        import(`@/assets/lessons/${sourceFile}`).then((file) => editor.value.commands.loadFromJSON(file));
+function defineLessonTitle(): string | null {
+    return saveManager.getCurrentDraftName() || typeNewLessonTitle();
+}
+
+function typeNewLessonTitle(): string | null {
+    return window.prompt('Zapisz jako:', getLessonTitle(editor.value) || undefined);
+}
+
+function onQuickSave(event: KeyboardEvent) {
+    if (event.key === 's' && (event.metaKey || event.ctrlKey)) {
+        event.preventDefault();
+        const title = defineLessonTitle();
+        if (title !== null) {
+            saveManager.saveToLocalStorage(title, currentLessonData(), false);
+        }
     }
+}
+
+function onSave() {
+    const title = defineLessonTitle();
+    if (title !== null) {
+        const data = currentLessonData();
+        saveManager.saveToFile(title, data);
+        saveManager.saveToLocalStorage(title, data);
+        saveManager.setIsDirty(false);
+    }
+}
+
+function onSaveAsNew() {
+    const title = typeNewLessonTitle();
+    if (title !== null) {
+        const data = currentLessonData();
+        saveManager.saveToFile(title, data);
+        saveManager.makeNewFile(title);
+        saveManager.saveToLocalStorage(title, data);
+        saveManager.setIsDirty(false);
+    }
+}
+
+function onSaveAndExit() {
+    saveManager.saveToLocalStorage(defineLessonTitle(), currentLessonData());
+    saveManager.setIsDirty(false);
+    exitPending.value!();
+    exitPending.value = null;
+}
+
+function onDiscardAndExit() {
+    LocalStorageSaver.deleteDraft({ fromAutosave: true, id: saveManager.getCurrentDraftId() });
+    saveManager.setIsDirty(false);
+    exitPending.value!();
+    exitPending.value = null;
 }
 
 function clearContent(title?: string) {
     editor.value.commands.setContent(`
-        <h1>${title ? title : ''}</h1>
+        <h1>${title || ''}</h1>
         <intro></intro>
         <chapter>
             <chapter-title isHidden="false"></chapter-title>
             <chapter-body></chapter-body>
         </chapter>
     `);
+    saveManager.setIsDirty(false);
 }
 
 function exitListener(event: any) {
     event.preventDefault();
     event.returnValue = '';
-}
-
-function draftsList(): DraftPreview[] {
-    return LocalStorageSaver.draftsList().sort((d1, d2) => {
-        const d1AutoSave = d1.fromAutosave ? 1 : 0;
-        const d2AutoSave = d2.fromAutosave ? 1 : 0;
-        return d1.name == d2.name ? d1AutoSave - d2AutoSave : d2.lastModified.getTime() - d1.lastModified.getTime();
-    });
 }
 </script>
 
@@ -982,88 +1035,6 @@ function draftsList(): DraftPreview[] {
     display: flex;
 }
 
-.drafts-dialog {
-    position: fixed;
-    width: 800px;
-    height: 500px;
-    z-index: 10000;
-    left: calc(50% - 400px);
-    top: calc(50% - 250px);
-    box-sizing: border-box;
-    background: white;
-    box-shadow: 0 0 15px 5px rgba(0, 0, 0, 0.2);
-
-    .drafts-dialog-header {
-        background: black;
-        line-height: 50px;
-        color: white;
-        height: 50px;
-        padding-left: 15px;
-        font-weight: bold;
-
-        button {
-            float: right;
-            width: 50px;
-            height: 50px;
-            padding: 0;
-            background: colors.$main-red;
-            color: white;
-            font-family: fonts.$geometric-font;
-            font-size: 1.5em;
-        }
-    }
-
-    .drafts-dialog-body {
-        padding: 10px;
-
-        .drafts-list {
-            clear: both;
-            height: 390px;
-            overflow-y: auto;
-
-            button {
-                float: left;
-                background: colors.$main-red;
-                padding: 5px 10px;
-                margin: 10px 5px;
-                color: white;
-                &:hover {
-                    background: colors.$dark-red;
-                }
-            }
-        }
-
-        .draft {
-            float: left;
-            width: 500px;
-            margin: 10px 10px 10px 5px;
-            padding: 5px 10px;
-            background: colors.$light-gray;
-            cursor: pointer;
-            &:hover {
-                background: colors.$gray;
-            }
-        }
-
-        .drafts-list-header {
-            float: left;
-            width: 500px;
-            margin-left: 5px;
-            padding: 5px 10px;
-        }
-
-        .draft-name {
-            display: inline-block;
-            width: 35%;
-        }
-
-        .draft-date {
-            display: inline-block;
-            width: 32%;
-        }
-    }
-}
-
 /*=== CONTENT - GENERAL===*/
 .editor img {
     display: block;
@@ -1101,6 +1072,39 @@ comment {
 
 a[lesson-url] {
     text-decoration: underline;
+}
+
+/*=== POPUP ===*/
+.popup-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 4;
+
+    .popup {
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        text-align: center;
+
+        button {
+            margin: 10px;
+            padding: 8px 16px;
+            font-size: 1em;
+            cursor: pointer;
+
+            &:hover {
+                background: colors.$light-gray;
+            }
+        }
+    }
 }
 
 /*=== CONTENT - EDITOR SPECIFIC===*/
@@ -1191,7 +1195,7 @@ a[lesson-url] {
 }
 
 /*
- * somethimes prosemirror adds "ProseMirror-hideselection" class which makes selection background transparent,
+ * sometimes prosemirror adds "ProseMirror-hideselection" class which makes selection background transparent,
  * but leaves text color unchanged (white), making text invisible...
  */
 .ProseMirror-hideselection *::selection {

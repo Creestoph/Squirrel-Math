@@ -24,8 +24,7 @@ export default Mark.create({
     parseHTML: () => [
         {
             tag: 'comment',
-            //when block of text is copy-pasted, comment gets new id, but same ids get same new ids
-            getAttrs: (dom) => ({ id: 1000 + dom.getAttribute('comment-id')! }),
+            getAttrs: (dom) => ({ id: dom.getAttribute('comment-id') }),
         },
     ],
 

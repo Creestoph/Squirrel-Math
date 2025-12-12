@@ -14,7 +14,7 @@ export const columnarOperationTableSchema: ComponentSchema = {
         '<li><b>s</b> (strikethrough) - wartość w komórce jest przekreślona.</li>' +
         '<li><b>h</b> (highlight) - wartość w komórce jest podświetlona.</li>' +
         '<li><b>r</b> (right border) - komórka będzie oddzielona od komórki z prawej linią pionową.</li>' +
-        '</ul>Modyfikatory można dowolnie łączyć. Przykład: <code>1 ; x ; uh/5</code> oznacza, że w danym wierszu mają się wyświetlać kolejno: cyfra 1, znak x oraz<br>' +
+        '</ul>Modyfikatory można dowolnie łączyć. Przykład: <code>1 ; x ; uh/5</code> oznacza, że w danym wierszu mają się wyświetlać kolejno: cyfra 1, znak x oraz ' +
         'podkreślona i podświetlona cyfra 5.',
     component: ColumnarOperationTable,
     parameters: {

@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import { routes } from '@/router/routes';
 
-export default createRouter({
+const router = createRouter({
     history: createWebHistory(),
     routes,
     scrollBehavior: (to, _from, savedPosition) => {
@@ -20,3 +20,11 @@ export default createRouter({
         return { left: 0, top: 0 };
     },
 });
+
+router.beforeEach((to) => {
+    if (to.meta.title) {
+        document.title = to.meta.title as string;
+    }
+});
+
+export default router;
