@@ -112,7 +112,7 @@
 
 <script setup lang="ts">
 import paper from 'paper';
-import { idGenerator, snapShift } from './Shape';
+import { idGenerator, Snapper } from './utils';
 import ColorPicker from '../../ColorPicker.vue';
 import Dropdown from '../../Dropdown.vue';
 import DropdownOption from '../../DropdownOption.vue';
@@ -135,7 +135,6 @@ const props = defineProps(nodeViewProps);
 
 let eventsCatcherPaperScope: paper.PaperScope = null!;
 let overlayPaperScope: paper.PaperScope = null!;
-let snapPoints: paper.Point[] = [];
 let dragStartPoint: paper.Point | null = null;
 let shapeDragged = -1;
 let shapeDragStartPosition: paper.Point | null = null;
@@ -144,6 +143,8 @@ let selectionBox: paper.Shape.Rectangle | null = null;
 let selectionBoxAnchor: paper.Point | null = null;
 let resizeObserver: ResizeObserver = null!;
 let lastTextAreaClickEvent: MouseEvent | null = null;
+let snapper: Snapper = null!;
+let saveTimeout: number | null = null;
 const hitOptions = {
     segments: true,
     stroke: true,
@@ -173,11 +174,9 @@ const canvas = computed({
 });
 const fillColor = computed({
     get() {
-        const firstSelected = shapeAtIndex(selection.value[0])!;
-        return selection.value
-            .map((i) => shapeAtIndex(i)!)
-            .every((shape) => shape.fillColor.value == firstSelected.fillColor.value)
-            ? firstSelected.fillColor.value
+        const shapes = selection.value.map((i) => shapeAtIndex(i)!);
+        return shapes.every((shape) => shape.fillColor.value == shapes[0].fillColor.value)
+            ? shapes[0].fillColor.value
             : null;
     },
     set(color) {
@@ -186,12 +185,9 @@ const fillColor = computed({
 });
 const borderColor = computed({
     get() {
-        const firstSelected = shapeAtIndex(selection.value[0])! as ShapeWithBorder;
-        return selection.value
-            .map((i) => shapeAtIndex(i)!)
-            .filter((shape) => canHaveBorder(shape))
-            .every((shape) => shape.borderColor.value == firstSelected.borderColor.value)
-            ? firstSelected.borderColor.value
+        const shapesWithBorder = selection.value.map((i) => shapeAtIndex(i)!).filter((shape) => canHaveBorder(shape));
+        return shapesWithBorder.every((shape) => shape.borderColor.value == shapesWithBorder[0].borderColor.value)
+            ? shapesWithBorder[0].borderColor.value
             : null;
     },
     set(color) {
@@ -203,12 +199,9 @@ const borderColor = computed({
 });
 const align = computed({
     get() {
-        const firstSelected = shapeAtIndex(selection.value[0])! as TextAreaShapeController;
-        return selection.value
-            .map((i) => shapeAtIndex(i)!)
-            .filter((shape) => isTextArea(shape))
-            .every((shape) => shape.align.value == firstSelected.align.value)
-            ? firstSelected.align.value
+        const textAreas = selection.value.map((i) => shapeAtIndex(i)!).filter((shape) => isTextArea(shape));
+        return textAreas.every((shape) => shape.align.value === textAreas[0].align.value)
+            ? textAreas[0].align.value
             : null;
     },
     set(align) {
@@ -275,10 +268,12 @@ onMounted(() => {
     eventsCatcherPaperScope.tool.onMouseDrag = handleMouseDrag;
     eventsCatcherPaperScope.tool.onMouseUp = handleMouseUp;
     eventsCatcherPaperScope.tool.onKeyDown = handleKeyDown;
+    eventsCatcherPaperScope.tool.onKeyUp = handleKeyUp;
     eventsCatcher.value.addEventListener('wheel', handleScroll);
 
     overlayPaperScope = new paper.PaperScope();
     overlayPaperScope.setup(overlayCanvas.value);
+    snapper = new Snapper(overlayPaperScope);
 
     initializeFromAttributes();
 
@@ -357,7 +352,9 @@ function handleMouseDown(event: paper.ToolEvent) {
                     select(i, shape);
                     break;
                 } else {
-                    selectOnly(i);
+                    if (!selection.value.includes(i)) {
+                        selectOnly(i);
+                    }
                     break;
                 }
             }
@@ -398,7 +395,7 @@ function handleMouseDrag(event: paper.ToolEvent) {
     for (let i = 0; i < totalShapes(); i++) {
         if (shapeEdited.value == -1 || shapeEdited.value == i) {
             const shape = shapeAtIndex(i)!;
-            if (shape.onMouseDrag(event, snapPoints)) {
+            if (shape.onMouseDrag(event, snapper)) {
                 moveObjects = false;
             }
         }
@@ -409,14 +406,13 @@ function handleMouseDrag(event: paper.ToolEvent) {
             .add(shapeDragStartPosition!)
             .subtract(shapeAtIndex(shapeDragged)!.getPosition());
         if (event.modifiers.shift) {
-            const futurePositions = selection.value.flatMap((i) =>
-                shapeAtIndex(i)!
-                    .getSnapPoints()
-                    .map((p) => p.add(deltaToCurrentPosition)),
-            );
-            deltaToCurrentPosition = deltaToCurrentPosition.add(snapShift(futurePositions, snapPoints));
+            const futureOwnSnaps = selectedSnapPoints().map((p) => p.add(deltaToCurrentPosition));
+            deltaToCurrentPosition = deltaToCurrentPosition.add(snapper.snapShift(futureOwnSnaps));
         }
         selection.value.forEach((i) => shapeAtIndex(i)!.move(deltaToCurrentPosition));
+        if (event.modifiers.shift) {
+            snapper.drawSnapLines(selectedSnapPoints());
+        }
     } else if (selectionBox) {
         selectionBox.position = event.point.add(selectionBoxAnchor!).multiply(0.5);
         selectionBox.size = new paper.Size(
@@ -442,6 +438,7 @@ function handleMouseUp() {
         selectionBox.remove();
         selectionBox = null;
     }
+    snapper.clearSnapLines();
     // delay attrs update to avoid collisions with prosemirror selection update, which also happens on mouseup
     requestAnimationFrame(() => save());
 }
@@ -463,7 +460,7 @@ function handleKeyDown(event: paper.KeyEvent) {
                     const elementBegin = shape.getPos()!;
                     const transaction = props.editor.view.state.tr.delete(
                         elementBegin,
-                        elementBegin + shape.node.nodeSize,
+                        elementBegin + shape.getNode().nodeSize - 1,
                     );
                     transaction.setMeta('allowDelete', true); //see TextAreaNode.ts for usage
                     props.editor.view.dispatch(transaction);
@@ -481,7 +478,7 @@ function handleKeyDown(event: paper.KeyEvent) {
         } else if (event.key == 'escape') {
             onBlur();
         } else if (event.key == 'c' && event.modifiers.control) {
-            copiedNodes = selection.value.map((i) => shapeAtIndex(i)!.node);
+            copiedNodes = selection.value.map((i) => shapeAtIndex(i)!.getNode());
         } else {
             catchedEvent = false;
         }
@@ -492,20 +489,17 @@ function handleKeyDown(event: paper.KeyEvent) {
     if (event.key == 'v' && event.modifiers.control && copiedNodes) {
         deselectAll();
         copiedNodes.forEach((shapeNode) => {
-            const node = shapeNode.type.createAndFill(
-                { ...shapeNode.attrs, id: idGenerator.next().value },
-                shapeNode.content,
-            )!;
-            const transaction = props.editor.view.state.tr.insert(insertPosition(), node);
-            props.editor.view.dispatch(transaction);
+            const serializedNode = shapeNode.toJSON();
+            serializedNode.attrs = { ...serializedNode.attrs, id: idGenerator.next().value };
+            props.editor.commands.insertContentAt(insertPosition(), props.editor.schema.nodeFromJSON(serializedNode));
 
-            const cloned = lastShape();
-            cloned.move(new paper.Point(40, 40));
-            select(totalShapes() - 1, cloned);
+            const added = lastShape();
+            select(totalShapes() - 1, added);
+            added.handleResize(canvas.value.width, canvas.value.height);
+            added.move(new paper.Point(40, 40));
         });
-        save();
-        handleResize();
         event.preventDefault();
+        save();
     } else if (event.key == 'a' && event.modifiers.control) {
         deselectAll();
         for (let i = 0; i < totalShapes(); i++) {
@@ -515,43 +509,44 @@ function handleKeyDown(event: paper.KeyEvent) {
     }
 }
 
+function handleKeyUp(event: paper.KeyEvent) {
+    if (event.key === 'shift') {
+        snapper.clearSnapLines();
+    }
+}
+
 function handleScroll(event: WheelEvent) {
     if (!event.ctrlKey) {
         return;
     }
 
     const zoomFactor = Math.pow(1.1, -Math.sign(event.deltaY));
+    const center = {
+        x: event.offsetX,
+        y: event.offsetY,
+    };
 
-    if (selection.value.length > 0) {
-        for (let i = totalShapes() - 1; i >= 0; i--) {
-            if (selection.value.includes(i)) {
-                shapeAtIndex(i)!.scale(zoomFactor, {
-                    x: event.offsetX,
-                    y: event.offsetY,
-                });
-                event.preventDefault();
-            }
+    for (let i = totalShapes() - 1; i >= 0; i--) {
+        if (selection.value.length === 0 || selection.value.includes(i)) {
+            shapeAtIndex(i)!.scale(zoomFactor, center);
+            event.preventDefault();
         }
-    } else if (shapeEdited.value == -1) {
-        for (let i = 0; i < totalShapes(); i++) {
-            shapeAtIndex(i)!.scale(zoomFactor, {
-                x: event.offsetX,
-                y: event.offsetY,
-            });
-        }
-        event.preventDefault();
     }
+
+    clearTimeout(saveTimeout ?? undefined);
+    saveTimeout = setTimeout(() => save(), 100);
 }
 
 function insertPosition() {
     return props.getPos()! + props.node.nodeSize - 1;
 }
 
-function addShape(event: MouseEvent) {
+function addShape(event: MouseEvent | paper.KeyEvent) {
     const added = lastShape();
     deselectAll();
     select(totalShapes() - 1, added);
     added.handleResize(canvas.value.width, canvas.value.height);
+    save();
     if (event) {
         event.preventDefault();
     }
@@ -722,27 +717,27 @@ function canHaveBorder(shape: ShapeController): shape is ShapeWithBorder {
 }
 
 function isArc(shape: ShapeController) {
-    return shape.node.type.name === 'arc';
+    return shape.getNode().type.name === 'arc';
 }
 
 function isCircle(shape: ShapeController) {
-    return shape.node.type.name === 'circle';
+    return shape.getNode().type.name === 'circle';
 }
 
 function isRectangle(shape: ShapeController) {
-    return shape.node.type.name === 'rectangle';
+    return shape.getNode().type.name === 'rectangle';
 }
 
 function isPolygon(shape: ShapeController) {
-    return shape.node.type.name === 'polygon';
+    return shape.getNode().type.name === 'polygon';
 }
 
 function isLine(shape: ShapeController) {
-    return shape.node.type.name === 'line';
+    return shape.getNode().type.name === 'line';
 }
 
 function isTextArea(shape: ShapeController): shape is TextAreaShapeController {
-    return shape.node.type.name === 'textArea';
+    return shape.getNode().type.name === 'textArea';
 }
 
 function select(index: number, shape = shapeAtIndex(index)!) {
@@ -767,7 +762,7 @@ function deselectAll() {
     allShapes().forEach((shape) => shape.setSelected(false));
     shapeEdited.value = -1;
     selection.value = [];
-    snapPoints = [];
+    snapper.setSnapPoints([]);
 }
 
 function selectOnly(index: number) {
@@ -783,15 +778,22 @@ function selectOnly(index: number) {
     recalculateSnapPoints();
 }
 
+function selectedSnapPoints() {
+    return selection.value.flatMap((i) => shapeAtIndex(i)!.getSnapPoints());
+}
+
 function recalculateSnapPoints() {
-    snapPoints = Array(totalShapes())
-        .fill(0)
-        .map((_, i) => i)
-        .filter((i) => !selection.value.includes(i))
-        .flatMap((i) => shapeAtIndex(i)!.getSnapPoints());
+    snapper.setSnapPoints(
+        Array(totalShapes())
+            .fill(0)
+            .map((_, i) => i)
+            .filter((i) => !selection.value.includes(i))
+            .flatMap((i) => shapeAtIndex(i)!.getSnapPoints()),
+    );
 }
 
 function save() {
+    clearTimeout(saveTimeout ?? undefined);
     allShapes().forEach((shape) => shape.save());
     handleResize();
 }
@@ -938,6 +940,7 @@ function forwardClickEventToCanvas(event: MouseEvent) {
 
     input[type='number'] {
         width: 30px;
+        height: 100%;
         background: transparent;
         padding: 0 5px;
         text-overflow: ellipsis;

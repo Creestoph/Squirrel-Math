@@ -2,7 +2,7 @@ import { Node } from '@tiptap/vue-3';
 import { VueNodeViewRenderer } from '@tiptap/vue-3';
 import { mainRedColor } from './Colors';
 import PolygonView from './PolygonView.vue';
-import { idGenerator } from './Shape';
+import { idGenerator } from './utils';
 import { Point } from '@/models/point';
 import { ShapeController } from './Canvas';
 import { ValueObject } from '@/models/common';

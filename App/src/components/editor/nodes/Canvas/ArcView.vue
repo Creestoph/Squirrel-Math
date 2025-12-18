@@ -6,8 +6,8 @@
 import paper from 'paper';
 import { nodeViewProps, NodeViewWrapper } from '@tiptap/vue-3';
 import { ComponentPublicInstance, computed, onMounted, ref, watch } from 'vue';
-import { snapShift } from './Shape';
 import { ArcShapeController } from './ArcNode';
+import { Snapper } from './utils';
 
 const props = defineProps(nodeViewProps);
 
@@ -87,7 +87,7 @@ const arm1 = computed(() => arm1End.value.subtract(center.value));
 const arm2 = computed(() => arm2End.value.subtract(center.value));
 
 const controller: ArcShapeController = {
-    node: props.node,
+    getNode: () => props.node,
     getPos: props.getPos,
     paperScope: new paper.PaperScope(),
     angle,
@@ -172,7 +172,6 @@ function scale(factor: number, center: paper.Point) {
     line1.value.scale(factor, new paper.Point(center));
     line2.value.scale(factor, new paper.Point(center));
     radius.value *= factor;
-    save();
 }
 
 function containedInBounds(bounds: paper.Rectangle) {
@@ -218,7 +217,7 @@ function onMouseDown(_event: paper.ToolEvent, hitResult: paper.HitResult) {
     return !!movedShape.value;
 }
 
-function onMouseDrag(event: paper.ToolEvent, snapPoints: paper.Point[]) {
+function onMouseDrag(event: paper.ToolEvent, snapper: Snapper) {
     if (!movedShape.value) {
         return false;
     }
@@ -245,7 +244,7 @@ function onMouseDrag(event: paper.ToolEvent, snapPoints: paper.Point[]) {
 
     let result = grips.value.children.findIndex((grip) => grip == movedShape.value);
     if (result != -1) {
-        let shift = event.modifiers.shift ? snapShift([event.point], snapPoints) : new paper.Point(0, 0);
+        let shift = event.modifiers.shift ? snapper.snapShift([event.point]) : new paper.Point(0, 0);
         movedShape.value.position = event.point.add(shift);
         if (result == 0) {
             line1.value.segments[0].point = movedShape.value.position;
@@ -256,6 +255,9 @@ function onMouseDrag(event: paper.ToolEvent, snapPoints: paper.Point[]) {
             line2.value.segments[1].point = movedShape.value.position;
         }
         recalculateArc();
+        if (event.modifiers.shift) {
+            snapper.drawSnapLines([movedShape.value.position]);
+        }
         return true;
     }
 

@@ -7,7 +7,7 @@ import paper from 'paper';
 import { nodeViewProps, NodeViewWrapper } from '@tiptap/vue-3';
 import { ComponentPublicInstance, onMounted, ref, watch } from 'vue';
 import { Point } from '@/models/point';
-import { snapShift } from './Shape';
+import { Snapper } from './utils';
 import { LineShapeController } from './LineNode';
 
 const props = defineProps(nodeViewProps);
@@ -41,7 +41,7 @@ const fillColor = {
 };
 
 const controller: LineShapeController = {
-    node: props.node,
+    getNode: () => props.node,
     getPos: props.getPos,
     paperScope: new paper.PaperScope(),
     fillColor,
@@ -117,7 +117,6 @@ function move(shift: paper.Point) {
 
 function scale(factor: number, center: paper.Point) {
     line.value.scale(factor, new paper.Point(center));
-    save();
 }
 
 function setSelected(value: boolean) {
@@ -189,17 +188,20 @@ function onMouseDown(event: paper.ToolEvent, hitResult: paper.HitResult) {
     return !!movedShape.value;
 }
 
-function onMouseDrag(event: paper.ToolEvent, snapPoints: paper.Point[]) {
+function onMouseDrag(event: paper.ToolEvent, snapper: Snapper) {
     if (!movedShape.value) {
         return false;
     }
 
     let result = grips.value.children.findIndex((grip) => grip == movedShape.value);
     if (result != -1) {
-        let shift = event.modifiers.shift ? snapShift([event.point], snapPoints) : new paper.Point(0, 0);
+        let shift = event.modifiers.shift ? snapper.snapShift([event.point]) : new paper.Point(0, 0);
         movedShape.value.position = event.point.add(shift);
         line.value.segments[result].point = movedShape.value.position;
         selectedGripOutline.value.position = movedShape.value.position;
+        if (event.modifiers.shift) {
+            snapper.drawSnapLines([movedShape.value.position]);
+        }
         return true;
     } else {
         return false;

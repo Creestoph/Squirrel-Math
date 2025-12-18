@@ -26,10 +26,10 @@
 
 <script setup lang="ts">
 import paper from 'paper';
-import { snapShift } from './Shape';
 import { NodeViewContent, nodeViewProps, NodeViewWrapper } from '@tiptap/vue-3';
 import { ComponentPublicInstance, computed, onMounted, onUnmounted, ref, watch } from 'vue';
 import { TextAreaShapeController } from './TextAreaNode';
+import { Snapper } from './utils';
 
 const props = defineProps(nodeViewProps);
 
@@ -105,7 +105,7 @@ const align = {
 };
 
 const controller: TextAreaShapeController = {
-    node: props.node,
+    getNode: () => props.node,
     getPos: props.getPos,
     fillColor,
     borderColor,
@@ -179,7 +179,12 @@ function containedInBounds(bounds: paper.Rectangle) {
 }
 
 function getSnapPoints() {
-    return [new paper.Point(x.value, y.value), new paper.Point(x.value + width.value, y.value + height.value)];
+    return [
+        [0, 0],
+        [0, 1],
+        [1, 0],
+        [1, 1],
+    ].map(([w, h]) => new paper.Point(x.value + w * width.value, y.value + h * height.value));
 }
 
 function onMouseMove(event: paper.ToolEvent, hitResult: paper.HitResult | null, cursorStyle: CSSStyleDeclaration) {
@@ -232,7 +237,7 @@ function getHoveredResizeArea(event: paper.ToolEvent): string {
     return 'inside';
 }
 
-function onMouseDrag(event: paper.ToolEvent, snapPoints: paper.Point[]) {
+function onMouseDrag(event: paper.ToolEvent, snapper: Snapper) {
     if (editing.value) {
         return true;
     }
@@ -247,26 +252,25 @@ function onMouseDrag(event: paper.ToolEvent, snapPoints: paper.Point[]) {
         new paper.Size(width.value, height.value),
     );
 
-    let shift = event.modifiers.shift ? snapShift([mousePosition], snapPoints) : new paper.Point(0, 0);
+    const shift = event.modifiers.shift ? snapper.snapShift([mousePosition]) : new paper.Point(0, 0);
+    const shifted = mousePosition.add(shift);
 
     if (resizing.value == 'left') {
-        const w =
-            mousePosition.x > boundingBox.right - minWidth ? minWidth : boundingBox.right - mousePosition.add(shift).x;
+        const w = mousePosition.x > boundingBox.right - minWidth ? minWidth : boundingBox.right - shifted.x;
         width.value = w;
         x.value = boundingBox.right - w;
     } else if (resizing.value == 'right') {
-        width.value =
-            mousePosition.x < boundingBox.left + minWidth ? minWidth : mousePosition.add(shift).x - boundingBox.left;
+        width.value = mousePosition.x < boundingBox.left + minWidth ? minWidth : shifted.x - boundingBox.left;
     } else if (resizing.value == 'top') {
-        const h =
-            mousePosition.y > boundingBox.bottom - minHeight
-                ? minHeight
-                : boundingBox.bottom - mousePosition.add(shift).y;
+        const h = mousePosition.y > boundingBox.bottom - minHeight ? minHeight : boundingBox.bottom - shifted.y;
         height.value = h;
         y.value = boundingBox.bottom - h;
     } else if (resizing.value == 'bottom') {
-        height.value =
-            mousePosition.y < boundingBox.top + minHeight ? minHeight : mousePosition.add(shift).y - boundingBox.top;
+        height.value = mousePosition.y < boundingBox.top + minHeight ? minHeight : shifted.y - boundingBox.top;
+    }
+
+    if (event.modifiers.shift) {
+        snapper.drawSnapLines([shifted]);
     }
 
     return true;

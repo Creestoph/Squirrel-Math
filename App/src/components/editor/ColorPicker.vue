@@ -6,7 +6,15 @@
         </div>
         <table class="dropdown" v-if="dropdownVisible">
             <tr v-for="(row, i) in availableColors" :key="i">
-                <td v-for="(cell, j) in row" :key="j" :class="{ active: cell == color }" @click="choose(cell); $event.stopPropagation()">
+                <td
+                    v-for="(cell, j) in row"
+                    :key="j"
+                    :class="{ active: cell == color }"
+                    @click="
+                        choose(cell);
+                        $event.stopPropagation();
+                    "
+                >
                     <div
                         class="color-picker"
                         :class="{ 'no-color': cell == '#00000000' }"
@@ -42,6 +50,7 @@ function choose(color: string) {
 
 .color-picker-wrapper {
     position: relative;
+    gap: 10px;
 
     > div {
         display: flex;

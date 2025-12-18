@@ -4,6 +4,7 @@ import { Node as PMNode } from '@tiptap/pm/model';
 import { Point } from '@/models/point';
 import { ValueObject } from '@/models/common';
 import { EditorState, TextSelection, Transaction } from '@tiptap/pm/state';
+import { Snapper } from './utils';
 
 declare module '@tiptap/core' {
     interface Commands<ReturnType> {
@@ -24,7 +25,6 @@ declare module '@tiptap/core' {
 }
 
 export interface ShapeController {
-    readonly node: PMNode;
     readonly fillColor: ValueObject<string>;
     readonly paperScope?: paper.PaperScope;
 
@@ -33,7 +33,7 @@ export interface ShapeController {
     /** returns true if the shape captured mouse down */
     onMouseDown(event: paper.ToolEvent, hitResult: paper.HitResult | null): boolean;
     /** returns true if the shape captured mouse drag */
-    onMouseDrag(event: paper.ToolEvent, snapPoints: paper.Point[]): boolean;
+    onMouseDrag(event: paper.ToolEvent, snapper: Snapper): boolean;
     onMouseUp(): void;
     onDelete(): void;
     handleResize(width: number, height: number): void;
@@ -44,6 +44,7 @@ export interface ShapeController {
     getPosition(): paper.Point;
     getSnapPoints(): paper.Point[];
     containedInBounds(bounds: paper.Rectangle): boolean;
+    getNode(): PMNode;
 }
 
 export default Node.create({

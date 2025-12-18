@@ -6,24 +6,24 @@
 import paper from 'paper';
 import { nodeViewProps, NodeViewWrapper } from '@tiptap/vue-3';
 import { ComponentPublicInstance, onMounted, ref, watch } from 'vue';
-import { snapShift } from './Shape';
 import { CircleShapeController } from './CircleNode';
+import { Snapper } from './utils';
 
 const props = defineProps(nodeViewProps);
 
-const circle = ref<paper.Shape.Ellipse>(null!);
-const upper = ref<paper.Path.Circle>(null!);
-const bottom = ref<paper.Path.Circle>(null!);
-const left = ref<paper.Path.Circle>(null!);
-const right = ref<paper.Path.Circle>(null!);
-const upperLeft = ref<paper.Path.Circle>(null!);
-const upperRight = ref<paper.Path.Circle>(null!);
-const bottomLeft = ref<paper.Path.Circle>(null!);
-const bottomRight = ref<paper.Path.Circle>(null!);
-const all = ref<paper.Group>(null!);
-const grips = ref<paper.Group>(null!);
-const movedShape = ref<paper.Item | null>(null);
-const isSelected = ref(false);
+let circle: paper.Shape.Ellipse = null!;
+let upper: paper.Path.Circle = null!;
+let bottom: paper.Path.Circle = null!;
+let left: paper.Path.Circle = null!;
+let right: paper.Path.Circle = null!;
+let upperLeft: paper.Path.Circle = null!;
+let upperRight: paper.Path.Circle = null!;
+let bottomLeft: paper.Path.Circle = null!;
+let bottomRight: paper.Path.Circle = null!;
+let all: paper.Group = null!;
+let grips: paper.Group = null!;
+let movedShape: paper.Item | null = null;
+let isSelected = false;
 const canvas = ref<ComponentPublicInstance>(null!);
 
 const fillColor = {
@@ -38,9 +38,9 @@ const fillColor = {
         if (color == '#00000000') {
             color = '#00000001';
         }
-        circle.value.fillColor = new paper.Color(color);
-        grips.value.fillColor = new paper.Color(color).multiply(0.7);
-        grips.value.fillColor.alpha = 1;
+        circle.fillColor = new paper.Color(color);
+        grips.fillColor = new paper.Color(color).multiply(0.7);
+        grips.fillColor.alpha = 1;
     },
 };
 
@@ -50,8 +50,8 @@ const borderColor = {
     },
 
     set value(borderColor) {
-        circle.value.strokeColor = new paper.Color(borderColor);
-        circle.value.style.strokeWidth = circle.value.strokeColor.alpha > 0 ? 3 : 0;
+        circle.strokeColor = new paper.Color(borderColor);
+        circle.style.strokeWidth = circle.strokeColor.alpha > 0 ? 3 : 0;
         if (borderColor != borderColor.value) {
             props.updateAttributes({ borderColor });
         }
@@ -60,13 +60,13 @@ const borderColor = {
 
 const width = {
     get value() {
-        return circle.value.bounds.width;
+        return circle.bounds.width;
     },
 
     set value(value) {
         let newWidth = typeof value == 'number' ? value : parseFloat(value);
         if (newWidth >= 3) {
-            circle.value.bounds.width = newWidth;
+            circle.bounds.width = newWidth;
             recalculateGripsPositions();
             save();
         }
@@ -75,13 +75,13 @@ const width = {
 
 const height = {
     get value() {
-        return circle.value.bounds.height;
+        return circle.bounds.height;
     },
 
     set value(value) {
         let newHeight = typeof value == 'number' ? value : parseFloat(value);
         if (newHeight >= 3) {
-            circle.value.bounds.height = newHeight;
+            circle.bounds.height = newHeight;
             recalculateGripsPositions();
             save();
         }
@@ -89,7 +89,7 @@ const height = {
 };
 
 const controller: CircleShapeController = {
-    node: props.node,
+    getNode: () => props.node,
     getPos: props.getPos,
     paperScope: new paper.PaperScope(),
     fillColor,
@@ -132,35 +132,26 @@ function render() {
     let center = new paper.Point(attrs.center.x, attrs.center.y);
     let size = new paper.Size(attrs.size.width, attrs.size.height);
 
-    circle.value = new paper.Shape.Ellipse(
+    circle = new paper.Shape.Ellipse(
         new paper.Rectangle(center.add(new paper.Point(-size.width / 2, -size.height / 2)), size),
     );
 
     let grip = new paper.Path.Circle(new paper.Point(0, 0), 6);
     grip.style.strokeWidth = 0;
-    upper.value = grip.clone();
-    bottom.value = grip.clone();
-    left.value = grip.clone();
-    right.value = grip.clone();
-    upperLeft.value = grip.clone();
-    upperRight.value = grip.clone();
-    bottomLeft.value = grip.clone();
-    bottomRight.value = grip.clone();
+    upper = grip.clone();
+    bottom = grip.clone();
+    left = grip.clone();
+    right = grip.clone();
+    upperLeft = grip.clone();
+    upperRight = grip.clone();
+    bottomLeft = grip.clone();
+    bottomRight = grip.clone();
     recalculateGripsPositions();
     grip.remove();
 
-    grips.value = new paper.Group([
-        upper.value,
-        bottom.value,
-        left.value,
-        right.value,
-        upperLeft.value,
-        upperRight.value,
-        bottomLeft.value,
-        bottomRight.value,
-    ]);
-    all.value = new paper.Group([circle.value, grips.value]);
-    grips.value.visible = isSelected.value;
+    grips = new paper.Group([upper, bottom, left, right, upperLeft, upperRight, bottomLeft, bottomRight]);
+    all = new paper.Group([circle, grips]);
+    updateGripsVisibility();
 
     fillColor.value = attrs.color;
     borderColor.value = attrs.borderColor;
@@ -169,12 +160,12 @@ function render() {
 function save() {
     props.updateAttributes({
         size: {
-            width: circle.value.bounds.width,
-            height: circle.value.bounds.height,
+            width: circle.bounds.width,
+            height: circle.bounds.height,
         },
         center: {
-            x: circle.value.position.x,
-            y: circle.value.position.y,
+            x: circle.position.x,
+            y: circle.position.y,
         },
     });
 }
@@ -184,48 +175,54 @@ function handleResize(width: number, height: number) {
 }
 
 function getPosition() {
-    return circle.value.position;
+    return circle.position;
 }
 
 function move(shift: paper.Point) {
-    all.value.translate(shift);
+    all.translate(shift);
+    grips.visible = false;
 }
 
 function scale(factor: number, center: paper.Point) {
-    circle.value.scale(factor, new paper.Point(center));
+    circle.scale(factor, new paper.Point(center));
     recalculateGripsPositions();
-    save();
 }
 
 function setSelected(value: boolean) {
-    isSelected.value = value;
-    grips.value.visible = value;
+    isSelected = value;
+    updateGripsVisibility();
+}
+
+function updateGripsVisibility(): void {
+    grips.visible = isSelected;
+    [left, right].forEach((grip) => (grip.visible = height.value > 40));
+    [upper, bottom].forEach((grip) => (grip.visible = width.value > 40));
 }
 
 function containedInBounds(bounds: paper.Rectangle) {
-    return circle.value.bounds.intersects(bounds);
+    return circle.bounds.intersects(bounds);
 }
 
-function getSnapPoints() {
-    return [upperLeft.value.position, circle.value.position, bottomRight.value.position];
+function getSnapPoints(): paper.Point[] {
+    return [left, upper, right, bottom, circle].map((c) => c.position);
 }
 
 function onDelete() {
-    all.value.remove();
+    all.remove();
 }
 
 function onMouseMove(_event: paper.ToolEvent, hitResult: paper.HitResult, cursorStyle: CSSStyleDeclaration) {
     if (!hitResult) {
         return;
-    } else if (circle.value == hitResult.item) {
+    } else if (circle == hitResult.item) {
         cursorStyle.cursor = 'move';
-    } else if (upper.value == hitResult.item || bottom.value == hitResult.item) {
+    } else if (upper == hitResult.item || bottom == hitResult.item) {
         cursorStyle.cursor = 'ns-resize';
-    } else if (left.value == hitResult.item || right.value == hitResult.item) {
+    } else if (left == hitResult.item || right == hitResult.item) {
         cursorStyle.cursor = 'ew-resize';
-    } else if (upperLeft.value == hitResult.item || bottomRight.value == hitResult.item) {
+    } else if (upperLeft == hitResult.item || bottomRight == hitResult.item) {
         cursorStyle.cursor = 'nwse-resize';
-    } else if (upperRight.value == hitResult.item || bottomLeft.value == hitResult.item) {
+    } else if (upperRight == hitResult.item || bottomLeft == hitResult.item) {
         cursorStyle.cursor = 'nesw-resize';
     }
 }
@@ -234,93 +231,85 @@ function onMouseDown(_event: paper.ToolEvent, hitResult: paper.HitResult) {
     if (!hitResult) {
         return false;
     }
-    if (circle.value == hitResult.item) {
-        movedShape.value = all.value;
+    if (circle == hitResult.item) {
+        movedShape = all;
         return true;
     }
-    let result = grips.value.children.find((grip) => grip == hitResult.item);
+    let result = grips.children.find((grip) => grip == hitResult.item);
     if (result) {
-        movedShape.value = result;
+        movedShape = result;
     }
     return !!result;
 }
 
-function onMouseDrag(event: paper.ToolEvent, snapPoints: paper.Point[]) {
-    if (!movedShape.value || movedShape.value == all.value) {
+function onMouseDrag(event: paper.ToolEvent, snapper: Snapper) {
+    if (!movedShape || movedShape == all) {
         return false;
     }
 
-    let shift = event.modifiers.shift ? snapShift([event.point], snapPoints) : new paper.Point(0, 0);
-    if (movedShape.value == upperLeft.value || movedShape.value == left.value || movedShape.value == bottomLeft.value) {
-        if (event.point.x > right.value.position.x - 3) {
-            left.value.position.x = right.value.position.x - 3;
+    let shift = event.modifiers.shift ? snapper.snapShift([event.point]) : new paper.Point(0, 0);
+    const shifted = event.point.add(shift);
+    if (movedShape == upperLeft || movedShape == left || movedShape == bottomLeft) {
+        if (event.point.x > right.position.x - 3) {
+            left.position.x = right.position.x - 3;
         } else {
-            left.value.position.x = event.point.add(shift).x;
+            left.position.x = shifted.x;
         }
     }
-    if (
-        movedShape.value == upperRight.value ||
-        movedShape.value == right.value ||
-        movedShape.value == bottomRight.value
-    ) {
-        if (event.point.x < left.value.position.x + 3) {
-            right.value.position.x = left.value.position.x + 3;
+    if (movedShape == upperRight || movedShape == right || movedShape == bottomRight) {
+        if (event.point.x < left.position.x + 3) {
+            right.position.x = left.position.x + 3;
         } else {
-            right.value.position.x = event.point.add(shift).x;
+            right.position.x = shifted.x;
         }
     }
-    if (
-        movedShape.value == upperLeft.value ||
-        movedShape.value == upper.value ||
-        movedShape.value == upperRight.value
-    ) {
-        if (event.point.y > bottom.value.position.y - 3) {
-            upper.value.position.y = bottom.value.position.y - 3;
+    if (movedShape == upperLeft || movedShape == upper || movedShape == upperRight) {
+        if (event.point.y > bottom.position.y - 3) {
+            upper.position.y = bottom.position.y - 3;
         } else {
-            upper.value.position.y = event.point.add(shift).y;
+            upper.position.y = shifted.y;
         }
     }
-    if (
-        movedShape.value == bottomLeft.value ||
-        movedShape.value == bottom.value ||
-        movedShape.value == bottomRight.value
-    ) {
-        if (event.point.y < upper.value.position.y + 3) {
-            bottom.value.position.y = upper.value.position.y + 3;
+    if (movedShape == bottomLeft || movedShape == bottom || movedShape == bottomRight) {
+        if (event.point.y < upper.position.y + 3) {
+            bottom.position.y = upper.position.y + 3;
         } else {
-            bottom.value.position.y = event.point.add(shift).y;
+            bottom.position.y = shifted.y;
         }
     }
 
-    circle.value.bounds.width = right.value.position.x - left.value.position.x;
-    circle.value.bounds.height = bottom.value.position.y - upper.value.position.y;
-    circle.value.position.x = (left.value.position.x + right.value.position.x) / 2;
-    circle.value.position.y = (bottom.value.position.y + upper.value.position.y) / 2;
+    circle.bounds.width = right.position.x - left.position.x;
+    circle.bounds.height = bottom.position.y - upper.position.y;
+    circle.position.x = (left.position.x + right.position.x) / 2;
+    circle.position.y = (bottom.position.y + upper.position.y) / 2;
     recalculateGripsPositions();
+    updateGripsVisibility();
+
+    if (event.modifiers.shift) {
+        snapper.drawSnapLines([shifted]);
+    }
 
     return true;
 }
 
 function onMouseUp() {
-    movedShape.value = null;
+    movedShape = null;
+    updateGripsVisibility();
 }
 
 function recalculateGripsPositions() {
-    upper.value.position = circle.value.position.add(new paper.Point(0, -circle.value.bounds.height / 2));
-    bottom.value.position = circle.value.position.add(new paper.Point(0, circle.value.bounds.height / 2));
-    left.value.position = circle.value.position.add(new paper.Point(-circle.value.bounds.width / 2, 0));
-    right.value.position = circle.value.position.add(new paper.Point(circle.value.bounds.width / 2, 0));
-    upperLeft.value.position = circle.value.position.add(
-        new paper.Point(-circle.value.bounds.width / 2, -circle.value.bounds.height / 2),
-    );
-    upperRight.value.position = circle.value.position.add(
-        new paper.Point(circle.value.bounds.width / 2, -circle.value.bounds.height / 2),
-    );
-    bottomLeft.value.position = circle.value.position.add(
-        new paper.Point(-circle.value.bounds.width / 2, circle.value.bounds.height / 2),
-    );
-    bottomRight.value.position = circle.value.position.add(
-        new paper.Point(circle.value.bounds.width / 2, circle.value.bounds.height / 2),
+    let blank = { position: null };
+    [
+        [upperLeft, upper, upperRight],
+        [left, blank, right],
+        [bottomLeft, bottom, bottomRight],
+    ].forEach((row, i) =>
+        row.forEach(
+            (grip, j) =>
+                (grip.position = circle.position.add(
+                    new paper.Point(((j - 1) * width.value) / 2, ((i - 1) * height.value) / 2),
+                )),
+        ),
     );
 }
 </script>
