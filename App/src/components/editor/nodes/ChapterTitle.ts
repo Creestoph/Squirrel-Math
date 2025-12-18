@@ -2,6 +2,7 @@ import { Node } from '@tiptap/vue-3';
 import { Editor } from '@tiptap/core';
 import { VueNodeViewRenderer } from '@tiptap/vue-3';
 import ChapterTitleVue from './ChapterTitle.vue';
+import { GapCursor } from 'prosemirror-gapcursor';
 
 export default Node.create({
     name: 'chapterTitle',
@@ -38,6 +39,13 @@ export default Node.create({
             // If we're in the long version and hit a semantic tag, skip it
             if ($pos.nodeAfter?.type.name === 'semanticTag') {
                 targetPos += $pos.nodeAfter.nodeSize;
+            }
+
+            const $targetPos = editor.state.doc.resolve(targetPos - 1);
+            const nodeAfter = $targetPos.nodeAfter;
+            if (nodeAfter?.isBlock && (!nodeAfter.isTextblock || nodeAfter.type.name === 'customElement')) {
+                editor.view.dispatch(editor.state.tr.setSelection(new GapCursor($targetPos)));
+                return true;
             }
 
             return editor.commands.setTextSelection(targetPos);
