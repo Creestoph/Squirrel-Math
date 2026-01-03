@@ -167,10 +167,15 @@ function onDelete() {
     if (selectedGripIndex.value != -1 && sides.value > 3) {
         polygon.value.removeSegment(selectedGripIndex.value);
         grips.value.children[selectedGripIndex.value].remove();
-        selectGrip(-1);
+        selectGrip(
+            selectedGripIndex.value < grips.value.children.length
+                ? selectedGripIndex.value
+                : selectedGripIndex.value - 1,
+        );
         return true;
     }
     all.value.remove();
+    return false;
 }
 
 function onMouseMove(_event: paper.ToolEvent, hitResult: paper.HitResult, cursorStyle: CSSStyleDeclaration) {

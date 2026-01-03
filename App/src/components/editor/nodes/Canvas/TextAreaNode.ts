@@ -1,13 +1,12 @@
-import { Node } from '@tiptap/core';
-import { Plugin, Transaction, EditorState } from 'prosemirror-state';
-import { Slice, Node as PMNode } from 'prosemirror-model';
-import { ReplaceStep } from 'prosemirror-transform';
+import { Editor, Node } from '@tiptap/core';
 import { VueNodeViewRenderer } from '@tiptap/vue-3';
 import TextAreaVue from './TextAreaView.vue';
 import { idGenerator } from './utils';
 import { Point } from '@/models/point';
 import { ShapeController } from './Canvas';
 import { ValueObject } from '@/models/common';
+import { Node as PMNode, ResolvedPos } from '@tiptap/pm/model';
+import { TextSelection } from '@tiptap/pm/state';
 
 declare module '@tiptap/core' {
     interface Commands<ReturnType> {
@@ -33,11 +32,54 @@ export interface TextAreaAttributes extends Point {
     align?: 'top' | 'middle' | 'bottom';
 }
 
+function findParentDepth($pos: ResolvedPos, typeName: string): number | null {
+    for (let d = $pos.depth; d > 0; d--) {
+        if ($pos.node(d).type.name === typeName) {
+            return d;
+        }
+    }
+    return null;
+}
+
+function isEffectivelyEmptyTextArea(node: PMNode): boolean {
+    if (!node || node.type.name !== 'textArea' || node.textContent.length !== 0) {
+        return false;
+    }
+
+    let hasNonTextLeaf = false;
+    node.descendants((n) => {
+        hasNonTextLeaf = n.isLeaf && !n.isText;
+        return !hasNonTextLeaf;
+    });
+
+    return !hasNonTextLeaf;
+}
+
+function handleDelete(editor: Editor): boolean {
+    const { state } = editor.view;
+    const { selection } = state;
+    const { $from } = selection;
+
+    const depth = findParentDepth($from, 'textArea');
+
+    if (
+        depth !== null &&
+        selection instanceof TextSelection &&
+        selection.empty &&
+        $from.parentOffset === 0 &&
+        isEffectivelyEmptyTextArea($from.node(depth))
+    ) {
+        editor.emit('textAreaDelete' as any);
+        return true;
+    }
+
+    return false;
+}
+
 export default Node.create({
     name: 'textArea',
     content: '(paragraph | orderedList | bulletList | expression | image | table)+',
-    defining: true, // TODO verify ??? useful for selection behavior
-    isolating: true, // TODO verify ??? keeps edits inside from merging across boundaries (often desirable for widget-like blocks)
+    isolating: true,
 
     addAttributes() {
         return {
@@ -63,48 +105,23 @@ export default Node.create({
 
     addNodeView: () => VueNodeViewRenderer(TextAreaVue),
 
-    addCommands() {
+    /**
+     * Clicking backspace inside empty textarea should remove it. However, the backspace event is not propagated to Canvas, so we need to inform
+     * it via custom event.
+     */
+    addKeyboardShortcuts() {
         return {
-            createTextArea:
-                (attrs: Partial<TextAreaAttributes>, pos: number) =>
-                ({ commands }) =>
-                    commands.insertContentAt(pos, this.type.createAndFill({ ...attrs, id: idGenerator.next().value })),
+            Backspace: () => handleDelete(this.editor),
+            Delete: () => handleDelete(this.editor),
         };
     },
 
-    addProseMirrorPlugins() {
-        const isTextAreaInSlice = (slice: Slice) =>
-            slice.content?.content?.some((c: PMNode) => c?.type?.name === this.name);
-
-        const isInsideCanvas = (state: EditorState, pos: number) => {
-            const $pos = state.doc.resolve(pos);
-            for (let d = $pos.depth; d >= 0; d--) {
-                if ($pos.node(d).type.name === 'geometry') {
-                    return true;
-                }
-            }
-            return false;
+    addCommands() {
+        return {
+            createTextArea:
+                (attrs, pos) =>
+                ({ commands }) =>
+                    commands.insertContentAt(pos, this.type.createAndFill({ ...attrs, id: idGenerator.next().value })),
         };
-
-        return [
-            new Plugin({
-                filterTransaction: (tr: Transaction, state: EditorState) => {
-                    const step = tr.steps[0];
-                    const isReplace = step instanceof ReplaceStep;
-
-                    if (isReplace && isInsideCanvas(state, step.from)) {
-                        // Deleting a textArea node by replacing it with empty slice
-                        const deletingTextArea =
-                            isTextAreaInSlice(state.doc.slice(step.from, step.to)) && step.slice?.size === 0;
-                        const allowDelete = tr.getMeta('allowDelete');
-                        if (deletingTextArea && !allowDelete) {
-                            return false;
-                        }
-                    }
-
-                    return true;
-                },
-            }),
-        ];
     },
 });

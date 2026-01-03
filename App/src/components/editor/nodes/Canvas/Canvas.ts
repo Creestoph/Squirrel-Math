@@ -35,7 +35,7 @@ export interface ShapeController {
     /** returns true if the shape captured mouse drag */
     onMouseDrag(event: paper.ToolEvent, snapper: Snapper): boolean;
     onMouseUp(): void;
-    onDelete(): void;
+    onDelete(): boolean;
     handleResize(width: number, height: number): void;
     move(shift: paper.Point): void;
     scale(factor: number, center: Point): void;
@@ -51,6 +51,8 @@ export default Node.create({
     name: 'geometry',
     content: '(textArea | rectangle | line | circle | polygon | arc)*',
     group: 'block',
+    isolating: true,
+    atom: true,
     draggable: true,
 
     parseHTML: () => [{ tag: 'geometry' }],
@@ -115,7 +117,6 @@ export default Node.create({
             moveShapesToBottom:
                 (canvasPosition: number, childIndexes: number[]) =>
                 ({ state, tr, dispatch }) => {
-                    tr.setMeta('allowDelete', true);
                     childIndexes
                         .toSorted((a, b) => a - b)
                         .forEach((childIndex) => {
@@ -130,8 +131,6 @@ export default Node.create({
             moveShapesDown:
                 (canvasPosition: number, childIndexes: number[]) =>
                 ({ state, tr, dispatch }) => {
-                    tr.setMeta('allowDelete', true);
-
                     const sortedChildIndexes = childIndexes.toSorted((a, b) => a - b);
                     const firstUnselected = sortedChildIndexes.findIndex((c, i) => c > i);
                     if (firstUnselected === -1) {
@@ -151,8 +150,6 @@ export default Node.create({
             moveShapesUp:
                 (canvasPosition: number, childIndexes: number[]) =>
                 ({ state, tr, dispatch }) => {
-                    tr.setMeta('allowDelete', true);
-
                     const canvasNode = state.doc.resolve(canvasPosition).nodeAfter!;
                     const childCount = canvasNode.children.length;
                     const sortedChildIndexes = childIndexes.toSorted((a, b) => b - a);
@@ -178,7 +175,6 @@ export default Node.create({
                     const canvasStartPosition = canvasPosition + 1;
                     const target = canvasStartPosition + canvasNode.content.size;
 
-                    tr.setMeta('allowDelete', true);
                     childIndexes
                         .toSorted((a, b) => a - b)
                         .forEach((childIndex) => {

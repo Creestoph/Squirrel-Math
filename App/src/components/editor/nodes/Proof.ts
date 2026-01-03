@@ -14,7 +14,6 @@ export default Node.create({
     name: 'proof',
     content: '(paragraph | expression | orderedList | geometry)+',
     group: 'block',
-    defining: false,
     draggable: true,
 
     parseHTML: () => [{ tag: 'proof' }],

@@ -137,13 +137,18 @@ function getSnapPoints() {
 }
 
 function onDelete() {
-    if (selectedGripIndex.value != -1) {
+    if (selectedGripIndex.value != -1 && grips.value.children.length > 1) {
         line.value.removeSegment(selectedGripIndex.value);
         grips.value.children[selectedGripIndex.value].remove();
-        selectGrip(-1);
+        selectGrip(
+            selectedGripIndex.value < grips.value.children.length
+                ? selectedGripIndex.value
+                : selectedGripIndex.value - 1,
+        );
         return true;
     }
     all.value.remove();
+    return false;
 }
 
 function onMouseMove(_event: paper.ToolEvent, hitResult: paper.HitResult, cursorStyle: CSSStyleDeclaration) {

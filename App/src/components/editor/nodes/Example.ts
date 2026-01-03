@@ -12,7 +12,6 @@ export default Node.create({
     name: 'example',
     content: 'block+',
     group: 'block',
-    defining: false,
     draggable: true,
     parseHTML: () => [{ tag: 'example' }],
     renderHTML: () => ['example', { class: 'example' }, 0],

@@ -1,6 +1,12 @@
 <template>
     <node-view-wrapper>
-        <button ref="geometryEditor" class="geometry-editor" @focus="focused = true" @blur="onBlur($event)">
+        <button
+            ref="geometryEditor"
+            class="geometry-editor"
+            @focus="focused = true"
+            @blur="onBlur($event)"
+            contenteditable="false"
+        >
             <div v-if="focused" class="geometry-toolbar-wrapper">
                 <div class="geometry-toolbar" contenteditable="false">
                     <button @mousedown="addSquare($event)">
@@ -100,6 +106,7 @@
             <div class="canvas-wrapper" ref="canvasWrapper">
                 <canvas ref="eventsCatcher" resize="true"></canvas>
                 <node-view-content
+                    contenteditable="true"
                     @mousedown="forwardClickEventToCanvas($event)"
                     class="shapes-container"
                     :style="{ width: canvas.width + 'px', height: canvas.height + 'px' }"
@@ -278,6 +285,8 @@ onMounted(() => {
     initializeFromAttributes();
 
     (resizeObserver = new ResizeObserver(handleResize)).observe(eventsCatcher.value);
+
+    props.editor.on('textAreaDelete' as any, () => deleteSelected(true));
 });
 
 onUnmounted(() => resizeObserver.disconnect());
@@ -450,23 +459,10 @@ function handleKeyDown(event: paper.KeyEvent) {
 
     if (selection.value.length > 0) {
         const anyTextAreaSelected = selection.value.some((i) => isTextArea(shapeAtIndex(i)!));
-        let catchedEvent = true;
-        if (event.key == 'delete') {
-            for (let i = totalShapes() - 1; i >= 0; i--) {
-                if (selection.value.includes(i)) {
-                    const shape = shapeAtIndex(i)!;
-                    shape.onDelete();
-                    deselect(i);
-                    const elementBegin = shape.getPos()!;
-                    const transaction = props.editor.view.state.tr.delete(
-                        elementBegin,
-                        elementBegin + shape.getNode().nodeSize - 1,
-                    );
-                    transaction.setMeta('allowDelete', true); //see TextAreaNode.ts for usage
-                    props.editor.view.dispatch(transaction);
-                }
-            }
-            handleResize(); // some components might be re-rendered and need to have canvas size reassigned
+        let capturedEvent = true;
+        if (event.key == 'delete' || event.key === 'backspace') {
+            deleteSelected();
+            capturedEvent = false;
         } else if (event.key == 'up' && !anyTextAreaSelected) {
             selection.value.forEach((i) => shapeAtIndex(i)!.move(new paper.Point(0, -1)));
         } else if (event.key == 'down' && !anyTextAreaSelected) {
@@ -478,11 +474,14 @@ function handleKeyDown(event: paper.KeyEvent) {
         } else if (event.key == 'escape') {
             onBlur();
         } else if (event.key == 'c' && event.modifiers.control) {
-            copiedNodes = selection.value.map((i) => shapeAtIndex(i)!.getNode());
+            copySelected();
+        } else if (event.key == 'x' && event.modifiers.control) {
+            copySelected();
+            deleteSelected();
         } else {
-            catchedEvent = false;
+            capturedEvent = false;
         }
-        if (catchedEvent) {
+        if (capturedEvent) {
             event.preventDefault();
         }
     }
@@ -507,6 +506,34 @@ function handleKeyDown(event: paper.KeyEvent) {
         }
         event.preventDefault();
     }
+}
+
+function copySelected() {
+    copiedNodes = selection.value.map((i) => shapeAtIndex(i)!.getNode());
+}
+
+function deleteSelected(force = false) {
+    let selectedShapeIds = selection.value.map((i) => props.node.children[i].attrs.id);
+    for (let i = totalShapes() - 1; i >= 0; i--) {
+        if (!selection.value.includes(i)) {
+            continue;
+        }
+        const shape = shapeAtIndex(i)!;
+        const captured = shape.onDelete();
+        if (captured && !force) {
+            continue;
+        }
+        deselect(i);
+        selectedShapeIds = selectedShapeIds.filter((s) => s !== shape.getNode().attrs.id);
+        const elementBegin = shape.getPos()!;
+        const transaction = props.editor.view.state.tr.delete(
+            elementBegin,
+            elementBegin + shape.getNode().nodeSize - 1,
+        );
+        props.editor.view.dispatch(transaction);
+    }
+    handleResize(); // some components might be re-rendered and need to have canvas size reassigned
+    selection.value = selectedShapeIds.map((s) => props.node.children.findIndex((c) => c.attrs.id === s));
 }
 
 function handleKeyUp(event: paper.KeyEvent) {
@@ -686,6 +713,7 @@ function toggleEdit() {
         | TextAreaShapeController;
     shape.editing.value = !shape.editing.value;
     shapeEdited.value = shape.editing.value ? selection.value[0] : -1;
+    props.editor.commands.focus();
 }
 
 function selectedRectangle() {
@@ -837,6 +865,10 @@ function forwardClickEventToCanvas(event: MouseEvent) {
     cursor: initial;
 }
 
+.ProseMirror-selectednode .geometry-editor {
+    outline: 4px dotted colors.$main-red;
+}
+
 .canvas-wrapper {
     border: 2px colors.$gray dashed;
     resize: both;
@@ -860,6 +892,7 @@ function forwardClickEventToCanvas(event: MouseEvent) {
         left: 0;
         overflow: hidden;
         pointer-events: none;
+        outline: none;
     }
 }
 
@@ -876,10 +909,14 @@ function forwardClickEventToCanvas(event: MouseEvent) {
     height: 0;
     position: absolute;
     z-index: 1;
-    // user-select: none;
 }
 
 .geometry-toolbar {
+    &,
+    * {
+        @extend .no-selection;
+    }
+
     background: colors.$light-gray;
     transform: translateY(-100%);
     &::after {

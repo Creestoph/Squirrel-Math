@@ -225,6 +225,7 @@ function getSnapPoints() {
 
 function onDelete() {
     all.remove();
+    return false;
 }
 
 function onMouseMove(_event: paper.ToolEvent, hitResult: paper.HitResult, cursorStyle: CSSStyleDeclaration) {

@@ -13,7 +13,6 @@ declare module '@tiptap/core' {
 export default Node.create({
     name: 'component',
     group: 'block',
-    defining: false,
     draggable: true,
 
     parseHTML: () => [{ tag: 'component' }],

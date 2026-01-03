@@ -117,7 +117,7 @@ const controller: TextAreaShapeController = {
     scale,
     containedInBounds,
     getSnapPoints,
-    onDelete: () => {},
+    onDelete,
     onMouseMove,
     onMouseDown,
     onMouseDrag,
@@ -170,6 +170,9 @@ function scale(factor: number, center: paper.Point) {
 
 function setSelected(value: boolean) {
     focused.value = value;
+    if (!value) {
+        editing.value = false;
+    }
 }
 
 function containedInBounds(bounds: paper.Rectangle) {
@@ -185,6 +188,10 @@ function getSnapPoints() {
         [1, 0],
         [1, 1],
     ].map(([w, h]) => new paper.Point(x.value + w * width.value, y.value + h * height.value));
+}
+
+function onDelete(): boolean {
+    return editing.value;
 }
 
 function onMouseMove(event: paper.ToolEvent, hitResult: paper.HitResult | null, cursorStyle: CSSStyleDeclaration) {

@@ -13,7 +13,6 @@ export default Node.create({
     content: 'inline*',
     group: 'block',
     marks: 'underline strike comment',
-    defining: false,
     parseHTML: () => [{ tag: 'problem' }],
     renderHTML: () => ['problem', { class: 'problem' }, 0],
 
