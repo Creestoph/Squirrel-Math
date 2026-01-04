@@ -21,6 +21,7 @@ export default TableCell.extend({
             ...(this as any).parent?.(),
 
             colwidth: {
+                ...(this as any).parent?.().colwidth,
                 default: [40],
             },
             background: {

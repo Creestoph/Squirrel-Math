@@ -290,7 +290,6 @@ onMounted(() => {
 });
 
 onUnmounted(() => {
-    console.log('unmounting canvas');
     resizeObserver?.disconnect();
     clearTimeout(resizeSaveTimeout ?? undefined);
     clearTimeout(saveTimeout ?? undefined);
@@ -336,7 +335,6 @@ function scheduleSizeSave(width: number, height: number) {
 }
 
 function handleResize() {
-    console.trace('handleResize');
     const width = eventsCatcher.value.offsetWidth;
     const height = eventsCatcher.value.offsetHeight;
     eventsCatcherPaperScope.view.viewSize = new paper.Size(width, height);
