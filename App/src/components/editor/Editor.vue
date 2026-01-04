@@ -409,7 +409,7 @@
 </template>
 
 <script setup lang="ts">
-import { getCurrentInstance, onMounted, onUnmounted, ref } from 'vue';
+import { onMounted, onUnmounted, ref } from 'vue';
 import { EditorContent, Editor } from '@tiptap/vue-3';
 import Icon from '../Icon.vue';
 
@@ -998,6 +998,10 @@ function exitListener(event: any) {
 .tools-specific {
     background: #ffdddd;
 
+    .dropdown {
+        position: relative;
+    }
+
     .dropdown-label {
         display: flex;
     }
@@ -1042,7 +1046,7 @@ function exitListener(event: any) {
     max-width: 100%;
 
     &.ProseMirror-selectednode {
-        outline: 2px solid black;
+        outline: 4px dotted colors.$main-red;
     }
 }
 
@@ -1111,11 +1115,10 @@ a[lesson-url] {
 .editor table[style^='width:']:not([class]),
 .editor table[style^='min-width:']:not([class]) {
     margin: 0 auto;
+    table-layout: fixed; // critical for proper resize of cell with canvas
 
-    > tbody > tr > td,
-    > tbody > tr > th {
+    > tbody > tr > td {
         padding: 0 2px;
-        width: 26px;
         position: relative;
         border-style: solid;
         &.selectedCell {
@@ -1124,7 +1127,7 @@ a[lesson-url] {
         &::after {
             content: ' ';
             position: absolute;
-            right: -5px;
+            right: -6px;
             top: 0;
             background: transparent;
             width: 10px;

@@ -2,7 +2,7 @@
     <node-view-wrapper>
         <div>
             <div v-show="!mathJax" class="math-placeholder" @click="edit()">Wprowadź wyrażenie matematyczne</div>
-            <div v-show="mathJax" ref="output" class="math-display" @click="edit()"></div>
+            <div v-show="mathJax" ref="output" class="math-display" @dblclick="edit()"></div>
             <textarea
                 v-if="displayPopup"
                 v-model="mathJaxDirty"
@@ -11,6 +11,7 @@
                 class="math-editor"
                 placeholder="Wprowadź kod MathJax"
                 @blur="applyEdit()"
+                @keydown.enter="!$event.shiftKey && applyEdit()"
                 @keydown.esc="applyEdit()"
             ></textarea>
         </div>
@@ -89,7 +90,7 @@ function updateView() {
     top: calc(50% - 140px);
     background: white;
     outline: none;
-    box-shadow: 0 0 15px 15px rgba(0.4, 0.4, 0.4, 0.4);
+    box-shadow: 0 0 500px 15px rgba(0.4, 0.4, 0.4, 0.4);
     padding: 10px;
     font-family: fonts.$geometric-font;
     color: colors.$half-gray;

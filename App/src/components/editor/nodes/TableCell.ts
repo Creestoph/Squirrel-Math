@@ -20,6 +20,9 @@ export default TableCell.extend({
         return {
             ...(this as any).parent?.(),
 
+            colwidth: {
+                default: [40],
+            },
             background: {
                 default: null,
                 parseHTML: (dom: HTMLElement) => dom.style.backgroundColor || null,

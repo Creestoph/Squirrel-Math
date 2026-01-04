@@ -1,0 +1,38 @@
+@use '@/style/colors';
+@use '@/style/fonts';
+
+.dialog {
+    position: fixed;
+    width: 800px;
+    height: 500px;
+    z-index: 10000;
+    left: calc(50% - 400px);
+    top: calc(50% - 250px);
+    box-sizing: border-box;
+    background: white;
+    box-shadow: 0 0 15px 5px rgba(0, 0, 0, 0.2);
+
+    .dialog-header {
+        background: black;
+        line-height: 50px;
+        color: white;
+        height: 50px;
+        padding-left: 15px;
+        font-weight: bold;
+
+        button {
+            float: right;
+            width: 50px;
+            height: 50px;
+            padding: 0;
+            background: colors.$main-red;
+            color: white;
+            font-family: fonts.$geometric-font;
+            font-size: 1.5em;
+        }
+    }
+
+    .dialog-body {
+        padding: 10px;
+    }
+}

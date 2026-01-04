@@ -57,7 +57,7 @@ export default Node.create({
 
     parseHTML: () => [{ tag: 'geometry' }],
 
-    renderHTML: () => ['geometry', 0],
+    renderHTML: ({ HTMLAttributes }) => ['geometry', HTMLAttributes, 0],
 
     addAttributes() {
         return {
@@ -66,8 +66,8 @@ export default Node.create({
                     width: 500,
                     height: 300,
                 },
-                parseHTML: (element) => JSON.parse(element.getAttribute('canvas')!),
-                renderHTML: (attributes) => ({ canvas: JSON.stringify(attributes.canvas) }),
+                parseHTML: (element) => JSON.parse(element.getAttribute('canvasSize')!),
+                renderHTML: (attributes) => ({ canvasSize: JSON.stringify(attributes.canvas) }),
             },
         };
     },

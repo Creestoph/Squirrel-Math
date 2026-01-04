@@ -49,11 +49,11 @@ const borderColor = {
         return props.node.attrs.borderColor;
     },
 
-    set value(borderColor) {
-        circle.strokeColor = new paper.Color(borderColor);
+    set value(color) {
+        circle.strokeColor = new paper.Color(color);
         circle.style.strokeWidth = circle.strokeColor.alpha > 0 ? 3 : 0;
-        if (borderColor != borderColor.value) {
-            props.updateAttributes({ borderColor });
+        if (color != borderColor.value) {
+            props.updateAttributes({ borderColor: color });
         }
     },
 };

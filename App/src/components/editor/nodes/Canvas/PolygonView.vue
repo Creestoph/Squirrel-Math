@@ -49,14 +49,14 @@ const borderColor = {
         return props.node.attrs.borderColor;
     },
 
-    set value(borderColor) {
-        if (borderColor != borderColor.value) {
-            props.updateAttributes({ borderColor });
+    set value(color) {
+        if (color != borderColor.value) {
+            props.updateAttributes({ borderColor: color });
         }
-        if (borderColor == '#00000000') {
-            borderColor = '#00000001';
+        if (color == '#00000000') {
+            color = '#00000001';
         }
-        polygon.value.strokeColor = new paper.Color(borderColor);
+        polygon.value.strokeColor = new paper.Color(color);
     },
 };
 

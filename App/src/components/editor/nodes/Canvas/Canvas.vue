@@ -109,7 +109,6 @@
                     contenteditable="true"
                     @mousedown="forwardClickEventToCanvas($event)"
                     class="shapes-container"
-                    :style="{ width: canvas.width + 'px', height: canvas.height + 'px' }"
                 />
                 <canvas ref="overlayCanvas" class="overlay-canvas"></canvas>
             </div>
@@ -152,6 +151,7 @@ let resizeObserver: ResizeObserver = null!;
 let lastTextAreaClickEvent: MouseEvent | null = null;
 let snapper: Snapper = null!;
 let saveTimeout: number | null = null;
+let resizeSaveTimeout: number | null = null;
 const hitOptions = {
     segments: true,
     stroke: true,
@@ -289,7 +289,12 @@ onMounted(() => {
     props.editor.on('textAreaDelete' as any, () => deleteSelected(true));
 });
 
-onUnmounted(() => resizeObserver.disconnect());
+onUnmounted(() => {
+    console.log('unmounting canvas');
+    resizeObserver?.disconnect();
+    clearTimeout(resizeSaveTimeout ?? undefined);
+    clearTimeout(saveTimeout ?? undefined);
+});
 
 function lastShape() {
     return shapeAtIndex(totalShapes() - 1)!;
@@ -310,24 +315,34 @@ function allShapes(): ShapeController[] {
 
 function initializeFromAttributes() {
     if (canvas.value) {
-        eventsCatcher.value.width = canvas.value.width;
-        eventsCatcher.value.height = canvas.value.height;
-        overlayCanvas.value.width = canvas.value.width;
-        overlayCanvas.value.height = canvas.value.height;
+        // eventsCatcher.value.width = canvas.value.width;
+        // eventsCatcher.value.height = canvas.value.height;
+        // overlayCanvas.value.width = canvas.value.width;
+        // overlayCanvas.value.height = canvas.value.height;
         canvasWrapper.value.style.width = canvas.value.width + 'px';
         canvasWrapper.value.style.height = canvas.value.height + 'px';
     }
 }
 
+function scheduleSizeSave(width: number, height: number) {
+    clearTimeout(resizeSaveTimeout ?? undefined);
+    resizeSaveTimeout = setTimeout(() => {
+        if (canvas.value.width !== width || canvas.value.height !== height) {
+            canvas.value = { width, height };
+            canvasWrapper.value.style.width = canvas.value.width + 'px';
+            canvasWrapper.value.style.height = canvas.value.height + 'px';
+        }
+    }, 200);
+}
+
 function handleResize() {
+    console.trace('handleResize');
     const width = eventsCatcher.value.offsetWidth;
     const height = eventsCatcher.value.offsetHeight;
     eventsCatcherPaperScope.view.viewSize = new paper.Size(width, height);
     overlayPaperScope.view.viewSize = new paper.Size(width, height);
     allShapes().forEach((shape) => shape.handleResize(width, height));
-    if (canvas.value.width !== width || canvas.value.height !== height) {
-        canvas.value = { width, height };
-    }
+    scheduleSizeSave(width, height);
 }
 
 function handleMouseMove(event: paper.ToolEvent) {
@@ -449,7 +464,8 @@ function handleMouseUp() {
     }
     snapper.clearSnapLines();
     // delay attrs update to avoid collisions with prosemirror selection update, which also happens on mouseup
-    requestAnimationFrame(() => save());
+    clearTimeout(saveTimeout ?? undefined);
+    saveTimeout = setTimeout(() => save());
 }
 
 function handleKeyDown(event: paper.KeyEvent) {
@@ -839,7 +855,8 @@ function onBlur(event?: FocusEvent) {
         focused.value = false;
     }
     // delay attrs update to avoid collisions with prosemirror selection update
-    requestAnimationFrame(() => save());
+    clearTimeout(saveTimeout ?? undefined);
+    saveTimeout = setTimeout(() => save(), 100);
 }
 
 function forwardClickEventToCanvas(event: MouseEvent) {
@@ -863,6 +880,7 @@ function forwardClickEventToCanvas(event: MouseEvent) {
     background: none;
     position: relative;
     cursor: initial;
+    max-width: 100%;
 }
 
 .ProseMirror-selectednode .geometry-editor {
@@ -873,6 +891,7 @@ function forwardClickEventToCanvas(event: MouseEvent) {
     border: 2px colors.$gray dashed;
     resize: both;
     overflow: hidden;
+    max-width: 100%;
 
     > canvas {
         width: 100%;
@@ -893,6 +912,8 @@ function forwardClickEventToCanvas(event: MouseEvent) {
         overflow: hidden;
         pointer-events: none;
         outline: none;
+        width: 100%;
+        height: 100%;
     }
 }
 

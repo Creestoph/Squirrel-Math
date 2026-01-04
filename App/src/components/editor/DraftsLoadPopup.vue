@@ -1,16 +1,16 @@
 <template>
-    <div class="drafts-dialog">
-        <div class="drafts-dialog-header">
+    <div class="dialog">
+        <div class="dialog-header">
             Wczytaj wersję roboczą
             <button @click="close()">✖</button>
         </div>
-        <div class="drafts-dialog-body">
-            <div class="drafts-list-header">
+        <div class="dialog-body">
+            <div class="list-header">
                 <span class="draft-name"><b>Tytuł</b></span>
                 <span class="draft-date"><b>Data utworzenia</b></span>
                 <span class="draft-date"><b>Data modyfikacji</b></span>
             </div>
-            <div v-if="availableDrafts.length > 0" class="drafts-list">
+            <div v-if="availableDrafts.length > 0" class="list">
                 <div v-for="(draft, i) in availableDrafts" :key="i">
                     <div class="draft" @click="load(draft)">
                         <span class="draft-name">
@@ -70,91 +70,60 @@ function draftsList(): DraftPreview[] {
 <style scoped lang="scss">
 @use '@/style/colors';
 @use '@/style/fonts';
+@use '@/style/dialog';
 
-.drafts-dialog {
-    position: fixed;
-    width: 800px;
-    height: 500px;
-    z-index: 10000;
-    left: calc(50% - 400px);
-    top: calc(50% - 250px);
-    box-sizing: border-box;
-    background: white;
-    box-shadow: 0 0 15px 5px rgba(0, 0, 0, 0.2);
+.dialog-body {
+    padding: 10px;
 
-    .drafts-dialog-header {
-        background: black;
-        line-height: 50px;
-        color: white;
-        height: 50px;
-        padding-left: 15px;
-        font-weight: bold;
+    .list-header {
+        width: 500px;
+        margin-left: 5px;
+        padding: 5px 10px;
+    }
+
+    .list {
+        height: 390px;
+        overflow-y: auto;
 
         button {
-            float: right;
-            width: 50px;
-            height: 50px;
-            padding: 0;
+            float: left;
             background: colors.$main-red;
+            padding: 5px 10px;
+            margin: 10px 5px;
             color: white;
-            font-family: fonts.$geometric-font;
-            font-size: 1.5em;
+            &:hover {
+                background: colors.$dark-red;
+            }
+        }
+
+        .draft {
+            float: left;
+            width: 500px;
+            margin: 10px 10px 10px 5px;
+            padding: 5px 10px;
+            background: colors.$light-gray;
+            cursor: pointer;
+            &:hover {
+                background: colors.$gray;
+            }
         }
     }
 
-    .drafts-dialog-body {
-        padding: 10px;
+    .draft-name {
+        display: inline-block;
+        width: 35%;
+    }
 
-        .drafts-list-header {
-            width: 500px;
-            margin-left: 5px;
-            padding: 5px 10px;
-        }
+    .draft-date {
+        display: inline-block;
+        width: 32%;
+    }
 
-        .drafts-list {
-            height: 390px;
-            overflow-y: auto;
-
-            button {
-                float: left;
-                background: colors.$main-red;
-                padding: 5px 10px;
-                margin: 10px 5px;
-                color: white;
-                &:hover {
-                    background: colors.$dark-red;
-                }
-            }
-
-            .draft {
-                float: left;
-                width: 500px;
-                margin: 10px 10px 10px 5px;
-                padding: 5px 10px;
-                background: colors.$light-gray;
-                cursor: pointer;
-                &:hover {
-                    background: colors.$gray;
-                }
-            }
-        }
-
-        .draft-name {
-            display: inline-block;
-            width: 35%;
-        }
-
-        .draft-date {
-            display: inline-block;
-            width: 32%;
-        }
-
-        .no-data {
-            width: 500px;
-            line-height: 300px;
-            text-align: center;
-            color: colors.$dark-gray;
-        }
+    .no-data {
+        width: 500px;
+        line-height: 300px;
+        text-align: center;
+        color: colors.$dark-gray;
     }
 }
 </style>

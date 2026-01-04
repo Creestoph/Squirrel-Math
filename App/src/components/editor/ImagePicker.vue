@@ -1,10 +1,10 @@
 <template>
-    <div v-if="visible" class="drafts-dialog">
-        <div class="drafts-dialog-header">
+    <div v-if="visible" class="dialog">
+        <div class="dialog-header">
             Wczytaj obraz
             <button @click="close()">✖</button>
         </div>
-        <div class="drafts-dialog-body">
+        <div class="dialog-body">
             <span class="caption">Baza Squirrel-Math</span>
             <div class="images-gallery">
                 <button v-if="globalScrollable" @click="scrollGlobalLeft()">🢐</button>
@@ -135,8 +135,9 @@ function scrollGlobalRight() {
 <style scoped lang="scss">
 @use '@/style/global';
 @use '@/style/colors';
+@use '@/style/dialog';
 
-.drafts-dialog {
+.dialog {
     width: 80%;
     height: 480px;
     left: 10%;
