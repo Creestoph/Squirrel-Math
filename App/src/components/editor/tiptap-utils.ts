@@ -1,5 +1,6 @@
 import { ResolvedPos } from '@tiptap/pm/model';
 import { Editor } from '@tiptap/core';
+import { EditorView } from '@tiptap/pm/view';
 
 export function getSurroundingWord($pos: ResolvedPos): { from: number; to: number } | null {
     const parentText = $pos.parent.textBetween(0, $pos.parent.content.size, undefined, '\ufffc');
@@ -39,4 +40,12 @@ export function generateGUID(): string {
         const v = c === 'x' ? r : (r & 0x3) | 0x8;
         return v.toString(16);
     });
+}
+
+export function dropNewlines(event: ClipboardEvent, view: EditorView): boolean {
+    const text = event.clipboardData?.getData('text/plain') ?? event.clipboardData?.getData('text') ?? '';
+    const cleaned = text.replace(/\r\n/g, '\n').replace(/\n+/g, ' ').replace(/\s+/g, ' ').trim();
+    event.preventDefault();
+    view.dispatch(view.state.tr.insertText(cleaned));
+    return true;
 }

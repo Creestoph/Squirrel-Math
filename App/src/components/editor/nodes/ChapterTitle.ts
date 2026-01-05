@@ -3,6 +3,8 @@ import { Editor } from '@tiptap/core';
 import { VueNodeViewRenderer } from '@tiptap/vue-3';
 import ChapterTitleVue from './ChapterTitle.vue';
 import { GapCursor } from 'prosemirror-gapcursor';
+import { Plugin } from '@tiptap/pm/state';
+import { dropNewlines } from '../tiptap-utils';
 
 export default Node.create({
     name: 'chapterTitle',
@@ -54,5 +56,32 @@ export default Node.create({
             ArrowDown: moveToChapterBody,
             Enter: moveToChapterBody,
         };
+    },
+
+    /**
+     * Drop newline characters when pasting into title node
+     */
+    addProseMirrorPlugins() {
+        return [
+            new Plugin({
+                props: {
+                    handleDOMEvents: {
+                        paste: (view, event) => {
+                            const { state } = view;
+                            const { $from } = state.selection;
+
+                            /**
+                             * Capturing "chapter" as well helps avoid weird errors with NodeSelection on chapter node
+                             */
+                            if ($from.parent.type.name !== 'chapterTitle' && $from.parent.type.name !== 'chapter') {
+                                return false;
+                            }
+
+                            return dropNewlines(event as ClipboardEvent, view);
+                        },
+                    },
+                },
+            }),
+        ];
     },
 });
