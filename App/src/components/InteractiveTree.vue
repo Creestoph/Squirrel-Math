@@ -1,7 +1,7 @@
 <template>
     <div class="tree-container">
         <canvas ref="canvas" resize="true" />
-        <div class="tree-tools">
+        <div class="tree-tools no-selection">
             <router-link v-if="!editMode" custom v-slot="{ navigate }" to="/editor">
                 <button @click="navigate">+ Stwórz nową lekcję</button>
             </router-link>

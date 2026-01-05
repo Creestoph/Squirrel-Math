@@ -71,7 +71,8 @@ export default Node.create({
                             const { $from } = state.selection;
 
                             /**
-                             * Capturing "chapter" as well helps avoid weird errors with NodeSelection on chapter node
+                             * Capturing "chapter" as well helps avoid weird errors with NodeSelection on chapter node.
+                             * For some reason, "selectable: false" on chapter node doesn't prevent NodeSelection on chapter.
                              */
                             if ($from.parent.type.name !== 'chapterTitle' && $from.parent.type.name !== 'chapter') {
                                 return false;

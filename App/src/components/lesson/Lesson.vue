@@ -87,7 +87,7 @@
                 </div>
             </div>
             <div class="footer-container" @click="isLessonPanelExpanded = true">
-                <div class="footer">
+                <div class="footer no-selection">
                     <h1>
                         <a href="mailto: oblicze.calki@gmail.com">
                             Skontaktuj się z nami!<br />

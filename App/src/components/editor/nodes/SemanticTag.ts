@@ -14,10 +14,11 @@ export default Node.create({
     name: 'semanticTag',
     group: 'block',
     selectable: false,
+    atom: true,
 
     parseHTML: () => [{ tag: 'semantic-tag' }],
 
-    renderHTML: ({ HTMLAttributes }) => ['semantic-tag', HTMLAttributes, 0],
+    renderHTML: ({ HTMLAttributes }) => ['semantic-tag', HTMLAttributes],
 
     addNodeView: () => VueNodeViewRenderer(SemanticTagVue),
 
@@ -29,7 +30,10 @@ export default Node.create({
         },
         required: {
             default: [],
-            parseHTML: (element) => element.getAttribute('requiredLessons')?.split('\n') || [],
+            parseHTML: (element) => {
+                const attr = element.getAttribute('requiredLessons');
+                return !attr || attr === '' ? [] : attr.split('\n');
+            },
             renderHTML: (attributes) => ({ requiredLessons: attributes.required.join('\n') }),
         },
     }),

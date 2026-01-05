@@ -41,7 +41,7 @@ const isHidden = computed({
     display: none;
     position: absolute;
     left: -50px;
-    padding-right: 20px;
+    padding-right: 9px;
     top: -12px;
     cursor: pointer !important;
 
