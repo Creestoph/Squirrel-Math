@@ -882,7 +882,7 @@ function exitListener(event: any) {
     outline: none !important;
 }
 .editor {
-    margin-top: 100px;
+    margin-top: 171px; // minimum to ensure LinkPopup for the very first line of intro stays below (expanded) menu
 }
 .toolbar {
     position: fixed;

@@ -35,7 +35,7 @@
                         <lesson-chapter
                             v-for="(chapter, i) in short.chapters"
                             :key="i"
-                            :optional="chapter[0].attrs && chapter[0].attrs.isHidden"
+                            :optional="chapter[0].attrs?.isHidden"
                         >
                             <template #title>
                                 <block-element
@@ -68,7 +68,7 @@
                         <lesson-chapter
                             v-for="(chapter, i) in long.chapters"
                             :key="i"
-                            :optional="chapter[0].attrs && chapter[0].attrs.isHidden"
+                            :optional="chapter[0].attrs?.isHidden"
                         >
                             <template #title>
                                 <block-element
@@ -115,6 +115,7 @@ import BlockElement from './BlockElement.vue';
 import { LessonData, NodeData, NodeType } from '@/models/lesson';
 import { allComments, lessonImages } from '../editor/shared-state';
 import { useLessonExpandedInfo } from '../utils/menu-bus';
+import { deepClone } from '@/utils/utils';
 declare var MathJax: any;
 
 interface LessonElements {
@@ -165,8 +166,8 @@ function loadLesson() {
 function setContent() {
     clearElements();
     if (content.value) {
-        import(`@/assets/lessons/${content.value}`).then((loadedJson) => {
-            const json = JSON.parse(JSON.stringify(loadedJson)) as LessonData; // deep clone
+        import(`@/assets/lessons/${content.value}`).then((loadedJson: LessonData) => {
+            const json = deepClone(loadedJson);
             if (json.long) {
                 long.value.title = json.long.content[0].content![0] as { type: NodeType; text: string };
                 long.value.introElements = json.long.content[1].content!;
