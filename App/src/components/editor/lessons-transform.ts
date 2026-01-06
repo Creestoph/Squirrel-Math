@@ -1,5 +1,6 @@
 import { LessonData, NodeData } from '@/models/lesson';
 import { downloadFile } from '../utils/files';
+import { lessonTree } from '@/utils/lesson-tree';
 
 function transformNode(node: NodeData) {
     const attrs = node.attrs!;
@@ -72,13 +73,10 @@ function transformNodeAndChildren(node: NodeData) {
 }
 
 export function transformAll() {
-    import(`@/assets/current-lesson-graph.json`).then((file) => {
-        const titles = [...file.default.map((lesson) => lesson.title), 'Demo'];
-        titles.forEach(async (title, i) => {
-            const lesson = (await import(`@/assets/lessons/${title}.json`)).default as LessonData;
-            lesson.short?.content?.forEach((node) => transformNodeAndChildren(node));
-            lesson.long?.content?.forEach((node) => transformNodeAndChildren(node));
-            setTimeout(() => downloadFile(JSON.stringify(lesson), title, 'application/json'), i * 500);
-        });
+    [...lessonTree.allLessonNames(), 'Demo'].forEach(async (title, i) => {
+        const lesson = (await import(`@/assets/lessons/${title}.json`)).default as LessonData;
+        lesson.short?.content?.forEach((node) => transformNodeAndChildren(node));
+        lesson.long?.content?.forEach((node) => transformNodeAndChildren(node));
+        setTimeout(() => downloadFile(JSON.stringify(lesson), title, 'application/json'), i * 500);
     });
 }

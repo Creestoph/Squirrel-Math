@@ -22,28 +22,19 @@
 </template>
 
 <script setup lang="ts">
-import graphLessons from '@/assets/current-lesson-graph.json';
 import graphCoordinates from '@/assets/current-graph-coordinates.json';
 import Tooltip from '@/components/utils/Tooltip.vue';
 import { getCurrentInstance, onMounted, ref } from 'vue';
 import { Point } from '../models/point';
 import paper from 'paper';
-
-class Lesson {
-    title: string = '';
-    requires: string[] = [];
-    isRequiredBy: string[] = [];
-    field?: string;
-    level?: string;
-}
+import { LessonInfo, lessonTree } from '@/utils/lesson-tree';
 
 const editMode = ref(false);
 const showTooltip = ref(false);
-const lessonTooltipData = ref<Lesson | null>(null);
+const lessonTooltipData = ref<LessonInfo | null>(null);
 const canvas = ref<HTMLCanvasElement>(null!);
 const proxy = getCurrentInstance()!.proxy!;
 
-let lessons: { [name: string]: Lesson } = {};
 let positions: { [lesson: string]: Point } = {};
 let stairsX: { [lesson: string]: { [req: string]: number } } = {}; //e.g. stairsX[Wyrażenia algebraiczne][Ułamki dziesiętne] = 200 - x position of edge "jump" is 200
 
@@ -57,18 +48,13 @@ let edges: { [from: string]: { [to: string]: paper.Path } } = {};
 
 onMounted(() => {
     initialize();
-    loadLessons();
     reloadPositions();
     setBoldLesson();
     displayLessons();
 });
 
 function setBoldLesson() {
-    for (let l of Object.values(lessons)) {
-        if (l.title == proxy.$route.params.sourceFile) {
-            boldLesson = l.title;
-        }
-    }
+    boldLesson = lessonTree.allLessons().find((l) => l.title === proxy.$route.params.sourceFile)?.title || null;
 }
 
 function download(data: string, filename: string, type: string) {
@@ -95,9 +81,7 @@ function save() {
         nodes: [],
         edgeJumps: [],
     };
-    for (let name in lessons) {
-        json.nodes.push([name, positions[name].x, positions[name].y]);
-    }
+    lessonTree.allLessonNames().forEach((l) => json.nodes.push([l, positions[l].x, positions[l].y]));
     for (let lesson in stairsX) {
         for (let req in stairsX[lesson]) {
             json.edgeJumps.push([lesson, req, stairsX[lesson][req]]);
@@ -148,9 +132,9 @@ function addEventHandlers() {
                 hoveredLesson = hitResult.item as paper.PointText;
                 hoveredLesson.style!.fillColor = redColor;
                 let lessonName = hoveredLesson.content!;
-                lessonTooltipData.value = lessons[lessonName];
+                lessonTooltipData.value = lessonTree.getLesson(lessonName);
                 showTooltip.value = true;
-                for (let req of lessons[lessonName].requires) {
+                for (let req of lessonTooltipData.value.requires) {
                     edges[lessonName][req].style!.strokeColor = redColor;
                     edges[lessonName][req].bringToFront();
                 }
@@ -170,12 +154,12 @@ function addEventHandlers() {
                     .replace({
                         name: 'lesson',
                         params: {
-                            sourceFile: lessons[boldLesson].title,
+                            sourceFile: lessonTree.getLesson(boldLesson).title,
                         },
                     })
                     .catch(() => {});
             } else if ((event as any).event.button === 1) {
-                let url = proxy.$router.resolve('/lesson/' + lessons[boldLesson].title);
+                let url = proxy.$router.resolve('/lesson/' + lessonTree.getLesson(boldLesson).title);
                 window.open(url.href, '_blank');
             }
             clearHoveredLesson();
@@ -213,7 +197,7 @@ function addEventHandlers() {
                     segments[2].point!.x = (segments[1].point!.x! + segments[4].point!.x!) / 2;
                 }
             }
-            for (let upper of lessons[clickedTitle].isRequiredBy) {
+            for (let upper of lessonTree.getLesson(clickedTitle).isRequiredBy) {
                 let segments = edges[upper][clickedTitle].segments as paper.Segment[];
                 if (segments.length == 4) {
                     segments[3].point!.x! += deltaX;
@@ -258,7 +242,7 @@ function clearHoveredLesson() {
     if (hoveredLesson) {
         hoveredLesson.style!.fillColor = new paper.Color('black');
         const lessonName = hoveredLesson.content!;
-        for (let req of lessons[lessonName].requires) {
+        for (let req of lessonTree.getLesson(lessonName).requires) {
             edges[lessonName][req].style!.strokeColor = new paper.Color('black');
         }
         hoveredLesson = null;
@@ -270,23 +254,6 @@ function initialize() {
     mypaper.setup(canvas.value);
     mypaper.activate();
     addEventHandlers();
-}
-
-function loadLessons() {
-    for (let lesson of graphLessons) {
-        lessons[lesson.title] = {
-            title: lesson.title,
-            requires: lesson.requires,
-            isRequiredBy: [],
-            field: lesson.field,
-            level: lesson.level,
-        };
-    }
-    for (let lesson of graphLessons) {
-        for (let req of lesson.requires) {
-            lessons[req].isRequiredBy.push(lesson.title);
-        }
-    }
 }
 
 function reloadPositions() {
@@ -302,9 +269,7 @@ function reloadPositions() {
     }
     const centerX = (minX + maxX) / 2;
 
-    for (let lesson of graphLessons) {
-        positions[lesson.title] = { x: 300, y: 300 };
-    }
+    lessonTree.allLessons().forEach((l) => (positions[l.title] = { x: 300, y: 300 }));
     for (let lesson of graphCoordinates.nodes) {
         positions[lesson[0]] = {
             x: mypaper.view.center!.x! + (lesson[1] as number) - centerX,
@@ -312,10 +277,10 @@ function reloadPositions() {
         };
     }
 
-    for (let lesson of graphLessons) {
+    for (let lesson of lessonTree.allLessons()) {
         if (lesson.requires.length != 1) {
             for (let req of lesson.requires) {
-                if (lessons[req].isRequiredBy.length != 1) {
+                if (lessonTree.getLesson(req).isRequiredBy.length != 1) {
                     if (!stairsX[lesson.title]) {
                         stairsX[lesson.title] = {};
                     }
@@ -333,10 +298,10 @@ function displayLessons() {
     mypaper.activate();
     mypaper.project!.clear();
 
-    //add text edges
+    // add text edges
     const fontSize = 16;
-    for (let name in lessons) {
-        let text = new paper.PointText(new paper.Point(positions[name].x, positions[name].y));
+    for (const name of lessonTree.allLessonNames()) {
+        const text = new paper.PointText(new paper.Point(positions[name].x, positions[name].y));
         text.content = name;
         text.style = new paper.Style({
             justification: 'center',
@@ -348,9 +313,9 @@ function displayLessons() {
         edges[name] = {};
     }
 
-    //add edges
-    for (const name in lessons) {
-        for (const req of lessons[name].requires) {
+    // add edges
+    for (const name of lessonTree.allLessonNames()) {
+        for (const req of lessonTree.getLesson(name).requires) {
             const edge = new paper.Path();
             edge.style = new paper.Style({
                 strokeColor: 'black',
@@ -358,12 +323,12 @@ function displayLessons() {
             });
             edge.data = { lesson: name, req: req };
             edges[name][req] = edge;
-            if (lessons[name].requires.length == 1) {
+            if (lessonTree.getLesson(name).requires.length == 1) {
                 edge.add(new paper.Point(positions[name].x, positions[name].y + 5));
                 edge.add(new paper.Point(positions[name].x, positions[req].y - fontSize - 10));
                 edge.add(new paper.Point(positions[req].x, positions[req].y - fontSize - 10));
                 edge.add(new paper.Point(positions[req].x, positions[req].y - fontSize));
-            } else if (lessons[req].isRequiredBy.length == 1) {
+            } else if (lessonTree.getLesson(req).isRequiredBy.length == 1) {
                 edge.add(new paper.Point(positions[name].x, positions[name].y + 5));
                 edge.add(new paper.Point(positions[name].x, positions[name].y + 15));
                 edge.add(new paper.Point(positions[req].x, positions[name].y + 15));

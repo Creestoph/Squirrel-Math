@@ -5,16 +5,15 @@
             :class="{ 'link-dropdown': true }"
             :arrow="true"
             :selectedOption="selectedLesson"
-            @click.native="getLessons()"
             @selected="selectLesson($event)"
         >
             <dropdown-option
                 v-for="(lesson, i) in lessons"
                 :key="i"
                 :class="{ 'link-dropdown-option': true }"
-                v-bind:value.attr="lesson.title"
+                v-bind:value.attr="lesson"
             >
-                {{ lesson.title }}
+                {{ lesson }}
             </dropdown-option>
         </dropdown>
         Rozdział
@@ -44,15 +43,16 @@ import { ref, watch } from 'vue';
 import Dropdown from './Dropdown.vue';
 import DropdownOption from './DropdownOption.vue';
 import { LessonData } from '@/models/lesson';
+import { lessonTree } from '@/utils/lesson-tree';
 
 const props = defineProps<{ href?: string }>();
 const emit = defineEmits<{ (event: 'updated', url: string): void }>();
 
 const selectedLesson = ref('');
 const selectedChapter = ref('');
-const lessons = ref([{ title: 'Ładowanie...' }]);
 const chapters = ref<{ name: string; disabled: boolean }[]>([]);
 
+const lessons = lessonTree.allLessonNames();
 let url = '';
 
 watch(
@@ -61,26 +61,9 @@ watch(
         url = props.href || '';
         let lessonUrl;
         [lessonUrl, selectedChapter.value] = url.split('#');
-        if (lessonUrl) {
-            getLessons().then(
-                (lessons) => (selectedLesson.value = lessons.find((l) => '/lesson/' + l.title == lessonUrl)!.title),
-            );
-        } else {
-            selectedLesson.value = '';
-        }
+        selectedLesson.value = lessonUrl ? lessons.find((l) => '/lesson/' + l == lessonUrl)! : '';
     },
 );
-
-function getLessons() {
-    if (lessons.value.length == 1) {
-        return import(`@/assets/current-lesson-graph.json`).then((file) => {
-            lessons.value = file.default;
-            return Promise.resolve(lessons.value);
-        });
-    } else {
-        return Promise.resolve(lessons.value);
-    }
-}
 
 function getChapters() {
     if (selectedLesson.value) {
@@ -127,14 +110,14 @@ function getChapters() {
 
 function selectLesson(lesson: string) {
     selectedLesson.value = lesson;
-    url = '/lesson/' + lessons.value.find((l) => l.title == lesson)!.title;
+    url = '/lesson/' + lessons.find((l) => l == lesson)!;
     selectedChapter.value = '';
     emit('updated', url);
 }
 
 function selectChapter(chapter: string) {
     selectedChapter.value = chapter;
-    url = '/lesson/' + lessons.value.find((l) => l.title == selectedLesson.value)!.title + '#' + chapter;
+    url = '/lesson/' + lessons.find((l) => l == selectedLesson.value)! + '#' + chapter;
     emit('updated', url);
 }
 

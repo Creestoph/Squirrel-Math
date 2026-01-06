@@ -18,10 +18,15 @@
         </div>
         <span v-if="canAddTag()" @click="addTag()" class="add-tag-button no-selection">+</span>
 
-        <span :class="required.length == 0 ? 'required-optional' : 'required-strong'" class="no-selection"
-            >Wymagane:</span
+        <span :class="required.length == 0 ? 'required-optional' : 'required-strong'" class="no-selection">
+            Wymagane:
+        </span>
+        <div
+            class="required dropdown"
+            v-for="(required, j) in required"
+            :key="'required' + j"
+            @mouseenter="updateAvailableLessons(j)"
         >
-        <div class="required dropdown" v-for="(required, j) in required" :key="'required' + j">
             <div class="required-label">
                 {{ required }}
                 <span @click="removeRequired(j)" class="cross no-selection">⨯</span>
@@ -31,9 +36,9 @@
                     class="dropdown-position"
                     v-for="(lesson, i) in availableLessons"
                     :key="i"
-                    @click="chooseLesson(j, lesson.title)"
+                    @click="chooseLesson(j, lesson)"
                 >
-                    {{ lesson.title }}
+                    {{ lesson }}
                 </div>
             </div>
         </div>
@@ -42,12 +47,15 @@
 </template>
 
 <script setup lang="ts">
+import { lessonTree } from '@/utils/lesson-tree';
 import { nodeViewProps, NodeViewWrapper } from '@tiptap/vue-3';
-import { computed, onMounted, ref } from 'vue';
+import { computed, ref } from 'vue';
 
 const props = defineProps(nodeViewProps);
 
-const allLessons = ref<{ title: string }[]>([]);
+const futureLesson = 'Lekcja jeszcze niedostępna';
+const allLessons = [...lessonTree.allLessonNames(), futureLesson];
+const availableLessons = ref<string[]>(allLessons);
 
 const tags = computed({
     get() {
@@ -59,7 +67,7 @@ const tags = computed({
 });
 
 const required = computed({
-    get() {
+    get(): string[] {
         return props.node.attrs.required;
     },
     set(required) {
@@ -67,16 +75,18 @@ const required = computed({
     },
 });
 
-const availableLessons = computed(() => allLessons.value.filter((lesson) => !required.value.includes(lesson.title)));
-
-onMounted(() => {
-    import(`@/assets/current-lesson-graph.json`).then(
-        (file) =>
-            (allLessons.value = (file.default as { title: string }[]).concat({
-                title: 'Lekcja jeszcze niedostępna',
-            })),
-    );
-});
+function updateAvailableLessons(position: number) {
+    availableLessons.value = [
+        ...new Set(allLessons)
+            .difference(
+                lessonTree.getAllRequiredLessons(
+                    required.value.filter((r, i) => i !== position && r !== futureLesson && r !== ''),
+                ),
+            )
+            .difference(new Set(required.value))
+            .values(),
+    ];
+}
 
 function availableOptions(position: number) {
     if (position == 0 && tags.value.length == 1) {
@@ -111,9 +121,14 @@ function addRequiredLesson() {
 }
 
 function chooseLesson(position: number, lesson: string) {
-    const newRequired = [...required.value];
+    let newRequired = [...required.value];
     newRequired[position] = lesson;
+    if (lesson !== '' && lesson !== futureLesson) {
+        const requiredByLesson = lessonTree.getAllRequiredLessons([lesson]);
+        newRequired = newRequired.filter((r) => !requiredByLesson.has(r));
+    }
     required.value = newRequired;
+    updateAvailableLessons(position);
 }
 
 function removeRequired(position: number) {
