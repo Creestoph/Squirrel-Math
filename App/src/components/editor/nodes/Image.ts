@@ -1,6 +1,8 @@
 import { Node, nodeInputRule } from '@tiptap/core';
+import { VueNodeViewRenderer } from '@tiptap/vue-3';
 import { Plugin } from '@tiptap/pm/state';
 import { globalImages, lessonImages } from '../shared-state';
+import ImageVue from './Image.vue';
 
 declare module '@tiptap/core' {
     interface Commands<ReturnType> {
@@ -18,6 +20,8 @@ const IMAGE_INPUT_REGEX = /!\[(.+|:?)]\((\S+)(?:(?:\s+)["'](\S+)["'])?\)/;
 
 export interface ImageAttrs {
     key: string | null;
+    width?: number | null;
+    height?: number | null;
 }
 
 export default Node.create({
@@ -35,6 +39,22 @@ export default Node.create({
                 parseHTML: (element) => element.getAttribute('key'),
                 renderHTML: (attrs: ImageAttrs) => (attrs.key ? { key: attrs.key } : {}),
             },
+            width: {
+                default: null,
+                parseHTML: (element) => {
+                    const widthAttr = element.getAttribute('width');
+                    return widthAttr ? Number.parseInt(widthAttr, 10) : null;
+                },
+                renderHTML: (attrs: ImageAttrs) => (attrs.width ? { width: Math.round(attrs.width) } : {}),
+            },
+            height: {
+                default: null,
+                parseHTML: (element) => {
+                    const heightAttr = element.getAttribute('height');
+                    return heightAttr ? Number.parseInt(heightAttr, 10) : null;
+                },
+                renderHTML: (attrs: ImageAttrs) => (attrs.height ? { height: Math.round(attrs.height) } : {}),
+            },
         };
     },
 
@@ -45,7 +65,15 @@ export default Node.create({
                 getAttrs: (dom) => {
                     const key = dom.getAttribute('key');
                     if (key) {
-                        return { key };
+                        const widthAttr = dom.getAttribute('width');
+                        const heightAttr = dom.getAttribute('height');
+                        const width = widthAttr ? Number.parseInt(widthAttr, 10) : null;
+                        const height = heightAttr ? Number.parseInt(heightAttr, 10) : null;
+                        return {
+                            key,
+                            width,
+                            height,
+                        };
                     }
 
                     const proposed = prompt('Nazwa obrazu:') || 'unnamed';
@@ -65,7 +93,14 @@ export default Node.create({
     renderHTML({ HTMLAttributes }) {
         const key = HTMLAttributes.key;
         const image = lessonImages.value[key] || globalImages.value[key];
-        return ['img', { key, src: image.src, alt: image.name }];
+        return [
+            'img',
+            {
+                src: image.src,
+                alt: image.name,
+                ...HTMLAttributes,
+            },
+        ];
     },
 
     addCommands() {
@@ -89,6 +124,8 @@ export default Node.create({
             }),
         ];
     },
+
+    addNodeView: () => VueNodeViewRenderer(ImageVue),
 
     addProseMirrorPlugins() {
         return [

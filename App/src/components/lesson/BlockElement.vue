@@ -21,7 +21,7 @@
 <script setup lang="ts">
 import { computed, onMounted, ref } from 'vue';
 import type { Component } from 'vue';
-import Graphics from './Graphics.vue';
+import Image from './Image.vue';
 import DefaultTable from './DefaultTable.vue';
 import TableCell from './TableCell.vue';
 import SemanticTag from './SemanticTag.vue';
@@ -65,7 +65,7 @@ const tagName = computed<string | Component>(() => {
         listItem: 'li',
         tableRow: 'tr',
         paragraph: Paragraph,
-        image: Graphics,
+        image: Image,
         table: DefaultTable,
         tableCell: TableCell,
         semanticTag: SemanticTag,

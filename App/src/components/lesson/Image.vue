@@ -1,14 +1,25 @@
 <template>
-    <img :src="src" :alt="title" :title="title" />
+    <img :src="src" :alt="title" :title="title" :style="style" />
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref } from 'vue';
+import { computed, onMounted, ref } from 'vue';
 import { lessonImages } from '../editor/shared-state';
 
-const props = defineProps<{ attrs: { key: string } }>();
+const props = defineProps<{ attrs: { key: string; width?: number; height?: number } }>();
 const src = ref('');
 const title = ref('');
+
+const style = computed(() => {
+    const style: Record<string, string> = {};
+    if (props.attrs.width) {
+        style.width = `${Math.round(props.attrs.width)}px`;
+    }
+    if (props.attrs.height) {
+        style.height = `${Math.round(props.attrs.height)}px`;
+    }
+    return style;
+});
 
 onMounted(() => {
     const scopedImage = lessonImages.value[props.attrs.key];

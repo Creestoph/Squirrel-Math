@@ -457,6 +457,10 @@ function validate(): boolean {
         z-index: 1;
     }
 }
+.ProseMirror-selectednode .editor-wrapper {
+    outline: 4px dotted colors.$main-red;
+}
+
 .output {
     min-height: 42px;
 }

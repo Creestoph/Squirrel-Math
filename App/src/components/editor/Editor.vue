@@ -382,7 +382,7 @@
 
         <image-picker
             :visible="showImagesDialog"
-            @select="editor.commands.createImage($event)"
+            @select="editor.chain().focus().createImage($event).run()"
             @delete="deleteImage"
             @close="showImagesDialog = false"
         />
@@ -606,6 +606,7 @@ function createEditor(shortVersion: boolean) {
                             'customElement',
                             'component',
                             'geometry',
+                            'image',
                         ].includes(node.type.name)
                     ) {
                         return '';
@@ -1040,17 +1041,7 @@ function exitListener(event: any) {
 }
 
 /*=== CONTENT - GENERAL===*/
-.editor img {
-    display: block;
-    margin: 20px auto;
-    max-width: 100%;
-
-    &.ProseMirror-selectednode {
-        outline: 4px dotted colors.$main-red;
-    }
-}
-
-.editor table img {
+.editor table .image-node {
     margin: 0;
 }
 
