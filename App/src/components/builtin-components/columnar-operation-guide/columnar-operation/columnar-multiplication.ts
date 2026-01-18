@@ -2,12 +2,12 @@ import { DisplayTable } from './display-table';
 import { ColumnarOperation, ColumnarOperationStep } from './columnar-operation';
 
 class ColumnarMultiplicationStep implements ColumnarOperationStep {
-    private table: DisplayTable;
+    readonly table: DisplayTable;
 
     constructor(
         table: string[][],
         highlightFields: boolean[][],
-        private readonly comment: string,
+        readonly comment: string,
         private readonly carry: number,
         mulUnderline: number,
         sumUnderline: number,
@@ -34,11 +34,6 @@ class ColumnarMultiplicationStep implements ColumnarOperationStep {
             }
         }
         this.table = new DisplayTable(tab);
-    }
-
-    print(table: HTMLElement): string {
-        this.table.print(table);
-        return this.comment;
     }
 }
 
@@ -100,7 +95,6 @@ export class ColumnarMultiplication extends ColumnarOperation {
             }
         }
 
-        this.step = 0;
         let comment;
         let carry = 0;
         let mul;
@@ -266,6 +260,8 @@ export class ColumnarMultiplication extends ColumnarOperation {
 
         highlightFields = ColumnarMultiplication.emptyHighlight(table);
         this.steps.push(new ColumnarMultiplicationStep(table, highlightFields, comment, carry, 1, sumUnderline));
+
+        return this.steps;
     }
 
     private static addFirstColumn(tab: string[][]) {

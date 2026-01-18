@@ -21,9 +21,10 @@
 </template>
 
 <script setup lang="ts" generic="Step">
-import { computed, nextTick, ref } from 'vue';
+import { computed, nextTick, ref, shallowRef } from 'vue';
 
 const props = defineProps<{ generateSteps: (input: string) => Step[] }>();
+const emit = defineEmits<{ (event: 'update', value: Step): void }>();
 const enteredValue = ref('');
 
 const maskArea = ref<HTMLDivElement>(null!);
@@ -31,7 +32,7 @@ const stepArea = ref<HTMLDivElement>(null!);
 const contentArea = ref<HTMLDivElement>(null!);
 
 const step = ref<number>(0);
-const steps = ref<Step[]>([]);
+const steps = shallowRef<Step[]>([]);
 const hasNext = computed(() => step.value < steps.value.length - 1);
 const hasPrev = computed(() => step.value > 0);
 
@@ -53,8 +54,11 @@ function onPrev() {
 
 function update() {
     nextTick(() => {
-        MathJax.Hub.Queue(['Typeset', MathJax.Hub]);
-        maskArea.value.style.height = stepArea.value.style.height = contentArea.value.clientHeight + 10 + 'px';
+        emit('update', steps.value[step.value]);
+        nextTick(() => {
+            MathJax.Hub.Queue(['Typeset', MathJax.Hub]);
+            maskArea.value.style.height = stepArea.value.style.height = contentArea.value.clientHeight + 10 + 'px';
+        });
     });
 }
 </script>

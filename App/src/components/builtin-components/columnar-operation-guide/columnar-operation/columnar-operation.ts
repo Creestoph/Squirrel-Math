@@ -1,48 +1,23 @@
+import { DisplayTable } from './display-table';
+
 export interface ColumnarOperationStep {
-    print(table: HTMLElement): string;
+    comment: string;
+    table?: DisplayTable;
+    showZeroDivisionError?: boolean;
 }
 
 export abstract class ColumnarOperation {
-    protected step = 0;
     protected steps: ColumnarOperationStep[] = [];
     protected abstract signs: string[];
-    protected abstract generateSteps(numbers: string[], isFloat: boolean): void;
+    protected abstract generateSteps(numbers: string[], isFloat: boolean): ColumnarOperationStep[];
 
-    constructor(protected readonly table: HTMLElement) {}
-
-    next(): string {
-        this.step += 1;
-        return this.printStep(this.step);
-    }
-    prev(): string {
-        this.step -= 1;
-        return this.printStep(this.step);
-    }
-
-    start(): string {
-        this.step = 0;
-        return this.printStep(this.step);
-    }
-
-    hasNext(): boolean {
-        return this.step < this.steps.length - 1;
-    }
-
-    hasPrev(): boolean {
-        return this.step > 0;
-    }
-
-    generateFromInput(inputValue: string, isFloat = true): void {
+    generateFromInput(inputValue: string, isFloat = true): ColumnarOperationStep[] {
         inputValue = inputValue.replace(/ /g, '');
         inputValue = inputValue.replace(/,/g, '.');
-        this.generateSteps(
+        return this.generateSteps(
             this.signs.reduce((acc, separator) => acc.flatMap((s) => s.split(separator)), [inputValue]),
             isFloat,
         );
-    }
-
-    protected printStep(i: number): string {
-        return this.steps[i].print(this.table);
     }
 
     protected validateNumber(x: string, isFloat: boolean) {

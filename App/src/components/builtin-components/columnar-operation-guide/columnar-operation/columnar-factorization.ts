@@ -2,19 +2,14 @@ import { ColumnarOperation, ColumnarOperationStep } from './columnar-operation';
 import { DisplayTable } from './display-table';
 
 class ColumnarFactorizationStep implements ColumnarOperationStep {
-    private table: DisplayTable;
+    readonly table: DisplayTable;
 
     constructor(
         dividends: (number | null)[],
         divisors: number[],
-        private readonly comment: string,
+        readonly comment: string,
     ) {
         this.table = new DisplayTable(dividends.map((d, i) => [`r/${d ?? ''}`, `${divisors[i] ?? ''}`]));
-    }
-
-    print(tableTargetId: HTMLElement): string {
-        this.table.print(tableTargetId);
-        return this.comment;
     }
 }
 
@@ -137,6 +132,8 @@ export class ColumnarFactorization extends ColumnarOperation {
             `Otrzymaliśmy 1 jako wynik dzielenia, więc kończymy rozkład. ` +
                 `Odczytujemy wynik z prawej strony kreski: ${this.dividends[0]} = ${this.divisors.join(' · ')}.`,
         );
+
+        return this.steps;
     }
 
     private generateSieveUpTo(n: number): void {

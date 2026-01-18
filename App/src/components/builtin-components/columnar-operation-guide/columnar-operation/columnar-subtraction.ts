@@ -2,14 +2,14 @@ import { ColumnarOperation, ColumnarOperationStep } from './columnar-operation';
 import { DisplayTable } from './display-table';
 
 class ColumnarSubtractionStep implements ColumnarOperationStep {
-    private table: DisplayTable;
+    readonly table: DisplayTable;
 
     constructor(
         table: string[][],
         comma: number,
         highlightColumn: number,
         crossedFields: boolean[][],
-        private readonly comment: string,
+        readonly comment: string,
     ) {
         const tab: string[][] = [];
         for (let i = 0; i < table.length; i++) {
@@ -236,5 +236,7 @@ export class ColumnarSubtraction extends ColumnarOperation {
         }
         comment += this.removeLeadingZeros(w) + '.';
         this.steps.push(new ColumnarSubtractionStep(table, longestAfterComma, -1, crossedFields, comment));
+
+        return this.steps;
     }
 }

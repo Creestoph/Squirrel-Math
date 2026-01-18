@@ -65,6 +65,7 @@ function edit() {
     outline: 1px solid colors.$gray;
     padding: 10px;
     font-family: fonts.$geometric-font;
+    font-size: 14px;
     color: colors.$half-gray;
     line-height: 1.61em;
 

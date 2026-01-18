@@ -2,13 +2,13 @@ import { ColumnarOperation, ColumnarOperationStep } from './columnar-operation';
 import { DisplayTable } from './display-table';
 
 class ColumnarAdditionStep implements ColumnarOperationStep {
-    private table: DisplayTable;
+    readonly table: DisplayTable;
 
     constructor(
         table: string[][],
         comma: number,
         highlightColumn: number,
-        private readonly comment: string,
+        readonly comment: string,
     ) {
         const tab: string[][] = [];
         for (let i = 0; i < table.length; i++) {
@@ -40,11 +40,6 @@ class ColumnarAdditionStep implements ColumnarOperationStep {
         }
 
         this.table = new DisplayTable(tab);
-    }
-
-    print(tableTargetId: HTMLElement): string {
-        this.table.print(tableTargetId);
-        return this.comment;
     }
 }
 
@@ -184,5 +179,7 @@ export class ColumnarAddition extends ColumnarOperation {
         }
         comment += '.';
         this.steps.push(new ColumnarAdditionStep(table, longestAfterComma, -1, comment));
+
+        return this.steps;
     }
 }
