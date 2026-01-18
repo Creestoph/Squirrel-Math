@@ -23,15 +23,14 @@
 </template>
 
 <script setup lang="ts">
-import { ColumnarAddition } from '../../utils/columnar-operation/columnar-addition';
-import { ColumnarSubtraction } from '../../utils/columnar-operation/columnar-subtraction';
-import { ColumnarDivision, ZeroDivisionError } from '../../utils/columnar-operation/columnar-division';
-import { ColumnarMultiplication } from '../../utils/columnar-operation/columnar-multiplication';
-import ZeroDivisionPopup from '../../utils/columnar-operation/ZeroDivisionPopup.vue';
+import { ColumnarAddition } from './columnar-operation/columnar-addition';
+import { ColumnarSubtraction } from './columnar-operation/columnar-subtraction';
+import { ColumnarDivision, ZeroDivisionError } from './columnar-operation/columnar-division';
+import { ColumnarMultiplication } from './columnar-operation/columnar-multiplication';
+import ZeroDivisionPopup from './columnar-operation/ZeroDivisionPopup.vue';
 import { nextTick, ref } from 'vue';
-import { ColumnarOperation } from '@/components/utils/columnar-operation/columnar-operation';
-import { ColumnarFactorization } from '@/components/utils/columnar-operation/columnar-factorization';
-declare var MathJax: any;
+import { ColumnarOperation } from '@/components/builtin-components/columnar-operation-guide/columnar-operation/columnar-operation';
+import { ColumnarFactorization } from '@/components/builtin-components/columnar-operation-guide/columnar-operation/columnar-factorization';
 
 const props = defineProps<{ operation: string; floats: boolean }>();
 

@@ -116,7 +116,6 @@ import { LessonData, NodeData, NodeType } from '@/models/lesson';
 import { allComments, lessonImages } from '../editor/shared-state';
 import { useLessonExpandedInfo } from '../utils/menu-bus';
 import { deepClone } from '@/utils/utils';
-declare var MathJax: any;
 
 interface LessonElements {
     title: { type: NodeType; text: string };

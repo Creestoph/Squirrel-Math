@@ -1,5 +1,5 @@
 import { LessonData, NodeData } from '@/models/lesson';
-import { downloadFile } from '../utils/files';
+import { downloadFile } from '../../utils/files';
 import { lessonTree } from '@/utils/lesson-tree';
 
 function transformNode(node: NodeData) {

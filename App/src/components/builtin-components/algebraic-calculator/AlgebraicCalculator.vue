@@ -10,7 +10,6 @@
 import { Expression, parseExpression } from '../../../math-engine/algebra-engine/expression';
 import { simplify } from '../../../math-engine/algebra-engine/algorithms/simplification-algorithm';
 import { nextTick, ref } from 'vue';
-declare var MathJax: any;
 
 const input = ref('');
 const resultDiv = ref<HTMLDivElement>(null!);

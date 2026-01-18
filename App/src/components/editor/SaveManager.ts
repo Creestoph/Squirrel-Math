@@ -1,5 +1,5 @@
 import { Draft, DraftPreview, LocalStorageSaver } from './LocalStorageManager';
-import { downloadFile } from '@/components/utils/files';
+import { downloadFile } from '@/utils/files';
 import { allComments, lessonImages } from './shared-state';
 import { LessonData, LessonVersionData } from '@/models/lesson';
 import { generateGUID } from './tiptap-utils';

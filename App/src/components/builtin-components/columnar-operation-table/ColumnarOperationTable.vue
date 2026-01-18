@@ -3,9 +3,8 @@
 </template>
 
 <script setup lang="ts">
-import { DisplayTable } from '@/components/utils/columnar-operation/display-table';
+import { DisplayTable } from '@/components/builtin-components/columnar-operation-guide/columnar-operation/display-table';
 import { onMounted, ref } from 'vue';
-declare var MathJax: any;
 
 const props = defineProps<{ numbers: string[] }>();
 const main = ref<HTMLElement | null>(null);

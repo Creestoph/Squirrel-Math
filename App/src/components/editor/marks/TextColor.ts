@@ -1,4 +1,4 @@
-import { colorsDifference, rgbToHex } from '@/components/utils/colors';
+import { colorsDifference, rgbToHex } from '@/utils/colors';
 import { Mark } from '@tiptap/vue-3';
 import { colors } from '@/style/palette';
 import { getSurroundingWord } from '../tiptap-utils';

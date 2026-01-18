@@ -23,7 +23,6 @@ import { Product } from '../../../math-engine/algebra-engine/product';
 import { Power } from '../../../math-engine/algebra-engine/power';
 import { equals, simplify } from '../../../math-engine/algebra-engine/algorithms/simplification-algorithm';
 import { UnivariatePolynomial } from '../../../math-engine/algebra-engine/univariate-polynomial';
-declare var MathJax: any;
 
 let correctX1: Fraction = new Fraction(0, 1);
 let correctX2: Fraction = new Fraction(0, 1);
