@@ -22,6 +22,7 @@
 
 <script setup lang="ts" generic="Step">
 import { computed, nextTick, ref, shallowRef } from 'vue';
+import { useLatexRenderer } from './latex-utils';
 
 const props = defineProps<{ generateSteps: (input: string) => Step[] }>();
 const emit = defineEmits<{ (event: 'update', value: Step): void }>();
@@ -56,7 +57,7 @@ function update() {
     nextTick(() => {
         emit('update', steps.value[step.value]);
         nextTick(() => {
-            MathJax.Hub.Queue(['Typeset', MathJax.Hub]);
+            useLatexRenderer().recalculateWholePage();
             maskArea.value.style.height = stepArea.value.style.height = contentArea.value.clientHeight + 10 + 'px';
         });
     });

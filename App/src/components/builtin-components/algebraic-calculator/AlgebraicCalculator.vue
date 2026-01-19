@@ -10,6 +10,7 @@
 import { Expression, parseExpression } from '../../../math-engine/algebra-engine/expression';
 import { simplify } from '../../../math-engine/algebra-engine/algorithms/simplification-algorithm';
 import { nextTick, ref } from 'vue';
+import { useLatexRenderer } from '@/components/utils/latex-utils';
 
 const input = ref('');
 const resultDiv = ref<HTMLDivElement>(null!);
@@ -23,7 +24,7 @@ function onSimplify() {
                 'To wyrażenie jest okropnie długie po uproszczeniu. Chyba nie potrzebujesz aż tak potężnych obliczeń.';
         } else {
             resultDiv.value.innerHTML = `$$${expression.toMathJax()} = ${simplified}$$`;
-            nextTick(() => MathJax.Hub.Queue(['Typeset', MathJax.Hub]));
+            nextTick(() => useLatexRenderer().recalculateWholePage());
         }
     } catch (exception: any) {
         resultDiv.value.innerHTML = exception;

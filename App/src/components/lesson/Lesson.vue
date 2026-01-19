@@ -116,6 +116,7 @@ import { LessonData, NodeData, NodeType } from '@/models/lesson';
 import { allComments, lessonImages } from '../editor/shared-state';
 import { useLessonExpandedInfo } from '../utils/menu-bus';
 import { deepClone } from '@/utils/utils';
+import { useLatexRenderer } from '../utils/latex-utils';
 
 interface LessonElements {
     title: { type: NodeType; text: string };
@@ -179,10 +180,10 @@ function setContent() {
             }
             allComments.value = json.comments || {};
             lessonImages.value = json.images || {};
-            nextTick(() => MathJax.Hub.Queue(['Typeset', MathJax.Hub]));
+            nextTick(() => useLatexRenderer().recalculateWholePage());
         });
     } else {
-        MathJax.Hub.Queue(['Typeset', MathJax.Hub]);
+        useLatexRenderer().recalculateWholePage();
     }
 }
 
@@ -192,7 +193,7 @@ function moveExpandButton() {
 
 function toggleMode() {
     shortMode.value = !shortMode.value;
-    nextTick(() => MathJax.Hub.Queue(['Typeset', MathJax.Hub]));
+    nextTick(() => useLatexRenderer().recalculateWholePage());
 }
 
 function clearElements() {

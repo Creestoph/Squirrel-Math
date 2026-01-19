@@ -9,5 +9,6 @@ defineProps<{ attrs: { mathJax: string } }>();
 <style scoped lang="scss">
 .mathjax-container {
     overflow-x: auto;
+    overflow-y: hidden;
 }
 </style>

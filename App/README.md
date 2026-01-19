@@ -1,5 +1,9 @@
 # squirrel-math
 
+## Node and npm version
+Node v22
+npm 11.7.0
+
 ## Project setup
 
 ```
