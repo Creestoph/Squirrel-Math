@@ -1,6 +1,8 @@
 /* eslint no-constant-condition:0 */
 /* eslint-disable */
 
+// Copy from KaTeX auto-render extension
+
 const findEndOfMath = function(delimiter: string, text: string, startIndex: number) {
     // Adapted from
     // https://github.com/Khan/perseus/blob/master/src/perseus-markdown.jsx
