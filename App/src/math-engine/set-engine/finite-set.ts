@@ -25,6 +25,10 @@ export class FiniteSet implements Set {
         return '\\{' + this.elements.map((e) => e.toMathJax()).join(', ') + '\\}';
     }
 
+    toLatex() {
+        return '\\{' + this.elements.map((e) => e.toLatex()).join(', ') + '\\}';
+    }
+
     includes(x: Expression) {
         return this.elements.some((e) => equals(e, x));
     }

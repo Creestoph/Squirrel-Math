@@ -2,7 +2,9 @@
     <node-view-wrapper>
         <div>
             <div v-show="!mathJax" class="math-placeholder" @click="edit()">Wprowadź wyrażenie matematyczne</div>
-            <div v-show="mathJax" ref="output" class="math-display" @dblclick="edit()"></div>
+            <div v-show="mathJax" class="math-display" @dblclick="edit()">
+                <latex-render :latex="mathJax" :display-mode="true"></latex-render>
+            </div>
             <textarea
                 v-if="displayPopup"
                 v-model="mathJaxDirty"
@@ -19,7 +21,7 @@
 </template>
 
 <script setup lang="ts">
-import { useLatexRenderer } from '@/components/utils/latex-utils';
+import LatexRender from '@/components/utils/latex-utils/LatexRender.vue';
 import { nodeViewProps, NodeViewWrapper } from '@tiptap/vue-3';
 import { computed, nextTick, onMounted, ref } from 'vue';
 
@@ -27,7 +29,6 @@ const props = defineProps(nodeViewProps);
 
 const mathJaxDirty = ref('');
 const displayPopup = ref(false);
-const output = ref<HTMLElement>();
 const mathEditor = ref<HTMLTextAreaElement>();
 
 const mathJax = computed({
@@ -54,8 +55,6 @@ function applyEdit() {
 
 function updateView() {
     displayPopup.value = false;
-    output.value!.innerHTML = '$$' + mathJax.value + '$$';
-    useLatexRenderer().recalculateWholePage();
 }
 </script>
 

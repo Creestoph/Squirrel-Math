@@ -2,32 +2,30 @@
     <div>
         <input class="with-highlight" v-model="input" v-on:keyup.enter="onSimplify()" />
         <button class="button-red" @click="onSimplify()">Uprość</button>
-        <div id="result" ref="resultDiv"></div>
+        <latex-render :latex="latex" :display-mode="true" />
     </div>
 </template>
 
 <script setup lang="ts">
+import LatexRender from '@/components/utils/latex-utils/LatexRender.vue';
 import { Expression, parseExpression } from '../../../math-engine/algebra-engine/expression';
 import { simplify } from '../../../math-engine/algebra-engine/algorithms/simplification-algorithm';
-import { nextTick, ref } from 'vue';
-import { useLatexRenderer } from '@/components/utils/latex-utils';
+import { ref } from 'vue';
 
 const input = ref('');
-const resultDiv = ref<HTMLDivElement>(null!);
+const latex = ref('');
 
 function onSimplify() {
     try {
         const expression: Expression = parseExpression(input.value);
-        const simplified = simplify(expression).toMathJax();
+        const simplified = simplify(expression).toLatex();
         if (simplified.length > 10000) {
-            resultDiv.value.innerHTML =
-                'To wyrażenie jest okropnie długie po uproszczeniu. Chyba nie potrzebujesz aż tak potężnych obliczeń.';
+            latex.value = 'To wyrażenie jest okropnie długie po uproszczeniu. Chyba nie potrzebujesz aż tak potężnych obliczeń.';
         } else {
-            resultDiv.value.innerHTML = `$$${expression.toMathJax()} = ${simplified}$$`;
-            nextTick(() => useLatexRenderer().recalculateWholePage());
+            latex.value = `$$${expression.toLatex()} = ${simplified}$$`;
         }
     } catch (exception: any) {
-        resultDiv.value.innerHTML = exception;
+        latex.value = exception;
     }
 }
 </script>

@@ -95,6 +95,27 @@ export class Monomial extends Product {
         return result;
     }
 
+    toLatex(): string {
+        let result = '';
+        if (this.coefficient.identical(Integer.minusOne) && this.variables.length > 0) {
+            result += '-';
+        } else if (!(this.coefficient.identical(Integer.one) && this.variables.length > 0)) {
+            result +=
+                this.coefficient instanceof Sum
+                    ? '(' + this.coefficient.toLatex() + ')'
+                    : this.coefficient.toLatex();
+        }
+        this.exponentVector
+            .filter((e) => !e.identical(Integer.zero))
+            .forEach((f, i) => {
+                result += this.variables[i].toLatex();
+                if (!f.identical(Integer.one)) {
+                    result += '^' + f.toLatex();
+                }
+            });
+        return result;
+    }
+
     //returns monomial with collected like variables
     cleaned(): Monomial {
         const factors = this.factors.filter((f, i) => i > 0) as Power[];

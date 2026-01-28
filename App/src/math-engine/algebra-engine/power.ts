@@ -26,6 +26,17 @@ export class Power implements Expression {
         );
     }
 
+    toLatex(): string {
+        return (
+            (this.base.precedence() <= this.precedence()
+                ? '\\left(' + this.base.toLatex() + '\\right)'
+                : '{' + this.base.toLatex() + '}') +
+            '^{' +
+            this.exponent.toLatex() +
+            '}'
+        );
+    }
+
     isNegative(): boolean {
         return false;
     }

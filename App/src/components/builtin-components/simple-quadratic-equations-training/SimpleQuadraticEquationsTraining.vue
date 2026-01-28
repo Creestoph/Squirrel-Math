@@ -1,16 +1,16 @@
 <template>
     <div class="whole">
         Równanie:
-        <div ref="equationDiv"></div>
+        <latex-text :text="equationLatex" />
         Rozwiązują $x = $
         <input class="with-highlight" v-model="x1" @keyup="updateProduct()" tabindex="1" /> lub $x = $
         <input class="with-highlight" v-model="x2" @keyup="updateProduct()" tabindex="2" />
-        <div ref="productDiv"></div>
+        <latex-text :text="productLatex" />
         <div id="buttons">
             <button class="button-red" @click="check()">Sprawdź</button>
             <button class="button-red" @click="next()">Następne</button>
         </div>
-        <div ref="resultDiv"></div>
+        <latex-text :text="resultLatex" />
     </div>
 </template>
 
@@ -23,7 +23,7 @@ import { Product } from '../../../math-engine/algebra-engine/product';
 import { Power } from '../../../math-engine/algebra-engine/power';
 import { equals, simplify } from '../../../math-engine/algebra-engine/algorithms/simplification-algorithm';
 import { UnivariatePolynomial } from '../../../math-engine/algebra-engine/univariate-polynomial';
-import { useLatexRenderer } from '@/components/utils/latex-utils';
+import LatexText from '@/components/utils/latex-utils/LatexText.vue';
 
 let correctX1: Fraction = new Fraction(0, 1);
 let correctX2: Fraction = new Fraction(0, 1);
@@ -32,9 +32,9 @@ let userX2: Fraction = new Fraction(0, 1);
 const x1 = ref('');
 const x2 = ref('');
 const varX: Variable = new Variable('x');
-const equationDiv = ref<HTMLDivElement>(null!);
-const productDiv = ref<HTMLDivElement>(null!);
-const resultDiv = ref<HTMLDivElement>(null!);
+const equationLatex = ref('');
+const productLatex = ref('');
+const resultLatex = ref('');
 
 onMounted(() => next());
 
@@ -56,16 +56,16 @@ function updateProduct() {
         product += new Power(
             simplify(UnivariatePolynomial.withCoefficients([userX1.numerator.opposite(), userX1.denominator], varX)),
             new Integer(2),
-        ).toMathJax();
+        ).toLatex();
     } else {
         product += Product.of(
             simplify(UnivariatePolynomial.withCoefficients([userX1.numerator.opposite(), userX1.denominator], varX)),
             simplify(UnivariatePolynomial.withCoefficients([userX2.numerator.opposite(), userX2.denominator], varX)),
-        ).toMathJax();
+        ).toLatex();
     }
     product += ' = 0$.';
 
-    setDivContent(productDiv, product);
+    productLatex.value = product;
 }
 
 function check() {
@@ -83,20 +83,20 @@ function check() {
     ) {
         result =
             'Prawie dobrze, tylko złe znaki: $x = ' +
-            simplify(correctX1).toMathJax() +
+            simplify(correctX1).toLatex() +
             '$ lub $x = ' +
-            simplify(correctX2).toMathJax() +
+            simplify(correctX2).toLatex() +
             '$.';
     } else {
         result =
             'Niedobrze. Powinno być $x = ' +
-            simplify(correctX1).toMathJax() +
+            simplify(correctX1).toLatex() +
             '$ lub $x = ' +
-            simplify(correctX2).toMathJax() +
+            simplify(correctX2).toLatex() +
             '$.';
     }
 
-    setDivContent(resultDiv, result);
+    resultLatex.value = result;
 }
 
 function next() {
@@ -123,17 +123,12 @@ function next() {
             UnivariatePolynomial.withCoefficients([correctX2.numerator.opposite(), correctX2.denominator], varX),
         ),
     );
-    let equationString = '$$' + equationPolynomial.toMathJax() + ' = 0$$';
+    let equationString = '$$' + equationPolynomial.toLatex() + ' = 0$$';
 
-    setDivContent(equationDiv, equationString);
-    setDivContent(resultDiv, '');
-    setDivContent(productDiv, '');
+    equationLatex.value = equationString;
+    resultLatex.value = '';
+    productLatex.value = '';
     x1.value = x2.value = '';
-}
-
-function setDivContent(div: Ref<HTMLDivElement>, content: string) {
-    div.value.innerHTML = content;
-    useLatexRenderer().recalculateWholePage()
 }
 </script>
 

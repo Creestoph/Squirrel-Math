@@ -5,6 +5,7 @@ abstract class Constant implements Expression {
     simplified = this;
 
     abstract toMathJax(): string;
+    abstract toLatex(): string; 
     abstract numeric(): number;
 
     isNegative() {
@@ -32,6 +33,9 @@ export const constantE = new (class extends Constant {
     toMathJax(): string {
         return 'e';
     }
+    toLatex(): string {
+        return 'e';
+    }
     numeric(): number {
         return Math.E;
     }
@@ -39,6 +43,9 @@ export const constantE = new (class extends Constant {
 
 export const constantPI = new (class extends Constant {
     toMathJax(): string {
+        return '\\pi';
+    }
+    toLatex(): string {
         return '\\pi';
     }
     numeric(): number {

@@ -8,6 +8,7 @@ export interface LatexRenderer {
 
 export const useLatexRenderer: () => LatexRenderer = () => ({
     recalculateWholePage: () => {
+        return;
         renderMathInElement(document.body, { delimeters: [
             { left: "$$", right: "$$", display: true },
             { left: "$", right: "$", display: false },

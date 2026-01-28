@@ -58,6 +58,19 @@ export class Inequality implements AlgebraicNotion {
         }
     }
 
+    toLatex(): string {
+        switch (this.sign) {
+            case InequalitySign.LESS:
+                return this.left.toLatex() + ' < ' + this.right.toLatex();
+            case InequalitySign.LESS_EQUAL:
+                return this.left.toLatex() + ' \\leq ' + this.right.toLatex();
+            case InequalitySign.GREATER:
+                return this.left.toLatex() + ' > ' + this.right.toLatex();
+            case InequalitySign.GREATER_EQUAL:
+                return this.left.toLatex() + ' \\geq ' + this.right.toLatex();
+        }
+    }
+
     simplified(): Inequality {
         this.left = simplify(Sum.difference(this.left, this.right));
         if (this.left instanceof Quotient) this.left = Product.of(this.left.numerator, this.left.denominator);

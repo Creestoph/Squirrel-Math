@@ -46,6 +46,24 @@ export class Sum implements Expression {
         return result;
     }
 
+    toLatex(): string {
+        if (this.addends.length == 0) {
+            return '0';
+        }
+        let result = '';
+        this.addends.forEach((a, i) => {
+            if (i > 0) {
+                result += a.isNegative() ? ' ' : ' + ';
+            }
+            if (a.precedence() <= this.precedence()) {
+                result += '\\left(' + a.toLatex() + '\\right)';
+            } else {
+                result += a.toLatex();
+            }
+        });
+        return result;
+    }
+
     isNegative(): boolean {
         return false;
     }

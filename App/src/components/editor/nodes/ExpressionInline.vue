@@ -1,7 +1,9 @@
 <template>
     <node-view-wrapper as="span" class="inline-kurwa">
         <span v-show="!mathJax" class="math-placeholder" @click="edit()">Wprowadź wyrażenie matematyczne</span>
-        <span v-show="mathJax" ref="output" class="math-display" @dblclick="edit()"></span>
+        <span v-show="mathJax" class="math-display" @dblclick="edit()">
+            <latex-render :latex="mathJax" ref="output" />
+        </span>
         <textarea
             v-if="displayPopup"
             v-model="mathJaxDirty"
@@ -25,7 +27,6 @@ const props = defineProps(nodeViewProps);
 
 const mathJaxDirty = ref('');
 const displayPopup = ref(false);
-const output = ref<HTMLElement>();
 const mathEditor = ref<HTMLTextAreaElement>();
 
 const mathJax = computed({
@@ -53,13 +54,10 @@ function edit() {
 function applyEdit() {
     mathJax.value = mathJaxDirty.value;
     updateView();
-    nextTick(() => output.value!.focus());
 }
 
 function updateView() {
     displayPopup.value = false;
-    output.value!.innerHTML = '$' + mathJax.value + '$';
-    nextTick(() => useLatexRenderer().recalculateWholePage());
 }
 </script>
 

@@ -36,6 +36,10 @@ export class Integer extends N {
         return '' + this.int;
     }
 
+    toLatex(): string {
+        return '' + this.int;
+    }
+
     isNegative(): boolean {
         return this.int < BigInt(0);
     }

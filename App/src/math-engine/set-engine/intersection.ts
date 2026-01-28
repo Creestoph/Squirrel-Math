@@ -17,6 +17,10 @@ export class Intersection implements Set {
         return this.sets.map((s) => s.toMathJax()).join('\\cap');
     }
 
+    toLatex(): string {
+        return this.sets.map((s) => s.toLatex()).join('\\cap');
+    }
+
     includes(e: Expression): boolean {
         return this.sets.every((a) => a.includes(e));
     }
