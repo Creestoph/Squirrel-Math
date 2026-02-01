@@ -1,5 +1,5 @@
 <template>
-    <lesson>
+    <lesson :key="shortMode">
         <div class="toolbar no-selection" :style="{ left: lessonLeftPos }">
             <div v-if="editor">
                 <div class="tools-managing">
@@ -395,13 +395,19 @@
         />
 
         <bubble-menu
+            ref="bubbleMenuRef"
             :editor="editor"
-            :options="{ placement: 'top', offset: 8 }"
+            :options="{
+                shift: true,
+                offset: 30,
+                onUpdate: computeLinkPopupPos,
+            }"
             :should-show="() => editor.isActive('link')"
         >
             <link-popup
                 v-if="editor"
                 :href="editor.getAttributes('link').href"
+                :pos="linkPopupPosition"
                 @updated="editor.chain().focus().extendMarkRange('link').setLink($event).run()"
             />
         </bubble-menu>
@@ -409,8 +415,8 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, onUnmounted, ref } from 'vue';
-import { EditorContent, Editor } from '@tiptap/vue-3';
+import { ComponentPublicInstance, onMounted, onUnmounted, ref } from 'vue';
+import { EditorContent, Editor, posToDOMRect } from '@tiptap/vue-3';
 import Icon from '../Icon.vue';
 
 import Lesson from '../lesson/Lesson.vue';
@@ -483,6 +489,8 @@ const { lessonLeftPos } = useLessonExpandedInfo();
 const saveManager = new SaveManager();
 
 const editor = ref<Editor>(null!);
+const bubbleMenuRef = ref<ComponentPublicInstance>(null!);
+const linkPopupPosition = ref({ top: true, shift: 0 });
 const showDraftsDialog = ref(false);
 const showImagesDialog = ref(false);
 const exitPending = ref<(() => void) | null>(null);
@@ -867,6 +875,17 @@ function exitListener(event: any) {
     event.preventDefault();
     event.returnValue = '';
 }
+
+function computeLinkPopupPos() {
+    const menuEl = bubbleMenuRef.value.$el as HTMLElement;
+    const menuRect = menuEl.getBoundingClientRect();
+    const { from, to } = editor.value.state.selection;
+    const selRect = posToDOMRect(editor.value.view, from, to);
+    linkPopupPosition.value = {
+        top: menuRect.bottom <= selRect.top,
+        shift: (menuRect.left + menuRect.right) / 2 - (selRect.left + selRect.right) / 2,
+    };
+}
 </script>
 
 <style lang="scss">
@@ -883,7 +902,7 @@ function exitListener(event: any) {
     outline: none !important;
 }
 .editor {
-    margin-top: 171px; // minimum to ensure LinkPopup for the very first line of intro stays below (expanded) menu
+    margin-top: 100px;
 }
 .toolbar {
     position: fixed;

@@ -1,5 +1,9 @@
 <template>
-    <div class="link-editor">
+    <div
+        class="link-editor"
+        :class="{ top: props.pos.top, bottom: !props.pos.top }"
+        :style="{ '--shift': `${props.pos.shift}px` }"
+    >
         Link do lekcji
         <dropdown
             :class="{ 'link-dropdown': true }"
@@ -45,7 +49,7 @@ import DropdownOption from './DropdownOption.vue';
 import { LessonData } from '@/models/lesson';
 import { lessonTree } from '@/utils/lesson-tree';
 
-const props = defineProps<{ href?: string }>();
+const props = defineProps<{ href?: string; pos: { top: boolean; shift: number } }>();
 const emit = defineEmits<{ (event: 'updated', url: string): void }>();
 
 const selectedLesson = ref('');
@@ -133,17 +137,38 @@ function navigate() {
 @use '@/style/fonts';
 
 .link-editor {
-    display: inline-block;
-    position: absolute;
-    z-index: 3;
-    margin-left: -145px;
-    margin-top: -230px;
     width: 322px;
     height: 185px;
     background: black;
     border-radius: 15px;
     color: white;
     padding: 10px;
+
+    &:after {
+        content: '';
+        position: absolute;
+        left: calc(50% - 20px - var(--shift));
+        width: 0;
+        height: 0;
+        border-left: 20px solid transparent;
+        border-right: 20px solid transparent;
+    }
+
+    &.top {
+        margin-top: 165px; // minimum to ensure the popup doesnt collide with (expanded) editor menu
+        &:after {
+            bottom: -20px;
+            border-top: 20px solid black;
+        }
+    }
+
+    &.bottom {
+        margin-bottom: 165px;
+        &:after {
+            top: -20px;
+            border-bottom: 20px solid black;
+        }
+    }
 
     .navigate-button {
         border-radius: 6px;
@@ -159,18 +184,6 @@ function navigate() {
             background-color: white;
             color: black;
         }
-    }
-
-    &:after {
-        content: '';
-        position: absolute;
-        left: calc(50% - 20px);
-        bottom: -20px;
-        width: 0;
-        height: 0;
-        border-left: 20px solid transparent;
-        border-right: 20px solid transparent;
-        border-top: 20px solid black;
     }
 }
 
