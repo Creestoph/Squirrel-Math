@@ -21,6 +21,7 @@
 <script setup lang="ts">
 import { nodeViewProps, NodeViewWrapper } from '@tiptap/vue-3';
 import { computed, nextTick, onMounted, ref } from 'vue';
+import LatexRender from '@/components/utils/latex-utils/LatexRender.vue';
 
 const props = defineProps(nodeViewProps);
 
