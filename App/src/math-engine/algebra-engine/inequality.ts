@@ -45,19 +45,6 @@ export class Inequality implements AlgebraicNotion {
         return new Inequality(this.left.copy(), this.sign, this.right.copy());
     }
 
-    toMathJax(): string {
-        switch (this.sign) {
-            case InequalitySign.LESS:
-                return this.left.toMathJax() + ' < ' + this.right.toMathJax();
-            case InequalitySign.LESS_EQUAL:
-                return this.left.toMathJax() + ' \\leq ' + this.right.toMathJax();
-            case InequalitySign.GREATER:
-                return this.left.toMathJax() + ' > ' + this.right.toMathJax();
-            case InequalitySign.GREATER_EQUAL:
-                return this.left.toMathJax() + ' \\geq ' + this.right.toMathJax();
-        }
-    }
-
     toLatex(): string {
         switch (this.sign) {
             case InequalitySign.LESS:

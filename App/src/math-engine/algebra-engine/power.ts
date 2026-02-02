@@ -15,17 +15,6 @@ export class Power implements Expression {
         return new Power(this.base.copy(), this.exponent.copy());
     }
 
-    toMathJax(): string {
-        return (
-            (this.base.precedence() <= this.precedence()
-                ? '\\left(' + this.base.toMathJax() + '\\right)'
-                : '{' + this.base.toMathJax() + '}') +
-            '^{' +
-            this.exponent.toMathJax() +
-            '}'
-        );
-    }
-
     toLatex(): string {
         return (
             (this.base.precedence() <= this.precedence()

@@ -15,10 +15,6 @@ export class SetSum implements Set {
         return new SetSum(...this.addends.map((a) => a.copy()));
     }
 
-    toMathJax(): string {
-        return this.addends.map((a) => a.toMathJax()).join('\\cup');
-    }
-
     toLatex(): string {
         return this.addends.map((a) => a.toLatex()).join('\\cup');
     }

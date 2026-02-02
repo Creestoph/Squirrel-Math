@@ -28,24 +28,6 @@ export class Sum implements Expression {
         return Sum.of(...this.addends.map((a) => a.copy()));
     }
 
-    toMathJax(): string {
-        if (this.addends.length == 0) {
-            return '0';
-        }
-        let result = '';
-        this.addends.forEach((a, i) => {
-            if (i > 0) {
-                result += a.isNegative() ? ' ' : ' + ';
-            }
-            if (a.precedence() <= this.precedence()) {
-                result += '\\left(' + a.toMathJax() + '\\right)';
-            } else {
-                result += a.toMathJax();
-            }
-        });
-        return result;
-    }
-
     toLatex(): string {
         if (this.addends.length == 0) {
             return '0';

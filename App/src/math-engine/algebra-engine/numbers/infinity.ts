@@ -7,9 +7,6 @@ export abstract class Infty extends N {
     readonly simplified = this;
 
     static positive: Infty = new (class extends Infty {
-        toMathJax() {
-            return '\\infty';
-        }
         toLatex(): string {
             return '\\infty';
         }
@@ -61,9 +58,6 @@ export abstract class Infty extends N {
     })();
 
     static negative: Infty = new (class extends Infty {
-        toMathJax() {
-            return '-\\infty';
-        }
         toLatex(): string {
             return '-\\infty';
         }

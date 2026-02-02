@@ -302,7 +302,7 @@ export function solveNumeric(
         const v = simplify(f.substitute(x, new Decimal(pos)));
         if (!(v instanceof Number)) {
             throw new Error(
-                "Can't solve equation " + e.toMathJax() + ' using numeric methods; it containt more than one variable',
+                "Can't solve equation " + e.toLatex() + ' using numeric methods; it containt more than one variable',
             );
         }
         const sign = v.signum();
@@ -348,9 +348,9 @@ export function solveInequality(e: Inequality, x: Variable): Set {
             } else {
                 throw new Error(
                     "Can't solve inequality " +
-                        e.toMathJax() +
+                        e.toLatex() +
                         ' in general case as coefficient ' +
-                        coefficients[1].toMathJax() +
+                        coefficients[1].toLatex() +
                         ' has undefined sign',
                 );
             }
@@ -368,9 +368,9 @@ export function solveInequality(e: Inequality, x: Variable): Set {
             if (!isInequalityIdentity(new Inequality(coefficients[2], InequalitySign.GREATER, Integer.zero))) {
                 throw new Error(
                     "Can't solve inequality " +
-                        e.toMathJax() +
+                        e.toLatex() +
                         ' in general case as coefficient ' +
-                        coefficients[1].toMathJax() +
+                        coefficients[1].toLatex() +
                         ' has undefined sign',
                 );
             }
@@ -409,11 +409,11 @@ export function solveInequality(e: Inequality, x: Variable): Set {
                 } else {
                     throw new Error(
                         "Can't solve inequality " +
-                            e.toMathJax() +
+                            e.toLatex() +
                             ' as it has two incomparable zeros: ' +
-                            solutions[0].toMathJax() +
+                            solutions[0].toLatex() +
                             ' and ' +
-                            solutions[1].toMathJax(),
+                            solutions[1].toLatex(),
                     );
                 }
 

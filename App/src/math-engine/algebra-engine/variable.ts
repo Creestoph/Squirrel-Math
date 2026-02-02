@@ -14,11 +14,6 @@ export class Variable implements Expression {
         return this; //new Variable(this.name, this.index);
     }
 
-    toMathJax(): string {
-        const longIndex = ('' + this.index).length > 1;
-        return this.name + (this.index ? '_' + (longIndex ? '{' + this.index + '}' : this.index) : '');
-    }
-
     toLatex(): string {
         const longIndex = ('' + this.index).length > 1;
         return this.name + (this.index ? '_' + (longIndex ? '{' + this.index + '}' : this.index) : '');

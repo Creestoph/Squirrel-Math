@@ -15,16 +15,7 @@ export class Logarithm implements Expression {
     copy(): Logarithm {
         return new Logarithm(this.base.copy(), this.antilogarithm.copy());
     }
-
-    toMathJax(): string {
-        return (
-            (this.base == constantE ? '\\log' : '\\log_{' + this.base.toMathJax() + '}') +
-            (this.antilogarithm.precedence() <= this.precedence()
-                ? '\\left(' + this.antilogarithm.toMathJax() + '\\right)'
-                : '{' + this.antilogarithm.toMathJax() + '}')
-        );
-    }
-
+    
     toLatex(): string {
         return (
             (this.base == constantE ? '\\log' : '\\log_{' + this.base.toLatex() + '}') +

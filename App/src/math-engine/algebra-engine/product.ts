@@ -20,31 +20,6 @@ export class Product implements Expression {
         return Product.of(...this.factors.map((f) => f.copy()));
     }
 
-    toMathJax(): string {
-        const config = engineConfiguration.mathJax.alwaysDisplayMultiplicationSign;
-        let result = '';
-        this.factors.forEach((f, i) => {
-            const withBrackets = f.precedence() < this.precedence() || (i > 0 && f.isNegative());
-            if (
-                i > 0 &&
-                (config ||
-                    (!withBrackets &&
-                        (f instanceof Number || f instanceof Quotient) &&
-                        !this.factors[i - 1].identical(Integer.minusOne)))
-            ) {
-                result += ' \\cdot ';
-            }
-            if (i == 0 && this.factors.length > 1 && f.identical(Integer.minusOne) && !config) {
-                result += '-';
-            } else if (withBrackets) {
-                result += '\\left(' + f.toMathJax() + '\\right)';
-            } else {
-                result += f.toMathJax();
-            }
-        });
-        return result;
-    }
-
     toLatex(): string {
         const config = engineConfiguration.mathJax.alwaysDisplayMultiplicationSign;
         let result = '';

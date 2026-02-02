@@ -18,7 +18,7 @@ export class Polynomial extends Sum {
         super(monomials);
         this.monomials = monomials;
         const varByName: { [name: string]: Variable } = {};
-        this.monomials.forEach((m) => m.variables.forEach((v) => (varByName[v.toMathJax()] = v)));
+        this.monomials.forEach((m) => m.variables.forEach((v) => (varByName[v.toLatex()] = v)));
         this.variables = Object.values(varByName);
         this.order = order;
     }

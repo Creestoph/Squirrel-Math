@@ -23,15 +23,6 @@ export class Fraction extends N {
         return new Fraction(this.numerator.int, this.denominator.int);
     }
 
-    toMathJax(): string {
-        return (
-            (this.numerator.isNegative() ? '-' : '') +
-            (engineConfiguration.mathJax.displayFractionsHorizontal
-                ? this.numerator.absolute().toMathJax() + '/' + this.denominator.toMathJax()
-                : '\\frac{' + this.numerator.absolute().toMathJax() + '}{' + this.denominator.toMathJax() + '}')
-        );
-    }
-
     toLatex(): string {
         return (
             (this.numerator.isNegative() ? '-' : '') +

@@ -4,7 +4,6 @@ import { Variable } from './variable';
 abstract class Constant implements Expression {
     simplified = this;
 
-    abstract toMathJax(): string;
     abstract toLatex(): string; 
     abstract numeric(): number;
 
@@ -30,9 +29,6 @@ abstract class Constant implements Expression {
 }
 
 export const constantE = new (class extends Constant {
-    toMathJax(): string {
-        return 'e';
-    }
     toLatex(): string {
         return 'e';
     }
@@ -42,9 +38,6 @@ export const constantE = new (class extends Constant {
 })();
 
 export const constantPI = new (class extends Constant {
-    toMathJax(): string {
-        return '\\pi';
-    }
     toLatex(): string {
         return '\\pi';
     }

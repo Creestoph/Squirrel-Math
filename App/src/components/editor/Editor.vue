@@ -1045,7 +1045,7 @@ function exitListener(event: any) {
 }
 
 number {
-    font-family: 'STIXMathJax_Main';
+    font-family: var(--math-font-name);
     font-size: 120%;
 }
 

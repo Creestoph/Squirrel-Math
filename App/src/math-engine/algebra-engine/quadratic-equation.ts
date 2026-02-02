@@ -19,7 +19,7 @@ export class QuadraticEquation extends Equation {
     constructor(a: Expression, b: Expression, c: Expression, x: Variable) {
         super(Sum.of(Product.of(a, new Power(x, new Integer(2)), Product.of(b, x), c)), Integer.zero);
         if (equals(a, Integer.zero))
-            throw new Error('coefficient by x^2 is zero in quadratic equation ' + this.toMathJax());
+            throw new Error('coefficient by x^2 is zero in quadratic equation ' + this.toLatex());
         this.a = a;
         this.b = b;
         this.c = c;

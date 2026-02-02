@@ -16,18 +16,6 @@ export class Quotient implements Expression {
         return new Quotient(this.numerator.copy(), this.denominator.copy());
     }
 
-    toMathJax(): string {
-        return engineConfiguration.mathJax.displayFractionsHorizontal
-            ? (this.numerator.precedence() <= this.precedence()
-                  ? '\\left(' + this.numerator.toMathJax() + '\\right)'
-                  : this.numerator.toMathJax()) +
-                  '/' +
-                  (this.denominator.precedence() <= this.precedence()
-                      ? '\\left(' + this.denominator.toMathJax() + '\\right)'
-                      : this.denominator.toMathJax())
-            : '\\frac{' + this.numerator.toMathJax() + '}{' + this.denominator.toMathJax() + '}';
-    }
-
     toLatex(): string {
         return engineConfiguration.mathJax.displayFractionsHorizontal
             ? (this.numerator.precedence() <= this.precedence()

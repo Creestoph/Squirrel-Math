@@ -238,13 +238,13 @@ export function polynomialDivision(
     if (divident.variable != divider.variable) {
         throw new Error(
             "Can't divide univariate polynomials " +
-                divident.toMathJax() +
+                divident.toLatex() +
                 ' and ' +
-                divider.toMathJax() +
+                divider.toLatex() +
                 ' having different variables: ' +
-                divident.variable.toMathJax() +
+                divident.variable.toLatex() +
                 ', ' +
-                divider.variable.toMathJax(),
+                divider.variable.toLatex(),
         );
     }
     const x = divident.variable;

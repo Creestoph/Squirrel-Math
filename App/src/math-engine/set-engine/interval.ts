@@ -28,16 +28,6 @@ export class Interval implements Set {
         return new Interval(this.leftBound.copy(), this.rightBound.copy(), this.leftOpen, this.rightOpen);
     }
 
-    toMathJax(): string {
-        return (
-            (this.leftOpen ? '(' : '[') +
-            this.leftBound.toMathJax() +
-            ', ' +
-            this.rightBound.toMathJax() +
-            (this.rightOpen ? ')' : ']')
-        );
-    }
-
     toLatex(): string {
         return (
             (this.leftOpen ? '(' : '[') +

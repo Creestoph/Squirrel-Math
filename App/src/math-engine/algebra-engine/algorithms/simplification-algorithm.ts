@@ -196,7 +196,7 @@ function simplifyQuotient(e: Quotient): Expression {
 
     for (let i = 0; i < d.length; i++) {
         if (equals(d[i], Integer.zero)) {
-            throw new Error('Division by 0 in quotient ' + e.toMathJax());
+            throw new Error('Division by 0 in quotient ' + e.toLatex());
         }
     }
 
@@ -354,7 +354,7 @@ function simplifyPower(e: Power): Expression {
     if (simpleBase instanceof Integer && simpleExponent instanceof Fraction) {
         if (simpleBase.isNegative()) {
             if (simpleExponent.denominator.int % BigInt(2) == BigInt(0)) {
-                throw new Error("Can't raise negative number to fractional power: " + e.toMathJax());
+                throw new Error("Can't raise negative number to fractional power: " + e.toLatex());
             }
             const sqrt = simpleBase.opposite().powerDecimal(new Decimal(simpleExponent.numeric())).numeric();
             if (Math.floor(sqrt) == sqrt) {

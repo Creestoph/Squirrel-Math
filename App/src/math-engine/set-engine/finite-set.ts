@@ -21,10 +21,6 @@ export class FiniteSet implements Set {
         return new FiniteSet(...this.elements.map((e) => e.copy()));
     }
 
-    toMathJax() {
-        return '\\{' + this.elements.map((e) => e.toMathJax()).join(', ') + '\\}';
-    }
-
     toLatex() {
         return '\\{' + this.elements.map((e) => e.toLatex()).join(', ') + '\\}';
     }

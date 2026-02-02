@@ -16,9 +16,9 @@ export class Monomial extends Product {
         if (exponentVector.some((e) => e.isNegative())) {
             throw new Error(
                 "Can't create monomial from variables " +
-                    variables.map((v) => v.toMathJax()).join(', ') +
+                    variables.map((v) => v.toLatex()).join(', ') +
                     ' and exponents ' +
-                    exponentVector.map((v) => v.toMathJax()).join(', ') +
+                    exponentVector.map((v) => v.toLatex()).join(', ') +
                     ' becaouse the vector contains negative integer',
             );
         }
@@ -71,27 +71,6 @@ export class Monomial extends Product {
         if (result instanceof Product) {
             return Product.of(...result.factors);
         }
-        return result;
-    }
-
-    toMathJax(): string {
-        let result = '';
-        if (this.coefficient.identical(Integer.minusOne) && this.variables.length > 0) {
-            result += '-';
-        } else if (!(this.coefficient.identical(Integer.one) && this.variables.length > 0)) {
-            result +=
-                this.coefficient instanceof Sum
-                    ? '(' + this.coefficient.toMathJax() + ')'
-                    : this.coefficient.toMathJax();
-        }
-        this.exponentVector
-            .filter((e) => !e.identical(Integer.zero))
-            .forEach((f, i) => {
-                result += this.variables[i].toMathJax();
-                if (!f.identical(Integer.one)) {
-                    result += '^' + f.toMathJax();
-                }
-            });
         return result;
     }
 

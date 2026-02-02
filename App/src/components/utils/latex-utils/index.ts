@@ -1,5 +1,6 @@
 import katex from 'katex';
 
+
 export interface LatexRenderer {
     render(latex: string, displayMode?: boolean): string;
 }

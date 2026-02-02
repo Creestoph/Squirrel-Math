@@ -21,10 +21,6 @@ export class Equation implements AlgebraicNotion {
         return new Equation(this.left.copy(), this.right.copy());
     }
 
-    toMathJax(): string {
-        return this.left.toMathJax() + ' = ' + this.right.toMathJax();
-    }
-
     toLatex(): string {
         return this.left.toLatex() + ' = ' + this.right.toLatex();
     }

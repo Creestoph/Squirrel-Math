@@ -32,10 +32,6 @@ export class Decimal extends Number {
         return new Decimal(this.float);
     }
 
-    toMathJax(): string {
-        return '' + this.float;
-    }
-
     toLatex(): string {
         return '' + this.float;
     }

@@ -31,11 +31,7 @@ export class Integer extends N {
     copy(): Integer {
         return new Integer(this.int);
     }
-
-    toMathJax(): string {
-        return '' + this.int;
-    }
-
+    
     toLatex(): string {
         return '' + this.int;
     }

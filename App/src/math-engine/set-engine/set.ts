@@ -21,9 +21,6 @@ export abstract class Set {
         equals(other: Set): boolean {
             return other == Set.empty;
         },
-        toMathJax(): string {
-            return '\\emptyset';
-        },
         toLatex(): string {
             return '\\emptyset';
         },
@@ -35,6 +32,5 @@ export abstract class Set {
     abstract size(): Expression;
     abstract copy(): Set;
     abstract equals(other: Set): boolean;
-    abstract toMathJax(): string;
     abstract toLatex(): string;
 }

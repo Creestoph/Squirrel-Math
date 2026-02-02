@@ -138,7 +138,7 @@ export function parseExpression(text: string): Expression {
             position++;
         } else if (char == '_') {
             position++;
-            const index = nextToken().toMathJax();
+            const index = nextToken().toLatex();
             if (expectToken || !lastToken || !(lastToken instanceof Variable)) {
                 throw 'Wrong character _ ' + (position == 0 ? 'at the beginning' : 'after ' + text.substr(0, position));
             } else {

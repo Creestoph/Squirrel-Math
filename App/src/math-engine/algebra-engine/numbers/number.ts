@@ -6,7 +6,6 @@ import { Variable } from '../variable';
 export abstract class Number implements Expression {
     readonly simplified: Expression | null = null;
 
-    abstract toMathJax(): string;
     abstract toLatex(): string;
     abstract identical(other: Expression): boolean;
     abstract isNegative(): boolean;
