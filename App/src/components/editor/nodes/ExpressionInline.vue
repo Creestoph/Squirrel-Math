@@ -19,7 +19,6 @@
 </template>
 
 <script setup lang="ts">
-import { useLatexRenderer } from '@/components/utils/latex-utils';
 import { nodeViewProps, NodeViewWrapper } from '@tiptap/vue-3';
 import { computed, nextTick, onMounted, ref } from 'vue';
 

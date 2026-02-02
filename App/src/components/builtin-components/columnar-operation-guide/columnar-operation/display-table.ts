@@ -1,3 +1,5 @@
+import { useLatexRenderer } from "@/components/utils/latex-utils";
+
 type StyleCode = 'c' | 'u' | 'h' | 's' | 'r';
 
 class ColumnarOperationNode {
@@ -11,6 +13,7 @@ class ColumnarOperationNode {
 
     private value: string;
     private styleIds: StyleCode[] = [];
+    private latexRenderer = useLatexRenderer();
 
     constructor(str: string) {
         if (str.includes('/')) {
@@ -26,7 +29,7 @@ class ColumnarOperationNode {
 
     print() {
         const classStr = `class = "${this.styleIds.map((id) => this.styleDictionary[id]).join(' ')}"`;
-        return this.value ? `<td ${classStr}>$${this.value}$</td>` : `<td ${classStr}></td>`;
+        return this.value ? `<td ${classStr}>${this.latexRenderer.render(this.value)}</td>` : `<td ${classStr}></td>`;
     }
 }
 

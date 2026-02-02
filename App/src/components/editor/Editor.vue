@@ -473,7 +473,6 @@ import CustomBold from './marks/Bold';
 import CustomItalic from './marks/Italic';
 import CustomStrike from './marks/Strike';
 import CustomUnderline from './marks/Underline';
-import { transformAll } from './lessons-transform';
 import { getLessonTitle } from './tiptap-utils';
 import { SaveManager } from './SaveManager';
 

@@ -15,7 +15,7 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, Ref, ref } from 'vue';
+import { onMounted, ref } from 'vue';
 import { Variable } from '../../../math-engine/algebra-engine/variable';
 import { Integer, Fraction } from '../../../math-engine/algebra-engine/numbers';
 import { numericGCD } from '../../../math-engine/algebra-engine/algorithms/numeric-algorithms';
