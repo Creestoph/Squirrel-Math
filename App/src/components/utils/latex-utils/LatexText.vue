@@ -44,13 +44,13 @@ function doRender() {
 
         renderedHtml.value = parts.map(part => {
             if (part.type === 'text') {
-                return escapeHtml(part.data);
+                return part.data;
             } else {
                 try {
                     return render(part.data, part.display);
                 } catch (e) {
                     console.error('KaTeX render error:', e);
-                    return escapeHtml(part.rawData ?? part.data);
+                    return part.rawData ?? part.data;
                 }
             }
         }).join('');
