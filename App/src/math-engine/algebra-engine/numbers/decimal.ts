@@ -36,6 +36,10 @@ export class Decimal extends Number {
         return '' + this.float;
     }
 
+    toLatex(): string {
+        return '' + this.float;
+    }
+
     isNegative(): boolean {
         return this.float < 0;
     }

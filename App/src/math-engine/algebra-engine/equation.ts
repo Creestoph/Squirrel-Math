@@ -25,6 +25,10 @@ export class Equation implements AlgebraicNotion {
         return this.left.toMathJax() + ' = ' + this.right.toMathJax();
     }
 
+    toLatex(): string {
+        return this.left.toLatex() + ' = ' + this.right.toLatex();
+    }
+
     simplified(): Equation {
         let left = simplify(Sum.difference(this.left, this.right));
         if (left instanceof Quotient) left = left.numerator;

@@ -25,6 +25,15 @@ export class Logarithm implements Expression {
         );
     }
 
+    toLatex(): string {
+        return (
+            (this.base == constantE ? '\\log' : '\\log_{' + this.base.toLatex() + '}') +
+            (this.antilogarithm.precedence() <= this.precedence()
+                ? '\\left(' + this.antilogarithm.toLatex() + '\\right)'
+                : '{' + this.antilogarithm.toLatex() + '}')
+        );
+    }   
+
     isNegative(): boolean {
         return false;
     }

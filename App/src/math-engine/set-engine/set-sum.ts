@@ -19,6 +19,10 @@ export class SetSum implements Set {
         return this.addends.map((a) => a.toMathJax()).join('\\cup');
     }
 
+    toLatex(): string {
+        return this.addends.map((a) => a.toLatex()).join('\\cup');
+    }
+
     includes(e: Expression): boolean {
         return this.addends.some((a) => a.includes(e));
     }

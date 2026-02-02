@@ -10,6 +10,9 @@ export abstract class Infty extends N {
         toMathJax() {
             return '\\infty';
         }
+        toLatex(): string {
+            return '\\infty';
+        }
         isNegative() {
             return false;
         }
@@ -59,6 +62,9 @@ export abstract class Infty extends N {
 
     static negative: Infty = new (class extends Infty {
         toMathJax() {
+            return '-\\infty';
+        }
+        toLatex(): string {
             return '-\\infty';
         }
         isNegative() {

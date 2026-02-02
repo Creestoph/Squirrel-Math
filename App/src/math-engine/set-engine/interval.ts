@@ -38,6 +38,16 @@ export class Interval implements Set {
         );
     }
 
+    toLatex(): string {
+        return (
+            (this.leftOpen ? '(' : '[') +
+            this.leftBound.toLatex() +
+            ', ' +
+            this.rightBound.toLatex() +
+            (this.rightOpen ? ')' : ']')
+        );
+    }
+
     includes(e: Expression): boolean {
         return (
             isInequalityIdentity(

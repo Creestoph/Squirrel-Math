@@ -44,6 +44,12 @@ ol {
     }
 }
 
+math {
+    font-family: 'STIXMathJax_Main-italic';
+    font-size: 125%;
+    font-weight: 400;
+}
+
 @media screen and (max-width: 700px) {
     ul,
     ol {

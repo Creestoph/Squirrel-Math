@@ -28,6 +28,18 @@ export class Quotient implements Expression {
             : '\\frac{' + this.numerator.toMathJax() + '}{' + this.denominator.toMathJax() + '}';
     }
 
+    toLatex(): string {
+        return engineConfiguration.mathJax.displayFractionsHorizontal
+            ? (this.numerator.precedence() <= this.precedence()
+                    ? '\\left(' + this.numerator.toLatex() + '\\right)'
+                    : this.numerator.toLatex()) +
+                  '/' +
+                  (this.denominator.precedence() <= this.precedence()
+                        ? '\\left(' + this.denominator.toLatex() + '\\right)'
+                        : this.denominator.toLatex())
+            : '\\frac{' + this.numerator.toLatex() + '}{' + this.denominator.toLatex() + '}';
+    }
+
     isNegative(): boolean {
         return false;
     }

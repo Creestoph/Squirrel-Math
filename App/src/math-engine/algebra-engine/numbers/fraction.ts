@@ -32,6 +32,15 @@ export class Fraction extends N {
         );
     }
 
+    toLatex(): string {
+        return (
+            (this.numerator.isNegative() ? '-' : '') +
+            (engineConfiguration.mathJax.displayFractionsHorizontal
+                ? this.numerator.absolute().toLatex() + '/' + this.denominator.toLatex()
+                : '\\frac{' + this.numerator.absolute().toLatex() + '}{' + this.denominator.toLatex() + '}')
+        );
+    }
+
     isNegative(): boolean {
         return this.numerator.isNegative();
     }

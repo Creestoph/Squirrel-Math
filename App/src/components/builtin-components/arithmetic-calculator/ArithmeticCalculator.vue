@@ -1,13 +1,16 @@
 <template>
     <step-by-step :generateSteps="generateSteps">
         <template #default="{ stepData }">
-            <p class="math no-selection">{{ stepData.mathJax ? '$$' + stepData.mathJax + '$$' : '' }}</p>
+            <p class="math no-selection">
+                <latex-render :latex="stepData.mathJax ?? ''" :displayMode="!!stepData.mathJax" />
+            </p>
             <p class="comment no-selection" v-html="stepData.comment"></p>
         </template>
     </step-by-step>
 </template>
 
 <script setup lang="ts">
+import LatexRender from '@/components/utils/latex-utils/LatexRender.vue';
 import { ArithmeticCalculatorLogic } from './arithmetic-calculator-logic';
 import StepByStep from '@/components/utils/StepByStep.vue';
 
