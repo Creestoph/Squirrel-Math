@@ -22,7 +22,7 @@ function onSimplify() {
         if (simplified.length > 10000) {
             latex.value = 'To wyrażenie jest okropnie długie po uproszczeniu. Chyba nie potrzebujesz aż tak potężnych obliczeń.';
         } else {
-            latex.value = `$$${expression.toLatex()} = ${simplified}$$`;
+            latex.value = `${expression.toLatex()} = ${simplified}`;
         }
     } catch (exception: any) {
         latex.value = exception;

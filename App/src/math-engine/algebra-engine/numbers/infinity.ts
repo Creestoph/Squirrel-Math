@@ -114,7 +114,7 @@ export abstract class Infty extends N {
         }
     })();
 
-    identical(other: Expression) {
+    identical(other: Expression): boolean {
         return other == this;
     }
     powerInteger(n: Integer): N {

@@ -4,6 +4,7 @@ import router from '@/router';
 import Comment from '@/components/lesson/Comment.vue';
 import Icon from '@/components/Icon.vue';
 import './style/reset.scss';
+import 'katex/dist/katex.min.css';
 
 const app = createApp(App);
 

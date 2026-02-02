@@ -1,6 +1,27 @@
 @use '@/style/colors';
 @use '@/style/fonts';
 
+// KaTeX styling
+.katex {
+    font-size: 1.16em;
+    white-space: normal !important;
+    word-wrap: break-word;
+
+    .mspace.newline {
+        height: 0.5em;
+    }
+
+    .katex-html {
+        white-space: normal !important;
+
+        .base {
+            display: inline;
+        }
+    }
+
+}
+
+
 body {
     line-height: 1.5; // ? not sure about this one
     font-family: fonts.$main-font;
@@ -44,11 +65,6 @@ ol {
     }
 }
 
-math {
-    font-family: 'STIXMathJax_Main-italic';
-    font-size: 125%;
-    font-weight: 400;
-}
 
 @media screen and (max-width: 700px) {
     ul,
