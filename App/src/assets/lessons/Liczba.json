@@ -39284,7 +39284,7 @@
                                     {
                                         "type": "expressionInline",
                                         "attrs": {
-                                            "mathJax": "12\\color{#dd3333}{1}, 434\\color{#dd3333}{0}"
+                                            "mathJax": "12\\textcolor{#dd3333}{1}, 434\\textcolor{#dd3333}{0}"
                                         }
                                     },
                                     {
@@ -39310,7 +39310,7 @@
                                     {
                                         "type": "expressionInline",
                                         "attrs": {
-                                            "mathJax": "1\\color{#dd3333}{2}1, 43\\color{#dd3333}{4}0"
+                                            "mathJax": "1\\textcolor{#dd3333}{2}1, 43\\textcolor{#dd3333}{4}0"
                                         }
                                     },
                                     {
@@ -39336,7 +39336,7 @@
                                     {
                                         "type": "expressionInline",
                                         "attrs": {
-                                            "mathJax": "\\color{#dd3333}{1}21, 4\\color{#dd3333}{3}40"
+                                            "mathJax": "\\textcolor{#dd3333}{1}21, 4\\textcolor{#dd3333}{3}40"
                                         }
                                     },
                                     {
@@ -39362,7 +39362,7 @@
                                     {
                                         "type": "expressionInline",
                                         "attrs": {
-                                            "mathJax": "\\color{#dd3333}{4}340"
+                                            "mathJax": "\\textcolor{#dd3333}{4}340"
                                         }
                                     },
                                     {

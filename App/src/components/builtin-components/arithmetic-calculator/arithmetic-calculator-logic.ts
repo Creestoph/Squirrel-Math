@@ -459,7 +459,7 @@ export class ArithmeticCalculatorLogic {
     }
 
     private colored(input: string): string {
-        return `\\color{#dd3333}{${input}}`;
+        return `\\textcolor{#dd3333}{${input}}`;
     }
 
     private linkTo(lessonName: string): string {

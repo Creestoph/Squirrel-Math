@@ -5,6 +5,7 @@ import { useLatexRenderer } from '.';
 const props = defineProps<{
     latex: string;
     displayMode?: boolean;
+    debug?: boolean;
 }>();
 
 const { render } = useLatexRenderer();
@@ -73,6 +74,9 @@ watch(() => props.latex, () => {
 </script>
 
 <template>
-    <div v-if="displayMode" ref="containerRef" class="katex-display" v-html="renderedHtml || latex"></div>
-    <span v-else ref="containerRef" v-html="renderedHtml || latex"></span>
+    <span>
+        <div v-if="displayMode" ref="containerRef" class="katex-display" v-html="renderedHtml || latex"></div>
+        <span v-else ref="containerRef" v-html="renderedHtml || latex"></span>
+        <span v-if="debug">{{ latex }}</span>
+    </span>
 </template>
