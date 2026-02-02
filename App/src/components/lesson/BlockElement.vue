@@ -11,9 +11,10 @@
         :attrs="attrs"
         :style="{ color: attrs.color }"
     >
-        <template v-if="text">{{
-            marks?.some((m) => m.type == 'number') ? '$' + text.replaceAll('%', '\\%') + '$' : text
-        }}</template>
+        <template v-if="text">
+            <latex-text v-if="marks?.some((m) => m.type == 'number')" :text="'$' + text.replaceAll('%', '\\%') + '$'"></latex-text>
+            <template v-else>{{ text }} </template>
+        </template>
         <block-element v-for="(block, i) in children" :key="i" :content="block"></block-element>
     </component>
 </template>
@@ -43,6 +44,7 @@ import BuiltInComponent from './BuiltInComponent.vue';
 import CustomComponent from './CustomComponent.vue';
 import Paragraph from './Paragraph.vue';
 import { MarkData, NodeData, NodeType } from '../../models/lesson';
+import LatexText from '../utils/latex-utils/LatexText.vue';
 
 const props = defineProps<{ content: NodeData }>();
 let type: NodeType;
