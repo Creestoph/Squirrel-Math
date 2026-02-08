@@ -1,12 +1,6 @@
 <template>
     <node-view-wrapper>
-        <button
-            ref="geometryEditor"
-            class="geometry-editor"
-            @focus="focused = true"
-            @blur="onBlur($event)"
-            contenteditable="false"
-        >
+        <button ref="geometryEditor" class="geometry-editor" @focus="focused = true">
             <div v-if="focused" class="geometry-toolbar-wrapper">
                 <div class="geometry-toolbar" contenteditable="false">
                     <button @mousedown="addSquare($event)">
@@ -105,11 +99,7 @@
             </div>
             <div class="canvas-wrapper" ref="canvasWrapper">
                 <canvas ref="eventsCatcher" resize="true"></canvas>
-                <node-view-content
-                    contenteditable="true"
-                    @mousedown="forwardClickEventToCanvas($event)"
-                    class="shapes-container"
-                />
+                <node-view-content class="shapes-container" />
                 <canvas ref="overlayCanvas" class="overlay-canvas"></canvas>
             </div>
         </button>
@@ -148,7 +138,6 @@ let copiedNodes: PMNode[] | null = null;
 let selectionBox: paper.Shape.Rectangle | null = null;
 let selectionBoxAnchor: paper.Point | null = null;
 let resizeObserver: ResizeObserver = null!;
-let lastTextAreaClickEvent: MouseEvent | null = null;
 let snapper: Snapper = null!;
 let saveTimeout: number | null = null;
 let resizeSaveTimeout: number | null = null;
@@ -287,6 +276,7 @@ onMounted(() => {
     (resizeObserver = new ResizeObserver(handleResize)).observe(eventsCatcher.value);
 
     props.editor.on('textAreaDelete' as any, () => deleteSelected(true));
+    props.editor.on('selectionUpdate', onSelectionUpdate);
 });
 
 onUnmounted(() => {
@@ -486,7 +476,7 @@ function handleKeyDown(event: paper.KeyEvent) {
         } else if (event.key == 'right' && !anyTextAreaSelected) {
             selection.value.forEach((i) => shapeAtIndex(i)!.move(new paper.Point(1, 0)));
         } else if (event.key == 'escape') {
-            onBlur();
+            deselectAll();
         } else if (event.key == 'c' && event.modifiers.control) {
             copySelected();
         } else if (event.key == 'x' && event.modifiers.control) {
@@ -545,8 +535,8 @@ function deleteSelected(force = false) {
             elementBegin + shape.getNode().nodeSize - 1,
         );
         props.editor.view.dispatch(transaction);
+        handleResize(); // some components might be re-rendered and need to have canvas size reassigned
     }
-    handleResize(); // some components might be re-rendered and need to have canvas size reassigned
     selection.value = selectedShapeIds.map((s) => props.node.children.findIndex((c) => c.attrs.id === s));
 }
 
@@ -678,6 +668,7 @@ function addTextArea(event: MouseEvent) {
     );
 
     addShape(event);
+    toggleEdit();
 }
 
 function onMoveToBottom() {
@@ -727,7 +718,20 @@ function toggleEdit() {
         | TextAreaShapeController;
     shape.editing.value = !shape.editing.value;
     shapeEdited.value = shape.editing.value ? selection.value[0] : -1;
-    props.editor.commands.focus();
+
+    if (shape.editing.value) {
+        let pos = shape.getPos()! + 1;
+        shape
+            .getNode()
+            .descendants(
+                (child, offset) => void (pos = child.isTextblock ? shape.getPos()! + offset + child.nodeSize : pos),
+            );
+
+        props.editor.commands.setTextSelection(pos);
+        props.editor.commands.focus();
+    } else {
+        props.editor.commands.blur();
+    }
 }
 
 function selectedRectangle() {
@@ -840,30 +844,21 @@ function save() {
     handleResize();
 }
 
-function onBlur(event?: FocusEvent) {
-    if (!event) {
-        deselectAll();
-    } else if (
-        shapeEdited.value == -1 &&
-        event.relatedTarget instanceof Node &&
-        !geometryEditor.value.contains(event.relatedTarget) &&
-        (!lastTextAreaClickEvent || event.timeStamp > lastTextAreaClickEvent.timeStamp + 10)
-    ) {
-        deselectAll();
-        focused.value = false;
-    }
-    // delay attrs update to avoid collisions with prosemirror selection update
-    clearTimeout(saveTimeout ?? undefined);
-    saveTimeout = setTimeout(() => save(), 100);
-}
+function onSelectionUpdate() {
+    const { from } = props.editor.state.selection;
 
-function forwardClickEventToCanvas(event: MouseEvent) {
-    const copiedEvent = new MouseEvent('mousedown', {
-        clientX: event.pageX,
-        clientY: event.pageY,
-    });
-    eventsCatcher.value.dispatchEvent(copiedEvent);
-    lastTextAreaClickEvent = event;
+    const nodeStart = props.getPos()!;
+    const nodeEnd = nodeStart + props.node.nodeSize;
+    const selectionInsideCanvas = from > nodeStart && from < nodeEnd;
+
+    if (!selectionInsideCanvas && focused.value) {
+        deselectAll();
+        // delay attrs update to avoid collisions with prosemirror selection update
+        clearTimeout(saveTimeout ?? undefined);
+        saveTimeout = setTimeout(() => save(), 100);
+    }
+
+    focused.value = selectionInsideCanvas;
 }
 </script>
 
