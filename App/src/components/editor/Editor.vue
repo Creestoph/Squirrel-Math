@@ -1129,6 +1129,7 @@ a[lesson-url] {
 
     > tbody > tr > td {
         padding: 0 2px;
+        width: 26px;
         position: relative;
         border-style: solid;
         &.selectedCell {

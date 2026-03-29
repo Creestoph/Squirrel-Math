@@ -111,6 +111,10 @@ function addEventHandlers() {
     };
 
     mypaper.tool.onMouseMove = (event: paper.ToolEvent) => {
+        if ((event as any).event.target !== canvas.value) {
+            return;
+        }
+
         const hitResult = mypaper.project!.hitTest(event.point!, hitOptions);
         hoveredStair = null;
         if (!hitResult || hitResult.type != 'fill') {

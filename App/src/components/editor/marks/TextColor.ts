@@ -25,9 +25,9 @@ export default Mark.create({
     parseHTML: () => [
         {
             tag: 'span[style^="color"]',
-            getAttrs: (dom: any) => {
+            getAttrs: (dom) => {
                 const color = dom.style.color;
-                const colorHex = color.substr(0, 3) == 'rgb' ? rgbToHex(color) : color;
+                const colorHex = color.substring(0, 3) == 'rgb' ? rgbToHex(color) : color;
                 const candidates = colors.map((hex) => [hex, colorsDifference(hex, colorHex)]) as [string, number][];
                 candidates.sort(([_1, d1], [_2, d2]) => d1 - d2);
                 return { color: candidates[0][1] < 50 ? candidates[0][0] : 'black' };
