@@ -27,6 +27,9 @@ export default Mark.create({
             tag: 'span[style^="color"]',
             getAttrs: (dom) => {
                 const color = dom.style.color;
+                if (!color.startsWith('rgb') && !color.startsWith('#')) {
+                    return false;
+                }
                 const colorHex = color.substring(0, 3) == 'rgb' ? rgbToHex(color) : color;
                 const candidates = colors.map((hex) => [hex, colorsDifference(hex, colorHex)]) as [string, number][];
                 candidates.sort(([_1, d1], [_2, d2]) => d1 - d2);

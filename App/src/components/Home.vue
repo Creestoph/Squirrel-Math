@@ -90,6 +90,24 @@
 
             <img style="display: block; margin: auto" src="@/assets/global-images/squirrel.png" width="60%" />
         </lesson-chapter>
+
+        <lesson-chapter>
+            <template #title>Kontrybucja</template>
+            <p>
+                Wszelka forma pomocy w rozwijaniu treści portalu jest mile widziana, włącznie z użyciem
+                <router-link class="link" target="_blank" :to="'/editor'">edytora</router-link>, za pomocą którego można
+                modyfikować treści istniejących lekcji lub tworzyć nowe. Wygenerowane pliki w formacie .json można
+                śmiało podrzucać na naszego maila.
+            </p>
+
+            <p>
+                Tworząc treści lekcji, zalecamy trzymać się reguł spisanych tutaj:
+                <ul>
+                    <li><router-link class="link" target="_blank" :to="'/conventions'">Reguły redaktorskie</router-link></li>
+                </ul>
+                Dzięki temu zachowamy spójność i estetykę całego podręcznika.
+            </p>
+        </lesson-chapter>
     </lesson>
 </template>
 

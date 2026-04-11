@@ -80,14 +80,10 @@ table {
     border-collapse: collapse;
 }
 
-input {
+input,
+textarea {
     outline: none;
     font-family: inherit;
-}
-
-textarea {
-    font-family: inherit;
-    font-size: inherit;
 }
 
 ::selection {
@@ -156,12 +152,12 @@ a.link {
     }
 }
 
-input.with-highlight {
+input.with-highlight,
+textarea.with-highlight {
     border-radius: 7px;
     border: 1px solid colors.$darker-gray;
     padding-left: 6px;
     padding-right: 6px;
-    height: 25px;
 
     &:focus {
         border-color: colors.$darker-creamy;
@@ -173,6 +169,9 @@ input.with-highlight {
     &::placeholder {
         color: colors.$dark-gray;
     }
+}
+input.with-highlight {
+    height: 25px;
 }
 
 code {
