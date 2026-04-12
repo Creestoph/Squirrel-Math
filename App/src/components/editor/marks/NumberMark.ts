@@ -14,14 +14,12 @@ export default Mark.create({
         return [
             new InputRule({
                 find: new RegExp(`(${CHAR_CLASS})$`),
-                handler: ({ range }) => {
+                handler: ({ range }) =>
                     queueMicrotask(() => {
                         const { state, view } = this.editor;
                         const tr = state.tr.addMark(range.from, range.to + 1, this.type.create());
                         view.dispatch(tr);
-                    });
-                    return;
-                },
+                    }),
             }),
         ];
     },

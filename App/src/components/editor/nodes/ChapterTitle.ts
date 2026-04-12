@@ -97,10 +97,60 @@ export default Node.create({
             return true;
         };
 
+        const handleBackspaceInEmptyTitle = ({ editor }: { editor: Editor }) => {
+            const { state, view } = editor;
+            const { $from } = state.selection;
+
+            if (
+                $from.parent.type.name !== this.name ||
+                $from.parent.textContent.length !== 0 ||
+                $from.parentOffset !== 0
+            ) {
+                return false;
+            }
+
+            let chapterDepth = -1;
+            for (let d = $from.depth; d > 0; d--) {
+                if ($from.node(d).type.name === 'chapter') {
+                    chapterDepth = d;
+                    break;
+                }
+            }
+
+            const chapter = $from.node(chapterDepth);
+            const chapterPos = $from.before(chapterDepth);
+            const chapterBody = chapter.child(1);
+            const chapterBodyEmpty =
+                chapterBody.children.every((c) => c.type.name === 'paragraph' || c.type.name === 'semanticTag') &&
+                !chapterBody.textContent.trim();
+            const $beforeChapter = state.doc.resolve(chapterPos);
+            const nodeBeforeChapter = $beforeChapter.nodeBefore!;
+
+            if (chapterBodyEmpty) {
+                const tr = state.tr.delete(chapterPos, chapterPos + chapter.nodeSize);
+                view.dispatch(tr);
+                return true;
+            } else if (nodeBeforeChapter.type.name !== 'title') {
+                const insertPos = chapterPos + (nodeBeforeChapter.type.name === 'intro' ? -1 : -2);
+                const tr = state.tr;
+                let offset = 0;
+                chapterBody.forEach((node) => {
+                    tr.insert(insertPos + offset, node.copy(node.content));
+                    offset += node.nodeSize;
+                });
+                tr.delete(tr.mapping.map(chapterPos), tr.mapping.map(chapterPos + chapter.nodeSize));
+                view.dispatch(tr);
+                return true;
+            } else {
+                return false;
+            }
+        };
+
         return {
             ArrowDown: moveToChapterBody,
             ArrowUp: moveAboveChapterTitle,
             Enter: enterAtStartCreatesParagraphAbove,
+            Backspace: handleBackspaceInEmptyTitle,
         };
     },
 

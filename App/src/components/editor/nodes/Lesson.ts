@@ -1,5 +1,13 @@
 import Document from '@tiptap/extension-document';
 
 export default Document.extend({
-    content: 'title intro chapter*',
+    addOptions() {
+        return {
+            shortVersion: false,
+        };
+    },
+
+    content() {
+        return this.options.shortVersion ? 'title chapter*' : 'title intro chapter*';
+    },
 });

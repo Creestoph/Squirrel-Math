@@ -12,7 +12,8 @@
             <ul>
                 <li>
                     Italika może być stosowana tylko do wprowadzania nowych pojęć, nie wolno jej używać w innych
-                    przypadkach.
+                    przypadkach. Jeśli nowe pojecie zostało użyte w tytule lekci lub rozdziału, wciąż powinno być
+                    oznaczone italiką przy pierwszym wystąpieniu w tekście.
                 </li>
                 <li>Wytłuszczenie może być stosowane do zwiększenia siły pewnego wyrazu, położenia akcentu.</li>
                 <li>

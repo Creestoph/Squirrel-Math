@@ -570,7 +570,7 @@ function createEditor(shortVersion: boolean) {
             TableBorders,
 
             // custom extensions
-            LessonDoc,
+            LessonDoc.configure({ shortVersion }),
             Title.configure({ shortVersion }),
             Intro,
             Chapter,

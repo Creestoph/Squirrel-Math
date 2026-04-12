@@ -112,7 +112,7 @@ import LessonIntro from './LessonIntro.vue';
 import LessonVersionButton from './LessonVersionButton.vue';
 import LessonChapter from './chapter/LessonChapter.vue';
 import BlockElement from './BlockElement.vue';
-import { LessonData, NodeData, NodeType } from '@/models/lesson';
+import { LessonData, LessonVersionData, NodeData, NodeType } from '@/models/lesson';
 import { allComments, lessonImages } from '../editor/shared-state';
 import { useLessonExpandedInfo } from '../utils/menu-bus';
 import { deepClone } from '@/utils/utils';
@@ -131,8 +131,8 @@ const shortMode = ref(false);
 const expandButtonContent = ref('<');
 const expandButtonPosition = ref<number>(undefined!);
 
-const long = ref<LessonElements>() as Ref<LessonElements>;
-const short = ref<LessonElements>() as Ref<LessonElements>;
+const long = ref<LessonElements>(emptyElements()) as Ref<LessonElements>;
+const short = ref<LessonElements>(emptyElements()) as Ref<LessonElements>;
 
 const content = computed(() => proxy.$route.params.sourceFile || props.inputContent);
 
@@ -150,8 +150,6 @@ watch(
     () => setTimeout(() => (expandButtonContent.value = isLessonPanelExpanded.value ? '<' : '>'), 1000),
 );
 
-clearElements();
-
 onMounted(() => loadLesson());
 
 onUnmounted(() => window.removeEventListener('scroll', moveExpandButton));
@@ -163,20 +161,13 @@ function loadLesson() {
 }
 
 function setContent() {
-    clearElements();
+    long.value = emptyElements();
+    short.value = emptyElements();
     if (content.value) {
         import(`@/assets/lessons/${content.value}`).then((loadedJson: LessonData) => {
             const json = deepClone(loadedJson);
-            if (json.long) {
-                long.value.title = json.long.content[0].content![0] as { type: NodeType; text: string };
-                long.value.introElements = json.long.content[1].content!;
-                long.value.chapters = json.long.content.filter((_item, i) => i > 1).map((item) => item.content!);
-            }
-            if (json.short) {
-                short.value.title = json.short.content[0].content![0] as { type: NodeType; text: string };
-                short.value.introElements = json.short.content[1].content!;
-                short.value.chapters = json.short.content.filter((_item, i) => i > 1).map((item) => item.content!);
-            }
+            long.value = jsonToElements(json.long);
+            short.value = jsonToElements(json.short);
             allComments.value = json.comments || {};
             lessonImages.value = json.images || {};
             nextTick(() => MathJax.Hub.Queue(['Typeset', MathJax.Hub]));
@@ -184,6 +175,16 @@ function setContent() {
     } else {
         MathJax.Hub.Queue(['Typeset', MathJax.Hub]);
     }
+}
+
+function jsonToElements(json: LessonVersionData | undefined): LessonElements {
+    if (!json) {
+        return emptyElements();
+    }
+    const title = json.content.find((item) => item.type === 'title')!.content![0] as { type: NodeType; text: string };
+    const introElements = json.content.find((item) => item.type === 'intro')?.content! || [];
+    const chapters = json.content.filter((item) => item.type === 'chapter').map((item) => item.content!);
+    return { title, introElements, chapters };
 }
 
 function moveExpandButton() {
@@ -195,13 +196,8 @@ function toggleMode() {
     nextTick(() => MathJax.Hub.Queue(['Typeset', MathJax.Hub]));
 }
 
-function clearElements() {
-    long.value = {
-        title: { type: 'text', text: '' },
-        introElements: [],
-        chapters: [],
-    };
-    short.value = {
+function emptyElements(): LessonElements {
+    return {
         title: { type: 'text', text: '' },
         introElements: [],
         chapters: [],
