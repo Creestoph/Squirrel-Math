@@ -506,7 +506,7 @@ createEditor(false);
 
 onMounted(() => {
     clearAll();
-    loadContent();
+    loadLessonFromUrl();
     createAutoSave();
     addEventListener('beforeunload', exitListener);
     addEventListener('keydown', onQuickSave);
@@ -637,15 +637,15 @@ function createEditor(shortVersion: boolean) {
     editor.value.on('update', () => saveManager.setIsDirty(true));
 }
 
-function loadContent() {
+function loadLessonFromUrl() {
     const sourceFile = route.params.editSourceFile;
     if (sourceFile) {
         import(`@/assets/lessons/${sourceFile}`).then((file: LessonData) => {
             lessonData.short = file.short || null;
             lessonData.long = file.long || null;
             saveManager.loadFromJSON(file);
-            saveManager.makeNewFile(getLessonTitle(editor.value));
             editor.value.commands.setContent(currentModeData());
+            saveManager.makeNewFile(getLessonTitle(editor.value));
             saveManager.setIsDirty(false);
         });
     }

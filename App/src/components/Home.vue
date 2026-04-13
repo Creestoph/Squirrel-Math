@@ -100,13 +100,13 @@
                 śmiało podrzucać na naszego maila.
             </p>
 
-            <p>
-                Tworząc treści lekcji, zalecamy trzymać się reguł spisanych tutaj:
-                <ul>
-                    <li><router-link class="link" target="_blank" :to="'/conventions'">Reguły redaktorskie</router-link></li>
-                </ul>
-                Dzięki temu zachowamy spójność i estetykę całego podręcznika.
-            </p>
+            <p>Tworząc treści lekcji, zalecamy trzymać się reguł spisanych tutaj:</p>
+            <ul>
+                <li>
+                    <router-link class="link" target="_blank" :to="'/conventions'">Reguły redaktorskie</router-link>
+                </li>
+            </ul>
+            <p>Dzięki temu zachowamy spójność i estetykę całego podręcznika.</p>
         </lesson-chapter>
     </lesson>
 </template>

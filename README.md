@@ -12,7 +12,7 @@ npm run serve
 ## Deploy
 
 ```
-npm install -g firebase-tools
+npm i -g firebase-tools
 ./deploy.ps1
 ```
 

@@ -95,7 +95,7 @@
                         </a>
                     </h1>
                     Strona jest nadal w trakcie rozwoju. <br />
-                    Jeśli podoba Ci się inicjatywa i chciałbyś wesprzeć proces tworzenia Squirrel-Math, masz
+                    Jeśli podoba ci się inicjatywa i chciałbyś wesprzeć proces tworzenia Squirrel-Math, masz
                     jakiekolwiek pytania lub sugestie - ślij do nas maila. <br />
                     Jesteśmy otwarci na każdą pomoc.
                 </div>

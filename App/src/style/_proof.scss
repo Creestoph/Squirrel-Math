@@ -1,26 +1,28 @@
 @use '@/style/colors';
+@use '@/style/fonts';
 
 .proof-sticker {
     position: absolute;
     display: inline-block;
-    padding: 5px;
+    padding: 0 10px;
+    height: 31px;
+    line-height: 31px;
     margin: 0px;
     top: 0;
     left: -1px;
     color: white;
     background-color: colors.$darker-gray;
     transition: background-color 0.1s;
-    box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.4);
+    font-size: 0.9em;
+    font-family: fonts.$secondary-font;
 }
 
 .proof {
     display: block;
     position: relative;
-    padding: 40px 10px 10px 10px;
-    border: 1px solid colors.$darker-gray;
-    border-top: 1px solid colors.$gray;
-    border-bottom: 1px solid colors.$gray;
-    background: white;
+    padding: 31px;
+    border: 1px solid colors.$gray;
+    background: colors.$light-gray;
 
     .warning {
         font-family: arial;
