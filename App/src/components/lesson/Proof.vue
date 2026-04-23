@@ -14,4 +14,8 @@ defineProps<{ attrs: { label: string; required: string[] } }>();
 
 <style scoped lang="scss">
 @use '@/style/proof';
+
+.proof-sticker {
+    position: absolute;
+}
 </style>

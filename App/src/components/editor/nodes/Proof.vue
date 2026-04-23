@@ -1,42 +1,33 @@
 <template>
     <node-view-wrapper class="proof">
-        <div class="wrapper">
-            <div class="dropdown">
-                <div class="proof-sticker">{{ label }}</div>
-                <div class="dropdown-list">
-                    <div
-                        class="dropdown-position"
-                        v-for="(option, i) in availableOptions"
-                        :key="i"
-                        @click="chooseLabel(option)"
-                    >
-                        {{ option }}
-                    </div>
-                </div>
-            </div>
+        <div class="wrappper">
+            <dropdown showOnHover>
+                <template v-slot:placeholder>
+                    <div class="proof-sticker">{{ label }}</div>
+                </template>
+                <dropdown-option v-for="(option, i) in availableOptions" :key="i" @click="chooseLabel(option)">
+                    {{ option }}
+                </dropdown-option>
+            </dropdown>
 
             <span :class="required.length == 0 ? 'required-optional' : 'required-strong'">Wymagane:</span>
-            <div
-                class="required dropdown"
+            <dropdown
+                class="required"
                 v-for="(required, j) in required"
+                showOnHover
                 :key="'required' + j"
                 @mouseenter="updateAvailableLessons(j)"
             >
-                <div class="required-label">
-                    {{ required }}
-                    <span @click="removeRequired(j)" class="cross">⨯</span>
-                </div>
-                <div class="dropdown-list">
-                    <div
-                        class="dropdown-position"
-                        v-for="(lesson, i) in availableLessons"
-                        :key="i"
-                        @click="chooseLesson(j, lesson)"
-                    >
-                        {{ lesson }}
+                <template v-slot:placeholder>
+                    <div class="required-label">
+                        {{ required }}
+                        <span @click="removeRequired(j)" class="cross">⨯</span>
                     </div>
-                </div>
-            </div>
+                </template>
+                <dropdown-option v-for="(lesson, i) in availableLessons" :key="i" @click="chooseLesson(j, lesson)">
+                    {{ lesson }}
+                </dropdown-option>
+            </dropdown>
             <span class="add-required-button" v-if="canAddNewRequired()" @click="addRequiredLesson()">+</span>
         </div>
         <node-view-content />
@@ -47,6 +38,8 @@
 import { lessonTree } from '@/utils/lesson-tree';
 import { NodeViewContent, nodeViewProps, NodeViewWrapper } from '@tiptap/vue-3';
 import { computed, ref } from 'vue';
+import Dropdown from '../Dropdown.vue';
+import DropdownOption from '../DropdownOption.vue';
 
 const props = defineProps(nodeViewProps);
 
@@ -121,96 +114,60 @@ function updateAvailableLessons(position: number) {
 @use '@/style/fonts';
 @use '@/style/proof';
 
-.wrapper {
-    padding-right: 100px;
-    margin-left: -10px;
-
-    > * {
-        float: left;
-        margin-bottom: 5px;
-    }
-
-    &::after {
-        //clearfix
-        content: '';
-        clear: both;
-        display: table;
-    }
-}
-
 .proof {
     padding-top: 0;
 }
 
-.proof-sticker {
-    position: static;
-    line-height: 30px;
-    outline: none;
-    margin: 0;
+.wrappper {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-left: -31px;
 }
 
-.cross {
-    display: none;
-    float: right;
-    font-size: 2em;
-    line-height: 1.3em;
-    cursor: pointer;
-    .wrapper:hover & {
+.wrappper:hover {
+    z-index: 2;
+    .cross {
         display: block;
     }
-}
-
-.wrapper:hover {
-    z-index: 2;
     .proof-sticker {
-        width: 100px;
+        width: 85px;
+    }
+    .required-label {
+        min-width: 50px;
+    }
+    .add-tag-button,
+    .required-optional,
+    .add-required-button {
+        display: inline-block;
     }
 }
 
-.dropdown {
-    max-width: 120px;
-    margin-right: 5px;
-}
-
-.dropdown-list {
-    position: absolute;
-    display: none;
-    z-index: 2;
-    background: colors.$light-gray;
-    max-height: 300px;
-    width: 100%;
-    overflow-y: auto;
-
-    .dropdown:hover & {
-        display: block;
-    }
-}
-
-.dropdown-position {
+[dropdown-option] {
     padding: 2px 8px;
     font-size: 0.9em;
-    cursor: pointer;
-    &:hover {
-        background: colors.$gray;
-    }
 }
 
 .required {
-    min-width: 70px;
-    max-width: unset;
-    width: max-content;
-    .dropdown-list {
-        width: 320px;
-    }
+    height: 31px;
 }
 .required-label {
+    display: flex;
+    align-items: center;
+    padding: 0 12px;
     background: colors.$light-gray;
     color: colors.$darker-gray;
     font-size: 0.9em;
     font-weight: bold;
-    height: 40px;
-    line-height: 40px;
-    padding: 0 12px;
+    white-space: nowrap;
+
+    .cross {
+        display: none;
+        font-size: 2em;
+        height: 31px;
+        line-height: 24px;
+        cursor: pointer;
+    }
 }
 .required-optional {
     @extend .required-label;
@@ -223,20 +180,14 @@ function updateAvailableLessons(position: number) {
     margin-right: 5px;
 }
 .add-required-button {
+    display: none;
+    width: 70px;
+    height: 31px;
+    line-height: 27px;
+    margin-left: 5px;
     font-family: fonts.$geometric-font;
     font-size: 2em;
     color: colors.$darker-gray;
-    margin-left: 5px;
-    display: none;
     cursor: pointer;
-    height: 40px;
-    line-height: 40px;
-}
-.wrapper:hover {
-    .add-tag-button,
-    .required-optional,
-    .add-required-button {
-        display: inline-block;
-    }
 }
 </style>

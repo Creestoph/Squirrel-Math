@@ -1,47 +1,48 @@
 <template>
     <node-view-wrapper class="tags-wrapper">
-        <div class="dropdown" v-for="(tag, j) in tags" :key="'tag' + j">
-            <div class="type">
-                {{ tag }}
-                <span v-if="tags.length > 1" @click="removeTag(j)" class="cross">⨯</span>
-            </div>
-            <div v-if="availableOptions(j).length > 1" class="dropdown-list no-selection">
-                <div
-                    class="dropdown-position"
-                    v-for="(option, i) in availableOptions(j)"
-                    :key="i"
-                    @click="choose(j, option)"
-                >
-                    {{ option }}
+        <dropdown v-for="(tag, j) in tags" :key="'tag' + j" showOnHover class="tag-dropdown">
+            <template #placeholder>
+                <div class="type">
+                    {{ tag }}
+                    <span v-if="tags.length > 1" @click="removeTag(j)" class="cross">⨯</span>
                 </div>
-            </div>
-        </div>
+            </template>
+            <dropdown-option
+                v-for="(option, i) in availableOptions(j)"
+                :key="i"
+                @click="choose(j, option)"
+                class="tag-option no-selection"
+            >
+                {{ option }}
+            </dropdown-option>
+        </dropdown>
         <span v-if="canAddTag()" @click="addTag()" class="add-tag-button no-selection">+</span>
 
         <span :class="required.length == 0 ? 'required-optional' : 'required-strong'" class="no-selection">
             Wymagane:
         </span>
-        <div
-            class="required dropdown"
+        <dropdown
+            class="required"
             v-for="(required, j) in required"
+            showOnHover
             :key="'required' + j"
             @mouseenter="updateAvailableLessons(j)"
         >
-            <div class="required-label">
-                {{ required }}
-                <span @click="removeRequired(j)" class="cross no-selection">⨯</span>
-            </div>
-            <div class="dropdown-list no-selection">
-                <div
-                    class="dropdown-position"
-                    v-for="(lesson, i) in availableLessons"
-                    :key="i"
-                    @click="chooseLesson(j, lesson)"
-                >
-                    {{ lesson }}
+            <template #placeholder>
+                <div class="required-label">
+                    {{ required }}
+                    <span @click="removeRequired(j)" class="cross no-selection">⨯</span>
                 </div>
-            </div>
-        </div>
+            </template>
+            <dropdown-option
+                class="no-selection"
+                v-for="(lesson, i) in availableLessons"
+                :key="i"
+                @click="chooseLesson(j, lesson)"
+            >
+                {{ lesson }}
+            </dropdown-option>
+        </dropdown>
         <span class="add-required-button no-selection" v-if="canAddNewRequired()" @click="addRequiredLesson()">+</span>
     </node-view-wrapper>
 </template>
@@ -50,6 +51,8 @@
 import { lessonTree } from '@/utils/lesson-tree';
 import { nodeViewProps, NodeViewWrapper } from '@tiptap/vue-3';
 import { computed, ref } from 'vue';
+import Dropdown from '../Dropdown.vue';
+import DropdownOption from '../DropdownOption.vue';
 
 const props = defineProps(nodeViewProps);
 
@@ -147,28 +150,30 @@ function canAddNewRequired() {
 @use '@/style/semantic-tag';
 
 .tags-wrapper {
-    padding-right: 100px;
-    > * {
-        float: left;
-        margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.tags-wrapper:hover {
+    .type {
+        width: 98px;
     }
-    &::after {
-        //clearfix
-        content: '';
-        clear: both;
-        display: table;
+    .add-tag-button,
+    .required-optional,
+    .add-required-button {
+        display: inline-block;
     }
 }
 
-.dropdown {
-    max-width: 120px;
+.tag-dropdown {
     margin-right: 5px;
-    position: relative;
+
+    [dropdown-option] {
+        width: 100px;
+    }
 }
 
-.tags-wrapper:hover .type {
-    width: 110px;
-}
 .cross {
     display: none;
     float: right;
@@ -179,31 +184,9 @@ function canAddNewRequired() {
     }
 }
 
-.type:hover {
-    background: colors.$main-red;
-}
-
-.dropdown-list {
-    position: absolute;
-    z-index: 2;
-    display: none;
-    background: colors.$light-gray;
-    width: 100%;
-    max-height: 300px;
-    overflow-y: auto;
-}
-
-.dropdown:hover .dropdown-list {
-    display: block;
-}
-
-.dropdown-position {
+[dropdown-option] {
     padding: 2px 8px;
     font-size: 0.9em;
-    cursor: pointer;
-    &:hover {
-        background: colors.$gray;
-    }
 }
 
 .add-tag-button {
@@ -218,12 +201,7 @@ function canAddNewRequired() {
 }
 
 .required {
-    min-width: 70px;
-    max-width: unset;
-    width: max-content;
-    .dropdown-list {
-        width: 320px;
-    }
+    min-width: 50px;
 }
 
 .required-label {
@@ -235,6 +213,7 @@ function canAddNewRequired() {
     line-height: 31px;
     padding: 0 10px;
     font-family: fonts.$secondary-font;
+    margin-right: 5px;
 }
 .required-optional {
     @extend .required-label;
@@ -259,13 +238,6 @@ function canAddNewRequired() {
     cursor: pointer;
     height: 31px;
     line-height: 27px;
-}
-.tags-wrapper:hover {
-    .add-tag-button,
-    .required-optional,
-    .add-required-button {
-        display: inline-block;
-    }
 }
 </style>
 <style lang="scss">

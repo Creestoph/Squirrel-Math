@@ -13,7 +13,13 @@ defineProps<{ attrs: { tags: string[]; required: string[] } }>();
 
 <style scoped lang="scss">
 @use '@/style/semantic-tag';
+@use '@/style/colors';
+
 .section + * {
     margin-top: 0 !important;
+}
+.type:hover {
+    background-color: colors.$darker-main-red;
+    transition: background-color 0.1s;
 }
 </style>

@@ -19,11 +19,6 @@
     margin-top: 0;
 }
 
-.type:hover {
-    background-color: colors.$darker-main-red;
-    transition: background-color 0.1s;
-}
-
 .warning {
     font-family: fonts.$secondary-font;
     color: colors.$darker-gray;
