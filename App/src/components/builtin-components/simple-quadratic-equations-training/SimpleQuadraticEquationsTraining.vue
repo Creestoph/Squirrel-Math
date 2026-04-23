@@ -2,8 +2,9 @@
     <div class="whole">
         Równanie:
         <latex-text :text="equationLatex" />
-        Rozwiązują $x = $
-        <input class="with-highlight" v-model="x1" @keyup="updateProduct()" tabindex="1" /> lub $x = $
+        <latex-text :text="'Rozwiązują $x = $'" />
+        <input class="with-highlight" v-model="x1" @keyup="updateProduct()" tabindex="1" />
+        <latex-text :text="'lub $x = $'" />
         <input class="with-highlight" v-model="x2" @keyup="updateProduct()" tabindex="2" />
         <latex-text :text="productLatex" />
         <div id="buttons">
@@ -144,6 +145,8 @@ function next() {
 }
 input {
     width: 25px;
+    margin-left: 0.2778em;
+    margin-right: 0.2778em;
 }
 #buttons {
     position: absolute;
