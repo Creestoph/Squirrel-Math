@@ -1,1 +1,124 @@
-{"long":{"type":"doc","content":[{"type":"title","content":[{"type":"text","text":"Wprowadzenie"}]},{"type":"intro","content":[{"type":"paragraph","attrs":{"textAlign":""},"content":[{"type":"text","text":"Po co nam matematyka? To bardzo ważne pytanie. Spróbujmy na nie odpowiedzieć."}]},{"type":"bulletList","content":[{"type":"listItem","content":[{"type":"paragraph","attrs":{"textAlign":""},"content":[{"type":"text","text":"Matematyka to kwintesencja prawdy, jako królowa nauk jest czysta, niezależna i nieskazitelnie logiczna. Każdy człowiek powinien znać matematykę, ponieważ dzięki niej umie myśleć i mówić precyzyjnie, w oparciu o rozum."}]}]},{"type":"listItem","content":[{"type":"paragraph","attrs":{"textAlign":""},"content":[{"type":"text","text":"Matematyka jest doskonałym narzędziem do opisu świata i wszystkich występujących na nim zależności, wykorzystywanym przez fizyków, chemików, biologów, informatyków, techników… Postęp cywilizacyjny zawdzięczamy ich odkryciom, a oni odkrycia zawdzięczają matematyce."}]}]},{"type":"listItem","content":[{"type":"paragraph","attrs":{"textAlign":""},"content":[{"type":"text","text":"Gdy człowiek zarazi się matematyką, uczy się jej, żeby zostać wykładowcą na uczelni. Jak już nim zostanie, zasiewa tego wirusa wśród przyszłych pokoleń."}]}]},{"type":"listItem","content":[{"type":"paragraph","attrs":{"textAlign":""},"content":[{"type":"text","text":"Matematyka przyda Ci się na jutrzejszy sprawdzian, więc nie marudź, tylko wkuwaj."}]}]}]},{"type":"paragraph","attrs":{"textAlign":""},"content":[{"type":"text","text":"Squirrel-Math to projekt zapoczątkowany przez dwóch matematycznych zapaleńców, informatyków z wykształcenia. Założenie jest proste – czemu by nie zebrać "},{"type":"text","marks":[{"type":"comment","attrs":{"id":1}}],"text":"całej"},{"type":"text","text":" wiedzy matematycznej w jednym podręczniku, który pozwoli przyswoić ją w sposób przystępny, intuicyjny i uporządkowany? Państwowe i prywatne systemy edukacji robią świetną robotę, próbując zaszczepić w młodych ludziach iskrę matematyki, lecz mierzą się z wieloma trudnościami. Nauczyciele muszą dostosować się do uczniów na różnym poziomie, jednocześnie goniąc z realizacją bieżącego materiału. Nie zawsze jest czas na zbudowanie właściwych intuicji czy uzupełnienie braków, przez co rodzi się przekonanie, że matematyka sama w sobie jest trudna. A przecież nie jest - wierzymy w to całym sercem - jeśli tylko pobuduje się wiedzę odpowiednią wyobraźnią i treningiem."}]},{"type":"paragraph","attrs":{"textAlign":""},"content":[{"type":"text","text":"I tu pojawia się nasza misja."}]},{"type":"paragraph","attrs":{"textAlign":""},"content":[{"type":"text","text":"Próbujemy dziarsko wyjść naprzeciw powikłaniom programów nauczania, podsuwając matematykę w wydaniu przystępnym dla każdego - nieważne, czy masz braki w tabliczce mnożenia, czy chcesz nadprogramowo pouczyć się o rozkładzie wielomianów. Na starcie nie wymagamy żadnej wiedzy, a wszystkie pojęcia, definicje, twierdzenia i metody wyjaśnimy po kolei, zawsze opierając się tylko na tym, co wyjaśniliśmy wcześniej. Zaczynamy zupełnie od zera. Chociaż… wybaczcie, nie powiedzieliśmy jeszcze, czym jest zero!"}]}]}]},"comments":{"1":{"text":"Rzeczywiście okiełznanie „całej” wiedzy matematycznej to przedsięwzięcie raczej nieosiągalne, ale na dobry początek zadowolimy się poziomem maturalnym.","hidden":false}}}
+{
+    "long": {
+        "type": "doc",
+        "content": [
+            { "type": "title", "content": [{ "type": "text", "text": "Wprowadzenie" }] },
+            {
+                "type": "intro",
+                "content": [
+                    {
+                        "type": "paragraph",
+                        "attrs": { "textAlign": "" },
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "Po co nam matematyka? To bardzo ważne pytanie. Spróbujmy na nie odpowiedzieć."
+                            }
+                        ]
+                    },
+                    {
+                        "type": "bulletList",
+                        "content": [
+                            {
+                                "type": "listItem",
+                                "content": [
+                                    {
+                                        "type": "paragraph",
+                                        "attrs": { "textAlign": "" },
+                                        "content": [
+                                            {
+                                                "type": "text",
+                                                "text": "Matematyka to kwintesencja prawdy, jako królowa nauk jest czysta, niezależna i nieskazitelnie logiczna. Każdy człowiek powinien znać matematykę, ponieważ dzięki niej umie myśleć i mówić precyzyjnie, w oparciu o rozum."
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "listItem",
+                                "content": [
+                                    {
+                                        "type": "paragraph",
+                                        "attrs": { "textAlign": "" },
+                                        "content": [
+                                            {
+                                                "type": "text",
+                                                "text": "Matematyka jest doskonałym narzędziem do opisu świata i wszystkich występujących na nim zależności, wykorzystywanym przez fizyków, chemików, biologów, informatyków, techników… Postęp cywilizacyjny zawdzięczamy ich odkryciom, a oni odkrycia zawdzięczają matematyce."
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "listItem",
+                                "content": [
+                                    {
+                                        "type": "paragraph",
+                                        "attrs": { "textAlign": "" },
+                                        "content": [
+                                            {
+                                                "type": "text",
+                                                "text": "Gdy człowiek zarazi się matematyką, uczy się jej, żeby zostać wykładowcą na uczelni. Jak już nim zostanie, zasiewa tego wirusa wśród przyszłych pokoleń."
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "listItem",
+                                "content": [
+                                    {
+                                        "type": "paragraph",
+                                        "attrs": { "textAlign": "" },
+                                        "content": [
+                                            {
+                                                "type": "text",
+                                                "text": "Matematyka przyda Ci się na jutrzejszy sprawdzian, więc nie marudź, tylko wkuwaj."
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "attrs": { "textAlign": "" },
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "Squirrel-Math to projekt zapoczątkowany przez dwóch matematycznych zapaleńców, informatyków z wykształcenia. Założenie jest proste – czemu by nie zebrać "
+                            },
+                            { "type": "text", "marks": [{ "type": "comment", "attrs": { "id": 1 } }], "text": "całej" },
+                            {
+                                "type": "text",
+                                "text": " wiedzy matematycznej w jednym podręczniku, który pozwoli przyswoić ją w sposób przystępny, intuicyjny i uporządkowany? Państwowe i prywatne systemy edukacji robią świetną robotę, próbując zaszczepić w młodych ludziach iskrę matematyki, lecz mierzą się z wieloma trudnościami. Nauczyciele muszą dostosować się do uczniów na różnym poziomie, jednocześnie goniąc z realizacją bieżącego materiału. Nie zawsze jest czas na zbudowanie właściwych intuicji czy uzupełnienie braków, przez co rodzi się przekonanie, że matematyka sama w sobie jest trudna. A przecież nie jest - wierzymy w to całym sercem - jeśli tylko pobuduje się wiedzę odpowiednią wyobraźnią i treningiem."
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "attrs": { "textAlign": "" },
+                        "content": [{ "type": "text", "text": "I tu pojawia się nasza misja." }]
+                    },
+                    {
+                        "type": "paragraph",
+                        "attrs": { "textAlign": "" },
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "Próbujemy dziarsko wyjść naprzeciw powikłaniom programów nauczania, podsuwając matematykę w wydaniu przystępnym dla każdego - nieważne, czy masz braki w tabliczce mnożenia, czy chcesz nadprogramowo pouczyć się o rozkładzie wielomianów. Na starcie nie wymagamy żadnej wiedzy, a wszystkie pojęcia, definicje, twierdzenia i metody wyjaśnimy po kolei, zawsze opierając się tylko na tym, co wyjaśniliśmy wcześniej. Zaczynamy zupełnie od zera. Chociaż… wybaczcie, nie powiedzieliśmy jeszcze, czym jest zero!"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    "comments": {
+        "1": {
+            "text": "Rzeczywiście okiełznanie „całej” wiedzy matematycznej to przedsięwzięcie raczej nieosiągalne, ale na dobry początek zadowolimy się poziomem maturalnym.",
+            "hidden": false
+        }
+    }
+}
