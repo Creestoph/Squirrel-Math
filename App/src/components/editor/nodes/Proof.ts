@@ -12,7 +12,7 @@ declare module '@tiptap/core' {
 
 export default Node.create({
     name: 'proof',
-    content: '(paragraph | expression | orderedList | geometry)+',
+    content: '(paragraph | expression | bulletList | orderedList | geometry)+',
     group: 'block',
     draggable: true,
 

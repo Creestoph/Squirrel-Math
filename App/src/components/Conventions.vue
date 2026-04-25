@@ -53,6 +53,32 @@
                 </li>
             </ul>
         </lesson-chapter>
+
+        <lesson-chapter>
+            <template #title>Uniwersum Squirrel-Math</template>
+            <p>
+                W wielu przykładach zawartych w różnych lekcjach pojawiają się te same postaci. Zachęcamy do
+                wykorzystywania ich w roli bohaterów na potrzeby mini-opowieści lub do poszerzania uniwersum o własne
+                pomysły. Jeśli w lekcji użyte jest imię którejś z poniższych postaci, należy zachowac spójność z
+                kanonem.
+            </p>
+            <ul>
+                <li>
+                    <b>Eustachy</b> - pasterz, który trudni się liczeniem owiec. Pomaga mu w tym sąsiad (również
+                    pasterz) <b>Wirgiliusz</b> oraz syn <b>Zenon</b>.
+                </li>
+                <li><b>Zygfryd</b> ma 30 punktów karnych i stracił prawo jazdy.</li>
+                <li>
+                    <b>Pan Janusz</b> uosabia negatywne, stereotypowe cechy Polaka. Zarabia minimalną krajową, lecz jest
+                    pazerny na pieniądze. Lubi pojeść (np. golonki). Jeździ przepisowo. Przyjaźni się z
+                    <b>Panem Markiem</b>.
+                </li>
+                <li><b>Stefan</b> ma 24 punkty karne.</li>
+                <li><b>Michaś</b> nie jest pilnym uczniem.</li>
+                <li><b>Onufry</b> jest bardzo pilnym uczniem.</li>
+                <li><b>Maciuś</b> jest przeciętnym uczniem.</li>
+            </ul>
+        </lesson-chapter>
     </lesson>
 </template>
 
