@@ -2,25 +2,54 @@
     "long": {
         "type": "doc",
         "content": [
-            { "type": "title", "content": [{ "type": "text", "text": "Wyrażenia algebraiczne" }] },
+            {
+                "type": "title",
+                "content": [
+                    {
+                        "type": "text",
+                        "text": "Wyrażenia algebraiczne"
+                    }
+                ]
+            },
             {
                 "type": "intro",
                 "content": [
                     {
                         "type": "paragraph",
-                        "attrs": { "textAlign": "" },
+                        "attrs": {
+                            "textAlign": ""
+                        },
                         "content": [
                             {
                                 "type": "text",
                                 "text": "Wreszcie przychodzi pora, by przestać bawić się w księgowość, a wkroczyć w prawdziwą matematykę. Dziedzina, którą głównie zajmowaliśmy się do tej pory, to "
                             },
-                            { "type": "text", "marks": [{ "type": "italic" }], "text": "arytmetyka" },
+                            {
+                                "type": "text",
+                                "marks": [
+                                    {
+                                        "type": "italic"
+                                    }
+                                ],
+                                "text": "arytmetyka"
+                            },
                             {
                                 "type": "text",
                                 "text": " – stosunkowo żmudna nauka, mówiąca jedynie, jak grzebać w kałuży liczb naturalnych, wymiernych i całkowitych, aby nie pobrudzić sobie za bardzo rąk. Teraz wchodzimy o szczebel wyżej w wysokiej drabinie abstrakcji – rozpoczynamy znajomość z "
                             },
-                            { "type": "text", "marks": [{ "type": "italic" }], "text": "algebrą" },
-                            { "type": "text", "text": "." }
+                            {
+                                "type": "text",
+                                "marks": [
+                                    {
+                                        "type": "italic"
+                                    }
+                                ],
+                                "text": "algebrą"
+                            },
+                            {
+                                "type": "text",
+                                "text": "."
+                            }
                         ]
                     }
                 ]
@@ -30,47 +59,116 @@
                 "content": [
                     {
                         "type": "chapterTitle",
-                        "attrs": { "isHidden": false },
-                        "content": [{ "type": "text", "text": "Wzór na doskonałość" }]
+                        "attrs": {
+                            "isHidden": false
+                        },
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "Wzór na doskonałość"
+                            }
+                        ]
                     },
                     {
                         "type": "chapterBody",
                         "content": [
-                            { "type": "semanticTag", "attrs": { "tags": ["Intuicje"], "required": [] } },
+                            {
+                                "type": "semanticTag",
+                                "attrs": {
+                                    "tags": [
+                                        "Intuicje"
+                                    ],
+                                    "required": []
+                                }
+                            },
                             {
                                 "type": "paragraph",
-                                "attrs": { "textAlign": "" },
+                                "attrs": {
+                                    "textAlign": ""
+                                },
                                 "content": [
                                     {
                                         "type": "text",
                                         "text": "Po kilku miesiącach intensywnego odchudzania tabletkami „Nopain” Michaś zaczął dostrzegać rzeczywiste rezultaty – patrząc w lustro, nie może odmówić swej sylwetce cech boskich. Z obawy przed czyhającą za rogiem anoreksją, Michaś postanowił upewnić się, czy nie grozi mu niedowaga. Z głową zajętą planowaniem, w jaki sposób zacząłby walkę ze swoją niedowagą, przystąpił do obliczenia swojego wskaźnika BMI, o którym usłyszał na lekcjach biologii. Aby uzyskać wskaźnik BMI, bierzemy swój wzrost w metrach i mnożymy jego wartość przez samą siebie, a następnie dzielimy swoją wagę w kilogramach przez uzyskany wynik. Jeżeli wskaźnik jest mniejszy niż "
                                     },
-                                    { "type": "expressionInline", "attrs": { "mathJax": "18,5" } },
-                                    { "type": "text", "text": ", mamy niedowagę, wartość między " },
-                                    { "type": "expressionInline", "attrs": { "mathJax": "18,5" } },
-                                    { "type": "text", "text": " a " },
-                                    { "type": "expressionInline", "attrs": { "mathJax": "25" } },
-                                    { "type": "text", "text": " oznacza normę, zaś wskaźnik powyżej " },
-                                    { "type": "expressionInline", "attrs": { "mathJax": "25" } },
-                                    { "type": "text", "text": " sugeruje nadwagę." }
+                                    {
+                                        "type": "expressionInline",
+                                        "attrs": {
+                                            "mathJax": "18,5"
+                                        }
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": ", mamy niedowagę, wartość między "
+                                    },
+                                    {
+                                        "type": "expressionInline",
+                                        "attrs": {
+                                            "mathJax": "18,5"
+                                        }
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": " a "
+                                    },
+                                    {
+                                        "type": "expressionInline",
+                                        "attrs": {
+                                            "mathJax": "25"
+                                        }
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": " oznacza normę, zaś wskaźnik powyżej "
+                                    },
+                                    {
+                                        "type": "expressionInline",
+                                        "attrs": {
+                                            "mathJax": "25"
+                                        }
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": " sugeruje nadwagę."
+                                    }
                                 ]
                             },
                             {
                                 "type": "paragraph",
-                                "attrs": { "textAlign": "" },
+                                "attrs": {
+                                    "textAlign": ""
+                                },
                                 "content": [
-                                    { "type": "text", "text": "Powyższą regułkę matematyk zapisze w postaci " },
-                                    { "type": "text", "marks": [{ "type": "italic" }], "text": "wzoru" },
-                                    { "type": "text", "text": ":" }
+                                    {
+                                        "type": "text",
+                                        "text": "Powyższą regułkę matematyk zapisze w postaci "
+                                    },
+                                    {
+                                        "type": "text",
+                                        "marks": [
+                                            {
+                                                "type": "italic"
+                                            }
+                                        ],
+                                        "text": "wzoru"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": ":"
+                                    }
                                 ]
                             },
                             {
                                 "type": "expression",
-                                "attrs": { "mathJax": " BMI=\\frac{waga}{wzrost \\cdot wzrost} " }
+                                "attrs": {
+                                    "mathJax": " BMI=\\frac{waga}{wzrost \\cdot wzrost} "
+                                }
                             },
                             {
                                 "type": "paragraph",
-                                "attrs": { "textAlign": "" },
+                                "attrs": {
+                                    "textAlign": ""
+                                },
                                 "content": [
                                     {
                                         "type": "text",
@@ -78,38 +176,107 @@
                                     }
                                 ]
                             },
-                            { "type": "expression", "attrs": { "mathJax": " B=\\frac{m}{h \\cdot h} " } },
+                            {
+                                "type": "expression",
+                                "attrs": {
+                                    "mathJax": " B=\\frac{m}{h \\cdot h} "
+                                }
+                            },
                             {
                                 "type": "paragraph",
-                                "attrs": { "textAlign": "" },
+                                "attrs": {
+                                    "textAlign": ""
+                                },
                                 "content": [
                                     {
                                         "type": "text",
                                         "text": "Następnie po dumnym zapisaniu wzoru wyjaśnimy z dowolną dokładnością i czułością osobie niewtajemniczonej nasze oznaczenia:"
                                     },
-                                    { "type": "hardBreak" },
-                                    { "type": "expressionInline", "attrs": { "mathJax": "m" } },
-                                    { "type": "text", "text": " – masa ciała w kilogramach" },
-                                    { "type": "hardBreak" },
-                                    { "type": "expressionInline", "attrs": { "mathJax": "h" } },
-                                    { "type": "text", "text": " – wzrost w metrach" },
-                                    { "type": "hardBreak" },
-                                    { "type": "expressionInline", "attrs": { "mathJax": "B" } },
-                                    { "type": "text", "text": " – współczynnik BMI niosący konsekwencje:" },
-                                    { "type": "hardBreak" },
-                                    { "type": "expressionInline", "attrs": { "mathJax": "B \\lt 18,5" } },
-                                    { "type": "text", "text": " – niedowaga" },
-                                    { "type": "hardBreak" },
-                                    { "type": "expressionInline", "attrs": { "mathJax": "18,5 \\lt B \\lt 25" } },
-                                    { "type": "text", "text": " – norma" },
-                                    { "type": "hardBreak" },
-                                    { "type": "expressionInline", "attrs": { "mathJax": "B>25" } },
-                                    { "type": "text", "text": " – nadwaga" }
+                                    {
+                                        "type": "hardBreak"
+                                    },
+                                    {
+                                        "type": "expressionInline",
+                                        "attrs": {
+                                            "mathJax": "m"
+                                        }
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": " – masa ciała w kilogramach"
+                                    },
+                                    {
+                                        "type": "hardBreak"
+                                    },
+                                    {
+                                        "type": "expressionInline",
+                                        "attrs": {
+                                            "mathJax": "h"
+                                        }
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": " – wzrost w metrach"
+                                    },
+                                    {
+                                        "type": "hardBreak"
+                                    },
+                                    {
+                                        "type": "expressionInline",
+                                        "attrs": {
+                                            "mathJax": "B"
+                                        }
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": " – współczynnik BMI niosący konsekwencje:"
+                                    },
+                                    {
+                                        "type": "hardBreak"
+                                    },
+                                    {
+                                        "type": "expressionInline",
+                                        "attrs": {
+                                            "mathJax": "B \\lt 18,5"
+                                        }
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": " – niedowaga"
+                                    },
+                                    {
+                                        "type": "hardBreak"
+                                    },
+                                    {
+                                        "type": "expressionInline",
+                                        "attrs": {
+                                            "mathJax": "18,5 \\lt B \\lt 25"
+                                        }
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": " – norma"
+                                    },
+                                    {
+                                        "type": "hardBreak"
+                                    },
+                                    {
+                                        "type": "expressionInline",
+                                        "attrs": {
+                                            "mathJax": "B>25"
+                                        }
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": " – nadwaga"
+                                    }
                                 ]
                             },
                             {
                                 "type": "paragraph",
-                                "attrs": { "textAlign": "" },
+                                "attrs": {
+                                    "textAlign": ""
+                                },
                                 "content": [
                                     {
                                         "type": "text",
@@ -122,26 +289,62 @@
                                 "content": [
                                     {
                                         "type": "paragraph",
-                                        "attrs": { "textAlign": "" },
+                                        "attrs": {
+                                            "textAlign": ""
+                                        },
                                         "content": [
-                                            { "type": "text", "text": "Pani Krystyna: waga " },
-                                            { "type": "expressionInline", "attrs": { "mathJax": "64 \\text{ kg}" } },
-                                            { "type": "text", "text": ", wzrost " },
-                                            { "type": "expressionInline", "attrs": { "mathJax": "1,87 \\text{ m}" } },
-                                            { "type": "text", "text": " " }
+                                            {
+                                                "type": "text",
+                                                "text": "Pani Krystyna: waga "
+                                            },
+                                            {
+                                                "type": "expressionInline",
+                                                "attrs": {
+                                                    "mathJax": "64 \\text{ kg}"
+                                                }
+                                            },
+                                            {
+                                                "type": "text",
+                                                "text": ", wzrost "
+                                            },
+                                            {
+                                                "type": "expressionInline",
+                                                "attrs": {
+                                                    "mathJax": "1,87 \\text{ m}"
+                                                }
+                                            },
+                                            {
+                                                "type": "text",
+                                                "text": " "
+                                            }
                                         ]
                                     },
                                     {
                                         "type": "expression",
-                                        "attrs": { "mathJax": "B=\\frac{64}{1,87 \\cdot 1,87}≈18,3" }
+                                        "attrs": {
+                                            "mathJax": "B=\\frac{64}{1,87 \\cdot 1,87}≈18,3"
+                                        }
                                     },
                                     {
                                         "type": "paragraph",
-                                        "attrs": { "textAlign": "" },
+                                        "attrs": {
+                                            "textAlign": ""
+                                        },
                                         "content": [
-                                            { "type": "text", "text": " Niedowaga to niska cena za " },
-                                            { "type": "expressionInline", "attrs": { "mathJax": "20" } },
-                                            { "type": "text", "text": " miejsce w konkursie top-model." }
+                                            {
+                                                "type": "text",
+                                                "text": " Niedowaga to niska cena za "
+                                            },
+                                            {
+                                                "type": "expressionInline",
+                                                "attrs": {
+                                                    "mathJax": "20"
+                                                }
+                                            },
+                                            {
+                                                "type": "text",
+                                                "text": " miejsce w konkursie top-model."
+                                            }
                                         ]
                                     }
                                 ]
@@ -151,22 +354,47 @@
                                 "content": [
                                     {
                                         "type": "paragraph",
-                                        "attrs": { "textAlign": "" },
+                                        "attrs": {
+                                            "textAlign": ""
+                                        },
                                         "content": [
-                                            { "type": "text", "text": "Stefan: waga " },
-                                            { "type": "expressionInline", "attrs": { "mathJax": "79 \\text{ kg}" } },
-                                            { "type": "text", "text": ", wzrost " },
-                                            { "type": "expressionInline", "attrs": { "mathJax": "1,78 \\text{ m}" } },
-                                            { "type": "text", "text": " " }
+                                            {
+                                                "type": "text",
+                                                "text": "Stefan: waga "
+                                            },
+                                            {
+                                                "type": "expressionInline",
+                                                "attrs": {
+                                                    "mathJax": "79 \\text{ kg}"
+                                                }
+                                            },
+                                            {
+                                                "type": "text",
+                                                "text": ", wzrost "
+                                            },
+                                            {
+                                                "type": "expressionInline",
+                                                "attrs": {
+                                                    "mathJax": "1,78 \\text{ m}"
+                                                }
+                                            },
+                                            {
+                                                "type": "text",
+                                                "text": " "
+                                            }
                                         ]
                                     },
                                     {
                                         "type": "expression",
-                                        "attrs": { "mathJax": "B=\\frac{79}{1,78 \\cdot 1,78}≈24,93" }
+                                        "attrs": {
+                                            "mathJax": "B=\\frac{79}{1,78 \\cdot 1,78}≈24,93"
+                                        }
                                     },
                                     {
                                         "type": "paragraph",
-                                        "attrs": { "textAlign": "" },
+                                        "attrs": {
+                                            "textAlign": ""
+                                        },
                                         "content": [
                                             {
                                                 "type": "text",
@@ -181,22 +409,47 @@
                                 "content": [
                                     {
                                         "type": "paragraph",
-                                        "attrs": { "textAlign": "" },
+                                        "attrs": {
+                                            "textAlign": ""
+                                        },
                                         "content": [
-                                            { "type": "text", "text": "Michaś: waga " },
-                                            { "type": "expressionInline", "attrs": { "mathJax": "103 \\text{ kg}" } },
-                                            { "type": "text", "text": ", wzrost " },
-                                            { "type": "expressionInline", "attrs": { "mathJax": "1,75 \\text{ m}" } },
-                                            { "type": "text", "text": " " }
+                                            {
+                                                "type": "text",
+                                                "text": "Michaś: waga "
+                                            },
+                                            {
+                                                "type": "expressionInline",
+                                                "attrs": {
+                                                    "mathJax": "103 \\text{ kg}"
+                                                }
+                                            },
+                                            {
+                                                "type": "text",
+                                                "text": ", wzrost "
+                                            },
+                                            {
+                                                "type": "expressionInline",
+                                                "attrs": {
+                                                    "mathJax": "1,75 \\text{ m}"
+                                                }
+                                            },
+                                            {
+                                                "type": "text",
+                                                "text": " "
+                                            }
                                         ]
                                     },
                                     {
                                         "type": "expression",
-                                        "attrs": { "mathJax": "B=\\frac{103}{1,75 \\cdot 1,75}≈33,63" }
+                                        "attrs": {
+                                            "mathJax": "B=\\frac{103}{1,75 \\cdot 1,75}≈33,63"
+                                        }
                                     },
                                     {
                                         "type": "paragraph",
-                                        "attrs": { "textAlign": "" },
+                                        "attrs": {
+                                            "textAlign": ""
+                                        },
                                         "content": [
                                             {
                                                 "type": "text",
@@ -215,16 +468,33 @@
                 "content": [
                     {
                         "type": "chapterTitle",
-                        "attrs": { "isHidden": false },
-                        "content": [{ "type": "text", "text": "Oznaczenia literowe" }]
+                        "attrs": {
+                            "isHidden": false
+                        },
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "Oznaczenia literowe"
+                            }
+                        ]
                     },
                     {
                         "type": "chapterBody",
                         "content": [
-                            { "type": "semanticTag", "attrs": { "tags": ["Intuicje"], "required": [] } },
+                            {
+                                "type": "semanticTag",
+                                "attrs": {
+                                    "tags": [
+                                        "Intuicje"
+                                    ],
+                                    "required": []
+                                }
+                            },
                             {
                                 "type": "paragraph",
-                                "attrs": { "textAlign": "" },
+                                "attrs": {
+                                    "textAlign": ""
+                                },
                                 "content": [
                                     {
                                         "type": "text",
@@ -232,17 +502,51 @@
                                     }
                                 ]
                             },
-                            { "type": "expression", "attrs": { "mathJax": " B=\\frac{m}{h \\cdot h} " } },
+                            {
+                                "type": "expression",
+                                "attrs": {
+                                    "mathJax": " B=\\frac{m}{h \\cdot h} "
+                                }
+                            },
                             {
                                 "type": "paragraph",
-                                "attrs": { "textAlign": "" },
+                                "attrs": {
+                                    "textAlign": ""
+                                },
                                 "content": [
-                                    { "type": "text", "text": "Litery " },
-                                    { "type": "expressionInline", "attrs": { "mathJax": "m" } },
-                                    { "type": "text", "text": " i " },
-                                    { "type": "expressionInline", "attrs": { "mathJax": "h" } },
-                                    { "type": "text", "text": " to " },
-                                    { "type": "text", "marks": [{ "type": "italic" }], "text": "zmienne" },
+                                    {
+                                        "type": "text",
+                                        "text": "Litery "
+                                    },
+                                    {
+                                        "type": "expressionInline",
+                                        "attrs": {
+                                            "mathJax": "m"
+                                        }
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": " i "
+                                    },
+                                    {
+                                        "type": "expressionInline",
+                                        "attrs": {
+                                            "mathJax": "h"
+                                        }
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": " to "
+                                    },
+                                    {
+                                        "type": "text",
+                                        "marks": [
+                                            {
+                                                "type": "italic"
+                                            }
+                                        ],
+                                        "text": "zmienne"
+                                    },
                                     {
                                         "type": "text",
                                         "text": ", pod które należy podstawić konkretne wartości liczbowe, kiedy przyjdzie na to pora."
@@ -251,71 +555,209 @@
                             },
                             {
                                 "type": "paragraph",
-                                "attrs": { "textAlign": "" },
+                                "attrs": {
+                                    "textAlign": ""
+                                },
                                 "content": [
-                                    { "type": "text", "text": "Litery mogą zastępować także dowolne " },
-                                    { "type": "text", "marks": [{ "type": "italic" }], "text": "stałe" },
+                                    {
+                                        "type": "text",
+                                        "text": "Litery mogą zastępować także dowolne "
+                                    },
+                                    {
+                                        "type": "text",
+                                        "marks": [
+                                            {
+                                                "type": "italic"
+                                            }
+                                        ],
+                                        "text": "stałe"
+                                    },
                                     {
                                         "type": "text",
                                         "text": " matematyczne lub fizyczne. Dla przykładu weźmy wzór fizyczny pozwalający określić jak daleko przemieszcza się światło w ciągu zadanego czasu:"
                                     }
                                 ]
                             },
-                            { "type": "expression", "attrs": { "mathJax": " d=299\\ 792\\ 458 \\cdot t " } },
+                            {
+                                "type": "expression",
+                                "attrs": {
+                                    "mathJax": " d=299\\ 792\\ 458 \\cdot t "
+                                }
+                            },
                             {
                                 "type": "paragraph",
-                                "attrs": { "textAlign": "" },
+                                "attrs": {
+                                    "textAlign": ""
+                                },
                                 "content": [
-                                    { "type": "text", "text": "gdzie " },
-                                    { "type": "expressionInline", "attrs": { "mathJax": "t" } },
+                                    {
+                                        "type": "text",
+                                        "text": "gdzie "
+                                    },
+                                    {
+                                        "type": "expressionInline",
+                                        "attrs": {
+                                            "mathJax": "t"
+                                        }
+                                    },
                                     {
                                         "type": "text",
                                         "text": " oznacza jakąkolwiek wartość wyrażoną w sekundach, zaś "
                                     },
-                                    { "type": "expressionInline", "attrs": { "mathJax": "d" } },
+                                    {
+                                        "type": "expressionInline",
+                                        "attrs": {
+                                            "mathJax": "d"
+                                        }
+                                    },
                                     {
                                         "type": "text",
                                         "text": " oznacza oznacza ilość metrów, jakie światło przebędzie w ciągu tylu sekund. Przykładowo podstawiając "
                                     },
-                                    { "type": "expressionInline", "attrs": { "mathJax": "t=60" } },
-                                    { "type": "text", "text": " otrzymamy " },
                                     {
                                         "type": "expressionInline",
-                                        "attrs": { "mathJax": "d=299\\ 792\\ 458 \\cdot 60=17\\ 987\\ 547\\ 480" }
+                                        "attrs": {
+                                            "mathJax": "t=60"
+                                        }
                                     },
-                                    { "type": "text", "text": " i oznacza to tyle, że w ciągu " },
-                                    { "type": "expressionInline", "attrs": { "mathJax": "60" } },
-                                    { "type": "text", "text": " sekund (w ciągu minuty) światło przebywa " },
-                                    { "type": "expressionInline", "attrs": { "mathJax": "17\\ 987\\ 547\\ 480" } },
-                                    { "type": "text", "text": " metrów, czyli prawie " },
-                                    { "type": "expressionInline", "attrs": { "mathJax": "18" } },
-                                    { "type": "text", "text": " milionów kilometrów. Dla porównania, w ciągu " },
-                                    { "type": "expressionInline", "attrs": { "mathJax": "499" } },
-                                    { "type": "text", "text": " sekund (" },
-                                    { "type": "expressionInline", "attrs": { "mathJax": "8" } },
-                                    { "type": "text", "text": " minut i " },
-                                    { "type": "expressionInline", "attrs": { "mathJax": "19" } },
-                                    { "type": "text", "text": " sekund) światło przebywa " },
-                                    { "type": "expressionInline", "attrs": { "mathJax": "149\\ 600\\ 000\\ 000" } },
+                                    {
+                                        "type": "text",
+                                        "text": " otrzymamy "
+                                    },
+                                    {
+                                        "type": "expressionInline",
+                                        "attrs": {
+                                            "mathJax": "d=299\\ 792\\ 458 \\cdot 60=17\\ 987\\ 547\\ 480"
+                                        }
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": " i oznacza to tyle, że w ciągu "
+                                    },
+                                    {
+                                        "type": "expressionInline",
+                                        "attrs": {
+                                            "mathJax": "60"
+                                        }
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": " sekund (w ciągu minuty) światło przebywa "
+                                    },
+                                    {
+                                        "type": "expressionInline",
+                                        "attrs": {
+                                            "mathJax": "17\\ 987\\ 547\\ 480"
+                                        }
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": " metrów, czyli prawie "
+                                    },
+                                    {
+                                        "type": "expressionInline",
+                                        "attrs": {
+                                            "mathJax": "18"
+                                        }
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": " milionów kilometrów. Dla porównania, w ciągu "
+                                    },
+                                    {
+                                        "type": "expressionInline",
+                                        "attrs": {
+                                            "mathJax": "499"
+                                        }
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": " sekund ("
+                                    },
+                                    {
+                                        "type": "expressionInline",
+                                        "attrs": {
+                                            "mathJax": "8"
+                                        }
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": " minut i "
+                                    },
+                                    {
+                                        "type": "expressionInline",
+                                        "attrs": {
+                                            "mathJax": "19"
+                                        }
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": " sekund) światło przebywa "
+                                    },
+                                    {
+                                        "type": "expressionInline",
+                                        "attrs": {
+                                            "mathJax": "149\\ 600\\ 000\\ 000"
+                                        }
+                                    },
                                     {
                                         "type": "text",
                                         "text": " metrów, czyli odległość od Ziemi do Słońca. Tak więc gdyby Słońce nagle zgasło, zauważylibyśmy to dopiero po "
                                     },
-                                    { "type": "expressionInline", "attrs": { "mathJax": "8" } },
-                                    { "type": "text", "text": " minutach. Powyższy wzór moglibyśmy zapisać jako" }
+                                    {
+                                        "type": "expressionInline",
+                                        "attrs": {
+                                            "mathJax": "8"
+                                        }
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": " minutach. Powyższy wzór moglibyśmy zapisać jako"
+                                    }
                                 ]
                             },
-                            { "type": "expression", "attrs": { "mathJax": " d=c \\cdot t " } },
+                            {
+                                "type": "expression",
+                                "attrs": {
+                                    "mathJax": " d=c \\cdot t "
+                                }
+                            },
                             {
                                 "type": "paragraph",
-                                "attrs": { "textAlign": "" },
+                                "attrs": {
+                                    "textAlign": ""
+                                },
                                 "content": [
-                                    { "type": "text", "text": "zastępując literą " },
-                                    { "type": "expressionInline", "attrs": { "mathJax": "c" } },
-                                    { "type": "text", "text": " dość długą liczbę o stałej wartości " },
-                                    { "type": "expressionInline", "attrs": { "mathJax": "299\\ 792\\ 458" } },
-                                    { "type": "text", "text": ". Stała " },
-                                    { "type": "expressionInline", "attrs": { "mathJax": "c" } },
+                                    {
+                                        "type": "text",
+                                        "text": "zastępując literą "
+                                    },
+                                    {
+                                        "type": "expressionInline",
+                                        "attrs": {
+                                            "mathJax": "c"
+                                        }
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": " dość długą liczbę o stałej wartości "
+                                    },
+                                    {
+                                        "type": "expressionInline",
+                                        "attrs": {
+                                            "mathJax": "299\\ 792\\ 458"
+                                        }
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": ". Stała "
+                                    },
+                                    {
+                                        "type": "expressionInline",
+                                        "attrs": {
+                                            "mathJax": "c"
+                                        }
+                                    },
                                     {
                                         "type": "text",
                                         "text": " w fizyce nosi nazwę \"prędkość światła w próżni\" i pojawia się w całkiem wielu wzorach opisujących fale świetlne oraz energię. Jeśli jakaś wartość liczbowa często pojawia się w fizyce, naukowcy chętnie nazywają je stałą i przydzielają jej unikalne oznaczenie literowe. Fizycy nie lubią, kiedy w ich wzorach pojawiają się przydługie liczby wymierne."
@@ -324,64 +766,151 @@
                             },
                             {
                                 "type": "paragraph",
-                                "attrs": { "textAlign": "" },
+                                "attrs": {
+                                    "textAlign": ""
+                                },
                                 "content": [
                                     {
                                         "type": "text",
                                         "text": "Gdy wzory stają się rozbudowane i wymagają użycia wielu zmiennych, bądź też jeśli do oznaczenia różnych zmiennych chcielibyśmy zastosować tę samą literę, zaleca się stosowanie "
                                     },
-                                    { "type": "text", "marks": [{ "type": "italic" }], "text": "indeksów dolnych" },
+                                    {
+                                        "type": "text",
+                                        "marks": [
+                                            {
+                                                "type": "italic"
+                                            }
+                                        ],
+                                        "text": "indeksów dolnych"
+                                    },
                                     {
                                         "type": "text",
                                         "text": ". Weźmy wzór wynaleziony przez dietetyków mający rzekomo określać liczbę kalorii, "
                                     },
                                     {
                                         "type": "text",
-                                        "marks": [{ "type": "comment", "attrs": { "id": 1 } }],
+                                        "marks": [
+                                            {
+                                                "type": "comment",
+                                                "attrs": {
+                                                    "id": 1
+                                                }
+                                            }
+                                        ],
                                         "text": "jaką dana osoba powinna spożyć w ciągu dnia:"
                                     }
                                 ]
                             },
-                            { "type": "expression", "attrs": { "mathJax": " K=K_{mat}+K_{akt}+K_ż+K_{poż} " } },
+                            {
+                                "type": "expression",
+                                "attrs": {
+                                    "mathJax": " K=K_{mat}+K_{akt}+K_ż+K_{poż} "
+                                }
+                            },
                             {
                                 "type": "paragraph",
-                                "attrs": { "textAlign": "" },
+                                "attrs": {
+                                    "textAlign": ""
+                                },
                                 "content": [
-                                    { "type": "text", "text": "gdzie:" },
-                                    { "type": "hardBreak" },
-                                    { "type": "expressionInline", "attrs": { "mathJax": "K_{mat}" } },
-                                    { "type": "text", "text": " to kalorie przeznaczone na przemianę materii" },
-                                    { "type": "hardBreak" },
-                                    { "type": "expressionInline", "attrs": { "mathJax": "K_{akt}" } },
-                                    { "type": "text", "text": " to kalorie spalane podczas aktywności fizycznej" },
-                                    { "type": "hardBreak" },
-                                    { "type": "expressionInline", "attrs": { "mathJax": "K_ż" } },
+                                    {
+                                        "type": "text",
+                                        "text": "gdzie:"
+                                    },
+                                    {
+                                        "type": "hardBreak"
+                                    },
+                                    {
+                                        "type": "expressionInline",
+                                        "attrs": {
+                                            "mathJax": "K_{mat}"
+                                        }
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": " to kalorie przeznaczone na przemianę materii"
+                                    },
+                                    {
+                                        "type": "hardBreak"
+                                    },
+                                    {
+                                        "type": "expressionInline",
+                                        "attrs": {
+                                            "mathJax": "K_{akt}"
+                                        }
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": " to kalorie spalane podczas aktywności fizycznej"
+                                    },
+                                    {
+                                        "type": "hardBreak"
+                                    },
+                                    {
+                                        "type": "expressionInline",
+                                        "attrs": {
+                                            "mathJax": "K_ż"
+                                        }
+                                    },
                                     {
                                         "type": "text",
                                         "text": " to kalorie potrzebne do wykonywania podstawowych czynności życiowych"
                                     },
-                                    { "type": "hardBreak" },
-                                    { "type": "expressionInline", "attrs": { "mathJax": "K_{poż}" } },
-                                    { "type": "text", "text": " to kalorie wykorzystywane do spalania pożywienia" }
+                                    {
+                                        "type": "hardBreak"
+                                    },
+                                    {
+                                        "type": "expressionInline",
+                                        "attrs": {
+                                            "mathJax": "K_{poż}"
+                                        }
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": " to kalorie wykorzystywane do spalania pożywienia"
+                                    }
                                 ]
                             },
                             {
                                 "type": "paragraph",
-                                "attrs": { "textAlign": "" },
+                                "attrs": {
+                                    "textAlign": ""
+                                },
                                 "content": [
                                     {
                                         "type": "text",
                                         "text": "każdy ze składników powyższej sumy oznacza jakieś kalorie, więc każdy z nich oznaczamy literką "
                                     },
-                                    { "type": "expressionInline", "attrs": { "mathJax": "K" } },
-                                    { "type": "text", "text": ", jednak dla rozróżnienia " },
-                                    { "type": "text", "marks": [{ "type": "italic" }], "text": "indeksujemy" },
-                                    { "type": "text", "text": " te zmienne adekwatnymi przypisami." }
+                                    {
+                                        "type": "expressionInline",
+                                        "attrs": {
+                                            "mathJax": "K"
+                                        }
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": ", jednak dla rozróżnienia "
+                                    },
+                                    {
+                                        "type": "text",
+                                        "marks": [
+                                            {
+                                                "type": "italic"
+                                            }
+                                        ],
+                                        "text": "indeksujemy"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": " te zmienne adekwatnymi przypisami."
+                                    }
                                 ]
                             },
                             {
                                 "type": "paragraph",
-                                "attrs": { "textAlign": "" },
+                                "attrs": {
+                                    "textAlign": ""
+                                },
                                 "content": [
                                     {
                                         "type": "text",
@@ -397,7 +926,9 @@
                                         "content": [
                                             {
                                                 "type": "paragraph",
-                                                "attrs": { "textAlign": "" },
+                                                "attrs": {
+                                                    "textAlign": ""
+                                                },
                                                 "content": [
                                                     {
                                                         "type": "expressionInline",
@@ -405,18 +936,55 @@
                                                             "mathJax": "K_{mat}=5+9,99 \\cdot m + 6,25 \\cdot h - 4,92 \\cdot a"
                                                         }
                                                     },
-                                                    { "type": "hardBreak" },
-                                                    { "type": "text", "text": "gdzie" },
-                                                    { "type": "hardBreak" },
-                                                    { "type": "expressionInline", "attrs": { "mathJax": "m" } },
-                                                    { "type": "text", "text": " oznacza masę ciała w kilogramach" },
-                                                    { "type": "hardBreak" },
-                                                    { "type": "expressionInline", "attrs": { "mathJax": "h" } },
-                                                    { "type": "text", "text": " to wzrost w centymetrach" },
-                                                    { "type": "hardBreak" },
-                                                    { "type": "expressionInline", "attrs": { "mathJax": "a" } },
-                                                    { "type": "text", "text": " to wiek w latach" },
-                                                    { "type": "hardBreak" }
+                                                    {
+                                                        "type": "hardBreak"
+                                                    },
+                                                    {
+                                                        "type": "text",
+                                                        "text": "gdzie"
+                                                    },
+                                                    {
+                                                        "type": "hardBreak"
+                                                    },
+                                                    {
+                                                        "type": "expressionInline",
+                                                        "attrs": {
+                                                            "mathJax": "m"
+                                                        }
+                                                    },
+                                                    {
+                                                        "type": "text",
+                                                        "text": " oznacza masę ciała w kilogramach"
+                                                    },
+                                                    {
+                                                        "type": "hardBreak"
+                                                    },
+                                                    {
+                                                        "type": "expressionInline",
+                                                        "attrs": {
+                                                            "mathJax": "h"
+                                                        }
+                                                    },
+                                                    {
+                                                        "type": "text",
+                                                        "text": " to wzrost w centymetrach"
+                                                    },
+                                                    {
+                                                        "type": "hardBreak"
+                                                    },
+                                                    {
+                                                        "type": "expressionInline",
+                                                        "attrs": {
+                                                            "mathJax": "a"
+                                                        }
+                                                    },
+                                                    {
+                                                        "type": "text",
+                                                        "text": " to wiek w latach"
+                                                    },
+                                                    {
+                                                        "type": "hardBreak"
+                                                    }
                                                 ]
                                             }
                                         ]
@@ -426,7 +994,9 @@
                                         "content": [
                                             {
                                                 "type": "paragraph",
-                                                "attrs": { "textAlign": "" },
+                                                "attrs": {
+                                                    "textAlign": ""
+                                                },
                                                 "content": [
                                                     {
                                                         "type": "expressionInline",
@@ -434,24 +1004,55 @@
                                                             "mathJax": "K_{akt}=8 \\cdot t_{sił}+7 \\cdot t_{aero}+0,05 \\cdot K_{mat} \\cdot l"
                                                         }
                                                     },
-                                                    { "type": "hardBreak" },
-                                                    { "type": "text", "text": "gdzie" },
-                                                    { "type": "hardBreak" },
-                                                    { "type": "expressionInline", "attrs": { "mathJax": "t_{sił}" } },
+                                                    {
+                                                        "type": "hardBreak"
+                                                    },
+                                                    {
+                                                        "type": "text",
+                                                        "text": "gdzie"
+                                                    },
+                                                    {
+                                                        "type": "hardBreak"
+                                                    },
+                                                    {
+                                                        "type": "expressionInline",
+                                                        "attrs": {
+                                                            "mathJax": "t_{sił}"
+                                                        }
+                                                    },
                                                     {
                                                         "type": "text",
                                                         "text": " – liczba minut poświęconych dziennie na trening siłowy"
                                                     },
-                                                    { "type": "hardBreak" },
-                                                    { "type": "expressionInline", "attrs": { "mathJax": "t_{aero}" } },
+                                                    {
+                                                        "type": "hardBreak"
+                                                    },
+                                                    {
+                                                        "type": "expressionInline",
+                                                        "attrs": {
+                                                            "mathJax": "t_{aero}"
+                                                        }
+                                                    },
                                                     {
                                                         "type": "text",
                                                         "text": " - liczba minut poświęconych dziennie na trening aerobowy"
                                                     },
-                                                    { "type": "hardBreak" },
-                                                    { "type": "expressionInline", "attrs": { "mathJax": "l" } },
-                                                    { "type": "text", "text": " – liczba podjętych treningów" },
-                                                    { "type": "hardBreak" }
+                                                    {
+                                                        "type": "hardBreak"
+                                                    },
+                                                    {
+                                                        "type": "expressionInline",
+                                                        "attrs": {
+                                                            "mathJax": "l"
+                                                        }
+                                                    },
+                                                    {
+                                                        "type": "text",
+                                                        "text": " – liczba podjętych treningów"
+                                                    },
+                                                    {
+                                                        "type": "hardBreak"
+                                                    }
                                                 ]
                                             }
                                         ]
@@ -461,15 +1062,43 @@
                                         "content": [
                                             {
                                                 "type": "paragraph",
-                                                "attrs": { "textAlign": "" },
+                                                "attrs": {
+                                                    "textAlign": ""
+                                                },
                                                 "content": [
-                                                    { "type": "expressionInline", "attrs": { "mathJax": "K_ż=300" } },
-                                                    { "type": "text", "text": " dla osoby szczupłej, " },
-                                                    { "type": "expressionInline", "attrs": { "mathJax": "K_ż=800" } },
-                                                    { "type": "text", "text": " dla osoby tęższej, " },
-                                                    { "type": "expressionInline", "attrs": { "mathJax": "K_ż=450" } },
-                                                    { "type": "text", "text": " dla osoby atletycznie zbudowanej " },
-                                                    { "type": "hardBreak" }
+                                                    {
+                                                        "type": "expressionInline",
+                                                        "attrs": {
+                                                            "mathJax": "K_ż=300"
+                                                        }
+                                                    },
+                                                    {
+                                                        "type": "text",
+                                                        "text": " dla osoby szczupłej, "
+                                                    },
+                                                    {
+                                                        "type": "expressionInline",
+                                                        "attrs": {
+                                                            "mathJax": "K_ż=800"
+                                                        }
+                                                    },
+                                                    {
+                                                        "type": "text",
+                                                        "text": " dla osoby tęższej, "
+                                                    },
+                                                    {
+                                                        "type": "expressionInline",
+                                                        "attrs": {
+                                                            "mathJax": "K_ż=450"
+                                                        }
+                                                    },
+                                                    {
+                                                        "type": "text",
+                                                        "text": " dla osoby atletycznie zbudowanej "
+                                                    },
+                                                    {
+                                                        "type": "hardBreak"
+                                                    }
                                                 ]
                                             }
                                         ]
@@ -479,7 +1108,9 @@
                                         "content": [
                                             {
                                                 "type": "paragraph",
-                                                "attrs": { "textAlign": "" },
+                                                "attrs": {
+                                                    "textAlign": ""
+                                                },
                                                 "content": [
                                                     {
                                                         "type": "expressionInline",
@@ -498,7 +1129,9 @@
                                 "content": [
                                     {
                                         "type": "paragraph",
-                                        "attrs": { "textAlign": "" },
+                                        "attrs": {
+                                            "textAlign": ""
+                                        },
                                         "content": [
                                             {
                                                 "type": "text",
@@ -514,24 +1147,43 @@
                                                 "content": [
                                                     {
                                                         "type": "paragraph",
-                                                        "attrs": { "textAlign": "" },
+                                                        "attrs": {
+                                                            "textAlign": ""
+                                                        },
                                                         "content": [
-                                                            { "type": "text", "text": "Waga: " },
+                                                            {
+                                                                "type": "text",
+                                                                "text": "Waga: "
+                                                            },
                                                             {
                                                                 "type": "expressionInline",
-                                                                "attrs": { "mathJax": "103 \\text{ kg}" }
+                                                                "attrs": {
+                                                                    "mathJax": "103 \\text{ kg}"
+                                                                }
                                                             },
-                                                            { "type": "text", "text": ", wzrost: " },
+                                                            {
+                                                                "type": "text",
+                                                                "text": ", wzrost: "
+                                                            },
                                                             {
                                                                 "type": "expressionInline",
-                                                                "attrs": { "mathJax": "175 \\text{ cm}" }
+                                                                "attrs": {
+                                                                    "mathJax": "175 \\text{ cm}"
+                                                                }
                                                             },
-                                                            { "type": "text", "text": ", wiek: " },
+                                                            {
+                                                                "type": "text",
+                                                                "text": ", wiek: "
+                                                            },
                                                             {
                                                                 "type": "expressionInline",
-                                                                "attrs": { "mathJax": "14 \\text{ lat}" }
+                                                                "attrs": {
+                                                                    "mathJax": "14 \\text{ lat}"
+                                                                }
                                                             },
-                                                            { "type": "hardBreak" },
+                                                            {
+                                                                "type": "hardBreak"
+                                                            },
                                                             {
                                                                 "type": "expressionInline",
                                                                 "attrs": {
@@ -547,11 +1199,15 @@
                                                 "content": [
                                                     {
                                                         "type": "paragraph",
-                                                        "attrs": { "textAlign": "" },
+                                                        "attrs": {
+                                                            "textAlign": ""
+                                                        },
                                                         "content": [
                                                             {
                                                                 "type": "expressionInline",
-                                                                "attrs": { "mathJax": "K_{akt}=0" }
+                                                                "attrs": {
+                                                                    "mathJax": "K_{akt}=0"
+                                                                }
                                                             },
                                                             {
                                                                 "type": "text",
@@ -566,11 +1222,15 @@
                                                 "content": [
                                                     {
                                                         "type": "paragraph",
-                                                        "attrs": { "textAlign": "" },
+                                                        "attrs": {
+                                                            "textAlign": ""
+                                                        },
                                                         "content": [
                                                             {
                                                                 "type": "expressionInline",
-                                                                "attrs": { "mathJax": "K_ż=800" }
+                                                                "attrs": {
+                                                                    "mathJax": "K_ż=800"
+                                                                }
                                                             },
                                                             {
                                                                 "type": "text",
@@ -585,7 +1245,9 @@
                                                 "content": [
                                                     {
                                                         "type": "paragraph",
-                                                        "attrs": { "textAlign": "" },
+                                                        "attrs": {
+                                                            "textAlign": ""
+                                                        },
                                                         "content": [
                                                             {
                                                                 "type": "expressionInline",
@@ -601,19 +1263,38 @@
                                     },
                                     {
                                         "type": "paragraph",
-                                        "attrs": { "textAlign": "" },
-                                        "content": [{ "type": "text", "text": "Stąd" }]
+                                        "attrs": {
+                                            "textAlign": ""
+                                        },
+                                        "content": [
+                                            {
+                                                "type": "text",
+                                                "text": "Stąd"
+                                            }
+                                        ]
                                     },
                                     {
                                         "type": "expression",
-                                        "attrs": { "mathJax": " K=2058,84+0+800+228,7072=3087,5472 " }
+                                        "attrs": {
+                                            "mathJax": " K=2058,84+0+800+228,7072=3087,5472 "
+                                        }
                                     },
                                     {
                                         "type": "paragraph",
-                                        "attrs": { "textAlign": "" },
+                                        "attrs": {
+                                            "textAlign": ""
+                                        },
                                         "content": [
-                                            { "type": "text", "text": "Jeśli kawałek tortu czekoladowego ma " },
-                                            { "type": "expressionInline", "attrs": { "mathJax": "700 \\text{ kcal}" } },
+                                            {
+                                                "type": "text",
+                                                "text": "Jeśli kawałek tortu czekoladowego ma "
+                                            },
+                                            {
+                                                "type": "expressionInline",
+                                                "attrs": {
+                                                    "mathJax": "700 \\text{ kcal}"
+                                                }
+                                            },
                                             {
                                                 "type": "text",
                                                 "text": ", Michaś zapełniłby swoje dzienne zapotrzebowanie na energię czterema kawałkami tortu… jednak do odważnych świat należy – im większa masa ciała, tym większe zapotrzebowanie na kalorie!"
@@ -631,16 +1312,33 @@
                 "content": [
                     {
                         "type": "chapterTitle",
-                        "attrs": { "isHidden": false },
-                        "content": [{ "type": "text", "text": "Jednomiany" }]
+                        "attrs": {
+                            "isHidden": false
+                        },
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "Jednomiany"
+                            }
+                        ]
                     },
                     {
                         "type": "chapterBody",
                         "content": [
-                            { "type": "semanticTag", "attrs": { "tags": ["Intuicje"], "required": [] } },
+                            {
+                                "type": "semanticTag",
+                                "attrs": {
+                                    "tags": [
+                                        "Intuicje"
+                                    ],
+                                    "required": []
+                                }
+                            },
                             {
                                 "type": "paragraph",
-                                "attrs": { "textAlign": "" },
+                                "attrs": {
+                                    "textAlign": ""
+                                },
                                 "content": [
                                     {
                                         "type": "text",
@@ -650,16 +1348,30 @@
                             },
                             {
                                 "type": "expression",
-                                "attrs": { "mathJax": " 5 \\cdot a \\cdot b+6 \\cdot m+5,5 \\cdot g \\cdot h " }
+                                "attrs": {
+                                    "mathJax": " 5 \\cdot a \\cdot b+6 \\cdot m+5,5 \\cdot g \\cdot h "
+                                }
                             },
                             {
                                 "type": "paragraph",
-                                "attrs": { "textAlign": "" },
+                                "attrs": {
+                                    "textAlign": ""
+                                },
                                 "content": [
-                                    { "type": "text", "text": "Każdy taki zlepek liczb (" },
                                     {
                                         "type": "text",
-                                        "marks": [{ "type": "comment", "attrs": { "id": 2 } }],
+                                        "text": "Każdy taki zlepek liczb ("
+                                    },
+                                    {
+                                        "type": "text",
+                                        "marks": [
+                                            {
+                                                "type": "comment",
+                                                "attrs": {
+                                                    "id": 2
+                                                }
+                                            }
+                                        ],
                                         "text": "naturalnych, wymiernych, całkowitych…"
                                     },
                                     {
@@ -668,25 +1380,69 @@
                                     },
                                     {
                                         "type": "text",
-                                        "marks": [{ "type": "italic" }],
+                                        "marks": [
+                                            {
+                                                "type": "italic"
+                                            }
+                                        ],
                                         "text": "wyrażeniem algebraicznym"
                                     },
-                                    { "type": "text", "text": " albo po prostu " },
-                                    { "type": "text", "marks": [{ "type": "italic" }], "text": "wyrażeniem" },
+                                    {
+                                        "type": "text",
+                                        "text": " albo po prostu "
+                                    },
+                                    {
+                                        "type": "text",
+                                        "marks": [
+                                            {
+                                                "type": "italic"
+                                            }
+                                        ],
+                                        "text": "wyrażeniem"
+                                    },
                                     {
                                         "type": "text",
                                         "text": ". Wyrażenia algebraiczne bardzo często mają postać kilku iloczynów, które do siebie dodajemy, tak jak powyższa suma iloczynów "
                                     },
-                                    { "type": "expressionInline", "attrs": { "mathJax": "(5 \\cdot a \\cdot b)" } },
-                                    { "type": "text", "text": ", " },
-                                    { "type": "expressionInline", "attrs": { "mathJax": "(6 \\cdot m)" } },
-                                    { "type": "text", "text": " oraz " },
-                                    { "type": "expressionInline", "attrs": { "mathJax": "(5,5 \\cdot g \\cdot h)" } },
+                                    {
+                                        "type": "expressionInline",
+                                        "attrs": {
+                                            "mathJax": "(5 \\cdot a \\cdot b)"
+                                        }
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": ", "
+                                    },
+                                    {
+                                        "type": "expressionInline",
+                                        "attrs": {
+                                            "mathJax": "(6 \\cdot m)"
+                                        }
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": " oraz "
+                                    },
+                                    {
+                                        "type": "expressionInline",
+                                        "attrs": {
+                                            "mathJax": "(5,5 \\cdot g \\cdot h)"
+                                        }
+                                    },
                                     {
                                         "type": "text",
                                         "text": ". Ze względu na kolejność wykonywania działań mnożenie wykonujemy w pierwszej kolejności, a więc kiedy obliczamy wartość wyrażenia algebraicznego (po podstawieniu wartości liczbowych) zawsze musimy najpierw rozpracować poszczególne grupy iloczynów, a na koniec zajmujemy się ich sumowaniem. O każdym takim iloczynie możemy myśleć jak o unikalnej indywidualności, jakby bohaterze naszych matematycznych przygód. Sumowanie to tylko wprowadzanie tych bohaterów na scenę, zebranie ich wszystkich razem w celu odegrania spektaklu. Każdego takiego bohatera nazywamy "
                                     },
-                                    { "type": "text", "marks": [{ "type": "italic" }], "text": "jednomianem" },
+                                    {
+                                        "type": "text",
+                                        "marks": [
+                                            {
+                                                "type": "italic"
+                                            }
+                                        ],
+                                        "text": "jednomianem"
+                                    },
                                     {
                                         "type": "text",
                                         "text": ". Jednomian to iloczyn liczby oraz zmiennych literowych, przykładowo"
@@ -701,11 +1457,15 @@
                                         "content": [
                                             {
                                                 "type": "paragraph",
-                                                "attrs": { "textAlign": "" },
+                                                "attrs": {
+                                                    "textAlign": ""
+                                                },
                                                 "content": [
                                                     {
                                                         "type": "expressionInline",
-                                                        "attrs": { "mathJax": "a \\cdot b \\cdot b" }
+                                                        "attrs": {
+                                                            "mathJax": "a \\cdot b \\cdot b"
+                                                        }
                                                     }
                                                 ]
                                             }
@@ -716,11 +1476,15 @@
                                         "content": [
                                             {
                                                 "type": "paragraph",
-                                                "attrs": { "textAlign": "" },
+                                                "attrs": {
+                                                    "textAlign": ""
+                                                },
                                                 "content": [
                                                     {
                                                         "type": "expressionInline",
-                                                        "attrs": { "mathJax": "-5,4 \\cdot m \\cdot f" }
+                                                        "attrs": {
+                                                            "mathJax": "-5,4 \\cdot m \\cdot f"
+                                                        }
                                                     }
                                                 ]
                                             }
@@ -731,11 +1495,15 @@
                                         "content": [
                                             {
                                                 "type": "paragraph",
-                                                "attrs": { "textAlign": "" },
+                                                "attrs": {
+                                                    "textAlign": ""
+                                                },
                                                 "content": [
                                                     {
                                                         "type": "expressionInline",
-                                                        "attrs": { "mathJax": "\\frac{4}{3} \\cdot x \\cdot y" }
+                                                        "attrs": {
+                                                            "mathJax": "\\frac{4}{3} \\cdot x \\cdot y"
+                                                        }
                                                     }
                                                 ]
                                             }
@@ -745,7 +1513,9 @@
                             },
                             {
                                 "type": "paragraph",
-                                "attrs": { "textAlign": "" },
+                                "attrs": {
+                                    "textAlign": ""
+                                },
                                 "content": [
                                     {
                                         "type": "text",
@@ -753,10 +1523,17 @@
                                     },
                                     {
                                         "type": "text",
-                                        "marks": [{ "type": "italic" }],
+                                        "marks": [
+                                            {
+                                                "type": "italic"
+                                            }
+                                        ],
                                         "text": "współczynnik jednomianu"
                                     },
-                                    { "type": "text", "text": "." }
+                                    {
+                                        "type": "text",
+                                        "text": "."
+                                    }
                                 ]
                             },
                             {
@@ -767,15 +1544,30 @@
                                         "content": [
                                             {
                                                 "type": "paragraph",
-                                                "attrs": { "textAlign": "" },
+                                                "attrs": {
+                                                    "textAlign": ""
+                                                },
                                                 "content": [
-                                                    { "type": "text", "text": "W jednomianie " },
+                                                    {
+                                                        "type": "text",
+                                                        "text": "W jednomianie "
+                                                    },
                                                     {
                                                         "type": "expressionInline",
-                                                        "attrs": { "mathJax": "25,3 \\cdot b \\cdot d \\cdot e" }
+                                                        "attrs": {
+                                                            "mathJax": "25,3 \\cdot b \\cdot d \\cdot e"
+                                                        }
                                                     },
-                                                    { "type": "text", "text": " współczynnikiem jest " },
-                                                    { "type": "expressionInline", "attrs": { "mathJax": "25,3" } }
+                                                    {
+                                                        "type": "text",
+                                                        "text": " współczynnikiem jest "
+                                                    },
+                                                    {
+                                                        "type": "expressionInline",
+                                                        "attrs": {
+                                                            "mathJax": "25,3"
+                                                        }
+                                                    }
                                                 ]
                                             }
                                         ]
@@ -785,17 +1577,29 @@
                                         "content": [
                                             {
                                                 "type": "paragraph",
-                                                "attrs": { "textAlign": "" },
+                                                "attrs": {
+                                                    "textAlign": ""
+                                                },
                                                 "content": [
-                                                    { "type": "text", "text": "W jednomianie " },
                                                     {
-                                                        "type": "expressionInline",
-                                                        "attrs": { "mathJax": "\\frac{a \\cdot b \\cdot c}{3}" }
+                                                        "type": "text",
+                                                        "text": "W jednomianie "
                                                     },
-                                                    { "type": "text", "text": " współczynnikiem jest " },
                                                     {
                                                         "type": "expressionInline",
-                                                        "attrs": { "mathJax": "\\frac{1}{3}" }
+                                                        "attrs": {
+                                                            "mathJax": "\\frac{a \\cdot b \\cdot c}{3}"
+                                                        }
+                                                    },
+                                                    {
+                                                        "type": "text",
+                                                        "text": " współczynnikiem jest "
+                                                    },
+                                                    {
+                                                        "type": "expressionInline",
+                                                        "attrs": {
+                                                            "mathJax": "\\frac{1}{3}"
+                                                        }
                                                     },
                                                     {
                                                         "type": "text",
@@ -807,7 +1611,10 @@
                                                             "mathJax": "\\frac{1}{3} \\cdot a \\cdot b \\cdot c"
                                                         }
                                                     },
-                                                    { "type": "text", "text": ")" }
+                                                    {
+                                                        "type": "text",
+                                                        "text": ")"
+                                                    }
                                                 ]
                                             }
                                         ]
@@ -817,15 +1624,30 @@
                                         "content": [
                                             {
                                                 "type": "paragraph",
-                                                "attrs": { "textAlign": "" },
+                                                "attrs": {
+                                                    "textAlign": ""
+                                                },
                                                 "content": [
-                                                    { "type": "text", "text": "W jednomianie " },
+                                                    {
+                                                        "type": "text",
+                                                        "text": "W jednomianie "
+                                                    },
                                                     {
                                                         "type": "expressionInline",
-                                                        "attrs": { "mathJax": "-x \\cdot y \\cdot z" }
+                                                        "attrs": {
+                                                            "mathJax": "-x \\cdot y \\cdot z"
+                                                        }
                                                     },
-                                                    { "type": "text", "text": " współczynnikiem jest " },
-                                                    { "type": "expressionInline", "attrs": { "mathJax": "-1" } }
+                                                    {
+                                                        "type": "text",
+                                                        "text": " współczynnikiem jest "
+                                                    },
+                                                    {
+                                                        "type": "expressionInline",
+                                                        "attrs": {
+                                                            "mathJax": "-1"
+                                                        }
+                                                    }
                                                 ]
                                             }
                                         ]
@@ -835,12 +1657,30 @@
                                         "content": [
                                             {
                                                 "type": "paragraph",
-                                                "attrs": { "textAlign": "" },
+                                                "attrs": {
+                                                    "textAlign": ""
+                                                },
                                                 "content": [
-                                                    { "type": "text", "text": "W jednomianie " },
-                                                    { "type": "expressionInline", "attrs": { "mathJax": "4" } },
-                                                    { "type": "text", "text": " współczynnikiem jest " },
-                                                    { "type": "expressionInline", "attrs": { "mathJax": "4" } }
+                                                    {
+                                                        "type": "text",
+                                                        "text": "W jednomianie "
+                                                    },
+                                                    {
+                                                        "type": "expressionInline",
+                                                        "attrs": {
+                                                            "mathJax": "4"
+                                                        }
+                                                    },
+                                                    {
+                                                        "type": "text",
+                                                        "text": " współczynnikiem jest "
+                                                    },
+                                                    {
+                                                        "type": "expressionInline",
+                                                        "attrs": {
+                                                            "mathJax": "4"
+                                                        }
+                                                    }
                                                 ]
                                             }
                                         ]
@@ -850,17 +1690,30 @@
                                         "content": [
                                             {
                                                 "type": "paragraph",
-                                                "attrs": { "textAlign": "" },
+                                                "attrs": {
+                                                    "textAlign": ""
+                                                },
                                                 "content": [
-                                                    { "type": "text", "text": "W jednomianie " },
+                                                    {
+                                                        "type": "text",
+                                                        "text": "W jednomianie "
+                                                    },
                                                     {
                                                         "type": "expressionInline",
                                                         "attrs": {
                                                             "mathJax": "h \\cdot 3 \\cdot n \\cdot 2 \\cdot j \\cdot j"
                                                         }
                                                     },
-                                                    { "type": "text", "text": " współczynnikiem jest " },
-                                                    { "type": "expressionInline", "attrs": { "mathJax": "6" } }
+                                                    {
+                                                        "type": "text",
+                                                        "text": " współczynnikiem jest "
+                                                    },
+                                                    {
+                                                        "type": "expressionInline",
+                                                        "attrs": {
+                                                            "mathJax": "6"
+                                                        }
+                                                    }
                                                 ]
                                             }
                                         ]
@@ -869,7 +1722,9 @@
                             },
                             {
                                 "type": "paragraph",
-                                "attrs": { "textAlign": "" },
+                                "attrs": {
+                                    "textAlign": ""
+                                },
                                 "content": [
                                     {
                                         "type": "text",
@@ -879,12 +1734,36 @@
                             },
                             {
                                 "type": "paragraph",
-                                "attrs": { "textAlign": "" },
+                                "attrs": {
+                                    "textAlign": ""
+                                },
                                 "content": [
-                                    { "type": "text", "text": "Wyrażenie będące sumą jednomianów nazywamy " },
-                                    { "type": "text", "marks": [{ "type": "italic" }], "text": "sumą algebraiczną" },
-                                    { "type": "text", "text": " lub czasem " },
-                                    { "type": "text", "marks": [{ "type": "italic" }], "text": "wielomianem" },
+                                    {
+                                        "type": "text",
+                                        "text": "Wyrażenie będące sumą jednomianów nazywamy "
+                                    },
+                                    {
+                                        "type": "text",
+                                        "marks": [
+                                            {
+                                                "type": "italic"
+                                            }
+                                        ],
+                                        "text": "sumą algebraiczną"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": " lub czasem "
+                                    },
+                                    {
+                                        "type": "text",
+                                        "marks": [
+                                            {
+                                                "type": "italic"
+                                            }
+                                        ],
+                                        "text": "wielomianem"
+                                    },
                                     {
                                         "type": "text",
                                         "text": ", choć pojęcie wielomianu odnosi się do trochę innej idei matematycznej."
@@ -893,7 +1772,9 @@
                             },
                             {
                                 "type": "paragraph",
-                                "attrs": { "textAlign": "" },
+                                "attrs": {
+                                    "textAlign": ""
+                                },
                                 "content": [
                                     {
                                         "type": "text",
@@ -903,17 +1784,33 @@
                             },
                             {
                                 "type": "expression",
-                                "attrs": { "mathJax": " 5 \\cdot a \\cdot b+6 \\cdot m+5,5 \\cdot g \\cdot h " }
+                                "attrs": {
+                                    "mathJax": " 5 \\cdot a \\cdot b+6 \\cdot m+5,5 \\cdot g \\cdot h "
+                                }
                             },
                             {
                                 "type": "paragraph",
-                                "attrs": { "textAlign": "" },
-                                "content": [{ "type": "text", "text": "Zamiast tego zapisujemy" }]
+                                "attrs": {
+                                    "textAlign": ""
+                                },
+                                "content": [
+                                    {
+                                        "type": "text",
+                                        "text": "Zamiast tego zapisujemy"
+                                    }
+                                ]
                             },
-                            { "type": "expression", "attrs": { "mathJax": " 5ab+6m+5,5gh " } },
+                            {
+                                "type": "expression",
+                                "attrs": {
+                                    "mathJax": " 5ab+6m+5,5gh "
+                                }
+                            },
                             {
                                 "type": "paragraph",
-                                "attrs": { "textAlign": "" },
+                                "attrs": {
+                                    "textAlign": ""
+                                },
                                 "content": [
                                     {
                                         "type": "text",
@@ -923,7 +1820,9 @@
                             },
                             {
                                 "type": "paragraph",
-                                "attrs": { "textAlign": "" },
+                                "attrs": {
+                                    "textAlign": ""
+                                },
                                 "content": [
                                     {
                                         "type": "text",
@@ -933,12 +1832,21 @@
                             },
                             {
                                 "type": "expression",
-                                "attrs": { "mathJax": " BMI=\\frac{waga}{wzrost \\cdot wzrost} " }
+                                "attrs": {
+                                    "mathJax": " BMI=\\frac{waga}{wzrost \\cdot wzrost} "
+                                }
                             },
                             {
                                 "type": "paragraph",
-                                "attrs": { "textAlign": "" },
-                                "content": [{ "type": "text", "text": "oznacza, że" }]
+                                "attrs": {
+                                    "textAlign": ""
+                                },
+                                "content": [
+                                    {
+                                        "type": "text",
+                                        "text": "oznacza, że"
+                                    }
+                                ]
                             },
                             {
                                 "type": "expression",
@@ -948,7 +1856,9 @@
                             },
                             {
                                 "type": "paragraph",
-                                "attrs": { "textAlign": "" },
+                                "attrs": {
+                                    "textAlign": ""
+                                },
                                 "content": [
                                     {
                                         "type": "text",
@@ -965,48 +1875,120 @@
     "short": {
         "type": "doc",
         "content": [
-            { "type": "title", "content": [{ "type": "text", "text": "Wyrażenia algebraiczne" }] },
-            { "type": "intro", "content": [{ "type": "paragraph", "attrs": { "textAlign": "" } }] },
+            {
+                "type": "title",
+                "content": [
+                    {
+                        "type": "text",
+                        "text": "Wyrażenia algebraiczne"
+                    }
+                ]
+            },
+            {
+                "type": "intro",
+                "content": [
+                    {
+                        "type": "paragraph",
+                        "attrs": {
+                            "textAlign": ""
+                        }
+                    }
+                ]
+            },
             {
                 "type": "chapter",
                 "content": [
                     {
                         "type": "chapterTitle",
-                        "attrs": { "isHidden": false },
-                        "content": [{ "type": "text", "text": "Litery zamiast liczb" }]
+                        "attrs": {
+                            "isHidden": false
+                        },
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "Litery zamiast liczb"
+                            }
+                        ]
                     },
                     {
                         "type": "chapterBody",
                         "content": [
                             {
                                 "type": "paragraph",
-                                "attrs": { "textAlign": "" },
+                                "attrs": {
+                                    "textAlign": ""
+                                },
                                 "content": [
                                     {
                                         "type": "text",
                                         "text": "Aby wyrazić w matematyczny sposób uniwersalne obserwacje, własności czy zależności, stosuje się oznaczenia literowe które zastępują liczby zapisane cyframi. Spójrzmy na pewien "
                                     },
-                                    { "type": "text", "marks": [{ "type": "italic" }], "text": "wzór" },
-                                    { "type": "text", "text": " matematyczny, który ma zastosowanie w dietetyce: " }
+                                    {
+                                        "type": "text",
+                                        "marks": [
+                                            {
+                                                "type": "italic"
+                                            }
+                                        ],
+                                        "text": "wzór"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": " matematyczny, który ma zastosowanie w dietetyce: "
+                                    }
                                 ]
                             },
                             {
                                 "type": "expression",
-                                "attrs": { "mathJax": " BMI=\\frac{waga}{wzrost \\cdot wzrost} " }
+                                "attrs": {
+                                    "mathJax": " BMI=\\frac{waga}{wzrost \\cdot wzrost} "
+                                }
                             },
                             {
                                 "type": "paragraph",
-                                "attrs": { "textAlign": "justify" },
+                                "attrs": {
+                                    "textAlign": "justify"
+                                },
                                 "content": [
                                     {
                                         "type": "text",
                                         "text": "Z jego pomocą każdy może obliczyć swój \"wskaźnik BMI\" podstawiając do powyższego wzoru swoją wagę w kilogramach i wzrost w metrach (w dietetyce wskaźnik ten pomaga ocenić, czy dana osoba ma prawidłową sylwetkę: jeśli wskaźnik BMI jest mniejszy niż "
                                     },
-                                    { "type": "text", "marks": [{ "type": "number" }], "text": "18" },
-                                    { "type": "text", "text": "," },
-                                    { "type": "text", "marks": [{ "type": "number" }], "text": "5" },
-                                    { "type": "text", "text": ", to osoba ma niedowagę, a jeśli większy niż " },
-                                    { "type": "text", "marks": [{ "type": "number" }], "text": "25" },
+                                    {
+                                        "type": "text",
+                                        "marks": [
+                                            {
+                                                "type": "number"
+                                            }
+                                        ],
+                                        "text": "18"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": ","
+                                    },
+                                    {
+                                        "type": "text",
+                                        "marks": [
+                                            {
+                                                "type": "number"
+                                            }
+                                        ],
+                                        "text": "5"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": ", to osoba ma niedowagę, a jeśli większy niż "
+                                    },
+                                    {
+                                        "type": "text",
+                                        "marks": [
+                                            {
+                                                "type": "number"
+                                            }
+                                        ],
+                                        "text": "25"
+                                    },
                                     {
                                         "type": "text",
                                         "text": ", to osoba ma nadwagę). Powyższy wzór można by zapisać słownie: "
@@ -1021,7 +2003,9 @@
                             },
                             {
                                 "type": "paragraph",
-                                "attrs": { "textAlign": "justify" },
+                                "attrs": {
+                                    "textAlign": "justify"
+                                },
                                 "content": [
                                     {
                                         "type": "text",
@@ -1029,59 +2013,152 @@
                                     }
                                 ]
                             },
-                            { "type": "expression", "attrs": { "mathJax": " B=\\frac{m}{h \\cdot h} " } },
+                            {
+                                "type": "expression",
+                                "attrs": {
+                                    "mathJax": " B=\\frac{m}{h \\cdot h} "
+                                }
+                            },
                             {
                                 "type": "paragraph",
-                                "attrs": { "textAlign": "justify" },
+                                "attrs": {
+                                    "textAlign": "justify"
+                                },
                                 "content": [
                                     {
                                         "type": "text",
                                         "text": "Wybór liter jest dowolny, należy jednak wyjaśnić, co mają one oznaczać. Po zapisaniu wzoru takiego, jak powyższy, powinno się wyjaśnić, że "
                                     },
-                                    { "type": "expressionInline", "attrs": { "mathJax": "B" } },
-                                    { "type": "text", "text": " symbolizuje obliczany wskaźnik BMI, " },
-                                    { "type": "expressionInline", "attrs": { "mathJax": "m" } },
-                                    { "type": "text", "text": " jest masą ciała w kilogramach, zaś " },
-                                    { "type": "expressionInline", "attrs": { "mathJax": "h" } },
-                                    { "type": "text", "text": " to wzrost w metrach." }
+                                    {
+                                        "type": "expressionInline",
+                                        "attrs": {
+                                            "mathJax": "B"
+                                        }
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": " symbolizuje obliczany wskaźnik BMI, "
+                                    },
+                                    {
+                                        "type": "expressionInline",
+                                        "attrs": {
+                                            "mathJax": "m"
+                                        }
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": " jest masą ciała w kilogramach, zaś "
+                                    },
+                                    {
+                                        "type": "expressionInline",
+                                        "attrs": {
+                                            "mathJax": "h"
+                                        }
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": " to wzrost w metrach."
+                                    }
                                 ]
                             },
                             {
                                 "type": "paragraph",
-                                "attrs": { "textAlign": "justify" },
+                                "attrs": {
+                                    "textAlign": "justify"
+                                },
                                 "content": [
-                                    { "type": "text", "text": "Litery " },
-                                    { "type": "expressionInline", "attrs": { "mathJax": "B" } },
-                                    { "type": "text", "text": ", " },
-                                    { "type": "expressionInline", "attrs": { "mathJax": "m" } },
-                                    { "type": "text", "text": " i " },
-                                    { "type": "expressionInline", "attrs": { "mathJax": "h" } },
+                                    {
+                                        "type": "text",
+                                        "text": "Litery "
+                                    },
+                                    {
+                                        "type": "expressionInline",
+                                        "attrs": {
+                                            "mathJax": "B"
+                                        }
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": ", "
+                                    },
+                                    {
+                                        "type": "expressionInline",
+                                        "attrs": {
+                                            "mathJax": "m"
+                                        }
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": " i "
+                                    },
+                                    {
+                                        "type": "expressionInline",
+                                        "attrs": {
+                                            "mathJax": "h"
+                                        }
+                                    },
                                     {
                                         "type": "text",
                                         "text": " możemy traktować jak tymczasowe oznaczenia, zamiast których należy ostatecznie wstawić prawdziwe wartości liczbowe. Gdy chcemy obliczyć wskaźnik osoby, która waży "
                                     },
-                                    { "type": "expressionInline", "attrs": { "mathJax": "72 \\text{ kg}" } },
-                                    { "type": "text", "text": " i ma wzrost " },
-                                    { "type": "expressionInline", "attrs": { "mathJax": "1,8 \\text{ m}" } },
-                                    { "type": "text", "text": ", wystarczy wstawić te wartości do wzoru:" }
+                                    {
+                                        "type": "expressionInline",
+                                        "attrs": {
+                                            "mathJax": "72 \\text{ kg}"
+                                        }
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": " i ma wzrost "
+                                    },
+                                    {
+                                        "type": "expressionInline",
+                                        "attrs": {
+                                            "mathJax": "1,8 \\text{ m}"
+                                        }
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": ", wystarczy wstawić te wartości do wzoru:"
+                                    }
                                 ]
                             },
                             {
                                 "type": "expression",
-                                "attrs": { "mathJax": " B = \\frac{72}{1,8 \\cdot 1,8} = 22,(2) " }
+                                "attrs": {
+                                    "mathJax": " B = \\frac{72}{1,8 \\cdot 1,8} = 22,(2) "
+                                }
                             },
                             {
                                 "type": "paragraph",
-                                "attrs": { "textAlign": "justify" },
+                                "attrs": {
+                                    "textAlign": "justify"
+                                },
                                 "content": [
                                     {
                                         "type": "text",
                                         "text": "Uzyskany wynik oznacza, że waga osoby jest w normie. Gdy chcemy obliczyć wskaźnik dla innej osoby, wystarczy wstawić inne wartości "
                                     },
-                                    { "type": "expressionInline", "attrs": { "mathJax": "m" } },
-                                    { "type": "text", "text": " i " },
-                                    { "type": "expressionInline", "attrs": { "mathJax": "h" } },
-                                    { "type": "text", "text": "." }
+                                    {
+                                        "type": "expressionInline",
+                                        "attrs": {
+                                            "mathJax": "m"
+                                        }
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": " i "
+                                    },
+                                    {
+                                        "type": "expressionInline",
+                                        "attrs": {
+                                            "mathJax": "h"
+                                        }
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "."
+                                    }
                                 ]
                             }
                         ]
@@ -1093,23 +2170,50 @@
                 "content": [
                     {
                         "type": "chapterTitle",
-                        "attrs": { "isHidden": false },
-                        "content": [{ "type": "text", "text": "Nowe pojęcia" }]
+                        "attrs": {
+                            "isHidden": false
+                        },
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "Nowe pojęcia"
+                            }
+                        ]
                     },
                     {
                         "type": "chapterBody",
                         "content": [
                             {
                                 "type": "paragraph",
-                                "attrs": { "textAlign": "" },
+                                "attrs": {
+                                    "textAlign": ""
+                                },
                                 "content": [
-                                    { "type": "text", "marks": [{ "type": "bold" }], "text": "Arytmetyka" },
+                                    {
+                                        "type": "text",
+                                        "marks": [
+                                            {
+                                                "type": "bold"
+                                            }
+                                        ],
+                                        "text": "Arytmetyka"
+                                    },
                                     {
                                         "type": "text",
                                         "text": " to dział matematyki zajmujący się wykonywaniem działań na liczbach; dotychczasowe lekcje o dodawaniu, dzieleniu itd. dotyczyły właśnie arytmetyki."
                                     },
-                                    { "type": "hardBreak" },
-                                    { "type": "text", "marks": [{ "type": "bold" }], "text": "Algebra" },
+                                    {
+                                        "type": "hardBreak"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "marks": [
+                                            {
+                                                "type": "bold"
+                                            }
+                                        ],
+                                        "text": "Algebra"
+                                    },
                                     {
                                         "type": "text",
                                         "text": " to dział matematyki operujący liczbach w bardziej abstrakcyjnym sensie, wykorzystującym zapis literowy."
@@ -1118,92 +2222,290 @@
                             },
                             {
                                 "type": "paragraph",
-                                "attrs": { "textAlign": "justify" },
+                                "attrs": {
+                                    "textAlign": "justify"
+                                },
                                 "content": [
-                                    { "type": "text", "marks": [{ "type": "bold" }], "text": "Wzór" },
+                                    {
+                                        "type": "text",
+                                        "marks": [
+                                            {
+                                                "type": "bold"
+                                            }
+                                        ],
+                                        "text": "Wzór"
+                                    },
                                     {
                                         "type": "text",
                                         "text": " to równość wyrażona za pomocą liter. Po wstawieniu w miejsce liter znanych wartości zmiennych, możemy obliczyć interesującą nas nieznaną wartość. Wzór na wskaźnik BMI przedstawia się jako "
                                     },
-                                    { "type": "expressionInline", "attrs": { "mathJax": "B=\\frac{m}{h \\cdot h}" } },
-                                    { "type": "text", "text": "." }
+                                    {
+                                        "type": "expressionInline",
+                                        "attrs": {
+                                            "mathJax": "B=\\frac{m}{h \\cdot h}"
+                                        }
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "."
+                                    }
                                 ]
                             },
                             {
                                 "type": "paragraph",
-                                "attrs": { "textAlign": "justify" },
+                                "attrs": {
+                                    "textAlign": "justify"
+                                },
                                 "content": [
-                                    { "type": "text", "marks": [{ "type": "bold" }], "text": "Zmienne" },
+                                    {
+                                        "type": "text",
+                                        "marks": [
+                                            {
+                                                "type": "bold"
+                                            }
+                                        ],
+                                        "text": "Zmienne"
+                                    },
                                     {
                                         "type": "text",
                                         "text": " to litery, pod które wolno podstawić dowolną wartość liczbową - taką, jaka nas interesuje w pewnym kontekście. Zależności czy też wzory wykorzystujące zmienne powinny być słuszne bez względu na to, jakie liczby przypiszemy pod zmienne."
                                     },
-                                    { "type": "hardBreak" },
-                                    { "type": "text", "marks": [{ "type": "bold" }], "text": "Stałe" },
+                                    {
+                                        "type": "hardBreak"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "marks": [
+                                            {
+                                                "type": "bold"
+                                            }
+                                        ],
+                                        "text": "Stałe"
+                                    },
                                     {
                                         "type": "text",
                                         "text": " to konkretne, ustalone wartości liczbowe, które nazwano pewną literą, choćby dlatego, że taki zapis jest krótszy. Przeprowadzając pewne obliczenia, można się umówić, że np. litera "
                                     },
-                                    { "type": "expressionInline", "attrs": { "mathJax": "c" } },
-                                    { "type": "text", "text": " będzie oznaczać wartość " },
-                                    { "type": "expressionInline", "attrs": { "mathJax": "299\\ 792\\ 458" } },
+                                    {
+                                        "type": "expressionInline",
+                                        "attrs": {
+                                            "mathJax": "c"
+                                        }
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": " będzie oznaczać wartość "
+                                    },
+                                    {
+                                        "type": "expressionInline",
+                                        "attrs": {
+                                            "mathJax": "299\\ 792\\ 458"
+                                        }
+                                    },
                                     {
                                         "type": "text",
                                         "text": ", która często pojawia się w działaniach, a ma uciążliwie długi zapis."
                                     },
-                                    { "type": "hardBreak" },
-                                    { "type": "text", "marks": [{ "type": "bold" }], "text": "Niewiadome" },
+                                    {
+                                        "type": "hardBreak"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "marks": [
+                                            {
+                                                "type": "bold"
+                                            }
+                                        ],
+                                        "text": "Niewiadome"
+                                    },
                                     {
                                         "type": "text",
                                         "text": " to litery, oznaczające wartość, którą chcemy poznać. Więcej na ich temat w lekcji \"Równania\"."
                                     },
-                                    { "type": "hardBreak" },
+                                    {
+                                        "type": "hardBreak"
+                                    },
                                     {
                                         "type": "text",
                                         "text": "Możemy uznać, że oznaczenia literowe pojawiają się w matematyce w jednym z powyższych trzech kontekstów. We wzorze "
                                     },
-                                    { "type": "expressionInline", "attrs": { "mathJax": "B=\\frac{m}{h \\cdot h}" } },
-                                    { "type": "text", "text": " możemy uznać " },
-                                    { "type": "expressionInline", "attrs": { "mathJax": "m" } },
-                                    { "type": "text", "text": " i " },
-                                    { "type": "expressionInline", "attrs": { "mathJax": "h" } },
-                                    { "type": "text", "text": " za zmienne, a " },
-                                    { "type": "expressionInline", "attrs": { "mathJax": "B" } },
-                                    { "type": "text", "text": " za niewiadomą, której wartość chcemy obliczyć." }
+                                    {
+                                        "type": "expressionInline",
+                                        "attrs": {
+                                            "mathJax": "B=\\frac{m}{h \\cdot h}"
+                                        }
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": " możemy uznać "
+                                    },
+                                    {
+                                        "type": "expressionInline",
+                                        "attrs": {
+                                            "mathJax": "m"
+                                        }
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": " i "
+                                    },
+                                    {
+                                        "type": "expressionInline",
+                                        "attrs": {
+                                            "mathJax": "h"
+                                        }
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": " za zmienne, a "
+                                    },
+                                    {
+                                        "type": "expressionInline",
+                                        "attrs": {
+                                            "mathJax": "B"
+                                        }
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": " za niewiadomą, której wartość chcemy obliczyć."
+                                    }
                                 ]
                             },
                             {
                                 "type": "paragraph",
-                                "attrs": { "textAlign": "justify" },
+                                "attrs": {
+                                    "textAlign": "justify"
+                                },
                                 "content": [
-                                    { "type": "text", "marks": [{ "type": "bold" }], "text": "Indeksy dolne" },
+                                    {
+                                        "type": "text",
+                                        "marks": [
+                                            {
+                                                "type": "bold"
+                                            }
+                                        ],
+                                        "text": "Indeksy dolne"
+                                    },
                                     {
                                         "type": "text",
                                         "text": " służą do numerowania zmiennych. Czasami zdarza się, że zajdzie potrzeba nazwania literami dość dużej gromady liczb, które opisują wielkości tego samego typu. Możemy np. oznaczyć przez "
                                     },
-                                    { "type": "expressionInline", "attrs": { "mathJax": "p_1" } },
-                                    { "type": "text", "text": ", " },
-                                    { "type": "expressionInline", "attrs": { "mathJax": "p_2" } },
-                                    { "type": "text", "text": ", " },
-                                    { "type": "expressionInline", "attrs": { "mathJax": "p_3" } },
-                                    { "type": "text", "text": ", " },
-                                    { "type": "expressionInline", "attrs": { "mathJax": "p_4" } },
-                                    { "type": "text", "text": ", " },
-                                    { "type": "expressionInline", "attrs": { "mathJax": "p_5" } },
-                                    { "type": "text", "text": ", " },
-                                    { "type": "expressionInline", "attrs": { "mathJax": "p_6" } },
-                                    { "type": "text", "text": ", " },
-                                    { "type": "expressionInline", "attrs": { "mathJax": "p_7" } },
-                                    { "type": "text", "text": ", " },
-                                    { "type": "expressionInline", "attrs": { "mathJax": "p_8" } },
-                                    { "type": "text", "text": ", " },
-                                    { "type": "expressionInline", "attrs": { "mathJax": "p_9" } },
-                                    { "type": "text", "text": ", " },
-                                    { "type": "expressionInline", "attrs": { "mathJax": "p_{10}" } },
-                                    { "type": "text", "text": ", " },
-                                    { "type": "expressionInline", "attrs": { "mathJax": "p_{11}" } },
-                                    { "type": "text", "text": ", " },
-                                    { "type": "expressionInline", "attrs": { "mathJax": "p_{12}" } },
+                                    {
+                                        "type": "expressionInline",
+                                        "attrs": {
+                                            "mathJax": "p_1"
+                                        }
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": ", "
+                                    },
+                                    {
+                                        "type": "expressionInline",
+                                        "attrs": {
+                                            "mathJax": "p_2"
+                                        }
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": ", "
+                                    },
+                                    {
+                                        "type": "expressionInline",
+                                        "attrs": {
+                                            "mathJax": "p_3"
+                                        }
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": ", "
+                                    },
+                                    {
+                                        "type": "expressionInline",
+                                        "attrs": {
+                                            "mathJax": "p_4"
+                                        }
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": ", "
+                                    },
+                                    {
+                                        "type": "expressionInline",
+                                        "attrs": {
+                                            "mathJax": "p_5"
+                                        }
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": ", "
+                                    },
+                                    {
+                                        "type": "expressionInline",
+                                        "attrs": {
+                                            "mathJax": "p_6"
+                                        }
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": ", "
+                                    },
+                                    {
+                                        "type": "expressionInline",
+                                        "attrs": {
+                                            "mathJax": "p_7"
+                                        }
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": ", "
+                                    },
+                                    {
+                                        "type": "expressionInline",
+                                        "attrs": {
+                                            "mathJax": "p_8"
+                                        }
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": ", "
+                                    },
+                                    {
+                                        "type": "expressionInline",
+                                        "attrs": {
+                                            "mathJax": "p_9"
+                                        }
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": ", "
+                                    },
+                                    {
+                                        "type": "expressionInline",
+                                        "attrs": {
+                                            "mathJax": "p_{10}"
+                                        }
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": ", "
+                                    },
+                                    {
+                                        "type": "expressionInline",
+                                        "attrs": {
+                                            "mathJax": "p_{11}"
+                                        }
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": ", "
+                                    },
+                                    {
+                                        "type": "expressionInline",
+                                        "attrs": {
+                                            "mathJax": "p_{12}"
+                                        }
+                                    },
                                     {
                                         "type": "text",
                                         "text": " pensję otrzymywaną w kolejnych miesiącach. Indeksem (dolnym) nazywamy małą liczbę zapisaną obok oznaczenia literowego. (Indeksy górne wykorzystywane są przy \"Potęgowaniu\", które nadejdzie w niedalekiej lekcji)."
@@ -1212,74 +2514,221 @@
                             },
                             {
                                 "type": "paragraph",
-                                "attrs": { "textAlign": "justify" },
+                                "attrs": {
+                                    "textAlign": "justify"
+                                },
                                 "content": [
-                                    { "type": "text", "marks": [{ "type": "bold" }], "text": "Wyrażenie algebraiczne" },
-                                    { "type": "text", "text": " to dowolne działanie zapisane z użyciem liter, np. " },
+                                    {
+                                        "type": "text",
+                                        "marks": [
+                                            {
+                                                "type": "bold"
+                                            }
+                                        ],
+                                        "text": "Wyrażenie algebraiczne"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": " to dowolne działanie zapisane z użyciem liter, np. "
+                                    },
                                     {
                                         "type": "expressionInline",
-                                        "attrs": { "mathJax": "a \\cdot b \\cdot c + b : a" }
+                                        "attrs": {
+                                            "mathJax": "a \\cdot b \\cdot c + b : a"
+                                        }
                                     },
-                                    { "type": "text", "text": " lub " },
-                                    { "type": "expressionInline", "attrs": { "mathJax": "\\frac{p}{q}" } },
-                                    { "type": "text", "text": " lub " },
-                                    { "type": "expressionInline", "attrs": { "mathJax": "32xyz" } },
+                                    {
+                                        "type": "text",
+                                        "text": " lub "
+                                    },
+                                    {
+                                        "type": "expressionInline",
+                                        "attrs": {
+                                            "mathJax": "\\frac{p}{q}"
+                                        }
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": " lub "
+                                    },
+                                    {
+                                        "type": "expressionInline",
+                                        "attrs": {
+                                            "mathJax": "32xyz"
+                                        }
+                                    },
                                     {
                                         "type": "text",
                                         "text": ". Przyjęło się, że znak mnożenia pomiędzy literami (lub literami i liczbami) nie jest zapisywany. "
                                     },
-                                    { "type": "expressionInline", "attrs": { "mathJax": "32xyz" } },
-                                    { "type": "text", "text": " jest skróconym zapisem wyrażenia " },
                                     {
                                         "type": "expressionInline",
-                                        "attrs": { "mathJax": "32 \\cdot x \\cdot y \\cdot z" }
+                                        "attrs": {
+                                            "mathJax": "32xyz"
+                                        }
                                     },
-                                    { "type": "text", "text": "." },
-                                    { "type": "hardBreak" },
-                                    { "type": "text", "marks": [{ "type": "bold" }], "text": "Jednomian" },
+                                    {
+                                        "type": "text",
+                                        "text": " jest skróconym zapisem wyrażenia "
+                                    },
+                                    {
+                                        "type": "expressionInline",
+                                        "attrs": {
+                                            "mathJax": "32 \\cdot x \\cdot y \\cdot z"
+                                        }
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "."
+                                    },
+                                    {
+                                        "type": "hardBreak"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "marks": [
+                                            {
+                                                "type": "bold"
+                                            }
+                                        ],
+                                        "text": "Jednomian"
+                                    },
                                     {
                                         "type": "text",
                                         "text": " to wyrażenie składające się jedynie z iloczynów; może w nim występować dowolnie dużo liter oraz liczb zapisanych cyframi, przy czym liczby te niekoniecznie muszą być naturalne, mogą np. być ułamkami. Przykłady jednomianów to "
                                     },
-                                    { "type": "expressionInline", "attrs": { "mathJax": "32xyz" } },
-                                    { "type": "text", "text": " lub " },
                                     {
                                         "type": "expressionInline",
-                                        "attrs": { "mathJax": "5 \\cdot n \\cdot 4 \\cdot m" }
+                                        "attrs": {
+                                            "mathJax": "32xyz"
+                                        }
                                     },
-                                    { "type": "text", "text": " lub " },
-                                    { "type": "expressionInline", "attrs": { "mathJax": "\\frac{1}{3}xyz" } },
-                                    { "type": "text", "text": "." },
-                                    { "type": "hardBreak" },
                                     {
                                         "type": "text",
-                                        "marks": [{ "type": "bold" }],
+                                        "text": " lub "
+                                    },
+                                    {
+                                        "type": "expressionInline",
+                                        "attrs": {
+                                            "mathJax": "5 \\cdot n \\cdot 4 \\cdot m"
+                                        }
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": " lub "
+                                    },
+                                    {
+                                        "type": "expressionInline",
+                                        "attrs": {
+                                            "mathJax": "\\frac{1}{3}xyz"
+                                        }
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "."
+                                    },
+                                    {
+                                        "type": "hardBreak"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "marks": [
+                                            {
+                                                "type": "bold"
+                                            }
+                                        ],
                                         "text": "Współczynnik jednomianu"
                                     },
                                     {
                                         "type": "text",
                                         "text": " to jego czynnik będący liczbą zapisaną za pomocą cyfr. Dla jednomianu "
                                     },
-                                    { "type": "expressionInline", "attrs": { "mathJax": "32xyz" } },
-                                    { "type": "text", "text": " jest to " },
-                                    { "type": "expressionInline", "attrs": { "mathJax": "32" } },
-                                    { "type": "text", "text": ", dla jednomianu " },
                                     {
                                         "type": "expressionInline",
-                                        "attrs": { "mathJax": "5 \\cdot n \\cdot 4 \\cdot m" }
+                                        "attrs": {
+                                            "mathJax": "32xyz"
+                                        }
                                     },
-                                    { "type": "text", "text": " współczynnikiem jest " },
-                                    { "type": "expressionInline", "attrs": { "mathJax": "20" } },
-                                    { "type": "text", "text": ", a dla " },
-                                    { "type": "expressionInline", "attrs": { "mathJax": "\\frac{xyz}{3}" } },
-                                    { "type": "text", "text": " współczynnikiem jest " },
-                                    { "type": "expressionInline", "attrs": { "mathJax": "\\frac{1}{3}" } },
-                                    { "type": "text", "text": "." },
-                                    { "type": "hardBreak" },
-                                    { "type": "text", "marks": [{ "type": "bold" }], "text": "Suma algebraiczna" },
-                                    { "type": "text", "text": " to wyrażenie będące sumą jednomianów, np. " },
-                                    { "type": "expressionInline", "attrs": { "mathJax": "5ab+6m+5,5gh" } },
-                                    { "type": "text", "text": "." }
+                                    {
+                                        "type": "text",
+                                        "text": " jest to "
+                                    },
+                                    {
+                                        "type": "expressionInline",
+                                        "attrs": {
+                                            "mathJax": "32"
+                                        }
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": ", dla jednomianu "
+                                    },
+                                    {
+                                        "type": "expressionInline",
+                                        "attrs": {
+                                            "mathJax": "5 \\cdot n \\cdot 4 \\cdot m"
+                                        }
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": " współczynnikiem jest "
+                                    },
+                                    {
+                                        "type": "expressionInline",
+                                        "attrs": {
+                                            "mathJax": "20"
+                                        }
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": ", a dla "
+                                    },
+                                    {
+                                        "type": "expressionInline",
+                                        "attrs": {
+                                            "mathJax": "\\frac{xyz}{3}"
+                                        }
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": " współczynnikiem jest "
+                                    },
+                                    {
+                                        "type": "expressionInline",
+                                        "attrs": {
+                                            "mathJax": "\\frac{1}{3}"
+                                        }
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "."
+                                    },
+                                    {
+                                        "type": "hardBreak"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "marks": [
+                                            {
+                                                "type": "bold"
+                                            }
+                                        ],
+                                        "text": "Suma algebraiczna"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": " to wyrażenie będące sumą jednomianów, np. "
+                                    },
+                                    {
+                                        "type": "expressionInline",
+                                        "attrs": {
+                                            "mathJax": "5ab+6m+5,5gh"
+                                        }
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "."
+                                    }
                                 ]
                             }
                         ]
@@ -1289,7 +2738,13 @@
         ]
     },
     "comments": {
-        "1": { "text": "Dla uproszczenia przedstawiamy tylko wzory opracowane dla mężczyzn.", "hidden": false },
-        "2": { "text": "i nie tylko", "hidden": true }
+        "1": {
+            "text": "Dla uproszczenia przedstawiamy tylko wzory opracowane dla mężczyzn.",
+            "hidden": false
+        },
+        "2": {
+            "text": "i nie tylko",
+            "hidden": true
+        }
     }
 }

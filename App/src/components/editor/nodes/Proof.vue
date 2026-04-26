@@ -122,7 +122,7 @@ function updateAvailableLessons(position: number) {
     display: flex;
     align-items: center;
     flex-wrap: wrap;
-    margin-left: -31px;
+    margin-left: -30px;
 }
 
 .wrappper:hover {
@@ -149,7 +149,7 @@ function updateAvailableLessons(position: number) {
 }
 
 .required {
-    height: 31px;
+    height: 30px;
 }
 .required-label {
     display: flex;
@@ -164,7 +164,7 @@ function updateAvailableLessons(position: number) {
     .cross {
         display: none;
         font-size: 2em;
-        height: 31px;
+        height: 30px;
         line-height: 24px;
         cursor: pointer;
     }
@@ -182,7 +182,7 @@ function updateAvailableLessons(position: number) {
 .add-required-button {
     display: none;
     width: 70px;
-    height: 31px;
+    height: 30px;
     line-height: 27px;
     margin-left: 5px;
     font-family: fonts.$geometric-font;

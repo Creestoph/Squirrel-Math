@@ -196,7 +196,7 @@ function canAddNewRequired() {
     margin-left: 5px;
     display: none;
     cursor: pointer;
-    height: 31px;
+    height: 30px;
     line-height: 27px;
 }
 
@@ -209,8 +209,8 @@ function canAddNewRequired() {
     color: colors.$darker-gray;
     font-size: 0.9em;
     font-weight: bold;
-    height: 31px;
-    line-height: 31px;
+    height: 30px;
+    line-height: 30px;
     padding: 0 10px;
     font-family: fonts.$secondary-font;
     margin-right: 5px;
@@ -236,7 +236,7 @@ function canAddNewRequired() {
     margin-left: 5px;
     display: none;
     cursor: pointer;
-    height: 31px;
+    height: 30px;
     line-height: 27px;
 }
 </style>

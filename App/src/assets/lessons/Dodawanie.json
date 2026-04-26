@@ -88,7 +88,9 @@
                             {
                                 "type": "semanticTag",
                                 "attrs": {
-                                    "tags": ["Intuicje"],
+                                    "tags": [
+                                        "Intuicje"
+                                    ],
                                     "required": []
                                 }
                             },
@@ -973,7 +975,9 @@
                             {
                                 "type": "semanticTag",
                                 "attrs": {
-                                    "tags": ["Intuicje"],
+                                    "tags": [
+                                        "Intuicje"
+                                    ],
                                     "required": []
                                 }
                             },
@@ -1334,7 +1338,9 @@
                             {
                                 "type": "semanticTag",
                                 "attrs": {
-                                    "tags": ["Rozszerzenie"],
+                                    "tags": [
+                                        "Rozszerzenie"
+                                    ],
                                     "required": []
                                 }
                             },
@@ -1867,7 +1873,9 @@
                             {
                                 "type": "semanticTag",
                                 "attrs": {
-                                    "tags": ["Warsztat"],
+                                    "tags": [
+                                        "Warsztat"
+                                    ],
                                     "required": []
                                 }
                             },
@@ -2037,7 +2045,12 @@
                                 "type": "component",
                                 "attrs": {
                                     "componentName": "operation-table",
-                                    "args": ["(a, b) => a + b", "(a, b, c) => \"\"", null, null]
+                                    "args": [
+                                        "(a, b) => a + b",
+                                        "(a, b, c) => \"\"",
+                                        null,
+                                        null
+                                    ]
                                 }
                             },
                             {
@@ -2076,7 +2089,12 @@
                                 "type": "component",
                                 "attrs": {
                                     "componentName": "operation-table",
-                                    "args": ["(a, b) => a + b", "(a, b, c) => `${a} + ${b} = ${c}`", "8", "9"]
+                                    "args": [
+                                        "(a, b) => a + b",
+                                        "(a, b, c) => `${a} + ${b} = ${c}`",
+                                        "8",
+                                        "9"
+                                    ]
                                 }
                             },
                             {
@@ -2178,7 +2196,14 @@
                                         "type": "component",
                                         "attrs": {
                                             "componentName": "columnar-operation-table",
-                                            "args": [["c/;c/;;;", ";;1;2;7", "u/+;u/;u/;u/3;u/2", ";;;;"]]
+                                            "args": [
+                                                [
+                                                    "c/;c/;;;",
+                                                    ";;1;2;7",
+                                                    "u/+;u/;u/;u/3;u/2",
+                                                    ";;;;"
+                                                ]
+                                            ]
                                         }
                                     },
                                     {
@@ -2291,7 +2316,14 @@
                                         "type": "component",
                                         "attrs": {
                                             "componentName": "columnar-operation-table",
-                                            "args": [["c/;c/;;;", ";;1;2;7", "u/+;u/;u/;u/3;u/2", ";;1;5;9"]]
+                                            "args": [
+                                                [
+                                                    "c/;c/;;;",
+                                                    ";;1;2;7",
+                                                    "u/+;u/;u/;u/3;u/2",
+                                                    ";;1;5;9"
+                                                ]
+                                            ]
                                         }
                                     },
                                     {
@@ -2367,7 +2399,14 @@
                                         "type": "component",
                                         "attrs": {
                                             "componentName": "columnar-operation-table",
-                                            "args": [["c/;c/;;;", ";;2;5;6", "u/+;u/;u/9;u/4;u/7", ";;;;"]]
+                                            "args": [
+                                                [
+                                                    "c/;c/;;;",
+                                                    ";;2;5;6",
+                                                    "u/+;u/;u/9;u/4;u/7",
+                                                    ";;;;"
+                                                ]
+                                            ]
                                         }
                                     },
                                     {
@@ -2426,7 +2465,14 @@
                                         "type": "component",
                                         "attrs": {
                                             "componentName": "columnar-operation-table",
-                                            "args": [["c/;c/;c/;c/1;c/", ";;2;5;6", "u/+;u/;u/9;u/4;u/7", ";;;;3"]]
+                                            "args": [
+                                                [
+                                                    "c/;c/;c/;c/1;c/",
+                                                    ";;2;5;6",
+                                                    "u/+;u/;u/9;u/4;u/7",
+                                                    ";;;;3"
+                                                ]
+                                            ]
                                         }
                                     },
                                     {
@@ -2505,7 +2551,14 @@
                                         "type": "component",
                                         "attrs": {
                                             "componentName": "columnar-operation-table",
-                                            "args": [["c/;c/;c/1;c/1;c/", ";;2;5;6", "u/+;u/;u/9;u/4;u/7", ";;;0;3"]]
+                                            "args": [
+                                                [
+                                                    "c/;c/;c/1;c/1;c/",
+                                                    ";;2;5;6",
+                                                    "u/+;u/;u/9;u/4;u/7",
+                                                    ";;;0;3"
+                                                ]
+                                            ]
                                         }
                                     },
                                     {
@@ -2640,7 +2693,10 @@
                                 "type": "component",
                                 "attrs": {
                                     "componentName": "columnar-operation-guide",
-                                    "args": ["addition", false]
+                                    "args": [
+                                        "addition",
+                                        false
+                                    ]
                                 }
                             }
                         ]
@@ -2668,8 +2724,12 @@
                             {
                                 "type": "semanticTag",
                                 "attrs": {
-                                    "tags": ["Rozszerzenie"],
-                                    "required": ["Kolejność wykonywania działań"]
+                                    "tags": [
+                                        "Rozszerzenie"
+                                    ],
+                                    "required": [
+                                        "Kolejność wykonywania działań"
+                                    ]
                                 }
                             },
                             {
@@ -2993,8 +3053,13 @@
                             {
                                 "type": "semanticTag",
                                 "attrs": {
-                                    "tags": ["Formalnie", "Rozszerzenie"],
-                                    "required": ["Lekcja jeszcze niedostępna"]
+                                    "tags": [
+                                        "Formalnie",
+                                        "Rozszerzenie"
+                                    ],
+                                    "required": [
+                                        "Lekcja jeszcze niedostępna"
+                                    ]
                                 }
                             },
                             {
@@ -4350,7 +4415,12 @@
                                 "type": "component",
                                 "attrs": {
                                     "componentName": "operation-table",
-                                    "args": ["(a, b) => a + b", "(a, b, c) => `${a} + ${b} = ${c}`", "8", "9"]
+                                    "args": [
+                                        "(a, b) => a + b",
+                                        "(a, b, c) => `${a} + ${b} = ${c}`",
+                                        "8",
+                                        "9"
+                                    ]
                                 }
                             },
                             {
@@ -4437,7 +4507,10 @@
                                 "type": "component",
                                 "attrs": {
                                     "componentName": "columnar-operation-guide",
-                                    "args": ["addition", false]
+                                    "args": [
+                                        "addition",
+                                        false
+                                    ]
                                 }
                             }
                         ]

@@ -2,36 +2,109 @@
     "long": {
         "type": "doc",
         "content": [
-            { "type": "title", "content": [{ "type": "text", "text": "Wielkie DEMO" }] },
+            {
+                "type": "title",
+                "content": [
+                    {
+                        "type": "text",
+                        "text": "Wielkie DEMO"
+                    }
+                ]
+            },
             {
                 "type": "intro",
                 "content": [
                     {
                         "type": "paragraph",
-                        "attrs": { "textAlign": "" },
+                        "attrs": {
+                            "textAlign": ""
+                        },
                         "content": [
-                            { "type": "text", "marks": [{ "type": "bold" }], "text": "Lolek " },
-                            { "type": "text", "text": "i " },
-                            { "type": "text", "marks": [{ "type": "italic" }], "text": "dziadek" },
-                            { "type": "text", "text": " poszli do " },
-                            { "type": "text", "marks": [{ "type": "underline" }], "text": "lasu" },
-                            { "type": "text", "text": " nazbi" },
-                            { "type": "text", "marks": [{ "type": "bold" }], "text": "erać " },
                             {
                                 "type": "text",
-                                "marks": [{ "type": "bold" }, { "type": "comment", "attrs": { "id": 1 } }],
+                                "marks": [
+                                    {
+                                        "type": "bold"
+                                    }
+                                ],
+                                "text": "Lolek "
+                            },
+                            {
+                                "type": "text",
+                                "text": "i "
+                            },
+                            {
+                                "type": "text",
+                                "marks": [
+                                    {
+                                        "type": "italic"
+                                    }
+                                ],
+                                "text": "dziadek"
+                            },
+                            {
+                                "type": "text",
+                                "text": " poszli do "
+                            },
+                            {
+                                "type": "text",
+                                "marks": [
+                                    {
+                                        "type": "underline"
+                                    }
+                                ],
+                                "text": "lasu"
+                            },
+                            {
+                                "type": "text",
+                                "text": " nazbi"
+                            },
+                            {
+                                "type": "text",
+                                "marks": [
+                                    {
+                                        "type": "bold"
+                                    }
+                                ],
+                                "text": "erać "
+                            },
+                            {
+                                "type": "text",
+                                "marks": [
+                                    {
+                                        "type": "bold"
+                                    },
+                                    {
+                                        "type": "comment",
+                                        "attrs": {
+                                            "id": 1
+                                        }
+                                    }
+                                ],
                                 "text": "bo"
                             },
                             {
                                 "type": "text",
                                 "marks": [
-                                    { "type": "bold" },
-                                    { "type": "underline" },
-                                    { "type": "comment", "attrs": { "id": 1 } }
+                                    {
+                                        "type": "bold"
+                                    },
+                                    {
+                                        "type": "underline"
+                                    },
+                                    {
+                                        "type": "comment",
+                                        "attrs": {
+                                            "id": 1
+                                        }
+                                    }
                                 ],
                                 "text": "rówek"
                             },
-                            { "type": "text", "text": "." }
+                            {
+                                "type": "text",
+                                "text": "."
+                            }
                         ]
                     }
                 ]
@@ -41,20 +114,51 @@
                 "content": [
                     {
                         "type": "chapterTitle",
-                        "attrs": { "isHidden": false },
-                        "content": [{ "type": "text", "text": "Ąci Ąci Ąci Ły" }]
+                        "attrs": {
+                            "isHidden": false
+                        },
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "Ąci Ąci Ąci Ły"
+                            }
+                        ]
                     },
                     {
                         "type": "chapterBody",
                         "content": [
-                            { "type": "semanticTag", "attrs": { "tags": ["Formalnie"], "required": [] } },
+                            {
+                                "type": "semanticTag",
+                                "attrs": {
+                                    "tags": [
+                                        "Formalnie"
+                                    ],
+                                    "required": []
+                                }
+                            },
                             {
                                 "type": "paragraph",
-                                "attrs": { "textAlign": "" },
+                                "attrs": {
+                                    "textAlign": ""
+                                },
                                 "content": [
-                                    { "type": "text", "text": "Rzecz jest poważna. " },
-                                    { "type": "text", "marks": [{ "type": "number" }], "text": "12" },
-                                    { "type": "text", "text": " apostołów szturmuje Watykan." }
+                                    {
+                                        "type": "text",
+                                        "text": "Rzecz jest poważna. "
+                                    },
+                                    {
+                                        "type": "text",
+                                        "marks": [
+                                            {
+                                                "type": "number"
+                                            }
+                                        ],
+                                        "text": "12"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": " apostołów szturmuje Watykan."
+                                    }
                                 ]
                             },
                             {
@@ -62,22 +166,37 @@
                                 "content": [
                                     {
                                         "type": "paragraph",
-                                        "attrs": { "textAlign": "" },
+                                        "attrs": {
+                                            "textAlign": ""
+                                        },
                                         "content": [
-                                            { "type": "text", "text": "Nie wolno dopuszczać apostołów do szturmu:" }
+                                            {
+                                                "type": "text",
+                                                "text": "Nie wolno dopuszczać apostołów do szturmu:"
+                                            }
                                         ]
                                     },
                                     {
                                         "type": "orderedList",
-                                        "attrs": { "start": 1, "type": null },
+                                        "attrs": {
+                                            "start": 1,
+                                            "type": null
+                                        },
                                         "content": [
                                             {
                                                 "type": "listItem",
                                                 "content": [
                                                     {
                                                         "type": "paragraph",
-                                                        "attrs": { "textAlign": "" },
-                                                        "content": [{ "type": "text", "text": "Tak powiedział Noe." }]
+                                                        "attrs": {
+                                                            "textAlign": ""
+                                                        },
+                                                        "content": [
+                                                            {
+                                                                "type": "text",
+                                                                "text": "Tak powiedział Noe."
+                                                            }
+                                                        ]
                                                     }
                                                 ]
                                             },
@@ -86,15 +205,27 @@
                                                 "content": [
                                                     {
                                                         "type": "paragraph",
-                                                        "attrs": { "textAlign": "" },
+                                                        "attrs": {
+                                                            "textAlign": ""
+                                                        },
                                                         "content": [
-                                                            { "type": "text", "text": "Tak powiedział " },
                                                             {
                                                                 "type": "text",
-                                                                "marks": [{ "type": "strike" }],
+                                                                "text": "Tak powiedział "
+                                                            },
+                                                            {
+                                                                "type": "text",
+                                                                "marks": [
+                                                                    {
+                                                                        "type": "strike"
+                                                                    }
+                                                                ],
                                                                 "text": "Abraham"
                                                             },
-                                                            { "type": "text", "text": " Izajasz." }
+                                                            {
+                                                                "type": "text",
+                                                                "text": " Izajasz."
+                                                            }
                                                         ]
                                                     }
                                                 ]
@@ -103,34 +234,89 @@
                                     }
                                 ]
                             },
-                            { "type": "paragraph", "attrs": { "textAlign": "" } },
+                            {
+                                "type": "paragraph",
+                                "attrs": {
+                                    "textAlign": ""
+                                }
+                            },
                             {
                                 "type": "semanticTag",
-                                "attrs": { "tags": ["Warsztat", "Rozszerzenie"], "required": [] }
+                                "attrs": {
+                                    "tags": [
+                                        "Warsztat",
+                                        "Rozszerzenie"
+                                    ],
+                                    "required": []
+                                }
                             },
                             {
                                 "type": "paragraph",
-                                "attrs": { "textAlign": "" },
-                                "content": [{ "type": "text", "text": "Przeciwdziałać należy szybko." }]
+                                "attrs": {
+                                    "textAlign": ""
+                                },
+                                "content": [
+                                    {
+                                        "type": "text",
+                                        "text": "Przeciwdziałać należy szybko."
+                                    }
+                                ]
                             },
                             {
                                 "type": "example",
                                 "content": [
                                     {
                                         "type": "paragraph",
-                                        "attrs": { "textAlign": "" },
+                                        "attrs": {
+                                            "textAlign": ""
+                                        },
                                         "content": [
-                                            { "type": "text", "text": "Zaleca się " },
                                             {
                                                 "type": "text",
-                                                "marks": [{ "type": "link", "attrs": { "href": "/lesson/Dzielenie" } }],
+                                                "text": "Zaleca się "
+                                            },
+                                            {
+                                                "type": "text",
+                                                "marks": [
+                                                    {
+                                                        "type": "link",
+                                                        "attrs": {
+                                                            "href": "/lesson/Dzielenie"
+                                                        }
+                                                    }
+                                                ],
                                                 "text": "podzielić"
                                             },
-                                            { "type": "text", "text": " apostołów. " },
-                                            { "type": "text", "marks": [{ "type": "number" }], "text": "12" },
-                                            { "type": "text", "text": " : " },
-                                            { "type": "text", "marks": [{ "type": "number" }], "text": "2 = 6" },
-                                            { "type": "text", "text": "." }
+                                            {
+                                                "type": "text",
+                                                "text": " apostołów. "
+                                            },
+                                            {
+                                                "type": "text",
+                                                "marks": [
+                                                    {
+                                                        "type": "number"
+                                                    }
+                                                ],
+                                                "text": "12"
+                                            },
+                                            {
+                                                "type": "text",
+                                                "text": " : "
+                                            },
+                                            {
+                                                "type": "text",
+                                                "marks": [
+                                                    {
+                                                        "type": "number"
+                                                    }
+                                                ],
+                                                "text": "2 = 6"
+                                            },
+                                            {
+                                                "type": "text",
+                                                "text": "."
+                                            }
                                         ]
                                     }
                                 ]
@@ -140,25 +326,82 @@
                                 "content": [
                                     {
                                         "type": "paragraph",
-                                        "attrs": { "textAlign": "" },
+                                        "attrs": {
+                                            "textAlign": ""
+                                        },
                                         "content": [
-                                            { "type": "text", "text": "Zaleca się " },
+                                            {
+                                                "type": "text",
+                                                "text": "Zaleca się "
+                                            },
                                             {
                                                 "type": "text",
                                                 "marks": [
-                                                    { "type": "link", "attrs": { "href": "/lesson/Odejmowanie" } }
+                                                    {
+                                                        "type": "link",
+                                                        "attrs": {
+                                                            "href": "/lesson/Odejmowanie"
+                                                        }
+                                                    }
                                                 ],
                                                 "text": "odjąć"
                                             },
-                                            { "type": "text", "text": " apostołów. " },
-                                            { "type": "text", "marks": [{ "type": "number" }], "text": "12" },
-                                            { "type": "text", "text": " - " },
-                                            { "type": "text", "marks": [{ "type": "number" }], "text": "7" },
-                                            { "type": "text", "text": " " },
-                                            { "type": "text", "marks": [{ "type": "number" }], "text": "=" },
-                                            { "type": "text", "text": " " },
-                                            { "type": "text", "marks": [{ "type": "number" }], "text": "5" },
-                                            { "type": "text", "text": "." }
+                                            {
+                                                "type": "text",
+                                                "text": " apostołów. "
+                                            },
+                                            {
+                                                "type": "text",
+                                                "marks": [
+                                                    {
+                                                        "type": "number"
+                                                    }
+                                                ],
+                                                "text": "12"
+                                            },
+                                            {
+                                                "type": "text",
+                                                "text": " - "
+                                            },
+                                            {
+                                                "type": "text",
+                                                "marks": [
+                                                    {
+                                                        "type": "number"
+                                                    }
+                                                ],
+                                                "text": "7"
+                                            },
+                                            {
+                                                "type": "text",
+                                                "text": " "
+                                            },
+                                            {
+                                                "type": "text",
+                                                "marks": [
+                                                    {
+                                                        "type": "number"
+                                                    }
+                                                ],
+                                                "text": "="
+                                            },
+                                            {
+                                                "type": "text",
+                                                "text": " "
+                                            },
+                                            {
+                                                "type": "text",
+                                                "marks": [
+                                                    {
+                                                        "type": "number"
+                                                    }
+                                                ],
+                                                "text": "5"
+                                            },
+                                            {
+                                                "type": "text",
+                                                "text": "."
+                                            }
                                         ]
                                     }
                                 ]
@@ -172,17 +415,39 @@
                 "content": [
                     {
                         "type": "chapterTitle",
-                        "attrs": { "isHidden": false },
-                        "content": [{ "type": "text", "text": "Param pam pa pam I'm lovin' it" }]
+                        "attrs": {
+                            "isHidden": false
+                        },
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "Param pam pa pam I'm lovin' it"
+                            }
+                        ]
                     },
                     {
                         "type": "chapterBody",
                         "content": [
-                            { "type": "semanticTag", "attrs": { "tags": ["Intuicje"], "required": [] } },
+                            {
+                                "type": "semanticTag",
+                                "attrs": {
+                                    "tags": [
+                                        "Intuicje"
+                                    ],
+                                    "required": []
+                                }
+                            },
                             {
                                 "type": "paragraph",
-                                "attrs": { "textAlign": "" },
-                                "content": [{ "type": "text", "text": "A więc tak:" }]
+                                "attrs": {
+                                    "textAlign": ""
+                                },
+                                "content": [
+                                    {
+                                        "type": "text",
+                                        "text": "A więc tak:"
+                                    }
+                                ]
                             },
                             {
                                 "type": "bulletList",
@@ -192,57 +457,29 @@
                                         "content": [
                                             {
                                                 "type": "paragraph",
-                                                "attrs": { "textAlign": "" },
-                                                "content": [{ "type": "text", "text": "Mojżesz" }]
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        "type": "listItem",
-                                        "content": [
-                                            {
-                                                "type": "paragraph",
-                                                "attrs": { "textAlign": "" },
-                                                "content": [{ "type": "text", "text": "Książę" }]
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        "type": "listItem",
-                                        "content": [
-                                            {
-                                                "type": "paragraph",
-                                                "attrs": { "textAlign": "" },
-                                                "content": [{ "type": "text", "text": "Egiptu" }]
-                                            }
-                                        ]
-                                    }
-                                ]
-                            },
-                            {
-                                "type": "orderedList",
-                                "attrs": { "start": 1, "type": null },
-                                "content": [
-                                    {
-                                        "type": "listItem",
-                                        "content": [
-                                            {
-                                                "type": "paragraph",
-                                                "attrs": { "textAlign": "" },
-                                                "content": [{ "type": "text", "text": "Mojżesz" }]
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        "type": "listItem",
-                                        "content": [
-                                            {
-                                                "type": "paragraph",
-                                                "attrs": { "textAlign": "" },
+                                                "attrs": {
+                                                    "textAlign": ""
+                                                },
                                                 "content": [
                                                     {
                                                         "type": "text",
-                                                        "marks": [{ "type": "comment", "attrs": { "id": 2 } }],
+                                                        "text": "Mojżesz"
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "listItem",
+                                        "content": [
+                                            {
+                                                "type": "paragraph",
+                                                "attrs": {
+                                                    "textAlign": ""
+                                                },
+                                                "content": [
+                                                    {
+                                                        "type": "text",
                                                         "text": "Książę"
                                                     }
                                                 ]
@@ -254,11 +491,88 @@
                                         "content": [
                                             {
                                                 "type": "paragraph",
-                                                "attrs": { "textAlign": "" },
+                                                "attrs": {
+                                                    "textAlign": ""
+                                                },
                                                 "content": [
                                                     {
                                                         "type": "text",
-                                                        "marks": [{ "type": "comment", "attrs": { "id": 2 } }],
+                                                        "text": "Egiptu"
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "orderedList",
+                                "attrs": {
+                                    "start": 1,
+                                    "type": null
+                                },
+                                "content": [
+                                    {
+                                        "type": "listItem",
+                                        "content": [
+                                            {
+                                                "type": "paragraph",
+                                                "attrs": {
+                                                    "textAlign": ""
+                                                },
+                                                "content": [
+                                                    {
+                                                        "type": "text",
+                                                        "text": "Mojżesz"
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "listItem",
+                                        "content": [
+                                            {
+                                                "type": "paragraph",
+                                                "attrs": {
+                                                    "textAlign": ""
+                                                },
+                                                "content": [
+                                                    {
+                                                        "type": "text",
+                                                        "marks": [
+                                                            {
+                                                                "type": "comment",
+                                                                "attrs": {
+                                                                    "id": 2
+                                                                }
+                                                            }
+                                                        ],
+                                                        "text": "Książę"
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "listItem",
+                                        "content": [
+                                            {
+                                                "type": "paragraph",
+                                                "attrs": {
+                                                    "textAlign": ""
+                                                },
+                                                "content": [
+                                                    {
+                                                        "type": "text",
+                                                        "marks": [
+                                                            {
+                                                                "type": "comment",
+                                                                "attrs": {
+                                                                    "id": 2
+                                                                }
+                                                            }
+                                                        ],
                                                         "text": "Egiptu"
                                                     }
                                                 ]
@@ -269,25 +583,54 @@
                             },
                             {
                                 "type": "proof",
-                                "attrs": { "label": "Szkic dowodu", "required": [] },
-                                "content": [{ "type": "expression", "attrs": { "mathJax": "3 > 1" } }]
-                            },
-                            {
-                                "type": "proof",
-                                "attrs": { "label": "Dowód", "required": [] },
+                                "attrs": {
+                                    "label": "Szkic dowodu",
+                                    "required": []
+                                },
                                 "content": [
                                     {
                                         "type": "expression",
-                                        "attrs": { "mathJax": "3 \\text{ Mojżesze} > 1 \\text{ Mojżesz}" }
+                                        "attrs": {
+                                            "mathJax": "3 > 1"
+                                        }
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "proof",
+                                "attrs": {
+                                    "label": "Dowód",
+                                    "required": []
+                                },
+                                "content": [
+                                    {
+                                        "type": "expression",
+                                        "attrs": {
+                                            "mathJax": "3 \\text{ Mojżesze} > 1 \\text{ Mojżesz}"
+                                        }
                                     }
                                 ]
                             },
                             {
                                 "type": "paragraph",
-                                "attrs": { "textAlign": "" },
-                                "content": [{ "type": "text", "text": "Powyższe obliczenia nie są poprawne." }]
+                                "attrs": {
+                                    "textAlign": ""
+                                },
+                                "content": [
+                                    {
+                                        "type": "text",
+                                        "text": "Powyższe obliczenia nie są poprawne."
+                                    }
+                                ]
                             },
-                            { "type": "image", "attrs": { "key": "Błąd Gruby.png", "width": 594, "height": 217 } },
+                            {
+                                "type": "image",
+                                "attrs": {
+                                    "key": "Błąd Gruby.png",
+                                    "width": 594,
+                                    "height": 217
+                                }
+                            },
                             {
                                 "type": "table",
                                 "content": [
@@ -313,8 +656,15 @@
                                                 "content": [
                                                     {
                                                         "type": "paragraph",
-                                                        "attrs": { "textAlign": "center" },
-                                                        "content": [{ "type": "text", "text": "pośpiech" }]
+                                                        "attrs": {
+                                                            "textAlign": "center"
+                                                        },
+                                                        "content": [
+                                                            {
+                                                                "type": "text",
+                                                                "text": "pośpiech"
+                                                            }
+                                                        ]
                                                     }
                                                 ]
                                             },
@@ -337,8 +687,15 @@
                                                 "content": [
                                                     {
                                                         "type": "paragraph",
-                                                        "attrs": { "textAlign": "center" },
-                                                        "content": [{ "type": "text", "text": "jest" }]
+                                                        "attrs": {
+                                                            "textAlign": "center"
+                                                        },
+                                                        "content": [
+                                                            {
+                                                                "type": "text",
+                                                                "text": "jest"
+                                                            }
+                                                        ]
                                                     }
                                                 ]
                                             },
@@ -361,8 +718,15 @@
                                                 "content": [
                                                     {
                                                         "type": "paragraph",
-                                                        "attrs": { "textAlign": "center" },
-                                                        "content": [{ "type": "text", "text": "wskazany" }]
+                                                        "attrs": {
+                                                            "textAlign": "center"
+                                                        },
+                                                        "content": [
+                                                            {
+                                                                "type": "text",
+                                                                "text": "wskazany"
+                                                            }
+                                                        ]
                                                     }
                                                 ]
                                             }
@@ -390,8 +754,15 @@
                                                 "content": [
                                                     {
                                                         "type": "paragraph",
-                                                        "attrs": { "textAlign": "center" },
-                                                        "content": [{ "type": "text", "text": "przy" }]
+                                                        "attrs": {
+                                                            "textAlign": "center"
+                                                        },
+                                                        "content": [
+                                                            {
+                                                                "type": "text",
+                                                                "text": "przy"
+                                                            }
+                                                        ]
                                                     }
                                                 ]
                                             },
@@ -414,8 +785,15 @@
                                                 "content": [
                                                     {
                                                         "type": "paragraph",
-                                                        "attrs": { "textAlign": "center" },
-                                                        "content": [{ "type": "text", "text": "łapaniu" }]
+                                                        "attrs": {
+                                                            "textAlign": "center"
+                                                        },
+                                                        "content": [
+                                                            {
+                                                                "type": "text",
+                                                                "text": "łapaniu"
+                                                            }
+                                                        ]
                                                     }
                                                 ]
                                             },
@@ -438,8 +816,15 @@
                                                 "content": [
                                                     {
                                                         "type": "paragraph",
-                                                        "attrs": { "textAlign": "center" },
-                                                        "content": [{ "type": "text", "text": "pcheł" }]
+                                                        "attrs": {
+                                                            "textAlign": "center"
+                                                        },
+                                                        "content": [
+                                                            {
+                                                                "type": "text",
+                                                                "text": "pcheł"
+                                                            }
+                                                        ]
                                                     }
                                                 ]
                                             }
@@ -449,8 +834,15 @@
                             },
                             {
                                 "type": "paragraph",
-                                "attrs": { "textAlign": "" },
-                                "content": [{ "type": "text", "text": "O jaka ładna tabela:" }]
+                                "attrs": {
+                                    "textAlign": ""
+                                },
+                                "content": [
+                                    {
+                                        "type": "text",
+                                        "text": "O jaka ładna tabela:"
+                                    }
+                                ]
                             },
                             {
                                 "type": "table",
@@ -474,7 +866,14 @@
                                                     "borderBottom": 1,
                                                     "borderTop": 1
                                                 },
-                                                "content": [{ "type": "paragraph", "attrs": { "textAlign": "" } }]
+                                                "content": [
+                                                    {
+                                                        "type": "paragraph",
+                                                        "attrs": {
+                                                            "textAlign": ""
+                                                        }
+                                                    }
+                                                ]
                                             },
                                             {
                                                 "type": "tableCell",
@@ -492,7 +891,14 @@
                                                     "borderBottom": "3",
                                                     "borderTop": "3"
                                                 },
-                                                "content": [{ "type": "paragraph", "attrs": { "textAlign": "" } }]
+                                                "content": [
+                                                    {
+                                                        "type": "paragraph",
+                                                        "attrs": {
+                                                            "textAlign": ""
+                                                        }
+                                                    }
+                                                ]
                                             },
                                             {
                                                 "type": "tableCell",
@@ -510,7 +916,14 @@
                                                     "borderBottom": 1,
                                                     "borderTop": 1
                                                 },
-                                                "content": [{ "type": "paragraph", "attrs": { "textAlign": "" } }]
+                                                "content": [
+                                                    {
+                                                        "type": "paragraph",
+                                                        "attrs": {
+                                                            "textAlign": ""
+                                                        }
+                                                    }
+                                                ]
                                             }
                                         ]
                                     },
@@ -533,7 +946,14 @@
                                                     "borderBottom": "3",
                                                     "borderTop": "3"
                                                 },
-                                                "content": [{ "type": "paragraph", "attrs": { "textAlign": "" } }]
+                                                "content": [
+                                                    {
+                                                        "type": "paragraph",
+                                                        "attrs": {
+                                                            "textAlign": ""
+                                                        }
+                                                    }
+                                                ]
                                             },
                                             {
                                                 "type": "tableCell",
@@ -554,7 +974,11 @@
                                                 "content": [
                                                     {
                                                         "type": "image",
-                                                        "attrs": { "key": "sheep.png", "width": 26, "height": 27 }
+                                                        "attrs": {
+                                                            "key": "sheep.png",
+                                                            "width": 26,
+                                                            "height": 27
+                                                        }
                                                     }
                                                 ]
                                             },
@@ -574,7 +998,14 @@
                                                     "borderBottom": "3",
                                                     "borderTop": "3"
                                                 },
-                                                "content": [{ "type": "paragraph", "attrs": { "textAlign": "" } }]
+                                                "content": [
+                                                    {
+                                                        "type": "paragraph",
+                                                        "attrs": {
+                                                            "textAlign": ""
+                                                        }
+                                                    }
+                                                ]
                                             }
                                         ]
                                     },
@@ -597,7 +1028,14 @@
                                                     "borderBottom": 1,
                                                     "borderTop": 1
                                                 },
-                                                "content": [{ "type": "paragraph", "attrs": { "textAlign": "" } }]
+                                                "content": [
+                                                    {
+                                                        "type": "paragraph",
+                                                        "attrs": {
+                                                            "textAlign": ""
+                                                        }
+                                                    }
+                                                ]
                                             },
                                             {
                                                 "type": "tableCell",
@@ -615,7 +1053,14 @@
                                                     "borderBottom": "3",
                                                     "borderTop": "3"
                                                 },
-                                                "content": [{ "type": "paragraph", "attrs": { "textAlign": "" } }]
+                                                "content": [
+                                                    {
+                                                        "type": "paragraph",
+                                                        "attrs": {
+                                                            "textAlign": ""
+                                                        }
+                                                    }
+                                                ]
                                             },
                                             {
                                                 "type": "tableCell",
@@ -633,29 +1078,67 @@
                                                     "borderBottom": 1,
                                                     "borderTop": 1
                                                 },
-                                                "content": [{ "type": "paragraph", "attrs": { "textAlign": "" } }]
+                                                "content": [
+                                                    {
+                                                        "type": "paragraph",
+                                                        "attrs": {
+                                                            "textAlign": ""
+                                                        }
+                                                    }
+                                                ]
                                             }
                                         ]
                                     }
                                 ]
                             },
-                            { "type": "paragraph", "attrs": { "textAlign": "" } },
+                            {
+                                "type": "paragraph",
+                                "attrs": {
+                                    "textAlign": ""
+                                }
+                            },
                             {
                                 "type": "geometry",
-                                "attrs": { "canvas": { "width": 661, "height": 500 } },
+                                "attrs": {
+                                    "canvas": {
+                                        "width": 661,
+                                        "height": 500
+                                    }
+                                },
                                 "content": [
                                     {
                                         "type": "line",
                                         "attrs": {
                                             "id": "785",
                                             "points": [
-                                                { "x": 47.515625, "y": 90.75 },
-                                                { "x": 157.515625, "y": 98.75 },
-                                                { "x": 167.515625, "y": 252.75 },
-                                                { "x": 145.515625, "y": 366.75 },
-                                                { "x": 85.515625, "y": 384.75 },
-                                                { "x": 57.515625, "y": 340.75 },
-                                                { "x": 49.515625, "y": 280.75 }
+                                                {
+                                                    "x": 47.515625,
+                                                    "y": 90.75
+                                                },
+                                                {
+                                                    "x": 157.515625,
+                                                    "y": 98.75
+                                                },
+                                                {
+                                                    "x": 167.515625,
+                                                    "y": 252.75
+                                                },
+                                                {
+                                                    "x": 145.515625,
+                                                    "y": 366.75
+                                                },
+                                                {
+                                                    "x": 85.515625,
+                                                    "y": 384.75
+                                                },
+                                                {
+                                                    "x": 57.515625,
+                                                    "y": 340.75
+                                                },
+                                                {
+                                                    "x": 49.515625,
+                                                    "y": 280.75
+                                                }
                                             ],
                                             "color": "#dd3333",
                                             "smooth": false
@@ -666,9 +1149,18 @@
                                         "attrs": {
                                             "id": "786",
                                             "vertices": [
-                                                { "x": 181.515625, "y": 372.75 },
-                                                { "x": 251.515625, "y": 100.75 },
-                                                { "x": 329.515625, "y": 372.75 }
+                                                {
+                                                    "x": 181.515625,
+                                                    "y": 372.75
+                                                },
+                                                {
+                                                    "x": 251.515625,
+                                                    "y": 100.75
+                                                },
+                                                {
+                                                    "x": 329.515625,
+                                                    "y": 372.75
+                                                }
                                             ],
                                             "color": "#dd3333",
                                             "borderColor": "#00000000"
@@ -678,8 +1170,14 @@
                                         "type": "circle",
                                         "attrs": {
                                             "id": "788",
-                                            "center": { "x": 600.7578125, "y": 233.75 },
-                                            "size": { "width": 213.515625, "height": 310 },
+                                            "center": {
+                                                "x": 600.7578125,
+                                                "y": 233.75
+                                            },
+                                            "size": {
+                                                "width": 213.515625,
+                                                "height": 310
+                                            },
                                             "color": "#dd3333",
                                             "borderColor": "#00000000"
                                         }
@@ -688,8 +1186,14 @@
                                         "type": "rectangle",
                                         "attrs": {
                                             "id": "789",
-                                            "center": { "x": 664.7578125, "y": 237.375 },
-                                            "size": { "width": 141.515625, "height": 346.75 },
+                                            "center": {
+                                                "x": 664.7578125,
+                                                "y": 237.375
+                                            },
+                                            "size": {
+                                                "width": 141.515625,
+                                                "height": 346.75
+                                            },
                                             "color": "#ffffff",
                                             "borderColor": "#00000000"
                                         }
@@ -698,8 +1202,14 @@
                                         "type": "circle",
                                         "attrs": {
                                             "id": "790",
-                                            "center": { "x": 700.515625, "y": 235.75 },
-                                            "size": { "width": 162, "height": 318 },
+                                            "center": {
+                                                "x": 700.515625,
+                                                "y": 235.75
+                                            },
+                                            "size": {
+                                                "width": 162,
+                                                "height": 318
+                                            },
                                             "color": "#dd3333",
                                             "borderColor": "#00000000"
                                         }
@@ -709,12 +1219,30 @@
                                         "attrs": {
                                             "id": "0",
                                             "points": [
-                                                { "x": 370.8125, "y": 102.59999084472656 },
-                                                { "x": 425.8125, "y": 89.59999084472656 },
-                                                { "x": 452.8125, "y": 122.59999084472656 },
-                                                { "x": 449.8125, "y": 347.59999084472656 },
-                                                { "x": 374.8125, "y": 377.59999084472656 },
-                                                { "x": 380.8125, "y": 295.59999084472656 }
+                                                {
+                                                    "x": 370.8125,
+                                                    "y": 102.59999084472656
+                                                },
+                                                {
+                                                    "x": 425.8125,
+                                                    "y": 89.59999084472656
+                                                },
+                                                {
+                                                    "x": 452.8125,
+                                                    "y": 122.59999084472656
+                                                },
+                                                {
+                                                    "x": 449.8125,
+                                                    "y": 347.59999084472656
+                                                },
+                                                {
+                                                    "x": 374.8125,
+                                                    "y": 377.59999084472656
+                                                },
+                                                {
+                                                    "x": 380.8125,
+                                                    "y": 295.59999084472656
+                                                }
                                             ],
                                             "color": "#dd3333",
                                             "smooth": true
@@ -722,7 +1250,12 @@
                                     }
                                 ]
                             },
-                            { "type": "paragraph", "attrs": { "textAlign": "" } },
+                            {
+                                "type": "paragraph",
+                                "attrs": {
+                                    "textAlign": ""
+                                }
+                            },
                             {
                                 "type": "component",
                                 "attrs": {
@@ -735,10 +1268,17 @@
                                     ]
                                 }
                             },
-                            { "type": "paragraph", "attrs": { "textAlign": "" } },
+                            {
+                                "type": "paragraph",
+                                "attrs": {
+                                    "textAlign": ""
+                                }
+                            },
                             {
                                 "type": "customElement",
-                                "attrs": { "language": null },
+                                "attrs": {
+                                    "language": null
+                                },
                                 "content": [
                                     {
                                         "type": "text",
@@ -746,7 +1286,12 @@
                                     }
                                 ]
                             },
-                            { "type": "paragraph", "attrs": { "textAlign": "" } }
+                            {
+                                "type": "paragraph",
+                                "attrs": {
+                                    "textAlign": ""
+                                }
+                            }
                         ]
                     }
                 ]
@@ -754,8 +1299,14 @@
         ]
     },
     "comments": {
-        "1": { "text": "Bo im się zachciało", "hidden": false },
-        "2": { "text": "Mojżesz w świecie faraonów", "hidden": false }
+        "1": {
+            "text": "Bo im się zachciało",
+            "hidden": false
+        },
+        "2": {
+            "text": "Mojżesz w świecie faraonów",
+            "hidden": false
+        }
     },
     "images": {
         "Błąd Gruby.png": {

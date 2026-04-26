@@ -2,13 +2,23 @@
     "long": {
         "type": "doc",
         "content": [
-            { "type": "title", "content": [{ "type": "text", "text": "Wprowadzenie" }] },
+            {
+                "type": "title",
+                "content": [
+                    {
+                        "type": "text",
+                        "text": "Wprowadzenie"
+                    }
+                ]
+            },
             {
                 "type": "intro",
                 "content": [
                     {
                         "type": "paragraph",
-                        "attrs": { "textAlign": "" },
+                        "attrs": {
+                            "textAlign": ""
+                        },
                         "content": [
                             {
                                 "type": "text",
@@ -24,7 +34,9 @@
                                 "content": [
                                     {
                                         "type": "paragraph",
-                                        "attrs": { "textAlign": "" },
+                                        "attrs": {
+                                            "textAlign": ""
+                                        },
                                         "content": [
                                             {
                                                 "type": "text",
@@ -39,7 +51,9 @@
                                 "content": [
                                     {
                                         "type": "paragraph",
-                                        "attrs": { "textAlign": "" },
+                                        "attrs": {
+                                            "textAlign": ""
+                                        },
                                         "content": [
                                             {
                                                 "type": "text",
@@ -54,7 +68,9 @@
                                 "content": [
                                     {
                                         "type": "paragraph",
-                                        "attrs": { "textAlign": "" },
+                                        "attrs": {
+                                            "textAlign": ""
+                                        },
                                         "content": [
                                             {
                                                 "type": "text",
@@ -69,7 +85,9 @@
                                 "content": [
                                     {
                                         "type": "paragraph",
-                                        "attrs": { "textAlign": "" },
+                                        "attrs": {
+                                            "textAlign": ""
+                                        },
                                         "content": [
                                             {
                                                 "type": "text",
@@ -83,13 +101,26 @@
                     },
                     {
                         "type": "paragraph",
-                        "attrs": { "textAlign": "" },
+                        "attrs": {
+                            "textAlign": ""
+                        },
                         "content": [
                             {
                                 "type": "text",
                                 "text": "Squirrel-Math to projekt zapoczątkowany przez dwóch matematycznych zapaleńców, informatyków z wykształcenia. Założenie jest proste – czemu by nie zebrać "
                             },
-                            { "type": "text", "marks": [{ "type": "comment", "attrs": { "id": 1 } }], "text": "całej" },
+                            {
+                                "type": "text",
+                                "marks": [
+                                    {
+                                        "type": "comment",
+                                        "attrs": {
+                                            "id": 1
+                                        }
+                                    }
+                                ],
+                                "text": "całej"
+                            },
                             {
                                 "type": "text",
                                 "text": " wiedzy matematycznej w jednym podręczniku, który pozwoli przyswoić ją w sposób przystępny, intuicyjny i uporządkowany? Państwowe i prywatne systemy edukacji robią świetną robotę, próbując zaszczepić w młodych ludziach iskrę matematyki, lecz mierzą się z wieloma trudnościami. Nauczyciele muszą dostosować się do uczniów na różnym poziomie, jednocześnie goniąc z realizacją bieżącego materiału. Nie zawsze jest czas na zbudowanie właściwych intuicji czy uzupełnienie braków, przez co rodzi się przekonanie, że matematyka sama w sobie jest trudna. A przecież nie jest - wierzymy w to całym sercem - jeśli tylko pobuduje się wiedzę odpowiednią wyobraźnią i treningiem."
@@ -98,12 +129,21 @@
                     },
                     {
                         "type": "paragraph",
-                        "attrs": { "textAlign": "" },
-                        "content": [{ "type": "text", "text": "I tu pojawia się nasza misja." }]
+                        "attrs": {
+                            "textAlign": ""
+                        },
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "I tu pojawia się nasza misja."
+                            }
+                        ]
                     },
                     {
                         "type": "paragraph",
-                        "attrs": { "textAlign": "" },
+                        "attrs": {
+                            "textAlign": ""
+                        },
                         "content": [
                             {
                                 "type": "text",
