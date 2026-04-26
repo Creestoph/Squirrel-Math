@@ -3,26 +3,29 @@
         <button ref="geometryEditor" class="geometry-editor" @focus="focused = true">
             <div v-if="focused" class="geometry-toolbar-wrapper">
                 <div class="geometry-toolbar" contenteditable="false">
-                    <button @mousedown="addSquare($event)">
+                    <button @mousedown="onAddSquare($event)">
                         <icon>crop_square</icon>
                     </button>
-                    <button @mousedown="addPolygon($event)">
+                    <button @mousedown="onAddPolygon($event)">
                         <icon>pentagon</icon>
                     </button>
-                    <button @mousedown="addCircle($event)">
+                    <button @mousedown="onAddCircle($event)">
                         <icon>circle</icon>
                     </button>
-                    <button @mousedown="addLine($event)">
+                    <button @mousedown="onAddLine($event)">
                         <icon>show_chart</icon>
                     </button>
-                    <button @mousedown="addCurve($event)">
+                    <button @mousedown="onAddCurve($event)">
                         <icon>gesture</icon>
                     </button>
-                    <button @mousedown="addArc($event)">
+                    <button @mousedown="onAddArc($event)">
                         <icon>compass</icon>
                     </button>
-                    <button @mousedown="addTextArea($event)">
+                    <button @mousedown="onAddTextArea($event)">
                         <span class="T-icon">T</span>
+                    </button>
+                    <button @mousedown="onCenter($event)" style="margin-left: 40px">
+                        <icon>recenter</icon>
                     </button>
                     <template v-if="selection.length">
                         <dropdown title="kolejność rysowania" class="layers-dropdown">
@@ -256,6 +259,8 @@ const sides = computed({
 });
 
 onMounted(() => {
+    reserveExistingShapeIds();
+
     eventsCatcherPaperScope = new paper.PaperScope();
     eventsCatcherPaperScope.setup(eventsCatcher.value);
     eventsCatcherPaperScope.tool = new paper.Tool();
@@ -300,6 +305,10 @@ function shapeAtIndex(i: number) {
 
 function allShapes(): ShapeController[] {
     return props.node.children.map((c) => props.editor.storage.geometry.controllers.get(c.attrs.id)!);
+}
+
+function reserveExistingShapeIds() {
+    props.node.children.forEach((node) => idGenerator.reserve(parseInt(node.attrs.id)));
 }
 
 function initializeFromAttributes() {
@@ -463,10 +472,9 @@ function handleKeyDown(event: paper.KeyEvent) {
 
     if (selection.value.length > 0) {
         const anyTextAreaSelected = selection.value.some((i) => isTextArea(shapeAtIndex(i)!));
-        let capturedEvent = true;
+        let shouldPreventDefault = true;
         if (event.key == 'delete' || event.key === 'backspace') {
-            deleteSelected();
-            capturedEvent = false;
+            shouldPreventDefault = deleteSelected();
         } else if (event.key == 'up' && !anyTextAreaSelected) {
             selection.value.forEach((i) => shapeAtIndex(i)!.move(new paper.Point(0, -1)));
         } else if (event.key == 'down' && !anyTextAreaSelected) {
@@ -483,9 +491,9 @@ function handleKeyDown(event: paper.KeyEvent) {
             copySelected();
             deleteSelected();
         } else {
-            capturedEvent = false;
+            shouldPreventDefault = false;
         }
-        if (capturedEvent) {
+        if (shouldPreventDefault) {
             event.preventDefault();
         }
     }
@@ -516,15 +524,20 @@ function copySelected() {
     copiedNodes = selection.value.map((i) => shapeAtIndex(i)!.getNode());
 }
 
-function deleteSelected(force = false) {
-    let selectedShapeIds = selection.value.map((i) => props.node.children[i].attrs.id);
+/**
+ * @returns shouldPreventDefault
+ */
+function deleteSelected(force = false): boolean {
+    let selectedShapeIds = selection.value.map((i) => props.node.children[i].attrs.id).sort((a, b) => b - a);
+    let shouldPreventDefault = true;
     for (let i = totalShapes() - 1; i >= 0; i--) {
-        if (!selection.value.includes(i)) {
+        const shape = shapeAtIndex(i)!;
+        if (!selectedShapeIds.find((s) => s === shape.getNode().attrs.id)) {
             continue;
         }
-        const shape = shapeAtIndex(i)!;
-        const captured = shape.onDelete();
-        if (captured && !force) {
+        const deleteResult = shape.onDelete();
+        shouldPreventDefault &&= deleteResult.shouldPreventDefault;
+        if (deleteResult.captured && !force) {
             continue;
         }
         deselect(i);
@@ -538,6 +551,8 @@ function deleteSelected(force = false) {
         handleResize(); // some components might be re-rendered and need to have canvas size reassigned
     }
     selection.value = selectedShapeIds.map((s) => props.node.children.findIndex((c) => c.attrs.id === s));
+    focused.value = true;
+    return shouldPreventDefault;
 }
 
 function handleKeyUp(event: paper.KeyEvent) {
@@ -578,13 +593,11 @@ function addShape(event: MouseEvent | paper.KeyEvent) {
     select(totalShapes() - 1, added);
     added.handleResize(canvas.value.width, canvas.value.height);
     save();
-    if (event) {
-        event.preventDefault();
-    }
+    event?.preventDefault();
     return added;
 }
 
-function addSquare(event: MouseEvent) {
+function onAddSquare(event: MouseEvent) {
     props.editor.commands.createRectangle(
         {
             center: {
@@ -597,7 +610,7 @@ function addSquare(event: MouseEvent) {
     addShape(event);
 }
 
-function addPolygon(event: MouseEvent) {
+function onAddPolygon(event: MouseEvent) {
     props.editor.commands.createPolygon({}, insertPosition());
     const added = addShape(event) as PolygonShapeController;
     added.makeRegular(3, {
@@ -606,7 +619,7 @@ function addPolygon(event: MouseEvent) {
     });
 }
 
-function addCircle(event: MouseEvent) {
+function onAddCircle(event: MouseEvent) {
     props.editor.commands.createCircle(
         {
             center: {
@@ -619,21 +632,21 @@ function addCircle(event: MouseEvent) {
     addShape(event);
 }
 
-function addLine(event: MouseEvent) {
+function onAddLine(event: MouseEvent) {
     props.editor.commands.createLine({}, insertPosition());
     const added = addShape(event) as LineShapeController;
     added.editing.value = true;
     shapeEdited.value = totalShapes() - 1;
 }
 
-function addCurve(event: MouseEvent) {
+function onAddCurve(event: MouseEvent) {
     props.editor.commands.createLine({ smooth: true }, insertPosition());
     const added = addShape(event) as LineShapeController;
     added.editing.value = true;
     shapeEdited.value = totalShapes() - 1;
 }
 
-function addArc(event: MouseEvent) {
+function onAddArc(event: MouseEvent) {
     props.editor.commands.createArc(
         {
             center: {
@@ -656,7 +669,7 @@ function addArc(event: MouseEvent) {
     addShape(event);
 }
 
-function addTextArea(event: MouseEvent) {
+function onAddTextArea(event: MouseEvent) {
     props.editor.commands.createTextArea(
         {
             width: 160,
@@ -669,6 +682,17 @@ function addTextArea(event: MouseEvent) {
 
     addShape(event);
     toggleEdit();
+}
+
+function onCenter(event: MouseEvent) {
+    event.preventDefault();
+    const bounds = allShapes().map((shape) => shape.getBounds());
+    const totalBounds = bounds.reduce((acc, b) => acc.unite(b), bounds[0]);
+    const center = totalBounds.center;
+    const canvasCenter = new paper.Point(canvas.value.width / 2, canvas.value.height / 2);
+    const delta = canvasCenter.subtract(center);
+    allShapes().forEach((shape) => shape.move(delta));
+    save();
 }
 
 function onMoveToBottom() {

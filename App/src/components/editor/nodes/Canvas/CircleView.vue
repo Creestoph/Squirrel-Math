@@ -109,6 +109,7 @@ const controller: CircleShapeController = {
     onMouseUp,
     setSelected,
     save,
+    getBounds,
 };
 
 watch(() => props.node, afterNodeChanged);
@@ -178,6 +179,10 @@ function getPosition() {
     return circle.position;
 }
 
+function getBounds() {
+    return circle.bounds;
+}
+
 function move(shift: paper.Point) {
     all.translate(shift);
     grips.visible = false;
@@ -207,9 +212,9 @@ function getSnapPoints(): paper.Point[] {
     return [left, upper, right, bottom, circle].map((c) => c.position);
 }
 
-function onDelete() {
+function onDelete(): { captured: boolean; shouldPreventDefault: boolean } {
     all.remove();
-    return false;
+    return { captured: false, shouldPreventDefault: true };
 }
 
 function onMouseMove(_event: paper.ToolEvent, hitResult: paper.HitResult, cursorStyle: CSSStyleDeclaration) {

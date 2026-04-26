@@ -124,6 +124,7 @@ const controller: TextAreaShapeController = {
     onMouseUp,
     setSelected,
     save: () => {},
+    getBounds,
 };
 
 watch(() => props.node, afterNodeChanged);
@@ -158,6 +159,10 @@ function getPosition() {
     return new paper.Point(x.value, y.value);
 }
 
+function getBounds() {
+    return new paper.Rectangle(new paper.Point(x.value, y.value), new paper.Size(width.value, height.value));
+}
+
 function move(shift: paper.Point) {
     x.value += shift.x;
     y.value += shift.y;
@@ -190,8 +195,8 @@ function getSnapPoints() {
     ].map(([w, h]) => new paper.Point(x.value + w * width.value, y.value + h * height.value));
 }
 
-function onDelete(): boolean {
-    return editing.value;
+function onDelete(): { captured: boolean; shouldPreventDefault: boolean } {
+    return { captured: editing.value, shouldPreventDefault: !editing.value };
 }
 
 function onMouseMove(event: paper.ToolEvent, hitResult: paper.HitResult | null, cursorStyle: CSSStyleDeclaration) {

@@ -113,6 +113,7 @@ const controller: RectangleShapeController = {
     onMouseUp,
     setSelected,
     save,
+    getBounds,
 };
 
 watch(() => props.node, afterNodeChanged);
@@ -182,6 +183,10 @@ function getPosition() {
     return rectangle.position;
 }
 
+function getBounds() {
+    return rectangle.bounds;
+}
+
 function move(shift: paper.Point) {
     rectangle.position.x += shift.x;
     rectangle.position.y += shift.y;
@@ -223,9 +228,9 @@ function getSnapPoints() {
     );
 }
 
-function onDelete() {
+function onDelete(): { captured: boolean; shouldPreventDefault: boolean } {
     all.remove();
-    return false;
+    return { captured: false, shouldPreventDefault: true };
 }
 
 function onMouseMove(_event: paper.ToolEvent, hitResult: paper.HitResult, cursorStyle: CSSStyleDeclaration) {

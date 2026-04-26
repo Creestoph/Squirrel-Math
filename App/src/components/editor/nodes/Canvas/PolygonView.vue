@@ -88,6 +88,7 @@ const controller: PolygonShapeController = {
     onMouseUp,
     setSelected,
     save,
+    getBounds,
 };
 
 watch(() => props.node, afterNodeChanged);
@@ -138,6 +139,10 @@ function getPosition() {
     return polygon.value.position;
 }
 
+function getBounds() {
+    return polygon.value.bounds;
+}
+
 function move(shift: paper.Point) {
     all.value.translate(shift);
 }
@@ -163,7 +168,7 @@ function getSnapPoints() {
     return grips.value.children.map((g) => g.position);
 }
 
-function onDelete() {
+function onDelete(): { captured: boolean; shouldPreventDefault: boolean } {
     if (selectedGripIndex.value != -1 && sides.value > 3) {
         polygon.value.removeSegment(selectedGripIndex.value);
         grips.value.children[selectedGripIndex.value].remove();
@@ -172,10 +177,10 @@ function onDelete() {
                 ? selectedGripIndex.value
                 : selectedGripIndex.value - 1,
         );
-        return true;
+        return { captured: true, shouldPreventDefault: true };
     }
     all.value.remove();
-    return false;
+    return { captured: false, shouldPreventDefault: true };
 }
 
 function onMouseMove(_event: paper.ToolEvent, hitResult: paper.HitResult, cursorStyle: CSSStyleDeclaration) {

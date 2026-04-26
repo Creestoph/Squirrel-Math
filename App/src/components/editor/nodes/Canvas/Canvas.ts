@@ -1,10 +1,10 @@
 import { Node, VueNodeViewRenderer } from '@tiptap/vue-3';
 import CanvasVue from './Canvas.vue';
-import { Node as PMNode } from '@tiptap/pm/model';
+import { Fragment, Node as PMNode, Slice } from '@tiptap/pm/model';
 import { Point } from '@/models/point';
 import { ValueObject } from '@/models/common';
-import { EditorState, TextSelection, Transaction } from '@tiptap/pm/state';
-import { Snapper } from './utils';
+import { EditorState, Plugin, TextSelection, Transaction } from '@tiptap/pm/state';
+import { idGenerator, Snapper } from './utils';
 
 declare module '@tiptap/core' {
     interface Commands<ReturnType> {
@@ -28,23 +28,44 @@ export interface ShapeController {
     readonly fillColor: ValueObject<string>;
     readonly paperScope?: paper.PaperScope;
 
-    getPos(): number | undefined;
     onMouseMove(event: paper.ToolEvent, hitResult: paper.HitResult | null, cursorStyle: CSSStyleDeclaration): void;
-    /** returns true if the shape captured mouse down */
+    /** @returns true if the shape captured mouse down */
     onMouseDown(event: paper.ToolEvent, hitResult: paper.HitResult | null): boolean;
-    /** returns true if the shape captured mouse drag */
+    /** @returns true if the shape captured mouse drag */
     onMouseDrag(event: paper.ToolEvent, snapper: Snapper): boolean;
     onMouseUp(): void;
-    onDelete(): boolean;
+    /**
+     * @returns **captured**: whether the delete action was processed internally by this shape, i.e. some part of it was deleted;
+     * if false, the whole shape may be deleted freely;
+     *
+     * **shouldPreventDefault**: if false, it means that delete action needs to be processed by the browser (e.g. to modify a text) and cannot be captured
+     */
+    onDelete(): { captured: boolean; shouldPreventDefault: boolean };
     handleResize(width: number, height: number): void;
     move(shift: paper.Point): void;
     scale(factor: number, center: Point): void;
     setSelected(value: boolean): void;
     save(): void;
+    getPos(): number | undefined;
     getPosition(): paper.Point;
     getSnapPoints(): paper.Point[];
+    getBounds(): paper.Rectangle;
     containedInBounds(bounds: paper.Rectangle): boolean;
     getNode(): PMNode;
+}
+
+const shapeNodeNames = new Set(['textArea', 'rectangle', 'line', 'circle', 'polygon', 'arc']);
+
+function withFreshShapeIds(node: PMNode): PMNode {
+    if (node.isText) {
+        return node;
+    }
+
+    const children: PMNode[] = [];
+    node.content.forEach((child) => children.push(withFreshShapeIds(child)));
+
+    const attrs = shapeNodeNames.has(node.type.name) ? { ...node.attrs, id: idGenerator.next().value } : node.attrs;
+    return node.type.create(attrs, children.length > 0 ? Fragment.fromArray(children) : node.content, node.marks);
 }
 
 export default Node.create({
@@ -74,6 +95,20 @@ export default Node.create({
 
     addStorage() {
         return { controllers: new Map<string, ShapeController>() };
+    },
+
+    addProseMirrorPlugins() {
+        return [
+            new Plugin({
+                props: {
+                    transformPasted: (slice) => {
+                        const nodes: PMNode[] = [];
+                        slice.content.forEach((node) => nodes.push(withFreshShapeIds(node)));
+                        return new Slice(Fragment.fromArray(nodes), slice.openStart, slice.openEnd);
+                    },
+                },
+            }),
+        ];
     },
 
     addCommands() {
