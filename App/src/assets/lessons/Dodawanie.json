@@ -3148,7 +3148,7 @@
                                             {
                                                 "type": "expressionInline",
                                                 "attrs": {
-                                                    "mathJax": "S = \\sum_{i = 1}^{n} a_i"
+                                                    "mathJax": "s = \\sum_{i = 1}^{n} a_i"
                                                 }
                                             },
                                             {
@@ -3250,7 +3250,7 @@
                                                             {
                                                                 "type": "expressionInline",
                                                                 "attrs": {
-                                                                    "mathJax": "s_j = \\sum_{i=1}^n a_{i,j} + c_j"
+                                                                    "mathJax": "v_j = \\sum_{i=1}^n a_{i,j} + c_j"
                                                                 }
                                                             },
                                                             {
@@ -3260,7 +3260,7 @@
                                                             {
                                                                 "type": "expressionInline",
                                                                 "attrs": {
-                                                                    "mathJax": "v_j = s_j \\mod 10"
+                                                                    "mathJax": "s_j = v_j \\mod 10"
                                                                 }
                                                             },
                                                             {
@@ -3270,7 +3270,7 @@
                                                             {
                                                                 "type": "expressionInline",
                                                                 "attrs": {
-                                                                    "mathJax": "c_{j+1} = \\frac{s_j - v_j}{10}"
+                                                                    "mathJax": "c_{j+1} = \\frac{v_j - s_j}{10}"
                                                                 }
                                                             },
                                                             {
@@ -3317,7 +3317,7 @@
                                                             {
                                                                 "type": "expressionInline",
                                                                 "attrs": {
-                                                                    "mathJax": "l := l + 1"
+                                                                    "mathJax": "j := j + 1"
                                                                 }
                                                             },
                                                             {
@@ -3360,7 +3360,7 @@
                                                             {
                                                                 "type": "expressionInline",
                                                                 "attrs": {
-                                                                    "mathJax": "\\sum_{k=0}^j v_k10^k"
+                                                                    "mathJax": "\\sum_{k=0}^j s_k10^k"
                                                                 }
                                                             },
                                                             {
@@ -3370,7 +3370,7 @@
                                                             {
                                                                 "type": "expressionInline",
                                                                 "attrs": {
-                                                                    "mathJax": "S"
+                                                                    "mathJax": "s"
                                                                 }
                                                             },
                                                             {
@@ -3393,7 +3393,7 @@
                                                             {
                                                                 "type": "expressionInline",
                                                                 "attrs": {
-                                                                    "mathJax": "v_{i} \\in \\{0, 1, 2, 3, 4, 5, 6, 7, 8, 9\\}"
+                                                                    "mathJax": "s_{i} \\in \\{0, 1, 2, 3, 4, 5, 6, 7, 8, 9\\}"
                                                                 }
                                                             },
                                                             {
@@ -3456,7 +3456,7 @@
                                     {
                                         "type": "expression",
                                         "attrs": {
-                                            "mathJax": "S = \\sum_{k=j+1}^l 10^k\\sum_{i=1}^n a_{i,k} + \\sum_{k=0}^j v_k10^k + c_{j+1}10^{j+1}"
+                                            "mathJax": "s = \\sum_{k=j+1}^l 10^k\\sum_{i=1}^n a_{i,k} + \\sum_{k=0}^j s_k10^k + c_{j+1}10^{j+1}"
                                         }
                                     },
                                     {
@@ -3514,7 +3514,7 @@
                                             {
                                                 "type": "expressionInline",
                                                 "attrs": {
-                                                    "mathJax": "s_0 = \\sum_{i=1}^n a_{i,0}"
+                                                    "mathJax": "v_0 = \\sum_{i=1}^n a_{i,0}"
                                                 }
                                             },
                                             {
@@ -3542,7 +3542,7 @@
                                     {
                                         "type": "expression",
                                         "attrs": {
-                                            "mathJax": "\\sum_{k=1}^l 10^k\\sum_{i=1}^n a_{i,k} + \\sum_{k=0}^0 v_k10^k + c_{1}10^1=\n\n\\sum_{k=1}^l 10^k\\sum_{i=1}^n a_{i,k} + v_0 + 10 \\cdot \\frac{s_0 - v_0}{10} = \n\n\\sum_{k=1}^l 10^k\\sum_{i=1}^n a_{i,k} + s_0 =\\\\\n\n=\\sum_{k=1}^l 10^k\\sum_{i=1}^n a_{i,k} + \\sum_{i=1}^n a_{i,0} = \n\n\\sum_{k=0}^l 10^k\\sum_{i=1}^n a_{i,k} = \n\n\\sum_{i=1}^n \\sum_{k=0}^l a_{i,k}10^k = \n\n\\sum_{i=1}^n a_i = S\n"
+                                            "mathJax": "\\sum_{k=1}^l 10^k\\sum_{i=1}^n a_{i,k} + \\sum_{k=0}^0 s_k10^k + c_{1}10^1=\n\n\\sum_{k=1}^l 10^k\\sum_{i=1}^n a_{i,k} + s_0 + 10 \\cdot \\frac{v_0 - s_0}{10} = \n\n\\sum_{k=1}^l 10^k\\sum_{i=1}^n a_{i,k} + v_0 =\\\\\n\n=\\sum_{k=1}^l 10^k\\sum_{i=1}^n a_{i,k} + \\sum_{i=1}^n a_{i,0} = \n\n\\sum_{k=0}^l 10^k\\sum_{i=1}^n a_{i,k} = \n\n\\sum_{i=1}^n \\sum_{k=0}^l a_{i,k}10^k = \n\n\\sum_{i=1}^n a_i = s\n"
                                         }
                                     },
                                     {
@@ -3580,7 +3580,7 @@
                                     {
                                         "type": "expression",
                                         "attrs": {
-                                            "mathJax": "\\sum_{k=j+2}^l 10^k\\sum_{i=1}^n a_{i,k} + \\sum_{k=0}^{j+1} v_k10^k + c_{j+2}10^{j+2} =\\\\\n\n=\\left(\\sum_{k=j+1}^l 10^k\\sum_{i=1}^n a_{i,k} - 10^{j+1}\\sum_{i=1}^n a_{i,j+1}\\right) + \\left(\\sum_{k=0}^{j} v_k10^k + v_{j+1}10^{j+1}\\right) + (s_{j+1} - v_{j+1})10^{j+1}=\\\\\n\n=\\sum_{k=j+1}^l 10^k\\sum_{i=1}^n a_{i,k} - 10^{j+1}\\sum_{i=1}^n a_{i,j+1} + \\sum_{k=0}^{j} v_k10^k + \\left(\\sum_{i=1}^n a_{i,j+1} + c_{j+1} \\right)10^{j+1}=\\\\\n\n=\\sum_{k=j+1}^l 10^k\\sum_{i=1}^n a_{i,k} + \\sum_{k=0}^{j} v_k10^k + c_{j+1}10^{j+1}=S"
+                                            "mathJax": "\\sum_{k=j+2}^l 10^k\\sum_{i=1}^n a_{i,k} + \\sum_{k=0}^{j+1} s_k10^k + c_{j+2}10^{j+2} =\\\\\n\n=\\left(\\sum_{k=j+1}^l 10^k\\sum_{i=1}^n a_{i,k} - 10^{j+1}\\sum_{i=1}^n a_{i,j+1}\\right) + \\left(\\sum_{k=0}^{j} s_k10^k + s_{j+1}10^{j+1}\\right) + (v_{j+1} - s_{j+1})10^{j+1}=\\\\\n\n=\\sum_{k=j+1}^l 10^k\\sum_{i=1}^n a_{i,k} - 10^{j+1}\\sum_{i=1}^n a_{i,j+1} + \\sum_{k=0}^{j} s_k10^k + \\left(\\sum_{i=1}^n a_{i,j+1} + c_{j+1} \\right)10^{j+1}=\\\\\n\n=\\sum_{k=j+1}^l 10^k\\sum_{i=1}^n a_{i,k} + \\sum_{k=0}^{j} s_k10^k + c_{j+1}10^{j+1}=s"
                                         }
                                     },
                                     {
@@ -3674,7 +3674,7 @@
                                             {
                                                 "type": "expressionInline",
                                                 "attrs": {
-                                                    "mathJax": "l"
+                                                    "mathJax": "j"
                                                 }
                                             },
                                             {
@@ -3707,7 +3707,7 @@
                                             {
                                                 "type": "expressionInline",
                                                 "attrs": {
-                                                    "mathJax": "s_j \\leq 10"
+                                                    "mathJax": "v_j <10"
                                                 }
                                             },
                                             {
@@ -3727,7 +3727,7 @@
                                             {
                                                 "type": "expressionInline",
                                                 "attrs": {
-                                                    "mathJax": "s_j"
+                                                    "mathJax": "v_j"
                                                 }
                                             },
                                             {
@@ -3739,7 +3739,7 @@
                                     {
                                         "type": "expression",
                                         "attrs": {
-                                            "mathJax": "s_{j+1} = \\sum_{i=1}^n a_{i,j+1} + c_j+1 = \\sum_{i=1}^n 0 + c_{j+1} = c_{j+1} = \\frac{s_j-v_j}{10} = \\frac{s_j - (s_j \\mod 10)}{10} < s_j"
+                                            "mathJax": "v_{j+1} = \\sum_{i=1}^n a_{i,j+1} + c_j+1 = \\sum_{i=1}^n 0 + c_{j+1} = c_{j+1} = \\frac{v_j-s_j}{10} = \\frac{v_j - (v_j \\mod 10)}{10} < v_j"
                                         }
                                     },
                                     {
@@ -3755,7 +3755,7 @@
                                             {
                                                 "type": "expressionInline",
                                                 "attrs": {
-                                                    "mathJax": "s_j \\leq 10"
+                                                    "mathJax": "v_j < 10"
                                                 }
                                             },
                                             {
@@ -3795,7 +3795,7 @@
                                     {
                                         "type": "expression",
                                         "attrs": {
-                                            "mathJax": "S = \\sum_{k=j+1}^l 10^k\\sum_{i=1}^n a_{i,k} + \\sum_{k=0}^j v_k10^k + c_{j+1}10^{j+1} = \\sum_{k=j+1}^l 10^k\\sum_{i=1}^n 0 + \\sum_{k=0}^j v_k10^k + 0 \\cdot 10^{j+1} = \\sum_{k=0}^j v_k10^k"
+                                            "mathJax": "s = \\sum_{k=j+1}^l 10^k\\sum_{i=1}^n a_{i,k} + \\sum_{k=0}^j s_k10^k + c_{j+1}10^{j+1} = \\sum_{k=j+1}^l 10^k\\sum_{i=1}^n 0 + \\sum_{k=0}^j s_k10^k + 0 \\cdot 10^{j+1} = \\sum_{k=0}^j s_k10^k"
                                         }
                                     },
                                     {
@@ -3806,22 +3806,44 @@
                                         "content": [
                                             {
                                                 "type": "text",
-                                                "text": "Warunek "
+                                                "text": "co kończy dowód poprawności otrzymanego wyniku "
                                             },
                                             {
                                                 "type": "expressionInline",
                                                 "attrs": {
-                                                    "mathJax": "v_{i} \\in \\{0, 1, 2, 3, 4, 5, 6, 7, 8, 9\\}"
+                                                    "mathJax": "s"
                                                 }
                                             },
                                             {
                                                 "type": "text",
-                                                "text": " wynika wprost z faktu z faktu, że w każdym kroku "
+                                                "text": "."
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "paragraph",
+                                        "attrs": {
+                                            "textAlign": ""
+                                        },
+                                        "content": [
+                                            {
+                                                "type": "text",
+                                                "text": "Własność "
                                             },
                                             {
                                                 "type": "expressionInline",
                                                 "attrs": {
-                                                    "mathJax": "v_j = s_j \\mod 10.\\ \\ □"
+                                                    "mathJax": "s_{i} \\in \\{0, 1, 2, 3, 4, 5, 6, 7, 8, 9\\}"
+                                                }
+                                            },
+                                            {
+                                                "type": "text",
+                                                "text": " wynika zaś wprost z faktu, że w każdym kroku "
+                                            },
+                                            {
+                                                "type": "expressionInline",
+                                                "attrs": {
+                                                    "mathJax": "s_j = v_j \\mod 10.\\ \\ □"
                                                 }
                                             }
                                         ]
@@ -4859,7 +4881,7 @@
         },
         "18": {
             "text": "soku",
-            "hidden": false
+            "hidden": true
         }
     }
 }

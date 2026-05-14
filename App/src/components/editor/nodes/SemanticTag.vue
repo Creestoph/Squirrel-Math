@@ -97,7 +97,7 @@ function availableOptions(position: number) {
     } else if (position == 0 && tags.value.length == 2) {
         return ['Intuicje', 'Formalnie', 'Warsztat'];
     } else {
-        return ['Rozszerzenie'];
+        return [];
     }
 }
 
@@ -108,7 +108,7 @@ function choose(position: number, option: string) {
 }
 
 function canAddTag() {
-    return tags.value.length == 1 && tags.value[0] != 'Rozszerzenie';
+    return tags.value.length == 1;
 }
 
 function removeTag(position: number) {
@@ -116,7 +116,11 @@ function removeTag(position: number) {
 }
 
 function addTag() {
-    tags.value = [...tags.value, 'Rozszerzenie'];
+    if (tags.value[0] === 'Rozszerzenie') {
+        tags.value = ['Intuicje', 'Rozszerzenie'];
+    } else {
+        tags.value = [...tags.value, 'Rozszerzenie'];
+    }
 }
 
 function addRequiredLesson() {
@@ -157,7 +161,7 @@ function canAddNewRequired() {
 
 .tags-wrapper:hover {
     .type {
-        width: 98px;
+        width: 102px;
     }
     .add-tag-button,
     .required-optional,
@@ -170,7 +174,7 @@ function canAddNewRequired() {
     margin-right: 5px;
 
     [dropdown-option] {
-        width: 100px;
+        width: 106px;
     }
 }
 

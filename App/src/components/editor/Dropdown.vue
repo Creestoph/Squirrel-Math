@@ -74,7 +74,6 @@ function select(event: MouseEvent) {
     z-index: 2;
     max-height: 500px;
     overflow-y: auto;
-    border: 1px solid colors.$gray;
     background-color: colors.$gray;
 }
 
