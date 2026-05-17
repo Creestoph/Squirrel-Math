@@ -3,10 +3,10 @@
 
 .dialog {
     position: fixed;
-    width: 800px;
+    width: 80%;
+    max-width: 800px;
     height: 500px;
     z-index: 10000;
-    left: calc(50% - 400px);
     top: calc(50% - 250px);
     box-sizing: border-box;
     background: white;

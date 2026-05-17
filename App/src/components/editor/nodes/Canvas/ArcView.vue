@@ -107,6 +107,7 @@ const controller: ArcShapeController = {
     onMouseUp,
     setSelected,
     save,
+    getBounds,
 };
 
 watch(() => props.node, afterNodeChanged);
@@ -168,10 +169,10 @@ function setSelected(value: boolean) {
     isSelected.value = value;
 }
 
-function scale(factor: number, center: paper.Point) {
-    line1.value.scale(factor, new paper.Point(center));
-    line2.value.scale(factor, new paper.Point(center));
-    radius.value *= factor;
+function scale(factorX: number, factorY: number, center: paper.Point) {
+    line1.value.scale(factorX, factorY, center);
+    line2.value.scale(factorX, factorY, center);
+    radius.value *= Math.sqrt(factorX ** 2 + factorY ** 2) / Math.sqrt(2);
 }
 
 function containedInBounds(bounds: paper.Rectangle) {
@@ -182,9 +183,9 @@ function getSnapPoints() {
     return grips.value.children.map((g) => g.position);
 }
 
-function onDelete() {
+function onDelete(): { captured: boolean; shouldPreventDefault: boolean } {
     all.value.remove();
-    return false;
+    return { captured: false, shouldPreventDefault: true };
 }
 
 function onMouseMove(_event: paper.ToolEvent, hitResult: paper.HitResult, cursorStyle: CSSStyleDeclaration) {
@@ -278,6 +279,10 @@ function save() {
         ],
         radius: radius.value,
     });
+}
+
+function getBounds() {
+    return arcFill.value.bounds;
 }
 
 function recalculateArc() {

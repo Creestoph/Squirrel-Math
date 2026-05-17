@@ -27,6 +27,11 @@
                     <button @mousedown="onCenter($event)" style="margin-left: 40px">
                         <icon>recenter</icon>
                     </button>
+                    <dropdown title="odbij symetrycznie" class="layers-dropdown" @click="$event.preventDefault()">
+                        <template v-slot:placeholder><icon>flip</icon></template>
+                        <dropdown-option @click="onFlipHorizontal"><icon>swap_horiz</icon></dropdown-option>
+                        <dropdown-option @click="onFlipVertical"><icon>swap_vert</icon></dropdown-option>
+                    </dropdown>
                     <template v-if="selection.length">
                         <dropdown title="kolejność rysowania" class="layers-dropdown">
                             <template v-slot:placeholder><icon>layers</icon></template>
@@ -119,7 +124,6 @@ import DropdownOption from '../../DropdownOption.vue';
 import { computed, onMounted, onUnmounted, ref } from 'vue';
 import { NodeViewContent, nodeViewProps, NodeViewWrapper } from '@tiptap/vue-3';
 import { ShapeController } from './Canvas';
-import { Node as PMNode } from '@tiptap/pm/model';
 import { LineShapeController } from './LineNode';
 import { PolygonShapeController } from './PolygonNode';
 import { TextAreaShapeController } from './TextAreaNode';
@@ -127,6 +131,7 @@ import { ArcShapeController } from './ArcNode';
 import { CircleShapeController } from './CircleNode';
 import { RectangleShapeController } from './RectangleNode';
 import { ValueObject } from '@/models/common';
+import { copiedCanvasShapes } from '../../shared-state';
 
 type ShapeWithBorder = ShapeController & { borderColor: ValueObject<string | null> };
 
@@ -137,7 +142,6 @@ let overlayPaperScope: paper.PaperScope = null!;
 let dragStartPoint: paper.Point | null = null;
 let shapeDragged = -1;
 let shapeDragStartPosition: paper.Point | null = null;
-let copiedNodes: PMNode[] | null = null;
 let selectionBox: paper.Shape.Rectangle | null = null;
 let selectionBoxAnchor: paper.Point | null = null;
 let resizeObserver: ResizeObserver = null!;
@@ -280,11 +284,13 @@ onMounted(() => {
 
     (resizeObserver = new ResizeObserver(handleResize)).observe(eventsCatcher.value);
 
-    props.editor.on('textAreaDelete' as any, () => deleteSelected(true));
+    props.editor.on('textAreaDelete' as any, onTextAreaDelete);
     props.editor.on('selectionUpdate', onSelectionUpdate);
 });
 
 onUnmounted(() => {
+    props.editor.off('textAreaDelete' as any, onTextAreaDelete);
+    props.editor.off('selectionUpdate', onSelectionUpdate);
     resizeObserver?.disconnect();
     clearTimeout(resizeSaveTimeout ?? undefined);
     clearTimeout(saveTimeout ?? undefined);
@@ -301,6 +307,10 @@ function totalShapes() {
 function shapeAtIndex(i: number) {
     const id = props.node.child(i).attrs.id;
     return props.editor.storage.geometry.controllers.get(id);
+}
+
+function activeShapes(): ShapeController[] {
+    return selection.value.length > 0 ? selection.value.map((i) => shapeAtIndex(i)!) : allShapes();
 }
 
 function allShapes(): ShapeController[] {
@@ -497,9 +507,9 @@ function handleKeyDown(event: paper.KeyEvent) {
             event.preventDefault();
         }
     }
-    if (event.key == 'v' && event.modifiers.control && copiedNodes) {
+    if (event.key == 'v' && event.modifiers.control && copiedCanvasShapes.value) {
         deselectAll();
-        copiedNodes.forEach((shapeNode) => {
+        copiedCanvasShapes.value.forEach((shapeNode) => {
             const serializedNode = shapeNode.toJSON();
             serializedNode.attrs = { ...serializedNode.attrs, id: idGenerator.next().value };
             props.editor.commands.insertContentAt(insertPosition(), props.editor.schema.nodeFromJSON(serializedNode));
@@ -521,7 +531,11 @@ function handleKeyDown(event: paper.KeyEvent) {
 }
 
 function copySelected() {
-    copiedNodes = selection.value.map((i) => shapeAtIndex(i)!.getNode());
+    copiedCanvasShapes.value = selection.value.map((i) => shapeAtIndex(i)!.getNode());
+}
+
+function onTextAreaDelete() {
+    deleteSelected(true);
 }
 
 /**
@@ -574,7 +588,7 @@ function handleScroll(event: WheelEvent) {
 
     for (let i = totalShapes() - 1; i >= 0; i--) {
         if (selection.value.length === 0 || selection.value.includes(i)) {
-            shapeAtIndex(i)!.scale(zoomFactor, center);
+            shapeAtIndex(i)!.scale(zoomFactor, zoomFactor, center);
             event.preventDefault();
         }
     }
@@ -684,14 +698,30 @@ function onAddTextArea(event: MouseEvent) {
     toggleEdit();
 }
 
+function getShapesCenter() {
+    const bounds = activeShapes().map((shape) => shape.getBounds());
+    return bounds.reduce((acc, b) => acc.unite(b), bounds[0]).center;
+}
+
 function onCenter(event: MouseEvent) {
     event.preventDefault();
-    const bounds = allShapes().map((shape) => shape.getBounds());
-    const totalBounds = bounds.reduce((acc, b) => acc.unite(b), bounds[0]);
-    const center = totalBounds.center;
     const canvasCenter = new paper.Point(canvas.value.width / 2, canvas.value.height / 2);
-    const delta = canvasCenter.subtract(center);
-    allShapes().forEach((shape) => shape.move(delta));
+    const delta = canvasCenter.subtract(getShapesCenter());
+    activeShapes().forEach((shape) => shape.move(delta));
+    save();
+}
+
+function onFlipHorizontal(event: MouseEvent) {
+    event.preventDefault();
+    const shapesCenter = getShapesCenter();
+    activeShapes().forEach((shape) => shape.scale(-1, 1, shapesCenter));
+    save();
+}
+
+function onFlipVertical(event: MouseEvent) {
+    event.preventDefault();
+    const shapesCenter = getShapesCenter();
+    activeShapes().forEach((shape) => shape.scale(1, -1, shapesCenter));
     save();
 }
 
@@ -869,11 +899,11 @@ function save() {
 }
 
 function onSelectionUpdate() {
-    const { from } = props.editor.state.selection;
+    const { from, to } = props.editor.state.selection;
 
     const nodeStart = props.getPos()!;
     const nodeEnd = nodeStart + props.node.nodeSize;
-    const selectionInsideCanvas = from > nodeStart && from < nodeEnd;
+    const selectionInsideCanvas = to >= nodeStart && from <= nodeEnd;
 
     if (!selectionInsideCanvas && focused.value) {
         deselectAll();
@@ -1035,6 +1065,9 @@ function onSelectionUpdate() {
 [dropdown-option] {
     background: colors.$gray;
     padding: 0 10px;
+    display: flex;
+    align-items: center;
+    height: 47px;
 
     &:hover {
         background: colors.$dark-gray;

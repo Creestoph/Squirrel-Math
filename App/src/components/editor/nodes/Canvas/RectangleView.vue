@@ -193,8 +193,8 @@ function move(shift: paper.Point) {
     grips.visible = false;
 }
 
-function scale(factor: number, center: paper.Point) {
-    rectangle.scale(factor, new paper.Point(center));
+function scale(factorX: number, factorY: number, center: paper.Point) {
+    rectangle.scale(factorX, factorY, center);
     recalculateGripsPositions();
 }
 

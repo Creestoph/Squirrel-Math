@@ -1,6 +1,7 @@
 <template>
     <node-view-wrapper
         class="area no-selection"
+        ref="area"
         :style="{
             left: x + 0.5 + 'px',
             top: y + 2 + 'px',
@@ -10,17 +11,11 @@
             width: width + 'px',
             height: height + 'px',
             'pointer-events': editing ? 'all' : 'none',
+            alignItems: align.value === 'top' ? 'flex-start' : align.value === 'bottom' ? 'flex-end' : 'center',
         }"
         :contenteditable="editing"
     >
-        <div
-            class="align-wrapper no-selection"
-            :style="{
-                'vertical-align': align.value,
-            }"
-        >
-            <node-view-content ref="content" class="content no-selection" />
-        </div>
+        <node-view-content ref="content" class="content no-selection" />
     </node-view-wrapper>
 </template>
 
@@ -33,12 +28,13 @@ import { Snapper } from './utils';
 
 const props = defineProps(nodeViewProps);
 
-const focused = ref(false);
 const content = ref<ComponentPublicInstance>(null!);
+const area = ref<ComponentPublicInstance>(null!);
+const focused = ref(false);
 const resizing = ref('');
 const editing = ref(false);
 let resizeObserver: ResizeObserver;
-let minWidth = 44;
+const minWidth = 44;
 let minHeight = 44;
 
 const x = computed({
@@ -133,12 +129,12 @@ onMounted(() => {
     afterNodeChanged();
 
     (resizeObserver = new ResizeObserver(([content]) => {
-        const newWidth = content.borderBoxSize[0].inlineSize;
-        const newHeight = content.borderBoxSize[0].blockSize;
+        const s = getComputedStyle(area.value.$el);
+        const newWidth = content.borderBoxSize[0].inlineSize + parseFloat(s.borderLeft) + parseFloat(s.borderRight);
+        const newHeight = content.borderBoxSize[0].blockSize + parseFloat(s.borderTop) + parseFloat(s.borderBottom);
         if (newWidth === width.value && newHeight === height.value) {
             return;
         }
-        minWidth = Math.max(newWidth, 44);
         minHeight = Math.max(newHeight, 44);
         requestAnimationFrame(() => {
             if (newWidth > width.value) {
@@ -168,9 +164,9 @@ function move(shift: paper.Point) {
     y.value += shift.y;
 }
 
-function scale(factor: number, center: paper.Point) {
-    x.value = center.x + (x.value - center.x) * factor;
-    y.value = center.y + (y.value - center.y) * factor;
+function scale(factorX: number, factorY: number, center: paper.Point) {
+    x.value = center.x + (x.value - center.x) * factorX;
+    y.value = center.y + (y.value - center.y) * factorY;
 }
 
 function setSelected(value: boolean) {
@@ -298,16 +294,12 @@ function onMouseUp() {
 .area {
     position: absolute;
     box-sizing: border-box;
-    display: table;
+    display: flex;
 
     .content {
         box-sizing: border-box;
+        width: 100%;
         padding: 5px;
-        outline: none;
-    }
-
-    .align-wrapper {
-        display: table-cell;
     }
 }
 </style>

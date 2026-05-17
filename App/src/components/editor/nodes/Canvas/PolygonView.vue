@@ -147,8 +147,8 @@ function move(shift: paper.Point) {
     all.value.translate(shift);
 }
 
-function scale(factor: number, center: paper.Point) {
-    polygon.value.scale(factor, new paper.Point(center));
+function scale(factorX: number, factorY: number, center: paper.Point) {
+    polygon.value.scale(factorX, factorY, center);
 }
 
 function setSelected(value: boolean) {

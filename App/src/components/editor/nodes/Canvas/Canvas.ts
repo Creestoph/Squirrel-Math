@@ -43,7 +43,7 @@ export interface ShapeController {
     onDelete(): { captured: boolean; shouldPreventDefault: boolean };
     handleResize(width: number, height: number): void;
     move(shift: paper.Point): void;
-    scale(factor: number, center: Point): void;
+    scale(factorX: number, factorY: number, center: Point): void;
     setSelected(value: boolean): void;
     save(): void;
     getPos(): number | undefined;

@@ -6,12 +6,15 @@
         </div>
         <div class="dialog-body">
             <div class="list-header">
-                <span class="draft-name"><b>Tytuł</b></span>
-                <span class="draft-date"><b>Data utworzenia</b></span>
-                <span class="draft-date"><b>Data modyfikacji</b></span>
+                <div>
+                    <span class="draft-name"><b>Tytuł</b></span>
+                    <span class="draft-date"><b>Data utworzenia</b></span>
+                    <span class="draft-date"><b>Data modyfikacji</b></span>
+                </div>
+                <span style="width: 90px"></span>
             </div>
             <div v-if="availableDrafts.length > 0" class="list">
-                <div v-for="(draft, i) in availableDrafts" :key="i">
+                <div v-for="(draft, i) in availableDrafts" class="line" :key="i">
                     <div class="draft" @click="load(draft)">
                         <span class="draft-name">
                             {{ (draft.name || 'Bez tytułu') + (draft.fromAutosave ? ' (autosave)' : '') }}
@@ -76,35 +79,41 @@ function draftsList(): DraftPreview[] {
     padding: 10px;
 
     .list-header {
-        width: 500px;
-        margin-left: 5px;
+        display: flex;
+        margin-left: 10px;
         padding: 5px 10px;
+
+        > div {
+            flex: 1;
+        }
     }
 
     .list {
         height: 390px;
         overflow-y: auto;
 
-        button {
-            float: left;
-            background: colors.$main-red;
-            padding: 5px 10px;
-            margin: 10px 5px;
-            color: white;
-            &:hover {
-                background: colors.$dark-red;
-            }
-        }
+        .line {
+            display: flex;
 
-        .draft {
-            float: left;
-            width: 500px;
-            margin: 10px 10px 10px 5px;
-            padding: 5px 10px;
-            background: colors.$light-gray;
-            cursor: pointer;
-            &:hover {
-                background: colors.$gray;
+            .draft {
+                flex: 1;
+                margin: 10px 10px 10px 5px;
+                padding: 5px 10px;
+                background: colors.$light-gray;
+                cursor: pointer;
+                &:hover {
+                    background: colors.$gray;
+                }
+            }
+
+            button {
+                background: colors.$main-red;
+                padding: 5px 10px;
+                margin: 10px 5px;
+                color: white;
+                &:hover {
+                    background: colors.$dark-red;
+                }
             }
         }
     }

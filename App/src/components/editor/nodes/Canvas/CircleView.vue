@@ -188,8 +188,8 @@ function move(shift: paper.Point) {
     grips.visible = false;
 }
 
-function scale(factor: number, center: paper.Point) {
-    circle.scale(factor, new paper.Point(center));
+function scale(factorX: number, factorY: number, center: paper.Point) {
+    circle.scale(factorX, factorY, center);
     recalculateGripsPositions();
 }
 
