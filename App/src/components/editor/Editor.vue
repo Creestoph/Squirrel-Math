@@ -460,7 +460,7 @@ import MarkClick from './marks/MarkClick';
 import CommentPopup from './CommentPopup.vue';
 import { DraftPreview, LocalStorageSaver } from './LocalStorageManager';
 import BulletList from '@tiptap/extension-bullet-list';
-import OrderedList from '@tiptap/extension-ordered-list';
+import OrderedList from './nodes/OrderedList';
 import HardBreak from '@tiptap/extension-hard-break';
 import Paragraph from '@tiptap/extension-paragraph';
 import Text from '@tiptap/extension-text';
@@ -999,7 +999,7 @@ function computeLinkPopupPos() {
         }
 
         &:hover {
-            background: #ffcccc;
+            background: colors.$creamy;
         }
 
         &.active:hover {

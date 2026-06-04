@@ -155,6 +155,7 @@ import {
 import { builtInComponents } from '@/components/builtin-components/components-list';
 import Dropdown from '../Dropdown.vue';
 import DropdownOption from '../DropdownOption.vue';
+import { deepClone } from '@/utils/utils';
 
 const props = defineProps(nodeViewProps);
 
@@ -185,13 +186,12 @@ const args = computed({
 });
 
 onMounted(() => {
-    formArgs.value = [...args.value];
     if (componentId.value) {
         onComponentSelect(componentId.value);
-        formArgs.value = [...args.value];
-        if (validate()) {
-            run();
-        }
+    }
+    formArgs.value = deepClone(args.value);
+    if (componentId.value && validate()) {
+        run();
     }
 });
 

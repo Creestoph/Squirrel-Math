@@ -51,6 +51,12 @@
                     Nazwy liczb powyżej duodecyliarda oparte są na spolszczonej konwencji
                     Conwaya-Guya-Wechslera-Miakinena, zgodnie z opisem w lekcji "Liczby".
                 </li>
+                <li>
+                    Zapis mówiący o wyniku dzielenia z resztą, np.
+                    <expression-inline :attrs="{ mathJax: '3\\,\\text{r.}\\,2' }" /> jest uznawany przez Squirrel-Math
+                    za dopuszczalną notację matematyczną pod warunkiem jasno określonego kontekstu. W latex powinien być
+                    zapisywany w formie <code>3\,\text{r.}\,2</code>.
+                </li>
             </ul>
         </lesson-chapter>
 
@@ -74,9 +80,18 @@
                     <b>Panem Markiem</b>.
                 </li>
                 <li><b>Stefan</b> ma 24 punkty karne.</li>
-                <li><b>Michaś</b> nie jest pilnym uczniem.</li>
-                <li><b>Onufry</b> jest bardzo pilnym uczniem.</li>
-                <li><b>Maciuś</b> jest przeciętnym uczniem.</li>
+                <li><b>Michaś, Maciuś, Krzyś i Onufry</b> są spokrewnieni, mają wspólną ciocię.</li>
+                <li><b>Michaś</b> nie jest pilnym uczniem. Ma dwóch przyjaciół.</li>
+                <li>
+                    <b>Onufry</b> jest bardzo pilnym uczniem, lecz brakuje mu przyjaciół. Jest zawsze niedoceniany i
+                    nieuczciwie wykluczany.
+                </li>
+                <li><b>Maciuś</b> jest przeciętnym uczniem. Ma trzech przyjaciół.</li>
+                <li><b>Krzyś</b> ma jednego przyjaciela.</li>
+                <li>
+                    <b>Babcia Teresa</b>, matka Pana Janusza, dobrze gotuje i ma liczną rodzinę. Zawsze przygotowuje
+                    zbyt duże porcje dla gości.
+                </li>
             </ul>
         </lesson-chapter>
     </lesson>
@@ -87,4 +102,5 @@ import LessonTitle from './lesson/LessonTitle.vue';
 import LessonIntro from './lesson/LessonIntro.vue';
 import Lesson from './lesson/Lesson.vue';
 import LessonChapter from './lesson/chapter/LessonChapter.vue';
+import ExpressionInline from './lesson/ExpressionInline.vue';
 </script>

@@ -17,7 +17,7 @@ export default Mark.create({
                 handler: ({ range }) =>
                     queueMicrotask(() => {
                         const { state, view } = this.editor;
-                        const tr = state.tr.addMark(range.from, range.to + 1, this.type.create());
+                        const tr = state.tr.addMark(range.from, range.from + 1, this.type.create());
                         view.dispatch(tr);
                     }),
             }),

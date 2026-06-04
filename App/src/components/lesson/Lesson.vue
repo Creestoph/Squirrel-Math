@@ -289,7 +289,6 @@ function emptyElements(): LessonElements {
 @media screen and (min-width: 1200px) {
     .lesson {
         width: 86%;
-        line-height: 1.7em;
         border-right: 3px solid black;
         box-shadow: 0 0 40px 20px rgba(0, 0, 0, 0.2);
     }

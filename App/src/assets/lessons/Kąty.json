@@ -49,9 +49,7 @@
                             {
                                 "type": "semanticTag",
                                 "attrs": {
-                                    "tags": [
-                                        "Intuicje"
-                                    ],
+                                    "tags": ["Intuicje"],
                                     "required": []
                                 }
                             },
@@ -746,9 +744,7 @@
                                                 "attrs": {
                                                     "colspan": 1,
                                                     "rowspan": 1,
-                                                    "colwidth": [
-                                                        140
-                                                    ],
+                                                    "colwidth": [140],
                                                     "background": null,
                                                     "borderColorLeft": "#cccccc",
                                                     "borderColorRight": "#cccccc",
@@ -873,9 +869,7 @@
                                                 "attrs": {
                                                     "colspan": 1,
                                                     "rowspan": 1,
-                                                    "colwidth": [
-                                                        140
-                                                    ],
+                                                    "colwidth": [140],
                                                     "background": null,
                                                     "borderColorLeft": "#cccccc",
                                                     "borderColorRight": "#cccccc",
@@ -1004,9 +998,7 @@
                                                 "attrs": {
                                                     "colspan": 1,
                                                     "rowspan": 1,
-                                                    "colwidth": [
-                                                        140
-                                                    ],
+                                                    "colwidth": [140],
                                                     "background": null,
                                                     "borderColorLeft": "#cccccc",
                                                     "borderColorRight": "#cccccc",
@@ -1135,9 +1127,7 @@
                                                 "attrs": {
                                                     "colspan": 1,
                                                     "rowspan": 1,
-                                                    "colwidth": [
-                                                        140
-                                                    ],
+                                                    "colwidth": [140],
                                                     "background": null,
                                                     "borderColorLeft": "#cccccc",
                                                     "borderColorRight": "#cccccc",
@@ -1266,9 +1256,7 @@
                                                 "attrs": {
                                                     "colspan": 1,
                                                     "rowspan": 1,
-                                                    "colwidth": [
-                                                        140
-                                                    ],
+                                                    "colwidth": [140],
                                                     "background": null,
                                                     "borderColorLeft": "#cccccc",
                                                     "borderColorRight": "#cccccc",
@@ -1397,9 +1385,7 @@
                                                 "attrs": {
                                                     "colspan": 1,
                                                     "rowspan": 1,
-                                                    "colwidth": [
-                                                        140
-                                                    ],
+                                                    "colwidth": [140],
                                                     "background": null,
                                                     "borderColorLeft": "#cccccc",
                                                     "borderColorRight": "#cccccc",
@@ -1754,12 +1740,7 @@
                                                 "attrs": {
                                                     "colspan": 4,
                                                     "rowspan": 1,
-                                                    "colwidth": [
-                                                        295,
-                                                        208,
-                                                        143,
-                                                        233
-                                                    ],
+                                                    "colwidth": [295, 208, 143, 233],
                                                     "background": null,
                                                     "borderColorLeft": "#cccccc",
                                                     "borderColorRight": "#cccccc",
@@ -1871,12 +1852,7 @@
                                                 "attrs": {
                                                     "colspan": 4,
                                                     "rowspan": 1,
-                                                    "colwidth": [
-                                                        295,
-                                                        208,
-                                                        143,
-                                                        233
-                                                    ],
+                                                    "colwidth": [295, 208, 143, 233],
                                                     "background": null,
                                                     "borderColorLeft": "#cccccc",
                                                     "borderColorRight": "#cccccc",
@@ -1983,12 +1959,7 @@
                                                 "attrs": {
                                                     "colspan": 4,
                                                     "rowspan": 1,
-                                                    "colwidth": [
-                                                        295,
-                                                        208,
-                                                        143,
-                                                        233
-                                                    ],
+                                                    "colwidth": [295, 208, 143, 233],
                                                     "background": null,
                                                     "borderColorLeft": "#cccccc",
                                                     "borderColorRight": "#cccccc",
@@ -2089,12 +2060,7 @@
                                                 "attrs": {
                                                     "colspan": 4,
                                                     "rowspan": 1,
-                                                    "colwidth": [
-                                                        295,
-                                                        208,
-                                                        143,
-                                                        233
-                                                    ],
+                                                    "colwidth": [295, 208, 143, 233],
                                                     "background": null,
                                                     "borderColorLeft": "#cccccc",
                                                     "borderColorRight": "#cccccc",
@@ -2130,9 +2096,7 @@
                                                 "attrs": {
                                                     "colspan": 1,
                                                     "rowspan": 1,
-                                                    "colwidth": [
-                                                        295
-                                                    ],
+                                                    "colwidth": [295],
                                                     "background": null,
                                                     "borderColorLeft": "#cccccc",
                                                     "borderColorRight": "#cccccc",
@@ -2225,9 +2189,7 @@
                                                 "attrs": {
                                                     "colspan": 1,
                                                     "rowspan": 1,
-                                                    "colwidth": [
-                                                        208
-                                                    ],
+                                                    "colwidth": [208],
                                                     "background": null,
                                                     "borderColorLeft": "#cccccc",
                                                     "borderColorRight": "#cccccc",
@@ -2320,9 +2282,7 @@
                                                 "attrs": {
                                                     "colspan": 1,
                                                     "rowspan": 1,
-                                                    "colwidth": [
-                                                        143
-                                                    ],
+                                                    "colwidth": [143],
                                                     "background": null,
                                                     "borderColorLeft": "#cccccc",
                                                     "borderColorRight": "#cccccc",
@@ -2415,9 +2375,7 @@
                                                 "attrs": {
                                                     "colspan": 1,
                                                     "rowspan": 1,
-                                                    "colwidth": [
-                                                        233
-                                                    ],
+                                                    "colwidth": [233],
                                                     "background": null,
                                                     "borderColorLeft": "#cccccc",
                                                     "borderColorRight": "#cccccc",
@@ -2664,12 +2622,8 @@
                             {
                                 "type": "semanticTag",
                                 "attrs": {
-                                    "tags": [
-                                        "Rozszerzenie"
-                                    ],
-                                    "required": [
-                                        "Podzielność"
-                                    ]
+                                    "tags": ["Rozszerzenie"],
+                                    "required": ["Podzielność"]
                                 }
                             },
                             {
@@ -2812,9 +2766,7 @@
                             {
                                 "type": "semanticTag",
                                 "attrs": {
-                                    "tags": [
-                                        "Intuicje"
-                                    ],
+                                    "tags": ["Intuicje"],
                                     "required": []
                                 }
                             },
@@ -3916,9 +3868,7 @@
                             {
                                 "type": "semanticTag",
                                 "attrs": {
-                                    "tags": [
-                                        "Formalnie"
-                                    ],
+                                    "tags": ["Formalnie"],
                                     "required": []
                                 }
                             },
@@ -3990,9 +3940,7 @@
                             {
                                 "type": "semanticTag",
                                 "attrs": {
-                                    "tags": [
-                                        "Rozszerzenie"
-                                    ],
+                                    "tags": ["Rozszerzenie"],
                                     "required": []
                                 }
                             },
@@ -4246,9 +4194,7 @@
                             {
                                 "type": "semanticTag",
                                 "attrs": {
-                                    "tags": [
-                                        "Intuicje"
-                                    ],
+                                    "tags": ["Intuicje"],
                                     "required": []
                                 }
                             },
@@ -4473,7 +4419,7 @@
                                                 }
                                             ],
                                             "radius": "70",
-                                            "color": "#f5e0e0",
+                                            "color": "#ffcccc",
                                             "borderColor": "#eeaaaa"
                                         }
                                     },
@@ -4757,7 +4703,7 @@
                                                 }
                                             ],
                                             "radius": "70",
-                                            "color": "#f5e0e0",
+                                            "color": "#ffcccc",
                                             "borderColor": "#eeaaaa"
                                         }
                                     },
@@ -6158,9 +6104,7 @@
                             {
                                 "type": "semanticTag",
                                 "attrs": {
-                                    "tags": [
-                                        "Intuicje"
-                                    ],
+                                    "tags": ["Intuicje"],
                                     "required": []
                                 }
                             },
@@ -7241,9 +7185,7 @@
                                                 "attrs": {
                                                     "colspan": 1,
                                                     "rowspan": 1,
-                                                    "colwidth": [
-                                                        300
-                                                    ],
+                                                    "colwidth": [300],
                                                     "background": null,
                                                     "borderColorLeft": "#cccccc",
                                                     "borderColorRight": "#cccccc",
@@ -7719,9 +7661,7 @@
                                                 "attrs": {
                                                     "colspan": 1,
                                                     "rowspan": 1,
-                                                    "colwidth": [
-                                                        31
-                                                    ],
+                                                    "colwidth": [31],
                                                     "background": null,
                                                     "borderColorLeft": "#cccccc",
                                                     "borderColorRight": "#cccccc",
@@ -8034,9 +7974,7 @@
                                                 "attrs": {
                                                     "colspan": 1,
                                                     "rowspan": 1,
-                                                    "colwidth": [
-                                                        300
-                                                    ],
+                                                    "colwidth": [300],
                                                     "background": null,
                                                     "borderColorLeft": "#cccccc",
                                                     "borderColorRight": "#cccccc",
@@ -8086,9 +8024,7 @@
                                                 "attrs": {
                                                     "colspan": 1,
                                                     "rowspan": 1,
-                                                    "colwidth": [
-                                                        31
-                                                    ],
+                                                    "colwidth": [31],
                                                     "background": null,
                                                     "borderColorLeft": "#cccccc",
                                                     "borderColorRight": "#cccccc",
@@ -8121,12 +8057,8 @@
                             {
                                 "type": "semanticTag",
                                 "attrs": {
-                                    "tags": [
-                                        "Rozszerzenie"
-                                    ],
-                                    "required": [
-                                        "Lekcja jeszcze niedostępna"
-                                    ]
+                                    "tags": ["Rozszerzenie"],
+                                    "required": ["Lekcja jeszcze niedostępna"]
                                 }
                             },
                             {
@@ -8204,9 +8136,7 @@
                             {
                                 "type": "semanticTag",
                                 "attrs": {
-                                    "tags": [
-                                        "Rozszerzenie"
-                                    ],
+                                    "tags": ["Rozszerzenie"],
                                     "required": []
                                 }
                             },
@@ -9619,9 +9549,7 @@
                                 "type": "proof",
                                 "attrs": {
                                     "label": "Dowód",
-                                    "required": [
-                                        "Działania na wyrażeniach algebraicznych"
-                                    ]
+                                    "required": ["Działania na wyrażeniach algebraicznych"]
                                 },
                                 "content": [
                                     {
@@ -10230,9 +10158,7 @@
                                                 "attrs": {
                                                     "colspan": 1,
                                                     "rowspan": 1,
-                                                    "colwidth": [
-                                                        149
-                                                    ],
+                                                    "colwidth": [149],
                                                     "background": null,
                                                     "borderColorLeft": "#cccccc",
                                                     "borderColorRight": "#cccccc",
@@ -10317,9 +10243,7 @@
                                                 "attrs": {
                                                     "colspan": 1,
                                                     "rowspan": 1,
-                                                    "colwidth": [
-                                                        153
-                                                    ],
+                                                    "colwidth": [153],
                                                     "background": null,
                                                     "borderColorLeft": "#cccccc",
                                                     "borderColorRight": "#cccccc",
@@ -10427,9 +10351,7 @@
                                                 "attrs": {
                                                     "colspan": 1,
                                                     "rowspan": 1,
-                                                    "colwidth": [
-                                                        152
-                                                    ],
+                                                    "colwidth": [152],
                                                     "background": null,
                                                     "borderColorLeft": "#cccccc",
                                                     "borderColorRight": "#cccccc",
@@ -10541,9 +10463,7 @@
                                                 "attrs": {
                                                     "colspan": 1,
                                                     "rowspan": 1,
-                                                    "colwidth": [
-                                                        158
-                                                    ],
+                                                    "colwidth": [158],
                                                     "background": null,
                                                     "borderColorLeft": "#cccccc",
                                                     "borderColorRight": "#cccccc",
@@ -10655,9 +10575,7 @@
                                                 "attrs": {
                                                     "colspan": 1,
                                                     "rowspan": 1,
-                                                    "colwidth": [
-                                                        162
-                                                    ],
+                                                    "colwidth": [162],
                                                     "background": null,
                                                     "borderColorLeft": "#cccccc",
                                                     "borderColorRight": "#cccccc",
@@ -10769,9 +10687,7 @@
                                                 "attrs": {
                                                     "colspan": 1,
                                                     "rowspan": 1,
-                                                    "colwidth": [
-                                                        162
-                                                    ],
+                                                    "colwidth": [162],
                                                     "background": null,
                                                     "borderColorLeft": "#cccccc",
                                                     "borderColorRight": "#cccccc",
@@ -10888,9 +10804,7 @@
                                                 "attrs": {
                                                     "colspan": 1,
                                                     "rowspan": 1,
-                                                    "colwidth": [
-                                                        149
-                                                    ],
+                                                    "colwidth": [149],
                                                     "background": null,
                                                     "borderColorLeft": "#cccccc",
                                                     "borderColorRight": "#cccccc",
@@ -10923,9 +10837,7 @@
                                                 "attrs": {
                                                     "colspan": 1,
                                                     "rowspan": 1,
-                                                    "colwidth": [
-                                                        153
-                                                    ],
+                                                    "colwidth": [153],
                                                     "background": null,
                                                     "borderColorLeft": "#cccccc",
                                                     "borderColorRight": "#cccccc",
@@ -10958,9 +10870,7 @@
                                                 "attrs": {
                                                     "colspan": 1,
                                                     "rowspan": 1,
-                                                    "colwidth": [
-                                                        152
-                                                    ],
+                                                    "colwidth": [152],
                                                     "background": null,
                                                     "borderColorLeft": "#cccccc",
                                                     "borderColorRight": "#cccccc",
@@ -10993,9 +10903,7 @@
                                                 "attrs": {
                                                     "colspan": 1,
                                                     "rowspan": 1,
-                                                    "colwidth": [
-                                                        158
-                                                    ],
+                                                    "colwidth": [158],
                                                     "background": null,
                                                     "borderColorLeft": "#cccccc",
                                                     "borderColorRight": "#cccccc",
@@ -11028,9 +10936,7 @@
                                                 "attrs": {
                                                     "colspan": 1,
                                                     "rowspan": 1,
-                                                    "colwidth": [
-                                                        162
-                                                    ],
+                                                    "colwidth": [162],
                                                     "background": null,
                                                     "borderColorLeft": "#cccccc",
                                                     "borderColorRight": "#cccccc",
@@ -11063,9 +10969,7 @@
                                                 "attrs": {
                                                     "colspan": 1,
                                                     "rowspan": 1,
-                                                    "colwidth": [
-                                                        162
-                                                    ],
+                                                    "colwidth": [162],
                                                     "background": null,
                                                     "borderColorLeft": "#cccccc",
                                                     "borderColorRight": "#cccccc",
@@ -11120,9 +11024,7 @@
                                                 "attrs": {
                                                     "colspan": 1,
                                                     "rowspan": 1,
-                                                    "colwidth": [
-                                                        542
-                                                    ],
+                                                    "colwidth": [542],
                                                     "background": null,
                                                     "borderColorLeft": "#cccccc",
                                                     "borderColorRight": "#cccccc",
@@ -11153,9 +11055,7 @@
                                                 "attrs": {
                                                     "colspan": 1,
                                                     "rowspan": 1,
-                                                    "colwidth": [
-                                                        389
-                                                    ],
+                                                    "colwidth": [389],
                                                     "background": null,
                                                     "borderColorLeft": "#cccccc",
                                                     "borderColorRight": "#cccccc",
@@ -11456,9 +11356,7 @@
                                                 "attrs": {
                                                     "colspan": 1,
                                                     "rowspan": 1,
-                                                    "colwidth": [
-                                                        508
-                                                    ],
+                                                    "colwidth": [508],
                                                     "background": null,
                                                     "borderColorLeft": "#cccccc",
                                                     "borderColorRight": "#cccccc",
@@ -11496,9 +11394,7 @@
                                                 "attrs": {
                                                     "colspan": 1,
                                                     "rowspan": 1,
-                                                    "colwidth": [
-                                                        463
-                                                    ],
+                                                    "colwidth": [463],
                                                     "background": null,
                                                     "borderColorLeft": "#cccccc",
                                                     "borderColorRight": "#cccccc",
@@ -11541,9 +11437,7 @@
                                                 "attrs": {
                                                     "colspan": 1,
                                                     "rowspan": 1,
-                                                    "colwidth": [
-                                                        508
-                                                    ],
+                                                    "colwidth": [508],
                                                     "background": null,
                                                     "borderColorLeft": "#cccccc",
                                                     "borderColorRight": "#cccccc",
@@ -11644,9 +11538,7 @@
                                                 "attrs": {
                                                     "colspan": 1,
                                                     "rowspan": 1,
-                                                    "colwidth": [
-                                                        463
-                                                    ],
+                                                    "colwidth": [463],
                                                     "background": null,
                                                     "borderColorLeft": "#cccccc",
                                                     "borderColorRight": "#cccccc",
@@ -11845,7 +11737,7 @@
                                                 }
                                             ],
                                             "radius": "70",
-                                            "color": "#f5e0e0",
+                                            "color": "#ffcccc",
                                             "borderColor": "#eeaaaa"
                                         }
                                     },
@@ -12091,7 +11983,7 @@
                                                 }
                                             ],
                                             "radius": "70",
-                                            "color": "#f5e0e0",
+                                            "color": "#ffcccc",
                                             "borderColor": "#eeaaaa"
                                         }
                                     },

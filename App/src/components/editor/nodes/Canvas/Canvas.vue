@@ -1,6 +1,13 @@
 <template>
     <node-view-wrapper>
-        <button ref="geometryEditor" class="geometry-editor" @focus="focused = true">
+        <div
+            ref="geometryEditor"
+            class="geometry-editor"
+            tabindex="0"
+            @mousedown="focusCanvas"
+            @keydown="handleKeyDown"
+            @keyup="handleKeyUp"
+        >
             <div v-if="focused" class="geometry-toolbar-wrapper">
                 <div class="geometry-toolbar" contenteditable="false">
                     <button @mousedown="onAddSquare($event)">
@@ -76,14 +83,14 @@
                         >
                             <icon>align_bottom</icon>
                         </button>
-                        <span class="input-button" v-if="selectedRectangle() || selectedCircle()">
-                            <span @mousedown="(widthInput.focus(), $event.preventDefault())">szerokość</span>
+                        <button class="input-button" v-if="selectedRectangle() || selectedCircle()" title="szerokość">
+                            <icon @mousedown="(widthInput.focus(), $event.preventDefault())">width</icon>
                             <input type="number" ref="widthInput" v-model="width" />
-                        </span>
-                        <span class="input-button" v-if="selectedRectangle() || selectedCircle()">
-                            <span @mousedown="(heightInput.focus(), $event.preventDefault())">wysokość</span>
+                        </button>
+                        <button class="input-button" v-if="selectedRectangle() || selectedCircle()" title="wysokość">
+                            <icon @mousedown="(heightInput.focus(), $event.preventDefault())">height</icon>
                             <input type="number" ref="heightInput" v-model="height" />
-                        </span>
+                        </button>
                         <button
                             v-if="selectedLine() || selectedPolygon() || selectedTextArea()"
                             @mousedown="toggleEdit()"
@@ -110,7 +117,7 @@
                 <node-view-content class="shapes-container" />
                 <canvas ref="overlayCanvas" class="overlay-canvas"></canvas>
             </div>
-        </button>
+        </div>
     </node-view-wrapper>
 </template>
 
@@ -272,8 +279,6 @@ onMounted(() => {
     eventsCatcherPaperScope.tool.onMouseDown = handleMouseDown;
     eventsCatcherPaperScope.tool.onMouseDrag = handleMouseDrag;
     eventsCatcherPaperScope.tool.onMouseUp = handleMouseUp;
-    eventsCatcherPaperScope.tool.onKeyDown = handleKeyDown;
-    eventsCatcherPaperScope.tool.onKeyUp = handleKeyUp;
     eventsCatcher.value.addEventListener('wheel', handleScroll);
 
     overlayPaperScope = new paper.PaperScope();
@@ -475,39 +480,59 @@ function handleMouseUp() {
     saveTimeout = setTimeout(() => save());
 }
 
-function handleKeyDown(event: paper.KeyEvent) {
-    if (event.key == 'control' || (event.key == 'z' && event.modifiers.control)) {
+function focusCanvas() {
+    focused.value = true;
+    geometryEditor.value.focus();
+}
+
+function shouldIgnoreKeyboardEvent(event: KeyboardEvent) {
+    return (event.target as HTMLElement | null)?.nodeName.toLowerCase() === 'input';
+}
+
+function handleKeyDown(event: KeyboardEvent) {
+    if (!focused.value || shouldIgnoreKeyboardEvent(event)) {
         return;
     }
 
-    if (selection.value.length > 0) {
-        const anyTextAreaSelected = selection.value.some((i) => isTextArea(shapeAtIndex(i)!));
-        let shouldPreventDefault = true;
-        if (event.key == 'delete' || event.key === 'backspace') {
+    const ctrl = event.ctrlKey || event.metaKey;
+    const key = event.key.toLowerCase();
+
+    if (key === 'control' || key === 'meta' || (key === 'z' && ctrl)) {
+        return;
+    }
+
+    let shouldPreventDefault = true;
+    if (key == 'a' && ctrl) {
+        deselectAll();
+        allShapes().forEach((shape) => shape.setSelected(true));
+    } else if (selection.value.length > 0) {
+        const isEditingTextArea = selectedTextArea() && shapeEdited.value != -1;
+        if (key == 'delete' || key === 'backspace') {
             shouldPreventDefault = deleteSelected();
-        } else if (event.key == 'up' && !anyTextAreaSelected) {
+        } else if (key == 'arrowup' && !isEditingTextArea) {
             selection.value.forEach((i) => shapeAtIndex(i)!.move(new paper.Point(0, -1)));
-        } else if (event.key == 'down' && !anyTextAreaSelected) {
+        } else if (key == 'arrowdown' && !isEditingTextArea) {
             selection.value.forEach((i) => shapeAtIndex(i)!.move(new paper.Point(0, 1)));
-        } else if (event.key == 'left' && !anyTextAreaSelected) {
+        } else if (key == 'arrowleft' && !isEditingTextArea) {
             selection.value.forEach((i) => shapeAtIndex(i)!.move(new paper.Point(-1, 0)));
-        } else if (event.key == 'right' && !anyTextAreaSelected) {
+        } else if (key == 'arrowright' && !isEditingTextArea) {
             selection.value.forEach((i) => shapeAtIndex(i)!.move(new paper.Point(1, 0)));
-        } else if (event.key == 'escape') {
+        } else if (key == 'escape') {
             deselectAll();
-        } else if (event.key == 'c' && event.modifiers.control) {
+        } else if (key == 'c' && ctrl) {
             copySelected();
-        } else if (event.key == 'x' && event.modifiers.control) {
+        } else if (key == 'x' && ctrl) {
             copySelected();
             deleteSelected();
         } else {
             shouldPreventDefault = false;
         }
-        if (shouldPreventDefault) {
-            event.preventDefault();
-        }
     }
-    if (event.key == 'v' && event.modifiers.control && copiedCanvasShapes.value) {
+    if (shouldPreventDefault) {
+        event.preventDefault();
+        event.stopPropagation();
+    }
+    if (key == 'v' && ctrl && copiedCanvasShapes.value) {
         deselectAll();
         copiedCanvasShapes.value.forEach((shapeNode) => {
             const serializedNode = shapeNode.toJSON();
@@ -515,18 +540,26 @@ function handleKeyDown(event: paper.KeyEvent) {
             props.editor.commands.insertContentAt(insertPosition(), props.editor.schema.nodeFromJSON(serializedNode));
 
             const added = lastShape();
-            select(totalShapes() - 1, added);
             added.handleResize(canvas.value.width, canvas.value.height);
-            added.move(new paper.Point(40, 40));
+            const center = added.getBounds().center;
+            added.move(
+                new paper.Point(
+                    center.x < canvas.value.width - 50 ? 40 : center.x > 50 ? -40 : 0,
+                    center.y < canvas.value.height - 50 ? 40 : center.y > 50 ? -40 : 0,
+                ),
+            );
+            select(totalShapes() - 1, added);
         });
         event.preventDefault();
+        event.stopPropagation();
         save();
-    } else if (event.key == 'a' && event.modifiers.control) {
+    } else if (key == 'a' && ctrl) {
         deselectAll();
         for (let i = 0; i < totalShapes(); i++) {
             select(i);
         }
         event.preventDefault();
+        event.stopPropagation();
     }
 }
 
@@ -569,8 +602,11 @@ function deleteSelected(force = false): boolean {
     return shouldPreventDefault;
 }
 
-function handleKeyUp(event: paper.KeyEvent) {
-    if (event.key === 'shift') {
+function handleKeyUp(event: KeyboardEvent) {
+    if (shouldIgnoreKeyboardEvent(event)) {
+        return;
+    }
+    if (event.key.toLowerCase() === 'shift') {
         snapper.clearSnapLines();
     }
 }
@@ -922,12 +958,13 @@ function onSelectionUpdate() {
 
 .geometry-editor {
     display: block;
+    width: fit-content;
+    max-width: 100%;
     margin: 0 auto;
     padding: 0;
     background: none;
     position: relative;
     cursor: initial;
-    max-width: 100%;
 }
 
 .ProseMirror-selectednode .geometry-editor {
@@ -935,7 +972,7 @@ function onSelectionUpdate() {
 }
 
 .canvas-wrapper {
-    border: 2px colors.$gray dashed;
+    outline: 2px colors.$gray dashed; // don't use border here because it messes canvas size, devicePixelRatio etc.
     resize: both;
     overflow: hidden;
     max-width: 100%;
@@ -965,11 +1002,11 @@ function onSelectionUpdate() {
 }
 
 .canvas-wrapper:hover {
-    border: 2px colors.$darker-gray dashed;
+    outline: 2px colors.$darker-gray dashed;
 }
 
 .canvas-wrapper:focus {
-    border: 2px black dashed;
+    outline: 2px black dashed;
 }
 
 .geometry-toolbar-wrapper {
@@ -1040,11 +1077,11 @@ function onSelectionUpdate() {
     padding: 0;
 
     span {
-        padding: 0 5px 0 10px;
+        margin: 0 5px 0 10px;
     }
 
     input[type='number'] {
-        width: 30px;
+        width: 40px;
         height: 100%;
         background: transparent;
         padding: 0 5px;
@@ -1052,7 +1089,6 @@ function onSelectionUpdate() {
 
         &:focus {
             background: colors.$dark-gray;
-            width: 40px;
             @extend .allow-selection;
         }
     }
