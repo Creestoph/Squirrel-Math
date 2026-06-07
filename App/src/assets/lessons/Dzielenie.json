@@ -1496,7 +1496,7 @@
                                                 }
                                             }
                                         ],
-                                        "text": "12 "
+                                        "text": "12"
                                     },
                                     {
                                         "type": "text",
@@ -1508,11 +1508,11 @@
                                                 }
                                             }
                                         ],
-                                        "text": "kamieni."
+                                        "text": " kamieni"
                                     },
                                     {
                                         "type": "text",
-                                        "text": " Wychodzimy z szalonym pomysłem, by dzielić tę stertę na mniejsze grupki."
+                                        "text": ". Wychodzimy z szalonym pomysłem, by dzielić tę stertę na mniejsze grupki."
                                     }
                                 ]
                             },
@@ -2683,11 +2683,31 @@
                                         "type": "expressionInline",
                                         "attrs": {
                                             "mathJax": ":"
-                                        }
+                                        },
+                                        "marks": [
+                                            {
+                                                "type": "comment",
+                                                "attrs": {
+                                                    "id": 11
+                                                }
+                                            }
+                                        ]
                                     },
                                     {
                                         "type": "text",
-                                        "text": " ), nazywamy "
+                                        "marks": [
+                                            {
+                                                "type": "comment",
+                                                "attrs": {
+                                                    "id": 11
+                                                }
+                                            }
+                                        ],
+                                        "text": " )"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": ", nazywamy "
                                     },
                                     {
                                         "type": "text",
@@ -5314,7 +5334,7 @@
                                     },
                                     {
                                         "type": "text",
-                                        "text": ". Patrząc na powyższą rozpiskę, widać, że gdy wzięliśmy trzynastkę "
+                                        "text": ". Bazując na powyższej rozpisce, widać, że gdy wzięliśmy trzynastkę "
                                     },
                                     {
                                         "type": "text",
@@ -5755,7 +5775,7 @@
                                 "type": "semanticTag",
                                 "attrs": {
                                     "tags": [
-                                        "Intuicje"
+                                        "Warsztat"
                                     ],
                                     "required": []
                                 }
@@ -7485,7 +7505,7 @@
                                                             "colwidth": [
                                                                 40
                                                             ],
-                                                            "background": "#eeaaaa",
+                                                            "background": "#ffcccc",
                                                             "borderColorLeft": "rgb(0, 0, 0)",
                                                             "borderColorRight": "rgb(0, 0, 0)",
                                                             "borderColorBottom": "rgb(0, 0, 0)",
@@ -7742,7 +7762,7 @@
                                                             "colwidth": [
                                                                 40
                                                             ],
-                                                            "background": "#eeaaaa",
+                                                            "background": "#ffcccc",
                                                             "borderColorLeft": "rgb(0, 0, 0)",
                                                             "borderColorRight": "rgb(0, 0, 0)",
                                                             "borderColorBottom": "rgb(0, 0, 0)",
@@ -8327,7 +8347,7 @@
                                                             "colwidth": [
                                                                 40
                                                             ],
-                                                            "background": "#eeaaaa",
+                                                            "background": "#ffcccc",
                                                             "borderColorLeft": "#000000",
                                                             "borderColorRight": "#000000",
                                                             "borderColorBottom": "#000000",
@@ -8698,7 +8718,7 @@
                                                             "colwidth": [
                                                                 40
                                                             ],
-                                                            "background": "#eeaaaa",
+                                                            "background": "#ffcccc",
                                                             "borderColorLeft": "#000000",
                                                             "borderColorRight": "#000000",
                                                             "borderColorBottom": "#000000",
@@ -9787,7 +9807,7 @@
                                             },
                                             {
                                                 "type": "text",
-                                                "text": " dla której "
+                                                "text": ", dla której "
                                             },
                                             {
                                                 "type": "expressionInline",
@@ -10434,17 +10454,6 @@
                 ]
             },
             {
-                "type": "intro",
-                "content": [
-                    {
-                        "type": "paragraph",
-                        "attrs": {
-                            "textAlign": ""
-                        }
-                    }
-                ]
-            },
-            {
                 "type": "chapter",
                 "content": [
                     {
@@ -10463,80 +10472,6 @@
                         "type": "chapterBody",
                         "content": [
                             {
-                                "type": "paragraph",
-                                "attrs": {
-                                    "textAlign": ""
-                                },
-                                "content": [
-                                    {
-                                        "type": "text",
-                                        "marks": [
-                                            {
-                                                "type": "textColor",
-                                                "attrs": {
-                                                    "color": "rgb(0, 0, 0)"
-                                                }
-                                            }
-                                        ],
-                                        "text": "Dzielenie polega na rozkładaniu jednej liczby na kilka równych liczb. Gdybyśmy chcieli rozłożyć "
-                                    },
-                                    {
-                                        "type": "expressionInline",
-                                        "attrs": {
-                                            "mathJax": "20"
-                                        }
-                                    },
-                                    {
-                                        "type": "text",
-                                        "marks": [
-                                            {
-                                                "type": "textColor",
-                                                "attrs": {
-                                                    "color": "rgb(0, 0, 0)"
-                                                }
-                                            }
-                                        ],
-                                        "text": " kulek na "
-                                    },
-                                    {
-                                        "type": "expressionInline",
-                                        "attrs": {
-                                            "mathJax": "4"
-                                        }
-                                    },
-                                    {
-                                        "type": "text",
-                                        "marks": [
-                                            {
-                                                "type": "textColor",
-                                                "attrs": {
-                                                    "color": "rgb(0, 0, 0)"
-                                                }
-                                            }
-                                        ],
-                                        "text": " równe grupki, otrzymalibyśmy po "
-                                    },
-                                    {
-                                        "type": "expressionInline",
-                                        "attrs": {
-                                            "mathJax": "5"
-                                        }
-                                    },
-                                    {
-                                        "type": "text",
-                                        "marks": [
-                                            {
-                                                "type": "textColor",
-                                                "attrs": {
-                                                    "color": "rgb(0, 0, 0)"
-                                                }
-                                            }
-                                        ],
-                                        "text": " kulek na grupę."
-                                    }
-                                ]
-                            },
-                            {
                                 "type": "table",
                                 "content": [
                                     {
@@ -10548,29 +10483,41 @@
                                                     "colspan": 1,
                                                     "rowspan": 1,
                                                     "colwidth": [
-                                                        348
+                                                        283
                                                     ],
                                                     "background": null,
-                                                    "borderColor": "#cccccc",
+                                                    "borderColorLeft": "#cccccc",
+                                                    "borderColorRight": "#cccccc",
+                                                    "borderColorBottom": "#cccccc",
+                                                    "borderColorTop": "#cccccc",
                                                     "borderLeft": "0",
                                                     "borderRight": "0",
                                                     "borderBottom": "0",
-                                                    "borderTop": "0",
-                                                    "borderColorBottom": "#cccccc",
-                                                    "borderColorTop": "#cccccc",
-                                                    "borderColorRight": "#cccccc",
-                                                    "borderColorLeft": "#cccccc"
+                                                    "borderTop": "0"
                                                 },
                                                 "content": [
                                                     {
                                                         "type": "paragraph",
                                                         "attrs": {
-                                                            "textAlign": ""
+                                                            "textAlign": "center"
                                                         },
                                                         "content": [
                                                             {
                                                                 "type": "text",
-                                                                "text": "Przed uporządkowaniem:           "
+                                                                "text": "Nieuporządkowane "
+                                                            },
+                                                            {
+                                                                "type": "text",
+                                                                "marks": [
+                                                                    {
+                                                                        "type": "number"
+                                                                    }
+                                                                ],
+                                                                "text": "20"
+                                                            },
+                                                            {
+                                                                "type": "text",
+                                                                "text": " kulek."
                                                             }
                                                         ]
                                                     }
@@ -10582,347 +10529,346 @@
                                                     "colspan": 1,
                                                     "rowspan": 1,
                                                     "colwidth": [
-                                                        220
+                                                        622
                                                     ],
                                                     "background": null,
-                                                    "borderColor": "#cccccc",
+                                                    "borderColorLeft": "#cccccc",
+                                                    "borderColorRight": "#cccccc",
+                                                    "borderColorBottom": "#cccccc",
+                                                    "borderColorTop": "#cccccc",
                                                     "borderLeft": "0",
                                                     "borderRight": "0",
                                                     "borderBottom": "0",
-                                                    "borderTop": "0",
-                                                    "borderColorBottom": "#cccccc",
-                                                    "borderColorTop": "#cccccc",
-                                                    "borderColorRight": "#cccccc",
-                                                    "borderColorLeft": "#cccccc"
+                                                    "borderTop": "0"
                                                 },
                                                 "content": [
                                                     {
                                                         "type": "geometry",
                                                         "attrs": {
                                                             "canvas": {
-                                                                "width": 711,
-                                                                "height": 243
+                                                                "width": 540,
+                                                                "height": 196
                                                             }
                                                         },
                                                         "content": [
                                                             {
                                                                 "type": "circle",
                                                                 "attrs": {
+                                                                    "id": "190",
                                                                     "center": {
-                                                                        "x": 98.2578125,
-                                                                        "y": 59.5
+                                                                        "x": 35.5,
+                                                                        "y": 52
                                                                     },
                                                                     "size": {
                                                                         "width": 40,
                                                                         "height": 40
                                                                     },
                                                                     "color": "#aa0000",
-                                                                    "borderColor": "#00000000",
-                                                                    "id": "190"
+                                                                    "borderColor": "#00000000"
                                                                 }
                                                             },
                                                             {
                                                                 "type": "circle",
                                                                 "attrs": {
+                                                                    "id": "191",
                                                                     "center": {
-                                                                        "x": 159.2578125,
-                                                                        "y": 115.5
+                                                                        "x": 77.5,
+                                                                        "y": 88
                                                                     },
                                                                     "size": {
                                                                         "width": 40,
                                                                         "height": 40
                                                                     },
                                                                     "color": "#aa0000",
-                                                                    "borderColor": "#00000000",
-                                                                    "id": "191"
+                                                                    "borderColor": "#00000000"
                                                                 }
                                                             },
                                                             {
                                                                 "type": "circle",
                                                                 "attrs": {
+                                                                    "id": "192",
                                                                     "center": {
-                                                                        "x": 338.2578125,
-                                                                        "y": 80.5
+                                                                        "x": 251.5,
+                                                                        "y": 67
                                                                     },
                                                                     "size": {
                                                                         "width": 40,
                                                                         "height": 40
                                                                     },
                                                                     "color": "#aa0000",
-                                                                    "borderColor": "#00000000",
-                                                                    "id": "192"
+                                                                    "borderColor": "#00000000"
                                                                 }
                                                             },
                                                             {
                                                                 "type": "circle",
                                                                 "attrs": {
+                                                                    "id": "193",
                                                                     "center": {
-                                                                        "x": 296.2578125,
-                                                                        "y": 140.5
+                                                                        "x": 197.5,
+                                                                        "y": 104
                                                                     },
                                                                     "size": {
                                                                         "width": 40,
                                                                         "height": 40
                                                                     },
                                                                     "color": "#aa0000",
-                                                                    "borderColor": "#00000000",
-                                                                    "id": "193"
+                                                                    "borderColor": "#00000000"
                                                                 }
                                                             },
                                                             {
                                                                 "type": "circle",
                                                                 "attrs": {
+                                                                    "id": "194",
                                                                     "center": {
-                                                                        "x": 422.2578125,
-                                                                        "y": 117.5
+                                                                        "x": 310.5,
+                                                                        "y": 81
                                                                     },
                                                                     "size": {
                                                                         "width": 40,
                                                                         "height": 40
                                                                     },
                                                                     "color": "#aa0000",
-                                                                    "borderColor": "#00000000",
-                                                                    "id": "194"
+                                                                    "borderColor": "#00000000"
                                                                 }
                                                             },
                                                             {
                                                                 "type": "circle",
                                                                 "attrs": {
+                                                                    "id": "195",
                                                                     "center": {
-                                                                        "x": 204.2578125,
-                                                                        "y": 61.5
+                                                                        "x": 106.5,
+                                                                        "y": 39
                                                                     },
                                                                     "size": {
                                                                         "width": 40,
                                                                         "height": 40
                                                                     },
                                                                     "color": "#aa0000",
-                                                                    "borderColor": "#00000000",
-                                                                    "id": "195"
+                                                                    "borderColor": "#00000000"
                                                                 }
                                                             },
                                                             {
                                                                 "type": "circle",
                                                                 "attrs": {
+                                                                    "id": "196",
                                                                     "center": {
-                                                                        "x": 216.2578125,
-                                                                        "y": 195.5
+                                                                        "x": 141.5,
+                                                                        "y": 144
                                                                     },
                                                                     "size": {
                                                                         "width": 40,
                                                                         "height": 40
                                                                     },
                                                                     "color": "#aa0000",
-                                                                    "borderColor": "#00000000",
-                                                                    "id": "196"
+                                                                    "borderColor": "#00000000"
                                                                 }
                                                             },
                                                             {
                                                                 "type": "circle",
                                                                 "attrs": {
+                                                                    "id": "197",
                                                                     "center": {
-                                                                        "x": 402.2578125,
-                                                                        "y": 169.5
+                                                                        "x": 279.5,
+                                                                        "y": 127
                                                                     },
                                                                     "size": {
                                                                         "width": 40,
                                                                         "height": 40
                                                                     },
                                                                     "color": "#aa0000",
-                                                                    "borderColor": "#00000000",
-                                                                    "id": "197"
+                                                                    "borderColor": "#00000000"
                                                                 }
                                                             },
                                                             {
                                                                 "type": "circle",
                                                                 "attrs": {
+                                                                    "id": "198",
                                                                     "center": {
-                                                                        "x": 493.2578125,
-                                                                        "y": 56.5
+                                                                        "x": 367.5,
+                                                                        "y": 53
                                                                     },
                                                                     "size": {
                                                                         "width": 40,
                                                                         "height": 40
                                                                     },
                                                                     "color": "#aa0000",
-                                                                    "borderColor": "#00000000",
-                                                                    "id": "198"
+                                                                    "borderColor": "#00000000"
                                                                 }
                                                             },
                                                             {
                                                                 "type": "circle",
                                                                 "attrs": {
+                                                                    "id": "199",
                                                                     "center": {
-                                                                        "x": 152.2578125,
-                                                                        "y": 166.5
+                                                                        "x": 57.5,
+                                                                        "y": 138
                                                                     },
                                                                     "size": {
                                                                         "width": 40,
                                                                         "height": 40
                                                                     },
                                                                     "color": "#aa0000",
-                                                                    "borderColor": "#00000000",
-                                                                    "id": "199"
+                                                                    "borderColor": "#00000000"
                                                                 }
                                                             },
                                                             {
                                                                 "type": "circle",
                                                                 "attrs": {
+                                                                    "id": "200",
                                                                     "center": {
-                                                                        "x": 306.2578125,
-                                                                        "y": 186.5
+                                                                        "x": 219.5,
+                                                                        "y": 153
                                                                     },
                                                                     "size": {
                                                                         "width": 40,
                                                                         "height": 40
                                                                     },
                                                                     "color": "#aa0000",
-                                                                    "borderColor": "#00000000",
-                                                                    "id": "200"
+                                                                    "borderColor": "#00000000"
                                                                 }
                                                             },
                                                             {
                                                                 "type": "circle",
                                                                 "attrs": {
+                                                                    "id": "201",
                                                                     "center": {
-                                                                        "x": 490.2578125,
-                                                                        "y": 140.5
+                                                                        "x": 376.5,
+                                                                        "y": 113
                                                                     },
                                                                     "size": {
                                                                         "width": 40,
                                                                         "height": 40
                                                                     },
                                                                     "color": "#aa0000",
-                                                                    "borderColor": "#00000000",
-                                                                    "id": "201"
+                                                                    "borderColor": "#00000000"
                                                                 }
                                                             },
                                                             {
                                                                 "type": "circle",
                                                                 "attrs": {
+                                                                    "id": "202",
                                                                     "center": {
-                                                                        "x": 567.2578125,
-                                                                        "y": 102.5
+                                                                        "x": 424.5,
+                                                                        "y": 84
                                                                     },
                                                                     "size": {
                                                                         "width": 40,
                                                                         "height": 40
                                                                     },
                                                                     "color": "#aa0000",
-                                                                    "borderColor": "#00000000",
-                                                                    "id": "202"
+                                                                    "borderColor": "#00000000"
                                                                 }
                                                             },
                                                             {
                                                                 "type": "circle",
                                                                 "attrs": {
+                                                                    "id": "203",
                                                                     "center": {
-                                                                        "x": 549.2578125,
-                                                                        "y": 187.5
+                                                                        "x": 425.5,
+                                                                        "y": 157
                                                                     },
                                                                     "size": {
                                                                         "width": 40,
                                                                         "height": 40
                                                                     },
                                                                     "color": "#aa0000",
-                                                                    "borderColor": "#00000000",
-                                                                    "id": "203"
+                                                                    "borderColor": "#00000000"
                                                                 }
                                                             },
                                                             {
                                                                 "type": "circle",
                                                                 "attrs": {
+                                                                    "id": "204",
                                                                     "center": {
-                                                                        "x": 605.2578125,
-                                                                        "y": 52.5
+                                                                        "x": 465.5,
+                                                                        "y": 45
                                                                     },
                                                                     "size": {
                                                                         "width": 40,
                                                                         "height": 40
                                                                     },
                                                                     "color": "#aa0000",
-                                                                    "borderColor": "#00000000",
-                                                                    "id": "204"
+                                                                    "borderColor": "#00000000"
                                                                 }
                                                             },
                                                             {
                                                                 "type": "circle",
                                                                 "attrs": {
+                                                                    "id": "205",
                                                                     "center": {
-                                                                        "x": 238.2578125,
-                                                                        "y": 107.5
+                                                                        "x": 142.5,
+                                                                        "y": 80
                                                                     },
                                                                     "size": {
                                                                         "width": 40,
                                                                         "height": 40
                                                                     },
                                                                     "color": "#aa0000",
-                                                                    "borderColor": "#00000000",
-                                                                    "id": "205"
+                                                                    "borderColor": "#00000000"
                                                                 }
                                                             },
                                                             {
                                                                 "type": "circle",
                                                                 "attrs": {
+                                                                    "id": "206",
                                                                     "center": {
-                                                                        "x": 468.2578125,
-                                                                        "y": 207.5
+                                                                        "x": 333.5,
+                                                                        "y": 157
                                                                     },
                                                                     "size": {
                                                                         "width": 40,
                                                                         "height": 40
                                                                     },
                                                                     "color": "#aa0000",
-                                                                    "borderColor": "#00000000",
-                                                                    "id": "206"
+                                                                    "borderColor": "#00000000"
                                                                 }
                                                             },
                                                             {
                                                                 "type": "circle",
                                                                 "attrs": {
+                                                                    "id": "207",
                                                                     "center": {
-                                                                        "x": 644.2578125,
-                                                                        "y": 153.5
+                                                                        "x": 504.5,
+                                                                        "y": 77
                                                                     },
                                                                     "size": {
                                                                         "width": 40,
                                                                         "height": 40
                                                                     },
                                                                     "color": "#aa0000",
-                                                                    "borderColor": "#00000000",
-                                                                    "id": "207"
+                                                                    "borderColor": "#00000000"
                                                                 }
                                                             },
                                                             {
                                                                 "type": "circle",
                                                                 "attrs": {
+                                                                    "id": "208",
                                                                     "center": {
-                                                                        "x": 264.2578125,
-                                                                        "y": 57.5
+                                                                        "x": 190.5,
+                                                                        "y": 40
                                                                     },
                                                                     "size": {
                                                                         "width": 40,
                                                                         "height": 40
                                                                     },
                                                                     "color": "#aa0000",
-                                                                    "borderColor": "#00000000",
-                                                                    "id": "208"
+                                                                    "borderColor": "#00000000"
                                                                 }
                                                             },
                                                             {
                                                                 "type": "circle",
                                                                 "attrs": {
+                                                                    "id": "593",
                                                                     "center": {
-                                                                        "x": 616.2578125,
-                                                                        "y": 106.5
+                                                                        "x": 485,
+                                                                        "y": 125
                                                                     },
                                                                     "size": {
                                                                         "width": 40,
                                                                         "height": 40
                                                                     },
                                                                     "color": "#aa0000",
-                                                                    "borderColor": "#00000000",
-                                                                    "id": "209"
+                                                                    "borderColor": "#00000000"
                                                                 }
                                                             }
                                                         ]
@@ -10940,26 +10886,19 @@
                                                     "colspan": 1,
                                                     "rowspan": 1,
                                                     "colwidth": [
-                                                        348
+                                                        283
                                                     ],
                                                     "background": null,
-                                                    "borderColor": "#cccccc",
+                                                    "borderColorLeft": "#cccccc",
+                                                    "borderColorRight": "#cccccc",
+                                                    "borderColorBottom": "#cccccc",
+                                                    "borderColorTop": "#cccccc",
                                                     "borderLeft": "0",
                                                     "borderRight": "0",
                                                     "borderBottom": "0",
-                                                    "borderTop": "0",
-                                                    "borderColorBottom": "#cccccc",
-                                                    "borderColorTop": "#cccccc",
-                                                    "borderColorRight": "#cccccc",
-                                                    "borderColorLeft": "#cccccc"
+                                                    "borderTop": "0"
                                                 },
                                                 "content": [
-                                                    {
-                                                        "type": "paragraph",
-                                                        "attrs": {
-                                                            "textAlign": ""
-                                                        }
-                                                    },
                                                     {
                                                         "type": "paragraph",
                                                         "attrs": {
@@ -10980,18 +10919,17 @@
                                                     "colspan": 1,
                                                     "rowspan": 1,
                                                     "colwidth": [
-                                                        220
+                                                        622
                                                     ],
                                                     "background": null,
-                                                    "borderColor": "#cccccc",
+                                                    "borderColorLeft": "#cccccc",
+                                                    "borderColorRight": "#cccccc",
+                                                    "borderColorBottom": "#cccccc",
+                                                    "borderColorTop": "#cccccc",
                                                     "borderLeft": "0",
                                                     "borderRight": "0",
                                                     "borderBottom": "0",
-                                                    "borderTop": "0",
-                                                    "borderColorBottom": "#cccccc",
-                                                    "borderColorTop": "#cccccc",
-                                                    "borderColorRight": "#cccccc",
-                                                    "borderColorLeft": "#cccccc"
+                                                    "borderTop": "0"
                                                 },
                                                 "content": [
                                                     {
@@ -11013,24 +10951,23 @@
                                                     "colspan": 1,
                                                     "rowspan": 1,
                                                     "colwidth": [
-                                                        348
+                                                        283
                                                     ],
                                                     "background": null,
-                                                    "borderColor": "#cccccc",
+                                                    "borderColorLeft": "#cccccc",
+                                                    "borderColorRight": "#cccccc",
+                                                    "borderColorBottom": "#cccccc",
+                                                    "borderColorTop": "#cccccc",
                                                     "borderLeft": "0",
                                                     "borderRight": "0",
                                                     "borderBottom": "0",
-                                                    "borderTop": "0",
-                                                    "borderColorBottom": "#cccccc",
-                                                    "borderColorTop": "#cccccc",
-                                                    "borderColorRight": "#cccccc",
-                                                    "borderColorLeft": "#cccccc"
+                                                    "borderTop": "0"
                                                 },
                                                 "content": [
                                                     {
                                                         "type": "paragraph",
                                                         "attrs": {
-                                                            "textAlign": ""
+                                                            "textAlign": "center"
                                                         },
                                                         "content": [
                                                             {
@@ -11048,7 +10985,7 @@
                                                             },
                                                             {
                                                                 "type": "text",
-                                                                "text": " sterty:"
+                                                                "text": " równe sterty."
                                                             }
                                                         ]
                                                     }
@@ -11060,485 +10997,427 @@
                                                     "colspan": 1,
                                                     "rowspan": 1,
                                                     "colwidth": [
-                                                        220
+                                                        622
                                                     ],
                                                     "background": null,
-                                                    "borderColor": "rgb(204, 204, 204)",
+                                                    "borderColorLeft": "rgb(204, 204, 204)",
+                                                    "borderColorRight": "rgb(204, 204, 204)",
+                                                    "borderColorBottom": "rgb(204, 204, 204)",
+                                                    "borderColorTop": "rgb(204, 204, 204)",
                                                     "borderLeft": "0",
                                                     "borderRight": "0",
                                                     "borderBottom": "0",
-                                                    "borderTop": "0",
-                                                    "borderColorBottom": "rgb(204, 204, 204)",
-                                                    "borderColorTop": "rgb(204, 204, 204)",
-                                                    "borderColorRight": "rgb(204, 204, 204)",
-                                                    "borderColorLeft": "rgb(204, 204, 204)"
+                                                    "borderTop": "0"
                                                 },
                                                 "content": [
                                                     {
-                                                        "type": "table",
+                                                        "type": "geometry",
+                                                        "attrs": {
+                                                            "canvas": {
+                                                                "width": 555,
+                                                                "height": 174
+                                                            }
+                                                        },
                                                         "content": [
                                                             {
-                                                                "type": "tableRow",
-                                                                "content": [
-                                                                    {
-                                                                        "type": "tableCell",
-                                                                        "attrs": {
-                                                                            "colspan": 1,
-                                                                            "rowspan": 1,
-                                                                            "colwidth": [
-                                                                                121
-                                                                            ],
-                                                                            "background": null,
-                                                                            "borderColor": "rgb(204, 204, 204)",
-                                                                            "borderLeft": 1,
-                                                                            "borderRight": 1,
-                                                                            "borderBottom": 1,
-                                                                            "borderTop": 1,
-                                                                            "borderColorBottom": "rgb(204, 204, 204)",
-                                                                            "borderColorTop": "rgb(204, 204, 204)",
-                                                                            "borderColorRight": "rgb(204, 204, 204)",
-                                                                            "borderColorLeft": "rgb(204, 204, 204)"
-                                                                        },
-                                                                        "content": [
-                                                                            {
-                                                                                "type": "geometry",
-                                                                                "attrs": {
-                                                                                    "canvas": {
-                                                                                        "width": 171,
-                                                                                        "height": 181
-                                                                                    }
-                                                                                },
-                                                                                "content": [
-                                                                                    {
-                                                                                        "type": "circle",
-                                                                                        "attrs": {
-                                                                                            "center": {
-                                                                                                "x": 52.2578125,
-                                                                                                "y": 40.5
-                                                                                            },
-                                                                                            "size": {
-                                                                                                "width": 40,
-                                                                                                "height": 40
-                                                                                            },
-                                                                                            "color": "#aa0000",
-                                                                                            "borderColor": "#00000000",
-                                                                                            "id": "210"
-                                                                                        }
-                                                                                    },
-                                                                                    {
-                                                                                        "type": "circle",
-                                                                                        "attrs": {
-                                                                                            "center": {
-                                                                                                "x": 119.2578125,
-                                                                                                "y": 41.5
-                                                                                            },
-                                                                                            "size": {
-                                                                                                "width": 40,
-                                                                                                "height": 40
-                                                                                            },
-                                                                                            "color": "#aa0000",
-                                                                                            "borderColor": "#00000000",
-                                                                                            "id": "211"
-                                                                                        }
-                                                                                    },
-                                                                                    {
-                                                                                        "type": "circle",
-                                                                                        "attrs": {
-                                                                                            "center": {
-                                                                                                "x": 125.2578125,
-                                                                                                "y": 90.5
-                                                                                            },
-                                                                                            "size": {
-                                                                                                "width": 40,
-                                                                                                "height": 40
-                                                                                            },
-                                                                                            "color": "#aa0000",
-                                                                                            "borderColor": "#00000000",
-                                                                                            "id": "212"
-                                                                                        }
-                                                                                    },
-                                                                                    {
-                                                                                        "type": "circle",
-                                                                                        "attrs": {
-                                                                                            "center": {
-                                                                                                "x": 52.2578125,
-                                                                                                "y": 92.5
-                                                                                            },
-                                                                                            "size": {
-                                                                                                "width": 40,
-                                                                                                "height": 40
-                                                                                            },
-                                                                                            "color": "#aa0000",
-                                                                                            "borderColor": "#00000000",
-                                                                                            "id": "213"
-                                                                                        }
-                                                                                    },
-                                                                                    {
-                                                                                        "type": "circle",
-                                                                                        "attrs": {
-                                                                                            "center": {
-                                                                                                "x": 85.2578125,
-                                                                                                "y": 139.5
-                                                                                            },
-                                                                                            "size": {
-                                                                                                "width": 40,
-                                                                                                "height": 40
-                                                                                            },
-                                                                                            "color": "#aa0000",
-                                                                                            "borderColor": "#00000000",
-                                                                                            "id": "214"
-                                                                                        }
-                                                                                    }
-                                                                                ]
-                                                                            }
-                                                                        ]
+                                                                "type": "circle",
+                                                                "attrs": {
+                                                                    "id": "530",
+                                                                    "center": {
+                                                                        "x": 33.5,
+                                                                        "y": 45.5
                                                                     },
-                                                                    {
-                                                                        "type": "tableCell",
-                                                                        "attrs": {
-                                                                            "colspan": 1,
-                                                                            "rowspan": 1,
-                                                                            "colwidth": [
-                                                                                146
-                                                                            ],
-                                                                            "background": null,
-                                                                            "borderColor": "rgb(204, 204, 204)",
-                                                                            "borderLeft": 1,
-                                                                            "borderRight": 1,
-                                                                            "borderBottom": 1,
-                                                                            "borderTop": 1,
-                                                                            "borderColorBottom": "rgb(204, 204, 204)",
-                                                                            "borderColorTop": "rgb(204, 204, 204)",
-                                                                            "borderColorRight": "rgb(204, 204, 204)",
-                                                                            "borderColorLeft": "rgb(204, 204, 204)"
-                                                                        },
-                                                                        "content": [
-                                                                            {
-                                                                                "type": "geometry",
-                                                                                "attrs": {
-                                                                                    "canvas": {
-                                                                                        "width": 153,
-                                                                                        "height": 183
-                                                                                    }
-                                                                                },
-                                                                                "content": [
-                                                                                    {
-                                                                                        "type": "circle",
-                                                                                        "attrs": {
-                                                                                            "center": {
-                                                                                                "x": 52.2578125,
-                                                                                                "y": 39.5
-                                                                                            },
-                                                                                            "size": {
-                                                                                                "width": 40,
-                                                                                                "height": 40
-                                                                                            },
-                                                                                            "color": "#aa0000",
-                                                                                            "borderColor": "#00000000",
-                                                                                            "id": "215"
-                                                                                        }
-                                                                                    },
-                                                                                    {
-                                                                                        "type": "circle",
-                                                                                        "attrs": {
-                                                                                            "center": {
-                                                                                                "x": 111.2578125,
-                                                                                                "y": 38.5
-                                                                                            },
-                                                                                            "size": {
-                                                                                                "width": 40,
-                                                                                                "height": 40
-                                                                                            },
-                                                                                            "color": "#aa0000",
-                                                                                            "borderColor": "#00000000",
-                                                                                            "id": "216"
-                                                                                        }
-                                                                                    },
-                                                                                    {
-                                                                                        "type": "circle",
-                                                                                        "attrs": {
-                                                                                            "center": {
-                                                                                                "x": 51.2578125,
-                                                                                                "y": 88.5
-                                                                                            },
-                                                                                            "size": {
-                                                                                                "width": 40,
-                                                                                                "height": 40
-                                                                                            },
-                                                                                            "color": "#aa0000",
-                                                                                            "borderColor": "#00000000",
-                                                                                            "id": "217"
-                                                                                        }
-                                                                                    },
-                                                                                    {
-                                                                                        "type": "circle",
-                                                                                        "attrs": {
-                                                                                            "center": {
-                                                                                                "x": 110.2578125,
-                                                                                                "y": 94.5
-                                                                                            },
-                                                                                            "size": {
-                                                                                                "width": 40,
-                                                                                                "height": 40
-                                                                                            },
-                                                                                            "color": "#aa0000",
-                                                                                            "borderColor": "#00000000",
-                                                                                            "id": "218"
-                                                                                        }
-                                                                                    },
-                                                                                    {
-                                                                                        "type": "circle",
-                                                                                        "attrs": {
-                                                                                            "center": {
-                                                                                                "x": 82.2578125,
-                                                                                                "y": 140.5
-                                                                                            },
-                                                                                            "size": {
-                                                                                                "width": 40,
-                                                                                                "height": 40
-                                                                                            },
-                                                                                            "color": "#aa0000",
-                                                                                            "borderColor": "#00000000",
-                                                                                            "id": "219"
-                                                                                        }
-                                                                                    }
-                                                                                ]
-                                                                            }
-                                                                        ]
+                                                                    "size": {
+                                                                        "width": 40,
+                                                                        "height": 40
                                                                     },
-                                                                    {
-                                                                        "type": "tableCell",
-                                                                        "attrs": {
-                                                                            "colspan": 1,
-                                                                            "rowspan": 1,
-                                                                            "colwidth": [
-                                                                                125
-                                                                            ],
-                                                                            "background": null,
-                                                                            "borderColor": "rgb(204, 204, 204)",
-                                                                            "borderLeft": 1,
-                                                                            "borderRight": 1,
-                                                                            "borderBottom": 1,
-                                                                            "borderTop": 1,
-                                                                            "borderColorBottom": "rgb(204, 204, 204)",
-                                                                            "borderColorTop": "rgb(204, 204, 204)",
-                                                                            "borderColorRight": "rgb(204, 204, 204)",
-                                                                            "borderColorLeft": "rgb(204, 204, 204)"
-                                                                        },
-                                                                        "content": [
-                                                                            {
-                                                                                "type": "geometry",
-                                                                                "attrs": {
-                                                                                    "canvas": {
-                                                                                        "width": 143,
-                                                                                        "height": 183
-                                                                                    }
-                                                                                },
-                                                                                "content": [
-                                                                                    {
-                                                                                        "type": "circle",
-                                                                                        "attrs": {
-                                                                                            "center": {
-                                                                                                "x": 48.2578125,
-                                                                                                "y": 38.5
-                                                                                            },
-                                                                                            "size": {
-                                                                                                "width": 40,
-                                                                                                "height": 40
-                                                                                            },
-                                                                                            "color": "#aa0000",
-                                                                                            "borderColor": "#00000000",
-                                                                                            "id": "220"
-                                                                                        }
-                                                                                    },
-                                                                                    {
-                                                                                        "type": "circle",
-                                                                                        "attrs": {
-                                                                                            "center": {
-                                                                                                "x": 101.2578125,
-                                                                                                "y": 35.5
-                                                                                            },
-                                                                                            "size": {
-                                                                                                "width": 40,
-                                                                                                "height": 40
-                                                                                            },
-                                                                                            "color": "#aa0000",
-                                                                                            "borderColor": "#00000000",
-                                                                                            "id": "221"
-                                                                                        }
-                                                                                    },
-                                                                                    {
-                                                                                        "type": "circle",
-                                                                                        "attrs": {
-                                                                                            "center": {
-                                                                                                "x": 48.2578125,
-                                                                                                "y": 90.5
-                                                                                            },
-                                                                                            "size": {
-                                                                                                "width": 40,
-                                                                                                "height": 40
-                                                                                            },
-                                                                                            "color": "#aa0000",
-                                                                                            "borderColor": "#00000000",
-                                                                                            "id": "222"
-                                                                                        }
-                                                                                    },
-                                                                                    {
-                                                                                        "type": "circle",
-                                                                                        "attrs": {
-                                                                                            "center": {
-                                                                                                "x": 99.2578125,
-                                                                                                "y": 90.5
-                                                                                            },
-                                                                                            "size": {
-                                                                                                "width": 40,
-                                                                                                "height": 40
-                                                                                            },
-                                                                                            "color": "#aa0000",
-                                                                                            "borderColor": "#00000000",
-                                                                                            "id": "223"
-                                                                                        }
-                                                                                    },
-                                                                                    {
-                                                                                        "type": "circle",
-                                                                                        "attrs": {
-                                                                                            "center": {
-                                                                                                "x": 77.2578125,
-                                                                                                "y": 142.5
-                                                                                            },
-                                                                                            "size": {
-                                                                                                "width": 40,
-                                                                                                "height": 40
-                                                                                            },
-                                                                                            "color": "#aa0000",
-                                                                                            "borderColor": "#00000000",
-                                                                                            "id": "224"
-                                                                                        }
-                                                                                    }
-                                                                                ]
-                                                                            }
-                                                                        ]
+                                                                    "color": "#aa0000",
+                                                                    "borderColor": "#00000000"
+                                                                }
+                                                            },
+                                                            {
+                                                                "type": "circle",
+                                                                "attrs": {
+                                                                    "id": "531",
+                                                                    "center": {
+                                                                        "x": 81.5,
+                                                                        "y": 33.5
                                                                     },
-                                                                    {
-                                                                        "type": "tableCell",
-                                                                        "attrs": {
-                                                                            "colspan": 1,
-                                                                            "rowspan": 1,
-                                                                            "colwidth": [
-                                                                                155
-                                                                            ],
-                                                                            "background": null,
-                                                                            "borderColor": "rgb(204, 204, 204)",
-                                                                            "borderLeft": 1,
-                                                                            "borderRight": 1,
-                                                                            "borderBottom": 1,
-                                                                            "borderTop": 1,
-                                                                            "borderColorBottom": "rgb(204, 204, 204)",
-                                                                            "borderColorTop": "rgb(204, 204, 204)",
-                                                                            "borderColorRight": "rgb(204, 204, 204)",
-                                                                            "borderColorLeft": "rgb(204, 204, 204)"
-                                                                        },
-                                                                        "content": [
-                                                                            {
-                                                                                "type": "geometry",
-                                                                                "attrs": {
-                                                                                    "canvas": {
-                                                                                        "width": 135,
-                                                                                        "height": 181
-                                                                                    }
-                                                                                },
-                                                                                "content": [
-                                                                                    {
-                                                                                        "type": "circle",
-                                                                                        "attrs": {
-                                                                                            "center": {
-                                                                                                "x": 43.2578125,
-                                                                                                "y": 33.5
-                                                                                            },
-                                                                                            "size": {
-                                                                                                "width": 40,
-                                                                                                "height": 40
-                                                                                            },
-                                                                                            "color": "#aa0000",
-                                                                                            "borderColor": "#00000000",
-                                                                                            "id": "225"
-                                                                                        }
-                                                                                    },
-                                                                                    {
-                                                                                        "type": "circle",
-                                                                                        "attrs": {
-                                                                                            "center": {
-                                                                                                "x": 98.2578125,
-                                                                                                "y": 36.5
-                                                                                            },
-                                                                                            "size": {
-                                                                                                "width": 40,
-                                                                                                "height": 40
-                                                                                            },
-                                                                                            "color": "#aa0000",
-                                                                                            "borderColor": "#00000000",
-                                                                                            "id": "226"
-                                                                                        }
-                                                                                    },
-                                                                                    {
-                                                                                        "type": "circle",
-                                                                                        "attrs": {
-                                                                                            "center": {
-                                                                                                "x": 47.2578125,
-                                                                                                "y": 87.5
-                                                                                            },
-                                                                                            "size": {
-                                                                                                "width": 40,
-                                                                                                "height": 40
-                                                                                            },
-                                                                                            "color": "#aa0000",
-                                                                                            "borderColor": "#00000000",
-                                                                                            "id": "227"
-                                                                                        }
-                                                                                    },
-                                                                                    {
-                                                                                        "type": "circle",
-                                                                                        "attrs": {
-                                                                                            "center": {
-                                                                                                "x": 100.2578125,
-                                                                                                "y": 88.5
-                                                                                            },
-                                                                                            "size": {
-                                                                                                "width": 40,
-                                                                                                "height": 40
-                                                                                            },
-                                                                                            "color": "#aa0000",
-                                                                                            "borderColor": "#00000000",
-                                                                                            "id": "228"
-                                                                                        }
-                                                                                    },
-                                                                                    {
-                                                                                        "type": "circle",
-                                                                                        "attrs": {
-                                                                                            "center": {
-                                                                                                "x": 71.2578125,
-                                                                                                "y": 137.5
-                                                                                            },
-                                                                                            "size": {
-                                                                                                "width": 40,
-                                                                                                "height": 40
-                                                                                            },
-                                                                                            "color": "#aa0000",
-                                                                                            "borderColor": "#00000000",
-                                                                                            "id": "229"
-                                                                                        }
-                                                                                    }
-                                                                                ]
-                                                                            }
-                                                                        ]
-                                                                    }
-                                                                ]
+                                                                    "size": {
+                                                                        "width": 40,
+                                                                        "height": 40
+                                                                    },
+                                                                    "color": "#aa0000",
+                                                                    "borderColor": "#00000000"
+                                                                }
+                                                            },
+                                                            {
+                                                                "type": "circle",
+                                                                "attrs": {
+                                                                    "id": "532",
+                                                                    "center": {
+                                                                        "x": 82.5,
+                                                                        "y": 92.5
+                                                                    },
+                                                                    "size": {
+                                                                        "width": 40,
+                                                                        "height": 40
+                                                                    },
+                                                                    "color": "#aa0000",
+                                                                    "borderColor": "#00000000"
+                                                                }
+                                                            },
+                                                            {
+                                                                "type": "circle",
+                                                                "attrs": {
+                                                                    "id": "533",
+                                                                    "center": {
+                                                                        "x": 33.5,
+                                                                        "y": 97.5
+                                                                    },
+                                                                    "size": {
+                                                                        "width": 40,
+                                                                        "height": 40
+                                                                    },
+                                                                    "color": "#aa0000",
+                                                                    "borderColor": "#00000000"
+                                                                }
+                                                            },
+                                                            {
+                                                                "type": "circle",
+                                                                "attrs": {
+                                                                    "id": "534",
+                                                                    "center": {
+                                                                        "x": 469.5,
+                                                                        "y": 96.5
+                                                                    },
+                                                                    "size": {
+                                                                        "width": 40,
+                                                                        "height": 40
+                                                                    },
+                                                                    "color": "#aa0000",
+                                                                    "borderColor": "#00000000"
+                                                                }
+                                                            },
+                                                            {
+                                                                "type": "circle",
+                                                                "attrs": {
+                                                                    "id": "535",
+                                                                    "center": {
+                                                                        "x": 50.5,
+                                                                        "y": 139.5
+                                                                    },
+                                                                    "size": {
+                                                                        "width": 40,
+                                                                        "height": 40
+                                                                    },
+                                                                    "color": "#aa0000",
+                                                                    "borderColor": "#00000000"
+                                                                }
+                                                            },
+                                                            {
+                                                                "type": "circle",
+                                                                "attrs": {
+                                                                    "id": "536",
+                                                                    "center": {
+                                                                        "x": 188.5,
+                                                                        "y": 43.5
+                                                                    },
+                                                                    "size": {
+                                                                        "width": 40,
+                                                                        "height": 40
+                                                                    },
+                                                                    "color": "#aa0000",
+                                                                    "borderColor": "#00000000"
+                                                                }
+                                                            },
+                                                            {
+                                                                "type": "circle",
+                                                                "attrs": {
+                                                                    "id": "537",
+                                                                    "center": {
+                                                                        "x": 243.5,
+                                                                        "y": 40.5
+                                                                    },
+                                                                    "size": {
+                                                                        "width": 40,
+                                                                        "height": 40
+                                                                    },
+                                                                    "color": "#aa0000",
+                                                                    "borderColor": "#00000000"
+                                                                }
+                                                            },
+                                                            {
+                                                                "type": "circle",
+                                                                "attrs": {
+                                                                    "id": "538",
+                                                                    "center": {
+                                                                        "x": 223.5,
+                                                                        "y": 79.5
+                                                                    },
+                                                                    "size": {
+                                                                        "width": 40,
+                                                                        "height": 40
+                                                                    },
+                                                                    "color": "#aa0000",
+                                                                    "borderColor": "#00000000"
+                                                                }
+                                                            },
+                                                            {
+                                                                "type": "circle",
+                                                                "attrs": {
+                                                                    "id": "539",
+                                                                    "center": {
+                                                                        "x": 189.5,
+                                                                        "y": 111.5
+                                                                    },
+                                                                    "size": {
+                                                                        "width": 40,
+                                                                        "height": 40
+                                                                    },
+                                                                    "color": "#aa0000",
+                                                                    "borderColor": "#00000000"
+                                                                }
+                                                            },
+                                                            {
+                                                                "type": "circle",
+                                                                "attrs": {
+                                                                    "id": "540",
+                                                                    "center": {
+                                                                        "x": 521.5,
+                                                                        "y": 91.5
+                                                                    },
+                                                                    "size": {
+                                                                        "width": 40,
+                                                                        "height": 40
+                                                                    },
+                                                                    "color": "#aa0000",
+                                                                    "borderColor": "#00000000"
+                                                                }
+                                                            },
+                                                            {
+                                                                "type": "circle",
+                                                                "attrs": {
+                                                                    "id": "541",
+                                                                    "center": {
+                                                                        "x": 232.5,
+                                                                        "y": 130.5
+                                                                    },
+                                                                    "size": {
+                                                                        "width": 40,
+                                                                        "height": 40
+                                                                    },
+                                                                    "color": "#aa0000",
+                                                                    "borderColor": "#00000000"
+                                                                }
+                                                            },
+                                                            {
+                                                                "type": "circle",
+                                                                "attrs": {
+                                                                    "id": "542",
+                                                                    "center": {
+                                                                        "x": 348.5,
+                                                                        "y": 50.5
+                                                                    },
+                                                                    "size": {
+                                                                        "width": 40,
+                                                                        "height": 40
+                                                                    },
+                                                                    "color": "#aa0000",
+                                                                    "borderColor": "#00000000"
+                                                                }
+                                                            },
+                                                            {
+                                                                "type": "circle",
+                                                                "attrs": {
+                                                                    "id": "543",
+                                                                    "center": {
+                                                                        "x": 379.5,
+                                                                        "y": 122.5
+                                                                    },
+                                                                    "size": {
+                                                                        "width": 40,
+                                                                        "height": 40
+                                                                    },
+                                                                    "color": "#aa0000",
+                                                                    "borderColor": "#00000000"
+                                                                }
+                                                            },
+                                                            {
+                                                                "type": "circle",
+                                                                "attrs": {
+                                                                    "id": "544",
+                                                                    "center": {
+                                                                        "x": 384.5,
+                                                                        "y": 78.5
+                                                                    },
+                                                                    "size": {
+                                                                        "width": 40,
+                                                                        "height": 40
+                                                                    },
+                                                                    "color": "#aa0000",
+                                                                    "borderColor": "#00000000"
+                                                                }
+                                                            },
+                                                            {
+                                                                "type": "circle",
+                                                                "attrs": {
+                                                                    "id": "545",
+                                                                    "center": {
+                                                                        "x": 329.5,
+                                                                        "y": 95.5
+                                                                    },
+                                                                    "size": {
+                                                                        "width": 40,
+                                                                        "height": 40
+                                                                    },
+                                                                    "color": "#aa0000",
+                                                                    "borderColor": "#00000000"
+                                                                }
+                                                            },
+                                                            {
+                                                                "type": "circle",
+                                                                "attrs": {
+                                                                    "id": "546",
+                                                                    "center": {
+                                                                        "x": 496.5,
+                                                                        "y": 133.5
+                                                                    },
+                                                                    "size": {
+                                                                        "width": 40,
+                                                                        "height": 40
+                                                                    },
+                                                                    "color": "#aa0000",
+                                                                    "borderColor": "#00000000"
+                                                                }
+                                                            },
+                                                            {
+                                                                "type": "circle",
+                                                                "attrs": {
+                                                                    "id": "547",
+                                                                    "center": {
+                                                                        "x": 333.5,
+                                                                        "y": 140.5
+                                                                    },
+                                                                    "size": {
+                                                                        "width": 40,
+                                                                        "height": 40
+                                                                    },
+                                                                    "color": "#aa0000",
+                                                                    "borderColor": "#00000000"
+                                                                }
+                                                            },
+                                                            {
+                                                                "type": "circle",
+                                                                "attrs": {
+                                                                    "id": "548",
+                                                                    "center": {
+                                                                        "x": 474.5,
+                                                                        "y": 48.5
+                                                                    },
+                                                                    "size": {
+                                                                        "width": 40,
+                                                                        "height": 40
+                                                                    },
+                                                                    "color": "#aa0000",
+                                                                    "borderColor": "#00000000"
+                                                                }
+                                                            },
+                                                            {
+                                                                "type": "circle",
+                                                                "attrs": {
+                                                                    "id": "549",
+                                                                    "center": {
+                                                                        "x": 516.5,
+                                                                        "y": 41.5
+                                                                    },
+                                                                    "size": {
+                                                                        "width": 40,
+                                                                        "height": 40
+                                                                    },
+                                                                    "color": "#aa0000",
+                                                                    "borderColor": "#00000000"
+                                                                }
                                                             }
                                                         ]
                                                     }
                                                 ]
                                             }
                                         ]
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "paragraph",
+                                "attrs": {
+                                    "textAlign": ""
+                                },
+                                "content": [
+                                    {
+                                        "type": "text",
+                                        "marks": [
+                                            {
+                                                "type": "textColor",
+                                                "attrs": {
+                                                    "color": "#000000"
+                                                }
+                                            }
+                                        ],
+                                        "text": "Dzielenie polega na rozkładaniu jednej liczby na kilka równych liczb. Gdyby rozłożyć "
+                                    },
+                                    {
+                                        "type": "expressionInline",
+                                        "attrs": {
+                                            "mathJax": "20"
+                                        }
+                                    },
+                                    {
+                                        "type": "text",
+                                        "marks": [
+                                            {
+                                                "type": "textColor",
+                                                "attrs": {
+                                                    "color": "#000000"
+                                                }
+                                            }
+                                        ],
+                                        "text": " kulek na "
+                                    },
+                                    {
+                                        "type": "expressionInline",
+                                        "attrs": {
+                                            "mathJax": "4"
+                                        }
+                                    },
+                                    {
+                                        "type": "text",
+                                        "marks": [
+                                            {
+                                                "type": "textColor",
+                                                "attrs": {
+                                                    "color": "#000000"
+                                                }
+                                            }
+                                        ],
+                                        "text": " równe grupki, otrzymalibyśmy po "
+                                    },
+                                    {
+                                        "type": "expressionInline",
+                                        "attrs": {
+                                            "mathJax": "5"
+                                        }
+                                    },
+                                    {
+                                        "type": "text",
+                                        "marks": [
+                                            {
+                                                "type": "textColor",
+                                                "attrs": {
+                                                    "color": "#000000"
+                                                }
+                                            }
+                                        ],
+                                        "text": " kulek na grupę. Symbolicznie:"
                                     }
                                 ]
                             },
@@ -11564,61 +11443,7 @@
                                                 }
                                             }
                                         ],
-                                        "text": "Powyższy zapis oznacza, że gdy liczbę "
-                                    },
-                                    {
-                                        "type": "expressionInline",
-                                        "attrs": {
-                                            "mathJax": "20"
-                                        }
-                                    },
-                                    {
-                                        "type": "text",
-                                        "marks": [
-                                            {
-                                                "type": "textColor",
-                                                "attrs": {
-                                                    "color": "rgb(0, 0, 0)"
-                                                }
-                                            }
-                                        ],
-                                        "text": " rozłożymy na "
-                                    },
-                                    {
-                                        "type": "expressionInline",
-                                        "attrs": {
-                                            "mathJax": "4"
-                                        }
-                                    },
-                                    {
-                                        "type": "text",
-                                        "marks": [
-                                            {
-                                                "type": "textColor",
-                                                "attrs": {
-                                                    "color": "rgb(0, 0, 0)"
-                                                }
-                                            }
-                                        ],
-                                        "text": " równe części, każda z nich będzie miała wartość "
-                                    },
-                                    {
-                                        "type": "expressionInline",
-                                        "attrs": {
-                                            "mathJax": "5"
-                                        }
-                                    },
-                                    {
-                                        "type": "text",
-                                        "marks": [
-                                            {
-                                                "type": "textColor",
-                                                "attrs": {
-                                                    "color": "rgb(0, 0, 0)"
-                                                }
-                                            }
-                                        ],
-                                        "text": ". Symbol "
+                                        "text": "Symbol "
                                     },
                                     {
                                         "type": "expressionInline",
@@ -11791,10 +11616,585 @@
                                 ]
                             },
                             {
-                                "type": "expression",
+                                "type": "geometry",
                                 "attrs": {
-                                    "mathJax": " 28 : 7 = 4 \\ \\ \\text{ bo }\\ \\ 4 \\cdot 7 = 28 "
-                                }
+                                    "canvas": {
+                                        "width": 635,
+                                        "height": 221
+                                    }
+                                },
+                                "content": [
+                                    {
+                                        "type": "rectangle",
+                                        "attrs": {
+                                            "id": "554",
+                                            "center": {
+                                                "x": 85,
+                                                "y": 72.70000000000002
+                                            },
+                                            "size": {
+                                                "width": 30,
+                                                "height": 30
+                                            },
+                                            "color": "#cc4444",
+                                            "borderColor": "#990000"
+                                        }
+                                    },
+                                    {
+                                        "type": "rectangle",
+                                        "attrs": {
+                                            "id": "555",
+                                            "center": {
+                                                "x": 115,
+                                                "y": 72.70000000000002
+                                            },
+                                            "size": {
+                                                "width": 30,
+                                                "height": 30
+                                            },
+                                            "color": "#cc4444",
+                                            "borderColor": "#990000"
+                                        }
+                                    },
+                                    {
+                                        "type": "rectangle",
+                                        "attrs": {
+                                            "id": "556",
+                                            "center": {
+                                                "x": 145,
+                                                "y": 72.70000000000002
+                                            },
+                                            "size": {
+                                                "width": 30,
+                                                "height": 30
+                                            },
+                                            "color": "#cc4444",
+                                            "borderColor": "#990000"
+                                        }
+                                    },
+                                    {
+                                        "type": "rectangle",
+                                        "attrs": {
+                                            "id": "557",
+                                            "center": {
+                                                "x": 175,
+                                                "y": 72.70000000000002
+                                            },
+                                            "size": {
+                                                "width": 30,
+                                                "height": 30
+                                            },
+                                            "color": "#cc4444",
+                                            "borderColor": "#990000"
+                                        }
+                                    },
+                                    {
+                                        "type": "rectangle",
+                                        "attrs": {
+                                            "id": "558",
+                                            "center": {
+                                                "x": 205,
+                                                "y": 72.70000000000002
+                                            },
+                                            "size": {
+                                                "width": 30,
+                                                "height": 30
+                                            },
+                                            "color": "#cc4444",
+                                            "borderColor": "#990000"
+                                        }
+                                    },
+                                    {
+                                        "type": "rectangle",
+                                        "attrs": {
+                                            "id": "559",
+                                            "center": {
+                                                "x": 235,
+                                                "y": 72.70000000000002
+                                            },
+                                            "size": {
+                                                "width": 30,
+                                                "height": 30
+                                            },
+                                            "color": "#cc4444",
+                                            "borderColor": "#990000"
+                                        }
+                                    },
+                                    {
+                                        "type": "rectangle",
+                                        "attrs": {
+                                            "id": "560",
+                                            "center": {
+                                                "x": 265,
+                                                "y": 72.70000000000002
+                                            },
+                                            "size": {
+                                                "width": 30,
+                                                "height": 30
+                                            },
+                                            "color": "#cc4444",
+                                            "borderColor": "#990000"
+                                        }
+                                    },
+                                    {
+                                        "type": "rectangle",
+                                        "attrs": {
+                                            "id": "561",
+                                            "center": {
+                                                "x": 85,
+                                                "y": 102.69999999999999
+                                            },
+                                            "size": {
+                                                "width": 30,
+                                                "height": 30
+                                            },
+                                            "color": "#cc4444",
+                                            "borderColor": "#990000"
+                                        }
+                                    },
+                                    {
+                                        "type": "rectangle",
+                                        "attrs": {
+                                            "id": "562",
+                                            "center": {
+                                                "x": 115,
+                                                "y": 102.69999999999999
+                                            },
+                                            "size": {
+                                                "width": 30,
+                                                "height": 30
+                                            },
+                                            "color": "#cc4444",
+                                            "borderColor": "#990000"
+                                        }
+                                    },
+                                    {
+                                        "type": "rectangle",
+                                        "attrs": {
+                                            "id": "563",
+                                            "center": {
+                                                "x": 145,
+                                                "y": 102.69999999999999
+                                            },
+                                            "size": {
+                                                "width": 30,
+                                                "height": 30
+                                            },
+                                            "color": "#cc4444",
+                                            "borderColor": "#990000"
+                                        }
+                                    },
+                                    {
+                                        "type": "rectangle",
+                                        "attrs": {
+                                            "id": "564",
+                                            "center": {
+                                                "x": 175,
+                                                "y": 102.69999999999999
+                                            },
+                                            "size": {
+                                                "width": 30,
+                                                "height": 30
+                                            },
+                                            "color": "#cc4444",
+                                            "borderColor": "#990000"
+                                        }
+                                    },
+                                    {
+                                        "type": "rectangle",
+                                        "attrs": {
+                                            "id": "565",
+                                            "center": {
+                                                "x": 205,
+                                                "y": 102.69999999999999
+                                            },
+                                            "size": {
+                                                "width": 30,
+                                                "height": 30
+                                            },
+                                            "color": "#cc4444",
+                                            "borderColor": "#990000"
+                                        }
+                                    },
+                                    {
+                                        "type": "rectangle",
+                                        "attrs": {
+                                            "id": "566",
+                                            "center": {
+                                                "x": 235,
+                                                "y": 102.69999999999999
+                                            },
+                                            "size": {
+                                                "width": 30,
+                                                "height": 30
+                                            },
+                                            "color": "#cc4444",
+                                            "borderColor": "#990000"
+                                        }
+                                    },
+                                    {
+                                        "type": "rectangle",
+                                        "attrs": {
+                                            "id": "567",
+                                            "center": {
+                                                "x": 265,
+                                                "y": 102.69999999999999
+                                            },
+                                            "size": {
+                                                "width": 30,
+                                                "height": 30
+                                            },
+                                            "color": "#cc4444",
+                                            "borderColor": "#990000"
+                                        }
+                                    },
+                                    {
+                                        "type": "rectangle",
+                                        "attrs": {
+                                            "id": "568",
+                                            "center": {
+                                                "x": 85,
+                                                "y": 132.7
+                                            },
+                                            "size": {
+                                                "width": 30,
+                                                "height": 30
+                                            },
+                                            "color": "#cc4444",
+                                            "borderColor": "#990000"
+                                        }
+                                    },
+                                    {
+                                        "type": "rectangle",
+                                        "attrs": {
+                                            "id": "569",
+                                            "center": {
+                                                "x": 115,
+                                                "y": 132.7
+                                            },
+                                            "size": {
+                                                "width": 30,
+                                                "height": 30
+                                            },
+                                            "color": "#cc4444",
+                                            "borderColor": "#990000"
+                                        }
+                                    },
+                                    {
+                                        "type": "rectangle",
+                                        "attrs": {
+                                            "id": "570",
+                                            "center": {
+                                                "x": 145,
+                                                "y": 132.7
+                                            },
+                                            "size": {
+                                                "width": 30,
+                                                "height": 30
+                                            },
+                                            "color": "#cc4444",
+                                            "borderColor": "#990000"
+                                        }
+                                    },
+                                    {
+                                        "type": "rectangle",
+                                        "attrs": {
+                                            "id": "571",
+                                            "center": {
+                                                "x": 175,
+                                                "y": 132.7
+                                            },
+                                            "size": {
+                                                "width": 30,
+                                                "height": 30
+                                            },
+                                            "color": "#cc4444",
+                                            "borderColor": "#990000"
+                                        }
+                                    },
+                                    {
+                                        "type": "rectangle",
+                                        "attrs": {
+                                            "id": "572",
+                                            "center": {
+                                                "x": 205,
+                                                "y": 132.7
+                                            },
+                                            "size": {
+                                                "width": 30,
+                                                "height": 30
+                                            },
+                                            "color": "#cc4444",
+                                            "borderColor": "#990000"
+                                        }
+                                    },
+                                    {
+                                        "type": "rectangle",
+                                        "attrs": {
+                                            "id": "573",
+                                            "center": {
+                                                "x": 235,
+                                                "y": 132.7
+                                            },
+                                            "size": {
+                                                "width": 30,
+                                                "height": 30
+                                            },
+                                            "color": "#cc4444",
+                                            "borderColor": "#990000"
+                                        }
+                                    },
+                                    {
+                                        "type": "rectangle",
+                                        "attrs": {
+                                            "id": "574",
+                                            "center": {
+                                                "x": 265,
+                                                "y": 132.7
+                                            },
+                                            "size": {
+                                                "width": 30,
+                                                "height": 30
+                                            },
+                                            "color": "#cc4444",
+                                            "borderColor": "#990000"
+                                        }
+                                    },
+                                    {
+                                        "type": "rectangle",
+                                        "attrs": {
+                                            "id": "575",
+                                            "center": {
+                                                "x": 85,
+                                                "y": 162.7
+                                            },
+                                            "size": {
+                                                "width": 30,
+                                                "height": 30
+                                            },
+                                            "color": "#cc4444",
+                                            "borderColor": "#990000"
+                                        }
+                                    },
+                                    {
+                                        "type": "rectangle",
+                                        "attrs": {
+                                            "id": "576",
+                                            "center": {
+                                                "x": 115,
+                                                "y": 162.7
+                                            },
+                                            "size": {
+                                                "width": 30,
+                                                "height": 30
+                                            },
+                                            "color": "#cc4444",
+                                            "borderColor": "#990000"
+                                        }
+                                    },
+                                    {
+                                        "type": "rectangle",
+                                        "attrs": {
+                                            "id": "577",
+                                            "center": {
+                                                "x": 145,
+                                                "y": 162.7
+                                            },
+                                            "size": {
+                                                "width": 30,
+                                                "height": 30
+                                            },
+                                            "color": "#cc4444",
+                                            "borderColor": "#990000"
+                                        }
+                                    },
+                                    {
+                                        "type": "rectangle",
+                                        "attrs": {
+                                            "id": "578",
+                                            "center": {
+                                                "x": 175,
+                                                "y": 162.7
+                                            },
+                                            "size": {
+                                                "width": 30,
+                                                "height": 30
+                                            },
+                                            "color": "#cc4444",
+                                            "borderColor": "#990000"
+                                        }
+                                    },
+                                    {
+                                        "type": "rectangle",
+                                        "attrs": {
+                                            "id": "579",
+                                            "center": {
+                                                "x": 205,
+                                                "y": 162.7
+                                            },
+                                            "size": {
+                                                "width": 30,
+                                                "height": 30
+                                            },
+                                            "color": "#cc4444",
+                                            "borderColor": "#990000"
+                                        }
+                                    },
+                                    {
+                                        "type": "rectangle",
+                                        "attrs": {
+                                            "id": "580",
+                                            "center": {
+                                                "x": 235,
+                                                "y": 162.7
+                                            },
+                                            "size": {
+                                                "width": 30,
+                                                "height": 30
+                                            },
+                                            "color": "#cc4444",
+                                            "borderColor": "#990000"
+                                        }
+                                    },
+                                    {
+                                        "type": "rectangle",
+                                        "attrs": {
+                                            "id": "581",
+                                            "center": {
+                                                "x": 265,
+                                                "y": 162.7
+                                            },
+                                            "size": {
+                                                "width": 30,
+                                                "height": 30
+                                            },
+                                            "color": "#cc4444",
+                                            "borderColor": "#990000"
+                                        }
+                                    },
+                                    {
+                                        "type": "textArea",
+                                        "attrs": {
+                                            "id": "582",
+                                            "width": 60.42498779296875,
+                                            "height": 51.284375,
+                                            "x": 144.78750610351562,
+                                            "y": 92.05781250000001,
+                                            "fillColor": "none",
+                                            "borderColor": "#00000000",
+                                            "align": "top"
+                                        },
+                                        "content": [
+                                            {
+                                                "type": "paragraph",
+                                                "attrs": {
+                                                    "textAlign": "center"
+                                                },
+                                                "content": [
+                                                    {
+                                                        "type": "expressionInline",
+                                                        "attrs": {
+                                                            "mathJax": "\\color{#ffffff}{\\huge{28}}"
+                                                        }
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "textArea",
+                                        "attrs": {
+                                            "id": "583",
+                                            "width": 210,
+                                            "height": 42.8,
+                                            "x": 70,
+                                            "y": 12.300000000000011,
+                                            "fillColor": "none",
+                                            "borderColor": "#00000000",
+                                            "align": "top"
+                                        },
+                                        "content": [
+                                            {
+                                                "type": "paragraph",
+                                                "attrs": {
+                                                    "textAlign": "center"
+                                                },
+                                                "content": [
+                                                    {
+                                                        "type": "text",
+                                                        "marks": [
+                                                            {
+                                                                "type": "number"
+                                                            }
+                                                        ],
+                                                        "text": "7"
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "textArea",
+                                        "attrs": {
+                                            "id": "584",
+                                            "width": 44,
+                                            "height": 122.59999999999998,
+                                            "x": 26,
+                                            "y": 55.10000000000001,
+                                            "fillColor": "none",
+                                            "borderColor": "#00000000",
+                                            "align": "middle"
+                                        },
+                                        "content": [
+                                            {
+                                                "type": "paragraph",
+                                                "attrs": {
+                                                    "textAlign": "center"
+                                                },
+                                                "content": [
+                                                    {
+                                                        "type": "text",
+                                                        "marks": [
+                                                            {
+                                                                "type": "number"
+                                                            }
+                                                        ],
+                                                        "text": "4"
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "textArea",
+                                        "attrs": {
+                                            "id": "585",
+                                            "width": 235,
+                                            "height": 41.190625,
+                                            "x": 383.42498779296875,
+                                            "y": 90,
+                                            "fillColor": "none",
+                                            "borderColor": "#00000000",
+                                            "align": "top"
+                                        },
+                                        "content": [
+                                            {
+                                                "type": "paragraph",
+                                                "attrs": {
+                                                    "textAlign": "center"
+                                                },
+                                                "content": [
+                                                    {
+                                                        "type": "expressionInline",
+                                                        "attrs": {
+                                                            "mathJax": " 28 : 7 = 4 \\ \\ \\text{ bo }\\ \\ 4 \\cdot 7 = 28 "
+                                                        }
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    }
+                                ]
                             }
                         ]
                     }
@@ -11811,7 +12211,7 @@
                         "content": [
                             {
                                 "type": "text",
-                                "text": "Dzielenie przez zero"
+                                "text": "Nie wolno dzielić przez zero"
                             }
                         ]
                     },
@@ -11979,27 +12379,7 @@
                                 "content": [
                                     {
                                         "type": "text",
-                                        "text": "Wynik dzielenia nie zawsze jest liczbą naturalną. O ile przykłady "
-                                    },
-                                    {
-                                        "type": "expressionInline",
-                                        "attrs": {
-                                            "mathJax": "12 : 3 = 4"
-                                        }
-                                    },
-                                    {
-                                        "type": "text",
-                                        "text": " albo "
-                                    },
-                                    {
-                                        "type": "expressionInline",
-                                        "attrs": {
-                                            "mathJax": "28 : 4 = 7"
-                                        }
-                                    },
-                                    {
-                                        "type": "text",
-                                        "text": " dają się wykonać dość łatwo, tak dzielenie "
+                                        "text": "Wynik dzielenia nie zawsze jest liczbą naturalną. Przykładowo "
                                     },
                                     {
                                         "type": "expressionInline",
@@ -12009,27 +12389,20 @@
                                     },
                                     {
                                         "type": "text",
-                                        "text": " nie daje oczywistego wyniku - nie da się rozłożyć liczby "
-                                    },
-                                    {
-                                        "type": "expressionInline",
-                                        "attrs": {
-                                            "mathJax": "7"
-                                        }
+                                        "text": " - w siódemce mieszczą się trzy dwójki, a poza tym zostaje samotna jedynka, która nie daje się już podzielić na trzy części - stanowi ona "
                                     },
                                     {
                                         "type": "text",
-                                        "text": " na "
-                                    },
-                                    {
-                                        "type": "expressionInline",
-                                        "attrs": {
-                                            "mathJax": "3"
-                                        }
+                                        "marks": [
+                                            {
+                                                "type": "italic"
+                                            }
+                                        ],
+                                        "text": "resztę"
                                     },
                                     {
                                         "type": "text",
-                                        "text": " równe liczby naturalne."
+                                        "text": "."
                                     }
                                 ]
                             },
@@ -12045,6 +12418,7 @@
                                     {
                                         "type": "circle",
                                         "attrs": {
+                                            "id": "230",
                                             "center": {
                                                 "x": 67.2578125,
                                                 "y": 45.5
@@ -12054,13 +12428,13 @@
                                                 "height": 40
                                             },
                                             "color": "#aa0000",
-                                            "borderColor": "#00000000",
-                                            "id": "230"
+                                            "borderColor": "#00000000"
                                         }
                                     },
                                     {
                                         "type": "circle",
                                         "attrs": {
+                                            "id": "231",
                                             "center": {
                                                 "x": 67.2578125,
                                                 "y": 100.5
@@ -12070,13 +12444,13 @@
                                                 "height": 40
                                             },
                                             "color": "#aa0000",
-                                            "borderColor": "#00000000",
-                                            "id": "231"
+                                            "borderColor": "#00000000"
                                         }
                                     },
                                     {
                                         "type": "circle",
                                         "attrs": {
+                                            "id": "232",
                                             "center": {
                                                 "x": 193.2578125,
                                                 "y": 45.5
@@ -12086,13 +12460,13 @@
                                                 "height": 40
                                             },
                                             "color": "#aa0000",
-                                            "borderColor": "#00000000",
-                                            "id": "232"
+                                            "borderColor": "#00000000"
                                         }
                                     },
                                     {
                                         "type": "circle",
                                         "attrs": {
+                                            "id": "233",
                                             "center": {
                                                 "x": 193.2578125,
                                                 "y": 100.5
@@ -12102,13 +12476,13 @@
                                                 "height": 40
                                             },
                                             "color": "#aa0000",
-                                            "borderColor": "#00000000",
-                                            "id": "233"
+                                            "borderColor": "#00000000"
                                         }
                                     },
                                     {
                                         "type": "circle",
                                         "attrs": {
+                                            "id": "234",
                                             "center": {
                                                 "x": 319.2578125,
                                                 "y": 45.5
@@ -12118,13 +12492,13 @@
                                                 "height": 40
                                             },
                                             "color": "#aa0000",
-                                            "borderColor": "#00000000",
-                                            "id": "234"
+                                            "borderColor": "#00000000"
                                         }
                                     },
                                     {
                                         "type": "circle",
                                         "attrs": {
+                                            "id": "235",
                                             "center": {
                                                 "x": 319.2578125,
                                                 "y": 100.5
@@ -12134,13 +12508,13 @@
                                                 "height": 40
                                             },
                                             "color": "#aa0000",
-                                            "borderColor": "#00000000",
-                                            "id": "235"
+                                            "borderColor": "#00000000"
                                         }
                                     },
                                     {
                                         "type": "circle",
                                         "attrs": {
+                                            "id": "236",
                                             "center": {
                                                 "x": 193.2578125,
                                                 "y": 193.5
@@ -12150,29 +12524,28 @@
                                                 "height": 40
                                             },
                                             "color": "#aa0000",
-                                            "borderColor": "#00000000",
-                                            "id": "236"
+                                            "borderColor": "#00000000"
                                         }
-                                    }
-                                ]
-                            },
-                            {
-                                "type": "paragraph",
-                                "attrs": {
-                                    "textAlign": "justify"
-                                },
-                                "content": [
-                                    {
-                                        "type": "text",
-                                        "text": "W takiej sytuacji mówimy, że została nam reszta. W siódemce mieszczą się trzy dwójki, a poza tym zostaje samotna jedynka, która nie daje się już podzielić na trzy części. Zapiszemy to w taki sposób:"
                                     }
                                 ]
                             },
                             {
                                 "type": "expression",
                                 "attrs": {
-                                    "mathJax": " 7 : 3 = 2\\ r. 1 "
+                                    "mathJax": " 7 : 3 = 2\\,\\text{r.}\\,1 "
                                 }
+                            },
+                            {
+                                "type": "paragraph",
+                                "attrs": {
+                                    "textAlign": "center"
+                                },
+                                "content": [
+                                    {
+                                        "type": "text",
+                                        "text": "czyt. \"siedem dzielone na trzy to dwa, reszty jeden\""
+                                    }
+                                ]
                             }
                         ]
                     }
@@ -12212,7 +12585,7 @@
                                                 }
                                             }
                                         ],
-                                        "text": "Aby obliczyć wynik dzielenia małych liczb warto mieć na uwadze, że dzielenie jest odwrotnością mnożenia - można wtedy korzystać z tabliczki mnożenia. Aby obliczyć "
+                                        "text": "Dla małych liczb skorzystaj z tabliczki mnożenia: aby obliczyć "
                                     },
                                     {
                                         "type": "expressionInline",
@@ -12230,7 +12603,7 @@
                                                 }
                                             }
                                         ],
-                                        "text": ", zlokalizuj kolumnę o nazwie \""
+                                        "text": ", znajdź kolumnę \""
                                     },
                                     {
                                         "type": "expressionInline",
@@ -12248,13 +12621,17 @@
                                                 }
                                             }
                                         ],
-                                        "text": "\" i znajdź w niej pole z wartością "
+                                        "text": "\" i w niej pole \""
                                     },
                                     {
                                         "type": "expressionInline",
                                         "attrs": {
                                             "mathJax": "72"
                                         }
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "\""
                                     },
                                     {
                                         "type": "text",
@@ -12266,7 +12643,7 @@
                                                 }
                                             }
                                         ],
-                                        "text": ". Wiersz, w którym znajduje się ta liczba: "
+                                        "text": ". Wynikiem jest numer wiersza: "
                                     },
                                     {
                                         "type": "expressionInline",
@@ -12284,7 +12661,7 @@
                                                 }
                                             }
                                         ],
-                                        "text": " stanowi wynik dzielenia."
+                                        "text": "."
                                     }
                                 ]
                             },
@@ -12298,6 +12675,109 @@
                                         "8",
                                         "9"
                                     ]
+                                }
+                            },
+                            {
+                                "type": "paragraph",
+                                "attrs": {
+                                    "textAlign": ""
+                                },
+                                "content": [
+                                    {
+                                        "type": "text",
+                                        "text": "Dla średnio-dużych liczb wykonaj wielokrotne dodawanie. By znaleźć wynik "
+                                    },
+                                    {
+                                        "type": "expressionInline",
+                                        "attrs": {
+                                            "mathJax": "63 : 13"
+                                        }
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": ", sprawdź, ile razy możesz dodać do siebie "
+                                    },
+                                    {
+                                        "type": "text",
+                                        "marks": [
+                                            {
+                                                "type": "number"
+                                            }
+                                        ],
+                                        "text": "13"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": ", zanim przekroczysz "
+                                    },
+                                    {
+                                        "type": "text",
+                                        "marks": [
+                                            {
+                                                "type": "number"
+                                            }
+                                        ],
+                                        "text": "63"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": " - okazuje się że maksymalnie "
+                                    },
+                                    {
+                                        "type": "text",
+                                        "marks": [
+                                            {
+                                                "type": "number"
+                                            }
+                                        ],
+                                        "text": "4"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": " razy. Różnica między "
+                                    },
+                                    {
+                                        "type": "text",
+                                        "marks": [
+                                            {
+                                                "type": "number"
+                                            }
+                                        ],
+                                        "text": "63"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": " a "
+                                    },
+                                    {
+                                        "type": "text",
+                                        "marks": [
+                                            {
+                                                "type": "number"
+                                            }
+                                        ],
+                                        "text": "52"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": " stanowi resztę z dzielenia: "
+                                    },
+                                    {
+                                        "type": "expressionInline",
+                                        "attrs": {
+                                            "mathJax": "63 : 13 = 4\\,\\text{r.}\\,11"
+                                        }
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "."
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "expression",
+                                "attrs": {
+                                    "mathJax": "0 \n\\xrightarrow{\\ \\ +13\\ \\ } 13\n\\xrightarrow{\\ \\ +13\\ \\ } 26\n\\xrightarrow{\\ \\ +13\\ \\ } 39\n\\xrightarrow{\\ \\ +13\\ \\ } \\color{#dd3333}{52}\n\\xrightarrow{\\ \\ +13\\ \\ } 65\n\\xrightarrow{\\ \\ +13\\ \\ } 78"
                                 }
                             },
                             {
@@ -12523,7 +13003,7 @@
                                     {
                                         "type": "expressionInline",
                                         "attrs": {
-                                            "mathJax": "14 : 4 = 3 r. 2"
+                                            "mathJax": "14 : 4 = 3\\,\\text{r.}\\,2"
                                         }
                                     },
                                     {
@@ -12597,6 +13077,10 @@
         },
         "10": {
             "text": "Musisz być dzielna, żeby dać się rozłożyć na części.",
+            "hidden": true
+        },
+        "11": {
+            "text": ": )",
             "hidden": true
         }
     },

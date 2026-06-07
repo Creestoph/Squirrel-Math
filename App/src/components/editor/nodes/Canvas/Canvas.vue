@@ -486,7 +486,7 @@ function focusCanvas() {
 }
 
 function shouldIgnoreKeyboardEvent(event: KeyboardEvent) {
-    return (event.target as HTMLElement | null)?.nodeName.toLowerCase() === 'input';
+    return ['input', 'textarea'].includes((event.target as HTMLElement | null)?.nodeName.toLowerCase()!);
 }
 
 function handleKeyDown(event: KeyboardEvent) {

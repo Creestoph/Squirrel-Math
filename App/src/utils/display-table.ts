@@ -33,7 +33,7 @@ export class DisplayTable {
     constructor(private nodes: DisplayTableCell[][]) {}
 
     static parse(strs: string[][]) {
-        return new DisplayTable(strs.map((s) => s.map((t) => new DisplayTableCell(t))));
+        return new DisplayTable(strs.map((s) => s.map((t) => DisplayTableCell.parse(t))));
     }
 
     print(target: HTMLElement) {
