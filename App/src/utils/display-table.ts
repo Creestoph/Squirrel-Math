@@ -1,7 +1,7 @@
-type StyleCode = 'c' | 'u' | 'h' | 's' | 'r';
+export type DisplayTableCellStyle = 'c' | 'u' | 'h' | 's' | 'r';
 
-class ColumnarOperationNode {
-    private styleDictionary: Record<StyleCode, string> = {
+export class DisplayTableCell {
+    private styleDictionary: Record<DisplayTableCellStyle, string> = {
         c: 'carry',
         u: 'underlined',
         h: 'highlight',
@@ -9,32 +9,31 @@ class ColumnarOperationNode {
         r: 'border-right',
     };
 
-    private value: string;
-    private styleIds: StyleCode[] = [];
-
-    constructor(str: string) {
+    static parse(str: string) {
         if (str.includes('/')) {
             const [styles, value] = str.split('/');
-            this.value = value;
-            this.styleIds = styles.split('') as StyleCode[];
-        } else {
-            this.value = str;
+            return new DisplayTableCell(value, styles.split('') as DisplayTableCellStyle[]);
         }
-
-        this.value = this.value === 'r.' ? this.value : this.value.replace('.', ',');
+        return new DisplayTableCell(str);
     }
+
+    constructor(
+        public value: string | number | null = null,
+        readonly styleIds: DisplayTableCellStyle[] = [],
+    ) {}
 
     print() {
         const classStr = `class = "${this.styleIds.map((id) => this.styleDictionary[id]).join(' ')}"`;
-        return this.value ? `<td ${classStr}>$${this.value}$</td>` : `<td ${classStr}></td>`;
+        const isEmpty = this.value === '' || this.value === null;
+        return `<td ${classStr}>${isEmpty ? '' : '$' + this.value + '$'}</td>`;
     }
 }
 
 export class DisplayTable {
-    private nodes: ColumnarOperationNode[][];
+    constructor(private nodes: DisplayTableCell[][]) {}
 
-    constructor(strs: string[][]) {
-        this.nodes = strs.map((s) => s.map((t) => new ColumnarOperationNode(t)));
+    static parse(strs: string[][]) {
+        return new DisplayTable(strs.map((s) => s.map((t) => new DisplayTableCell(t))));
     }
 
     print(target: HTMLElement) {

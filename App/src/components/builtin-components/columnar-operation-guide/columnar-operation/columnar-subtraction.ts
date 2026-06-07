@@ -1,242 +1,137 @@
 import { ColumnarOperation, ColumnarOperationStep } from './columnar-operation';
-import { DisplayTable } from './display-table';
-
-class ColumnarSubtractionStep implements ColumnarOperationStep {
-    readonly table: DisplayTable;
-
-    constructor(
-        table: string[][],
-        comma: number,
-        highlightColumn: number,
-        crossedFields: boolean[][],
-        readonly comment: string,
-    ) {
-        const tab: string[][] = [];
-        for (let i = 0; i < table.length; i++) {
-            tab[i] = [];
-            for (let j = 0; j < table[i].length; j++) {
-                let t = '/' + table[i][j];
-                if (j == highlightColumn) {
-                    t = 'h' + t;
-                }
-                if (crossedFields[i][j]) {
-                    t = 's' + t;
-                }
-                tab[i].push(t[0] == '/' ? t.replace(/\//g, '') : t);
-                if (comma != 0 && j == table[i].length - comma - 1) {
-                    if (i == table.length - 1 || (i != 0 && i != 1 && table[i][j + 1] != '')) {
-                        tab[i].push(',');
-                    } else {
-                        tab[i].push('');
-                    }
-                }
-            }
-        }
-
-        for (let i = 0; i < tab.length; i++) {
-            if (i === 0 || i === 1) {
-                tab[i] = ['c/', 'c/', ...tab[i].map((n) => (n.includes('/') ? `c${n}` : `c/${n}`))];
-            } else if (i == tab.length - 2) {
-                tab[i] = ['u/-', 'u/', ...tab[i].map((n) => (n.includes('/') ? `u${n}` : `u/${n}`))];
-            } else {
-                tab[i] = ['', '', ...tab[i]];
-            }
-        }
-
-        this.table = new DisplayTable(tab);
-    }
-
-    print(table: HTMLElement): string {
-        this.table.print(table);
-        return this.comment;
-    }
-}
+import { DisplayTable, DisplayTableCell } from '../../../../utils/display-table';
 
 export class ColumnarSubtraction extends ColumnarOperation {
-    protected steps: ColumnarSubtractionStep[] = [];
+    protected steps: ColumnarOperationStep[] = [];
     protected signs = ['-'];
+
+    private minuend: (number | null)[][] = [];
+    private subtrahend: (number | null)[] = [];
+    private result: (number | null)[] = [];
+    private commaIndex: number = 0;
 
     protected generateSteps(numbers: string[], isFloat = true) {
         this.steps = [];
 
         if (numbers.length != 2 || numbers.some((n) => !this.validateNumber(n, isFloat))) {
-            const standardErr = isFloat
-                ? 'Wpisz dwie liczby do odjęcia <br>np. 1234-73'
-                : 'Wpisz dwie naturalne liczby do odjęcia <br>np. 1234-73';
-            throw standardErr;
+            throw isFloat
+                ? 'Wpisz dwie liczby do odjęcia <br>np. <code>1234-73</code>'
+                : 'Wpisz dwie naturalne liczby do odjęcia <br>np. <code>1234-73</code>';
         }
+
         if (parseFloat(numbers[0]) - parseFloat(numbers[1]) < 0) {
             throw 'Odjemnik jest większy niż odjemna...';
         }
+
         numbers = numbers.map((n) => this.removeLeadingZeros(n));
-        let longestBeforeComma = 0;
-        let longestAfterComma = 0;
-        for (let i = 0; i < numbers.length; i++) {
-            let j = 0;
-            while (j < numbers[i].length && numbers[i][j] != '.') {
-                j++;
-            }
-            if (j > longestBeforeComma) {
-                longestBeforeComma = j;
-            }
-            if (numbers[i].length - 1 - j > longestAfterComma) {
-                longestAfterComma = numbers[i].length - 1 - j;
-            }
+        const stats = numbers.map((n) => this.digitsCount(n));
+        const longestBeforeComma = Math.max(...stats.map((s) => s.beforeComma));
+        const longestAfterComma = Math.max(...stats.map((s) => s.afterComma));
+        const totalSize = longestBeforeComma + longestAfterComma;
+        this.commaIndex = longestAfterComma > 0 ? longestBeforeComma : -1;
+
+        if ((longestAfterComma != 0 && totalSize > 38) || (longestAfterComma == 0 && totalSize > 39)) {
+            throw '<b>ERROR</b><br>Wprowadzone liczby są zbyt długie.<br>Nawet się nie zmieszczą na tej stronie.<br>To nie przystoi.';
         }
 
-        if (
-            (longestAfterComma != 0 && longestBeforeComma + longestAfterComma > 38) ||
-            (longestAfterComma == 0 && longestBeforeComma > 39)
-        ) {
-            throw "<b>ERROR</b><br>Wprowadzone liczby są zbyt długie.<br>Ich wyświetlenie przeczy design'owi strony.<br>Szanujmy się.";
+        // organizing digits
+        const [min, sub] = numbers.map((num, i) => {
+            const n = num.replace('.', '');
+            return this.emptyArr(totalSize).toSpliced(longestBeforeComma - stats[i].beforeComma, n.length, ...n);
+        });
+        this.minuend = min.map((m) => [m === '' ? null : parseInt(m)]);
+        this.subtrahend = sub.map((m) => (m === '' ? null : parseInt(m)));
+        this.result = this.emptyArr(totalSize, null);
+
+        this.addStep(
+            `Zapisujemy obie liczby jedna pod drugą z wyrównaniem do ${longestAfterComma == 0 ? 'prawej' : 'przecinka'} i podkreślamy.`,
+        );
+
+        if (stats[0].afterComma < longestAfterComma) {
+            for (let i = this.minuend.length - longestAfterComma + stats[0].afterComma; i < this.minuend.length; i++) {
+                this.minuend[i] = [0];
+            }
+            this.addStep('Wypełniamy puste miejsca po przecinku odjemnej zerami.');
         }
 
-        const table: string[][] = [];
-        const crossedFields: boolean[][] = [];
-        for (let i = 0; i < numbers.length + 3; i++) {
-            table[i] = [];
-            crossedFields[i] = [];
-            for (let j = 0; j < longestAfterComma + longestBeforeComma; j++) {
-                table[i][j] = '';
-                crossedFields[i][j] = false;
-            }
-        }
-        for (let i = 0; i < numbers.length; i++) {
-            let j = 0;
-            while (j < numbers[i].length && numbers[i][j] != '.') {
-                j++;
-            }
-            const beforeComma = j;
-            numbers[i] = numbers[i].replace('.', '');
-            for (let k = 0; k < numbers[i].length; k++) {
-                table[i + 2][longestBeforeComma - beforeComma + k] = numbers[i][k];
-            }
-        }
+        // main loop
+        for (let currentColumn = totalSize - 1; currentColumn >= 0; currentColumn--) {
+            let minuend = this.minuend[currentColumn].at(-1)!;
+            const subtrahend = this.subtrahend[currentColumn];
 
-        let currentColumn = table[0].length - 1;
-        let diff: number;
-        let comment =
-            'Zapisujemy obie liczby jedna pod drugą z wyrównaniem do ' +
-            (longestAfterComma == 0 ? 'prawej' : 'przecinka') +
-            ' i podkreślamy.';
-        this.steps.push(new ColumnarSubtractionStep(table, longestAfterComma, -1, crossedFields, comment));
+            if (subtrahend === null) {
+                this.result[currentColumn] = minuend;
+                this.addStep(`Cyfra $${minuend}$ jest samotna, więc przepisujemy ją bez zmian.`, currentColumn);
+                continue;
+            }
 
-        let r = false;
-        for (let i = table[0].length - longestAfterComma; i < table[0].length; i++) {
-            for (let j = 2; j < 4; j++) {
-                if (table[j][i] == '') {
-                    table[j][i] = '0';
-                    comment = 'Wypełniamy puste miejsca zerami.';
-                    r = true;
-                }
-            }
-        }
-        if (r) {
-            this.steps.push(new ColumnarSubtractionStep(table, longestAfterComma, -1, crossedFields, comment));
-        }
-        while (currentColumn >= 0) {
-            let k = 2;
-            while (crossedFields[k][currentColumn]) {
-                k--;
-            }
-            diff = parseInt(table[k][currentColumn]) - parseInt(table[3][currentColumn] || '0');
-            if (diff >= 0) {
-                table[4][currentColumn] = '' + diff;
-                if (table[3][currentColumn] == '') {
-                    comment = 'Cyfra ' + table[k][currentColumn] + ' jest samotna, więc przepisujemy ją bez zmian.';
-                } else {
-                    comment =
-                        'Odejmujemy liczby ' +
-                        table[k][currentColumn] +
-                        ' i ' +
-                        table[3][currentColumn] +
-                        ', otrzymujemy ' +
-                        diff +
-                        '. Wynik zapisujemy pod kreską.';
-                }
-                this.steps.push(
-                    new ColumnarSubtractionStep(table, longestAfterComma, currentColumn, crossedFields, comment),
-                );
-            } else {
-                let i = 0;
-                let j = 0;
-                for (i = currentColumn - 1; i >= 0; i--) {
-                    j = 2;
-                    while (crossedFields[j][i]) {
-                        j--;
-                    }
-                    crossedFields[j][i] = true;
-                    if (table[j][i] == '0') {
-                        table[j - 1][i] = '9';
-                    } else {
-                        table[j - 1][i] = '' + (parseInt(table[2][i]) - 1);
+            let diff = minuend - subtrahend!;
+            if (diff < 0) {
+                let borrowColumn = currentColumn - 1;
+                let borrowBefore, borrowAfter;
+                for (; borrowColumn >= 0; borrowColumn--) {
+                    borrowBefore = this.minuend[borrowColumn].at(-1)!;
+                    borrowAfter = (borrowBefore + 9) % 10;
+                    this.minuend[borrowColumn].push(borrowAfter);
+                    if (borrowBefore > 0) {
                         break;
                     }
                 }
-                let l = 2;
-                while (crossedFields[l][currentColumn]) {
-                    l--;
-                }
-                crossedFields[l][currentColumn] = true;
-                table[l - 1][currentColumn] = '' + (parseInt(table[l][currentColumn]) + 10);
 
-                if (i == currentColumn - 1) {
-                    comment =
-                        'Chcemy odjąć cyfry ' +
-                        table[k][currentColumn] +
-                        ' i ' +
-                        table[3][currentColumn] +
-                        '. Napotykamy trudności, więc musimy wykonać zapożyczenie. Cyfrę ' +
-                        table[k][currentColumn] +
-                        ' zwiększamy do ' +
-                        (parseInt(table[k][currentColumn]) + 10) +
-                        ' kosztem cyfry bezpośrednio po lewej, którą zmiejszamy do ' +
-                        table[j - 1][i] +
-                        '.';
-                } else {
-                    comment =
-                        'Chcemy odjąć cyfry ' +
-                        table[k][currentColumn] +
-                        ' i ' +
-                        table[3][currentColumn] +
-                        '. Naptykamy trudności, więc chcemy wykonać pożyczkę od cyfry bezpośrednio po lewej. Ponieważ jest ona zerem, zapożyczenia musimy dokonać od dalszej cyfry - od ' +
-                        (parseInt(table[j - 1][i]) + 1) +
-                        '. Zmniejszamy ją do ' +
-                        table[j - 1][i] +
-                        ', wszystkie zera po drodze do 9, a wyjściowe ' +
-                        table[k][currentColumn] +
-                        ' zwiększamy do ' +
-                        (parseInt(table[k][currentColumn]) + 10) +
-                        '.';
-                }
+                const oldMinuend = minuend;
+                minuend += 10;
+                diff += 10;
+                this.minuend[currentColumn].push(minuend);
 
-                this.steps.push(
-                    new ColumnarSubtractionStep(table, longestAfterComma, currentColumn, crossedFields, comment),
-                );
-                table[4][currentColumn] = '' + (10 + diff);
-                comment =
-                    'Odejmujemy liczby ' +
-                    (parseInt(table[k][currentColumn]) + 10) +
-                    ' i ' +
-                    table[3][currentColumn] +
-                    ', otrzymujemy ' +
-                    (10 + diff) +
-                    '. Wynik zapisujemy pod kreską.';
-                this.steps.push(
-                    new ColumnarSubtractionStep(table, longestAfterComma, currentColumn, crossedFields, comment),
+                this.addStep(
+                    borrowColumn == currentColumn - 1
+                        ? `Chcemy odjąć cyfry $${oldMinuend}$ i $${subtrahend}$. Napotykamy trudności, więc musimy wykonać zapożyczenie. Cyfrę ` +
+                              `$${oldMinuend}$ zwiększamy do $${minuend}$ kosztem cyfry bezpośrednio po lewej, którą zmiejszamy do ` +
+                              `$${borrowAfter}$.`
+                        : `Chcemy odjąć cyfry $${oldMinuend}$ i $${subtrahend}$. Naptykamy trudności, więc próbujemy wykonać pożyczkę od cyfry bezpośrednio ` +
+                              `po lewej. Ponieważ jest ona zerem, zapożyczenia musimy dokonać od dalszej cyfry - od $${borrowBefore}$. ` +
+                              `Zmniejszamy ją do $${borrowAfter}$, wszystkie zera po drodze do $9$, a wyjściowe $${oldMinuend}$ zwiększamy do ` +
+                              `$${minuend}$.`,
+                    currentColumn,
                 );
             }
-            currentColumn -= 1;
+
+            this.result[currentColumn] = diff;
+            this.addStep(
+                `Odejmujemy liczby $${minuend}$ i $${subtrahend}$, otrzymujemy $${diff}$. Wynik zapisujemy pod kreską.`,
+                currentColumn,
+            );
         }
 
-        comment = 'Odczytujemy wynik: ';
-        let w = '';
-        for (let i = 0; i < table[table.length - 1].length; i++) {
-            w += (i == longestBeforeComma ? ',' : '') + table[table.length - 1][i];
-        }
-        comment += this.removeLeadingZeros(w) + '.';
-        this.steps.push(new ColumnarSubtractionStep(table, longestAfterComma, -1, crossedFields, comment));
+        // result
+        return this.addStep(`Odczytujemy wynik: $${this.readValue(this.result, this.commaIndex)}$.`);
+    }
 
+    private addStep(comment: string, column = -1): ColumnarOperationStep[] {
+        const totalMinuends = Math.max(...this.minuend.map((m) => m.length));
+        const minuends = this.emptyArr(totalMinuends)
+            .map((_, i) => this.minuend.map((m) => new DisplayTableCell(m[i], m.length > i + 1 ? ['s'] : [])))
+            .reverse();
+        const subtrahend = this.subtrahend.map((m) => new DisplayTableCell(m));
+        const result = this.result.map((m) => new DisplayTableCell(m));
+
+        [...minuends, subtrahend, result].forEach((row) => row[column]?.styleIds.push('h'));
+        if (this.commaIndex !== -1) {
+            minuends.slice(0, -1).forEach((row) => row.splice(this.commaIndex, 0, new DisplayTableCell()));
+            [minuends.at(-1)!, subtrahend].forEach((n) =>
+                n.splice(this.commaIndex, 0, new DisplayTableCell(n[this.commaIndex].value !== '' ? ',' : '')),
+            );
+            result.splice(this.commaIndex, 0, new DisplayTableCell(','));
+        }
+        [...minuends, subtrahend, result].forEach((row) => row.unshift(new DisplayTableCell(), new DisplayTableCell()));
+        subtrahend[0].value = '-';
+        minuends.slice(0, -1).forEach((row) => row.forEach((n) => n.styleIds.push('c')));
+        subtrahend.forEach((n) => n.styleIds.push('u'));
+
+        this.steps.push({
+            comment,
+            table: new DisplayTable([...minuends, subtrahend, result]),
+        });
         return this.steps;
     }
 }
