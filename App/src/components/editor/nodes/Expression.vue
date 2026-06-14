@@ -5,12 +5,12 @@
             v-show="!mathJax"
             class="math-placeholder"
             :class="{ block: !isInline }"
-            @click="edit()"
+            @click="onEdit()"
         >
             Wprowadź wyrażenie matematyczne
         </component>
-        <component :is="spanOrDiv" v-show="mathJax" ref="output" class="math-display" @dblclick="edit()" />
-        <div v-if="displayPopup" class="math-editor">
+        <component :is="spanOrDiv" v-show="mathJax" ref="output" class="math-display" @dblclick="onEdit()" />
+        <div v-if="displayPopup" class="math-editor" :style="{ height: editorHeight + 'px' }">
             <editor-content v-if="mathJaxEditor" class="math-code-editor" :editor="mathJaxEditor" />
             <div class="config">
                 <button
@@ -53,6 +53,7 @@ const props = defineProps(nodeViewProps);
 const mathJaxDirty = ref('');
 const displayPopup = ref(false);
 const isDetaching = ref(false);
+const editorHeight = ref(100);
 const output = ref<HTMLElement>();
 const mathJaxEditor = ref<Editor | null>(null);
 
@@ -72,7 +73,7 @@ const mathJax = computed({
 onMounted(() => {
     updateView();
     if (consumeOpenEditorAfterToggle() || (isInline.value && !mathJax.value)) {
-        edit();
+        onEdit();
     }
 });
 
@@ -81,11 +82,14 @@ onBeforeUnmount(() => {
     destroyMathJaxEditor();
 });
 
-function edit() {
+function onEdit() {
     mathJaxDirty.value = mathJax.value;
     displayPopup.value = true;
     createMathJaxEditor();
-    nextTick(() => mathJaxEditor.value!.commands.focus('end'));
+    nextTick(() => {
+        mathJaxEditor.value!.commands.focus('end');
+        nextTick(() => updateEditorHeight());
+    });
 }
 
 function applyEdit() {
@@ -141,6 +145,7 @@ function createMathJaxEditor() {
             CodeBlockLowlight.configure({
                 lowlight,
                 defaultLanguage: 'latex',
+                exitOnArrowDown: false,
             }),
         ],
         editorProps: {
@@ -163,6 +168,23 @@ function createMathJaxEditor() {
                     return true;
                 }
 
+                if (event.key === 'ArrowUp' || event.key === 'ArrowDown') {
+                    const { selection } = view.state;
+                    const $from = selection.$from;
+                    const text = $from.parent.textContent;
+                    const isInFirstLine =
+                        event.key === 'ArrowUp' && selection.empty && !text.slice(0, $from.parentOffset).includes('\n');
+                    const isInLastLine =
+                        event.key === 'ArrowDown' &&
+                        selection.empty &&
+                        !text.slice($from.parentOffset).includes('\n');
+
+                    if (isInFirstLine || isInLastLine) {
+                        event.preventDefault();
+                        return true;
+                    }
+                }
+
                 if (event.key === 'Escape') {
                     event.preventDefault();
                     applyEdit();
@@ -181,6 +203,7 @@ function createMathJaxEditor() {
         onBlur: () => applyEdit(),
         onUpdate: ({ editor }) => {
             mathJaxDirty.value = editor.getText();
+            nextTick(() => updateEditorHeight());
         },
     });
 }
@@ -188,6 +211,12 @@ function createMathJaxEditor() {
 function destroyMathJaxEditor() {
     mathJaxEditor.value?.destroy();
     mathJaxEditor.value = null;
+}
+
+function updateEditorHeight() {
+    const editorElement = mathJaxEditor.value!.view.dom;
+    console.log('up', editorElement, editorElement?.scrollHeight)
+    editorHeight.value = Math.min(400, Math.max(100, editorElement?.scrollHeight || 100));
 }
 
 function updateView() {
@@ -224,7 +253,6 @@ function updateView() {
 .math-editor {
     display: flex;
     width: 100%;
-    height: 200px;
     z-index: 3;
     position: fixed;
     left: 0;
@@ -243,6 +271,7 @@ function updateView() {
             min-height: 100%;
             margin: 0;
             padding: 10px;
+            box-sizing: border-box;
             font-family: fonts.$geometric-font;
             white-space: pre-wrap;
             tab-size: 4;
@@ -262,20 +291,21 @@ function updateView() {
         align-items: center;
         justify-content: center;
         width: 200px;
-        background: colors.$darker-gray;
         border-left: 2px solid black;
 
         button {
-            background: #999999;
+            background: rgba(colors.$gray, 0.85);
+            backdrop-filter: blur(10px);
             width: 100%;
             height: 50%;
 
             &.active {
-                background: #777777;
+                background: black;
+                color: white
             }
 
             &:not(.active):hover {
-                background: #888888;
+                background: rgba(colors.$darker-gray, 0.4);
             }
         }
     }
