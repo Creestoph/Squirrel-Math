@@ -1,7 +1,15 @@
 <template>
-    <node-view-wrapper>
-        <div v-show="!mathJax" class="math-placeholder" @click="edit()">Wprowadź wyrażenie matematyczne</div>
-        <div v-show="mathJax" ref="output" class="math-display" @dblclick="edit()"></div>
+    <node-view-wrapper :as="spanOrDiv">
+        <component
+            :is="spanOrDiv"
+            v-show="!mathJax"
+            class="math-placeholder"
+            :class="{ block: !isInline }"
+            @click="edit()"
+        >
+            Wprowadź wyrażenie matematyczne
+        </component>
+        <component :is="spanOrDiv" v-show="mathJax" ref="output" class="math-display" @dblclick="edit()" />
         <div v-if="displayPopup" class="math-editor">
             <textarea
                 v-model="mathJaxDirty"
@@ -13,8 +21,22 @@
                 @keydown.esc="applyEdit()"
             ></textarea>
             <div class="config">
-                <button>Inline</button>
-                <button>Block</button>
+                <button
+                    type="button"
+                    :class="{ active: isInline }"
+                    @mousedown.prevent
+                    @click="setDisplayMode('inline')"
+                >
+                    Inline
+                </button>
+                <button
+                    type="button"
+                    :class="{ active: !isInline }"
+                    @mousedown.prevent
+                    @click="setDisplayMode('block')"
+                >
+                    Block
+                </button>
             </div>
         </div>
     </node-view-wrapper>
@@ -22,14 +44,21 @@
 
 <script setup lang="ts">
 import { nodeViewProps, NodeViewWrapper } from '@tiptap/vue-3';
-import { computed, nextTick, onMounted, ref } from 'vue';
+import { computed, nextTick, onBeforeUnmount, onMounted, ref } from 'vue';
+
+type ExpressionDisplayMode = 'inline' | 'block';
 
 const props = defineProps(nodeViewProps);
 
 const mathJaxDirty = ref('');
 const displayPopup = ref(false);
+const isDetaching = ref(false);
 const output = ref<HTMLElement>();
 const mathEditor = ref<HTMLTextAreaElement>();
+
+const isInline = computed(() => props.node.type.name === 'expressionInline');
+const spanOrDiv = computed(() => (isInline.value ? 'span' : 'div'));
+const mathJaxWrapper = computed(() => (isInline.value ? '$' : '$$'));
 
 const mathJax = computed({
     get() {
@@ -40,7 +69,16 @@ const mathJax = computed({
     },
 });
 
-onMounted(() => updateView());
+onMounted(() => {
+    updateView();
+    if (consumeOpenEditorAfterToggle() || (isInline.value && !mathJax.value)) {
+        edit();
+    }
+});
+
+onBeforeUnmount(() => {
+    isDetaching.value = true;
+});
 
 function edit() {
     mathJaxDirty.value = mathJax.value;
@@ -49,13 +87,39 @@ function edit() {
 }
 
 function applyEdit() {
+    if (isDetaching.value) {
+        return;
+    }
+
     mathJax.value = mathJaxDirty.value;
     updateView();
+    if (isInline.value) {
+        nextTick(() => output.value!.focus());
+    }
+}
+
+function setDisplayMode(mode: ExpressionDisplayMode) {
+    if ((mode === 'inline') === isInline.value) {
+        return;
+    }
+
+    isDetaching.value = true;
+    props.editor.commands.toggleExpressionDisplayMode({
+        pos: props.getPos()!,
+        mathJax: mathJaxDirty.value,
+    });
+}
+
+function consumeOpenEditorAfterToggle() {
+    const storage = props.editor.storage.expression
+    const value = storage.openEditorAfterToggle;
+    storage.openEditorAfterToggle = false;
+    return value;
 }
 
 function updateView() {
     displayPopup.value = false;
-    output.value!.innerHTML = '$$' + mathJax.value + '$$';
+    output.value!.innerHTML = mathJaxWrapper.value + mathJax.value + mathJaxWrapper.value;
     nextTick(() => MathJax.Hub.Queue(['Typeset', MathJax.Hub]));
 }
 </script>
@@ -66,11 +130,14 @@ function updateView() {
 @use '@/style/fonts';
 
 .math-placeholder {
-    min-height: 27px;
-    line-height: 27px;
-    text-align: center;
     color: colors.$dark-gray;
     cursor: pointer;
+
+    &.block {
+        min-height: 27px;
+        line-height: 27px;
+        text-align: center;
+    }
 }
 .math-display {
     user-select: text;
@@ -116,7 +183,11 @@ function updateView() {
             width: 100%;
             height: 50%;
 
-            &:hover {
+            &.active {
+                background: #777777;
+            }
+
+            &:not(.active):hover {
                 background: #888888;
             }
         }
