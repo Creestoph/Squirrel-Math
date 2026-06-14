@@ -24,3 +24,7 @@ export function numeralNoun(count: number, noun: 'cyfrę' | 'raz'): string {
         })()
     );
 }
+
+export function clamp(v: number, min: number, max: number): number {
+    return Math.min(Math.max(v, min), max)
+}

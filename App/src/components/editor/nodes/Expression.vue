@@ -1,33 +1,65 @@
 <template>
-    <node-view-wrapper>
-        <div>
-            <div v-show="!mathJax" class="math-placeholder" @click="edit()">Wprowadź wyrażenie matematyczne</div>
-            <div v-show="mathJax" ref="output" class="math-display" @dblclick="edit()"></div>
-            <textarea
-                v-if="displayPopup"
-                v-model="mathJaxDirty"
-                @paste.stop
-                ref="mathEditor"
-                class="math-editor"
-                placeholder="Wprowadź kod MathJax"
-                @blur="applyEdit()"
-                @keydown.enter="!$event.shiftKey && applyEdit()"
-                @keydown.esc="applyEdit()"
-            ></textarea>
+    <node-view-wrapper :as="spanOrDiv">
+        <component
+            :is="spanOrDiv"
+            v-show="!mathJax"
+            class="math-placeholder"
+            :class="{ block: !isInline }"
+            @click="onEdit()"
+        >
+            Wprowadź wyrażenie matematyczne
+        </component>
+        <component :is="spanOrDiv" v-show="mathJax" ref="output" class="math-display" @dblclick="onEdit()" />
+        <div v-if="displayPopup" class="math-editor" :style="{ height: editorHeight + 'px' }">
+            <editor-content v-if="mathJaxEditor" class="math-code-editor" :editor="mathJaxEditor" />
+            <div class="config">
+                <button
+                    type="button"
+                    :class="{ active: isInline }"
+                    @mousedown.prevent
+                    @click="setDisplayMode('inline')"
+                >
+                    Inline
+                </button>
+                <button
+                    type="button"
+                    :class="{ active: !isInline }"
+                    @mousedown.prevent
+                    @click="setDisplayMode('block')"
+                >
+                    Block
+                </button>
+            </div>
         </div>
     </node-view-wrapper>
 </template>
 
 <script setup lang="ts">
-import { nodeViewProps, NodeViewWrapper } from '@tiptap/vue-3';
-import { computed, nextTick, onMounted, ref } from 'vue';
+import Document from '@tiptap/extension-document';
+import { CodeBlockLowlight } from '@tiptap/extension-code-block-lowlight';
+import Text from '@tiptap/extension-text';
+import { Editor, EditorContent, nodeViewProps, NodeViewWrapper } from '@tiptap/vue-3';
+import latex from 'highlight.js/lib/languages/latex';
+import { createLowlight } from 'lowlight';
+import { computed, nextTick, onBeforeUnmount, onMounted, ref } from 'vue';
+
+type ExpressionDisplayMode = 'inline' | 'block';
+
+const lowlight = createLowlight();
+lowlight.register('latex', latex);
 
 const props = defineProps(nodeViewProps);
 
 const mathJaxDirty = ref('');
 const displayPopup = ref(false);
+const isDetaching = ref(false);
+const editorHeight = ref(100);
 const output = ref<HTMLElement>();
-const mathEditor = ref<HTMLTextAreaElement>();
+const mathJaxEditor = ref<Editor | null>(null);
+
+const isInline = computed(() => props.node.type.name === 'expressionInline');
+const spanOrDiv = computed(() => (isInline.value ? 'span' : 'div'));
+const mathJaxWrapper = computed(() => (isInline.value ? '$' : '$$'));
 
 const mathJax = computed({
     get() {
@@ -38,22 +70,158 @@ const mathJax = computed({
     },
 });
 
-onMounted(() => updateView());
+onMounted(() => {
+    updateView();
+    if (consumeOpenEditorAfterToggle() || (isInline.value && !mathJax.value)) {
+        onEdit();
+    }
+});
 
-function edit() {
+onBeforeUnmount(() => {
+    isDetaching.value = true;
+    destroyMathJaxEditor();
+});
+
+function onEdit() {
     mathJaxDirty.value = mathJax.value;
     displayPopup.value = true;
-    nextTick(() => mathEditor.value!.focus());
+    createMathJaxEditor();
+    nextTick(() => {
+        mathJaxEditor.value!.commands.focus('end');
+        nextTick(() => updateEditorHeight());
+    });
 }
 
 function applyEdit() {
+    if (isDetaching.value) {
+        return;
+    }
+
     mathJax.value = mathJaxDirty.value;
     updateView();
+    destroyMathJaxEditor();
+    if (isInline.value) {
+        nextTick(() => output.value!.focus());
+    }
+}
+
+function setDisplayMode(mode: ExpressionDisplayMode) {
+    if ((mode === 'inline') === isInline.value) {
+        return;
+    }
+
+    isDetaching.value = true;
+    props.editor.commands.toggleExpressionDisplayMode({
+        pos: props.getPos()!,
+        mathJax: mathJaxDirty.value,
+    });
+    destroyMathJaxEditor();
+}
+
+function consumeOpenEditorAfterToggle() {
+    const storage = props.editor.storage.expression
+    const value = storage.openEditorAfterToggle;
+    storage.openEditorAfterToggle = false;
+    return value;
+}
+
+function createMathJaxEditor() {
+    destroyMathJaxEditor();
+
+    mathJaxEditor.value = new Editor({
+        content: {
+            type: 'doc',
+            content: [
+                {
+                    type: 'codeBlock',
+                    attrs: { language: 'latex' },
+                    content: mathJaxDirty.value ? [{ type: 'text', text: mathJaxDirty.value }] : [],
+                },
+            ],
+        },
+        extensions: [
+            Document,
+            Text,
+            CodeBlockLowlight.configure({
+                lowlight,
+                defaultLanguage: 'latex',
+                exitOnArrowDown: false,
+            }),
+        ],
+        editorProps: {
+            handleKeyDown: (view, event) => {
+                event.stopPropagation();
+
+                if (event.key === 'Tab') {
+                    event.preventDefault();
+                    view.dispatch(view.state.tr.insertText('    '));
+                    return true;
+                }
+
+                if (event.key === 'Enter') {
+                    event.preventDefault();
+                    if (event.shiftKey) {
+                        view.dispatch(view.state.tr.insertText('\n'));
+                    } else {
+                        applyEdit();
+                    }
+                    return true;
+                }
+
+                if (event.key === 'ArrowUp' || event.key === 'ArrowDown') {
+                    const { selection } = view.state;
+                    const $from = selection.$from;
+                    const text = $from.parent.textContent;
+                    const isInFirstLine =
+                        event.key === 'ArrowUp' && selection.empty && !text.slice(0, $from.parentOffset).includes('\n');
+                    const isInLastLine =
+                        event.key === 'ArrowDown' &&
+                        selection.empty &&
+                        !text.slice($from.parentOffset).includes('\n');
+
+                    if (isInFirstLine || isInLastLine) {
+                        event.preventDefault();
+                        return true;
+                    }
+                }
+
+                if (event.key === 'Escape') {
+                    event.preventDefault();
+                    applyEdit();
+                    return true;
+                }
+
+                return false;
+            },
+            handleDOMEvents: {
+                paste: (_view, event) => {
+                    event.stopPropagation();
+                    return false;
+                },
+            },
+        },
+        onBlur: () => applyEdit(),
+        onUpdate: ({ editor }) => {
+            mathJaxDirty.value = editor.getText();
+            nextTick(() => updateEditorHeight());
+        },
+    });
+}
+
+function destroyMathJaxEditor() {
+    mathJaxEditor.value?.destroy();
+    mathJaxEditor.value = null;
+}
+
+function updateEditorHeight() {
+    const editorElement = mathJaxEditor.value!.view.dom;
+    console.log('up', editorElement, editorElement?.scrollHeight)
+    editorHeight.value = Math.min(400, Math.max(100, editorElement?.scrollHeight || 100));
 }
 
 function updateView() {
     displayPopup.value = false;
-    output.value!.innerHTML = '$$' + mathJax.value + '$$';
+    output.value!.innerHTML = mathJaxWrapper.value + mathJax.value + mathJaxWrapper.value;
     nextTick(() => MathJax.Hub.Queue(['Typeset', MathJax.Hub]));
 }
 </script>
@@ -64,14 +232,16 @@ function updateView() {
 @use '@/style/fonts';
 
 .math-placeholder {
-    min-height: 27px;
-    line-height: 27px;
-    text-align: center;
     color: colors.$dark-gray;
     cursor: pointer;
+
+    &.block {
+        min-height: 27px;
+        line-height: 27px;
+        text-align: center;
+    }
 }
 .math-display {
-    outline: none;
     user-select: text;
 }
 .math-placeholder:hover,
@@ -81,23 +251,85 @@ function updateView() {
 }
 
 .math-editor {
-    width: 500px;
-    height: 300px;
+    display: flex;
+    width: 100%;
     z-index: 3;
     position: fixed;
-    left: calc(50% - 240px);
-    top: calc(50% - 140px);
-    background: white;
-    outline: none;
+    left: 0;
+    bottom: 0;
     box-shadow: 0 0 500px 15px rgba(0.4, 0.4, 0.4, 0.4);
-    padding: 10px;
-    font-family: fonts.$geometric-font;
-    color: colors.$half-gray;
+    border-top: 2px solid black;
+
+    .math-code-editor {
+        flex: 1;
+        height: 100%;
+        background: rgba(colors.$gray, 0.85);
+        backdrop-filter: blur(10px);
+        overflow: auto;
+
+        :deep(pre) {
+            min-height: 100%;
+            margin: 0;
+            padding: 10px;
+            box-sizing: border-box;
+            font-family: fonts.$geometric-font;
+            white-space: pre-wrap;
+            tab-size: 4;
+            line-height: 1.3em;
+        }
+
+        :deep(code) {
+            border: none;
+            font-family: inherit;
+            color: #444444;
+        }
+    }
+
+    .config {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 200px;
+        border-left: 2px solid black;
+
+        button {
+            background: rgba(colors.$gray, 0.85);
+            backdrop-filter: blur(10px);
+            width: 100%;
+            height: 50%;
+
+            &.active {
+                background: black;
+                color: white
+            }
+
+            &:not(.active):hover {
+                background: rgba(colors.$darker-gray, 0.4);
+            }
+        }
+    }
 }
 ::placeholder {
     color: colors.$dark-gray;
 }
-.math-editor:focus {
-    display: block;
+
+:deep(.hljs-keyword) {
+    font-weight: bold;
+    color: colors.$primary-token;
+}
+:deep(.hljs-built_in) {
+    font-weight: bold;
+    color: colors.$secondary-token;
+}
+
+:deep(.hljs-string) {
+    color: colors.$string;
+}
+:deep(.hljs-comment) {
+    color: colors.$comment;
+}
+:deep(.hljs-params) {
+    font-weight: bold;
 }
 </style>
