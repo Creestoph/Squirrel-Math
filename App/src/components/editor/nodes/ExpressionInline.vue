@@ -1,18 +1,22 @@
 <template>
-    <node-view-wrapper as="span" class="inline-kurwa">
+    <node-view-wrapper as="span">
         <span v-show="!mathJax" class="math-placeholder" @click="edit()">Wprowadź wyrażenie matematyczne</span>
         <span v-show="mathJax" ref="output" class="math-display" @dblclick="edit()"></span>
-        <textarea
-            v-if="displayPopup"
-            v-model="mathJaxDirty"
-            @paste.stop
-            ref="mathEditor"
-            class="math-editor"
-            placeholder="Wprowadź kod MathJax"
-            @blur="applyEdit()"
-            @keydown.enter="!$event.shiftKey && applyEdit()"
-            @keydown.esc="applyEdit()"
-        ></textarea>
+        <div v-if="displayPopup" class="math-editor">
+            <textarea
+                v-model="mathJaxDirty"
+                @paste.stop
+                ref="mathEditor"
+                placeholder="Wprowadź kod MathJax"
+                @blur="applyEdit()"
+                @keydown.enter="!$event.shiftKey && applyEdit()"
+                @keydown.esc="applyEdit()"
+            ></textarea>
+            <div class="config">
+                <button>Inline</button>
+                <button>Block</button>
+            </div>
+        </div>
     </node-view-wrapper>
 </template>
 
@@ -72,31 +76,56 @@ function updateView() {
     cursor: pointer;
 }
 .math-display {
-    outline: none;
+    user-select: text;
 }
 .math-placeholder:hover,
 .math-display:hover {
     background: rgba(0, 0, 0, 0.07);
     cursor: pointer;
 }
+
 .math-editor {
-    width: 500px;
-    height: 300px;
+    display: flex;
+    width: 100%;
+    height: 200px;
     z-index: 3;
     position: fixed;
-    left: calc(50% - 240px);
-    top: calc(50% - 140px);
-    background: white;
-    outline: none;
+    left: 0;
+    bottom: 0;
     box-shadow: 0 0 500px 15px rgba(0.4, 0.4, 0.4, 0.4);
-    padding: 10px;
-    font-family: fonts.$geometric-font;
-    color: colors.$half-gray;
+    border-top: 2px solid black;
+
+    textarea {
+        flex: 1;
+        height: 100%;
+        padding: 10px;
+        font-family: fonts.$geometric-font;
+        color: #444444;
+        background: rgba(colors.$gray, 0.9);
+        backdrop-filter: blur(10px);
+    }
+
+    .config {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 200px;
+        background: colors.$darker-gray;
+        border-left: 2px solid black;
+
+        button {
+            background: #999999;
+            width: 100%;
+            height: 50%;
+
+            &:hover {
+                background: #888888;
+            }
+        }
+    }
 }
 ::placeholder {
     color: colors.$dark-gray;
-}
-.math-editor:focus {
-    display: block;
 }
 </style>
