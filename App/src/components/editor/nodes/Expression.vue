@@ -11,15 +11,7 @@
         </component>
         <component :is="spanOrDiv" v-show="mathJax" ref="output" class="math-display" @dblclick="edit()" />
         <div v-if="displayPopup" class="math-editor">
-            <textarea
-                v-model="mathJaxDirty"
-                @paste.stop
-                ref="mathEditor"
-                placeholder="Wprowadź kod MathJax"
-                @blur="applyEdit()"
-                @keydown.enter="!$event.shiftKey && applyEdit()"
-                @keydown.esc="applyEdit()"
-            ></textarea>
+            <editor-content v-if="mathJaxEditor" class="math-code-editor" :editor="mathJaxEditor" />
             <div class="config">
                 <button
                     type="button"
@@ -43,10 +35,18 @@
 </template>
 
 <script setup lang="ts">
-import { nodeViewProps, NodeViewWrapper } from '@tiptap/vue-3';
+import Document from '@tiptap/extension-document';
+import { CodeBlockLowlight } from '@tiptap/extension-code-block-lowlight';
+import Text from '@tiptap/extension-text';
+import { Editor, EditorContent, nodeViewProps, NodeViewWrapper } from '@tiptap/vue-3';
+import latex from 'highlight.js/lib/languages/latex';
+import { createLowlight } from 'lowlight';
 import { computed, nextTick, onBeforeUnmount, onMounted, ref } from 'vue';
 
 type ExpressionDisplayMode = 'inline' | 'block';
+
+const lowlight = createLowlight();
+lowlight.register('latex', latex);
 
 const props = defineProps(nodeViewProps);
 
@@ -54,7 +54,7 @@ const mathJaxDirty = ref('');
 const displayPopup = ref(false);
 const isDetaching = ref(false);
 const output = ref<HTMLElement>();
-const mathEditor = ref<HTMLTextAreaElement>();
+const mathJaxEditor = ref<Editor | null>(null);
 
 const isInline = computed(() => props.node.type.name === 'expressionInline');
 const spanOrDiv = computed(() => (isInline.value ? 'span' : 'div'));
@@ -78,12 +78,14 @@ onMounted(() => {
 
 onBeforeUnmount(() => {
     isDetaching.value = true;
+    destroyMathJaxEditor();
 });
 
 function edit() {
     mathJaxDirty.value = mathJax.value;
     displayPopup.value = true;
-    nextTick(() => mathEditor.value!.focus());
+    createMathJaxEditor();
+    nextTick(() => mathJaxEditor.value!.commands.focus('end'));
 }
 
 function applyEdit() {
@@ -93,6 +95,7 @@ function applyEdit() {
 
     mathJax.value = mathJaxDirty.value;
     updateView();
+    destroyMathJaxEditor();
     if (isInline.value) {
         nextTick(() => output.value!.focus());
     }
@@ -108,6 +111,7 @@ function setDisplayMode(mode: ExpressionDisplayMode) {
         pos: props.getPos()!,
         mathJax: mathJaxDirty.value,
     });
+    destroyMathJaxEditor();
 }
 
 function consumeOpenEditorAfterToggle() {
@@ -115,6 +119,75 @@ function consumeOpenEditorAfterToggle() {
     const value = storage.openEditorAfterToggle;
     storage.openEditorAfterToggle = false;
     return value;
+}
+
+function createMathJaxEditor() {
+    destroyMathJaxEditor();
+
+    mathJaxEditor.value = new Editor({
+        content: {
+            type: 'doc',
+            content: [
+                {
+                    type: 'codeBlock',
+                    attrs: { language: 'latex' },
+                    content: mathJaxDirty.value ? [{ type: 'text', text: mathJaxDirty.value }] : [],
+                },
+            ],
+        },
+        extensions: [
+            Document,
+            Text,
+            CodeBlockLowlight.configure({
+                lowlight,
+                defaultLanguage: 'latex',
+            }),
+        ],
+        editorProps: {
+            handleKeyDown: (view, event) => {
+                event.stopPropagation();
+
+                if (event.key === 'Tab') {
+                    event.preventDefault();
+                    view.dispatch(view.state.tr.insertText('    '));
+                    return true;
+                }
+
+                if (event.key === 'Enter') {
+                    event.preventDefault();
+                    if (event.shiftKey) {
+                        view.dispatch(view.state.tr.insertText('\n'));
+                    } else {
+                        applyEdit();
+                    }
+                    return true;
+                }
+
+                if (event.key === 'Escape') {
+                    event.preventDefault();
+                    applyEdit();
+                    return true;
+                }
+
+                return false;
+            },
+            handleDOMEvents: {
+                paste: (_view, event) => {
+                    event.stopPropagation();
+                    return false;
+                },
+            },
+        },
+        onBlur: () => applyEdit(),
+        onUpdate: ({ editor }) => {
+            mathJaxDirty.value = editor.getText();
+        },
+    });
+}
+
+function destroyMathJaxEditor() {
+    mathJaxEditor.value?.destroy();
+    mathJaxEditor.value = null;
 }
 
 function updateView() {
@@ -159,14 +232,28 @@ function updateView() {
     box-shadow: 0 0 500px 15px rgba(0.4, 0.4, 0.4, 0.4);
     border-top: 2px solid black;
 
-    textarea {
+    .math-code-editor {
         flex: 1;
         height: 100%;
-        padding: 10px;
-        font-family: fonts.$geometric-font;
-        color: #444444;
-        background: rgba(colors.$gray, 0.9);
+        background: rgba(colors.$gray, 0.85);
         backdrop-filter: blur(10px);
+        overflow: auto;
+
+        :deep(pre) {
+            min-height: 100%;
+            margin: 0;
+            padding: 10px;
+            font-family: fonts.$geometric-font;
+            white-space: pre-wrap;
+            tab-size: 4;
+            line-height: 1.3em;
+        }
+
+        :deep(code) {
+            border: none;
+            font-family: inherit;
+            color: #444444;
+        }
     }
 
     .config {
@@ -195,5 +282,24 @@ function updateView() {
 }
 ::placeholder {
     color: colors.$dark-gray;
+}
+
+:deep(.hljs-keyword) {
+    font-weight: bold;
+    color: colors.$primary-token;
+}
+:deep(.hljs-built_in) {
+    font-weight: bold;
+    color: colors.$secondary-token;
+}
+
+:deep(.hljs-string) {
+    color: colors.$string;
+}
+:deep(.hljs-comment) {
+    color: colors.$comment;
+}
+:deep(.hljs-params) {
+    font-weight: bold;
 }
 </style>

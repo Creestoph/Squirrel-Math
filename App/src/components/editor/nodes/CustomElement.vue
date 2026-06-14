@@ -69,20 +69,20 @@ function edit() {
     color: colors.$half-gray;
     line-height: 1.61em;
 
-    .hljs-comment {
-        color: #56af02;
-    }
     .hljs-tag {
         font-weight: bold;
-        color: #30017c;
+        color: colors.$primary-token;
     }
     .hljs-tag.hljs-attr {
         font-weight: normal;
-        color: #770434;
+        color: colors.$secondary-token;
     }
     .hljs-tag.hljs-string {
-        color: #df8a68;
+        color: colors.$string;
         font-weight: normal;
+    }
+    .hljs-comment {
+        color: colors.$comment;
     }
     .hljs-symbol {
         font-weight: bold;
