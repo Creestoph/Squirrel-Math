@@ -9,7 +9,7 @@
             :class="{ 'link-dropdown': true }"
             :arrow="true"
             :selectedOption="selectedLesson"
-            @selected="selectLesson($event)"
+            @selected="onSelectLesson($event)"
         >
             <dropdown-option
                 v-for="(lesson, i) in lessons"
@@ -26,7 +26,7 @@
             :arrow="true"
             :selectedOption="selectedChapter"
             @click.native="getChapters()"
-            @selected="selectChapter($event)"
+            @selected="onSelectChapter($event)"
         >
             <dropdown-option
                 v-for="(chapter, i) in chapters"
@@ -38,7 +38,8 @@
                 {{ chapter.name }}
             </dropdown-option>
         </dropdown>
-        <button class="navigate-button" @click="navigate()">Odwiedź stronę</button>
+        <button class="navigate-button" @click="onNavigate()">Odwiedź stronę</button>
+        <button @click="onDeleteLink()" class="delete-button">Usuń</button>
     </div>
 </template>
 
@@ -50,7 +51,10 @@ import { LessonData } from '@/models/lesson';
 import { lessonTree } from '@/utils/lesson-tree';
 
 const props = defineProps<{ href?: string; pos: { top: boolean; shift: number } }>();
-const emit = defineEmits<{ (event: 'updated', url: string): void }>();
+const emit = defineEmits<{
+    (event: 'updated', url: string): void;
+    (event: 'delete'): void;
+}>();
 
 const selectedLesson = ref('');
 const selectedChapter = ref('');
@@ -112,20 +116,24 @@ function getChapters() {
     }
 }
 
-function selectLesson(lesson: string) {
+function onDeleteLink() {
+    emit('delete');
+}
+
+function onSelectLesson(lesson: string) {
     selectedLesson.value = lesson;
     url = '/lesson/' + lessons.find((l) => l == lesson)!;
     selectedChapter.value = '';
     emit('updated', url);
 }
 
-function selectChapter(chapter: string) {
+function onSelectChapter(chapter: string) {
     selectedChapter.value = chapter;
     url = '/lesson/' + lessons.find((l) => l == selectedLesson.value)! + '#' + chapter;
     emit('updated', url);
 }
 
-function navigate() {
+function onNavigate() {
     if (url) {
         window.open(url, '_blank');
     }
@@ -135,10 +143,11 @@ function navigate() {
 <style scoped lang="scss">
 @use '@/style/global';
 @use '@/style/fonts';
+@use '@/style/colors';
 
 .link-editor {
     width: 322px;
-    height: 185px;
+    height: 177px;
     background: black;
     border-radius: 15px;
     color: white;
@@ -171,8 +180,6 @@ function navigate() {
     }
 
     .navigate-button {
-        border-radius: 6px;
-        padding: 3px 6px;
         background-color: black;
         color: white;
         border: 1px solid white;
@@ -204,5 +211,15 @@ function navigate() {
         background: black;
         color: white;
     }
+}
+.navigate-button,
+.delete-button {
+    border-radius: 5px;
+    padding: 5px 10px;
+}
+.delete-button {
+    background: colors.$main-red;
+    color: white;
+    float: right;
 }
 </style>

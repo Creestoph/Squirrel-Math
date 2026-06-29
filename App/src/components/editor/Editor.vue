@@ -130,7 +130,7 @@
 
                     <button
                         :class="{ active: editor.isActive('comment') }"
-                        @click="addComment()"
+                        @click="editor.commands.addComment()"
                         title="dodaj komentarz"
                     >
                         <icon>add_comment</icon>
@@ -387,12 +387,18 @@
             @close="showImagesDialog = false"
         />
 
-        <comment-popup
-            v-if="editedCommentData"
-            :id="editedCommentData.id"
-            :pos="editedCommentData.pos"
-            @closed="editedCommentData = null"
-        />
+        <bubble-menu
+            :editor="editor"
+            :options="{ shift: true, onUpdate: computeCommentPopupPos }"
+            :should-show="() => editor.isActive('comment')"
+        >
+            <comment-popup
+                v-if="editor"
+                :id="editor.getAttributes('comment').id ?? null"
+                :toLeft="commentPopupToLeft"
+                @delete="(id) => editor.chain().focus().extendMarkRange('comment').deleteComment(id).run()"
+            />
+        </bubble-menu>
 
         <bubble-menu
             ref="bubbleMenuRef"
@@ -409,6 +415,7 @@
                 :href="editor.getAttributes('link').href"
                 :pos="linkPopupPosition"
                 @updated="editor.chain().focus().extendMarkRange('link').setLink($event).run()"
+                @delete="() => editor.chain().focus().extendMarkRange('link').deleteLink().run()"
             />
         </bubble-menu>
     </lesson>
@@ -456,7 +463,6 @@ import Link from './marks/Link';
 import NumberMark from './marks/NumberMark';
 import TextColor from './marks/TextColor';
 import Comment from './marks/Comment';
-import MarkClick from './marks/MarkClick';
 import CommentPopup from './CommentPopup.vue';
 import { DraftPreview, LocalStorageSaver } from './LocalStorageManager';
 import BulletList from '@tiptap/extension-bullet-list';
@@ -470,7 +476,6 @@ import { Gapcursor, UndoRedo } from '@tiptap/extensions';
 import LinkPopup from './LinkPopup.vue';
 import { BubbleMenu } from '@tiptap/vue-3/menus';
 import { allComments, lessonImages } from './shared-state';
-import { Point } from '../../models/point';
 import { ImageData, LessonData, LessonVersionData } from '@/models/lesson';
 import { NavigationGuardNext, onBeforeRouteLeave, useRoute, useRouter } from 'vue-router';
 import TableBorders from './extensions/TableBorders';
@@ -494,7 +499,7 @@ const linkPopupPosition = ref({ top: true, shift: 0 });
 const showDraftsDialog = ref(false);
 const showImagesDialog = ref(false);
 const exitPending = ref<(() => void) | null>(null);
-const editedCommentData = ref<{ id: string; pos: Point } | null>(null);
+const commentPopupToLeft = ref<boolean>(false);
 const shortMode = ref(false);
 const lessonData = {
     short: null as LessonVersionData | null,
@@ -622,15 +627,6 @@ function createEditor(shortVersion: boolean) {
                     return 'Treść sekcji';
                 },
             }),
-            MarkClick.configure({
-                targets: [
-                    {
-                        selector: 'comment[comment-id]',
-                        idAttr: 'comment-id',
-                        onClick: ({ id, rect }) => (editedCommentData.value = { id, pos: rect }),
-                    },
-                ],
-            }),
         ],
     });
 
@@ -696,22 +692,6 @@ function insert(element: string) {
         case 'dynamic':
             editor.value.commands.createComponent();
             break;
-    }
-}
-
-function addComment() {
-    editor.value.commands.addComment();
-    const { from } = editor.value.state.selection;
-    const dom = editor.value.view.domAtPos(from + 1);
-    let el: HTMLElement | null = dom.node.nodeType === 1 ? (dom.node as HTMLElement) : dom.node.parentElement;
-
-    while (el) {
-        if (el.matches?.('comment[comment-id]')) {
-            const id = el.getAttribute('comment-id')!;
-            editedCommentData.value = { id, pos: el.getBoundingClientRect() };
-            break;
-        }
-        el = el.parentElement;
     }
 }
 
@@ -885,6 +865,12 @@ function computeLinkPopupPos() {
         top: menuRect.bottom <= selRect.top,
         shift: (menuRect.left + menuRect.right) / 2 - (selRect.left + selRect.right) / 2,
     };
+}
+
+function computeCommentPopupPos() {
+    const { from, to } = editor.value.state.selection;
+    const selRect = posToDOMRect(editor.value.view, from, to);
+    commentPopupToLeft.value = selRect.left + window.pageXOffset > window.innerWidth / 2;
 }
 </script>
 
