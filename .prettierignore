@@ -1,1 +1,3 @@
 App/src/assets/**/*
+!App/src/assets/**/
+!App/src/assets/**/*.json

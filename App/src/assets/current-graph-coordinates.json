@@ -1,1 +1,36 @@
-{"nodes":[["Wprowadzenie",1120,720],["Liczba",1120,690],["Figury geometryczne",1240,650],["Dodawanie",1000,650],["Odejmowanie",930,610],["Mnożenie",1070,610],["Dzielenie",1000,570],["Kąty",1200,520],["Podzielność",1000,520],["Kolejność wykonywania działań",810,520],["Ułamki zwykłe",940,470],["Liczby ujemne",740,470],["Ułamki dziesiętne",940,440],["Procenty",1000,390],["Wyrażenia algebraiczne",810,390],["Twierdzenia i dowody",960,350],["Równania i nierówności",660,350],["Potęgowanie",960,320],["Pierwiastkowanie",1100,280],["Logarytmy",1180,240],["Działania na wyrażeniach algebraicznych",820,280],["Zbiory liczbowe",1010,240],["Funkcje",1060,190],["Równania i nierówności liniowe",820,190],["Równania kwadratowe",820,160],["Wielomiany",820,130]],"edgeJumps":[["Kąty","Dzielenie",1160],["Ułamki zwykłe","Kolejność wykonywania działań",880],["Wyrażenia algebraiczne","Ułamki dziesiętne",880],["Równania i nierówności liniowe","Zbiory liczbowe",970]]}
+{
+    "nodes": [
+        ["Wprowadzenie", 1120, 720],
+        ["Liczba", 1120, 690],
+        ["Figury geometryczne", 1240, 650],
+        ["Dodawanie", 1000, 650],
+        ["Odejmowanie", 930, 610],
+        ["Mnożenie", 1070, 610],
+        ["Dzielenie", 1000, 570],
+        ["Kąty", 1200, 520],
+        ["Podzielność", 1000, 520],
+        ["Kolejność wykonywania działań", 810, 520],
+        ["Ułamki zwykłe", 940, 470],
+        ["Liczby ujemne", 740, 470],
+        ["Ułamki dziesiętne", 940, 440],
+        ["Procenty", 1000, 390],
+        ["Wyrażenia algebraiczne", 810, 390],
+        ["Twierdzenia i dowody", 960, 350],
+        ["Równania i nierówności", 660, 350],
+        ["Potęgowanie", 960, 320],
+        ["Pierwiastkowanie", 1100, 280],
+        ["Logarytmy", 1180, 240],
+        ["Działania na wyrażeniach algebraicznych", 820, 280],
+        ["Zbiory liczbowe", 1010, 240],
+        ["Funkcje", 1060, 190],
+        ["Równania i nierówności liniowe", 820, 190],
+        ["Równania kwadratowe", 820, 160],
+        ["Wielomiany", 820, 130]
+    ],
+    "edgeJumps": [
+        ["Kąty", "Dzielenie", 1160],
+        ["Ułamki zwykłe", "Kolejność wykonywania działań", 880],
+        ["Wyrażenia algebraiczne", "Ułamki dziesiętne", 880],
+        ["Równania i nierówności liniowe", "Zbiory liczbowe", 970]
+    ]
+}
