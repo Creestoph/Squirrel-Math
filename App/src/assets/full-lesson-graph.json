@@ -1,40 +1,15 @@
 [
-    {
-        "title": "Liczba",
-        "requires": [],
-        "field": "Arytmetyka",
-        "level": "Przedszkole"
-    },
-    {
-        "title": "Dodawanie",
-        "requires": ["Liczba"],
-        "field": "Arytmetyka",
-        "level": "Szkoła podstawowa"
-    },
-    {
-        "title": "Odejmowanie",
-        "requires": ["Dodawanie"],
-        "field": "Arytmetyka",
-        "level": "Szkoła podstawowa"
-    },
-    {
-        "title": "Mnożenie",
-        "requires": ["Dodawanie"],
-        "field": "Arytmetyka",
-        "level": "Szkoła podstawowa"
-    },
+    { "title": "Liczba", "requires": [], "field": "Arytmetyka", "level": "Przedszkole" },
+    { "title": "Dodawanie", "requires": ["Liczba"], "field": "Arytmetyka", "level": "Szkoła podstawowa" },
+    { "title": "Odejmowanie", "requires": ["Dodawanie"], "field": "Arytmetyka", "level": "Szkoła podstawowa" },
+    { "title": "Mnożenie", "requires": ["Dodawanie"], "field": "Arytmetyka", "level": "Szkoła podstawowa" },
     {
         "title": "Dzielenie",
         "requires": ["Odejmowanie", "Mnożenie"],
         "field": "Arytmetyka",
         "level": "Szkoła podstawowa"
     },
-    {
-        "title": "Podzielność",
-        "requires": ["Dzielenie"],
-        "field": "Teoria liczb",
-        "level": "Szkoła podstawowa"
-    },
+    { "title": "Podzielność", "requires": ["Dzielenie"], "field": "Teoria liczb", "level": "Szkoła podstawowa" },
     {
         "title": "Kolejność wykonywania działań",
         "requires": ["Dzielenie"],
@@ -95,58 +70,30 @@
         "field": "Algebra",
         "level": "Szkoła podstawowa"
     },
-    {
-        "title": "Potęgowanie",
-        "requires": ["Twierdzenia i dowody"],
-        "field": "Algebra",
-        "level": "Szkoła podstawowa"
-    },
-    {
-        "title": "Pierwiastkowanie",
-        "requires": ["Potęgowanie"],
-        "field": "Algebra",
-        "level": "Szkoła podstawowa"
-    },
+    { "title": "Potęgowanie", "requires": ["Twierdzenia i dowody"], "field": "Algebra", "level": "Szkoła podstawowa" },
+    { "title": "Pierwiastkowanie", "requires": ["Potęgowanie"], "field": "Algebra", "level": "Szkoła podstawowa" },
     {
         "title": "Działania na wyrażeniach algebraicznych",
         "requires": ["Potęgowanie"],
         "field": "Algebra",
         "level": "Szkoła podstawowa"
     },
-    {
-        "title": "A1",
-        "requires": ["Wyrażenia algebraiczne", "Pola i obwody"]
-    },
+    { "title": "A1", "requires": ["Wyrażenia algebraiczne", "Pola i obwody"] },
     {
         "title": "Układ współrzędnych",
         "requires": ["A1"],
         "field": "Geometria analityczna",
         "level": "Szkoła podstawowa"
     },
-    {
-        "title": "Trójkąty",
-        "requires": ["A1"],
-        "field": "Geometria płaska",
-        "level": "Szkoła podstawowa"
-    },
-    {
-        "title": "Czworokąty",
-        "requires": ["Trójkąty"],
-        "field": "Geometria płaska",
-        "level": "Szkoła podstawowa"
-    },
+    { "title": "Trójkąty", "requires": ["A1"], "field": "Geometria płaska", "level": "Szkoła podstawowa" },
+    { "title": "Czworokąty", "requires": ["Trójkąty"], "field": "Geometria płaska", "level": "Szkoła podstawowa" },
     {
         "title": "Figury podobne",
         "requires": ["Czworokąty"],
         "field": "Geometria płaska",
         "level": "Szkoła podstawowa"
     },
-    {
-        "title": "Koła i okręgi",
-        "requires": ["Czworokąty"],
-        "field": "Geometria płaska",
-        "level": "Szkoła podstawowa"
-    },
+    { "title": "Koła i okręgi", "requires": ["Czworokąty"], "field": "Geometria płaska", "level": "Szkoła podstawowa" },
     {
         "title": "Graniastosłupy i ostrosłupy",
         "requires": ["Czworokąty"],
@@ -159,12 +106,7 @@
         "field": "Geometria przestrzenna",
         "level": "Liceum"
     },
-    {
-        "title": "Logarytmy",
-        "requires": ["Pierwiastkowanie"],
-        "field": "Algebra",
-        "level": "Liceum"
-    },
+    { "title": "Logarytmy", "requires": ["Pierwiastkowanie"], "field": "Algebra", "level": "Liceum" },
     {
         "title": "Zbiory liczbowe",
         "requires": ["Pierwiastkowanie"],
@@ -189,18 +131,8 @@
         "field": "Algebra",
         "level": "Szkoła podstawowa"
     },
-    {
-        "title": "Zdania logiczne",
-        "requires": ["Zbiory liczbowe"],
-        "field": "Logika matematyczna",
-        "level": "Liceum"
-    },
-    {
-        "title": "Funkcje",
-        "requires": ["Zbiory liczbowe"],
-        "field": "Algebra",
-        "level": "Szkoła podstawowa"
-    },
+    { "title": "Zdania logiczne", "requires": ["Zbiory liczbowe"], "field": "Logika matematyczna", "level": "Liceum" },
+    { "title": "Funkcje", "requires": ["Zbiory liczbowe"], "field": "Algebra", "level": "Szkoła podstawowa" },
     {
         "title": "Teoria grafów",
         "requires": ["Kombinatoryka"],
@@ -237,12 +169,7 @@
         "field": "Analiza matematyczna",
         "level": "Liceum"
     },
-    {
-        "title": "Rozwiązywanie trójkąta",
-        "requires": ["Trygonometria"],
-        "field": "Trygonomegtria",
-        "level": "Liceum"
-    },
+    { "title": "Rozwiązywanie trójkąta", "requires": ["Trygonometria"], "field": "Trygonomegtria", "level": "Liceum" },
     {
         "title": "Arytmetyka modularna",
         "requires": ["Równania i nierówności liniowe"],
@@ -267,18 +194,8 @@
         "field": "Algebra",
         "level": "Liceum"
     },
-    {
-        "title": "Macierze",
-        "requires": ["Układ równań"],
-        "field": "Algebra liniowa",
-        "level": "Studia inżynierskie"
-    },
-    {
-        "title": "Wielomiany",
-        "requires": ["Równania kwadratowe"],
-        "field": "Algebra",
-        "level": "Liceum"
-    },
+    { "title": "Macierze", "requires": ["Układ równań"], "field": "Algebra liniowa", "level": "Studia inżynierskie" },
+    { "title": "Wielomiany", "requires": ["Równania kwadratowe"], "field": "Algebra", "level": "Liceum" },
     {
         "title": "Zmienne losowe",
         "requires": ["Funkcje", "Prawdopodobieństwo warunkowe"],
@@ -291,12 +208,7 @@
         "field": "Analiza matematyczna",
         "level": "Liceum"
     },
-    {
-        "title": "Funkcja liniowa",
-        "requires": ["Wykres funkcji"],
-        "field": "Algebra",
-        "level": "Szkoła podstawowa"
-    },
+    { "title": "Funkcja liniowa", "requires": ["Wykres funkcji"], "field": "Algebra", "level": "Szkoła podstawowa" },
     {
         "title": "Funkcje trygonometryczne",
         "requires": ["Wykres funkcji", "Trygonometria", "Koła i okręgi"],
@@ -333,12 +245,7 @@
         "field": "Analiza matematyczna",
         "level": "Liceum"
     },
-    {
-        "title": "Granica funkcji",
-        "requires": ["Granica ciągu"],
-        "field": "Analiza matematyczna",
-        "level": "Liceum"
-    },
+    { "title": "Granica funkcji", "requires": ["Granica ciągu"], "field": "Analiza matematyczna", "level": "Liceum" },
     {
         "title": "Szeregi liczbowe",
         "requires": ["Granica ciągu"],
@@ -375,16 +282,8 @@
         "field": "Analiza matematyczna",
         "level": "Liceum"
     },
-    {
-        "title": "A2",
-        "requires": ["Pochodna funkcji", "Szeregi liczbowe"]
-    },
-    {
-        "title": "Całkowanie",
-        "requires": ["A2"],
-        "field": "Analiza matematyczna",
-        "level": "Studia inżynierskie"
-    },
+    { "title": "A2", "requires": ["Pochodna funkcji", "Szeregi liczbowe"] },
+    { "title": "Całkowanie", "requires": ["A2"], "field": "Analiza matematyczna", "level": "Studia inżynierskie" },
     {
         "title": "Rozwinięcia funkcji w szereg",
         "requires": ["A2"],

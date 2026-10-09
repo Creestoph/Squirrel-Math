@@ -1,38 +1,10 @@
 [
-    {
-        "title": "Wprowadzenie",
-        "requires": []
-    },
-    {
-        "title": "Liczba",
-        "requires": ["Wprowadzenie"],
-        "field": "Arytmetyka",
-        "level": "Przedszkole"
-    },
-    {
-        "title": "Figury geometryczne",
-        "requires": ["Liczba"],
-        "field": "Geometria",
-        "level": "Szkoła podstawowa"
-    },
-    {
-        "title": "Dodawanie",
-        "requires": ["Liczba"],
-        "field": "Arytmetyka",
-        "level": "Szkoła podstawowa"
-    },
-    {
-        "title": "Odejmowanie",
-        "requires": ["Dodawanie"],
-        "field": "Arytmetyka",
-        "level": "Szkoła podstawowa"
-    },
-    {
-        "title": "Mnożenie",
-        "requires": ["Dodawanie"],
-        "field": "Arytmetyka",
-        "level": "Szkoła podstawowa"
-    },
+    { "title": "Wprowadzenie", "requires": [] },
+    { "title": "Liczba", "requires": ["Wprowadzenie"], "field": "Arytmetyka", "level": "Przedszkole" },
+    { "title": "Figury geometryczne", "requires": ["Liczba"], "field": "Geometria", "level": "Szkoła podstawowa" },
+    { "title": "Dodawanie", "requires": ["Liczba"], "field": "Arytmetyka", "level": "Szkoła podstawowa" },
+    { "title": "Odejmowanie", "requires": ["Dodawanie"], "field": "Arytmetyka", "level": "Szkoła podstawowa" },
+    { "title": "Mnożenie", "requires": ["Dodawanie"], "field": "Arytmetyka", "level": "Szkoła podstawowa" },
     {
         "title": "Dzielenie",
         "requires": ["Odejmowanie", "Mnożenie"],
@@ -45,12 +17,7 @@
         "field": "Geometria",
         "level": "Szkoła podstawowa"
     },
-    {
-        "title": "Podzielność",
-        "requires": ["Dzielenie"],
-        "field": "Teoria liczb",
-        "level": "Szkoła podstawowa"
-    },
+    { "title": "Podzielność", "requires": ["Dzielenie"], "field": "Teoria liczb", "level": "Szkoła podstawowa" },
     {
         "title": "Kolejność wykonywania działań",
         "requires": ["Dzielenie"],
@@ -99,24 +66,9 @@
         "field": "Algebra",
         "level": "Szkoła podstawowa"
     },
-    {
-        "title": "Potęgowanie",
-        "requires": ["Twierdzenia i dowody"],
-        "field": "Algebra",
-        "level": "Szkoła podstawowa"
-    },
-    {
-        "title": "Pierwiastkowanie",
-        "requires": ["Potęgowanie"],
-        "field": "Algebra",
-        "level": "Szkoła podstawowa"
-    },
-    {
-        "title": "Logarytmy",
-        "requires": ["Pierwiastkowanie"],
-        "field": "Algebra",
-        "level": "Liceum"
-    },
+    { "title": "Potęgowanie", "requires": ["Twierdzenia i dowody"], "field": "Algebra", "level": "Szkoła podstawowa" },
+    { "title": "Pierwiastkowanie", "requires": ["Potęgowanie"], "field": "Algebra", "level": "Szkoła podstawowa" },
+    { "title": "Logarytmy", "requires": ["Pierwiastkowanie"], "field": "Algebra", "level": "Liceum" },
     {
         "title": "Działania na wyrażeniach algebraicznych",
         "requires": ["Potęgowanie"],
@@ -129,12 +81,7 @@
         "field": "Teoria mnogości",
         "level": "Szkoła podstawowa"
     },
-    {
-        "title": "Funkcje",
-        "requires": ["Zbiory liczbowe"],
-        "field": "Teoria mnogości",
-        "level": "Szkoła podstawowa"
-    },
+    { "title": "Funkcje", "requires": ["Zbiory liczbowe"], "field": "Teoria mnogości", "level": "Szkoła podstawowa" },
     {
         "title": "Równania i nierówności liniowe",
         "requires": ["Równania i nierówności", "Zbiory liczbowe", "Działania na wyrażeniach algebraicznych"],
@@ -147,10 +94,5 @@
         "field": "Algebra",
         "level": "Liceum"
     },
-    {
-        "title": "Wielomiany",
-        "requires": ["Równania kwadratowe"],
-        "field": "Algebra",
-        "level": "Liceum"
-    }
+    { "title": "Wielomiany", "requires": ["Równania kwadratowe"], "field": "Algebra", "level": "Liceum" }
 ]
