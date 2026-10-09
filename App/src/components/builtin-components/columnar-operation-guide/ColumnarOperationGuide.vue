@@ -108,7 +108,8 @@ function update(step: ColumnarOperationStep) {
     }
 
     p {
-        flex: 0 0 100px;
+        min-height: 80px;
+        margin-bottom: 30px;
     }
 }
 </style>

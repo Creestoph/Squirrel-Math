@@ -444,7 +444,7 @@
                                     }
                                 ]
                             },
-                            { "type": "image", "attrs": { "height": null, "key": "7 kamieni", "width": null } },
+                            { "type": "image", "attrs": { "key": "7 kamieni" } },
                             {
                                 "type": "paragraph",
                                 "attrs": { "textAlign": null },
@@ -455,7 +455,7 @@
                                     }
                                 ]
                             },
-                            { "type": "image", "attrs": { "height": null, "key": "7 kamieni / 3", "width": null } },
+                            { "type": "image", "attrs": { "key": "7 kamieni / 3" } },
                             {
                                 "type": "paragraph",
                                 "attrs": { "textAlign": null },
@@ -482,7 +482,7 @@
                                     }
                                 ]
                             },
-                            { "type": "image", "attrs": { "height": null, "key": "łupki", "width": null } },
+                            { "type": "image", "attrs": { "key": "łupki" } },
                             {
                                 "type": "paragraph",
                                 "attrs": { "textAlign": null },
@@ -699,7 +699,7 @@
                                     { "type": "text", "text": " tortu." }
                                 ]
                             },
-                            { "type": "image", "attrs": { "height": null, "key": "tort", "width": null } },
+                            { "type": "image", "attrs": { "key": "tort" } },
                             {
                                 "type": "paragraph",
                                 "attrs": { "textAlign": null },
@@ -709,7 +709,7 @@
                                     { "type": "text", "text": " tortu." }
                                 ]
                             },
-                            { "type": "image", "attrs": { "height": null, "key": "tort - 3/8", "width": null } },
+                            { "type": "image", "attrs": { "key": "tort - 3/8" } },
                             {
                                 "type": "paragraph",
                                 "attrs": { "textAlign": null },
@@ -724,7 +724,7 @@
                                     { "type": "text", "text": " takich kawałków." }
                                 ]
                             },
-                            { "type": "image", "attrs": { "height": null, "key": "tort - 6/16", "width": null } },
+                            { "type": "image", "attrs": { "key": "tort - 6/16" } },
                             {
                                 "type": "paragraph",
                                 "attrs": { "textAlign": null },
@@ -761,7 +761,7 @@
                                     { "type": "text", "text": " sztuk." }
                                 ]
                             },
-                            { "type": "image", "attrs": { "height": null, "key": "tort - 9/24", "width": null } },
+                            { "type": "image", "attrs": { "key": "tort - 9/24" } },
                             {
                                 "type": "paragraph",
                                 "attrs": { "textAlign": null },
@@ -795,7 +795,7 @@
                                     { "type": "text", "text": "." }
                                 ]
                             },
-                            { "type": "image", "attrs": { "height": null, "key": "tort - 4/8", "width": null } },
+                            { "type": "image", "attrs": { "key": "tort - 4/8" } },
                             {
                                 "type": "paragraph",
                                 "attrs": { "textAlign": null },
@@ -807,7 +807,7 @@
                                     { "type": "text", "text": ", efekt byłby ten sam." }
                                 ]
                             },
-                            { "type": "image", "attrs": { "height": null, "key": "2/4", "width": null } },
+                            { "type": "image", "attrs": { "key": "2/4" } },
                             {
                                 "type": "paragraph",
                                 "attrs": { "textAlign": null },
@@ -818,7 +818,7 @@
                                     }
                                 ]
                             },
-                            { "type": "image", "attrs": { "height": null, "key": "1/2", "width": null } },
+                            { "type": "image", "attrs": { "key": "1/2" } },
                             {
                                 "type": "paragraph",
                                 "attrs": { "textAlign": null },
@@ -916,7 +916,7 @@
                                         ]
                                     },
                                     { "type": "expression", "attrs": { "mathJax": "1:3= \\frac{1}{3}" } },
-                                    { "type": "image", "attrs": { "height": null, "key": "mały łupek", "width": null } }
+                                    { "type": "image", "attrs": { "key": "mały łupek" } }
                                 ]
                             },
                             {
@@ -935,7 +935,7 @@
                                         "type": "expression",
                                         "attrs": { "mathJax": "\\frac{1}{3}+\\frac{1}{3}=\\frac{2}{3}" }
                                     },
-                                    { "type": "image", "attrs": { "height": null, "key": "2 łupki", "width": null } }
+                                    { "type": "image", "attrs": { "key": "2 łupki" } }
                                 ]
                             },
                             {
@@ -954,7 +954,7 @@
                                         "type": "expression",
                                         "attrs": { "mathJax": "\\frac{1}{3}+\\frac{1}{3}+\\frac{1}{3}=\\frac{3}{3}=1" }
                                     },
-                                    { "type": "image", "attrs": { "height": null, "key": "3 łupki", "width": null } }
+                                    { "type": "image", "attrs": { "key": "3 łupki" } }
                                 ]
                             },
                             {
@@ -989,7 +989,7 @@
                                         "type": "expression",
                                         "attrs": { "mathJax": "\\frac{3}{8}+\\frac{2}{8}=\\frac{5}{8}" }
                                     },
-                                    { "type": "image", "attrs": { "height": null, "key": "tort suma", "width": null } }
+                                    { "type": "image", "attrs": { "key": "tort suma" } }
                                 ]
                             },
                             {
@@ -1023,7 +1023,7 @@
                                     "mathJax": " \\frac{1}{3}+\\frac{1}{6}=\\frac{2}{6}+\\frac{1}{6}=\\frac{3}{6}=\\frac{1}{2} "
                                 }
                             },
-                            { "type": "image", "attrs": { "height": null, "key": "tort suma ez", "width": null } },
+                            { "type": "image", "attrs": { "key": "tort suma ez" } },
                             {
                                 "type": "paragraph",
                                 "attrs": { "textAlign": null },
@@ -1125,7 +1125,7 @@
                                         "type": "expression",
                                         "attrs": { "mathJax": "\\frac{5}{8}-\\frac{2}{8}=\\frac{3}{8}" }
                                     },
-                                    { "type": "image", "attrs": { "height": null, "key": "tort suma", "width": null } }
+                                    { "type": "image", "attrs": { "key": "tort suma" } }
                                 ]
                             }
                         ]
@@ -1442,6 +1442,7 @@
                                                         "attrs": {
                                                             "background": null,
                                                             "borderBottom": "0",
+                                                            "borderColor": "#cccccc",
                                                             "borderColorBottom": "#cccccc",
                                                             "borderColorLeft": "#cccccc",
                                                             "borderColorRight": "#cccccc",
@@ -1472,6 +1473,7 @@
                                                         "attrs": {
                                                             "background": "#f6f6f6",
                                                             "borderBottom": "0",
+                                                            "borderColor": "#cccccc",
                                                             "borderColorBottom": "#cccccc",
                                                             "borderColorLeft": "#cccccc",
                                                             "borderColorRight": "#cccccc",
@@ -1507,6 +1509,7 @@
                                                         "attrs": {
                                                             "background": null,
                                                             "borderBottom": "0",
+                                                            "borderColor": "#cccccc",
                                                             "borderColorBottom": "#cccccc",
                                                             "borderColorLeft": "#cccccc",
                                                             "borderColorRight": "#cccccc",
@@ -1541,6 +1544,7 @@
                                                         "attrs": {
                                                             "background": null,
                                                             "borderBottom": "0",
+                                                            "borderColor": "#cccccc",
                                                             "borderColorBottom": "#cccccc",
                                                             "borderColorLeft": "#cccccc",
                                                             "borderColorRight": "#cccccc",
@@ -1581,6 +1585,7 @@
                                                         "attrs": {
                                                             "background": null,
                                                             "borderBottom": 1,
+                                                            "borderColor": "#aa0000",
                                                             "borderColorBottom": "#aa0000",
                                                             "borderColorLeft": "#aa0000",
                                                             "borderColorRight": "#aa0000",
@@ -1601,6 +1606,7 @@
                                                         "attrs": {
                                                             "background": null,
                                                             "borderBottom": 1,
+                                                            "borderColor": "#aa0000",
                                                             "borderColorBottom": "#aa0000",
                                                             "borderColorLeft": "#aa0000",
                                                             "borderColorRight": "#aa0000",
@@ -1621,6 +1627,7 @@
                                                         "attrs": {
                                                             "background": "#eeaaaa",
                                                             "borderBottom": 1,
+                                                            "borderColor": "#aa0000",
                                                             "borderColorBottom": "#aa0000",
                                                             "borderColorLeft": "#aa0000",
                                                             "borderColorRight": "#aa0000",
@@ -1641,6 +1648,7 @@
                                                         "attrs": {
                                                             "background": "#eeaaaa",
                                                             "borderBottom": 1,
+                                                            "borderColor": "#aa0000",
                                                             "borderColorBottom": "#aa0000",
                                                             "borderColorLeft": "#aa0000",
                                                             "borderColorRight": "#aa0000",
@@ -1661,6 +1669,7 @@
                                                         "attrs": {
                                                             "background": "#eeaaaa",
                                                             "borderBottom": 1,
+                                                            "borderColor": "#aa0000",
                                                             "borderColorBottom": "#aa0000",
                                                             "borderColorLeft": "#aa0000",
                                                             "borderColorRight": "#aa0000",
@@ -1681,6 +1690,7 @@
                                                         "attrs": {
                                                             "background": "#eeaaaa",
                                                             "borderBottom": 1,
+                                                            "borderColor": "#aa0000",
                                                             "borderColorBottom": "#aa0000",
                                                             "borderColorLeft": "#aa0000",
                                                             "borderColorRight": "#aa0000",
@@ -1701,6 +1711,7 @@
                                                         "attrs": {
                                                             "background": "#eeaaaa",
                                                             "borderBottom": 1,
+                                                            "borderColor": "#aa0000",
                                                             "borderColorBottom": "#aa0000",
                                                             "borderColorLeft": "#aa0000",
                                                             "borderColorRight": "#aa0000",
@@ -1721,6 +1732,7 @@
                                                         "attrs": {
                                                             "background": "#eeaaaa",
                                                             "borderBottom": 1,
+                                                            "borderColor": "#aa0000",
                                                             "borderColorBottom": "#aa0000",
                                                             "borderColorLeft": "#aa0000",
                                                             "borderColorRight": "#aa0000",
@@ -1741,6 +1753,7 @@
                                                         "attrs": {
                                                             "background": "#eeaaaa",
                                                             "borderBottom": 1,
+                                                            "borderColor": "#aa0000",
                                                             "borderColorBottom": "#aa0000",
                                                             "borderColorLeft": "#aa0000",
                                                             "borderColorRight": "#aa0000",
@@ -1761,6 +1774,7 @@
                                                         "attrs": {
                                                             "background": "#eeaaaa",
                                                             "borderBottom": 1,
+                                                            "borderColor": "#aa0000",
                                                             "borderColorBottom": "#aa0000",
                                                             "borderColorLeft": "#aa0000",
                                                             "borderColorRight": "#aa0000",
@@ -1781,6 +1795,7 @@
                                                         "attrs": {
                                                             "background": "#eeaaaa",
                                                             "borderBottom": 1,
+                                                            "borderColor": "#aa0000",
                                                             "borderColorBottom": "#aa0000",
                                                             "borderColorLeft": "#aa0000",
                                                             "borderColorRight": "#aa0000",
@@ -1801,6 +1816,7 @@
                                                         "attrs": {
                                                             "background": "#dd8888",
                                                             "borderBottom": 1,
+                                                            "borderColor": "#aa0000",
                                                             "borderColorBottom": "#aa0000",
                                                             "borderColorLeft": "#aa0000",
                                                             "borderColorRight": "#aa0000",
@@ -1821,6 +1837,7 @@
                                                         "attrs": {
                                                             "background": "#dd8888",
                                                             "borderBottom": 1,
+                                                            "borderColor": "#aa0000",
                                                             "borderColorBottom": "#aa0000",
                                                             "borderColorLeft": "#aa0000",
                                                             "borderColorRight": "#aa0000",
@@ -1841,6 +1858,7 @@
                                                         "attrs": {
                                                             "background": "#dd8888",
                                                             "borderBottom": 1,
+                                                            "borderColor": "#aa0000",
                                                             "borderColorBottom": "#aa0000",
                                                             "borderColorLeft": "#aa0000",
                                                             "borderColorRight": "#aa0000",
@@ -1861,6 +1879,7 @@
                                                         "attrs": {
                                                             "background": "#dd8888",
                                                             "borderBottom": 1,
+                                                            "borderColor": "#aa0000",
                                                             "borderColorBottom": "#aa0000",
                                                             "borderColorLeft": "#aa0000",
                                                             "borderColorRight": "#aa0000",
@@ -1881,6 +1900,7 @@
                                                         "attrs": {
                                                             "background": "#dd8888",
                                                             "borderBottom": 1,
+                                                            "borderColor": "#aa0000",
                                                             "borderColorBottom": "#aa0000",
                                                             "borderColorLeft": "#aa0000",
                                                             "borderColorRight": "#aa0000",
@@ -1901,6 +1921,7 @@
                                                         "attrs": {
                                                             "background": "#dd8888",
                                                             "borderBottom": 1,
+                                                            "borderColor": "#aa0000",
                                                             "borderColorBottom": "#aa0000",
                                                             "borderColorLeft": "#aa0000",
                                                             "borderColorRight": "#aa0000",
@@ -1921,6 +1942,7 @@
                                                         "attrs": {
                                                             "background": "#dd8888",
                                                             "borderBottom": 1,
+                                                            "borderColor": "#aa0000",
                                                             "borderColorBottom": "#aa0000",
                                                             "borderColorLeft": "#aa0000",
                                                             "borderColorRight": "#aa0000",
@@ -1941,6 +1963,7 @@
                                                         "attrs": {
                                                             "background": "#dd8888",
                                                             "borderBottom": 1,
+                                                            "borderColor": "#aa0000",
                                                             "borderColorBottom": "#aa0000",
                                                             "borderColorLeft": "#aa0000",
                                                             "borderColorRight": "#aa0000",
@@ -1961,6 +1984,7 @@
                                                         "attrs": {
                                                             "background": "#dd8888",
                                                             "borderBottom": 1,
+                                                            "borderColor": "#aa0000",
                                                             "borderColorBottom": "#aa0000",
                                                             "borderColorLeft": "#aa0000",
                                                             "borderColorRight": "#aa0000",
@@ -1981,6 +2005,7 @@
                                                         "attrs": {
                                                             "background": null,
                                                             "borderBottom": 1,
+                                                            "borderColor": "#aa0000",
                                                             "borderColorBottom": "#aa0000",
                                                             "borderColorLeft": "#aa0000",
                                                             "borderColorRight": "#aa0000",
@@ -2001,6 +2026,7 @@
                                                         "attrs": {
                                                             "background": null,
                                                             "borderBottom": 1,
+                                                            "borderColor": "#aa0000",
                                                             "borderColorBottom": "#aa0000",
                                                             "borderColorLeft": "#aa0000",
                                                             "borderColorRight": "#aa0000",
@@ -2186,7 +2212,7 @@
                                     { "type": "text", "text": ":" }
                                 ]
                             },
-                            { "type": "image", "attrs": { "height": null, "key": "5/6", "width": null } },
+                            { "type": "image", "attrs": { "key": "5/6" } },
                             {
                                 "type": "paragraph",
                                 "attrs": { "textAlign": null },
@@ -2197,7 +2223,7 @@
                                     }
                                 ]
                             },
-                            { "type": "image", "attrs": { "height": null, "key": "5/6 na pół", "width": null } },
+                            { "type": "image", "attrs": { "key": "5/6 na pół" } },
                             {
                                 "type": "paragraph",
                                 "attrs": { "textAlign": null },
@@ -2231,7 +2257,7 @@
                                     { "type": "text", "text": "." }
                                 ]
                             },
-                            { "type": "image", "attrs": { "height": null, "key": "5/9", "width": null } },
+                            { "type": "image", "attrs": { "key": "5/9" } },
                             {
                                 "type": "paragraph",
                                 "attrs": { "textAlign": null },
@@ -3144,7 +3170,7 @@
                                     { "type": "text", "text": "." }
                                 ]
                             },
-                            { "type": "image", "attrs": { "height": null, "key": "porównanie", "width": null } },
+                            { "type": "image", "attrs": { "key": "porównanie" } },
                             {
                                 "type": "paragraph",
                                 "attrs": { "textAlign": null },
@@ -3376,7 +3402,7 @@
                                 "attrs": { "textAlign": null },
                                 "content": [{ "type": "text", "text": "Nie zaś" }]
                             },
-                            { "type": "image", "attrs": { "height": null, "key": "zły piętrowy", "width": null } }
+                            { "type": "image", "attrs": { "key": "zły piętrowy" } }
                         ]
                     }
                 ]

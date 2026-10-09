@@ -5,7 +5,7 @@
         <lesson-intro>
             <p>
                 Oto wersja robocza naszego podręcznika. Projekt nie ma jeszcze oficjalnej nazwy, chwilowo nazywamy go
-                <i>Squirrel-Math</i> ze względu na globalnie udzielające się zamiłowanie do wiewiórek.
+                <i>Squirrel-Math</i>, bo wszyscy (a przynajmniej my) kochamy wiewiórki.
             </p>
 
             <p>
@@ -17,17 +17,17 @@
 
             <p>
                 Przedsięwzięcie jest dość odważne, więc potrzebna jest nam Wasza pomoc. Będziemy stale uzupełniać tę
-                stronę o kolejne lekcje. Pisząc je, ciężko jest uwzględnić zróżnicowane zapotrzebowania odbiorców,
-                dlatego ogromną wartość będzie miała każda przesłana opinia.
+                stronę o kolejne lekcje. Pisząc je, ciężko uwzględnić zróżnicowane zapotrzebowania odbiorców, dlatego
+                ogromną wartość będzie miała każda przesłana opinia.
             </p>
 
             <p>Interesują nas przede wszystkim następujące aspekty:</p>
 
             <ul>
-                <li>Czy lekcje czyta się przyjemnie, czy nie są męczące, rozwlekłe, infantylne, chaotyczne...</li>
-                <li>Czy przedstawione treści matematyczne są zrozumiałe (albo raczej: do bólu oczywiste)</li>
-                <li>Czy oprogramowanie nie zawiera błędów</li>
-                <li>Czy design graficzny strony jest przyjazny</li>
+                <li>Czy lekcje czyta się przyjemnie, czy nie są męczące, rozwlekłe, infantylne, chaotyczne... ?</li>
+                <li>Czy przedstawione treści matematyczne są zrozumiałe (albo raczej: do bólu oczywiste)?</li>
+                <li>Czy oprogramowanie nie zawiera błędów?</li>
+                <li>Czy strona jest estetyczna i wizualnie przejrzysta? Czy design graficzny strony jest przyjazny?</li>
             </ul>
 
             <p>
@@ -51,7 +51,7 @@
                 prawdy”. Pierwsza z nich ma na celu wyjaśnienie matematyki „na chłopski rozum” - odstąpimy od
                 profesjonalizmu i matematycznego rygoru na rzecz przystępności; druga ścieżka będzie zimną i bardzo
                 ścisłą reprezentacją struktur matematycznych, zaczynając od aksjomatów, kończąc na wysoko abstrakcyjnych
-                tworach (coś w rodzaju Definicja - Twierdzenie - Dowód - Definicja - Twierdzenie - Dowód...). Obecnie
+                tworach (coś w rodzaju Definicja - Twierdzenie - Dowód - Definicja - Twierdzenie - Dowód...). Póki co
                 wszystkie dostępne materiały stanowią realizację „ścieżki dydaktycznej”.
             </p>
 
@@ -60,15 +60,15 @@
                 się tak:
             </p>
 
-                <router-link target="_blank" :to="'/drzewoHD'">
-                    <img src="./.images/tree.png" width="100%" />
-                </router-link>
+            <router-link target="_blank" :to="'/drzewoHD'">
+                <img src="./.images/tree.png" width="100%" />
+            </router-link>
 
             <p>
-                Według naszej idei, lekcje znajdujące się wyżej w drzewie wymagają znajomości lekcji im podległych. Aby
-                przystąpić do nauki „Kolejności wykonywania działań” trzeba zaznajomić się z „Dzieleniem” które z kolei
-                wymaga opanowania „Odejmowania” i „Mnożenia”. Na razie na stronie Drzewo jest androgeniczną listą
-                lekcji, uporządkowaną w kolejności tworzenia...
+                Na czerwono zaznaczony jest fragment całego Drzewa, który mamy już dostępny na stronie - kliknij w duży
+                czerwony przycisk, by je obejrzeć. Według naszej idei, lekcje znajdujące się wyżej w drzewie wymagają
+                znajomości lekcji im podległych. Aby przystąpić do nauki „Kolejności wykonywania działań” trzeba
+                zaznajomić się z „Dzieleniem” które z kolei wymaga opanowania „Odejmowania” i „Mnożenia”.
             </p>
 
             <p>
@@ -80,7 +80,7 @@
 
             <p>
                 Większość lekcji zaopatrzona jest w dodatkowe komentarze. Częśc z nich to swego rodzaju „easter eggi” -
-                cyniczne żarty, które można odkryć jedynie najeżdżając na powiązane słowo lub zdanie (jak
+                cyniczne żarty, które można odkryć jedynie, najeżdżając na powiązane słowo lub zdanie (jak
                 <comment text="To miejsce czeka na Twój cyniczny żart">TUTAJ</comment>). Komentarze, które pomagają w
                 zrozumieniu trudnych pojęć / przekształceń matematycznych / dowodów będą zaznaczone na marginesie za
                 pomocą <comment text="Mniej więcej takiego" :hidden="false"> czerwonego pytajnika</comment>.
@@ -89,6 +89,24 @@
             <p>To chyba tyle. Teraz wyruszajmy na podbój świata.</p>
 
             <img style="display: block; margin: auto" src="@/assets/global-images/squirrel.png" width="60%" />
+        </lesson-chapter>
+
+        <lesson-chapter>
+            <template #title>Kontrybucja</template>
+            <p>
+                Wszelka forma pomocy w rozwijaniu treści portalu jest mile widziana, włącznie z użyciem
+                <router-link class="link" target="_blank" :to="'/editor'">edytora</router-link>, za pomocą którego można
+                modyfikować treści istniejących lekcji lub tworzyć nowe. Wygenerowane pliki w formacie .json można
+                śmiało podrzucać na naszego maila.
+            </p>
+
+            <p>Tworząc treści lekcji, zalecamy trzymać się reguł spisanych tutaj:</p>
+            <ul>
+                <li>
+                    <router-link class="link" target="_blank" :to="'/conventions'">Reguły redaktorskie</router-link>
+                </li>
+            </ul>
+            <p>Dzięki temu zachowamy spójność i estetykę całego podręcznika.</p>
         </lesson-chapter>
     </lesson>
 </template>

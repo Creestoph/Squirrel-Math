@@ -1,5 +1,5 @@
 import { ColumnarOperation, ColumnarOperationStep } from './columnar-operation';
-import { DisplayTable } from './display-table';
+import { DisplayTable, DisplayTableCell } from '../../../../utils/display-table';
 
 class ColumnarFactorizationStep implements ColumnarOperationStep {
     readonly table: DisplayTable;
@@ -9,7 +9,12 @@ class ColumnarFactorizationStep implements ColumnarOperationStep {
         divisors: number[],
         readonly comment: string,
     ) {
-        this.table = new DisplayTable(dividends.map((d, i) => [`r/${d ?? ''}`, `${divisors[i] ?? ''}`]));
+        this.table = new DisplayTable(
+            dividends.map((d, i) => [
+                new DisplayTableCell(`${d ?? ''}`, ['r']),
+                new DisplayTableCell(`${divisors[i] ?? ''}`),
+            ]),
+        );
     }
 }
 

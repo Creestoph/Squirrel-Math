@@ -1,11 +1,15 @@
 <template>
-    <div class="link-editor">
+    <div
+        class="link-editor"
+        :class="{ top: props.pos.top, bottom: !props.pos.top }"
+        :style="{ '--shift': `${props.pos.shift}px` }"
+    >
         Link do lekcji
         <dropdown
             :class="{ 'link-dropdown': true }"
             :arrow="true"
             :selectedOption="selectedLesson"
-            @selected="selectLesson($event)"
+            @selected="onSelectLesson($event)"
         >
             <dropdown-option
                 v-for="(lesson, i) in lessons"
@@ -22,7 +26,7 @@
             :arrow="true"
             :selectedOption="selectedChapter"
             @click.native="getChapters()"
-            @selected="selectChapter($event)"
+            @selected="onSelectChapter($event)"
         >
             <dropdown-option
                 v-for="(chapter, i) in chapters"
@@ -34,7 +38,8 @@
                 {{ chapter.name }}
             </dropdown-option>
         </dropdown>
-        <button class="navigate-button" @click="navigate()">Odwiedź stronę</button>
+        <button class="navigate-button" @click="onNavigate()">Odwiedź stronę</button>
+        <button @click="onDeleteLink()" class="delete-button">Usuń</button>
     </div>
 </template>
 
@@ -45,8 +50,11 @@ import DropdownOption from './DropdownOption.vue';
 import { LessonData } from '@/models/lesson';
 import { lessonTree } from '@/utils/lesson-tree';
 
-const props = defineProps<{ href?: string }>();
-const emit = defineEmits<{ (event: 'updated', url: string): void }>();
+const props = defineProps<{ href?: string; pos: { top: boolean; shift: number } }>();
+const emit = defineEmits<{
+    (event: 'updated', url: string): void;
+    (event: 'delete'): void;
+}>();
 
 const selectedLesson = ref('');
 const selectedChapter = ref('');
@@ -108,20 +116,24 @@ function getChapters() {
     }
 }
 
-function selectLesson(lesson: string) {
+function onDeleteLink() {
+    emit('delete');
+}
+
+function onSelectLesson(lesson: string) {
     selectedLesson.value = lesson;
     url = '/lesson/' + lessons.find((l) => l == lesson)!;
     selectedChapter.value = '';
     emit('updated', url);
 }
 
-function selectChapter(chapter: string) {
+function onSelectChapter(chapter: string) {
     selectedChapter.value = chapter;
     url = '/lesson/' + lessons.find((l) => l == selectedLesson.value)! + '#' + chapter;
     emit('updated', url);
 }
 
-function navigate() {
+function onNavigate() {
     if (url) {
         window.open(url, '_blank');
     }
@@ -131,23 +143,43 @@ function navigate() {
 <style scoped lang="scss">
 @use '@/style/global';
 @use '@/style/fonts';
+@use '@/style/colors';
 
 .link-editor {
-    display: inline-block;
-    position: absolute;
-    z-index: 3;
-    margin-left: -145px;
-    margin-top: -230px;
     width: 322px;
-    height: 185px;
+    height: 177px;
     background: black;
     border-radius: 15px;
     color: white;
     padding: 10px;
 
+    &:after {
+        content: '';
+        position: absolute;
+        left: calc(50% - 20px - var(--shift));
+        width: 0;
+        height: 0;
+        border-left: 20px solid transparent;
+        border-right: 20px solid transparent;
+    }
+
+    &.top {
+        margin-top: 165px; // minimum to ensure the popup doesnt collide with (expanded) editor menu
+        &:after {
+            bottom: -20px;
+            border-top: 20px solid black;
+        }
+    }
+
+    &.bottom {
+        margin-bottom: 165px;
+        &:after {
+            top: -20px;
+            border-bottom: 20px solid black;
+        }
+    }
+
     .navigate-button {
-        border-radius: 6px;
-        padding: 3px 6px;
         background-color: black;
         color: white;
         border: 1px solid white;
@@ -159,18 +191,6 @@ function navigate() {
             background-color: white;
             color: black;
         }
-    }
-
-    &:after {
-        content: '';
-        position: absolute;
-        left: calc(50% - 20px);
-        bottom: -20px;
-        width: 0;
-        height: 0;
-        border-left: 20px solid transparent;
-        border-right: 20px solid transparent;
-        border-top: 20px solid black;
     }
 }
 
@@ -191,5 +211,15 @@ function navigate() {
         background: black;
         color: white;
     }
+}
+.navigate-button,
+.delete-button {
+    border-radius: 5px;
+    padding: 5px 10px;
+}
+.delete-button {
+    background: colors.$main-red;
+    color: white;
+    float: right;
 }
 </style>

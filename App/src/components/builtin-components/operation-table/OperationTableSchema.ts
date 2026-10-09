@@ -21,6 +21,20 @@ export const operationTableSchema: ComponentSchema = {
             label: 'Działanie',
             hint: 'Funkcja typu (number, number) => number zwracająca wynik działania tabliczki dla argumentów: kolumna i wiersz.',
             placeholder: 'np. (a, b) => a + b',
+            validation: (f: (a: number, b: number) => number) => {
+                let i = 0,
+                    j = 0;
+                try {
+                    for (; i <= 9; i++) {
+                        for (; j <= 9; j++) {
+                            f(i, j);
+                        }
+                    }
+                    return null;
+                } catch (e) {
+                    return `Funkcja zwróciła błąd dla argumentów (${i}, ${j}): ${e}`;
+                }
+            },
         },
         print: {
             type: ParameterType.FUNCTION,
@@ -28,6 +42,20 @@ export const operationTableSchema: ComponentSchema = {
             label: 'Tekst wyświetlany',
             hint: 'Funkcja typu (number, number, number) => string zwracająca podpis pod tabliczką, gdy zaznaczona jest dana kolumna, wiersz i komórka.',
             placeholder: 'np. (a, b, c) => `${a} plus ${b} to ${c}`',
+            validation: (f: (a: number, b: number, c: number) => string) => {
+                let i = 0,
+                    j = 0;
+                try {
+                    for (; i <= 9; i++) {
+                        for (; j <= 9; j++) {
+                            f(i, j, 0);
+                        }
+                    }
+                    return null;
+                } catch (e) {
+                    return `Funkcja zwróciła błąd dla argumentów (${i}, ${j}, 0): ${e}`;
+                }
+            },
         },
         defaultLoperand: {
             type: ParameterType.NUMBER,

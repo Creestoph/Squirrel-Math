@@ -466,7 +466,7 @@
                                     }
                                 ]
                             },
-                            { "type": "image", "attrs": { "height": null, "key": "bohaterowie", "width": null } },
+                            { "type": "image", "attrs": { "key": "bohaterowie" } },
                             {
                                 "type": "paragraph",
                                 "attrs": { "textAlign": "justify" },
@@ -483,7 +483,7 @@
                                     }
                                 ]
                             },
-                            { "type": "image", "attrs": { "height": null, "key": "cięcia", "width": null } },
+                            { "type": "image", "attrs": { "key": "cięcia" } },
                             {
                                 "type": "paragraph",
                                 "attrs": { "textAlign": "justify" },
@@ -642,7 +642,7 @@
                                     { "type": "text", "text": " kafli." }
                                 ]
                             },
-                            { "type": "image", "attrs": { "height": null, "key": "a*b kafli", "width": null } },
+                            { "type": "image", "attrs": { "key": "a*b kafli" } },
                             {
                                 "type": "paragraph",
                                 "attrs": { "textAlign": "justify" },
@@ -656,7 +656,7 @@
                                     { "type": "text", "text": " kafli." }
                                 ]
                             },
-                            { "type": "image", "attrs": { "height": null, "key": "rozbicie kafli", "width": null } },
+                            { "type": "image", "attrs": { "key": "rozbicie kafli" } },
                             {
                                 "type": "paragraph",
                                 "attrs": { "textAlign": "justify" },
@@ -773,7 +773,7 @@
                                     { "type": "text", "text": " kafli." }
                                 ]
                             },
-                            { "type": "image", "attrs": { "height": null, "key": "podwójne rozbicie", "width": null } },
+                            { "type": "image", "attrs": { "key": "podwójne rozbicie" } },
                             {
                                 "type": "paragraph",
                                 "attrs": { "textAlign": "justify" },
@@ -816,7 +816,7 @@
                                     { "type": "text", "text": "." }
                                 ]
                             },
-                            { "type": "image", "attrs": { "height": null, "key": "pajęczak", "width": null } },
+                            { "type": "image", "attrs": { "key": "pajęczak" } },
                             {
                                 "type": "example",
                                 "content": [
@@ -2824,7 +2824,7 @@
                                     }
                                 ]
                             },
-                            { "type": "image", "attrs": { "height": null, "key": "rozbicie kafli", "width": null } },
+                            { "type": "image", "attrs": { "key": "rozbicie kafli" } },
                             { "type": "expression", "attrs": { "mathJax": " a(b+c)=ab+ac " } },
                             {
                                 "type": "paragraph",
@@ -2836,8 +2836,8 @@
                                     }
                                 ]
                             },
-                            { "type": "image", "attrs": { "height": null, "key": "podwójne rozbicie", "width": null } },
-                            { "type": "image", "attrs": { "height": null, "key": "pajęczak", "width": null } },
+                            { "type": "image", "attrs": { "key": "podwójne rozbicie" } },
+                            { "type": "image", "attrs": { "key": "pajęczak" } },
                             {
                                 "type": "paragraph",
                                 "attrs": { "textAlign": "justify" },

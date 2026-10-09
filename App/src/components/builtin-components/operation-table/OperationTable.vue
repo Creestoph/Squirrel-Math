@@ -26,16 +26,17 @@
         </table>
 
         <p style="text-align: center" class="math" v-if="loperand !== -1 && roperand !== -1">
-            {{ print(loperand, roperand, f(loperand, roperand)) }}
+            {{ displayedText }}
         </p>
     </div>
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
+import { nextTick, ref } from 'vue';
 
 const loperand = ref(0);
 const roperand = ref(0);
+const displayedText = ref('');
 const props = withDefaults(
     defineProps<{
         defaultLoperand: number;
@@ -58,25 +59,22 @@ reset();
 function set(lop: number, rop: number) {
     loperand.value = lop;
     roperand.value = rop;
+    try {
+        displayedText.value = props.print(loperand.value, roperand.value, props.f(loperand.value, roperand.value));
+        nextTick(() => MathJax.Hub.Queue(['Typeset', MathJax.Hub]));
+    } catch (e) {
+        displayedText.value = `${e}`;
+    }
 }
 
 function reset() {
-    loperand.value = props.defaultLoperand;
-    roperand.value = props.defaultRoperand;
+    set(props.defaultLoperand, props.defaultRoperand);
 }
 </script>
 
 <style scoped lang="scss">
 @use '@/style/global';
 @use '@/style/colors';
-
-.selected {
-    background: colors.$creamy;
-}
-
-.selected-strong {
-    background: colors.$darker-main-red;
-}
 
 table.operation-table {
     text-align: center;
@@ -87,10 +85,20 @@ table.operation-table {
     th {
         height: 32px;
         width: 32px;
+
+        &.selected {
+            background: colors.$creamy;
+        }
     }
 
     td {
-        border: 1px solid black;
+        border: 1px solid colors.$half-gray;
+
+        &.selected-strong {
+            color: colors.$light-creamy;
+            background: colors.$darker-main-red;
+            border: 2px solid black;
+        }
     }
 
     th {

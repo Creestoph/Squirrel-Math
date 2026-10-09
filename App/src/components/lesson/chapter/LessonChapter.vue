@@ -6,7 +6,7 @@
             :title="optional ? 'Opcjonalny temat rozszerzony' : ''"
             ref="title"
         >
-            <icon v-if="optional && bodyZipped" class="block">block</icon><slot name="title" />
+            <icon v-if="optional && bodyZipped" class="block">skull</icon><slot name="title" />
         </chapter-title>
         <chapter-body ref="body" :zipped="bodyZipped" @animation="isBodyAnimating = $event">
             <slot />

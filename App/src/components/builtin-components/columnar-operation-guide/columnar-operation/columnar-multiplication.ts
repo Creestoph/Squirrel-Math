@@ -1,289 +1,175 @@
-import { DisplayTable } from './display-table';
+import { DisplayTable, DisplayTableCell } from '../../../../utils/display-table';
 import { ColumnarOperation, ColumnarOperationStep } from './columnar-operation';
-
-class ColumnarMultiplicationStep implements ColumnarOperationStep {
-    readonly table: DisplayTable;
-
-    constructor(
-        table: string[][],
-        highlightFields: boolean[][],
-        readonly comment: string,
-        private readonly carry: number,
-        mulUnderline: number,
-        sumUnderline: number,
-    ) {
-        const tab: string[][] = [];
-        for (let i = 0; i < table.length; i++) {
-            tab[i] = [];
-            if (i == mulUnderline) {
-                tab[i] = ['u/\\cdot', 'u/'];
-            } else if (i == sumUnderline) {
-                tab[i] = ['u/+', 'u/'];
-            } else {
-                tab[i] = ['', ''];
-            }
-            for (let j = 0; j < table[i].length; j++) {
-                let t = '/' + table[i][j];
-                if (highlightFields[i][j]) {
-                    t = 'h' + t;
-                }
-                if (i == mulUnderline || i == sumUnderline) {
-                    t = 'u' + t;
-                }
-                tab[i].push(t[0] == '/' ? t.replace(/\//g, '') : t);
-            }
-        }
-        this.table = new DisplayTable(tab);
-    }
-}
+import { numeralNoun } from '@/utils/utils';
 
 export class ColumnarMultiplication extends ColumnarOperation {
-    protected steps: ColumnarMultiplicationStep[] = [];
+    protected steps: ColumnarOperationStep[] = [];
     protected signs = ['*'];
 
-    protected generateSteps(numbers: string[], isFloat = true) {
+    private table: string[][] = [];
+
+    private static addFirstColumn(tab: string[][]): void {
+        tab.forEach((row) => row.unshift(''));
+    }
+
+    protected generateSteps(numbers: string[], isFloat = true): ColumnarOperationStep[] {
         this.steps = [];
 
         if (numbers.length != 2 || numbers.some((n) => !this.validateNumber(n, isFloat))) {
             const standardErr = isFloat
-                ? 'Wpisz dwie liczby do pomnożenia <br>np. 1234*73'
-                : 'Wpisz dwie liczby naturalne do pomnożenia <br>np. 1234*73';
+                ? 'Wpisz dwie liczby do pomnożenia <br>np. <code>1234*73</code>'
+                : 'Wpisz dwie liczby naturalne do pomnożenia <br>np. <code>1234*73</code>';
             throw standardErr;
         }
         if (numbers[0].length + numbers[1].length > 39 || numbers[1].length > 10) {
-            throw "<b>ERROR</b><br>Wprowadzone liczby są zbyt długie.<br>Ich wyświetlenie przeczy design'owi strony.<br>Szanujmy się.";
+            throw '<b>ERROR</b><br>Wprowadzone liczby są zbyt długie.<br>Nawet się nie zmieszczą na tej stronie.<br>Miej litość.';
         }
-        let longest = 0;
-        const commas: number[] = [];
+
+        // organizing digits
         numbers = numbers.map((n) => this.removeLeadingZeros(n));
         const numbersOrig = [...numbers];
+        const stats = numbers.map((n) => this.digitsCount(n));
+        const longestAfterComma = Math.max(...stats.map((s) => s.afterComma));
+        const totalSize = Math.max(...stats.map((s) => s.beforeComma + s.afterComma));
+        numbers = numbers.map((n) => n.replace('.', ''));
+        this.table = numbers.map((n) => this.emptyArr(totalSize).toSpliced(totalSize - n.length, n.length, ...n));
 
-        for (let i = 0; i < numbers.length; i++) {
-            let l = numbers[i].length;
-            commas[i] = 0;
-            for (let j = 0; j < l; j++) {
-                if (numbers[i][j] == '.') {
-                    l = l - 1;
-                    commas[i] = l - j;
-                    break;
-                }
-            }
-            if (l > longest) {
-                longest = l;
-            }
-            numbers[i] = numbers[i].replace('.', '');
-        }
+        this.addStep(
+            'Zapisujemy obie liczby jedna pod drugą z wyrównaniem do prawej i podkreślamy.' +
+                (longestAfterComma > 0 ? ' Chwilowo zaniedbujemy przecinki.' : ''),
+            false,
+        );
 
-        let table: string[][] = [];
-        for (let i = 0; i < numbers.length; i++) {
-            table[i] = [];
-            for (let j = 0; j < longest; j++) {
-                table[i][j] = '';
-            }
-        }
-        for (let i = 0; i < numbers.length; i++) {
-            for (let k = 0; k < numbers[i].length; k++) {
-                table[i][longest - numbers[i].length + k] = numbers[i][k];
-            }
-        }
-
-        let highlightFields: boolean[][] = [];
-        for (let i = 0; i < table.length; i++) {
-            highlightFields[i] = [];
-            for (let j = 0; j < table[0].length; j++) {
-                highlightFields[i][j] = false;
-            }
-        }
-
-        let comment;
-        let carry = 0;
-        let mul;
-        comment = 'Zapisujemy obie liczby jedna pod drugą z wyrównaniem do prawej i podkreślamy.';
-        if (commas[0] + commas[1] > 0) {
-            comment += ' Chwilowo zaniedbujemy przecinki.';
-        }
-        this.steps.push(new ColumnarMultiplicationStep(table, highlightFields, comment, carry, 1, -1));
-
+        // iterating bottom factor digits
         for (let i = numbers[1].length - 1; i >= 0; i--) {
             let t = 0;
             const ci = numbers[1].length - 1 - i;
-            comment = 'Przystępujemy do mnożenia liczby ' + numbers[0] + ' przez ' + numbers[1][i] + '.';
-            highlightFields = ColumnarMultiplication.emptyHighlight(table);
-            for (let k = 0; k < numbers[0].length; k++) {
-                highlightFields[0][table[0].length - 1 - k] = true;
-            }
-            highlightFields[1][table[1].length - 1 - ci] = true;
-            this.steps.push(new ColumnarMultiplicationStep(table, highlightFields, comment, carry, 1, -1));
+
+            this.addStep(`Przystępujemy do mnożenia liczby $${numbers[0]}$ przez $${numbers[1][i]}$.`, false, [
+                ...this.highlightRow(0),
+                [1, this.table[1].length - 1 - ci],
+            ]);
+
+            this.table.push(this.emptyArr(this.table[0].length));
+
+            // iterating upper factor digits
+            let carry = 0;
             for (let j = numbers[0].length - 1; j >= 0; j--) {
                 const cj = numbers[0].length - 1 - j;
-                mul = parseInt(numbers[1][i]) * parseInt(numbers[0][j]) + carry;
-                comment = 'Mnożymy cyfry ' + numbers[1][i] + ' i ' + numbers[0][j];
-                if (carry > 0) {
-                    comment += ', dodajemy zapamiętane ' + carry;
-                }
-                comment += ' i otrzymujemy ' + mul + '.';
+                const oldCarry = carry;
+                const mul = parseInt(numbers[1][i]) * parseInt(numbers[0][j]) + oldCarry;
                 carry = Math.floor(mul / 10);
-                t = table[0].length - 1 - (ci + cj);
-                while (t < 0) {
-                    table = ColumnarMultiplication.addFirstColumn(table);
-                    t = table[0].length - 1 - (ci + cj);
-                }
-                if (typeof table[2 + ci] == 'undefined') {
-                    table[2 + ci] = [];
-                    for (let k = 0; k < table[0].length; k++) {
-                        table[2 + ci].push('');
-                    }
-                }
-                table[2 + ci][t] = '' + (mul % 10);
-                if (carry > 0) {
-                    comment +=
-                        ' Ponieważ wynik jest dwucyfrowy, rozbijamy go na ' +
-                        carry +
-                        ' i ' +
-                        (mul % 10) +
-                        '. Cyfrę ' +
-                        (mul % 10) +
-                        ' zapisujemy pod kreską';
-                } else {
-                    comment += ' Wynik zapisujemy pod kreską';
-                }
-                if (cj == 0) {
-                    if (ci == 1) {
-                        comment += ' z pojedynczym wcięciem';
-                    }
-                    if (ci == 2) {
-                        comment += ' z podwójnym wcięciem';
-                    }
-                    if (ci == 3) {
-                        comment += ' z potrójnym wcięciem';
-                    }
-                    if (ci > 3) {
-                        comment += ' z odpowiednim wcięciem';
-                    }
-                }
-                if (carry > 0) {
-                    comment += ', a ' + carry + ' zapamiętujemy.';
-                } else {
-                    comment += '.';
-                }
-                highlightFields = ColumnarMultiplication.emptyHighlight(table);
-                highlightFields[0][table[0].length - 1 - cj] = true;
-                highlightFields[1][table[1].length - 1 - ci] = true;
-                highlightFields[2 + ci][t] = true;
-                this.steps.push(new ColumnarMultiplicationStep(table, highlightFields, comment, carry, 1, -1));
-            }
-            if (carry != 0) {
-                if (t - 1 == -1) {
-                    table = ColumnarMultiplication.addFirstColumn(table);
-                    t = 0;
-                    table[2 + (numbers[1].length - 1 - i)][t] = '' + carry;
-                } else {
-                    table[2 + (numbers[1].length - 1 - i)][t - 1] = '' + carry;
-                }
+                const result = mul % 10;
 
-                comment = 'Dopisujemy zapamiętane ' + carry + '.';
+                t = this.table[0].length - 1 - (ci + cj);
+                while (t < 0) {
+                    ColumnarMultiplication.addFirstColumn(this.table);
+                    t++;
+                }
+                this.table[2 + ci][t] = `${result}`;
+
+                const comment =
+                    `Mnożymy cyfry $${numbers[1][i]}$ i $${numbers[0][j]}$` +
+                    (oldCarry > 0 ? `, dodajemy zapamiętane $${oldCarry}$` : '') +
+                    ` i otrzymujemy $${mul}$. ` +
+                    (carry > 0
+                        ? `Ponieważ wynik jest dwucyfrowy, rozbijamy go na $${carry}$ i $${result}$. Cyfrę $${result}$ zapisujemy pod kreską`
+                        : 'Wynik zapisujemy pod kreską') +
+                    (cj == 0 && ci > 0
+                        ? ' z ' +
+                          (ci === 1 ? 'pojedynczym' : ci === 2 ? 'podwójnym' : ci === 3 ? 'potrójnym' : 'odpowiednim') +
+                          ' wcięciem'
+                        : '') +
+                    (carry > 0 ? `, a $${carry}$ zapamiętujemy.` : '.');
+
+                this.addStep(comment, false, [
+                    [0, this.table[0].length - 1 - cj],
+                    [1, this.table[1].length - 1 - ci],
+                    [2 + ci, t],
+                ]);
+            }
+
+            if (carry != 0) {
+                if (t === 0) {
+                    ColumnarMultiplication.addFirstColumn(this.table);
+                    t++;
+                }
+                this.table[2 + (numbers[1].length - 1 - i)][t - 1] = `${carry}`;
+                const oldCarry = carry;
                 carry = 0;
-                highlightFields = ColumnarMultiplication.emptyHighlight(table);
-                this.steps.push(new ColumnarMultiplicationStep(table, highlightFields, comment, carry, 1, -1));
+                this.addStep(`Dopisujemy zapamiętane $${oldCarry}$.`, false);
             }
         }
 
-        let w = '';
-        let sumUnderline: number = -1;
-        if (numbers[1].length == 1) {
-            w = table[table.length - 1].toString();
-            w = w.split(',').join('');
-        } else {
-            sumUnderline = table.length - 1;
+        // summation
+        if (numbers[1].length > 1) {
+            const resultRow = this.emptyArr(this.table[0].length);
+            this.table.push(resultRow);
+            this.addStep('Otrzymane liczby podkreślamy i wykonujemy ich dodawanie pisemne.', true);
 
             let carry = 0;
-            for (let i = table[0].length - 1; i >= 0; i--) {
+            for (let i = this.table[0].length - 1; i >= 0; i--) {
                 let sum = carry;
-                for (let j = 2; j < table.length; j++) {
-                    sum += parseInt(table[j][i] == '' ? '0' : table[j][i]);
+                for (let j = 2; j < this.table.length; j++) {
+                    sum += parseInt(this.table[j][i] || '0');
                 }
-                w = w + (sum % 10).toString();
+                resultRow[i] = `${sum % 10}`;
                 carry = Math.floor(sum / 10);
             }
             if (carry > 0) {
-                w = w + carry.toString();
-                table = ColumnarMultiplication.addFirstColumn(table);
+                ColumnarMultiplication.addFirstColumn(this.table);
+                resultRow[0] = `${carry}`;
             }
-
-            comment = 'Otrzymane liczby podkreślamy i wykonujemy ich dodawanie pisemne.';
-            highlightFields = ColumnarMultiplication.emptyHighlight(table);
-            this.steps.push(new ColumnarMultiplicationStep(table, highlightFields, comment, carry, 1, sumUnderline));
-
-            table[table.length] = [];
-            for (let k = 0; k < table[0].length; k++) {
-                table[table.length - 1].push('');
-            }
-            for (let i = 0; i < w.length; i++) {
-                table[table.length - 1][table[0].length - 1 - i] = w[i];
-            }
-            w = w.split('').reverse().join('');
         }
 
-        if (commas[0] + commas[1] == 0) {
-            comment = 'Odczytujemy wynik: ' + w + '.';
+        // result
+        if (longestAfterComma === 0) {
+            return this.addStep(`Odczytujemy wynik: $${this.readValue(this.table.at(-1)!)}$.`, true);
         } else {
-            const c = commas[0] + commas[1];
-            comment =
-                'Odczytujemy liczbę ' + w + '. Ponieważ ' + numbersOrig[0].replace('.', ',') + ' ma ' + commas[0] + ' ';
-            if (commas[0] == 1) {
-                comment += 'cyfrę';
-            } else if (commas[0] / 10 != 1 && (commas[0] % 10 == 2 || commas[0] % 10 == 3 || commas[0] % 10 == 4)) {
-                comment += 'cyfry';
-            } else {
-                comment += 'cyfr';
-            }
-            comment += ' po przecinku, a ' + numbersOrig[1].replace('.', ',') + ' ma ' + commas[1] + ' ';
-            if (commas[1] == 1) {
-                comment += 'cyfrę';
-            } else if (commas[1] / 10 != 1 && (commas[1] % 10 == 2 || commas[1] % 10 == 3 || commas[1] % 10 == 4)) {
-                comment += 'cyfry';
-            } else {
-                comment += 'cyfr';
-            }
-            comment += ' po przecinku, to wynik musi mieć ' + c + ' ';
-            if (c == 1) {
-                comment += 'cyfrę';
-            } else if (c / 10 != 1 && (c % 10 == 2 || c % 10 == 3 || c % 10 == 4)) {
-                comment += 'cyfry';
-            } else {
-                comment += 'cyfr';
-            }
-            comment += ' po przecinku.';
-            w = w.substring(0, w.length - c) + ',' + w.substring(w.length - c);
-            comment += ' Ostatecznie otrzymujemy ' + w + '.';
+            const [commas0, commas1] = stats.map((s) => s.afterComma);
+            const commasTotal = commas0 + commas1;
+            const result = this.readValue(this.table.at(-1)!);
+            const resultWithComma = this.readValue(this.table.at(-1)!, result.length - commasTotal);
+
+            return this.addStep(
+                `Odczytujemy liczbę $${result}$. Ponieważ $${numbersOrig[0].replace('.', ',')}$ ma ${numeralNoun(commas0, 'cyfrę')} po przecinku, a ` +
+                    `$${numbersOrig[1].replace('.', ',')}$ ma ${numeralNoun(commas1, 'cyfrę')} po przecinku, to wynik musi mieć ` +
+                    `${numeralNoun(commasTotal, 'cyfrę')} po przecinku. Ostatecznie otrzymujemy $${resultWithComma}$.`,
+                true,
+            );
+        }
+    }
+
+    private addStep(
+        comment: string,
+        withSumUnderline: boolean,
+        highlight: [number, number][] = [],
+    ): ColumnarOperationStep[] {
+        const tab = this.table.map((row, i) => [
+            new DisplayTableCell(),
+            new DisplayTableCell(),
+            ...row.map(
+                (cell, j) =>
+                    new DisplayTableCell(cell, highlight.some(([row, col]) => row === i && col === j) ? ['h'] : []),
+            ),
+        ]);
+        tab[1][0].value = '\\cdot';
+        tab[1].forEach((c) => c.styleIds.push('u'));
+        if (withSumUnderline && tab.length > 3) {
+            tab.at(-2)![0].value = '+';
+            tab.at(-2)!.forEach((c) => c.styleIds.push('u'));
         }
 
-        highlightFields = ColumnarMultiplication.emptyHighlight(table);
-        this.steps.push(new ColumnarMultiplicationStep(table, highlightFields, comment, carry, 1, sumUnderline));
-
+        this.steps.push({
+            comment,
+            table: new DisplayTable(tab),
+        });
         return this.steps;
     }
 
-    private static addFirstColumn(tab: string[][]) {
-        const tab1: string[][] = [];
-        for (let i = 0; i < tab.length; i++) {
-            tab1[i] = [];
-            tab1[i].push('');
-            for (let j = 0; j < tab[i].length; j++) {
-                tab1[i].push(tab[i][j]);
-            }
-        }
-        return tab1;
-    }
-
-    private static emptyHighlight(tab: string[][]) {
-        const tab1: boolean[][] = [];
-        for (let i = 0; i < tab.length; i++) {
-            tab1[i] = [];
-            for (let j = 0; j < tab[i].length; j++) {
-                tab1[i].push(false);
-            }
-        }
-        return tab1;
+    private highlightRow(row: number): [number, number][] {
+        return this.emptyArr(this.table[row].length)
+            .map((_, j) => [row, j] as [number, number])
+            .filter(([_, h]) => this.table[row][h] !== undefined && this.table[row][h] !== '');
     }
 }

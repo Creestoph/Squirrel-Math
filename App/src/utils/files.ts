@@ -1,4 +1,6 @@
-export function downloadFile(data: any, filename: string, type: string) {
+import { LessonData } from '@/models/lesson';
+
+function downloadFile(data: BlobPart, filename: string, type: string) {
     const file = new Blob([data], { type: type });
     const a = document.createElement('a'),
         url = URL.createObjectURL(file);
@@ -10,4 +12,8 @@ export function downloadFile(data: any, filename: string, type: string) {
         document.body.removeChild(a);
         window.URL.revokeObjectURL(url);
     }, 0);
+}
+
+export function downloadLesson(data: LessonData, filename: string) {
+    downloadFile(JSON.stringify(data, null, 4), filename, 'application/json');
 }

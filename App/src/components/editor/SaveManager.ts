@@ -1,5 +1,5 @@
 import { Draft, DraftPreview, LocalStorageSaver } from './LocalStorageManager';
-import { downloadFile } from '@/utils/files';
+import { downloadLesson } from '@/utils/files';
 import { allComments, lessonImages } from './shared-state';
 import { LessonData, LessonVersionData } from '@/models/lesson';
 import { generateGUID } from './tiptap-utils';
@@ -72,13 +72,8 @@ export class SaveManager {
         LocalStorageSaver.saveDraft(this.currentDraft, fromAutosave);
     }
 
-    saveToFile(
-        fileName: string | null,
-        lessonData: { long: LessonVersionData | null; short: LessonVersionData | null },
-    ) {
-        const lessonString = JSON.stringify(this.getLessonJSON(lessonData));
-        const finalName = fileName || `${fileName || 'lekcja'}.json`;
-        downloadFile(lessonString, finalName, 'application/json');
+    saveToFile(fileName: string, lessonData: { long: LessonVersionData | null; short: LessonVersionData | null }) {
+        downloadLesson(this.getLessonJSON(lessonData), fileName);
     }
 
     loadDraft(draft: DraftPreview) {

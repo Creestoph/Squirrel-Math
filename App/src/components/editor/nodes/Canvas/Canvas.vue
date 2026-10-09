@@ -1,35 +1,44 @@
 <template>
     <node-view-wrapper>
-        <button
+        <div
             ref="geometryEditor"
             class="geometry-editor"
-            @focus="focused = true"
-            @blur="onBlur($event)"
-            contenteditable="false"
+            tabindex="0"
+            @mousedown="focusCanvas"
+            @keydown="handleKeyDown"
+            @keyup="handleKeyUp"
         >
             <div v-if="focused" class="geometry-toolbar-wrapper">
                 <div class="geometry-toolbar" contenteditable="false">
-                    <button @mousedown="addSquare($event)">
+                    <button @mousedown="onAddSquare($event)">
                         <icon>crop_square</icon>
                     </button>
-                    <button @mousedown="addPolygon($event)">
+                    <button @mousedown="onAddPolygon($event)">
                         <icon>pentagon</icon>
                     </button>
-                    <button @mousedown="addCircle($event)">
+                    <button @mousedown="onAddCircle($event)">
                         <icon>circle</icon>
                     </button>
-                    <button @mousedown="addLine($event)">
+                    <button @mousedown="onAddLine($event)">
                         <icon>show_chart</icon>
                     </button>
-                    <button @mousedown="addCurve($event)">
+                    <button @mousedown="onAddCurve($event)">
                         <icon>gesture</icon>
                     </button>
-                    <button @mousedown="addArc($event)">
+                    <button @mousedown="onAddArc($event)">
                         <icon>compass</icon>
                     </button>
-                    <button @mousedown="addTextArea($event)">
+                    <button @mousedown="onAddTextArea($event)">
                         <span class="T-icon">T</span>
                     </button>
+                    <button @mousedown="onCenter($event)" style="margin-left: 40px">
+                        <icon>recenter</icon>
+                    </button>
+                    <dropdown title="odbij symetrycznie" class="layers-dropdown" @click="$event.preventDefault()">
+                        <template v-slot:placeholder><icon>flip</icon></template>
+                        <dropdown-option @click="onFlipHorizontal"><icon>swap_horiz</icon></dropdown-option>
+                        <dropdown-option @click="onFlipVertical"><icon>swap_vert</icon></dropdown-option>
+                    </dropdown>
                     <template v-if="selection.length">
                         <dropdown title="kolejność rysowania" class="layers-dropdown">
                             <template v-slot:placeholder><icon>layers</icon></template>
@@ -74,14 +83,14 @@
                         >
                             <icon>align_bottom</icon>
                         </button>
-                        <span class="input-button" v-if="selectedRectangle() || selectedCircle()">
-                            <span @mousedown="(widthInput.focus(), $event.preventDefault())">szerokość</span>
+                        <button class="input-button" v-if="selectedRectangle() || selectedCircle()" title="szerokość">
+                            <icon @mousedown="(widthInput.focus(), $event.preventDefault())">width</icon>
                             <input type="number" ref="widthInput" v-model="width" />
-                        </span>
-                        <span class="input-button" v-if="selectedRectangle() || selectedCircle()">
-                            <span @mousedown="(heightInput.focus(), $event.preventDefault())">wysokość</span>
+                        </button>
+                        <button class="input-button" v-if="selectedRectangle() || selectedCircle()" title="wysokość">
+                            <icon @mousedown="(heightInput.focus(), $event.preventDefault())">height</icon>
                             <input type="number" ref="heightInput" v-model="height" />
-                        </span>
+                        </button>
                         <button
                             v-if="selectedLine() || selectedPolygon() || selectedTextArea()"
                             @mousedown="toggleEdit()"
@@ -105,14 +114,10 @@
             </div>
             <div class="canvas-wrapper" ref="canvasWrapper">
                 <canvas ref="eventsCatcher" resize="true"></canvas>
-                <node-view-content
-                    contenteditable="true"
-                    @mousedown="forwardClickEventToCanvas($event)"
-                    class="shapes-container"
-                />
+                <node-view-content class="shapes-container" />
                 <canvas ref="overlayCanvas" class="overlay-canvas"></canvas>
             </div>
-        </button>
+        </div>
     </node-view-wrapper>
 </template>
 
@@ -126,7 +131,6 @@ import DropdownOption from '../../DropdownOption.vue';
 import { computed, onMounted, onUnmounted, ref } from 'vue';
 import { NodeViewContent, nodeViewProps, NodeViewWrapper } from '@tiptap/vue-3';
 import { ShapeController } from './Canvas';
-import { Node as PMNode } from '@tiptap/pm/model';
 import { LineShapeController } from './LineNode';
 import { PolygonShapeController } from './PolygonNode';
 import { TextAreaShapeController } from './TextAreaNode';
@@ -134,6 +138,7 @@ import { ArcShapeController } from './ArcNode';
 import { CircleShapeController } from './CircleNode';
 import { RectangleShapeController } from './RectangleNode';
 import { ValueObject } from '@/models/common';
+import { copiedCanvasShapes } from '../../shared-state';
 
 type ShapeWithBorder = ShapeController & { borderColor: ValueObject<string | null> };
 
@@ -144,11 +149,9 @@ let overlayPaperScope: paper.PaperScope = null!;
 let dragStartPoint: paper.Point | null = null;
 let shapeDragged = -1;
 let shapeDragStartPosition: paper.Point | null = null;
-let copiedNodes: PMNode[] | null = null;
 let selectionBox: paper.Shape.Rectangle | null = null;
 let selectionBoxAnchor: paper.Point | null = null;
 let resizeObserver: ResizeObserver = null!;
-let lastTextAreaClickEvent: MouseEvent | null = null;
 let snapper: Snapper = null!;
 let saveTimeout: number | null = null;
 let resizeSaveTimeout: number | null = null;
@@ -267,6 +270,8 @@ const sides = computed({
 });
 
 onMounted(() => {
+    reserveExistingShapeIds();
+
     eventsCatcherPaperScope = new paper.PaperScope();
     eventsCatcherPaperScope.setup(eventsCatcher.value);
     eventsCatcherPaperScope.tool = new paper.Tool();
@@ -274,8 +279,6 @@ onMounted(() => {
     eventsCatcherPaperScope.tool.onMouseDown = handleMouseDown;
     eventsCatcherPaperScope.tool.onMouseDrag = handleMouseDrag;
     eventsCatcherPaperScope.tool.onMouseUp = handleMouseUp;
-    eventsCatcherPaperScope.tool.onKeyDown = handleKeyDown;
-    eventsCatcherPaperScope.tool.onKeyUp = handleKeyUp;
     eventsCatcher.value.addEventListener('wheel', handleScroll);
 
     overlayPaperScope = new paper.PaperScope();
@@ -286,10 +289,13 @@ onMounted(() => {
 
     (resizeObserver = new ResizeObserver(handleResize)).observe(eventsCatcher.value);
 
-    props.editor.on('textAreaDelete' as any, () => deleteSelected(true));
+    props.editor.on('textAreaDelete' as any, onTextAreaDelete);
+    props.editor.on('selectionUpdate', onSelectionUpdate);
 });
 
 onUnmounted(() => {
+    props.editor.off('textAreaDelete' as any, onTextAreaDelete);
+    props.editor.off('selectionUpdate', onSelectionUpdate);
     resizeObserver?.disconnect();
     clearTimeout(resizeSaveTimeout ?? undefined);
     clearTimeout(saveTimeout ?? undefined);
@@ -308,8 +314,16 @@ function shapeAtIndex(i: number) {
     return props.editor.storage.geometry.controllers.get(id);
 }
 
+function activeShapes(): ShapeController[] {
+    return selection.value.length > 0 ? selection.value.map((i) => shapeAtIndex(i)!) : allShapes();
+}
+
 function allShapes(): ShapeController[] {
     return props.node.children.map((c) => props.editor.storage.geometry.controllers.get(c.attrs.id)!);
+}
+
+function reserveExistingShapeIds() {
+    props.node.children.forEach((node) => idGenerator.reserve(parseInt(node.attrs.id)));
 }
 
 function initializeFromAttributes() {
@@ -466,75 +480,111 @@ function handleMouseUp() {
     saveTimeout = setTimeout(() => save());
 }
 
-function handleKeyDown(event: paper.KeyEvent) {
-    if (event.key == 'control' || (event.key == 'z' && event.modifiers.control)) {
+function focusCanvas() {
+    focused.value = true;
+    geometryEditor.value.focus();
+}
+
+function shouldIgnoreKeyboardEvent(event: KeyboardEvent) {
+    return ['input', 'textarea'].includes((event.target as HTMLElement | null)?.nodeName.toLowerCase()!);
+}
+
+function handleKeyDown(event: KeyboardEvent) {
+    if (!focused.value || shouldIgnoreKeyboardEvent(event)) {
         return;
     }
 
-    if (selection.value.length > 0) {
-        const anyTextAreaSelected = selection.value.some((i) => isTextArea(shapeAtIndex(i)!));
-        let capturedEvent = true;
-        if (event.key == 'delete' || event.key === 'backspace') {
-            deleteSelected();
-            capturedEvent = false;
-        } else if (event.key == 'up' && !anyTextAreaSelected) {
+    const ctrl = event.ctrlKey || event.metaKey;
+    const key = event.key.toLowerCase();
+
+    if (key === 'control' || key === 'meta' || (key === 'z' && ctrl)) {
+        return;
+    }
+
+    let shouldPreventDefault = true;
+    if (key == 'a' && ctrl) {
+        deselectAll();
+        allShapes().forEach((shape) => shape.setSelected(true));
+    } else if (selection.value.length > 0) {
+        const isEditingTextArea = selectedTextArea() && shapeEdited.value != -1;
+        if (key == 'delete' || key === 'backspace') {
+            shouldPreventDefault = deleteSelected();
+        } else if (key == 'arrowup' && !isEditingTextArea) {
             selection.value.forEach((i) => shapeAtIndex(i)!.move(new paper.Point(0, -1)));
-        } else if (event.key == 'down' && !anyTextAreaSelected) {
+        } else if (key == 'arrowdown' && !isEditingTextArea) {
             selection.value.forEach((i) => shapeAtIndex(i)!.move(new paper.Point(0, 1)));
-        } else if (event.key == 'left' && !anyTextAreaSelected) {
+        } else if (key == 'arrowleft' && !isEditingTextArea) {
             selection.value.forEach((i) => shapeAtIndex(i)!.move(new paper.Point(-1, 0)));
-        } else if (event.key == 'right' && !anyTextAreaSelected) {
+        } else if (key == 'arrowright' && !isEditingTextArea) {
             selection.value.forEach((i) => shapeAtIndex(i)!.move(new paper.Point(1, 0)));
-        } else if (event.key == 'escape') {
-            onBlur();
-        } else if (event.key == 'c' && event.modifiers.control) {
+        } else if (key == 'escape') {
+            deselectAll();
+        } else if (key == 'c' && ctrl) {
             copySelected();
-        } else if (event.key == 'x' && event.modifiers.control) {
+        } else if (key == 'x' && ctrl) {
             copySelected();
             deleteSelected();
         } else {
-            capturedEvent = false;
-        }
-        if (capturedEvent) {
-            event.preventDefault();
+            shouldPreventDefault = false;
         }
     }
-    if (event.key == 'v' && event.modifiers.control && copiedNodes) {
+    if (shouldPreventDefault) {
+        event.preventDefault();
+        event.stopPropagation();
+    }
+    if (key == 'v' && ctrl && copiedCanvasShapes.value) {
         deselectAll();
-        copiedNodes.forEach((shapeNode) => {
+        copiedCanvasShapes.value.forEach((shapeNode) => {
             const serializedNode = shapeNode.toJSON();
             serializedNode.attrs = { ...serializedNode.attrs, id: idGenerator.next().value };
             props.editor.commands.insertContentAt(insertPosition(), props.editor.schema.nodeFromJSON(serializedNode));
 
             const added = lastShape();
-            select(totalShapes() - 1, added);
             added.handleResize(canvas.value.width, canvas.value.height);
-            added.move(new paper.Point(40, 40));
+            const center = added.getBounds().center;
+            added.move(
+                new paper.Point(
+                    center.x < canvas.value.width - 50 ? 40 : center.x > 50 ? -40 : 0,
+                    center.y < canvas.value.height - 50 ? 40 : center.y > 50 ? -40 : 0,
+                ),
+            );
+            select(totalShapes() - 1, added);
         });
         event.preventDefault();
+        event.stopPropagation();
         save();
-    } else if (event.key == 'a' && event.modifiers.control) {
+    } else if (key == 'a' && ctrl) {
         deselectAll();
         for (let i = 0; i < totalShapes(); i++) {
             select(i);
         }
         event.preventDefault();
+        event.stopPropagation();
     }
 }
 
 function copySelected() {
-    copiedNodes = selection.value.map((i) => shapeAtIndex(i)!.getNode());
+    copiedCanvasShapes.value = selection.value.map((i) => shapeAtIndex(i)!.getNode());
 }
 
-function deleteSelected(force = false) {
-    let selectedShapeIds = selection.value.map((i) => props.node.children[i].attrs.id);
+function onTextAreaDelete() {
+    deleteSelected(true);
+}
+
+/**
+ * @returns shouldPreventDefault
+ */
+function deleteSelected(force = false): boolean {
+    let selectedShapeIds = selection.value.map((i) => props.node.children[i].attrs.id).sort((a, b) => b - a);
+    let shouldPreventDefault = true;
     for (let i = totalShapes() - 1; i >= 0; i--) {
-        if (!selection.value.includes(i)) {
+        const shape = shapeAtIndex(i)!;
+        if (!selectedShapeIds.find((s) => s === shape.getNode().attrs.id)) {
             continue;
         }
-        const shape = shapeAtIndex(i)!;
-        const captured = shape.onDelete();
-        if (captured && !force) {
+        const deleteResult = shape.onDelete();
+        shouldPreventDefault &&= deleteResult.shouldPreventDefault;
+        if (deleteResult.captured && !force) {
             continue;
         }
         deselect(i);
@@ -545,13 +595,18 @@ function deleteSelected(force = false) {
             elementBegin + shape.getNode().nodeSize - 1,
         );
         props.editor.view.dispatch(transaction);
+        handleResize(); // some components might be re-rendered and need to have canvas size reassigned
     }
-    handleResize(); // some components might be re-rendered and need to have canvas size reassigned
     selection.value = selectedShapeIds.map((s) => props.node.children.findIndex((c) => c.attrs.id === s));
+    focused.value = true;
+    return shouldPreventDefault;
 }
 
-function handleKeyUp(event: paper.KeyEvent) {
-    if (event.key === 'shift') {
+function handleKeyUp(event: KeyboardEvent) {
+    if (shouldIgnoreKeyboardEvent(event)) {
+        return;
+    }
+    if (event.key.toLowerCase() === 'shift') {
         snapper.clearSnapLines();
     }
 }
@@ -569,7 +624,7 @@ function handleScroll(event: WheelEvent) {
 
     for (let i = totalShapes() - 1; i >= 0; i--) {
         if (selection.value.length === 0 || selection.value.includes(i)) {
-            shapeAtIndex(i)!.scale(zoomFactor, center);
+            shapeAtIndex(i)!.scale(zoomFactor, zoomFactor, center);
             event.preventDefault();
         }
     }
@@ -588,13 +643,11 @@ function addShape(event: MouseEvent | paper.KeyEvent) {
     select(totalShapes() - 1, added);
     added.handleResize(canvas.value.width, canvas.value.height);
     save();
-    if (event) {
-        event.preventDefault();
-    }
+    event?.preventDefault();
     return added;
 }
 
-function addSquare(event: MouseEvent) {
+function onAddSquare(event: MouseEvent) {
     props.editor.commands.createRectangle(
         {
             center: {
@@ -607,7 +660,7 @@ function addSquare(event: MouseEvent) {
     addShape(event);
 }
 
-function addPolygon(event: MouseEvent) {
+function onAddPolygon(event: MouseEvent) {
     props.editor.commands.createPolygon({}, insertPosition());
     const added = addShape(event) as PolygonShapeController;
     added.makeRegular(3, {
@@ -616,7 +669,7 @@ function addPolygon(event: MouseEvent) {
     });
 }
 
-function addCircle(event: MouseEvent) {
+function onAddCircle(event: MouseEvent) {
     props.editor.commands.createCircle(
         {
             center: {
@@ -629,21 +682,21 @@ function addCircle(event: MouseEvent) {
     addShape(event);
 }
 
-function addLine(event: MouseEvent) {
+function onAddLine(event: MouseEvent) {
     props.editor.commands.createLine({}, insertPosition());
     const added = addShape(event) as LineShapeController;
     added.editing.value = true;
     shapeEdited.value = totalShapes() - 1;
 }
 
-function addCurve(event: MouseEvent) {
+function onAddCurve(event: MouseEvent) {
     props.editor.commands.createLine({ smooth: true }, insertPosition());
     const added = addShape(event) as LineShapeController;
     added.editing.value = true;
     shapeEdited.value = totalShapes() - 1;
 }
 
-function addArc(event: MouseEvent) {
+function onAddArc(event: MouseEvent) {
     props.editor.commands.createArc(
         {
             center: {
@@ -666,7 +719,7 @@ function addArc(event: MouseEvent) {
     addShape(event);
 }
 
-function addTextArea(event: MouseEvent) {
+function onAddTextArea(event: MouseEvent) {
     props.editor.commands.createTextArea(
         {
             width: 160,
@@ -678,6 +731,34 @@ function addTextArea(event: MouseEvent) {
     );
 
     addShape(event);
+    toggleEdit();
+}
+
+function getShapesCenter() {
+    const bounds = activeShapes().map((shape) => shape.getBounds());
+    return bounds.reduce((acc, b) => acc.unite(b), bounds[0]).center;
+}
+
+function onCenter(event: MouseEvent) {
+    event.preventDefault();
+    const canvasCenter = new paper.Point(canvas.value.width / 2, canvas.value.height / 2);
+    const delta = canvasCenter.subtract(getShapesCenter());
+    activeShapes().forEach((shape) => shape.move(delta));
+    save();
+}
+
+function onFlipHorizontal(event: MouseEvent) {
+    event.preventDefault();
+    const shapesCenter = getShapesCenter();
+    activeShapes().forEach((shape) => shape.scale(-1, 1, shapesCenter));
+    save();
+}
+
+function onFlipVertical(event: MouseEvent) {
+    event.preventDefault();
+    const shapesCenter = getShapesCenter();
+    activeShapes().forEach((shape) => shape.scale(1, -1, shapesCenter));
+    save();
 }
 
 function onMoveToBottom() {
@@ -727,7 +808,20 @@ function toggleEdit() {
         | TextAreaShapeController;
     shape.editing.value = !shape.editing.value;
     shapeEdited.value = shape.editing.value ? selection.value[0] : -1;
-    props.editor.commands.focus();
+
+    if (shape.editing.value) {
+        let pos = shape.getPos()! + 1;
+        shape
+            .getNode()
+            .descendants(
+                (child, offset) => void (pos = child.isTextblock ? shape.getPos()! + offset + child.nodeSize : pos),
+            );
+
+        props.editor.commands.setTextSelection(pos);
+        props.editor.commands.focus();
+    } else {
+        props.editor.commands.blur();
+    }
 }
 
 function selectedRectangle() {
@@ -840,30 +934,21 @@ function save() {
     handleResize();
 }
 
-function onBlur(event?: FocusEvent) {
-    if (!event) {
-        deselectAll();
-    } else if (
-        shapeEdited.value == -1 &&
-        event.relatedTarget instanceof Node &&
-        !geometryEditor.value.contains(event.relatedTarget) &&
-        (!lastTextAreaClickEvent || event.timeStamp > lastTextAreaClickEvent.timeStamp + 10)
-    ) {
-        deselectAll();
-        focused.value = false;
-    }
-    // delay attrs update to avoid collisions with prosemirror selection update
-    clearTimeout(saveTimeout ?? undefined);
-    saveTimeout = setTimeout(() => save(), 100);
-}
+function onSelectionUpdate() {
+    const { from, to } = props.editor.state.selection;
 
-function forwardClickEventToCanvas(event: MouseEvent) {
-    const copiedEvent = new MouseEvent('mousedown', {
-        clientX: event.pageX,
-        clientY: event.pageY,
-    });
-    eventsCatcher.value.dispatchEvent(copiedEvent);
-    lastTextAreaClickEvent = event;
+    const nodeStart = props.getPos()!;
+    const nodeEnd = nodeStart + props.node.nodeSize;
+    const selectionInsideCanvas = to >= nodeStart && from <= nodeEnd;
+
+    if (!selectionInsideCanvas && focused.value) {
+        deselectAll();
+        // delay attrs update to avoid collisions with prosemirror selection update
+        clearTimeout(saveTimeout ?? undefined);
+        saveTimeout = setTimeout(() => save(), 100);
+    }
+
+    focused.value = selectionInsideCanvas;
 }
 </script>
 
@@ -873,12 +958,13 @@ function forwardClickEventToCanvas(event: MouseEvent) {
 
 .geometry-editor {
     display: block;
+    width: fit-content;
+    max-width: 100%;
     margin: 0 auto;
     padding: 0;
     background: none;
     position: relative;
     cursor: initial;
-    max-width: 100%;
 }
 
 .ProseMirror-selectednode .geometry-editor {
@@ -886,7 +972,7 @@ function forwardClickEventToCanvas(event: MouseEvent) {
 }
 
 .canvas-wrapper {
-    border: 2px colors.$gray dashed;
+    outline: 2px colors.$gray dashed; // don't use border here because it messes canvas size, devicePixelRatio etc.
     resize: both;
     overflow: hidden;
     max-width: 100%;
@@ -916,11 +1002,11 @@ function forwardClickEventToCanvas(event: MouseEvent) {
 }
 
 .canvas-wrapper:hover {
-    border: 2px colors.$darker-gray dashed;
+    outline: 2px colors.$darker-gray dashed;
 }
 
 .canvas-wrapper:focus {
-    border: 2px black dashed;
+    outline: 2px black dashed;
 }
 
 .geometry-toolbar-wrapper {
@@ -991,11 +1077,11 @@ function forwardClickEventToCanvas(event: MouseEvent) {
     padding: 0;
 
     span {
-        padding: 0 5px 0 10px;
+        margin: 0 5px 0 10px;
     }
 
     input[type='number'] {
-        width: 30px;
+        width: 40px;
         height: 100%;
         background: transparent;
         padding: 0 5px;
@@ -1003,7 +1089,6 @@ function forwardClickEventToCanvas(event: MouseEvent) {
 
         &:focus {
             background: colors.$dark-gray;
-            width: 40px;
             @extend .allow-selection;
         }
     }
@@ -1016,6 +1101,9 @@ function forwardClickEventToCanvas(event: MouseEvent) {
 [dropdown-option] {
     background: colors.$gray;
     padding: 0 10px;
+    display: flex;
+    align-items: center;
+    height: 47px;
 
     &:hover {
         background: colors.$dark-gray;

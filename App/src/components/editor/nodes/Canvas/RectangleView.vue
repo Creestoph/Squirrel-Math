@@ -113,6 +113,7 @@ const controller: RectangleShapeController = {
     onMouseUp,
     setSelected,
     save,
+    getBounds,
 };
 
 watch(() => props.node, afterNodeChanged);
@@ -182,14 +183,18 @@ function getPosition() {
     return rectangle.position;
 }
 
+function getBounds() {
+    return rectangle.bounds;
+}
+
 function move(shift: paper.Point) {
     rectangle.position.x += shift.x;
     rectangle.position.y += shift.y;
     grips.visible = false;
 }
 
-function scale(factor: number, center: paper.Point) {
-    rectangle.scale(factor, new paper.Point(center));
+function scale(factorX: number, factorY: number, center: paper.Point) {
+    rectangle.scale(factorX, factorY, center);
     recalculateGripsPositions();
 }
 
@@ -223,9 +228,9 @@ function getSnapPoints() {
     );
 }
 
-function onDelete() {
+function onDelete(): { captured: boolean; shouldPreventDefault: boolean } {
     all.remove();
-    return false;
+    return { captured: false, shouldPreventDefault: true };
 }
 
 function onMouseMove(_event: paper.ToolEvent, hitResult: paper.HitResult, cursorStyle: CSSStyleDeclaration) {

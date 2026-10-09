@@ -5,12 +5,15 @@ export interface ShapeAttributes {
     type?: string;
 }
 
-export const idGenerator = (function* () {
-    let id = 0;
-    while (true) {
-        yield (id++).toString();
-    }
-})();
+let nextId = 0;
+export const idGenerator = {
+    next(): IteratorResult<string> {
+        return { value: (nextId++).toString(), done: false };
+    },
+    reserve(id: number): void {
+        nextId = Math.max(nextId, id + 1);
+    },
+};
 
 interface SnapPair {
     moved: Point;

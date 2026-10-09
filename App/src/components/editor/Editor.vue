@@ -1,5 +1,5 @@
 <template>
-    <lesson>
+    <lesson :key="shortMode">
         <div class="toolbar no-selection" :style="{ left: lessonLeftPos }">
             <div v-if="editor">
                 <div class="tools-managing">
@@ -130,7 +130,7 @@
 
                     <button
                         :class="{ active: editor.isActive('comment') }"
-                        @click="addComment()"
+                        @click="editor.commands.addComment()"
                         title="dodaj komentarz"
                     >
                         <icon>add_comment</icon>
@@ -387,30 +387,43 @@
             @close="showImagesDialog = false"
         />
 
-        <comment-popup
-            v-if="editedCommentData"
-            :id="editedCommentData.id"
-            :pos="editedCommentData.pos"
-            @closed="editedCommentData = null"
-        />
-
         <bubble-menu
             :editor="editor"
-            :options="{ placement: 'top', offset: 8 }"
+            :options="{ shift: true, onUpdate: computeCommentPopupPos }"
+            :should-show="() => editor.isActive('comment')"
+        >
+            <comment-popup
+                v-if="editor"
+                :id="editor.getAttributes('comment').id ?? null"
+                :toLeft="commentPopupToLeft"
+                @delete="(id) => editor.chain().focus().extendMarkRange('comment').deleteComment(id).run()"
+            />
+        </bubble-menu>
+
+        <bubble-menu
+            ref="bubbleMenuRef"
+            :editor="editor"
+            :options="{
+                shift: true,
+                offset: 30,
+                onUpdate: computeLinkPopupPos,
+            }"
             :should-show="() => editor.isActive('link')"
         >
             <link-popup
                 v-if="editor"
                 :href="editor.getAttributes('link').href"
+                :pos="linkPopupPosition"
                 @updated="editor.chain().focus().extendMarkRange('link').setLink($event).run()"
+                @delete="() => editor.chain().focus().extendMarkRange('link').deleteLink().run()"
             />
         </bubble-menu>
     </lesson>
 </template>
 
 <script setup lang="ts">
-import { onMounted, onUnmounted, ref } from 'vue';
-import { EditorContent, Editor } from '@tiptap/vue-3';
+import { ComponentPublicInstance, onMounted, onUnmounted, ref } from 'vue';
+import { EditorContent, Editor, posToDOMRect } from '@tiptap/vue-3';
 import Icon from '../Icon.vue';
 
 import Lesson from '../lesson/Lesson.vue';
@@ -450,11 +463,10 @@ import Link from './marks/Link';
 import NumberMark from './marks/NumberMark';
 import TextColor from './marks/TextColor';
 import Comment from './marks/Comment';
-import MarkClick from './marks/MarkClick';
 import CommentPopup from './CommentPopup.vue';
 import { DraftPreview, LocalStorageSaver } from './LocalStorageManager';
 import BulletList from '@tiptap/extension-bullet-list';
-import OrderedList from '@tiptap/extension-ordered-list';
+import OrderedList from './nodes/OrderedList';
 import HardBreak from '@tiptap/extension-hard-break';
 import Paragraph from '@tiptap/extension-paragraph';
 import Text from '@tiptap/extension-text';
@@ -464,7 +476,6 @@ import { Gapcursor, UndoRedo } from '@tiptap/extensions';
 import LinkPopup from './LinkPopup.vue';
 import { BubbleMenu } from '@tiptap/vue-3/menus';
 import { allComments, lessonImages } from './shared-state';
-import { Point } from '../../models/point';
 import { ImageData, LessonData, LessonVersionData } from '@/models/lesson';
 import { NavigationGuardNext, onBeforeRouteLeave, useRoute, useRouter } from 'vue-router';
 import TableBorders from './extensions/TableBorders';
@@ -482,10 +493,12 @@ const { lessonLeftPos } = useLessonExpandedInfo();
 const saveManager = new SaveManager();
 
 const editor = ref<Editor>(null!);
+const bubbleMenuRef = ref<ComponentPublicInstance>(null!);
+const linkPopupPosition = ref({ top: true, shift: 0 });
 const showDraftsDialog = ref(false);
 const showImagesDialog = ref(false);
 const exitPending = ref<(() => void) | null>(null);
-const editedCommentData = ref<{ id: string; pos: Point } | null>(null);
+const commentPopupToLeft = ref<boolean>(false);
 const shortMode = ref(false);
 const lessonData = {
     short: null as LessonVersionData | null,
@@ -497,7 +510,7 @@ createEditor(false);
 
 onMounted(() => {
     clearAll();
-    loadContent();
+    loadLessonFromUrl();
     createAutoSave();
     addEventListener('beforeunload', exitListener);
     addEventListener('keydown', onQuickSave);
@@ -561,7 +574,7 @@ function createEditor(shortVersion: boolean) {
             TableBorders,
 
             // custom extensions
-            LessonDoc,
+            LessonDoc.configure({ shortVersion }),
             Title.configure({ shortVersion }),
             Intro,
             Chapter,
@@ -613,30 +626,21 @@ function createEditor(shortVersion: boolean) {
                     return 'Treść sekcji';
                 },
             }),
-            MarkClick.configure({
-                targets: [
-                    {
-                        selector: 'comment[comment-id]',
-                        idAttr: 'comment-id',
-                        onClick: ({ id, rect }) => (editedCommentData.value = { id, pos: rect }),
-                    },
-                ],
-            }),
         ],
     });
 
     editor.value.on('update', () => saveManager.setIsDirty(true));
 }
 
-function loadContent() {
+function loadLessonFromUrl() {
     const sourceFile = route.params.editSourceFile;
     if (sourceFile) {
         import(`@/assets/lessons/${sourceFile}`).then((file: LessonData) => {
             lessonData.short = file.short || null;
             lessonData.long = file.long || null;
             saveManager.loadFromJSON(file);
-            saveManager.makeNewFile(getLessonTitle(editor.value));
             editor.value.commands.setContent(currentModeData());
+            saveManager.makeNewFile(getLessonTitle(editor.value));
             saveManager.setIsDirty(false);
         });
     }
@@ -687,22 +691,6 @@ function insert(element: string) {
         case 'dynamic':
             editor.value.commands.createComponent();
             break;
-    }
-}
-
-function addComment() {
-    editor.value.commands.addComment();
-    const { from } = editor.value.state.selection;
-    const dom = editor.value.view.domAtPos(from + 1);
-    let el: HTMLElement | null = dom.node.nodeType === 1 ? (dom.node as HTMLElement) : dom.node.parentElement;
-
-    while (el) {
-        if (el.matches?.('comment[comment-id]')) {
-            const id = el.getAttribute('comment-id')!;
-            editedCommentData.value = { id, pos: el.getBoundingClientRect() };
-            break;
-        }
-        el = el.parentElement;
     }
 }
 
@@ -866,6 +854,23 @@ function exitListener(event: any) {
     event.preventDefault();
     event.returnValue = '';
 }
+
+function computeLinkPopupPos() {
+    const menuEl = bubbleMenuRef.value.$el as HTMLElement;
+    const menuRect = menuEl.getBoundingClientRect();
+    const { from, to } = editor.value.state.selection;
+    const selRect = posToDOMRect(editor.value.view, from, to);
+    linkPopupPosition.value = {
+        top: menuRect.bottom <= selRect.top,
+        shift: (menuRect.left + menuRect.right) / 2 - (selRect.left + selRect.right) / 2,
+    };
+}
+
+function computeCommentPopupPos() {
+    const { from, to } = editor.value.state.selection;
+    const selRect = posToDOMRect(editor.value.view, from, to);
+    commentPopupToLeft.value = selRect.left + window.pageXOffset > window.innerWidth / 2;
+}
 </script>
 
 <style lang="scss">
@@ -882,7 +887,7 @@ function exitListener(event: any) {
     outline: none !important;
 }
 .editor {
-    margin-top: 171px; // minimum to ensure LinkPopup for the very first line of intro stays below (expanded) menu
+    margin-top: 100px;
 }
 .toolbar {
     position: fixed;
@@ -979,7 +984,7 @@ function exitListener(event: any) {
         }
 
         &:hover {
-            background: #ffcccc;
+            background: colors.$creamy;
         }
 
         &.active:hover {
@@ -1109,6 +1114,7 @@ a[lesson-url] {
 
     > tbody > tr > td {
         padding: 0 2px;
+        width: 26px;
         position: relative;
         border-style: solid;
         &.selectedCell {

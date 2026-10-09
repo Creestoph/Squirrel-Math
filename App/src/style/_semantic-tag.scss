@@ -4,9 +4,9 @@
 .type {
     display: inline-block;
     background-color: colors.$main-red;
-    padding: 0 5px;
-    height: 31px;
-    line-height: 31px;
+    padding: 0 10px;
+    height: 30px;
+    line-height: 30px;
     color: white;
     margin-top: 0;
     transition: background-color 0.1s;
@@ -17,16 +17,4 @@
 
 .type + * {
     margin-top: 0;
-}
-
-.type:hover {
-    background-color: colors.$darker-main-red;
-    transition: background-color 0.1s;
-}
-
-.warning {
-    font-family: fonts.$secondary-font;
-    color: colors.$darker-gray;
-    font-size: 0.8em;
-    margin-top: -0.2em;
 }

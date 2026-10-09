@@ -32,6 +32,14 @@ p {
     margin: 1.2em 0;
 }
 
+p:first-child {
+    margin-top: 0;
+}
+
+p:last-child {
+    margin-bottom: 0;
+}
+
 ul {
     list-style: none;
     display: table;
@@ -100,14 +108,10 @@ table {
     border-collapse: collapse;
 }
 
-input {
+input,
+textarea {
     outline: none;
     font-family: inherit;
-}
-
-textarea {
-    font-family: inherit;
-    font-size: inherit;
 }
 
 ::selection {
@@ -118,6 +122,37 @@ textarea {
 ::-moz-selection {
     background: #ff6666;
     color: white;
+}
+
+// scrollbar
+* {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(120, 120, 120, 0.6) transparent;
+}
+
+*::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+*::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+    background: rgba(120, 120, 120, 0.6);
+    border-radius: 999px;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+    background: rgba(120, 120, 120, 0.8);
+}
+
+/* Remove scrollbar arrows/buttons */
+*::-webkit-scrollbar-button {
+    display: none;
+    width: 0;
+    height: 0;
 }
 
 // useful reusable classes
@@ -176,12 +211,12 @@ a.link {
     }
 }
 
-input.with-highlight {
+input.with-highlight,
+textarea.with-highlight {
     border-radius: 7px;
     border: 1px solid colors.$darker-gray;
     padding-left: 6px;
     padding-right: 6px;
-    height: 25px;
 
     &:focus {
         border-color: colors.$darker-creamy;
@@ -193,6 +228,9 @@ input.with-highlight {
     &::placeholder {
         color: colors.$dark-gray;
     }
+}
+input.with-highlight {
+    height: 25px;
 }
 
 code {

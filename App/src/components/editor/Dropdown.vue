@@ -1,5 +1,10 @@
 <template>
-    <button class="wrapper" @click="dropdownVisible = !dropdownVisible">
+    <button
+        class="wrapper"
+        @click="dropdownVisible = !dropdownVisible"
+        @mouseenter="showOnHover && (dropdownVisible = true)"
+        @mouseleave="showOnHover && (dropdownVisible = false)"
+    >
         <slot name="placeholder">
             <div class="value">{{ selectedOption }}</div>
         </slot>
@@ -19,11 +24,15 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 
-withDefaults(defineProps<{ arrow?: boolean; opensToRight?: boolean; selectedOption?: string }>(), {
-    arrow: false,
-    opensToRight: true,
-    selectedOption: '',
-});
+withDefaults(
+    defineProps<{ arrow?: boolean; opensToRight?: boolean; selectedOption?: string; showOnHover?: boolean }>(),
+    {
+        arrow: false,
+        opensToRight: true,
+        selectedOption: '',
+        showOnHover: false,
+    },
+);
 const emit = defineEmits<{ (event: 'selected', value: string): void }>();
 
 const dropdownVisible = ref(false);
@@ -65,7 +74,6 @@ function select(event: MouseEvent) {
     z-index: 2;
     max-height: 500px;
     overflow-y: auto;
-    border: 1px solid colors.$gray;
     background-color: colors.$gray;
 }
 

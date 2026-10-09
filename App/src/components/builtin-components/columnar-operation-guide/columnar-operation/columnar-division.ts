@@ -1,46 +1,19 @@
+import { numeralNoun } from '@/utils/utils';
 import { ColumnarOperation, ColumnarOperationStep } from './columnar-operation';
-import { DisplayTable } from './display-table';
-
-class ColumnarDivisionStep implements ColumnarOperationStep {
-    readonly table: DisplayTable;
-
-    constructor(
-        table: string[][],
-        highlightFields: boolean[][],
-        readonly comment: string,
-    ) {
-        const tab: string[][] = [];
-        const underline = true;
-        for (let i = 0; i < table.length; i++) {
-            tab[i] = [i % 2 == 0 && i > 0 ? 'u/-' : ''];
-            for (let j = 0; j < table[i].length; j++) {
-                let t = '/' + table[i][j];
-                if (highlightFields[i][j]) {
-                    t = 'h' + t;
-                }
-                if (i % 2 == 0) {
-                    if (i == 0) {
-                        if (table[i][j].toString() != '' || underline) {
-                            t = 'u' + t;
-                        }
-                    } else {
-                        t = 'u' + t;
-                    }
-                }
-                tab[i].push(t[0] == '/' ? t.replace(/\//g, '') : t);
-            }
-        }
-        this.table = new DisplayTable(tab);
-    }
-}
+import { DisplayTable, DisplayTableCell, DisplayTableCellStyle } from '../../../../utils/display-table';
 
 export class ZeroDivisionError {
     readonly message = 'Po prostu nie wolno.';
 }
 
 export class ColumnarDivision extends ColumnarOperation {
-    protected steps: ColumnarDivisionStep[] = [];
+    protected steps: ColumnarOperationStep[] = [];
     protected signs = ['/', ':'];
+
+    private helperTable: number[] = [];
+    private table: string[][] = [];
+    private dividend = '';
+    private divisor = '';
 
     protected generateSteps(numbers: string[], isFloat = true) {
         this.steps = [];
@@ -50,480 +23,253 @@ export class ColumnarDivision extends ColumnarOperation {
         }
 
         if (numbers.length != 2 || numbers.some((n) => !this.validateNumber(n, isFloat))) {
-            const standardErr = isFloat
-                ? 'Wpisz dwie liczby do podzielenia <br>np. 1234:73'
-                : 'Wpisz dwie liczby naturalne do podzielenia <br>np. 1234:73';
-            throw standardErr;
+            throw isFloat
+                ? 'Wpisz dwie liczby do podzielenia <br>np. <code>1234:73</code>'
+                : 'Wpisz dwie liczby naturalne do podzielenia <br>np. <code>1234:73</code>';
         }
 
         if (numbers[0].length + numbers[1].length > 37) {
             throw "<b>ERROR</b><br>Wprowadzone liczby są zbyt długie.<br>Ich wyświetlenie przeczy design'owi strony.<br>Szanujmy się.";
         }
-        numbers = numbers.map((n) => this.removeLeadingZeros(n));
-        const numbersOrig = [...numbers];
 
-        let decmialPlaces1 = 0;
-        for (let i = 0; i < numbers[1].length; i++) {
-            if (numbers[1][i] == '.') {
-                decmialPlaces1 = numbers[1].length - 1 - i;
-            }
-        }
-        let decmialPlaces0 = 0;
-        for (let i = 0; i < numbers[0].length; i++) {
-            if (numbers[0][i] == '.') {
-                decmialPlaces0 = numbers[0].length - 1 - i;
-            }
-        }
-        const decimalDiff = decmialPlaces0 - decmialPlaces1;
-        numbers[0] = numbers[0].replace('.', '');
+        // organizing decimals
+        const [dividendDecimals, divisorDecimals] = numbers.map((n) => n.split('.')[1]?.length ?? 0);
+        const decimalDiff = dividendDecimals - divisorDecimals;
+
+        let dividend = numbers[0].replace('.', '');
         if (decimalDiff < 0) {
-            for (let i = 0; i < -1 * decimalDiff; i++) {
-                numbers[0] += '0';
-            }
+            dividend += '0'.repeat(-decimalDiff);
         } else if (decimalDiff > 0) {
-            numbers[0] =
-                numbers[0].slice(0, numbers[0].length - decimalDiff) +
-                '.' +
-                numbers[0].slice(numbers[0].length - decimalDiff);
+            const decimalIndex = dividend.length - decimalDiff;
+            dividend = dividend.slice(0, decimalIndex) + '.' + dividend.slice(decimalIndex);
         }
-        numbers[1] = numbers[1].replace('.', '');
-        numbers = numbers.map((n) => this.removeLeadingZeros(n));
-        let table: string[][] = [];
-        for (let i = 0; i < 2; i++) {
-            table[i] = [];
-            for (let j = 0; j < numbers[1].length + numbers[0].length + 1; j++) {
-                table[i][j] = '';
-            }
-        }
-        let k = 0;
-        for (let i = 0; i < numbers.length; i++) {
-            for (let j = 0; j < numbers[i].length; j++) {
-                table[1][k] = numbers[i][j];
-                k = k + 1;
-            }
-            if (i == 0) {
-                table[1][k] = ':';
-                k = k + 1;
-            }
+        dividend = this.removeLeadingZeros(dividend);
+        this.dividend = dividend;
+
+        const divisor = this.removeLeadingZeros(numbers[1].replace('.', ''));
+        const divisorInt = parseInt(divisor);
+        this.divisor = divisor;
+
+        this.table = [[], (dividend + ':' + divisor).split('')];
+        if (dividend.includes('.')) {
+            this.table[0][dividend.indexOf('.')] = '.';
         }
 
-        for (let i = 0; i < table[0].length; i++) {
-            if (table[1][i] == '.') {
-                table[0][i] = '.';
+        this.helperTable = [];
+
+        this.addStep(
+            (divisorDecimals > 0
+                ? `Przed przystapieniem do dzielenia pozbywamy się przecinka w dzielniku. Ponieważ liczba ` +
+                  `$${numbers[1].replace('.', ',')}$ ma ${numeralNoun(divisorDecimals, 'cyfrę')} ` +
+                  `po przecinku, przesuwamy przecinek dzielnej o $${divisorDecimals}$ w prawo. `
+                : '') + 'Zapisujemy obie liczby obok siebie i rysujemy kreskę ponad nimi.',
+        );
+
+        // analysis beginning
+        const dividend0 = parseInt(dividend[0]);
+        const result0 = Math.floor(dividend0 / divisorInt);
+        this.table[0][0] = `${result0}`;
+
+        this.addStep(
+            `Analizujemy dzielną od lewej strony. Bierzemy cyfrę $${dividend0}$ i próbujemy podzielić ją przez $${divisor}$. Dzielnik ` +
+                `mieści się ${numeralNoun(result0, 'raz')} w dzielnej, więc nad kreską zapisujemy $${result0}$.`,
+            [[0, 0], [1, 0], ...this.highlightDivisor()],
+        );
+
+        // first subtraction
+        const multiple0 = result0 * divisorInt;
+        let diffI = dividend0 - multiple0;
+        this.table.push([`${multiple0}`], [`${diffI}`]);
+
+        this.addStep(
+            `Mnożymy zapisane w wyniku $${result0}$ przez dzielnik i otrzymujemy $${multiple0}$. Wykonujemy odejmowanie ` +
+                `$${dividend0} - ${multiple0} = ${diffI}$, wynik zapisujemy poniżej.`,
+            [
+                [1, 0],
+                [2, 0],
+                [3, 0],
+            ],
+        );
+
+        // main loop
+        const occuredDiffs: number[] = [];
+        for (let i = 1, dividendIndex = 1; ; dividendIndex++, i++) {
+            const isAfterDecimal = dividendIndex >= dividend.length;
+
+            if (isAfterDecimal && i === dividendIndex) {
+                this.table[0][dividendIndex] = '.';
+            }
+            if (this.table[0][dividendIndex] === '.') {
+                dividendIndex++;
+            }
+            if (isAfterDecimal) {
+                occuredDiffs.push(diffI);
+            }
+
+            const newDigit = isAfterDecimal ? '0' : dividend[dividendIndex];
+            this.table.at(-1)![i] = newDigit;
+            const dividedPart = parseInt(this.table.at(-1)!.join(''));
+            const resultI = Math.floor(dividedPart / divisorInt);
+            this.table[0][dividendIndex] = `${resultI}`;
+
+            const previousHelperLength = this.helperTable.length;
+            const helperDisplayIndex = resultI - 1;
+            const isHelperNeeded = divisor.length >= 2 && resultI >= 2;
+            if (isHelperNeeded) {
+                const helperTableLength = Math.max(previousHelperLength, resultI + 1);
+                this.helperTable = this.emptyArr(helperTableLength).map((_, i) => divisorInt * (i + 1));
+            }
+
+            const comment =
+                (isAfterDecimal
+                    ? 'Kolejną cyfrą rozwinięcia dziesiętnego dzielnej jest $0$. Dopisujemy więc $0$ '
+                    : `Dopisujemy cyfrę $${newDigit}$ `) +
+                `i próbujemy wykonać dzielenie $${dividedPart}$ przez $${divisor}$. ` +
+                (!isHelperNeeded
+                    ? `Dzielnik mieści się ${numeralNoun(resultI, 'raz')} w dzielnej, czyli nad kreską zapisujemy $${resultI}$.`
+                    : previousHelperLength === 0
+                      ? `Pracujemy na dość dużych liczbach, więc warto zanotować na marginesie, ile wynosi dzielnik dodawany do siebie raz po raz. ` +
+                        `Widać dzięki temu, że $${divisor}$ można wziąć maksymalnie ${numeralNoun(resultI, 'raz')} zanim przekroczy dzielną, ` +
+                        `dlatego zapisujemy $${resultI}$ nad kreską.`
+                      : (this.helperTable.length <= previousHelperLength
+                            ? `Korzystając z naszej wcześniejszej notatki, `
+                            : `Rozszerzamy naszą wcześniejszą notatkę z wielokrotnym dodawaniem i `) +
+                        `odczytujemy, że dzielnik mieści się ${numeralNoun(resultI, 'raz')} w dzielnej, czyli nad kreską zapisujemy $${resultI}$.`);
+
+            this.addStep(
+                comment,
+                [
+                    [0, dividendIndex],
+                    isAfterDecimal ? [-1, -1] : [1, dividendIndex],
+                    ...this.highlightRow(this.table.length - 1),
+                    ...this.highlightDivisor(),
+                ],
+                helperDisplayIndex,
+            );
+
+            const multipleI = resultI * divisorInt;
+            diffI = dividedPart - multipleI;
+            this.addRow(multipleI, i);
+            this.addRow(diffI, i);
+            this.addStep(
+                `Mnożymy zapisane w wyniku $${resultI}$ przez dzielnik i otrzymujemy $${multipleI}$. Wykonujemy odejmowanie ` +
+                    `$${dividedPart} - ${multipleI} = ${diffI}$, wynik zapisujemy poniżej.`,
+                [1, 2, 3].flatMap((j) => this.highlightRow(this.table.length - j)),
+                helperDisplayIndex,
+            );
+
+            // clean finite result
+            if (diffI === 0 && dividendIndex >= dividend.length - 1) {
+                return this.addStep(
+                    (dividendIndex === dividend.length - 1
+                        ? 'Ponieważ w dzielnej nie ma już cyfr do spisania, a '
+                        : 'Ponieważ ') +
+                        `w wyniku odejmowania otrzymaliśmy $0$, kończymy procedurę. Odczytujemy wynik ${this.readResult()}.`,
+                );
+            }
+
+            // finished with remainder
+            if (dividendIndex === dividend.length - 1 && !isFloat) {
+                this.table[0][i + 1] = '\\text{r.}';
+                const diffIString = `${diffI}`;
+                this.table[0].splice(i + 2, diffIString.length, ...diffIString);
+                return this.addStep(
+                    `Ponieważ w dzielnej nie ma już cyfr do spisania, traktujemy pozostałe $${diffI}$ jako resztę z dzielenia. ` +
+                        `Odczytujemy wynik ${this.readResult()}.`,
+                );
+            }
+
+            // cycle
+            if (occuredDiffs.includes(diffI)) {
+                this.table.at(-1)![i + 1] = '0';
+                const fromEnd = occuredDiffs.length - occuredDiffs.indexOf(diffI) || 1;
+                const cycleStart = this.table[0].length - fromEnd;
+                this.table[0].splice(cycleStart, 0, '(');
+                this.table[0].push(')');
+
+                return this.addStep(
+                    `Po spisaniu zera otrzymujemy do podzielenia liczbę $${diffI}0$ - taką samą jak kilka kroków wcześniej. Wszystkie kolejne ` +
+                        `operacje przynosiłyby cyklicznie takie same wyniki - zatem wyznaczyliśmy okres. Odczytujemy wynik ${this.readResult()}.`,
+                    this.highlightRow(this.table.length - fromEnd * 2 - 1),
+                );
+            }
+
+            // overflow
+            const resultLength = this.table[0].findLastIndex((x) => x !== '') + 1;
+            if (resultLength > 27) {
+                this.table[0][resultLength] = '\\dots';
+                return this.addStep(
+                    `Możemy kontynuować procedurę aż do napotkania okresu rozwinięcia dziesiętnego. Rachunki mogą trwać jeszcze bardzo długo, ` +
+                        `więc zadowalamy się przybliżonym wynikiem ${this.readResult()}.`,
+                );
             }
         }
-        let comment = '';
-        if (decmialPlaces1 > 0) {
-            comment +=
-                'Przed przystapieniem do dzielenia pozbywamy się przecinka w dzielniku. Ponieważ liczba ' +
-                numbersOrig[1].replace('.', ',') +
-                ' ma ' +
-                decmialPlaces1;
-            if (decmialPlaces1 == 1) {
-                comment += ' cyfrę';
-            } else if (
-                (decmialPlaces1 % 10 == 2 || decmialPlaces1 % 10 == 3 || decmialPlaces1 % 10 == 4) &&
-                decmialPlaces1 / 10 != 1
-            ) {
-                comment += ' cyfry';
-            } else {
-                comment += ' cyfr';
-            }
-            comment += ' po przecinku,' + ' przesuwamy przecinek dzielnej o ' + decmialPlaces1 + ' w prawo. ';
-        }
-        comment += 'Zapisujemy obie liczby obok siebie i rysujemy kreskę ponad nimi.';
-        let highlightFields = ColumnarDivision.emptyHighlight(table);
-        this.steps.push(new ColumnarDivisionStep(table, highlightFields, comment));
+    }
 
-        table[0][0] = '' + Math.floor(parseInt(table[1][0]) / parseInt(numbers[1]));
+    private addStep(
+        comment: string,
+        highlightFields: [number, number][] = [],
+        helperIndicator = -1,
+    ): ColumnarOperationStep[] {
+        // main table
+        const rowSize = Math.max(...this.table.map((row) => row.length));
+        const table = this.table.map((row, i) => [
+            new DisplayTableCell(i % 2 === 0 && i > 0 ? '-' : '', i % 2 === 0 ? ['u'] : []),
+            ...this.emptyArr(rowSize).map((_, j) => {
+                const cell = row[j] || '';
+                const hMod = highlightFields.some(([row, col]) => row === i && col === j) ? (['h'] as const) : [];
+                const uMod = i % 2 === 0 ? (['u'] as const) : [];
+                return new DisplayTableCell(cell === '.' ? ',' : cell, [...hMod, ...uMod]);
+            }),
+        ]);
 
-        comment =
-            'Analizujemy dzielną od lewej strony. Bierzemy cyfrę ' +
-            table[1][0] +
-            ' i próbujemy podzielić ją przez ' +
-            numbers[1] +
-            '. Liczba ' +
-            numbers[1] +
-            ' mieści się ' +
-            table[0][0] +
-            ' raz' +
-            (table[0][0] == '1' ? '' : 'y') +
-            ' w liczbie ' +
-            table[1][0] +
-            ', więc nad kreską zapisujemy ' +
-            table[0][0] +
-            '.';
-        highlightFields = ColumnarDivision.emptyHighlight(table);
-        highlightFields[1][0] = true;
-        highlightFields[0][0] = true;
-        for (let h = 0; h < numbers[1].length; h++) {
-            highlightFields[1][numbers[0].length + 1 + h] = true;
-        }
-        this.steps.push(new ColumnarDivisionStep(table, highlightFields, comment));
-
-        table = ColumnarDivision.addEmptyRow(table);
-        table[2][0] = '' + parseInt(table[0][0]) * parseInt(numbers[1]);
-        table = ColumnarDivision.addEmptyRow(table);
-        table[3][0] = '' + (parseInt(table[1][0]) - parseInt(table[2][0]));
-
-        comment =
-            'Mnożymy zapisane w wyniku ' +
-            table[0][0] +
-            ' przez dzielnik i otrzymujemy ' +
-            table[2][0] +
-            '. Wykonujemy odejmowanie ' +
-            table[1][0] +
-            '&nbsp;-&nbsp;' +
-            table[2][0] +
-            '&nbsp;=&nbsp;' +
-            table[3][0] +
-            ', wynik zapisujemy poniżej.';
-        highlightFields = ColumnarDivision.emptyHighlight(table);
-        highlightFields[1][0] = true;
-        highlightFields[2][0] = true;
-        highlightFields[3][0] = true;
-        this.steps.push(new ColumnarDivisionStep(table, highlightFields, comment));
-
-        let i = 1;
-        let fi = i;
-        let z: string = '' + parseInt(table[3][0]);
-        for (; fi < numbers[0].length; fi++) {
-            if (numbers[0][fi] == '.') {
-                fi++;
+        // helper table
+        if (this.helperTable.length > 0) {
+            for (let i = table.length; i < this.helperTable.length; i++) {
+                table.push(this.emptyArr(rowSize).map(() => new DisplayTableCell()));
             }
-            table[table.length - 1][i] = numbers[0][fi];
-            let x = '';
-            for (let j = i; j >= 0 && table[table.length - 1][j] != ''; j--) {
-                x = table[table.length - 1][j] + x;
-            }
-            table[0][fi] = '' + Math.floor(parseInt(x) / parseInt(numbers[1]));
-
-            comment =
-                'Dopisujemy cyfrę ' +
-                numbers[0][fi] +
-                ' i próbujemy wykonać dzielenie ' +
-                parseInt(x) +
-                ' przez ' +
-                numbers[1] +
-                '. Liczba ' +
-                numbers[1] +
-                ' mieści się ' +
-                table[0][fi] +
-                ' raz' +
-                (table[0][fi] == '1' ? '' : 'y') +
-                ' w liczbie ' +
-                parseInt(x) +
-                ', więc nad kreską zapisujemy ' +
-                table[0][fi] +
-                '.';
-            highlightFields = ColumnarDivision.emptyHighlight(table);
-            highlightFields[0][fi] = true;
-            highlightFields[1][fi] = true;
-            for (let j = i; j >= 0 && table[table.length - 1][j] != ''; j--) {
-                highlightFields[table.length - 1][j] = true;
-            }
-            for (let h = 0; h < numbers[1].length; h++) {
-                highlightFields[1][numbers[0].length + 1 + h] = true;
-            }
-            this.steps.push(new ColumnarDivisionStep(table, highlightFields, comment));
-
-            const y = '' + parseInt(table[0][fi]) * parseInt(numbers[1]);
-            table = ColumnarDivision.addEmptyRow(table);
-            for (let j = y.length - 1; j >= 0; j--) {
-                table[table.length - 1][i - (y.length - 1 - j)] = y[j];
-            }
-            z = '' + (parseInt(x) - parseInt(y));
-            table = ColumnarDivision.addEmptyRow(table);
-            for (let j = z.length - 1; j >= 0; j--) {
-                table[table.length - 1][i - (z.length - 1 - j)] = z[j];
-            }
-
-            comment =
-                'Mnożymy zapisane w wyniku ' +
-                table[0][fi] +
-                ' przez dzielnik i otrzymujemy ' +
-                parseInt(y) +
-                '. Wykonujemy odejmowanie<br>' +
-                parseInt(x) +
-                '-' +
-                parseInt(y) +
-                '=' +
-                parseInt(z) +
-                ', wynik zapisujemy poniżej.';
-            highlightFields = ColumnarDivision.emptyHighlight(table);
-            for (let j = z.length - 1; j >= 0; j--) {
-                highlightFields[table.length - 1][i - (z.length - 1 - j)] = true;
-            }
-            for (let j = y.length - 1; j >= 0; j--) {
-                highlightFields[table.length - 2][i - (y.length - 1 - j)] = true;
-            }
-            for (let j = x.length - 1; j >= 0; j--) {
-                highlightFields[table.length - 3][i - (x.length - 1 - j)] = true;
-            }
-            this.steps.push(new ColumnarDivisionStep(table, highlightFields, comment));
-            i++;
-        }
-        i--;
-        fi--;
-        if (parseInt(z) == 0) {
-            comment =
-                'Ponieważ w dzielnej nie ma już cyfr do spisania, a w wyniku odejmowania otrzymaliśmy 0, kończymy procedurę. Odczytujemy wynik ';
-            let zeros = 1;
-            let result = '';
-            for (let j = 0; j < table[0].length; j++) {
-                if (table[0][j] == '0' && zeros != 1) {
-                    result += table[0][j].toString();
-                } else if (table[0][j] != '0') {
-                    result += table[0][j].toString();
-                    zeros = 0;
+            table.forEach((row, i) => {
+                const styles: DisplayTableCellStyle[] = i < this.helperTable.length ? ['r'] : [];
+                if (i < this.helperTable.length - 1) {
+                    styles.push('u');
                 }
-            }
-            comment += (result[0] == '.' ? '0' : '') + result.replace('.', ',') + '.';
-            this.steps.push(new ColumnarDivisionStep(table, ColumnarDivision.emptyHighlight(table), comment));
-            return this.steps;
-        }
-
-        if (!isFloat) {
-            let zeros = 1;
-            let result = '';
-            for (let j = 0; j < table[0].length; j++) {
-                if (table[0][j] == '0' && zeros != 1) {
-                    result += table[0][j].toString();
-                } else if (table[0][j] != '0') {
-                    result += table[0][j].toString();
-                    zeros = 0;
+                if (i === helperIndicator) {
+                    styles.push('h');
                 }
-            }
-
-            comment = `Ponieważ w dzielnej nie ma już cyfr do spisania, traktujemy pozostałe ${parseInt(z)} jako resztę z dzielenia. Odczytujemy wynik ${
-                (result[0] == '.' || result == '' ? '0' : '') + result
-            } r. ${z}.`;
-
-            let j = 0;
-            while (table[0][j].toString() != '') {
-                j++;
-            }
-            table[0][j++] = 'r.';
-            for (let k = 0; k < z.length; k++) {
-                table[0][j++] = z[k];
-            }
-            highlightFields = ColumnarDivision.emptyHighlight(table);
-            this.steps.push(new ColumnarDivisionStep(table, highlightFields, comment));
-            return this.steps;
+                row.unshift(
+                    new DisplayTableCell(this.helperTable[i] ?? null, styles),
+                    new DisplayTableCell('\\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ '),
+                );
+            });
         }
 
-        const occured = [];
-        let n = z.toString();
-        if (fi == i) {
-            fi++;
-            table[0][fi] = '.';
-        }
-        fi++;
-        i++;
-        while (occured.indexOf(n) == -1) {
-            occured.push(n);
-            if (fi + 1 >= table[0].length) {
-                table = ColumnarDivision.addEmptyColumn(table);
-            }
-            table[table.length - 1][i] = '0';
-            let x = '';
-            for (let j = i; j >= 0 && table[table.length - 1][j] != ''; j--) {
-                x = table[table.length - 1][j] + x;
-            }
-            table[0][fi] = '' + Math.floor(parseInt(x) / parseInt(numbers[1]));
-
-            comment =
-                'Kolejną cyfrą rozwinięcia dziesiętnego dzielnej jest 0. Dopisujemy więc 0 i próbujemy wykonać dzielenie ' +
-                parseInt(x) +
-                ' przez ' +
-                numbers[1] +
-                '. Liczba ' +
-                numbers[1] +
-                ' mieści się ' +
-                table[0][fi] +
-                ' raz' +
-                (table[0][fi] == '1' ? '' : 'y') +
-                ' w liczbie ' +
-                parseInt(x) +
-                ', więc nad kreską zapisujemy ' +
-                table[0][fi] +
-                '.';
-            highlightFields = ColumnarDivision.emptyHighlight(table);
-            highlightFields[0][fi] = true;
-            if (fi < numbers[0].length) {
-                highlightFields[1][fi] = true;
-            }
-            for (let j = i; j >= 0 && table[table.length - 1][j] != ''; j--) {
-                highlightFields[table.length - 1][j] = true;
-            }
-            for (let h = 0; h < numbers[1].length; h++) {
-                highlightFields[1][numbers[0].length + 1 + h] = true;
-            }
-            this.steps.push(new ColumnarDivisionStep(table, highlightFields, comment));
-
-            const y = '' + parseInt(table[0][fi]) * parseInt(numbers[1]);
-            table = ColumnarDivision.addEmptyRow(table);
-            for (let j = y.length - 1; j >= 0; j--) {
-                table[table.length - 1][i - (y.length - 1 - j)] = y[j];
-            }
-            z = '' + (parseInt(x) - parseInt(y));
-            table = ColumnarDivision.addEmptyRow(table);
-            for (let j = z.length - 1; j >= 0; j--) {
-                table[table.length - 1][i - (z.length - 1 - j)] = z[j];
-            }
-
-            comment =
-                'Mnożymy zapisane w wyniku ' +
-                table[0][fi] +
-                ' przez dzielnik i otrzymujemy ' +
-                parseInt(y) +
-                '. Wykonujemy odejmowanie ' +
-                parseInt(x) +
-                '&nbsp;-&nbsp;' +
-                parseInt(y) +
-                '&nbsp;=&nbsp;' +
-                parseInt(z) +
-                ', wynik zapisujemy poniżej.';
-            highlightFields = ColumnarDivision.emptyHighlight(table);
-            for (let j = z.length - 1; j >= 0; j--) {
-                highlightFields[table.length - 1][i - (z.length - 1 - j)] = true;
-            }
-            for (let j = y.length - 1; j >= 0; j--) {
-                highlightFields[table.length - 2][i - (y.length - 1 - j)] = true;
-            }
-            for (let j = x.length - 1; j >= 0; j--) {
-                highlightFields[table.length - 3][i - (x.length - 1 - j)] = true;
-            }
-            this.steps.push(new ColumnarDivisionStep(table, highlightFields, comment));
-            let tl = table[0].length - 1;
-            while (table[0][tl].toString() == '') {
-                tl--;
-            }
-            tl++;
-            if (tl > 27) {
-                table = ColumnarDivision.addEmptyColumn(table);
-                table[0][tl] = '\\dots';
-                comment =
-                    'Możemy kontynuować procedurę aż do napotkania okresu rozwinięcia dziesiętnego. Rachunki mogą trwać jeszcze bardzo długo, więc zadowalamy się przybliżonym wynikiem ';
-                let zeros = 1;
-                let result = '';
-                for (let j = 0; j < table[0].length; j++) {
-                    if (table[0][j] == '0' && zeros != 1) {
-                        result += table[0][j].toString();
-                    } else if (table[0][j] != '0') {
-                        result += table[0][j].toString();
-                        zeros = 0;
-                    }
-                }
-                comment += '$' + (result[0] == '.' ? '0' : '') + result.replace('.', ',') + '$.';
-                highlightFields = ColumnarDivision.emptyHighlight(table);
-                this.steps.push(new ColumnarDivisionStep(table, highlightFields, comment));
-                return this.steps;
-            }
-            if (parseInt(z) == 0) {
-                comment = 'Ponieważ w wyniku odejmowania otrzymaliśmy 0, kończymy procedurę. Odczytujemy wynik ';
-                let zeros = 1;
-                let result = '';
-                for (let j = 0; j < table[0].length; j++) {
-                    if (table[0][j] == '0' && zeros != 1) {
-                        result += table[0][j].toString();
-                    } else if (table[0][j] != '0') {
-                        result += table[0][j].toString();
-                        zeros = 0;
-                    }
-                }
-                comment += (result[0] == '.' ? '0' : '') + result.replace('.', ',') + '.';
-                highlightFields = ColumnarDivision.emptyHighlight(table);
-                this.steps.push(new ColumnarDivisionStep(table, highlightFields, comment));
-                return this.steps;
-            }
-            i++;
-            fi++;
-            n = z;
-        }
-        table[table.length - 1][i] = '0';
-        let x = '';
-        for (let j = i; j >= 0 && table[table.length - 1][j] != ''; j--) {
-            x = table[table.length - 1][j] + x;
-        }
-        comment =
-            'Po spisaniu zera otrzymujemy do podzielenia liczbę ' +
-            parseInt(x) +
-            ' - taką samą jak kilka kroków wcześniej. Wszystkie kolejne operacje przynosiłyby cyklicznie takie same wyniki - zatem wyznaczyliśmy okres. Odczytujemy wynik ';
-        let zeros = 1;
-        let result = '';
-        for (let j = 0; j < table[0].length; j++) {
-            if (table[0][j] == '0' && zeros != 1) {
-                result += table[0][j].toString();
-            } else if (table[0][j] != '0') {
-                result += table[0][j].toString();
-                zeros = 0;
-            }
-        }
-        let fromEnd = occured.length - occured.indexOf(n);
-        if (fromEnd == 0) {
-            fromEnd = 1;
-        }
-        result = result.slice(0, result.length - fromEnd) + '(' + result.slice(result.length - fromEnd) + ')';
-        comment += (result[0] == '.' ? '0' : '') + result.replace('.', ',') + '.';
-        let temp = table[0][table[0].length - fromEnd - 1];
-        table[0][table[0].length - fromEnd - 1] = '(';
-        let temp1;
-        for (let b = table[0].length - fromEnd; b < table[0].length; b++) {
-            temp1 = table[0][b];
-            table[0][b] = temp;
-            temp = temp1;
-        }
-        table = ColumnarDivision.addEmptyColumn(table);
-        table[0][table[0].length - 1] = temp;
-        table = ColumnarDivision.addEmptyColumn(table);
-        table[0][table[0].length - 1] = ')';
-        highlightFields = ColumnarDivision.emptyHighlight(table);
-        for (let h = 0; h < highlightFields[highlightFields.length - fromEnd * 2 - 1].length; h++) {
-            if (table[highlightFields.length - fromEnd * 2 - 1][h].toString() != '') {
-                highlightFields[highlightFields.length - fromEnd * 2 - 1][h] = true;
-            }
-        }
-        this.steps.push(new ColumnarDivisionStep(table, highlightFields, comment));
-
+        this.steps.push({
+            comment,
+            table: new DisplayTable(table),
+        });
         return this.steps;
     }
 
-    private static emptyHighlight(tab: string[][]) {
-        const tab1: boolean[][] = [];
-        for (let i = 0; i < tab.length; i++) {
-            tab1[i] = [];
-            for (let j = 0; j < tab[i].length; j++) {
-                tab1[i].push(false);
-            }
-        }
-        return tab1;
+    private highlightDivisor(): [number, number][] {
+        return this.emptyArr(this.divisor.length).map((_, j) => [1, this.dividend.length + 1 + j] as [number, number]);
     }
 
-    private static addEmptyRow(tab: string[][]) {
-        const tab1: string[][] = [];
-        for (let i = 0; i < tab.length; i++) {
-            tab1[i] = [];
-            for (let j = 0; j < tab[i].length; j++) {
-                tab1[i].push(tab[i][j]);
-            }
-        }
-        tab1[tab1.length] = [];
-        for (let j = 0; j < tab[0].length; j++) {
-            tab1[tab1.length - 1].push('');
-        }
-        return tab1;
+    private highlightRow(row: number): [number, number][] {
+        return this.emptyArr(this.table[row].length)
+            .map((_, j) => [row, j] as [number, number])
+            .filter(([_, h]) => this.table[row][h] !== undefined && this.table[row][h] !== '');
     }
 
-    private static addEmptyColumn(tab: string[][]) {
-        const tab1: string[][] = [];
-        for (let i = 0; i < tab.length; i++) {
-            tab1[i] = [];
-            for (let j = 0; j < tab[i].length; j++) {
-                tab1[i].push(tab[i][j]);
-            }
-            tab1[i].push('');
-        }
-        return tab1;
+    private addRow(value: number, endIndex: number): void {
+        this.table.push(
+            `${value}`
+                .padStart(endIndex + 1, 'x')
+                .split('')
+                .map((c) => (c == 'x' ? '' : c)),
+        );
+    }
+
+    private readResult(): string {
+        return `$${this.readValue(this.table[0]).replace('.', ',').replace('\\text{r,}', '\\,\\text{r.}\\,')}$`;
     }
 }

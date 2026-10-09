@@ -12,7 +12,10 @@
         :style="{ color: attrs.color }"
     >
         <template v-if="text">
-            <latex-text v-if="marks?.some((m) => m.type == 'number')" :text="'$' + text.replaceAll('%', '\\%') + '$'"></latex-text>
+            <latex-text
+                v-if="marks?.some((m) => m.type == 'number')"
+                :text="'$' + text.replaceAll('%', '\\%') + '$'"
+            ></latex-text>
             <template v-else>{{ text }} </template>
         </template>
         <block-element v-for="(block, i) in children" :key="i" :content="block"></block-element>

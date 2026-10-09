@@ -1,15 +1,15 @@
 import { Mark } from '@tiptap/vue-3';
 import { getSurroundingWord } from '../tiptap-utils';
+import { allComments } from '../shared-state';
 
 declare module '@tiptap/core' {
     interface Commands<ReturnType> {
         comment: {
-            addComment: (attrs?: { id?: string | number }) => ReturnType;
+            addComment: () => ReturnType;
+            deleteComment: (id: number | string) => ReturnType;
         };
     }
 }
-
-let idCounter = 1;
 
 export default Mark.create({
     name: 'comment',
@@ -33,9 +33,12 @@ export default Mark.create({
     addCommands() {
         return {
             addComment:
-                (attrs = {}) =>
+                () =>
                 ({ commands, state, chain }) => {
-                    const id = attrs.id || idCounter++;
+                    const existingIds = Object.keys(allComments.value).map((id) => parseInt(id, 10));
+                    const lastId = Math.max(...existingIds, 0);
+                    const id = lastId + 1;
+                    allComments.value[id] ??= { text: '', hidden: false };
                     const { selection } = state;
 
                     if (!selection.empty) {
@@ -53,6 +56,12 @@ export default Mark.create({
                         .setMark(this.type, { id })
                         .setTextSelection(selection.from)
                         .run();
+                },
+            deleteComment:
+                (id: number | string) =>
+                ({ commands }) => {
+                    delete allComments.value[id];
+                    return commands.unsetMark(this.type);
                 },
         };
     },

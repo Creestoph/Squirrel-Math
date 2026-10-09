@@ -1,4 +1,6 @@
-td {
+@use '@/style/colors';
+
+.columnar-operation td {
     padding: 0 2px;
     height: 27px;
 
@@ -34,7 +36,7 @@ td {
     }
 
     &.highlight {
-        background: #ffcccc;
+        background: colors.$creamy;
     }
 
     &.border-right {

@@ -17,7 +17,17 @@
                             {
                                 "type": "text",
                                 "marks": [{ "type": "comment", "attrs": { "id": 1 } }],
-                                "text": "Istotę odejmowania słusznie ujął Sidney Polak: „Popatrz jak wszystko szybko się zmienia, coś jest, a później tego nie ma”."
+                                "text": "Istotę "
+                            },
+                            {
+                                "type": "text",
+                                "marks": [{ "type": "italic" }, { "type": "comment", "attrs": { "id": 1 } }],
+                                "text": "odejmowania"
+                            },
+                            {
+                                "type": "text",
+                                "marks": [{ "type": "comment", "attrs": { "id": 24 } }],
+                                "text": " słusznie ujął Sidney Polak: „Popatrz jak wszystko szybko się zmienia. Coś jest, a później tego nie ma.”"
                             }
                         ]
                     }
@@ -41,7 +51,7 @@
                                 "content": [
                                     {
                                         "type": "text",
-                                        "text": "Zastanawiało Cię kiedyś, czemu koniom lżej? W chwili początkowej mamy wóz, a na nim babę. Biedne konie męczą się z ciągnięciem ciężaru wozu i damy słusznego rozmiaru. Następnie obserwujemy, że baba z wozu. Wtedy ciężar, który konie mają dźwigać, ogranicza się jedynie do wozu, "
+                                        "text": "Zastanawiało cię kiedyś, czemu koniom lżej? W chwili początkowej mamy wóz, a na nim babę. Biedne konie męczą się z ciągnięciem ciężaru wozu i damy słusznego rozmiaru. Następnie obserwujemy, że baba z wozu. Wtedy ciężar, który konie mają dźwigać, ogranicza się jedynie do wozu, "
                                     },
                                     {
                                         "type": "text",
@@ -65,13 +75,13 @@
                             },
                             {
                                 "type": "geometry",
-                                "attrs": { "canvas": { "height": 290, "width": 531 } },
+                                "attrs": { "canvas": { "height": 262, "width": 528 } },
                                 "content": [
                                     {
                                         "type": "circle",
                                         "attrs": {
                                             "borderColor": "#00000000",
-                                            "center": { "x": 130, "y": 86 },
+                                            "center": { "x": 133, "y": 73 },
                                             "color": "#aa0000",
                                             "id": "170",
                                             "size": { "height": 45, "width": 45 }
@@ -81,7 +91,7 @@
                                         "type": "circle",
                                         "attrs": {
                                             "borderColor": "#00000000",
-                                            "center": { "x": 166, "y": 156 },
+                                            "center": { "x": 169, "y": 143 },
                                             "color": "#aa0000",
                                             "id": "171",
                                             "size": { "height": 45, "width": 45 }
@@ -91,7 +101,7 @@
                                         "type": "circle",
                                         "attrs": {
                                             "borderColor": "#00000000",
-                                            "center": { "x": 112, "y": 198 },
+                                            "center": { "x": 115, "y": 185 },
                                             "color": "#aa0000",
                                             "id": "172",
                                             "size": { "height": 45, "width": 45 }
@@ -101,7 +111,7 @@
                                         "type": "circle",
                                         "attrs": {
                                             "borderColor": "#00000000",
-                                            "center": { "x": 334, "y": 140 },
+                                            "center": { "x": 337, "y": 127 },
                                             "color": "#aa0000",
                                             "id": "173",
                                             "size": { "height": 45, "width": 45 }
@@ -111,7 +121,7 @@
                                         "type": "circle",
                                         "attrs": {
                                             "borderColor": "#00000000",
-                                            "center": { "x": 370, "y": 192 },
+                                            "center": { "x": 373, "y": 179 },
                                             "color": "#aa0000",
                                             "id": "174",
                                             "size": { "height": 45, "width": 45 }
@@ -121,7 +131,7 @@
                                         "type": "circle",
                                         "attrs": {
                                             "borderColor": "#00000000",
-                                            "center": { "x": 426, "y": 166 },
+                                            "center": { "x": 429, "y": 153 },
                                             "color": "#aa0000",
                                             "id": "175",
                                             "size": { "height": 45, "width": 45 }
@@ -131,7 +141,7 @@
                                         "type": "circle",
                                         "attrs": {
                                             "borderColor": "#00000000",
-                                            "center": { "x": 440, "y": 90 },
+                                            "center": { "x": 443, "y": 77 },
                                             "color": "#aa0000",
                                             "id": "176",
                                             "size": { "height": 45, "width": 45 }
@@ -153,13 +163,13 @@
                             },
                             {
                                 "type": "geometry",
-                                "attrs": { "canvas": { "height": 290, "width": 531 } },
+                                "attrs": { "canvas": { "height": 273, "width": 529 } },
                                 "content": [
                                     {
                                         "type": "circle",
                                         "attrs": {
                                             "borderColor": "#00000000",
-                                            "center": { "x": 130, "y": 86 },
+                                            "center": { "x": 131, "y": 77 },
                                             "color": "#aa0000",
                                             "id": "177",
                                             "size": { "height": 45, "width": 45 }
@@ -169,7 +179,7 @@
                                         "type": "circle",
                                         "attrs": {
                                             "borderColor": "#00000000",
-                                            "center": { "x": 166, "y": 156 },
+                                            "center": { "x": 167, "y": 147 },
                                             "color": "#aa0000",
                                             "id": "178",
                                             "size": { "height": 45, "width": 45 }
@@ -179,7 +189,7 @@
                                         "type": "circle",
                                         "attrs": {
                                             "borderColor": "#00000000",
-                                            "center": { "x": 112, "y": 198 },
+                                            "center": { "x": 113, "y": 189 },
                                             "color": "#aa0000",
                                             "id": "179",
                                             "size": { "height": 45, "width": 45 }
@@ -222,10 +232,12 @@
                                     },
                                     {
                                         "type": "text",
-                                        "text": " Znaczy on tyle, że od tego, co po lewej stronie, zabieramy (czyli odejmujemy) to, co po prawej stronie. Symbol "
+                                        "text": " Znaczy on tyle, że od tego, co po lewej stronie, zabieramy (czyli "
                                     },
+                                    { "type": "text", "marks": [{ "type": "italic" }], "text": "odejmujemy" },
+                                    { "type": "text", "text": ") to, co po prawej stronie. Symbol " },
                                     { "type": "expressionInline", "attrs": { "mathJax": "=" } },
-                                    { "type": "text", "text": " jest Ci już znany. Mówi on tyle, że " },
+                                    { "type": "text", "text": " jest ci już znany. Mówi on tyle, że " },
                                     {
                                         "type": "expressionInline",
                                         "attrs": { "mathJax": "7 \\text{ kulek} - 4 \\text{ kulki}" }
@@ -313,7 +325,7 @@
                                             { "type": "expressionInline", "attrs": { "mathJax": "30" } },
                                             {
                                                 "type": "text",
-                                                "text": " ciastek z zamiarem spędzenia miłego wieczoru. Nie wiesz, że kiedy czytasz „Squirrel Math”, młodsza siostra zjada Ci wszystkie ciastka. Najadłeś się zamiarem. "
+                                                "text": " ciastek z zamiarem spędzenia miłego wieczoru. Nie wiesz, że kiedy czytasz „Squirrel Math”, młodsza siostra zjada ci wszystkie ciastka. Najadłeś się zamiarem. "
                                             }
                                         ]
                                     },
@@ -331,13 +343,13 @@
                                 "content": [
                                     {
                                         "type": "text",
-                                        "text": "Ponieważ jesteśmy profesjonalistami, umiemy wykonywać odejmowanie nie tylko na kulkach, owcach, butelkach i ciastkach, ale też na liczbach jako takich. Powyższe równości można zapisać ogólniej:"
+                                        "text": "Ponieważ jesteśmy profesjonalistami, umiemy wykonywać odejmowanie nie tylko na kulkach, owcach, butelkach i ciastkach, ale też na liczbach jako takich. Powyższe równości można zapisać jako ogólne fakty, bez jakiegokolwiek kontekstu:"
                                     }
                                 ]
                             },
                             {
                                 "type": "expression",
-                                "attrs": { "mathJax": " 7 - 4 = 3\\\\ 10 - 3 = 7\\\\ 5 - 2 = 3\\\\ 30 - 30 = 0\\\\ " }
+                                "attrs": { "mathJax": " 7 - 4 = 3\\\\ 10 - 3 = 7\\\\ 5 - 2 = 3\\\\ 30 - 30 = 0" }
                             }
                         ]
                     }
@@ -354,7 +366,7 @@
                     {
                         "type": "chapterBody",
                         "content": [
-                            { "type": "semanticTag", "attrs": { "required": [], "tags": ["Intuicje"] } },
+                            { "type": "semanticTag", "attrs": { "required": [], "tags": ["Formalnie"] } },
                             {
                                 "type": "paragraph",
                                 "attrs": { "textAlign": "" },
@@ -364,9 +376,10 @@
                                         "text": "Podobnie, jak w przypadku dodawania określamy składniki i sumę, tak w odejmowaniu matematycy pokusili się o wyróżnienie poszczególnych składowych działania. Tu jednak ma znaczenie, czy liczba stoi przed znakiem "
                                     },
                                     { "type": "expressionInline", "attrs": { "mathJax": "-" } },
-                                    { "type": "text", "text": ", czy po nim. Liczbę, od której " },
-                                    { "type": "text", "marks": [{ "type": "italic" }], "text": "odejmujemy" },
-                                    { "type": "text", "text": " (po lewej), nazywamy " },
+                                    {
+                                        "type": "text",
+                                        "text": ", czy po nim. Liczbę, od której odejmujemy (po lewej), nazywamy "
+                                    },
                                     { "type": "text", "marks": [{ "type": "italic" }], "text": "odjemną" },
                                     { "type": "text", "text": ", a liczbę, którą odejmujemy (po prawej), nazywamy " },
                                     { "type": "text", "marks": [{ "type": "italic" }], "text": "odjemnikiem" },
@@ -473,13 +486,13 @@
                             },
                             {
                                 "type": "geometry",
-                                "attrs": { "canvas": { "height": 300, "width": 632 } },
+                                "attrs": { "canvas": { "height": 284, "width": 629 } },
                                 "content": [
                                     {
                                         "type": "circle",
                                         "attrs": {
                                             "borderColor": "#00000000",
-                                            "center": { "x": 184, "y": 84 },
+                                            "center": { "x": 187, "y": 74 },
                                             "color": "#aa0000",
                                             "id": "180",
                                             "size": { "height": 45, "width": 45 }
@@ -489,7 +502,7 @@
                                         "type": "circle",
                                         "attrs": {
                                             "borderColor": "#00000000",
-                                            "center": { "x": 162, "y": 138 },
+                                            "center": { "x": 165, "y": 128 },
                                             "color": "#aa0000",
                                             "id": "181",
                                             "size": { "height": 45, "width": 45 }
@@ -499,7 +512,7 @@
                                         "type": "circle",
                                         "attrs": {
                                             "borderColor": "#00000000",
-                                            "center": { "x": 132, "y": 218 },
+                                            "center": { "x": 135, "y": 208 },
                                             "color": "#aa0000",
                                             "id": "182",
                                             "size": { "height": 45, "width": 45 }
@@ -509,7 +522,7 @@
                                         "type": "circle",
                                         "attrs": {
                                             "borderColor": "#00000000",
-                                            "center": { "x": 204, "y": 184 },
+                                            "center": { "x": 207, "y": 174 },
                                             "color": "#aa0000",
                                             "id": "183",
                                             "size": { "height": 45, "width": 45 }
@@ -519,7 +532,7 @@
                                         "type": "circle",
                                         "attrs": {
                                             "borderColor": "#00000000",
-                                            "center": { "x": 424, "y": 122 },
+                                            "center": { "x": 427, "y": 112 },
                                             "color": "#aa0000",
                                             "id": "184",
                                             "size": { "height": 45, "width": 45 }
@@ -529,7 +542,7 @@
                                         "type": "circle",
                                         "attrs": {
                                             "borderColor": "#00000000",
-                                            "center": { "x": 456, "y": 164 },
+                                            "center": { "x": 459, "y": 154 },
                                             "color": "#aa0000",
                                             "id": "185",
                                             "size": { "height": 45, "width": 45 }
@@ -539,7 +552,7 @@
                                         "type": "circle",
                                         "attrs": {
                                             "borderColor": "#00000000",
-                                            "center": { "x": 506, "y": 196 },
+                                            "center": { "x": 509, "y": 186 },
                                             "color": "#aa0000",
                                             "id": "186",
                                             "size": { "height": 45, "width": 45 }
@@ -549,7 +562,7 @@
                                         "type": "circle",
                                         "attrs": {
                                             "borderColor": "#00000000",
-                                            "center": { "x": 448, "y": 74 },
+                                            "center": { "x": 451, "y": 64 },
                                             "color": "#aa0000",
                                             "id": "187",
                                             "size": { "height": 45, "width": 45 }
@@ -559,7 +572,7 @@
                                         "type": "circle",
                                         "attrs": {
                                             "borderColor": "#00000000",
-                                            "center": { "x": 516, "y": 96 },
+                                            "center": { "x": 519, "y": 86 },
                                             "color": "#aa0000",
                                             "id": "188",
                                             "size": { "height": 45, "width": 45 }
@@ -569,7 +582,7 @@
                                         "type": "circle",
                                         "attrs": {
                                             "borderColor": "#00000000",
-                                            "center": { "x": 536, "y": 148 },
+                                            "center": { "x": 539, "y": 138 },
                                             "color": "#aa0000",
                                             "id": "189",
                                             "size": { "height": 45, "width": 45 }
@@ -593,7 +606,7 @@
                                     { "type": "expressionInline", "attrs": { "mathJax": "6" } },
                                     { "type": "text", "text": " kulek to razem " },
                                     { "type": "expressionInline", "attrs": { "mathJax": "10" } },
-                                    { "type": "text", "text": " kulek" },
+                                    { "type": "text", "text": " kulek." },
                                     { "type": "hardBreak" },
                                     { "type": "expressionInline", "attrs": { "mathJax": "4 + 6 = 10" } }
                                 ]
@@ -608,7 +621,7 @@
                                     { "type": "expressionInline", "attrs": { "mathJax": "6" } },
                                     { "type": "text", "text": " kulek, to pozostaną nam " },
                                     { "type": "expressionInline", "attrs": { "mathJax": "4" } },
-                                    { "type": "text", "text": " kulki" },
+                                    { "type": "text", "text": " kulki." },
                                     { "type": "hardBreak" },
                                     { "type": "expressionInline", "attrs": { "mathJax": "10 - 6 = 4" } }
                                 ]
@@ -623,7 +636,7 @@
                                     { "type": "expressionInline", "attrs": { "mathJax": "4" } },
                                     { "type": "text", "text": " kulki, to pozostanie nam " },
                                     { "type": "expressionInline", "attrs": { "mathJax": "6" } },
-                                    { "type": "text", "text": " kulek" },
+                                    { "type": "text", "text": " kulek." },
                                     { "type": "hardBreak" },
                                     { "type": "expressionInline", "attrs": { "mathJax": "10 - 6 = 4" } }
                                 ]
@@ -669,27 +682,27 @@
                                         "content": [
                                             {
                                                 "type": "text",
-                                                "text": "Za złe zachowanie pensja pana Janusza spada ze "
+                                                "text": "Za złe zachowanie pensja pana Janusza spada z "
                                             },
-                                            { "type": "expressionInline", "attrs": { "mathJax": "120 \\text{ zł}" } },
+                                            { "type": "expressionInline", "attrs": { "mathJax": "250 \\text{ zł}" } },
                                             { "type": "text", "text": " do " },
-                                            { "type": "expressionInline", "attrs": { "mathJax": "110 \\text{ zł}" } },
+                                            { "type": "expressionInline", "attrs": { "mathJax": "240 \\text{ zł}" } },
                                             {
                                                 "type": "text",
                                                 "text": " za dzień. Zdruzgotany pan Janusz zastanawia się, jak bardzo jest stratny, czyli jaka jest różnica między jego poprzednią a obecną pensją. Napotykając problem z obliczeniem "
                                             },
-                                            { "type": "expressionInline", "attrs": { "mathJax": "120 - 110" } },
+                                            { "type": "expressionInline", "attrs": { "mathJax": "250 - 240" } },
                                             {
                                                 "type": "text",
                                                 "text": " pan Janusz zastanawia się, ile musiałby dołożyć do "
                                             },
-                                            { "type": "expressionInline", "attrs": { "mathJax": "110" } },
+                                            { "type": "expressionInline", "attrs": { "mathJax": "240" } },
                                             { "type": "text", "text": ", aby otrzymać " },
-                                            { "type": "expressionInline", "attrs": { "mathJax": "120" } },
+                                            { "type": "expressionInline", "attrs": { "mathJax": "250" } },
                                             { "type": "text", "text": ": " }
                                         ]
                                     },
-                                    { "type": "expression", "attrs": { "mathJax": "110 + \\text{∎} = 120" } },
+                                    { "type": "expression", "attrs": { "mathJax": "240 + \\text{∎} = 250" } },
                                     {
                                         "type": "paragraph",
                                         "attrs": { "textAlign": "" },
@@ -791,12 +804,12 @@
                                     { "type": "expressionInline", "attrs": { "mathJax": "10" } },
                                     {
                                         "type": "text",
-                                        "text": ". Sytuacja taka najpewniej pozwoliłaby rozwiązać problem głodu na świecie, jednak rzeczywistość nie jest łaskawa. Jak widać, "
+                                        "text": ". Sytuacja taka najpewniej pozwoliłaby rozwiązać problem głodu na świecie, jednak rzeczywistość nie jest łaskawa. Rzecz w tym, że "
                                     },
                                     { "type": "expressionInline", "attrs": { "mathJax": "10 - 2" } },
                                     { "type": "text", "text": " to nie to samo, co " },
                                     { "type": "expressionInline", "attrs": { "mathJax": "2 - 10" } },
-                                    { "type": "text", "text": ", a więc odejmowanie nie jest przemienne." }
+                                    { "type": "text", "text": ", czyli odejmowanie nie jest przemienne." }
                                 ]
                             },
                             {
@@ -828,13 +841,15 @@
                                     { "type": "expressionInline", "attrs": { "mathJax": "8 - 5" } },
                                     { "type": "text", "text": ", a potem od wyniku odejmujemy " },
                                     { "type": "expressionInline", "attrs": { "mathJax": "2" } },
+                                    { "type": "text", "text": "." },
                                     { "type": "hardBreak" },
                                     { "type": "expressionInline", "attrs": { "mathJax": "8 - 5 = 3" } },
                                     { "type": "hardBreak" },
                                     { "type": "expressionInline", "attrs": { "mathJax": "3 - 2 = 1" } },
                                     { "type": "hardBreak" },
                                     { "type": "text", "text": "Dostajemy " },
-                                    { "type": "expressionInline", "attrs": { "mathJax": "1" } }
+                                    { "type": "expressionInline", "attrs": { "mathJax": "1" } },
+                                    { "type": "text", "text": "." }
                                 ]
                             },
                             {
@@ -845,6 +860,7 @@
                                     { "type": "expressionInline", "attrs": { "mathJax": "5 - 2" } },
                                     { "type": "text", "text": ", a potem odejmujemy wynik od " },
                                     { "type": "expressionInline", "attrs": { "mathJax": "8" } },
+                                    { "type": "text", "text": "." },
                                     { "type": "hardBreak" },
                                     { "type": "expressionInline", "attrs": { "mathJax": "5 - 2 = 3" } },
                                     { "type": "hardBreak" },
@@ -852,7 +868,7 @@
                                     { "type": "hardBreak" },
                                     { "type": "text", "text": "Dostajemy " },
                                     { "type": "expressionInline", "attrs": { "mathJax": "5" } },
-                                    { "type": "hardBreak" }
+                                    { "type": "text", "text": "." }
                                 ]
                             },
                             {
@@ -978,15 +994,7 @@
                                     {
                                         "type": "component",
                                         "attrs": {
-                                            "args": [
-                                                [
-                                                    "c/;c/;;;;",
-                                                    "c/;c/;;;;",
-                                                    ";;3;6;9;8",
-                                                    "u/-;u/;u/1;u/2;u/7;u/4",
-                                                    ";;;;;"
-                                                ]
-                                            ],
+                                            "args": [[";;3;6;9;8", "u/-;u/;u/1;u/2;u/7;u/4", ";;;;;"]],
                                             "componentName": "columnar-operation-table"
                                         }
                                     },
@@ -1014,11 +1022,10 @@
                                                                 "type": "expressionInline",
                                                                 "attrs": { "mathJax": "8 - 4 = 4" }
                                                             },
-                                                            { "type": "text", "text": ", więc pod " },
-                                                            { "type": "expressionInline", "attrs": { "mathJax": "8" } },
-                                                            { "type": "text", "text": " i " },
-                                                            { "type": "expressionInline", "attrs": { "mathJax": "4" } },
-                                                            { "type": "text", "text": " piszemy " },
+                                                            {
+                                                                "type": "text",
+                                                                "text": ", więc pod kreską w ostatniej kolumnie piszemy "
+                                                            },
                                                             { "type": "expressionInline", "attrs": { "mathJax": "4" } },
                                                             { "type": "text", "text": "." }
                                                         ]
@@ -1036,11 +1043,10 @@
                                                                 "type": "expressionInline",
                                                                 "attrs": { "mathJax": "9 - 7 = 2" }
                                                             },
-                                                            { "type": "text", "text": ", więc pod " },
-                                                            { "type": "expressionInline", "attrs": { "mathJax": "9" } },
-                                                            { "type": "text", "text": " i " },
-                                                            { "type": "expressionInline", "attrs": { "mathJax": "7" } },
-                                                            { "type": "text", "text": " piszemy " },
+                                                            {
+                                                                "type": "text",
+                                                                "text": ", więc w kolumnie obok piszemy "
+                                                            },
                                                             { "type": "expressionInline", "attrs": { "mathJax": "2" } },
                                                             { "type": "text", "text": "." }
                                                         ]
@@ -1059,10 +1065,18 @@
                                                                 "attrs": { "mathJax": "6 - 2 = 4" }
                                                             },
                                                             { "type": "text", "text": ", więc pod " },
-                                                            { "type": "expressionInline", "attrs": { "mathJax": "6" } },
+                                                            {
+                                                                "type": "text",
+                                                                "marks": [{ "type": "number" }],
+                                                                "text": "6"
+                                                            },
                                                             { "type": "text", "text": " i " },
-                                                            { "type": "expressionInline", "attrs": { "mathJax": "2" } },
-                                                            { "type": "text", "text": " piszemy " },
+                                                            {
+                                                                "type": "text",
+                                                                "marks": [{ "type": "number" }],
+                                                                "text": "2"
+                                                            },
+                                                            { "type": "text", "text": " nimi piszemy " },
                                                             { "type": "expressionInline", "attrs": { "mathJax": "4" } },
                                                             { "type": "text", "text": "." }
                                                         ]
@@ -1080,11 +1094,7 @@
                                                                 "type": "expressionInline",
                                                                 "attrs": { "mathJax": "3 - 1 = 2" }
                                                             },
-                                                            { "type": "text", "text": ", więc pod " },
-                                                            { "type": "expressionInline", "attrs": { "mathJax": "3" } },
-                                                            { "type": "text", "text": " i " },
-                                                            { "type": "expressionInline", "attrs": { "mathJax": "1" } },
-                                                            { "type": "text", "text": " piszemy " },
+                                                            { "type": "text", "text": ", więc pod nimi piszemy " },
                                                             { "type": "expressionInline", "attrs": { "mathJax": "2" } },
                                                             { "type": "text", "text": "." }
                                                         ]
@@ -1096,15 +1106,7 @@
                                     {
                                         "type": "component",
                                         "attrs": {
-                                            "args": [
-                                                [
-                                                    "c/;c/;;;;",
-                                                    "c/;c/;;;;",
-                                                    ";;3;6;9;8",
-                                                    "u/-;u/;u/1;u/2;u/7;u/4",
-                                                    ";;2;4;2;4"
-                                                ]
-                                            ],
+                                            "args": [[";;3;6;9;8", "u/-;u/;u/1;u/2;u/7;u/4", ";;2;4;2;4"]],
                                             "componentName": "columnar-operation-table"
                                         }
                                     },
@@ -1134,15 +1136,7 @@
                                     {
                                         "type": "component",
                                         "attrs": {
-                                            "args": [
-                                                [
-                                                    "c/;c/;;;;",
-                                                    "c/;c/;;;;",
-                                                    ";;2;7;3;7",
-                                                    "u/-;u/;u/;u/6;u/8;u/3",
-                                                    ";;;;;"
-                                                ]
-                                            ],
+                                            "args": [[";;2;7;3;7", "u/-;u/;u/;u/6;u/8;u/3", ";;;;;"]],
                                             "componentName": "columnar-operation-table"
                                         }
                                     },
@@ -1158,15 +1152,7 @@
                                     {
                                         "type": "component",
                                         "attrs": {
-                                            "args": [
-                                                [
-                                                    "c/;c/;;;;",
-                                                    "c/;c/;;;;",
-                                                    ";;2;7;3;7",
-                                                    "u/-;u/;u/;u/6;u/8;u/3",
-                                                    ";;;;;4"
-                                                ]
-                                            ],
+                                            "args": [[";;2;7;3;7", "u/-;u/;u/;u/6;u/8;u/3", ";;;;;4"]],
                                             "componentName": "columnar-operation-table"
                                         }
                                     },
@@ -1204,7 +1190,6 @@
                                         "attrs": {
                                             "args": [
                                                 [
-                                                    "c/;c/;;;;",
                                                     "c/;c/;c/;c/6;c/13;",
                                                     ";;2;s/ 7;s/ 3;7",
                                                     "u/-;u/;u/;u/6;u/8;u/3",
@@ -1294,7 +1279,6 @@
                                         "attrs": {
                                             "args": [
                                                 [
-                                                    "c/;c/;;;;",
                                                     "c/;c/;c/;c/6;c/13;",
                                                     ";;2;s/ 7;s/ 3;7",
                                                     "u/-;u/;u/;u/6;u/8;u/3",
@@ -1336,15 +1320,7 @@
                                     {
                                         "type": "component",
                                         "attrs": {
-                                            "args": [
-                                                [
-                                                    "c/;c/;;;;",
-                                                    "c/;c/;;;;",
-                                                    ";;1;3;5;8",
-                                                    "u/-;u/;u/;u/4;u/8;u/9",
-                                                    ";;;;;"
-                                                ]
-                                            ],
+                                            "args": [[";;1;3;5;8", "u/-;u/;u/;u/4;u/8;u/9", ";;;;;"]],
                                             "componentName": "columnar-operation-table"
                                         }
                                     },
@@ -1367,7 +1343,6 @@
                                         "attrs": {
                                             "args": [
                                                 [
-                                                    "c/;c/;;;;",
                                                     "c/;c/;c/;c/;c/4;c/18",
                                                     ";;1;3;s/ 5;s/ 8",
                                                     "u/-;u/;u/;u/4;u/8;u/9",
@@ -1460,15 +1435,7 @@
                                     {
                                         "type": "component",
                                         "attrs": {
-                                            "args": [
-                                                [
-                                                    "c/;c/;;;;",
-                                                    "c/;c/;;;;",
-                                                    ";;1;0;0;0",
-                                                    "u/-;u/;u/;u/6;u/7;u/9",
-                                                    ";;;;;"
-                                                ]
-                                            ],
+                                            "args": [[";;1;0;0;0", "u/-;u/;u/;u/6;u/7;u/9", ";;;;;"]],
                                             "componentName": "columnar-operation-table"
                                         }
                                     },
@@ -1494,7 +1461,6 @@
                                         "attrs": {
                                             "args": [
                                                 [
-                                                    "c/;c/;;;;",
                                                     "c/;c/;c/0;c/10;c/;c/",
                                                     ";;s/ 1;s/ 0;0;0",
                                                     "u/-;u/;u/;u/6;u/7;u/9",
@@ -1552,7 +1518,7 @@
                                         "content": [
                                             {
                                                 "type": "text",
-                                                "text": "Wreszcie możemy wykonać odejmowanie i otrzymać wynik "
+                                                "text": "Wreszcie możemy wykonać odejmowanie w każdej kolumnie i otrzymać wynik "
                                             },
                                             { "type": "expressionInline", "attrs": { "mathJax": "321" } },
                                             { "type": "text", "text": "." }
@@ -1586,7 +1552,7 @@
                                     },
                                     {
                                         "type": "text",
-                                        "text": ", prześledź dowolne własne przykłady wpisując je do poniższego pola. Poza tym nie martw się, odejmowanie w słupku jest głównie po to, żeby męczyć nim dzieci w podstawówce. Z czasem nabierzesz wprawy w liczeniu i będziesz w stanie odejmować nawet duże liczby w pamięci. A jeśli nie, to przecież zawsze jest kalkulator."
+                                        "text": ", prześledź dowolne własne przykłady, wpisując je do poniższego pola. Poza tym nie martw się, odejmowanie w słupku jest głównie po to, żeby męczyć nim dzieci w podstawówce. Z czasem nabierzesz wprawy w liczeniu i będziesz w stanie odejmować nawet duże liczby w pamięci. A jeśli nie, to przecież zawsze jest kalkulator."
                                     }
                                 ]
                             },
@@ -1645,37 +1611,37 @@
                                     {
                                         "type": "expressionInline",
                                         "attrs": { "mathJax": " = 2000 + (700 - 600) + (30 - 80) + (7 - 3) =" },
-                                        "marks": [{ "type": "comment", "attrs": { "id": 12 } }]
+                                        "marks": [{ "type": "comment", "attrs": { "id": "12" } }]
                                     },
                                     { "type": "hardBreak" },
                                     {
                                         "type": "expressionInline",
                                         "attrs": { "mathJax": " = 2000 + (700 - 600) + (30 - 80) + 4 =" },
-                                        "marks": [{ "type": "comment", "attrs": { "id": 13 } }]
+                                        "marks": [{ "type": "comment", "attrs": { "id": "13" } }]
                                     },
                                     { "type": "hardBreak" },
                                     {
                                         "type": "expressionInline",
                                         "attrs": { "mathJax": " = 2000 + (600 + 100 - 600) + (30 - 80) + 4 =" },
-                                        "marks": [{ "type": "comment", "attrs": { "id": 14 } }]
+                                        "marks": [{ "type": "comment", "attrs": { "id": "14" } }]
                                     },
                                     { "type": "hardBreak" },
                                     {
                                         "type": "expressionInline",
                                         "attrs": { "mathJax": " = 2000 + (600 - 600) + (100 + 30 - 80) + 4 =" },
-                                        "marks": [{ "type": "comment", "attrs": { "id": 14 } }]
+                                        "marks": [{ "type": "comment", "attrs": { "id": "14" } }]
                                     },
                                     { "type": "hardBreak" },
                                     {
                                         "type": "expressionInline",
                                         "attrs": { "mathJax": " = 2000 + (600 - 600) + (130 - 80) + 4 =" },
-                                        "marks": [{ "type": "comment", "attrs": { "id": 14 } }]
+                                        "marks": [{ "type": "comment", "attrs": { "id": "14" } }]
                                     },
                                     { "type": "hardBreak" },
                                     {
                                         "type": "expressionInline",
                                         "attrs": { "mathJax": " = 2000 + (600 - 600) + 50 + 4 =" },
-                                        "marks": [{ "type": "comment", "attrs": { "id": 15 } }]
+                                        "marks": [{ "type": "comment", "attrs": { "id": "15" } }]
                                     },
                                     { "type": "hardBreak" },
                                     {
@@ -1705,7 +1671,7 @@
                                     {
                                         "type": "expressionInline",
                                         "attrs": { "mathJax": " = (1000 + 0 + 0 + 0) - (600 + 70 + 9) =" },
-                                        "marks": [{ "type": "comment", "attrs": { "id": 17 } }]
+                                        "marks": [{ "type": "comment", "attrs": { "id": "17" } }]
                                     },
                                     { "type": "hardBreak" },
                                     {
@@ -1716,43 +1682,43 @@
                                     {
                                         "type": "expressionInline",
                                         "attrs": { "mathJax": " = 1000 + (0 - 600) + (0 - 70) + (0 - 9) =" },
-                                        "marks": [{ "type": "comment", "attrs": { "id": 18 } }]
+                                        "marks": [{ "type": "comment", "attrs": { "id": "18" } }]
                                     },
                                     { "type": "hardBreak" },
                                     {
                                         "type": "expressionInline",
                                         "attrs": { "mathJax": " = 0 + (1000 - 600) + (0 - 70) + (0 - 9) =" },
-                                        "marks": [{ "type": "comment", "attrs": { "id": 19 } }]
+                                        "marks": [{ "type": "comment", "attrs": { "id": "19" } }]
                                     },
                                     { "type": "hardBreak" },
                                     {
                                         "type": "expressionInline",
                                         "attrs": { "mathJax": " = 0 + (900 + 100 - 600) + (0 - 70) + (0 - 9) =" },
-                                        "marks": [{ "type": "comment", "attrs": { "id": 20 } }]
+                                        "marks": [{ "type": "comment", "attrs": { "id": "20" } }]
                                     },
                                     { "type": "hardBreak" },
                                     {
                                         "type": "expressionInline",
                                         "attrs": { "mathJax": " = 0 + (900 - 600) + (100 - 70) + (0 - 9) =" },
-                                        "marks": [{ "type": "comment", "attrs": { "id": 20 } }]
+                                        "marks": [{ "type": "comment", "attrs": { "id": "20" } }]
                                     },
                                     { "type": "hardBreak" },
                                     {
                                         "type": "expressionInline",
                                         "attrs": { "mathJax": " = 0 + (900 - 600) + (90 + 10 - 70) + (0 - 9) =" },
-                                        "marks": [{ "type": "comment", "attrs": { "id": 21 } }]
+                                        "marks": [{ "type": "comment", "attrs": { "id": "21" } }]
                                     },
                                     { "type": "hardBreak" },
                                     {
                                         "type": "expressionInline",
                                         "attrs": { "mathJax": "= 0 + (900 - 600) + (90 - 70) + (10 - 9) =" },
-                                        "marks": [{ "type": "comment", "attrs": { "id": 21 } }]
+                                        "marks": [{ "type": "comment", "attrs": { "id": "21" } }]
                                     },
                                     { "type": "hardBreak" },
                                     {
                                         "type": "expressionInline",
                                         "attrs": { "mathJax": " = 0 + 300 + 20 + 1" },
-                                        "marks": [{ "type": "comment", "attrs": { "id": 22 } }]
+                                        "marks": [{ "type": "comment", "attrs": { "id": "22" } }]
                                     },
                                     { "type": "hardBreak" },
                                     { "type": "expressionInline", "attrs": { "mathJax": "= 321" } }
@@ -1776,384 +1742,541 @@
                                 }
                             },
                             {
-                                "type": "paragraph",
-                                "attrs": { "textAlign": "" },
+                                "type": "formula",
                                 "content": [
                                     {
-                                        "type": "text",
-                                        "text": "Formalnie algorytm odejmowania pisemnego przedstawia się następująco. Dane są liczby "
-                                    },
-                                    { "type": "expressionInline", "attrs": { "mathJax": "a" } },
-                                    { "type": "text", "text": " i " },
-                                    { "type": "expressionInline", "attrs": { "mathJax": "b" } },
-                                    { "type": "text", "text": " (" },
-                                    { "type": "expressionInline", "attrs": { "mathJax": "a \\geq b" } },
-                                    { "type": "text", "text": ") o reprezentacjach dziesiętnych " },
-                                    {
-                                        "type": "expressionInline",
-                                        "attrs": {
-                                            "mathJax": "a = \\sum_{j = 0}^{l_a} 10^j a_j, b = \\sum_{j = 0}^{l_b} 10^j b_j"
-                                        }
-                                    },
-                                    { "type": "text", "text": ", gdzie " },
-                                    { "type": "expressionInline", "attrs": { "mathJax": "l_a, l_b" } },
-                                    { "type": "text", "text": " oznaczają długość (liczbę cyfr) odpowiednio liczb " },
-                                    { "type": "expressionInline", "attrs": { "mathJax": "a" } },
-                                    { "type": "text", "text": " i " },
-                                    { "type": "expressionInline", "attrs": { "mathJax": "b" } },
-                                    { "type": "text", "text": ", zaś " },
-                                    {
-                                        "type": "expressionInline",
-                                        "attrs": { "mathJax": "a_j, b_j \\in \\{0, 1, 2, 3, 4, 5, 6, 7, 8, 9\\}" }
-                                    },
-                                    { "type": "text", "text": ", zakładamy też " },
-                                    { "type": "expressionInline", "attrs": { "mathJax": "a_{l_a}, b_{l_b} \\neq 0" } },
-                                    {
-                                        "type": "text",
-                                        "text": ". Poszukiwana jest reprezentacja dziesiętna ich różnicy "
-                                    },
-                                    { "type": "expressionInline", "attrs": { "mathJax": "d = a - b" } },
-                                    { "type": "text", "text": "." }
-                                ]
-                            },
-                            {
-                                "type": "paragraph",
-                                "attrs": { "textAlign": "" },
-                                "content": [
-                                    { "type": "text", "text": "Z założenia " },
-                                    { "type": "expressionInline", "attrs": { "mathJax": "a \\geq b" } },
-                                    { "type": "text", "text": " wynika, że " },
-                                    { "type": "expressionInline", "attrs": { "mathJax": "l_a \\geq l_b" } },
-                                    { "type": "text", "text": ". Wobec tego wprowadźmy symbol " },
-                                    { "type": "expressionInline", "attrs": { "mathJax": "l = l_a" } },
-                                    { "type": "text", "text": " (wtedy " },
-                                    {
-                                        "type": "expressionInline",
-                                        "attrs": { "mathJax": "a = \\sum_{j = 0}^{l} 10^j a_j" }
-                                    },
-                                    { "type": "text", "text": ") oraz rozwińmy postać dziesiętną liczby " },
-                                    { "type": "expressionInline", "attrs": { "mathJax": "b" } },
-                                    { "type": "text", "text": " do długości " },
-                                    { "type": "expressionInline", "attrs": { "mathJax": "l" } },
-                                    { "type": "text", "text": " cyfr przez dodanie zer z przodu: " },
-                                    {
-                                        "type": "expressionInline",
-                                        "attrs": { "mathJax": "b = \\sum_{j = 0}^{l} 10^j b_j" }
-                                    },
-                                    { "type": "text", "text": ", przy czym " },
-                                    { "type": "expressionInline", "attrs": { "mathJax": "b_j = 0" } },
-                                    { "type": "text", "text": " dla " },
-                                    { "type": "expressionInline", "attrs": { "mathJax": "j > l_b" } },
-                                    { "type": "text", "text": ". Wtedy" }
-                                ]
-                            },
-                            {
-                                "type": "expression",
-                                "attrs": {
-                                    "mathJax": " d = a - b = \\sum_{j = 0}^{l} 10^j a_j - \\sum_{j = 0}^{l} 10^j b_j = \\sum_{j = 0}^{l} 10^j \\left(a_j - b_j \\right) "
-                                }
-                            },
-                            {
-                                "type": "paragraph",
-                                "attrs": { "textAlign": "" },
-                                "content": [
-                                    {
-                                        "type": "text",
-                                        "text": "Dokonamy teraz kroku indukcyjnego, który odpowiada wyznaczeniu różnicy cyfr "
-                                    },
-                                    { "type": "expressionInline", "attrs": { "mathJax": "a_i" } },
-                                    { "type": "text", "text": " oraz " },
-                                    { "type": "expressionInline", "attrs": { "mathJax": "b_i" } },
-                                    {
-                                        "type": "text",
-                                        "text": " z tej samej kolumny podczas odejmowania pisemnego. Niech "
-                                    },
-                                    { "type": "expressionInline", "attrs": { "mathJax": "c_k" } },
-                                    { "type": "text", "text": " oznacza różnicę obliczoną dla kolumny " },
-                                    { "type": "expressionInline", "attrs": { "mathJax": "k" } },
-                                    { "type": "text", "text": ". Zakładamy, że w momencie wykonywania " },
-                                    { "type": "expressionInline", "attrs": { "mathJax": "i" } },
-                                    { "type": "text", "text": "-tego kroku wartości " },
-                                    { "type": "expressionInline", "attrs": { "mathJax": "c_0, c_1, ..., c_{i-1}" } },
-                                    { "type": "text", "text": " zostały już obliczone i mieszczą się w zbiorze " },
-                                    {
-                                        "type": "expressionInline",
-                                        "attrs": { "mathJax": "\\{0, 1, 2, 3, 4, 5, 6, 7, 8, 9\\}" }
-                                    },
-                                    { "type": "text", "text": ". Oznaczmy przez " },
-                                    { "type": "expressionInline", "attrs": { "mathJax": "r_i" } },
-                                    { "type": "text", "text": " ewentualne zapożyczenie dokonane na kolumnie " },
-                                    { "type": "expressionInline", "attrs": { "mathJax": "i" } },
-                                    { "type": "text", "text": ". " },
-                                    { "type": "expressionInline", "attrs": { "mathJax": "r_i" } },
-                                    { "type": "text", "text": " będzie przyjmować wartość " },
-                                    { "type": "expressionInline", "attrs": { "mathJax": "1" } },
-                                    { "type": "text", "text": ", jeśli zapożyczenie zostało dokonane lub " },
-                                    { "type": "expressionInline", "attrs": { "mathJax": "0" } },
-                                    { "type": "text", "text": ", jeśli nie zostało. Dla kroku zerowego ustalamy " },
-                                    { "type": "expressionInline", "attrs": { "mathJax": "r_0 = 0" } },
-                                    { "type": "text", "text": ". Zakładamy więc, że w momencie sumowania cyfr " },
-                                    { "type": "expressionInline", "attrs": { "mathJax": "i" } },
-                                    { "type": "text", "text": "-tej kolumny liczbę " },
-                                    { "type": "expressionInline", "attrs": { "mathJax": "d" } },
-                                    { "type": "text", "text": " można przedstawić w postaci " }
-                                ]
-                            },
-                            {
-                                "type": "expression",
-                                "attrs": {
-                                    "mathJax": " d = c_0 + 10^1c_1 + 10^2c_2 + ... + 10^i(a_i - r_i - b_i) + \\sum_{j = i + 1}^{l} 10^j \\left(a_j - b_j \\right) "
-                                }
-                            },
-                            {
-                                "type": "paragraph",
-                                "attrs": { "textAlign": "" },
-                                "content": [
-                                    {
-                                        "type": "text",
-                                        "text": "W wyniku obecnego kroku indukcyjnego będziemy chcieli rozwinąć tę postać o jeden element dalej, co sprowadza się do wyznaczenia wartości "
-                                    },
-                                    { "type": "expressionInline", "attrs": { "mathJax": "c_i" } },
-                                    { "type": "text", "text": " oraz " },
-                                    { "type": "expressionInline", "attrs": { "mathJax": "r_{i+1}" } },
-                                    { "type": "text", "text": ". Rozważmy dwa przypadki:" }
-                                ]
-                            },
-                            {
-                                "type": "orderedList",
-                                "attrs": { "order": 1 },
-                                "content": [
-                                    {
-                                        "type": "listItem",
+                                        "type": "paragraph",
+                                        "attrs": { "textAlign": "" },
                                         "content": [
+                                            { "type": "text", "text": "Dane niech będą liczby naturalne " },
+                                            { "type": "expressionInline", "attrs": { "mathJax": "a" } },
+                                            { "type": "text", "text": ", " },
+                                            { "type": "expressionInline", "attrs": { "mathJax": "b" } },
+                                            { "type": "text", "text": ", " },
+                                            { "type": "expressionInline", "attrs": { "mathJax": "a \\geq b" } },
+                                            { "type": "text", "text": " o reprezentacjach dziesiętnych " },
                                             {
-                                                "type": "paragraph",
-                                                "attrs": { "textAlign": "" },
-                                                "content": [
-                                                    {
-                                                        "type": "expressionInline",
-                                                        "attrs": { "mathJax": "a_i - r_i \\geq b_i" }
-                                                    }
-                                                ]
-                                            },
-                                            {
-                                                "type": "paragraph",
-                                                "attrs": { "textAlign": "" },
-                                                "content": [
-                                                    {
-                                                        "type": "text",
-                                                        "text": "Przypadek ten odpowiada sytuacji, w której od cyfry odjemnej jest odejmowana cyfra o mniejszej (lub równej) wartości. Ustalamy "
-                                                    },
-                                                    {
-                                                        "type": "expressionInline",
-                                                        "attrs": { "mathJax": "c_i = a_i - r_i - b_i, r_{i+1} = 0" }
-                                                    },
-                                                    {
-                                                        "type": "text",
-                                                        "text": " Z założenia dla tego przypadku wynika, że "
-                                                    },
-                                                    {
-                                                        "type": "expressionInline",
-                                                        "attrs": { "mathJax": "c_i \\geq 0" }
-                                                    },
-                                                    { "type": "text", "text": ", ponadto " },
-                                                    {
-                                                        "type": "expressionInline",
-                                                        "attrs": { "mathJax": "a_i \\leq 9" }
-                                                    },
-                                                    { "type": "text", "text": ", więc również " },
-                                                    {
-                                                        "type": "expressionInline",
-                                                        "attrs": { "mathJax": "c_i \\leq 9" }
-                                                    },
-                                                    { "type": "text", "text": ", czyli " },
-                                                    {
-                                                        "type": "expressionInline",
-                                                        "attrs": { "mathJax": "0 \\leq c_i \\leq 9" }
-                                                    },
-                                                    { "type": "text", "text": ". Mamy więc " }
-                                                ]
-                                            },
-                                            {
-                                                "type": "expression",
+                                                "type": "expressionInline",
                                                 "attrs": {
-                                                    "mathJax": " d = c_0 + 10^1c_1 + ... + 10^i c_i + 10^{i+1}(a_{i+1} - r_{i+1} - b_{i+1}) + \\sum_{j = i + 2}^{l} 10^j \\left(a_j - b_j \\right) "
+                                                    "mathJax": "a = \\sum_{i = 0}^n a_i10^i, b = \\sum_{i = 0}^m b_i10^i"
                                                 }
-                                            }
+                                            },
+                                            { "type": "text", "text": ", gdzie " },
+                                            { "type": "expressionInline", "attrs": { "mathJax": "n + 1, m + 1" } },
+                                            { "type": "text", "text": " oznaczają liczbę cyfr odpowiednio liczb " },
+                                            { "type": "expressionInline", "attrs": { "mathJax": "a" } },
+                                            { "type": "text", "text": " i " },
+                                            { "type": "expressionInline", "attrs": { "mathJax": "b" } },
+                                            { "type": "text", "text": ", zaś " },
+                                            {
+                                                "type": "expressionInline",
+                                                "attrs": {
+                                                    "mathJax": "a_i, b_i \\in \\{0, 1, 2, 3, 4, 5, 6, 7, 8, 9\\}"
+                                                }
+                                            },
+                                            { "type": "text", "text": " oraz " },
+                                            { "type": "expressionInline", "attrs": { "mathJax": "a_n, b_m \\neq 0" } },
+                                            { "type": "text", "text": ". Ponadto przyjmujemy " },
+                                            { "type": "expressionInline", "attrs": { "mathJax": "b_i=0" } },
+                                            { "type": "text", "text": " dla " },
+                                            { "type": "expressionInline", "attrs": { "mathJax": "i>m" } },
+                                            {
+                                                "type": "text",
+                                                "text": ". Następujący algorytm pozwala obliczyć różnicę "
+                                            },
+                                            { "type": "expressionInline", "attrs": { "mathJax": "d=a-b" } },
+                                            { "type": "text", "text": ":" }
                                         ]
                                     },
                                     {
-                                        "type": "listItem",
+                                        "type": "orderedList",
+                                        "attrs": { "type": null, "start": 1 },
                                         "content": [
                                             {
-                                                "type": "paragraph",
-                                                "attrs": { "textAlign": "" },
+                                                "type": "listItem",
                                                 "content": [
                                                     {
-                                                        "type": "expressionInline",
-                                                        "attrs": { "mathJax": "a_i - r_i \\lt b_i" }
+                                                        "type": "paragraph",
+                                                        "attrs": { "textAlign": "" },
+                                                        "content": [
+                                                            { "type": "text", "text": "Definiujemy " },
+                                                            {
+                                                                "type": "expressionInline",
+                                                                "attrs": { "mathJax": "r_0=0" }
+                                                            },
+                                                            { "type": "text", "text": "." }
+                                                        ]
                                                     }
                                                 ]
                                             },
                                             {
-                                                "type": "paragraph",
-                                                "attrs": { "textAlign": "" },
+                                                "type": "listItem",
                                                 "content": [
                                                     {
-                                                        "type": "text",
-                                                        "text": "Przypadek ten odpowiada sytuacji, w której od cyfry o mniejszej wartości jest odejmowana cyfra o większej wartości, wobec czego zachodzi potrzeba dokonania zapożyczenia z kolejnej kolumny. Ustalamy "
-                                                    },
-                                                    {
-                                                        "type": "expressionInline",
-                                                        "attrs": {
-                                                            "mathJax": "c_i = 10 + a_i - r_i - b_i, r_{i+1} = 1"
-                                                        }
-                                                    },
-                                                    { "type": "text", "text": ". Z założenia " },
-                                                    {
-                                                        "type": "expressionInline",
-                                                        "attrs": { "mathJax": "a_i - r_i \\lt b_i" }
-                                                    },
-                                                    { "type": "text", "text": " zachodzą implikacje: " }
+                                                        "type": "paragraph",
+                                                        "attrs": { "textAlign": "" },
+                                                        "content": [
+                                                            { "type": "text", "text": "Ustalamy " },
+                                                            {
+                                                                "type": "expressionInline",
+                                                                "attrs": { "mathJax": "i := 0" }
+                                                            },
+                                                            { "type": "text", "text": "." }
+                                                        ]
+                                                    }
                                                 ]
                                             },
                                             {
-                                                "type": "expression",
-                                                "attrs": {
-                                                    "mathJax": "a_i - r_i \\leq b_i - 1\\\\ a_i - b_i \\leq r_i - 1\\\\ 10 - r_i + a_i - b_i \\leq 10 - r_i + r_i - 1 \\\\ c_i \\leq 9"
-                                                }
-                                            },
-                                            {
-                                                "type": "paragraph",
-                                                "attrs": { "textAlign": "" },
+                                                "type": "listItem",
                                                 "content": [
-                                                    { "type": "text", "text": "Ponadto " },
                                                     {
-                                                        "type": "expressionInline",
-                                                        "attrs": { "mathJax": "a_i \\geq 0" }
-                                                    },
-                                                    { "type": "text", "text": ", " },
-                                                    {
-                                                        "type": "expressionInline",
-                                                        "attrs": { "mathJax": "-r_i \\geq -1" }
-                                                    },
-                                                    { "type": "text", "text": " oraz " },
-                                                    {
-                                                        "type": "expressionInline",
-                                                        "attrs": { "mathJax": "-b_i \\geq -9" }
-                                                    },
-                                                    { "type": "text", "text": ", więc " }
+                                                        "type": "paragraph",
+                                                        "attrs": { "textAlign": "" },
+                                                        "content": [
+                                                            { "type": "text", "text": "Jeżeli " },
+                                                            {
+                                                                "type": "expressionInline",
+                                                                "attrs": { "mathJax": "a_i - r_i \\geq b_i" }
+                                                            },
+                                                            { "type": "text", "text": ", ustalamy " },
+                                                            {
+                                                                "type": "expressionInline",
+                                                                "attrs": { "mathJax": "d_i = a_i - r_i - b_i" }
+                                                            },
+                                                            { "type": "text", "text": ", " },
+                                                            {
+                                                                "type": "expressionInline",
+                                                                "attrs": { "mathJax": "r_{i+1}=0" }
+                                                            },
+                                                            { "type": "text", "text": ", w przeciwnym razie " },
+                                                            {
+                                                                "type": "expressionInline",
+                                                                "attrs": { "mathJax": "d_i=10 + a_i - r_i - b_i" }
+                                                            },
+                                                            { "type": "text", "text": ", " },
+                                                            {
+                                                                "type": "expressionInline",
+                                                                "attrs": { "mathJax": "r_{i+1}=1" }
+                                                            },
+                                                            { "type": "text", "text": "." }
+                                                        ]
+                                                    }
                                                 ]
                                             },
                                             {
-                                                "type": "expression",
-                                                "attrs": {
-                                                    "mathJax": "10 + a_i - r_i - b_i \\geq 10 + 0 - 1 - 9 \\\\ c_i \\geq 0"
-                                                }
-                                            },
-                                            {
-                                                "type": "paragraph",
-                                                "attrs": { "textAlign": "" },
+                                                "type": "listItem",
                                                 "content": [
-                                                    { "type": "text", "text": "a zatem " },
                                                     {
-                                                        "type": "expressionInline",
-                                                        "attrs": { "mathJax": "0 \\leq c_i \\leq 9" }
-                                                    },
-                                                    { "type": "text", "text": ". Mamy więc " }
+                                                        "type": "paragraph",
+                                                        "attrs": { "textAlign": "" },
+                                                        "content": [
+                                                            { "type": "text", "text": "Jeżeli " },
+                                                            {
+                                                                "type": "expressionInline",
+                                                                "attrs": { "mathJax": "i < n" }
+                                                            },
+                                                            { "type": "text", "text": ", przypisujemy " },
+                                                            {
+                                                                "type": "expressionInline",
+                                                                "attrs": { "mathJax": "i := i + 1" }
+                                                            },
+                                                            { "type": "text", "text": " i wracamy do kroku " },
+                                                            {
+                                                                "type": "text",
+                                                                "marks": [
+                                                                    {
+                                                                        "type": "textColor",
+                                                                        "attrs": { "color": "#ef0000" }
+                                                                    }
+                                                                ],
+                                                                "text": "3)"
+                                                            },
+                                                            { "type": "text", "text": "." }
+                                                        ]
+                                                    }
                                                 ]
                                             },
                                             {
-                                                "type": "expression",
-                                                "attrs": {
-                                                    "mathJax": "d = c_0 + 10^1c_1 + 10^2c_2 + ... + 10^i(10 - 10 + a_i - r_i - b_i) + 10^{i+1}(a_{i+1} - b_{i+1}) + \\sum_{j = i + 2}^{l} 10^j \\left(a_j - b_j \\right) =\\\\\n                        = c_0 + 10^1c_1 + 10^2c_2 + ... + 10^i(10 + a_i - r_i - b_i) + 10^{i+1}(a_{i+1} - 1 - b_{i+1}) + \\sum_{j = i + 1}^{l} 10^j \\left(a_j - b_j \\right) =\\\\\n                        = c_0 + 10^1c_1 + 10^2c_2 + ... + 10^ic_i + 10^{i+1}(a_{i+1} - r_{i+1} - b_{i+1}) + \\sum_{j = i + 1}^{l} 10^j \\left(a_j - b_j \\right)"
-                                                }
+                                                "type": "listItem",
+                                                "content": [
+                                                    {
+                                                        "type": "paragraph",
+                                                        "attrs": { "textAlign": "" },
+                                                        "content": [
+                                                            {
+                                                                "type": "text",
+                                                                "marks": [
+                                                                    {
+                                                                        "type": "textColor",
+                                                                        "attrs": { "color": "#000000" }
+                                                                    }
+                                                                ],
+                                                                "text": "Suma "
+                                                            },
+                                                            {
+                                                                "type": "expressionInline",
+                                                                "attrs": { "mathJax": "\\sum_{i=0}^n d_i 10^i" }
+                                                            },
+                                                            { "type": "text", "text": " stanowi poszukiwaną wartość " },
+                                                            { "type": "expressionInline", "attrs": { "mathJax": "d" } },
+                                                            { "type": "text", "text": ". Ponadto dla wszystkich " },
+                                                            { "type": "expressionInline", "attrs": { "mathJax": "i" } },
+                                                            { "type": "text", "text": " zachodzi" },
+                                                            { "type": "hardBreak" },
+                                                            {
+                                                                "type": "expressionInline",
+                                                                "attrs": {
+                                                                    "mathJax": "d_i \\in \\{0, 1, 2, 3, 4, 5, 6, 7, 8, 9\\}"
+                                                                }
+                                                            },
+                                                            { "type": "text", "text": "." }
+                                                        ]
+                                                    }
+                                                ]
                                             }
                                         ]
                                     }
                                 ]
                             },
                             {
-                                "type": "paragraph",
-                                "attrs": { "textAlign": "" },
+                                "type": "proof",
+                                "attrs": { "label": "Dowód", "required": [] },
                                 "content": [
-                                    { "type": "text", "text": "Na zasadzie indukcji liczba " },
-                                    { "type": "expressionInline", "attrs": { "mathJax": "d" } },
-                                    { "type": "text", "text": " zostaje rozwinięta do postaci dziesiętnej: " }
-                                ]
-                            },
-                            {
-                                "type": "expression",
-                                "attrs": { "mathJax": " d = c_0 + 10^1c_1 + 10^2c_2 + ... + 10^lc_l " }
-                            },
-                            {
-                                "type": "paragraph",
-                                "attrs": { "textAlign": "" },
-                                "content": [
-                                    { "type": "text", "text": "Pozostaje jeszcze uzasadnić, że " },
-                                    { "type": "expressionInline", "attrs": { "mathJax": "r_{l+1} = 0" } },
                                     {
-                                        "type": "text",
-                                        "text": ", czyli że nie zostało wykonane zapożyczenie z kolumny na pozycji większej niż "
-                                    },
-                                    { "type": "expressionInline", "attrs": { "mathJax": "l" } },
-                                    { "type": "text", "text": ". Dowodząc nie wprost, przypuśćmy, że " },
-                                    { "type": "expressionInline", "attrs": { "mathJax": "r_{l+1} = 1" } },
-                                    {
-                                        "type": "text",
-                                        "text": ". Cofając się o jeden krok wstecz w dokonanej indukcji, stwierdzamy, że dla kolumny "
-                                    },
-                                    { "type": "expressionInline", "attrs": { "mathJax": "l" } },
-                                    { "type": "text", "text": " zaszedł przypadek (" },
-                                    { "type": "expressionInline", "attrs": { "mathJax": "2" } },
-                                    { "type": "text", "text": "): " },
-                                    { "type": "expressionInline", "attrs": { "mathJax": "a_l - r_l \\lt b_l" } },
-                                    { "type": "text", "text": " (gdyby było inaczej, wartość " },
-                                    { "type": "expressionInline", "attrs": { "mathJax": "r_{l+1}" } },
-                                    { "type": "text", "text": " zostałaby ustalona na " },
-                                    { "type": "expressionInline", "attrs": { "mathJax": "0" } },
-                                    { "type": "text", "text": "). Z pierwotnego założenia " },
-                                    { "type": "expressionInline", "attrs": { "mathJax": "a \\geq b" } },
-                                    { "type": "text", "text": " wynika, że " },
-                                    { "type": "expressionInline", "attrs": { "mathJax": "a_l \\geq b_l" } },
-                                    { "type": "text", "text": " (najbardziej znacząca cyfra " },
-                                    { "type": "expressionInline", "attrs": { "mathJax": "a" } },
-                                    { "type": "text", "text": " jest nie mniejsza niż najbardziej znacząca cyfra " },
-                                    { "type": "expressionInline", "attrs": { "mathJax": "b" } },
-                                    {
-                                        "type": "text",
-                                        "text": "). W takim razie jedyną sytuacją spełniającą wszystkie warunki jest przypadek "
-                                    },
-                                    { "type": "expressionInline", "attrs": { "mathJax": "a_l = b_l, r_l = 1" } },
-                                    { "type": "text", "text": ". Ponownie, oznacza to, że " },
-                                    {
-                                        "type": "expressionInline",
-                                        "attrs": { "mathJax": "a_{l - 1} - r_{l - 1} \\lt b_{l - 1}" }
+                                        "type": "paragraph",
+                                        "attrs": { "textAlign": "" },
+                                        "content": [
+                                            {
+                                                "type": "text",
+                                                "text": "Pokażemy, że za każdym razem, gdy algorytm rozpoczyna krok "
+                                            },
+                                            {
+                                                "type": "text",
+                                                "marks": [{ "type": "textColor", "attrs": { "color": "#ef0000" } }],
+                                                "text": "4)"
+                                            },
+                                            {
+                                                "type": "text",
+                                                "text": ", zachowany jest następujący niezmiennik pętli:"
+                                            }
+                                        ]
                                     },
                                     {
-                                        "type": "text",
-                                        "text": ", przy czym z uwagi na równość najbardziej znaczących cyfr "
-                                    },
-                                    { "type": "expressionInline", "attrs": { "mathJax": "a" } },
-                                    { "type": "text", "text": " i " },
-                                    { "type": "expressionInline", "attrs": { "mathJax": "b" } },
-                                    { "type": "text", "text": " musi zachodzić " },
-                                    { "type": "expressionInline", "attrs": { "mathJax": "a_{l-1} \\geq b_{l-1}" } },
-                                    { "type": "text", "text": " (w przeciwnym razie " },
-                                    { "type": "expressionInline", "attrs": { "mathJax": "a \\lt b" } },
-                                    { "type": "text", "text": "). To zaś implikuje " },
-                                    {
-                                        "type": "expressionInline",
-                                        "attrs": { "mathJax": "a_{l-1} = b_{l-1}, r_{l-1} = 1" }
+                                        "type": "expression",
+                                        "attrs": {
+                                            "mathJax": " d = \\sum_{j=0}^{i-1} d_j 10^j + (a_i - r_i - b_i)10^i + \\sum_{j = i + 1}^{n} \\left(a_j - b_j \\right) 10^j"
+                                        }
                                     },
                                     {
-                                        "type": "text",
-                                        "text": ". Kontynuując rozumowanie wstecz, dochodzimy do wniosku, że "
+                                        "type": "paragraph",
+                                        "attrs": { "textAlign": "" },
+                                        "content": [
+                                            { "type": "text", "text": "Gdy krok " },
+                                            {
+                                                "type": "text",
+                                                "marks": [{ "type": "textColor", "attrs": { "color": "#ef0000" } }],
+                                                "text": "4)"
+                                            },
+                                            { "type": "text", "text": " jest osiągnięty po raz pierwszy, mamy " },
+                                            { "type": "expressionInline", "attrs": { "mathJax": "r_0 = 0" } },
+                                            { "type": "text", "text": " (z kroku " },
+                                            {
+                                                "type": "text",
+                                                "marks": [{ "type": "textColor", "attrs": { "color": "#ef0000" } }],
+                                                "text": "1)"
+                                            },
+                                            { "type": "text", "text": ") oraz " },
+                                            { "type": "expressionInline", "attrs": { "mathJax": "i = 0" } },
+                                            { "type": "text", "text": " (z kroku " },
+                                            {
+                                                "type": "text",
+                                                "marks": [{ "type": "textColor", "attrs": { "color": "#ef0000" } }],
+                                                "text": "2)"
+                                            },
+                                            { "type": "text", "text": "). Wtedy:" }
+                                        ]
                                     },
-                                    { "type": "expressionInline", "attrs": { "mathJax": "r_0 = 1" } },
                                     {
-                                        "type": "text",
-                                        "text": " wbrew założeniu indukcyjnemu, co kończy dowód nie wprost."
+                                        "type": "expression",
+                                        "attrs": {
+                                            "mathJax": " \\sum_{j=0}^{i-1} d_j 10^j + (a_i - r_i - b_i)10^i + \\sum_{j = i + 1}^{n} \\left(a_j - b_j \\right) 10^j =\n\n(a_0 - b_0) + \\sum_{j = 1}^{n} \\left(a_j - b_j \\right)10^j =\n\n\\sum_{j = 0}^{n} \\left(a_j - b_j \\right)10^j =\\\\\n\n=\\sum_{j = 0}^{n} a_j10^j - \\sum_{j = 0}^{n}b_j10^j = \n\n\\sum_{j = 0}^{n} a_j10^j - \\left(\\sum_{j = 0}^{m}b_j10^j + \\sum_{j = m+1}^{n}b_j10^j \\right) = \n\na - \\left(b + 0 \\right) = a - b = d"
+                                        }
+                                    },
+                                    {
+                                        "type": "paragraph",
+                                        "attrs": { "textAlign": "" },
+                                        "content": [
+                                            {
+                                                "type": "text",
+                                                "text": "Na zasadzie indukcji, załóżmy że niezmiennik jest spełniony dla pewnego "
+                                            },
+                                            { "type": "expressionInline", "attrs": { "mathJax": "i \\geq 0" } },
+                                            { "type": "text", "text": " i udowodnijmy go dla " },
+                                            { "type": "expressionInline", "attrs": { "mathJax": "i + 1" } },
+                                            { "type": "text", "text": ". Zauważmy, że w kroku " },
+                                            {
+                                                "type": "text",
+                                                "marks": [{ "type": "textColor", "attrs": { "color": "#ef0000" } }],
+                                                "text": "3)"
+                                            },
+                                            {
+                                                "type": "text",
+                                                "text": ", niezależnie od warunku implikacji, zachodzi: "
+                                            },
+                                            {
+                                                "type": "expressionInline",
+                                                "attrs": { "mathJax": "d_i = a_i - r_i - b_i + 10r_{i+1}" }
+                                            },
+                                            { "type": "text", "text": ". Mamy więc:" }
+                                        ]
+                                    },
+                                    {
+                                        "type": "expression",
+                                        "attrs": {
+                                            "mathJax": "\\sum_{j=0}^{i} d_j 10^j + (a_{i+1} - r_{i+1} - b_{i+1})10^{i+1} + \\sum_{j = i + 2}^{n} \\left(a_j - b_j \\right) 10^j =\\\\\n\n=\\sum_{j=0}^{i-1} d_j 10^j + d_i10^i + (a_{i+1} - r_{i+1} - b_{i+1})10^{i+1} + \\sum_{j = i + 2}^{n} \\left(a_j - b_j \\right) 10^j=\\\\\n\n=\\sum_{j=0}^{i-1} d_j 10^j + (a_i-r_i-b_i+10r_{i+1})10^i - r_{i+1}10^{i+1} + (a_{i+1} - b_{i+1})10^{i+1} + \\sum_{j = i + 2}^{n} \\left(a_j - b_j \\right) 10^j=\\\\\n\n=\\sum_{j=0}^{i-1} d_j 10^j + (a_i-r_i-b_i)10^i + \\sum_{j = i + 1}^{n} \\left(a_j - b_j \\right) 10^j"
+                                        }
+                                    },
+                                    {
+                                        "type": "paragraph",
+                                        "attrs": { "textAlign": "" },
+                                        "content": [{ "type": "text", "text": "Co kończy krok indukcyjny. " }]
+                                    },
+                                    {
+                                        "type": "paragraph",
+                                        "attrs": { "textAlign": "" },
+                                        "content": [
+                                            { "type": "text", "text": "Uzasadnimy teraz, że " },
+                                            { "type": "expressionInline", "attrs": { "mathJax": "r_{n+1}" } },
+                                            {
+                                                "type": "text",
+                                                "text": ", obliczone w ostatniej iteracji pętli, musi wynosić "
+                                            },
+                                            { "type": "text", "marks": [{ "type": "number" }], "text": "0" },
+                                            {
+                                                "type": "text",
+                                                "text": ". Przeprowadźmy dowód nie wprost i przypuśćmy, że "
+                                            },
+                                            { "type": "expressionInline", "attrs": { "mathJax": "r_{n+1}=1" } },
+                                            { "type": "text", "text": ". Wartość ta mogła zostać wyznaczona w kroku " },
+                                            {
+                                                "type": "text",
+                                                "marks": [{ "type": "textColor", "attrs": { "color": "#ef0000" } }],
+                                                "text": "4)"
+                                            },
+                                            { "type": "text", "text": " tylko gdy " },
+                                            { "type": "expressionInline", "attrs": { "mathJax": "a_n - r_n < b_n" } },
+                                            { "type": "text", "text": ". Z założenia wiemy, że " },
+                                            { "type": "expressionInline", "attrs": { "mathJax": "a \\geq b" } },
+                                            { "type": "text", "text": ", czyli też " },
+                                            { "type": "expressionInline", "attrs": { "mathJax": "a_n \\geq b_n" } },
+                                            { "type": "text", "text": " (najbardziej znacząca cyfra " },
+                                            { "type": "expressionInline", "attrs": { "mathJax": "a" } },
+                                            {
+                                                "type": "text",
+                                                "text": " jest nie mniejsza niż najbardziej znacząca cyfra "
+                                            },
+                                            { "type": "expressionInline", "attrs": { "mathJax": "b" } },
+                                            { "type": "text", "text": "), a więc warunek " },
+                                            { "type": "expressionInline", "attrs": { "mathJax": "a_n - r_n < b_n" } },
+                                            { "type": "text", "text": " mógłby zajść tylko gdy " },
+                                            { "type": "expressionInline", "attrs": { "mathJax": "a_n = b_n" } },
+                                            { "type": "text", "text": " oraz " },
+                                            { "type": "expressionInline", "attrs": { "mathJax": "r_n = 1" } },
+                                            {
+                                                "type": "text",
+                                                "text": ". Przeprowadzając rozumowanie wstecz, dochodzimy do wniosku, że "
+                                            },
+                                            { "type": "expressionInline", "attrs": { "mathJax": "r_n = 1" } },
+                                            { "type": "text", "text": " tylko wtedy, gdy " },
+                                            {
+                                                "type": "expressionInline",
+                                                "attrs": { "mathJax": "a_{n-1} - r_{n+1} < b_{n+1}" }
+                                            },
+                                            {
+                                                "type": "text",
+                                                "text": ", przy czym z uwagi na równość najbardziej znaczących cyfr "
+                                            },
+                                            { "type": "expressionInline", "attrs": { "mathJax": "a" } },
+                                            { "type": "text", "text": " i " },
+                                            { "type": "expressionInline", "attrs": { "mathJax": "b" } },
+                                            { "type": "text", "text": " musi zachodzić " },
+                                            {
+                                                "type": "expressionInline",
+                                                "attrs": { "mathJax": "a_{n-1} \\geq b_{n-1}" }
+                                            },
+                                            { "type": "text", "text": " (w przeciwnym razie " },
+                                            { "type": "expressionInline", "attrs": { "mathJax": "a \\lt b" } },
+                                            { "type": "text", "text": "). To zaś implikuje " },
+                                            {
+                                                "type": "expressionInline",
+                                                "attrs": { "mathJax": "a_{n-1} = b_{n-1}, r_{n-1} = 1" }
+                                            },
+                                            {
+                                                "type": "text",
+                                                "text": ". Kontynuując rozumowanie indukcyjnie wstecz, dochodzimy do wniosku, że "
+                                            },
+                                            { "type": "expressionInline", "attrs": { "mathJax": "r_0 = 1" } },
+                                            { "type": "text", "text": ", co przeczy definicji z " },
+                                            {
+                                                "type": "text",
+                                                "marks": [{ "type": "textColor", "attrs": { "color": "#ef0000" } }],
+                                                "text": "1)"
+                                            },
+                                            { "type": "text", "text": " i kończy dowód nie wprost." }
+                                        ]
+                                    },
+                                    {
+                                        "type": "paragraph",
+                                        "attrs": { "textAlign": "" },
+                                        "content": [
+                                            { "type": "text", "text": "Ostatecznie więc, w kroku " },
+                                            {
+                                                "type": "text",
+                                                "marks": [{ "type": "textColor", "attrs": { "color": "#ef0000" } }],
+                                                "text": "5)"
+                                            },
+                                            { "type": "text", "text": ", mamy " },
+                                            { "type": "expressionInline", "attrs": { "mathJax": "i=n" } },
+                                            { "type": "text", "text": " (z warunku wyjścia z " },
+                                            {
+                                                "type": "text",
+                                                "marks": [{ "type": "textColor", "attrs": { "color": "#ef0000" } }],
+                                                "text": "4)"
+                                            },
+                                            { "type": "text", "text": "), oraz " },
+                                            { "type": "expressionInline", "attrs": { "mathJax": "r_{n+1}=0" } },
+                                            { "type": "text", "text": ", więc z niezmiennika:" }
+                                        ]
+                                    },
+                                    {
+                                        "type": "expression",
+                                        "attrs": {
+                                            "mathJax": " d = \\sum_{j=0}^{n-1} d_j 10^j + (a_n - r_n - b_n)10^n = \n\\sum_{j=0}^{n-1} d_j 10^j + (a_n - r_n - b_n + 10r_{n+1})10^n=\\sum_{j=0}^{n-1} d_j 10^j + d_n10^n=\\\\\n=\\sum_{j=0}^{n}d_j 10^j"
+                                        }
+                                    },
+                                    {
+                                        "type": "paragraph",
+                                        "attrs": { "textAlign": "" },
+                                        "content": [
+                                            { "type": "text", "text": "Na koniec udowodnimy, że dla każdego " },
+                                            { "type": "expressionInline", "attrs": { "mathJax": "i" } },
+                                            { "type": "text", "text": " zachodzi " },
+                                            {
+                                                "type": "expressionInline",
+                                                "attrs": { "mathJax": "0 \\leq d_i \\leq 9" }
+                                            },
+                                            { "type": "text", "text": ". W kroku " },
+                                            {
+                                                "type": "text",
+                                                "marks": [{ "type": "textColor", "attrs": { "color": "#ef0000" } }],
+                                                "text": "4)"
+                                            },
+                                            { "type": "text", "text": " mamy: " }
+                                        ]
+                                    },
+                                    {
+                                        "type": "bulletList",
+                                        "content": [
+                                            {
+                                                "type": "listItem",
+                                                "content": [
+                                                    {
+                                                        "type": "paragraph",
+                                                        "attrs": { "textAlign": "" },
+                                                        "content": [
+                                                            { "type": "text", "text": "Jeżeli " },
+                                                            {
+                                                                "type": "expressionInline",
+                                                                "attrs": { "mathJax": "a_i - r_i \\geq b_i" }
+                                                            },
+                                                            { "type": "text", "text": ", to " },
+                                                            {
+                                                                "type": "expressionInline",
+                                                                "attrs": { "mathJax": "d_i = a_i - r_i - b_i" }
+                                                            },
+                                                            { "type": "text", "text": ", co daje " },
+                                                            {
+                                                                "type": "expressionInline",
+                                                                "attrs": { "mathJax": "d_i \\geq 0" }
+                                                            },
+                                                            {
+                                                                "type": "text",
+                                                                "text": " z poprzednika implikacji oraz "
+                                                            },
+                                                            {
+                                                                "type": "expressionInline",
+                                                                "attrs": { "mathJax": "d_i \\leq 9" }
+                                                            },
+                                                            { "type": "text", "text": " z uwagi na " },
+                                                            {
+                                                                "type": "expressionInline",
+                                                                "attrs": { "mathJax": "a_i \\leq 9" }
+                                                            },
+                                                            { "type": "text", "text": " i nieujemne odjemne." }
+                                                        ]
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "type": "listItem",
+                                                "content": [
+                                                    {
+                                                        "type": "paragraph",
+                                                        "attrs": { "textAlign": "" },
+                                                        "content": [
+                                                            { "type": "text", "text": "Jeżeli " },
+                                                            {
+                                                                "type": "expressionInline",
+                                                                "attrs": { "mathJax": "a_i - r_i < b_i" }
+                                                            },
+                                                            { "type": "text", "text": ", to " },
+                                                            {
+                                                                "type": "expressionInline",
+                                                                "attrs": { "mathJax": "d_i = 10 + a_i - r_i - b_i" }
+                                                            },
+                                                            {
+                                                                "type": "text",
+                                                                "text": ". Dla tego przypadku zachodzą implikacje:"
+                                                            }
+                                                        ]
+                                                    },
+                                                    {
+                                                        "type": "expression",
+                                                        "attrs": {
+                                                            "mathJax": "a_i - r_i < b_i \\\\\na_i - r_i \\leq b_i - 1\\\\\n10 + a_i - r_i - b_i \\leq 10 - 1 \\\\\nd_i \\leq 9"
+                                                        }
+                                                    },
+                                                    {
+                                                        "type": "paragraph",
+                                                        "attrs": { "textAlign": null },
+                                                        "content": [
+                                                            { "type": "text", "text": "Ponadto " },
+                                                            {
+                                                                "type": "expressionInline",
+                                                                "attrs": { "mathJax": "a_i \\geq 0" }
+                                                            },
+                                                            { "type": "text", "text": ", " },
+                                                            {
+                                                                "type": "expressionInline",
+                                                                "attrs": { "mathJax": "-r_i \\geq -1" }
+                                                            },
+                                                            { "type": "text", "text": " oraz " },
+                                                            {
+                                                                "type": "expressionInline",
+                                                                "attrs": { "mathJax": "-b_i \\geq -9" }
+                                                            },
+                                                            { "type": "text", "text": ", więc " },
+                                                            {
+                                                                "type": "expressionInline",
+                                                                "attrs": {
+                                                                    "mathJax": "d_i = 10 + a_i - r_i - b_i \\geq 10 + 0 - 1 - 9 \\geq 0.\\ \\ □"
+                                                                }
+                                                            }
+                                                        ]
+                                                    }
+                                                ]
+                                            }
+                                        ]
                                     }
                                 ]
                             }
@@ -2167,7 +2290,6 @@
         "type": "doc",
         "content": [
             { "type": "title", "content": [{ "type": "text", "text": "Odejmowanie" }] },
-            { "type": "intro", "content": [{ "type": "paragraph", "attrs": { "textAlign": "" } }] },
             {
                 "type": "chapter",
                 "content": [
@@ -2181,7 +2303,7 @@
                         "content": [
                             {
                                 "type": "geometry",
-                                "attrs": { "canvas": { "height": 290, "width": 531 } },
+                                "attrs": { "canvas": { "height": 268, "width": 565 } },
                                 "content": [
                                     {
                                         "type": "circle",
@@ -2217,7 +2339,7 @@
                                         "type": "circle",
                                         "attrs": {
                                             "borderColor": "#00000000",
-                                            "center": { "x": 334, "y": 140 },
+                                            "center": { "x": 340, "y": 128 },
                                             "color": "#aa0000",
                                             "id": "166",
                                             "size": { "height": 45, "width": 45 }
@@ -2227,7 +2349,7 @@
                                         "type": "circle",
                                         "attrs": {
                                             "borderColor": "#00000000",
-                                            "center": { "x": 370, "y": 192 },
+                                            "center": { "x": 373, "y": 185 },
                                             "color": "#aa0000",
                                             "id": "167",
                                             "size": { "height": 45, "width": 45 }
@@ -2237,7 +2359,7 @@
                                         "type": "circle",
                                         "attrs": {
                                             "borderColor": "#00000000",
-                                            "center": { "x": 426, "y": 166 },
+                                            "center": { "x": 431, "y": 162 },
                                             "color": "#aa0000",
                                             "id": "168",
                                             "size": { "height": 45, "width": 45 }
@@ -2247,10 +2369,38 @@
                                         "type": "circle",
                                         "attrs": {
                                             "borderColor": "#00000000",
-                                            "center": { "x": 440, "y": 90 },
+                                            "center": { "x": 413, "y": 100 },
                                             "color": "#aa0000",
                                             "id": "169",
                                             "size": { "height": 45, "width": 45 }
+                                        }
+                                    },
+                                    {
+                                        "type": "polygon",
+                                        "attrs": {
+                                            "borderColor": "#00000000",
+                                            "color": "#000000",
+                                            "id": "2",
+                                            "vertices": [
+                                                { "x": 441.18070879604966, "y": 203.62138813147374 },
+                                                { "x": 328.32772831304806, "y": 93.79998779296875 },
+                                                { "x": 342.92498779296875, "y": 78.79999542236328 },
+                                                { "x": 455.77796827597035, "y": 189.8000030517578 }
+                                            ]
+                                        }
+                                    },
+                                    {
+                                        "type": "polygon",
+                                        "attrs": {
+                                            "borderColor": "#00000000",
+                                            "color": "#000000",
+                                            "id": "7",
+                                            "vertices": [
+                                                { "x": 337.92498779296875, "y": 201.8000030517578 },
+                                                { "x": 324.92498779296875, "y": 190.8000030517578 },
+                                                { "x": 440.92498779296875, "y": 70.79999542236328 },
+                                                { "x": 454.92498779296875, "y": 82.79999542236328 }
+                                            ]
                                         }
                                     }
                                 ]
@@ -2259,10 +2409,9 @@
                                 "type": "paragraph",
                                 "attrs": { "textAlign": "" },
                                 "content": [
-                                    {
-                                        "type": "text",
-                                        "text": "Istotą odejmowania jest zmniejszanie jednej liczby o drugą. Gdy od "
-                                    },
+                                    { "type": "text", "text": "Istotą " },
+                                    { "type": "text", "marks": [{ "type": "italic" }], "text": "odejmowania" },
+                                    { "type": "text", "text": " jest zmniejszanie jednej liczby o drugą. Gdy od " },
                                     { "type": "expressionInline", "attrs": { "mathJax": "7" } },
                                     { "type": "text", "text": " kulek zabierzemy " },
                                     { "type": "expressionInline", "attrs": { "mathJax": "4" } },
@@ -2281,9 +2430,13 @@
                                 "content": [
                                     { "type": "text", "text": "Znaczek " },
                                     { "type": "expressionInline", "attrs": { "mathJax": "–" } },
+                                    { "type": "text", "text": " jest symbolem matematycznym o nazwie „" },
+                                    { "type": "text", "marks": [{ "type": "italic" }], "text": "minus" },
+                                    { "type": "text", "text": "”. W działaniu czytamy go jako „" },
+                                    { "type": "text", "marks": [{ "type": "italic" }], "text": "odjąć" },
                                     {
                                         "type": "text",
-                                        "text": " jest symbolem matematycznym o nazwie „minus”. W działaniu czytamy go jako „odjąć”. Znaczy on tyle, że od tego, co po lewej stronie, zabieramy (czyli odejmujemy) to, co po prawej stronie."
+                                        "text": "”. Znaczy on tyle, że od tego, co po lewej stronie, zabieramy (czyli odejmujemy) to, co po prawej stronie."
                                     }
                                 ]
                             }
@@ -2309,7 +2462,7 @@
                                     {
                                         "type": "text",
                                         "marks": [{ "type": "textColor", "attrs": { "color": "rgb(0, 0, 0)" } }],
-                                        "text": "Odejmowanie jest działaniem odwrotnym do dodawania. Kiedy napotkamy problem, próbując odjąć "
+                                        "text": "Kiedy próbujemy odjąć "
                                     },
                                     { "type": "expressionInline", "attrs": { "mathJax": "10 - 4" } },
                                     {
@@ -2339,13 +2492,13 @@
                                     {
                                         "type": "text",
                                         "marks": [{ "type": "textColor", "attrs": { "color": "rgb(0, 0, 0)" } }],
-                                        "text": " brakuje jeszcze "
+                                        "text": " brakuje "
                                     },
                                     { "type": "expressionInline", "attrs": { "mathJax": "6" } },
                                     {
                                         "type": "text",
                                         "marks": [{ "type": "textColor", "attrs": { "color": "rgb(0, 0, 0)" } }],
-                                        "text": ". Tak więc spostrzeżenie "
+                                        "text": ". Czyli spostrzeżenie "
                                     },
                                     { "type": "expressionInline", "attrs": { "mathJax": "4 + 6 = 10" } },
                                     {
@@ -2389,13 +2542,13 @@
                                     {
                                         "type": "text",
                                         "marks": [{ "type": "textColor", "attrs": { "color": "rgb(0, 0, 0)" } }],
-                                        "text": " zlokalizuj kolumnę o nazwie \""
+                                        "text": " znajdź kolumnę \""
                                     },
                                     { "type": "expressionInline", "attrs": { "mathJax": "8" } },
                                     {
                                         "type": "text",
                                         "marks": [{ "type": "textColor", "attrs": { "color": "rgb(0, 0, 0)" } }],
-                                        "text": "\" i znajdź w niej pole z wartością "
+                                        "text": "\" i w niej pole z wartością "
                                     },
                                     { "type": "expressionInline", "attrs": { "mathJax": "17" } },
                                     {
@@ -2414,7 +2567,7 @@
                             {
                                 "type": "component",
                                 "attrs": {
-                                    "args": ["(a, b) => a + b", "(a, b, c) => `${c} - ${a} = ${b}`", "3", "4"],
+                                    "args": ["(a, b) => a + b", "(a, b, c) => `${c} - ${a} = ${b}`", 8, 9],
                                     "componentName": "operation-table"
                                 }
                             },
@@ -2503,14 +2656,14 @@
     "comments": {
         "1": {
             "hidden": true,
-            "text": "Sidney Polak stwierdził również, że „człowiek jest tylko sumą oddechów”. Skoro już umiesz dodawać, jesteś w stanie ocenić słuszność jego śmiałej teorii."
+            "text": "Sidney Polak twierdził również, że „człowiek jest tylko sumą oddechów”. Skoro już umiesz dodawać, jesteś w stanie ocenić słuszność jego śmiałej teorii."
         },
-        "2": { "hidden": true, "text": "co kończy dowód." },
+        "2": { "hidden": true, "text": "co kończy dowód" },
         "3": { "hidden": true, "text": "Jak dorośniesz, zrozumiesz różnicę." },
         "4": { "hidden": true, "text": "Lekcja zawiera lokowanie produktu." },
         "5": { "hidden": true, "text": "zwyczajowo zwaną kieszonkowym" },
         "6": { "hidden": true, "text": "Chyba że jesteś wrażliwy. Wtedy po prostu to przeczytaj." },
-        "7": { "hidden": true, "text": "Pomijając fakt, że dwie owce właśnie zostały zagryzione." },
+        "7": { "hidden": true, "text": "Pomijając fakt, że dwie owce właśnie zostały pożarte." },
         "8": { "hidden": true, "text": "Chyba że jesteś poborcą podatkowym." },
         "9": { "hidden": true, "text": "to nie zaciągaj kredytu hipotecznego. To cię zrujnuje." },
         "11": { "hidden": false, "text": "Rozbijamy liczby na cyfry." },
@@ -2521,9 +2674,17 @@
         "16": { "hidden": false, "text": "Odejmujemy cyfry setek." },
         "17": { "hidden": false, "text": "Rozbijamy na cyfry." },
         "18": { "hidden": false, "text": "Porządkujemy wszystkie cyfry." },
-        "19": { "hidden": false, "text": "Zaciągamy „trzecią” pożyczkę." },
-        "20": { "hidden": false, "text": "Zaciągamy „drugą” pożyczkę." },
-        "21": { "hidden": false, "text": "Zaciągamy „pierwszą” pożyczkę." },
-        "22": { "hidden": false, "text": "Odejmujemy wszystkie cyfry." }
+        "19": { "hidden": false, "text": "Zaciągamy pożyczkę z pierwszej kolumny od lewej." },
+        "20": { "hidden": false, "text": "Zaciągamy pożyczkę z drugiej kolumny od lewej." },
+        "21": { "hidden": false, "text": "Zaciągamy pożyczkę z trzeciej kolumny od lewej." },
+        "22": { "hidden": false, "text": "Odejmujemy wszystkie cyfry." },
+        "23": {
+            "hidden": true,
+            "text": "Sidney Polak twierdził również, że „człowiek jest tylko sumą oddechów”. Skoro już umiesz dodawać, jesteś w stanie ocenić słuszność jego śmiałej teorii."
+        },
+        "24": {
+            "hidden": false,
+            "text": "Sidney Polak twierdził również, że „człowiek jest tylko sumą oddechów”. Skoro już umiesz dodawać, jesteś w stanie ocenić słuszność jego śmiałej teorii."
+        }
     }
 }
