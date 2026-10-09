@@ -29,7 +29,7 @@
                     {
                         "type": "chapterBody",
                         "content": [
-                            { "type": "semanticTag", "attrs": { "tags": ["Intuicje"], "required": [] } },
+                            { "type": "semanticTag", "attrs": { "required": [], "tags": ["Intuicje"] } },
                             {
                                 "type": "paragraph",
                                 "attrs": { "textAlign": "" },
@@ -355,7 +355,7 @@
                     {
                         "type": "chapterBody",
                         "content": [
-                            { "type": "semanticTag", "attrs": { "tags": ["Intuicje"], "required": [] } },
+                            { "type": "semanticTag", "attrs": { "required": [], "tags": ["Intuicje"] } },
                             {
                                 "type": "paragraph",
                                 "attrs": { "textAlign": "" },
@@ -798,7 +798,7 @@
                     {
                         "type": "chapterBody",
                         "content": [
-                            { "type": "semanticTag", "attrs": { "tags": ["Intuicje"], "required": [] } },
+                            { "type": "semanticTag", "attrs": { "required": [], "tags": ["Intuicje"] } },
                             {
                                 "type": "paragraph",
                                 "attrs": { "textAlign": "" },
@@ -1245,7 +1245,7 @@
                                     }
                                 ]
                             },
-                            { "type": "semanticTag", "attrs": { "tags": ["Rozszerzenie"], "required": [] } },
+                            { "type": "semanticTag", "attrs": { "required": [], "tags": ["Rozszerzenie"] } },
                             {
                                 "type": "paragraph",
                                 "attrs": { "textAlign": "" },
@@ -1927,12 +1927,12 @@
     },
     "comments": {
         "1": {
-            "text": "Warto zaznaczyć różnicę między znakiem równości $=$ a znakiem równoważności $\\Leftrightarrow$. Znak równości stawiamy pomiędzy dwoma liczbami/wyrażeniami algebraicznymi/obiektami matematycznymi, które są takie same (mają tą samą wartość). Równoważność dotyczy dwóch stwierdzeń (zdań), które wyrażają dokładnie taką samą myśl.",
-            "hidden": false
+            "hidden": false,
+            "text": "Warto zaznaczyć różnicę między znakiem równości $=$ a znakiem równoważności $\\Leftrightarrow$. Znak równości stawiamy pomiędzy dwoma liczbami/wyrażeniami algebraicznymi/obiektami matematycznymi, które są takie same (mają tą samą wartość). Równoważność dotyczy dwóch stwierdzeń (zdań), które wyrażają dokładnie taką samą myśl."
         },
         "2": {
-            "text": "A gdzie to wszystko się zaczyna? Istnieje coś takiego jak 'pojęcia pierwotne', których się nie definiuje, a jedynie mówi, że istnieją. Spójne i ścisłe konstruowanie całej matematyki od zera jest trudnym zagadnieniem, które wymaga sporej wiedzy w dziedzinie logiki\n\t\tmatematycznej i teorii mnogości. W naszej ścieżce dydaktycznej podchodzimy do formalizmu bardziej pobłażliwie i opieramy się po części na intuicjach.",
-            "hidden": false
+            "hidden": false,
+            "text": "A gdzie to wszystko się zaczyna? Istnieje coś takiego jak 'pojęcia pierwotne', których się nie definiuje, a jedynie mówi, że istnieją. Spójne i ścisłe konstruowanie całej matematyki od zera jest trudnym zagadnieniem, które wymaga sporej wiedzy w dziedzinie logiki\n\t\tmatematycznej i teorii mnogości. W naszej ścieżce dydaktycznej podchodzimy do formalizmu bardziej pobłażliwie i opieramy się po części na intuicjach."
         }
     }
 }

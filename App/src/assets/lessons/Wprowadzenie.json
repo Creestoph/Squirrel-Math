@@ -117,8 +117,8 @@
     },
     "comments": {
         "1": {
-            "text": "Rzeczywiście okiełznanie „całej” wiedzy matematycznej to przedsięwzięcie raczej nieosiągalne, ale na dobry początek zadowolimy się poziomem maturalnym.",
-            "hidden": false
+            "hidden": false,
+            "text": "Rzeczywiście okiełznanie „całej” wiedzy matematycznej to przedsięwzięcie raczej nieosiągalne, ale na dobry początek zadowolimy się poziomem maturalnym."
         }
     }
 }

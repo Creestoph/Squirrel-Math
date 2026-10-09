@@ -36,7 +36,7 @@
                     {
                         "type": "chapterBody",
                         "content": [
-                            { "type": "semanticTag", "attrs": { "tags": ["Intuicje"], "required": [] } },
+                            { "type": "semanticTag", "attrs": { "required": [], "tags": ["Intuicje"] } },
                             {
                                 "type": "paragraph",
                                 "attrs": { "textAlign": "" },
@@ -221,7 +221,7 @@
                     {
                         "type": "chapterBody",
                         "content": [
-                            { "type": "semanticTag", "attrs": { "tags": ["Intuicje"], "required": [] } },
+                            { "type": "semanticTag", "attrs": { "required": [], "tags": ["Intuicje"] } },
                             {
                                 "type": "paragraph",
                                 "attrs": { "textAlign": "" },
@@ -637,7 +637,7 @@
                     {
                         "type": "chapterBody",
                         "content": [
-                            { "type": "semanticTag", "attrs": { "tags": ["Intuicje"], "required": [] } },
+                            { "type": "semanticTag", "attrs": { "required": [], "tags": ["Intuicje"] } },
                             {
                                 "type": "paragraph",
                                 "attrs": { "textAlign": "" },
@@ -1289,7 +1289,7 @@
         ]
     },
     "comments": {
-        "1": { "text": "Dla uproszczenia przedstawiamy tylko wzory opracowane dla mężczyzn.", "hidden": false },
-        "2": { "text": "i nie tylko", "hidden": true }
+        "1": { "hidden": false, "text": "Dla uproszczenia przedstawiamy tylko wzory opracowane dla mężczyzn." },
+        "2": { "hidden": true, "text": "i nie tylko" }
     }
 }

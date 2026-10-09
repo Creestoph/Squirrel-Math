@@ -54,7 +54,7 @@
                     {
                         "type": "chapterBody",
                         "content": [
-                            { "type": "semanticTag", "attrs": { "tags": ["Intuicje"], "required": [] } },
+                            { "type": "semanticTag", "attrs": { "required": [], "tags": ["Intuicje"] } },
                             {
                                 "type": "paragraph",
                                 "attrs": { "textAlign": "" },
@@ -332,7 +332,7 @@
                     {
                         "type": "chapterBody",
                         "content": [
-                            { "type": "semanticTag", "attrs": { "tags": ["Intuicje"], "required": [] } },
+                            { "type": "semanticTag", "attrs": { "required": [], "tags": ["Intuicje"] } },
                             {
                                 "type": "paragraph",
                                 "attrs": { "textAlign": "" },
@@ -1721,7 +1721,7 @@
                         "content": [
                             {
                                 "type": "semanticTag",
-                                "attrs": { "tags": ["Rozszerzenie"], "required": ["Potęgowanie"] }
+                                "attrs": { "required": ["Potęgowanie"], "tags": ["Rozszerzenie"] }
                             },
                             {
                                 "type": "paragraph",
@@ -2370,7 +2370,7 @@
                                     },
                                     {
                                         "type": "orderedList",
-                                        "attrs": { "start": 1, "type": null },
+                                        "attrs": { "type": null, "start": 1 },
                                         "content": [
                                             {
                                                 "type": "listItem",
@@ -3361,7 +3361,7 @@
                     {
                         "type": "chapterBody",
                         "content": [
-                            { "type": "semanticTag", "attrs": { "tags": ["Intuicje"], "required": [] } },
+                            { "type": "semanticTag", "attrs": { "required": [], "tags": ["Intuicje"] } },
                             {
                                 "type": "paragraph",
                                 "attrs": { "textAlign": "" },
@@ -3610,7 +3610,7 @@
                                     { "type": "text", "text": ". Zera przez zero dzielić nie wolno." }
                                 ]
                             },
-                            { "type": "semanticTag", "attrs": { "tags": ["Rozszerzenie"], "required": [] } },
+                            { "type": "semanticTag", "attrs": { "required": [], "tags": ["Rozszerzenie"] } },
                             {
                                 "type": "paragraph",
                                 "attrs": { "textAlign": "" },
@@ -4094,7 +4094,7 @@
                     {
                         "type": "chapterBody",
                         "content": [
-                            { "type": "semanticTag", "attrs": { "tags": ["Intuicje"], "required": [] } },
+                            { "type": "semanticTag", "attrs": { "required": [], "tags": ["Intuicje"] } },
                             {
                                 "type": "paragraph",
                                 "attrs": { "textAlign": "" },
@@ -4454,7 +4454,7 @@
                     {
                         "type": "chapterBody",
                         "content": [
-                            { "type": "semanticTag", "attrs": { "tags": ["Warsztat"], "required": [] } },
+                            { "type": "semanticTag", "attrs": { "required": [], "tags": ["Warsztat"] } },
                             {
                                 "type": "paragraph",
                                 "attrs": { "textAlign": "" },
@@ -4592,8 +4592,8 @@
                             {
                                 "type": "component",
                                 "attrs": {
-                                    "componentName": "columnar-operation-table",
-                                    "args": [["r/120;", "r/;", "r/;", "r/;", "r/;", "r/;"]]
+                                    "args": [["r/120;", "r/;", "r/;", "r/;", "r/;", "r/;"]],
+                                    "componentName": "columnar-operation-table"
                                 }
                             },
                             {
@@ -4615,8 +4615,8 @@
                             {
                                 "type": "component",
                                 "attrs": {
-                                    "componentName": "columnar-operation-table",
-                                    "args": [["r/120;2", "r/60;", "r/;", "r/;", "r/;"]]
+                                    "args": [["r/120;2", "r/60;", "r/;", "r/;", "r/;"]],
+                                    "componentName": "columnar-operation-table"
                                 }
                             },
                             {
@@ -4634,8 +4634,8 @@
                             {
                                 "type": "component",
                                 "attrs": {
-                                    "componentName": "columnar-operation-table",
-                                    "args": [["r/120;2", "r/60;2", "r/30;", "r/;", "r/;", "r/;"]]
+                                    "args": [["r/120;2", "r/60;2", "r/30;", "r/;", "r/;", "r/;"]],
+                                    "componentName": "columnar-operation-table"
                                 }
                             },
                             {
@@ -4646,8 +4646,8 @@
                             {
                                 "type": "component",
                                 "attrs": {
-                                    "componentName": "columnar-operation-table",
-                                    "args": [["r/120;2", "r/60;2", "r/30;2", "r/15;3", "r/5;5", "r/1;"]]
+                                    "args": [["r/120;2", "r/60;2", "r/30;2", "r/15;3", "r/5;5", "r/1;"]],
+                                    "componentName": "columnar-operation-table"
                                 }
                             },
                             {
@@ -4681,24 +4681,23 @@
                                             {
                                                 "type": "tableCell",
                                                 "attrs": {
-                                                    "colspan": 1,
-                                                    "rowspan": 1,
-                                                    "colwidth": [260],
                                                     "background": null,
+                                                    "borderBottom": "0",
+                                                    "borderColorBottom": "#cccccc",
                                                     "borderColorLeft": "#cccccc",
                                                     "borderColorRight": "#cccccc",
-                                                    "borderColorBottom": "#cccccc",
                                                     "borderColorTop": "#cccccc",
                                                     "borderLeft": "0",
                                                     "borderRight": "0",
-                                                    "borderBottom": "0",
-                                                    "borderTop": "0"
+                                                    "borderTop": "0",
+                                                    "colspan": 1,
+                                                    "colwidth": [260],
+                                                    "rowspan": 1
                                                 },
                                                 "content": [
                                                     {
                                                         "type": "component",
                                                         "attrs": {
-                                                            "componentName": "columnar-operation-table",
                                                             "args": [
                                                                 [
                                                                     "r/630;2",
@@ -4708,7 +4707,8 @@
                                                                     "r/7;7",
                                                                     "r/1;"
                                                                 ]
-                                                            ]
+                                                            ],
+                                                            "componentName": "columnar-operation-table"
                                                         }
                                                     },
                                                     {
@@ -4722,24 +4722,23 @@
                                             {
                                                 "type": "tableCell",
                                                 "attrs": {
-                                                    "colspan": 1,
-                                                    "rowspan": 1,
-                                                    "colwidth": [285],
                                                     "background": null,
+                                                    "borderBottom": "0",
+                                                    "borderColorBottom": "#cccccc",
                                                     "borderColorLeft": "#cccccc",
                                                     "borderColorRight": "#cccccc",
-                                                    "borderColorBottom": "#cccccc",
                                                     "borderColorTop": "#cccccc",
                                                     "borderLeft": "0",
                                                     "borderRight": "0",
-                                                    "borderBottom": "0",
-                                                    "borderTop": "0"
+                                                    "borderTop": "0",
+                                                    "colspan": 1,
+                                                    "colwidth": [285],
+                                                    "rowspan": 1
                                                 },
                                                 "content": [
                                                     {
                                                         "type": "component",
                                                         "attrs": {
-                                                            "componentName": "columnar-operation-table",
                                                             "args": [
                                                                 [
                                                                     "r/440;2",
@@ -4749,7 +4748,8 @@
                                                                     "r/11;11",
                                                                     "r/1;"
                                                                 ]
-                                                            ]
+                                                            ],
+                                                            "componentName": "columnar-operation-table"
                                                         }
                                                     },
                                                     {
@@ -4763,24 +4763,23 @@
                                             {
                                                 "type": "tableCell",
                                                 "attrs": {
-                                                    "colspan": 1,
-                                                    "rowspan": 1,
-                                                    "colwidth": [280],
                                                     "background": null,
+                                                    "borderBottom": "0",
+                                                    "borderColorBottom": "#cccccc",
                                                     "borderColorLeft": "#cccccc",
                                                     "borderColorRight": "#cccccc",
-                                                    "borderColorBottom": "#cccccc",
                                                     "borderColorTop": "#cccccc",
                                                     "borderLeft": "0",
                                                     "borderRight": "0",
-                                                    "borderBottom": "0",
-                                                    "borderTop": "0"
+                                                    "borderTop": "0",
+                                                    "colspan": 1,
+                                                    "colwidth": [280],
+                                                    "rowspan": 1
                                                 },
                                                 "content": [
                                                     {
                                                         "type": "component",
                                                         "attrs": {
-                                                            "componentName": "columnar-operation-table",
                                                             "args": [
                                                                 [
                                                                     "r/24310;2",
@@ -4790,7 +4789,8 @@
                                                                     "r/17;17",
                                                                     "r/1;"
                                                                 ]
-                                                            ]
+                                                            ],
+                                                            "componentName": "columnar-operation-table"
                                                         }
                                                     },
                                                     {
@@ -4830,8 +4830,8 @@
                             {
                                 "type": "component",
                                 "attrs": {
-                                    "componentName": "columnar-operation-guide",
-                                    "args": ["factorization", false]
+                                    "args": ["factorization", false],
+                                    "componentName": "columnar-operation-guide"
                                 }
                             }
                         ]
@@ -4849,7 +4849,7 @@
                     {
                         "type": "chapterBody",
                         "content": [
-                            { "type": "semanticTag", "attrs": { "tags": ["Intuicje"], "required": [] } },
+                            { "type": "semanticTag", "attrs": { "required": [], "tags": ["Intuicje"] } },
                             {
                                 "type": "paragraph",
                                 "attrs": { "textAlign": "" },
@@ -5471,7 +5471,7 @@
                                     { "type": "text", "text": "." }
                                 ]
                             },
-                            { "type": "semanticTag", "attrs": { "tags": ["Warsztat"], "required": [] } },
+                            { "type": "semanticTag", "attrs": { "required": [], "tags": ["Warsztat"] } },
                             {
                                 "type": "paragraph",
                                 "attrs": { "textAlign": "" },
@@ -5495,24 +5495,23 @@
                                             {
                                                 "type": "tableCell",
                                                 "attrs": {
-                                                    "colspan": 1,
-                                                    "rowspan": 1,
-                                                    "colwidth": [265],
                                                     "background": null,
+                                                    "borderBottom": "0",
+                                                    "borderColorBottom": "#cccccc",
                                                     "borderColorLeft": "#cccccc",
                                                     "borderColorRight": "#cccccc",
-                                                    "borderColorBottom": "#cccccc",
                                                     "borderColorTop": "#cccccc",
                                                     "borderLeft": "0",
                                                     "borderRight": "0",
-                                                    "borderBottom": "0",
-                                                    "borderTop": "0"
+                                                    "borderTop": "0",
+                                                    "colspan": 1,
+                                                    "colwidth": [265],
+                                                    "rowspan": 1
                                                 },
                                                 "content": [
                                                     {
                                                         "type": "component",
                                                         "attrs": {
-                                                            "componentName": "columnar-operation-table",
                                                             "args": [
                                                                 [
                                                                     "r/120;2",
@@ -5522,7 +5521,8 @@
                                                                     "r/5;5",
                                                                     "r/1;"
                                                                 ]
-                                                            ]
+                                                            ],
+                                                            "componentName": "columnar-operation-table"
                                                         }
                                                     }
                                                 ]
@@ -5530,24 +5530,23 @@
                                             {
                                                 "type": "tableCell",
                                                 "attrs": {
-                                                    "colspan": 1,
-                                                    "rowspan": 1,
-                                                    "colwidth": [266],
                                                     "background": null,
+                                                    "borderBottom": "0",
+                                                    "borderColorBottom": "#cccccc",
                                                     "borderColorLeft": "#cccccc",
                                                     "borderColorRight": "#cccccc",
-                                                    "borderColorBottom": "#cccccc",
                                                     "borderColorTop": "#cccccc",
                                                     "borderLeft": "0",
                                                     "borderRight": "0",
-                                                    "borderBottom": "0",
-                                                    "borderTop": "0"
+                                                    "borderTop": "0",
+                                                    "colspan": 1,
+                                                    "colwidth": [266],
+                                                    "rowspan": 1
                                                 },
                                                 "content": [
                                                     {
                                                         "type": "component",
                                                         "attrs": {
-                                                            "componentName": "columnar-operation-table",
                                                             "args": [
                                                                 [
                                                                     "r/300;2",
@@ -5557,7 +5556,8 @@
                                                                     "r/5;5",
                                                                     "r/1;"
                                                                 ]
-                                                            ]
+                                                            ],
+                                                            "componentName": "columnar-operation-table"
                                                         }
                                                     }
                                                 ]
@@ -5585,24 +5585,23 @@
                                             {
                                                 "type": "tableCell",
                                                 "attrs": {
-                                                    "colspan": 1,
-                                                    "rowspan": 1,
-                                                    "colwidth": [250],
                                                     "background": null,
+                                                    "borderBottom": "0",
+                                                    "borderColorBottom": "#cccccc",
                                                     "borderColorLeft": "#cccccc",
                                                     "borderColorRight": "#cccccc",
-                                                    "borderColorBottom": "#cccccc",
                                                     "borderColorTop": "#cccccc",
                                                     "borderLeft": "0",
                                                     "borderRight": "0",
-                                                    "borderBottom": "0",
-                                                    "borderTop": "0"
+                                                    "borderTop": "0",
+                                                    "colspan": 1,
+                                                    "colwidth": [250],
+                                                    "rowspan": 1
                                                 },
                                                 "content": [
                                                     {
                                                         "type": "component",
                                                         "attrs": {
-                                                            "componentName": "columnar-operation-table",
                                                             "args": [
                                                                 [
                                                                     "r/120;h/2",
@@ -5612,7 +5611,8 @@
                                                                     "r/5;h/5",
                                                                     "r/1;"
                                                                 ]
-                                                            ]
+                                                            ],
+                                                            "componentName": "columnar-operation-table"
                                                         }
                                                     }
                                                 ]
@@ -5620,24 +5620,23 @@
                                             {
                                                 "type": "tableCell",
                                                 "attrs": {
-                                                    "colspan": 1,
-                                                    "rowspan": 1,
-                                                    "colwidth": [256],
                                                     "background": null,
+                                                    "borderBottom": "0",
+                                                    "borderColorBottom": "#cccccc",
                                                     "borderColorLeft": "#cccccc",
                                                     "borderColorRight": "#cccccc",
-                                                    "borderColorBottom": "#cccccc",
                                                     "borderColorTop": "#cccccc",
                                                     "borderLeft": "0",
                                                     "borderRight": "0",
-                                                    "borderBottom": "0",
-                                                    "borderTop": "0"
+                                                    "borderTop": "0",
+                                                    "colspan": 1,
+                                                    "colwidth": [256],
+                                                    "rowspan": 1
                                                 },
                                                 "content": [
                                                     {
                                                         "type": "component",
                                                         "attrs": {
-                                                            "componentName": "columnar-operation-table",
                                                             "args": [
                                                                 [
                                                                     "r/300;h/2",
@@ -5647,7 +5646,8 @@
                                                                     "r/5;5",
                                                                     "r/1;"
                                                                 ]
-                                                            ]
+                                                            ],
+                                                            "componentName": "columnar-operation-table"
                                                         }
                                                     }
                                                 ]
@@ -5829,7 +5829,7 @@
                                     { "type": "text", "text": " bierzemy tylko raz." }
                                 ]
                             },
-                            { "type": "semanticTag", "attrs": { "tags": ["Rozszerzenie"], "required": [] } },
+                            { "type": "semanticTag", "attrs": { "required": [], "tags": ["Rozszerzenie"] } },
                             {
                                 "type": "paragraph",
                                 "attrs": { "textAlign": "" },
@@ -6605,8 +6605,8 @@
                             {
                                 "type": "component",
                                 "attrs": {
-                                    "componentName": "columnar-operation-table",
-                                    "args": [["r/60;2", "r/30;2", "r/15;3", "r/5;5", "r/1;"]]
+                                    "args": [["r/60;2", "r/30;2", "r/15;3", "r/5;5", "r/1;"]],
+                                    "componentName": "columnar-operation-table"
                                 }
                             },
                             {
@@ -6617,8 +6617,8 @@
                             {
                                 "type": "component",
                                 "attrs": {
-                                    "componentName": "columnar-operation-guide",
-                                    "args": ["factorization", false]
+                                    "args": ["factorization", false],
+                                    "componentName": "columnar-operation-guide"
                                 }
                             }
                         ]
@@ -6702,24 +6702,23 @@
                                             {
                                                 "type": "tableCell",
                                                 "attrs": {
-                                                    "colspan": 1,
-                                                    "rowspan": 1,
-                                                    "colwidth": [403],
                                                     "background": null,
+                                                    "borderBottom": "0",
+                                                    "borderColorBottom": "#cccccc",
                                                     "borderColorLeft": "#cccccc",
                                                     "borderColorRight": "#cccccc",
-                                                    "borderColorBottom": "#cccccc",
                                                     "borderColorTop": "#cccccc",
                                                     "borderLeft": "0",
                                                     "borderRight": "0",
-                                                    "borderBottom": "0",
-                                                    "borderTop": "0"
+                                                    "borderTop": "0",
+                                                    "colspan": 1,
+                                                    "colwidth": [403],
+                                                    "rowspan": 1
                                                 },
                                                 "content": [
                                                     {
                                                         "type": "component",
                                                         "attrs": {
-                                                            "componentName": "columnar-operation-table",
                                                             "args": [
                                                                 [
                                                                     "r/120;h/2",
@@ -6729,7 +6728,8 @@
                                                                     "r/5;h/5",
                                                                     "r/1;"
                                                                 ]
-                                                            ]
+                                                            ],
+                                                            "componentName": "columnar-operation-table"
                                                         }
                                                     }
                                                 ]
@@ -6737,24 +6737,23 @@
                                             {
                                                 "type": "tableCell",
                                                 "attrs": {
-                                                    "colspan": 1,
-                                                    "rowspan": 1,
-                                                    "colwidth": [360],
                                                     "background": null,
+                                                    "borderBottom": "0",
+                                                    "borderColorBottom": "#cccccc",
                                                     "borderColorLeft": "#cccccc",
                                                     "borderColorRight": "#cccccc",
-                                                    "borderColorBottom": "#cccccc",
                                                     "borderColorTop": "#cccccc",
                                                     "borderLeft": "0",
                                                     "borderRight": "0",
-                                                    "borderBottom": "0",
-                                                    "borderTop": "0"
+                                                    "borderTop": "0",
+                                                    "colspan": 1,
+                                                    "colwidth": [360],
+                                                    "rowspan": 1
                                                 },
                                                 "content": [
                                                     {
                                                         "type": "component",
                                                         "attrs": {
-                                                            "componentName": "columnar-operation-table",
                                                             "args": [
                                                                 [
                                                                     "r/300;h/2",
@@ -6764,7 +6763,8 @@
                                                                     "r/5;5",
                                                                     "r/1;"
                                                                 ]
-                                                            ]
+                                                            ],
+                                                            "componentName": "columnar-operation-table"
                                                         }
                                                     }
                                                 ]
@@ -6875,24 +6875,23 @@
                                             {
                                                 "type": "tableCell",
                                                 "attrs": {
-                                                    "colspan": 1,
-                                                    "rowspan": 1,
-                                                    "colwidth": [403],
                                                     "background": null,
+                                                    "borderBottom": 0,
+                                                    "borderColorBottom": "rgb(204, 204, 204)",
                                                     "borderColorLeft": "rgb(204, 204, 204)",
                                                     "borderColorRight": "rgb(204, 204, 204)",
-                                                    "borderColorBottom": "rgb(204, 204, 204)",
                                                     "borderColorTop": "rgb(204, 204, 204)",
                                                     "borderLeft": 0,
                                                     "borderRight": 0,
-                                                    "borderBottom": 0,
-                                                    "borderTop": 0
+                                                    "borderTop": 0,
+                                                    "colspan": 1,
+                                                    "colwidth": [403],
+                                                    "rowspan": 1
                                                 },
                                                 "content": [
                                                     {
                                                         "type": "component",
                                                         "attrs": {
-                                                            "componentName": "columnar-operation-table",
                                                             "args": [
                                                                 [
                                                                     "r/120;h/2",
@@ -6902,7 +6901,8 @@
                                                                     "r/5;h/5",
                                                                     "r/1;"
                                                                 ]
-                                                            ]
+                                                            ],
+                                                            "componentName": "columnar-operation-table"
                                                         }
                                                     }
                                                 ]
@@ -6910,24 +6910,23 @@
                                             {
                                                 "type": "tableCell",
                                                 "attrs": {
-                                                    "colspan": 1,
-                                                    "rowspan": 1,
-                                                    "colwidth": [360],
                                                     "background": null,
+                                                    "borderBottom": 0,
+                                                    "borderColorBottom": "rgb(204, 204, 204)",
                                                     "borderColorLeft": "rgb(204, 204, 204)",
                                                     "borderColorRight": "rgb(204, 204, 204)",
-                                                    "borderColorBottom": "rgb(204, 204, 204)",
                                                     "borderColorTop": "rgb(204, 204, 204)",
                                                     "borderLeft": 0,
                                                     "borderRight": 0,
-                                                    "borderBottom": 0,
-                                                    "borderTop": 0
+                                                    "borderTop": 0,
+                                                    "colspan": 1,
+                                                    "colwidth": [360],
+                                                    "rowspan": 1
                                                 },
                                                 "content": [
                                                     {
                                                         "type": "component",
                                                         "attrs": {
-                                                            "componentName": "columnar-operation-table",
                                                             "args": [
                                                                 [
                                                                     "r/300;h/2",
@@ -6937,7 +6936,8 @@
                                                                     "r/5;5",
                                                                     "r/1;"
                                                                 ]
-                                                            ]
+                                                            ],
+                                                            "componentName": "columnar-operation-table"
                                                         }
                                                     }
                                                 ]
@@ -7238,27 +7238,27 @@
         ]
     },
     "comments": {
-        "1": { "text": "Może zawierać śladowe ilości orzechów arachidowych.", "hidden": true },
-        "2": { "text": "czyt. „trzy nie dzieli siedmiu” - nie zaś „trzyłsiedem”", "hidden": true },
-        "4": { "text": "czyt. „dziewięć nie dzieli dwudziestu” - nie zaś „dziewięćłdwadzieścia”", "hidden": true },
-        "5": { "text": "dokładniej 00", "hidden": true },
-        "7": { "text": "", "hidden": false },
+        "1": { "hidden": true, "text": "Może zawierać śladowe ilości orzechów arachidowych." },
+        "2": { "hidden": true, "text": "czyt. „trzy nie dzieli siedmiu” - nie zaś „trzyłsiedem”" },
+        "4": { "hidden": true, "text": "czyt. „dziewięć nie dzieli dwudziestu” - nie zaś „dziewięćłdwadzieścia”" },
+        "5": { "hidden": true, "text": "dokładniej 00" },
+        "7": { "hidden": false, "text": "" },
         "8": {
-            "text": "Przykładowo liczbę 158 możemy zapisać jako $10^2\\cdot1+10^1\\cdot5+10^0\\cdot8$. $k$ wynosi tu 2.",
-            "hidden": false
+            "hidden": false,
+            "text": "Przykładowo liczbę 158 możemy zapisać jako $10^2\\cdot1+10^1\\cdot5+10^0\\cdot8$. $k$ wynosi tu 2."
         },
         "9": {
-            "text": "Przykładowo liczbę 158 możemy zapisać jako $10^2\\cdot1+10^1\\cdot5+10^0\\cdot8$. $k$ wynosi tu 2.",
-            "hidden": false
+            "hidden": false,
+            "text": "Przykładowo liczbę 158 możemy zapisać jako $10^2\\cdot1+10^1\\cdot5+10^0\\cdot8$. $k$ wynosi tu 2."
         },
         "10": {
-            "text": "Jeśli liczba ma n cyfr lub mniej, to liczba utworzona przez n ostatnich cyfr to ta sama liczba. Wtedy twierdzenie jest mało pomocne.",
-            "hidden": false
+            "hidden": false,
+            "text": "Jeśli liczba ma n cyfr lub mniej, to liczba utworzona przez n ostatnich cyfr to ta sama liczba. Wtedy twierdzenie jest mało pomocne."
         },
         "11": {
-            "text": "Jeśli żyjesz w dalekiej przyszłości i problem ten jest już rozwiązany, zgłoś proszę tę nieścisłość do administracji strony.",
-            "hidden": true
+            "hidden": true,
+            "text": "Jeśli żyjesz w dalekiej przyszłości i problem ten jest już rozwiązany, zgłoś proszę tę nieścisłość do administracji strony."
         },
-        "12": { "text": "czyli kilka pierwszych liczb pierwszych", "hidden": true }
+        "12": { "hidden": true, "text": "czyli kilka pierwszych liczb pierwszych" }
     }
 }

@@ -29,7 +29,7 @@
                     {
                         "type": "chapterBody",
                         "content": [
-                            { "type": "semanticTag", "attrs": { "tags": ["Intuicje"], "required": [] } },
+                            { "type": "semanticTag", "attrs": { "required": [], "tags": ["Intuicje"] } },
                             {
                                 "type": "paragraph",
                                 "attrs": { "textAlign": "" },
@@ -154,7 +154,7 @@
                                     { "type": "text", "text": "." }
                                 ]
                             },
-                            { "type": "semanticTag", "attrs": { "tags": ["Formalnie"], "required": [] } },
+                            { "type": "semanticTag", "attrs": { "required": [], "tags": ["Formalnie"] } },
                             {
                                 "type": "paragraph",
                                 "attrs": { "textAlign": "" },
@@ -184,7 +184,7 @@
                                     { "type": "text", "text": " w sekcji \"Ograniczenia\"." }
                                 ]
                             },
-                            { "type": "semanticTag", "attrs": { "tags": ["Intuicje"], "required": [] } },
+                            { "type": "semanticTag", "attrs": { "required": [], "tags": ["Intuicje"] } },
                             {
                                 "type": "paragraph",
                                 "attrs": { "textAlign": "" },
@@ -267,7 +267,7 @@
                     {
                         "type": "chapterBody",
                         "content": [
-                            { "type": "semanticTag", "attrs": { "tags": ["Intuicje"], "required": [] } },
+                            { "type": "semanticTag", "attrs": { "required": [], "tags": ["Intuicje"] } },
                             {
                                 "type": "paragraph",
                                 "attrs": { "textAlign": "" },
@@ -409,7 +409,7 @@
                     {
                         "type": "chapterBody",
                         "content": [
-                            { "type": "semanticTag", "attrs": { "tags": ["Intuicje"], "required": [] } },
+                            { "type": "semanticTag", "attrs": { "required": [], "tags": ["Intuicje"] } },
                             {
                                 "type": "paragraph",
                                 "attrs": { "textAlign": "" },
@@ -601,7 +601,7 @@
                     {
                         "type": "chapterBody",
                         "content": [
-                            { "type": "semanticTag", "attrs": { "tags": ["Warsztat"], "required": [] } },
+                            { "type": "semanticTag", "attrs": { "required": [], "tags": ["Warsztat"] } },
                             {
                                 "type": "paragraph",
                                 "attrs": { "textAlign": "" },
@@ -943,7 +943,7 @@
                             { "type": "paragraph", "attrs": { "textAlign": "" } },
                             {
                                 "type": "semanticTag",
-                                "attrs": { "tags": ["Rozszerzenie"], "required": ["Równania i nierówności"] }
+                                "attrs": { "required": ["Równania i nierówności"], "tags": ["Rozszerzenie"] }
                             },
                             {
                                 "type": "paragraph",
@@ -1074,7 +1074,7 @@
                     {
                         "type": "chapterBody",
                         "content": [
-                            { "type": "semanticTag", "attrs": { "tags": ["Intuicje"], "required": [] } },
+                            { "type": "semanticTag", "attrs": { "required": [], "tags": ["Intuicje"] } },
                             {
                                 "type": "paragraph",
                                 "attrs": { "textAlign": "" },
@@ -1104,19 +1104,19 @@
                                             {
                                                 "type": "tableCell",
                                                 "attrs": {
-                                                    "colspan": 1,
-                                                    "rowspan": 1,
-                                                    "colwidth": [308],
                                                     "background": null,
+                                                    "borderBottom": "0",
                                                     "borderColor": "#cccccc",
+                                                    "borderColorBottom": "#cccccc",
+                                                    "borderColorLeft": "#cccccc",
+                                                    "borderColorRight": "#cccccc",
+                                                    "borderColorTop": "#cccccc",
                                                     "borderLeft": "0",
                                                     "borderRight": "0",
-                                                    "borderBottom": "0",
                                                     "borderTop": "0",
-                                                    "borderColorBottom": "#cccccc",
-                                                    "borderColorTop": "#cccccc",
-                                                    "borderColorRight": "#cccccc",
-                                                    "borderColorLeft": "#cccccc"
+                                                    "colspan": 1,
+                                                    "colwidth": [308],
+                                                    "rowspan": 1
                                                 },
                                                 "content": [
                                                     {
@@ -1129,19 +1129,19 @@
                                             {
                                                 "type": "tableCell",
                                                 "attrs": {
-                                                    "colspan": 1,
-                                                    "rowspan": 1,
-                                                    "colwidth": [253],
                                                     "background": null,
+                                                    "borderBottom": "0",
                                                     "borderColor": "#cccccc",
+                                                    "borderColorBottom": "#cccccc",
+                                                    "borderColorLeft": "#cccccc",
+                                                    "borderColorRight": "#cccccc",
+                                                    "borderColorTop": "#cccccc",
                                                     "borderLeft": "0",
                                                     "borderRight": "0",
-                                                    "borderBottom": "0",
                                                     "borderTop": "0",
-                                                    "borderColorBottom": "#cccccc",
-                                                    "borderColorTop": "#cccccc",
-                                                    "borderColorRight": "#cccccc",
-                                                    "borderColorLeft": "#cccccc"
+                                                    "colspan": 1,
+                                                    "colwidth": [253],
+                                                    "rowspan": 1
                                                 },
                                                 "content": [
                                                     {
@@ -1159,19 +1159,19 @@
                                             {
                                                 "type": "tableCell",
                                                 "attrs": {
-                                                    "colspan": 1,
-                                                    "rowspan": 1,
-                                                    "colwidth": [308],
                                                     "background": null,
+                                                    "borderBottom": "0",
                                                     "borderColor": "#cccccc",
+                                                    "borderColorBottom": "#cccccc",
+                                                    "borderColorLeft": "#cccccc",
+                                                    "borderColorRight": "#cccccc",
+                                                    "borderColorTop": "#cccccc",
                                                     "borderLeft": "0",
                                                     "borderRight": "0",
-                                                    "borderBottom": "0",
                                                     "borderTop": "0",
-                                                    "borderColorBottom": "#cccccc",
-                                                    "borderColorTop": "#cccccc",
-                                                    "borderColorRight": "#cccccc",
-                                                    "borderColorLeft": "#cccccc"
+                                                    "colspan": 1,
+                                                    "colwidth": [308],
+                                                    "rowspan": 1
                                                 },
                                                 "content": [
                                                     {
@@ -1201,19 +1201,19 @@
                                             {
                                                 "type": "tableCell",
                                                 "attrs": {
-                                                    "colspan": 1,
-                                                    "rowspan": 1,
-                                                    "colwidth": [253],
                                                     "background": null,
+                                                    "borderBottom": "0",
                                                     "borderColor": "#cccccc",
+                                                    "borderColorBottom": "#cccccc",
+                                                    "borderColorLeft": "#cccccc",
+                                                    "borderColorRight": "#cccccc",
+                                                    "borderColorTop": "#cccccc",
                                                     "borderLeft": "0",
                                                     "borderRight": "0",
-                                                    "borderBottom": "0",
                                                     "borderTop": "0",
-                                                    "borderColorBottom": "#cccccc",
-                                                    "borderColorTop": "#cccccc",
-                                                    "borderColorRight": "#cccccc",
-                                                    "borderColorLeft": "#cccccc"
+                                                    "colspan": 1,
+                                                    "colwidth": [253],
+                                                    "rowspan": 1
                                                 },
                                                 "content": [
                                                     {
@@ -1236,19 +1236,19 @@
                                             {
                                                 "type": "tableCell",
                                                 "attrs": {
-                                                    "colspan": 1,
-                                                    "rowspan": 1,
-                                                    "colwidth": [308],
                                                     "background": null,
+                                                    "borderBottom": "0",
                                                     "borderColor": "#cccccc",
+                                                    "borderColorBottom": "#cccccc",
+                                                    "borderColorLeft": "#cccccc",
+                                                    "borderColorRight": "#cccccc",
+                                                    "borderColorTop": "#cccccc",
                                                     "borderLeft": "0",
                                                     "borderRight": "0",
-                                                    "borderBottom": "0",
                                                     "borderTop": "0",
-                                                    "borderColorBottom": "#cccccc",
-                                                    "borderColorTop": "#cccccc",
-                                                    "borderColorRight": "#cccccc",
-                                                    "borderColorLeft": "#cccccc"
+                                                    "colspan": 1,
+                                                    "colwidth": [308],
+                                                    "rowspan": 1
                                                 },
                                                 "content": [
                                                     {
@@ -1266,19 +1266,19 @@
                                             {
                                                 "type": "tableCell",
                                                 "attrs": {
-                                                    "colspan": 1,
-                                                    "rowspan": 1,
-                                                    "colwidth": [253],
                                                     "background": null,
+                                                    "borderBottom": "0",
                                                     "borderColor": "#cccccc",
+                                                    "borderColorBottom": "#cccccc",
+                                                    "borderColorLeft": "#cccccc",
+                                                    "borderColorRight": "#cccccc",
+                                                    "borderColorTop": "#cccccc",
                                                     "borderLeft": "0",
                                                     "borderRight": "0",
-                                                    "borderBottom": "0",
                                                     "borderTop": "0",
-                                                    "borderColorBottom": "#cccccc",
-                                                    "borderColorTop": "#cccccc",
-                                                    "borderColorRight": "#cccccc",
-                                                    "borderColorLeft": "#cccccc"
+                                                    "colspan": 1,
+                                                    "colwidth": [253],
+                                                    "rowspan": 1
                                                 },
                                                 "content": [
                                                     {
@@ -1303,19 +1303,19 @@
                                             {
                                                 "type": "tableCell",
                                                 "attrs": {
-                                                    "colspan": 1,
-                                                    "rowspan": 1,
-                                                    "colwidth": [308],
                                                     "background": null,
+                                                    "borderBottom": "0",
                                                     "borderColor": "#cccccc",
+                                                    "borderColorBottom": "#cccccc",
+                                                    "borderColorLeft": "#cccccc",
+                                                    "borderColorRight": "#cccccc",
+                                                    "borderColorTop": "#cccccc",
                                                     "borderLeft": "0",
                                                     "borderRight": "0",
-                                                    "borderBottom": "0",
                                                     "borderTop": "0",
-                                                    "borderColorBottom": "#cccccc",
-                                                    "borderColorTop": "#cccccc",
-                                                    "borderColorRight": "#cccccc",
-                                                    "borderColorLeft": "#cccccc"
+                                                    "colspan": 1,
+                                                    "colwidth": [308],
+                                                    "rowspan": 1
                                                 },
                                                 "content": [
                                                     {
@@ -1333,19 +1333,19 @@
                                             {
                                                 "type": "tableCell",
                                                 "attrs": {
-                                                    "colspan": 1,
-                                                    "rowspan": 1,
-                                                    "colwidth": [253],
                                                     "background": null,
+                                                    "borderBottom": "0",
                                                     "borderColor": "#cccccc",
+                                                    "borderColorBottom": "#cccccc",
+                                                    "borderColorLeft": "#cccccc",
+                                                    "borderColorRight": "#cccccc",
+                                                    "borderColorTop": "#cccccc",
                                                     "borderLeft": "0",
                                                     "borderRight": "0",
-                                                    "borderBottom": "0",
                                                     "borderTop": "0",
-                                                    "borderColorBottom": "#cccccc",
-                                                    "borderColorTop": "#cccccc",
-                                                    "borderColorRight": "#cccccc",
-                                                    "borderColorLeft": "#cccccc"
+                                                    "colspan": 1,
+                                                    "colwidth": [253],
+                                                    "rowspan": 1
                                                 },
                                                 "content": [
                                                     {
@@ -1368,19 +1368,19 @@
                                             {
                                                 "type": "tableCell",
                                                 "attrs": {
-                                                    "colspan": 1,
-                                                    "rowspan": 1,
-                                                    "colwidth": [308],
                                                     "background": null,
+                                                    "borderBottom": "0",
                                                     "borderColor": "#cccccc",
+                                                    "borderColorBottom": "#cccccc",
+                                                    "borderColorLeft": "#cccccc",
+                                                    "borderColorRight": "#cccccc",
+                                                    "borderColorTop": "#cccccc",
                                                     "borderLeft": "0",
                                                     "borderRight": "0",
-                                                    "borderBottom": "0",
                                                     "borderTop": "0",
-                                                    "borderColorBottom": "#cccccc",
-                                                    "borderColorTop": "#cccccc",
-                                                    "borderColorRight": "#cccccc",
-                                                    "borderColorLeft": "#cccccc"
+                                                    "colspan": 1,
+                                                    "colwidth": [308],
+                                                    "rowspan": 1
                                                 },
                                                 "content": [
                                                     {
@@ -1398,19 +1398,19 @@
                                             {
                                                 "type": "tableCell",
                                                 "attrs": {
-                                                    "colspan": 1,
-                                                    "rowspan": 1,
-                                                    "colwidth": [253],
                                                     "background": null,
+                                                    "borderBottom": "0",
                                                     "borderColor": "#cccccc",
+                                                    "borderColorBottom": "#cccccc",
+                                                    "borderColorLeft": "#cccccc",
+                                                    "borderColorRight": "#cccccc",
+                                                    "borderColorTop": "#cccccc",
                                                     "borderLeft": "0",
                                                     "borderRight": "0",
-                                                    "borderBottom": "0",
                                                     "borderTop": "0",
-                                                    "borderColorBottom": "#cccccc",
-                                                    "borderColorTop": "#cccccc",
-                                                    "borderColorRight": "#cccccc",
-                                                    "borderColorLeft": "#cccccc"
+                                                    "colspan": 1,
+                                                    "colwidth": [253],
+                                                    "rowspan": 1
                                                 },
                                                 "content": [
                                                     {
@@ -1435,19 +1435,19 @@
                                             {
                                                 "type": "tableCell",
                                                 "attrs": {
-                                                    "colspan": 1,
-                                                    "rowspan": 1,
-                                                    "colwidth": [308],
                                                     "background": null,
+                                                    "borderBottom": "0",
                                                     "borderColor": "#cccccc",
+                                                    "borderColorBottom": "#cccccc",
+                                                    "borderColorLeft": "#cccccc",
+                                                    "borderColorRight": "#cccccc",
+                                                    "borderColorTop": "#cccccc",
                                                     "borderLeft": "0",
                                                     "borderRight": "0",
-                                                    "borderBottom": "0",
                                                     "borderTop": "0",
-                                                    "borderColorBottom": "#cccccc",
-                                                    "borderColorTop": "#cccccc",
-                                                    "borderColorRight": "#cccccc",
-                                                    "borderColorLeft": "#cccccc"
+                                                    "colspan": 1,
+                                                    "colwidth": [308],
+                                                    "rowspan": 1
                                                 },
                                                 "content": [
                                                     {
@@ -1465,19 +1465,19 @@
                                             {
                                                 "type": "tableCell",
                                                 "attrs": {
-                                                    "colspan": 1,
-                                                    "rowspan": 1,
-                                                    "colwidth": [253],
                                                     "background": null,
+                                                    "borderBottom": "0",
                                                     "borderColor": "#cccccc",
+                                                    "borderColorBottom": "#cccccc",
+                                                    "borderColorLeft": "#cccccc",
+                                                    "borderColorRight": "#cccccc",
+                                                    "borderColorTop": "#cccccc",
                                                     "borderLeft": "0",
                                                     "borderRight": "0",
-                                                    "borderBottom": "0",
                                                     "borderTop": "0",
-                                                    "borderColorBottom": "#cccccc",
-                                                    "borderColorTop": "#cccccc",
-                                                    "borderColorRight": "#cccccc",
-                                                    "borderColorLeft": "#cccccc"
+                                                    "colspan": 1,
+                                                    "colwidth": [253],
+                                                    "rowspan": 1
                                                 },
                                                 "content": [
                                                     {
@@ -1500,19 +1500,19 @@
                                             {
                                                 "type": "tableCell",
                                                 "attrs": {
-                                                    "colspan": 1,
-                                                    "rowspan": 1,
-                                                    "colwidth": [308],
                                                     "background": null,
+                                                    "borderBottom": "0",
                                                     "borderColor": "#cccccc",
+                                                    "borderColorBottom": "#cccccc",
+                                                    "borderColorLeft": "#cccccc",
+                                                    "borderColorRight": "#cccccc",
+                                                    "borderColorTop": "#cccccc",
                                                     "borderLeft": "0",
                                                     "borderRight": "0",
-                                                    "borderBottom": "0",
                                                     "borderTop": "0",
-                                                    "borderColorBottom": "#cccccc",
-                                                    "borderColorTop": "#cccccc",
-                                                    "borderColorRight": "#cccccc",
-                                                    "borderColorLeft": "#cccccc"
+                                                    "colspan": 1,
+                                                    "colwidth": [308],
+                                                    "rowspan": 1
                                                 },
                                                 "content": [
                                                     {
@@ -1530,19 +1530,19 @@
                                             {
                                                 "type": "tableCell",
                                                 "attrs": {
-                                                    "colspan": 1,
-                                                    "rowspan": 1,
-                                                    "colwidth": [253],
                                                     "background": null,
+                                                    "borderBottom": "0",
                                                     "borderColor": "#cccccc",
+                                                    "borderColorBottom": "#cccccc",
+                                                    "borderColorLeft": "#cccccc",
+                                                    "borderColorRight": "#cccccc",
+                                                    "borderColorTop": "#cccccc",
                                                     "borderLeft": "0",
                                                     "borderRight": "0",
-                                                    "borderBottom": "0",
                                                     "borderTop": "0",
-                                                    "borderColorBottom": "#cccccc",
-                                                    "borderColorTop": "#cccccc",
-                                                    "borderColorRight": "#cccccc",
-                                                    "borderColorLeft": "#cccccc"
+                                                    "colspan": 1,
+                                                    "colwidth": [253],
+                                                    "rowspan": 1
                                                 },
                                                 "content": [
                                                     {
@@ -1565,19 +1565,19 @@
                                             {
                                                 "type": "tableCell",
                                                 "attrs": {
-                                                    "colspan": 1,
-                                                    "rowspan": 1,
-                                                    "colwidth": [308],
                                                     "background": null,
+                                                    "borderBottom": "0",
                                                     "borderColor": "#cccccc",
+                                                    "borderColorBottom": "#cccccc",
+                                                    "borderColorLeft": "#cccccc",
+                                                    "borderColorRight": "#cccccc",
+                                                    "borderColorTop": "#cccccc",
                                                     "borderLeft": "0",
                                                     "borderRight": "0",
-                                                    "borderBottom": "0",
                                                     "borderTop": "0",
-                                                    "borderColorBottom": "#cccccc",
-                                                    "borderColorTop": "#cccccc",
-                                                    "borderColorRight": "#cccccc",
-                                                    "borderColorLeft": "#cccccc"
+                                                    "colspan": 1,
+                                                    "colwidth": [308],
+                                                    "rowspan": 1
                                                 },
                                                 "content": [
                                                     {
@@ -1595,19 +1595,19 @@
                                             {
                                                 "type": "tableCell",
                                                 "attrs": {
-                                                    "colspan": 1,
-                                                    "rowspan": 1,
-                                                    "colwidth": [253],
                                                     "background": null,
+                                                    "borderBottom": "0",
                                                     "borderColor": "#cccccc",
+                                                    "borderColorBottom": "#cccccc",
+                                                    "borderColorLeft": "#cccccc",
+                                                    "borderColorRight": "#cccccc",
+                                                    "borderColorTop": "#cccccc",
                                                     "borderLeft": "0",
                                                     "borderRight": "0",
-                                                    "borderBottom": "0",
                                                     "borderTop": "0",
-                                                    "borderColorBottom": "#cccccc",
-                                                    "borderColorTop": "#cccccc",
-                                                    "borderColorRight": "#cccccc",
-                                                    "borderColorLeft": "#cccccc"
+                                                    "colspan": 1,
+                                                    "colwidth": [253],
+                                                    "rowspan": 1
                                                 },
                                                 "content": [
                                                     {
@@ -1630,19 +1630,19 @@
                                             {
                                                 "type": "tableCell",
                                                 "attrs": {
-                                                    "colspan": 1,
-                                                    "rowspan": 1,
-                                                    "colwidth": [308],
                                                     "background": null,
+                                                    "borderBottom": "0",
                                                     "borderColor": "#cccccc",
+                                                    "borderColorBottom": "#cccccc",
+                                                    "borderColorLeft": "#cccccc",
+                                                    "borderColorRight": "#cccccc",
+                                                    "borderColorTop": "#cccccc",
                                                     "borderLeft": "0",
                                                     "borderRight": "0",
-                                                    "borderBottom": "0",
                                                     "borderTop": "0",
-                                                    "borderColorBottom": "#cccccc",
-                                                    "borderColorTop": "#cccccc",
-                                                    "borderColorRight": "#cccccc",
-                                                    "borderColorLeft": "#cccccc"
+                                                    "colspan": 1,
+                                                    "colwidth": [308],
+                                                    "rowspan": 1
                                                 },
                                                 "content": [
                                                     {
@@ -1660,19 +1660,19 @@
                                             {
                                                 "type": "tableCell",
                                                 "attrs": {
-                                                    "colspan": 1,
-                                                    "rowspan": 1,
-                                                    "colwidth": [253],
                                                     "background": null,
+                                                    "borderBottom": "0",
                                                     "borderColor": "#cccccc",
+                                                    "borderColorBottom": "#cccccc",
+                                                    "borderColorLeft": "#cccccc",
+                                                    "borderColorRight": "#cccccc",
+                                                    "borderColorTop": "#cccccc",
                                                     "borderLeft": "0",
                                                     "borderRight": "0",
-                                                    "borderBottom": "0",
                                                     "borderTop": "0",
-                                                    "borderColorBottom": "#cccccc",
-                                                    "borderColorTop": "#cccccc",
-                                                    "borderColorRight": "#cccccc",
-                                                    "borderColorLeft": "#cccccc"
+                                                    "colspan": 1,
+                                                    "colwidth": [253],
+                                                    "rowspan": 1
                                                 },
                                                 "content": [
                                                     {
@@ -1697,19 +1697,19 @@
                                             {
                                                 "type": "tableCell",
                                                 "attrs": {
-                                                    "colspan": 1,
-                                                    "rowspan": 1,
-                                                    "colwidth": [308],
                                                     "background": null,
+                                                    "borderBottom": "0",
                                                     "borderColor": "#cccccc",
+                                                    "borderColorBottom": "#cccccc",
+                                                    "borderColorLeft": "#cccccc",
+                                                    "borderColorRight": "#cccccc",
+                                                    "borderColorTop": "#cccccc",
                                                     "borderLeft": "0",
                                                     "borderRight": "0",
-                                                    "borderBottom": "0",
                                                     "borderTop": "0",
-                                                    "borderColorBottom": "#cccccc",
-                                                    "borderColorTop": "#cccccc",
-                                                    "borderColorRight": "#cccccc",
-                                                    "borderColorLeft": "#cccccc"
+                                                    "colspan": 1,
+                                                    "colwidth": [308],
+                                                    "rowspan": 1
                                                 },
                                                 "content": [
                                                     {
@@ -1722,19 +1722,19 @@
                                             {
                                                 "type": "tableCell",
                                                 "attrs": {
-                                                    "colspan": 1,
-                                                    "rowspan": 1,
-                                                    "colwidth": [253],
                                                     "background": null,
+                                                    "borderBottom": "0",
                                                     "borderColor": "#cccccc",
+                                                    "borderColorBottom": "#cccccc",
+                                                    "borderColorLeft": "#cccccc",
+                                                    "borderColorRight": "#cccccc",
+                                                    "borderColorTop": "#cccccc",
                                                     "borderLeft": "0",
                                                     "borderRight": "0",
-                                                    "borderBottom": "0",
                                                     "borderTop": "0",
-                                                    "borderColorBottom": "#cccccc",
-                                                    "borderColorTop": "#cccccc",
-                                                    "borderColorRight": "#cccccc",
-                                                    "borderColorLeft": "#cccccc"
+                                                    "colspan": 1,
+                                                    "colwidth": [253],
+                                                    "rowspan": 1
                                                 },
                                                 "content": [
                                                     {
@@ -1925,7 +1925,7 @@
                     {
                         "type": "chapterBody",
                         "content": [
-                            { "type": "semanticTag", "attrs": { "tags": ["Formalnie"], "required": [] } },
+                            { "type": "semanticTag", "attrs": { "required": [], "tags": ["Formalnie"] } },
                             {
                                 "type": "paragraph",
                                 "attrs": { "textAlign": "" },
@@ -2445,7 +2445,7 @@
                         "content": [
                             {
                                 "type": "semanticTag",
-                                "attrs": { "tags": ["Intuicje", "Rozszerzenie"], "required": [] }
+                                "attrs": { "required": [], "tags": ["Intuicje", "Rozszerzenie"] }
                             },
                             {
                                 "type": "paragraph",
@@ -3469,17 +3469,17 @@
         ]
     },
     "comments": {
-        "1": { "text": "czasem w matematyce można się odwrócić na dwa różne sposoby", "hidden": true },
-        "2": { "text": "niepatriotycznie", "hidden": true },
+        "1": { "hidden": true, "text": "czasem w matematyce można się odwrócić na dwa różne sposoby" },
+        "2": { "hidden": true, "text": "niepatriotycznie" },
         "3": {
-            "text": "Tak na prawdę to inflacja wszystko zeżre, więc lepiej wydać kieszonkowe na gumę do żucia.",
-            "hidden": true
+            "hidden": true,
+            "text": "Tak na prawdę to inflacja wszystko zeżre, więc lepiej wydać kieszonkowe na gumę do żucia."
         },
-        "4": { "text": "$\\sqrt ☢$", "hidden": true },
+        "4": { "hidden": true, "text": "$\\sqrt ☢$" },
         "5": {
-            "text": "Przypadek dla $p<0$ i $q<0$ możemy pominąć, ponieważ wtedy oryginalny ułamek moglibyśmy zdefiniować jako $\\frac{-p}{-q}=\\frac{p}{q}$",
-            "hidden": false
+            "hidden": false,
+            "text": "Przypadek dla $p<0$ i $q<0$ możemy pominąć, ponieważ wtedy oryginalny ułamek moglibyśmy zdefiniować jako $\\frac{-p}{-q}=\\frac{p}{q}$"
         },
-        "6": { "text": "ponieważ nie jest legalne być AŻ TAK niewymiernym", "hidden": true }
+        "6": { "hidden": true, "text": "ponieważ nie jest legalne być AŻ TAK niewymiernym" }
     }
 }
