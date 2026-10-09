@@ -8,7 +8,7 @@
     word-wrap: break-word;
 
     .mspace.newline {
-        height: 0.2em;
+        height: 0.6em;
     }
 
     .katex-html {
@@ -16,6 +16,7 @@
 
         .base {
             display: inline;
+            white-space: normal;
         }
     }
 }
