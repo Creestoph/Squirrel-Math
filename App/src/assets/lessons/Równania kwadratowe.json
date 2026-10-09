@@ -30,7 +30,7 @@
                     {
                         "type": "chapterBody",
                         "content": [
-                            { "type": "semanticTag", "attrs": { "tags": ["Intuicje"], "required": [] } },
+                            { "type": "semanticTag", "attrs": { "required": [], "tags": ["Intuicje"] } },
                             {
                                 "type": "paragraph",
                                 "attrs": { "textAlign": "" },
@@ -126,7 +126,7 @@
                                     }
                                 ]
                             },
-                            { "type": "semanticTag", "attrs": { "tags": ["Formalnie"], "required": [] } },
+                            { "type": "semanticTag", "attrs": { "required": [], "tags": ["Formalnie"] } },
                             {
                                 "type": "paragraph",
                                 "attrs": { "textAlign": "" },
@@ -179,7 +179,7 @@
                                     }
                                 ]
                             },
-                            { "type": "semanticTag", "attrs": { "tags": ["Intuicje"], "required": [] } },
+                            { "type": "semanticTag", "attrs": { "required": [], "tags": ["Intuicje"] } },
                             {
                                 "type": "paragraph",
                                 "attrs": { "textAlign": "" },
@@ -694,7 +694,7 @@
                     {
                         "type": "chapterBody",
                         "content": [
-                            { "type": "semanticTag", "attrs": { "tags": ["Intuicje"], "required": [] } },
+                            { "type": "semanticTag", "attrs": { "required": [], "tags": ["Intuicje"] } },
                             {
                                 "type": "paragraph",
                                 "attrs": { "textAlign": "" },
@@ -829,7 +829,7 @@
                                     }
                                 ]
                             },
-                            { "type": "semanticTag", "attrs": { "tags": ["Rozszerzenie"], "required": [] } },
+                            { "type": "semanticTag", "attrs": { "required": [], "tags": ["Rozszerzenie"] } },
                             {
                                 "type": "paragraph",
                                 "attrs": { "textAlign": "" },
@@ -906,7 +906,7 @@
                     {
                         "type": "chapterBody",
                         "content": [
-                            { "type": "semanticTag", "attrs": { "tags": ["Intuicje"], "required": [] } },
+                            { "type": "semanticTag", "attrs": { "required": [], "tags": ["Intuicje"] } },
                             {
                                 "type": "paragraph",
                                 "attrs": { "textAlign": "" },
@@ -1021,7 +1021,7 @@
                                     }
                                 ]
                             },
-                            { "type": "semanticTag", "attrs": { "tags": ["Formalnie"], "required": [] } },
+                            { "type": "semanticTag", "attrs": { "required": [], "tags": ["Formalnie"] } },
                             {
                                 "type": "paragraph",
                                 "attrs": { "textAlign": "" },
@@ -1487,7 +1487,7 @@
                     {
                         "type": "chapterBody",
                         "content": [
-                            { "type": "semanticTag", "attrs": { "tags": ["Formalnie"], "required": [] } },
+                            { "type": "semanticTag", "attrs": { "required": [], "tags": ["Formalnie"] } },
                             {
                                 "type": "paragraph",
                                 "attrs": { "textAlign": "" },
@@ -1619,7 +1619,7 @@
                         "content": [
                             {
                                 "type": "semanticTag",
-                                "attrs": { "tags": ["Warsztat", "Rozszerzenie"], "required": [] }
+                                "attrs": { "required": [], "tags": ["Warsztat", "Rozszerzenie"] }
                             },
                             {
                                 "type": "paragraph",
@@ -2074,7 +2074,7 @@
                             },
                             {
                                 "type": "component",
-                                "attrs": { "componentName": "simple-quadratic-equations-training", "args": [] }
+                                "attrs": { "args": [], "componentName": "simple-quadratic-equations-training" }
                             }
                         ]
                     }
@@ -2679,7 +2679,7 @@
                             },
                             {
                                 "type": "component",
-                                "attrs": { "componentName": "simple-quadratic-equations-training", "args": [] }
+                                "attrs": { "args": [], "componentName": "simple-quadratic-equations-training" }
                             }
                         ]
                     }
@@ -2804,8 +2804,8 @@
     },
     "comments": {
         "1": {
-            "text": "Jeżeli czytasz to, mając dom, samochód, rodzinę i dobrą pracę, nie musisz się martwić, gdyż najpewniej już osiągnąłeś sukces.",
-            "hidden": true
+            "hidden": true,
+            "text": "Jeżeli czytasz to, mając dom, samochód, rodzinę i dobrą pracę, nie musisz się martwić, gdyż najpewniej już osiągnąłeś sukces."
         }
     }
 }

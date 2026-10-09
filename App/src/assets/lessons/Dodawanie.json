@@ -33,7 +33,7 @@
                     {
                         "type": "chapterBody",
                         "content": [
-                            { "type": "semanticTag", "attrs": { "tags": ["Intuicje"], "required": [] } },
+                            { "type": "semanticTag", "attrs": { "required": [], "tags": ["Intuicje"] } },
                             {
                                 "type": "paragraph",
                                 "attrs": { "textAlign": "" },
@@ -51,66 +51,66 @@
                             },
                             {
                                 "type": "geometry",
-                                "attrs": { "canvas": { "width": 557, "height": 246 } },
+                                "attrs": { "canvas": { "height": 246, "width": 557 } },
                                 "content": [
                                     {
                                         "type": "circle",
                                         "attrs": {
+                                            "borderColor": "#00000000",
                                             "center": { "x": 58, "y": 68 },
-                                            "size": { "width": 45, "height": 45 },
                                             "color": "#aa0000",
-                                            "borderColor": "#00000000",
-                                            "id": "122"
+                                            "id": "122",
+                                            "size": { "height": 45, "width": 45 }
                                         }
                                     },
                                     {
                                         "type": "circle",
                                         "attrs": {
+                                            "borderColor": "#00000000",
                                             "center": { "x": 101, "y": 130 },
-                                            "size": { "width": 45, "height": 45 },
                                             "color": "#aa0000",
-                                            "borderColor": "#00000000",
-                                            "id": "123"
+                                            "id": "123",
+                                            "size": { "height": 45, "width": 45 }
                                         }
                                     },
                                     {
                                         "type": "circle",
                                         "attrs": {
+                                            "borderColor": "#00000000",
                                             "center": { "x": 363, "y": 149 },
-                                            "size": { "width": 45, "height": 45 },
                                             "color": "#aa0000",
-                                            "borderColor": "#00000000",
-                                            "id": "124"
+                                            "id": "124",
+                                            "size": { "height": 45, "width": 45 }
                                         }
                                     },
                                     {
                                         "type": "circle",
                                         "attrs": {
+                                            "borderColor": "#00000000",
                                             "center": { "x": 431, "y": 186 },
-                                            "size": { "width": 45, "height": 45 },
                                             "color": "#aa0000",
-                                            "borderColor": "#00000000",
-                                            "id": "125"
+                                            "id": "125",
+                                            "size": { "height": 45, "width": 45 }
                                         }
                                     },
                                     {
                                         "type": "circle",
                                         "attrs": {
+                                            "borderColor": "#00000000",
                                             "center": { "x": 385, "y": 85 },
-                                            "size": { "width": 45, "height": 45 },
                                             "color": "#aa0000",
-                                            "borderColor": "#00000000",
-                                            "id": "126"
+                                            "id": "126",
+                                            "size": { "height": 45, "width": 45 }
                                         }
                                     },
                                     {
                                         "type": "circle",
                                         "attrs": {
-                                            "center": { "x": 488, "y": 65 },
-                                            "size": { "width": 45, "height": 45 },
-                                            "color": "#aa0000",
                                             "borderColor": "#00000000",
-                                            "id": "127"
+                                            "center": { "x": 488, "y": 65 },
+                                            "color": "#aa0000",
+                                            "id": "127",
+                                            "size": { "height": 45, "width": 45 }
                                         }
                                     }
                                 ]
@@ -182,46 +182,46 @@
                             },
                             {
                                 "type": "geometry",
-                                "attrs": { "canvas": { "width": 568, "height": 265 } },
+                                "attrs": { "canvas": { "height": 265, "width": 568 } },
                                 "content": [
                                     {
                                         "type": "circle",
                                         "attrs": {
+                                            "borderColor": "#00000000",
                                             "center": { "x": 90, "y": 62 },
-                                            "size": { "width": 45, "height": 45 },
                                             "color": "#aa0000",
-                                            "borderColor": "#00000000",
-                                            "id": "128"
+                                            "id": "128",
+                                            "size": { "height": 45, "width": 45 }
                                         }
                                     },
                                     {
                                         "type": "circle",
                                         "attrs": {
+                                            "borderColor": "#00000000",
                                             "center": { "x": 179, "y": 143 },
-                                            "size": { "width": 45, "height": 45 },
                                             "color": "#aa0000",
-                                            "borderColor": "#00000000",
-                                            "id": "129"
+                                            "id": "129",
+                                            "size": { "height": 45, "width": 45 }
                                         }
                                     },
                                     {
                                         "type": "circle",
                                         "attrs": {
+                                            "borderColor": "#00000000",
                                             "center": { "x": 401, "y": 151 },
-                                            "size": { "width": 45, "height": 45 },
                                             "color": "#aa0000",
-                                            "borderColor": "#00000000",
-                                            "id": "130"
+                                            "id": "130",
+                                            "size": { "height": 45, "width": 45 }
                                         }
                                     },
                                     {
                                         "type": "circle",
                                         "attrs": {
-                                            "center": { "x": 480, "y": 60 },
-                                            "size": { "width": 45, "height": 45 },
-                                            "color": "#aa0000",
                                             "borderColor": "#00000000",
-                                            "id": "131"
+                                            "center": { "x": 480, "y": 60 },
+                                            "color": "#aa0000",
+                                            "id": "131",
+                                            "size": { "height": 45, "width": 45 }
                                         }
                                     }
                                 ]
@@ -244,136 +244,136 @@
                             },
                             {
                                 "type": "geometry",
-                                "attrs": { "canvas": { "width": 770, "height": 271 } },
+                                "attrs": { "canvas": { "height": 271, "width": 770 } },
                                 "content": [
                                     {
                                         "type": "circle",
                                         "attrs": {
+                                            "borderColor": "#00000000",
                                             "center": { "x": 68, "y": 170 },
-                                            "size": { "width": 45, "height": 45 },
                                             "color": "#aa0000",
-                                            "borderColor": "#00000000",
-                                            "id": "132"
+                                            "id": "132",
+                                            "size": { "height": 45, "width": 45 }
                                         }
                                     },
                                     {
                                         "type": "circle",
                                         "attrs": {
+                                            "borderColor": "#00000000",
                                             "center": { "x": 90, "y": 121 },
-                                            "size": { "width": 45, "height": 45 },
                                             "color": "#aa0000",
-                                            "borderColor": "#00000000",
-                                            "id": "133"
+                                            "id": "133",
+                                            "size": { "height": 45, "width": 45 }
                                         }
                                     },
                                     {
                                         "type": "circle",
                                         "attrs": {
+                                            "borderColor": "#00000000",
                                             "center": { "x": 155, "y": 64 },
-                                            "size": { "width": 45, "height": 45 },
                                             "color": "#aa0000",
-                                            "borderColor": "#00000000",
-                                            "id": "134"
+                                            "id": "134",
+                                            "size": { "height": 45, "width": 45 }
                                         }
                                     },
                                     {
                                         "type": "circle",
                                         "attrs": {
+                                            "borderColor": "#00000000",
                                             "center": { "x": 334, "y": 186 },
-                                            "size": { "width": 45, "height": 45 },
                                             "color": "#aa0000",
-                                            "borderColor": "#00000000",
-                                            "id": "135"
+                                            "id": "135",
+                                            "size": { "height": 45, "width": 45 }
                                         }
                                     },
                                     {
                                         "type": "circle",
                                         "attrs": {
+                                            "borderColor": "#00000000",
                                             "center": { "x": 402, "y": 147 },
-                                            "size": { "width": 45, "height": 45 },
                                             "color": "#aa0000",
-                                            "borderColor": "#00000000",
-                                            "id": "136"
+                                            "id": "136",
+                                            "size": { "height": 45, "width": 45 }
                                         }
                                     },
                                     {
                                         "type": "circle",
                                         "attrs": {
+                                            "borderColor": "#00000000",
                                             "center": { "x": 364, "y": 102 },
-                                            "size": { "width": 45, "height": 45 },
                                             "color": "#aa0000",
-                                            "borderColor": "#00000000",
-                                            "id": "137"
+                                            "id": "137",
+                                            "size": { "height": 45, "width": 45 }
                                         }
                                     },
                                     {
                                         "type": "circle",
                                         "attrs": {
+                                            "borderColor": "#00000000",
                                             "center": { "x": 428, "y": 72 },
-                                            "size": { "width": 45, "height": 45 },
                                             "color": "#aa0000",
-                                            "borderColor": "#00000000",
-                                            "id": "138"
+                                            "id": "138",
+                                            "size": { "height": 45, "width": 45 }
                                         }
                                     },
                                     {
                                         "type": "circle",
                                         "attrs": {
+                                            "borderColor": "#00000000",
                                             "center": { "x": 606, "y": 82 },
-                                            "size": { "width": 45, "height": 45 },
                                             "color": "#aa0000",
-                                            "borderColor": "#00000000",
-                                            "id": "139"
+                                            "id": "139",
+                                            "size": { "height": 45, "width": 45 }
                                         }
                                     },
                                     {
                                         "type": "circle",
                                         "attrs": {
+                                            "borderColor": "#00000000",
                                             "center": { "x": 656, "y": 112 },
-                                            "size": { "width": 45, "height": 45 },
                                             "color": "#aa0000",
-                                            "borderColor": "#00000000",
-                                            "id": "140"
+                                            "id": "140",
+                                            "size": { "height": 45, "width": 45 }
                                         }
                                     },
                                     {
                                         "type": "circle",
                                         "attrs": {
+                                            "borderColor": "#00000000",
                                             "center": { "x": 707, "y": 149 },
-                                            "size": { "width": 45, "height": 45 },
                                             "color": "#aa0000",
-                                            "borderColor": "#00000000",
-                                            "id": "141"
+                                            "id": "141",
+                                            "size": { "height": 45, "width": 45 }
                                         }
                                     },
                                     {
                                         "type": "circle",
                                         "attrs": {
+                                            "borderColor": "#00000000",
                                             "center": { "x": 710, "y": 80 },
-                                            "size": { "width": 45, "height": 45 },
                                             "color": "#aa0000",
-                                            "borderColor": "#00000000",
-                                            "id": "142"
+                                            "id": "142",
+                                            "size": { "height": 45, "width": 45 }
                                         }
                                     },
                                     {
                                         "type": "circle",
                                         "attrs": {
+                                            "borderColor": "#00000000",
                                             "center": { "x": 598, "y": 164 },
-                                            "size": { "width": 45, "height": 45 },
                                             "color": "#aa0000",
-                                            "borderColor": "#00000000",
-                                            "id": "143"
+                                            "id": "143",
+                                            "size": { "height": 45, "width": 45 }
                                         }
                                     },
                                     {
                                         "type": "circle",
                                         "attrs": {
-                                            "center": { "x": 675, "y": 211 },
-                                            "size": { "width": 45, "height": 45 },
-                                            "color": "#aa0000",
                                             "borderColor": "#00000000",
-                                            "id": "144"
+                                            "center": { "x": 675, "y": 211 },
+                                            "color": "#aa0000",
+                                            "id": "144",
+                                            "size": { "height": 45, "width": 45 }
                                         }
                                     }
                                 ]
@@ -534,7 +534,7 @@
                     {
                         "type": "chapterBody",
                         "content": [
-                            { "type": "semanticTag", "attrs": { "tags": ["Intuicje"], "required": [] } },
+                            { "type": "semanticTag", "attrs": { "required": [], "tags": ["Intuicje"] } },
                             {
                                 "type": "paragraph",
                                 "attrs": { "textAlign": "" },
@@ -674,7 +674,7 @@
                     {
                         "type": "chapterBody",
                         "content": [
-                            { "type": "semanticTag", "attrs": { "tags": ["Rozszerzenie"], "required": [] } },
+                            { "type": "semanticTag", "attrs": { "required": [], "tags": ["Rozszerzenie"] } },
                             {
                                 "type": "paragraph",
                                 "attrs": { "textAlign": "" },
@@ -687,96 +687,96 @@
                             },
                             {
                                 "type": "geometry",
-                                "attrs": { "canvas": { "width": 771, "height": 274 } },
+                                "attrs": { "canvas": { "height": 274, "width": 771 } },
                                 "content": [
                                     {
                                         "type": "circle",
                                         "attrs": {
+                                            "borderColor": "#00000000",
                                             "center": { "x": 172, "y": 56 },
-                                            "size": { "width": 45, "height": 45 },
                                             "color": "#aa0000",
-                                            "borderColor": "#00000000",
-                                            "id": "145"
+                                            "id": "145",
+                                            "size": { "height": 45, "width": 45 }
                                         }
                                     },
                                     {
                                         "type": "circle",
                                         "attrs": {
+                                            "borderColor": "#00000000",
                                             "center": { "x": 202, "y": 102 },
-                                            "size": { "width": 45, "height": 45 },
                                             "color": "#aa0000",
-                                            "borderColor": "#00000000",
-                                            "id": "146"
+                                            "id": "146",
+                                            "size": { "height": 45, "width": 45 }
                                         }
                                     },
                                     {
                                         "type": "circle",
                                         "attrs": {
+                                            "borderColor": "#00000000",
                                             "center": { "x": 255, "y": 137 },
-                                            "size": { "width": 45, "height": 45 },
                                             "color": "#aa0000",
-                                            "borderColor": "#00000000",
-                                            "id": "147"
+                                            "id": "147",
+                                            "size": { "height": 45, "width": 45 }
                                         }
                                     },
                                     {
                                         "type": "circle",
                                         "attrs": {
+                                            "borderColor": "#00000000",
                                             "center": { "x": 190, "y": 204 },
-                                            "size": { "width": 45, "height": 45 },
                                             "color": "#aa0000",
-                                            "borderColor": "#00000000",
-                                            "id": "148"
+                                            "id": "148",
+                                            "size": { "height": 45, "width": 45 }
                                         }
                                     },
                                     {
                                         "type": "circle",
                                         "attrs": {
+                                            "borderColor": "#00000000",
                                             "center": { "x": 566, "y": 54 },
-                                            "size": { "width": 45, "height": 45 },
                                             "color": "#aa0000",
-                                            "borderColor": "#00000000",
-                                            "id": "149"
+                                            "id": "149",
+                                            "size": { "height": 45, "width": 45 }
                                         }
                                     },
                                     {
                                         "type": "circle",
                                         "attrs": {
+                                            "borderColor": "#00000000",
                                             "center": { "x": 557, "y": 112 },
-                                            "size": { "width": 45, "height": 45 },
                                             "color": "#aa0000",
-                                            "borderColor": "#00000000",
-                                            "id": "150"
+                                            "id": "150",
+                                            "size": { "height": 45, "width": 45 }
                                         }
                                     },
                                     {
                                         "type": "circle",
                                         "attrs": {
+                                            "borderColor": "#00000000",
                                             "center": { "x": 518, "y": 160 },
-                                            "size": { "width": 45, "height": 45 },
                                             "color": "#aa0000",
-                                            "borderColor": "#00000000",
-                                            "id": "151"
+                                            "id": "151",
+                                            "size": { "height": 45, "width": 45 }
                                         }
                                     },
                                     {
                                         "type": "circle",
                                         "attrs": {
+                                            "borderColor": "#00000000",
                                             "center": { "x": 648, "y": 119 },
-                                            "size": { "width": 45, "height": 45 },
                                             "color": "#aa0000",
-                                            "borderColor": "#00000000",
-                                            "id": "152"
+                                            "id": "152",
+                                            "size": { "height": 45, "width": 45 }
                                         }
                                     },
                                     {
                                         "type": "circle",
                                         "attrs": {
-                                            "center": { "x": 627, "y": 195 },
-                                            "size": { "width": 45, "height": 45 },
-                                            "color": "#aa0000",
                                             "borderColor": "#00000000",
-                                            "id": "153"
+                                            "center": { "x": 627, "y": 195 },
+                                            "color": "#aa0000",
+                                            "id": "153",
+                                            "size": { "height": 45, "width": 45 }
                                         }
                                     }
                                 ]
@@ -817,96 +817,96 @@
                             },
                             {
                                 "type": "geometry",
-                                "attrs": { "canvas": { "width": 801, "height": 227 } },
+                                "attrs": { "canvas": { "height": 227, "width": 801 } },
                                 "content": [
                                     {
                                         "type": "circle",
                                         "attrs": {
+                                            "borderColor": "#00000000",
                                             "center": { "x": 111, "y": 59 },
-                                            "size": { "width": 45, "height": 45 },
                                             "color": "#aa0000",
-                                            "borderColor": "#00000000",
-                                            "id": "154"
+                                            "id": "154",
+                                            "size": { "height": 45, "width": 45 }
                                         }
                                     },
                                     {
                                         "type": "circle",
                                         "attrs": {
+                                            "borderColor": "#00000000",
                                             "center": { "x": 126, "y": 139 },
-                                            "size": { "width": 45, "height": 45 },
                                             "color": "#aa0000",
-                                            "borderColor": "#00000000",
-                                            "id": "155"
+                                            "id": "155",
+                                            "size": { "height": 45, "width": 45 }
                                         }
                                     },
                                     {
                                         "type": "circle",
                                         "attrs": {
+                                            "borderColor": "#00000000",
                                             "center": { "x": 333, "y": 108 },
-                                            "size": { "width": 45, "height": 45 },
                                             "color": "#aa0000",
-                                            "borderColor": "#00000000",
-                                            "id": "156"
+                                            "id": "156",
+                                            "size": { "height": 45, "width": 45 }
                                         }
                                     },
                                     {
                                         "type": "circle",
                                         "attrs": {
+                                            "borderColor": "#00000000",
                                             "center": { "x": 536, "y": 165 },
-                                            "size": { "width": 45, "height": 45 },
                                             "color": "#aa0000",
-                                            "borderColor": "#00000000",
-                                            "id": "157"
+                                            "id": "157",
+                                            "size": { "height": 45, "width": 45 }
                                         }
                                     },
                                     {
                                         "type": "circle",
                                         "attrs": {
+                                            "borderColor": "#00000000",
                                             "center": { "x": 549, "y": 97 },
-                                            "size": { "width": 45, "height": 45 },
                                             "color": "#aa0000",
-                                            "borderColor": "#00000000",
-                                            "id": "158"
+                                            "id": "158",
+                                            "size": { "height": 45, "width": 45 }
                                         }
                                     },
                                     {
                                         "type": "circle",
                                         "attrs": {
+                                            "borderColor": "#00000000",
                                             "center": { "x": 607, "y": 80 },
-                                            "size": { "width": 45, "height": 45 },
                                             "color": "#aa0000",
-                                            "borderColor": "#00000000",
-                                            "id": "159"
+                                            "id": "159",
+                                            "size": { "height": 45, "width": 45 }
                                         }
                                     },
                                     {
                                         "type": "circle",
                                         "attrs": {
+                                            "borderColor": "#00000000",
                                             "center": { "x": 650, "y": 125 },
-                                            "size": { "width": 45, "height": 45 },
                                             "color": "#aa0000",
-                                            "borderColor": "#00000000",
-                                            "id": "160"
+                                            "id": "160",
+                                            "size": { "height": 45, "width": 45 }
                                         }
                                     },
                                     {
                                         "type": "circle",
                                         "attrs": {
+                                            "borderColor": "#00000000",
                                             "center": { "x": 686, "y": 74 },
-                                            "size": { "width": 45, "height": 45 },
                                             "color": "#aa0000",
-                                            "borderColor": "#00000000",
-                                            "id": "161"
+                                            "id": "161",
+                                            "size": { "height": 45, "width": 45 }
                                         }
                                     },
                                     {
                                         "type": "circle",
                                         "attrs": {
-                                            "center": { "x": 729, "y": 124 },
-                                            "size": { "width": 45, "height": 45 },
-                                            "color": "#aa0000",
                                             "borderColor": "#00000000",
-                                            "id": "162"
+                                            "center": { "x": 729, "y": 124 },
+                                            "color": "#aa0000",
+                                            "id": "162",
+                                            "size": { "height": 45, "width": 45 }
                                         }
                                     }
                                 ]
@@ -969,7 +969,7 @@
                     {
                         "type": "chapterBody",
                         "content": [
-                            { "type": "semanticTag", "attrs": { "tags": ["Warsztat"], "required": [] } },
+                            { "type": "semanticTag", "attrs": { "required": [], "tags": ["Warsztat"] } },
                             {
                                 "type": "paragraph",
                                 "attrs": { "textAlign": "" },
@@ -1033,8 +1033,8 @@
                             {
                                 "type": "component",
                                 "attrs": {
-                                    "componentName": "operation-table",
-                                    "args": ["(a, b) => a + b", "(a, b, c) => \"\"", null, null]
+                                    "args": ["(a, b) => a + b", "(a, b, c) => \"\"", null, null],
+                                    "componentName": "operation-table"
                                 }
                             },
                             {
@@ -1054,8 +1054,8 @@
                             {
                                 "type": "component",
                                 "attrs": {
-                                    "componentName": "operation-table",
-                                    "args": ["(a, b) => a + b", "(a, b, c) => `${a} + ${b} = ${c}`", "8", "9"]
+                                    "args": ["(a, b) => a + b", "(a, b, c) => `${a} + ${b} = ${c}`", "8", "9"],
+                                    "componentName": "operation-table"
                                 }
                             },
                             {
@@ -1104,8 +1104,8 @@
                                     {
                                         "type": "component",
                                         "attrs": {
-                                            "componentName": "columnar-operation-table",
-                                            "args": [["c/;c/;;;", ";;1;2;7", "u/+;u/;u/;u/3;u/2", ";;;;"]]
+                                            "args": [["c/;c/;;;", ";;1;2;7", "u/+;u/;u/;u/3;u/2", ";;;;"]],
+                                            "componentName": "columnar-operation-table"
                                         }
                                     },
                                     {
@@ -1184,8 +1184,8 @@
                                     {
                                         "type": "component",
                                         "attrs": {
-                                            "componentName": "columnar-operation-table",
-                                            "args": [["c/;c/;;;", ";;1;2;7", "u/+;u/;u/;u/3;u/2", ";;1;5;9"]]
+                                            "args": [["c/;c/;;;", ";;1;2;7", "u/+;u/;u/;u/3;u/2", ";;1;5;9"]],
+                                            "componentName": "columnar-operation-table"
                                         }
                                     },
                                     {
@@ -1221,8 +1221,8 @@
                                     {
                                         "type": "component",
                                         "attrs": {
-                                            "componentName": "columnar-operation-table",
-                                            "args": [["c/;c/;;;", ";;2;5;6", "u/+;u/;u/9;u/4;u/7", ";;;;"]]
+                                            "args": [["c/;c/;;;", ";;2;5;6", "u/+;u/;u/9;u/4;u/7", ";;;;"]],
+                                            "componentName": "columnar-operation-table"
                                         }
                                     },
                                     {
@@ -1252,8 +1252,8 @@
                                     {
                                         "type": "component",
                                         "attrs": {
-                                            "componentName": "columnar-operation-table",
-                                            "args": [["c/;c/;c/;c/1;c/", ";;2;5;6", "u/+;u/;u/9;u/4;u/7", ";;;;3"]]
+                                            "args": [["c/;c/;c/;c/1;c/", ";;2;5;6", "u/+;u/;u/9;u/4;u/7", ";;;;3"]],
+                                            "componentName": "columnar-operation-table"
                                         }
                                     },
                                     {
@@ -1281,8 +1281,8 @@
                                     {
                                         "type": "component",
                                         "attrs": {
-                                            "componentName": "columnar-operation-table",
-                                            "args": [["c/;c/;c/1;c/1;c/", ";;2;5;6", "u/+;u/;u/9;u/4;u/7", ";;;0;3"]]
+                                            "args": [["c/;c/;c/1;c/1;c/", ";;2;5;6", "u/+;u/;u/9;u/4;u/7", ";;;0;3"]],
+                                            "componentName": "columnar-operation-table"
                                         }
                                     },
                                     {
@@ -1303,7 +1303,6 @@
                                     {
                                         "type": "component",
                                         "attrs": {
-                                            "componentName": "columnar-operation-table",
                                             "args": [
                                                 [
                                                     "c/;c/;c/1;c/1;c/1;c/",
@@ -1311,7 +1310,8 @@
                                                     "u/+;u/;u/;u/9;u/4;u/7",
                                                     ";;;2;0;3"
                                                 ]
-                                            ]
+                                            ],
+                                            "componentName": "columnar-operation-table"
                                         }
                                     },
                                     {
@@ -1327,7 +1327,6 @@
                                     {
                                         "type": "component",
                                         "attrs": {
-                                            "componentName": "columnar-operation-table",
                                             "args": [
                                                 [
                                                     "c/;c/;c/1;c/1;c/1;c/",
@@ -1335,7 +1334,8 @@
                                                     "u/+;u/;u/;u/9;u/4;u/7",
                                                     ";;1;2;0;3"
                                                 ]
-                                            ]
+                                            ],
+                                            "componentName": "columnar-operation-table"
                                         }
                                     },
                                     {
@@ -1361,7 +1361,7 @@
                             },
                             {
                                 "type": "component",
-                                "attrs": { "componentName": "columnar-operation-guide", "args": ["addition", false] }
+                                "attrs": { "args": ["addition", false], "componentName": "columnar-operation-guide" }
                             }
                         ]
                     }
@@ -1380,7 +1380,7 @@
                         "content": [
                             {
                                 "type": "semanticTag",
-                                "attrs": { "tags": ["Rozszerzenie"], "required": ["Kolejność wykonywania działań"] }
+                                "attrs": { "required": ["Kolejność wykonywania działań"], "tags": ["Rozszerzenie"] }
                             },
                             {
                                 "type": "paragraph",
@@ -1517,8 +1517,8 @@
                             {
                                 "type": "semanticTag",
                                 "attrs": {
-                                    "tags": ["Formalnie", "Rozszerzenie"],
-                                    "required": ["Lekcja jeszcze niedostępna"]
+                                    "required": ["Lekcja jeszcze niedostępna"],
+                                    "tags": ["Formalnie", "Rozszerzenie"]
                                 }
                             },
                             {
@@ -1745,66 +1745,66 @@
                         "content": [
                             {
                                 "type": "geometry",
-                                "attrs": { "canvas": { "width": 557, "height": 246 } },
+                                "attrs": { "canvas": { "height": 246, "width": 557 } },
                                 "content": [
                                     {
                                         "type": "circle",
                                         "attrs": {
+                                            "borderColor": "#00000000",
                                             "center": { "x": 58, "y": 68 },
-                                            "size": { "width": 45, "height": 45 },
                                             "color": "#aa0000",
-                                            "borderColor": "#00000000",
-                                            "id": "116"
+                                            "id": "116",
+                                            "size": { "height": 45, "width": 45 }
                                         }
                                     },
                                     {
                                         "type": "circle",
                                         "attrs": {
+                                            "borderColor": "#00000000",
                                             "center": { "x": 101, "y": 130 },
-                                            "size": { "width": 45, "height": 45 },
                                             "color": "#aa0000",
-                                            "borderColor": "#00000000",
-                                            "id": "117"
+                                            "id": "117",
+                                            "size": { "height": 45, "width": 45 }
                                         }
                                     },
                                     {
                                         "type": "circle",
                                         "attrs": {
+                                            "borderColor": "#00000000",
                                             "center": { "x": 363, "y": 149 },
-                                            "size": { "width": 45, "height": 45 },
                                             "color": "#aa0000",
-                                            "borderColor": "#00000000",
-                                            "id": "118"
+                                            "id": "118",
+                                            "size": { "height": 45, "width": 45 }
                                         }
                                     },
                                     {
                                         "type": "circle",
                                         "attrs": {
+                                            "borderColor": "#00000000",
                                             "center": { "x": 431, "y": 186 },
-                                            "size": { "width": 45, "height": 45 },
                                             "color": "#aa0000",
-                                            "borderColor": "#00000000",
-                                            "id": "119"
+                                            "id": "119",
+                                            "size": { "height": 45, "width": 45 }
                                         }
                                     },
                                     {
                                         "type": "circle",
                                         "attrs": {
+                                            "borderColor": "#00000000",
                                             "center": { "x": 385, "y": 85 },
-                                            "size": { "width": 45, "height": 45 },
                                             "color": "#aa0000",
-                                            "borderColor": "#00000000",
-                                            "id": "120"
+                                            "id": "120",
+                                            "size": { "height": 45, "width": 45 }
                                         }
                                     },
                                     {
                                         "type": "circle",
                                         "attrs": {
-                                            "center": { "x": 488, "y": 65 },
-                                            "size": { "width": 45, "height": 45 },
-                                            "color": "#aa0000",
                                             "borderColor": "#00000000",
-                                            "id": "121"
+                                            "center": { "x": 488, "y": 65 },
+                                            "color": "#aa0000",
+                                            "id": "121",
+                                            "size": { "height": 45, "width": 45 }
                                         }
                                     }
                                 ]
@@ -1942,8 +1942,8 @@
                             {
                                 "type": "component",
                                 "attrs": {
-                                    "componentName": "operation-table",
-                                    "args": ["(a, b) => a + b", "(a, b, c) => `${a} + ${b} = ${c}`", "8", "9"]
+                                    "args": ["(a, b) => a + b", "(a, b, c) => `${a} + ${b} = ${c}`", "8", "9"],
+                                    "componentName": "operation-table"
                                 }
                             },
                             {
@@ -1977,7 +1977,7 @@
                             },
                             {
                                 "type": "component",
-                                "attrs": { "componentName": "columnar-operation-guide", "args": ["addition", false] }
+                                "attrs": { "args": ["addition", false], "componentName": "columnar-operation-guide" }
                             }
                         ]
                     }
@@ -2079,20 +2079,20 @@
         ]
     },
     "comments": {
-        "1": { "text": "Kulki zostały rzucone.", "hidden": true },
-        "2": { "text": "To ile czasu spędzi w toalecie?", "hidden": true },
-        "3": { "text": "Tak naprawdę nie wiadomo. Niektóre jabłka mogły zjeść osobno.", "hidden": true },
-        "4": { "text": "", "hidden": false },
-        "5": { "text": "", "hidden": false },
-        "6": { "text": "Ustalamy wygodną kolejność składników.", "hidden": false },
-        "7": { "text": "Dodajemy cyfry jedności.", "hidden": false },
-        "8": { "text": "Rozbijamy wynikowe 13 na dwie cyfry.", "hidden": false },
-        "9": { "text": "", "hidden": false },
-        "10": { "text": "Przenosimy jedynkę do następnej kolumny.", "hidden": false },
-        "11": { "text": "", "hidden": false },
-        "12": { "text": "Dodajemy cyfry dziesiątek.", "hidden": false },
-        "13": { "text": "Przenosimy jedynkę do następnej kolumny.", "hidden": false },
-        "14": { "text": "Dodajemy cyfry setek.", "hidden": false },
-        "15": { "text": "Rozbijamy 12 na 1 i 2.", "hidden": false }
+        "1": { "hidden": true, "text": "Kulki zostały rzucone." },
+        "2": { "hidden": true, "text": "To ile czasu spędzi w toalecie?" },
+        "3": { "hidden": true, "text": "Tak naprawdę nie wiadomo. Niektóre jabłka mogły zjeść osobno." },
+        "4": { "hidden": false, "text": "" },
+        "5": { "hidden": false, "text": "" },
+        "6": { "hidden": false, "text": "Ustalamy wygodną kolejność składników." },
+        "7": { "hidden": false, "text": "Dodajemy cyfry jedności." },
+        "8": { "hidden": false, "text": "Rozbijamy wynikowe 13 na dwie cyfry." },
+        "9": { "hidden": false, "text": "" },
+        "10": { "hidden": false, "text": "Przenosimy jedynkę do następnej kolumny." },
+        "11": { "hidden": false, "text": "" },
+        "12": { "hidden": false, "text": "Dodajemy cyfry dziesiątek." },
+        "13": { "hidden": false, "text": "Przenosimy jedynkę do następnej kolumny." },
+        "14": { "hidden": false, "text": "Dodajemy cyfry setek." },
+        "15": { "hidden": false, "text": "Rozbijamy 12 na 1 i 2." }
     }
 }

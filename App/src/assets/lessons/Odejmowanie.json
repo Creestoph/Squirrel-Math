@@ -34,7 +34,7 @@
                     {
                         "type": "chapterBody",
                         "content": [
-                            { "type": "semanticTag", "attrs": { "tags": ["Intuicje"], "required": [] } },
+                            { "type": "semanticTag", "attrs": { "required": [], "tags": ["Intuicje"] } },
                             {
                                 "type": "paragraph",
                                 "attrs": { "textAlign": "" },
@@ -65,76 +65,76 @@
                             },
                             {
                                 "type": "geometry",
-                                "attrs": { "canvas": { "width": 531, "height": 290 } },
+                                "attrs": { "canvas": { "height": 290, "width": 531 } },
                                 "content": [
                                     {
                                         "type": "circle",
                                         "attrs": {
+                                            "borderColor": "#00000000",
                                             "center": { "x": 130, "y": 86 },
-                                            "size": { "width": 45, "height": 45 },
                                             "color": "#aa0000",
-                                            "borderColor": "#00000000",
-                                            "id": "170"
+                                            "id": "170",
+                                            "size": { "height": 45, "width": 45 }
                                         }
                                     },
                                     {
                                         "type": "circle",
                                         "attrs": {
+                                            "borderColor": "#00000000",
                                             "center": { "x": 166, "y": 156 },
-                                            "size": { "width": 45, "height": 45 },
                                             "color": "#aa0000",
-                                            "borderColor": "#00000000",
-                                            "id": "171"
+                                            "id": "171",
+                                            "size": { "height": 45, "width": 45 }
                                         }
                                     },
                                     {
                                         "type": "circle",
                                         "attrs": {
+                                            "borderColor": "#00000000",
                                             "center": { "x": 112, "y": 198 },
-                                            "size": { "width": 45, "height": 45 },
                                             "color": "#aa0000",
-                                            "borderColor": "#00000000",
-                                            "id": "172"
+                                            "id": "172",
+                                            "size": { "height": 45, "width": 45 }
                                         }
                                     },
                                     {
                                         "type": "circle",
                                         "attrs": {
+                                            "borderColor": "#00000000",
                                             "center": { "x": 334, "y": 140 },
-                                            "size": { "width": 45, "height": 45 },
                                             "color": "#aa0000",
-                                            "borderColor": "#00000000",
-                                            "id": "173"
+                                            "id": "173",
+                                            "size": { "height": 45, "width": 45 }
                                         }
                                     },
                                     {
                                         "type": "circle",
                                         "attrs": {
+                                            "borderColor": "#00000000",
                                             "center": { "x": 370, "y": 192 },
-                                            "size": { "width": 45, "height": 45 },
                                             "color": "#aa0000",
-                                            "borderColor": "#00000000",
-                                            "id": "174"
+                                            "id": "174",
+                                            "size": { "height": 45, "width": 45 }
                                         }
                                     },
                                     {
                                         "type": "circle",
                                         "attrs": {
+                                            "borderColor": "#00000000",
                                             "center": { "x": 426, "y": 166 },
-                                            "size": { "width": 45, "height": 45 },
                                             "color": "#aa0000",
-                                            "borderColor": "#00000000",
-                                            "id": "175"
+                                            "id": "175",
+                                            "size": { "height": 45, "width": 45 }
                                         }
                                     },
                                     {
                                         "type": "circle",
                                         "attrs": {
-                                            "center": { "x": 440, "y": 90 },
-                                            "size": { "width": 45, "height": 45 },
-                                            "color": "#aa0000",
                                             "borderColor": "#00000000",
-                                            "id": "176"
+                                            "center": { "x": 440, "y": 90 },
+                                            "color": "#aa0000",
+                                            "id": "176",
+                                            "size": { "height": 45, "width": 45 }
                                         }
                                     }
                                 ]
@@ -153,36 +153,36 @@
                             },
                             {
                                 "type": "geometry",
-                                "attrs": { "canvas": { "width": 531, "height": 290 } },
+                                "attrs": { "canvas": { "height": 290, "width": 531 } },
                                 "content": [
                                     {
                                         "type": "circle",
                                         "attrs": {
+                                            "borderColor": "#00000000",
                                             "center": { "x": 130, "y": 86 },
-                                            "size": { "width": 45, "height": 45 },
                                             "color": "#aa0000",
-                                            "borderColor": "#00000000",
-                                            "id": "177"
+                                            "id": "177",
+                                            "size": { "height": 45, "width": 45 }
                                         }
                                     },
                                     {
                                         "type": "circle",
                                         "attrs": {
+                                            "borderColor": "#00000000",
                                             "center": { "x": 166, "y": 156 },
-                                            "size": { "width": 45, "height": 45 },
                                             "color": "#aa0000",
-                                            "borderColor": "#00000000",
-                                            "id": "178"
+                                            "id": "178",
+                                            "size": { "height": 45, "width": 45 }
                                         }
                                     },
                                     {
                                         "type": "circle",
                                         "attrs": {
-                                            "center": { "x": 112, "y": 198 },
-                                            "size": { "width": 45, "height": 45 },
-                                            "color": "#aa0000",
                                             "borderColor": "#00000000",
-                                            "id": "179"
+                                            "center": { "x": 112, "y": 198 },
+                                            "color": "#aa0000",
+                                            "id": "179",
+                                            "size": { "height": 45, "width": 45 }
                                         }
                                     }
                                 ]
@@ -354,7 +354,7 @@
                     {
                         "type": "chapterBody",
                         "content": [
-                            { "type": "semanticTag", "attrs": { "tags": ["Intuicje"], "required": [] } },
+                            { "type": "semanticTag", "attrs": { "required": [], "tags": ["Intuicje"] } },
                             {
                                 "type": "paragraph",
                                 "attrs": { "textAlign": "" },
@@ -465,7 +465,7 @@
                     {
                         "type": "chapterBody",
                         "content": [
-                            { "type": "semanticTag", "attrs": { "tags": ["Intuicje"], "required": [] } },
+                            { "type": "semanticTag", "attrs": { "required": [], "tags": ["Intuicje"] } },
                             {
                                 "type": "paragraph",
                                 "attrs": { "textAlign": "" },
@@ -473,106 +473,106 @@
                             },
                             {
                                 "type": "geometry",
-                                "attrs": { "canvas": { "width": 632, "height": 300 } },
+                                "attrs": { "canvas": { "height": 300, "width": 632 } },
                                 "content": [
                                     {
                                         "type": "circle",
                                         "attrs": {
+                                            "borderColor": "#00000000",
                                             "center": { "x": 184, "y": 84 },
-                                            "size": { "width": 45, "height": 45 },
                                             "color": "#aa0000",
-                                            "borderColor": "#00000000",
-                                            "id": "180"
+                                            "id": "180",
+                                            "size": { "height": 45, "width": 45 }
                                         }
                                     },
                                     {
                                         "type": "circle",
                                         "attrs": {
+                                            "borderColor": "#00000000",
                                             "center": { "x": 162, "y": 138 },
-                                            "size": { "width": 45, "height": 45 },
                                             "color": "#aa0000",
-                                            "borderColor": "#00000000",
-                                            "id": "181"
+                                            "id": "181",
+                                            "size": { "height": 45, "width": 45 }
                                         }
                                     },
                                     {
                                         "type": "circle",
                                         "attrs": {
+                                            "borderColor": "#00000000",
                                             "center": { "x": 132, "y": 218 },
-                                            "size": { "width": 45, "height": 45 },
                                             "color": "#aa0000",
-                                            "borderColor": "#00000000",
-                                            "id": "182"
+                                            "id": "182",
+                                            "size": { "height": 45, "width": 45 }
                                         }
                                     },
                                     {
                                         "type": "circle",
                                         "attrs": {
+                                            "borderColor": "#00000000",
                                             "center": { "x": 204, "y": 184 },
-                                            "size": { "width": 45, "height": 45 },
                                             "color": "#aa0000",
-                                            "borderColor": "#00000000",
-                                            "id": "183"
+                                            "id": "183",
+                                            "size": { "height": 45, "width": 45 }
                                         }
                                     },
                                     {
                                         "type": "circle",
                                         "attrs": {
+                                            "borderColor": "#00000000",
                                             "center": { "x": 424, "y": 122 },
-                                            "size": { "width": 45, "height": 45 },
                                             "color": "#aa0000",
-                                            "borderColor": "#00000000",
-                                            "id": "184"
+                                            "id": "184",
+                                            "size": { "height": 45, "width": 45 }
                                         }
                                     },
                                     {
                                         "type": "circle",
                                         "attrs": {
+                                            "borderColor": "#00000000",
                                             "center": { "x": 456, "y": 164 },
-                                            "size": { "width": 45, "height": 45 },
                                             "color": "#aa0000",
-                                            "borderColor": "#00000000",
-                                            "id": "185"
+                                            "id": "185",
+                                            "size": { "height": 45, "width": 45 }
                                         }
                                     },
                                     {
                                         "type": "circle",
                                         "attrs": {
+                                            "borderColor": "#00000000",
                                             "center": { "x": 506, "y": 196 },
-                                            "size": { "width": 45, "height": 45 },
                                             "color": "#aa0000",
-                                            "borderColor": "#00000000",
-                                            "id": "186"
+                                            "id": "186",
+                                            "size": { "height": 45, "width": 45 }
                                         }
                                     },
                                     {
                                         "type": "circle",
                                         "attrs": {
+                                            "borderColor": "#00000000",
                                             "center": { "x": 448, "y": 74 },
-                                            "size": { "width": 45, "height": 45 },
                                             "color": "#aa0000",
-                                            "borderColor": "#00000000",
-                                            "id": "187"
+                                            "id": "187",
+                                            "size": { "height": 45, "width": 45 }
                                         }
                                     },
                                     {
                                         "type": "circle",
                                         "attrs": {
+                                            "borderColor": "#00000000",
                                             "center": { "x": 516, "y": 96 },
-                                            "size": { "width": 45, "height": 45 },
                                             "color": "#aa0000",
-                                            "borderColor": "#00000000",
-                                            "id": "188"
+                                            "id": "188",
+                                            "size": { "height": 45, "width": 45 }
                                         }
                                     },
                                     {
                                         "type": "circle",
                                         "attrs": {
-                                            "center": { "x": 536, "y": 148 },
-                                            "size": { "width": 45, "height": 45 },
-                                            "color": "#aa0000",
                                             "borderColor": "#00000000",
-                                            "id": "189"
+                                            "center": { "x": 536, "y": 148 },
+                                            "color": "#aa0000",
+                                            "id": "189",
+                                            "size": { "height": 45, "width": 45 }
                                         }
                                     }
                                 ]
@@ -756,7 +756,7 @@
                     {
                         "type": "chapterBody",
                         "content": [
-                            { "type": "semanticTag", "attrs": { "tags": ["Rozszerzenie"], "required": [] } },
+                            { "type": "semanticTag", "attrs": { "required": [], "tags": ["Rozszerzenie"] } },
                             {
                                 "type": "paragraph",
                                 "attrs": { "textAlign": "" },
@@ -887,7 +887,7 @@
                     {
                         "type": "chapterBody",
                         "content": [
-                            { "type": "semanticTag", "attrs": { "tags": ["Warsztat"], "required": [] } },
+                            { "type": "semanticTag", "attrs": { "required": [], "tags": ["Warsztat"] } },
                             {
                                 "type": "paragraph",
                                 "attrs": { "textAlign": null },
@@ -928,8 +928,8 @@
                             {
                                 "type": "component",
                                 "attrs": {
-                                    "componentName": "operation-table",
-                                    "args": ["(a,b) => a+b", "(a,b,c) => c + ' - ' + a + ' = ' + b", "3", "4"]
+                                    "args": ["(a,b) => a+b", "(a,b,c) => c + ' - ' + a + ' = ' + b", "3", "4"],
+                                    "componentName": "operation-table"
                                 }
                             },
                             {
@@ -978,7 +978,6 @@
                                     {
                                         "type": "component",
                                         "attrs": {
-                                            "componentName": "columnar-operation-table",
                                             "args": [
                                                 [
                                                     "c/;c/;;;;",
@@ -987,7 +986,8 @@
                                                     "u/-;u/;u/1;u/2;u/7;u/4",
                                                     ";;;;;"
                                                 ]
-                                            ]
+                                            ],
+                                            "componentName": "columnar-operation-table"
                                         }
                                     },
                                     {
@@ -1096,7 +1096,6 @@
                                     {
                                         "type": "component",
                                         "attrs": {
-                                            "componentName": "columnar-operation-table",
                                             "args": [
                                                 [
                                                     "c/;c/;;;;",
@@ -1105,7 +1104,8 @@
                                                     "u/-;u/;u/1;u/2;u/7;u/4",
                                                     ";;2;4;2;4"
                                                 ]
-                                            ]
+                                            ],
+                                            "componentName": "columnar-operation-table"
                                         }
                                     },
                                     {
@@ -1134,7 +1134,6 @@
                                     {
                                         "type": "component",
                                         "attrs": {
-                                            "componentName": "columnar-operation-table",
                                             "args": [
                                                 [
                                                     "c/;c/;;;;",
@@ -1143,7 +1142,8 @@
                                                     "u/-;u/;u/;u/6;u/8;u/3",
                                                     ";;;;;"
                                                 ]
-                                            ]
+                                            ],
+                                            "componentName": "columnar-operation-table"
                                         }
                                     },
                                     {
@@ -1158,7 +1158,6 @@
                                     {
                                         "type": "component",
                                         "attrs": {
-                                            "componentName": "columnar-operation-table",
                                             "args": [
                                                 [
                                                     "c/;c/;;;;",
@@ -1167,7 +1166,8 @@
                                                     "u/-;u/;u/;u/6;u/8;u/3",
                                                     ";;;;;4"
                                                 ]
-                                            ]
+                                            ],
+                                            "componentName": "columnar-operation-table"
                                         }
                                     },
                                     {
@@ -1202,7 +1202,6 @@
                                     {
                                         "type": "component",
                                         "attrs": {
-                                            "componentName": "columnar-operation-table",
                                             "args": [
                                                 [
                                                     "c/;c/;;;;",
@@ -1211,7 +1210,8 @@
                                                     "u/-;u/;u/;u/6;u/8;u/3",
                                                     ";;;;;4"
                                                 ]
-                                            ]
+                                            ],
+                                            "componentName": "columnar-operation-table"
                                         }
                                     },
                                     {
@@ -1292,7 +1292,6 @@
                                     {
                                         "type": "component",
                                         "attrs": {
-                                            "componentName": "columnar-operation-table",
                                             "args": [
                                                 [
                                                     "c/;c/;;;;",
@@ -1301,7 +1300,8 @@
                                                     "u/-;u/;u/;u/6;u/8;u/3",
                                                     ";;2;0;5;4"
                                                 ]
-                                            ]
+                                            ],
+                                            "componentName": "columnar-operation-table"
                                         }
                                     },
                                     {
@@ -1336,7 +1336,6 @@
                                     {
                                         "type": "component",
                                         "attrs": {
-                                            "componentName": "columnar-operation-table",
                                             "args": [
                                                 [
                                                     "c/;c/;;;;",
@@ -1345,7 +1344,8 @@
                                                     "u/-;u/;u/;u/4;u/8;u/9",
                                                     ";;;;;"
                                                 ]
-                                            ]
+                                            ],
+                                            "componentName": "columnar-operation-table"
                                         }
                                     },
                                     {
@@ -1365,7 +1365,6 @@
                                     {
                                         "type": "component",
                                         "attrs": {
-                                            "componentName": "columnar-operation-table",
                                             "args": [
                                                 [
                                                     "c/;c/;;;;",
@@ -1374,7 +1373,8 @@
                                                     "u/-;u/;u/;u/4;u/8;u/9",
                                                     ";;;;;9"
                                                 ]
-                                            ]
+                                            ],
+                                            "componentName": "columnar-operation-table"
                                         }
                                     },
                                     {
@@ -1394,7 +1394,6 @@
                                     {
                                         "type": "component",
                                         "attrs": {
-                                            "componentName": "columnar-operation-table",
                                             "args": [
                                                 [
                                                     "c/;c/;c/;c/;c/14;c/",
@@ -1403,7 +1402,8 @@
                                                     "u/-;u/;u/;u/4;u/8;u/9",
                                                     ";;;;6;9"
                                                 ]
-                                            ]
+                                            ],
+                                            "componentName": "columnar-operation-table"
                                         }
                                     },
                                     {
@@ -1418,7 +1418,6 @@
                                     {
                                         "type": "component",
                                         "attrs": {
-                                            "componentName": "columnar-operation-table",
                                             "args": [
                                                 [
                                                     "c/;c/;c/;c/12;c/14;c/",
@@ -1427,7 +1426,8 @@
                                                     "u/-;u/;u/;u/4;u/8;u/9",
                                                     ";;;8;6;9"
                                                 ]
-                                            ]
+                                            ],
+                                            "componentName": "columnar-operation-table"
                                         }
                                     },
                                     {
@@ -1460,7 +1460,6 @@
                                     {
                                         "type": "component",
                                         "attrs": {
-                                            "componentName": "columnar-operation-table",
                                             "args": [
                                                 [
                                                     "c/;c/;;;;",
@@ -1469,7 +1468,8 @@
                                                     "u/-;u/;u/;u/6;u/7;u/9",
                                                     ";;;;;"
                                                 ]
-                                            ]
+                                            ],
+                                            "componentName": "columnar-operation-table"
                                         }
                                     },
                                     {
@@ -1492,7 +1492,6 @@
                                     {
                                         "type": "component",
                                         "attrs": {
-                                            "componentName": "columnar-operation-table",
                                             "args": [
                                                 [
                                                     "c/;c/;;;;",
@@ -1501,7 +1500,8 @@
                                                     "u/-;u/;u/;u/6;u/7;u/9",
                                                     ";;;;;"
                                                 ]
-                                            ]
+                                            ],
+                                            "componentName": "columnar-operation-table"
                                         }
                                     },
                                     {
@@ -1514,7 +1514,6 @@
                                     {
                                         "type": "component",
                                         "attrs": {
-                                            "componentName": "columnar-operation-table",
                                             "args": [
                                                 [
                                                     "c/;c/;c/;c/9;c/;c/",
@@ -1523,7 +1522,8 @@
                                                     "u/-;u/;u/;u/6;u/7;u/9",
                                                     ";;;;;"
                                                 ]
-                                            ]
+                                            ],
+                                            "componentName": "columnar-operation-table"
                                         }
                                     },
                                     {
@@ -1534,7 +1534,6 @@
                                     {
                                         "type": "component",
                                         "attrs": {
-                                            "componentName": "columnar-operation-table",
                                             "args": [
                                                 [
                                                     "c/;c/;c/;c/9;c/9;c/",
@@ -1543,7 +1542,8 @@
                                                     "u/-;u/;u/;u/6;u/7;u/9",
                                                     ";;;;;"
                                                 ]
-                                            ]
+                                            ],
+                                            "componentName": "columnar-operation-table"
                                         }
                                     },
                                     {
@@ -1561,7 +1561,6 @@
                                     {
                                         "type": "component",
                                         "attrs": {
-                                            "componentName": "columnar-operation-table",
                                             "args": [
                                                 [
                                                     "c/;c/;c/;c/9;c/9;c/",
@@ -1570,7 +1569,8 @@
                                                     "u/-;u/;u/;u/6;u/7;u/9",
                                                     ";;;3;2;1"
                                                 ]
-                                            ]
+                                            ],
+                                            "componentName": "columnar-operation-table"
                                         }
                                     }
                                 ]
@@ -1592,7 +1592,7 @@
                             },
                             {
                                 "type": "component",
-                                "attrs": { "componentName": "columnar-operation-guide", "args": ["subtraction", false] }
+                                "attrs": { "args": ["subtraction", false], "componentName": "columnar-operation-guide" }
                             }
                         ]
                     }
@@ -1611,7 +1611,7 @@
                         "content": [
                             {
                                 "type": "semanticTag",
-                                "attrs": { "tags": ["Rozszerzenie"], "required": ["Kolejność wykonywania działań"] }
+                                "attrs": { "required": ["Kolejność wykonywania działań"], "tags": ["Rozszerzenie"] }
                             },
                             {
                                 "type": "paragraph",
@@ -1771,8 +1771,8 @@
                             {
                                 "type": "semanticTag",
                                 "attrs": {
-                                    "tags": ["Formalnie", "Rozszerzenie"],
-                                    "required": ["Lekcja jeszcze niedostępna"]
+                                    "required": ["Lekcja jeszcze niedostępna"],
+                                    "tags": ["Formalnie", "Rozszerzenie"]
                                 }
                             },
                             {
@@ -2181,76 +2181,76 @@
                         "content": [
                             {
                                 "type": "geometry",
-                                "attrs": { "canvas": { "width": 531, "height": 290 } },
+                                "attrs": { "canvas": { "height": 290, "width": 531 } },
                                 "content": [
                                     {
                                         "type": "circle",
                                         "attrs": {
+                                            "borderColor": "#00000000",
                                             "center": { "x": 130, "y": 86 },
-                                            "size": { "width": 45, "height": 45 },
                                             "color": "#aa0000",
-                                            "borderColor": "#00000000",
-                                            "id": "163"
+                                            "id": "163",
+                                            "size": { "height": 45, "width": 45 }
                                         }
                                     },
                                     {
                                         "type": "circle",
                                         "attrs": {
+                                            "borderColor": "#00000000",
                                             "center": { "x": 166, "y": 156 },
-                                            "size": { "width": 45, "height": 45 },
                                             "color": "#aa0000",
-                                            "borderColor": "#00000000",
-                                            "id": "164"
+                                            "id": "164",
+                                            "size": { "height": 45, "width": 45 }
                                         }
                                     },
                                     {
                                         "type": "circle",
                                         "attrs": {
+                                            "borderColor": "#00000000",
                                             "center": { "x": 112, "y": 198 },
-                                            "size": { "width": 45, "height": 45 },
                                             "color": "#aa0000",
-                                            "borderColor": "#00000000",
-                                            "id": "165"
+                                            "id": "165",
+                                            "size": { "height": 45, "width": 45 }
                                         }
                                     },
                                     {
                                         "type": "circle",
                                         "attrs": {
+                                            "borderColor": "#00000000",
                                             "center": { "x": 334, "y": 140 },
-                                            "size": { "width": 45, "height": 45 },
                                             "color": "#aa0000",
-                                            "borderColor": "#00000000",
-                                            "id": "166"
+                                            "id": "166",
+                                            "size": { "height": 45, "width": 45 }
                                         }
                                     },
                                     {
                                         "type": "circle",
                                         "attrs": {
+                                            "borderColor": "#00000000",
                                             "center": { "x": 370, "y": 192 },
-                                            "size": { "width": 45, "height": 45 },
                                             "color": "#aa0000",
-                                            "borderColor": "#00000000",
-                                            "id": "167"
+                                            "id": "167",
+                                            "size": { "height": 45, "width": 45 }
                                         }
                                     },
                                     {
                                         "type": "circle",
                                         "attrs": {
+                                            "borderColor": "#00000000",
                                             "center": { "x": 426, "y": 166 },
-                                            "size": { "width": 45, "height": 45 },
                                             "color": "#aa0000",
-                                            "borderColor": "#00000000",
-                                            "id": "168"
+                                            "id": "168",
+                                            "size": { "height": 45, "width": 45 }
                                         }
                                     },
                                     {
                                         "type": "circle",
                                         "attrs": {
-                                            "center": { "x": 440, "y": 90 },
-                                            "size": { "width": 45, "height": 45 },
-                                            "color": "#aa0000",
                                             "borderColor": "#00000000",
-                                            "id": "169"
+                                            "center": { "x": 440, "y": 90 },
+                                            "color": "#aa0000",
+                                            "id": "169",
+                                            "size": { "height": 45, "width": 45 }
                                         }
                                     }
                                 ]
@@ -2414,8 +2414,8 @@
                             {
                                 "type": "component",
                                 "attrs": {
-                                    "componentName": "operation-table",
-                                    "args": ["(a, b) => a + b", "(a, b, c) => `${c} - ${a} = ${b}`", "3", "4"]
+                                    "args": ["(a, b) => a + b", "(a, b, c) => `${c} - ${a} = ${b}`", "3", "4"],
+                                    "componentName": "operation-table"
                                 }
                             },
                             {
@@ -2449,7 +2449,7 @@
                             },
                             {
                                 "type": "component",
-                                "attrs": { "componentName": "columnar-operation-guide", "args": ["subtraction", false] }
+                                "attrs": { "args": ["subtraction", false], "componentName": "columnar-operation-guide" }
                             }
                         ]
                     }
@@ -2502,28 +2502,28 @@
     },
     "comments": {
         "1": {
-            "text": "Sidney Polak stwierdził również, że „człowiek jest tylko sumą oddechów”. Skoro już umiesz dodawać, jesteś w stanie ocenić słuszność jego śmiałej teorii.",
-            "hidden": true
+            "hidden": true,
+            "text": "Sidney Polak stwierdził również, że „człowiek jest tylko sumą oddechów”. Skoro już umiesz dodawać, jesteś w stanie ocenić słuszność jego śmiałej teorii."
         },
-        "2": { "text": "co kończy dowód.", "hidden": true },
-        "3": { "text": "Jak dorośniesz, zrozumiesz różnicę.", "hidden": true },
-        "4": { "text": "Lekcja zawiera lokowanie produktu.", "hidden": true },
-        "5": { "text": "zwyczajowo zwaną kieszonkowym", "hidden": true },
-        "6": { "text": "Chyba że jesteś wrażliwy. Wtedy po prostu to przeczytaj.", "hidden": true },
-        "7": { "text": "Pomijając fakt, że dwie owce właśnie zostały zagryzione.", "hidden": true },
-        "8": { "text": "Chyba że jesteś poborcą podatkowym.", "hidden": true },
-        "9": { "text": "to nie zaciągaj kredytu hipotecznego. To cię zrujnuje.", "hidden": true },
-        "11": { "text": "Rozbijamy liczby na cyfry.", "hidden": false },
-        "12": { "text": "Porządkujemy cyfry tysięcy, setek, dziesiątek i jedności.", "hidden": false },
-        "13": { "text": "Odejmujemy cyfry jedności.", "hidden": false },
-        "14": { "text": "Zaciągamy pożyczkę.", "hidden": false },
-        "15": { "text": "Odejmujemy cyfry dziesiątek.", "hidden": false },
-        "16": { "text": "Odejmujemy cyfry setek.", "hidden": false },
-        "17": { "text": "Rozbijamy na cyfry.", "hidden": false },
-        "18": { "text": "Porządkujemy wszystkie cyfry.", "hidden": false },
-        "19": { "text": "Zaciągamy „trzecią” pożyczkę.", "hidden": false },
-        "20": { "text": "Zaciągamy „drugą” pożyczkę.", "hidden": false },
-        "21": { "text": "Zaciągamy „pierwszą” pożyczkę.", "hidden": false },
-        "22": { "text": "Odejmujemy wszystkie cyfry.", "hidden": false }
+        "2": { "hidden": true, "text": "co kończy dowód." },
+        "3": { "hidden": true, "text": "Jak dorośniesz, zrozumiesz różnicę." },
+        "4": { "hidden": true, "text": "Lekcja zawiera lokowanie produktu." },
+        "5": { "hidden": true, "text": "zwyczajowo zwaną kieszonkowym" },
+        "6": { "hidden": true, "text": "Chyba że jesteś wrażliwy. Wtedy po prostu to przeczytaj." },
+        "7": { "hidden": true, "text": "Pomijając fakt, że dwie owce właśnie zostały zagryzione." },
+        "8": { "hidden": true, "text": "Chyba że jesteś poborcą podatkowym." },
+        "9": { "hidden": true, "text": "to nie zaciągaj kredytu hipotecznego. To cię zrujnuje." },
+        "11": { "hidden": false, "text": "Rozbijamy liczby na cyfry." },
+        "12": { "hidden": false, "text": "Porządkujemy cyfry tysięcy, setek, dziesiątek i jedności." },
+        "13": { "hidden": false, "text": "Odejmujemy cyfry jedności." },
+        "14": { "hidden": false, "text": "Zaciągamy pożyczkę." },
+        "15": { "hidden": false, "text": "Odejmujemy cyfry dziesiątek." },
+        "16": { "hidden": false, "text": "Odejmujemy cyfry setek." },
+        "17": { "hidden": false, "text": "Rozbijamy na cyfry." },
+        "18": { "hidden": false, "text": "Porządkujemy wszystkie cyfry." },
+        "19": { "hidden": false, "text": "Zaciągamy „trzecią” pożyczkę." },
+        "20": { "hidden": false, "text": "Zaciągamy „drugą” pożyczkę." },
+        "21": { "hidden": false, "text": "Zaciągamy „pierwszą” pożyczkę." },
+        "22": { "hidden": false, "text": "Odejmujemy wszystkie cyfry." }
     }
 }

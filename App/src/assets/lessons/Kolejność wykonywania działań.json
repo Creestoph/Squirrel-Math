@@ -34,7 +34,7 @@
                     {
                         "type": "chapterBody",
                         "content": [
-                            { "type": "semanticTag", "attrs": { "tags": ["Intuicje"], "required": [] } },
+                            { "type": "semanticTag", "attrs": { "required": [], "tags": ["Intuicje"] } },
                             {
                                 "type": "paragraph",
                                 "attrs": { "textAlign": "" },
@@ -729,7 +729,7 @@
                     {
                         "type": "chapterBody",
                         "content": [
-                            { "type": "semanticTag", "attrs": { "tags": ["Intuicje"], "required": [] } },
+                            { "type": "semanticTag", "attrs": { "required": [], "tags": ["Intuicje"] } },
                             {
                                 "type": "paragraph",
                                 "attrs": { "textAlign": "" },
@@ -829,7 +829,7 @@
                                     },
                                     {
                                         "type": "orderedList",
-                                        "attrs": { "start": 1, "type": null },
+                                        "attrs": { "type": null, "start": 1 },
                                         "content": [
                                             {
                                                 "type": "listItem",
@@ -940,7 +940,7 @@
                                     }
                                 ]
                             },
-                            { "type": "semanticTag", "attrs": { "tags": ["Rozszerzenie"], "required": [] } },
+                            { "type": "semanticTag", "attrs": { "required": [], "tags": ["Rozszerzenie"] } },
                             {
                                 "type": "paragraph",
                                 "attrs": { "textAlign": "" },
@@ -1129,7 +1129,7 @@
                                     }
                                 ]
                             },
-                            { "type": "component", "attrs": { "componentName": "arithmetic-calculator", "args": [] } }
+                            { "type": "component", "attrs": { "args": [], "componentName": "arithmetic-calculator" } }
                         ]
                     }
                 ]
@@ -1145,7 +1145,7 @@
                     {
                         "type": "chapterBody",
                         "content": [
-                            { "type": "semanticTag", "attrs": { "tags": ["Intuicje"], "required": [] } },
+                            { "type": "semanticTag", "attrs": { "required": [], "tags": ["Intuicje"] } },
                             {
                                 "type": "paragraph",
                                 "attrs": { "textAlign": "" },
@@ -1166,95 +1166,95 @@
                                             {
                                                 "type": "tableCell",
                                                 "attrs": {
-                                                    "colspan": 1,
-                                                    "rowspan": 1,
-                                                    "colwidth": [47],
                                                     "background": "rgb(238, 221, 221)",
+                                                    "borderBottom": 3,
+                                                    "borderColorBottom": "rgb(153, 0, 0)",
                                                     "borderColorLeft": "rgb(153, 0, 0)",
                                                     "borderColorRight": "rgb(153, 0, 0)",
-                                                    "borderColorBottom": "rgb(153, 0, 0)",
                                                     "borderColorTop": "rgb(153, 0, 0)",
                                                     "borderLeft": 3,
                                                     "borderRight": 3,
-                                                    "borderBottom": 3,
-                                                    "borderTop": 3
+                                                    "borderTop": 3,
+                                                    "colspan": 1,
+                                                    "colwidth": [47],
+                                                    "rowspan": 1
                                                 },
                                                 "content": [{ "type": "paragraph", "attrs": { "textAlign": "" } }]
                                             },
                                             {
                                                 "type": "tableCell",
                                                 "attrs": {
-                                                    "colspan": 1,
-                                                    "rowspan": 1,
-                                                    "colwidth": [49],
                                                     "background": "rgb(238, 221, 221)",
+                                                    "borderBottom": 3,
+                                                    "borderColorBottom": "rgb(153, 0, 0)",
                                                     "borderColorLeft": "rgb(153, 0, 0)",
                                                     "borderColorRight": "rgb(153, 0, 0)",
-                                                    "borderColorBottom": "rgb(153, 0, 0)",
                                                     "borderColorTop": "rgb(153, 0, 0)",
                                                     "borderLeft": 3,
                                                     "borderRight": 3,
-                                                    "borderBottom": 3,
-                                                    "borderTop": 3
+                                                    "borderTop": 3,
+                                                    "colspan": 1,
+                                                    "colwidth": [49],
+                                                    "rowspan": 1
                                                 },
                                                 "content": [
                                                     {
                                                         "type": "geometry",
-                                                        "attrs": { "canvas": { "width": 35, "height": 42 } }
+                                                        "attrs": { "canvas": { "height": 42, "width": 35 } }
                                                     }
                                                 ]
                                             },
                                             {
                                                 "type": "tableCell",
                                                 "attrs": {
-                                                    "colspan": 1,
-                                                    "rowspan": 1,
-                                                    "colwidth": [49],
                                                     "background": "rgb(238, 221, 221)",
+                                                    "borderBottom": 3,
+                                                    "borderColorBottom": "rgb(153, 0, 0)",
                                                     "borderColorLeft": "rgb(153, 0, 0)",
                                                     "borderColorRight": "rgb(153, 0, 0)",
-                                                    "borderColorBottom": "rgb(153, 0, 0)",
                                                     "borderColorTop": "rgb(153, 0, 0)",
                                                     "borderLeft": 3,
                                                     "borderRight": 3,
-                                                    "borderBottom": 3,
-                                                    "borderTop": 3
+                                                    "borderTop": 3,
+                                                    "colspan": 1,
+                                                    "colwidth": [49],
+                                                    "rowspan": 1
                                                 },
                                                 "content": [{ "type": "paragraph", "attrs": { "textAlign": "" } }]
                                             },
                                             {
                                                 "type": "tableCell",
                                                 "attrs": {
-                                                    "colspan": 1,
-                                                    "rowspan": 1,
-                                                    "colwidth": [49],
                                                     "background": "rgb(238, 221, 221)",
+                                                    "borderBottom": 3,
+                                                    "borderColorBottom": "rgb(153, 0, 0)",
                                                     "borderColorLeft": "rgb(153, 0, 0)",
                                                     "borderColorRight": "rgb(153, 0, 0)",
-                                                    "borderColorBottom": "rgb(153, 0, 0)",
                                                     "borderColorTop": "rgb(153, 0, 0)",
                                                     "borderLeft": 3,
                                                     "borderRight": 3,
-                                                    "borderBottom": 3,
-                                                    "borderTop": 3
+                                                    "borderTop": 3,
+                                                    "colspan": 1,
+                                                    "colwidth": [49],
+                                                    "rowspan": 1
                                                 },
                                                 "content": [{ "type": "paragraph", "attrs": { "textAlign": "" } }]
                                             },
                                             {
                                                 "type": "tableCell",
                                                 "attrs": {
+                                                    "background": "rgb(238, 221, 221)",
+                                                    "borderBottom": 3,
+                                                    "borderColorBottom": "rgb(153, 0, 0)",
+                                                    "borderColorLeft": "rgb(153, 0, 0)",
+                                                    "borderColorRight": "rgb(153, 0, 0)",
+                                                    "borderColorTop": "rgb(153, 0, 0)",
+                                                    "borderLeft": 3,
+                                                    "borderRight": 3,
+                                                    "borderTop": 3,
                                                     "colspan": 1,
-                                                    "rowspan": 1,
                                                     "colwidth": [46],
-                                                    "background": "rgb(238, 221, 221)",
-                                                    "borderColorLeft": "rgb(153, 0, 0)",
-                                                    "borderColorRight": "rgb(153, 0, 0)",
-                                                    "borderColorBottom": "rgb(153, 0, 0)",
-                                                    "borderColorTop": "rgb(153, 0, 0)",
-                                                    "borderLeft": 3,
-                                                    "borderRight": 3,
-                                                    "borderBottom": 3,
-                                                    "borderTop": 3
+                                                    "rowspan": 1
                                                 },
                                                 "content": [{ "type": "paragraph", "attrs": { "textAlign": "" } }]
                                             }
@@ -1266,95 +1266,95 @@
                                             {
                                                 "type": "tableCell",
                                                 "attrs": {
-                                                    "colspan": 1,
-                                                    "rowspan": 1,
-                                                    "colwidth": [47],
                                                     "background": "rgb(238, 221, 221)",
+                                                    "borderBottom": 3,
+                                                    "borderColorBottom": "rgb(153, 0, 0)",
                                                     "borderColorLeft": "rgb(153, 0, 0)",
                                                     "borderColorRight": "rgb(153, 0, 0)",
-                                                    "borderColorBottom": "rgb(153, 0, 0)",
                                                     "borderColorTop": "rgb(153, 0, 0)",
                                                     "borderLeft": 3,
                                                     "borderRight": 3,
-                                                    "borderBottom": 3,
-                                                    "borderTop": 3
+                                                    "borderTop": 3,
+                                                    "colspan": 1,
+                                                    "colwidth": [47],
+                                                    "rowspan": 1
                                                 },
                                                 "content": [{ "type": "paragraph", "attrs": { "textAlign": "" } }]
                                             },
                                             {
                                                 "type": "tableCell",
                                                 "attrs": {
-                                                    "colspan": 1,
-                                                    "rowspan": 1,
-                                                    "colwidth": [49],
                                                     "background": "rgb(238, 221, 221)",
+                                                    "borderBottom": 3,
+                                                    "borderColorBottom": "rgb(153, 0, 0)",
                                                     "borderColorLeft": "rgb(153, 0, 0)",
                                                     "borderColorRight": "rgb(153, 0, 0)",
-                                                    "borderColorBottom": "rgb(153, 0, 0)",
                                                     "borderColorTop": "rgb(153, 0, 0)",
                                                     "borderLeft": 3,
                                                     "borderRight": 3,
-                                                    "borderBottom": 3,
-                                                    "borderTop": 3
+                                                    "borderTop": 3,
+                                                    "colspan": 1,
+                                                    "colwidth": [49],
+                                                    "rowspan": 1
                                                 },
                                                 "content": [
                                                     {
                                                         "type": "geometry",
-                                                        "attrs": { "canvas": { "width": 35, "height": 42 } }
+                                                        "attrs": { "canvas": { "height": 42, "width": 35 } }
                                                     }
                                                 ]
                                             },
                                             {
                                                 "type": "tableCell",
                                                 "attrs": {
-                                                    "colspan": 1,
-                                                    "rowspan": 1,
-                                                    "colwidth": [49],
                                                     "background": "rgb(238, 221, 221)",
+                                                    "borderBottom": 3,
+                                                    "borderColorBottom": "rgb(153, 0, 0)",
                                                     "borderColorLeft": "rgb(153, 0, 0)",
                                                     "borderColorRight": "rgb(153, 0, 0)",
-                                                    "borderColorBottom": "rgb(153, 0, 0)",
                                                     "borderColorTop": "rgb(153, 0, 0)",
                                                     "borderLeft": 3,
                                                     "borderRight": 3,
-                                                    "borderBottom": 3,
-                                                    "borderTop": 3
+                                                    "borderTop": 3,
+                                                    "colspan": 1,
+                                                    "colwidth": [49],
+                                                    "rowspan": 1
                                                 },
                                                 "content": [{ "type": "paragraph", "attrs": { "textAlign": "" } }]
                                             },
                                             {
                                                 "type": "tableCell",
                                                 "attrs": {
-                                                    "colspan": 1,
-                                                    "rowspan": 1,
-                                                    "colwidth": [49],
                                                     "background": "rgb(238, 221, 221)",
+                                                    "borderBottom": 3,
+                                                    "borderColorBottom": "rgb(153, 0, 0)",
                                                     "borderColorLeft": "rgb(153, 0, 0)",
                                                     "borderColorRight": "rgb(153, 0, 0)",
-                                                    "borderColorBottom": "rgb(153, 0, 0)",
                                                     "borderColorTop": "rgb(153, 0, 0)",
                                                     "borderLeft": 3,
                                                     "borderRight": 3,
-                                                    "borderBottom": 3,
-                                                    "borderTop": 3
+                                                    "borderTop": 3,
+                                                    "colspan": 1,
+                                                    "colwidth": [49],
+                                                    "rowspan": 1
                                                 },
                                                 "content": [{ "type": "paragraph", "attrs": { "textAlign": "" } }]
                                             },
                                             {
                                                 "type": "tableCell",
                                                 "attrs": {
+                                                    "background": "rgb(238, 221, 221)",
+                                                    "borderBottom": 3,
+                                                    "borderColorBottom": "rgb(153, 0, 0)",
+                                                    "borderColorLeft": "rgb(153, 0, 0)",
+                                                    "borderColorRight": "rgb(153, 0, 0)",
+                                                    "borderColorTop": "rgb(153, 0, 0)",
+                                                    "borderLeft": 3,
+                                                    "borderRight": 3,
+                                                    "borderTop": 3,
                                                     "colspan": 1,
-                                                    "rowspan": 1,
                                                     "colwidth": [46],
-                                                    "background": "rgb(238, 221, 221)",
-                                                    "borderColorLeft": "rgb(153, 0, 0)",
-                                                    "borderColorRight": "rgb(153, 0, 0)",
-                                                    "borderColorBottom": "rgb(153, 0, 0)",
-                                                    "borderColorTop": "rgb(153, 0, 0)",
-                                                    "borderLeft": 3,
-                                                    "borderRight": 3,
-                                                    "borderBottom": 3,
-                                                    "borderTop": 3
+                                                    "rowspan": 1
                                                 },
                                                 "content": [{ "type": "paragraph", "attrs": { "textAlign": "" } }]
                                             }
@@ -1366,95 +1366,95 @@
                                             {
                                                 "type": "tableCell",
                                                 "attrs": {
-                                                    "colspan": 1,
-                                                    "rowspan": 1,
-                                                    "colwidth": [47],
                                                     "background": "rgb(238, 221, 221)",
+                                                    "borderBottom": 3,
+                                                    "borderColorBottom": "rgb(153, 0, 0)",
                                                     "borderColorLeft": "rgb(153, 0, 0)",
                                                     "borderColorRight": "rgb(153, 0, 0)",
-                                                    "borderColorBottom": "rgb(153, 0, 0)",
                                                     "borderColorTop": "rgb(153, 0, 0)",
                                                     "borderLeft": 3,
                                                     "borderRight": 3,
-                                                    "borderBottom": 3,
-                                                    "borderTop": 3
+                                                    "borderTop": 3,
+                                                    "colspan": 1,
+                                                    "colwidth": [47],
+                                                    "rowspan": 1
                                                 },
                                                 "content": [{ "type": "paragraph", "attrs": { "textAlign": "" } }]
                                             },
                                             {
                                                 "type": "tableCell",
                                                 "attrs": {
-                                                    "colspan": 1,
-                                                    "rowspan": 1,
-                                                    "colwidth": [49],
                                                     "background": "rgb(238, 221, 221)",
+                                                    "borderBottom": 3,
+                                                    "borderColorBottom": "rgb(153, 0, 0)",
                                                     "borderColorLeft": "rgb(153, 0, 0)",
                                                     "borderColorRight": "rgb(153, 0, 0)",
-                                                    "borderColorBottom": "rgb(153, 0, 0)",
                                                     "borderColorTop": "rgb(153, 0, 0)",
                                                     "borderLeft": 3,
                                                     "borderRight": 3,
-                                                    "borderBottom": 3,
-                                                    "borderTop": 3
+                                                    "borderTop": 3,
+                                                    "colspan": 1,
+                                                    "colwidth": [49],
+                                                    "rowspan": 1
                                                 },
                                                 "content": [
                                                     {
                                                         "type": "geometry",
-                                                        "attrs": { "canvas": { "width": 35, "height": 42 } }
+                                                        "attrs": { "canvas": { "height": 42, "width": 35 } }
                                                     }
                                                 ]
                                             },
                                             {
                                                 "type": "tableCell",
                                                 "attrs": {
-                                                    "colspan": 1,
-                                                    "rowspan": 1,
-                                                    "colwidth": [49],
                                                     "background": "rgb(238, 221, 221)",
+                                                    "borderBottom": 3,
+                                                    "borderColorBottom": "rgb(153, 0, 0)",
                                                     "borderColorLeft": "rgb(153, 0, 0)",
                                                     "borderColorRight": "rgb(153, 0, 0)",
-                                                    "borderColorBottom": "rgb(153, 0, 0)",
                                                     "borderColorTop": "rgb(153, 0, 0)",
                                                     "borderLeft": 3,
                                                     "borderRight": 3,
-                                                    "borderBottom": 3,
-                                                    "borderTop": 3
+                                                    "borderTop": 3,
+                                                    "colspan": 1,
+                                                    "colwidth": [49],
+                                                    "rowspan": 1
                                                 },
                                                 "content": [{ "type": "paragraph", "attrs": { "textAlign": "" } }]
                                             },
                                             {
                                                 "type": "tableCell",
                                                 "attrs": {
-                                                    "colspan": 1,
-                                                    "rowspan": 1,
-                                                    "colwidth": [49],
                                                     "background": "rgb(238, 221, 221)",
+                                                    "borderBottom": 3,
+                                                    "borderColorBottom": "rgb(153, 0, 0)",
                                                     "borderColorLeft": "rgb(153, 0, 0)",
                                                     "borderColorRight": "rgb(153, 0, 0)",
-                                                    "borderColorBottom": "rgb(153, 0, 0)",
                                                     "borderColorTop": "rgb(153, 0, 0)",
                                                     "borderLeft": 3,
                                                     "borderRight": 3,
-                                                    "borderBottom": 3,
-                                                    "borderTop": 3
+                                                    "borderTop": 3,
+                                                    "colspan": 1,
+                                                    "colwidth": [49],
+                                                    "rowspan": 1
                                                 },
                                                 "content": [{ "type": "paragraph", "attrs": { "textAlign": "" } }]
                                             },
                                             {
                                                 "type": "tableCell",
                                                 "attrs": {
+                                                    "background": "rgb(238, 221, 221)",
+                                                    "borderBottom": 3,
+                                                    "borderColorBottom": "rgb(153, 0, 0)",
+                                                    "borderColorLeft": "rgb(153, 0, 0)",
+                                                    "borderColorRight": "rgb(153, 0, 0)",
+                                                    "borderColorTop": "rgb(153, 0, 0)",
+                                                    "borderLeft": 3,
+                                                    "borderRight": 3,
+                                                    "borderTop": 3,
                                                     "colspan": 1,
-                                                    "rowspan": 1,
                                                     "colwidth": [46],
-                                                    "background": "rgb(238, 221, 221)",
-                                                    "borderColorLeft": "rgb(153, 0, 0)",
-                                                    "borderColorRight": "rgb(153, 0, 0)",
-                                                    "borderColorBottom": "rgb(153, 0, 0)",
-                                                    "borderColorTop": "rgb(153, 0, 0)",
-                                                    "borderLeft": 3,
-                                                    "borderRight": 3,
-                                                    "borderBottom": 3,
-                                                    "borderTop": 3
+                                                    "rowspan": 1
                                                 },
                                                 "content": [{ "type": "paragraph", "attrs": { "textAlign": "" } }]
                                             }
@@ -1466,95 +1466,95 @@
                                             {
                                                 "type": "tableCell",
                                                 "attrs": {
-                                                    "colspan": 1,
-                                                    "rowspan": 1,
-                                                    "colwidth": [47],
                                                     "background": "rgb(238, 221, 221)",
+                                                    "borderBottom": 3,
+                                                    "borderColorBottom": "rgb(153, 0, 0)",
                                                     "borderColorLeft": "rgb(153, 0, 0)",
                                                     "borderColorRight": "rgb(153, 0, 0)",
-                                                    "borderColorBottom": "rgb(153, 0, 0)",
                                                     "borderColorTop": "rgb(153, 0, 0)",
                                                     "borderLeft": 3,
                                                     "borderRight": 3,
-                                                    "borderBottom": 3,
-                                                    "borderTop": 3
+                                                    "borderTop": 3,
+                                                    "colspan": 1,
+                                                    "colwidth": [47],
+                                                    "rowspan": 1
                                                 },
                                                 "content": [{ "type": "paragraph", "attrs": { "textAlign": "" } }]
                                             },
                                             {
                                                 "type": "tableCell",
                                                 "attrs": {
-                                                    "colspan": 1,
-                                                    "rowspan": 1,
-                                                    "colwidth": [49],
                                                     "background": "rgb(238, 221, 221)",
+                                                    "borderBottom": 3,
+                                                    "borderColorBottom": "rgb(153, 0, 0)",
                                                     "borderColorLeft": "rgb(153, 0, 0)",
                                                     "borderColorRight": "rgb(153, 0, 0)",
-                                                    "borderColorBottom": "rgb(153, 0, 0)",
                                                     "borderColorTop": "rgb(153, 0, 0)",
                                                     "borderLeft": 3,
                                                     "borderRight": 3,
-                                                    "borderBottom": 3,
-                                                    "borderTop": 3
+                                                    "borderTop": 3,
+                                                    "colspan": 1,
+                                                    "colwidth": [49],
+                                                    "rowspan": 1
                                                 },
                                                 "content": [
                                                     {
                                                         "type": "geometry",
-                                                        "attrs": { "canvas": { "width": 35, "height": 42 } }
+                                                        "attrs": { "canvas": { "height": 42, "width": 35 } }
                                                     }
                                                 ]
                                             },
                                             {
                                                 "type": "tableCell",
                                                 "attrs": {
-                                                    "colspan": 1,
-                                                    "rowspan": 1,
-                                                    "colwidth": [49],
                                                     "background": "rgb(238, 221, 221)",
+                                                    "borderBottom": 3,
+                                                    "borderColorBottom": "rgb(153, 0, 0)",
                                                     "borderColorLeft": "rgb(153, 0, 0)",
                                                     "borderColorRight": "rgb(153, 0, 0)",
-                                                    "borderColorBottom": "rgb(153, 0, 0)",
                                                     "borderColorTop": "rgb(153, 0, 0)",
                                                     "borderLeft": 3,
                                                     "borderRight": 3,
-                                                    "borderBottom": 3,
-                                                    "borderTop": 3
+                                                    "borderTop": 3,
+                                                    "colspan": 1,
+                                                    "colwidth": [49],
+                                                    "rowspan": 1
                                                 },
                                                 "content": [{ "type": "paragraph", "attrs": { "textAlign": "" } }]
                                             },
                                             {
                                                 "type": "tableCell",
                                                 "attrs": {
-                                                    "colspan": 1,
-                                                    "rowspan": 1,
-                                                    "colwidth": [49],
                                                     "background": "rgb(238, 221, 221)",
+                                                    "borderBottom": 3,
+                                                    "borderColorBottom": "rgb(153, 0, 0)",
                                                     "borderColorLeft": "rgb(153, 0, 0)",
                                                     "borderColorRight": "rgb(153, 0, 0)",
-                                                    "borderColorBottom": "rgb(153, 0, 0)",
                                                     "borderColorTop": "rgb(153, 0, 0)",
                                                     "borderLeft": 3,
                                                     "borderRight": 3,
-                                                    "borderBottom": 3,
-                                                    "borderTop": 3
+                                                    "borderTop": 3,
+                                                    "colspan": 1,
+                                                    "colwidth": [49],
+                                                    "rowspan": 1
                                                 },
                                                 "content": [{ "type": "paragraph", "attrs": { "textAlign": "" } }]
                                             },
                                             {
                                                 "type": "tableCell",
                                                 "attrs": {
+                                                    "background": "rgb(238, 221, 221)",
+                                                    "borderBottom": 3,
+                                                    "borderColorBottom": "rgb(153, 0, 0)",
+                                                    "borderColorLeft": "rgb(153, 0, 0)",
+                                                    "borderColorRight": "rgb(153, 0, 0)",
+                                                    "borderColorTop": "rgb(153, 0, 0)",
+                                                    "borderLeft": 3,
+                                                    "borderRight": 3,
+                                                    "borderTop": 3,
                                                     "colspan": 1,
-                                                    "rowspan": 1,
                                                     "colwidth": [46],
-                                                    "background": "rgb(238, 221, 221)",
-                                                    "borderColorLeft": "rgb(153, 0, 0)",
-                                                    "borderColorRight": "rgb(153, 0, 0)",
-                                                    "borderColorBottom": "rgb(153, 0, 0)",
-                                                    "borderColorTop": "rgb(153, 0, 0)",
-                                                    "borderLeft": 3,
-                                                    "borderRight": 3,
-                                                    "borderBottom": 3,
-                                                    "borderTop": 3
+                                                    "rowspan": 1
                                                 },
                                                 "content": [{ "type": "paragraph", "attrs": { "textAlign": "" } }]
                                             }
@@ -1583,113 +1583,113 @@
                                             {
                                                 "type": "tableCell",
                                                 "attrs": {
-                                                    "colspan": 1,
-                                                    "rowspan": 1,
-                                                    "colwidth": [47],
                                                     "background": "rgb(238, 221, 221)",
+                                                    "borderBottom": 3,
+                                                    "borderColorBottom": "rgb(153, 0, 0)",
                                                     "borderColorLeft": "rgb(153, 0, 0)",
                                                     "borderColorRight": "rgb(153, 0, 0)",
-                                                    "borderColorBottom": "rgb(153, 0, 0)",
                                                     "borderColorTop": "rgb(153, 0, 0)",
                                                     "borderLeft": 3,
                                                     "borderRight": 3,
-                                                    "borderBottom": 3,
-                                                    "borderTop": 3
+                                                    "borderTop": 3,
+                                                    "colspan": 1,
+                                                    "colwidth": [47],
+                                                    "rowspan": 1
                                                 },
                                                 "content": [{ "type": "paragraph", "attrs": { "textAlign": "" } }]
                                             },
                                             {
                                                 "type": "tableCell",
                                                 "attrs": {
-                                                    "colspan": 1,
-                                                    "rowspan": 1,
-                                                    "colwidth": [49],
                                                     "background": "rgb(238, 221, 221)",
+                                                    "borderBottom": 3,
+                                                    "borderColorBottom": "rgb(153, 0, 0)",
                                                     "borderColorLeft": "rgb(153, 0, 0)",
                                                     "borderColorRight": "rgb(153, 0, 0)",
-                                                    "borderColorBottom": "rgb(153, 0, 0)",
                                                     "borderColorTop": "rgb(153, 0, 0)",
                                                     "borderLeft": 3,
                                                     "borderRight": 3,
-                                                    "borderBottom": 3,
-                                                    "borderTop": 3
+                                                    "borderTop": 3,
+                                                    "colspan": 1,
+                                                    "colwidth": [49],
+                                                    "rowspan": 1
                                                 },
                                                 "content": [
                                                     {
                                                         "type": "geometry",
-                                                        "attrs": { "canvas": { "width": 35, "height": 42 } }
+                                                        "attrs": { "canvas": { "height": 42, "width": 35 } }
                                                     }
                                                 ]
                                             },
                                             {
                                                 "type": "tableCell",
                                                 "attrs": {
-                                                    "colspan": 1,
-                                                    "rowspan": 1,
-                                                    "colwidth": [49],
                                                     "background": "rgb(238, 221, 221)",
+                                                    "borderBottom": 3,
+                                                    "borderColorBottom": "rgb(153, 0, 0)",
                                                     "borderColorLeft": "rgb(153, 0, 0)",
                                                     "borderColorRight": "rgb(153, 0, 0)",
-                                                    "borderColorBottom": "rgb(153, 0, 0)",
                                                     "borderColorTop": "rgb(153, 0, 0)",
                                                     "borderLeft": 3,
                                                     "borderRight": 3,
-                                                    "borderBottom": 3,
-                                                    "borderTop": 3
+                                                    "borderTop": 3,
+                                                    "colspan": 1,
+                                                    "colwidth": [49],
+                                                    "rowspan": 1
                                                 },
                                                 "content": [{ "type": "paragraph", "attrs": { "textAlign": "" } }]
                                             },
                                             {
                                                 "type": "tableCell",
                                                 "attrs": {
-                                                    "colspan": 1,
-                                                    "rowspan": 1,
-                                                    "colwidth": [31],
                                                     "background": "white",
+                                                    "borderBottom": "0",
+                                                    "borderColorBottom": "rgb(153, 0, 0)",
                                                     "borderColorLeft": "rgb(153, 0, 0)",
                                                     "borderColorRight": "rgb(153, 0, 0)",
-                                                    "borderColorBottom": "rgb(153, 0, 0)",
                                                     "borderColorTop": "rgb(153, 0, 0)",
                                                     "borderLeft": "0",
                                                     "borderRight": "0",
-                                                    "borderBottom": "0",
-                                                    "borderTop": "0"
+                                                    "borderTop": "0",
+                                                    "colspan": 1,
+                                                    "colwidth": [31],
+                                                    "rowspan": 1
                                                 },
                                                 "content": [{ "type": "paragraph", "attrs": { "textAlign": "" } }]
                                             },
                                             {
                                                 "type": "tableCell",
                                                 "attrs": {
+                                                    "background": "rgb(238, 221, 221)",
+                                                    "borderBottom": 3,
+                                                    "borderColorBottom": "rgb(153, 0, 0)",
+                                                    "borderColorLeft": "rgb(153, 0, 0)",
+                                                    "borderColorRight": "rgb(153, 0, 0)",
+                                                    "borderColorTop": "rgb(153, 0, 0)",
+                                                    "borderLeft": 3,
+                                                    "borderRight": 3,
+                                                    "borderTop": 3,
                                                     "colspan": 1,
-                                                    "rowspan": 1,
                                                     "colwidth": [48],
-                                                    "background": "rgb(238, 221, 221)",
-                                                    "borderColorLeft": "rgb(153, 0, 0)",
-                                                    "borderColorRight": "rgb(153, 0, 0)",
-                                                    "borderColorBottom": "rgb(153, 0, 0)",
-                                                    "borderColorTop": "rgb(153, 0, 0)",
-                                                    "borderLeft": 3,
-                                                    "borderRight": 3,
-                                                    "borderBottom": 3,
-                                                    "borderTop": 3
+                                                    "rowspan": 1
                                                 },
                                                 "content": [{ "type": "paragraph", "attrs": { "textAlign": "" } }]
                                             },
                                             {
                                                 "type": "tableCell",
                                                 "attrs": {
-                                                    "colspan": 1,
-                                                    "rowspan": 1,
-                                                    "colwidth": [46],
                                                     "background": "rgb(238, 221, 221)",
+                                                    "borderBottom": 3,
+                                                    "borderColorBottom": "rgb(153, 0, 0)",
                                                     "borderColorLeft": "rgb(153, 0, 0)",
                                                     "borderColorRight": "rgb(153, 0, 0)",
-                                                    "borderColorBottom": "rgb(153, 0, 0)",
                                                     "borderColorTop": "rgb(153, 0, 0)",
                                                     "borderLeft": 3,
                                                     "borderRight": 3,
-                                                    "borderBottom": 3,
-                                                    "borderTop": 3
+                                                    "borderTop": 3,
+                                                    "colspan": 1,
+                                                    "colwidth": [46],
+                                                    "rowspan": 1
                                                 },
                                                 "content": [{ "type": "paragraph", "attrs": { "textAlign": "" } }]
                                             }
@@ -1701,113 +1701,113 @@
                                             {
                                                 "type": "tableCell",
                                                 "attrs": {
-                                                    "colspan": 1,
-                                                    "rowspan": 1,
-                                                    "colwidth": [47],
                                                     "background": "rgb(238, 221, 221)",
+                                                    "borderBottom": 3,
+                                                    "borderColorBottom": "rgb(153, 0, 0)",
                                                     "borderColorLeft": "rgb(153, 0, 0)",
                                                     "borderColorRight": "rgb(153, 0, 0)",
-                                                    "borderColorBottom": "rgb(153, 0, 0)",
                                                     "borderColorTop": "rgb(153, 0, 0)",
                                                     "borderLeft": 3,
                                                     "borderRight": 3,
-                                                    "borderBottom": 3,
-                                                    "borderTop": 3
+                                                    "borderTop": 3,
+                                                    "colspan": 1,
+                                                    "colwidth": [47],
+                                                    "rowspan": 1
                                                 },
                                                 "content": [{ "type": "paragraph", "attrs": { "textAlign": "" } }]
                                             },
                                             {
                                                 "type": "tableCell",
                                                 "attrs": {
-                                                    "colspan": 1,
-                                                    "rowspan": 1,
-                                                    "colwidth": [49],
                                                     "background": "rgb(238, 221, 221)",
+                                                    "borderBottom": 3,
+                                                    "borderColorBottom": "rgb(153, 0, 0)",
                                                     "borderColorLeft": "rgb(153, 0, 0)",
                                                     "borderColorRight": "rgb(153, 0, 0)",
-                                                    "borderColorBottom": "rgb(153, 0, 0)",
                                                     "borderColorTop": "rgb(153, 0, 0)",
                                                     "borderLeft": 3,
                                                     "borderRight": 3,
-                                                    "borderBottom": 3,
-                                                    "borderTop": 3
+                                                    "borderTop": 3,
+                                                    "colspan": 1,
+                                                    "colwidth": [49],
+                                                    "rowspan": 1
                                                 },
                                                 "content": [
                                                     {
                                                         "type": "geometry",
-                                                        "attrs": { "canvas": { "width": 35, "height": 42 } }
+                                                        "attrs": { "canvas": { "height": 42, "width": 35 } }
                                                     }
                                                 ]
                                             },
                                             {
                                                 "type": "tableCell",
                                                 "attrs": {
-                                                    "colspan": 1,
-                                                    "rowspan": 1,
-                                                    "colwidth": [49],
                                                     "background": "rgb(238, 221, 221)",
+                                                    "borderBottom": 3,
+                                                    "borderColorBottom": "rgb(153, 0, 0)",
                                                     "borderColorLeft": "rgb(153, 0, 0)",
                                                     "borderColorRight": "rgb(153, 0, 0)",
-                                                    "borderColorBottom": "rgb(153, 0, 0)",
                                                     "borderColorTop": "rgb(153, 0, 0)",
                                                     "borderLeft": 3,
                                                     "borderRight": 3,
-                                                    "borderBottom": 3,
-                                                    "borderTop": 3
+                                                    "borderTop": 3,
+                                                    "colspan": 1,
+                                                    "colwidth": [49],
+                                                    "rowspan": 1
                                                 },
                                                 "content": [{ "type": "paragraph", "attrs": { "textAlign": "" } }]
                                             },
                                             {
                                                 "type": "tableCell",
                                                 "attrs": {
-                                                    "colspan": 1,
-                                                    "rowspan": 1,
-                                                    "colwidth": [31],
                                                     "background": "white",
+                                                    "borderBottom": "0",
+                                                    "borderColorBottom": "rgb(153, 0, 0)",
                                                     "borderColorLeft": "rgb(153, 0, 0)",
                                                     "borderColorRight": "rgb(153, 0, 0)",
-                                                    "borderColorBottom": "rgb(153, 0, 0)",
                                                     "borderColorTop": "rgb(153, 0, 0)",
                                                     "borderLeft": "0",
                                                     "borderRight": "0",
-                                                    "borderBottom": "0",
-                                                    "borderTop": "0"
+                                                    "borderTop": "0",
+                                                    "colspan": 1,
+                                                    "colwidth": [31],
+                                                    "rowspan": 1
                                                 },
                                                 "content": [{ "type": "paragraph", "attrs": { "textAlign": "" } }]
                                             },
                                             {
                                                 "type": "tableCell",
                                                 "attrs": {
+                                                    "background": "rgb(238, 221, 221)",
+                                                    "borderBottom": 3,
+                                                    "borderColorBottom": "rgb(153, 0, 0)",
+                                                    "borderColorLeft": "rgb(153, 0, 0)",
+                                                    "borderColorRight": "rgb(153, 0, 0)",
+                                                    "borderColorTop": "rgb(153, 0, 0)",
+                                                    "borderLeft": 3,
+                                                    "borderRight": 3,
+                                                    "borderTop": 3,
                                                     "colspan": 1,
-                                                    "rowspan": 1,
                                                     "colwidth": [48],
-                                                    "background": "rgb(238, 221, 221)",
-                                                    "borderColorLeft": "rgb(153, 0, 0)",
-                                                    "borderColorRight": "rgb(153, 0, 0)",
-                                                    "borderColorBottom": "rgb(153, 0, 0)",
-                                                    "borderColorTop": "rgb(153, 0, 0)",
-                                                    "borderLeft": 3,
-                                                    "borderRight": 3,
-                                                    "borderBottom": 3,
-                                                    "borderTop": 3
+                                                    "rowspan": 1
                                                 },
                                                 "content": [{ "type": "paragraph", "attrs": { "textAlign": "" } }]
                                             },
                                             {
                                                 "type": "tableCell",
                                                 "attrs": {
-                                                    "colspan": 1,
-                                                    "rowspan": 1,
-                                                    "colwidth": [46],
                                                     "background": "rgb(238, 221, 221)",
+                                                    "borderBottom": 3,
+                                                    "borderColorBottom": "rgb(153, 0, 0)",
                                                     "borderColorLeft": "rgb(153, 0, 0)",
                                                     "borderColorRight": "rgb(153, 0, 0)",
-                                                    "borderColorBottom": "rgb(153, 0, 0)",
                                                     "borderColorTop": "rgb(153, 0, 0)",
                                                     "borderLeft": 3,
                                                     "borderRight": 3,
-                                                    "borderBottom": 3,
-                                                    "borderTop": 3
+                                                    "borderTop": 3,
+                                                    "colspan": 1,
+                                                    "colwidth": [46],
+                                                    "rowspan": 1
                                                 },
                                                 "content": [{ "type": "paragraph", "attrs": { "textAlign": "" } }]
                                             }
@@ -1819,113 +1819,113 @@
                                             {
                                                 "type": "tableCell",
                                                 "attrs": {
-                                                    "colspan": 1,
-                                                    "rowspan": 1,
-                                                    "colwidth": [47],
                                                     "background": "rgb(238, 221, 221)",
+                                                    "borderBottom": 3,
+                                                    "borderColorBottom": "rgb(153, 0, 0)",
                                                     "borderColorLeft": "rgb(153, 0, 0)",
                                                     "borderColorRight": "rgb(153, 0, 0)",
-                                                    "borderColorBottom": "rgb(153, 0, 0)",
                                                     "borderColorTop": "rgb(153, 0, 0)",
                                                     "borderLeft": 3,
                                                     "borderRight": 3,
-                                                    "borderBottom": 3,
-                                                    "borderTop": 3
+                                                    "borderTop": 3,
+                                                    "colspan": 1,
+                                                    "colwidth": [47],
+                                                    "rowspan": 1
                                                 },
                                                 "content": [{ "type": "paragraph", "attrs": { "textAlign": "" } }]
                                             },
                                             {
                                                 "type": "tableCell",
                                                 "attrs": {
-                                                    "colspan": 1,
-                                                    "rowspan": 1,
-                                                    "colwidth": [49],
                                                     "background": "rgb(238, 221, 221)",
+                                                    "borderBottom": 3,
+                                                    "borderColorBottom": "rgb(153, 0, 0)",
                                                     "borderColorLeft": "rgb(153, 0, 0)",
                                                     "borderColorRight": "rgb(153, 0, 0)",
-                                                    "borderColorBottom": "rgb(153, 0, 0)",
                                                     "borderColorTop": "rgb(153, 0, 0)",
                                                     "borderLeft": 3,
                                                     "borderRight": 3,
-                                                    "borderBottom": 3,
-                                                    "borderTop": 3
+                                                    "borderTop": 3,
+                                                    "colspan": 1,
+                                                    "colwidth": [49],
+                                                    "rowspan": 1
                                                 },
                                                 "content": [
                                                     {
                                                         "type": "geometry",
-                                                        "attrs": { "canvas": { "width": 35, "height": 42 } }
+                                                        "attrs": { "canvas": { "height": 42, "width": 35 } }
                                                     }
                                                 ]
                                             },
                                             {
                                                 "type": "tableCell",
                                                 "attrs": {
-                                                    "colspan": 1,
-                                                    "rowspan": 1,
-                                                    "colwidth": [49],
                                                     "background": "rgb(238, 221, 221)",
+                                                    "borderBottom": 3,
+                                                    "borderColorBottom": "rgb(153, 0, 0)",
                                                     "borderColorLeft": "rgb(153, 0, 0)",
                                                     "borderColorRight": "rgb(153, 0, 0)",
-                                                    "borderColorBottom": "rgb(153, 0, 0)",
                                                     "borderColorTop": "rgb(153, 0, 0)",
                                                     "borderLeft": 3,
                                                     "borderRight": 3,
-                                                    "borderBottom": 3,
-                                                    "borderTop": 3
+                                                    "borderTop": 3,
+                                                    "colspan": 1,
+                                                    "colwidth": [49],
+                                                    "rowspan": 1
                                                 },
                                                 "content": [{ "type": "paragraph", "attrs": { "textAlign": "" } }]
                                             },
                                             {
                                                 "type": "tableCell",
                                                 "attrs": {
-                                                    "colspan": 1,
-                                                    "rowspan": 1,
-                                                    "colwidth": [31],
                                                     "background": "white",
+                                                    "borderBottom": "0",
+                                                    "borderColorBottom": "rgb(153, 0, 0)",
                                                     "borderColorLeft": "rgb(153, 0, 0)",
                                                     "borderColorRight": "rgb(153, 0, 0)",
-                                                    "borderColorBottom": "rgb(153, 0, 0)",
                                                     "borderColorTop": "rgb(153, 0, 0)",
                                                     "borderLeft": "0",
                                                     "borderRight": "0",
-                                                    "borderBottom": "0",
-                                                    "borderTop": "0"
+                                                    "borderTop": "0",
+                                                    "colspan": 1,
+                                                    "colwidth": [31],
+                                                    "rowspan": 1
                                                 },
                                                 "content": [{ "type": "paragraph", "attrs": { "textAlign": "" } }]
                                             },
                                             {
                                                 "type": "tableCell",
                                                 "attrs": {
+                                                    "background": "rgb(238, 221, 221)",
+                                                    "borderBottom": 3,
+                                                    "borderColorBottom": "rgb(153, 0, 0)",
+                                                    "borderColorLeft": "rgb(153, 0, 0)",
+                                                    "borderColorRight": "rgb(153, 0, 0)",
+                                                    "borderColorTop": "rgb(153, 0, 0)",
+                                                    "borderLeft": 3,
+                                                    "borderRight": 3,
+                                                    "borderTop": 3,
                                                     "colspan": 1,
-                                                    "rowspan": 1,
                                                     "colwidth": [48],
-                                                    "background": "rgb(238, 221, 221)",
-                                                    "borderColorLeft": "rgb(153, 0, 0)",
-                                                    "borderColorRight": "rgb(153, 0, 0)",
-                                                    "borderColorBottom": "rgb(153, 0, 0)",
-                                                    "borderColorTop": "rgb(153, 0, 0)",
-                                                    "borderLeft": 3,
-                                                    "borderRight": 3,
-                                                    "borderBottom": 3,
-                                                    "borderTop": 3
+                                                    "rowspan": 1
                                                 },
                                                 "content": [{ "type": "paragraph", "attrs": { "textAlign": "" } }]
                                             },
                                             {
                                                 "type": "tableCell",
                                                 "attrs": {
-                                                    "colspan": 1,
-                                                    "rowspan": 1,
-                                                    "colwidth": [46],
                                                     "background": "rgb(238, 221, 221)",
+                                                    "borderBottom": 3,
+                                                    "borderColorBottom": "rgb(153, 0, 0)",
                                                     "borderColorLeft": "rgb(153, 0, 0)",
                                                     "borderColorRight": "rgb(153, 0, 0)",
-                                                    "borderColorBottom": "rgb(153, 0, 0)",
                                                     "borderColorTop": "rgb(153, 0, 0)",
                                                     "borderLeft": 3,
                                                     "borderRight": 3,
-                                                    "borderBottom": 3,
-                                                    "borderTop": 3
+                                                    "borderTop": 3,
+                                                    "colspan": 1,
+                                                    "colwidth": [46],
+                                                    "rowspan": 1
                                                 },
                                                 "content": [{ "type": "paragraph", "attrs": { "textAlign": "" } }]
                                             }
@@ -1937,113 +1937,113 @@
                                             {
                                                 "type": "tableCell",
                                                 "attrs": {
-                                                    "colspan": 1,
-                                                    "rowspan": 1,
-                                                    "colwidth": [47],
                                                     "background": "rgb(238, 221, 221)",
+                                                    "borderBottom": 3,
+                                                    "borderColorBottom": "rgb(153, 0, 0)",
                                                     "borderColorLeft": "rgb(153, 0, 0)",
                                                     "borderColorRight": "rgb(153, 0, 0)",
-                                                    "borderColorBottom": "rgb(153, 0, 0)",
                                                     "borderColorTop": "rgb(153, 0, 0)",
                                                     "borderLeft": 3,
                                                     "borderRight": 3,
-                                                    "borderBottom": 3,
-                                                    "borderTop": 3
+                                                    "borderTop": 3,
+                                                    "colspan": 1,
+                                                    "colwidth": [47],
+                                                    "rowspan": 1
                                                 },
                                                 "content": [{ "type": "paragraph", "attrs": { "textAlign": "" } }]
                                             },
                                             {
                                                 "type": "tableCell",
                                                 "attrs": {
-                                                    "colspan": 1,
-                                                    "rowspan": 1,
-                                                    "colwidth": [49],
                                                     "background": "rgb(238, 221, 221)",
+                                                    "borderBottom": 3,
+                                                    "borderColorBottom": "rgb(153, 0, 0)",
                                                     "borderColorLeft": "rgb(153, 0, 0)",
                                                     "borderColorRight": "rgb(153, 0, 0)",
-                                                    "borderColorBottom": "rgb(153, 0, 0)",
                                                     "borderColorTop": "rgb(153, 0, 0)",
                                                     "borderLeft": 3,
                                                     "borderRight": 3,
-                                                    "borderBottom": 3,
-                                                    "borderTop": 3
+                                                    "borderTop": 3,
+                                                    "colspan": 1,
+                                                    "colwidth": [49],
+                                                    "rowspan": 1
                                                 },
                                                 "content": [
                                                     {
                                                         "type": "geometry",
-                                                        "attrs": { "canvas": { "width": 35, "height": 42 } }
+                                                        "attrs": { "canvas": { "height": 42, "width": 35 } }
                                                     }
                                                 ]
                                             },
                                             {
                                                 "type": "tableCell",
                                                 "attrs": {
-                                                    "colspan": 1,
-                                                    "rowspan": 1,
-                                                    "colwidth": [49],
                                                     "background": "rgb(238, 221, 221)",
+                                                    "borderBottom": 3,
+                                                    "borderColorBottom": "rgb(153, 0, 0)",
                                                     "borderColorLeft": "rgb(153, 0, 0)",
                                                     "borderColorRight": "rgb(153, 0, 0)",
-                                                    "borderColorBottom": "rgb(153, 0, 0)",
                                                     "borderColorTop": "rgb(153, 0, 0)",
                                                     "borderLeft": 3,
                                                     "borderRight": 3,
-                                                    "borderBottom": 3,
-                                                    "borderTop": 3
+                                                    "borderTop": 3,
+                                                    "colspan": 1,
+                                                    "colwidth": [49],
+                                                    "rowspan": 1
                                                 },
                                                 "content": [{ "type": "paragraph", "attrs": { "textAlign": "" } }]
                                             },
                                             {
                                                 "type": "tableCell",
                                                 "attrs": {
-                                                    "colspan": 1,
-                                                    "rowspan": 1,
-                                                    "colwidth": [31],
                                                     "background": "white",
+                                                    "borderBottom": "0",
+                                                    "borderColorBottom": "rgb(153, 0, 0)",
                                                     "borderColorLeft": "rgb(153, 0, 0)",
                                                     "borderColorRight": "rgb(153, 0, 0)",
-                                                    "borderColorBottom": "rgb(153, 0, 0)",
                                                     "borderColorTop": "rgb(153, 0, 0)",
                                                     "borderLeft": "0",
                                                     "borderRight": "0",
-                                                    "borderBottom": "0",
-                                                    "borderTop": "0"
+                                                    "borderTop": "0",
+                                                    "colspan": 1,
+                                                    "colwidth": [31],
+                                                    "rowspan": 1
                                                 },
                                                 "content": [{ "type": "paragraph", "attrs": { "textAlign": "" } }]
                                             },
                                             {
                                                 "type": "tableCell",
                                                 "attrs": {
+                                                    "background": "rgb(238, 221, 221)",
+                                                    "borderBottom": 3,
+                                                    "borderColorBottom": "rgb(153, 0, 0)",
+                                                    "borderColorLeft": "rgb(153, 0, 0)",
+                                                    "borderColorRight": "rgb(153, 0, 0)",
+                                                    "borderColorTop": "rgb(153, 0, 0)",
+                                                    "borderLeft": 3,
+                                                    "borderRight": 3,
+                                                    "borderTop": 3,
                                                     "colspan": 1,
-                                                    "rowspan": 1,
                                                     "colwidth": [48],
-                                                    "background": "rgb(238, 221, 221)",
-                                                    "borderColorLeft": "rgb(153, 0, 0)",
-                                                    "borderColorRight": "rgb(153, 0, 0)",
-                                                    "borderColorBottom": "rgb(153, 0, 0)",
-                                                    "borderColorTop": "rgb(153, 0, 0)",
-                                                    "borderLeft": 3,
-                                                    "borderRight": 3,
-                                                    "borderBottom": 3,
-                                                    "borderTop": 3
+                                                    "rowspan": 1
                                                 },
                                                 "content": [{ "type": "paragraph", "attrs": { "textAlign": "" } }]
                                             },
                                             {
                                                 "type": "tableCell",
                                                 "attrs": {
-                                                    "colspan": 1,
-                                                    "rowspan": 1,
-                                                    "colwidth": [46],
                                                     "background": "rgb(238, 221, 221)",
+                                                    "borderBottom": 3,
+                                                    "borderColorBottom": "rgb(153, 0, 0)",
                                                     "borderColorLeft": "rgb(153, 0, 0)",
                                                     "borderColorRight": "rgb(153, 0, 0)",
-                                                    "borderColorBottom": "rgb(153, 0, 0)",
                                                     "borderColorTop": "rgb(153, 0, 0)",
                                                     "borderLeft": 3,
                                                     "borderRight": 3,
-                                                    "borderBottom": 3,
-                                                    "borderTop": 3
+                                                    "borderTop": 3,
+                                                    "colspan": 1,
+                                                    "colwidth": [46],
+                                                    "rowspan": 1
                                                 },
                                                 "content": [{ "type": "paragraph", "attrs": { "textAlign": "" } }]
                                             }
@@ -2510,7 +2510,7 @@
                                     },
                                     {
                                         "type": "orderedList",
-                                        "attrs": { "start": 1, "type": null },
+                                        "attrs": { "type": null, "start": 1 },
                                         "content": [
                                             {
                                                 "type": "listItem",
@@ -2612,7 +2612,7 @@
                                     { "type": "text", "text": "Możesz przećwiczyć więcej własnych przykładów poniżej:" }
                                 ]
                             },
-                            { "type": "component", "attrs": { "componentName": "arithmetic-calculator", "args": [] } }
+                            { "type": "component", "attrs": { "args": [], "componentName": "arithmetic-calculator" } }
                         ]
                     }
                 ]
@@ -2760,8 +2760,8 @@
         ]
     },
     "comments": {
-        "1": { "text": "Myszka komputerowa to nie zabawka.", "hidden": true },
-        "2": { "text": "Problem rozwiązany.", "hidden": true },
-        "3": { "text": "Chcemy przecież oddać 70 dzieci.", "hidden": true }
+        "1": { "hidden": true, "text": "Myszka komputerowa to nie zabawka." },
+        "2": { "hidden": true, "text": "Problem rozwiązany." },
+        "3": { "hidden": true, "text": "Chcemy przecież oddać 70 dzieci." }
     }
 }

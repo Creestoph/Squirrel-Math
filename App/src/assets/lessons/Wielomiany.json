@@ -29,7 +29,7 @@
                     {
                         "type": "chapterBody",
                         "content": [
-                            { "type": "semanticTag", "attrs": { "tags": ["Intuicje"], "required": [] } },
+                            { "type": "semanticTag", "attrs": { "required": [], "tags": ["Intuicje"] } },
                             {
                                 "type": "paragraph",
                                 "attrs": { "textAlign": "" },
@@ -51,7 +51,7 @@
                                     }
                                 ]
                             },
-                            { "type": "semanticTag", "attrs": { "tags": ["Formalnie"], "required": [] } },
+                            { "type": "semanticTag", "attrs": { "required": [], "tags": ["Formalnie"] } },
                             {
                                 "type": "paragraph",
                                 "attrs": { "textAlign": "" },
@@ -276,7 +276,7 @@
                                     }
                                 ]
                             },
-                            { "type": "semanticTag", "attrs": { "tags": ["Intuicje"], "required": [] } },
+                            { "type": "semanticTag", "attrs": { "required": [], "tags": ["Intuicje"] } },
                             {
                                 "type": "paragraph",
                                 "attrs": { "textAlign": "" },
@@ -364,7 +364,7 @@
                     {
                         "type": "chapterBody",
                         "content": [
-                            { "type": "semanticTag", "attrs": { "tags": ["Intuicje"], "required": [] } },
+                            { "type": "semanticTag", "attrs": { "required": [], "tags": ["Intuicje"] } },
                             {
                                 "type": "paragraph",
                                 "attrs": { "textAlign": "" },
@@ -612,7 +612,7 @@
                     {
                         "type": "chapterBody",
                         "content": [
-                            { "type": "semanticTag", "attrs": { "tags": ["Warsztat"], "required": [] } },
+                            { "type": "semanticTag", "attrs": { "required": [], "tags": ["Warsztat"] } },
                             {
                                 "type": "paragraph",
                                 "attrs": { "textAlign": "" },
@@ -698,8 +698,8 @@
                                     {
                                         "type": "component",
                                         "attrs": {
-                                            "componentName": "columnar-operation-table",
-                                            "args": [["u/;u/;u/;u/;u/;u/;u/", "x^3;-13x^2;+50x;-56;:;x;-2"]]
+                                            "args": [["u/;u/;u/;u/;u/;u/;u/", "x^3;-13x^2;+50x;-56;:;x;-2"]],
+                                            "componentName": "columnar-operation-table"
                                         }
                                     },
                                     {
@@ -726,8 +726,8 @@
                                     {
                                         "type": "component",
                                         "attrs": {
-                                            "componentName": "columnar-operation-table",
-                                            "args": [["u/x^2;u/;u/;u/;u/;u/;u/", "x^3;-13x^2;+50x;-56;:;x;-2"]]
+                                            "args": [["u/x^2;u/;u/;u/;u/;u/;u/", "x^3;-13x^2;+50x;-56;:;x;-2"]],
+                                            "componentName": "columnar-operation-table"
                                         }
                                     },
                                     {
@@ -757,14 +757,14 @@
                                     {
                                         "type": "component",
                                         "attrs": {
-                                            "componentName": "columnar-operation-table",
                                             "args": [
                                                 [
                                                     "u/\\ \\ x^2;u/;u/;u/;u/;u/;u/",
                                                     "\\ \\ x^3;-13x^2;+50x;-56;:;x;-2",
                                                     "-x^3;+2x^2;;;;;"
                                                 ]
-                                            ]
+                                            ],
+                                            "componentName": "columnar-operation-table"
                                         }
                                     },
                                     {
@@ -780,7 +780,6 @@
                                     {
                                         "type": "component",
                                         "attrs": {
-                                            "componentName": "columnar-operation-table",
                                             "args": [
                                                 [
                                                     "u/\\ \\ x^2;u/;u/;u/;u/;u/;u/",
@@ -788,7 +787,8 @@
                                                     "u/-x^3;u/+2x^2;u/;u/;u/;u/;u/",
                                                     ";-11x^2;+50x;-56;;;"
                                                 ]
-                                            ]
+                                            ],
+                                            "componentName": "columnar-operation-table"
                                         }
                                     },
                                     {
@@ -808,7 +808,6 @@
                                     {
                                         "type": "component",
                                         "attrs": {
-                                            "componentName": "columnar-operation-table",
                                             "args": [
                                                 [
                                                     "u/\\ \\ x^2;u/-11x;u/;u/;u/;u/;u/",
@@ -816,7 +815,8 @@
                                                     "u/-x^3;u/+2x^2;u/;u/;u/;u/;u/",
                                                     ";-11x^2;+50x;-56;;;"
                                                 ]
-                                            ]
+                                            ],
+                                            "componentName": "columnar-operation-table"
                                         }
                                     },
                                     {
@@ -837,7 +837,6 @@
                                     {
                                         "type": "component",
                                         "attrs": {
-                                            "componentName": "columnar-operation-table",
                                             "args": [
                                                 [
                                                     "u/\\ \\ x^2;u/-11x;u/;u/;u/;u/;u/",
@@ -847,7 +846,8 @@
                                                     "u/;u/\\ \\ 11x^2;u/-22x;u/;u/;u/;u/",
                                                     ";;\\ \\ 28x;-56;;;"
                                                 ]
-                                            ]
+                                            ],
+                                            "componentName": "columnar-operation-table"
                                         }
                                     },
                                     {
@@ -870,7 +870,6 @@
                                     {
                                         "type": "component",
                                         "attrs": {
-                                            "componentName": "columnar-operation-table",
                                             "args": [
                                                 [
                                                     "u/\\ \\ x^2;u/-11x;u/+28;u/;u/;u/;u/",
@@ -882,7 +881,8 @@
                                                     "u/;u/;u/-28x;u/+56;u/;u/;u/",
                                                     ";;;0;;;"
                                                 ]
-                                            ]
+                                            ],
+                                            "componentName": "columnar-operation-table"
                                         }
                                     },
                                     {
@@ -990,13 +990,13 @@
                                     {
                                         "type": "component",
                                         "attrs": {
-                                            "componentName": "columnar-operation-table",
                                             "args": [
                                                 [
                                                     "u/;u/;u/;u/;u/;u/;u/;u/;u/",
                                                     "6x^4;-5x^3;+17x^2;+0x;+15;:;3x^2;+2x;+4"
                                                 ]
-                                            ]
+                                            ],
+                                            "componentName": "columnar-operation-table"
                                         }
                                     },
                                     {
@@ -1030,7 +1030,6 @@
                                     {
                                         "type": "component",
                                         "attrs": {
-                                            "componentName": "columnar-operation-table",
                                             "args": [
                                                 [
                                                     "u/\\ \\ 2x^2;u/;u/;u/;u/;u/;u/;u/;u/",
@@ -1038,7 +1037,8 @@
                                                     "u/-6x^4;u/-4x^3;u/-8x^2;u/;u/;u/;u/;u/;u/",
                                                     ";-9x^3;+9x^2;+0x;+15;;;;"
                                                 ]
-                                            ]
+                                            ],
+                                            "componentName": "columnar-operation-table"
                                         }
                                     },
                                     {
@@ -1063,7 +1063,6 @@
                                     {
                                         "type": "component",
                                         "attrs": {
-                                            "componentName": "columnar-operation-table",
                                             "args": [
                                                 [
                                                     "u/\\ \\ 2x^2;u/-3x;u/;u/;u/;u/;u/;u/;u/",
@@ -1073,7 +1072,8 @@
                                                     "u/;u/\\ \\ 9x^3;u/+6x^2;u/+12x;u/;u/;u/;u/;u/",
                                                     ";;\\ \\ 15x^2;+12x;+15;;;;"
                                                 ]
-                                            ]
+                                            ],
+                                            "componentName": "columnar-operation-table"
                                         }
                                     },
                                     {
@@ -1093,7 +1093,6 @@
                                     {
                                         "type": "component",
                                         "attrs": {
-                                            "componentName": "columnar-operation-table",
                                             "args": [
                                                 [
                                                     "u/\\ \\ 2x^2;u/-3x;u/+5;u/;u/;u/;u/;u/;u/",
@@ -1105,7 +1104,8 @@
                                                     "u/;u/;u/-15x^2;u/-10x;u/-20;u/;u/;u/;u/",
                                                     ";;;\\ \\ \\ \\ 2x;-5;;;;"
                                                 ]
-                                            ]
+                                            ],
+                                            "componentName": "columnar-operation-table"
                                         }
                                     },
                                     {
@@ -1240,7 +1240,7 @@
                     {
                         "type": "chapterBody",
                         "content": [
-                            { "type": "semanticTag", "attrs": { "tags": ["Formalnie"], "required": [] } },
+                            { "type": "semanticTag", "attrs": { "required": [], "tags": ["Formalnie"] } },
                             {
                                 "type": "paragraph",
                                 "attrs": { "textAlign": "" },
@@ -1489,7 +1489,7 @@
                     {
                         "type": "chapterBody",
                         "content": [
-                            { "type": "semanticTag", "attrs": { "tags": ["Intuicje"], "required": [] } },
+                            { "type": "semanticTag", "attrs": { "required": [], "tags": ["Intuicje"] } },
                             {
                                 "type": "paragraph",
                                 "attrs": { "textAlign": "" },
@@ -1833,7 +1833,6 @@
                                     {
                                         "type": "component",
                                         "attrs": {
-                                            "componentName": "columnar-operation-table",
                                             "args": [
                                                 [
                                                     "u/\\ \\ x^2;u/+2x;u/-8;u/;u/;u/;u/",
@@ -1845,7 +1844,8 @@
                                                     "u/;u/;u/\\ \\ 8x;u/-16;u/;u/;u/",
                                                     ";;;\\ \\ 0;;;"
                                                 ]
-                                            ]
+                                            ],
+                                            "componentName": "columnar-operation-table"
                                         }
                                     },
                                     {
@@ -2084,7 +2084,6 @@
                                     {
                                         "type": "component",
                                         "attrs": {
-                                            "componentName": "columnar-operation-table",
                                             "args": [
                                                 [
                                                     "u/\\ \\ x^3;u/+4x^2;u/-x;u/-12;u/;u/;u/;u/",
@@ -2098,7 +2097,8 @@
                                                     "u/;u/;u/;u/\\ \\ 24x;u/-12;u/;u/;u/",
                                                     ";;;;\\ \\ 0;;;"
                                                 ]
-                                            ]
+                                            ],
+                                            "componentName": "columnar-operation-table"
                                         }
                                     },
                                     {
@@ -2234,7 +2234,6 @@
                                     {
                                         "type": "component",
                                         "attrs": {
-                                            "componentName": "columnar-operation-table",
                                             "args": [
                                                 [
                                                     "u/\\ \\ x^2;u/+x;u/-4;u/;u/;u/;u/",
@@ -2246,7 +2245,8 @@
                                                     "u/;u/;u/\\ \\ 4x;u/+12;u/;u/;u/",
                                                     ";;;\\ \\ 0;;;"
                                                 ]
-                                            ]
+                                            ],
+                                            "componentName": "columnar-operation-table"
                                         }
                                     },
                                     {
@@ -2327,7 +2327,7 @@
                         "content": [
                             {
                                 "type": "semanticTag",
-                                "attrs": { "tags": ["Warsztat", "Rozszerzenie"], "required": [] }
+                                "attrs": { "required": [], "tags": ["Warsztat", "Rozszerzenie"] }
                             },
                             {
                                 "type": "paragraph",
@@ -2829,13 +2829,13 @@
                                     {
                                         "type": "component",
                                         "attrs": {
-                                            "componentName": "columnar-operation-table",
                                             "args": [
                                                 [
                                                     "u/;u/;u/;u/;u/;u/;u/;u/;u/",
                                                     "6x^4;-5x^3;+17x^2;+0x;+15;:;3x^2;+2x;+4"
                                                 ]
-                                            ]
+                                            ],
+                                            "componentName": "columnar-operation-table"
                                         }
                                     },
                                     {
@@ -2858,7 +2858,6 @@
                                     {
                                         "type": "component",
                                         "attrs": {
-                                            "componentName": "columnar-operation-table",
                                             "args": [
                                                 [
                                                     "u/\\ \\ 2x^2;u/;u/;u/;u/;u/;u/;u/;u/",
@@ -2866,7 +2865,8 @@
                                                     "u/-6x^4;u/-4x^3;u/-8x^2;u/;u/;u/;u/;u/;u/",
                                                     ";-9x^3;+9x^2;+0x;+15;;;;"
                                                 ]
-                                            ]
+                                            ],
+                                            "componentName": "columnar-operation-table"
                                         }
                                     },
                                     {
@@ -2890,7 +2890,6 @@
                                     {
                                         "type": "component",
                                         "attrs": {
-                                            "componentName": "columnar-operation-table",
                                             "args": [
                                                 [
                                                     "u/\\ \\ 2x^2;u/-3x;u/;u/;u/;u/;u/;u/;u/",
@@ -2900,7 +2899,8 @@
                                                     "u/;u/\\ \\ 9x^3;u/+6x^2;u/+12x;u/;u/;u/;u/;u/",
                                                     ";;\\ \\ 15x^2;+12x;+15;;;;"
                                                 ]
-                                            ]
+                                            ],
+                                            "componentName": "columnar-operation-table"
                                         }
                                     },
                                     {
@@ -2920,7 +2920,6 @@
                                     {
                                         "type": "component",
                                         "attrs": {
-                                            "componentName": "columnar-operation-table",
                                             "args": [
                                                 [
                                                     "u/\\ \\ 2x^2;u/-3x;u/+5;u/;u/;u/;u/;u/;u/",
@@ -2932,7 +2931,8 @@
                                                     "u/;u/;u/-15x^2;u/-10x;u/-20;u/;u/;u/;u/",
                                                     ";;;\\ \\ \\ \\ 2x;-5;;;;"
                                                 ]
-                                            ]
+                                            ],
+                                            "componentName": "columnar-operation-table"
                                         }
                                     },
                                     {
@@ -3892,5 +3892,5 @@
             }
         ]
     },
-    "comments": { "1": { "text": "Jak widać, poniższe twierdzenie rzeczywiście nie zawiera 'u'.", "hidden": true } }
+    "comments": { "1": { "hidden": true, "text": "Jak widać, poniższe twierdzenie rzeczywiście nie zawiera 'u'." } }
 }
