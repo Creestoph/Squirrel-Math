@@ -45,13 +45,7 @@ const props = withDefaults(
         print: (l: number, r: number, f: number) => string;
         active?: boolean;
     }>(),
-    {
-        defaultLoperand: -1,
-        defaultRoperand: -1,
-        f: () => 0,
-        print: () => '',
-        active: true,
-    },
+    { defaultLoperand: -1, defaultRoperand: -1, f: () => 0, print: () => '', active: true },
 );
 
 reset();
@@ -61,7 +55,6 @@ function set(lop: number, rop: number) {
     roperand.value = rop;
     try {
         displayedText.value = props.print(loperand.value, roperand.value, props.f(loperand.value, roperand.value));
-        nextTick(() => MathJax.Hub.Queue(['Typeset', MathJax.Hub]));
     } catch (e) {
         displayedText.value = `${e}`;
     }

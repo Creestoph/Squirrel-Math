@@ -102,9 +102,6 @@ function applyEdit() {
     mathJax.value = mathJaxDirty.value;
     updateView();
     destroyMathJaxEditor();
-    if (isInline.value) {
-        nextTick(() => output.value!.focus());
-    }
 }
 
 function setDisplayMode(mode: ExpressionDisplayMode) {
