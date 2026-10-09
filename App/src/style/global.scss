@@ -17,6 +17,10 @@
         .base {
             display: inline;
             white-space: normal;
+                       // stacked boxes (fractions, \cancel, braces, scripts) must never wrap internally
+            .vlist-t {
+                white-space: nowrap;
+            }
         }
     }
 }

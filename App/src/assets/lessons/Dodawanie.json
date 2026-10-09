@@ -1390,9 +1390,15 @@
                                         "text": "Być może jesteś ciekaw, dlaczego magiczna metoda dodawania w słupku jest matematycznie poprawna. Czemu jakieś dodawanie cyfr w kolumnach i przepisywanie jedynek do kolejnej kolumny w ogóle działa? Na pierwszym naszym przykładzie "
                                     },
                                     { "type": "expressionInline", "attrs": { "mathJax": "127 + 32 = 159" } },
+                                    { "type": "text", "text": " " },
                                     {
                                         "type": "text",
-                                        "text": " stosunkowo łatwo to zrozumieć, szczególnie jak pomyślimy o obu liczbach jako kwotach, które mamy w portfelu w gotówce, w banknotach stuzłotowych, dziesięciozłotowych i monetach jednozłotowych.  "
+                                        "marks": [{ "type": "comment", "attrs": { "id": 19 } }],
+                                        "text": "stosunkowo"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": " łatwo to zrozumieć, szczególnie jak pomyślimy o obu liczbach jako kwotach, które mamy w portfelu w gotówce, w banknotach stuzłotowych, dziesięciozłotowych i monetach jednozłotowych.  "
                                     },
                                     { "type": "expressionInline", "attrs": { "mathJax": "127" } },
                                     { "type": "text", "text": " można zapisać jako " },
@@ -2407,6 +2413,7 @@
         "15": { "hidden": false, "text": "Rozbijamy 12 na 1 i 2." },
         "16": { "hidden": false, "text": "" },
         "17": { "hidden": false, "text": "" },
-        "18": { "hidden": true, "text": "soku" }
+        "18": { "hidden": true, "text": "soku" },
+        "19": { "hidden": true, "text": "🤤" }
     }
 }
