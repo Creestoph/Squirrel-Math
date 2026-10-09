@@ -5,6 +5,7 @@ declare module '@tiptap/core' {
     interface Commands<ReturnType> {
         link: {
             setLink: (href?: string) => ReturnType;
+            deleteLink: () => ReturnType;
         };
     }
 }
@@ -50,6 +51,11 @@ export default Mark.create({
                         .setMark(this.type, { href })
                         .setTextSelection(selection.from)
                         .run();
+                },
+            deleteLink:
+                () =>
+                ({ commands }) => {
+                    return commands.unsetMark(this.type);
                 },
         };
     },
