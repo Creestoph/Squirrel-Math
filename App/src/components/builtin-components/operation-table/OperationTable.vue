@@ -26,13 +26,14 @@
         </table>
 
         <p style="text-align: center" class="math" v-if="loperand !== -1 && roperand !== -1">
-            {{ displayedText }}
+            <latex-text :text="displayedText" />
         </p>
     </div>
 </template>
 
 <script setup lang="ts">
-import { nextTick, ref } from 'vue';
+import { ref } from 'vue';
+import LatexText from '@/components/utils/latex-utils/LatexText.vue';
 
 const loperand = ref(0);
 const roperand = ref(0);
@@ -78,6 +79,8 @@ table.operation-table {
     th {
         height: 32px;
         width: 32px;
+        font-family: var(--math-font-name);
+        font-size: 120%;
 
         &.selected {
             background: colors.$creamy;

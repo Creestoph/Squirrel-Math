@@ -7,5 +7,14 @@
     "bracketSpacing": true,
     "arrowParens": "always",
     "bracketSameLine": false,
-    "objectWrap": "collapse"
+    "objectWrap": "collapse",
+    "overrides": [
+        {
+            "files": ["src/assets/lessons/**/*.json"],
+            "options": {
+                "plugins": ["prettier-plugin-sort-json"],
+                "jsonRecursiveSort": true
+            }
+        }
+    ]
 }

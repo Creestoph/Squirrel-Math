@@ -5,7 +5,7 @@
             <template #default="{ stepData }">
                 <div class="columnar-operation-output">
                     <div v-if="stepData.table" ref="table" class="no-selection" />
-                    <p class="no-selection" v-html="stepData.comment"></p>
+                    <latex-text class="no-selection" :text="stepData.comment"></latex-text>
                 </div>
             </template>
         </step-by-step>
@@ -22,6 +22,7 @@ import { ColumnarFactorization } from '@/components/builtin-components/columnar-
 import ZeroDivisionPopup from './columnar-operation/ZeroDivisionPopup.vue';
 import StepByStep from '@/components/utils/StepByStep.vue';
 import { ColumnarOperationStep } from './columnar-operation/columnar-operation';
+import LatexText from '@/components/utils/latex-utils/LatexText.vue';
 
 const props = defineProps<{ operation: string; floats: boolean }>();
 const table = ref<HTMLElement>(null!);
@@ -40,19 +41,11 @@ function generateSteps(input: string): ColumnarOperationStep[] {
 
     if (props.operation === 'factorization') {
         if (operatorsCount > 0) {
-            return [
-                {
-                    comment: 'Wpisz jedną liczbę naturalną do rozłożenia na czynniki pierwsze, np. 120.',
-                },
-            ];
+            return [{ comment: 'Wpisz jedną liczbę naturalną do rozłożenia na czynniki pierwsze, np. 120.' }];
         }
         operationType = ColumnarFactorization;
     } else if (props.operation === 'all' && operatorsCount !== 1) {
-        return [
-            {
-                comment: 'Wpisz jedno działanie do wykonania',
-            },
-        ];
+        return [{ comment: 'Wpisz jedno działanie do wykonania' }];
     } else if (props.operation === 'addition' || (props.operation === 'all' && input.includes('+'))) {
         operationType = ColumnarAddition;
     } else if (props.operation === 'subtraction' || (props.operation === 'all' && input.includes('-'))) {
@@ -100,14 +93,14 @@ function update(step: ColumnarOperationStep) {
     justify-content: center;
     min-height: 400px;
 
-    div {
+    > div {
         flex: 1 1 auto;
         display: flex;
         align-items: center;
         padding: 30px 0 20px 0;
     }
 
-    p {
+    > span {
         min-height: 80px;
         margin-bottom: 30px;
     }

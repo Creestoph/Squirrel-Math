@@ -57,7 +57,6 @@ const mathJaxDirty = ref('');
 const displayPopup = ref(false);
 const isDetaching = ref(false);
 const editorHeight = ref(100);
-const output = ref<HTMLElement>();
 const mathJaxEditor = ref<Editor | null>(null);
 
 const isInline = computed(() => props.node.type.name === 'expressionInline');
