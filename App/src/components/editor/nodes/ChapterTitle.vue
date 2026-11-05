@@ -42,7 +42,7 @@ const isHidden = computed({
     position: absolute;
     left: -50px;
     padding-right: 9px;
-    top: -12px;
+    transform: translateY(-70%);
     cursor: pointer !important;
 
     color: colors.$gray;

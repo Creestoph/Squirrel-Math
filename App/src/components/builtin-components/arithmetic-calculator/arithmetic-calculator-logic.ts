@@ -37,7 +37,7 @@ export class ArithmeticCalculatorLogic {
         if (!/^[\d+\-*:()[\]{}]*$/.test(input)) {
             return {
                 comment:
-                    'Ten kalkulator obsługuje wyrażenia arytmetyczne złożone jedynie ze znaków: <code>+-*:() </code> oraz cyfr.',
+                    'Ten kalkulator obsługuje wyrażenia arytmetyczne złożone jedynie ze znaków: <code>+-*:() </code>&nbsp;oraz cyfr.',
             };
         }
 
@@ -466,21 +466,13 @@ export class ArithmeticCalculatorLogic {
         return `<a class="link" href='/lesson/${lessonName}' target="_blank">${lessonName}</a>`;
     }
 
-    private extractFirstInnerMostBracketExpression(input: string): {
-        before: string;
-        inside: string;
-        after: string;
-    } {
+    private extractFirstInnerMostBracketExpression(input: string): { before: string; inside: string; after: string } {
         let start = -1;
         for (let i = 0; i < input.length; i++) {
             if (input[i] === '(') {
                 start = i;
             } else if (input[i] === ')') {
-                return {
-                    before: input.slice(0, start),
-                    inside: input.slice(start, i + 1),
-                    after: input.slice(i + 1),
-                };
+                return { before: input.slice(0, start), inside: input.slice(start, i + 1), after: input.slice(i + 1) };
             }
         }
 

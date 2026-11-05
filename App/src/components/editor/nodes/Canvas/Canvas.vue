@@ -155,12 +155,7 @@ let resizeObserver: ResizeObserver = null!;
 let snapper: Snapper = null!;
 let saveTimeout: number | null = null;
 let resizeSaveTimeout: number | null = null;
-const hitOptions = {
-    segments: true,
-    stroke: true,
-    fill: true,
-    tolerance: 5,
-};
+const hitOptions = { segments: true, stroke: true, fill: true, tolerance: 5 };
 const selection = ref<number[]>([]);
 const focused = ref(false);
 const shapeEdited = ref(-1);
@@ -480,7 +475,11 @@ function handleMouseUp() {
     saveTimeout = setTimeout(() => save());
 }
 
-function focusCanvas() {
+function focusCanvas(event: MouseEvent) {
+    // dont change focus when editing math inside textarea inside canvas
+    if (['PRE', 'CODE', 'BUTTON'].includes((event.target! as HTMLElement).nodeName)) {
+        return;
+    }
     focused.value = true;
     geometryEditor.value.focus();
 }
@@ -617,10 +616,7 @@ function handleScroll(event: WheelEvent) {
     }
 
     const zoomFactor = Math.pow(1.1, -Math.sign(event.deltaY));
-    const center = {
-        x: event.offsetX,
-        y: event.offsetY,
-    };
+    const center = { x: event.offsetX, y: event.offsetY };
 
     for (let i = totalShapes() - 1; i >= 0; i--) {
         if (selection.value.length === 0 || selection.value.includes(i)) {
@@ -649,12 +645,7 @@ function addShape(event: MouseEvent | paper.KeyEvent) {
 
 function onAddSquare(event: MouseEvent) {
     props.editor.commands.createRectangle(
-        {
-            center: {
-                x: canvas.value.width / 2,
-                y: canvas.value.height / 2,
-            },
-        },
+        { center: { x: canvas.value.width / 2, y: canvas.value.height / 2 } },
         insertPosition(),
     );
     addShape(event);
@@ -663,20 +654,12 @@ function onAddSquare(event: MouseEvent) {
 function onAddPolygon(event: MouseEvent) {
     props.editor.commands.createPolygon({}, insertPosition());
     const added = addShape(event) as PolygonShapeController;
-    added.makeRegular(3, {
-        x: canvas.value.width / 2,
-        y: canvas.value.height / 2,
-    });
+    added.makeRegular(3, { x: canvas.value.width / 2, y: canvas.value.height / 2 });
 }
 
 function onAddCircle(event: MouseEvent) {
     props.editor.commands.createCircle(
-        {
-            center: {
-                x: canvas.value.width / 2,
-                y: canvas.value.height / 2,
-            },
-        },
+        { center: { x: canvas.value.width / 2, y: canvas.value.height / 2 } },
         insertPosition(),
     );
     addShape(event);
@@ -699,19 +682,10 @@ function onAddCurve(event: MouseEvent) {
 function onAddArc(event: MouseEvent) {
     props.editor.commands.createArc(
         {
-            center: {
-                x: canvas.value.width / 2 - 50,
-                y: canvas.value.height / 2,
-            },
+            center: { x: canvas.value.width / 2 - 50, y: canvas.value.height / 2 },
             arms: [
-                {
-                    x: canvas.value.width / 2 + 50,
-                    y: canvas.value.height / 2 - 50,
-                },
-                {
-                    x: canvas.value.width / 2 + 50,
-                    y: canvas.value.height / 2 + 50,
-                },
+                { x: canvas.value.width / 2 + 50, y: canvas.value.height / 2 - 50 },
+                { x: canvas.value.width / 2 + 50, y: canvas.value.height / 2 + 50 },
             ],
         },
         insertPosition(),
@@ -721,12 +695,7 @@ function onAddArc(event: MouseEvent) {
 
 function onAddTextArea(event: MouseEvent) {
     props.editor.commands.createTextArea(
-        {
-            width: 160,
-            height: 44,
-            x: canvas.value.width / 2 - 80,
-            y: canvas.value.height / 2 - 20,
-        },
+        { width: 160, height: 44, x: canvas.value.width / 2 - 80, y: canvas.value.height / 2 - 20 },
         insertPosition(),
     );
 

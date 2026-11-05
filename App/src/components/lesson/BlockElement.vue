@@ -31,6 +31,7 @@ import TableCell from './TableCell.vue';
 import SemanticTag from './SemanticTag.vue';
 import Proof from './Proof.vue';
 import Example from './Example.vue';
+import WrongExample from './WrongExample.vue';
 import Formula from './Formula.vue';
 import Problem from './Problem.vue';
 import Expression from './Expression.vue';
@@ -76,6 +77,7 @@ const tagName = computed<string | Component>(() => {
         semanticTag: SemanticTag,
         proof: Proof,
         example: Example,
+        wrong: WrongExample,
         formula: Formula,
         expression: Expression,
         expressionInline: ExpressionInline,

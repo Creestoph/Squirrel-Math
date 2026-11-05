@@ -36,6 +36,10 @@
                 </li>
                 <li>Zwroty do czytelnika (ty, twój, ciebie) piszemy małą literą.</li>
                 <li>
+                    Bezpośrednie polecenie do czytelnika (zauważ, zastanów się) powinno być unikane, zamiast tego
+                    używamy zwrotów typu "zauważmy", "zastanówmy się", "warto zauważyć".
+                </li>
+                <li>
                     Użycie emotikonów nie jest dozwolone z wyjątkiem a) komentarzy, b) Bobera, dokładnie w takiej
                     formie: <code>: B</code>
                     (dwukropek, spacja, wielka litera B). Jeśli Bober kończy zdanie, powinna się po nim pojawić kropka.
@@ -73,20 +77,28 @@
                     <b>Eustachy</b> - pasterz, który trudni się liczeniem owiec. Pomaga mu w tym sąsiad (również
                     pasterz) <b>Wirgiliusz</b> oraz syn <b>Zenon</b>.
                 </li>
+                <li>
+                    <b>Stefan</b> ma 24 punkty karne. Zawsze żyje na krawędzi, nie jest zbyt rozważny, lecz jego
+                    strategie okazują się skuteczne i zawsze dopisuje mu szczęście. Jest przyjacielem <b>Zygfryda</b>.
+                </li>
                 <li><b>Zygfryd</b> ma 30 punktów karnych i stracił prawo jazdy.</li>
                 <li>
                     <b>Pan Janusz</b> uosabia negatywne, stereotypowe cechy Polaka. Zarabia minimalną krajową, lecz jest
                     pazerny na pieniądze. Lubi pojeść (np. golonki). Jeździ przepisowo. Przyjaźni się z
                     <b>Panem Markiem</b>.
                 </li>
-                <li><b>Stefan</b> ma 24 punkty karne.</li>
                 <li><b>Michaś, Maciuś, Krzyś i Onufry</b> są spokrewnieni, mają wspólną ciocię.</li>
-                <li><b>Michaś</b> nie jest pilnym uczniem. Ma dwóch przyjaciół.</li>
+                <li>
+                    <b>Michaś</b> nie jest pilnym uczniem. Ma dwóch przyjaciół. Jest znany z nieposkromionego apetytu.
+                </li>
                 <li>
                     <b>Onufry</b> jest bardzo pilnym uczniem, lecz brakuje mu przyjaciół. Jest zawsze niedoceniany i
                     nieuczciwie wykluczany.
                 </li>
-                <li><b>Maciuś</b> jest przeciętnym uczniem. Ma trzech przyjaciół.</li>
+                <li>
+                    <b>Maciuś</b> jest przeciętnym uczniem. Ma trzech przyjaciół. Zawsze był trochę nieporadny i mało
+                    samodzielny.
+                </li>
                 <li><b>Krzyś</b> ma jednego przyjaciela.</li>
                 <li>
                     <b>Babcia Teresa</b>, matka Pana Janusza, dobrze gotuje i ma liczną rodzinę. Zawsze przygotowuje

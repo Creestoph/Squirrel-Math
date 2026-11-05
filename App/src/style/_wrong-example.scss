@@ -1,0 +1,47 @@
+@use '@/style/colors';
+@use '@/style/fonts';
+
+.wrong {
+    position: relative;
+    display: block;
+    width: fit-content;
+    text-align: justify;
+    border-left: 3px solid colors.$intense-red;
+    padding: 15px 10px;
+    margin: 30px auto;
+
+    &::before {
+        position: absolute;
+        top: -20px;
+        left: -15px;
+        padding: 3px 8px;
+        border-radius: 8px;
+        background-color: colors.$intense-red;
+        color: white;
+        content: 'Błąd !';
+        font-family: fonts.$secondary-font;
+        line-height: 1.2;
+    }
+
+    &::after {
+        position: absolute;
+        right: 0;
+        bottom: -1px;
+        left: 0;
+        height: 12px;
+        background-color: colors.$intense-red;
+        content: '';
+        -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M-6 3L0 9L6 3L12 9L18 3' fill='none' stroke='white' stroke-width='2' stroke-linejoin='miter'/%3E%3C/svg%3E")
+            repeat-x;
+        -webkit-mask-size: 12px 12px;
+        mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M-6 3L0 9L6 3L12 9L18 3' fill='none' stroke='white' stroke-width='2' stroke-linejoin='miter'/%3E%3C/svg%3E")
+            repeat-x;
+        mask-size: 12px 12px;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .wrong {
+        margin: 30px 0;
+    }
+}

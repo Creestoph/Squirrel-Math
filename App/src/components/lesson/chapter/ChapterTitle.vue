@@ -9,8 +9,4 @@
 
 <style scoped lang="scss">
 @use '@/style/chapter';
-
-.chapter-name > div {
-    display: flex;
-}
 </style>

@@ -101,6 +101,7 @@ function applyEdit() {
     mathJax.value = mathJaxDirty.value;
     updateView();
     destroyMathJaxEditor();
+    props.editor.commands.focus();
 }
 
 function setDisplayMode(mode: ExpressionDisplayMode) {
@@ -203,9 +204,7 @@ function destroyMathJaxEditor() {
 }
 
 function updateEditorHeight() {
-    const editorElement = mathJaxEditor.value!.view.dom;
-    console.log('up', editorElement, editorElement?.scrollHeight);
-    editorHeight.value = Math.min(400, Math.max(100, editorElement?.scrollHeight || 100));
+    editorHeight.value = Math.min(400, Math.max(100, mathJaxEditor.value!.view.dom?.scrollHeight || 100));
 }
 
 function updateView() {
@@ -254,6 +253,10 @@ function updateView() {
         backdrop-filter: blur(10px);
         overflow: auto;
 
+        :deep(> div) {
+            height: 100%;
+        }
+
         :deep(pre) {
             min-height: 100%;
             margin: 0;
@@ -269,6 +272,12 @@ function updateView() {
             border: none;
             font-family: inherit;
             color: #444444;
+            background: transparent;
+
+            &,
+            * {
+                caret-color: black;
+            }
         }
     }
 
@@ -289,6 +298,7 @@ function updateView() {
             &.active {
                 background: black;
                 color: white;
+                cursor: default;
             }
 
             &:not(.active):hover {

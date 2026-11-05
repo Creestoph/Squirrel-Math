@@ -187,8 +187,8 @@ $transition-length: 0.7s;
 }
 
 .menu-segment.menu-small {
-    border-bottom-width: 4px;
-    border-right-width: 5.65px;
+    border-bottom-width: 3px;
+    border-right-width: 4.24px;
     height: 90px;
     padding: 0 20px 0 30px;
 

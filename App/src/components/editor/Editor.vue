@@ -149,6 +149,7 @@
                         <dropdown-option value="theorem"><icon>emoji_objects</icon> twierdzenie</dropdown-option>
                         <dropdown-option value="proof"><icon>engineering</icon> dowód</dropdown-option>
                         <dropdown-option value="example"><icon>view_agenda</icon> przykład</dropdown-option>
+                        <dropdown-option value="wrongExample">! błąd</dropdown-option>
                         <dropdown-option value="problem"><icon>help</icon> problem</dropdown-option>
                         <dropdown-option value="table"><icon>grid_on</icon> tabela</dropdown-option>
                         <dropdown-option value="image"><icon>insert_photo</icon> obraz</dropdown-option>
@@ -403,11 +404,7 @@
         <bubble-menu
             ref="bubbleMenuRef"
             :editor="editor"
-            :options="{
-                shift: true,
-                offset: 30,
-                onUpdate: computeLinkPopupPos,
-            }"
+            :options="{ shift: true, offset: 30, onUpdate: computeLinkPopupPos }"
             :should-show="() => editor.isActive('link')"
         >
             <link-popup
@@ -443,6 +440,7 @@ import SemanticTag from './nodes/SemanticTag';
 import Expression from './nodes/Expression';
 import ExpressionInline from './nodes/ExpressionInline';
 import Example from './nodes/Example';
+import WrongExample from './nodes/WrongExample';
 import Problem from './nodes/Problem';
 import Formula from './nodes/Formula';
 import Proof from './nodes/Proof';
@@ -500,10 +498,7 @@ const showImagesDialog = ref(false);
 const exitPending = ref<(() => void) | null>(null);
 const commentPopupToLeft = ref<boolean>(false);
 const shortMode = ref(false);
-const lessonData = {
-    short: null as LessonVersionData | null,
-    long: null as LessonVersionData | null,
-};
+const lessonData = { short: null as LessonVersionData | null, long: null as LessonVersionData | null };
 let autoSaveObserverId: number;
 
 createEditor(false);
@@ -549,20 +544,11 @@ function createEditor(shortVersion: boolean) {
             HardBreak,
             BulletList,
             OrderedList,
-            TableKit.configure({
-                table: { resizable: true },
-                tableCell: false,
-                tableHeader: false,
-                tableRow: false,
-            }),
-            TextAlign.configure({
-                types: ['paragraph'],
-            }),
+            TableKit.configure({ table: { resizable: true }, tableCell: false, tableHeader: false, tableRow: false }),
+            TextAlign.configure({ types: ['paragraph'] }),
             Gapcursor,
             UndoRedo,
-            TableRow.extend({
-                content: 'tableCell*',
-            }),
+            TableRow.extend({ content: 'tableCell*' }),
 
             // customized tiptap extensions
             CustomBold,
@@ -584,6 +570,7 @@ function createEditor(shortVersion: boolean) {
             Expression,
             ExpressionInline,
             Example,
+            WrongExample,
             Problem,
             Formula,
             Proof,
@@ -657,6 +644,9 @@ function insert(element: string) {
         case 'example':
             editor.value.commands.toggleExample();
             break;
+        case 'wrongExample':
+            editor.value.commands.toggleWrongExample();
+            break;
         case 'problem':
             editor.value.commands.createProblem();
             break;
@@ -676,11 +666,7 @@ function insert(element: string) {
             showImagesDialog.value = true;
             break;
         case 'table':
-            editor.value.commands.insertTable({
-                rows: 3,
-                cols: 3,
-                withHeaderRow: false,
-            });
+            editor.value.commands.insertTable({ rows: 3, cols: 3, withHeaderRow: false });
             break;
         case 'shape':
             editor.value.chain().focus().createGeometry().run();
@@ -879,6 +865,7 @@ function computeCommentPopupPos() {
 @use '@/style/fonts';
 @use '@/style/chapter';
 @use '@/style/example';
+@use '@/style/wrong-example';
 @use '@/style/problem';
 @use '@/style/formula';
 
@@ -1187,10 +1174,6 @@ a[lesson-url] {
         background: #ffe5e5;
         cursor: pointer;
     }
-}
-
-.editor .example:hover {
-    background-color: colors.$example-background;
 }
 
 /*

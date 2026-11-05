@@ -1,9 +1,12 @@
 **@Creestoph:**
 
-1. Edytor geometrii
-   - https://github.com/Creestoph/Squirrel-Math/issues?q=state%3Aopen%20label%3A%22geometry-editor%22
-2. Utrzymywanie kodu (do dyskusji)
+1. Utrzymywanie kodu (do dyskusji)
    - Errory raportowane w VSC mimo poprawnej kompilacji
+   - Debugowanie pliku w devtools
+   - https://github.com/Creestoph/Squirrel-Math/issues/177
+   - ...?
+2. Edytor geometrii
+   - https://github.com/Creestoph/Squirrel-Math/issues?q=state%3Aopen%20label%3A%22geometry-editor%22
 3. Element HTML
    - https://github.com/Creestoph/Squirrel-Math/issues/172
    - https://github.com/Creestoph/Squirrel-Math/issues/171
@@ -31,10 +34,6 @@ Zrobić check każdej lekcji:
 Ogólne:
 https://github.com/Creestoph/Squirrel-Math/issues/44 ulepszony wygląd Dowód
 https://github.com/Creestoph/Squirrel-Math/issues/102 kolory
-
-Dzielenie:
-Możliwość przełączania się łatwo między math inline i block
-canvas -> textarea -> expression -> jak klikam w okienko edycji expression to znika
 
 Podzielność liczb:
 https://github.com/Creestoph/Squirrel-Math/issues/56 ogólny chaos

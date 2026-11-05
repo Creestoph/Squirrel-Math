@@ -9,7 +9,7 @@ import { Node as PMNode } from '@tiptap/pm/model';
 
 export default Node.create({
     name: 'chapterTitle',
-    content: 'text*',
+    content: '(text | expressionInline)*',
     marks: '',
     parseHTML: () => [{ tag: 'chapter-title' }],
     renderHTML: ({ HTMLAttributes }) => ['chapter-title', HTMLAttributes, 0],

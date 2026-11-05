@@ -10,6 +10,7 @@ export type NodeType =
     | 'listItem'
     | 'hardBreak'
     | 'example'
+    | 'wrong'
     | 'proof'
     | 'problem'
     | 'formula'

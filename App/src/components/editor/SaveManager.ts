@@ -32,10 +32,7 @@ export class SaveManager {
         allComments.value = {};
         if (json?.comments) {
             Object.entries(json.comments).forEach(([id, comment]) => {
-                allComments.value[id] = {
-                    text: comment.text,
-                    hidden: comment.hidden,
-                };
+                allComments.value[id] = { text: comment.text, hidden: comment.hidden };
             });
         }
 
@@ -83,19 +80,13 @@ export class SaveManager {
     }
 
     private getLessonJSON(lessonData: { long: LessonVersionData | null; short: LessonVersionData | null }): LessonData {
-        const lessonJSON: LessonData = {
-            long: lessonData.long || undefined,
-            short: lessonData.short || undefined,
-        };
+        const lessonJSON: LessonData = { long: lessonData.long || undefined, short: lessonData.short || undefined };
 
         if (Object.entries(allComments.value).length > 0) {
             lessonJSON.comments = {};
         }
         Object.entries(allComments.value).forEach(([id, comment]) => {
-            lessonJSON.comments![id] = {
-                text: comment.text,
-                hidden: comment.hidden,
-            };
+            lessonJSON.comments![id] = { text: comment.text, hidden: comment.hidden };
         });
 
         if (Object.entries(lessonImages.value).length > 0) {
@@ -109,6 +100,6 @@ export class SaveManager {
     }
 
     private updateTitle() {
-        document.title = (this.currentDraft.name || 'Nowa lekcja') + (this.isDirty ? ' *' : '');
+        document.title = (this.isDirty ? '* ' : '') + (this.currentDraft.name || 'Nowa lekcja');
     }
 }
