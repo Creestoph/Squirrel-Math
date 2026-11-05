@@ -104,6 +104,7 @@
                     <b>Babcia Teresa</b>, matka Pana Janusza, dobrze gotuje i ma liczną rodzinę. Zawsze przygotowuje
                     zbyt duże porcje dla gości.
                 </li>
+                <li><b>Ambroży</b> jest początkującym malarzem-rzeźbiarzem, ma zacięcie artystyczne.</li>
             </ul>
         </lesson-chapter>
     </lesson>
